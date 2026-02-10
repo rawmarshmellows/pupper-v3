@@ -263,43 +263,36 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-## Test Your Understanding
-
+**Q1:** Why does ABS require higher print temperatures than PLA, even though both are thermoplastics?
 <details>
-<summary><strong>1. Why does ABS require higher print temperatures than PLA, even though both are thermoplastics?</strong></summary>
-
+<summary>Answer</summary>
 ABS contains styrene monomers with aromatic (benzene) rings that participate in pi-pi stacking interactions. These millions of weak attractions between polymer chains act like molecular velcro, requiring more thermal energy to disrupt. PLA lacks aromatic rings entirely, so it has fewer intermolecular attractions to overcome and flows at lower temperatures.
-
 </details>
 
+**Q2:** If a single pi-pi interaction is about 50x weaker than a covalent bond, why do these interactions matter so much for material properties?
 <details>
-<summary><strong>2. If a single pi-pi interaction is about 50x weaker than a covalent bond, why do these interactions matter so much for material properties?</strong></summary>
-
+<summary>Answer</summary>
 Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and glass transition temperature. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
-
 </details>
 
+**Q3:** A 3D print in ABS is warping at the corners. Based on pi-pi stacking, what are two potential solutions and why would they work?
 <details>
-<summary><strong>3. A 3D print in ABS is warping at the corners. Based on pi-pi stacking, what are two potential solutions and why would they work?</strong></summary>
-
+<summary>Answer</summary>
 **Solution 1: Increase bed temperature (to ~100-110°C).** This keeps the bottom layers warm enough that pi-pi interactions remain partially disrupted, allowing those layers to shrink along with the cooling upper layers instead of staying rigidly fixed to the bed.
 
 **Solution 2: Use an enclosure to maintain ambient temperature.** This slows the cooling rate of all layers, reducing the temperature differential between fresh-extruded material and already-deposited layers. More uniform cooling means more uniform re-stacking of aromatic rings, reducing internal stresses that cause warping.
-
 </details>
 
+**Q4:** You're designing a new polymer for high-temperature applications. Would you want more or fewer aromatic rings in your monomer structure? Explain the tradeoff.
 <details>
-<summary><strong>4. You're designing a new polymer for high-temperature applications. Would you want more or fewer aromatic rings in your monomer structure? Explain the tradeoff.</strong></summary>
-
+<summary>Answer</summary>
 **More aromatic rings** would increase pi-pi stacking, raising the glass transition temperature and making the material more rigid at higher temperatures—good for heat resistance. However, this also means higher processing temperatures (harder to melt and mold), increased risk of thermal degradation during manufacturing, and greater shrinkage/warping. The tradeoff is: heat-resistant in use vs. difficult to manufacture. Engineers balance this by choosing the minimum aromatic content needed to meet thermal requirements.
-
 </details>
 
+**Q5:** Compare pi-pi stacking to [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] and [[quick-context/van-der-waals-forces|van der Waals forces]]. Where does pi-pi stacking fit in the intermolecular force hierarchy, and why?
 <details>
-<summary><strong>5. Compare pi-pi stacking to [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] and [[quick-context/van-der-waals-forces|van der Waals forces]]. Where does pi-pi stacking fit in the intermolecular force hierarchy, and why?</strong></summary>
-
+<summary>Answer</summary>
 Pi-pi stacking falls between typical van der Waals forces and hydrogen bonds in strength (~2-10 kJ/mol vs ~0.5-5 kJ/mol for London dispersion and ~10-40 kJ/mol for hydrogen bonds). Mechanistically, it's a specialized type of van der Waals interaction—the delocalized electron clouds of aromatic rings create larger polarizable surfaces for London dispersion forces, plus electrostatic interactions between the quadrupole moments of the rings. Unlike hydrogen bonds (which require specific H-O/N/F donors and acceptors), pi-pi stacking just requires flat aromatic surfaces to align. This explains why materials like graphite (pure pi-pi stacking) are slippery between layers but strong within them—the stacking is significant but less directional than hydrogen bonds. See: [[quick-context/chemical-bonds-spectrum]] for the full intermolecular force hierarchy.
-
 </details>
 
 </details>

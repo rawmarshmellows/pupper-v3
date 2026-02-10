@@ -7,51 +7,9 @@ created: 2026-01-27
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
-# Pupper Control Board: How the Robot's Brain Works
+## The Core Problem
 
-## The Core Problem: Coordinating a Walking Robot
-
-A quadruped robot like Pupper needs to simultaneously: (1) know its orientation in 3D space, (2) send coordinated position commands to 12 servo motors (3 per leg), (3) receive sensor feedback from those motors, (4) run real-time control algorithms at 1000Hz, and (5) communicate with a host computer for high-level commands. Each of these requires specialized hardware—an [[micro-context/imu-inertial-measurement-unit|IMU]] for orientation, [[micro-context/can-bus-transceiver|CAN transceivers]] for motor communication, [[micro-context/stm32-microcontroller|microcontrollers]] for computation, and a [[micro-context/buck-converter|power supply]] to convert battery voltage. The control board integrates all these components onto a single PCB, with carefully routed traces and proper [[micro-context/decoupling-capacitor|decoupling]] to ensure reliable operation.
-
-```
-PUPPER CONTROL BOARD ARCHITECTURE
-═══════════════════════════════════════════════════════════════════════════════
-
-                           ┌─────────────────────────────────────────────────┐
-                           │          PUPPER CONTROL BOARD Rev 3.5           │
-    BATTERY ──────────────►│                                                 │
-    (12-24V)               │  ┌─────────────┐                                │
-                           │  │ TPS54561    │  5V @ 5A                       │
-                           │  │ Buck Conv.  ├──────────────┬─────────────────┤
-                           │  └─────────────┘              │                 │
-                           │         │                     │                 │
-                           │         ▼ 3.3V LDO            │                 │
-                           │  ┌──────┴──────┐       ┌──────┴──────┐          │
-                           │  │  STM32F446  │       │  STM32F446  │          │
-                           │  │    (U1)     │◄─────►│    (U5)     │          │
-                           │  │  Main MCU   │ SPI   │  Motor MCU  │          │
-                           │  └──────┬──────┘       └──────┬──────┘          │
-                           │         │                     │                 │
-                           │    ┌────┴────┐           ┌────┴────┐            │
-                           │    │  BNO086 │           │ MAX3051 │ ×4        │
-                           │    │   IMU   │           │CAN Xcvr │            │
-                           │    └─────────┘           └────┬────┘            │
-                           │                               │                 │
-                           │    ┌─────────┐           ┌────┴────┐            │
-                           │    │ADS1110  │           │ CAN Bus │            │
-                           │    │  ADC    │           │  Conn.  │            │
-                           │    └─────────┘           └─────────┘            │
-                           │                               │                 │
-                           │    ┌─────────┐                ▼                 │
-                           │    │MAX98357 │         To 12 Servos             │
-                           │    │ Audio   │         (3 per leg)              │
-                           │    └─────────┘                                  │
-                           └─────────────────────────────────────────────────┘
-                                      │
-                                      ▼
-                              Raspberry Pi (40-pin header)
-                              High-level control & WiFi
-```
+A quadruped robot like Pupper needs to simultaneously know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized components—IMU, CAN transceivers, microcontrollers, power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure reliable operation.
 
 ## 5 Essential Terms
 
@@ -63,65 +21,8 @@ PUPPER CONTROL BOARD ARCHITECTURE
 | **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
 | **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
 
-## Component Map by Function
-
-```
-POWER PATH:
-═══════════════════════════════════════════════════════════════════════════════
-
-  Battery ──► D1 (SS56 diode) ──► TPS54561 ──► 5V rail
-  12-24V      reverse polarity     buck         │
-              protection           converter    ├──► 3.3V LDO ──► MCUs, IMU, ADC
-                                               │
-                                               └──► 5V ──► CAN transceivers
-
-  Inductor L1 (10µH): stores energy for buck converter
-  Capacitors C18, C19 (47µF): smooth output voltage ripple
-
-
-SIGNAL PATH (sensing):
-═══════════════════════════════════════════════════════════════════════════════
-
-  BNO086 IMU ──I2C──► STM32 U1 (main MCU)
-     │                    │
-     │  Quaternion        │  Processes orientation
-     │  output            │  at 400Hz
-     │                    │
-     └────────────────────┴──► Feeds into balance controller
-
-  ADS1110 ADC ──I2C──► STM32 U1
-     │
-     └── Battery voltage monitoring (16-bit precision)
-
-
-SIGNAL PATH (motor control):
-═══════════════════════════════════════════════════════════════════════════════
-
-  STM32 U5 ──► MAX3051 (×4) ──► CAN Bus ──► 12 Servos
-  (motor MCU)  CAN transceivers   │
-       │                          │
-       │  1000Hz control loop     │  Each servo has:
-       │  Position commands       │  - Motor driver
-       │                          │  - Encoder feedback
-       │                          │  - CAN interface
-       └──────────────────────────┘
-
-  Why 4 transceivers? Redundancy + separate buses for front/rear legs
-
-
-COMMUNICATION PATH:
-═══════════════════════════════════════════════════════════════════════════════
-
-  Raspberry Pi ◄──40-pin header──► STM32 U1
-       │              (U2)              │
-       │                                │
-  WiFi/SSH                         UART/SPI
-  High-level                       Low-level
-  commands                         telemetry
-```
-
 <details>
-<summary><strong>How It Works: Signal Flow During Walking</strong></summary>
+<summary><strong>How It Works</strong></summary>
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
@@ -155,7 +56,7 @@ When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 </details>
 
 <details>
-<summary><strong>The Key Tension: Real-Time vs. Flexibility</strong></summary>
+<summary><strong>The Key Tension</strong></summary>
 
 The dual-MCU architecture reflects a fundamental tension in robot control: **real-time guarantees vs. software flexibility**.
 
@@ -185,7 +86,7 @@ ARCHITECTURE TRADEOFFS:
 </details>
 
 <details>
-<summary><strong>Concrete Example: Reading the BOM</strong></summary>
+<summary><strong>Concrete Example</strong></summary>
 
 Here's how to interpret key entries from the Bill of Materials:
 
@@ -239,32 +140,22 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - "LCSC" supplier = designed for JLCPCB assembly service
 - C0402 parts are nearly impossible to hand-solder—use assembly service or hot air
 
+**The one thing most outsiders get wrong about this is...** thinking a robot control board is just "a bunch of sensors and motors connected to a computer." The critical insight is that real-time control requires deterministic timing—you cannot run a 1000Hz balance loop on a general-purpose OS like Linux because garbage collection, kernel interrupts, or WiFi processing can randomly delay your code by milliseconds. This is why the architecture uses dedicated microcontrollers for timing-critical tasks while offloading flexible but latency-tolerant work (networking, logging, ML) to the Raspberry Pi.
+
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-### Component Deep-Dives
 - [[micro-context/stm32-microcontroller]] — The dual ARM Cortex-M4 MCUs running the show
 - [[micro-context/can-bus-transceiver]] — How differential signaling enables reliable motor communication
 - [[micro-context/buck-converter]] — Switching power supply converting battery to 5V
 - [[micro-context/imu-inertial-measurement-unit]] — 9-axis sensor fusion for orientation
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
-- [[micro-context/i2s-audio-amplifier]] — Digital audio output for speaker
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
-- [[micro-context/smd-resistor]] — The tiny 0402 resistors and what they do
-- [[micro-context/power-inductor]] — Energy storage in the buck converter
-- [[micro-context/ceramic-resonator]] — 8MHz clock source for the MCUs
-
-### PCB & Electronics Fundamentals
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
 - [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards
 - [[quick-context/electric-current]] — Fundamentals of current flow
-
-### Related Robotics Topics
-- Servo motor control (not yet documented)
-- PID control loops (not yet documented)
-- Quaternions and orientation representation (not yet documented)
 
 </details>
 

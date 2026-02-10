@@ -343,6 +343,13 @@ TPU:
 </details>
 
 <details>
+<summary><strong>The Key Tension</strong></summary>
+
+The fundamental tradeoff is **bond strength vs. flexibility**. More hydrogen bonds between polymer chains create a stiffer, stronger material—but one that's also more brittle and prone to sudden fracture. Fewer hydrogen bonds allow chains to slide freely, enabling flexibility and stretch—but at the cost of structural rigidity and load-bearing capacity. PLA exemplifies the "too uniform" failure mode: its evenly distributed H-bonds make it stiff everywhere, so when stress concentrates, chains separate catastrophically. TPU resolves this by *segregating* the bonds—dense H-bond networks in hard segments provide anchor points and strength, while bond-free soft segments provide stretch and energy absorption. The engineering challenge is that you can't easily tune this ratio after synthesis; you're choosing from pre-designed polymer architectures. Practitioners argue about whether to modify the hard/soft segment ratio (changes Shore hardness), add plasticizers (weakens H-bonds), or use blends of different polymers to achieve target properties.
+
+</details>
+
+<details>
 <summary><strong>Concrete Example</strong></summary>
 
 Shore Hardness and H-Bond Ratio
@@ -423,6 +430,8 @@ TPU at 60C:
 - **[[quick-context/glass-transition-temperature]]**: The temperature where polymer chains gain enough energy to overcome intermolecular forces (including H-bonds) and begin moving freely - directly explains why PLA softens in a hot car.
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
+
+- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
 
 </details>
 

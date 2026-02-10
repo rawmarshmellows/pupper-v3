@@ -3,36 +3,15 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
 # Silicon Die
 
-## The Core Problem: Getting Billions of Switches Into Something You Can Use
+## The Core Problem
 
-A silicon die solves the fundamental problem of cramming billions of microscopic switches (transistors) onto something small enough to fit in your devices, yet organized enough to actually compute. Without dies, you'd have no processors, no memory chips, no smartphones—nothing that thinks electronically. The die is where the actual computing happens; everything else (the package, the circuit board) exists just to get power in and signals out of this tiny piece of silicon.
-
-Think of it this way: you can't buy "transistors in bulk" and wire them together by hand. The die is a pre-built city of billions of transistors, already connected by microscopic metal highways, manufactured all at once through a photographic printing process. Without this manufacturing approach, a modern CPU would cost billions of dollars and take centuries to assemble.
-
-```
-WHAT IS A SILICON DIE?
-════════════════════════════════════════════════════════════════════════
-
-    WAFER (300mm diameter)           A SINGLE DIE (~10mm)
-    ┌─────────────────────┐          ┌───────────────────┐
-    │ □ □ □ □ □ □ □ □ □ □ │          │  Metal Layer 10   │ ← signals out
-    │ □ □ □ □ □ □ □ □ □ □ │          │  Metal Layer 9    │
-    │ □ □ □ □ □ □ □ □ □ □ │   CUT    │  Metal Layer 8    │   (wiring)
-    │ □ □ □ □ □ □ □ □ □ □ │   ───►   │  ...              │
-    │ □ □ □ □ □ □ □ □ □ □ │          │  Metal Layer 1    │
-    │ □ □ □ □ □ □ □ □ □ □ │          │═══════════════════│
-    │ □ □ □ □ □ □ □ □ □ □ │          │ TRANSISTORS       │ ← computing
-    └─────────────────────┘          │ ┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬  │
-           │                         │ Silicon substrate │
-    Each □ = one die                 └───────────────────┘
-    (hundreds per wafer)
-```
+A silicon die solves the fundamental problem of cramming billions of microscopic switches (transistors) onto something small enough to fit in your devices, yet organized enough to actually compute. The die is a pre-built city of billions of transistors, already connected by microscopic metal highways, manufactured all at once through a photographic printing process—without this approach, a modern CPU would cost billions of dollars and take centuries to assemble.
 
 ## 5 Essential Terms
 
@@ -131,8 +110,6 @@ CROSS-SECTION OF A SILICON DIE (not to scale)
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Die Size vs. Yield vs. Cost
-
 The semiconductor industry constantly battles a fundamental tradeoff:
 
 | Larger Dies | Smaller Dies |
@@ -172,8 +149,6 @@ THE YIELD PROBLEM: Defects Kill Large Dies More Often
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
-
-Anatomy of a Real Die
 
 Let's examine what a modern CPU die actually contains. Consider Apple's M2 chip:
 

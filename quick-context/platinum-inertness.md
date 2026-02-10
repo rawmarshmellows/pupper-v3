@@ -9,9 +9,19 @@ created: 2026-01-25
 
 # Why Platinum is Chemically Inert
 
-## The Core Problem: Why Does Platinum Just Sit There?
+## The Core Problem
 
-In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the anode because they readily give up electrons. But platinum? It just sits there, pristine, letting electrons flow through while refusing to react. Why?
+In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the anode because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
+
+## 5 Essential Terms
+
+| Term | Definition |
+|------|------------|
+| **Inert** | Chemically unreactive; doesn't participate in reactions |
+| **Ionization energy** | Energy required to remove an electron from an atom |
+| **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
+| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
+| **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -128,15 +138,16 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 
 </details>
 
-## 5 Essential Terms
+<details>
+<summary><strong>Peripheral Knowledge</strong></summary>
 
-| Term | Definition |
-|------|------------|
-| **Inert** | Chemically unreactive; doesn't participate in reactions |
-| **Ionization energy** | Energy required to remove an electron from an atom |
-| **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
-| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
-| **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
+- **[[quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
+- **[[quick-context/electrolysis-basics]]** - The broader process where platinum electrodes are commonly used
+- **[[quick-context/reduction-oxidation-reactions]]** - Redox chemistry that explains why some metals dissolve and others don't
+- **[[quick-context/noble-metals]]** - Other metals like gold and silver that share platinum's corrosion resistance
+- **[[quick-context/transition-metals-d-orbitals]]** - How d-orbital electron configurations influence metal reactivity
+
+</details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
@@ -157,6 +168,18 @@ Platinum conducts electricity by allowing electrons to flow *through* its metall
 <details>
 <summary>Answer</summary>
 Gold would work chemically, but it's even more expensive than platinum and is softer (less durable). Platinum offers a good balance of inertness, conductivity, mechanical strength, and cost. For most applications, platinum is "inert enough."
+</details>
+
+**Q4:** Platinum has electron configuration [Xe] 4f14 5d9 6s1. How does having a nearly-full d-subshell contribute to its inertness?
+<details>
+<summary>Answer</summary>
+The 5d subshell holds up to 10 electrons, and platinum has 9. This nearly-full configuration is very stable—there's no strong thermodynamic "drive" for platinum to gain or lose electrons. Combined with its high nuclear charge (78 protons) pulling tightly on those electrons, removing an electron requires substantial energy.
+</details>
+
+**Q5:** Why doesn't platinum form a stable oxide layer the way aluminum does, and how does this relate to its use as an electrode?
+<details>
+<summary>Answer</summary>
+The reaction Pt + O2 → PtO2 is thermodynamically unfavorable under normal conditions—there's no energetic "payoff" for platinum to oxidize. Unlike aluminum (which readily forms protective Al2O3), platinum simply doesn't want to react with oxygen. This is advantageous for electrodes because platinum stays pristine rather than forming an oxide coating that could interfere with electron transfer.
 </details>
 
 </details>

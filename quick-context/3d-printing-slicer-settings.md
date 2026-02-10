@@ -8,15 +8,19 @@ updated: 2026-01-21
 
 > **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
-# 3D Printing Slicer Settings: Absolute Beginner Guide
+## The Core Problem
 
-## How 3D Printing Works (30-second version)
+A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed. The challenge is that settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
-A 3D printer works like a hot glue gun on a robot arm. It melts plastic [[quick-context/3d-printing-filament-types|filament]] (a long spool of plastic wire) and squirts it out layer by layer, building up an object from the bottom. Each layer is maybe 0.2-0.3mm thick—about 2-3 sheets of paper. Stack enough layers and you get a 3D object.
+## 5 Essential Terms
 
-A **slicer** is software that takes your 3D model and converts it into instructions the printer understands: "move here, squirt plastic, move there, squirt more." The settings below control *how* it does this.
-
----
+| Term | Definition |
+|------|------------|
+| **Layer height** | Thickness of each horizontal layer (thinner = smoother but slower) |
+| **Infill** | Percentage of interior that's solid plastic vs air (15% = mostly hollow) |
+| **Walls/perimeters** | Number of solid outlines on the exterior shell |
+| **Volumetric flow rate** | How much plastic (mm³/s) must melt and extrude—limited by hotend capacity |
+| **G-code** | The text file of line-by-line commands that tell the printer exactly what to do |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -128,167 +132,6 @@ HOW SETTINGS INTERACT: The Flow Rate Equation
 
 </details>
 
----
-
-## Your Settings Explained
-
-### Material: PETG
-
-**What it is**: The type of plastic you're feeding through the printer.
-
-**[[quick-context/3d-printing-filament-types|PETG]]** is a specific plastic (polyethylene terephthalate glycol). Think of it like choosing between materials for a water bottle—some plastics are flimsy, some are tough.
-
-- **[[quick-context/3d-printing-filament-types|PLA]]**: The "easy mode" plastic. Prints easily, but brittle and melts in hot cars (~60°C)
-- **PETG**: Tougher, slightly flexible, survives heat better (~80°C), but trickier to print
-- **ABS**: Very tough, but warps easily and produces fumes
-
-**Your choice (PETG)**: Good for functional parts that need to survive real use.
-
----
-
-### Infill: 15%
-
-**What it is**: How solid the inside of your print is.
-
-3D prints are NOT solid plastic inside—that would waste material and time. Instead, the inside has a pattern (usually honeycomb or grid) that provides structure while being mostly air.
-
-```
-100% infill     vs     15% infill
-┌──────────┐          ┌──────────┐
-│██████████│          │▓░░░▓░░░▓│
-│██████████│          │░░░░░░░░░│
-│██████████│          │▓░░░▓░░░▓│
-│██████████│          │░░░░░░░░░│
-└──────────┘          └──────────┘
- Solid, slow,           Light, fast,
- uses lots of           uses less
- plastic                plastic
-```
-
-**15%** means only 15% of the interior volume is plastic. The rest is air with a sparse support pattern.
-
-**Your choice (15%)**: Fast prints, light parts. Fine for most things unless you need to bolt through it or it takes heavy loads.
-
----
-
-### Support: On build plate - Tree (auto)
-
-**What it is**: Temporary scaffolding for parts that stick out in mid-air.
-
-**The problem**: Printers build bottom-up. If your model has parts that stick out horizontally (like a character's outstretched arm), there's nothing underneath to support the plastic as it's laid down. It would just droop or fall.
-
-```
-Without support:              With support:
-
-    ┌───┐  ← arm droops          ┌───┐  ← arm prints correctly
-   /    │                        │   │
-  ▼     │                       ╱│   │
-        │                      ╱ │   │
-        │                     ╱  │   │
-   ─────┴─────              ─╱───┴───╱─
-                             ↑ support structure
-                               (removed after printing)
-```
-
-**"Tree" support**: Instead of a solid block under overhangs, it grows branch-like structures from the build plate up to where they're needed. Easier to snap off and leaves cleaner surfaces.
-
-**"On build plate"**: Support only grows from the bottom plate, not from the model itself. Simpler but can't reach all overhangs.
-
-**Your choice**: You have some overhangs, but want supports that are easy to remove.
-
----
-
-### Walls: 3
-
-**What it is**: How many solid outlines make up the outer shell of your print.
-
-Before filling in the inside with infill, the printer traces the outline of each layer—like drawing the edges of a shape before coloring it in. More outlines = thicker, stronger outer shell.
-
-```
-Cross-section view:
-
-1 wall:          3 walls:
-┌────────┐       ┌────────┐
-│░░░░░░░░│       │▓▓▓░░▓▓▓│
-│░░░░░░░░│       │▓░░░░░░▓│
-│░░░░░░░░│       │▓░░░░░░▓│
-│░░░░░░░░│       │▓▓▓░░▓▓▓│
-└────────┘       └────────┘
- Thin shell,      Thick shell,
- weak edges       strong edges
-
-░ = infill (sparse interior)
-▓ = solid wall
-```
-
-**Your choice (3 walls)**: A good middle ground. The edges of your part will be solid and reasonably strong.
-
----
-
-### Layer Height: 0.3mm
-
-**What it is**: How thick each horizontal layer is.
-
-Remember, the printer builds objects by stacking thin layers. Thinner layers = smoother surfaces but more layers to print (slower). Thicker layers = faster but you can see/feel the "stair steps."
-
-```
-0.1mm layers:           0.3mm layers:
-    ╭─────╮                 ┌─────┐
-   ╱       ╲               ╱│     │
-  ╱         ╲             ╱ │     │
- ╱           ╲           ╱  │     │
-╱             ╲         ╱   │     │
-───────────────         ─────┴─────
-Smooth curves,          Visible steps,
-takes 3x longer         much faster
-```
-
-**0.3mm** is on the thick/fast end. You'll see layer lines, but prints finish quickly.
-
-**Your choice**: Speed over beauty. Good for prototypes and functional parts where appearance doesn't matter.
-
----
-
-### Nozzle Diameter: 0.6mm
-
-**What it is**: The size of the hole the melted plastic comes out of.
-
-Think of it like choosing between a fine-tip pen and a marker:
-- **0.4mm** (standard): Good balance of detail and speed
-- **0.2mm** (small): Fine details, very slow
-- **0.6mm** (large): Fast printing, can't do fine details
-
-```
-0.4mm nozzle:     0.6mm nozzle:
-───────────       ━━━━━━━━━━━
-thin lines,       thick lines,
-more passes       fewer passes
-needed            needed
-```
-
-**Your choice (0.6mm)**: You're printing fast, chunky parts. Small text or fine details will look blobby.
-
----
-
-## What Your Settings Mean Together
-
-```
-PETG + 15% infill + 3 walls + 0.3mm layers + 0.6mm nozzle
-                           ↓
-        "Fast functional prototype mode"
-```
-
-This setup prioritizes **speed over appearance**. You'll get:
-- Parts that are reasonably strong (PETG + 3 walls)
-- Prints that finish relatively quickly (thick layers + wide nozzle + low infill)
-- Visible layer lines and no fine detail
-- Parts that won't melt in a hot car
-
-**Good for**: Robot parts, brackets, cases, anything functional
-**Bad for**: Display pieces, gifts, anything with fine text or details
-
----
-
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
@@ -298,8 +141,6 @@ The fundamental tension in slicer settings is **speed vs. quality vs. strength**
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
-
-## The One Thing Beginners Get Wrong
 
 People think "more infill = stronger part." Not really. A part with **3 walls and 15% infill** is often stronger than **2 walls and 50% infill** because the outer shell carries most of the load in real-world use. Cranking infill to 100% wastes plastic and time for minimal strength gain.
 
@@ -322,58 +163,37 @@ Concepts that connect to slicer settings and deepen your understanding:
 
 </details>
 
----
-
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
+**Q1:** Why might you increase wall count instead of infill percentage when you need a stronger part?
 <details>
-<summary>Why might you increase wall count instead of infill percentage when you need a stronger part?</summary>
-
+<summary>Answer</summary>
 The outer walls carry most of the structural load in real-world use because forces typically act on the surface of a part. Increasing walls from 3 to 4-5 adds solid material where stress concentrates, while increasing infill adds material to the interior where it contributes less to strength. A part with 4 walls and 15% infill is often stronger than one with 2 walls and 50% infill, while using similar amounts of material and print time.
 </details>
 
+**Q2:** If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
 <details>
-<summary>If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?</summary>
-
-You would need to increase:
-- **Nozzle temperature**: PETG melts at ~230-250°C vs PLA's ~200-220°C
-- **Bed temperature**: PETG needs ~70-80°C vs PLA's ~50-60°C
-- **Retraction settings**: PETG is stringier, may need different retraction distance/speed
-- **Print speed**: Often slower for PETG to allow proper layer adhesion
-- **Cooling**: PETG typically needs less part cooling than PLA
-
-These changes account for PETG's higher glass transition temperature and different flow characteristics.
+<summary>Answer</summary>
+You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher glass transition temperature and different flow characteristics.
 </details>
 
+**Q3:** When would you choose a 0.2mm layer height over a 0.3mm setting?
 <details>
-<summary>When would you choose a 0.2mm layer height over your current 0.3mm setting?</summary>
-
-Choose thinner layers (0.2mm) when:
-- Printing parts with curved or angled surfaces where "stair-stepping" would be visible and objectionable
-- Creating display pieces, gifts, or anything where surface finish matters
-- Printing parts with fine details or small text that would blob together at 0.3mm
-- Making parts that need to fit precisely with other components (tolerances matter)
-
-The trade-off is print time—0.2mm layers take roughly 50% longer than 0.3mm layers for the same part.
+<summary>Answer</summary>
+Choose thinner layers (0.2mm) when printing parts with curved or angled surfaces where stair-stepping would be visible, creating display pieces or gifts where surface finish matters, printing parts with fine details or small text, or making parts that need precise tolerances. The trade-off is print time—0.2mm layers take roughly 50% longer than 0.3mm layers for the same part.
 </details>
 
+**Q4:** What problem does tree support solve that regular block supports don't?
 <details>
-<summary>What problem does "tree support" solve that regular block supports don't?</summary>
-
-Tree supports branch upward from the build plate to reach overhangs, touching the model only where absolutely necessary. Regular block supports create solid walls of material directly under overhangs. Tree supports solve several problems:
-- **Easier removal**: Branch tips snap off cleanly vs prying away solid blocks
-- **Better surface finish**: Minimal contact points mean fewer support scars on the final part
-- **Less material waste**: Branches use far less filament than solid blocks
-- **Access to interior overhangs**: Can sometimes reach places block supports can't
-
-The trade-off is slightly longer slicing time and occasionally less stability for very heavy overhangs.
+<summary>Answer</summary>
+Tree supports branch upward from the build plate to reach overhangs, touching the model only where absolutely necessary. They provide easier removal (branch tips snap off cleanly), better surface finish (minimal contact points mean fewer support scars), less material waste (branches use far less filament), and sometimes better access to interior overhangs. The trade-off is slightly longer slicing time and occasionally less stability for very heavy overhangs.
 </details>
 
+**Q5:** Two filaments have identical melting points (240C), but one is semi-crystalline and one is amorphous. Why might the same slicer profile produce good results with one but failures with the other?
 <details>
-<summary>Two filaments have identical melting points (240°C), but one is semi-crystalline and one is amorphous. Why might the same slicer profile produce good results with one but failures with the other?</summary>
-
-Melting point is just one property—[[quick-context/polymer-crystallinity-vs-amorphous|crystallinity]] and [[quick-context/glass-transition-temperature|Tg]] profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different "working windows" where the material is moldable but not too soft. A material with Tg close to room temperature might warp as the print cools past Tg, while one with high Tg could crack from thermal stress. The semi-crystalline material may need slower cooling (for proper crystal formation), different bed temps (to manage warping differently), and adjusted retraction (crystallizing material behaves differently during ooze). The slicer sees temperature; the physics depends on molecular architecture. See: [[quick-context/polymer-crystallinity-vs-amorphous]] for how structure affects thermal behavior.
+<summary>Answer</summary>
+Melting point is just one property—crystallinity and glass transition temperature profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
 </details>
 
 </details>

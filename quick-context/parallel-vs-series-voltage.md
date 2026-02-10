@@ -3,7 +3,7 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
 
@@ -197,7 +197,7 @@ THE CURRENT DELIVERY PROBLEM
   2. MANY POWER PINS: Modern CPUs have hundreds of Vdd pins to distribute
      current, reducing resistance per path
 
-  3. DECOUPLING CAPACITORS: Store charge locally to handle sudden current
+  3. [[quick-context/capacitor|DECOUPLING CAPACITORS]]: Store charge locally to handle sudden current
      demands without voltage drops from power supply
 
   4. VOLTAGE REGULATORS ON PACKAGE: Place power conversion very close to
@@ -207,7 +207,7 @@ THE CURRENT DELIVERY PROBLEM
 | Challenge | Why It's Hard | Solution |
 |-----------|---------------|----------|
 | Resistance in power delivery | Even tiny resistance × huge current = significant voltage drop | Wide copper planes, many parallel paths |
-| Sudden current changes | Transistors switching creates current spikes | Decoupling capacitors everywhere |
+| Sudden current changes | Transistors switching creates current spikes | [[quick-context/capacitor|Decoupling capacitors]] everywhere |
 | Heat from I²R losses | 100A through any resistance generates serious heat | Low-resistance materials, spreading current across many pins |
 | Voltage tolerance | Transistors at 0.65V have very little margin for error | Precision voltage regulators, on-die monitoring |
 

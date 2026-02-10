@@ -15,13 +15,13 @@ Here is a fact that surprises most people: **pure water is almost a perfect insu
 
 ## 5 Essential Terms
 
-| Term | Simple Definition | Analogy |
-|------|------------------|---------|
-| **Ion** | An atom or molecule with an electrical charge (+ or -) because it lost or gained electrons | Like a person carrying either a positive or negative flag |
-| **Electrolyte** | A substance that creates free-moving ions when dissolved in water (or melted), allowing the liquid to conduct electricity | Like adding "electricity carriers" to water |
-| **Dissociation** | The process where a compound splits into its component ions when dissolved | Like a team breaking into individual players who can now run around the field |
-| **Conductivity** | A measure of how well a solution carries electrical current (more ions = higher conductivity) | Like measuring how wide a highway is for traffic |
-| **Molten salt** | A salt heated until it melts into liquid form, where ions can move freely without needing water | Like melting ice so the water molecules can flow |
+| Term | Definition |
+|------|------------|
+| **Ion** | An atom or molecule with an electrical charge (+ or -) because it lost or gained electrons. Like a person carrying either a positive or negative flag. |
+| **Electrolyte** | A substance that creates free-moving ions when dissolved in water (or melted), allowing the liquid to conduct electricity. Like adding "electricity carriers" to water. |
+| **Dissociation** | The process where a compound splits into its component ions when dissolved. Like a team breaking into individual players who can now run around the field. |
+| **Conductivity** | A measure of how well a solution carries electrical current (more ions = higher conductivity). Like measuring how wide a highway is for traffic. |
+| **Molten salt** | A salt heated until it melts into liquid form, where ions can move freely without needing water. Like melting ice so the water molecules can flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -93,11 +93,7 @@ Conductivity │                           ●  SATURATION
                water    conc.     conc.       conc.    solution
 ```
 
-</details>
-
-## What Even Is an Ion? (Starting from Zero)
-
-Before we can understand electrolytes, we need to understand atoms and ions. Here is the simplest possible explanation:
+**What is an ion?** Ions are just atoms (or groups of atoms) that have gained or lost electrons, giving them an electrical charge. A positive ion (cation) like Na+ has lost an electron; a negative ion (anion) like Cl- has gained one. These charged particles can move through liquid, carrying electricity with them.
 
 ```
 ATOMS AND IONS - A Visual Guide
@@ -149,11 +145,7 @@ What happens when chlorine GAINS one electron:
                     Total: -1 NEGATIVE CHARGE (called an ANION)
 ```
 
-**Key insight**: Ions are just atoms (or groups of atoms) that have gained or lost electrons, giving them an electrical charge. These charged particles can move through liquid, carrying electricity with them.
-
-## The Three Types of Electrolytes
-
-There are three categories of substances that create ions when dissolved in water (or when melted). Each works slightly differently:
+There are three categories of electrolytes that create ions when dissolved in water (or when melted):
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -180,8 +172,6 @@ There are three categories of substances that create ions when dissolved in wate
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
-
-## How Dissolving Creates Ions (The Magic Moment)
 
 When you add salt to water, something remarkable happens at the molecular level (related to [[quick-context/chemical-bonds-spectrum|chemical bonds]]):
 
@@ -220,6 +210,8 @@ RESULT: Free-floating Na⁺ and Cl⁻ ions can now carry electrical current
 ```
 
 **Why does water pull apart salt?** Water molecules have a slight charge imbalance (they are "polar")—the oxygen end is slightly negative, the hydrogen ends are slightly positive. This lets water molecules surround and "pull apart" the ions from each other, one by one.
+
+</details>
 
 <details>
 <summary><strong>The Key Tension</strong></summary>
@@ -348,7 +340,7 @@ WHAT IS HAPPENING:
   - Anode: 2H₂O → O₂ + 4H⁺ + 4e⁻ ([[quick-context/anions-and-oxidation|oxidation]])
 ```
 
-### Alternative Electrolytes Compared
+**Alternative Electrolytes Compared:**
 
 | Electrolyte | Formula | What It Adds | Conductivity | Pros | Cons |
 |-------------|---------|--------------|--------------|------|------|
@@ -358,9 +350,7 @@ WHAT IS HAPPENING:
 | Sodium sulfate | Na₂SO₄ | Na⁺, SO₄²⁻ | High | Safe, non-corrosive | Slightly lower conductivity |
 | Baking soda | NaHCO₃ | Na⁺, HCO₃⁻ | Moderate | Safe, household item | Lower conductivity, CO₂ issues |
 
-## Special Case: Molten Salt Electrolytes
-
-Sometimes you cannot use water at all. To extract highly reactive metals like sodium, lithium, or aluminum, you must melt the salt itself:
+**Special Case: Molten Salt Electrolytes.** Sometimes you cannot use water at all. To extract highly reactive metals like sodium, lithium, or aluminum, you must melt the salt itself:
 
 ```
 MOLTEN SALT ELECTROLYSIS (No Water Involved)

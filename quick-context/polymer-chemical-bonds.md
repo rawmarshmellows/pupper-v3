@@ -189,39 +189,34 @@ Concepts that deepen understanding of polymer chemical bonds:
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
+**Q1:** Why does PLA deform in a hot car (~60°C) while ABS parts survive?
 <details>
-<summary><strong>1. Why does PLA deform in a hot car (~60°C) while ABS parts survive?</strong></summary>
-
+<summary>Answer</summary>
 PLA has a glass transition temperature (Tg) of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
-
 </details>
 
+**Q2:** TPU is flexible and elastic, yet it has strong hydrogen bonds. How is this possible?
 <details>
-<summary><strong>2. TPU is flexible and elastic, yet it has strong hydrogen bonds. How is this possible?</strong></summary>
-
+<summary>Answer</summary>
 TPU achieves elasticity through phase separation. It contains "hard segments" (urethane linkages with strong H-bonds that form crystalline domains) and "soft segments" (flexible polyether/polyester chains with only weak van der Waals forces). The hard segments act as physical crosslinks providing structural integrity, while the soft segments provide the flexibility and elastic recovery. This is different from a homogeneous material where strong H-bonds would make it rigid throughout.
-
 </details>
 
+**Q3:** What does the "G" in PETG actually do at the molecular level?
 <details>
-<summary><strong>3. What does the "G" in PETG actually do at the molecular level?</strong></summary>
-
+<summary>Answer</summary>
 The "G" stands for glycol modification. Standard PET (polyethylene terephthalate) is semi-crystalline—its chains pack into ordered crystalline regions that create strong intermolecular forces but also cause dramatic shrinkage during cooling (warping). The glycol modification introduces irregular side groups that physically prevent chains from packing into crystals. This keeps PETG amorphous: transparent, lower shrinkage, easier to print, but with a slightly lower Tg and heat resistance compared to crystalline PET.
-
 </details>
 
+**Q4:** Why does Nylon absorb moisture while PLA (also with oxygen-containing groups) absorbs much less?
 <details>
-<summary><strong>4. Why does Nylon absorb moisture while PLA (also with oxygen-containing groups) absorbs much less?</strong></summary>
-
+<summary>Answer</summary>
 Nylon contains amide groups (-NH-C=O-) with both N-H donors and C=O acceptors for hydrogen bonding. Water molecules can directly hydrogen bond to these amide groups, inserting between polymer chains and plasticizing the material. PLA has ester groups (-C=O-O-) which can only act as H-bond acceptors (no N-H or O-H donors). While PLA can absorb some moisture, it lacks the strong donor-acceptor combination that makes Nylon so hygroscopic. The N-H group in Nylon is the key difference.
-
 </details>
 
+**Q5:** ABS prints at ~240°C while PLA prints at ~200°C, but ABS doesn't necessarily make stronger parts. Explain why.
 <details>
-<summary><strong>5. ABS prints at ~240°C while PLA prints at ~200°C, but ABS doesn't necessarily make stronger parts. Explain why.</strong></summary>
-
+<summary>Answer</summary>
 Print temperature only determines how well polymer chains mobilize for layer fusion—it doesn't determine final part strength. What matters is the strength of intermolecular forces that re-establish as the layer cools. ABS's higher print temperature is needed to overcome its strong π-π stacking and dipole-dipole interactions. Once cooled, those same forces provide excellent layer adhesion and heat resistance, but not necessarily higher ultimate tensile strength than PLA. In fact, PLA often has higher tensile strength than ABS—ABS's advantage is impact resistance (from the butadiene rubber phase) and thermal performance, not raw strength.
-
 </details>
 
 </details>

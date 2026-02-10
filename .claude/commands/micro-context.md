@@ -35,6 +35,11 @@ created: YYYY-MM-DD
 3. **No sections:** No "How It Works", no "Key Tension", no questions - that's what quick-context is for
 4. **Link inline, not just at top:** Only include links where they naturally fit in the text and help understanding. Don't list unrelated topics in "See also" just because they're tangentially related—every link should have a clear reason the reader would want to follow it from this context
 5. **Glossary tone:** Neutral, factual, definitional
+6. **Verify ASCII diagrams:** After creating any ASCII diagram, carefully review it to ensure:
+   - Lines connect properly and don't have gaps or misalignments
+   - Waveforms (sine waves, square waves, etc.) show the correct shape above AND below the baseline
+   - Labels align with what they're pointing to
+   - The diagram accurately represents the concept (e.g., AC current must show alternating positive/negative values)
 
 ## Output
 

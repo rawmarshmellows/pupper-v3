@@ -3,13 +3,13 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
 
 # Flip-Chip (C4) Packaging
 
-## The Core Problem: Getting Signals In and Out of a Microscopic Chip
+## The Core Problem
 
 Imagine you have a tiny piece of silicon smaller than your fingernail, containing billions of transistors (microscopic on/off switches). This silicon "die" is the actual brain of your computer, phone, or any electronic device. The problem? Those transistors are so small (about 5 nanometers—a human hair is 80,000 nanometers wide) that you can't just stick a wire onto them. You need to connect this microscopic world to the human-scale world of circuit boards, cables, and power supplies.
 
@@ -118,7 +118,7 @@ BUMP ARRAY: What the bottom of a flip-chip looks like
 </details>
 
 <details>
-<summary><strong>The Key Tension: Cost and Complexity vs. Performance</strong></summary>
+<summary><strong>The Key Tension</strong></summary>
 
 The central tradeoff in flip-chip packaging is **performance versus manufacturing complexity and cost**. Flip-chip offers undeniable advantages—more connections, shorter signal paths, better thermal performance—but it demands:
 

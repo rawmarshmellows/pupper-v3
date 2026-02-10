@@ -24,8 +24,9 @@ I2S AUDIO SIGNAL CHAIN:
 
   I2S Timing:
   BCLK:  ┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐  (bit clock)
-  LRCLK: ────────┐        └────────  (left/right select)
-  DIN:   ◄─L channel─►◄─R channel─►  (audio data)
+  LRCLK: ────────┐       ┌────────  (left/right select)
+                 └───────┘
+  DIN:   ◄──L channel──►◄──R channel──►  (audio data)
 ```
 
 **Key insight:** I2S amplifiers eliminate the analog audio path entirely—digital data goes straight to the speaker driver, avoiding noise pickup and simplifying PCB layout compared to traditional analog audio chains.

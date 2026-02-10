@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -430,6 +430,8 @@ NOISE AND VARIATION IN REAL CHIPS:
 - **[[quick-context/electric-current|Electric Current]]** — What "leakage current" actually means. Understanding that current = charge flow explains why even small leakage matters when multiplied by billions of transistors.
 
 - **Boolean Logic and CMOS Design** — How complementary transistors create regenerative logic gates. CMOS is specifically designed to produce clean digital outputs from imperfect analog transistors.
+
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved to combat leakage. FinFET and GAA were invented specifically because planar MOSFETs couldn't control short-channel effects at small scales.
 
 </details>
 

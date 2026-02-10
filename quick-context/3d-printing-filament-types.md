@@ -130,8 +130,6 @@ The one thing most outsiders get wrong about this is **assuming "stronger" or "m
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-## Peripheral Knowledge
-
 Related concepts that deepen understanding of filament types:
 
 - [[quick-context/glass-transition-temperature]] — Why PLA fails in hot cars and ABS survives; the critical temperature threshold for each material
@@ -145,41 +143,34 @@ Related concepts that deepen understanding of filament types:
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-## Test Your Understanding
-
+**Q1:** You need to print a bracket that will be mounted inside a car dashboard in summer. Which filament should you use and why?
 <details>
-<summary>1. You need to print a bracket that will be mounted inside a car dashboard in summer. Which filament should you use and why?</summary>
-
-**Answer:** ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "6 words to know" and the temperature comparison in the settings table.
-
+<summary>Answer</summary>
+ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
 </details>
 
+**Q2:** Your PETG prints have thin wisps of plastic connecting different parts of the model. What's happening and how do you fix it?
 <details>
-<summary>2. Your PETG prints have thin wisps of plastic connecting different parts of the model. What's happening and how do you fix it?</summary>
-
-**Answer:** This is stringing, PETG's most common problem. The material doesn't cleanly retract during travel moves due to its sticky, viscous nature when melted. Fix by increasing retraction distance/speed, lowering nozzle temperature slightly (within recommended range), and enabling "wipe" or "coasting" in your slicer. See "stringing" in the "6 words to know" section.
-
+<summary>Answer</summary>
+This is stringing, PETG's most common problem. The material doesn't cleanly retract during travel moves due to its sticky, viscous nature when melted. Fix by increasing retraction distance/speed, lowering nozzle temperature slightly (within recommended range), and enabling "wipe" or "coasting" in your slicer. See "stringing" in the "5 Essential Terms" section.
 </details>
 
+**Q3:** Why would someone choose PLA Matte over PLA Basic for a visible functional part?
 <details>
-<summary>3. Why would someone choose PLA Matte over PLA Basic for a visible functional part?</summary>
-
-**Answer:** PLA Matte hides layer lines without requiring post-processing like sanding or painting. The matte finish diffuses light rather than reflecting it off the ridged surface of each layer. Trade-off: it may be slightly weaker than basic PLA. See the "When to use what" section for application guidance.
-
+<summary>Answer</summary>
+PLA Matte hides layer lines without requiring post-processing like sanding or painting. The matte finish diffuses light rather than reflecting it off the ridged surface of each layer. Trade-off: it may be slightly weaker than basic PLA. See the "When to use what" section for application guidance.
 </details>
 
+**Q4:** You want to print flexible phone bumpers but your printer has a Bowden tube setup. What problems will you encounter?
 <details>
-<summary>4. You want to print flexible phone bumpers but your printer has a Bowden tube setup. What problems will you encounter?</summary>
-
-**Answer:** TPU will likely jam. Bowden setups have a long, flexible path between the extruder motor and hotend, and soft TPU compresses and buckles in this tube instead of being pushed forward. You need a direct drive extruder where the motor sits directly on the hotend. See the TPU row in the settings table (footnote **) and the final paragraph about hardware requirements.
-
+<summary>Answer</summary>
+TPU will likely jam. Bowden setups have a long, flexible path between the extruder motor and hotend, and soft TPU compresses and buckles in this tube instead of being pushed forward. You need a direct drive extruder where the motor sits directly on the hotend. See the TPU row in the settings table (footnote **) and the final paragraph about hardware requirements.
 </details>
 
+**Q5:** A friend claims ABS is "better" than PLA because it's stronger. How would you respond?
 <details>
-<summary>5. A friend claims ABS is "better" than PLA because it's stronger. How would you respond?</summary>
-
-**Answer:** This is the common misconception addressed in the final paragraph. A well-printed PLA part often outperforms a poorly-printed ABS part. ABS requires an enclosure, fights warping, and produces toxic fumes—if you can't manage these, your ABS prints will have weak layer adhesion and dimensional inaccuracy. PLA's easy printability often matters more than raw material strength. The "best" filament is the one you can actually print well.
-
+<summary>Answer</summary>
+This is the common misconception addressed in the final paragraph. A well-printed PLA part often outperforms a poorly-printed ABS part. ABS requires an enclosure, fights warping, and produces toxic fumes—if you can't manage these, your ABS prints will have weak layer adhesion and dimensional inaccuracy. PLA's easy printability often matters more than raw material strength. The "best" filament is the one you can actually print well.
 </details>
 
 </details>

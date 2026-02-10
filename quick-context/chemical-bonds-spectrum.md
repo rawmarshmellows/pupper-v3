@@ -346,6 +346,8 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[quick-context/3d-printing-filament-types]]** — How different bond profiles in PLA, ABS, PETG, TPU translate to different printing requirements.
 
+- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+
 </details>
 
 <details>

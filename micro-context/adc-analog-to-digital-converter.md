@@ -15,14 +15,13 @@ ANALOG TO DIGITAL CONVERSION:
   Analog input          ADC              Digital output
   (continuous)       (samples)           (discrete)
        │                 │                    │
-   3.3V┤    ╭─╮         │                 1111111111111111
-       │   ╱   ╲        │ 16-bit          (65535)
-       │  ╱     ╲       │ resolution
-       │ ╱       ╲      │                      ▪
-       │╱         ╲     │                      ▪
-   0V  ┼───────────────►│                 0000000000000000
-       t               Sample              (0)
-                       points
+   3.3V┤   /\           │                 1111111111111111
+       │  /  \    /     │ 16-bit          (65535)
+       │ /    \  /      │ resolution
+       │/      \/       │                      :
+   0V  ┼───────────────►│                      :
+       t               Sample             0000000000000000
+                       points              (0)
 
   Resolution comparison:
   ┌──────────┬─────────┬──────────────────┐

@@ -9,9 +9,9 @@ created: 2026-01-22
 
 # Voltage and Thermodynamic Relationship in Electrolysis
 
-## The Core Problem It Solves
+## The Core Problem
 
-[[quick-context/electrolysis|Electrolysis]] is the process of using electricity to force a chemical reaction that wouldn't happen on its own—like splitting water into hydrogen and oxygen gas. But here's the puzzle: **how much electricity do you actually need?** This is where the voltage-thermodynamic relationship comes in. It tells us the *minimum* voltage required to make the reaction happen, calculated from the energy the reaction needs. Without understanding this relationship, you'd either (a) waste money pumping in way more electricity than necessary, or (b) apply too little voltage and nothing happens at all. The equation **ΔG = -nFE** connects the energy requirement of the reaction (ΔG, Gibbs free energy) to the voltage (E) you must apply. For water splitting, ΔG = +237 kJ/mol—the positive sign means "this reaction refuses to happen spontaneously; you must force it with electricity." That translates to a theoretical minimum of **1.23 volts**. If this relationship didn't exist (or we didn't understand it), we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
+[[quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
 
 ## 5 Essential Terms
 
@@ -104,8 +104,6 @@ ENERGY FLOW IN ELECTROLYSIS
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-## The Key Tension: Theory vs. Reality (Overpotential)
-
 Here's what practitioners argue about constantly: **the gap between theoretical voltage and real-world voltage**. Theory says 1.23V should split water. Reality demands 1.8–2.5V. That extra voltage is called **overpotential**, and it's the enemy of efficiency.
 
 ```
@@ -148,8 +146,6 @@ VOLTAGE BREAKDOWN IN REAL ELECTROLYSIS
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
-
-## A Concrete Example: Calculating Minimum Voltage
 
 Let's walk through the actual calculation for water electrolysis:
 
@@ -244,24 +240,20 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-## Peripheral Knowledge
+- **[[quick-context/electrolysis]]** — The broader process that this voltage relationship enables; understanding the full electrolysis cell setup ([[quick-context/electrodes|anode]], [[quick-context/electrodes|cathode]], [[quick-context/making-electrolytes|electrolyte]]) provides essential context for where these voltages are applied.
 
-1. **[[quick-context/electrolysis]]** — The broader process that this voltage relationship enables; understanding the full electrolysis cell setup ([[quick-context/electrodes|anode]], [[quick-context/electrodes|cathode]], [[quick-context/making-electrolytes|electrolyte]]) provides essential context for where these voltages are applied.
+- **Electrochemistry fundamentals** — The study of chemical reactions that produce or consume electricity; this relationship is one specific application of broader electrochemical principles like the Nernst equation.
 
-2. **Electrochemistry fundamentals** — The study of chemical reactions that produce or consume electricity; this relationship is one specific application of broader electrochemical principles like the Nernst equation.
+- **Catalysis** — The science of speeding up reactions without being consumed; platinum and iridium catalysts on electrodes are how engineers reduce activation overpotential.
 
-3. **Catalysis** — The science of speeding up reactions without being consumed; platinum and iridium catalysts on electrodes are how engineers reduce activation overpotential.
+- **Thermodynamics (entropy and enthalpy)** — Gibbs free energy combines enthalpy (heat content) and entropy (disorder); understanding these components explains *why* ΔG has the value it does.
 
-4. **Thermodynamics (entropy and enthalpy)** — Gibbs free energy combines enthalpy (heat content) and entropy (disorder); understanding these components explains *why* ΔG has the value it does.
-
-5. **Hydrogen economy** — The vision of using hydrogen as a clean fuel; the efficiency of electrolysis (determined by overpotential) is a key bottleneck in making "green hydrogen" economically viable.
+- **Hydrogen economy** — The vision of using hydrogen as a clean fuel; the efficiency of electrolysis (determined by overpotential) is a key bottleneck in making "green hydrogen" economically viable.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
-
-## Test Your Understanding
 
 **Q1:** If a reaction has a negative ΔG value, does that mean you need to apply voltage to make it happen?
 <details>

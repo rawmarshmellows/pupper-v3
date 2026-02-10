@@ -3,13 +3,13 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
 # BGA (Ball Grid Array)
 
-## The Core Problem: Connecting Tiny Chips to Big Boards
+## The Core Problem
 
 Imagine you have a computer chip containing millions of microscopic circuits, and you need to connect it to a circuit board (the green board inside electronics). The chip needs hundreds or even thousands of electrical connections to receive power and exchange data. The old solution was metal "legs" (pins) sticking out from the chip's edges—but there's only so much room around the edges. BGA solves this by putting connections **underneath** the chip as an array of tiny solder balls, like a grid of metallic dots on the bottom. This lets manufacturers pack far more connections into the same space. Without BGA, modern processors, memory chips, and graphics cards couldn't exist—they simply wouldn't have enough connections to function.
 
@@ -127,7 +127,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 </details>
 
 <details>
-<summary><strong>The Key Tension: Density vs. Repairability</strong></summary>
+<summary><strong>The Key Tension</strong></summary>
 
 The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 

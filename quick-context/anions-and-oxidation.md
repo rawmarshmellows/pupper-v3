@@ -88,8 +88,6 @@ THIS IS OXIDATION: Loss of electrons, charge goes from negative to neutral
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-## The Key Tension
-
 The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and voltage applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
 
 </details>
@@ -97,35 +95,32 @@ The central tradeoff practitioners navigate is **selectivity vs. energy efficien
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-## A Concrete Example
-
 Here's what happens during electrolysis of brine (salt water), showing anions being oxidized at the anode:
 
 ```
 THE SETUP: Electrolysis Cell
 ============================
 
-     Battery/Power Source
-         (+)    (-)
-          |      |
-    ======|======|======  <- Wire
-          |      |
-     +----+      +----+
-     |    ANODE  CATHODE  |
-     |    (+)      (-)    |
-     |     |        |     |
-     |   __|__    __|__   |
-     |  /     \  /     \  |
-     |  | Pt  |  | Pt  |  |   <- Platinum electrodes
-     |  |     |  |     |  |      dipped in solution
-     |  +--+--+  +--+--+  |
-     |     |        |     |
-     |~~~~~|~~~~~~~~|~~~~~|   <- Salt water (NaCl + H2O)
-     |  Cl- migrates     |      contains Cl- and OH- anions
-     |  toward anode     |
-     |     ------>       |
-     +-------------------+
-           Beaker
+          Battery/Power Source
+              (+)    (-)
+               │      │
+     ══════════╪══════╪══════  ← Wire
+               │      │
+     ┌─────────┴──────┴─────────┐
+     │     ANODE     CATHODE    │
+     │      (+)        (-)      │
+     │       │          │       │
+     │    ┌──┴──┐    ┌──┴──┐    │
+     │    │ Pt  │    │ Pt  │    │  ← Platinum electrodes
+     │    │     │    │     │    │    dipped in solution
+     │    └──┬──┘    └──┬──┘    │
+     │       │          │       │
+     │~~~~~~~│~~~~~~~~~~│~~~~~~~│  ← Salt water (NaCl + H₂O)
+     │    Cl⁻ migrates toward   │    contains Cl⁻ and OH⁻ anions
+     │        anode             │
+     │       ──────►            │
+     └──────────────────────────┘
+              Beaker
 ```
 
 **Step-by-step: What happens to chloride anions (Cl⁻)**
@@ -187,8 +182,6 @@ so they go to the Anode to lose electrons!
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-## Peripheral Knowledge
-
 1. **[[quick-context/cations-and-reduction|Reduction]]** — The opposite of oxidation; gaining electrons. In electrolysis, while anions get oxidized at the [[quick-context/electrodes|anode]], cations (positive ions) get reduced at the [[quick-context/electrodes|cathode]]. The two processes are always coupled.
 
 2. **Electrochemical Series** — A ranking of how easily different species lose or gain electrons. This determines which anion gets oxidized when multiple are present (the selectivity problem mentioned above).
@@ -203,8 +196,6 @@ so they go to the Anode to lose electrons!
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
-
-## Test Your Understanding
 
 **Q1:** In the reaction 2Cl⁻ → Cl₂ + 2e⁻, why do we say chloride is being *oxidized* even though no oxygen is present?
 <details>

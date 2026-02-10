@@ -57,6 +57,13 @@ Each deep-dive section is wrapped in `<details>` for progressive disclosure:
 
 [Walk through the core concept step-by-step in plain language. Use ASCII diagrams to visualize key relationships, flow, or structure. This gives someone a mental model they can reason with.]
 
+**ASCII Diagram Verification:** After creating any ASCII diagram, carefully review it to ensure:
+- Lines connect properly and don't have gaps or misalignments
+- Waveforms (sine waves, square waves, etc.) show the correct shape above AND below the baseline where applicable
+- Labels align with what they're pointing to
+- Flow arrows point in the correct direction
+- The diagram accurately represents the concept being explained
+
 </details>
 
 <details>

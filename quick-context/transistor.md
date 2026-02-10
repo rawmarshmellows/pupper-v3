@@ -1,9 +1,10 @@
 ---
 topic: Transistor
 created: 2026-01-25
+updated: 2026-01-30
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -21,9 +22,10 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 |------|------------|
 | **Silicon** | The most common semiconductor material; a purified form of sand (silicon dioxide). Neither a good conductor nor a good insulator, which makes it controllable. |
 | **Doping** | Intentionally adding impurities to silicon to change its electrical properties. Adding phosphorus creates "n-type" silicon (extra electrons); adding boron creates "p-type" silicon (missing electrons, called "holes"). |
-| **Gate** | The control terminal of a transistor. Applying voltage to the gate switches the transistor on or off, like a valve controlling water flow. |
+| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
 | **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
+| **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -31,6 +33,8 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 A transistor is fundamentally a **voltage-controlled switch**. Apply a small voltage to the gate, and the transistor "closes" (conducts electricity between source and drain). Remove the gate voltage, and the transistor "opens" (blocks current). This simple on/off behavior is the foundation of all digital computing: on = 1, off = 0.
 
 The magic happens through semiconductor physics. Pure silicon is a poor conductor. But by adding tiny amounts of impurities (doping), we create two types of silicon: n-type (with extra free electrons that can carry current) and p-type (with "holes" where electrons are missing, which also carry current by moving in the opposite direction). A transistor arranges these differently-doped regions so that the gate can create or destroy a conductive path.
+
+**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate capacitor. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
 
 ```
 THE TRANSISTOR: A Voltage-Controlled Switch
@@ -71,6 +75,94 @@ WHAT A TRANSISTOR DOES: Same Thing, But Electrically Controlled
     No physical movement needed. Works at nanometer scale.
 ```
 
+```
+THE OXIDE LAYER AS A CAPACITOR: The Key to Transistor Operation
+================================================================================
+
+Remember how a capacitor works: two conductive plates separated by an insulator.
+Apply voltage across the plates → charges accumulate on each plate (+ on one, − on other).
+The insulator blocks current flow, but the ELECTRIC FIELD passes through.
+
+The transistor's gate structure IS a capacitor:
+
+    CAPACITOR                          TRANSISTOR GATE
+    (parallel plate)                   (MOS capacitor)
+
+    ┌─────────────────┐                ┌─────────────────┐
+    │  METAL PLATE    │                │   METAL GATE    │  ← "top plate"
+    │  + + + + + + +  │                │  + + + + + + +  │     (positive charge
+    └─────────────────┘                └─────────────────┘      when voltage applied)
+    ╔═════════════════╗                ╔═════════════════╗
+    ║   INSULATOR     ║                ║   OXIDE (SiO₂)  ║  ← dielectric
+    ║  (dielectric)   ║                ║   ~1-2 nm thin  ║     blocks current,
+    ╚═════════════════╝                ╚═════════════════╝     passes electric field
+    ┌─────────────────┐                ┌─────────────────┐
+    │  METAL PLATE    │                │  SEMICONDUCTOR  │  ← "bottom plate"
+    │  − − − − − − −  │                │  − − − − − − −  │     (electrons pulled
+    └─────────────────┘                └─────────────────┘      to surface)
+
+    Q = C × V                          Same physics! Charge accumulates
+    (charge = capacitance × voltage)   in proportion to gate voltage.
+
+
+WHY THIS MATTERS: How the Capacitor Creates the Channel
+────────────────────────────────────────────────────────────────────────────────
+
+Step 1: No gate voltage (V = 0)
+
+         GATE (0V)
+           │
+           ▼
+    ┌──────┴──────┐
+    │ METAL GATE  │  No charge on gate
+    │             │
+    └─────────────┘
+    ╔═════════════╗
+    ║    OXIDE    ║  No electric field
+    ╚═════════════╝
+    ┌─────────────┐
+    │  P-TYPE Si  │  Holes (majority carriers) distributed normally
+    │   ○ ○ ○ ○   │  No channel forms → transistor OFF
+    └─────────────┘
+
+
+Step 2: Positive gate voltage applied (V > 0)
+
+         GATE (+V)
+           │
+           ⚡ Positive voltage applied
+           ▼
+    ┌──────┴──────┐
+    │ + + + + + + │  Positive charge accumulates on gate
+    │ METAL GATE  │  (like charging a capacitor)
+    └─────────────┘
+           ↓ ↓ ↓ ↓    Electric field passes through oxide
+    ╔═════════════╗   (oxide blocks current, not fields!)
+    ║    OXIDE    ║
+    ╚═════════════╝
+           ↓ ↓ ↓ ↓    Field reaches semiconductor
+    ┌─────────────┐
+    │ − − − − − − │  Electrons pulled to surface (attracted by + charge)
+    │  P-TYPE Si  │  Holes pushed away (repelled by + charge)
+    │             │
+    └─────────────┘
+           ↑
+    INVERSION LAYER FORMS: The surface "flips" from p-type to n-type!
+    This thin layer of electrons IS the conductive channel.
+
+
+The capacitor equation explains transistor behavior:
+
+    Q = C × V
+
+    • Higher gate voltage (V) → more charge (Q) pulled to surface
+    • More charge at surface → more conductive channel
+    • Thinner oxide → higher capacitance (C) → stronger effect per volt
+
+    This is why shrinking oxide thickness improves transistor performance!
+    (But too thin → quantum tunneling through oxide → leakage current)
+```
+
 The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
@@ -79,19 +171,19 @@ INSIDE A MOSFET TRANSISTOR
 
 STRUCTURE (cross-section view):
 
-                         GATE ELECTRODE (metal)
-                              │
-                    ┌─────────┴─────────┐
-                    │    OXIDE LAYER    │  ← thin insulator (SiO2)
-                    │   (glass, ~1nm)   │     prevents current into gate
-                    └─────────┬─────────┘
-         ┌────────────────────┴────────────────────┐
+                         GATE ELECTRODE (metal)     ─┐
+                              │                      │
+                    ┌─────────┴─────────┐            │ MOS CAPACITOR
+                    │    OXIDE LAYER    │  ← SiO₂    │ (the "switch"
+                    │   (glass, ~1nm)   │  dielectric│  mechanism)
+                    └─────────┬─────────┘            │
+         ┌────────────────────┴────────────────────┐─┘
          │                                         │
     ┌────┴────┐                               ┌────┴────┐
     │ SOURCE  │         CHANNEL REGION        │  DRAIN  │
     │ (n-type)│         (p-type silicon)      │ (n-type)│
-    │  ████   │                               │  ████   │
-    │  ████   │                               │  ████   │
+    │  ████   │     (becomes n-type when      │  ████   │
+    │  ████   │      capacitor is charged)    │  ████   │
     └────┬────┴───────────────────────────────┴────┬────┘
          │           P-TYPE SUBSTRATE              │
          │      (bulk silicon, p-doped)            │
@@ -125,26 +217,29 @@ Step 2: ON STATE (Gate voltage = positive)
 
                     GATE (+1 volt)
                          │
-                         ⚡ ← positive voltage attracts electrons
                     ┌────┴────┐
-                    │  OXIDE  │
-                    └────┬────┘
+                    │+ + + + +│ ← positive charge stored on gate
+                    │  OXIDE  │   (capacitor is now charged!)
+                    │---------│ ← oxide blocks current but
+                    └────┬────┘   electric field passes through
     ┌────────────────────┴────────────────────┐
-    │                                         │
-    │ SOURCE    ●●●●● CHANNEL ●●●●●    DRAIN  │
-    │ (n-type)  (electrons pulled up)  (n-type)│
+    │  − − − − − − − − − − − − − − − −        │ ← electrons pulled to surface
+    │ SOURCE    ●●●●● CHANNEL ●●●●●    DRAIN  │   (opposite charge attracted
+    │ (n-type)  (electrons pulled up)  (n-type)│    to bottom "plate")
     │  ████   → → → → → → → → → → →     ████  │
     │  ████       current flows!        ████  │
     └─────────────────────────────────────────────┘
 
-    Positive gate voltage pulls electrons from the p-type silicon
-    up to the surface, creating a thin conductive "channel."
-    Current can now flow from source to drain. The transistor is ON.
+    The MOS capacitor charges: positive charge on gate attracts
+    negative charge (electrons) to the semiconductor surface.
+    This electron layer IS the conductive channel. Transistor is ON.
 
 
-THE KEY INSIGHT: The gate doesn't carry current itself. It just creates
-an electric field that attracts/repels electrons in the silicon below.
-This is why it's called a "Field-Effect" Transistor (FET).
+THE KEY INSIGHT: The gate doesn't carry current itself—it's one plate
+of a capacitor! Charging the capacitor creates an electric field that
+attracts/repels electrons in the silicon below. This is why it's called
+a "Field-Effect" Transistor (FET): the FIELD from the capacitor creates
+the switching effect, not current flowing through the gate.
 ```
 
 ```
@@ -381,6 +476,8 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+
 </details>
 
 <details>
@@ -392,10 +489,10 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 The three terminals are: (1) **Gate** - the control terminal where voltage is applied to turn the transistor on or off; (2) **Source** - where current enters/exits; (3) **Drain** - where current exits/enters. Current flows between source and drain when the gate voltage is high enough; the gate itself draws almost no current because it is insulated by an oxide layer. See: 5 Essential Terms
 </details>
 
-**Q2:** What is "doping" and why is it necessary for transistors to work?
+**Q2:** How does the oxide layer in a MOSFET act as a capacitor, and why is this important for transistor operation?
 <details>
 <summary>Answer</summary>
-Doping is the intentional addition of impurities to pure silicon. Adding phosphorus creates n-type silicon (extra electrons that can carry current); adding boron creates p-type silicon (electron "holes"). Pure silicon is a poor conductor. By arranging n-type and p-type regions strategically, transistors create a situation where the gate voltage can control whether a conductive channel exists. See: 5 Essential Terms, How It Works
+The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal gate is one plate, the semiconductor surface is the other "plate," and the oxide (SiO₂) is the dielectric. When voltage is applied to the gate, positive charge accumulates on the gate (just like charging a capacitor). The electric field from this charge passes through the oxide and attracts electrons to the semiconductor surface, creating the conductive channel. This is why it's called a "field-effect" transistor—the gate controls current through an electric field, not by carrying current itself. See: How It Works (The Oxide Layer as a Capacitor)
 </details>
 
 **Q3:** Why can NAND gates be used to build any other type of logic gate or computing circuit?
@@ -404,16 +501,16 @@ Doping is the intentional addition of impurities to pure silicon. Adding phospho
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** A chip manufacturer claims their new "2nm" transistors are 2 nanometers in size. What is misleading about this claim?
+**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
-Modern process node names (3nm, 2nm) are marketing terms that do not reflect actual transistor dimensions. A "2nm" process might have transistors with gate lengths of 10-12nm and other features even larger. The names are useful for comparing generations but should not be taken literally. Actual transistor features are always larger than the node name suggests. See: The Key Tension (the shrinking transistor table and note)
+As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
 </details>
 
-**Q5:** As transistors shrink toward atomic scales, what physical phenomenon threatens to break the simple on/off model, and how does this relate to the limits of Moore's Law?
+**Q5:** A colleague claims that transistors work by "current flowing through the gate to control the channel." Explain why this is fundamentally wrong and what actually happens.
 <details>
 <summary>Answer</summary>
-**Quantum tunneling** allows electrons to pass through barriers that should block them when those barriers become thin enough (just a few atoms). This causes "leakage current" - transistors that should be "off" still conduct some current. At scales below ~5nm, quantum effects become significant enough that transistors behave unpredictably. This, combined with manufacturing difficulty and heat density, is why Moore's Law is slowing. The industry responds with 3D transistor structures and [[quick-context/pcb-chip-transistor-hierarchy|advanced packaging]] rather than pure shrinking. See: The Key Tension
+This is a common misconception. The gate draws **almost no current** because it's insulated by the oxide layer—it's one plate of a capacitor, not part of a current path. What actually happens: (1) Voltage applied to the gate stores charge on the gate electrode, (2) This charge creates an electric field that passes through the oxide, (3) The field attracts or repels electrons in the semiconductor below, (4) This creates or destroys a conductive channel between source and drain. The switching mechanism is electrostatic (charge inducing charge via a field), not current flow. This is why MOSFETs are called "field-effect" transistors and why they're so power-efficient—the control signal uses almost no power. See: How It Works (Key Insight, Oxide Layer as Capacitor)
 </details>
 
 </details>

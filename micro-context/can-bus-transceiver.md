@@ -24,8 +24,11 @@ MCU to CAN BUS signal conversion:
 
   Why differential?
   ──────────────────
-  CANH: ───╲  ╱───╲  ╱───    Noise hits BOTH wires equally
-  CANL: ───╱  ╲───╱  ╲───    Receiver subtracts → noise cancels
+  CANH: ──┐  ┌──┐  ┌──       Noise hits BOTH wires equally
+          └──┘  └──┘
+  CANL: ──┘  └──┘  └──       Receiver subtracts → noise cancels
+          ┌──┐  ┌──┐
+          (inverted)
 ```
 
 **Key insight:** CAN transceivers are why robots can communicate reliably over long cables in electrically noisy environments—the differential signaling rejects interference that would corrupt single-wire connections.

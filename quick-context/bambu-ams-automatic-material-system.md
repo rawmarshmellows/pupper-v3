@@ -172,33 +172,33 @@ Slots 5-6 are configured as backups for slots 1-2. When slot 1's white runs out 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
+**Q1:** Why does switching from black to white filament require more purge volume than white to black?
 <details>
-<summary>Why does switching from black to white filament require more purge volume than white to black?</summary>
-
+<summary>Answer</summary>
 Black pigment is highly saturating—even small traces contaminate lighter colors visibly. When purging black before printing white, you need extensive flushing (often 200+ mm³) to eliminate all dark residue. Going the opposite direction (white to black), tiny white contamination is invisible against the black, so minimal purging suffices. This asymmetry is why the flush_volumes_matrix isn't symmetric, and why experienced users sequence colors to minimize dark-to-light transitions.
 </details>
 
+**Q2:** What's the difference between "purge to infill" and a standard prime tower, and when would you choose each?
 <details>
-<summary>What's the difference between "purge to infill" and a standard prime tower, and when would you choose each?</summary>
-
+<summary>Answer</summary>
 A **prime tower** is a separate sacrificial structure printed alongside your model solely to waste purge material—it's reliable but adds print time, uses plate space, and wastes filament. **Purge to infill** routes purge material into your model's internal infill instead, hiding waste inside the part. Choose purge-to-infill when your model has substantial infill volume and you want to minimize waste; choose a prime tower when your model is thin-walled, has minimal infill, or when you need guaranteed purge consistency (infill purging can occasionally cause surface artifacts if misconfigured).
 </details>
 
+**Q3:** If you have a 16-hour print using a single material, what AMS feature provides value even without multi-color printing?
 <details>
-<summary>If you have a 16-hour print using a single material, what AMS feature provides value even without multi-color printing?</summary>
-
+<summary>Answer</summary>
 **Spool backup/automatic filament switching.** You can load two spools of identical material in different AMS slots and configure one as backup for the other. If the first spool runs out mid-print (especially common with large prints that consume 800g+), the AMS automatically retracts the empty spool's remnant, loads from the backup spool, and continues printing—no human intervention required. This enables truly unattended long prints without the risk of filament runout failures.
 </details>
 
+**Q4:** Why might you choose to manually load TPU filament even if you have an AMS?
 <details>
-<summary>Why might you choose to manually load TPU filament even if you have an AMS?</summary>
-
+<summary>Answer</summary>
 [[quick-context/3d-printing-filament-types|TPU]] (flexible filament) is soft and elastic, which causes feeding problems in the AMS's Bowden tube system. The filament can compress, stretch, or buckle instead of pushing smoothly through the tube, leading to jams or inconsistent feeding. The AMS was designed primarily for rigid filaments like [[quick-context/3d-printing-filament-types|PLA]] and PETG. For TPU and other flexible materials, direct manual loading into the printer's extruder (bypassing the AMS entirely) provides reliable feeding. Similar issues occur with very abrasive filaments (carbon fiber, glow-in-the-dark) that can wear AMS components.
 </details>
 
+**Q5:** The AMS enables multi-material prints. How do differences in Tg, thermal expansion, and inter-material adhesion create challenges that single-material printing doesn't face?
 <details>
-<summary>The AMS enables multi-material prints. How do differences in [[quick-context/glass-transition-temperature|Tg]], [[quick-context/3d-printing-filament-types|thermal expansion]], and inter-material adhesion create challenges that single-material printing doesn't face?</summary>
-
+<summary>Answer</summary>
 Multi-material printing introduces compatibility physics: (1) **Thermal mismatch**—materials with different Tg values cool at different rates, causing warping or delamination at interfaces (PLA shrinks more than PETG as it cools past its Tg); (2) **Adhesion problems**—some materials chemically bond (PLA/PLA) while others don't (PLA won't stick to TPU), requiring careful interface design or soluble interface materials; (3) **Temperature compromises**—the hotend must purge and switch between materials at potentially different optimal temps, risking under-extrusion or degradation; (4) **Expansion differences**—materials with different thermal expansion coefficients create internal stresses that cause cracking during cooling. The AMS mechanically enables swaps, but multi-material physics remains the user's challenge. See: [[quick-context/glass-transition-temperature]] and [[quick-context/3d-printing-filament-types]] for material property details.
 </details>
 

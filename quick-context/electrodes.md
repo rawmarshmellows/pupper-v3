@@ -69,10 +69,10 @@ THE ELECTRODE SYSTEM: TWO CIRCUITS WORKING TOGETHER
    ║                                                  ║
    ║    CATHODE (-)              ANODE (+)            ║
    ║    ┌────────┐              ┌────────┐            ║
-   ║    │ e⁻ → │              │ → e⁻ │            ║
+   ║    │  e⁻ →  │              │  → e⁻  │            ║
    ║    │        │              │        │            ║
    ║    │ REDUCE │  ←─ ions ─→  │ OXIDIZE│            ║
-   ║    │(gain e⁻)│              │(lose e⁻)│            ║
+   ║    │(gain e⁻)│             │(lose e⁻)│            ║
    ║    └────────┘              └────────┘            ║
    ║         ↑                       ↑                ║
    ║         │    INTERNAL CIRCUIT   │                ║

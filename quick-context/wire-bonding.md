@@ -3,15 +3,15 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
 # Wire Bonding
 
-## The Core Problem: How Do You Connect Something Smaller Than a Hair?
+## The Core Problem
 
-Inside every computer chip, smartphone, and electronic device is a tiny piece of silicon called a "die"—a flat square smaller than your fingernail containing billions of microscopic circuits. These circuits need to talk to the outside world (to get power, send data, etc.), but the connection points on the die are impossibly small: about 50 micrometers wide, which is thinner than a human hair. You can't just solder a regular wire to something that small. Wire bonding solves this problem by using specialized machines to attach extremely thin wires (about 25 micrometers—half the width of a human hair) between the chip and its protective housing. Without wire bonding (or its alternatives), chips would be useless islands of computation with no way to receive power or communicate. Every signal going into or out of a chip must cross this connection—if it fails, the entire device fails.
+Inside every computer chip is a tiny silicon die with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
 
 ## 5 Essential Terms
 
@@ -160,7 +160,7 @@ Repeat 100-2000 times per chip!
 </details>
 
 <details>
-<summary><strong>The Key Tension: Cost vs. Performance</strong></summary>
+<summary><strong>The Key Tension</strong></summary>
 
 Wire bonding is the **cheapest** way to connect a chip to its package—equipment costs less, it's well-understood, and gold/copper wire is relatively inexpensive. But it has real limitations:
 
@@ -224,7 +224,7 @@ The industry uses wire bonding when **cost matters more than speed**—which is 
 </details>
 
 <details>
-<summary><strong>Concrete Example: Wire-Bonded Memory Chip</strong></summary>
+<summary><strong>Concrete Example</strong></summary>
 
 Here's what a real wire-bonded DRAM (memory) chip looks like in cross-section:
 

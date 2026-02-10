@@ -10,7 +10,7 @@ updated: 2026-01-21
 
 # Breaking Elongation Rate: What "> 650%" Means
 
-## The Simple Explanation
+## The Core Problem
 
 **Breaking elongation rate** (also called "elongation at break") tells you how much a material can stretch before it snaps.
 
@@ -26,28 +26,6 @@ Stretched before breaking:
 ```
 
 **"> 650%"** means the material can stretch to **more than 7.5 times its original length** before it breaks. That's extremely flexible—think rubber bands or TPU (flexible [[quick-context/3d-printing-filament-types|3D printing filament]]).
-
----
-
-## Why It Matters
-
-This spec tells you whether a material will:
-- **Bend and flex** without cracking (high elongation)
-- **Snap brittlely** under stress (low elongation)
-
-| Material | Typical Elongation at Break |
-|----------|----------------------------|
-| Glass | ~0% (shatters, no stretch) |
-| PLA (3D print plastic) | 3-6% |
-| PETG | 20-30% |
-| ABS | 10-50% |
-| TPU (flexible filament) | 300-700%+ |
-| Rubber bands | 500-800% |
-| Silicone | 100-800% |
-
-**"> 650%" puts your material in TPU/rubber territory**—it's designed to flex, bend, and absorb impact without breaking.
-
----
 
 ## 5 Essential Terms
 
@@ -133,8 +111,6 @@ LOW ELONGATION (PLA ~5%):                HIGH ELONGATION (TPU >650%):
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-## The Tradeoff: Flexibility vs. Rigidity
-
 High elongation materials are:
 - ✅ Impact resistant (absorb energy by deforming)
 - ✅ Flexible (can bend without cracking)
@@ -156,8 +132,6 @@ Low elongation materials are:
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-## Concrete Example: Comparing Materials
-
 Imagine pulling a 10cm sample until it breaks:
 
 ```
@@ -169,10 +143,6 @@ TPU (>650%)     ~700%         Stretches to 80cm before breaking!
 ```
 
 For a robot foot pad or bumper, you want the TPU behavior—it deforms massively to absorb impact energy instead of cracking.
-
----
-
-## Real-World Spec Sheet Reading
 
 When you see a filament spec like:
 
@@ -196,8 +166,6 @@ This tells you:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-## Peripheral Knowledge
-
 - [[quick-context/tensile-strength-materials]] — The "how much force" counterpart to elongation; together they define a material's mechanical behavior under stress
 - [[quick-context/polymer-crystallinity-vs-amorphous|Crystallinity]] — Crystalline vs. [[quick-context/polymer-crystallinity-vs-amorphous|amorphous]] structure directly affects elongation; amorphous regions allow [[quick-context/atoms-molecules-polymers-basics|polymer]] chains to uncoil and stretch
 - [[quick-context/glass-transition-temperature|Glass transition temperature]] — Below [[quick-context/glass-transition-temperature|Tg]], polymers become brittle with low elongation; above Tg, they're rubbery with high elongation
@@ -208,9 +176,7 @@ This tells you:
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-## Test Your Understanding
-
-**Q1: A spec sheet shows 45 MPa tensile strength and >650% elongation. Is this material soft like a gummy bear?**
+**Q1:** A spec sheet shows 45 MPa tensile strength and >650% elongation. Is this material soft like a gummy bear?
 
 <details>
 <summary>Answer</summary>
@@ -219,7 +185,7 @@ Not necessarily. High elongation tells you the material stretches far before bre
 
 </details>
 
-**Q2: You're designing a protective bumper for a drone that crashes frequently. Would you choose PLA (5% elongation, 60 MPa tensile) or TPU (650% elongation, 45 MPa tensile)? Why?**
+**Q2:** You're designing a protective bumper for a drone that crashes frequently. Would you choose PLA (5% elongation, 60 MPa tensile) or TPU (650% elongation, 45 MPa tensile)? Why?
 
 <details>
 <summary>Answer</summary>
@@ -228,7 +194,7 @@ TPU. Despite lower tensile strength, the 650% elongation means the bumper absorb
 
 </details>
 
-**Q3: Why might a polymer have high elongation at room temperature but become brittle and snap easily in a freezer?**
+**Q3:** Why might a polymer have high elongation at room temperature but become brittle and snap easily in a freezer?
 
 <details>
 <summary>Answer</summary>
@@ -237,7 +203,7 @@ The freezer temperature may be below the polymer's glass transition temperature 
 
 </details>
 
-**Q4: Two TPU samples have identical Shore hardness (95A) but different elongation values (400% vs 700%). What might explain this?**
+**Q4:** Two TPU samples have identical Shore hardness (95A) but different elongation values (400% vs 700%). What might explain this?
 
 <details>
 <summary>Answer</summary>
@@ -246,7 +212,7 @@ Shore hardness measures resistance to indentation (surface deformation), while e
 
 </details>
 
-**Q5: How does elongation at break relate to [[quick-context/glass-transition-temperature|glass transition temperature]], and what happens to a material's elongation as temperature drops below Tg?**
+**Q5:** How does elongation at break relate to [[quick-context/glass-transition-temperature|glass transition temperature]], and what happens to a material's elongation as temperature drops below Tg?
 
 <details>
 <summary>Answer</summary>

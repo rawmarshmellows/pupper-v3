@@ -29,6 +29,16 @@ Everything around you—your desk, your skin, your 3D printer filament—is made
     (each "--" represents 2 shared electrons = 1 covalent bond)
 ```
 
+## 5 Essential Terms
+
+| Term | Definition |
+|------|------------|
+| **Electron** | A tiny negatively-charged particle that orbits atoms and gets shared in covalent bonds |
+| **[[quick-context/atoms-molecules-polymers-basics\|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
+| **Monomer** | The single repeating unit that links together to form a polymer chain (like a single LEGO brick) |
+| **Cross-linking** | When polymer chains form covalent bonds sideways to neighboring chains, creating a rigid network |
+| **Thermoplastic** | A polymer that softens when heated and hardens when cooled (reversible)—what FDM 3D printing uses |
+
 <details>
 <summary><strong>How It Works</strong></summary>
 
@@ -166,8 +176,6 @@ Carbon has 4 outer electrons, needs 4 more → forms 4 bonds
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Bond Strength vs. Flexibility
-
 Practitioners in materials science and polymer chemistry constantly wrestle with the tradeoff between **bond strength and material flexibility**. Stronger covalent bonds (like triple bonds) or more cross-linking between polymer chains creates harder, more rigid, more heat-resistant materials—but also more brittle ones that crack under stress. Fewer bonds or single bonds create flexible, stretchy materials—but they melt easier and can deform permanently. In 3D printing, this shows up directly: **PLA** (polylactic acid) has relatively simple polymer chains with limited cross-linking, making it easy to print at low temperatures but brittle. **ABS** has a more complex structure that's tougher but needs higher temps and tends to warp. The holy grail is engineering polymers that balance these properties—strong where needed, flexible where needed, printable at reasonable temperatures.
 
 ```
@@ -193,20 +201,8 @@ Practitioners in materials science and polymer chemistry constantly wrestle with
 
 </details>
 
-## 5 Essential Terms
-
-| Term | Definition |
-|------|------------|
-| **Electron** | A tiny negatively-charged particle that orbits atoms and gets shared in covalent bonds |
-| **[[quick-context/atoms-molecules-polymers-basics\|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
-| **Monomer** | The single repeating unit that links together to form a polymer chain (like a single LEGO brick) |
-| **Cross-linking** | When polymer chains form covalent bonds sideways to neighboring chains, creating a rigid network |
-| **Thermoplastic** | A polymer that softens when heated and hardens when cooled (reversible)—what FDM 3D printing uses |
-
 <details>
 <summary><strong>Concrete Example</strong></summary>
-
-How PLA Filament Works
 
 When you 3D print with PLA, here's what's happening at the molecular level:
 
@@ -286,39 +282,40 @@ Related concepts that connect to covalent bonds:
 - [[quick-context/hydrogen-bonds-beginners]] — A weaker type of bond that works alongside covalent bonds to influence material behavior (like water's unique properties)
 - [[quick-context/van-der-waals-forces]] — The weak attractions between polymer chains that you overcome when melting thermoplastics
 - [[quick-context/dipole-dipole-interactions]] — Another type of intermolecular force that affects how polymer chains interact with each other
+- [[quick-context/biology-fundamentals]] — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
+**Q1:** Why don't covalent bonds break when you melt PLA filament in a 3D printer?
 <details>
-<summary>1. Why don't covalent bonds break when you melt PLA filament in a 3D printer?</summary>
-
+<summary>Answer</summary>
 Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak intermolecular forces between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak van der Waals forces between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
 </details>
 
+**Q2:** What is the "octet rule" and why does it drive covalent bond formation?
 <details>
-<summary>2. What is the "octet rule" and why does it drive covalent bond formation?</summary>
-
+<summary>Answer</summary>
 The octet rule states that atoms are most stable when they have 8 electrons in their outer shell. Most atoms don't naturally have this configuration, so they "solve" this problem by sharing electrons with neighboring atoms. When two atoms share electrons, both atoms get to count those shared electrons toward their octet, making both more stable. This sharing creates an attractive force—the covalent bond—that holds the atoms together.
 </details>
 
+**Q3:** Why are cross-linked polymers more rigid and heat-resistant than linear polymers?
 <details>
-<summary>3. Why are cross-linked polymers more rigid and heat-resistant than linear polymers?</summary>
-
+<summary>Answer</summary>
 In linear polymers, chains can slide past each other when heated because they're only held together by weak intermolecular forces. Cross-linked polymers have covalent bonds connecting chains sideways to each other, creating a rigid 3D network. Since these cross-links are covalent bonds (not weak forces), they don't break when heated—the chains can't slide, so the material stays rigid. This is why you can't melt vulcanized rubber or cured epoxy.
 </details>
 
+**Q4:** Carbon can form 4 covalent bonds. How does this relate to its role in polymers?
 <details>
-<summary>4. Carbon can form 4 covalent bonds. How does this relate to its role in polymers?</summary>
-
+<summary>Answer</summary>
 Carbon's ability to form 4 covalent bonds makes it uniquely suited for building long, complex polymer chains. It can bond to two neighboring carbons (continuing the chain) while still having 2 bonds available for side groups or functional groups. This versatility allows for enormous variety in polymer structures—different side groups create different properties, and the ability to branch or cross-link gives materials engineers precise control over material characteristics.
 </details>
 
+**Q5:** What's the practical difference between a single covalent bond and a double or triple bond?
 <details>
-<summary>5. What's the practical difference between a single covalent bond and a double or triple bond?</summary>
-
+<summary>Answer</summary>
 Single bonds share 2 electrons, double bonds share 4, and triple bonds share 6. More shared electrons means a stronger, shorter, and more rigid bond. Single bonds allow rotation around the bond axis (flexibility), while double and triple bonds lock atoms in place (rigidity). In polymers, chains with mostly single bonds are more flexible and have lower melting points, while those with double bonds are stiffer. Triple bonds are rare in polymers but common in small molecules like nitrogen gas (N2).
 </details>
 

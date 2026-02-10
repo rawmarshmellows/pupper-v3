@@ -7,9 +7,7 @@ created: 2026-01-22
 
 > **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
 
-# Cations and Reduction
-
-## The Core Problem: Getting Positive Ions to Become Neutral Atoms
+## The Core Problem
 
 Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms can lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[quick-context/electrolysis|electrolysis]], cations travel toward the negative [[quick-context/electrodes|electrode]] ([[quick-context/electrodes|cathode]]), where they receive [[quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
 
@@ -123,8 +121,6 @@ The central challenge is a tug-of-war between **electrical attraction** and **ch
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
-
-## What Happens at the Cathode
 
 ```
 HOW CATIONS GET REDUCED: A Step-by-Step Visual

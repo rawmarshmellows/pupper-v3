@@ -12,11 +12,12 @@ created: 2026-01-26
 ```
 Clock:  ───┐   ┌───┐   ┌───┐   ┌───
            └───┘   └───┘   └───┘
-           ↑   ↑   ↑   ↑
-        RISING  FALLING
-         EDGE    EDGE
+           ↑   ↑
+           │   │
+       RISING  FALLING
+        EDGE    EDGE
 
-     Sample data HERE → signals have settled
+     Sample data at edges → signals have settled
      Ignore data between edges → may be invalid
 ```
 

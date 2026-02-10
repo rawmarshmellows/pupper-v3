@@ -4,65 +4,22 @@ created: 2026-01-23
 ---
 
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]]
+> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
 
 # PCB, Chip, Transistor, and Substrate Packaging Hierarchy
 
-```
-THE HIERARCHY: FROM ATOMS TO APPLIANCES
-════════════════════════════════════════════════════════════════════════════
+## The Core Problem
 
-    SCALE          COMPONENT              WHAT IT DOES
-    ─────          ─────────              ────────────
-
-    ~5 nm          TRANSISTOR             Tiny on/off switch made of [[quick-context/doped-silicon|doped silicon]]
-                   ┌─┬─┬─┐                (billions per chip)
-                   └─┴─┴─┘
-                      │
-                      │  (metal interconnect layers within the die)
-                      ▼
-    ~10 mm         SILICON DIE            The actual "chip" - a tiny square of
-                   ┌───────┐              patterned silicon containing all the
-                   │░░░░░░░│              transistors and wiring
-                   │░░░░░░░│
-                   └───────┘
-                      │
-                      │  (wire bonds or flip-chip bumps)
-                      ▼
-    ~15-50 mm      SUBSTRATE/PACKAGE      Protective housing that fans out the
-                   ┌─────────────┐        die's tiny connections to larger,
-                   │ ┌───────┐   │        solderable pins/balls
-                   │ │  die  │   │
-                   │ └───────┘   │
-                   └─────────────┘
-                      │
-                      │  (solder balls or pins)
-                      ▼
-    ~100-400 mm    PCB (Printed           The green board connecting multiple
-                   Circuit Board)         chips, capacitors, connectors, and
-                   ┌─────────────────┐    power delivery to each other
-                   │ □ □   ═══  □   │
-                   │   ▓▓▓      ○○  │
-                   │ ═══════════════│
-                   └─────────────────┘
-                      │
-                      │  (connectors, cables)
-                      ▼
-    ~meters        SYSTEM                 Complete device (phone, laptop, server)
-```
-
-## The Core Problem: Bridging Nine Orders of Magnitude
-
-Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor of 1,000,000× in scale that must be bridged with reliable electrical connections. You can't solder a wire directly to a transistor—the transistor is smaller than a bacterium. The packaging hierarchy solves this by progressively "fanning out" connections: the die has thousands of microscopic bond pads (~50 μm), which connect to the substrate's larger landing pads (~200 μm), which connect to the package's solder balls (~500 μm), which finally connect to the PCB's traces (~200 μm wide but millimeters long). Each level also manages different concerns: the die handles computation, the substrate handles signal redistribution and sometimes embedded capacitors, and the [[quick-context/pcb-printed-circuit-board|PCB]] handles power delivery, mechanical mounting, and system-level connectivity. Without this hierarchy, you'd have no way to get power into or signals out of a chip.
+Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **[[quick-context/silicon-die|Die]]** | The actual silicon chip cut from a wafer; contains all transistors and [[quick-context/metal-interconnect-layers|metal interconnect layers]] |
-| **[[quick-context/substrate-ic-packaging\|Substrate]]** | The intermediate layer (often organic or ceramic) that redistributes the die's fine-pitch connections to the package's coarser pins/balls |
+| **[[quick-context/substrate-ic-packaging|Substrate]]** | The intermediate layer (often organic or ceramic) that redistributes the die's fine-pitch connections to the package's coarser pins/balls |
 | **[[quick-context/wire-bonding|Wire bond]]** | Thin gold or copper wire (~25 μm) ultrasonically welded from die bond pad to substrate; cheap but limits density and adds inductance |
 | **[[quick-context/flip-chip|Flip-chip (C4)]]** | Die mounted face-down with solder bumps directly connecting to substrate; higher performance and I/O density than wire bonding |
 | **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | Package type where solder balls on the bottom connect to PCB; enables high pin counts in small area |

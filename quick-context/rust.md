@@ -9,9 +9,19 @@ created: 2026-01-25
 
 # Rust (Iron Corrosion Chemistry)
 
-## The Core Problem: Why Metal Structures Fall Apart
+## The Core Problem
 
-Iron and steel are the backbone of modern civilization—bridges, buildings, cars, ships, pipelines, rebar in concrete. But iron has a fundamental thermodynamic problem: it *wants* to return to its oxidized state. The iron ore we dig up (Fe₂O₃, hematite) required enormous energy to reduce into metal. Left exposed to oxygen and water, iron spontaneously reverses this process, releasing that stored energy as it corrodes. The result—rust—is structurally worthless: flaky, porous, and non-protective. Unlike aluminum (which forms a tight oxide layer that shields the metal beneath), rust keeps growing inward, consuming the iron until structures fail. Corrosion costs the global economy over $2.5 trillion annually in damaged infrastructure, maintenance, and replacement. Understanding rust chemistry is essential for preventing catastrophic failures.
+Iron and steel are the backbone of modern civilization, but iron has a fundamental thermodynamic problem: it *wants* to return to its oxidized state. Left exposed to oxygen and water, iron spontaneously corrodes, and unlike aluminum (which forms a protective oxide layer), rust keeps growing inward until structures fail—costing the global economy over $2.5 trillion annually.
+
+## 5 Essential Terms
+
+| Term | Definition |
+|------|------------|
+| **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
+| **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
+| **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
+| **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -133,16 +143,6 @@ Corrosion engineers balance multiple competing strategies:
 The core debate: **Is it cheaper to prevent corrosion or plan for replacement?** Bridges get repainted every 10-15 years because that's cheaper than using stainless steel. Ships use sacrificial anodes because replacing zinc blocks is cheaper than replacing hulls. Cars use galvanized steel (zinc-coated) because the zinc sacrifices itself over the vehicle's lifetime. Every application demands a different cost-benefit calculation.
 
 </details>
-
-## 5 Essential Terms
-
-| Term | Definition |
-|------|------------|
-| **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
-| **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
-| **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
-| **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
 <details>
 <summary><strong>Concrete Example</strong></summary>

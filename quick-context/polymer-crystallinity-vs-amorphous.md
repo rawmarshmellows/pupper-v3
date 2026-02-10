@@ -10,7 +10,7 @@ updated: 2026-01-21
 
 # Polymer Crystallinity vs Amorphous: A Beginner's Guide to 3D Printing Warping
 
-## The Core Problem and Why It Matters
+## The Core Problem
 
 Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that can arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
 
@@ -87,8 +87,6 @@ Some practitioners modify materials with additives to reduce crystallinity (trad
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-## ASCII Diagrams: Seeing the Difference
-
 ```
 CRYSTALLINE REGION (ordered chains)
 ====================================
@@ -120,7 +118,7 @@ AMORPHOUS REGION (tangled chains)
   LESS DENSE → WEAKER → SHRINKS LESS WHEN COOLING
 ```
 
-## Why This Causes Warping: A Step-by-Step Walkthrough
+**Why This Causes Warping: A Step-by-Step Walkthrough**
 
 ```
 STAGE 1: Printing begins
@@ -171,7 +169,7 @@ Eventually stress exceeds adhesion. Corners lift. Print fails.
   are PULLING THE EDGES UP as they finally shrink.
 ```
 
-## Material Comparison: Crystallinity in Common 3D Printing Plastics
+**Material Comparison: Crystallinity in Common 3D Printing Plastics**
 
 ```
 Material    │ Crystallinity │ Shrinkage │ Warp Risk │ Typical Use
@@ -187,7 +185,7 @@ PEEK        │ HIGH          │ 1.2-1.5%  │ VERY HIGH │ Aerospace, medical
 ** ABS warping is thermal contraction, not crystallization - different mechanism!
 ```
 
-## Practical Anti-Warp Strategies
+**Practical Anti-Warp Strategies**
 
 ```
 STRATEGY                    │ WHAT IT DOES                          │ MATERIALS
@@ -220,21 +218,21 @@ Draft shields               │ Block air currents, even cooling      │ ABS, N
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
+**Q1:** Why does Nylon warp more aggressively than PLA, even though both are thermoplastics?
 <details>
-<summary>1. Why does Nylon warp more aggressively than PLA, even though both are thermoplastics?</summary>
-
+<summary>Answer</summary>
 Nylon is semi-crystalline with high crystallinity (shrinkage of 1.5-2.0%), while PLA has very low crystallinity (shrinkage of 0.3-0.5%). When Nylon cools, its polymer chains reorganize into dense, ordered crystalline regions that occupy significantly less volume than the original molten state. This causes much greater shrinkage and internal stress, leading to aggressive warping. PLA remains mostly amorphous when it cools, so there is minimal volume change and much less warping.
 </details>
 
+**Q2:** ABS is amorphous, so why does it still warp? How is this different from Nylon warping?
 <details>
-<summary>2. ABS is amorphous, so why does it still warp? How is this different from Nylon warping?</summary>
-
+<summary>Answer</summary>
 ABS warps due to high thermal contraction, not crystallization. As ABS cools from its melt temperature, it contracts significantly (0.7-0.8%) simply because hot materials occupy more volume than cold materials. This is a purely thermal effect. Nylon warping, by contrast, involves both thermal contraction AND crystallization shrinkage - the molecules are reorganizing into denser packed structures. The fix for ABS is an enclosure to slow cooling uniformly. The fix for Nylon requires even slower cooling and sometimes post-print annealing to allow crystallization to happen gradually without building up internal stress.
 </details>
 
+**Q3:** You are printing a part that needs high chemical resistance and strength. You choose Nylon, but your prints keep warping badly. What three strategies would you try?
 <details>
-<summary>3. You are printing a part that needs high chemical resistance and strength. You choose Nylon, but your prints keep warping badly. What three strategies would you try?</summary>
-
+<summary>Answer</summary>
 Three effective strategies for reducing Nylon warping:
 
 1. **Heated chamber (40-80C)** — Slows the overall cooling rate so crystallization happens more uniformly throughout the part rather than creating stress gradients.
@@ -246,9 +244,9 @@ Three effective strategies for reducing Nylon warping:
 Other valid answers include: using a brim/raft for better adhesion, printing slower to reduce thermal shock, or using draft shields to prevent uneven cooling from air currents.
 </details>
 
+**Q4:** A colleague says "just use a heated bed and all warping problems are solved." Why is this advice incomplete?
 <details>
-<summary>4. A colleague says "just use a heated bed and all warping problems are solved." Why is this advice incomplete?</summary>
-
+<summary>Answer</summary>
 A heated bed only addresses part of the warping problem. While it slows cooling of the bottom layers and improves bed adhesion, it does not address:
 
 1. **Uneven cooling throughout the part** — Upper layers still cool in open air while bottom layers are kept warm, creating temperature gradients and stress.
@@ -260,9 +258,9 @@ A heated bed only addresses part of the warping problem. While it slows cooling 
 For highly crystalline materials like Nylon or PEEK, you typically also need a heated chamber, controlled cooling rates, draft shields, and potentially post-print annealing. The heated bed is necessary but not sufficient.
 </details>
 
+**Q5:** Looking at the material comparison table, why might someone choose PETG over Nylon for a functional part, despite Nylon being "stronger"?
 <details>
-<summary>5. Looking at the material comparison table, why might someone choose PETG over Nylon for a functional part, despite Nylon being "stronger"?</summary>
-
+<summary>Answer</summary>
 PETG offers a practical middle ground with several advantages:
 
 1. **Dramatically easier printing** — PETG has low crystallinity (0.5-0.8% shrinkage) versus Nylon's high crystallinity (1.5-2.0%), making it far less prone to warping.

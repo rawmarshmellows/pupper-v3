@@ -3,26 +3,13 @@ topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
 
-# Metal Interconnect Layers
-
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Metal interconnect layers are stacked wiring levels built on top of transistors that route signals and power throughout a chip—they've become the limiting factor in chip performance as transistors shrink faster than wires can scale.
 
-## The Core Problem: Connecting Billions of Switches
+## The Core Problem
 
-Imagine you have a city with 10 billion houses (transistors), and every house needs to connect to specific other houses with wires. You can't just run 10 billion wires across the ground—they'd all cross and tangle. The solution: build a multi-story parking garage above the city where wires run on different floors.
-
-**Metal interconnect layers are the "parking garage" of wiring built on top of the transistors inside a computer chip.** They're stacked layers of metal wiring (typically copper) that route electrical signals between transistors.
-
-| What Breaks Without Interconnects | Why It Matters |
-|-----------------------------------|----------------|
-| Transistors can't talk to each other | A transistor alone does nothing useful—logic requires connections |
-| No way to deliver power to transistors | Transistors need electricity to switch on/off |
-| No way to get signals in or out of the chip | The chip can't communicate with the outside world |
-| No way to build complex circuits | Everything more complex than a single switch becomes impossible |
-
-**In short:** Without metal interconnect layers, you'd have billions of transistors sitting in silence, unable to do anything.
+Metal interconnect layers are the "parking garage" of wiring built on top of the transistors inside a computer chip—stacked layers of metal wiring (typically copper) that route electrical signals between transistors. Without metal interconnect layers, you'd have billions of transistors sitting in silence, unable to do anything: no way to deliver power, no way to get signals in or out, no way to build complex circuits.
 
 ## 5 Essential Terms
 

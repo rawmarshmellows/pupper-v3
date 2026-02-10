@@ -10,38 +10,9 @@ updated: 2026-01-21
 
 # Refill vs Spool: 3D Printing Filament Packaging
 
-## What's the Difference?
+## The Core Problem
 
-When you buy 3D printing [[quick-context/3d-printing-filament-types|filament]] (the plastic "wire" that feeds into your printer), it comes in two forms:
-
-### With Spool (Standard)
-The filament is wound onto a plastic reel/spool. You buy the whole thing—plastic filament + plastic spool. When you're done, you throw away (or recycle) the spool.
-
-```
-┌─────────────────┐
-│   ┌───────┐     │
-│  ╱ ░░░░░░░ ╲    │  ← Plastic spool (reusable... but you get a new one every time)
-│ │  ░░░░░░░  │   │
-│ │  ░░░░░░░  │   │  ← Filament wound around it
-│  ╲ ░░░░░░░ ╱    │
-│   └───────┘     │
-└─────────────────┘
-     ~$25-30 for 1kg
-```
-
-### Refill (Spool-less)
-Just the filament, wound into a coil and held together with cardboard or zip ties. You reuse your existing spool or use a "master spool" (a reusable spool designed for refills).
-
-```
-┌─────────────────┐
-│                 │
-│    ░░░░░░░░     │  ← Just the filament coil
-│   ░░░░░░░░░░    │
-│    ░░░░░░░░     │  ← Held with cardboard/ties
-│                 │
-└─────────────────┘
-     ~$18-22 for 1kg
-```
+3D printing [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
 
 ## 5 Essential Terms
 
@@ -52,21 +23,6 @@ Just the filament, wound into a coil and held together with cardboard or zip tie
 | **Cardboard core** | Some refills come on a cardboard tube you can print directly from (no rewinding). |
 | **Tangle** | When filament loops cross over each other—can jam your printer or snap the filament. |
 | **Dry box** | Sealed container with desiccant to keep filament moisture-free (refills are more exposed). |
-
----
-
-## Why Refills Exist
-
-**Problem solved:** Waste and cost.
-
-Every 1kg spool comes with ~150-200g of plastic spool that gets thrown away. If you print a lot, you're accumulating dozens of empty spools. They're technically recyclable, but most people just trash them.
-
-Refills are:
-- **Cheaper**: No spool manufacturing cost (~15-25% savings)
-- **Less wasteful**: No plastic spool to throw away
-- **Lighter to ship**: Lower shipping costs and carbon footprint
-
----
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -176,8 +132,6 @@ LIFECYCLE COMPARISON
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-## Practical Example: Using a Refill
-
 **Step 1: Get a master spool** (or save an empty one)
 
 Many brands sell reusable master spools (~$10-15) that are designed to click together around refill coils:
@@ -203,8 +157,6 @@ Master spool (two halves):
 **Step 3: Print normally**
 
 Once mounted, it works exactly like a regular spool.
-
-## When to Use Each
 
 **Choose WITH SPOOL if:**
 - You're new to 3D printing (one less thing to deal with)
@@ -234,33 +186,33 @@ Once mounted, it works exactly like a regular spool.
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
+**Q1:** Why are refills typically 15-25% cheaper than spooled filament?
 <details>
-<summary>1. Why are refills typically 15-25% cheaper than spooled filament?</summary>
-
+<summary>Answer</summary>
 Refills eliminate the cost of manufacturing the plastic spool (which weighs 150-200g itself), reduce packaging volume, and lower shipping costs due to lighter weight. The filament itself is usually identical quality from the same production line.
 </details>
 
+**Q2:** What is the main risk when using refill filament, and how can you mitigate it?
 <details>
-<summary>2. What is the main risk when using refill filament, and how can you mitigate it?</summary>
-
+<summary>Answer</summary>
 The main risk is tangling—when filament loops cross over each other, which can jam your printer or cause filament to snap mid-print. Mitigate this by: (1) carefully handling the coil when loading onto a master spool, (2) storing refills properly in a dry box, and (3) never letting the filament end slip under other loops.
 </details>
 
+**Q3:** What is a "master spool" and why is it useful?
 <details>
-<summary>3. What is a "master spool" and why is it useful?</summary>
-
+<summary>Answer</summary>
 A master spool is a reusable spool designed specifically to accept refill coils. It's typically sturdier than disposable spools and often consists of two halves that click or screw together around the refill coil. It lets you reuse the same spool indefinitely while purchasing cheaper refill filament.
 </details>
 
+**Q4:** When would you recommend someone stick with traditional spooled filament instead of refills?
 <details>
-<summary>4. When would you recommend someone stick with traditional spooled filament instead of refills?</summary>
-
+<summary>Answer</summary>
 Recommend spooled filament when: (1) the person is new to 3D printing and shouldn't add complexity, (2) they print only occasionally so savings are minimal, (3) they need a specific color/brand not available as refill, or (4) they lack proper storage (dry box) to protect exposed refill coils from moisture.
 </details>
 
+**Q5:** Why does moisture sensitivity matter more for refill filament than spooled filament?
 <details>
-<summary>5. Why does moisture sensitivity matter more for refill filament than spooled filament?</summary>
-
+<summary>Answer</summary>
 Refill coils lack the protective plastic spool enclosure that helps seal out humidity. Since many filaments (especially nylon, PETG, and PLA) absorb moisture from the air—leading to print defects like stringing, bubbling, and weak layer adhesion—refills require more careful storage in dry boxes with desiccant.
 </details>
 

@@ -3,7 +3,7 @@ topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** PCBs replace the nightmare of hand-soldered wire connections with thin copper pathways printed onto a rigid fiberglass board, providing the physical foundation for reliable, manufacturable, and repairable electronics in every smartphone, computer, and electronic device.
 
@@ -130,7 +130,7 @@ A REAL 4-LAYER PCB STACK-UP
     ├─────────────────────────────────────────────────────────────────────────┤
     │ LAYER 4 (BOTTOM): More signal traces and component pads                │
     │         ═══════════════════════════════════════════                    │
-    │    ●    ●    ●    ●    ●    ●    ●    ●    ●    ●   ← decoupling caps  │
+    │    ●    ●    ●    ●    ●    ●    ●    ●    ●    ●   ← [[quick-context/capacitor|decoupling caps]]  │
     └─────────────────────────────────────────────────────────────────────────┘
 
     Why planes instead of traces for power/ground?

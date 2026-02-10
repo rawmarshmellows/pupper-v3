@@ -10,9 +10,9 @@ updated: 2026-01-22
 
 # Electrolysis
 
-## The Core Problem: Using Electricity to Force Non-Spontaneous Chemistry
+## The Core Problem
 
-In chemistry, reactions "prefer" to move towards states that are lower in energy—this is what happens when a reaction happens spontaneously, often releasing energy as heat or light. However, many important chemical changes won’t happen on their own because they would require *climbing* to a higher energy state, which isn’t favorable naturally. Electrolysis is a process that uses electricity to push these non-spontaneous reactions forward. It supplies the needed energy directly, using electrical power to move electrons against their natural flow—so instead of letting reactions "roll downhill," you’re using electricity to push them "uphill" and make otherwise impossible chemistry occur.
+Many important chemical changes won't happen on their own because they require climbing to a higher energy state. Electrolysis uses electricity to push these non-spontaneous reactions forward, supplying energy directly to move electrons against their natural flow—pushing reactions "uphill" to make otherwise impossible chemistry occur.
 
 The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, electrolyte, electron flow), opposite energy direction.
 
@@ -88,8 +88,6 @@ THE SEQUENCE OF EVENTS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-## The Key Tension: Thermodynamics vs. Kinetics
-
 Two separate questions govern every electrolysis process:
 
 **Thermodynamics asks: "Is it possible?"** — The minimum voltage (cell potential) tells you whether you've supplied enough energy to make the reaction energetically feasible. Water electrolysis needs at least 1.23V. Below this, *nothing happens*, no matter how long you wait.
@@ -102,8 +100,6 @@ This thermodynamic/kinetic split echoes throughout chemistry. A reaction can be 
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
-
-## Concrete Example: Water Electrolysis
 
 ```
 THE CONCEPTUAL PICTURE
@@ -157,8 +153,6 @@ With 1M H₂SO₄: conductivity ≈ 100,000 μS/cm (2 million× better!)
 The electrolyte doesn't get consumed—it provides mobile ions to
 carry current, but the net reaction is still just: 2H₂O → 2H₂ + O₂
 ```
-
-## Electrode Materials: What the Surface Is Made Of
 
 The electrode surface is where electrons actually transfer to/from chemical species—the material dramatically affects efficiency, cost, and longevity. The key tradeoff: **catalytic activity vs. cost vs. stability**.
 
@@ -238,8 +232,6 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 
 **The research frontier**: Finding cheap catalysts that rival platinum's performance. Nickel-molybdenum alloys, cobalt phosphides, and nanostructured materials are promising. The goal: precious-metal-free electrodes that still achieve <200 mV overpotential. This is THE bottleneck for affordable green hydrogen.
 
-## Connection to Other Concepts
-
 **Relation to [[quick-context/chemical-bonds-spectrum|bond energies]]**: Electrolysis breaks strong [[quick-context/covalent-bonds|covalent bonds]] (O-H in water, ~460 kJ/mol) that require significant energy input. The 1.23V minimum for water electrolysis directly reflects this bond energy: 1.23V × 96,485 C/mol × 2 mol e⁻ per mol H₂O = 237 kJ/mol, matching the Gibbs free energy of water splitting.
 
 **Relation to oxidation states**: Track where electrons go by watching oxidation numbers change. In water (H₂O), hydrogen is +1 and oxygen is -2. After electrolysis, hydrogen in H₂ is 0 (reduced: gained electrons), oxygen in O₂ is 0 (oxidized: lost electrons). The total electron bookkeeping must balance.
@@ -248,18 +240,12 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 
 **Relation to energy storage**: Electrolysis is half of the hydrogen energy cycle. Electricity → electrolysis → H₂ stored → fuel cell → electricity. Round-trip efficiency is ~40-50%, much worse than [[quick-context/galvanic-cells-batteries|batteries]] (~90%), but hydrogen stores energy for months without loss and can be transported. The physics of [[quick-context/chemical-bonds-spectrum|bond formation]] in the fuel cell (H₂ + O₂ → H₂O) releases exactly what electrolysis put in, minus losses.
 
-## What Outsiders Get Wrong
-
-**The one thing most outsiders get wrong about this is...** thinking the energy gets "stored in the bonds" of hydrogen. This is backwards. **Breaking** bonds costs energy; **forming** bonds releases it. The O-H bonds in water are *strong*—that's why water is stable. Electrolysis puts energy *into* the system by breaking those bonds, creating separated H₂ and O₂ at higher chemical potential. When H₂ and O₂ recombine (combustion or fuel cell), *new* O-H bonds form, releasing that stored potential energy. The energy isn't in the H-H bond of hydrogen; it's in the *system's configuration*—separated fuel and oxidizer that "want" to combine.
-
-This misconception extends to nutrition ("breaking down food releases energy")—actually, it's the *formation* of CO₂ and H₂O bonds (plus ATP) during metabolism that releases energy, not the breaking of food molecule bonds.
+**The one thing most outsiders get wrong about this is...** thinking the energy gets "stored in the bonds" of hydrogen. This is backwards. **Breaking** bonds costs energy; **forming** bonds releases it. The O-H bonds in water are *strong*—that's why water is stable. Electrolysis puts energy *into* the system by breaking those bonds, creating separated H₂ and O₂ at higher chemical potential. When H₂ and O₂ recombine (combustion or fuel cell), *new* O-H bonds form, releasing that stored potential energy. The energy isn't in the H-H bond of hydrogen; it's in the *system's configuration*—separated fuel and oxidizer that "want" to combine. This misconception extends to nutrition ("breaking down food releases energy")—actually, it's the *formation* of CO₂ and H₂O bonds (plus ATP) during metabolism that releases energy, not the breaking of food molecule bonds.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
-
-## Peripheral Knowledge
 
 - **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking covalent bonds in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
 
@@ -271,12 +257,12 @@ This misconception extends to nutrition ("breaking down food releases energy")�
 
 - **Industrial Applications** — Hall-Héroult process (aluminum from Al₂O₃), chlor-alkali process (Cl₂, NaOH, H₂ from brine), electroplating, electrorefining of metals—all electrolysis at scale.
 
+- **[[quick-context/biology-fundamentals]]** — Cellular respiration is the chemical inverse of electrolysis at the bond level: respiration releases energy when forming bonds (CO₂ + H₂O), while electrolysis inputs energy to break them.
+
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
-
-## Test Your Understanding
 
 **Q1:** A [[quick-context/galvanic-cells-batteries|battery]] and an electrolysis cell both have anodes, cathodes, and electrolytes. What's the fundamental difference between them?
 <details>

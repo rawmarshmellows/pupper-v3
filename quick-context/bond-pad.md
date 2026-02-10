@@ -3,11 +3,11 @@ topic: Bond Pad
 created: 2026-01-25
 ---
 
-# Bond Pad
-
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Bond pads are the tiny metal squares (~50 micrometers) on a chip's surface that serve as the "doorways" where all internal wiring converges, enabling billions of transistors to connect with the outside world for power and data.
+
+# Bond Pad
 
 ## The Core Problem: Getting Signals Out of an Impossibly Small Chip
 
@@ -29,8 +29,6 @@ A modern computer chip contains **billions of transistors**, each one smaller th
 
 <details>
 <summary><strong>How It Works</strong></summary>
-
-### The Big Picture: Bond Pads as the Chip's "Exits"
 
 Imagine a city (the chip) with millions of buildings (transistors). Every building is connected by a network of roads (metal interconnect wires) that get progressively wider as traffic merges. Eventually, all this traffic must exit through a limited number of highway on-ramps (bond pads) that lead to the outside world.
 
@@ -79,8 +77,6 @@ INSIDE A CHIP: From Transistors to Bond Pads
   └─────────────────────────────────────────────────────────────────┘
 ```
 
-### Where Bond Pads Are Located
-
 Bond pads can be arranged in two ways, depending on the connection method:
 
 ```
@@ -105,8 +101,6 @@ TWO ARRANGEMENTS OF BOND PADS
   • Limited to ~500-1000 connections         • Enables 3000+ connections
   • Cheaper manufacturing                    • Higher performance
 ```
-
-### How Bond Pads Connect to the Outside World
 
 Once signals reach the bond pad, they still need to get from the tiny chip to the larger world. Here's how:
 
@@ -164,8 +158,6 @@ CONNECTING BOND PADS TO THE PACKAGE
   3. Aligned with matching pads on substrate
   4. Heated—solder melts and self-aligns via surface tension
 ```
-
-### Scale Comparison: Just How Small Are These?
 
 ```
 SIZE COMPARISON (to scale representation)

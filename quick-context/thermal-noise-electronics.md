@@ -3,7 +3,7 @@ topic: Thermal Noise in Electronics
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]]
+> **Related:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Thermal noise is the unavoidable random voltage fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
 
@@ -260,13 +260,13 @@ ENGINEERING RESPONSES:
 
 Thermal Noise in a Sense Amplifier
 
-Memory chips must detect tiny voltage differences (often <100mV) stored in capacitors. Thermal noise directly limits how small these differences can be:
+Memory chips must detect tiny voltage differences (often <100mV) stored in [[quick-context/capacitor|capacitors]]. Thermal noise directly limits how small these differences can be:
 
 ```
 DRAM SENSE AMPLIFIER: Where Thermal Noise Matters Most
 ════════════════════════════════════════════════════════════════════════════════
 
-A DRAM cell stores a bit as charge on a tiny capacitor (~20 femtofarads).
+A DRAM cell stores a bit as charge on a tiny [[quick-context/capacitor|capacitor]] (~20 femtofarads).
 When read, the charge creates a small voltage difference on a bit line.
 The sense amplifier must detect this difference—but thermal noise fights back.
 
@@ -318,7 +318,7 @@ THE NOISE PROBLEM:
 THIS IS WHY:
 ─────────────────────────────────────────────────────────────────────────────
 
-    • DRAM capacitors can't shrink indefinitely (noise floor)
+    • DRAM [[quick-context/capacitor|capacitors]] can't shrink indefinitely (noise floor)
     • Memory refresh cycles are needed (charge leaks, signal degrades)
     • ECC (Error Correcting Code) memory exists
     • Server-grade RAM uses more conservative designs
@@ -340,6 +340,8 @@ THIS IS WHY:
 - **[[quick-context/glass-transition-temperature|Glass Transition Temperature]]** — Another manifestation of thermal energy (kT) overcoming barriers—in polymers, chains gain mobility above Tg; in electronics, electrons gain mobility to cause noise.
 
 - **Statistical Mechanics / Boltzmann Distribution** — The deeper physics explaining why thermal noise follows specific statistical distributions; temperature determines the probability of finding electrons at different energy levels.
+
+- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller capacitance means more thermal noise relative to signal.
 
 </details>
 
