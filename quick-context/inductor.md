@@ -3,7 +3,7 @@ topic: Inductor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
 
@@ -18,7 +18,7 @@ A switching power supply chops a DC voltage on and off millions of times per sec
 | Term | Definition |
 |------|------------|
 | **Inductance (L)** | The ability to store energy in a magnetic field per unit current change, measured in henrys (H). Most practical inductors are microhenrys (μH) to millihenrys (mH). |
-| **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt. Try to suddenly stop current through an inductor and it generates a voltage spike (potentially destructive). |
+| **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt ([[quick-context/lenzs-law|Lenz's Law]]). Try to suddenly stop current through an inductor and it generates a voltage spike (potentially destructive). |
 | **Saturation Current** | The current at which the core's magnetic material can't hold any more flux—inductance drops sharply and the inductor stops working properly. Exceeding this is a common design mistake. |
 | **DCR (DC Resistance)** | The resistance of the wire in the coil. Lower is better—DCR wastes power as heat. Thicker wire = lower DCR but larger inductor. |
 | **Core Material** | What the coil is wound around. Air (no saturation, low inductance), ferrite (high inductance, saturates), powdered iron (good for power, gradual saturation). |
@@ -26,9 +26,121 @@ A switching power supply chops a DC voltage on and off millions of times per sec
 <details>
 <summary><strong>How It Works</strong></summary>
 
-When [[quick-context/electric-current|current]] flows through a wire, it creates a magnetic field around the wire (see [[quick-context/electromagnetism]]). Coiling the wire concentrates the field. The key behavior: an inductor resists changes to the current flowing through it—the exact opposite of a [[quick-context/capacitor|capacitor]], which resists changes in voltage.
+When [[quick-context/electric-current|current]] flows through a wire, it creates a magnetic field around the wire (see [[quick-context/electromagnetism]] and [[quick-context/coil-magnetic-field|coil magnetic field]]). Coiling the wire concentrates the field. The key behavior: an inductor resists changes to the current flowing through it—the exact opposite of a [[quick-context/capacitor|capacitor]], which resists changes in voltage.
 
 ```
+WHY A COIL, NOT JUST A STRAIGHT WIRE?
+══════════════════════════════════════════════════════════════════════════════
+
+A straight wire DOES have a magnetic field when current flows. Every current-
+carrying conductor creates a magnetic field — that's fundamental physics.
+So why doesn't a straight wire act like an inductor?
+
+It does! But the inductance is tiny. The difference is concentration and
+self-linkage.
+
+
+STRAIGHT WIRE: Field exists, but weak and spread out
+──────────────────────────────────────────────────────────────────────────────
+
+    Current through ANY wire creates circular magnetic field:
+
+                    ╭───────╮
+                   ╱    ↑    ╲
+                  │     │     │
+                  │  ───┼───  │  ← Wire (current into page ⊗)
+                  │     │     │
+                   ╲    ↓    ╱
+                    ╰───────╯
+
+                  Field circles around wire (right-hand rule)
+
+    The field exists! But:
+    • It spreads out into open space (not concentrated)
+    • The wire doesn't "link" with much of its own flux
+    • Energy stored is small: E = ½LI², and L is tiny
+
+    A 10cm straight wire has inductance ≈ 100 nH (0.0001 mH)
+    That's basically nothing for most purposes.
+
+
+COILED WIRE: Same physics, but MULTIPLIED
+──────────────────────────────────────────────────────────────────────────────
+
+    When you coil the wire, two things happen:
+
+    1. THE FIELD CONCENTRATES (adds up in the center)
+
+        Straight wire:              Coiled wire:
+
+            ○                        →→→→→→→→→→
+           ╱│╲                      ║ ⊃⊃⊃⊃⊃⊃ ║
+          ╱ │ ╲                     ║ ║║║║║║ ║
+            │                       ║ ║║║║║║ ║
+        Field spreads              →→→→→→→→→→
+        in all directions           ←←←←←←←←←←
+
+                                   Fields from each turn ADD UP
+                                   in the center of the coil
+
+
+    2. EACH TURN LINKS WITH FLUX FROM ALL OTHER TURNS (the key insight!)
+
+        Single turn:
+        ┌─────────────────────┐
+        │  Flux Φ passes      │
+        │  through this loop  │     Inductance ∝ Φ/I
+        │        ↓↓↓↓         │
+        └─────────────────────┘
+
+        Multiple turns (N turns):
+        ┌─────────────────────┐
+        │  ╔═══════════════╗  │     Turn 1 links with flux from turns 1,2,3...N
+        │  ║ ╔═══════════╗ ║  │     Turn 2 links with flux from turns 1,2,3...N
+        │  ║ ║ ╔═══════╗ ║ ║  │     Turn 3 links with flux from turns 1,2,3...N
+        │  ║ ║ ║  ↓↓↓  ║ ║ ║  │     ...
+        │  ║ ║ ╚═══════╝ ║ ║  │
+        │  ║ ╚═══════════╝ ║  │     Total flux linkage = N × Φ
+        │  ╚═══════════════╝  │
+        └─────────────────────┘
+
+        Inductance L ∝ N² (turns SQUARED!)
+
+        10 turns doesn't give 10× inductance — it gives 100× inductance!
+
+
+    THE MATH:
+
+        For a coil:  L = (μ₀ × N² × A) / length
+
+        • μ₀ = permeability of free space
+        • N = number of turns  ← This is squared!
+        • A = cross-sectional area
+        • length = coil length
+
+        Example:
+        • 1 turn:    L ∝ 1² = 1
+        • 10 turns:  L ∝ 10² = 100
+        • 100 turns: L ∝ 100² = 10,000
+
+
+    ┌────────────────────────────────────────────────────────────────────────┐
+    │                                                                        │
+    │   STRAIGHT WIRE                      COIL                             │
+    │   ─────────────                      ────                             │
+    │   Has magnetic field: YES            Has magnetic field: YES          │
+    │   Has inductance: YES (tiny)         Has inductance: YES (large)      │
+    │                                                                        │
+    │   Why small?                         Why large?                       │
+    │   • Field spreads into space         • Field concentrates in center   │
+    │   • Wire doesn't link with           • Each turn links with flux     │
+    │     much of its own flux               from ALL turns (N² effect)    │
+    │                                                                        │
+    │   The physics is IDENTICAL. The geometry makes the difference.       │
+    │                                                                        │
+    └────────────────────────────────────────────────────────────────────────┘
+
+
 INDUCTOR FUNDAMENTALS
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -50,10 +162,14 @@ INDUCTOR FUNDAMENTALS
     • Sudden current cutoff → HUGE voltage spike (V = L × dI/dt, dt≈0)
 
 
-ENERGY STORAGE
+ENERGY STORAGE — The Key to Understanding Everything
 ══════════════════════════════════════════════════════════════════════════════
 
     E = ½ × L × I²
+
+    This equation is the answer to "why does it take time?" and "why does
+    current keep flowing?" Everything about inductor behavior follows from
+    the fact that the magnetic field contains real, physical energy.
 
     Compare with capacitor: E = ½ × C × V²
 
@@ -97,6 +213,339 @@ RL TIME CONSTANT
     At t=0: inductor blocks all current (acts like open circuit)
     At t=∞: inductor passes all current (acts like short circuit)
     Exactly opposite of a capacitor!
+
+
+WHY DOES VOLTAGE "APPEAR" ACROSS THE LOAD OVER TIME?
+══════════════════════════════════════════════════════════════════════════════
+
+This is a common confusion. Let's trace through what actually happens when you
+connect a battery to an inductor with a load (resistor):
+
+    CIRCUIT:
+                  L (inductor)        R (load)
+         ┌────────⊃⊃⊃⊃⊃⊃────────────╱╱╱╱╱─────┐
+         │                                     │
+      Vs │ 10V                                 │
+         │                                     │
+         └─────────────────────────────────────┘
+
+    Kirchhoff's Voltage Law:   Vs = V_L + V_R
+                               10V = V_L + V_R   (always true!)
+
+
+MOMENT 1: The instant you connect the battery (t = 0)
+──────────────────────────────────────────────────────────────────────────────
+
+    Current before:  I = 0 A
+    Current now:     I = 0 A  (hasn't had time to change yet!)
+
+    Since I = 0:     V_R = I × R = 0 × R = 0V
+
+    From KVL:        V_L = Vs - V_R = 10V - 0V = 10V
+
+    ALL the source voltage appears across the inductor!
+
+         ┌────────⊃⊃⊃⊃⊃⊃────────────╱╱╱╱╱─────┐
+         │         10V               0V        │
+      10V│        (all here!)      (nothing)   │
+         └─────────────────────────────────────┘
+                  V_L = 10V         V_R = 0V
+
+    WHY? The inductor is OPPOSING the current change.
+    • Current wants to go from 0 to something
+    • Inductor generates back-EMF: V_L = L × dI/dt
+    • This back-EMF is 10V, opposing the battery
+    • Net driving force on current = Vs - V_L = 10V - 10V... wait, that's 0?
+
+    Not quite. The 10V across the inductor IS the voltage driving dI/dt:
+    V_L = L × dI/dt   →   dI/dt = V_L / L = 10V / L
+
+    So current STARTS to rise at rate 10/L amps per second.
+
+
+MOMENT 2: A short time later (t = small)
+──────────────────────────────────────────────────────────────────────────────
+
+    Current has started flowing:  I = small (say 0.1A if R=100Ω, L=1H)
+
+    Now:             V_R = I × R = 0.1A × 100Ω = 1V
+
+    From KVL:        V_L = Vs - V_R = 10V - 1V = 9V
+
+    Voltage is now SHARED between inductor and load!
+
+         ┌────────⊃⊃⊃⊃⊃⊃────────────╱╱╱╱╱─────┐
+         │          9V                1V       │
+      10V│        (most here)      (some now)  │
+         └─────────────────────────────────────┘
+                  V_L = 9V          V_R = 1V
+
+    WHY is V_L decreasing?
+    • Current is now flowing, so it's changing LESS rapidly
+    • dI/dt is smaller than before
+    • V_L = L × dI/dt → smaller dI/dt means smaller V_L
+
+    The inductor is "giving up" voltage to the load as current builds up.
+
+
+MOMENT 3: Much later (t → ∞, steady state)
+──────────────────────────────────────────────────────────────────────────────
+
+    Current has reached its maximum:  I = Vs/R = 10V/100Ω = 0.1A
+    Current is now CONSTANT (not changing)
+
+    Since I is constant:  dI/dt = 0
+
+    Therefore:           V_L = L × dI/dt = L × 0 = 0V
+
+    From KVL:            V_R = Vs - V_L = 10V - 0V = 10V
+
+    ALL the source voltage now appears across the load!
+
+         ┌────────⊃⊃⊃⊃⊃⊃────────────╱╱╱╱╱─────┐
+         │          0V               10V       │
+      10V│        (nothing!)      (all here!)  │
+         └─────────────────────────────────────┘
+                  V_L = 0V          V_R = 10V
+
+    WHY? The inductor is no longer opposing anything.
+    • Current is steady—no change to oppose
+    • Magnetic field is fully established and stable
+    • Inductor acts like a plain wire (just its DCR)
+
+
+THE PHYSICS SUMMARY:
+══════════════════════════════════════════════════════════════════════════════
+
+    ┌────────────────────────────────────────────────────────────────────────┐
+    │                                                                        │
+    │  V_L = L × dI/dt     ← This equation explains everything!             │
+    │                                                                        │
+    │  • At t=0: current trying to change fast → dI/dt is large → V_L large │
+    │  • As time passes: current approaches limit → dI/dt decreases → V_L ↓ │
+    │  • At t=∞: current constant → dI/dt = 0 → V_L = 0                     │
+    │                                                                        │
+    │  The inductor "uses up" voltage only while current is CHANGING.       │
+    │  Once current stabilizes, the inductor becomes invisible (0V drop).   │
+    │                                                                        │
+    └────────────────────────────────────────────────────────────────────────┘
+
+    This is [[quick-context/lenzs-law|Lenz's Law]] in action:
+
+    • Inductor opposes CHANGE, not current itself
+    • Opposition is proportional to rate of change
+    • Fast changes → strong opposition (high voltage)
+    • Slow/no changes → weak/no opposition (low/zero voltage)
+
+    Energy perspective:
+    • While V_L > 0, energy is flowing INTO the magnetic field
+    • At steady state, field is "full"—no more energy transfer needed
+    • If you then disconnect, stored energy releases (voltage spike!)
+
+
+THE DEEP PHYSICS: WHY CAN'T CURRENT CHANGE INSTANTLY?
+══════════════════════════════════════════════════════════════════════════════
+
+This is the real question. The inductor is just wire—why can't electrons
+flow through it immediately?
+
+THE ANSWER: Because the magnetic field requires ENERGY to create.
+
+    When current flows through a coil:
+    ─────────────────────────────────────────────────────────────────────────
+
+    Current (I) → Creates magnetic field (B) → Field stores energy (E = ½LI²)
+
+         I ──→ ⊃⊃⊃⊃⊃⊃ ──→
+               ║║║║║║
+               ║║║║║║  ← Magnetic field lines
+               ║║║║║║    (real, physical, contain energy)
+               ══════
+
+    The magnetic field isn't just a concept—it's a physical thing that
+    exists in space and contains energy. Creating this field requires
+    transferring energy from the power source into the field.
+
+
+    Why instant current change is impossible:
+    ─────────────────────────────────────────────────────────────────────────
+
+    Suppose current could jump instantly from 0 to 1 amp:
+
+        Before (t=0⁻):   I = 0 A      →  E = ½L(0)² = 0 J
+        After (t=0⁺):    I = 1 A      →  E = ½L(1)² = ½L joules
+
+    Energy changed from 0 to ½L joules in ZERO time.
+
+        Power = Energy / Time = (½L) / 0 = INFINITE POWER
+
+    Infinite power is physically impossible. You cannot transfer a finite
+    amount of energy in zero time. Therefore current CANNOT change instantly.
+
+    The math confirms this:
+
+        V = L × dI/dt
+
+    If dI/dt → ∞ (instant change), then V → ∞ (infinite voltage).
+    No real power source can provide infinite voltage.
+
+
+    The mechanical analogy — INERTIA:
+    ─────────────────────────────────────────────────────────────────────────
+
+    An inductor has "electrical inertia" just like mass has mechanical inertia.
+
+        MASS                              INDUCTANCE
+        ────                              ──────────
+        Stores energy in motion:          Stores energy in magnetic field:
+        E = ½mv²                          E = ½LI²
+
+        Resists changes in velocity:      Resists changes in current:
+        F = m × dv/dt                     V = L × dI/dt
+
+        Can't instantly change speed      Can't instantly change current
+        (would require infinite force)    (would require infinite voltage)
+
+    Think of a heavy flywheel:
+
+        ┌─────────────────────────────────────────────────────────────────┐
+        │                                                                 │
+        │   FLYWHEEL                         INDUCTOR                     │
+        │                                                                 │
+        │      ╭───╮                            ⊃⊃⊃⊃                     │
+        │     ╱     ╲   ← spinning             ════   ← current flowing  │
+        │    │       │    (has momentum)       ════     (has "momentum") │
+        │     ╲     ╱                          ════                      │
+        │      ╰───╯                                                     │
+        │                                                                 │
+        │   To speed it up:                  To increase current:        │
+        │   Apply torque, wait for it        Apply voltage, wait for it  │
+        │   to accelerate gradually          to build up gradually       │
+        │                                                                 │
+        │   To stop it instantly:            To stop current instantly:  │
+        │   Would require infinite force     Would require infinite V    │
+        │   (impossible)                     (impossible)                │
+        │                                                                 │
+        └─────────────────────────────────────────────────────────────────┘
+
+
+THE DEEP PHYSICS: WHY DOES CURRENT KEEP FLOWING WHEN DISCONNECTED?
+══════════════════════════════════════════════════════════════════════════════
+
+When you open a switch on an inductor carrying current, the current doesn't
+stop. It WILL find a path—arcing across the switch if necessary. Why?
+
+THE ANSWER: The magnetic field contains energy that MUST go somewhere.
+
+    Before disconnection:
+    ─────────────────────────────────────────────────────────────────────────
+
+    Current I is flowing, magnetic field is established:
+
+         ┌────────[SW]────⊃⊃⊃⊃⊃⊃────╱╱╱╱╱────┐
+         │       (closed)    L         R      │
+      Vs │    I →→→→→→→→→→→→→→→→→→→→→→→→→    │
+         │                ║║║║║║              │
+         └────────────────╨╨╨╨╨╨──────────────┘
+                     magnetic field
+                     contains E = ½LI²
+
+
+    The moment you open the switch:
+    ─────────────────────────────────────────────────────────────────────────
+
+         ┌────────[SW]────⊃⊃⊃⊃⊃⊃────╱╱╱╱╱────┐
+         │       (open!)     L         R      │
+      Vs │       ╳                            │
+         │     AIR GAP   ║║║║║║               │
+         └───────────────╨╨╨╨╨╨───────────────┘
+                    field still exists!
+                    still contains ½LI² of energy!
+
+    The field cannot just disappear. Energy is conserved.
+    That energy MUST be released somehow.
+
+
+    What happens physically:
+    ─────────────────────────────────────────────────────────────────────────
+
+    1. Switch opens, breaking the circuit
+
+    2. Current TRIES to stop (dI/dt becomes very negative)
+
+    3. But V = L × dI/dt means a huge POSITIVE voltage appears across L
+
+    4. This voltage is the field's "attempt" to keep current flowing
+
+    5. The voltage rises until it finds a path:
+
+        • If voltage exceeds air breakdown (~3000V/mm), current ARCS
+          across the switch gap
+
+        • Or current flows through parasitic capacitance
+
+        • Or it destroys a transistor that was switching it
+
+    6. Current continues through whatever path exists, dissipating
+       the field's energy as heat (in the arc, in components, etc.)
+
+
+    The field FORCES current to continue:
+    ─────────────────────────────────────────────────────────────────────────
+
+         ┌────────[SW]────⊃⊃⊃⊃⊃⊃────╱╱╱╱╱────┐
+         │       ╳ ⚡      L         R      │
+         │       │ ARC!  ║║║║║║              │
+         │       │ (500V)║║║║║║              │
+         └───────┴───────╨╨╨╨╨╨──────────────┘
+
+    The inductor generates whatever voltage is necessary to maintain
+    current flow. If that means 500V across a 1mm air gap, so be it.
+
+    The energy equation:
+
+        Before: E = ½LI²  (stored in field)
+        After:  E = 0     (field collapsed)
+
+        Where did the energy go?
+        → Dissipated as heat in the arc
+        → Or heat in whatever component absorbed the spike
+
+
+    This is NOT the inductor "wanting" current to flow—it's simpler:
+    ─────────────────────────────────────────────────────────────────────────
+
+    ┌────────────────────────────────────────────────────────────────────────┐
+    │                                                                        │
+    │   The magnetic field contains real energy.                            │
+    │   Energy cannot be created or destroyed.                              │
+    │   The field must collapse to release its energy.                      │
+    │   A collapsing field (dΦ/dt) induces voltage (Faraday's Law).        │
+    │   That voltage drives current through whatever path exists.           │
+    │                                                                        │
+    │   The current isn't "trying" to flow—the field is collapsing,        │
+    │   and a collapsing field ALWAYS induces current. It's physics.        │
+    │                                                                        │
+    └────────────────────────────────────────────────────────────────────────┘
+
+
+    The flyback diode solution:
+    ─────────────────────────────────────────────────────────────────────────
+
+    Give the current a safe path to flow while the field collapses:
+
+         ┌────────[SW]────⊃⊃⊃⊃⊃⊃────╱╱╱╱╱────┐
+         │       (open)     L    │    R      │
+         │                  ║║║║ ▼ D         │
+         │                  ║║║║ │ (diode)   │
+         └──────────────────╨╨╨╨─┴───────────┘
+
+    When switch opens:
+    • Voltage across L reverses (tries to keep current going)
+    • This forward-biases diode D
+    • Current flows through D, gradually decreasing
+    • Field energy dissipates safely as heat in R and D
+    • No destructive voltage spike
 ```
 
 </details>
@@ -211,6 +660,14 @@ BUCK CONVERTER OPERATION
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
 - **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
+
+- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field, and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
+
+- **[[quick-context/lenzs-law]]** — The physics behind back-EMF: why the induced voltage always opposes current changes. This is conservation of energy enforced electromagnetically.
+
+- **[[quick-context/self-induction]]** — The complete cycle: how current creates flux, changing flux creates back-EMF, and what happens when you disconnect the battery (the field collapses, pushing current through the load until all energy is dissipated). Includes voltage across both inductor and load at each phase.
+
+- **[[case-study/permanent-magnet-creation]]** — A magnetizer is essentially a high-current inductor used to align magnetic domains in ferromagnetic materials. The same principle (current creates magnetic field) but applied to create permanent magnets.
 
 </details>
 

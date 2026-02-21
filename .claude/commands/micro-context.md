@@ -40,6 +40,10 @@ created: YYYY-MM-DD
    - Waveforms (sine waves, square waves, etc.) show the correct shape above AND below the baseline
    - Labels align with what they're pointing to
    - The diagram accurately represents the concept (e.g., AC current must show alternating positive/negative values)
+7. **Math notation:** Use LaTeX for all mathematical expressions:
+   - Inline math: `$V = IR$` renders as $V = IR$
+   - Display math: `$$P = IV$$` renders on its own line
+   - Use LaTeX for variables, equations, units with exponents, and formulas
 
 ## Output
 
@@ -55,6 +59,17 @@ Before writing:
 
 **Bad:** Listing 3 topics in "See also" that are vaguely related but don't help understanding
 **Good:** One inline link where the concept naturally appears in the definition
+
+---
+
+## Post-Processing (REQUIRED)
+
+After creating or updating the micro-context file, you MUST run these skills in order:
+
+1. **Fact-check:** Run `/fact-check <output-file-path>` to verify all factual claims
+2. **ASCII-fixer:** Run `/ascii-fixer <output-file-path>` to fix any diagram alignment issues
+
+Do not consider the task complete until both post-processing steps have been run.
 
 ## Example
 

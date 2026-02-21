@@ -24,7 +24,7 @@ Imagine you have energy in one place (a battery, a power plant) and you need to 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Electric current is the organized movement of electrons through a conductor. In a metal wire, countless free electrons normally drift randomly in all directions—no net flow. When you connect a battery or power supply, it creates an electric field that pushes electrons in one direction. Each electron doesn't travel far (they actually move quite slowly, just millimeters per second), but when one electron enters one end of the wire, it immediately pushes on its neighbors, which push on their neighbors, creating a near-instantaneous chain reaction. The effect travels at close to the speed of light even though individual electrons crawl.
+Electric current is the organized movement of [[quick-context/subatomic-particles|electrons]] through a conductor. In a metal wire, countless free electrons normally drift randomly in all directions—no net flow. When you connect a battery or power supply, it creates an electric field that pushes electrons in one direction. Each electron doesn't travel far (they actually move quite slowly, just millimeters per second), but when one electron enters one end of the wire, it immediately pushes on its neighbors, which push on their neighbors, creating a near-instantaneous chain reaction. The effect travels at close to the speed of light even though individual electrons crawl.
 
 The amount of current (measured in amperes) tells you how much charge passes a point per second. One ampere means one coulomb of charge (about 6.24 x 10^18 electrons) flows past every second. This rate directly determines how fast work gets done: more electrons flowing means more chemical reactions in electrolysis, more photons from a light bulb, more magnetic force in a motor. The relationship is linear—double the current, double the rate of work.
 
@@ -343,6 +343,12 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
 - **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+
+- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
+
+- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged subatomic particles that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
+
+- **[[case-study/permanent-magnet-creation]]** — Magnetizers use high current through a coil to create strong magnetic fields that align domains in iron. The field strength scales with current: more amps = stronger field = more domain alignment force.
 
 </details>
 

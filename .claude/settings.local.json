@@ -1,7 +1,40 @@
 {
   "permissions": {
     "allow": [
-      "Skill(update-quick-context)"
+      "Skill(update-quick-context)",
+      "Skill(fact-check)",
+      "Skill(ascii-fixer)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Skill(quick-context)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[POST-PROCESS REQUIRED] Run /fact-check and /ascii-fixer on the output file'"
+          }
+        ]
+      },
+      {
+        "matcher": "Skill(micro-context)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[POST-PROCESS REQUIRED] Run /fact-check and /ascii-fixer on the output file'"
+          }
+        ]
+      },
+      {
+        "matcher": "Skill(case-study)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[POST-PROCESS REQUIRED] Run /fact-check and /ascii-fixer on the output file'"
+          }
+        ]
+      }
     ]
   }
 }

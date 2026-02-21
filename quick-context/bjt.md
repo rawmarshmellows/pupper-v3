@@ -129,7 +129,7 @@ USE A BJT WHEN:                        USE A MOSFET WHEN:
   SOT-23 packages                        on a chip
 • Low-noise analog front-ends          • Power MOSFETs have lower Rds(on)
 ```
-
+ 
 The base current requirement is the BJT's biggest drawback for digital: in TTL logic, every gate draws continuous current from the previous stage. CMOS ([[quick-context/transistor|MOSFET-based]]) gates draw essentially zero static current, which is why CMOS won the digital war.
 
 </details>

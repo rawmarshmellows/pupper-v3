@@ -31,6 +31,7 @@ The argument can be:
    - Keep it ~15-20 lines (excluding diagram and Human notes)
    - One diagram only
    - No additional sections beyond: Definition, diagram, Key insight, and Human notes
+   - **Math notation:** Use LaTeX for all mathematical expressions (`$V = IR$` for inline, `$$P = IV$$` for display)
 
 5. **Update frontmatter:** Add `updated: YYYY-MM-DD` field
 

@@ -64,6 +64,11 @@ Each deep-dive section is wrapped in `<details>` for progressive disclosure:
 - Flow arrows point in the correct direction
 - The diagram accurately represents the concept being explained
 
+**Math Notation:** Use LaTeX for all mathematical expressions:
+- Inline math: `$E = mc^2$` renders as $E = mc^2$
+- Display math: `$$P = IV$$` renders on its own line
+- Use LaTeX for variables, equations, units with exponents, and formulas throughout the document
+
 </details>
 
 <details>
@@ -292,3 +297,14 @@ This ensures every new quick-context file is woven into the existing knowledge g
 - **Peripheral Knowledge section**: Add to the related topics list
 
 The goal is contextual linking where concepts naturally appear throughout all disclosure levels.
+
+---
+
+## Post-Processing (REQUIRED)
+
+After creating or updating the quick-context file, you MUST run these skills in order:
+
+1. **Fact-check:** Run `/fact-check <output-file-path>` to verify all factual claims
+2. **ASCII-fixer:** Run `/ascii-fixer <output-file-path>` to fix any diagram alignment issues
+
+Do not consider the task complete until both post-processing steps have been run.

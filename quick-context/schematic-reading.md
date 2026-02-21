@@ -190,7 +190,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process.
+- **[[quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process. See [[quick-context/pcb-layers]] for the individual Gerber files that translate a layout into manufacturing instructions.
 
 </details>
 

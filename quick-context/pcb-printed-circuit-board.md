@@ -39,7 +39,7 @@ BEFORE PCBs: Point-to-Point Wiring (1950s)      AFTER PCBs: Clean, Reliable Conn
 | **Via** | A tiny hole drilled through the board with copper plating inside, connecting traces on different layers—like an elevator between floors |
 | **Pad** | A copper area where a component's pin or ball gets soldered—the "parking spot" where components attach to the board |
 | **Layer** | One level of copper traces; simple boards have 2 layers (top and bottom), complex ones can have 16+ layers sandwiched together |
-| **Soldermask** | The colored coating (usually green) that covers most of the copper, leaving only pads exposed—prevents accidental short circuits |
+| **Soldermask** | The colored coating (usually green) that covers most of the copper, leaving only pads exposed—prevents accidental short circuits. See [[quick-context/pcb-layers]] for all layer types. |
 
 ```
 ANATOMY OF A PCB (Side View Cross-Section)
@@ -92,7 +92,7 @@ Problem: Two traces need to cross. They can't touch or they'd short-circuit!
            │                                   │
            │  ← Would short-circuit!           ●  ← via (goes down)
            │                                   │
-    C──────┼───────────►D              C═══════╪══════════►D
+    C──────x───────────►D              C═══════╪══════════►D
            │                                   │
            │                                   ●  ← via (comes back up)
                                                │
@@ -257,6 +257,8 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 - **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
 
 - **Soldering and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
+
+- **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 
 - **EDA (Electronic Design Automation) Software** — Tools like KiCad, Altium, or Eagle where designers draw schematics and lay out PCBs. The software enforces design rules and generates the files sent to PCB manufacturers.
 

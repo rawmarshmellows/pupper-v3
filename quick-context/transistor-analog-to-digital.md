@@ -429,6 +429,8 @@ NOISE AND VARIATION IN REAL CHIPS:
 
 - **[[quick-context/electric-current|Electric Current]]** — What "leakage current" actually means. Understanding that current = charge flow explains why even small leakage matters when multiplied by billions of transistors.
 
+- **[[quick-context/code-to-gates-and-bootstrapping|Code to Gates and Bootstrapping]]** — The full chain from high-level code down to logic gates. Shows how NAND gates (built from transistors) compose into half adders, ALUs, and entire CPUs, and how the first software was bootstrapped from punch cards.
+
 - **Boolean Logic and CMOS Design** — How complementary transistors create regenerative logic gates. CMOS is specifically designed to produce clean digital outputs from imperfect analog transistors.
 
 - **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved to combat leakage. FinFET and GAA were invented specifically because planar MOSFETs couldn't control short-channel effects at small scales.

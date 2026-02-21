@@ -16,7 +16,7 @@ Everything physical you touch—including the plastic [[quick-context/3d-printin
 
 | Term | Definition |
 |------|------------|
-| **Atom** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties. |
+| **[[quick-context/subatomic-particles\|Atom]]** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of [[quick-context/subatomic-particles\|protons, neutrons, and electrons]]. |
 | **Molecule** | Two or more atoms bonded together; water (H₂O) is a molecule of 2 hydrogen atoms + 1 oxygen atom. |
 | **Monomer** | A small molecule that can bond repeatedly to form long chains; the "building block" unit. |
 | **Polymer** | A long chain made of many monomers bonded together; plastics are polymers. |
@@ -226,6 +226,7 @@ Brittle when cold.            Branched, tangled chains.
 - [[quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] — Weak attractions between chains that affect melting point and layer adhesion; explains why nylon absorbs moisture and prints differently when wet.
 - [[quick-context/van-der-waals-forces|Van der Waals forces]] — The weakest intermolecular forces, but they add up across long polymer chains; crucial for understanding why longer chains = stronger parts.
 - [[quick-context/biology-fundamentals]] — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
+- [[quick-context/subatomic-particles]] — The fundamental building blocks (protons, neutrons, electrons, quarks) that make up atoms; explains why different elements have different numbers of bonds and chemical behaviors.
 
 </details>
 

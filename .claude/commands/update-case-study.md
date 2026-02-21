@@ -32,6 +32,7 @@ The argument can be:
    - Keep it 80-150 lines
    - Maintain: The Situation, The Pieces, Step by Step, The Result, Why Each Piece Matters, Go Deeper
    - Keep focus on ONE use case
+   - **Math notation:** Use LaTeX for all mathematical expressions (`$V = IR$` for inline, `$$P = IV$$` for display)
 
 5. **Update frontmatter:** Add `updated: YYYY-MM-DD` field
 

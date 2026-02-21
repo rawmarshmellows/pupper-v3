@@ -165,7 +165,7 @@ FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
     Φ   = magnetic flux through the coil (webers)
     dΦ/dt = rate of change of flux
 
-    The minus sign (Lenz's Law): induced voltage OPPOSES the change
+    The minus sign ([[quick-context/lenzs-law|Lenz's Law]]): induced voltage OPPOSES the change
     that created it. This is why inductors resist current changes
     and why generators require mechanical force to turn.
 
@@ -482,6 +482,12 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 - **[[quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
 
 - **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
+
+- **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
+
+- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
+
+- **[[quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
 
 </details>
 

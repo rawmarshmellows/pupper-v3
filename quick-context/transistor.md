@@ -1,7 +1,7 @@
 ---
 topic: Transistor
 created: 2026-01-25
-updated: 2026-01-30
+updated: 2026-02-21
 ---
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
@@ -60,16 +60,15 @@ WHAT A TRANSISTOR DOES: Same Thing, But Electrically Controlled
 
     OFF (gate voltage = 0)              ON (gate voltage = HIGH)
 
-         GATE                                GATE
-           │                                   │
-           ▼                                   ▼
-    ┌──────┴──────┐                     ┌──────┴──────┐
-    │      │      │                     │      │      │
-    │  ╱   │      │                     │  ║   │      │
-    │      │      │                     │  ║   │      │
-    │ SOURCE    DRAIN                   │ SOURCE    DRAIN
-    │   (no current)                    │   (current flows!)
-    └─────────────┘                     └─────────────┘
+              GATE                                GATE
+                │                                   │
+                ▼                                   ▼
+    ┌───────────────────┐               ┌───────────────────┐
+    │                   │               │                   │
+    │ SOURCE ╱   DRAIN  │               │ SOURCE ═══ DRAIN  │
+    │    (no current)   │               │  (current flows!) │
+    │                   │               │                   │
+    └───────────────────┘               └───────────────────┘
 
     The GATE controls whether current can flow between SOURCE and DRAIN.
     No physical movement needed. Works at nanometer scale.
@@ -195,17 +194,17 @@ HOW THE TRANSISTOR TURNS ON AND OFF:
 Step 1: OFF STATE (Gate voltage = 0)
 ─────────────────────────────────────────────────────────────────────────────
 
-                    GATE (0 volts)
-                         │
-                    ┌────┴────┐
-                    │  OXIDE  │
-                    └────┬────┘
-    ┌────────────────────┴────────────────────┐
-    │                                         │
-    │ SOURCE      No channel exists!      DRAIN │
-    │ (n-type)       ✗ ✗ ✗ ✗ ✗           (n-type)│
-    │  ████     blocked by p-type         ████  │
-    │  ████           silicon             ████  │
+                      GATE (0 volts)
+                           │
+                      ┌────┴────┐
+                      │  OXIDE  │
+                      └────┬────┘
+    ┌──────────────────────┴──────────────────────┐
+    │                                             │
+    │  SOURCE      No channel exists!       DRAIN │
+    │  (n-type)       ✗ ✗ ✗ ✗ ✗          (n-type) │
+    │   ████      blocked by p-type          ████ │
+    │   ████           silicon               ████ │
     └─────────────────────────────────────────────┘
 
     The p-type region between source and drain acts like an insulator.
@@ -215,19 +214,19 @@ Step 1: OFF STATE (Gate voltage = 0)
 Step 2: ON STATE (Gate voltage = positive)
 ─────────────────────────────────────────────────────────────────────────────
 
-                    GATE (+1 volt)
-                         │
-                    ┌────┴────┐
-                    │+ + + + +│ ← positive charge stored on gate
-                    │  OXIDE  │   (capacitor is now charged!)
-                    │---------│ ← oxide blocks current but
-                    └────┬────┘   electric field passes through
-    ┌────────────────────┴────────────────────┐
-    │  − − − − − − − − − − − − − − − −        │ ← electrons pulled to surface
-    │ SOURCE    ●●●●● CHANNEL ●●●●●    DRAIN  │   (opposite charge attracted
-    │ (n-type)  (electrons pulled up)  (n-type)│    to bottom "plate")
-    │  ████   → → → → → → → → → → →     ████  │
-    │  ████       current flows!        ████  │
+                      GATE (+1 volt)
+                           │
+                      ┌────┴────┐
+                      │+ + + + +│  ← positive charge stored on gate
+                      │  OXIDE  │    (capacitor is now charged!)
+                      │---------│  ← oxide blocks current but
+                      └────┬────┘    electric field passes through
+    ┌──────────────────────┴──────────────────────┐
+    │  − − − − − − − − − − − − − − − − − − − − −  │  ← electrons pulled to surface
+    │  SOURCE   ●●●●● CHANNEL ●●●●●        DRAIN  │    (opposite charge attracted
+    │  (n-type) (electrons pulled up)    (n-type) │     to bottom "plate")
+    │   ████  → → → → → → → → → → → →       ████  │
+    │   ████      current flows!            ████  │
     └─────────────────────────────────────────────┘
 
     The MOS capacitor charges: positive charge on gate attracts
@@ -252,23 +251,28 @@ and you can build logic gates, which can compute any calculation.
 EXAMPLE: NAND GATE (the universal building block)
 ─────────────────────────────────────────────────────────────────────────────
 
-    Two transistors in series:
+    Two transistors in series (NMOS pull-down network):
 
-    POWER (+V)
-        │
-        ├──────────┐
-        │          │
-    ┌───┴───┐      │
-    │   T1  │←─ Input A    If BOTH A AND B are ON (1):
-    └───┬───┘      │           both transistors conduct,
-        │          │           output connects to GROUND → Output = 0
-    ┌───┴───┐      │
-    │   T2  │←─ Input B    If EITHER A OR B is OFF (0):
-    └───┬───┘      │           path to ground is broken,
-        │          │           output connects to POWER → Output = 1
-      GROUND       │
-                   │
-              OUTPUT ←──┘
+         POWER (+V)
+            │
+            ├─────────────────────────┬──── OUTPUT
+            │                         │
+        ┌───┴───┐ (pull-up resistor   │
+        │  Rpu  │  or PMOS network)   │
+        └───┬───┘                     │
+            │                         │
+        ┌───┴───┐                     │
+        │       │←── Input A          │      If BOTH A AND B are HIGH (1):
+        │  T1   │                     │         Both transistors conduct,
+        └───┬───┘                     │         output pulled to GROUND → 0
+            │                         │
+        ┌───┴───┐                     │      If EITHER A OR B is LOW (0):
+        │       │←── Input B          │         Path to ground broken,
+        │  T2   │                     │         output pulled to POWER → 1
+        └───┬───┘                     │
+            │                         │
+          GROUND                      │
+            ▼                         ▼
 
     TRUTH TABLE:
     ┌─────┬─────┬────────┐
@@ -370,36 +374,49 @@ FROM TAP TO TRANSISTOR: What Actually Happens
 
    The touch coordinates trigger a cascade of transistor switching:
 
-   ┌─────────────────────────────────────────────────────────────────────┐
-   │ CPU DIE (simplified view)                                           │
-   │                                                                      │
-   │   ┌────────────┐    ┌────────────┐    ┌────────────┐                │
-   │   │ CACHE      │    │   CORE 1   │    │   CORE 2   │                │
-   │   │ (memory)   │◄──►│ (billions  │◄──►│ (billions  │                │
-   │   │ transistors│    │  of gates) │    │  of gates) │                │
-   │   │ store 0s/1s│    │            │    │            │                │
-   │   └────────────┘    └────────────┘    └────────────┘                │
-   │                                                                      │
-   │   Touch coordinate data (as binary: e.g., x=0110, y=1001)           │
-   │   enters the cache as voltage patterns stored in SRAM cells         │
-   │                                                                      │
-   │   Each SRAM cell = 6 transistors holding one bit (0 or 1):          │
-   │                                                                      │
-   │   ┌─────────────────────────────────────────┐                        │
-   │   │        SRAM CELL (stores 1 bit)         │                        │
-   │   │                                          │                        │
-   │   │    T1 ─┬─ T2         T3 ─┬─ T4          │                        │
-   │   │        │                  │              │                        │
-   │   │        ├────────────────────►           │                        │
-   │   │        │                  │              │                        │
-   │   │       T5                 T6              │                        │
-   │   │   (access)           (access)           │                        │
-   │   │                                          │                        │
-   │   │   Transistors T1-T4 hold the bit value  │                        │
-   │   │   T5-T6 control read/write access       │                        │
-   │   └─────────────────────────────────────────┘                        │
-   │                                                                      │
-   └──────────────────────────────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────────────────────────────┐
+   │ CPU DIE (simplified view)                                         │
+   │                                                                   │
+   │   ┌────────────┐    ┌────────────┐    ┌────────────┐              │
+   │   │   CACHE    │    │   CORE 1   │    │   CORE 2   │              │
+   │   │  (memory)  │◄──►│ (billions  │◄──►│ (billions  │              │
+   │   │ transistors│    │  of gates) │    │  of gates) │              │
+   │   │ store 0s/1s│    │            │    │            │              │
+   │   └────────────┘    └────────────┘    └────────────┘              │
+   │                                                                   │
+   │   Touch coordinate data (as binary: e.g., x=0110, y=1001)         │
+   │   enters the cache as voltage patterns stored in SRAM cells       │
+   │                                                                   │
+   │   Each SRAM cell = 6 transistors holding one bit (0 or 1):        │
+   │                                                                   │
+   │   ┌─────────────────────────────────────────────────────────────┐ │
+   │   │  SRAM CELL (stores 1 bit)                                   │ │
+   │   │                                                             │ │
+   │   │            Vdd                    Vdd                       │ │
+   │   │             │                      │                        │ │
+   │   │         ┌───┴───┐              ┌───┴───┐                    │ │
+   │   │         │  T1   │              │  T3   │   (PMOS pull-ups)  │ │
+   │   │         └───┬───┘              └───┬───┘                    │ │
+   │   │             │         Q             │        Q̄              │ │
+   │   │             ├───────────────────────┤                       │ │
+   │   │             │                       │                       │ │
+   │   │         ┌───┴───┐              ┌───┴───┐                    │ │
+   │   │         │  T2   │──────────────│  T4   │   (NMOS cross-     │ │
+   │   │         └───┬───┘              └───┬───┘    coupled pair)   │ │
+   │   │             │                      │                        │ │
+   │   │        GND                           GND                     │ │
+   │   │                                                             │ │
+   │   │       ┌───────┐                ┌───────┐                    │ │
+   │   │       │  T5   │                │  T6   │   (access)         │ │
+   │   │       └───┬───┘                └───┬───┘                    │ │
+   │   │           │                        │                        │ │
+   │   │      BIT LINE                 BIT LINĒ                      │ │
+   │   │                                                             │ │
+   │   │   T1-T4: cross-coupled inverters (hold bit value)           │ │
+   │   │   T5-T6: access gates (controlled by WORD LINE)             │ │
+   │   └─────────────────────────────────────────────────────────────┘ │
+   │                                                                   │
+   └───────────────────────────────────────────────────────────────────┘
 
 4. THE LOGIC GATES COMPUTE
    ─────────────────────────────────────────────────────────────────────────
@@ -409,17 +426,17 @@ FROM TAP TO TRANSISTOR: What Actually Happens
    This becomes millions of transistor switching operations:
 
    Compare X coordinate:
-   ┌─────────────────────────────────────────────────────────────────────┐
-   │                                                                      │
-   │  Touch X ──►┌────────┐                                              │
-   │             │COMPARE │──► Result: 1 (yes, X is in range)            │
-   │  Icon X  ──►│ LOGIC  │                                              │
-   │             └────────┘                                              │
-   │                                                                      │
-   │  (This "compare" block is built from hundreds of transistors        │
-   │   forming NAND, NOR, XOR gates wired together)                      │
-   │                                                                      │
-   └─────────────────────────────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────────────────────────────┐
+   │                                                                   │
+   │  Touch X ──►┌──────────┐                                          │
+   │             │ COMPARE  │──► Result: 1 (yes, X is in range)        │
+   │  Icon X  ──►│  LOGIC   │                                          │
+   │             └──────────┘                                          │
+   │                                                                   │
+   │  (This "compare" block is built from hundreds of transistors      │
+   │   forming NAND, NOR, XOR gates wired together)                    │
+   │                                                                   │
+   └───────────────────────────────────────────────────────────────────┘
 
    Each gate switches in ~100 picoseconds (0.0000000001 seconds)
    Millions of gates switch in parallel
@@ -467,6 +484,8 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to PCB; each level bridges a massive size gap.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication (Photolithography)]]** - How transistors are actually manufactured. Patterns of light are projected onto silicon wafers coated with light-sensitive chemicals, building up layer by layer like printing but at nanometer scale.
+
+- **[[quick-context/code-to-gates-and-bootstrapping|Code to Gates and Bootstrapping]]** - The full compilation chain from high-level code through compilers, assemblers, and machine code down to logic gates built from transistors. Also covers how the first programs were bootstrapped from punch cards.
 
 - **Boolean Logic and Digital Circuits** - How transistor switches combine to perform computation. AND, OR, NOT gates built from transistors form the basis of all digital processing.
 

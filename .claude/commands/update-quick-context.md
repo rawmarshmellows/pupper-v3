@@ -56,6 +56,10 @@ The argument can be:
      - Labels align with what they're pointing to
      - Flow arrows point in the correct direction
      - The diagram accurately represents the concept being explained
+   - **Math notation:** Use LaTeX for all mathematical expressions:
+     - Inline math: `$V = IR$` renders as $V = IR$
+     - Display math: `$$P = IV$$` renders on its own line
+     - Use LaTeX for variables, equations, units with exponents, and formulas
 
 ## Output
 
