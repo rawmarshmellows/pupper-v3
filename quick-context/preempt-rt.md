@@ -165,6 +165,7 @@ This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's a
 - **[[quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
 - **[[quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
 - **[[quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
 - **Xenomai** - A dual-kernel alternative providing harder real-time guarantees than PREEMPT_RT
 - **LinuxCNC** - The canonical example of PREEMPT_RT enabling industrial control in userspace
 

@@ -348,7 +348,7 @@ EQUATION 4: AMPÈRE-MAXWELL LAW
 | Deriving wave equations | Awkward | Required |
 | Circuit analysis (EMF, flux) | Better | Works |
 | Numerical simulation | Possible | Required |
-| Relativistic formulation | Possible | Natural (tensor form) |
+| Relativistic formulation | Possible | Natural ([[quick-context/tensor|tensor]] form) |
 | Conceptual understanding | Often clearer | More compact |
 
 </details>

@@ -143,6 +143,7 @@ This division means: software does the "thinking" (where to move, what to pick u
 
 - **[[quick-context/robotic-arm-api-levels]]** - The full API stack from high-level task planning down to servo control
 - **[[quick-context/preempt-rt]]** - The Linux kernel patch that enables soft real-time, bridging the gap between software and PLC
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
 - **[[quick-context/plc-vs-software]]** - Deeper dive into PLC architecture and why it differs fundamentally from software
 - **[[quick-context/sil-rated-safety-functions]]** - Why safety-critical functions still require certified hardware
 

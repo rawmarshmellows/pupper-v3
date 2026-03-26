@@ -192,6 +192,8 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process. See [[quick-context/pcb-layers]] for the individual Gerber files that translate a layout into manufacturing instructions.
 
+- **[[quick-context/pupper-bom-control-board]]** — A real-world BOM walkthrough showing how reference designators (R5, U8, C18) connect the schematic to the physical parts list. Demonstrates reading BOM lines and tracing designators back to circuit function.
+
 </details>
 
 <details>

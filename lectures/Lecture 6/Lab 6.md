@@ -1,1 +1,0 @@
-https://cs123-stanford.readthedocs.io/en/latest/schedule/labs/spring-25/lab-6.html

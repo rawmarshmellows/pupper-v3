@@ -425,6 +425,8 @@ EXAMPLE: Current-Carrying Wire
 
 - **Special Relativity** — The Lorentz transformations that mix E and B components come from special relativity. The Faraday tensor is defined to transform correctly under these transformations.
 
+- **[[quick-context/tensor]]** — The general mathematical framework that the Faraday tensor is a specific instance of. Covers what tensors are, why transformation laws matter, and how rank-2 tensors like $F^{\mu\nu}$ fit into the hierarchy from scalars to higher-rank objects.
+
 - **Differential Forms** — In advanced mathematics, the Faraday tensor is understood as a 2-form on spacetime. This explains why it has 6 independent components (ways to choose 2 dimensions from 4) and why it's antisymmetric.
 
 - **[[quick-context/maxwell-equations]]** — The four classical Maxwell equations reduce to two tensor equations when written using the Faraday tensor: ∂_μ F^μν = μ₀ J^ν and ∂_μ F̃^μν = 0. This is the most compact form of classical electromagnetism.

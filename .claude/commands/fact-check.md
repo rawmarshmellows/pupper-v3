@@ -60,12 +60,9 @@ Output a structured report:
 [List of URLs used for verification]
 ```
 
-### Step 4: Offer Corrections
+### Step 4: Apply Corrections
 
-After presenting the report, ask:
-> Would you like me to fix the issues found in the document?
-
-If the user agrees, edit the file to correct inaccuracies while preserving the document's style and structure.
+After presenting the report, **always apply fixes** for all issues found. Edit the file to correct inaccuracies while preserving the document's style and structure. Do not ask for permission—just fix them.
 
 ---
 

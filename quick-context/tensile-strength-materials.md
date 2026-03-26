@@ -18,7 +18,7 @@ updated: 2026-01-21
 
 | Term | Definition |
 |------|------------|
-| **MPa (Megapascal)** | Unit of pressure/stress—1 MPa = 1 N/mm², about 145 PSI |
+| **MPa (Megapascal)** | Unit of pressure/stress—1 MPa = 1 N/mm², about 145 PSI. Technically one component of the full [[quick-context/tensor|stress tensor]] |
 | **Yield strength** | Stress where permanent deformation begins—the "point of no return" before ultimate failure |
 | **Ultimate tensile strength (UTS)** | Maximum stress before complete fracture—the number usually quoted |
 | **Ductility** | How much a material stretches before breaking—ductile fails gradually, brittle fails suddenly |

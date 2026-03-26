@@ -1,10 +1,16 @@
 ---
 term: Buck Converter
 created: 2026-01-27
-updated: 2026-02-14
+updated: 2026-02-25
 ---
 
 # Buck Converter
+
+## Human notes
+
+Make the ASCII diagrams clearer, in particular on the relationship between [[quick-context/transistor|MOSFET]] and [[quick-context/diode|diode]] — what is connected to the source, drain, and gate?
+
+
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/inductor]]
 
@@ -15,29 +21,39 @@ updated: 2026-02-14
 ## Circuit Topology
 
 ```
-                                        INDUCTOR (L)
-                                    ┌──────────────┐
-          SW (MOSFET)               │   ~~~~~~     │
-         ┌───────┐                  │   ~~~~~~     │
-  VIN ───┤       ├──────────────────┤   ~~~~~~     ├───┬─────── VOUT
-  (12V)  └───┬───┘                  │   ~~~~~~     │   │        (5V)
-             │       "switch node"  └──────────────┘   │
-             │            (SW)                        ┌┴┐
-             │             │                          │ │ C
-           ──┴──           │                          │ │(output
-            ╲│             │                          └┬┘ capacitor)
-             ├─────────────┘                           │
-            ╱│  D (freewheeling diode)                 │
-           ──┴──                                       │
-             │                                         │
-  GND ───────┴─────────────────────────────────────────┘
+             GATE ◄── PWM controller
+               │
+          ┌────┴────┐                      INDUCTOR (L)
+          │ N-MOSFET│                  ┌──────────────┐
+  VIN ────┤D      S ├─────────┬────────┤   ~~~~~~     ├───┬──── VOUT
+  (12V)   │         │         │        │   ~~~~~~     │   │     (5V)
+          └─────────┘         │        └──────────────┘   │
+           drain    source    │                         ┌─┴─┐
+                              │  switch node (SW)       │   │ C
+                              │                         │   │(output
+                           ──┬── K (cathode)            └─┬─┘ cap)
+                            ╲│                            │
+                             │    DIODE (D)               │
+                            ╱│    freewheeling            │
+                           ──┴── A (anode)                │
+                              │                           │
+  GND ────────────────────────┴───────────────────────────┘
 
 
-  Signal path:  VIN ──▶ SW ──▶ INDUCTOR ──▶ LOAD/VOUT
-                              (in series)
+  MOSFET pins:                Diode terminals:
+  ┌──────────────────────┐    ┌───────────────────────────┐
+  │ DRAIN (D)  → VIN     │    │ CATHODE (K) → switch node │
+  │ GATE  (G)  → PWM     │    │ ANODE   (A) → GND         │
+  │ SOURCE (S) → SW node │    └───────────────────────────┘
+  └──────────────────────┘
 
-  The INDUCTOR sits between the switch output and the load.
-  It's the energy reservoir that smooths the chopped voltage.
+  The "switch node" — where 3 things meet:
+
+      MOSFET SOURCE ──┬── INDUCTOR input
+                      │
+                DIODE CATHODE
+
+  This junction swings between VIN (SW on) and ~−0.7V (SW off).
 ```
 
 ---
@@ -47,60 +63,62 @@ updated: 2026-02-14
 ### Phase 1: Switch ON (Charging)
 
 ```
-                                    INDUCTOR
-                  SW CLOSED      ┌────────────┐
-                 ┌───────┐       │  ~~~~~~    │
-  VIN ═══════════╡ ■■■■■ ╞═══════╡  ~~~~~~    ╞═══════╗
-  (12V)          └───────┘       │  ~~~~~~    │       ║
-         current ═══════▶        └────────────┘       ║
-                                  energy stored       ║
-             │                    in magnetic       ┌─╨─┐
-           ──┴──                  field (↑)         │   │
-            ╲│                                     │ L │ LOAD
-             │   (diode reverse                    │ O │
-            ╱│    biased - OFF)                    │ A │
-           ──┴──                                   │ D │
-             │                                      └─╥─┘
-             │                                        ║
-  GND ═══════╧════════════════════════════════════════╝
-                           ◀═══════════ current
+  GATE = HIGH → MOSFET ON (drain-to-source conducts)
+
+          ┌─────────┐                    INDUCTOR
+          │ N-MOSFET│                 ┌────────────┐
+  VIN ════╡D═════ S ╞═════════╤═══════╡  ~~~~~~    ╞═══════╗
+  (12V)   │  (ON)   │         │       │  ~~~~~~    │       ║
+          └─────────┘         │       └────────────┘       ║
+                       current║        energy stored       ║
+                        ═══▶  ║        in field (↑)      ┌─╨─┐
+                              ║                          │   │
+                           ──┬── K                       │ L │
+                            ╲│                           │ O │ LOAD
+                             │  DIODE reverse            │ A │
+                            ╱│  biased — OFF             │ D │
+                           ──┴── A                       │   │
+                              │   K is at ~VIN,          └─╥─┘
+                              │   A is at GND →            ║
+                              │   reverse biased           ║
+  GND ════════════════════════╧════════════════════════════╝
+                              ◀═══════════════ current
 
 
-     Path: VIN → SWITCH → INDUCTOR → LOAD → GND
-                            │
-                     stores energy in
-                     magnetic field (B↑)
+  Path: VIN → DRAIN → SOURCE → switch node → INDUCTOR → LOAD → GND
 ```
 
 ### Phase 2: Switch OFF (Discharging)
 
 ```
-                                    INDUCTOR
-                   SW OPEN       ┌────────────┐
-                 ┌───────┐       │  ~~~~~~    │
-  VIN ───────────┤   ×   ├ · · · ╡  ~~~~~~    ╞═══════╗
-  (12V)          └───────┘       │  ~~~~~~    │       ║
-         (no current)            └────────────┘       ║
-                          ═══════▶  releases          ║
-                          current   stored energy   ┌─╨─┐
-           ──┬──            ▲       (B↓)            │   │
-            ╲│             │                       │ L │ LOAD
-             ╞═════════════╝                        │ O │
-            ╱│  DIODE now conducts                  │ A │
-           ──┴──  (freewheeling)                    │ D │
-             ║                                      └─╥─┘
-             ║                                        ║
-  GND ═══════╩════════════════════════════════════════╝
-                           ◀═══════════ current
+  GATE = LOW → MOSFET OFF (drain-to-source open)
+
+          ┌─────────┐                     INDUCTOR
+          │ N-MOSFET│                  ┌────────────┐
+  VIN ────┤D  ×   S ├ · · · · ╤═══════╡  ~~~~~~    ╞═══════╗
+  (12V)   │  (OFF)  │         │       │  ~~~~~~    │       ║
+          └─────────┘         │       └────────────┘       ║
+                        ═══▶  ║        releases            ║
+                       current║        stored energy     ┌─╨─┐
+                              ║        (B↓)              │   │
+                           ══╤══ K                       │ L │
+                            ╲║                           │ O │ LOAD
+                             ║  DIODE now conducts       │ A │
+                            ╱║  (freewheeling)           │ D │
+                           ══╧══ A                       │   │
+                              ║                          └─╥─┘
+                              ║  SW node drops below       ║
+                              ║  GND → forward biases D    ║
+  GND ════════════════════════╩════════════════════════════╝
+                              ◀═══════════════ current
 
 
-     Path: INDUCTOR → LOAD → GND → DIODE → back to INDUCTOR
-                │                     │
-         releases stored         provides return
-         magnetic energy         path for current
+  Path: switch node → INDUCTOR → LOAD → GND → DIODE (A→K) → switch node
 
-     The inductor REFUSES to let current stop suddenly!
-     Its collapsing magnetic field drives current through the diode.
+  The inductor REFUSES to let current stop suddenly!
+  Its collapsing magnetic field drives current through the diode.
+
+  In Phase 2: can you explain why current flows through the diode now? Here's what's happening: during Phase 1, the [[quick-context/inductor|inductor]] was storing energy in its magnetic field while current flowed through it. When the MOSFET switches OFF, the inductor's current can't stop instantly — that's [[quick-context/self-induction|self-induction]] (a consequence of [[quick-context/lenzs-law|Lenz's law]]). The inductor's collapsing magnetic field generates a voltage that *fights* the current decrease, pulling the switch node voltage *below* GND. Once the switch node drops ~0.7V below GND, the [[quick-context/diode|diode]] becomes forward-biased (its cathode is now more negative than its anode at GND), so current flows: GND → diode anode → diode cathode → switch node → inductor → load → back to GND. The diode provides the return path that the inductor *demands*.
 ```
 
 ---
@@ -108,7 +126,7 @@ updated: 2026-02-14
 ## Waveforms
 
 ```
-     SWITCH STATE:
+     SWITCH STATE (GATE signal):
          ON      OFF     ON      OFF     ON
      ├────────┼────────┼────────┼────────┼────────┤
      │████████│        │████████│        │████████│
@@ -136,16 +154,11 @@ updated: 2026-02-14
 
 ## The Math
 
-```
-     DUTY CYCLE:  D = ton / T
+$$V_{OUT} = V_{IN} \times D$$
 
-     OUTPUT VOLTAGE:  VOUT = VIN × D
+where $D = t_{on} / T$ is the duty cycle.
 
-     Example: 12V input, want 5V output
-              D = 5V / 12V = 0.417 (41.7% duty cycle)
-              If switching at 500kHz (T = 2μs):
-              ton = 0.83μs, toff = 1.17μs
-```
+Example: 12V input, want 5V output → $D = 5/12 = 0.417$ (41.7% duty cycle). At 500kHz ($T = 2\mu s$): $t_{on} = 0.83\mu s$, $t_{off} = 1.17\mu s$.
 
 ---
 
@@ -161,7 +174,7 @@ updated: 2026-02-14
         │ΔΔΔΔΔ│  ← transistor               │         │
         │ΔΔΔΔΔ│    always ON               GND       GND
         └──┬──┘    (partial)
-           │                        • Switch: ON or OFF
+           │                        • Switch: fully ON or fully OFF
            ▼                             (no in-between)
         HEAT!                       • INDUCTOR stores/releases energy
                                     • No wasted voltage drop!
@@ -171,4 +184,4 @@ updated: 2026-02-14
 
 ---
 
-**Key insight:** The inductor is the magic—it stores energy magnetically when the switch is ON and releases it when OFF. Unlike a linear regulator where excess voltage becomes heat, the buck converter's switching approach only transfers the energy needed, achieving 85-95% efficiency. The output capacitor smooths the inductor's sawtooth current into clean DC.
+**Key insight:** The MOSFET's drain connects to VIN and its source connects to the "switch node," where it meets the diode's cathode and the inductor input. This three-way junction is the heart of the converter — it swings between VIN (switch on) and below GND (switch off, diode conducts). The inductor stores energy magnetically when the switch is ON and releases it when OFF, achieving 85–95% efficiency.

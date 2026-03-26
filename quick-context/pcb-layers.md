@@ -123,7 +123,7 @@ COPPER ETCHING PROCESS (subtractive)
 
   5. Etch (acid dissolves exposed copper)
       ▓▓      ▓▓        ← resist protects copper below
-  ════  ══════  ════    ← unprotected copper dissolved
+      ══      ══     ← unprotected copper dissolved
   ░░░░░░░░░░░░░░░░░░   ← FR-4
 
   6. Strip resist → finished traces!

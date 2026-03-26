@@ -29,4 +29,4 @@ STM32 MICROCONTROLLER BLOCK DIAGRAM:
      Motors  IMU    Flash  Debug   LEDs
 ```
 
-**Key insight:** Unlike a Raspberry Pi (which runs Linux), microcontrollers run "bare metal" or RTOS code with microsecond-level timing precision—essential for real-time motor control in robots.
+**Key insight:** Unlike a Raspberry Pi (which runs Linux), microcontrollers run [[micro-context/bare-metal-vs-rtos-vs-plc|"bare metal" or RTOS]] code with microsecond-level timing precision—essential for real-time motor control in robots.
