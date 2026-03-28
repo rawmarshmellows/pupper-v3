@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Knowledge Quest</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #161b22;
+    --bg-card: #1c2333;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent-glow: rgba(88,166,255,0.15);
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #f85149;
+    --hp-bar: #3fb950;
+    --mp-bar: #bc8cff;
+    --xp-bar: #58a6ff;
+    --gold: #d29922;
+    --mastery: #a371f7;
+    --radius: 8px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+  }
+
+  #hud {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-panel);
+    border-bottom: 1px solid #30363d;
+    padding: 8px 12px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    font-size: 0.85rem;
+  }
+  .hud-name { font-weight: 700; color: var(--accent); margin-right: auto; }
+  .hud-stat { display: flex; align-items: center; gap: 4px; }
+  .hud-bar { width: 60px; height: 8px; background: #30363d; border-radius: 4px; overflow: hidden; }
+  .hud-bar-fill { height: 100%; border-radius: 4px; transition: width 0.3s ease; }
+  .hud-bar-hp .hud-bar-fill { background: var(--hp-bar); }
+  .hud-bar-mp .hud-bar-fill { background: var(--mp-bar); }
+  .hud-bar-mastery .hud-bar-fill { background: var(--mastery); }
+  .hud-mastery { color: var(--mastery); font-weight: 600; }
+
+  #narrative {
+    flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    padding: 16px; max-width: 600px; width: 100%; margin: 0 auto;
+  }
+  .msg { margin-bottom: 16px; line-height: 1.6; animation: fadeIn 0.3s ease; }
+  .msg-narrator { color: var(--text); }
+  .msg-system { color: var(--text-dim); font-style: italic; font-size: 0.9rem; }
+  .msg-combat { color: var(--danger); }
+  .msg-success { color: var(--success); }
+  .msg-lore { color: var(--accent); border-left: 3px solid var(--accent); padding-left: 12px; background: var(--accent-glow); border-radius: 0 var(--radius) var(--radius) 0; padding: 8px 12px; }
+  .msg-challenge { background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius); padding: 12px; }
+  .msg-reward { color: var(--gold); font-weight: 600; }
+  .msg-hint { color: var(--warning); font-size: 0.9rem; font-style: italic; }
+  .msg-mastery { color: var(--mastery); font-weight: 600; }
+  .roll-result { font-family: monospace; color: var(--warning); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .circuit-diagram {
+    background: #0a0e14; border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 12px; margin: 8px 0; font-family: monospace; font-size: 0.85rem;
+    white-space: pre; overflow-x: auto; color: var(--accent); line-height: 1.4;
+  }
+
+  .component-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px; margin: 8px 0;
+  }
+  .component-btn {
+    padding: 10px 8px; background: var(--bg-card); border: 2px solid #30363d;
+    border-radius: var(--radius); color: var(--text); cursor: pointer;
+    text-align: center; font-size: 0.85rem; min-height: 44px;
+    transition: all 0.15s ease;
+  }
+  .component-btn:hover { border-color: var(--accent); background: var(--accent-glow); }
+  .component-btn.selected { border-color: var(--success); background: rgba(63,185,80,0.1); }
+  .component-btn.wrong { border-color: var(--danger); background: rgba(248,81,73,0.1); }
+
+  .knowledge-reveal {
+    background: var(--bg-card); border: 1px solid var(--success); border-radius: var(--radius);
+    padding: 12px; margin: 8px 0;
+  }
+  .knowledge-reveal h4 { color: var(--success); margin-bottom: 6px; font-size: 0.9rem; }
+  .knowledge-reveal p { font-size: 0.9rem; line-height: 1.5; color: var(--text-dim); }
+
+  .mastery-card {
+    background: var(--bg-card); border: 1px solid var(--mastery); border-radius: var(--radius);
+    padding: 12px; margin: 8px 0;
+  }
+  .mastery-card h4 { color: var(--mastery); margin-bottom: 6px; font-size: 0.9rem; }
+
+  #actions {
+    position: sticky; bottom: 0;
+    background: var(--bg-panel); border-top: 1px solid #30363d;
+    padding: 12px; max-width: 600px; width: 100%; margin: 0 auto;
+  }
+  .choice-btn {
+    display: block; width: 100%; padding: 12px 16px; margin-bottom: 8px;
+    background: var(--bg-card); color: var(--text); border: 1px solid #30363d;
+    border-radius: var(--radius); font-size: 1rem; text-align: left;
+    cursor: pointer; transition: all 0.15s ease; min-height: 44px; line-height: 1.4;
+  }
+  .choice-btn:hover, .choice-btn:focus { background: var(--accent-glow); border-color: var(--accent); outline: none; }
+  .choice-btn:active { transform: scale(0.98); }
+  .choice-btn .key-hint { color: var(--text-dim); font-size: 0.8rem; margin-right: 8px; }
+
+  #input-row { display: flex; gap: 8px; margin-top: 4px; }
+  #freeform { flex: 1; padding: 10px 12px; background: var(--bg-card); color: var(--text); border: 1px solid #30363d; border-radius: var(--radius); font-size: 1rem; min-height: 44px; }
+  #freeform:focus { border-color: var(--accent); outline: none; }
+  #submit-btn { padding: 10px 16px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; min-width: 44px; min-height: 44px; }
+
+  #char-creation {
+    max-width: 600px; margin: 0 auto; padding: 16px; width: 100%;
+  }
+  #char-creation h1 { color: var(--accent); margin-bottom: 8px; text-align: center; }
+  #char-creation h2 { color: var(--text-dim); font-size: 1rem; margin: 16px 0 8px; }
+  .class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .class-btn {
+    padding: 12px; background: var(--bg-card); border: 2px solid #30363d; border-radius: var(--radius);
+    color: var(--text); cursor: pointer; text-align: center; font-size: 0.9rem; min-height: 44px;
+    transition: all 0.15s ease;
+  }
+  .class-btn:hover, .class-btn.selected { border-color: var(--accent); background: var(--accent-glow); }
+
+  .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+  .stat-name { min-width: 40px; font-weight: 600; }
+  .stat-controls { display: flex; align-items: center; gap: 8px; }
+  .stat-btn { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid #30363d; border-radius: 50%; color: var(--text); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .stat-btn:hover { border-color: var(--accent); }
+  .stat-val { min-width: 24px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+  .stat-points { text-align: center; color: var(--warning); font-weight: 600; margin: 8px 0; }
+
+  #name-input { width: 100%; padding: 10px; background: var(--bg-card); color: var(--text); border: 1px solid #30363d; border-radius: var(--radius); font-size: 1rem; }
+  #start-btn {
+    display: block; width: 100%; padding: 14px; margin-top: 16px;
+    background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius);
+    font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  }
+  #start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  #loading { text-align: center; padding: 40px; color: var(--text-dim); }
+  .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #30363d; border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .premium-badge { display: inline-block; background: linear-gradient(135deg, #d29922, #f0c040); color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+
+  .region-card {
+    background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all 0.15s ease;
+  }
+  .region-card:hover { border-color: var(--accent); }
+  .region-card.locked { opacity: 0.5; cursor: not-allowed; }
+  .region-card h4 { color: var(--accent); margin-bottom: 4px; }
+  .region-card p { font-size: 0.85rem; color: var(--text-dim); }
+  .region-card .mastery-meter { width: 100%; height: 4px; background: #30363d; border-radius: 2px; margin-top: 6px; }
+  .region-card .mastery-meter-fill { height: 100%; background: var(--mastery); border-radius: 2px; transition: width 0.3s; }
+
+  .gate-card {
+    background: var(--bg-card); border: 2px solid var(--mastery); border-radius: var(--radius);
+    padding: 16px; margin: 12px 0; text-align: center;
+  }
+  .gate-card h4 { color: var(--mastery); margin-bottom: 8px; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="hud" style="display:none;">
+  <span class="hud-name" id="hud-name">Hero</span>
+  <span class="hud-stat">HP <span class="hud-bar hud-bar-hp"><span class="hud-bar-fill" id="hud-hp-bar" style="width:100%"></span></span> <span id="hud-hp-text">30/30</span></span>
+  <span class="hud-stat">MP <span class="hud-bar hud-bar-mp"><span class="hud-bar-fill" id="hud-mp-bar" style="width:100%"></span></span> <span id="hud-mp-text">20/20</span></span>
+  <span class="hud-stat"><span class="hud-mastery" id="hud-mastery">0 mastered</span></span>
+  <span class="hud-stat">Mastery <span class="hud-bar hud-bar-mastery"><span class="hud-bar-fill" id="hud-mastery-bar" style="width:0%"></span></span></span>
+</div>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p style="margin-top:12px;">Connecting to knowledge base...</p>
+</div>
+
+<div id="char-creation" style="display:none;">
+  <h1>Knowledge Quest</h1>
+  <p style="text-align:center; color:var(--text-dim); margin-bottom:16px;">An RPG where understanding IS your power</p>
+  <div id="db-stats" style="text-align:center; color:var(--text-dim); font-size:0.85rem; margin-bottom:16px;"></div>
+  <h2>Your Name</h2>
+  <input type="text" id="name-input" placeholder="Enter your name..." maxlength="20" aria-label="Character name">
+  <h2>Choose Your Path</h2>
+  <div class="class-grid" id="class-grid"></div>
+  <h2>Distribute Stats <span class="stat-points" id="stat-points">20 points remaining</span></h2>
+  <div id="stat-rows"></div>
+  <button id="start-btn" disabled>Begin Your Quest</button>
+</div>
+
+<div id="narrative" style="display:none;" role="main" aria-label="Game narrative"></div>
+
+<div id="actions" style="display:none;" role="navigation" aria-label="Game actions">
+  <div id="choice-container"></div>
+  <div id="input-row">
+    <input type="text" id="freeform" placeholder="Or type a custom action..." aria-label="Custom action input">
+    <button id="submit-btn" aria-label="Submit action">Go</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// GAME STATE & CONFIG
+// ============================================================
+const CLASSES = [
+  { id: 'engineer', name: 'Engineer', desc: 'Builds and analyzes circuits', resource: 'Stamina', statBonus: 'INT' },
+  { id: 'explorer', name: 'Explorer', desc: 'Discovers hidden knowledge', resource: 'Stamina', statBonus: 'WIS' },
+  { id: 'artificer', name: 'Artificer', desc: 'Crafts with components', resource: 'MP', statBonus: 'DEX' },
+  { id: 'scholar', name: 'Scholar', desc: 'Masters deep theory', resource: 'MP', statBonus: 'INT' },
+  { id: 'tinker', name: 'Tinker', desc: 'Hacks and improvises', resource: 'Stamina', statBonus: 'DEX' },
+  { id: 'sage', name: 'Sage', desc: 'Teaches and mentors', resource: 'MP', statBonus: 'WIS' },
+];
+const STAT_NAMES = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
+const BASE_STAT = 5, TOTAL_POINTS = 20;
+
+// Region -> category mapping prevents domain leakage
+const REGIONS = [
+  { id: 'workshop', name: 'The Workshop', desc: 'Basic components: resistors, capacitors, inductors, diodes',
+    categories: ['electronics'], difficulty: 1,
+    mystery: 'A power supply keeps failing. Something is drawing too much current...',
+    mysteryAnswer: 'The capacitor in the power supply has degraded, reducing its capacitance. Without proper filtering, the voltage regulator oscillates and draws excessive current through the inductor, causing thermal shutdown.',
+    topics: ['resistor', 'capacitor', 'inductor', 'diode', 'voltage'] },
+  { id: 'lab', name: 'The Laboratory', desc: 'Semiconductors: transistors, MOSFETs, BJTs, op-amps',
+    categories: ['semiconductors'], difficulty: 2,
+    mystery: 'A signal amplifier produces a distorted output. The transistor circuit needs debugging...',
+    mysteryAnswer: 'The BJT is operating in saturation rather than the active region because the base bias resistor is too low. This clips the output signal. The fix requires recalculating the bias network to keep the transistor in its linear region.',
+    topics: ['transistor', 'mosfet', 'bjt', 'op-amp'] },
+  { id: 'foundry', name: 'The Foundry', desc: 'Manufacturing: PCBs, soldering, 3D printing, CNC',
+    categories: ['manufacturing'], difficulty: 3,
+    mystery: 'A production line produces boards that fail intermittently. The fault lies somewhere in the fabrication...',
+    mysteryAnswer: 'Cold solder joints on the BGA package cause intermittent connections. The reflow profile temperature was too low for the lead-free solder paste, resulting in insufficient wetting. The fix requires adjusting the reflow oven thermal profile.',
+    topics: ['pcb', 'soldering', 'smd', '3d-printing', 'cnc'] },
+  { id: 'nexus', name: 'The Signal Nexus', desc: 'Protocols: I2C, SPI, CAN bus, PWM',
+    categories: ['protocols'], difficulty: 4,
+    mystery: 'Devices on the network are sending corrupted data. Something is wrong with the bus configuration...',
+    mysteryAnswer: 'The CAN bus is missing its 120-ohm termination resistors at both ends. Without proper termination, signal reflections corrupt the differential signals, causing intermittent bit errors that increase with bus length and speed.',
+    topics: ['i2c', 'spi', 'can-bus', 'pwm'] },
+  { id: 'sanctum', name: 'The Control Sanctum', desc: 'Embedded: STM32, clocks, ADC, IMU',
+    categories: ['embedded'], difficulty: 5,
+    mystery: 'A microcontroller keeps resetting. The clock source is unstable and peripherals are misbehaving...',
+    mysteryAnswer: 'The external crystal oscillator lacks proper load capacitors, causing the clock to drift and occasionally stop. When the clock fails, the watchdog timer resets the MCU. Adding the correct load capacitance (calculated from the crystal datasheet) stabilizes the oscillator.',
+    topics: ['stm32', 'clock', 'adc', 'imu'] },
+  { id: 'arena', name: 'The Motion Arena', desc: 'Robotics: PID, kinematics, gait, reinforcement learning',
+    categories: ['robotics'], difficulty: 6,
+    mystery: 'A robot walks erratically. Its control loop oscillates and the gait pattern destabilizes...',
+    mysteryAnswer: 'The PID controller derivative gain is too high, amplifying sensor noise from the IMU into the motor commands. Combined with a gait phase timing error, this creates a positive feedback loop. Reducing the D gain and adding a low-pass filter on the IMU data restores stable locomotion.',
+    topics: ['pid', 'kinematics', 'gait', 'reinforcement-learning'] },
+];
+
+// Total topics across all regions for mastery percentage
+const TOTAL_MASTERY_TOPICS_ESTIMATE = 185;
+
+let state = {
+  phase: 'loading',
+  char: null,
+  currentRegion: null,
+  masteredTopics: {},     // key -> { correct, attempts, lastSeen, bloomMax }
+  visitedRegions: [],
+  mysteryProgress: {},    // regionId -> { cluesFound: [], solved: bool }
+  inventory: [],
+  turnCount: 0,
+  dbStats: null,
+  hintsUsed: 0,
+  crossTopicSolved: 0,
+  gatesUnlocked: [],
+};
+
+// ============================================================
+// API
+// ============================================================
+async function api(endpoint, opts) {
+  const res = await fetch(endpoint, opts);
+  if (!res.ok) throw new Error(`API ${endpoint}: ${res.status}`);
+  return res.json();
+}
+
+async function evaluateAnswer(playerAnswer, correctAnswer) {
+  try {
+    const res = await api('/api/evaluate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerAnswer, correctAnswer }),
+    });
+    return res;
+  } catch (e) {
+    return fallbackEvaluate(playerAnswer, correctAnswer);
+  }
+}
+
+function fallbackEvaluate(playerAnswer, correctAnswer) {
+  const stopWords = new Set(['the','a','an','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','to','of','in','for','on','with','at','by','from','it','this','that','and','or','but','not','so','as','if']);
+  const keywords = correctAnswer.toLowerCase().split(/\s+/).map(w => w.replace(/[^a-z0-9]/g, '')).filter(w => w.length > 3 && !stopWords.has(w));
+  const unique = [...new Set(keywords)];
+  const inputLower = playerAnswer.toLowerCase();
+  const matches = unique.filter(kw => inputLower.includes(kw));
+  const score = unique.length > 0 ? matches.length / unique.length : 0;
+  if (score >= 0.3) return { similarity: 0.8, grade: 'correct' };
+  if (score >= 0.15) return { similarity: 0.6, grade: 'partial' };
+  return { similarity: 0.4, grade: 'incorrect' };
+}
+
+// ============================================================
+// DICE
+// ============================================================
+function d20() { return Math.floor(Math.random() * 20) + 1; }
+function dN(n) { return Math.floor(Math.random() * n) + 1; }
+function statMod(val) { return Math.floor((val - 10) / 2); }
+function rollCheck(statName, dc) {
+  const val = state.char.stats[statName] || 10;
+  const roll = d20(), mod = statMod(val), total = roll + mod;
+  return { roll, mod, total, dc, success: total >= dc, statName };
+}
+function formatRoll(r) {
+  return `<span class="roll-result">[d20: ${r.roll} + ${r.statName} ${r.mod >= 0 ? '+' : ''}${r.mod} = ${r.total} vs DC ${r.dc}] ${r.success ? 'SUCCESS' : 'FAILURE'}</span>`;
+}
+
+// ============================================================
+// MASTERY TRACKING (replaces XP/gold as primary feedback)
+// ============================================================
+function getMasteredCount() {
+  return Object.values(state.masteredTopics).filter(v => v.correct >= 2).length;
+}
+
+function getMasteryPercent() {
+  return Math.min(100, Math.round((getMasteredCount() / TOTAL_MASTERY_TOPICS_ESTIMATE) * 100));
+}
+
+function getBloomProgress() {
+  const levels = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+  Object.values(state.masteredTopics).forEach(v => {
+    if (v.bloomMax) levels[v.bloomMax] = (levels[v.bloomMax] || 0) + 1;
+  });
+  return levels;
+}
+
+// ============================================================
+// CHARACTER CREATION
+// ============================================================
+function initCharCreation() {
+  state.phase = 'creation';
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('char-creation').style.display = 'block';
+
+  if (state.dbStats) {
+    document.getElementById('db-stats').innerHTML =
+      `Knowledge base: ${state.dbStats.documents} topics | ${state.dbStats.essential_terms} terms | ${state.dbStats.quiz_questions} challenges`;
+  }
+
+  const grid = document.getElementById('class-grid');
+  grid.innerHTML = '';
+  let selectedClass = null;
+
+  CLASSES.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'class-btn';
+    btn.innerHTML = `${c.name}<br><small style="color:var(--text-dim)">${c.desc}</small>`;
+    btn.onclick = () => {
+      document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedClass = c;
+      checkReady();
+    };
+    grid.appendChild(btn);
+  });
+
+  const statContainer = document.getElementById('stat-rows');
+  statContainer.innerHTML = '';
+  const statValues = {};
+  let pointsLeft = TOTAL_POINTS;
+  STAT_NAMES.forEach(s => { statValues[s] = BASE_STAT; });
+
+  function renderStats() {
+    statContainer.innerHTML = '';
+    STAT_NAMES.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'stat-row';
+      row.innerHTML = `<span class="stat-name">${s}</span><div class="stat-controls"><button class="stat-btn" data-stat="${s}" data-dir="-1" aria-label="Decrease ${s}">-</button><span class="stat-val">${statValues[s]}</span><button class="stat-btn" data-stat="${s}" data-dir="1" aria-label="Increase ${s}">+</button></div>`;
+      statContainer.appendChild(row);
+    });
+    document.getElementById('stat-points').textContent = `${pointsLeft} points remaining`;
+    statContainer.querySelectorAll('.stat-btn').forEach(btn => {
+      btn.onclick = () => {
+        const stat = btn.dataset.stat, dir = parseInt(btn.dataset.dir);
+        if (dir === 1 && pointsLeft > 0 && statValues[stat] < 20) { statValues[stat]++; pointsLeft--; }
+        else if (dir === -1 && statValues[stat] > 1) { statValues[stat]--; pointsLeft++; }
+        renderStats(); checkReady();
+      };
+    });
+  }
+  renderStats();
+
+  const nameInput = document.getElementById('name-input');
+  nameInput.oninput = checkReady;
+
+  function checkReady() {
+    document.getElementById('start-btn').disabled = !(nameInput.value.trim().length > 0 && selectedClass && pointsLeft === 0);
+  }
+
+  document.getElementById('start-btn').onclick = () => {
+    const isCaster = selectedClass.resource === 'MP';
+    const hp = 20 + statValues.CON * 2, mp = isCaster ? (10 + statValues.INT * 2) : (10 + statValues.STR * 2);
+    state.char = {
+      name: nameInput.value.trim(), class: selectedClass, stats: { ...statValues },
+      hp, maxHp: hp, mp, maxMp: mp, resourceName: selectedClass.resource,
+      level: 1, xp: 0, xpToLevel: 100, gold: 50,
+      inventory: getStartingItems(selectedClass.id),
+    };
+    state.phase = 'playing';
+    saveState(); startGame();
+  };
+}
+
+function getStartingItems(classId) {
+  const items = {
+    engineer: ['Multimeter', 'Wire Strippers', 'Breadboard'],
+    explorer: ['Compass', 'Torch', 'Field Notebook'],
+    artificer: ['Soldering Iron', 'Component Kit', 'Magnifying Lens'],
+    scholar: ['Tome of Circuits', 'Quill & Ink', 'Reading Glasses'],
+    tinker: ['Wrench Set', 'Duct Tape', 'Pocket Oscilloscope'],
+    sage: ['Teaching Staff', 'Chalk', 'Student Roster'],
+  };
+  return items[classId] || ['Basic Toolkit'];
+}
+
+// ============================================================
+// HUD (mastery-centric instead of XP/gold-centric)
+// ============================================================
+function updateHUD() {
+  if (!state.char) return;
+  const c = state.char;
+  document.getElementById('hud').style.display = 'flex';
+  document.getElementById('hud-name').textContent = `${c.name} the ${c.class.name}`;
+  document.getElementById('hud-hp-bar').style.width = `${(c.hp / c.maxHp) * 100}%`;
+  document.getElementById('hud-hp-text').textContent = `${c.hp}/${c.maxHp}`;
+  document.getElementById('hud-mp-bar').style.width = `${(c.mp / c.maxMp) * 100}%`;
+  document.getElementById('hud-mp-text').textContent = `${c.mp}/${c.maxMp}`;
+  document.getElementById('hud-mastery').textContent = `${getMasteredCount()} mastered`;
+  document.getElementById('hud-mastery-bar').style.width = `${getMasteryPercent()}%`;
+}
+
+// ============================================================
+// NARRATIVE
+// ============================================================
+function addMsg(text, cls = 'narrator') {
+  const div = document.createElement('div');
+  div.className = `msg msg-${cls}`;
+  div.innerHTML = text;
+  document.getElementById('narrative').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+function clearNarrative() { document.getElementById('narrative').innerHTML = ''; }
+
+function showChoices(choices, handler) {
+  const container = document.getElementById('choice-container');
+  container.innerHTML = '';
+  choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="key-hint">[${i + 1}]</span> ${choice.text}`;
+    if (choice.premium) btn.innerHTML += ' <span class="premium-badge">PRO</span>';
+    btn.onclick = () => handler(choice);
+    container.appendChild(btn);
+  });
+  const keyHandler = (e) => {
+    const num = parseInt(e.key);
+    if (num >= 1 && num <= choices.length) { document.removeEventListener('keydown', keyHandler); handler(choices[num - 1]); }
+  };
+  document.addEventListener('keydown', keyHandler);
+  const freeform = document.getElementById('freeform');
+  const submitBtn = document.getElementById('submit-btn');
+  freeform.value = '';
+  const submitFreeform = () => { const text = freeform.value.trim(); if (text) { document.removeEventListener('keydown', keyHandler); handler({ text, id: 'freeform', freeformInput: text }); } };
+  submitBtn.onclick = submitFreeform;
+  freeform.onkeydown = (e) => { if (e.key === 'Enter') submitFreeform(); };
+}
+
+// ============================================================
+// GAME START
+// ============================================================
+function startGame() {
+  document.getElementById('char-creation').style.display = 'none';
+  document.getElementById('narrative').style.display = 'block';
+  document.getElementById('actions').style.display = 'block';
+  updateHUD();
+
+  addMsg(`Welcome, <strong>${state.char.name} the ${state.char.class.name}</strong>.`);
+  addMsg(`The Circuit Citadel is in crisis. Systems are failing across every wing. Power supplies surge, signals corrupt, robots stumble. The ancient mechanisms that keep this place running are breaking down -- and only someone who truly <em>understands</em> how they work can fix them.`);
+  addMsg(`Each region has a mystery to solve. Your knowledge of electronics, engineering, and physics is not just useful -- it is the only thing standing between order and chaos.`, 'system');
+  addMsg(`Your progress is measured by <strong style="color:var(--mastery)">mastery</strong> -- how deeply you understand each topic. Demonstrate understanding to unlock new regions and solve mysteries.`, 'system');
+
+  showWorldMap();
+}
+
+// ============================================================
+// WORLD MAP
+// ============================================================
+function showWorldMap() {
+  addMsg(`<strong>--- Circuit Citadel ---</strong>`, 'system');
+
+  const choices = [];
+  REGIONS.forEach(region => {
+    const unlocked = isRegionUnlocked(region);
+    const visited = state.visitedRegions.includes(region.id);
+    const mastery = getRegionMastery(region);
+    const mysteryState = state.mysteryProgress[region.id];
+    const solved = mysteryState?.solved;
+    const masteryStr = mastery > 0 ? ` [${Math.round(mastery * 100)}% mastered]` : '';
+    const mysteryStr = solved ? ' [MYSTERY SOLVED]' : (mysteryState?.cluesFound?.length > 0 ? ` [${mysteryState.cluesFound.length} clues found]` : '');
+
+    if (unlocked) {
+      addMsg(`<div class="region-card"><h4>${region.name} ${visited ? '' : '(new)'}${masteryStr}${mysteryStr}</h4><p>${region.desc}</p><p style="color:var(--warning); font-size:0.8rem;">${solved ? 'Mystery solved!' : region.mystery}</p><div class="mastery-meter"><div class="mastery-meter-fill" style="width:${Math.round(mastery*100)}%"></div></div></div>`);
+      choices.push({ text: `Enter ${region.name}`, id: 'enter_region', region });
+    } else {
+      const required = getUnlockRequirement(region);
+      addMsg(`<div class="region-card locked"><h4>${region.name} (locked)</h4><p>${region.desc}</p><p style="color:var(--mastery); font-size:0.8rem;">Unlock: ${required}</p></div>`);
+    }
+  });
+
+  // Cross-topic challenge (if 2+ regions have clues)
+  const regionsWithClues = REGIONS.filter(r => {
+    const mp = state.mysteryProgress[r.id];
+    return mp && mp.cluesFound && mp.cluesFound.length >= 2;
+  });
+  if (regionsWithClues.length >= 2) {
+    choices.push({ text: 'Attempt a Cross-Domain Challenge (combines knowledge)', id: 'cross_topic' });
+  }
+
+  choices.push({ text: 'Check mastery progress', id: 'char_sheet' });
+  choices.push({ text: 'Visit the Knowledge Library (search & review)', id: 'library' });
+
+  showChoices(choices, handleMapChoice);
+}
+
+function isRegionUnlocked(region) {
+  if (region.difficulty <= 1) return true;
+  // Unlock by mastery of previous regions, not by level/XP
+  const prevRegion = REGIONS.find(r => r.difficulty === region.difficulty - 1);
+  if (!prevRegion) return true;
+  return getRegionMastery(prevRegion) >= 0.4; // Must understand 40% of previous region
+}
+
+function getUnlockRequirement(region) {
+  const prevRegion = REGIONS.find(r => r.difficulty === region.difficulty - 1);
+  if (!prevRegion) return 'Unknown';
+  const current = Math.round(getRegionMastery(prevRegion) * 100);
+  return `Master 40% of ${prevRegion.name} (currently ${current}%)`;
+}
+
+function getRegionMastery(region) {
+  let total = 0, mastered = 0;
+  for (const t of region.topics) { total++; const m = state.masteredTopics[t]; if (m && m.correct >= 2) mastered++; }
+  return total > 0 ? mastered / total : 0;
+}
+
+async function handleMapChoice(choice) {
+  if (choice.id === 'enter_region') {
+    state.currentRegion = choice.region;
+    if (!state.visitedRegions.includes(choice.region.id)) state.visitedRegions.push(choice.region.id);
+    clearNarrative();
+    await enterRegion(choice.region);
+  } else if (choice.id === 'char_sheet') {
+    showMasteryProgress();
+    showWorldMap();
+  } else if (choice.id === 'library') {
+    await visitLibrary();
+  } else if (choice.id === 'cross_topic') {
+    await crossTopicChallenge();
+  } else if (choice.freeformInput) {
+    addMsg(`You consider: "${choice.freeformInput}". Choose a region to explore.`, 'system');
+    showWorldMap();
+  }
+}
+
+function showMasteryProgress() {
+  const c = state.char;
+  const masteredCount = getMasteredCount();
+  const bloomLevels = getBloomProgress();
+  const bloomNames = { 1: 'Remember', 2: 'Understand', 3: 'Apply', 4: 'Analyze', 5: 'Evaluate', 6: 'Create' };
+
+  addMsg(`<div class="mastery-card"><h4>${c.name} the ${c.class.name} -- Mastery Progress</h4>
+    <p>HP: ${c.hp}/${c.maxHp} | ${c.resourceName}: ${c.mp}/${c.maxMp} | Gold: ${c.gold}</p>
+    <p>STR: ${c.stats.STR} | DEX: ${c.stats.DEX} | CON: ${c.stats.CON} | INT: ${c.stats.INT} | WIS: ${c.stats.WIS} | CHA: ${c.stats.CHA}</p>
+    <p>Inventory: ${c.inventory.join(', ')}</p>
+    <p style="color:var(--mastery); font-size:1.1rem; margin-top:8px;"><strong>Topics mastered: ${masteredCount} / ~${TOTAL_MASTERY_TOPICS_ESTIMATE} (${getMasteryPercent()}%)</strong></p>
+    <p style="font-size:0.85rem;">Bloom's depth: ${Object.entries(bloomLevels).filter(([,v]) => v > 0).map(([k,v]) => `${bloomNames[k]}: ${v}`).join(' | ')}</p>
+    <p style="font-size:0.85rem;">Cross-domain challenges solved: ${state.crossTopicSolved}</p>
+    <p style="font-size:0.85rem;">Hints used: ${state.hintsUsed}</p>
+  </div>`);
+
+  // Per-region mastery
+  REGIONS.forEach(r => {
+    const m = Math.round(getRegionMastery(r) * 100);
+    const mp = state.mysteryProgress[r.id];
+    const mystery = mp?.solved ? 'SOLVED' : `${mp?.cluesFound?.length || 0} clues`;
+    addMsg(`<div style="font-size:0.85rem; color:var(--text-dim); padding:2px 0;">${r.name}: ${m}% mastered | Mystery: ${mystery}</div>`, 'system');
+  });
+}
+
+async function visitLibrary() {
+  clearNarrative();
+  addMsg(`The <strong>Knowledge Library</strong> glows with stored wisdom. The Librarian awaits your query.`);
+
+  showChoices([
+    { text: 'Search for a topic (type below)', id: 'search' },
+    { text: 'Review weak topics', id: 'review' },
+    { text: 'Return to the map', id: 'back' },
+  ], async (choice) => {
+    if (choice.id === 'search' || choice.freeformInput) {
+      const query = choice.freeformInput || '';
+      if (query) {
+        try {
+          const results = await api(`/api/search?q=${encodeURIComponent(query)}`);
+          if (results.length > 0) {
+            results.slice(0, 5).forEach(r => {
+              addMsg(`<div class="knowledge-reveal"><h4>${r.topic} <small>(${r.tier})</small></h4><p>${r.tldr || r.definition || ''}</p></div>`);
+            });
+          } else { addMsg(`No results for "${query}".`, 'system'); }
+        } catch (e) { addMsg('Search failed.', 'system'); }
+      }
+      await visitLibrary();
+    } else if (choice.id === 'review') {
+      await spacedRepetitionReview();
+    } else {
+      clearNarrative(); showWorldMap();
+    }
+  });
+}
+
+// ============================================================
+// ENCOUNTER SYSTEM (iteration 3: intrinsically integrated)
+// ============================================================
+async function enterRegion(region) {
+  const descriptions = {
+    workshop: `The Workshop hums. Copper wires stretch across workbenches, and the acrid smell of burnt components fills the air. The power supply on the main bench keeps tripping -- something is wrong with the circuit.`,
+    lab: `The Laboratory glows with semiconductor diagrams projected on the walls. An amplifier circuit on the test bench produces a garbled waveform. The signal chain needs debugging.`,
+    foundry: `The Foundry thunders with machines. A stack of freshly fabricated PCBs sits on the inspection table -- but quality control flags show intermittent failures. The manufacturing process has a hidden flaw.`,
+    nexus: `The Signal Nexus pulses with data streams. A network of devices should be communicating flawlessly, but packets drop and signals corrupt. The bus configuration needs diagnosis.`,
+    sanctum: `The Control Sanctum's microcontroller altar flickers. The STM32 on the central pedestal keeps resetting, and its peripheral registers show impossible values. Something fundamental is wrong with the clock configuration.`,
+    arena: `The Motion Arena echoes with the sound of stumbling robots. A quadruped robot tries to walk but oscillates wildly. Its PID controller needs tuning and its gait pattern is unstable.`,
+  };
+
+  addMsg(descriptions[region.id] || `You enter ${region.name}.`);
+  addMsg(`<em>${region.mystery}</em>`, 'hint');
+
+  if (!state.mysteryProgress[region.id]) {
+    state.mysteryProgress[region.id] = { cluesFound: [], solved: false };
+  }
+
+  await generateEncounter(region);
+}
+
+async function generateEncounter(region) {
+  // Fetch topic data FILTERED BY REGION CATEGORIES
+  const cats = region.categories.join(',');
+  const searchTerm = region.topics[Math.floor(Math.random() * region.topics.length)];
+  let topicData = null, termData = null, quizData = null;
+
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(searchTerm)}&category=${encodeURIComponent(region.categories[0])}`);
+    if (results.length > 0) { topicData = await api(`/api/topics/${results[0].id}`); }
+    if (!topicData) {
+      // Fallback: search without category
+      const fallback = await api(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+      if (fallback.length > 0) { topicData = await api(`/api/topics/${fallback[0].id}`); }
+    }
+  } catch (e) {}
+  // Region-filtered terms and quiz
+  try { termData = await api(`/api/terms/random?categories=${encodeURIComponent(cats)}`); } catch (e) {}
+  try { quizData = await api(`/api/quiz/random?categories=${encodeURIComponent(cats)}`); } catch (e) {}
+
+  // Choose encounter type
+  const types = [];
+  if (topicData) types.push('circuit_build', 'diagnosis', 'predict_behavior', 'component_choice');
+  if (termData) types.push('negotiate', 'decode');
+  if (quizData) types.push('apply_knowledge', 'teach_apprentice');
+  if (types.length === 0) types.push('explore');
+
+  const type = types[Math.floor(Math.random() * types.length)];
+
+  switch (type) {
+    case 'circuit_build': await circuitBuildEncounter(topicData, region); break;
+    case 'diagnosis': await diagnosisEncounter(topicData, region); break;
+    case 'predict_behavior': await predictBehaviorEncounter(topicData, region); break;
+    case 'component_choice': await componentChoiceEncounter(topicData, region); break;
+    case 'negotiate': await negotiateEncounter(termData, region); break;
+    case 'decode': await decodeEncounter(termData, region); break;
+    case 'apply_knowledge': await applyKnowledgeEncounter(quizData, region); break;
+    case 'teach_apprentice': await teachApprenticeEncounter(quizData, region); break;
+    default: await exploreEncounter(region);
+  }
+}
+
+// ENCOUNTER: Circuit Build -- select the right component (stealth assessment)
+async function circuitBuildEncounter(topic, region) {
+  addMsg(`<div class="msg-challenge"><strong>Build Challenge</strong><br>A broken mechanism needs a specific component to function. Choose the right one.</div>`);
+
+  // Get distractors from linked docs first, then similar
+  let options = [];
+  try {
+    const distractors = await api(`/api/distractors/${topic.id}?count=3`);
+    options = distractors.map(d => d.topic);
+  } catch (e) {
+    try {
+      const similar = await api(`/api/similar/${topic.id}`);
+      options = similar.slice(0, 3).map(s => s.topic);
+    } catch (e2) {}
+  }
+
+  const correctAnswer = topic.topic;
+  options = options.filter(o => o !== correctAnswer);
+  while (options.length < 3) { options.push(['Flux Capacitor', 'Quantum Resonator', 'Phase Inverter'][options.length]); }
+  options = options.slice(0, 3);
+
+  const allOptions = [...options, correctAnswer].sort(() => Math.random() - 0.5);
+
+  addMsg(`The mechanism's diagnostic display reads: <strong>"${topic.definition || topic.tldr || `Requires: ${topic.topic}`}"</strong>`, 'lore');
+  addMsg(`Which component do you install?`);
+
+  const choices = allOptions.map(opt => ({ text: opt, id: 'component', value: opt }));
+  choices.push({ text: 'Examine the mechanism more carefully (costs 1 turn)', id: 'examine' });
+
+  showChoices(choices, async (choice) => {
+    if (choice.id === 'examine') {
+      try {
+        const links = await api(`/api/links/${topic.id}`);
+        if (links.length > 0) {
+          addMsg(`You notice connections to: ${links.slice(0, 3).map(l => l.topic).join(', ')}`, 'hint');
+        }
+      } catch (e) {}
+      state.hintsUsed++;
+      showChoices(choices.filter(c => c.id !== 'examine'), async (c2) => {
+        await handleComponentChoice(c2, correctAnswer, topic, region);
+      });
+    } else {
+      await handleComponentChoice(choice, correctAnswer, topic, region);
+    }
+  });
+}
+
+async function handleComponentChoice(choice, correctAnswer, topic, region) {
+  if (choice.value === correctAnswer) {
+    addMsg(`The ${correctAnswer} clicks into place. The mechanism hums to life!`, 'success');
+    trackMastery(topic.topic, true, 3); // Apply level
+    addClue(region, topic.topic);
+    grantReward(region.difficulty * 10, region.difficulty * 3);
+    addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- understanding deepens.</span>`, 'mastery');
+  } else {
+    addMsg(`The ${choice.value} doesn't fit. Sparks fly from the mismatched connection.`, 'combat');
+    takeDamage(region.difficulty * 2, 'Electrical feedback!');
+    trackMastery(topic.topic, false);
+    addMsg(`<div class="knowledge-reveal"><h4>The correct component was: ${correctAnswer}</h4><p>${topic.definition || topic.tldr || ''}</p></div>`);
+  }
+  await continueOrMap(region);
+}
+
+// ENCOUNTER: Diagnosis -- topic-specific symptoms derived from content
+async function diagnosisEncounter(topic, region) {
+  addMsg(`A device is malfunctioning. You need to diagnose the root cause.`);
+
+  // Generate topic-specific symptom from the topic's key_insight or definition
+  const topicContent = topic.key_insight || topic.definition || topic.tldr || topic.topic;
+  const symptom = generateTopicSymptom(topic);
+
+  addMsg(`<div class="msg-challenge"><strong>Device: ${topic.topic}</strong><br><strong>Symptoms:</strong> ${symptom}</div>`);
+  addMsg(`Based on what you know about <strong>${topic.topic}</strong>, explain the root cause of this malfunction.`);
+
+  showChoices([
+    { text: 'Diagnose the problem (type your analysis below)', id: 'diagnose' },
+    { text: 'Request the device schematic (hint)', id: 'hint' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const correctAnswer = topicContent;
+      addMsg(`<em>Evaluating your diagnosis...</em>`, 'system');
+      const result = await evaluateAnswer(choice.freeformInput, correctAnswer);
+
+      if (result.grade === 'correct') {
+        addMsg(`Excellent diagnosis! Your understanding of ${topic.topic} pinpoints the issue.`, 'success');
+        trackMastery(topic.topic, true, 4); // Analyze level
+        addClue(region, topic.topic);
+        grantReward(region.difficulty * 12, region.difficulty * 5);
+        addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- diagnostic skill confirmed.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`You're on the right track, but missing key details.`, 'system');
+        trackMastery(topic.topic, false);
+        grantReward(region.difficulty * 5, region.difficulty * 2);
+        addMsg(`<div class="knowledge-reveal"><h4>Full diagnosis</h4><p>${correctAnswer}</p></div>`);
+      } else {
+        addMsg(`Your diagnosis doesn't match the symptoms.`, 'combat');
+        takeDamage(region.difficulty, 'Wasted time and resources.');
+        trackMastery(topic.topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Actual cause</h4><p>${correctAnswer}</p></div>`);
+      }
+    } else if (choice.id === 'hint') {
+      state.hintsUsed++;
+      if (topic.tldr) {
+        addMsg(`The schematic reveals relevant context: <em>${topic.tldr.slice(0, 120)}...</em>`, 'hint');
+      }
+      addMsg(`Now provide your diagnosis.`);
+      showChoices([{ text: 'Diagnose (type below)', id: 'diagnose' }], async (c) => {
+        if (c.freeformInput) {
+          const correctAnswer = topicContent;
+          const result = await evaluateAnswer(c.freeformInput, correctAnswer);
+          if (result.grade === 'correct') {
+            addMsg(`With the schematic's help, you identify the issue!`, 'success');
+            trackMastery(topic.topic, true, 4);
+            addClue(region, topic.topic);
+            grantReward(region.difficulty * 8, region.difficulty * 3);
+          } else {
+            addMsg(`Even with the schematic, the root cause eludes you.`);
+            trackMastery(topic.topic, false);
+            addMsg(`<div class="knowledge-reveal"><h4>Root cause</h4><p>${correctAnswer}</p></div>`);
+            grantReward(region.difficulty * 2, 0);
+          }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+// Generate topic-specific symptoms from the topic's actual content
+function generateTopicSymptom(topic) {
+  const insight = (topic.key_insight || '').toLowerCase();
+  const def = (topic.definition || '').toLowerCase();
+  const name = topic.topic.toLowerCase();
+
+  // Use the topic's own content to derive a plausible failure mode
+  if (insight || def) {
+    const content = insight || def;
+    // Extract what the component does to construct what happens when it fails
+    if (content.includes('store') || content.includes('capacit')) {
+      return `The output voltage shows excessive ripple and the circuit fails to maintain a steady DC level. The waveform on the oscilloscope shows the supply dipping periodically under load.`;
+    }
+    if (content.includes('resist') || content.includes('ohm') || content.includes('current limit')) {
+      return `Current through the circuit exceeds expected values. Components downstream are overheating. The voltage drop across one section is not matching calculations.`;
+    }
+    if (content.includes('induct') || content.includes('magnetic') || content.includes('coil')) {
+      return `When switching, large voltage spikes appear across the circuit. The switching regulator's output rings violently and occasionally damages downstream components.`;
+    }
+    if (content.includes('diode') || content.includes('rectif')) {
+      return `The circuit only works with one polarity of the input signal. When reversed, the protection mechanism fails and current flows in the wrong direction.`;
+    }
+    if (content.includes('transistor') || content.includes('amplif') || content.includes('gain')) {
+      return `The output signal is clipped at both rails. The amplification stage distorts instead of producing a clean scaled copy of the input.`;
+    }
+    if (content.includes('clock') || content.includes('oscillat') || content.includes('frequency')) {
+      return `The system timing is erratic. Some peripherals work intermittently. The output frequency drifts and the device occasionally locks up.`;
+    }
+    if (content.includes('bus') || content.includes('protocol') || content.includes('data')) {
+      return `Data transfers return corrupted values. Some devices on the bus respond, others timeout. The error rate increases with cable length.`;
+    }
+    if (content.includes('solder') || content.includes('pcb') || content.includes('manufacture')) {
+      return `The board passes bench testing but fails in the field. Failures correlate with temperature changes. Visual inspection shows dull, grainy joints on certain components.`;
+    }
+    if (content.includes('pid') || content.includes('control') || content.includes('feedback')) {
+      return `The system overshoots its target repeatedly. The output oscillates around the setpoint instead of settling. Increasing the correction makes it worse.`;
+    }
+    if (content.includes('sensor') || content.includes('measure') || content.includes('adc')) {
+      return `Readings are noisy and drift over time. The resolution seems lower than expected. Occasional values are completely wrong.`;
+    }
+  }
+  // Generic fallback based on region
+  return `The ${topic.topic} subsystem behaves unexpectedly. Measured values don't match theoretical predictions. Something fundamental about how ${topic.topic} works is being violated in this circuit.`;
+}
+
+// ENCOUNTER: Predict Behavior -- topic-derived scenarios
+async function predictBehaviorEncounter(topic, region) {
+  addMsg(`<div class="msg-challenge"><strong>Prediction Challenge</strong></div>`);
+
+  // Generate a topic-specific scenario from the content
+  const scenario = generateTopicScenario(topic);
+  addMsg(`A senior engineer poses a thought experiment about <strong>${topic.topic}</strong>:`);
+  addMsg(`"${scenario}"`, 'lore');
+  addMsg(`What's your prediction? Explain your reasoning.`);
+
+  showChoices([
+    { text: 'Make your prediction (type below)', id: 'predict' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const correctAnswer = topic.key_insight || topic.definition || topic.tldr || '';
+      const result = await evaluateAnswer(choice.freeformInput, correctAnswer);
+
+      if (result.grade === 'correct') {
+        addMsg(`"Spot on! You clearly understand ${topic.topic}."`, 'success');
+        trackMastery(topic.topic, true, 4); // Analyze
+        addClue(region, topic.topic);
+        grantReward(region.difficulty * 12, region.difficulty * 4);
+        addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- predictive understanding proven.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`"Close, but you're missing a key aspect."`, 'system');
+        trackMastery(topic.topic, false);
+        grantReward(region.difficulty * 5, region.difficulty * 2);
+        addMsg(`<div class="knowledge-reveal"><h4>The complete answer</h4><p>${correctAnswer}</p></div>`);
+      } else {
+        addMsg(`"Not quite. Here's what actually happens:"`, 'system');
+        trackMastery(topic.topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Correct behavior</h4><p>${correctAnswer}</p></div>`);
+        grantReward(region.difficulty * 2, 0);
+      }
+    } else {
+      addMsg(`You decline to make a prediction.`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+function generateTopicScenario(topic) {
+  const insight = (topic.key_insight || '').toLowerCase();
+  const def = (topic.definition || '').toLowerCase();
+  const name = topic.topic.toLowerCase();
+
+  if (insight.includes('capacit') || name.includes('capacit')) {
+    return `If you replace the capacitor in this filter circuit with one that has half the capacitance, how does the cutoff frequency change? What happens to the signal at the original cutoff frequency?`;
+  }
+  if (insight.includes('resist') || name.includes('resist')) {
+    return `If you double the resistance in this voltage divider, what happens to the output voltage? What about power dissipation?`;
+  }
+  if (insight.includes('induct') || name.includes('induct')) {
+    return `If you suddenly open the switch in a circuit with a charged inductor, what happens? Why is this dangerous?`;
+  }
+  if (insight.includes('diode') || name.includes('diode')) {
+    return `If you reverse the polarity of the diode in this rectifier circuit, how does the output waveform change?`;
+  }
+  if (insight.includes('transistor') || name.includes('transistor') || name.includes('bjt') || name.includes('mosfet')) {
+    return `If you increase the base/gate voltage beyond the saturation point, what happens to the collector/drain current? What region is the transistor operating in?`;
+  }
+  if (name.includes('op-amp') || name.includes('amplif')) {
+    return `If the feedback resistor in this inverting amplifier is removed (open circuit), what happens to the output?`;
+  }
+  if (name.includes('pcb') || name.includes('solder')) {
+    return `If you reduce the reflow oven peak temperature by 20 degrees below the solder paste specification, what defects would you expect to see?`;
+  }
+  if (name.includes('i2c') || name.includes('spi') || name.includes('can')) {
+    return `If you add a fourth device to this bus without adjusting the termination, what symptoms would appear as bus speed increases?`;
+  }
+  if (name.includes('pid') || name.includes('control')) {
+    return `If you triple the proportional gain while keeping the integral and derivative gains the same, what happens to the step response?`;
+  }
+  if (name.includes('clock') || name.includes('crystal') || name.includes('oscillat')) {
+    return `If the load capacitance on the crystal is incorrect (too low), how does this affect the oscillation frequency and stability?`;
+  }
+  if (name.includes('adc') || name.includes('sensor')) {
+    return `If you sample an analog signal at a rate below the Nyquist frequency, what artifact appears in the digitized data?`;
+  }
+  if (name.includes('imu') || name.includes('gyro') || name.includes('accelerometer')) {
+    return `If the IMU is mounted at an angle offset from the robot's body frame, how does this affect the orientation estimate over time?`;
+  }
+  // Generic but domain-aware
+  return `If the key operating principle of ${topic.topic} were to degrade -- for example, if the primary parameter changed by 50% -- what downstream effects would you observe in a system that depends on it? Explain your reasoning based on how ${topic.topic} works.`;
+}
+
+// ENCOUNTER: Component Choice -- stealth assessment through path selection
+async function componentChoiceEncounter(topic, region) {
+  addMsg(`You reach a junction in the circuit network. To proceed, you must route power correctly.`);
+
+  // Get distractors from linked docs
+  let distractors = [];
+  try {
+    const distData = await api(`/api/distractors/${topic.id}?count=2`);
+    distractors = distData.map(d => ({ name: d.topic, desc: d.definition || d.tldr || 'Unknown properties' }));
+  } catch (e) {}
+
+  const correctOption = { name: topic.topic, desc: topic.definition || topic.tldr || 'Standard component' };
+  while (distractors.length < 2) {
+    distractors.push({ name: ['Plasma Relay', 'Quantum Bridge', 'Flux Gate'][distractors.length], desc: 'Unknown component' });
+  }
+
+  const allOptions = [...distractors, correctOption].sort(() => Math.random() - 0.5);
+
+  addMsg(`Three paths branch out, each using a different approach. The circuit requirement: <em>${topic.tldr ? topic.tldr.slice(0, 150) : 'matches the specifications'}</em>`);
+
+  const choices = allOptions.map(opt => ({
+    text: `Use ${opt.name}`,
+    id: 'choose_component',
+    value: opt.name,
+    isCorrect: opt.name === topic.topic,
+  }));
+
+  showChoices(choices, async (choice) => {
+    if (choice.isCorrect) {
+      addMsg(`You route through ${choice.value}. The circuit completes perfectly -- current flows as intended.`, 'success');
+      trackMastery(topic.topic, true, 3);
+      addClue(region, topic.topic);
+      grantReward(region.difficulty * 8, region.difficulty * 3);
+      addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- practical application confirmed.</span>`, 'mastery');
+    } else {
+      addMsg(`The ${choice.value} doesn't match the circuit requirements. A protection fuse blows.`, 'combat');
+      takeDamage(region.difficulty * 2, 'Circuit mismatch!');
+      trackMastery(topic.topic, false);
+      addMsg(`<div class="knowledge-reveal"><h4>The correct path used: ${topic.topic}</h4><p>${topic.definition || topic.tldr || ''}</p></div>`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Negotiate -- must use term knowledge to make a trade
+// NO CHA BLUFF ESCAPE HATCH -- stat checks never bypass knowledge
+async function negotiateEncounter(term, region) {
+  addMsg(`A parts dealer offers a rare component, but speaks entirely in technical jargon.`);
+  addMsg(`"I've got a prime specimen here. But first -- tell me, what does <strong>${term.term}</strong> mean? I only deal with those who understand what they're buying."`, 'lore');
+
+  // Instead of "type the answer", offer 3 trade approaches that all require knowledge
+  addMsg(`Demonstrate your understanding to negotiate a fair price.`);
+
+  showChoices([
+    { text: 'Explain the term to prove your expertise (type below)', id: 'explain' },
+    { text: 'Describe a practical use case for this concept (type below)', id: 'use_case' },
+    { text: 'Ask a clarifying question about a specific detail (hint, then explain)', id: 'clarify' },
+  ], async (choice) => {
+    if (choice.freeformInput || choice.id === 'explain' || choice.id === 'use_case') {
+      const input = choice.freeformInput || '';
+      if (!input) { addMsg(`You say nothing. The dealer shakes their head.`); await continueOrMap(region); return; }
+
+      const result = await evaluateAnswer(input, term.definition);
+
+      if (result.grade === 'correct') {
+        addMsg(`The dealer nods approvingly. "You know your stuff! Here -- fair price."`, 'success');
+        trackMastery(term.term, true, choice.id === 'use_case' ? 3 : 2);
+        grantReward(region.difficulty * 8, region.difficulty * 5);
+        state.char.inventory.push(`${term.term} Component`);
+        addMsg(`<span class="msg-mastery">Mastery: ${term.term} -- domain vocabulary confirmed.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`"Close enough. I'll give you a small discount."`, 'system');
+        trackMastery(term.term, false);
+        grantReward(region.difficulty * 4, region.difficulty * 2);
+      } else {
+        addMsg(`"You don't know what you're buying. Full price -- or nothing."`, 'combat');
+        trackMastery(term.term, false);
+      }
+      addMsg(`<div class="knowledge-reveal"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+    } else if (choice.id === 'clarify') {
+      state.hintsUsed++;
+      addMsg(`The dealer gives you a hint: <em>"${term.definition.slice(0, 80)}..."</em>`, 'hint');
+      addMsg(`Now explain what ${term.term} means in your own words.`);
+      showChoices([{ text: 'Explain (type below)', id: 'explain' }], async (c) => {
+        if (c.freeformInput) {
+          const result = await evaluateAnswer(c.freeformInput, term.definition);
+          if (result.grade === 'correct') {
+            addMsg(`"Took you a moment, but you get it."`, 'success');
+            trackMastery(term.term, true, 2);
+            grantReward(region.difficulty * 5, region.difficulty * 3);
+          } else {
+            addMsg(`The dealer shakes their head.`);
+            trackMastery(term.term, false);
+          }
+          addMsg(`<div class="knowledge-reveal"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Decode -- decrypt using term knowledge
+async function decodeEncounter(term, region) {
+  addMsg(`You find an encrypted maintenance log. The password hint reads: <strong>"The ${term.document_topic} concept that means: ${term.definition.slice(0, 80)}..."</strong>`, 'challenge');
+  addMsg(`What is the password? (Name the term)`);
+
+  showChoices([
+    { text: 'Enter the password (type below)', id: 'answer' },
+  ], async (choice) => {
+    const input = (choice.freeformInput || '').toLowerCase().trim();
+    const correct = term.term.toLowerCase().trim();
+
+    if (input === correct || input.includes(correct) || correct.includes(input)) {
+      addMsg(`Access granted! The log reveals important operational data.`, 'success');
+      trackMastery(term.term, true, 1);
+      addClue(region, term.term);
+      grantReward(region.difficulty * 10, region.difficulty * 3);
+    } else {
+      addMsg(`Access denied. The correct term was: <strong>${term.term}</strong>`, 'system');
+      trackMastery(term.term, false);
+      addMsg(`<div class="knowledge-reveal"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+      grantReward(region.difficulty * 2, 0);
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Apply Knowledge -- quiz question in narrative context
+// Removed Bloom's Level display that broke immersion
+async function applyKnowledgeEncounter(quiz, region) {
+  addMsg(`A system panel flashes red. The diagnostic interface shows an error condition.`);
+  addMsg(`<div class="msg-challenge"><strong>System query:</strong> ${quiz.question}</div>`);
+
+  showChoices([
+    { text: 'Provide your answer (type below)', id: 'answer' },
+    { text: 'Look up related documentation', id: 'docs' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, quiz.answer);
+
+      if (result.grade === 'correct') {
+        addMsg(`The system accepts your input. The error clears!`, 'success');
+        trackMastery(quiz.document_topic, true, quiz.level || 2);
+        addClue(region, quiz.document_topic);
+        grantReward(region.difficulty * 12, region.difficulty * 5);
+        addMsg(`<span class="msg-mastery">Mastery: ${quiz.document_topic} -- system knowledge verified.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`The system partially recovers. Your answer was on the right track.`, 'system');
+        trackMastery(quiz.document_topic, false);
+        grantReward(region.difficulty * 5, region.difficulty * 2);
+        addMsg(`<div class="knowledge-reveal"><h4>Complete solution</h4><p>${quiz.answer}</p></div>`);
+      } else {
+        addMsg(`The system rejects your input. The error persists.`, 'combat');
+        takeDamage(region.difficulty, 'System overload backlash!');
+        trackMastery(quiz.document_topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Correct response</h4><p>${quiz.answer}</p></div>`);
+      }
+    } else if (choice.id === 'docs') {
+      state.hintsUsed++;
+      try {
+        const results = await api(`/api/search?q=${encodeURIComponent(quiz.document_topic)}`);
+        if (results.length > 0 && results[0].tldr) {
+          addMsg(`Documentation found: <em>${results[0].tldr.slice(0, 120)}...</em>`, 'hint');
+        }
+      } catch (e) { addMsg(`Documentation search failed.`, 'system'); }
+      addMsg(`Now answer: ${quiz.question}`, 'challenge');
+      showChoices([{ text: 'Answer (type below)', id: 'answer' }], async (c) => {
+        if (c.freeformInput) {
+          const result = await evaluateAnswer(c.freeformInput, quiz.answer);
+          if (result.grade === 'correct') {
+            addMsg(`With documentation assistance, you solve it!`, 'success');
+            trackMastery(quiz.document_topic, true, quiz.level || 2);
+            addClue(region, quiz.document_topic);
+            grantReward(region.difficulty * 7, region.difficulty * 3);
+          } else {
+            addMsg(`Still not right. The correct answer:`);
+            trackMastery(quiz.document_topic, false);
+            addMsg(`<div class="knowledge-reveal"><h4>Solution</h4><p>${quiz.answer}</p></div>`);
+            grantReward(region.difficulty * 2, 0);
+          }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Teach Apprentice -- redesigned to require domain reasoning
+async function teachApprenticeEncounter(quiz, region) {
+  addMsg(`An apprentice approaches with a real problem they're stuck on.`, 'lore');
+  addMsg(`"I tried to answer this but I got confused: <strong>${quiz.question}</strong>"`, 'challenge');
+
+  // The apprentice offers their (wrong) attempt, player must correct it
+  const wrongAttempt = generateWrongAttempt(quiz);
+  addMsg(`The apprentice's attempt: <em>"${wrongAttempt}"</em>`);
+  addMsg(`<strong>What's wrong with their answer? Explain the correct reasoning.</strong>`);
+
+  showChoices([
+    { text: 'Correct the apprentice (type your explanation below)', id: 'teach' },
+    { text: 'Show the apprentice the reference material first', id: 'reference' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      // Evaluate against the correct answer -- player must demonstrate they understand WHY
+      const result = await evaluateAnswer(choice.freeformInput, quiz.answer);
+
+      if (result.grade === 'correct') {
+        addMsg(`The apprentice's eyes widen. "Oh! That's where I went wrong. Thank you!"`, 'success');
+        addMsg(`Teaching forces you to organize your understanding -- you learn as much as your student.`, 'system');
+        trackMastery(quiz.document_topic, true, 5); // Evaluate level -- correcting errors
+        addClue(region, quiz.document_topic);
+        grantReward(region.difficulty * 15, region.difficulty * 6);
+        addMsg(`<span class="msg-mastery">Mastery: ${quiz.document_topic} -- teaching mastery achieved.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`"I think I understand part of it, but your explanation has gaps."`, 'system');
+        trackMastery(quiz.document_topic, false);
+        grantReward(region.difficulty * 6, region.difficulty * 2);
+        addMsg(`<div class="knowledge-reveal"><h4>A clearer correction</h4><p>${quiz.answer}</p></div>`);
+      } else {
+        addMsg(`The apprentice looks more confused. "I'm not sure that's right either..."`, 'system');
+        trackMastery(quiz.document_topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>The proper explanation</h4><p>${quiz.answer}</p></div>`);
+        grantReward(region.difficulty * 2, 0);
+      }
+    } else if (choice.id === 'reference') {
+      state.hintsUsed++;
+      addMsg(`<div class="knowledge-reveal"><h4>Reference material</h4><p>${quiz.answer.slice(0, 150)}...</p></div>`);
+      addMsg(`Now correct the apprentice's mistake.`);
+      showChoices([{ text: 'Teach (type below)', id: 'teach' }], async (c) => {
+        if (c.freeformInput) {
+          const result = await evaluateAnswer(c.freeformInput, quiz.answer);
+          if (result.grade === 'correct') {
+            addMsg(`With reference material in hand, you give a clear correction.`, 'success');
+            trackMastery(quiz.document_topic, true, 4);
+            addClue(region, quiz.document_topic);
+            grantReward(region.difficulty * 8, region.difficulty * 3);
+          } else {
+            addMsg(`The apprentice still seems confused.`);
+            trackMastery(quiz.document_topic, false);
+            addMsg(`<div class="knowledge-reveal"><h4>Correct explanation</h4><p>${quiz.answer}</p></div>`);
+          }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+// Generate a plausible wrong answer for the apprentice to give
+function generateWrongAttempt(quiz) {
+  const q = quiz.question.toLowerCase();
+  const a = quiz.answer;
+  // Common misconception patterns
+  if (q.includes('why') || q.includes('explain')) {
+    return `I think it's just because that's how it was designed. I'm not sure about the actual physics behind it.`;
+  }
+  if (q.includes('calculate') || q.includes('what value')) {
+    return `I tried plugging in the numbers but I keep getting a different answer. I think I might be using the wrong formula.`;
+  }
+  if (q.includes('compare') || q.includes('difference')) {
+    return `They seem pretty similar to me. I think they do basically the same thing?`;
+  }
+  if (q.includes('design') || q.includes('create') || q.includes('propose')) {
+    return `I just picked the first component that seemed to fit, but I'm not sure about the values or if it'll actually work.`;
+  }
+  return `I memorized the definition but I can't really explain how it works in practice. Is the answer just "${a.split(' ').slice(0, 3).join(' ')}..."?`;
+}
+
+// ENCOUNTER: Explore -- rest/discovery
+async function exploreEncounter(region) {
+  addMsg(`You explore deeper into ${region.name}. The corridors twist and turn.`);
+  const events = [
+    { text: 'You find a repair station. Tools and materials are available.', heal: true },
+    { text: 'A hidden cache contains salvaged components.', gold: true },
+    { text: `An old diagram on the wall shows a circuit you haven't seen before. You study it carefully.`, learn: true },
+  ];
+  const event = events[Math.floor(Math.random() * events.length)];
+  addMsg(event.text);
+
+  if (event.heal) {
+    const amount = dN(8) + 4;
+    state.char.hp = Math.min(state.char.maxHp, state.char.hp + amount);
+    addMsg(`You recover ${amount} HP at the repair station.`, 'success');
+  } else if (event.gold) {
+    const gold = dN(8) + region.difficulty * 2;
+    state.char.gold += gold;
+    addMsg(`+${gold} gold from salvaged components.`, 'reward');
+  } else if (event.learn) {
+    try {
+      const cats = region.categories.join(',');
+      const topic = await api(`/api/topics/random?category=${encodeURIComponent(region.categories[0])}`);
+      if (topic && topic.tldr) {
+        addMsg(`<div class="knowledge-reveal"><h4>${topic.topic}</h4><p>${topic.tldr}</p></div>`);
+        grantReward(region.difficulty * 3, 0);
+      }
+    } catch (e) {}
+  }
+
+  updateHUD(); saveState();
+  await continueOrMap(region);
+}
+
+// ============================================================
+// MYSTERY SYSTEM (requires domain knowledge to solve)
+// ============================================================
+function addClue(region, topicName) {
+  const mp = state.mysteryProgress[region.id];
+  if (!mp || mp.solved) return;
+  if (!mp.cluesFound.includes(topicName)) {
+    mp.cluesFound.push(topicName);
+    addMsg(`[Mystery clue ${mp.cluesFound.length}/${region.topics.length}: ${topicName}]`, 'system');
+
+    // When enough clues found, PRESENT the mystery for solving (don't auto-solve)
+    if (mp.cluesFound.length >= Math.ceil(region.topics.length * 0.6) && !mp.solvable) {
+      mp.solvable = true;
+      addMsg(`<div class="gate-card"><h4>Mystery Ready to Solve!</h4><p>You've gathered enough clues about ${region.name}. Return to the map and enter this region again to attempt solving the mystery.</p></div>`);
+    }
+  }
+  saveState();
+}
+
+async function attemptMysterySolve(region) {
+  const mp = state.mysteryProgress[region.id];
+  if (!mp || mp.solved || !mp.solvable) return false;
+
+  addMsg(`<div class="gate-card"><h4>Mystery Challenge: ${region.name}</h4><p>You've gathered clues from: ${mp.cluesFound.join(', ')}</p><p>The mystery: <em>${region.mystery}</em></p><p><strong>Using what you've learned, explain the root cause and how to fix it.</strong></p></div>`);
+
+  return new Promise((resolve) => {
+    showChoices([
+      { text: 'Solve the mystery (type your explanation below)', id: 'solve' },
+      { text: 'Not yet -- keep investigating', id: 'skip' },
+    ], async (choice) => {
+      if (choice.freeformInput) {
+        const result = await evaluateAnswer(choice.freeformInput, region.mysteryAnswer);
+
+        if (result.grade === 'correct') {
+          mp.solved = true;
+          addMsg(`<div class="mastery-card" style="border-color:var(--gold)"><h4>MYSTERY SOLVED: ${region.name}</h4><p>Your understanding of ${mp.cluesFound.join(', ')} allowed you to diagnose the root cause. The systems stabilize!</p><p style="color:var(--text);">${region.mysteryAnswer}</p></div>`);
+          grantReward(region.difficulty * 30, region.difficulty * 15);
+          addMsg(`<span class="msg-mastery">This is what mastery looks like -- combining knowledge to solve real problems.</span>`, 'mastery');
+          saveState();
+          resolve(true);
+        } else if (result.grade === 'partial') {
+          addMsg(`You're on the right track, but the full picture eludes you. Keep investigating to build deeper understanding.`, 'system');
+          grantReward(region.difficulty * 5, 0);
+          resolve(false);
+        } else {
+          addMsg(`Your explanation doesn't fit the evidence. The mystery remains unsolved. Explore more encounters to deepen your understanding.`, 'system');
+          resolve(false);
+        }
+      } else {
+        addMsg(`You decide to gather more knowledge before attempting the mystery.`);
+        resolve(false);
+      }
+    });
+  });
+}
+
+// ============================================================
+// CROSS-TOPIC CHALLENGE (combines knowledge across regions)
+// ============================================================
+async function crossTopicChallenge() {
+  clearNarrative();
+
+  // Pick 2-3 regions the player has clues in
+  const activeRegions = REGIONS.filter(r => {
+    const mp = state.mysteryProgress[r.id];
+    return mp && mp.cluesFound && mp.cluesFound.length >= 2;
+  });
+
+  if (activeRegions.length < 2) {
+    addMsg(`Not enough cross-domain knowledge yet. Explore more regions first.`, 'system');
+    showWorldMap();
+    return;
+  }
+
+  const r1 = activeRegions[Math.floor(Math.random() * activeRegions.length)];
+  let r2 = activeRegions.filter(r => r.id !== r1.id)[0];
+
+  const challenges = [
+    {
+      prompt: `A system requires converting raw sensor data from ${r1.name} into a control signal for ${r2.name}. What components and concepts from BOTH domains would you need? Describe the signal chain.`,
+      topics: [...r1.topics, ...r2.topics],
+    },
+    {
+      prompt: `A failure in ${r1.name} is causing cascading problems in ${r2.name}. Based on your knowledge of both domains, what could be the root cause? How are these systems connected?`,
+      topics: [...r1.topics, ...r2.topics],
+    },
+    {
+      prompt: `You need to debug a system that spans ${r1.name} and ${r2.name}. The data looks correct leaving ${r1.name} but arrives corrupted at ${r2.name}. Where would you look first, and what tools from both domains would you use?`,
+      topics: [...r1.topics, ...r2.topics],
+    },
+  ];
+
+  const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+
+  addMsg(`<div class="gate-card"><h4>Cross-Domain Challenge</h4><p>This challenge requires combining knowledge from <strong>${r1.name}</strong> and <strong>${r2.name}</strong>.</p></div>`);
+  addMsg(challenge.prompt, 'challenge');
+  addMsg(`Explain your approach, referencing specific concepts from both domains.`);
+
+  showChoices([
+    { text: 'Provide your cross-domain analysis (type below)', id: 'analyze' },
+    { text: 'Not ready yet -- return to map', id: 'back' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      // Evaluate against combined topic knowledge
+      const r1Insight = r1.topics.join(', ');
+      const r2Insight = r2.topics.join(', ');
+      const combinedAnswer = `This requires knowledge of ${r1Insight} from ${r1.name} and ${r2Insight} from ${r2.name}. The signal chain connects these domains through their shared interfaces.`;
+      const result = await evaluateAnswer(choice.freeformInput, combinedAnswer);
+
+      if (result.grade === 'correct') {
+        state.crossTopicSolved++;
+        addMsg(`Brilliant! Your ability to connect knowledge across domains is what separates a technician from an engineer.`, 'success');
+        grantReward(50, 25);
+        addMsg(`<span class="msg-mastery">Cross-domain mastery: connecting ${r1.name} and ${r2.name}.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`You're making connections, but missing some crucial links between the domains.`, 'system');
+        grantReward(15, 5);
+      } else {
+        addMsg(`The domains seem disconnected in your analysis. Keep exploring to see how they relate.`, 'system');
+        grantReward(5, 0);
+      }
+    }
+    clearNarrative();
+    showWorldMap();
+  });
+}
+
+// ============================================================
+// SPACED REPETITION
+// ============================================================
+async function spacedRepetitionReview() {
+  const candidates = Object.entries(state.masteredTopics)
+    .filter(([, v]) => v.correct < 2 && v.attempts > 0)
+    .sort((a, b) => a[1].lastSeen - b[1].lastSeen);
+
+  if (candidates.length === 0) {
+    addMsg(`No topics need review. Keep exploring!`, 'system');
+    await visitLibrary();
+    return;
+  }
+
+  const [topicKey] = candidates[0];
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(topicKey)}`);
+    if (results.length > 0) {
+      addMsg(`Review time! You previously struggled with <strong>${results[0].topic}</strong>.`);
+      addMsg(`Without looking it up, explain what ${results[0].topic} is and why it matters.`, 'challenge');
+
+      showChoices([{ text: 'Explain (type below)', id: 'explain' }], async (choice) => {
+        if (choice.freeformInput) {
+          const correctAnswer = results[0].tldr || results[0].definition || results[0].topic;
+          const result = await evaluateAnswer(choice.freeformInput, correctAnswer);
+          if (result.grade === 'correct') {
+            addMsg(`Your understanding has solidified!`, 'success');
+            trackMastery(topicKey, true, 2);
+            grantReward(10, 3);
+            addMsg(`<span class="msg-mastery">Review complete: ${results[0].topic} strengthened.</span>`, 'mastery');
+          } else {
+            addMsg(`Still needs work. Here's a refresher:`);
+            trackMastery(topicKey, false);
+            addMsg(`<div class="knowledge-reveal"><h4>${results[0].topic}</h4><p>${correctAnswer}</p></div>`);
+            grantReward(3, 0);
+          }
+        }
+        await visitLibrary();
+      });
+      return;
+    }
+  } catch (e) {}
+  addMsg(`Couldn't load review content.`, 'system');
+  await visitLibrary();
+}
+
+// ============================================================
+// REWARDS, DAMAGE, MASTERY
+// ============================================================
+function grantReward(xp, gold) {
+  state.char.xp += xp;
+  state.char.gold += gold;
+
+  // Show reward but de-emphasize XP/gold, emphasize mastery
+  let msg = '';
+  if (xp > 0 || gold > 0) msg += `<span style="color:var(--text-dim); font-size:0.85rem;">+${xp} XP${gold > 0 ? ` +${gold}g` : ''}</span>`;
+  if (msg) addMsg(msg, 'system');
+
+  while (state.char.xp >= state.char.xpToLevel) {
+    state.char.xp -= state.char.xpToLevel;
+    state.char.level++;
+    state.char.xpToLevel = 100 * state.char.level;
+    state.char.maxHp += 5; state.char.hp = state.char.maxHp;
+    state.char.maxMp += 3; state.char.mp = state.char.maxMp;
+    addMsg(`<strong>LEVEL UP! Level ${state.char.level}!</strong> +5 Max HP, +3 Max ${state.char.resourceName}.`, 'success');
+  }
+  updateHUD(); saveState();
+}
+
+function takeDamage(amount, description) {
+  state.char.hp = Math.max(0, state.char.hp - amount);
+  addMsg(`${description} (-${amount} HP)`, 'combat');
+  if (state.char.hp <= 0) {
+    state.char.hp = Math.floor(state.char.maxHp * 0.25);
+    state.char.gold = Math.max(0, state.char.gold - 10);
+    addMsg(`You collapse but are revived at the repair station. (-10 gold)`, 'combat');
+  }
+  updateHUD(); saveState();
+}
+
+function trackMastery(topicName, correct, bloomLevel) {
+  if (!topicName) return;
+  const key = topicName.toLowerCase().replace(/\s+/g, '-');
+  if (!state.masteredTopics[key]) state.masteredTopics[key] = { correct: 0, attempts: 0, lastSeen: Date.now(), bloomMax: 0 };
+  state.masteredTopics[key].attempts++;
+  if (correct) state.masteredTopics[key].correct++;
+  state.masteredTopics[key].lastSeen = Date.now();
+  if (bloomLevel && bloomLevel > (state.masteredTopics[key].bloomMax || 0)) {
+    state.masteredTopics[key].bloomMax = bloomLevel;
+  }
+}
+
+async function continueOrMap(region) {
+  state.turnCount++;
+  const shouldReview = state.turnCount % 6 === 0;
+  const mysteryState = state.mysteryProgress[region.id];
+  const clueCount = mysteryState?.cluesFound?.length || 0;
+
+  const choices = [
+    { text: `Continue investigating ${region.name} (${clueCount} clues found)`, id: 'continue' },
+  ];
+
+  // Offer mystery solve when ready
+  if (mysteryState?.solvable && !mysteryState?.solved) {
+    choices.push({ text: `Attempt to solve ${region.name}'s mystery!`, id: 'solve_mystery' });
+  }
+
+  if (shouldReview) choices.push({ text: 'Review a weak topic', id: 'review' });
+  choices.push({ text: 'Return to the map', id: 'map' });
+
+  showChoices(choices, async (choice) => {
+    if (choice.id === 'continue') {
+      clearNarrative();
+      addMsg(`You press deeper into ${region.name}...`);
+      await generateEncounter(region);
+    } else if (choice.id === 'solve_mystery') {
+      clearNarrative();
+      const solved = await attemptMysterySolve(region);
+      if (!solved) {
+        await continueOrMap(region);
+      } else {
+        clearNarrative();
+        showWorldMap();
+      }
+    } else if (choice.id === 'review') {
+      await spacedRepetitionReview();
+    } else {
+      clearNarrative(); showWorldMap();
+    }
+  });
+}
+
+// ============================================================
+// SAVE / LOAD
+// ============================================================
+function saveState() {
+  try {
+    localStorage.setItem('knowledge-quest-save', JSON.stringify({
+      char: state.char, masteredTopics: state.masteredTopics,
+      visitedRegions: state.visitedRegions, turnCount: state.turnCount,
+      mysteryProgress: state.mysteryProgress, hintsUsed: state.hintsUsed,
+      crossTopicSolved: state.crossTopicSolved || 0,
+      gatesUnlocked: state.gatesUnlocked || [],
+    }));
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem('knowledge-quest-save');
+    if (saved) {
+      const data = JSON.parse(saved);
+      Object.assign(state, {
+        char: data.char, masteredTopics: data.masteredTopics || {},
+        visitedRegions: data.visitedRegions || [], turnCount: data.turnCount || 0,
+        mysteryProgress: data.mysteryProgress || {}, hintsUsed: data.hintsUsed || 0,
+        crossTopicSolved: data.crossTopicSolved || 0,
+        gatesUnlocked: data.gatesUnlocked || [],
+      });
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+// ============================================================
+// PREMIUM
+// ============================================================
+const premiumFeatures = {
+  enabled: false,
+  features: {
+    advancedClasses: ['Quantum Sage', 'Signal Mage', 'Control Theorist'],
+    bonusRegions: ['The Quantum Realm', 'The Electromagnetic Field'],
+    cosmetics: ['Golden Circuit Aura', 'Plasma Trail'],
+    challengeModes: ['No-Hint Mode', 'Speedrun', 'Master Difficulty'],
+  },
+};
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  try {
+    state.dbStats = await api('/api/stats');
+    if (state.dbStats.documents === 0) {
+      document.getElementById('loading').innerHTML = '<p>Knowledge base is empty. Run the importer first.</p>';
+      return;
+    }
+    if (loadState()) {
+      document.getElementById('loading').style.display = 'none';
+      state.phase = 'playing';
+      document.getElementById('narrative').style.display = 'block';
+      document.getElementById('actions').style.display = 'block';
+      updateHUD();
+      addMsg(`Welcome back, ${state.char.name}! ${getMasteredCount()} topics mastered so far.`, 'system');
+      showWorldMap();
+    } else {
+      initCharCreation();
+    }
+  } catch (err) {
+    document.getElementById('loading').innerHTML = `<p>Could not connect. Is Docker running?</p><p style="color:var(--danger)">${err.message}</p>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
