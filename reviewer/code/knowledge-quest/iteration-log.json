@@ -1,0 +1,33 @@
+{
+  "game_name": "knowledge-quest",
+  "topic": "electronics, electrical engineering, robotics, manufacturing, and applied physics — covering topics from basic circuit components (resistors, capacitors, inductors, diodes, transistors, MOSFETs) through PCB design, microcontrollers (STM32), communication protocols (I2C, SPI, CAN bus), 3D printing, CNC machining, and robot control (PID, forward/inverse kinematics, gait control, reinforcement learning)",
+  "max_iterations": 5,
+  "pass_threshold": {
+    "intrinsic_integration": "deep",
+    "pedagogical_soundness": "strong",
+    "narrative_structure": "functional",
+    "motivation_engagement": "intrinsic",
+    "assessment_design": "hybrid",
+    "accessibility": "adequate",
+    "freemium_monetisation": "balanced"
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "timestamp": "2026-03-28T11:10:00Z",
+      "generator_action": "initial build",
+      "scores": {
+        "intrinsic_integration": "partial",
+        "pedagogical_soundness": "mixed",
+        "narrative_structure": "functional",
+        "motivation_engagement": "mixed",
+        "assessment_design": "overt",
+        "accessibility": "adequate",
+        "freemium_monetisation": "balanced"
+      },
+      "failing_dimensions": ["intrinsic_integration", "pedagogical_soundness", "motivation_engagement", "assessment_design"],
+      "biggest_risk": "Chocolate-covered-broccoli: learning and gameplay are separate activities despite narrative wrapping",
+      "status": "fail"
+    }
+  ]
+}

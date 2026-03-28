@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Knowledge Quest</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #161b22;
+    --bg-card: #1c2333;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent-glow: rgba(88,166,255,0.15);
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #f85149;
+    --hp-bar: #3fb950;
+    --mp-bar: #bc8cff;
+    --xp-bar: #58a6ff;
+    --gold: #d29922;
+    --radius: 8px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+  }
+
+  /* HUD BAR */
+  #hud {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-panel);
+    border-bottom: 1px solid #30363d;
+    padding: 8px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .hud-name { font-weight: 700; color: var(--accent); margin-right: auto; }
+  .hud-stat { display: flex; align-items: center; gap: 4px; }
+  .hud-bar { width: 60px; height: 8px; background: #30363d; border-radius: 4px; overflow: hidden; }
+  .hud-bar-fill { height: 100%; border-radius: 4px; transition: width 0.3s ease; }
+  .hud-bar-hp .hud-bar-fill { background: var(--hp-bar); }
+  .hud-bar-mp .hud-bar-fill { background: var(--mp-bar); }
+  .hud-bar-xp .hud-bar-fill { background: var(--xp-bar); }
+  .hud-gold { color: var(--gold); font-weight: 600; }
+  .hud-level { background: var(--accent); color: var(--bg); padding: 2px 8px; border-radius: 10px; font-weight: 700; font-size: 0.75rem; }
+
+  /* NARRATIVE AREA */
+  #narrative {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .msg { margin-bottom: 16px; line-height: 1.6; animation: fadeIn 0.3s ease; }
+  .msg-narrator { color: var(--text); }
+  .msg-system { color: var(--text-dim); font-style: italic; font-size: 0.9rem; }
+  .msg-combat { color: var(--danger); }
+  .msg-success { color: var(--success); }
+  .msg-lore { color: var(--accent); border-left: 3px solid var(--accent); padding-left: 12px; background: var(--accent-glow); border-radius: 0 var(--radius) var(--radius) 0; padding: 8px 12px; }
+  .msg-challenge { background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius); padding: 12px; }
+  .msg-reward { color: var(--gold); font-weight: 600; }
+
+  .roll-result { font-family: monospace; color: var(--warning); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ACTION AREA */
+  #actions {
+    position: sticky; bottom: 0;
+    background: var(--bg-panel);
+    border-top: 1px solid #30363d;
+    padding: 12px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .choice-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid #30363d;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-height: 44px;
+    line-height: 1.4;
+  }
+  .choice-btn:hover, .choice-btn:focus { background: var(--accent-glow); border-color: var(--accent); outline: none; }
+  .choice-btn:active { transform: scale(0.98); }
+  .choice-btn .key-hint { color: var(--text-dim); font-size: 0.8rem; margin-right: 8px; }
+
+  #input-row { display: flex; gap: 8px; margin-top: 4px; }
+  #freeform { flex: 1; padding: 10px 12px; background: var(--bg-card); color: var(--text); border: 1px solid #30363d; border-radius: var(--radius); font-size: 1rem; min-height: 44px; }
+  #freeform:focus { border-color: var(--accent); outline: none; }
+  #submit-btn { padding: 10px 16px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; min-width: 44px; min-height: 44px; }
+  #submit-btn:hover { opacity: 0.9; }
+
+  /* CHARACTER CREATION */
+  #char-creation {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+    width: 100%;
+  }
+  #char-creation h1 { color: var(--accent); margin-bottom: 8px; text-align: center; }
+  #char-creation h2 { color: var(--text-dim); font-size: 1rem; margin: 16px 0 8px; }
+  .class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .class-btn {
+    padding: 12px; background: var(--bg-card); border: 2px solid #30363d; border-radius: var(--radius);
+    color: var(--text); cursor: pointer; text-align: center; font-size: 0.9rem; min-height: 44px;
+    transition: all 0.15s ease;
+  }
+  .class-btn:hover, .class-btn.selected { border-color: var(--accent); background: var(--accent-glow); }
+  .class-btn .class-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+
+  .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+  .stat-name { min-width: 40px; font-weight: 600; }
+  .stat-controls { display: flex; align-items: center; gap: 8px; }
+  .stat-btn { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid #30363d; border-radius: 50%; color: var(--text); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .stat-btn:hover { border-color: var(--accent); }
+  .stat-val { min-width: 24px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+  .stat-points { text-align: center; color: var(--warning); font-weight: 600; margin: 8px 0; }
+
+  #name-input { width: 100%; padding: 10px; background: var(--bg-card); color: var(--text); border: 1px solid #30363d; border-radius: var(--radius); font-size: 1rem; }
+  #start-btn {
+    display: block; width: 100%; padding: 14px; margin-top: 16px;
+    background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius);
+    font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  }
+  #start-btn:hover { opacity: 0.9; }
+  #start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* LOADING */
+  #loading { text-align: center; padding: 40px; color: var(--text-dim); }
+  .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #30363d; border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* PREMIUM BADGE */
+  .premium-badge { display: inline-block; background: linear-gradient(135deg, #d29922, #f0c040); color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; vertical-align: middle; }
+
+  /* KNOWLEDGE PANEL */
+  .knowledge-panel {
+    background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 12px; margin: 8px 0;
+  }
+  .knowledge-panel h4 { color: var(--accent); margin-bottom: 6px; font-size: 0.9rem; }
+  .knowledge-panel p { font-size: 0.9rem; line-height: 1.5; color: var(--text-dim); }
+
+  /* MAP */
+  .region-card {
+    background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all 0.15s ease;
+  }
+  .region-card:hover { border-color: var(--accent); }
+  .region-card.locked { opacity: 0.5; cursor: not-allowed; }
+  .region-card h4 { color: var(--accent); margin-bottom: 4px; }
+  .region-card p { font-size: 0.85rem; color: var(--text-dim); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="hud" style="display:none;">
+  <span class="hud-name" id="hud-name">Hero</span>
+  <span class="hud-level" id="hud-level">Lv 1</span>
+  <span class="hud-stat">HP <span class="hud-bar hud-bar-hp"><span class="hud-bar-fill" id="hud-hp-bar" style="width:100%"></span></span> <span id="hud-hp-text">30/30</span></span>
+  <span class="hud-stat">MP <span class="hud-bar hud-bar-mp"><span class="hud-bar-fill" id="hud-mp-bar" style="width:100%"></span></span> <span id="hud-mp-text">20/20</span></span>
+  <span class="hud-stat">XP <span class="hud-bar hud-bar-xp"><span class="hud-bar-fill" id="hud-xp-bar" style="width:0%"></span></span></span>
+  <span class="hud-gold" id="hud-gold">50g</span>
+</div>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p style="margin-top:12px;">Connecting to knowledge base...</p>
+</div>
+
+<div id="char-creation" style="display:none;">
+  <h1>Knowledge Quest</h1>
+  <p style="text-align:center; color:var(--text-dim); margin-bottom:16px;">An RPG where understanding IS your power</p>
+  <div id="db-stats" style="text-align:center; color:var(--text-dim); font-size:0.85rem; margin-bottom:16px;"></div>
+
+  <h2>Your Name</h2>
+  <input type="text" id="name-input" placeholder="Enter your name..." maxlength="20" autocomplete="off">
+
+  <h2>Choose Your Path</h2>
+  <div class="class-grid" id="class-grid"></div>
+
+  <h2>Distribute Stats <span class="stat-points" id="stat-points">20 points remaining</span></h2>
+  <div id="stat-rows"></div>
+
+  <button id="start-btn" disabled>Begin Your Quest</button>
+</div>
+
+<div id="narrative" style="display:none;" role="main" aria-label="Game narrative"></div>
+
+<div id="actions" style="display:none;" role="navigation" aria-label="Game actions">
+  <div id="choice-container"></div>
+  <div id="input-row">
+    <input type="text" id="freeform" placeholder="Or type a custom action..." autocomplete="off" aria-label="Custom action input">
+    <button id="submit-btn" aria-label="Submit action">Go</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// GAME STATE
+// ============================================================
+const CLASSES = [
+  { id: 'engineer', name: 'Engineer', desc: 'Builds and analyzes circuits', icon: 'E', resource: 'Stamina', statBonus: 'INT' },
+  { id: 'explorer', name: 'Explorer', desc: 'Discovers hidden knowledge', icon: 'X', resource: 'Stamina', statBonus: 'WIS' },
+  { id: 'artificer', name: 'Artificer', desc: 'Crafts with components', icon: 'A', resource: 'MP', statBonus: 'DEX' },
+  { id: 'scholar', name: 'Scholar', desc: 'Masters deep theory', icon: 'S', resource: 'MP', statBonus: 'INT' },
+  { id: 'tinker', name: 'Tinker', desc: 'Hacks and improvises', icon: 'T', resource: 'Stamina', statBonus: 'DEX' },
+  { id: 'sage', name: 'Sage', desc: 'Teaches and mentors', icon: 'G', resource: 'MP', statBonus: 'WIS' },
+];
+
+const STAT_NAMES = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
+const BASE_STAT = 5;
+const TOTAL_POINTS = 20;
+
+const REGIONS = [
+  { id: 'workshop', name: 'The Workshop', desc: 'Basic components and circuits', tier: 'micro', difficulty: 1, topics: ['resistor', 'capacitor', 'inductor', 'diode', 'voltage'] },
+  { id: 'lab', name: 'The Laboratory', desc: 'Semiconductors and active devices', tier: 'micro', difficulty: 2, topics: ['transistor', 'mosfet', 'bjt', 'op-amp'] },
+  { id: 'foundry', name: 'The Foundry', desc: 'PCB design and manufacturing', tier: 'quick', difficulty: 3, topics: ['pcb', 'soldering', 'smd', '3d-printing'] },
+  { id: 'nexus', name: 'The Signal Nexus', desc: 'Communication protocols', tier: 'quick', difficulty: 4, topics: ['i2c', 'spi', 'can-bus', 'pwm'] },
+  { id: 'sanctum', name: 'The Control Sanctum', desc: 'Microcontrollers and embedded systems', tier: 'quick', difficulty: 5, topics: ['stm32', 'clock', 'adc', 'imu'] },
+  { id: 'arena', name: 'The Motion Arena', desc: 'Robotics and control theory', tier: 'small', difficulty: 6, topics: ['pid', 'kinematics', 'gait', 'reinforcement-learning'] },
+];
+
+let state = {
+  phase: 'loading', // loading, creation, playing
+  char: null,
+  currentRegion: null,
+  currentEncounter: null,
+  encounterStep: 0,
+  masteredTopics: {},   // topicId -> { correct: N, attempts: N, lastSeen: timestamp }
+  visitedRegions: [],
+  inventory: [],
+  questLog: [],
+  combatState: null,
+  turnCount: 0,
+  dbStats: null,
+  pendingAnswer: null,
+};
+
+// ============================================================
+// API HELPERS
+// ============================================================
+async function api(endpoint) {
+  const res = await fetch(endpoint);
+  if (!res.ok) throw new Error(`API ${endpoint}: ${res.status}`);
+  return res.json();
+}
+
+// ============================================================
+// DICE & MECHANICS
+// ============================================================
+function d20() { return Math.floor(Math.random() * 20) + 1; }
+function dN(n) { return Math.floor(Math.random() * n) + 1; }
+function statMod(val) { return Math.floor((val - 10) / 2); }
+
+function rollCheck(statName, dc) {
+  const val = state.char.stats[statName] || 10;
+  const roll = d20();
+  const mod = statMod(val);
+  const total = roll + mod;
+  const success = total >= dc;
+  return { roll, mod, total, dc, success, statName };
+}
+
+function formatRoll(r) {
+  return `<span class="roll-result">[d20: ${r.roll} + ${r.statName} mod ${r.mod >= 0 ? '+' : ''}${r.mod} = ${r.total} vs DC ${r.dc}] ${r.success ? 'SUCCESS' : 'FAILURE'}</span>`;
+}
+
+// ============================================================
+// CHARACTER CREATION
+// ============================================================
+function initCharCreation() {
+  state.phase = 'creation';
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('char-creation').style.display = 'block';
+
+  if (state.dbStats) {
+    document.getElementById('db-stats').innerHTML =
+      `Knowledge base: ${state.dbStats.documents} topics | ${state.dbStats.essential_terms} terms | ${state.dbStats.quiz_questions} challenges`;
+  }
+
+  // Class buttons
+  const grid = document.getElementById('class-grid');
+  grid.innerHTML = '';
+  let selectedClass = null;
+
+  CLASSES.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'class-btn';
+    btn.innerHTML = `<span class="class-icon">${c.icon}</span>${c.name}<br><small style="color:var(--text-dim)">${c.desc}</small>`;
+    btn.onclick = () => {
+      document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedClass = c;
+      checkReady();
+    };
+    grid.appendChild(btn);
+  });
+
+  // Stat allocation
+  const statContainer = document.getElementById('stat-rows');
+  statContainer.innerHTML = '';
+  const statValues = {};
+  let pointsLeft = TOTAL_POINTS;
+  STAT_NAMES.forEach(s => { statValues[s] = BASE_STAT; });
+
+  function renderStats() {
+    statContainer.innerHTML = '';
+    STAT_NAMES.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'stat-row';
+      row.innerHTML = `
+        <span class="stat-name">${s}</span>
+        <div class="stat-controls">
+          <button class="stat-btn" data-stat="${s}" data-dir="-1" aria-label="Decrease ${s}">-</button>
+          <span class="stat-val">${statValues[s]}</span>
+          <button class="stat-btn" data-stat="${s}" data-dir="1" aria-label="Increase ${s}">+</button>
+        </div>
+      `;
+      statContainer.appendChild(row);
+    });
+    document.getElementById('stat-points').textContent = `${pointsLeft} points remaining`;
+
+    statContainer.querySelectorAll('.stat-btn').forEach(btn => {
+      btn.onclick = () => {
+        const stat = btn.dataset.stat;
+        const dir = parseInt(btn.dataset.dir);
+        if (dir === 1 && pointsLeft > 0 && statValues[stat] < 20) {
+          statValues[stat]++;
+          pointsLeft--;
+        } else if (dir === -1 && statValues[stat] > 1) {
+          statValues[stat]--;
+          pointsLeft++;
+        }
+        renderStats();
+        checkReady();
+      };
+    });
+  }
+  renderStats();
+
+  // Name input
+  const nameInput = document.getElementById('name-input');
+  nameInput.oninput = checkReady;
+
+  function checkReady() {
+    const ready = nameInput.value.trim().length > 0 && selectedClass && pointsLeft === 0;
+    document.getElementById('start-btn').disabled = !ready;
+  }
+
+  document.getElementById('start-btn').onclick = () => {
+    const isCaster = selectedClass.resource === 'MP';
+    const hp = 20 + statValues.CON * 2;
+    const mp = isCaster ? (10 + statValues.INT * 2) : (10 + statValues.STR * 2);
+
+    state.char = {
+      name: nameInput.value.trim(),
+      class: selectedClass,
+      stats: { ...statValues },
+      hp, maxHp: hp,
+      mp, maxMp: mp,
+      resourceName: selectedClass.resource,
+      level: 1,
+      xp: 0,
+      xpToLevel: 100,
+      gold: 50,
+      inventory: getStartingItems(selectedClass.id),
+    };
+    state.phase = 'playing';
+    saveState();
+    startGame();
+  };
+}
+
+function getStartingItems(classId) {
+  const items = {
+    engineer: ['Multimeter', 'Wire Strippers', 'Breadboard'],
+    explorer: ['Compass', 'Torch', 'Field Notebook'],
+    artificer: ['Soldering Iron', 'Component Kit', 'Magnifying Lens'],
+    scholar: ['Tome of Circuits', 'Quill & Ink', 'Reading Glasses'],
+    tinker: ['Wrench Set', 'Duct Tape', 'Pocket Oscilloscope'],
+    sage: ['Teaching Staff', 'Chalk', 'Student Roster'],
+  };
+  return items[classId] || ['Basic Toolkit'];
+}
+
+// ============================================================
+// HUD
+// ============================================================
+function updateHUD() {
+  if (!state.char) return;
+  const c = state.char;
+  document.getElementById('hud').style.display = 'flex';
+  document.getElementById('hud-name').textContent = `${c.name} the ${c.class.name}`;
+  document.getElementById('hud-level').textContent = `Lv ${c.level}`;
+  document.getElementById('hud-hp-bar').style.width = `${(c.hp / c.maxHp) * 100}%`;
+  document.getElementById('hud-hp-text').textContent = `${c.hp}/${c.maxHp}`;
+  document.getElementById('hud-mp-bar').style.width = `${(c.mp / c.maxMp) * 100}%`;
+  document.getElementById('hud-mp-text').textContent = `${c.mp}/${c.maxMp}`;
+  document.getElementById('hud-xp-bar').style.width = `${(c.xp / c.xpToLevel) * 100}%`;
+  document.getElementById('hud-gold').textContent = `${c.gold}g`;
+}
+
+// ============================================================
+// NARRATIVE
+// ============================================================
+function addMsg(text, cls = 'narrator') {
+  const div = document.createElement('div');
+  div.className = `msg msg-${cls}`;
+  div.innerHTML = text;
+  document.getElementById('narrative').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function clearNarrative() {
+  document.getElementById('narrative').innerHTML = '';
+}
+
+// ============================================================
+// CHOICES
+// ============================================================
+function showChoices(choices, handler) {
+  const container = document.getElementById('choice-container');
+  container.innerHTML = '';
+
+  choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="key-hint">[${i + 1}]</span> ${choice.text}`;
+    if (choice.premium) btn.innerHTML += ' <span class="premium-badge">PRO</span>';
+    btn.onclick = () => handler(choice);
+    container.appendChild(btn);
+  });
+
+  // Keyboard shortcuts
+  const keyHandler = (e) => {
+    const num = parseInt(e.key);
+    if (num >= 1 && num <= choices.length) {
+      document.removeEventListener('keydown', keyHandler);
+      handler(choices[num - 1]);
+    }
+  };
+  document.addEventListener('keydown', keyHandler);
+
+  // Freeform input
+  const freeform = document.getElementById('freeform');
+  const submitBtn = document.getElementById('submit-btn');
+  freeform.value = '';
+
+  const submitFreeform = () => {
+    const text = freeform.value.trim();
+    if (text) {
+      document.removeEventListener('keydown', keyHandler);
+      handler({ text, id: 'freeform', freeformInput: text });
+    }
+  };
+  submitBtn.onclick = submitFreeform;
+  freeform.onkeydown = (e) => { if (e.key === 'Enter') submitFreeform(); };
+}
+
+// ============================================================
+// GAME LOGIC
+// ============================================================
+function startGame() {
+  document.getElementById('char-creation').style.display = 'none';
+  document.getElementById('narrative').style.display = 'block';
+  document.getElementById('actions').style.display = 'block';
+  updateHUD();
+
+  addMsg(`Welcome, <strong>${state.char.name} the ${state.char.class.name}</strong>.`);
+  addMsg(`You stand at the gates of the <strong>Circuit Citadel</strong>, a vast complex where the secrets of electronics, engineering, and robotics are woven into the very fabric of reality. Here, voltage flows like rivers, signals pulse through corridors, and understanding is the only true weapon.`);
+  addMsg(`Your quest: master the fundamental forces that govern this world. Each region holds knowledge that you must <em>understand and apply</em> — not merely memorize — to progress.`, 'system');
+
+  showWorldMap();
+}
+
+function showWorldMap() {
+  addMsg(`<strong>--- Circuit Citadel Map ---</strong>`, 'system');
+
+  const choices = [];
+  REGIONS.forEach((region, i) => {
+    const unlocked = region.difficulty <= (state.char.level + 1);
+    const visited = state.visitedRegions.includes(region.id);
+    const mastery = getRegionMastery(region);
+    const masteryStr = mastery > 0 ? ` [${Math.round(mastery * 100)}% mastered]` : '';
+
+    if (unlocked) {
+      addMsg(`<div class="region-card">
+        <h4>${region.name} ${visited ? '(visited)' : '(new)'} ${masteryStr}</h4>
+        <p>${region.desc} | Difficulty: ${'*'.repeat(region.difficulty)}</p>
+      </div>`);
+      choices.push({ text: `Enter ${region.name}`, id: 'enter_region', region });
+    } else {
+      addMsg(`<div class="region-card locked">
+        <h4>${region.name} (locked - Level ${region.difficulty - 1} required)</h4>
+        <p>${region.desc}</p>
+      </div>`);
+    }
+  });
+
+  choices.push({ text: 'Check character sheet', id: 'char_sheet' });
+  choices.push({ text: 'Visit the Knowledge Library', id: 'library' });
+
+  showChoices(choices, handleMapChoice);
+}
+
+function getRegionMastery(region) {
+  let total = 0, mastered = 0;
+  for (const t of region.topics) {
+    total++;
+    const m = state.masteredTopics[t];
+    if (m && m.correct >= 2) mastered++;
+  }
+  return total > 0 ? mastered / total : 0;
+}
+
+async function handleMapChoice(choice) {
+  if (choice.id === 'enter_region') {
+    state.currentRegion = choice.region;
+    if (!state.visitedRegions.includes(choice.region.id)) {
+      state.visitedRegions.push(choice.region.id);
+    }
+    clearNarrative();
+    await enterRegion(choice.region);
+  } else if (choice.id === 'char_sheet') {
+    showCharSheet();
+  } else if (choice.id === 'library') {
+    await visitLibrary();
+  } else if (choice.freeformInput) {
+    addMsg(`You consider: "${choice.freeformInput}". Perhaps explore one of the regions first.`, 'system');
+    showWorldMap();
+  }
+}
+
+function showCharSheet() {
+  const c = state.char;
+  addMsg(`<div class="knowledge-panel">
+    <h4>${c.name} the ${c.class.name} (Level ${c.level})</h4>
+    <p>HP: ${c.hp}/${c.maxHp} | ${c.resourceName}: ${c.mp}/${c.maxMp} | Gold: ${c.gold}</p>
+    <p>STR: ${c.stats.STR} | DEX: ${c.stats.DEX} | CON: ${c.stats.CON} | INT: ${c.stats.INT} | WIS: ${c.stats.WIS} | CHA: ${c.stats.CHA}</p>
+    <p>Inventory: ${c.inventory.join(', ')}</p>
+    <p>XP: ${c.xp}/${c.xpToLevel}</p>
+    <p>Topics mastered: ${Object.keys(state.masteredTopics).filter(k => state.masteredTopics[k].correct >= 2).length}</p>
+  </div>`);
+  showWorldMap();
+}
+
+async function visitLibrary() {
+  clearNarrative();
+  addMsg(`You enter the <strong>Knowledge Library</strong>, a vast hall lined with glowing scrolls. The Librarian nods at you.`);
+  addMsg(`"Seek knowledge and you shall find it. What interests you?"`, 'lore');
+
+  showChoices([
+    { text: 'Browse all topics', id: 'browse' },
+    { text: 'Search for something specific', id: 'search' },
+    { text: 'Review mastered topics', id: 'review' },
+    { text: 'Return to the map', id: 'back' },
+  ], async (choice) => {
+    if (choice.id === 'browse') {
+      try {
+        const topics = await api('/api/topics');
+        addMsg(`The Librarian gestures to the shelves. ${topics.length} scrolls glow softly.`, 'system');
+        const sample = topics.sort(() => 0.5 - Math.random()).slice(0, 8);
+        sample.forEach(t => {
+          addMsg(`<div class="knowledge-panel"><h4>${t.topic} <small>(${t.tier})</small></h4><p>${t.tldr || t.definition || 'A mysterious topic...'}</p></div>`);
+        });
+      } catch (e) {
+        addMsg('The scrolls seem faded right now...', 'system');
+      }
+      await visitLibrary();
+    } else if (choice.id === 'search' || choice.freeformInput) {
+      const query = choice.freeformInput || prompt('What do you seek?');
+      if (query) {
+        try {
+          const results = await api(`/api/search?q=${encodeURIComponent(query)}`);
+          if (results.length > 0) {
+            addMsg(`The Librarian finds ${results.length} relevant scrolls:`, 'system');
+            results.slice(0, 5).forEach(r => {
+              addMsg(`<div class="knowledge-panel"><h4>${r.topic} <small>(${r.tier})</small></h4><p>${r.tldr || r.definition || ''}</p></div>`);
+            });
+          } else {
+            addMsg(`"Hmm, nothing matches that query. Try different words."`, 'system');
+          }
+        } catch (e) {
+          addMsg('The search crystals flicker...', 'system');
+        }
+      }
+      await visitLibrary();
+    } else if (choice.id === 'review') {
+      const mastered = Object.entries(state.masteredTopics).filter(([, v]) => v.correct >= 2);
+      if (mastered.length === 0) {
+        addMsg(`"You haven't mastered any topics yet. Explore the regions to learn!"`, 'system');
+      } else {
+        addMsg(`You have mastered ${mastered.length} topics:`);
+        mastered.forEach(([topic, data]) => {
+          addMsg(`- <strong>${topic}</strong>: ${data.correct}/${data.attempts} correct`, 'success');
+        });
+      }
+      await visitLibrary();
+    } else {
+      clearNarrative();
+      showWorldMap();
+    }
+  });
+}
+
+// ============================================================
+// REGION ENCOUNTERS
+// ============================================================
+async function enterRegion(region) {
+  const descriptions = {
+    workshop: `The Workshop hums with energy. Copper wires stretch across workbenches like veins, and the air smells of solder. Here, the fundamental building blocks of all electronics await your understanding. A grizzled old Engineer looks up from a breadboard. "So, you want to learn about components? Let's see what you're made of."`,
+    lab: `The Laboratory glows with the eerie light of semiconductor wafers. Transistors the size of doors line the walls, their gates and drains labeled in glowing runes. A Professor adjusts her goggles. "Semiconductors are where passive becomes active. Ready to think?"`,
+    foundry: `The Foundry thunders with the sound of CNC machines and the hiss of 3D printers. Layers of copper traces form paths across massive PCBs. A Master Fabricator wipes grease from their hands. "Building is understanding in its purest form."`,
+    nexus: `The Signal Nexus pulses with data. Clock signals tick along corridors, and buses carry packets of information between towering machines. A Communications Officer monitors the traffic. "Every protocol has a purpose. Can you decode them?"`,
+    sanctum: `The Control Sanctum is a cathedral of microcontrollers. STM32 chips the size of altars sit on pedestals, their pin diagrams etched in gold. A Systems Architect studies a schematic. "The brain of every embedded system. Respect it."`,
+    arena: `The Motion Arena is a vast space where robotic limbs swing and mechanical creatures walk in precise gaits. A Robotics Master stands among them. "Theory becomes motion here. Your calculations will literally walk."`,
+  };
+
+  addMsg(descriptions[region.id] || `You enter ${region.name}.`);
+
+  // Fetch topic data from API
+  await generateEncounter(region);
+}
+
+async function generateEncounter(region) {
+  state.encounterStep = 0;
+
+  // Try to get a topic-related quiz question or term
+  let topicData = null;
+  let termData = null;
+  let quizData = null;
+
+  try {
+    // Search for a topic related to this region
+    const searchTerm = region.topics[Math.floor(Math.random() * region.topics.length)];
+    const results = await api(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+    if (results.length > 0) {
+      topicData = results[0];
+      // Get full topic
+      const fullTopic = await api(`/api/topics/${topicData.id}`);
+      topicData = { ...topicData, ...fullTopic };
+    }
+  } catch (e) { console.error('Topic fetch error:', e); }
+
+  try {
+    termData = await api('/api/terms/random');
+  } catch (e) { console.error('Term fetch error:', e); }
+
+  try {
+    const bloomLevel = Math.min(state.char.level, 5);
+    quizData = await api(`/api/quiz/random?level=${bloomLevel}`);
+  } catch (e) {
+    try { quizData = await api('/api/quiz/random'); } catch (e2) { }
+  }
+
+  // Choose encounter type based on what data we have
+  const encounterTypes = [];
+  if (topicData) encounterTypes.push('puzzle', 'npc_dialogue', 'investigation');
+  if (termData) encounterTypes.push('merchant', 'term_challenge');
+  if (quizData) encounterTypes.push('guardian', 'skill_check');
+  if (encounterTypes.length === 0) encounterTypes.push('exploration');
+
+  const encounterType = encounterTypes[Math.floor(Math.random() * encounterTypes.length)];
+
+  switch (encounterType) {
+    case 'puzzle':
+      await puzzleEncounter(topicData, region);
+      break;
+    case 'npc_dialogue':
+      await npcDialogueEncounter(topicData, region);
+      break;
+    case 'investigation':
+      await investigationEncounter(topicData, region);
+      break;
+    case 'merchant':
+      await merchantEncounter(termData, region);
+      break;
+    case 'term_challenge':
+      await termChallengeEncounter(termData, region);
+      break;
+    case 'guardian':
+      await guardianEncounter(quizData, region);
+      break;
+    case 'skill_check':
+      await skillCheckEncounter(quizData, topicData, region);
+      break;
+    default:
+      await explorationEncounter(region);
+  }
+}
+
+async function puzzleEncounter(topic, region) {
+  addMsg(`<div class="msg-challenge">
+    <strong>Puzzle Chamber: ${topic.topic}</strong><br>
+    A mechanism blocks the path forward. Its surface is etched with circuits and formulas. Understanding is the only key.
+  </div>`);
+
+  if (topic.tldr) {
+    addMsg(`<div class="knowledge-panel"><h4>Ancient Inscription</h4><p>${topic.tldr}</p></div>`);
+  }
+
+  // Find a quiz question related to this topic
+  let question = null;
+  try {
+    const qs = await api(`/api/quiz/topic/${topic.id}`);
+    if (qs.length > 0) question = qs[Math.floor(Math.random() * qs.length)];
+  } catch (e) { }
+
+  if (!question) {
+    try { question = await api(`/api/quiz/similar?q=${encodeURIComponent(topic.topic)}`); question = question[0]; } catch (e) { }
+  }
+
+  if (question) {
+    addMsg(`The mechanism poses a question: <strong>"${question.question}"</strong>`, 'challenge');
+    state.pendingAnswer = question;
+
+    showChoices([
+      { text: 'Attempt to answer (type your answer below)', id: 'answer' },
+      { text: `Use ${state.char.class.name} skill to analyze the mechanism (INT check DC ${10 + region.difficulty * 2})`, id: 'skill_analyze' },
+      { text: 'Search for clues nearby', id: 'search_clues' },
+      { text: 'Leave this puzzle for now', id: 'leave' },
+    ], async (choice) => {
+      if (choice.id === 'answer' || choice.freeformInput) {
+        await evaluateAnswer(choice.freeformInput || '', question, topic, region);
+      } else if (choice.id === 'skill_analyze') {
+        const check = rollCheck('INT', 10 + region.difficulty * 2);
+        addMsg(formatRoll(check));
+        if (check.success) {
+          addMsg(`Your technical expertise reveals the answer pattern. The mechanism relates to <strong>${topic.topic}</strong>.`);
+          if (topic.key_insight) {
+            addMsg(`<div class="knowledge-panel"><h4>Key Insight</h4><p>${topic.key_insight}</p></div>`);
+          }
+          addMsg(`With this understanding, you work through the problem...`);
+          // Give partial credit
+          grantReward(region.difficulty * 10, region.difficulty * 5, topic.topic);
+        } else {
+          addMsg(`The mechanism's complexity eludes your analysis. You'll need to reason through it directly.`);
+          takeDamage(region.difficulty * 2, 'The mechanism sparks painfully.');
+        }
+        await continueOrMap(region);
+      } else if (choice.id === 'search_clues') {
+        await searchForClues(topic, region);
+      } else {
+        clearNarrative();
+        showWorldMap();
+      }
+    });
+  } else {
+    addMsg(`The mechanism hums but presents no clear challenge. You study it carefully.`);
+    if (topic.definition) {
+      addMsg(`<div class="knowledge-panel"><h4>You Learn</h4><p>${topic.definition}</p></div>`);
+    }
+    grantReward(region.difficulty * 5, 0, topic.topic);
+    await continueOrMap(region);
+  }
+}
+
+async function npcDialogueEncounter(topic, region) {
+  const npcs = ['a weathered Engineer', 'a curious Apprentice', 'a mysterious Sage', 'an animated Golem inscribed with circuits'];
+  const npc = npcs[Math.floor(Math.random() * npcs.length)];
+
+  addMsg(`You encounter ${npc} who is studying a device related to <strong>${topic.topic}</strong>.`);
+
+  if (topic.definition) {
+    addMsg(`"Ah, ${state.char.name}! Do you know about <strong>${topic.topic}</strong>?" they ask.`);
+    addMsg(`"${topic.definition}"`, 'lore');
+  }
+
+  // Find related topics for dialogue options
+  let related = [];
+  try {
+    related = await api(`/api/similar/${topic.id}`);
+  } catch (e) { }
+
+  const choices = [
+    { text: `"Tell me more about ${topic.topic}"`, id: 'learn_more', topic },
+    { text: '"Can you test my understanding?"', id: 'test_me', topic },
+  ];
+
+  if (related.length > 0) {
+    choices.push({ text: `"How does this relate to ${related[0].topic}?"`, id: 'relate', topic, related: related[0] });
+  }
+  choices.push({ text: '"Thank you, I must go."', id: 'leave' });
+
+  showChoices(choices, async (choice) => {
+    if (choice.id === 'learn_more') {
+      if (topic.key_insight) {
+        addMsg(`<div class="knowledge-panel"><h4>Deeper Knowledge: ${topic.topic}</h4><p>${topic.key_insight}</p></div>`);
+      } else if (topic.tldr) {
+        addMsg(`<div class="knowledge-panel"><h4>${topic.topic}</h4><p>${topic.tldr}</p></div>`);
+      }
+      grantReward(region.difficulty * 3, 0, topic.topic);
+      await continueOrMap(region);
+    } else if (choice.id === 'test_me') {
+      let q;
+      try {
+        const qs = await api(`/api/quiz/topic/${topic.id}`);
+        q = qs.length > 0 ? qs[Math.floor(Math.random() * qs.length)] : null;
+      } catch (e) { }
+      if (q) {
+        addMsg(`"Very well. ${q.question}"`, 'challenge');
+        state.pendingAnswer = q;
+        showChoices([
+          { text: 'Answer (type below)', id: 'answer' },
+          { text: 'Ask for a hint', id: 'hint' },
+        ], async (c) => {
+          if (c.freeformInput) {
+            await evaluateAnswer(c.freeformInput, q, topic, region);
+          } else if (c.id === 'hint') {
+            if (topic.tldr) addMsg(`"Here's a hint: ${topic.tldr}"`, 'lore');
+            addMsg(`Now try to answer: "${q.question}"`, 'challenge');
+            showChoices([{ text: 'Answer (type below)', id: 'answer' }], async (c2) => {
+              await evaluateAnswer(c2.freeformInput || '', q, topic, region);
+            });
+          } else {
+            await evaluateAnswer('', q, topic, region);
+          }
+        });
+      } else {
+        addMsg(`"Hmm, I don't have a specific test for you right now. Keep exploring!"`, 'system');
+        await continueOrMap(region);
+      }
+    } else if (choice.id === 'relate') {
+      addMsg(`"Excellent question! ${topic.topic} connects to ${choice.related.topic}."`);
+      if (choice.related.tldr) addMsg(`<div class="knowledge-panel"><h4>${choice.related.topic}</h4><p>${choice.related.tldr}</p></div>`);
+      grantReward(region.difficulty * 5, 0, topic.topic);
+      await continueOrMap(region);
+    } else {
+      clearNarrative();
+      showWorldMap();
+    }
+  });
+}
+
+async function investigationEncounter(topic, region) {
+  addMsg(`You discover a malfunctioning device. Components are scattered around it. The problem seems related to <strong>${topic.topic}</strong>.`);
+
+  if (topic.tldr) {
+    addMsg(`Examining the device, you recall: ${topic.tldr}`, 'lore');
+  }
+
+  const dc = 10 + region.difficulty * 2;
+  showChoices([
+    { text: `Diagnose the problem (INT check DC ${dc})`, id: 'diagnose' },
+    { text: `Try a brute-force fix (STR check DC ${dc + 2})`, id: 'brute' },
+    { text: `Consult your notes (WIS check DC ${dc - 2})`, id: 'consult' },
+    { text: 'Leave it alone', id: 'leave' },
+  ], async (choice) => {
+    if (choice.id === 'diagnose') {
+      const check = rollCheck('INT', dc);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`You identify the issue! The problem was related to ${topic.topic}. Your understanding of the concept lets you fix it efficiently.`, 'success');
+        if (topic.key_insight) addMsg(`<div class="knowledge-panel"><h4>Insight Gained</h4><p>${topic.key_insight}</p></div>`);
+        grantReward(region.difficulty * 15, region.difficulty * 8, topic.topic);
+      } else {
+        addMsg(`The device's complexity is beyond your current understanding. You need to learn more about ${topic.topic}.`);
+        takeDamage(region.difficulty, 'A spark from the device stings you.');
+        grantReward(region.difficulty * 3, 0, null);
+      }
+    } else if (choice.id === 'brute') {
+      const check = rollCheck('STR', dc + 2);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`Through sheer determination, you force the device back together. It works... for now.`, 'success');
+        grantReward(region.difficulty * 8, region.difficulty * 3, null);
+      } else {
+        addMsg(`Your force makes things worse. Components scatter everywhere.`, 'combat');
+        takeDamage(region.difficulty * 3, 'Broken components cut your hands.');
+      }
+    } else if (choice.id === 'consult') {
+      const check = rollCheck('WIS', dc - 2);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`Your careful study pays off. You recall relevant knowledge about ${topic.topic}.`, 'success');
+        if (topic.definition) addMsg(`<div class="knowledge-panel"><h4>Recalled Knowledge</h4><p>${topic.definition}</p></div>`);
+        grantReward(region.difficulty * 10, region.difficulty * 5, topic.topic);
+      } else {
+        addMsg(`Your memory fails you this time. Perhaps more study is needed.`);
+        grantReward(region.difficulty * 2, 0, null);
+      }
+    } else if (choice.freeformInput) {
+      addMsg(`You try: "${choice.freeformInput}". Creative approach! Let's see...`);
+      const check = rollCheck('INT', dc - 1);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`Your unconventional approach works! The device hums to life.`, 'success');
+        grantReward(region.difficulty * 12, region.difficulty * 5, topic.topic);
+      } else {
+        addMsg(`Interesting idea, but it doesn't quite work. The device remains broken.`);
+        grantReward(region.difficulty * 3, 0, null);
+      }
+    } else {
+      addMsg(`You step away from the device, making a mental note to return later.`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function merchantEncounter(term, region) {
+  addMsg(`A traveling merchant blocks the narrow passage. Their cart is loaded with exotic components.`);
+  addMsg(`"I deal only with those who speak the language of engineering," they say. "Tell me — what is <strong>${term.term}</strong>?"`, 'challenge');
+
+  state.pendingAnswer = { question: `What is ${term.term}?`, answer: term.definition };
+
+  showChoices([
+    { text: 'Give your definition (type below)', id: 'define' },
+    { text: `Try to charm your way past (CHA check DC ${10 + region.difficulty * 2})`, id: 'charm' },
+    { text: 'Sneak around the merchant (DEX check DC 14)', id: 'sneak' },
+  ], async (choice) => {
+    if (choice.freeformInput || choice.id === 'define') {
+      const input = choice.freeformInput || '';
+      // Simple keyword matching for term definitions
+      const answer = term.definition.toLowerCase();
+      const keywords = answer.split(/\s+/).filter(w => w.length > 4);
+      const inputLower = input.toLowerCase();
+      const matches = keywords.filter(kw => inputLower.includes(kw));
+      const score = matches.length / Math.max(keywords.length, 1);
+
+      if (score > 0.3) {
+        addMsg(`The merchant nods approvingly. "You know your terms! Here, take this."`, 'success');
+        addMsg(`<div class="knowledge-panel"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+        grantReward(region.difficulty * 10, region.difficulty * 8, term.term);
+        state.char.inventory.push(`${term.term} Schematic`);
+      } else {
+        addMsg(`The merchant frowns. "Not quite. Let me teach you."`, 'system');
+        addMsg(`<div class="knowledge-panel"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+        grantReward(region.difficulty * 3, 0, null);
+      }
+    } else if (choice.id === 'charm') {
+      const check = rollCheck('CHA', 10 + region.difficulty * 2);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`Your charisma wins them over. "Fine, pass. But learn your terms!"`, 'success');
+        grantReward(region.difficulty * 5, region.difficulty * 3, null);
+      } else {
+        addMsg(`"Charisma won't build circuits! Learn the vocabulary."`, 'system');
+        addMsg(`<div class="knowledge-panel"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+      }
+    } else if (choice.id === 'sneak') {
+      const check = rollCheck('DEX', 14);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`You slip past unnoticed, but miss a learning opportunity.`, 'system');
+        grantReward(region.difficulty * 3, 0, null);
+      } else {
+        addMsg(`Caught! "Trying to sneak past knowledge? Here's what you should know:"`, 'system');
+        addMsg(`<div class="knowledge-panel"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+      }
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function termChallengeEncounter(term, region) {
+  addMsg(`An ancient terminal flickers to life. It displays: <strong>"Define: ${term.term}"</strong>`, 'challenge');
+  addMsg(`The terminal's screen pulses. A correct answer will power the next section of the citadel.`);
+
+  showChoices([
+    { text: 'Enter your definition (type below)', id: 'answer' },
+    { text: `Hack the terminal (INT check DC ${12 + region.difficulty})`, id: 'hack' },
+    { text: 'Skip this terminal', id: 'leave' },
+  ], async (choice) => {
+    if (choice.freeformInput || choice.id === 'answer') {
+      const input = choice.freeformInput || '';
+      const answer = term.definition.toLowerCase();
+      const keywords = answer.split(/\s+/).filter(w => w.length > 4);
+      const inputLower = input.toLowerCase();
+      const matches = keywords.filter(kw => inputLower.includes(kw));
+      const score = matches.length / Math.max(keywords.length, 1);
+
+      if (score > 0.25) {
+        addMsg(`The terminal accepts your answer! Energy flows through the corridor.`, 'success');
+        addMsg(`<div class="knowledge-panel"><h4>Confirmed: ${term.term}</h4><p>${term.definition}</p></div>`);
+        grantReward(region.difficulty * 12, region.difficulty * 5, term.term);
+      } else {
+        addMsg(`The terminal rejects the input. The correct definition appears briefly:`, 'system');
+        addMsg(`<div class="knowledge-panel"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+        takeDamage(region.difficulty, 'A static shock from the terminal.');
+        grantReward(region.difficulty * 2, 0, null);
+      }
+    } else if (choice.id === 'hack') {
+      const check = rollCheck('INT', 12 + region.difficulty);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`You bypass the terminal's security, but the knowledge display activates anyway.`, 'success');
+        addMsg(`<div class="knowledge-panel"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+        grantReward(region.difficulty * 8, region.difficulty * 3, term.term);
+      } else {
+        addMsg(`The terminal's security holds. A feedback loop stings your fingers.`);
+        takeDamage(region.difficulty * 2, 'Electrical feedback!');
+      }
+    } else {
+      addMsg(`You leave the terminal behind.`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function guardianEncounter(quiz, region) {
+  addMsg(`A Guardian Construct blocks the passage. Its eyes glow with inner light. It speaks in a resonant voice:`);
+  addMsg(`"To pass, you must demonstrate understanding. ${quiz.question}"`, 'challenge');
+  addMsg(`<small>Topic: ${quiz.document_topic} | Difficulty: Bloom's Level ${quiz.level}</small>`, 'system');
+
+  showChoices([
+    { text: 'Answer the Guardian (type below)', id: 'answer' },
+    { text: `Challenge the Guardian to combat (STR check DC ${12 + region.difficulty * 2})`, id: 'combat' },
+    { text: `Reason with the Guardian (WIS check DC ${10 + region.difficulty})`, id: 'reason' },
+    { text: 'Retreat', id: 'leave' },
+  ], async (choice) => {
+    if (choice.freeformInput || choice.id === 'answer') {
+      await evaluateAnswer(choice.freeformInput || '', quiz, { topic: quiz.document_topic }, region);
+    } else if (choice.id === 'combat') {
+      const check = rollCheck('STR', 12 + region.difficulty * 2);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`You overpower the Guardian! But brute force doesn't grant understanding.`, 'combat');
+        grantReward(region.difficulty * 5, region.difficulty * 2, null);
+        addMsg(`The Guardian's fading voice echoes: "${quiz.answer}"`, 'lore');
+      } else {
+        addMsg(`The Guardian easily deflects your attack.`, 'combat');
+        takeDamage(region.difficulty * 4, 'The Guardian strikes back!');
+        addMsg(`"Violence is not the answer. The answer is: ${quiz.answer}"`, 'lore');
+      }
+      await continueOrMap(region);
+    } else if (choice.id === 'reason') {
+      const check = rollCheck('WIS', 10 + region.difficulty);
+      addMsg(formatRoll(check));
+      if (check.success) {
+        addMsg(`Your wisdom helps you piece together the answer from context clues.`, 'success');
+        addMsg(`<div class="knowledge-panel"><h4>Answer</h4><p>${quiz.answer}</p></div>`);
+        grantReward(region.difficulty * 10, region.difficulty * 5, quiz.document_topic);
+      } else {
+        addMsg(`Your reasoning falls short. The Guardian provides the answer:`);
+        addMsg(`<div class="knowledge-panel"><h4>Answer</h4><p>${quiz.answer}</p></div>`);
+        grantReward(region.difficulty * 3, 0, null);
+      }
+      await continueOrMap(region);
+    } else {
+      addMsg(`You retreat from the Guardian. It returns to its vigil.`);
+      clearNarrative();
+      showWorldMap();
+    }
+  });
+}
+
+async function skillCheckEncounter(quiz, topic, region) {
+  addMsg(`The path ahead requires practical application. You must solve a real problem.`);
+
+  if (topic && topic.tldr) {
+    addMsg(`<div class="knowledge-panel"><h4>Context: ${topic.topic}</h4><p>${topic.tldr}</p></div>`);
+  }
+
+  if (quiz) {
+    addMsg(`<strong>Challenge:</strong> ${quiz.question}`, 'challenge');
+
+    showChoices([
+      { text: 'Work through the problem (type your answer below)', id: 'answer' },
+      { text: `Apply class skill: ${state.char.class.name} approach`, id: 'class_skill' },
+    ], async (choice) => {
+      if (choice.freeformInput || choice.id === 'answer') {
+        await evaluateAnswer(choice.freeformInput || '', quiz, topic, region);
+      } else if (choice.id === 'class_skill') {
+        const primaryStat = state.char.class.statBonus;
+        const dc = 10 + region.difficulty * 2;
+        const check = rollCheck(primaryStat, dc);
+        addMsg(formatRoll(check));
+        if (check.success) {
+          addMsg(`Your ${state.char.class.name} training helps you work through the problem!`, 'success');
+          addMsg(`<div class="knowledge-panel"><h4>Solution</h4><p>${quiz.answer}</p></div>`);
+          grantReward(region.difficulty * 12, region.difficulty * 5, quiz.document_topic);
+        } else {
+          addMsg(`Your approach doesn't quite work. The solution is:`);
+          addMsg(`<div class="knowledge-panel"><h4>Solution</h4><p>${quiz.answer}</p></div>`);
+          grantReward(region.difficulty * 3, 0, null);
+        }
+        await continueOrMap(region);
+      }
+    });
+  } else {
+    addMsg(`The path is clear, but you sense there's more to learn here.`);
+    grantReward(region.difficulty * 3, 0, null);
+    await continueOrMap(region);
+  }
+}
+
+async function explorationEncounter(region) {
+  addMsg(`You explore deeper into ${region.name}. The corridors twist and turn.`);
+
+  const events = [
+    `You find a glowing crystal that hums with stored energy. It refreshes you.`,
+    `An old inscription on the wall catches your eye. It contains a fragment of knowledge.`,
+    `A hidden alcove contains a small cache of gold coins.`,
+    `You discover a rest point with a workbench and tools.`,
+  ];
+
+  addMsg(events[Math.floor(Math.random() * events.length)]);
+
+  // Random small reward
+  const heal = Math.random() > 0.5;
+  if (heal) {
+    const amount = dN(6) + state.char.level;
+    state.char.hp = Math.min(state.char.maxHp, state.char.hp + amount);
+    addMsg(`You recover ${amount} HP.`, 'success');
+  } else {
+    const gold = dN(10) + region.difficulty * 2;
+    state.char.gold += gold;
+    addMsg(`You find ${gold} gold!`, 'reward');
+  }
+
+  updateHUD();
+  saveState();
+  await continueOrMap(region);
+}
+
+// ============================================================
+// ANSWER EVALUATION
+// ============================================================
+async function evaluateAnswer(playerAnswer, questionData, topic, region) {
+  if (!playerAnswer || playerAnswer.trim().length === 0) {
+    addMsg(`You must provide an answer. The correct answer was:`, 'system');
+    addMsg(`<div class="knowledge-panel"><h4>Answer</h4><p>${questionData.answer}</p></div>`);
+    trackMastery(topic?.topic, false);
+    grantReward(region.difficulty * 2, 0, null);
+    await continueOrMap(region);
+    return;
+  }
+
+  // Keyword-based evaluation
+  const correctAnswer = questionData.answer.toLowerCase();
+  const playerLower = playerAnswer.toLowerCase();
+
+  // Extract significant keywords from the correct answer
+  const stopWords = new Set(['the','a','an','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','shall','can','to','of','in','for','on','with','at','by','from','it','this','that','these','those','and','or','but','not','no','so','as','if','then','than','when','which','what','who','how','where','why']);
+  const keywords = correctAnswer.split(/\s+/)
+    .map(w => w.replace(/[^a-z0-9]/g, ''))
+    .filter(w => w.length > 3 && !stopWords.has(w));
+
+  const uniqueKeywords = [...new Set(keywords)];
+  const matches = uniqueKeywords.filter(kw => playerLower.includes(kw));
+  const score = uniqueKeywords.length > 0 ? matches.length / uniqueKeywords.length : 0;
+
+  if (score >= 0.4) {
+    addMsg(`Correct! Your understanding shows.`, 'success');
+    addMsg(`<div class="knowledge-panel"><h4>Full Answer</h4><p>${questionData.answer}</p></div>`);
+    trackMastery(topic?.topic, true);
+    grantReward(region.difficulty * 15, region.difficulty * 8, topic?.topic);
+  } else if (score >= 0.15) {
+    addMsg(`Partially correct. You're on the right track.`, 'warning');
+    addMsg(`<div class="knowledge-panel"><h4>Complete Answer</h4><p>${questionData.answer}</p></div>`);
+    trackMastery(topic?.topic, false);
+    grantReward(region.difficulty * 8, region.difficulty * 3, null);
+  } else {
+    addMsg(`Not quite. Let this knowledge strengthen you for next time.`, 'system');
+    addMsg(`<div class="knowledge-panel"><h4>The Answer</h4><p>${questionData.answer}</p></div>`);
+    trackMastery(topic?.topic, false);
+    takeDamage(region.difficulty, 'The sting of ignorance.');
+    grantReward(region.difficulty * 2, 0, null);
+  }
+}
+
+// ============================================================
+// REWARDS & PROGRESSION
+// ============================================================
+function grantReward(xp, gold, topicName) {
+  state.char.xp += xp;
+  state.char.gold += gold;
+
+  let msg = `<span class="msg-reward">`;
+  if (xp > 0) msg += `+${xp} XP `;
+  if (gold > 0) msg += `+${gold} gold `;
+  msg += `</span>`;
+  addMsg(msg, 'reward');
+
+  // Level up check
+  while (state.char.xp >= state.char.xpToLevel) {
+    state.char.xp -= state.char.xpToLevel;
+    state.char.level++;
+    state.char.xpToLevel = 100 * state.char.level;
+    state.char.maxHp += 5;
+    state.char.hp = state.char.maxHp;
+    state.char.maxMp += 3;
+    state.char.mp = state.char.maxMp;
+    addMsg(`<strong>LEVEL UP! You are now Level ${state.char.level}!</strong> +5 Max HP, +3 Max ${state.char.resourceName}. New regions may be unlocked!`, 'success');
+  }
+
+  updateHUD();
+  saveState();
+}
+
+function takeDamage(amount, description) {
+  state.char.hp = Math.max(0, state.char.hp - amount);
+  addMsg(`${description} (-${amount} HP)`, 'combat');
+
+  if (state.char.hp <= 0) {
+    state.char.hp = Math.floor(state.char.maxHp * 0.25);
+    state.char.gold = Math.max(0, state.char.gold - 10);
+    addMsg(`You collapse but are revived at the Citadel gates. (-10 gold)`, 'combat');
+  }
+
+  updateHUD();
+  saveState();
+}
+
+function trackMastery(topicName, correct) {
+  if (!topicName) return;
+  const key = topicName.toLowerCase().replace(/\s+/g, '-');
+  if (!state.masteredTopics[key]) {
+    state.masteredTopics[key] = { correct: 0, attempts: 0, lastSeen: Date.now() };
+  }
+  state.masteredTopics[key].attempts++;
+  if (correct) state.masteredTopics[key].correct++;
+  state.masteredTopics[key].lastSeen = Date.now();
+}
+
+async function continueOrMap(region) {
+  state.turnCount++;
+
+  // Spaced repetition: occasionally revisit old topics
+  const shouldReview = state.turnCount % 5 === 0;
+
+  showChoices([
+    { text: `Continue exploring ${region.name}`, id: 'continue' },
+    { text: 'Return to the map', id: 'map' },
+    ...(shouldReview ? [{ text: 'Review a past topic (bonus XP)', id: 'review' }] : []),
+  ], async (choice) => {
+    if (choice.id === 'continue') {
+      clearNarrative();
+      addMsg(`You press deeper into ${region.name}...`);
+      await generateEncounter(region);
+    } else if (choice.id === 'review') {
+      await spacedRepetitionReview(region);
+    } else {
+      clearNarrative();
+      showWorldMap();
+    }
+  });
+}
+
+async function spacedRepetitionReview(region) {
+  // Find a topic the player has seen but not mastered
+  const candidates = Object.entries(state.masteredTopics)
+    .filter(([, v]) => v.correct < 2 && v.attempts > 0)
+    .sort((a, b) => a[1].lastSeen - b[1].lastSeen);
+
+  if (candidates.length === 0) {
+    addMsg(`No topics need review right now. Keep exploring!`, 'system');
+    await continueOrMap(region);
+    return;
+  }
+
+  const [topicKey] = candidates[0];
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(topicKey)}`);
+    if (results.length > 0) {
+      addMsg(`A memory surfaces... You recall studying <strong>${results[0].topic}</strong>. Let's test your retention.`, 'system');
+      const qs = await api(`/api/quiz/similar?q=${encodeURIComponent(topicKey)}`);
+      if (qs.length > 0) {
+        addMsg(`"${qs[0].question}"`, 'challenge');
+        showChoices([
+          { text: 'Answer (type below)', id: 'answer' },
+        ], async (choice) => {
+          await evaluateAnswer(choice.freeformInput || '', qs[0], results[0], region);
+          addMsg(`Bonus: spaced repetition review grants extra XP!`, 'reward');
+          grantReward(region.difficulty * 5, 0, topicKey);
+          await continueOrMap(region);
+        });
+        return;
+      }
+    }
+  } catch (e) { }
+
+  addMsg(`Couldn't find a review topic. Keep exploring!`, 'system');
+  await continueOrMap(region);
+}
+
+async function searchForClues(topic, region) {
+  addMsg(`You search the area for clues about ${topic.topic}...`);
+
+  try {
+    const related = await api(`/api/similar/${topic.id}`);
+    if (related.length > 0) {
+      addMsg(`You find a worn journal with notes about related concepts:`, 'system');
+      related.slice(0, 2).forEach(r => {
+        addMsg(`<div class="knowledge-panel"><h4>${r.topic}</h4><p>${r.tldr || 'A related concept...'}</p></div>`);
+      });
+    }
+
+    if (topic.definition) {
+      addMsg(`<div class="knowledge-panel"><h4>Key Clue: ${topic.topic}</h4><p>${topic.definition}</p></div>`);
+    }
+  } catch (e) {
+    addMsg(`You find scattered notes but can't make sense of them.`, 'system');
+  }
+
+  grantReward(region.difficulty * 3, 0, null);
+  await continueOrMap(region);
+}
+
+// ============================================================
+// SAVE / LOAD
+// ============================================================
+function saveState() {
+  try {
+    localStorage.setItem('knowledge-quest-save', JSON.stringify({
+      char: state.char,
+      masteredTopics: state.masteredTopics,
+      visitedRegions: state.visitedRegions,
+      turnCount: state.turnCount,
+    }));
+  } catch (e) { }
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem('knowledge-quest-save');
+    if (saved) {
+      const data = JSON.parse(saved);
+      state.char = data.char;
+      state.masteredTopics = data.masteredTopics || {};
+      state.visitedRegions = data.visitedRegions || [];
+      state.turnCount = data.turnCount || 0;
+      return true;
+    }
+  } catch (e) { }
+  return false;
+}
+
+// ============================================================
+// PREMIUM FEATURES
+// ============================================================
+const premiumFeatures = {
+  enabled: false,
+  features: {
+    advancedClasses: ['Quantum Sage', 'Signal Mage', 'Control Theorist'],
+    bonusRegions: ['The Quantum Realm', 'The Electromagnetic Field'],
+    cosmetics: ['Golden Circuit Aura', 'Plasma Trail', 'Holographic HUD'],
+    challengeModes: ['Speedrun Mode', 'No-Hint Mode', 'Master Difficulty'],
+  },
+  toggle() {
+    this.enabled = !this.enabled;
+    console.log(`Premium features ${this.enabled ? 'enabled' : 'disabled'}`);
+  }
+};
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  try {
+    state.dbStats = await api('/api/stats');
+
+    if (state.dbStats.documents === 0) {
+      document.getElementById('loading').innerHTML = '<p>Knowledge base is empty. Please run the importer first.</p>';
+      return;
+    }
+
+    // Check for saved game
+    if (loadState()) {
+      document.getElementById('loading').style.display = 'none';
+      state.phase = 'playing';
+      document.getElementById('narrative').style.display = 'block';
+      document.getElementById('actions').style.display = 'block';
+      updateHUD();
+      addMsg(`Welcome back, ${state.char.name}! Your journey continues.`, 'system');
+      showWorldMap();
+    } else {
+      initCharCreation();
+    }
+  } catch (err) {
+    document.getElementById('loading').innerHTML = `<p>Could not connect to the game server. Make sure Docker is running.</p><p style="color:var(--danger)">${err.message}</p>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
