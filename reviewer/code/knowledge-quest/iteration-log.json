@@ -28,6 +28,24 @@
       "failing_dimensions": ["intrinsic_integration", "pedagogical_soundness", "motivation_engagement", "assessment_design"],
       "biggest_risk": "Chocolate-covered-broccoli: learning and gameplay are separate activities despite narrative wrapping",
       "status": "fail"
+    },
+    {
+      "iteration": 2,
+      "timestamp": "2026-03-29T00:25:00Z",
+      "generator_action": "refinement based on iteration 1 feedback",
+      "scores": {
+        "intrinsic_integration": "partial",
+        "pedagogical_soundness": "mixed",
+        "narrative_structure": "functional",
+        "motivation_engagement": "mixed",
+        "assessment_design": "hybrid",
+        "accessibility": "adequate",
+        "freemium_monetisation": "balanced"
+      },
+      "failing_dimensions": ["intrinsic_integration", "pedagogical_soundness", "motivation_engagement"],
+      "improvements": ["assessment_design: overt → hybrid"],
+      "biggest_risk": "Thematic incoherence — diagnosis symptoms, prediction scenarios, and terms are not matched to the topic or region",
+      "status": "fail"
     }
   ]
 }
