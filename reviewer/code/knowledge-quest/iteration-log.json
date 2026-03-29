@@ -158,6 +158,34 @@
       "improvements": ["narrative_structure: functional → compelling (persistent NPCs, NPC-triggered cascades, prerequisite sequencing)"],
       "biggest_risk": "REGION_QUIZ_SOURCES references nonexistent 'summary' source for difficulty 3",
       "status": "pass"
+    },
+    {
+      "iteration": 9,
+      "timestamp": "2026-03-30T01:30:00Z",
+      "generator_action": "Full interactive tutorial (6-step overlay with practice encounter), Help button in HUD, BUG-001 fix (remove summary source), BUG-002 fix (remove dead CSS), deterministic NPC cascade trigger, prerequisite check logging",
+      "scores": {
+        "intrinsic_integration": "deep",
+        "pedagogical_soundness": "strong",
+        "narrative_structure": "compelling",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "strong",
+        "freemium_monetisation": "learning-first",
+        "rpg_mechanical_integrity": "mechanically-rich"
+      },
+      "failing_dimensions": [],
+      "improvements": [
+        "Full 6-step interactive tutorial with progressive disclosure and live practice encounter",
+        "Persistent Help/How to Play button ([?]) in HUD accessible at any time",
+        "BUG-001 fixed: removed nonexistent summary source from REGION_QUIZ_SOURCES",
+        "BUG-002 fixed: removed unused CSS icon classes",
+        "Deterministic NPC cascade trigger (every 4th encounter instead of 30% random)",
+        "Prerequisite check failure logging",
+        "Input placeholder changed to 'Type your answer here...'",
+        "29 ARIA elements (up from 28)"
+      ],
+      "biggest_risk": "Tutorial overlay system introduces a new DOM code path; mitigated by try/catch with static fallback and always-accessible skip button",
+      "status": "pass"
     }
   ]
 }
