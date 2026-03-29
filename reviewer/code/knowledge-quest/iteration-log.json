@@ -1,13 +1,14 @@
 {
   "game_name": "knowledge-quest",
   "topic": "electronics, electrical engineering, robotics, manufacturing, and applied physics — covering topics from basic circuit components (resistors, capacitors, inductors, diodes, transistors, MOSFETs) through PCB design, microcontrollers (STM32), communication protocols (I2C, SPI, CAN bus), 3D printing, CNC machining, and robot control (PID, forward/inverse kinematics, gait control, reinforcement learning)",
-  "max_iterations": 5,
+  "max_iterations": 10,
   "pass_threshold": {
     "intrinsic_integration": "deep",
     "pedagogical_soundness": "strong",
     "narrative_structure": "functional",
     "motivation_engagement": "intrinsic",
     "assessment_design": "hybrid",
+    "rpg_mechanical_integrity": "partially-functional",
     "accessibility": "adequate",
     "freemium_monetisation": "balanced"
   },
@@ -100,6 +101,25 @@
       "improvements": ["intrinsic_integration: partial → deep"],
       "biggest_risk": "Cosine similarity evaluation across 8/12 encounter types measures vocabulary overlap rather than conceptual accuracy",
       "status": "max_iterations_reached"
+    },
+    {
+      "iteration": 6,
+      "timestamp": "2026-03-29T15:30:00Z",
+      "generator_action": "LLM evaluator (gemini flash), stats/classes mechanics, onboarding tutorial, half-life mastery decay",
+      "scores": {
+        "intrinsic_integration": "deep",
+        "pedagogical_soundness": "strong",
+        "narrative_structure": "functional",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "adequate",
+        "freemium_monetisation": "learning-first",
+        "rpg_mechanical_integrity": "mechanically-rich"
+      },
+      "failing_dimensions": [],
+      "improvements": ["pedagogical_soundness: mixed → strong (LLM evaluator)", "rpg_mechanical_integrity: cosmetic → mechanically-rich (stats, classes, onboarding, decay)"],
+      "biggest_risk": "LLM evaluator creates external API dependency for core assessment loop",
+      "status": "pass"
     }
   ]
 }
