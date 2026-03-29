@@ -139,6 +139,25 @@
       "improvements": ["accessibility: adequate → strong (light theme, full ARIA, keyboard nav)"],
       "biggest_risk": "Prerequisite graph endpoint built but not consumed by frontend encounter sequencing",
       "status": "pass"
+    },
+    {
+      "iteration": 8,
+      "timestamp": "2026-03-29T17:00:00Z",
+      "generator_action": "prerequisite graph sequencing, Bloom scaffolding by region, font controls, NPC cascades, BUG-001 fix, icon prefixes",
+      "scores": {
+        "intrinsic_integration": "deep",
+        "pedagogical_soundness": "strong",
+        "narrative_structure": "compelling",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "strong",
+        "freemium_monetisation": "learning-first",
+        "rpg_mechanical_integrity": "mechanically-rich"
+      },
+      "failing_dimensions": [],
+      "improvements": ["narrative_structure: functional → compelling (persistent NPCs, NPC-triggered cascades, prerequisite sequencing)"],
+      "biggest_risk": "REGION_QUIZ_SOURCES references nonexistent 'summary' source for difficulty 3",
+      "status": "pass"
     }
   ]
 }
