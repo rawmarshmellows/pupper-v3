@@ -64,6 +64,24 @@
       "improvements": ["freemium_monetisation: balanced → learning-first", "all 7 iter-2 issues addressed but new issues emerged"],
       "biggest_risk": "Cross-domain challenges reward listing topic names rather than demonstrating technical synthesis",
       "status": "fail"
+    },
+    {
+      "iteration": 4,
+      "timestamp": "2026-03-29T11:00:00Z",
+      "generator_action": "fundamental redesign: removed XP/level, mastery milestones, concept cascades, knowledge journal, 3-step negotiate, topic misconceptions",
+      "scores": {
+        "intrinsic_integration": "partial",
+        "pedagogical_soundness": "mixed",
+        "narrative_structure": "functional",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "adequate",
+        "freemium_monetisation": "learning-first"
+      },
+      "failing_dimensions": ["intrinsic_integration", "pedagogical_soundness"],
+      "improvements": ["motivation_engagement: mixed → intrinsic"],
+      "biggest_risk": "Non-deterministic cross-domain evaluation makes highest-order assessment unreliable",
+      "status": "fail"
     }
   ]
 }
