@@ -1,0 +1,10 @@
+{
+  "name": "circuit-quest-server",
+  "version": "1.0.0",
+  "description": "Circuit Quest educational game server",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.12.0"
+  }
+}
