@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Knowledge Quest</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #161b22;
+    --bg-card: #1c2333;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent-glow: rgba(88,166,255,0.15);
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #f85149;
+    --hp-bar: #3fb950;
+    --mp-bar: #bc8cff;
+    --mastery: #a371f7;
+    --radius: 8px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+  }
+
+  #hud {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-panel);
+    border-bottom: 1px solid #30363d;
+    padding: 8px 12px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    font-size: 0.85rem;
+  }
+  .hud-name { font-weight: 700; color: var(--accent); margin-right: auto; }
+  .hud-stat { display: flex; align-items: center; gap: 4px; }
+  .hud-bar { width: 60px; height: 8px; background: #30363d; border-radius: 4px; overflow: hidden; }
+  .hud-bar-fill { height: 100%; border-radius: 4px; transition: width 0.3s ease; }
+  .hud-bar-hp .hud-bar-fill { background: var(--hp-bar); }
+  .hud-bar-mp .hud-bar-fill { background: var(--mp-bar); }
+  .hud-bar-mastery .hud-bar-fill { background: var(--mastery); }
+  .hud-mastery { color: var(--mastery); font-weight: 600; }
+  .hud-rank { color: var(--warning); font-weight: 600; font-size: 0.8rem; }
+
+  #narrative {
+    flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    padding: 16px; max-width: 600px; width: 100%; margin: 0 auto;
+  }
+  .msg { margin-bottom: 16px; line-height: 1.6; animation: fadeIn 0.3s ease; }
+  .msg-narrator { color: var(--text); }
+  .msg-system { color: var(--text-dim); font-style: italic; font-size: 0.9rem; }
+  .msg-combat { color: var(--danger); }
+  .msg-success { color: var(--success); }
+  .msg-lore { color: var(--accent); border-left: 3px solid var(--accent); padding-left: 12px; background: var(--accent-glow); border-radius: 0 var(--radius) var(--radius) 0; padding: 8px 12px; }
+  .msg-challenge { background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius); padding: 12px; }
+  .msg-reward { color: var(--warning); font-weight: 600; }
+  .msg-hint { color: var(--warning); font-size: 0.9rem; font-style: italic; }
+  .msg-mastery { color: var(--mastery); font-weight: 600; }
+  .msg-cascade { background: linear-gradient(135deg, rgba(163,113,247,0.15), rgba(88,166,255,0.15)); border: 1px solid var(--mastery); border-radius: var(--radius); padding: 12px; }
+  .msg-misconception { background: rgba(248,81,73,0.08); border: 1px solid var(--danger); border-radius: var(--radius); padding: 12px; font-size: 0.9rem; }
+  .msg-misconception strong { color: var(--danger); }
+  .roll-result { font-family: monospace; color: var(--warning); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .circuit-diagram {
+    background: #0a0e14; border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 12px; margin: 8px 0; font-family: monospace; font-size: 0.85rem;
+    white-space: pre; overflow-x: auto; color: var(--accent); line-height: 1.4;
+  }
+
+  .component-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px; margin: 8px 0;
+  }
+  .component-btn {
+    padding: 10px 8px; background: var(--bg-card); border: 2px solid #30363d;
+    border-radius: var(--radius); color: var(--text); cursor: pointer;
+    text-align: center; font-size: 0.85rem; min-height: 44px;
+    transition: all 0.15s ease;
+  }
+  .component-btn:hover { border-color: var(--accent); background: var(--accent-glow); }
+  .component-btn.selected { border-color: var(--success); background: rgba(63,185,80,0.1); }
+  .component-btn.wrong { border-color: var(--danger); background: rgba(248,81,73,0.1); }
+
+  .wiring-slot {
+    display: flex; align-items: center; gap: 8px; padding: 8px; margin: 4px 0;
+    background: var(--bg-card); border: 2px dashed #30363d; border-radius: var(--radius);
+    min-height: 44px; transition: all 0.15s ease; cursor: pointer;
+  }
+  .wiring-slot.filled { border-style: solid; border-color: var(--accent); }
+  .wiring-slot.correct-slot { border-color: var(--success); background: rgba(63,185,80,0.08); }
+  .wiring-slot.wrong-slot { border-color: var(--danger); background: rgba(248,81,73,0.08); }
+  .wiring-slot .slot-label { color: var(--text-dim); font-size: 0.8rem; min-width: 80px; }
+  .wiring-slot .slot-component { color: var(--text); font-weight: 600; }
+
+  .wiring-parts {
+    display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; padding: 8px;
+    background: var(--bg-panel); border-radius: var(--radius); border: 1px solid #30363d;
+  }
+  .wiring-part {
+    padding: 6px 12px; background: var(--bg-card); border: 1px solid #30363d;
+    border-radius: var(--radius); cursor: pointer; font-size: 0.85rem;
+    transition: all 0.15s ease; min-height: 36px; display: flex; align-items: center;
+  }
+  .wiring-part:hover { border-color: var(--accent); }
+  .wiring-part.used { opacity: 0.3; cursor: not-allowed; border-color: transparent; }
+
+  .fault-info {
+    background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 10px; margin: 6px 0; font-size: 0.9rem;
+  }
+  .fault-info .fault-label { color: var(--warning); font-weight: 600; font-size: 0.8rem; }
+  .fault-info .fault-data { color: var(--text); margin-top: 4px; }
+
+  .fault-step-btn {
+    display: block; width: 100%; padding: 10px 12px; margin-bottom: 6px;
+    background: var(--bg-card); color: var(--text); border: 1px solid #30363d;
+    border-radius: var(--radius); font-size: 0.9rem; text-align: left;
+    cursor: pointer; transition: all 0.15s ease; min-height: 44px;
+  }
+  .fault-step-btn:hover { border-color: var(--accent); background: var(--accent-glow); }
+  .fault-step-btn.used-step { opacity: 0.5; border-color: var(--success); cursor: not-allowed; }
+
+  .knowledge-reveal {
+    background: var(--bg-card); border: 1px solid var(--success); border-radius: var(--radius);
+    padding: 12px; margin: 8px 0;
+  }
+  .knowledge-reveal h4 { color: var(--success); margin-bottom: 6px; font-size: 0.9rem; }
+  .knowledge-reveal p { font-size: 0.9rem; line-height: 1.5; color: var(--text-dim); }
+
+  .mastery-card {
+    background: var(--bg-card); border: 1px solid var(--mastery); border-radius: var(--radius);
+    padding: 12px; margin: 8px 0;
+  }
+  .mastery-card h4 { color: var(--mastery); margin-bottom: 6px; font-size: 0.9rem; }
+
+  .journal-entry {
+    background: var(--bg-card); border-left: 3px solid var(--mastery); border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 8px 12px; margin: 4px 0; font-size: 0.85rem;
+  }
+  .journal-connection { color: var(--accent); font-style: italic; font-size: 0.8rem; }
+
+  #actions {
+    position: sticky; bottom: 0;
+    background: var(--bg-panel); border-top: 1px solid #30363d;
+    padding: 12px; max-width: 600px; width: 100%; margin: 0 auto;
+  }
+  .choice-btn {
+    display: block; width: 100%; padding: 12px 16px; margin-bottom: 8px;
+    background: var(--bg-card); color: var(--text); border: 1px solid #30363d;
+    border-radius: var(--radius); font-size: 1rem; text-align: left;
+    cursor: pointer; transition: all 0.15s ease; min-height: 44px; line-height: 1.4;
+  }
+  .choice-btn:hover, .choice-btn:focus { background: var(--accent-glow); border-color: var(--accent); outline: none; }
+  .choice-btn:active { transform: scale(0.98); }
+  .choice-btn .key-hint { color: var(--text-dim); font-size: 0.8rem; margin-right: 8px; }
+
+  #input-row { display: flex; gap: 8px; margin-top: 4px; }
+  #freeform { flex: 1; padding: 10px 12px; background: var(--bg-card); color: var(--text); border: 1px solid #30363d; border-radius: var(--radius); font-size: 1rem; min-height: 44px; }
+  #freeform:focus { border-color: var(--accent); outline: none; }
+  #submit-btn { padding: 10px 16px; background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; min-width: 44px; min-height: 44px; }
+
+  #char-creation {
+    max-width: 600px; margin: 0 auto; padding: 16px; width: 100%;
+  }
+  #char-creation h1 { color: var(--accent); margin-bottom: 8px; text-align: center; }
+  #char-creation h2 { color: var(--text-dim); font-size: 1rem; margin: 16px 0 8px; }
+  .class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .class-btn {
+    padding: 12px; background: var(--bg-card); border: 2px solid #30363d; border-radius: var(--radius);
+    color: var(--text); cursor: pointer; text-align: center; font-size: 0.9rem; min-height: 44px;
+    transition: all 0.15s ease;
+  }
+  .class-btn:hover, .class-btn.selected { border-color: var(--accent); background: var(--accent-glow); }
+
+  .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+  .stat-name { min-width: 40px; font-weight: 600; }
+  .stat-controls { display: flex; align-items: center; gap: 8px; }
+  .stat-btn { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid #30363d; border-radius: 50%; color: var(--text); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .stat-btn:hover { border-color: var(--accent); }
+  .stat-val { min-width: 24px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+  .stat-points { text-align: center; color: var(--warning); font-weight: 600; margin: 8px 0; }
+
+  #name-input { width: 100%; padding: 10px; background: var(--bg-card); color: var(--text); border: 1px solid #30363d; border-radius: var(--radius); font-size: 1rem; }
+  #start-btn {
+    display: block; width: 100%; padding: 14px; margin-top: 16px;
+    background: var(--accent); color: var(--bg); border: none; border-radius: var(--radius);
+    font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  }
+  #start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  #loading { text-align: center; padding: 40px; color: var(--text-dim); }
+  .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #30363d; border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .premium-badge { display: inline-block; background: linear-gradient(135deg, #d29922, #f0c040); color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+
+  .region-card {
+    background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 12px; margin-bottom: 8px; cursor: pointer; transition: all 0.15s ease;
+  }
+  .region-card:hover { border-color: var(--accent); }
+  .region-card.locked { opacity: 0.5; cursor: not-allowed; }
+  .region-card h4 { color: var(--accent); margin-bottom: 4px; }
+  .region-card p { font-size: 0.85rem; color: var(--text-dim); }
+  .region-card .mastery-meter { width: 100%; height: 4px; background: #30363d; border-radius: 2px; margin-top: 6px; }
+  .region-card .mastery-meter-fill { height: 100%; background: var(--mastery); border-radius: 2px; transition: width 0.3s; }
+  .region-rank { font-size: 0.75rem; color: var(--warning); font-weight: 600; }
+
+  .gate-card {
+    background: var(--bg-card); border: 2px solid var(--mastery); border-radius: var(--radius);
+    padding: 16px; margin: 12px 0; text-align: center;
+  }
+  .gate-card h4 { color: var(--mastery); margin-bottom: 8px; }
+
+  .negotiate-step {
+    background: var(--bg-card); border: 1px solid #30363d; border-radius: var(--radius);
+    padding: 10px; margin: 6px 0;
+  }
+  .negotiate-step.active { border-color: var(--accent); }
+  .negotiate-step.complete { border-color: var(--success); opacity: 0.7; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="hud" style="display:none;" role="banner">
+  <span class="hud-name" id="hud-name">Hero</span>
+  <span class="hud-stat">HP <span class="hud-bar hud-bar-hp"><span class="hud-bar-fill" id="hud-hp-bar" style="width:100%"></span></span> <span id="hud-hp-text">30/30</span></span>
+  <span class="hud-stat">MP <span class="hud-bar hud-bar-mp"><span class="hud-bar-fill" id="hud-mp-bar" style="width:100%"></span></span> <span id="hud-mp-text">20/20</span></span>
+  <span class="hud-stat"><span class="hud-mastery" id="hud-mastery">0 mastered</span></span>
+  <span class="hud-stat"><span class="hud-rank" id="hud-rank">Novice</span></span>
+</div>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p style="margin-top:12px;">Connecting to knowledge base...</p>
+</div>
+
+<div id="char-creation" style="display:none;">
+  <h1>Knowledge Quest</h1>
+  <p style="text-align:center; color:var(--text-dim); margin-bottom:16px;">An RPG where understanding IS your power</p>
+  <div id="db-stats" style="text-align:center; color:var(--text-dim); font-size:0.85rem; margin-bottom:16px;"></div>
+  <h2>Your Name</h2>
+  <input type="text" id="name-input" placeholder="Enter your name..." maxlength="20" aria-label="Character name">
+  <h2>Choose Your Path</h2>
+  <div class="class-grid" id="class-grid"></div>
+  <h2>Distribute Stats <span class="stat-points" id="stat-points">20 points remaining</span></h2>
+  <div id="stat-rows"></div>
+  <button id="start-btn" disabled>Begin Your Quest</button>
+</div>
+
+<div id="narrative" style="display:none;" role="main" aria-label="Game narrative"></div>
+
+<div id="actions" style="display:none;" role="navigation" aria-label="Game actions">
+  <div id="choice-container"></div>
+  <div id="input-row">
+    <input type="text" id="freeform" placeholder="Or type a custom action..." aria-label="Custom action input">
+    <button id="submit-btn" aria-label="Submit action">Go</button>
+  </div>
+</div>
+
+<footer id="footer" role="contentinfo" style="display:none; text-align:center; padding:4px; color:var(--text-dim); font-size:0.7rem;">Knowledge Quest v5</footer>
+
+<script>
+// ============================================================
+// GAME STATE & CONFIG -- ITERATION 5: FINAL
+// Fixes: deterministic cross-domain challenges, action-based encounters
+// (circuit wiring + fault tree), diagnostic branching with misconception
+// matching, gold replenishment on mastery milestones.
+// PRESERVED: no XP/level, mastery milestones only, concept cascades,
+// knowledge journal, all content free, dark theme, mobile, ARIA.
+// ============================================================
+const CLASSES = [
+  { id: 'engineer', name: 'Engineer', desc: 'Builds and analyzes circuits', resource: 'Stamina', statBonus: 'INT' },
+  { id: 'explorer', name: 'Explorer', desc: 'Discovers hidden knowledge', resource: 'Stamina', statBonus: 'WIS' },
+  { id: 'artificer', name: 'Artificer', desc: 'Crafts with components', resource: 'MP', statBonus: 'DEX' },
+  { id: 'scholar', name: 'Scholar', desc: 'Masters deep theory', resource: 'MP', statBonus: 'INT' },
+  { id: 'tinker', name: 'Tinker', desc: 'Hacks and improvises', resource: 'Stamina', statBonus: 'DEX' },
+  { id: 'sage', name: 'Sage', desc: 'Teaches and mentors', resource: 'MP', statBonus: 'WIS' },
+];
+const STAT_NAMES = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
+const BASE_STAT = 5, TOTAL_POINTS = 20;
+
+const MASTERY_RANKS = [
+  { name: 'Novice', threshold: 0, color: '#8b949e' },
+  { name: 'Apprentice', threshold: 0.25, color: '#58a6ff' },
+  { name: 'Journeyman', threshold: 0.5, color: '#a371f7' },
+  { name: 'Master', threshold: 0.8, color: '#d29922' },
+];
+
+// Concept cascade definitions
+const CONCEPT_CASCADES = {
+  'capacitor+inductor': { name: 'LC Resonance', prompt: 'You realize capacitors store energy in electric fields and inductors store it in magnetic fields. When combined in an LC circuit, energy oscillates between these two forms -- creating resonance! What determines the resonant frequency?', answer: 'The resonant frequency is determined by f = 1/(2*pi*sqrt(LC)), where L is inductance and C is capacitance. Energy alternates between the electric field of the capacitor and the magnetic field of the inductor.' },
+  'resistor+capacitor': { name: 'RC Time Constant', prompt: 'Resistors limit current flow. Capacitors store charge. Together, they create a time-dependent behavior. What is the RC time constant and how does it affect circuit behavior?', answer: 'The RC time constant tau = R*C determines how quickly a capacitor charges or discharges through a resistor. After one time constant, the capacitor reaches 63.2% of its final voltage. This governs filters, timing circuits, and signal coupling.' },
+  'pid+imu': { name: 'Sensor-Driven Control', prompt: 'A PID controller needs feedback from sensors. An IMU provides orientation data. How do these combine to stabilize a robot, and what happens if the IMU data is noisy?', answer: 'The IMU provides angular velocity and acceleration data that the PID controller uses as error feedback. Noisy IMU data gets amplified by the derivative term, causing motor jitter. A low-pass filter on the IMU data or reducing the D gain smooths the control output.' },
+  'adc+voltage': { name: 'Signal Digitization', prompt: 'Analog signals live in a continuous world. ADCs convert them to discrete values. What determines the accuracy of this conversion, and what error is introduced?', answer: 'ADC accuracy depends on resolution (number of bits), reference voltage, and sampling rate. Quantization error equals half the least significant bit. Nyquist theorem requires sampling at 2x the signal frequency to avoid aliasing.' },
+  'mosfet+pwm': { name: 'Power Switching', prompt: 'MOSFETs can switch rapidly between on and off states. PWM varies the duty cycle. How do these combine in a motor driver, and why does switching frequency matter?', answer: 'A MOSFET acts as a high-speed switch controlled by PWM. The duty cycle determines average voltage delivered to the motor. Higher switching frequencies reduce audible noise and current ripple but increase switching losses and heat in the MOSFET.' },
+  'spi+stm32': { name: 'Peripheral Communication', prompt: 'An STM32 microcontroller needs to talk to external sensors and memory using SPI. What makes SPI suitable for high-speed data transfer, and what are the tradeoffs vs I2C?', answer: 'SPI is full-duplex with separate MOSI/MISO lines and can run at higher clock speeds than I2C. It uses dedicated chip-select lines per device (more pins). I2C needs only 2 wires and supports addressing but is half-duplex and slower.' },
+  'can-bus+pid': { name: 'Distributed Control', prompt: 'Multiple motor controllers on a robot communicate via CAN bus while each runs local PID loops. How does the bus architecture affect control responsiveness?', answer: 'CAN bus provides priority-based arbitration so time-critical PID setpoint updates get through first. Bus latency adds to the control loop delay. Each node runs local PID at high frequency while receiving setpoint commands over CAN at lower rates.' },
+};
+
+// ============================================================
+// ITERATION 5 FIX A: 7 Deterministic Cross-Domain Challenges
+// Fixed pre-authored technical reference answers -- NOT random.
+// ============================================================
+const CROSS_DOMAIN_CHALLENGES = [
+  {
+    id: 'motor_driver',
+    title: 'Design a Motor Driver Circuit',
+    regions: ['workshop', 'lab'],
+    prompt: 'Design a motor driver that can control DC motor speed and direction. What topology would you use, which semiconductor devices, and how would you protect against back-EMF?',
+    reference: 'An H-bridge topology using 4 N-channel MOSFETs allows bidirectional motor control. The gate drivers need bootstrap capacitors for the high-side switches. PWM at 20-50kHz controls speed via duty cycle. Flyback diodes (fast-recovery Schottky) across each MOSFET protect against back-EMF voltage spikes when switching. Gate resistors limit dI/dt to prevent ringing. A current-sense resistor in the low-side path enables overcurrent protection.',
+  },
+  {
+    id: 'sensor_pipeline',
+    title: 'Build a Sensor-to-Display Pipeline',
+    regions: ['sanctum', 'nexus'],
+    prompt: 'An IMU sensor needs to send orientation data to a display. Describe the complete signal chain from analog measurement to screen output, including protocols and data conversion.',
+    reference: 'The IMU MEMS accelerometer and gyroscope produce analog signals internally, converted by the on-chip ADC. The digital data is transmitted via SPI to the STM32 at high speed using DMA for efficient transfer. The MCU runs a complementary or Kalman filter to fuse accelerometer and gyroscope data into stable orientation angles. Processed orientation is sent via I2C to an OLED display controller which renders the data. SPI is chosen for IMU (high data rate) while I2C suffices for the display (low update rate).',
+  },
+  {
+    id: 'power_regulation',
+    title: 'Design Power Regulation for a Robot',
+    regions: ['workshop', 'sanctum'],
+    prompt: 'A battery-powered robot needs stable 3.3V and 5V rails from a 12V LiPo battery. Design the power regulation system, including filtering, protection, and thermal management.',
+    reference: 'A buck converter steps 12V down to 5V efficiently (>90%). The buck uses a power MOSFET switching at 500kHz-1MHz, a power inductor sized for the current rating, and output capacitors for ripple filtering. A linear regulator (LDO) drops 5V to 3.3V for the microcontroller since the dropout is small and current is low. Input bulk capacitors (100uF electrolytic) handle battery impedance. Decoupling capacitors (100nF ceramic) at every IC power pin suppress high-frequency noise. A TVS diode at the battery input protects against voltage transients. Thermal management requires adequate copper pour on PCB power planes.',
+  },
+  {
+    id: 'debug_comm',
+    title: 'Debug a Communication Failure',
+    regions: ['nexus', 'foundry'],
+    prompt: 'Multiple sensors on an I2C bus intermittently return wrong data. The PCB was recently manufactured. What could cause this, and how would you systematically debug it?',
+    reference: 'Cold solder joints from insufficient reflow temperature can cause intermittent connections on the I2C pull-up resistors or sensor package pads. Without proper pull-ups, the open-drain SDA/SCL lines cannot reach valid logic HIGH, causing bit errors. Debug steps: verify pull-up resistor values match the bus capacitance and speed (typically 4.7k for 100kHz, 2.2k for 400kHz). Use an oscilloscope to check signal rise times -- slow edges indicate excessive capacitance or missing pull-ups. Inspect solder joints under magnification for cold joints. Check that all I2C device addresses are unique and no bus contention exists.',
+  },
+  {
+    id: 'control_loop',
+    title: 'Stabilize an Unstable Control System',
+    regions: ['arena', 'sanctum'],
+    prompt: 'A robot arm with PID control oscillates around its setpoint. The STM32 reads encoder position via SPI. Diagnose the possible causes and describe how hardware and software interact to create or solve the instability.',
+    reference: 'Oscillation typically comes from excessive proportional or derivative gain relative to the system dynamics. The STM32 reads encoder counts via SPI at a fixed control loop rate. If the loop rate is too slow relative to the mechanical response, discrete-time effects create phase lag causing oscillation. The derivative term amplifies encoder quantization noise. Solutions: reduce Kp and Kd, add a low-pass filter on the derivative term, increase the control loop frequency by using timer interrupts and DMA for SPI reads. Verify the encoder resolution provides sufficient position accuracy for the required precision. Anti-windup on the integral term prevents overshoot after saturation.',
+  },
+  {
+    id: 'manufactured_board',
+    title: 'From Schematic to Working Board',
+    regions: ['lab', 'foundry'],
+    prompt: 'You designed an amplifier circuit with an op-amp and passive components. Describe the complete process from schematic to a working manufactured PCB, and what can go wrong at each stage.',
+    reference: 'Schematic design defines the op-amp configuration (inverting/non-inverting), feedback resistor values for gain, and bypass capacitors. PCB layout must place bypass caps close to op-amp power pins, use short traces in the feedback path to minimize parasitic capacitance, and provide a solid ground plane. Gerber files go to fabrication. The pick-and-place file positions SMD components. Reflow soldering must match the solder paste temperature profile. Common failures: wrong component footprint causes mechanical misfit, insufficient solder paste causes open joints, incorrect polarity on polarized capacitors causes shorts, ground plane breaks create return path issues affecting the op-amp PSRR.',
+  },
+  {
+    id: 'robot_walking',
+    title: 'Make a Robot Walk Reliably',
+    regions: ['arena', 'nexus'],
+    prompt: 'A quadruped robot has 12 servo motors controlled via CAN bus and uses an IMU for balance. Describe how all these systems must work together for stable walking, and what happens when one link in the chain fails.',
+    reference: 'The gait controller on the main MCU computes leg trajectories using inverse kinematics, generating joint angle setpoints for all 12 servos. Setpoints are broadcast via CAN bus using priority-based message IDs -- leg motors that are in stance phase get higher priority than swing phase. Each motor controller runs a local PID loop at 1kHz for responsive position tracking. The IMU provides body orientation feedback at 200Hz which the gait controller uses to adjust foot placement for balance. If CAN bus latency increases (bad termination, bus errors), setpoint updates arrive late causing jerky motion. If the IMU drifts, the balance correction over-compensates. If one servo PID is poorly tuned, that leg lags behind the gait phase, disrupting the trot pattern.',
+  },
+];
+
+// ============================================================
+// ITERATION 5 FIX B: Misconception pools with targeted feedback
+// Each misconception has specific corrective text
+// ============================================================
+const MISCONCEPTION_POOLS = {
+  'capacitor': [
+    { text: 'Capacitors store current, right? So a bigger capacitor stores more current and can power things longer, like a battery.', correction: 'Capacitors store energy in an electric field between two plates, not current. They store charge (Q = CV). Unlike batteries, capacitors discharge rapidly because they have very low internal resistance. A bigger capacitor stores more charge at the same voltage, but it is not a battery -- it cannot sustain current flow for extended periods.' },
+    { text: 'I thought capacitors block DC and pass AC, but I keep confusing which way. Maybe they pass DC at low frequencies?', correction: 'Capacitors block DC completely once charged (the dielectric prevents current flow). They pass AC because the alternating voltage continuously charges and discharges them, creating a displacement current. Higher frequencies pass more easily because the capacitor has less time to fully charge. This is why the impedance of a capacitor is 1/(2*pi*f*C) -- it decreases with frequency.' },
+    { text: 'The capacitance doubles when you put two in series because you are adding them up, same as resistors in series.', correction: 'Capacitors in series follow the reciprocal rule: 1/C_total = 1/C1 + 1/C2. This is the OPPOSITE of resistors in series. Two equal capacitors in series give HALF the capacitance. This is because the effective plate separation doubles, reducing capacitance. Capacitors in PARALLEL add directly (C_total = C1 + C2), which is the opposite of how parallel resistors combine.' },
+  ],
+  'resistor': [
+    { text: 'Resistors just waste power as heat. I do not understand why you would ever want one in a circuit -- isn\'t less resistance always better?', correction: 'Resistors are essential circuit elements that control current flow, divide voltages, set bias points for transistors, terminate transmission lines, and limit inrush current. Without current-limiting resistors, LEDs burn out, transistor bases get excessive current, and ICs get damaged. The power dissipation (P = I^2*R) is a side effect of their current-limiting function, and proper thermal design accounts for it.' },
+    { text: 'In a parallel circuit, the total resistance is the sum of all resistors, right? So adding more resistors increases total resistance.', correction: 'Parallel resistors follow the reciprocal rule: 1/R_total = 1/R1 + 1/R2 + ... The total resistance is always LESS than the smallest individual resistor. Adding more parallel paths gives current more ways to flow, reducing total resistance. For two equal resistors in parallel, the total is half of one. Series resistors add directly: R_total = R1 + R2.' },
+    { text: 'Ohm\'s law is V = I/R, so if you increase resistance, current goes up.', correction: 'Ohm\'s law is V = I*R (not I/R). Rearranging for current: I = V/R. Increasing resistance with the same voltage DECREASES current. This is the fundamental purpose of a resistor: to limit current. If V = 5V and R = 100 ohms, I = 50mA. Double R to 200 ohms and I drops to 25mA.' },
+  ],
+  'inductor': [
+    { text: 'An inductor is basically a resistor that uses a coil shape. The magnetic field is just a side effect.', correction: 'An inductor fundamentally stores energy in its magnetic field (E = 0.5*L*I^2), unlike a resistor which dissipates energy as heat. The magnetic field IS the operating principle, not a side effect. When current changes, the magnetic field changes, inducing a voltage (V = L*dI/dt) that opposes the change -- this is Lenz\'s law. Inductors pass DC freely but oppose AC, the exact opposite of capacitors.' },
+    { text: 'Inductors oppose changes in voltage, so they smooth out voltage fluctuations.', correction: 'Inductors oppose changes in CURRENT, not voltage. The induced voltage V = L*dI/dt resists current changes. In a power supply, this current-smoothing property helps create a steady output current. When used with capacitors (which smooth voltage), you get an effective LC filter. The inductor keeps current steady while the capacitor keeps voltage steady.' },
+    { text: 'When you open the switch on an inductor circuit, the current just stops instantly because there is nowhere for it to flow.', correction: 'An inductor cannot allow instantaneous current change because V = L*dI/dt would produce infinite voltage. When a switch opens, the inductor generates a very large voltage spike (potentially hundreds or thousands of volts) trying to maintain current flow. This is called flyback and can arc across switch contacts or destroy semiconductors. This is why flyback diodes are placed across inductors in switching circuits -- they provide a safe path for the decaying current.' },
+  ],
+  'diode': [
+    { text: 'A diode works like a switch -- it is either fully on or fully off, there is no voltage drop when conducting.', correction: 'A conducting diode has a forward voltage drop: about 0.7V for silicon diodes, 0.3V for Schottky diodes, and 2-3V for LEDs. This voltage drop is not negligible -- in a 3.3V system, a 0.7V diode drop wastes 21% of the supply. The transition from off to on is gradual around the threshold voltage, not a sharp switch. The I-V curve shows exponential behavior near the forward voltage.' },
+    { text: 'You can use any diode as a Zener diode by just reversing it, since all diodes break down at some reverse voltage.', correction: 'While all diodes have a reverse breakdown voltage, only Zener diodes are designed to operate reliably in this regime. Regular diodes break down destructively -- the high current and localized heating damage the junction permanently. Zener diodes are specifically doped to create a controlled, predictable breakdown voltage (typically 2.4V to 200V) and can handle continuous reverse current within their power rating.' },
+  ],
+  'transistor': [
+    { text: 'A MOSFET and a BJT work the same way -- they are both current-controlled devices.', correction: 'BJTs are current-controlled: base current controls collector current (Ic = beta * Ib). MOSFETs are voltage-controlled: gate-source voltage controls drain current, and the gate draws essentially zero DC current because it is insulated by an oxide layer. This fundamental difference makes MOSFETs more efficient for switching (no base current waste) and easier to drive from digital logic.' },
+    { text: 'In saturation, the transistor is fully on and acts like a short circuit with zero voltage drop.', correction: 'Even in saturation, a BJT has a collector-emitter saturation voltage (Vce_sat) typically 0.1-0.3V, and a MOSFET has an on-resistance (Rds_on) that creates a voltage drop proportional to current. These are not zero. In high-current applications, this residual voltage drop causes significant power dissipation (P = Vce_sat * Ic for BJTs, P = I^2 * Rds_on for MOSFETs) and must be factored into thermal design.' },
+    { text: 'The beta (gain) of a BJT is constant, so you can always calculate collector current by multiplying base current by beta.', correction: 'BJT beta varies significantly with temperature (can double over a 50C range), collector current, and manufacturing lot (2:1 variation between identical part numbers). A circuit that depends on a specific beta value will behave unpredictably. Good circuit design uses negative feedback (emitter degeneration resistors) to make the operating point independent of beta. Design for the minimum beta in the datasheet, not the typical value.' },
+  ],
+  'op-amp': [
+    { text: 'An op-amp has infinite gain, so the output should be infinite voltage.', correction: 'An ideal op-amp has infinite open-loop gain, but in practice you always use negative feedback which defines the closed-loop gain. In an inverting amplifier, the gain is -Rf/Rin regardless of the open-loop gain (as long as it is much larger). Without feedback, the op-amp does saturate to the supply rails. The "infinite gain" is a theoretical simplification -- real op-amps have finite gain (100dB typical) that decreases with frequency.' },
+    { text: 'The inverting and non-inverting inputs do the same thing, you just get opposite polarity output.', correction: 'The inverting (-) and non-inverting (+) inputs have fundamentally different circuit topologies. The inverting configuration has virtual ground at the input, provides constant input impedance (Rin), and has gain = -Rf/Rin. The non-inverting configuration has high input impedance (the op-amp input impedance itself, megaohms), gain = 1 + Rf/Rin, and cannot achieve gain less than 1. The choice between them depends on impedance matching, gain requirements, and signal polarity needs.' },
+  ],
+  'pid': [
+    { text: 'Just crank up the proportional gain really high -- that should eliminate steady-state error completely.', correction: 'High proportional gain reduces steady-state error but CANNOT eliminate it for a type-0 system. With very high Kp, the system oscillates or becomes unstable because the controller overreacts to small errors. Only the INTEGRAL term can eliminate steady-state error, because it accumulates error over time and keeps increasing the control signal until the error reaches zero. The practical approach is moderate Kp with Ki for zero steady-state error and Kd for damping.' },
+    { text: 'The derivative term predicts the future, so a higher derivative gain always gives better performance.', correction: 'The derivative term responds to the RATE of change of error, providing damping. But it also amplifies high-frequency noise in the measurement signal. Excessive Kd causes the output to jitter wildly in response to sensor noise, which can be worse than the oscillation it was meant to fix. In practice, the derivative term needs a low-pass filter (derivative filter time constant) to limit noise amplification. Many industrial controllers leave Kd at zero for noisy processes.' },
+    { text: 'The integral term eliminates oscillation by damping the response, right?', correction: 'The integral term does NOT damp oscillation -- it actually makes oscillation WORSE if not tuned carefully, because it adds phase lag to the control loop. The integral term accumulates past errors, which can cause overshoot (integral windup) and slow recovery. Damping is provided by the DERIVATIVE term, which opposes the rate of change. The integral term\'s purpose is solely to eliminate steady-state error by driving the accumulated error to zero over time.' },
+  ],
+  'pcb': [
+    { text: 'More solder is always better -- a bigger joint is a stronger joint.', correction: 'Excess solder can bridge adjacent pads causing short circuits, create solder balls that break loose and cause intermittent shorts, and form cold joints where the excess solder wicks heat away from the joint before proper wetting occurs. A good solder joint has a concave fillet showing proper wetting between the pad, component lead, and solder. For SMD components, the correct solder paste volume is controlled by the stencil thickness and aperture design.' },
+    { text: 'Lead-free solder and leaded solder work at the same temperature.', correction: 'Lead-free solder (SAC305: Sn96.5/Ag3.0/Cu0.5) melts at 217-220C, while traditional leaded solder (Sn63/Pb37) melts at 183C. Lead-free requires higher reflow peak temperatures (240-250C vs 210-230C), which stresses components and PCBs more. Mixing the two types is dangerous -- the intermediate melting range creates weak, unreliable joints with poor crystalline structure. Lead-free solder also has worse wetting properties and requires more aggressive flux.' },
+  ],
+  'i2c': [
+    { text: 'I2C is better than SPI because it only needs 2 wires, so you should always use I2C.', correction: 'I2C and SPI have different tradeoffs. I2C uses 2 wires (SDA, SCL) but is limited to 400kHz (standard) or 3.4MHz (high-speed), is half-duplex, and requires pull-up resistors. SPI uses 4+ wires but supports much higher speeds (tens of MHz), is full-duplex, and has simpler hardware. Use I2C for low-speed configuration/status reads (temperature sensors, EEPROMs). Use SPI for high-data-rate sensors (IMUs, ADCs) and displays. The "fewer wires" advantage disappears when you have many devices (each SPI device needs its own chip-select line).' },
+  ],
+  'spi': [
+    { text: 'SPI does not need pull-up resistors or termination, so bus speed does not matter.', correction: 'While SPI uses push-pull outputs (not open-drain like I2C) so pull-ups are not needed for logic levels, signal integrity absolutely matters at high speeds. At tens of MHz, unterminated SPI lines develop reflections, ringing, and crosstalk that corrupt data. Long SPI traces need proper impedance matching, series termination resistors near the driver, and adequate ground return paths. Clock edges can be degraded by stray capacitance, limiting maximum bus speed.' },
+  ],
+  'can-bus': [
+    { text: 'CAN bus does not need termination resistors if the cable is short enough.', correction: 'CAN bus ALWAYS requires 120-ohm termination resistors at both physical ends of the bus, regardless of cable length. Without termination matching the 120-ohm characteristic impedance of the twisted pair, signal reflections corrupt the differential signals even on short buses. At higher baud rates (500kbps+), even a few centimeters of unterminated bus can cause bit errors. The two 120-ohm resistors in parallel should measure 60 ohms across CANH-CANL.' },
+    { text: 'CAN is a master-slave protocol like I2C, with one node controlling all communication.', correction: 'CAN is a multi-master protocol with no central controller. Any node can transmit at any time. When two nodes transmit simultaneously, bit-wise arbitration resolves the conflict non-destructively -- the message with the lower ID wins priority while the losing node automatically retries. This distributed architecture makes CAN robust: removing or adding nodes does not require reconfiguring a master. This is fundamentally different from I2C where a master initiates every transaction.' },
+  ],
+  'adc': [
+    { text: 'A 10-bit ADC with a 5V reference can measure voltages down to 0.005V which is 5mV resolution.', correction: 'A 10-bit ADC has 2^10 = 1024 discrete levels. With a 5V reference, the resolution (LSB) is 5V/1024 = 4.88mV, not 5mV. More importantly, the practical resolution is limited by noise, not just the bit count. If the noise floor is 10mV (common for a basic ADC without averaging), the effective resolution is only about 9 bits. Oversampling and averaging can improve effective resolution beyond the nominal bit count.' },
+    { text: 'Sampling rate does not matter as long as the ADC resolution is high enough.', correction: 'The Nyquist theorem requires sampling at least 2x the highest signal frequency to avoid aliasing artifacts. If you sample a 1kHz signal at 1.5kHz, the aliased result appears as a false 500Hz signal that cannot be distinguished from real data. An anti-aliasing low-pass filter before the ADC must remove frequencies above half the sample rate. In practice, you oversample at 5-10x the signal bandwidth for clean reconstruction.' },
+  ],
+  'imu': [
+    { text: 'The accelerometer measures speed directly, so integrating it once gives you position.', correction: 'An accelerometer measures acceleration, not speed. You must integrate ONCE to get velocity, and TWICE to get position. Each integration accumulates error: small accelerometer bias (even 1mg) causes velocity to drift linearly and position to drift quadratically. After just 10 seconds, a 1mg bias creates ~0.5m position error. This is why standalone accelerometer-based positioning (dead reckoning) is unreliable -- you need GPS, visual odometry, or other corrections to bound the drift.' },
+    { text: 'Gyroscope drift is not a real problem because modern MEMS sensors are accurate enough.', correction: 'Even the best consumer MEMS gyroscopes drift at 1-10 degrees per hour. Over a few minutes, the accumulated angle error becomes significant for any application requiring absolute orientation. The drift comes from bias instability, temperature sensitivity, and flicker noise that integration amplifies. This is why practical IMU systems use sensor fusion (complementary filter or Kalman filter) combining gyroscope data (good short-term) with accelerometer data (good long-term, provides gravity reference) to correct drift.' },
+  ],
+  'clock': [
+    { text: 'Any crystal frequency works for any microcontroller -- you just configure the PLL to get what you want.', correction: 'While PLLs can multiply crystal frequencies, the crystal must be within the oscillator circuit specifications. Wrong crystal parameters (frequency tolerance, load capacitance, ESR, drive level) can cause the oscillator to fail to start, oscillate at wrong frequencies, or draw excessive current that damages the crystal. The PLL multiplication also multiplies any phase noise and jitter. Communication peripherals (UART, USB, CAN) often require specific crystal frequencies (e.g., 8MHz or 12MHz) to achieve exact baud rates without excessive error.' },
+    { text: 'Load capacitors do not affect the crystal frequency, they are just for filtering noise.', correction: 'Load capacitors are critical for correct crystal oscillation. The crystal is designed for a specific load capacitance (CL, specified in the datasheet, typically 12-20pF). Wrong load capacitance shifts the oscillation frequency: too low pulls the frequency high, too high pulls it low. The required capacitor values are calculated as: C1 = C2 = 2*CL - C_stray, where C_stray is the PCB trace capacitance (typically 3-5pF). Wrong frequency causes UART baud rate errors, USB enumeration failures, and timing drift.' },
+  ],
+  'stm32': [
+    { text: 'You can run all peripherals at maximum clock speed without worrying about power consumption.', correction: 'Power consumption in CMOS logic scales linearly with clock frequency (P = C*V^2*f). Running everything at max clock speed dramatically increases power draw and heat, which matters for battery-powered devices and thermal-limited designs. The STM32 peripheral bus prescalers exist specifically to let you run peripherals at lower speeds when they do not need maximum throughput. Good firmware puts unused peripherals in low-power mode and uses the lowest clock speed that meets timing requirements.' },
+    { text: 'The watchdog timer is just for debugging -- you do not need it in production firmware.', correction: 'The watchdog timer is essential for production reliability. It resets the MCU if firmware hangs due to bugs, hardware glitches, EMI events, or cosmic rays flipping bits. Without a watchdog, a firmware crash in a deployed system means it stays crashed until manually power-cycled. The independent watchdog (IWDG) on STM32 uses a separate internal RC oscillator, so it works even if the main clock fails. Safety-critical systems (automotive, medical) require watchdog timers by regulation.' },
+  ],
+  'pwm': [
+    { text: 'PWM duty cycle directly sets the voltage -- 50% duty cycle always means half the supply voltage at the output.', correction: 'PWM produces a square wave switching between 0V and Vcc. The average voltage IS duty_cycle * Vcc, but only after low-pass filtering. Without filtering, the output is a digital square wave, not a smooth DC voltage. For motor control, the motor winding inductance acts as the filter. For LED dimming, persistence of vision averages the pulses. For analog voltage generation, an RC filter is needed. The filter time constant must be much longer than the PWM period for smooth output.' },
+    { text: 'Higher PWM frequency is always better because the output is smoother.', correction: 'Higher PWM frequency reduces output ripple and moves audible noise above hearing range (>20kHz), but has tradeoffs. Each switching transition dissipates energy in the MOSFET (switching loss = 0.5*V*I*t_switch*f). At very high frequencies, switching losses dominate, reducing efficiency and generating heat. The gate driver must also be fast enough to fully turn the MOSFET on/off within each period. Typical motor PWM is 20-50kHz; LED PWM can be lower (1-10kHz).' },
+  ],
+  'kinematics': [
+    { text: 'Forward and inverse kinematics are the same thing, just calculated in different directions.', correction: 'Forward kinematics (FK) converts joint angles to end-effector position -- it has a unique, closed-form solution (one set of angles always maps to one position). Inverse kinematics (IK) converts a desired position to joint angles -- it is fundamentally harder because it may have multiple solutions (elbow up vs down), no solution (position out of reach), or require iterative numerical methods. IK is what robots need for task-space control and is computationally more expensive.' },
+    { text: 'Reinforcement learning always finds the optimal solution -- you just need enough training episodes.', correction: 'RL converges to a local optimum in the policy space, which may not be globally optimal. The reward function design critically determines what behavior the agent learns -- a poorly designed reward leads to reward hacking (finding exploits that maximize reward without achieving the intended behavior). PPO and other policy gradient methods are sample-inefficient, often requiring millions of episodes. Sim-to-real transfer is a major challenge because the simulation never perfectly matches reality, and policies that work in simulation may fail on real hardware.' },
+  ],
+};
+
+// ============================================================
+// ITERATION 5 FIX C: Circuit Wiring encounter definitions
+// Action-based: player selects and orders components, not text
+// ============================================================
+const CIRCUIT_WIRING_CHALLENGES = [
+  {
+    goal: 'Build a voltage regulator: convert 12V input to stable 5V output',
+    slots: ['Input filter', 'Voltage conversion', 'Output filter', 'Load decoupling'],
+    correctOrder: ['Bulk capacitor', 'Buck converter IC', 'Output inductor + capacitor', 'Ceramic decoupling cap'],
+    distractors: ['Zener diode', 'Pull-up resistor', 'Crystal oscillator', 'Flyback transformer'],
+    explanation: 'Input bulk capacitor smooths battery impedance. The buck converter IC switches at high frequency to step down voltage. The output LC filter (inductor + capacitor) smooths the switching waveform into DC. Ceramic decoupling caps at the load suppress high-frequency noise.',
+    category: 'electronics',
+  },
+  {
+    goal: 'Build an I2C sensor interface: connect a temperature sensor to a microcontroller',
+    slots: ['Bus pull-ups', 'Data line', 'Clock line', 'Power bypass'],
+    correctOrder: ['4.7k pull-up resistors to Vcc', 'SDA (bidirectional data)', 'SCL (clock from master)', '100nF ceramic cap near sensor'],
+    distractors: ['Termination resistor', 'MOSI line', 'Chip select', 'Bootstrap capacitor'],
+    explanation: 'I2C requires pull-up resistors because SDA and SCL are open-drain. SDA carries bidirectional data. SCL carries the clock generated by the master. A bypass capacitor near the sensor filters power supply noise that could corrupt the analog measurement inside the sensor.',
+    category: 'protocols',
+  },
+  {
+    goal: 'Build an H-bridge motor driver: control a DC motor bidirectionally',
+    slots: ['High-side switch A', 'Low-side switch B', 'Motor connection', 'Flyback protection'],
+    correctOrder: ['P-channel MOSFET (or N-ch with bootstrap)', 'N-channel MOSFET to ground', 'Motor between half-bridge outputs', 'Flyback diodes across each MOSFET'],
+    distractors: ['Zener regulator', 'Crystal oscillator', 'I2C pull-up', 'Coupling capacitor'],
+    explanation: 'The H-bridge uses complementary MOSFET pairs. High-side switches connect motor terminals to Vcc, low-side to ground. Activating diagonal pairs reverses motor direction. Flyback diodes protect MOSFETs from inductive voltage spikes when the motor switches off, as the inductor (motor winding) tries to maintain current flow.',
+    category: 'semiconductors',
+  },
+  {
+    goal: 'Build a signal conditioning chain: prepare an analog sensor output for ADC sampling',
+    slots: ['Input protection', 'Amplification', 'Anti-alias filtering', 'ADC input'],
+    correctOrder: ['TVS diode + series resistor', 'Non-inverting op-amp (gain stage)', 'RC low-pass filter (Nyquist)', 'ADC channel with reference voltage'],
+    distractors: ['PWM output', 'SPI clock', 'Watchdog timer', 'CAN transceiver'],
+    explanation: 'Input protection (TVS diode + resistor) clamps overvoltage. The op-amp amplifies the weak sensor signal to use the ADC full range. The anti-aliasing RC filter removes frequencies above half the ADC sample rate to prevent aliasing artifacts. The ADC converts the conditioned analog signal to digital with resolution determined by its bit count and reference voltage.',
+    category: 'embedded',
+  },
+];
+
+// ============================================================
+// ITERATION 5 FIX D: Fault Tree encounter definitions
+// Action-based: player chooses diagnostic steps to narrow fault
+// ============================================================
+const FAULT_TREE_CHALLENGES = [
+  {
+    title: 'Motor Not Spinning',
+    symptoms: 'A DC motor connected to an H-bridge driver does not spin. The motor worked yesterday. The power LED on the board is on.',
+    steps: [
+      { action: 'Measure supply voltage at motor driver input', result: '12.1V present -- power supply is good.', eliminates: 'power supply failure' },
+      { action: 'Check PWM signal with oscilloscope at MCU output', result: '25kHz PWM at 50% duty cycle present -- MCU is generating drive signal.', eliminates: 'firmware / PWM configuration' },
+      { action: 'Measure voltage at motor terminals', result: '0V across motor terminals, even though driver input is fine.', reveals: 'Problem is between driver IC and motor.' },
+      { action: 'Check gate drive signals on H-bridge MOSFETs', result: 'High-side gate voltage only reaches 8V (Vgs threshold is 4V, but Rds_on spec needs 10V).', reveals: 'Gate driver bootstrap capacitor not charging.' },
+      { action: 'Inspect bootstrap capacitor', result: 'The 100nF bootstrap cap has a hairline crack from board flex.', reveals: 'ROOT CAUSE found.' },
+    ],
+    rootCause: 'The bootstrap capacitor for the high-side MOSFET gate driver is cracked, preventing it from charging to the required voltage. Without sufficient gate drive, the high-side MOSFET turns on with high Rds_on (barely conducting), dropping most of the supply voltage across itself instead of delivering it to the motor.',
+    minStepsToSolve: 3,
+    category: 'electronics',
+  },
+  {
+    title: 'I2C Bus Lockup',
+    symptoms: 'An STM32 reads 0xFF from all I2C slave devices after running for a few hours. Power cycling fixes it temporarily. Three sensors share the bus.',
+    steps: [
+      { action: 'Check I2C pull-up resistors with multimeter', result: '4.7k pull-ups present on both SDA and SCL -- correct for 100kHz.', eliminates: 'missing pull-ups' },
+      { action: 'Monitor SDA line with oscilloscope', result: 'SDA is stuck LOW permanently. SCL is toggling normally.', reveals: 'A slave device is holding SDA low.' },
+      { action: 'Disconnect slaves one at a time', result: 'Removing the humidity sensor releases SDA. Reconnecting locks it again.', reveals: 'Humidity sensor is the culprit.' },
+      { action: 'Check sensor datasheet for I2C lockup conditions', result: 'Datasheet warns: "If master resets during transaction, slave may hold SDA low waiting for clocks to finish byte."', reveals: 'Sensor stuck mid-transaction after an MCU reset or timeout.' },
+      { action: 'Implement I2C bus recovery (9 clock pulses on SCL)', result: 'Sending 9 clocks on SCL with SDA released clears the stuck condition.', reveals: 'ROOT CAUSE found.' },
+    ],
+    rootCause: 'The humidity sensor was in the middle of transmitting a byte when the MCU reset (possibly due to watchdog timeout). The sensor held SDA low waiting to send remaining bits of the byte. Without bus recovery (toggling SCL 9 times to let the slave finish its byte), SDA stays stuck LOW and all I2C communication returns 0xFF.',
+    minStepsToSolve: 3,
+    category: 'protocols',
+  },
+  {
+    title: 'Robot Drifts Left While Walking',
+    symptoms: 'A quadruped robot consistently drifts to the left when commanded to walk forward. All 12 servos respond to commands. The gait looks visually symmetric.',
+    steps: [
+      { action: 'Check servo calibration offsets', result: 'All 12 servos have correct zero-angle offsets within 0.5 degrees.', eliminates: 'servo miscalibration' },
+      { action: 'Read IMU orientation during straight walk', result: 'IMU shows 0.3 degree/second yaw drift to the left, accumulating over time.', reveals: 'Possible IMU bias or actual robot asymmetry.' },
+      { action: 'Swap left and right leg assemblies', result: 'After swapping, the robot now drifts RIGHT. The drift follows the legs, not the body.', reveals: 'Problem is mechanical, in the leg assembly.' },
+      { action: 'Measure leg link lengths with calipers', result: 'Right front thigh link is 0.8mm shorter than spec (3D print warping).', reveals: 'Asymmetric leg geometry causes asymmetric step length.' },
+      { action: 'Update inverse kinematics with measured link lengths', result: 'Entering actual measured link lengths into IK solver corrects the drift.', reveals: 'ROOT CAUSE found.' },
+    ],
+    rootCause: 'A 3D-printed thigh link warped during cooling, making it 0.8mm shorter than the design specification. The inverse kinematics solver used nominal dimensions, so the actual foot placement on that side was different from commanded. The right legs took slightly shorter steps, causing the robot to arc left. Updating the IK model with measured dimensions corrects the path.',
+    minStepsToSolve: 3,
+    category: 'robotics',
+  },
+  {
+    title: 'ADC Readings Are Noisy',
+    symptoms: 'An STM32 ADC reading a temperature sensor fluctuates by +/- 50 LSB. The sensor output measured with a benchtop multimeter is stable at 1.234V. Expected ADC noise is +/- 2 LSB.',
+    steps: [
+      { action: 'Check ADC reference voltage with oscilloscope', result: 'VREF shows 30mV of high-frequency ripple at the switching frequency of the buck converter.', reveals: 'ADC reference is noisy from switching regulator.' },
+      { action: 'Add 100nF + 1uF capacitors at VREF pin', result: 'Ripple on VREF drops to 5mV. ADC noise reduces to +/- 15 LSB.', reveals: 'VREF filtering helps but noise still excessive.' },
+      { action: 'Check sensor trace routing on PCB', result: 'Analog sensor trace runs parallel to SPI clock trace for 3cm with 0.2mm spacing.', reveals: 'Crosstalk from digital signals coupling into analog trace.' },
+      { action: 'Enable ADC hardware averaging (16 samples)', result: 'Averaged readings reduce noise to +/- 4 LSB. Close to spec.', reveals: 'Software mitigation works, but root layout issue remains.' },
+      { action: 'Reroute analog trace away from digital signals', result: 'With proper separation and guard ground trace, noise drops to +/- 2 LSB.', reveals: 'ROOT CAUSE found.' },
+    ],
+    rootCause: 'Two issues combined: (1) The ADC reference voltage had ripple from the switching regulator due to inadequate decoupling, and (2) the analog sensor trace was routed adjacent to the high-speed SPI clock, coupling digital noise into the analog measurement via capacitive crosstalk. Proper VREF decoupling and PCB layout with analog/digital separation resolves both.',
+    minStepsToSolve: 3,
+    category: 'embedded',
+  },
+];
+
+const REGIONS = [
+  { id: 'workshop', name: 'The Workshop', desc: 'Basic components: resistors, capacitors, inductors, diodes',
+    categories: ['electronics'], difficulty: 1,
+    mystery: 'A power supply keeps failing. Something is drawing too much current...',
+    mysteryAnswer: 'The capacitor in the power supply has degraded, reducing its capacitance. Without proper filtering, the voltage regulator oscillates and draws excessive current through the inductor, causing thermal shutdown. The fix requires replacing the capacitor with one of correct capacitance and voltage rating, and verifying the inductor can handle the peak current.',
+    topics: ['resistor', 'capacitor', 'inductor', 'diode', 'voltage'] },
+  { id: 'lab', name: 'The Laboratory', desc: 'Semiconductors: transistors, MOSFETs, BJTs, op-amps',
+    categories: ['semiconductors'], difficulty: 2,
+    mystery: 'A signal amplifier produces a distorted output. The transistor circuit needs debugging...',
+    mysteryAnswer: 'The BJT is operating in saturation rather than the active region because the base bias resistor value is too low, allowing excessive base current. This clips the output signal at both rails. The fix requires recalculating the bias network using the transistor beta and desired quiescent point to keep it in the linear active region.',
+    topics: ['transistor', 'mosfet', 'bjt', 'op-amp'] },
+  { id: 'foundry', name: 'The Foundry', desc: 'Manufacturing: PCBs, soldering, 3D printing, CNC',
+    categories: ['manufacturing'], difficulty: 3,
+    mystery: 'A production line produces boards that fail intermittently. The fault lies somewhere in the fabrication...',
+    mysteryAnswer: 'Cold solder joints on the BGA package cause intermittent connections due to thermal cycling. The reflow profile peak temperature was too low for the lead-free solder paste (SAC305 requires 245C peak), resulting in insufficient wetting and voiding under the BGA balls. The fix requires adjusting the reflow oven thermal profile and verifying with X-ray inspection.',
+    topics: ['pcb', 'soldering', 'smd', '3d-printing', 'cnc'] },
+  { id: 'nexus', name: 'The Signal Nexus', desc: 'Protocols: I2C, SPI, CAN bus, PWM',
+    categories: ['protocols'], difficulty: 4,
+    mystery: 'Devices on the network are sending corrupted data. Something is wrong with the bus configuration...',
+    mysteryAnswer: 'The CAN bus is missing its 120-ohm termination resistors at both physical ends of the bus. Without proper termination matching the characteristic impedance, signal reflections corrupt the differential signals (CANH-CANL), causing intermittent bit errors that increase with bus length and baud rate. Adding 120-ohm resistors at each end absorbs reflections.',
+    topics: ['i2c', 'spi', 'can-bus', 'pwm'] },
+  { id: 'sanctum', name: 'The Control Sanctum', desc: 'Embedded: STM32, clocks, ADC, IMU',
+    categories: ['embedded'], difficulty: 5,
+    mystery: 'A microcontroller keeps resetting. The clock source is unstable and peripherals are misbehaving...',
+    mysteryAnswer: 'The external crystal oscillator lacks proper load capacitors, causing the clock frequency to drift and occasionally stop oscillating entirely. When the clock fails, the hardware watchdog timer expires and resets the MCU. The fix requires calculating correct load capacitance from the crystal datasheet CL spec and PCB stray capacitance, then soldering the appropriate capacitors.',
+    topics: ['stm32', 'clock', 'adc', 'imu'] },
+  { id: 'arena', name: 'The Motion Arena', desc: 'Robotics: PID, kinematics, gait, reinforcement learning',
+    categories: ['robotics'], difficulty: 6,
+    mystery: 'A robot walks erratically. Its control loop oscillates and the gait pattern destabilizes...',
+    mysteryAnswer: 'The PID controller derivative gain (Kd) is too high, amplifying high-frequency sensor noise from the IMU accelerometer into the motor PWM commands. Combined with a gait phase timing error that desynchronizes leg movements, this creates a positive feedback loop. Reducing Kd, adding a low-pass filter on IMU data, and correcting the phase offset between diagonal leg pairs restores stable trotting gait.',
+    topics: ['pid', 'kinematics', 'gait', 'reinforcement-learning'] },
+];
+
+const TOTAL_MASTERY_TOPICS_ESTIMATE = 185;
+// Gold earned per mastery rank achieved in a region
+const GOLD_PER_RANK = { 'Apprentice': 10, 'Journeyman': 15, 'Master': 25 };
+
+let state = {
+  phase: 'loading',
+  char: null,
+  currentRegion: null,
+  masteredTopics: {},
+  visitedRegions: [],
+  mysteryProgress: {},
+  inventory: [],
+  turnCount: 0,
+  dbStats: null,
+  hintsUsed: 0,
+  crossTopicSolved: 0,
+  conceptCascadesTriggered: [],
+  knowledgeJournal: [],
+  goldRanksEarned: {},  // regionId -> highest rank that earned gold
+};
+
+// ============================================================
+// API
+// ============================================================
+async function api(endpoint, opts) {
+  const res = await fetch(endpoint, opts);
+  if (!res.ok) throw new Error(`API ${endpoint}: ${res.status}`);
+  return res.json();
+}
+
+async function evaluateAnswer(playerAnswer, correctAnswer) {
+  try {
+    const res = await api('/api/evaluate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerAnswer, correctAnswer }),
+    });
+    return res;
+  } catch (e) {
+    return fallbackEvaluate(playerAnswer, correctAnswer);
+  }
+}
+
+function fallbackEvaluate(playerAnswer, correctAnswer) {
+  const stopWords = new Set(['the','a','an','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','to','of','in','for','on','with','at','by','from','it','this','that','and','or','but','not','so','as','if']);
+  const keywords = correctAnswer.toLowerCase().split(/\s+/).map(w => w.replace(/[^a-z0-9]/g, '')).filter(w => w.length > 3 && !stopWords.has(w));
+  const unique = [...new Set(keywords)];
+  const inputLower = playerAnswer.toLowerCase();
+  const matches = unique.filter(kw => inputLower.includes(kw));
+  const score = unique.length > 0 ? matches.length / unique.length : 0;
+  if (score >= 0.50) return { similarity: 0.8, grade: 'correct' };
+  if (score >= 0.25) return { similarity: 0.6, grade: 'partial' };
+  return { similarity: 0.4, grade: 'incorrect' };
+}
+
+// ============================================================
+// ITERATION 5: Misconception matching for diagnostic branching
+// ============================================================
+async function matchMisconception(playerAnswer, topicName) {
+  const topicLower = (topicName || '').toLowerCase();
+  // Find all applicable misconception pools
+  let misconceptions = [];
+  for (const [key, pool] of Object.entries(MISCONCEPTION_POOLS)) {
+    if (topicLower.includes(key)) {
+      misconceptions = misconceptions.concat(pool);
+    }
+  }
+  if (misconceptions.length === 0) return null;
+
+  try {
+    const result = await api('/api/misconception-match', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        playerAnswer,
+        misconceptions: misconceptions.map(m => ({ text: m.text, correction: m.correction })),
+      }),
+    });
+    if (result.matched && result.misconception) {
+      return result.misconception;
+    }
+  } catch (e) {
+    // Fallback: keyword matching
+    for (const m of misconceptions) {
+      const mWords = m.text.toLowerCase().split(/\s+/);
+      const pWords = playerAnswer.toLowerCase().split(/\s+/);
+      const overlap = mWords.filter(w => pWords.includes(w) && w.length > 4).length;
+      if (overlap >= 3) return m;
+    }
+  }
+  return null;
+}
+
+// ============================================================
+// DICE
+// ============================================================
+function d20() { return Math.floor(Math.random() * 20) + 1; }
+function dN(n) { return Math.floor(Math.random() * n) + 1; }
+function statMod(val) { return Math.floor((val - 10) / 2); }
+function rollCheck(statName, dc) {
+  const val = state.char.stats[statName] || 10;
+  const roll = d20(), mod = statMod(val), total = roll + mod;
+  return { roll, mod, total, dc, success: total >= dc, statName };
+}
+function formatRoll(r) {
+  return `<span class="roll-result">[d20: ${r.roll} + ${r.statName} ${r.mod >= 0 ? '+' : ''}${r.mod} = ${r.total} vs DC ${r.dc}] ${r.success ? 'SUCCESS' : 'FAILURE'}</span>`;
+}
+
+// ============================================================
+// MASTERY MILESTONES (REPLACES XP/LEVEL ENTIRELY)
+// ============================================================
+function getMasteredCount() {
+  return Object.values(state.masteredTopics).filter(v => v.correct >= 2).length;
+}
+function getMasteryPercent() {
+  return Math.min(100, Math.round((getMasteredCount() / TOTAL_MASTERY_TOPICS_ESTIMATE) * 100));
+}
+function getRegionMastery(region) {
+  let total = 0, mastered = 0;
+  for (const t of region.topics) { total++; const m = state.masteredTopics[t]; if (m && m.correct >= 2) mastered++; }
+  return total > 0 ? mastered / total : 0;
+}
+function getRegionRank(region) {
+  const mastery = getRegionMastery(region);
+  let rank = MASTERY_RANKS[0];
+  for (const r of MASTERY_RANKS) { if (mastery >= r.threshold) rank = r; }
+  return rank;
+}
+function getOverallRank() {
+  const pct = getMasteryPercent() / 100;
+  let rank = MASTERY_RANKS[0];
+  for (const r of MASTERY_RANKS) { if (pct >= r.threshold) rank = r; }
+  return rank;
+}
+function getBloomProgress() {
+  const levels = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+  Object.values(state.masteredTopics).forEach(v => { if (v.bloomMax) levels[v.bloomMax] = (levels[v.bloomMax] || 0) + 1; });
+  return levels;
+}
+
+// ITERATION 5: Gold replenishment through mastery ranks
+function checkGoldReplenishment(region) {
+  const rank = getRegionRank(region);
+  const earned = state.goldRanksEarned[region.id] || 'Novice';
+  const rankOrder = MASTERY_RANKS.map(r => r.name);
+  const earnedIdx = rankOrder.indexOf(earned);
+  const currentIdx = rankOrder.indexOf(rank.name);
+  if (currentIdx > earnedIdx) {
+    // Award gold for each new rank achieved
+    let totalGold = 0;
+    for (let i = earnedIdx + 1; i <= currentIdx; i++) {
+      const rankName = rankOrder[i];
+      totalGold += GOLD_PER_RANK[rankName] || 0;
+    }
+    if (totalGold > 0) {
+      state.char.gold += totalGold;
+      state.goldRanksEarned[region.id] = rank.name;
+      addMsg(`<span class="msg-reward">Rank up in ${region.name}: ${rank.name}! Earned ${totalGold} gold for your mastery.</span>`, 'reward');
+    }
+  }
+}
+
+// ============================================================
+// CONCEPT CASCADE DETECTION -- ITERATION 5: exact match fix
+// ============================================================
+function checkConceptCascade(topicName) {
+  const masteredKeys = Object.keys(state.masteredTopics).filter(k => state.masteredTopics[k].correct >= 2);
+  const normalizedTopic = topicName.toLowerCase().replace(/\s+/g, '-');
+
+  for (const [pair, cascade] of Object.entries(CONCEPT_CASCADES)) {
+    if (state.conceptCascadesTriggered.includes(pair)) continue;
+    const [a, b] = pair.split('+');
+    // ITERATION 5 FIX: exact key match, not includes()
+    const hasA = masteredKeys.some(k => k === a);
+    const hasB = masteredKeys.some(k => k === b);
+    const justMasteredOne = (normalizedTopic === a || normalizedTopic === b);
+    if (hasA && hasB && justMasteredOne) {
+      return { pair, cascade };
+    }
+  }
+  return null;
+}
+
+// ============================================================
+// KNOWLEDGE JOURNAL
+// ============================================================
+function addJournalEntry(topic, insight, connections) {
+  state.knowledgeJournal.push({ topic, insight: insight ? insight.slice(0, 200) : '', connections: connections || [], timestamp: Date.now() });
+  if (state.knowledgeJournal.length > 50) state.knowledgeJournal.shift();
+}
+
+// ============================================================
+// CHARACTER CREATION
+// ============================================================
+function initCharCreation() {
+  state.phase = 'creation';
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('char-creation').style.display = 'block';
+
+  if (state.dbStats) {
+    document.getElementById('db-stats').innerHTML =
+      `Knowledge base: ${state.dbStats.documents} topics | ${state.dbStats.essential_terms} terms | ${state.dbStats.quiz_questions} challenges`;
+  }
+
+  const grid = document.getElementById('class-grid');
+  grid.innerHTML = '';
+  let selectedClass = null;
+
+  CLASSES.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'class-btn';
+    btn.innerHTML = `${c.name}<br><small style="color:var(--text-dim)">${c.desc}</small>`;
+    btn.setAttribute('aria-label', `${c.name}: ${c.desc}`);
+    btn.onclick = () => {
+      document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedClass = c;
+      checkReady();
+    };
+    grid.appendChild(btn);
+  });
+
+  const statContainer = document.getElementById('stat-rows');
+  statContainer.innerHTML = '';
+  const statValues = {};
+  let pointsLeft = TOTAL_POINTS;
+  STAT_NAMES.forEach(s => { statValues[s] = BASE_STAT; });
+
+  function renderStats() {
+    statContainer.innerHTML = '';
+    STAT_NAMES.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'stat-row';
+      row.innerHTML = `<span class="stat-name">${s}</span><div class="stat-controls"><button class="stat-btn" data-stat="${s}" data-dir="-1" aria-label="Decrease ${s}">-</button><span class="stat-val">${statValues[s]}</span><button class="stat-btn" data-stat="${s}" data-dir="1" aria-label="Increase ${s}">+</button></div>`;
+      statContainer.appendChild(row);
+    });
+    document.getElementById('stat-points').textContent = `${pointsLeft} points remaining`;
+    statContainer.querySelectorAll('.stat-btn').forEach(btn => {
+      btn.onclick = () => {
+        const stat = btn.dataset.stat, dir = parseInt(btn.dataset.dir);
+        if (dir === 1 && pointsLeft > 0 && statValues[stat] < 20) { statValues[stat]++; pointsLeft--; }
+        else if (dir === -1 && statValues[stat] > 1) { statValues[stat]--; pointsLeft++; }
+        renderStats(); checkReady();
+      };
+    });
+  }
+  renderStats();
+
+  const nameInput = document.getElementById('name-input');
+  nameInput.oninput = checkReady;
+
+  function checkReady() {
+    document.getElementById('start-btn').disabled = !(nameInput.value.trim().length > 0 && selectedClass && pointsLeft === 0);
+  }
+
+  document.getElementById('start-btn').onclick = () => {
+    const isCaster = selectedClass.resource === 'MP';
+    const hp = 20 + statValues.CON * 2, mp = isCaster ? (10 + statValues.INT * 2) : (10 + statValues.STR * 2);
+    state.char = {
+      name: nameInput.value.trim(), class: selectedClass, stats: { ...statValues },
+      hp, maxHp: hp, mp, maxMp: mp, resourceName: selectedClass.resource,
+      gold: 50,
+      inventory: getStartingItems(selectedClass.id),
+    };
+    state.phase = 'playing';
+    saveState(); startGame();
+  };
+}
+
+function getStartingItems(classId) {
+  const items = {
+    engineer: ['Multimeter', 'Wire Strippers', 'Breadboard'],
+    explorer: ['Compass', 'Torch', 'Field Notebook'],
+    artificer: ['Soldering Iron', 'Component Kit', 'Magnifying Lens'],
+    scholar: ['Tome of Circuits', 'Quill & Ink', 'Reading Glasses'],
+    tinker: ['Wrench Set', 'Duct Tape', 'Pocket Oscilloscope'],
+    sage: ['Teaching Staff', 'Chalk', 'Student Roster'],
+  };
+  return items[classId] || ['Basic Toolkit'];
+}
+
+// ============================================================
+// HUD -- mastery milestones only, NO XP/level/gold display
+// ============================================================
+function updateHUD() {
+  if (!state.char) return;
+  const c = state.char;
+  document.getElementById('hud').style.display = 'flex';
+  document.getElementById('hud-name').textContent = `${c.name} the ${c.class.name}`;
+  document.getElementById('hud-hp-bar').style.width = `${(c.hp / c.maxHp) * 100}%`;
+  document.getElementById('hud-hp-text').textContent = `${c.hp}/${c.maxHp}`;
+  document.getElementById('hud-mp-bar').style.width = `${(c.mp / c.maxMp) * 100}%`;
+  document.getElementById('hud-mp-text').textContent = `${c.mp}/${c.maxMp}`;
+  document.getElementById('hud-mastery').textContent = `${getMasteredCount()} mastered`;
+  const rank = getOverallRank();
+  document.getElementById('hud-rank').textContent = rank.name;
+  document.getElementById('hud-rank').style.color = rank.color;
+}
+
+// ============================================================
+// NARRATIVE
+// ============================================================
+function addMsg(text, cls = 'narrator') {
+  const div = document.createElement('div');
+  div.className = `msg msg-${cls}`;
+  div.innerHTML = text;
+  document.getElementById('narrative').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+function clearNarrative() { document.getElementById('narrative').innerHTML = ''; }
+
+function showChoices(choices, handler) {
+  const container = document.getElementById('choice-container');
+  container.innerHTML = '';
+  choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="key-hint">[${i + 1}]</span> ${choice.text}`;
+    if (choice.premium) btn.innerHTML += ' <span class="premium-badge">PRO</span>';
+    btn.setAttribute('aria-label', choice.text);
+    btn.onclick = () => handler(choice);
+    container.appendChild(btn);
+  });
+  const keyHandler = (e) => {
+    const num = parseInt(e.key);
+    if (num >= 1 && num <= choices.length) { document.removeEventListener('keydown', keyHandler); handler(choices[num - 1]); }
+  };
+  document.addEventListener('keydown', keyHandler);
+  const freeform = document.getElementById('freeform');
+  const submitBtn = document.getElementById('submit-btn');
+  freeform.value = '';
+  const submitFreeform = () => { const text = freeform.value.trim(); if (text) { document.removeEventListener('keydown', keyHandler); handler({ text, id: 'freeform', freeformInput: text }); } };
+  submitBtn.onclick = submitFreeform;
+  freeform.onkeydown = (e) => { if (e.key === 'Enter') submitFreeform(); };
+}
+
+// ============================================================
+// GAME START
+// ============================================================
+function startGame() {
+  document.getElementById('char-creation').style.display = 'none';
+  document.getElementById('narrative').style.display = 'block';
+  document.getElementById('actions').style.display = 'block';
+  document.getElementById('footer').style.display = 'block';
+  updateHUD();
+
+  addMsg(`Welcome, <strong>${state.char.name} the ${state.char.class.name}</strong>.`);
+  addMsg(`The Circuit Citadel is in crisis. Systems are failing across every wing. Power supplies surge, signals corrupt, robots stumble. The ancient mechanisms that keep this place running are breaking down -- and only someone who truly <em>understands</em> how they work can fix them.`);
+  addMsg(`Each region has a mystery to solve. Your understanding of electronics, engineering, and physics is not just useful -- it is your only weapon.`, 'system');
+  addMsg(`Progress through mastery: <strong style="color:${MASTERY_RANKS[0].color}">Novice</strong> -> <strong style="color:${MASTERY_RANKS[1].color}">Apprentice</strong> -> <strong style="color:${MASTERY_RANKS[2].color}">Journeyman</strong> -> <strong style="color:${MASTERY_RANKS[3].color}">Master</strong>`, 'system');
+
+  showWorldMap();
+}
+
+// ============================================================
+// WORLD MAP
+// ============================================================
+function showWorldMap() {
+  addMsg(`<strong>--- Circuit Citadel ---</strong>`, 'system');
+
+  const choices = [];
+  REGIONS.forEach(region => {
+    const unlocked = isRegionUnlocked(region);
+    const visited = state.visitedRegions.includes(region.id);
+    const mastery = getRegionMastery(region);
+    const rank = getRegionRank(region);
+    const mysteryState = state.mysteryProgress[region.id];
+    const solved = mysteryState?.solved;
+    const mysteryStr = solved ? ' [MYSTERY SOLVED]' : (mysteryState?.cluesFound?.length > 0 ? ` [${mysteryState.cluesFound.length} clues]` : '');
+
+    if (unlocked) {
+      addMsg(`<div class="region-card"><h4>${region.name} ${visited ? '' : '(new)'}${mysteryStr}</h4><p>${region.desc}</p><p><span class="region-rank" style="color:${rank.color}">${rank.name}</span></p><p style="color:var(--warning); font-size:0.8rem;">${solved ? 'Mystery solved!' : region.mystery}</p><div class="mastery-meter"><div class="mastery-meter-fill" style="width:${Math.round(mastery*100)}%"></div></div></div>`);
+      choices.push({ text: `Enter ${region.name}`, id: 'enter_region', region });
+    } else {
+      const required = getUnlockRequirement(region);
+      addMsg(`<div class="region-card locked"><h4>${region.name} (locked)</h4><p>${region.desc}</p><p style="color:var(--mastery); font-size:0.8rem;">Unlock: ${required}</p></div>`);
+    }
+  });
+
+  // Cross-topic challenge -- uses deterministic challenges now
+  const regionsWithClues = REGIONS.filter(r => {
+    const mp = state.mysteryProgress[r.id];
+    return mp && mp.cluesFound && mp.cluesFound.length >= 2;
+  });
+  if (regionsWithClues.length >= 2) {
+    choices.push({ text: 'Attempt a Cross-Domain Challenge (combines knowledge)', id: 'cross_topic' });
+  }
+
+  choices.push({ text: 'Open Knowledge Journal', id: 'journal' });
+  choices.push({ text: 'Check mastery progress', id: 'char_sheet' });
+  choices.push({ text: 'Visit the Knowledge Library (search & review)', id: 'library' });
+
+  showChoices(choices, handleMapChoice);
+}
+
+function isRegionUnlocked(region) {
+  if (region.difficulty <= 1) return true;
+  const prevRegion = REGIONS.find(r => r.difficulty === region.difficulty - 1);
+  if (!prevRegion) return true;
+  return getRegionMastery(prevRegion) >= 0.4;
+}
+
+function getUnlockRequirement(region) {
+  const prevRegion = REGIONS.find(r => r.difficulty === region.difficulty - 1);
+  if (!prevRegion) return 'Unknown';
+  const current = Math.round(getRegionMastery(prevRegion) * 100);
+  return `Reach Apprentice rank in ${prevRegion.name} (currently ${current}%)`;
+}
+
+async function handleMapChoice(choice) {
+  if (choice.id === 'enter_region') {
+    state.currentRegion = choice.region;
+    if (!state.visitedRegions.includes(choice.region.id)) state.visitedRegions.push(choice.region.id);
+    clearNarrative();
+    await enterRegion(choice.region);
+  } else if (choice.id === 'char_sheet') {
+    showMasteryProgress();
+    showWorldMap();
+  } else if (choice.id === 'journal') {
+    showKnowledgeJournal();
+    showWorldMap();
+  } else if (choice.id === 'library') {
+    await visitLibrary();
+  } else if (choice.id === 'cross_topic') {
+    await crossTopicChallenge();
+  } else if (choice.freeformInput) {
+    addMsg(`You consider: "${choice.freeformInput}". Choose a region to explore.`, 'system');
+    showWorldMap();
+  }
+}
+
+function showMasteryProgress() {
+  const c = state.char;
+  const masteredCount = getMasteredCount();
+  const bloomLevels = getBloomProgress();
+  const bloomNames = { 1: 'Remember', 2: 'Understand', 3: 'Apply', 4: 'Analyze', 5: 'Evaluate', 6: 'Create' };
+  const overallRank = getOverallRank();
+
+  addMsg(`<div class="mastery-card"><h4>${c.name} the ${c.class.name} -- Mastery Progress</h4>
+    <p>HP: ${c.hp}/${c.maxHp} | ${c.resourceName}: ${c.mp}/${c.maxMp}</p>
+    <p>STR: ${c.stats.STR} | DEX: ${c.stats.DEX} | CON: ${c.stats.CON} | INT: ${c.stats.INT} | WIS: ${c.stats.WIS} | CHA: ${c.stats.CHA}</p>
+    <p>Inventory: ${c.inventory.join(', ')} | Gold: ${c.gold}</p>
+    <p style="color:${overallRank.color}; font-size:1.1rem; margin-top:8px;"><strong>Overall Rank: ${overallRank.name} -- ${masteredCount} / ~${TOTAL_MASTERY_TOPICS_ESTIMATE} topics (${getMasteryPercent()}%)</strong></p>
+    <p style="font-size:0.85rem;">Bloom's depth: ${Object.entries(bloomLevels).filter(([,v]) => v > 0).map(([k,v]) => `${bloomNames[k]}: ${v}`).join(' | ')}</p>
+    <p style="font-size:0.85rem;">Cross-domain challenges: ${state.crossTopicSolved} | Concept cascades: ${state.conceptCascadesTriggered.length} | Hints: ${state.hintsUsed}</p>
+  </div>`);
+
+  REGIONS.forEach(r => {
+    const m = Math.round(getRegionMastery(r) * 100);
+    const rank = getRegionRank(r);
+    const mp = state.mysteryProgress[r.id];
+    const mystery = mp?.solved ? 'SOLVED' : `${mp?.cluesFound?.length || 0} clues`;
+    addMsg(`<div style="font-size:0.85rem; color:var(--text-dim); padding:2px 0;"><span style="color:${rank.color}">[${rank.name}]</span> ${r.name}: ${m}% mastered | Mystery: ${mystery}</div>`, 'system');
+  });
+}
+
+function showKnowledgeJournal() {
+  addMsg(`<div class="mastery-card"><h4>Knowledge Journal -- ${state.knowledgeJournal.length} entries</h4></div>`);
+  if (state.knowledgeJournal.length === 0) {
+    addMsg(`Your journal is empty. Master topics to fill it with insights and connections.`, 'system');
+    return;
+  }
+  const recent = state.knowledgeJournal.slice(-10).reverse();
+  recent.forEach(entry => {
+    const connections = entry.connections.length > 0 ? `<br><span class="journal-connection">Connects to: ${entry.connections.join(', ')}</span>` : '';
+    addMsg(`<div class="journal-entry"><strong>${entry.topic}</strong>: ${entry.insight}${connections}</div>`);
+  });
+  if (state.conceptCascadesTriggered.length > 0) {
+    addMsg(`<div class="journal-entry" style="border-color:var(--warning);"><strong>Concept Cascades Discovered:</strong><br>${state.conceptCascadesTriggered.map(pair => {
+      const c = CONCEPT_CASCADES[pair];
+      return c ? `${c.name} (${pair.replace('+', ' + ')})` : pair;
+    }).join('<br>')}</div>`);
+  }
+}
+
+async function visitLibrary() {
+  clearNarrative();
+  addMsg(`The <strong>Knowledge Library</strong> glows with stored wisdom. The Librarian awaits your query.`);
+
+  showChoices([
+    { text: 'Search for a topic (type below)', id: 'search' },
+    { text: 'Review weak topics', id: 'review' },
+    { text: 'Return to the map', id: 'back' },
+  ], async (choice) => {
+    if (choice.id === 'search' || choice.freeformInput) {
+      const query = choice.freeformInput || '';
+      if (query) {
+        try {
+          const results = await api(`/api/search?q=${encodeURIComponent(query)}`);
+          if (results.length > 0) {
+            results.slice(0, 5).forEach(r => {
+              addMsg(`<div class="knowledge-reveal"><h4>${r.topic} <small>(${r.tier})</small></h4><p>${r.tldr || r.definition || ''}</p></div>`);
+            });
+          } else { addMsg(`No results for "${query}".`, 'system'); }
+        } catch (e) { addMsg('Search failed.', 'system'); }
+      }
+      await visitLibrary();
+    } else if (choice.id === 'review') {
+      await spacedRepetitionReview();
+    } else {
+      clearNarrative(); showWorldMap();
+    }
+  });
+}
+
+// ============================================================
+// ENCOUNTER SYSTEM -- ITERATION 5: adds circuit wiring + fault tree
+// ============================================================
+async function enterRegion(region) {
+  const descriptions = {
+    workshop: `The Workshop hums. Copper wires stretch across workbenches, and the acrid smell of burnt components fills the air. The power supply on the main bench keeps tripping -- something is wrong with the circuit.`,
+    lab: `The Laboratory glows with semiconductor diagrams projected on the walls. An amplifier circuit on the test bench produces a garbled waveform. The signal chain needs debugging.`,
+    foundry: `The Foundry thunders with machines. A stack of freshly fabricated PCBs sits on the inspection table -- but quality control flags show intermittent failures.`,
+    nexus: `The Signal Nexus pulses with data streams. A network of devices should be communicating flawlessly, but packets drop and signals corrupt.`,
+    sanctum: `The Control Sanctum's microcontroller altar flickers. The STM32 on the central pedestal keeps resetting, and its peripheral registers show impossible values.`,
+    arena: `The Motion Arena echoes with the sound of stumbling robots. A quadruped robot tries to walk but oscillates wildly.`,
+  };
+
+  addMsg(descriptions[region.id] || `You enter ${region.name}.`);
+  addMsg(`<em>${region.mystery}</em>`, 'hint');
+
+  if (!state.mysteryProgress[region.id]) {
+    state.mysteryProgress[region.id] = { cluesFound: [], solved: false };
+  }
+
+  await generateEncounter(region);
+}
+
+async function generateEncounter(region) {
+  const cats = region.categories.join(',');
+  const searchTerm = region.topics[Math.floor(Math.random() * region.topics.length)];
+  let topicData = null, termData = null, quizData = null;
+
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(searchTerm)}&categories=${encodeURIComponent(cats)}`);
+    if (results.length > 0) { topicData = await api(`/api/topics/${results[0].id}`); }
+    if (!topicData) {
+      const fallback = await api(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+      if (fallback.length > 0) { topicData = await api(`/api/topics/${fallback[0].id}`); }
+    }
+  } catch (e) {}
+  try { termData = await api(`/api/terms/random?categories=${encodeURIComponent(cats)}`); } catch (e) {}
+  try { quizData = await api(`/api/quiz/random?categories=${encodeURIComponent(cats)}`); } catch (e) {}
+
+  const types = [];
+  if (topicData) types.push('circuit_build', 'diagnosis', 'predict_behavior', 'component_choice');
+  if (termData) types.push('negotiate', 'decode');
+  if (quizData) types.push('apply_knowledge', 'teach_apprentice');
+  // ITERATION 5: new action-based encounter types
+  types.push('circuit_wiring', 'fault_tree');
+  if (types.length === 0) types.push('explore');
+
+  const type = types[Math.floor(Math.random() * types.length)];
+
+  switch (type) {
+    case 'circuit_build': await circuitBuildEncounter(topicData, region); break;
+    case 'diagnosis': await diagnosisEncounter(topicData, region); break;
+    case 'predict_behavior': await predictBehaviorEncounter(topicData, region); break;
+    case 'component_choice': await componentChoiceEncounter(topicData, region); break;
+    case 'negotiate': await negotiateEncounter(termData, region); break;
+    case 'decode': await decodeEncounter(termData, region); break;
+    case 'apply_knowledge': await applyKnowledgeEncounter(quizData, region); break;
+    case 'teach_apprentice': await teachApprenticeEncounter(quizData, region); break;
+    case 'circuit_wiring': await circuitWiringEncounter(region); break;
+    case 'fault_tree': await faultTreeEncounter(region); break;
+    default: await exploreEncounter(region);
+  }
+}
+
+// ============================================================
+// ENCOUNTER: Circuit Wiring (ACTION-BASED -- ITERATION 5 NEW)
+// Player selects components to fill slots in correct order.
+// No text entry. Understanding demonstrated through ACTIONS.
+// ============================================================
+async function circuitWiringEncounter(region) {
+  // Pick a wiring challenge matching this region's category
+  const regionCat = region.categories[0];
+  let candidates = CIRCUIT_WIRING_CHALLENGES.filter(c => c.category === regionCat);
+  if (candidates.length === 0) candidates = CIRCUIT_WIRING_CHALLENGES;
+  const challenge = candidates[Math.floor(Math.random() * candidates.length)];
+
+  addMsg(`<div class="msg-challenge"><strong>Circuit Wiring Challenge</strong><br>Goal: <em>${challenge.goal}</em></div>`);
+  addMsg(`You have a set of components. Wire them into the correct positions to build this circuit.`);
+
+  // Build the parts pool: correct parts + distractors, shuffled
+  const allParts = [...challenge.correctOrder, ...challenge.distractors].sort(() => Math.random() - 0.5);
+
+  const slotFills = new Array(challenge.slots.length).fill(null);
+  let usedParts = new Set();
+
+  function renderWiringUI() {
+    // Clear the narrative of old wiring UI
+    const existing = document.querySelectorAll('.wiring-ui-container');
+    existing.forEach(el => el.remove());
+
+    const container = document.createElement('div');
+    container.className = 'wiring-ui-container';
+
+    // Render slots
+    const slotsDiv = document.createElement('div');
+    slotsDiv.setAttribute('aria-label', 'Circuit slots');
+    challenge.slots.forEach((slotName, i) => {
+      const slot = document.createElement('div');
+      slot.className = 'wiring-slot' + (slotFills[i] ? ' filled' : '');
+      slot.innerHTML = `<span class="slot-label">${i + 1}. ${slotName}:</span> <span class="slot-component">${slotFills[i] || '(empty -- tap a part below)'}</span>`;
+      slot.setAttribute('aria-label', `Slot ${i + 1}: ${slotName}, ${slotFills[i] || 'empty'}`);
+      slot.onclick = () => {
+        if (slotFills[i]) {
+          usedParts.delete(slotFills[i]);
+          slotFills[i] = null;
+          renderWiringUI();
+        }
+      };
+      slotsDiv.appendChild(slot);
+    });
+    container.appendChild(slotsDiv);
+
+    // Render parts bin
+    const partsDiv = document.createElement('div');
+    partsDiv.className = 'wiring-parts';
+    partsDiv.setAttribute('aria-label', 'Available components');
+    allParts.forEach(part => {
+      const btn = document.createElement('button');
+      btn.className = 'wiring-part' + (usedParts.has(part) ? ' used' : '');
+      btn.textContent = part;
+      btn.setAttribute('aria-label', `Component: ${part}${usedParts.has(part) ? ' (already placed)' : ''}`);
+      btn.disabled = usedParts.has(part);
+      btn.onclick = () => {
+        if (usedParts.has(part)) return;
+        // Find first empty slot
+        const emptyIdx = slotFills.indexOf(null);
+        if (emptyIdx >= 0) {
+          slotFills[emptyIdx] = part;
+          usedParts.add(part);
+          renderWiringUI();
+        }
+      };
+      partsDiv.appendChild(btn);
+    });
+    container.appendChild(partsDiv);
+
+    document.getElementById('narrative').appendChild(container);
+    container.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
+
+  renderWiringUI();
+
+  showChoices([
+    { text: 'Submit wiring', id: 'submit_wiring' },
+    { text: 'Clear all slots', id: 'clear_wiring' },
+  ], async function wiringHandler(choice) {
+    if (choice.id === 'clear_wiring') {
+      slotFills.fill(null);
+      usedParts.clear();
+      renderWiringUI();
+      showChoices([
+        { text: 'Submit wiring', id: 'submit_wiring' },
+        { text: 'Clear all slots', id: 'clear_wiring' },
+      ], wiringHandler);
+      return;
+    }
+
+    // Grade: how many slots have the correct component
+    let correctCount = 0;
+    const existing = document.querySelectorAll('.wiring-ui-container');
+    existing.forEach(el => el.remove());
+
+    for (let i = 0; i < challenge.slots.length; i++) {
+      const isCorrect = slotFills[i] === challenge.correctOrder[i];
+      if (isCorrect) correctCount++;
+      const icon = isCorrect ? '&#10003;' : '&#10007;';
+      const cls = isCorrect ? 'correct-slot' : 'wrong-slot';
+      addMsg(`<div class="wiring-slot ${cls}"><span class="slot-label">${challenge.slots[i]}:</span> <span class="slot-component">${slotFills[i] || '(empty)'} ${icon}</span>${!isCorrect ? `<br><small style="color:var(--text-dim)">Needed: ${challenge.correctOrder[i]}</small>` : ''}</div>`);
+    }
+
+    if (correctCount === challenge.slots.length) {
+      addMsg(`All connections correct! The circuit powers up perfectly.`, 'success');
+      addMsg(`<span class="msg-mastery">Circuit Wiring mastery -- you built it through understanding, not guessing.</span>`, 'mastery');
+      // Track mastery for all related topics
+      for (const topic of region.topics) {
+        await trackMastery(topic, true, 3, null);
+      }
+      addClue(region, 'circuit-wiring-' + challenge.category);
+    } else if (correctCount >= challenge.slots.length / 2) {
+      addMsg(`${correctCount} of ${challenge.slots.length} correct. Close, but the circuit does not function as designed.`, 'system');
+      takeDamage(region.difficulty, 'Partial wiring caused a short.');
+    } else {
+      addMsg(`Only ${correctCount} of ${challenge.slots.length} correct. The circuit fails to operate.`, 'combat');
+      takeDamage(region.difficulty * 2, 'Incorrect wiring!');
+    }
+
+    addMsg(`<div class="knowledge-reveal"><h4>How This Circuit Works</h4><p>${challenge.explanation}</p></div>`);
+    await continueOrMap(region);
+  });
+}
+
+// ============================================================
+// ENCOUNTER: Fault Tree (ACTION-BASED -- ITERATION 5 NEW)
+// Player chooses diagnostic steps to find root cause.
+// Each step reveals information. Player reasons by elimination.
+// ============================================================
+async function faultTreeEncounter(region) {
+  const regionCat = region.categories[0];
+  let candidates = FAULT_TREE_CHALLENGES.filter(c => c.category === regionCat);
+  if (candidates.length === 0) candidates = FAULT_TREE_CHALLENGES;
+  const challenge = candidates[Math.floor(Math.random() * candidates.length)];
+
+  addMsg(`<div class="msg-challenge"><strong>Fault Diagnosis: ${challenge.title}</strong><br>${challenge.symptoms}</div>`);
+  addMsg(`Choose diagnostic steps to narrow down the root cause. Each step costs time but reveals information.`);
+
+  const usedSteps = new Set();
+  let stepsUsed = 0;
+
+  function showDiagnosticSteps() {
+    const container = document.getElementById('choice-container');
+    container.innerHTML = '';
+
+    challenge.steps.forEach((step, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'fault-step-btn' + (usedSteps.has(i) ? ' used-step' : '');
+      btn.innerHTML = `${usedSteps.has(i) ? '&#10003; ' : ''}${step.action}`;
+      btn.setAttribute('aria-label', `Diagnostic step: ${step.action}${usedSteps.has(i) ? ' (already performed)' : ''}`);
+      btn.disabled = usedSteps.has(i);
+      btn.onclick = () => {
+        if (usedSteps.has(i)) return;
+        usedSteps.add(i);
+        stepsUsed++;
+
+        // Show the result
+        const resultType = step.eliminates ? 'Eliminated' : 'Finding';
+        const resultText = step.eliminates
+          ? `<span style="color:var(--success)">Ruled out: ${step.eliminates}</span>`
+          : `<span style="color:var(--warning)">Clue: ${step.reveals}</span>`;
+
+        addMsg(`<div class="fault-info"><div class="fault-label">${step.action}</div><div class="fault-data">${step.result}<br>${resultText}</div></div>`);
+
+        // Check if they found the root cause
+        if (step.reveals && step.reveals.includes('ROOT CAUSE')) {
+          addMsg(`You have identified the root cause!`, 'success');
+          finalizeFaultTree(true);
+          return;
+        }
+
+        showDiagnosticSteps();
+      };
+      container.appendChild(btn);
+    });
+
+    // Add diagnose button after min steps
+    if (stepsUsed >= challenge.minStepsToSolve) {
+      const diagnoseBtn = document.createElement('button');
+      diagnoseBtn.className = 'choice-btn';
+      diagnoseBtn.innerHTML = `<span class="key-hint">[D]</span> Declare root cause (based on evidence gathered)`;
+      diagnoseBtn.setAttribute('aria-label', 'Declare root cause');
+      diagnoseBtn.onclick = () => {
+        addMsg(`Based on your investigation, what is the root cause?`, 'challenge');
+        showChoices([{ text: 'State your diagnosis (type below)', id: 'diagnose' }], async (choice) => {
+          if (choice.freeformInput) {
+            const result = await evaluateAnswer(choice.freeformInput, challenge.rootCause);
+            if (result.grade === 'correct') {
+              finalizeFaultTree(true);
+            } else if (result.grade === 'partial') {
+              addMsg(`You are close but missing a key detail.`, 'system');
+              finalizeFaultTree(false);
+            } else {
+              // ITERATION 5: try misconception matching
+              const misconception = await matchMisconception(choice.freeformInput, challenge.category);
+              if (misconception) {
+                addMsg(`<div class="msg-misconception"><strong>Common misconception detected:</strong> "${misconception.text}"<br><br><strong>Why this is wrong:</strong> ${misconception.correction}</div>`);
+              }
+              addMsg(`Your diagnosis does not match the evidence.`, 'combat');
+              finalizeFaultTree(false);
+            }
+          } else {
+            showDiagnosticSteps();
+          }
+        });
+      };
+      container.appendChild(diagnoseBtn);
+    }
+
+    // Give up option
+    const giveUpBtn = document.createElement('button');
+    giveUpBtn.className = 'choice-btn';
+    giveUpBtn.innerHTML = `<span class="key-hint">[X]</span> Give up and see the answer`;
+    giveUpBtn.setAttribute('aria-label', 'Give up');
+    giveUpBtn.onclick = () => finalizeFaultTree(false);
+    container.appendChild(giveUpBtn);
+
+    // Hide freeform for this encounter
+    document.getElementById('input-row').style.display = 'none';
+  }
+
+  async function finalizeFaultTree(solved) {
+    document.getElementById('input-row').style.display = 'flex';
+
+    if (solved) {
+      const efficiency = stepsUsed <= challenge.minStepsToSolve ? 'optimal' : 'thorough';
+      addMsg(`<div class="mastery-card"><h4>Fault Diagnosed${efficiency === 'optimal' ? ' Efficiently' : ''}!</h4><p>${challenge.rootCause}</p><p style="font-size:0.85rem; color:var(--text-dim);">Steps used: ${stepsUsed}/${challenge.steps.length}</p></div>`);
+      addMsg(`<span class="msg-mastery">Fault Tree mastery -- systematic diagnosis through reasoning, not guessing.</span>`, 'mastery');
+      for (const topic of region.topics) {
+        await trackMastery(topic, true, 4, null);
+      }
+      addClue(region, 'fault-tree-' + challenge.category);
+    } else {
+      takeDamage(region.difficulty * 2, 'Failed diagnosis -- the system remains broken.');
+      addMsg(`<div class="knowledge-reveal"><h4>Root Cause</h4><p>${challenge.rootCause}</p></div>`);
+    }
+    await continueOrMap(region);
+  }
+
+  showDiagnosticSteps();
+}
+
+// ENCOUNTER: Circuit Build (unchanged from iter 4)
+async function circuitBuildEncounter(topic, region) {
+  addMsg(`<div class="msg-challenge"><strong>Build Challenge</strong><br>A broken mechanism needs a specific component to function. Choose the right one.</div>`);
+
+  let options = [];
+  try {
+    const distractors = await api(`/api/distractors/${topic.id}?count=3`);
+    options = distractors.map(d => d.topic);
+  } catch (e) {
+    try {
+      const similar = await api(`/api/similar/${topic.id}`);
+      options = similar.slice(0, 3).map(s => s.topic);
+    } catch (e2) {}
+  }
+
+  const correctAnswer = topic.topic;
+  options = options.filter(o => o !== correctAnswer);
+  while (options.length < 3) { options.push(['Flux Capacitor', 'Quantum Resonator', 'Phase Inverter'][options.length]); }
+  options = options.slice(0, 3);
+
+  const allOptions = [...options, correctAnswer].sort(() => Math.random() - 0.5);
+
+  addMsg(`The mechanism's diagnostic display reads: <strong>"${topic.definition || topic.tldr || `Requires: ${topic.topic}`}"</strong>`, 'lore');
+  addMsg(`Which component do you install?`);
+
+  const choices = allOptions.map(opt => ({ text: opt, id: 'component', value: opt }));
+  choices.push({ text: 'Examine the mechanism more carefully (costs 1 turn)', id: 'examine' });
+
+  showChoices(choices, async (choice) => {
+    if (choice.id === 'examine') {
+      try {
+        const links = await api(`/api/links/${topic.id}`);
+        if (links.length > 0) {
+          addMsg(`You notice connections to: ${links.slice(0, 3).map(l => l.topic).join(', ')}`, 'hint');
+        }
+      } catch (e) {}
+      state.hintsUsed++;
+      showChoices(choices.filter(c => c.id !== 'examine'), async (c2) => {
+        await handleComponentChoice(c2, correctAnswer, topic, region);
+      });
+    } else {
+      await handleComponentChoice(choice, correctAnswer, topic, region);
+    }
+  });
+}
+
+async function handleComponentChoice(choice, correctAnswer, topic, region) {
+  if (choice.value === correctAnswer) {
+    addMsg(`The ${correctAnswer} clicks into place. The mechanism hums to life!`, 'success');
+    await trackMastery(topic.topic, true, 3, topic);
+    addClue(region, topic.topic);
+    addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- understanding deepens.</span>`, 'mastery');
+  } else {
+    addMsg(`The ${choice.value} doesn't fit. Sparks fly from the mismatched connection.`, 'combat');
+    takeDamage(region.difficulty * 2, 'Electrical feedback!');
+    trackMastery(topic.topic, false);
+    addMsg(`<div class="knowledge-reveal"><h4>The correct component was: ${correctAnswer}</h4><p>${topic.definition || topic.tldr || ''}</p></div>`);
+  }
+  await continueOrMap(region);
+}
+
+// ENCOUNTER: Diagnosis -- ITERATION 5: adds diagnostic branching
+async function diagnosisEncounter(topic, region) {
+  addMsg(`A device is malfunctioning. You need to diagnose the root cause.`);
+  const symptom = generateTopicSymptom(topic);
+  addMsg(`<div class="msg-challenge"><strong>Device: ${topic.topic}</strong><br><strong>Symptoms:</strong> ${symptom}</div>`);
+  addMsg(`Based on what you know about <strong>${topic.topic}</strong>, explain the root cause of this malfunction.`);
+
+  showChoices([
+    { text: 'Diagnose the problem (type your analysis below)', id: 'diagnose' },
+    { text: 'Request the device schematic (hint)', id: 'hint' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const correctAnswer = topic.key_insight || topic.definition || topic.tldr || topic.topic;
+      addMsg(`<em>Evaluating your diagnosis...</em>`, 'system');
+      const result = await evaluateAnswer(choice.freeformInput, correctAnswer);
+
+      if (result.grade === 'correct') {
+        addMsg(`Excellent diagnosis! Your understanding of ${topic.topic} pinpoints the issue.`, 'success');
+        await trackMastery(topic.topic, true, 4, topic);
+        addClue(region, topic.topic);
+        addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- diagnostic skill confirmed.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`You're on the right track, but missing key details.`, 'system');
+        trackMastery(topic.topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Full diagnosis</h4><p>${correctAnswer}</p></div>`);
+      } else {
+        // ITERATION 5: Try to match a misconception for targeted feedback
+        const misconception = await matchMisconception(choice.freeformInput, topic.topic);
+        if (misconception) {
+          addMsg(`<div class="msg-misconception"><strong>Common misconception detected:</strong> Your answer aligns with a known misunderstanding.<br><br>"${misconception.text}"<br><br><strong>Why this is wrong:</strong> ${misconception.correction}</div>`);
+        } else {
+          addMsg(`Your diagnosis doesn't match the symptoms.`, 'combat');
+        }
+        takeDamage(region.difficulty, 'Wasted time and resources.');
+        trackMastery(topic.topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Actual cause</h4><p>${correctAnswer}</p></div>`);
+      }
+    } else if (choice.id === 'hint') {
+      state.hintsUsed++;
+      if (topic.tldr) {
+        addMsg(`The schematic reveals relevant context: <em>${topic.tldr.slice(0, 120)}...</em>`, 'hint');
+      }
+      addMsg(`Now provide your diagnosis.`);
+      showChoices([{ text: 'Diagnose (type below)', id: 'diagnose' }], async (c) => {
+        if (c.freeformInput) {
+          const correctAnswer = topic.key_insight || topic.definition || topic.tldr || '';
+          const result = await evaluateAnswer(c.freeformInput, correctAnswer);
+          if (result.grade === 'correct') {
+            addMsg(`With the schematic's help, you identify the issue!`, 'success');
+            await trackMastery(topic.topic, true, 4, topic);
+            addClue(region, topic.topic);
+          } else {
+            addMsg(`Even with the schematic, the root cause eludes you.`);
+            trackMastery(topic.topic, false);
+            addMsg(`<div class="knowledge-reveal"><h4>Root cause</h4><p>${correctAnswer}</p></div>`);
+          }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+function generateTopicSymptom(topic) {
+  const insight = topic.key_insight || '';
+  const def = topic.definition || '';
+  const tldr = topic.tldr || '';
+  const content = insight || def || tldr;
+  const contentLower = content.toLowerCase();
+  if (contentLower.includes('store') && contentLower.includes('capacit')) return `The output voltage shows excessive ripple and the circuit fails to maintain a steady DC level.`;
+  if (contentLower.includes('resist') && (contentLower.includes('ohm') || contentLower.includes('current'))) return `Current through the circuit exceeds expected values. Components downstream are overheating.`;
+  if (contentLower.includes('induct') && (contentLower.includes('magnetic') || contentLower.includes('coil'))) return `When switching, large voltage spikes appear across the circuit.`;
+  if (contentLower.includes('diode') || contentLower.includes('rectif')) return `The circuit only works with one polarity of the input signal.`;
+  if (contentLower.includes('transistor') || contentLower.includes('amplif') || contentLower.includes('gain')) return `The output signal is clipped at both rails.`;
+  if (contentLower.includes('clock') || contentLower.includes('oscillat') || contentLower.includes('frequency')) return `The system timing is erratic. Some peripherals work intermittently.`;
+  if (contentLower.includes('bus') || contentLower.includes('protocol') || contentLower.includes('data')) return `Data transfers return corrupted values.`;
+  if (contentLower.includes('solder') || contentLower.includes('pcb') || contentLower.includes('manufacture')) return `The board passes bench testing but fails in the field.`;
+  if (contentLower.includes('pid') || contentLower.includes('control') || contentLower.includes('feedback')) return `The system overshoots its target repeatedly.`;
+  if (contentLower.includes('sensor') || contentLower.includes('measure') || contentLower.includes('adc')) return `Readings are noisy and drift over time.`;
+  if (content.length > 30) return `A subsystem that relies on ${topic.topic} is failing. Based on its function -- "${content.slice(0, 150)}" -- the expected behavior is no longer occurring.`;
+  return `The ${topic.topic} subsystem behaves unexpectedly. Measured values don't match theoretical predictions.`;
+}
+
+// ENCOUNTER: Predict Behavior -- ITERATION 5: adds diagnostic branching
+async function predictBehaviorEncounter(topic, region) {
+  addMsg(`<div class="msg-challenge"><strong>Prediction Challenge</strong></div>`);
+  const scenario = generateTopicScenario(topic);
+  addMsg(`A senior engineer poses a thought experiment about <strong>${topic.topic}</strong>:`);
+  addMsg(`"${scenario}"`, 'lore');
+  addMsg(`What's your prediction? Explain your reasoning.`);
+
+  showChoices([
+    { text: 'Make your prediction (type below)', id: 'predict' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const correctAnswer = topic.key_insight || topic.definition || topic.tldr || '';
+      const result = await evaluateAnswer(choice.freeformInput, correctAnswer);
+
+      if (result.grade === 'correct') {
+        addMsg(`"Spot on! You clearly understand ${topic.topic}."`, 'success');
+        await trackMastery(topic.topic, true, 4, topic);
+        addClue(region, topic.topic);
+        addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- predictive understanding proven.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`"Close, but you're missing a key aspect."`, 'system');
+        trackMastery(topic.topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>The complete answer</h4><p>${correctAnswer}</p></div>`);
+      } else {
+        // ITERATION 5: diagnostic branching for wrong predictions
+        const misconception = await matchMisconception(choice.freeformInput, topic.topic);
+        if (misconception) {
+          addMsg(`<div class="msg-misconception"><strong>I see where you went wrong.</strong> Your reasoning matches a common misconception:<br><br>"${misconception.text}"<br><br><strong>The correction:</strong> ${misconception.correction}</div>`);
+        } else {
+          addMsg(`"Not quite. Here's what actually happens:"`, 'system');
+        }
+        trackMastery(topic.topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Correct behavior</h4><p>${correctAnswer}</p></div>`);
+      }
+    } else {
+      addMsg(`You decline to make a prediction.`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+function generateTopicScenario(topic) {
+  const insight = (topic.key_insight || '').toLowerCase();
+  const name = topic.topic.toLowerCase();
+  if (insight.includes('capacit') || name.includes('capacit')) return `If you replace the capacitor in this filter circuit with one that has half the capacitance, how does the cutoff frequency change?`;
+  if (insight.includes('resist') || name.includes('resist')) return `If you double the resistance in this voltage divider, what happens to the output voltage?`;
+  if (insight.includes('induct') || name.includes('induct')) return `If you suddenly open the switch in a circuit with a charged inductor, what happens?`;
+  if (insight.includes('diode') || name.includes('diode')) return `If you reverse the polarity of the diode in this rectifier circuit, how does the output waveform change?`;
+  if (insight.includes('transistor') || name.includes('transistor') || name.includes('bjt') || name.includes('mosfet')) return `If you increase the base/gate voltage beyond the saturation point, what happens to the collector/drain current?`;
+  if (name.includes('op-amp') || name.includes('amplif')) return `If the feedback resistor in this inverting amplifier is removed, what happens to the output?`;
+  if (name.includes('pcb') || name.includes('solder')) return `If you reduce the reflow oven peak temperature by 20 degrees below spec, what defects would you expect?`;
+  if (name.includes('i2c') || name.includes('spi') || name.includes('can')) return `If you add a fourth device to this bus without adjusting termination, what symptoms appear?`;
+  if (name.includes('pid') || name.includes('control')) return `If you triple the proportional gain while keeping integral and derivative the same, what happens?`;
+  if (name.includes('clock') || name.includes('crystal')) return `If the load capacitance on the crystal is incorrect, how does this affect frequency and stability?`;
+  if (name.includes('adc') || name.includes('sensor')) return `If you sample an analog signal below the Nyquist frequency, what artifact appears?`;
+  if (name.includes('imu') || name.includes('gyro')) return `If the IMU is mounted at an angle offset from the body frame, how does this affect orientation?`;
+  const tldr = topic.tldr || topic.definition || '';
+  if (tldr.length > 30) return `Consider ${topic.topic}: "${tldr.slice(0, 120)}..." If the primary parameter changed by 50%, what downstream effects would you observe?`;
+  return `If the key operating principle of ${topic.topic} were compromised, what would you observe?`;
+}
+
+// ENCOUNTER: Component Choice (unchanged)
+async function componentChoiceEncounter(topic, region) {
+  addMsg(`You reach a junction in the circuit network. To proceed, you must route power correctly.`);
+  let distractors = [];
+  try { const d = await api(`/api/distractors/${topic.id}?count=2`); distractors = d.map(d => ({ name: d.topic, desc: d.definition || d.tldr || 'Unknown' })); } catch (e) {}
+  const correctOption = { name: topic.topic, desc: topic.definition || topic.tldr || 'Standard component' };
+  while (distractors.length < 2) distractors.push({ name: ['Plasma Relay', 'Quantum Bridge', 'Flux Gate'][distractors.length], desc: 'Unknown component' });
+  const allOptions = [...distractors, correctOption].sort(() => Math.random() - 0.5);
+  addMsg(`Three paths branch out. The circuit requirement: <em>${topic.tldr ? topic.tldr.slice(0, 150) : 'matches the specifications'}</em>`);
+  const choices = allOptions.map(opt => ({ text: `Use ${opt.name}`, id: 'choose_component', value: opt.name, isCorrect: opt.name === topic.topic }));
+  showChoices(choices, async (choice) => {
+    if (choice.isCorrect) {
+      addMsg(`You route through ${choice.value}. The circuit completes perfectly.`, 'success');
+      await trackMastery(topic.topic, true, 3, topic);
+      addClue(region, topic.topic);
+      addMsg(`<span class="msg-mastery">Mastery: ${topic.topic} -- practical application confirmed.</span>`, 'mastery');
+    } else {
+      addMsg(`The ${choice.value} doesn't match. A protection fuse blows.`, 'combat');
+      takeDamage(region.difficulty * 2, 'Circuit mismatch!');
+      trackMastery(topic.topic, false);
+      addMsg(`<div class="knowledge-reveal"><h4>The correct path: ${topic.topic}</h4><p>${topic.definition || topic.tldr || ''}</p></div>`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Negotiate -- ITERATION 5: gold check improved
+async function negotiateEncounter(term, region) {
+  addMsg(`A parts dealer has a booth filled with components. They notice you eyeing the shelves.`);
+  addMsg(`<div class="negotiate-step active"><strong>Step 1: Identify the Component</strong><br>The dealer gestures at their inventory. "What exactly do you need?"<br>The component relates to: <strong>${term.document_topic}</strong></div>`);
+
+  let stepsCorrect = 0;
+
+  showChoices([
+    { text: 'Describe what you need (type the term name and its purpose)', id: 'step1' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const step1Answer = `${term.term}: ${term.definition}`;
+      const result1 = await evaluateAnswer(choice.freeformInput, step1Answer);
+      if (result1.grade === 'correct' || result1.grade === 'partial') {
+        stepsCorrect++;
+        addMsg(`<div class="negotiate-step complete">The dealer nods. "I know exactly what you mean."</div>`);
+      } else {
+        addMsg(`<div class="negotiate-step">The dealer frowns. "That's not very specific."</div>`);
+      }
+
+      addMsg(`<div class="negotiate-step active"><strong>Step 2: Verify Quality</strong><br>"This one's rated for ${term.definition ? term.definition.slice(0, 60) : 'standard use'}..." Is it the RIGHT spec? What should you check?</div>`);
+
+      showChoices([
+        { text: 'Evaluate the component (explain what specs matter and why)', id: 'step2' },
+      ], async (choice2) => {
+        if (choice2.freeformInput) {
+          const step2Answer = term.key_insight || term.tldr || term.definition;
+          const result2 = await evaluateAnswer(choice2.freeformInput, step2Answer);
+          if (result2.grade === 'correct' || result2.grade === 'partial') {
+            stepsCorrect++;
+            addMsg(`<div class="negotiate-step complete">"Good eye! You know what matters."</div>`);
+          } else {
+            addMsg(`<div class="negotiate-step">The dealer shrugs. "If you can't tell the difference..."</div>`);
+          }
+
+          const basePrice = 10 + region.difficulty * 5;
+          const discount = stepsCorrect * 30;
+          const finalPrice = Math.max(5, Math.round(basePrice * (1 - discount/100)));
+
+          // ITERATION 5: If player has no gold, dealer accepts "knowledge in trade"
+          if (state.char.gold < finalPrice && stepsCorrect >= 2) {
+            addMsg(`<div class="negotiate-step active"><strong>Step 3: Knowledge Trade</strong><br>"You're clearly knowledgeable. I'll accept your expertise as payment -- take it."</div>`);
+            state.char.inventory.push(`${term.term} Component`);
+            addMsg(`The dealer gives you the ${term.term} component in exchange for your demonstrated expertise!`, 'success');
+            await trackMastery(term.term, true, 3, null);
+            addClue(region, term.term);
+            addMsg(`<span class="msg-mastery">Mastery: ${term.term} -- knowledge is currency.</span>`, 'mastery');
+          } else {
+            addMsg(`<div class="negotiate-step active"><strong>Step 3: Close the Deal</strong><br>"My price is ${basePrice} gold." ${stepsCorrect >= 2 ? '"Since you know your stuff: ' + finalPrice + ' gold."' : stepsCorrect === 1 ? '"I\'ll knock a bit off: ' + finalPrice + ' gold."' : '"Full price."'}</div>`);
+
+            showChoices([
+              { text: `Accept (${finalPrice} gold)`, id: 'buy' },
+              { text: 'Walk away', id: 'leave' },
+            ], async (choice3) => {
+              if (choice3.id === 'buy' && state.char.gold >= finalPrice) {
+                state.char.gold -= finalPrice;
+                state.char.inventory.push(`${term.term} Component`);
+                addMsg(`You purchase the ${term.term} component for ${finalPrice} gold.`, 'success');
+                if (stepsCorrect >= 2) {
+                  await trackMastery(term.term, true, 3, null);
+                  addClue(region, term.term);
+                  addMsg(`<span class="msg-mastery">Mastery: ${term.term} -- negotiation through understanding.</span>`, 'mastery');
+                } else {
+                  trackMastery(term.term, false);
+                }
+              } else if (choice3.id === 'buy') {
+                addMsg(`You don't have enough gold. Master topics in regions to earn more.`, 'system');
+                trackMastery(term.term, false);
+              } else {
+                addMsg(`You decide to pass on this deal.`);
+                trackMastery(term.term, false);
+              }
+              addMsg(`<div class="knowledge-reveal"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+              await continueOrMap(region);
+            });
+            return;
+          }
+          addMsg(`<div class="knowledge-reveal"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+          await continueOrMap(region);
+          return;
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    addMsg(`You walk past the dealer.`);
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Decode (unchanged)
+async function decodeEncounter(term, region) {
+  addMsg(`You find an encrypted maintenance log. The password hint reads: <strong>"The ${term.document_topic} concept that means: ${term.definition.slice(0, 80)}..."</strong>`, 'challenge');
+  addMsg(`What is the password? (Name the term)`);
+  showChoices([{ text: 'Enter the password (type below)', id: 'answer' }], async (choice) => {
+    const input = (choice.freeformInput || '').toLowerCase().trim();
+    const correct = term.term.toLowerCase().trim();
+    if (input === correct || input.includes(correct) || correct.includes(input)) {
+      addMsg(`Access granted! The log reveals important operational data.`, 'success');
+      await trackMastery(term.term, true, 1, null);
+      addClue(region, term.term);
+    } else {
+      addMsg(`Access denied. The correct term was: <strong>${term.term}</strong>`, 'system');
+      trackMastery(term.term, false);
+      addMsg(`<div class="knowledge-reveal"><h4>${term.term}</h4><p>${term.definition}</p></div>`);
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Apply Knowledge -- ITERATION 5: adds diagnostic branching
+async function applyKnowledgeEncounter(quiz, region) {
+  addMsg(`A system panel flashes red. The diagnostic interface shows an error condition.`);
+  addMsg(`<div class="msg-challenge"><strong>System query:</strong> ${quiz.question}</div>`);
+
+  showChoices([
+    { text: 'Provide your answer (type below)', id: 'answer' },
+    { text: 'Look up related documentation', id: 'docs' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, quiz.answer);
+      if (result.grade === 'correct') {
+        addMsg(`The system accepts your input. The error clears!`, 'success');
+        await trackMastery(quiz.document_topic, true, quiz.level || 2, null);
+        addClue(region, quiz.document_topic);
+        addMsg(`<span class="msg-mastery">Mastery: ${quiz.document_topic} -- system knowledge verified.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`The system partially recovers. Your answer was on the right track.`, 'system');
+        trackMastery(quiz.document_topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Complete solution</h4><p>${quiz.answer}</p></div>`);
+      } else {
+        // ITERATION 5: diagnostic branching
+        const misconception = await matchMisconception(choice.freeformInput, quiz.document_topic);
+        if (misconception) {
+          addMsg(`<div class="msg-misconception"><strong>Misconception identified:</strong><br>"${misconception.text}"<br><br><strong>Correction:</strong> ${misconception.correction}</div>`);
+        }
+        addMsg(`The system rejects your input. The error persists.`, 'combat');
+        takeDamage(region.difficulty, 'System overload backlash!');
+        trackMastery(quiz.document_topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>Correct response</h4><p>${quiz.answer}</p></div>`);
+      }
+    } else if (choice.id === 'docs') {
+      state.hintsUsed++;
+      try {
+        const results = await api(`/api/search?q=${encodeURIComponent(quiz.document_topic)}`);
+        if (results.length > 0 && results[0].tldr) addMsg(`Documentation: <em>${results[0].tldr.slice(0, 120)}...</em>`, 'hint');
+      } catch (e) { addMsg(`Documentation search failed.`, 'system'); }
+      addMsg(`Now answer: ${quiz.question}`, 'challenge');
+      showChoices([{ text: 'Answer (type below)', id: 'answer' }], async (c) => {
+        if (c.freeformInput) {
+          const result = await evaluateAnswer(c.freeformInput, quiz.answer);
+          if (result.grade === 'correct') {
+            addMsg(`With documentation, you solve it!`, 'success');
+            await trackMastery(quiz.document_topic, true, quiz.level || 2, null);
+            addClue(region, quiz.document_topic);
+          } else {
+            addMsg(`Still not right.`);
+            trackMastery(quiz.document_topic, false);
+            addMsg(`<div class="knowledge-reveal"><h4>Solution</h4><p>${quiz.answer}</p></div>`);
+          }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+// ENCOUNTER: Teach Apprentice -- ITERATION 5: diagnostic branching
+async function teachApprenticeEncounter(quiz, region) {
+  addMsg(`An apprentice approaches with a real problem they're stuck on.`, 'lore');
+  addMsg(`"I tried to answer this but I got confused: <strong>${quiz.question}</strong>"`, 'challenge');
+  const wrongAttempt = generateWrongAttempt(quiz);
+  addMsg(`The apprentice's attempt: <em>"${wrongAttempt}"</em>`);
+  addMsg(`<strong>What's wrong with their answer? Explain the correct reasoning.</strong>`);
+
+  showChoices([
+    { text: 'Correct the apprentice (type your explanation below)', id: 'teach' },
+    { text: 'Show the apprentice the reference material first', id: 'reference' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, quiz.answer);
+      if (result.grade === 'correct') {
+        addMsg(`The apprentice's eyes widen. "Oh! That's where I went wrong. Thank you!"`, 'success');
+        addMsg(`Teaching forces you to organize your understanding -- you learn as much as your student.`, 'system');
+        await trackMastery(quiz.document_topic, true, 5, null);
+        addClue(region, quiz.document_topic);
+        addMsg(`<span class="msg-mastery">Mastery: ${quiz.document_topic} -- teaching mastery achieved.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`"I think I understand part of it, but your explanation has gaps."`, 'system');
+        trackMastery(quiz.document_topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>A clearer correction</h4><p>${quiz.answer}</p></div>`);
+      } else {
+        // ITERATION 5: diagnostic branching for teach encounters
+        const misconception = await matchMisconception(choice.freeformInput, quiz.document_topic);
+        if (misconception) {
+          addMsg(`<div class="msg-misconception"><strong>It seems you share the apprentice's misconception:</strong><br>"${misconception.text}"<br><br><strong>Here is why this is wrong:</strong> ${misconception.correction}</div>`);
+        } else {
+          addMsg(`The apprentice looks more confused. "I'm not sure that's right either..."`, 'system');
+        }
+        trackMastery(quiz.document_topic, false);
+        addMsg(`<div class="knowledge-reveal"><h4>The proper explanation</h4><p>${quiz.answer}</p></div>`);
+      }
+    } else if (choice.id === 'reference') {
+      state.hintsUsed++;
+      addMsg(`<div class="knowledge-reveal"><h4>Reference material</h4><p>${quiz.answer.slice(0, 150)}...</p></div>`);
+      addMsg(`Now correct the apprentice's mistake.`);
+      showChoices([{ text: 'Teach (type below)', id: 'teach' }], async (c) => {
+        if (c.freeformInput) {
+          const result = await evaluateAnswer(c.freeformInput, quiz.answer);
+          if (result.grade === 'correct') {
+            addMsg(`With reference material in hand, you give a clear correction.`, 'success');
+            await trackMastery(quiz.document_topic, true, 4, null);
+            addClue(region, quiz.document_topic);
+          } else {
+            addMsg(`The apprentice still seems confused.`);
+            trackMastery(quiz.document_topic, false);
+            addMsg(`<div class="knowledge-reveal"><h4>Correct explanation</h4><p>${quiz.answer}</p></div>`);
+          }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+function generateWrongAttempt(quiz) {
+  const topic = (quiz.document_topic || '').toLowerCase();
+  const answer = quiz.answer || '';
+  // Use misconception pools for deterministic wrong attempts
+  for (const [key, pool] of Object.entries(MISCONCEPTION_POOLS)) {
+    if (topic.includes(key)) {
+      return pool[Math.floor(Math.random() * pool.length)].text;
+    }
+  }
+  // Fallback: derive from answer
+  if (answer.length > 20) {
+    const words = answer.split(' ');
+    if (words.length > 10) {
+      const partial = words.slice(0, Math.floor(words.length * 0.3)).join(' ');
+      return `I think it's something like "${partial}..." but then I got confused about how the rest works. Maybe the opposite happens?`;
+    }
+  }
+  return `I know it has something to do with ${quiz.document_topic}, but I'm confusing it with a similar concept. I think the answer is the opposite of what actually happens.`;
+}
+
+// ENCOUNTER: Explore (unchanged)
+async function exploreEncounter(region) {
+  addMsg(`You explore deeper into ${region.name}. The corridors twist and turn.`);
+  const events = [
+    { text: 'You find a repair station. Tools and materials are available.', heal: true },
+    { text: `An old diagram on the wall shows a circuit you haven't seen before. You study it carefully.`, learn: true },
+    { text: 'A hidden alcove contains a journal from a previous engineer. Their notes are still legible.', learn: true },
+  ];
+  const event = events[Math.floor(Math.random() * events.length)];
+  addMsg(event.text);
+  if (event.heal) {
+    const amount = dN(8) + 4;
+    state.char.hp = Math.min(state.char.maxHp, state.char.hp + amount);
+    addMsg(`You recover ${amount} HP at the repair station.`, 'success');
+  } else if (event.learn) {
+    try {
+      const topic = await api(`/api/topics/random?categories=${encodeURIComponent(region.categories[0])}`);
+      if (topic && topic.tldr) addMsg(`<div class="knowledge-reveal"><h4>${topic.topic}</h4><p>${topic.tldr}</p></div>`);
+    } catch (e) {}
+  }
+  updateHUD(); saveState();
+  await continueOrMap(region);
+}
+
+// ============================================================
+// MYSTERY SYSTEM (unchanged)
+// ============================================================
+function addClue(region, topicName) {
+  const mp = state.mysteryProgress[region.id];
+  if (!mp || mp.solved) return;
+  if (!mp.cluesFound.includes(topicName)) {
+    mp.cluesFound.push(topicName);
+    addMsg(`[Mystery clue ${mp.cluesFound.length}/${region.topics.length}: ${topicName}]`, 'system');
+    if (mp.cluesFound.length >= Math.ceil(region.topics.length * 0.6) && !mp.solvable) {
+      mp.solvable = true;
+      addMsg(`<div class="gate-card"><h4>Mystery Ready to Solve!</h4><p>You've gathered enough clues about ${region.name}. Return to the map and enter this region again to attempt solving the mystery.</p></div>`);
+    }
+  }
+  saveState();
+}
+
+async function attemptMysterySolve(region) {
+  const mp = state.mysteryProgress[region.id];
+  if (!mp || mp.solved || !mp.solvable) return false;
+  addMsg(`<div class="gate-card"><h4>Mystery Challenge: ${region.name}</h4><p>Clues: ${mp.cluesFound.join(', ')}</p><p><em>${region.mystery}</em></p><p><strong>Explain the root cause and how to fix it.</strong></p></div>`);
+  return new Promise((resolve) => {
+    showChoices([
+      { text: 'Solve the mystery (type below)', id: 'solve' },
+      { text: 'Not yet -- keep investigating', id: 'skip' },
+    ], async (choice) => {
+      if (choice.freeformInput) {
+        const result = await evaluateAnswer(choice.freeformInput, region.mysteryAnswer);
+        if (result.grade === 'correct') {
+          mp.solved = true;
+          addMsg(`<div class="mastery-card"><h4>MYSTERY SOLVED: ${region.name}</h4><p>Your understanding of ${mp.cluesFound.join(', ')} allowed you to diagnose the root cause.</p><p style="color:var(--text);">${region.mysteryAnswer}</p></div>`);
+          addMsg(`<span class="msg-mastery">This is what mastery looks like -- combining knowledge to solve real problems.</span>`, 'mastery');
+          saveState();
+          resolve(true);
+        } else if (result.grade === 'partial') {
+          addMsg(`You're on the right track, but the full picture eludes you.`, 'system');
+          resolve(false);
+        } else {
+          const misconception = await matchMisconception(choice.freeformInput, region.topics.join(' '));
+          if (misconception) {
+            addMsg(`<div class="msg-misconception"><strong>Your reasoning contains a misconception:</strong><br>"${misconception.text}"<br><br><strong>Correction:</strong> ${misconception.correction}</div>`);
+          }
+          addMsg(`Your explanation doesn't fit the evidence.`, 'system');
+          resolve(false);
+        }
+      } else {
+        addMsg(`You decide to gather more knowledge before attempting the mystery.`);
+        resolve(false);
+      }
+    });
+  });
+}
+
+// ============================================================
+// CROSS-TOPIC CHALLENGE -- ITERATION 5: DETERMINISTIC references
+// Uses CROSS_DOMAIN_CHALLENGES with fixed pre-authored answers
+// ============================================================
+async function crossTopicChallenge() {
+  clearNarrative();
+
+  const activeRegionIds = REGIONS.filter(r => {
+    const mp = state.mysteryProgress[r.id];
+    return mp && mp.cluesFound && mp.cluesFound.length >= 2;
+  }).map(r => r.id);
+
+  if (activeRegionIds.length < 2) {
+    addMsg(`Not enough cross-domain knowledge yet. Explore more regions first.`, 'system');
+    showWorldMap();
+    return;
+  }
+
+  // Find challenges where BOTH required regions are active
+  const available = CROSS_DOMAIN_CHALLENGES.filter(c =>
+    c.regions.every(rId => activeRegionIds.includes(rId))
+  );
+
+  // Also allow any challenge if player has enough regions
+  const allChallenges = available.length > 0 ? available : CROSS_DOMAIN_CHALLENGES;
+  const challenge = allChallenges[Math.floor(Math.random() * allChallenges.length)];
+
+  addMsg(`<div class="gate-card"><h4>Cross-Domain Challenge: ${challenge.title}</h4><p>This challenge requires combining knowledge from multiple domains.</p></div>`);
+  addMsg(challenge.prompt, 'challenge');
+  addMsg(`Explain your approach, referencing specific concepts from the relevant domains.`);
+
+  showChoices([
+    { text: 'Provide your cross-domain analysis (type below)', id: 'analyze' },
+    { text: 'Not ready yet -- return to map', id: 'back' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      // ITERATION 5: evaluate against FIXED, pre-authored reference
+      const result = await evaluateAnswer(choice.freeformInput, challenge.reference);
+
+      if (result.grade === 'correct') {
+        state.crossTopicSolved++;
+        addMsg(`Brilliant! Your ability to connect knowledge across domains is what separates a technician from an engineer.`, 'success');
+        addMsg(`<span class="msg-mastery">Cross-domain mastery: ${challenge.title}.</span>`, 'mastery');
+      } else if (result.grade === 'partial') {
+        addMsg(`You're making connections, but missing some crucial links.`, 'system');
+        addMsg(`<div class="knowledge-reveal"><h4>Deeper connections</h4><p>${challenge.reference}</p></div>`);
+      } else {
+        // ITERATION 5: diagnostic branching for cross-domain
+        const misconception = await matchMisconception(choice.freeformInput, challenge.title);
+        if (misconception) {
+          addMsg(`<div class="msg-misconception"><strong>Misconception detected in your analysis:</strong><br>"${misconception.text}"<br><br><strong>Correction:</strong> ${misconception.correction}</div>`);
+        }
+        addMsg(`The domains seem disconnected in your analysis.`, 'system');
+        addMsg(`<div class="knowledge-reveal"><h4>How they connect</h4><p>${challenge.reference}</p></div>`);
+      }
+    }
+    clearNarrative();
+    showWorldMap();
+  });
+}
+
+// ============================================================
+// SPACED REPETITION (unchanged)
+// ============================================================
+async function spacedRepetitionReview() {
+  const candidates = Object.entries(state.masteredTopics)
+    .filter(([, v]) => v.correct < 2 && v.attempts > 0)
+    .sort((a, b) => a[1].lastSeen - b[1].lastSeen);
+
+  if (candidates.length === 0) {
+    addMsg(`No topics need review. Keep exploring!`, 'system');
+    await visitLibrary();
+    return;
+  }
+
+  const [topicKey] = candidates[0];
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(topicKey)}`);
+    if (results.length > 0) {
+      addMsg(`Review time! You previously struggled with <strong>${results[0].topic}</strong>.`);
+      addMsg(`Without looking it up, explain what ${results[0].topic} is and why it matters.`, 'challenge');
+      showChoices([{ text: 'Explain (type below)', id: 'explain' }], async (choice) => {
+        if (choice.freeformInput) {
+          const correctAnswer = results[0].tldr || results[0].definition || results[0].topic;
+          const result = await evaluateAnswer(choice.freeformInput, correctAnswer);
+          if (result.grade === 'correct') {
+            addMsg(`Your understanding has solidified!`, 'success');
+            await trackMastery(topicKey, true, 2, null);
+            addMsg(`<span class="msg-mastery">Review complete: ${results[0].topic} strengthened.</span>`, 'mastery');
+          } else {
+            addMsg(`Still needs work. Here's a refresher:`);
+            trackMastery(topicKey, false);
+            addMsg(`<div class="knowledge-reveal"><h4>${results[0].topic}</h4><p>${correctAnswer}</p></div>`);
+          }
+        }
+        await visitLibrary();
+      });
+      return;
+    }
+  } catch (e) {}
+  addMsg(`Couldn't load review content.`, 'system');
+  await visitLibrary();
+}
+
+// ============================================================
+// DAMAGE & MASTERY -- NO XP/GOLD rewards except via mastery ranks
+// ============================================================
+function takeDamage(amount, description) {
+  state.char.hp = Math.max(0, state.char.hp - amount);
+  addMsg(`${description} (-${amount} HP)`, 'combat');
+  if (state.char.hp <= 0) {
+    state.char.hp = Math.floor(state.char.maxHp * 0.25);
+    addMsg(`You collapse but are revived at the repair station. Take time to review what you know.`, 'combat');
+  }
+  updateHUD(); saveState();
+}
+
+async function trackMastery(topicName, correct, bloomLevel, topicData) {
+  if (!topicName) return;
+  const key = topicName.toLowerCase().replace(/\s+/g, '-');
+  if (!state.masteredTopics[key]) state.masteredTopics[key] = { correct: 0, attempts: 0, lastSeen: Date.now(), bloomMax: 0 };
+  state.masteredTopics[key].attempts++;
+  if (correct) state.masteredTopics[key].correct++;
+  state.masteredTopics[key].lastSeen = Date.now();
+  if (bloomLevel && bloomLevel > (state.masteredTopics[key].bloomMax || 0)) {
+    state.masteredTopics[key].bloomMax = bloomLevel;
+  }
+
+  if (correct && state.masteredTopics[key].correct === 2) {
+    const insight = topicData ? (topicData.key_insight || topicData.tldr || topicData.definition || '') : topicName;
+    let connections = [];
+    if (topicData && topicData.id) {
+      try {
+        const links = await api(`/api/links/${topicData.id}`);
+        connections = links.slice(0, 3).map(l => l.topic);
+      } catch (e) {}
+    }
+    addJournalEntry(topicName, insight, connections);
+    addMsg(`<span class="msg-mastery">Journal updated: ${topicName} mastered.</span>`, 'mastery');
+
+    // ITERATION 5: Check gold replenishment for all regions
+    if (state.currentRegion) {
+      checkGoldReplenishment(state.currentRegion);
+    }
+
+    const cascade = checkConceptCascade(topicName);
+    if (cascade) {
+      state.conceptCascadesTriggered.push(cascade.pair);
+      await triggerConceptCascade(cascade);
+    }
+  }
+
+  updateHUD(); saveState();
+}
+
+async function triggerConceptCascade(cascadeInfo) {
+  const { pair, cascade } = cascadeInfo;
+  addMsg(`<div class="msg-cascade"><h4>Concept Cascade: ${cascade.name}!</h4><p>${cascade.prompt}</p></div>`);
+  showChoices([
+    { text: 'Explain the connection (type below)', id: 'explain' },
+  ], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, cascade.answer);
+      if (result.grade === 'correct') {
+        addMsg(`The pieces click together! You see how ${pair.replace('+', ' and ')} form a deeper principle.`, 'success');
+        addMsg(`<span class="msg-mastery">Cascade mastered: ${cascade.name} -- this is what deep understanding feels like.</span>`, 'mastery');
+        addJournalEntry(cascade.name, cascade.answer.slice(0, 150), pair.split('+'));
+      } else {
+        addMsg(`You sense the connection but can't quite articulate it yet.`);
+        addMsg(`<div class="knowledge-reveal"><h4>${cascade.name}</h4><p>${cascade.answer}</p></div>`);
+      }
+    }
+  });
+}
+
+async function continueOrMap(region) {
+  state.turnCount++;
+  const shouldReview = state.turnCount % 6 === 0;
+  const mysteryState = state.mysteryProgress[region.id];
+  const clueCount = mysteryState?.cluesFound?.length || 0;
+
+  const choices = [
+    { text: `Continue investigating ${region.name} (${clueCount} clues found)`, id: 'continue' },
+  ];
+  if (mysteryState?.solvable && !mysteryState?.solved) {
+    choices.push({ text: `Attempt to solve ${region.name}'s mystery!`, id: 'solve_mystery' });
+  }
+  if (shouldReview) choices.push({ text: 'Review a weak topic', id: 'review' });
+  choices.push({ text: 'Return to the map', id: 'map' });
+
+  showChoices(choices, async (choice) => {
+    if (choice.id === 'continue') {
+      clearNarrative();
+      addMsg(`You press deeper into ${region.name}...`);
+      await generateEncounter(region);
+    } else if (choice.id === 'solve_mystery') {
+      clearNarrative();
+      const solved = await attemptMysterySolve(region);
+      if (!solved) await continueOrMap(region);
+      else { clearNarrative(); showWorldMap(); }
+    } else if (choice.id === 'review') {
+      await spacedRepetitionReview();
+    } else {
+      clearNarrative(); showWorldMap();
+    }
+  });
+}
+
+// ============================================================
+// SAVE / LOAD
+// ============================================================
+function saveState() {
+  try {
+    localStorage.setItem('knowledge-quest-save', JSON.stringify({
+      char: state.char, masteredTopics: state.masteredTopics,
+      visitedRegions: state.visitedRegions, turnCount: state.turnCount,
+      mysteryProgress: state.mysteryProgress, hintsUsed: state.hintsUsed,
+      crossTopicSolved: state.crossTopicSolved || 0,
+      conceptCascadesTriggered: state.conceptCascadesTriggered || [],
+      knowledgeJournal: state.knowledgeJournal || [],
+      goldRanksEarned: state.goldRanksEarned || {},
+    }));
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem('knowledge-quest-save');
+    if (saved) {
+      const data = JSON.parse(saved);
+      Object.assign(state, {
+        char: data.char, masteredTopics: data.masteredTopics || {},
+        visitedRegions: data.visitedRegions || [], turnCount: data.turnCount || 0,
+        mysteryProgress: data.mysteryProgress || {}, hintsUsed: data.hintsUsed || 0,
+        crossTopicSolved: data.crossTopicSolved || 0,
+        conceptCascadesTriggered: data.conceptCascadesTriggered || [],
+        knowledgeJournal: data.knowledgeJournal || [],
+        goldRanksEarned: data.goldRanksEarned || {},
+      });
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+// ============================================================
+// PREMIUM (unchanged)
+// ============================================================
+const premiumFeatures = {
+  enabled: false,
+  features: {
+    advancedClasses: ['Quantum Sage', 'Signal Mage', 'Control Theorist'],
+    bonusRegions: ['The Quantum Realm', 'The Electromagnetic Field'],
+    cosmetics: ['Golden Circuit Aura', 'Plasma Trail'],
+    challengeModes: ['No-Hint Mode', 'Speedrun', 'Master Difficulty'],
+  },
+};
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  try {
+    state.dbStats = await api('/api/stats');
+    if (state.dbStats.documents === 0) {
+      document.getElementById('loading').innerHTML = '<p>Knowledge base is empty. Run the importer first.</p>';
+      return;
+    }
+    if (loadState()) {
+      document.getElementById('loading').style.display = 'none';
+      state.phase = 'playing';
+      document.getElementById('narrative').style.display = 'block';
+      document.getElementById('actions').style.display = 'block';
+      document.getElementById('footer').style.display = 'block';
+      updateHUD();
+      addMsg(`Welcome back, ${state.char.name}! ${getMasteredCount()} topics mastered. Rank: ${getOverallRank().name}.`, 'system');
+      showWorldMap();
+    } else {
+      initCharCreation();
+    }
+  } catch (err) {
+    document.getElementById('loading').innerHTML = `<p>Could not connect. Is Docker running?</p><p style="color:var(--danger)">${err.message}</p>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>

@@ -82,6 +82,24 @@
       "improvements": ["motivation_engagement: mixed → intrinsic"],
       "biggest_risk": "Non-deterministic cross-domain evaluation makes highest-order assessment unreliable",
       "status": "fail"
+    },
+    {
+      "iteration": 5,
+      "timestamp": "2026-03-29T14:00:00Z",
+      "generator_action": "deterministic cross-domain challenges, circuit wiring + fault tree action encounters, misconception-targeted feedback, gold replenishment",
+      "scores": {
+        "intrinsic_integration": "deep",
+        "pedagogical_soundness": "mixed",
+        "narrative_structure": "functional",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "adequate",
+        "freemium_monetisation": "learning-first"
+      },
+      "failing_dimensions": ["pedagogical_soundness"],
+      "improvements": ["intrinsic_integration: partial → deep"],
+      "biggest_risk": "Cosine similarity evaluation across 8/12 encounter types measures vocabulary overlap rather than conceptual accuracy",
+      "status": "max_iterations_reached"
     }
   ]
 }
