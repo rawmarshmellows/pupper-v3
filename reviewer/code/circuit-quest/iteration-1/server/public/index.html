@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Circuit Quest: Pupper Rescue</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #e6edf3;
+  --text-dim: #8b949e; --accent: #58a6ff; --accent2: #3fb950; --danger: #f85149;
+  --warning: #d29922; --xp: #bc8cff; --gold: #d29922;
+  --radius: 8px; --max-w: 640px;
+}
+html { font-size: 16px; background: var(--bg); color: var(--text); }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 100vh; min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+a { color: var(--accent); }
+
+/* ── Layout ── */
+#app { max-width: var(--max-w); margin: 0 auto; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+
+/* ── HUD ── */
+#hud { position: sticky; top: 0; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 8px 12px; display: none; }
+#hud .hud-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px; }
+#hud .hud-name { font-weight: 700; color: var(--accent); font-size: 0.9rem; }
+#hud .hud-stat { font-size: 0.8rem; color: var(--text-dim); }
+#hud .hud-stat b { color: var(--text); }
+.bar-wrap { height: 6px; background: var(--border); border-radius: 3px; flex: 1; min-width: 60px; max-width: 120px; }
+.bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+.bar-hp { background: var(--accent2); }
+.bar-mp { background: var(--accent); }
+.bar-xp { background: var(--xp); }
+.hud-bars { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.bar-label { font-size: 0.7rem; color: var(--text-dim); min-width: 20px; }
+
+/* ── Narrative ── */
+#narrative { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 12px; }
+.msg { margin-bottom: 12px; line-height: 1.6; animation: fadeIn 0.3s ease; }
+.msg-system { color: var(--text-dim); font-style: italic; font-size: 0.9rem; }
+.msg-narrator { color: var(--text); }
+.msg-npc { color: var(--accent); }
+.msg-success { color: var(--accent2); font-weight: 600; }
+.msg-danger { color: var(--danger); }
+.msg-warning { color: var(--warning); }
+.msg-xp { color: var(--xp); font-size: 0.85rem; }
+.msg-roll { color: var(--text-dim); font-size: 0.85rem; font-family: monospace; }
+.msg-tutorial { background: rgba(88,166,255,0.08); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 0 var(--radius) var(--radius) 0; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ── ASCII diagrams ── */
+pre.circuit { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px; overflow-x: auto; font-size: 0.75rem; line-height: 1.4; color: var(--accent2); margin: 8px 0; }
+
+/* ── Actions ── */
+#actions { position: sticky; bottom: 0; background: var(--surface); border-top: 1px solid var(--border);
+  padding: 8px 12px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
+#choices { display: flex; flex-direction: column; gap: 6px; margin-bottom: 6px; }
+.choice-btn { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 10px 14px;
+  border-radius: var(--radius); font-size: 0.95rem; cursor: pointer; text-align: left; min-height: 44px;
+  transition: border-color 0.2s, background 0.2s; }
+.choice-btn:hover, .choice-btn:focus { border-color: var(--accent); background: rgba(88,166,255,0.05); outline: none; }
+.choice-btn:active { transform: scale(0.98); }
+.choice-btn .key { color: var(--accent); font-weight: 700; margin-right: 8px; }
+#input-row { display: flex; gap: 6px; }
+#player-input { flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  padding: 10px 12px; border-radius: var(--radius); font-size: 1rem; min-height: 44px; }
+#player-input:focus { outline: none; border-color: var(--accent); }
+#send-btn { background: var(--accent); color: #000; border: none; padding: 10px 16px; border-radius: var(--radius);
+  font-weight: 700; cursor: pointer; min-height: 44px; font-size: 0.95rem; }
+#send-btn:hover { opacity: 0.9; }
+
+/* ── Character Creation ── */
+#char-create { padding: 20px 12px; display: flex; flex-direction: column; gap: 16px; }
+#char-create h1 { color: var(--accent); font-size: 1.5rem; text-align: center; }
+#char-create h2 { color: var(--text); font-size: 1.1rem; margin-top: 8px; }
+.spec-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.spec-card { background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius);
+  padding: 12px; cursor: pointer; transition: border-color 0.2s; }
+.spec-card:hover, .spec-card.selected { border-color: var(--accent); }
+.spec-card h3 { color: var(--accent); margin-bottom: 4px; }
+.spec-card p { color: var(--text-dim); font-size: 0.85rem; }
+.stat-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+.stat-row label { flex: 1; }
+.stat-row .stat-val { width: 30px; text-align: center; font-weight: 700; color: var(--accent); }
+.stat-btn { background: var(--bg); border: 1px solid var(--border); color: var(--text); width: 36px; height: 36px;
+  border-radius: var(--radius); cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
+.stat-btn:hover { border-color: var(--accent); }
+.stat-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.remaining { color: var(--warning); font-weight: 600; text-align: center; }
+input[type="text"].name-input { background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  padding: 10px 12px; border-radius: var(--radius); font-size: 1rem; width: 100%; }
+.start-btn { background: var(--accent2); color: #000; border: none; padding: 14px; border-radius: var(--radius);
+  font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 8px; }
+.start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.start-btn:hover:not(:disabled) { opacity: 0.9; }
+
+/* ── Help Modal ── */
+#help-modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.7);
+  justify-content: center; align-items: center; padding: 20px; }
+#help-modal.open { display: flex; }
+#help-content { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; max-width: 560px; width: 100%; max-height: 80vh; overflow-y: auto; }
+#help-content h2 { color: var(--accent); margin-bottom: 12px; }
+#help-content h3 { color: var(--accent2); margin-top: 12px; margin-bottom: 4px; font-size: 0.95rem; }
+#help-content p, #help-content li { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; }
+#help-content ul { padding-left: 20px; }
+.close-help { float: right; background: none; border: none; color: var(--text-dim); font-size: 1.3rem; cursor: pointer; }
+.help-btn { position: fixed; top: 8px; right: 12px; z-index: 150; background: var(--surface); border: 1px solid var(--border);
+  color: var(--accent); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: 700; font-size: 0.9rem; }
+
+/* ── Mastery Panel ── */
+#mastery-panel { display: none; padding: 16px 12px; }
+#mastery-panel h2 { color: var(--accent); margin-bottom: 8px; }
+.mastery-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.mastery-topic { flex: 1; font-size: 0.9rem; }
+.mastery-bar { width: 80px; height: 6px; background: var(--border); border-radius: 3px; }
+.mastery-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+.mastery-fresh { background: var(--accent2); }
+.mastery-fading { background: var(--warning); }
+.mastery-weak { background: var(--danger); }
+.mastery-pct { font-size: 0.75rem; color: var(--text-dim); width: 35px; text-align: right; }
+
+/* ── Tab bar ── */
+#tab-bar { display: none; background: var(--surface); border-top: 1px solid var(--border); padding: 4px 12px;
+  gap: 4px; justify-content: center; }
+#tab-bar.show { display: flex; }
+.tab-btn { background: none; border: 1px solid transparent; color: var(--text-dim); padding: 6px 14px;
+  border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+.tab-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(88,166,255,0.08); }
+
+/* ── Premium badge ── */
+.premium-badge { display: inline-block; background: var(--gold); color: #000; font-size: 0.7rem;
+  padding: 1px 6px; border-radius: 3px; font-weight: 700; vertical-align: middle; margin-left: 6px; }
+.premium-locked { opacity: 0.5; position: relative; }
+.premium-locked::after { content: 'PREMIUM'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  background: var(--gold); color: #000; padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+
+/* ── Responsive ── */
+@media (min-width: 500px) {
+  .spec-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <!-- Help button (always visible during gameplay) -->
+  <button class="help-btn" id="help-btn" style="display:none" aria-label="Help">?</button>
+
+  <!-- Help Modal -->
+  <div id="help-modal" role="dialog" aria-label="How to Play">
+    <div id="help-content">
+      <button class="close-help" aria-label="Close help">&times;</button>
+      <h2>How to Play Circuit Quest</h2>
+      <h3>Your Mission</h3>
+      <p>You're an apprentice robotics engineer. A broken Pupper v3 robot needs your help. Diagnose and fix circuit problems across 5 subsystems to bring it back to life.</p>
+      <h3>Encounters</h3>
+      <p>You'll face circuit puzzles, component challenges, and diagnostic mysteries. Each one requires real electronics reasoning — there are no quiz popups.</p>
+      <ul>
+        <li><b>Diagnosis:</b> Read the symptoms and circuit description. Type what you think the problem is.</li>
+        <li><b>Repair:</b> Select or specify the correct component/value to fix the issue.</li>
+        <li><b>Knowledge Checks:</b> NPCs will test your understanding in conversation. Answer in your own words.</li>
+      </ul>
+      <h3>How to Answer</h3>
+      <p>Type your answer in the text box at the bottom. You can also click the suggested action buttons. The game evaluates your reasoning, not just keywords.</p>
+      <h3>Stats &amp; Skills</h3>
+      <p>Your 6 skills affect gameplay: <b>Circuit Analysis</b> (calculations), <b>Signal Tracing</b> (schematics), <b>Component Knowledge</b> (parts), <b>Protocol Knowledge</b> (I2C/SPI/CAN), <b>Steady Hands</b> (soldering), <b>Intuition</b> (pattern recognition). Skill checks use d20 + modifier.</p>
+      <h3>Mastery &amp; Decay</h3>
+      <p>Topics you master will slowly decay over time. Revisit them through encounters to keep mastery strong. Check the Mastery tab to see which topics are fading.</p>
+      <h3>Zones</h3>
+      <p>Zone 1: Power Supply | Zone 2: Sensors | Zone 3: Motors | Zone 4: Communication | Zone 5: Integration (Boss)</p>
+      <h3>Inventory &amp; Tools</h3>
+      <p>Collect components and tools. Your multimeter, oscilloscope, and other tools unlock as you level up.</p>
+    </div>
+  </div>
+
+  <!-- Character Creation Screen -->
+  <div id="char-create">
+    <h1>Circuit Quest: Pupper Rescue</h1>
+    <p style="text-align:center;color:var(--text-dim)">An electronics repair RPG. Fix circuits. Save the robot.</p>
+
+    <h2>Your Name</h2>
+    <input type="text" class="name-input" id="char-name" placeholder="Enter your engineer name..." maxlength="24" aria-label="Character name">
+
+    <h2>Specialization</h2>
+    <div class="spec-grid" id="spec-grid">
+      <div class="spec-card" data-spec="power" tabindex="0" role="button" aria-pressed="false">
+        <h3>Power Systems</h3>
+        <p>+2 Circuit Analysis. Start with multimeter. You understand voltage regulation.</p>
+      </div>
+      <div class="spec-card" data-spec="signal" tabindex="0" role="button" aria-pressed="false">
+        <h3>Signal Integrity</h3>
+        <p>+2 Signal Tracing. Start with oscilloscope. You can read waveforms.</p>
+      </div>
+      <div class="spec-card" data-spec="protocol" tabindex="0" role="button" aria-pressed="false">
+        <h3>Protocol Engineering</h3>
+        <p>+2 Protocol Knowledge. Start with logic analyzer. You understand how devices communicate.</p>
+      </div>
+    </div>
+
+    <h2>Allocate Skill Points <span class="remaining" id="points-left">(12 points remaining)</span></h2>
+    <div id="stat-alloc"></div>
+
+    <button class="start-btn" id="start-btn" disabled>Begin Your Apprenticeship</button>
+  </div>
+
+  <!-- Game HUD -->
+  <div id="hud">
+    <div class="hud-row">
+      <span class="hud-name" id="hud-name">Engineer</span>
+      <span class="hud-stat">Lv <b id="hud-level">1</b></span>
+      <span class="hud-stat"><b id="hud-gold">50</b>g</span>
+      <span class="hud-stat" id="hud-zone">Zone 1</span>
+    </div>
+    <div class="hud-row hud-bars">
+      <span class="bar-label">HP</span>
+      <div class="bar-wrap"><div class="bar-fill bar-hp" id="bar-hp" style="width:100%"></div></div>
+      <span class="bar-label" id="hp-text">30</span>
+      <span class="bar-label">SP</span>
+      <div class="bar-wrap"><div class="bar-fill bar-mp" id="bar-sp" style="width:100%"></div></div>
+      <span class="bar-label" id="sp-text">20</span>
+      <span class="bar-label">XP</span>
+      <div class="bar-wrap"><div class="bar-fill bar-xp" id="bar-xp" style="width:0%"></div></div>
+      <span class="bar-label" id="xp-text">0</span>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <div id="tab-bar">
+    <button class="tab-btn active" data-tab="narrative">Adventure</button>
+    <button class="tab-btn" data-tab="mastery">Mastery</button>
+    <button class="tab-btn" data-tab="inventory">Inventory</button>
+  </div>
+
+  <!-- Narrative Area -->
+  <div id="narrative"></div>
+
+  <!-- Mastery Panel -->
+  <div id="mastery-panel"></div>
+
+  <!-- Inventory Panel -->
+  <div id="inventory-panel" style="display:none;padding:16px 12px;"></div>
+
+  <!-- Actions -->
+  <div id="actions" style="display:none">
+    <div id="choices"></div>
+    <div id="input-row">
+      <input type="text" id="player-input" placeholder="Type your answer or action..." aria-label="Player input">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// CIRCUIT QUEST: PUPPER RESCUE — Game Engine
+// ══════════════════════════════════════════════════════════════════
+
+const API = '';
+const SAVE_KEY = 'circuit-quest-save';
+
+// ── Game State ──────────────────────────────────────────────────
+let G = {
+  phase: 'create',  // create | tutorial | play
+  player: null,
+  currentZone: 0,
+  currentEncounter: 0,
+  encounterQueue: [],
+  mastery: {},      // topic_id -> { strength, halfLife, lastReviewed, topic }
+  inventory: [],
+  tools: [],
+  questLog: [],
+  tutorialStep: 0,
+  xp: 0,
+  level: 1,
+  xpToNext: 100,
+  gold: 50,
+  stats: null,      // DB stats
+  premiumFeatures: { unlocked: false },
+  flags: {},
+};
+
+// ── Skills ──────────────────────────────────────────────────────
+const SKILLS = [
+  { key: 'circuitAnalysis', name: 'Circuit Analysis', desc: 'Calculations, Ohm\'s Law, series/parallel' },
+  { key: 'signalTracing', name: 'Signal Tracing', desc: 'Schematics, current paths, debugging' },
+  { key: 'componentKnowledge', name: 'Component Knowledge', desc: 'Parts identification, specs, selection' },
+  { key: 'protocolKnowledge', name: 'Protocol Knowledge', desc: 'I2C, SPI, CAN, UART' },
+  { key: 'steadyHands', name: 'Steady Hands', desc: 'Soldering, physical repairs' },
+  { key: 'intuition', name: 'Intuition', desc: 'Pattern recognition, experience' },
+];
+
+const SPECS = {
+  power: { bonus: 'circuitAnalysis', tool: 'Multimeter', desc: 'Power Systems' },
+  signal: { bonus: 'signalTracing', tool: 'Oscilloscope', desc: 'Signal Integrity' },
+  protocol: { bonus: 'protocolKnowledge', tool: 'Logic Analyzer', desc: 'Protocol Engineering' },
+};
+
+const ZONES = [
+  { name: 'Power Supply Bay', concepts: 'Buck converter, voltage dividers, Ohm\'s Law, inductors, capacitors', icon: '⚡' },
+  { name: 'Sensor Network', concepts: 'I2C protocol, pull-up resistors, RC time constants, ADC', icon: '📡' },
+  { name: 'Motor Control Hub', concepts: 'CAN bus, differential signaling, termination, noise immunity', icon: '⚙️' },
+  { name: 'Communication Bridge', concepts: 'SPI, protocol comparison, clock polarity, full-duplex', icon: '🔗' },
+  { name: 'Full Integration', concepts: 'All concepts combined, system-level debugging', icon: '🤖' },
+];
+
+// ── DOM refs ────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const narr = $('narrative');
+const choices = $('choices');
+const input = $('player-input');
+
+// ── Utilities ───────────────────────────────────────────────────
+function d20() { return Math.floor(Math.random() * 20) + 1; }
+
+function skillMod(skillKey) {
+  if (!G.player) return 0;
+  return Math.floor((G.player.skills[skillKey] - 10) / 2);
+}
+
+function skillCheck(skillKey, dc) {
+  const roll = d20();
+  const mod = skillMod(skillKey);
+  const total = roll + mod;
+  const success = total >= dc;
+  const crit = roll === 20;
+  const fumble = roll === 1;
+  return { roll, mod, total, dc, success, crit, fumble, skillKey };
+}
+
+function addMsg(text, cls = 'narrator') {
+  const div = document.createElement('div');
+  div.className = `msg msg-${cls}`;
+  div.innerHTML = text;
+  narr.appendChild(div);
+  narr.scrollTop = narr.scrollHeight;
+}
+
+function addCircuit(ascii) {
+  const pre = document.createElement('pre');
+  pre.className = 'circuit';
+  pre.textContent = ascii;
+  narr.appendChild(pre);
+  narr.scrollTop = narr.scrollHeight;
+}
+
+function clearNarrative() { narr.innerHTML = ''; }
+function clearChoices() { choices.innerHTML = ''; }
+
+function setChoices(opts) {
+  clearChoices();
+  opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="key">${i + 1}</span>${opt.text}`;
+    btn.onclick = () => opt.action();
+    btn.setAttribute('tabindex', '0');
+    btn.setAttribute('role', 'button');
+    choices.appendChild(btn);
+  });
+}
+
+function showInput(visible = true) {
+  $('input-row').style.display = visible ? 'flex' : 'none';
+}
+
+function updateHUD() {
+  if (!G.player) return;
+  $('hud-name').textContent = G.player.name;
+  $('hud-level').textContent = G.level;
+  $('hud-gold').textContent = G.gold;
+  $('hud-zone').textContent = ZONES[G.currentZone]?.name || 'Hub';
+  const hpPct = (G.player.hp / G.player.maxHp) * 100;
+  const spPct = (G.player.sp / G.player.maxSp) * 100;
+  const xpPct = (G.xp / G.xpToNext) * 100;
+  $('bar-hp').style.width = hpPct + '%';
+  $('bar-sp').style.width = spPct + '%';
+  $('bar-xp').style.width = xpPct + '%';
+  $('hp-text').textContent = G.player.hp;
+  $('sp-text').textContent = G.player.sp;
+  $('xp-text').textContent = G.xp + '/' + G.xpToNext;
+}
+
+function gainXP(amount, reason) {
+  G.xp += amount;
+  addMsg(`+${amount} XP — ${reason}`, 'xp');
+  while (G.xp >= G.xpToNext) {
+    G.xp -= G.xpToNext;
+    G.level++;
+    G.xpToNext = Math.floor(G.xpToNext * 1.5);
+    G.player.maxHp += 5;
+    G.player.hp = G.player.maxHp;
+    G.player.maxSp += 3;
+    G.player.sp = G.player.maxSp;
+    addMsg(`LEVEL UP! You are now Level ${G.level}. HP and SP fully restored.`, 'success');
+  }
+  updateHUD();
+  saveGame();
+}
+
+function gainGold(amount) {
+  G.gold += amount;
+  if (amount > 0) addMsg(`+${amount} gold`, 'xp');
+  updateHUD();
+  saveGame();
+}
+
+function takeDamage(amount) {
+  G.player.hp = Math.max(0, G.player.hp - amount);
+  addMsg(`-${amount} HP`, 'danger');
+  if (G.player.hp <= 0) {
+    addMsg('You pass out from exhaustion. Doc finds you and patches you up, but you lose some gold.', 'danger');
+    G.player.hp = Math.floor(G.player.maxHp / 2);
+    G.gold = Math.max(0, G.gold - 10);
+  }
+  updateHUD();
+  saveGame();
+}
+
+// ── Mastery System (Half-Life Decay) ────────────────────────────
+function getMasteryStrength(topicId) {
+  const m = G.mastery[topicId];
+  if (!m) return 0;
+  const elapsed = (Date.now() - m.lastReviewed) / (1000 * 60 * 60); // hours
+  return Math.pow(2, -elapsed / m.halfLife);
+}
+
+function updateMastery(topicId, topicName, success) {
+  if (!G.mastery[topicId]) {
+    G.mastery[topicId] = { strength: 0, halfLife: 24, lastReviewed: Date.now(), topic: topicName };
+  }
+  const m = G.mastery[topicId];
+  if (success) {
+    m.halfLife = Math.min(m.halfLife * 2, 720); // cap at 30 days
+    m.strength = 1;
+  } else {
+    m.halfLife = Math.max(m.halfLife / 2, 12); // min 12 hours
+    m.strength = 0.5;
+  }
+  m.lastReviewed = Date.now();
+  saveGame();
+}
+
+function renderMasteryPanel() {
+  const panel = $('mastery-panel');
+  const entries = Object.entries(G.mastery);
+  if (entries.length === 0) {
+    panel.innerHTML = '<h2>Knowledge Mastery</h2><p style="color:var(--text-dim)">No topics mastered yet. Complete encounters to build mastery.</p>';
+    return;
+  }
+  let html = '<h2>Knowledge Mastery</h2>';
+  entries.sort((a, b) => getMasteryStrength(b[0]) - getMasteryStrength(a[0]));
+  for (const [id, m] of entries) {
+    const strength = getMasteryStrength(id);
+    const pct = Math.round(strength * 100);
+    const cls = pct > 70 ? 'fresh' : pct > 40 ? 'fading' : 'weak';
+    html += `<div class="mastery-item">
+      <span class="mastery-topic">${m.topic}</span>
+      <div class="mastery-bar"><div class="mastery-fill mastery-${cls}" style="width:${pct}%"></div></div>
+      <span class="mastery-pct">${pct}%</span>
+    </div>`;
+  }
+  panel.innerHTML = html;
+}
+
+function renderInventoryPanel() {
+  const panel = $('inventory-panel');
+  let html = '<h2 style="color:var(--accent);margin-bottom:8px;">Inventory</h2>';
+  html += '<h3 style="color:var(--accent2);font-size:0.9rem;margin-bottom:4px;">Tools</h3>';
+  if (G.tools.length === 0) {
+    html += '<p style="color:var(--text-dim);font-size:0.9rem;">No tools yet.</p>';
+  } else {
+    G.tools.forEach(t => { html += `<div style="padding:4px 0;font-size:0.9rem;">${t}</div>`; });
+  }
+  html += '<h3 style="color:var(--accent2);font-size:0.9rem;margin:8px 0 4px;">Components</h3>';
+  if (G.inventory.length === 0) {
+    html += '<p style="color:var(--text-dim);font-size:0.9rem;">No components yet.</p>';
+  } else {
+    G.inventory.forEach(c => { html += `<div style="padding:4px 0;font-size:0.9rem;">${c}</div>`; });
+  }
+  panel.innerHTML = html;
+}
+
+// ── Save/Load ───────────────────────────────────────────────────
+function saveGame() {
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({
+      player: G.player, currentZone: G.currentZone, currentEncounter: G.currentEncounter,
+      mastery: G.mastery, inventory: G.inventory, tools: G.tools, xp: G.xp, level: G.level,
+      xpToNext: G.xpToNext, gold: G.gold, flags: G.flags, phase: G.phase, questLog: G.questLog,
+    }));
+  } catch (e) { /* quota exceeded — ignore */ }
+}
+
+function loadGame() {
+  try {
+    const data = JSON.parse(localStorage.getItem(SAVE_KEY));
+    if (data && data.player) {
+      Object.assign(G, data);
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+// ── API helpers ─────────────────────────────────────────────────
+async function apiGet(path) {
+  try {
+    const r = await fetch(API + path);
+    return await r.json();
+  } catch (e) {
+    console.error('API error:', e);
+    return null;
+  }
+}
+
+async function apiPost(path, body) {
+  try {
+    const r = await fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    return await r.json();
+  } catch (e) {
+    console.error('API error:', e);
+    return null;
+  }
+}
+
+async function evaluateAnswer(question, correctAnswer, playerAnswer) {
+  const result = await apiPost('/api/evaluate-llm', { question, correct_answer: correctAnswer, player_answer: playerAnswer });
+  return result || { grade: 'partial', feedback: 'Could not evaluate.', misconception: null };
+}
+
+// ── Character Creation ──────────────────────────────────────────
+function initCharCreate() {
+  let selectedSpec = null;
+  let points = 12;
+  const skills = {};
+  SKILLS.forEach(s => { skills[s.key] = 3; });
+
+  // Build stat allocation UI
+  const allocDiv = $('stat-alloc');
+  allocDiv.innerHTML = '';
+  SKILLS.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'stat-row';
+    row.innerHTML = `
+      <label>${s.name} <span style="color:var(--text-dim);font-size:0.8rem">(${s.desc})</span></label>
+      <button class="stat-btn" data-skill="${s.key}" data-dir="-1" aria-label="Decrease ${s.name}">-</button>
+      <span class="stat-val" id="sv-${s.key}">${skills[s.key]}</span>
+      <button class="stat-btn" data-skill="${s.key}" data-dir="1" aria-label="Increase ${s.name}">+</button>
+    `;
+    allocDiv.appendChild(row);
+  });
+
+  function updateStatUI() {
+    SKILLS.forEach(s => {
+      $(`sv-${s.key}`).textContent = skills[s.key];
+    });
+    $('points-left').textContent = `(${points} points remaining)`;
+    document.querySelectorAll('.stat-btn').forEach(btn => {
+      const sk = btn.dataset.skill;
+      const dir = parseInt(btn.dataset.dir);
+      btn.disabled = (dir === 1 && (points <= 0 || skills[sk] >= 10)) || (dir === -1 && skills[sk] <= 1);
+    });
+    $('start-btn').disabled = !selectedSpec || !$('char-name').value.trim();
+  }
+
+  allocDiv.addEventListener('click', e => {
+    const btn = e.target.closest('.stat-btn');
+    if (!btn || btn.disabled) return;
+    const sk = btn.dataset.skill;
+    const dir = parseInt(btn.dataset.dir);
+    skills[sk] += dir;
+    points -= dir;
+    updateStatUI();
+  });
+
+  // Spec selection
+  document.querySelectorAll('.spec-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.spec-card').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-pressed', 'false'); });
+      card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
+      selectedSpec = card.dataset.spec;
+      updateStatUI();
+    });
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } });
+  });
+
+  $('char-name').addEventListener('input', updateStatUI);
+
+  $('start-btn').addEventListener('click', () => {
+    if (!selectedSpec || !$('char-name').value.trim()) return;
+    const spec = SPECS[selectedSpec];
+    skills[spec.bonus] += 2;
+
+    G.player = {
+      name: $('char-name').value.trim(),
+      spec: selectedSpec,
+      specName: spec.desc,
+      skills: skills,
+      hp: 20 + skills.circuitAnalysis * 2,
+      maxHp: 20 + skills.circuitAnalysis * 2,
+      sp: 10 + skills.intuition * 2,
+      maxSp: 10 + skills.intuition * 2,
+    };
+    G.tools = [spec.tool];
+    G.inventory = ['Assorted Resistors (10 pack)', 'Ceramic Capacitor 100nF x5', 'Soldering Wire'];
+    G.gold = 50;
+
+    saveGame();
+    startTutorial();
+  });
+
+  updateStatUI();
+}
+
+// ── Tutorial ────────────────────────────────────────────────────
+async function startTutorial() {
+  G.phase = 'tutorial';
+  G.tutorialStep = 0;
+  $('char-create').style.display = 'none';
+  $('hud').style.display = 'block';
+  $('actions').style.display = 'block';
+  $('help-btn').style.display = 'block';
+  $('tab-bar').classList.add('show');
+  updateHUD();
+  clearNarrative();
+
+  addMsg(`Welcome to the Electronics Repair Lab, <b>${G.player.name}</b>!`, 'tutorial');
+  addMsg(`You are a <b>${G.player.specName}</b> apprentice. Your mentor, Doc, has a special project for you.`, 'tutorial');
+
+  await delay(500);
+  addMsg(`<b>Doc:</b> "Good, you're here. We've got a Pupper v3 robot — a quadruped — that's completely dead. Every subsystem needs work. Power, sensors, motors, communications... the works."`, 'npc');
+
+  await delay(300);
+  addMsg(`<b>Doc:</b> "Before I turn you loose on it, let me show you how things work around here."`, 'npc');
+
+  await delay(300);
+  addMsg(`<b>TUTORIAL — Step 1 of 4: How Encounters Work</b>`, 'tutorial');
+  addMsg(`Each repair task is an <b>encounter</b>. You'll see a description of the problem — symptoms, circuit details, schematics — and you need to <b>diagnose and fix</b> the issue.`, 'tutorial');
+  addMsg(`Let's try a simple one. Look at this circuit:`, 'tutorial');
+
+  addCircuit(`    +5V ──┬── R1=??? ──┬── LED ──┬── GND
+            │           │          │
+            │         Vout=2V      │
+            │           │          │
+            └── R2=1kΩ ─┘          │
+                                   │
+    GND ───────────────────────────┘`);
+
+  addMsg(`The LED needs 2V across it, and R2 is 1kΩ. <b>What value should R1 be to set Vout to 2V?</b>`, 'tutorial');
+  addMsg(`<i>Hint: This is a voltage divider. Vout = Vin × R2 / (R1 + R2). Rearrange to find R1.</i>`, 'system');
+  addMsg(`Type your answer below (e.g., "1.5k" or "1500 ohms"):`, 'tutorial');
+
+  showInput(true);
+  setChoices([
+    { text: 'I need a hint', action: () => tutorialHint() },
+    { text: 'Skip Tutorial', action: () => skipTutorial() },
+  ]);
+
+  G.tutorialStep = 1;
+  saveGame();
+}
+
+function tutorialHint() {
+  addMsg(`<b>Doc:</b> "Vout = Vin × R2 / (R1 + R2). You want 2V from 5V with R2 = 1kΩ. So 2 = 5 × 1000 / (R1 + 1000). Solve for R1..."`, 'npc');
+  addMsg(`That gives: R1 + 1000 = 5 × 1000 / 2 = 2500, so R1 = <b>1500Ω (1.5kΩ)</b>.`, 'system');
+}
+
+async function handleTutorialInput(text) {
+  const t = text.toLowerCase().replace(/\s/g, '');
+  if (G.tutorialStep === 1) {
+    // Check answer for voltage divider: R1 = 1.5k
+    const correct = /1\.?5k|1500/.test(t);
+    if (correct) {
+      addMsg(`<b>Doc:</b> "That's right — 1.5kΩ. Vout = 5 × 1000/(1500+1000) = 2V. Good instincts."`, 'success');
+      gainXP(15, 'Tutorial puzzle — voltage divider');
+    } else {
+      const result = await evaluateAnswer(
+        'What value should R1 be in a voltage divider with Vin=5V, Vout=2V, R2=1kΩ?',
+        '1.5kΩ or 1500Ω. Using Vout = Vin × R2/(R1+R2): 2 = 5×1000/(R1+1000), so R1 = 1500Ω.',
+        text
+      );
+      if (result.grade === 'correct') {
+        addMsg(`<b>Doc:</b> "That's right! ${result.feedback}"`, 'success');
+        gainXP(15, 'Tutorial puzzle — voltage divider');
+      } else if (result.grade === 'partial') {
+        addMsg(`<b>Doc:</b> "${result.feedback} The answer is 1.5kΩ. Using Vout = Vin × R2/(R1+R2): R1 = 1500Ω."`, 'warning');
+        gainXP(5, 'Tutorial puzzle — partial');
+      } else {
+        addMsg(`<b>Doc:</b> "Not quite. ${result.feedback || ''} The answer is 1.5kΩ (1500Ω). Vout = 5 × 1000/(1500+1000) = 2V."`, 'danger');
+        gainXP(3, 'Tutorial puzzle — attempted');
+      }
+    }
+
+    await delay(500);
+    addMsg(`<b>TUTORIAL — Step 2 of 4: Skill Checks</b>`, 'tutorial');
+    addMsg(`Some actions require a <b>skill check</b>: you roll a d20, add your skill modifier, and compare to a Difficulty Class (DC).`, 'tutorial');
+    addMsg(`Let's try one. You need to trace a signal path (Signal Tracing check, DC 10).`, 'tutorial');
+    setChoices([
+      { text: 'Roll Signal Tracing check', action: () => tutorialRoll() },
+      { text: 'Skip Tutorial', action: () => skipTutorial() },
+    ]);
+    showInput(false);
+    G.tutorialStep = 2;
+    saveGame();
+
+  } else if (G.tutorialStep === 3) {
+    // Mastery explanation — just accept any input
+    tutorialMasteryStep();
+  }
+}
+
+function tutorialRoll() {
+  const check = skillCheck('signalTracing', 10);
+  addMsg(`<b>d20 Roll:</b> ${check.roll} + ${check.mod} (Signal Tracing) = <b>${check.total}</b> vs DC ${check.dc}`, 'roll');
+  if (check.crit) {
+    addMsg(`<b>Critical Success!</b> You trace the path instantly and notice an extra detail others would miss.`, 'success');
+  } else if (check.success) {
+    addMsg(`<b>Success!</b> You trace the signal from the MCU through the level shifter to the sensor.`, 'success');
+  } else if (check.fumble) {
+    addMsg(`<b>Critical Fail!</b> You accidentally short two pins together. Sparks fly! (Don't worry, Doc fixes it.)`, 'danger');
+  } else {
+    addMsg(`<b>Failed.</b> The trace is too fine to follow. But you learn from the attempt.`, 'warning');
+  }
+  addMsg(`Notice how the roll, modifier, and result are shown transparently. Higher skills = better odds.`, 'tutorial');
+
+  setTimeout(() => {
+    addMsg(`<b>TUTORIAL — Step 3 of 4: Mastery Tracking</b>`, 'tutorial');
+    addMsg(`Every topic you encounter is tracked. Mastery <b>decays over time</b> — like real memory. Topics you haven't reviewed recently will fade, and the game will bring them back.`, 'tutorial');
+    addMsg(`Check the <b>Mastery tab</b> above to see your tracked topics. After this tutorial, the voltage divider topic will appear there.`, 'tutorial');
+    updateMastery('tutorial-vdiv', 'Voltage Dividers', true);
+    renderMasteryPanel();
+
+    addMsg(`<b>TUTORIAL — Step 4 of 4: Zones &amp; Progression</b>`, 'tutorial');
+    addMsg(`The Pupper robot has 5 broken subsystems, each is a <b>Zone</b>:`, 'tutorial');
+    ZONES.forEach((z, i) => {
+      const premium = i >= 5 ? ' <span class="premium-badge">PREMIUM</span>' : '';
+      addMsg(`${z.icon} <b>Zone ${i+1}: ${z.name}</b> — ${z.concepts}${premium}`, 'system');
+    });
+    addMsg(`Complete Zone 1 to unlock Zone 2, and so on. Each zone has multiple encounters that build on each other.`, 'tutorial');
+    addMsg(`<b>You're ready!</b> Doc is waiting in the Power Supply Bay.`, 'tutorial');
+
+    setChoices([
+      { text: 'Enter Zone 1: Power Supply Bay', action: () => enterZone(0) },
+      { text: 'Look around the lab first', action: () => lookAroundLab() },
+    ]);
+    showInput(true);
+    G.tutorialStep = 4;
+    saveGame();
+  }, 500);
+}
+
+function skipTutorial() {
+  clearNarrative();
+  addMsg(`Tutorial skipped. You can always press the <b>?</b> button to review how to play.`, 'system');
+  updateMastery('tutorial-vdiv', 'Voltage Dividers', true);
+  G.phase = 'play';
+  enterZone(0);
+}
+
+function lookAroundLab() {
+  addMsg(`You look around the electronics repair lab. Workbenches line the walls, covered in oscilloscopes, soldering stations, and component drawers. A half-assembled robot sits on the central table — that must be Pupper.`, 'narrator');
+  addMsg(`Doc glances up from a schematic. "Ready to start? The power supply is completely dead. That's where we begin."`, 'npc');
+  setChoices([
+    { text: 'Enter Zone 1: Power Supply Bay', action: () => enterZone(0) },
+    { text: 'Check inventory', action: () => { showTab('inventory'); } },
+  ]);
+}
+
+// ── Zone System ─────────────────────────────────────────────────
+async function enterZone(zoneIdx) {
+  G.phase = 'play';
+  G.currentZone = zoneIdx;
+  G.currentEncounter = 0;
+  clearNarrative();
+  updateHUD();
+  saveGame();
+
+  const zone = ZONES[zoneIdx];
+  addMsg(`<b>${zone.icon} Zone ${zoneIdx + 1}: ${zone.name}</b>`, 'narrator');
+
+  // Fetch a relevant topic from the DB to seed the encounter
+  const searchTerms = ['voltage divider', 'I2C protocol', 'CAN bus', 'SPI protocol', 'decoupling capacitor'];
+  const searchQ = searchTerms[zoneIdx] || zone.concepts.split(',')[0].trim();
+
+  const results = await apiGet(`/api/search?q=${encodeURIComponent(searchQ)}`);
+
+  if (zoneIdx === 0) await zone1Intro(results);
+  else if (zoneIdx === 1) await zone2Intro(results);
+  else if (zoneIdx === 2) await zone3Intro(results);
+  else if (zoneIdx === 3) await zone4Intro(results);
+  else if (zoneIdx === 4) await zone5Intro(results);
+}
+
+// ── Zone 1: Power Supply Bay ────────────────────────────────────
+async function zone1Intro(dbResults) {
+  addMsg(`You approach the power supply section of the Pupper control board. The main 5V rail reads 0V on your ${G.tools.includes('Multimeter') ? 'multimeter' : 'test leads'}. The TPS54561 buck converter circuit is completely dead.`, 'narrator');
+  addMsg(`<b>Doc:</b> "The 5V rail is the backbone. Nothing works without it. Start with the feedback network — that's what sets the output voltage."`, 'npc');
+
+  // Provide context from DB if available
+  if (dbResults && dbResults.length > 0) {
+    const topic = dbResults[0];
+    if (topic.tldr) {
+      addMsg(`<i>Your notes mention: "${topic.tldr.slice(0, 150)}..."</i>`, 'system');
+    }
+  }
+
+  await startEncounter_Z1_E1();
+}
+
+async function startEncounter_Z1_E1() {
+  addMsg(`<hr><b>Encounter: The Missing Feedback Resistor</b>`, 'narrator');
+  addMsg(`You examine the buck converter's feedback network. R6 is missing — the pad is empty. The datasheet says Vout = Vref × (1 + R5/R6), where Vref = 0.8V and R5 = 60.4kΩ.`, 'narrator');
+
+  addCircuit(`  TPS54561 Buck Converter Feedback Network:
+
+    Vout ──┬── R5 (60.4kΩ) ──┬── FB pin (0.8V ref)
+            │                  │
+            └── R6 (???) ─────┘
+                               │
+                              GND`);
+
+  addMsg(`You need 5V output. <b>What value should R6 be?</b>`, 'narrator');
+  addMsg(`<i>Formula: Vout = 0.8 × (1 + R5/R6), solve for R6 with Vout=5V, R5=60.4kΩ</i>`, 'system');
+
+  setChoices([
+    { text: 'Calculate: R6 = 60.4k / (5/0.8 - 1) = 11.5kΩ', action: () => z1e1Answer('11.5k', true) },
+    { text: 'Use the formula to work it out...', action: () => { addMsg('Vout = 0.8 × (1 + 60.4k/R6). For 5V: 5/0.8 = 6.25, so 1 + 60.4k/R6 = 6.25, thus 60.4k/R6 = 5.25, R6 = 60.4k/5.25 ≈ 11.5kΩ.', 'system'); } },
+    { text: 'Ask Doc for a hint', action: () => { addMsg('<b>Doc:</b> "Rearrange the formula. 5 = 0.8 × (1 + 60.4k/R6). Divide both sides by 0.8, subtract 1, then solve for R6."', 'npc'); } },
+  ]);
+  showInput(true);
+  G.currentEncounter = 1;
+  G.flags.waitingFor = 'z1e1';
+  saveGame();
+}
+
+async function z1e1Answer(text, fromButton = false) {
+  const t = text.toLowerCase().replace(/\s/g, '');
+  const correct = /11\.?5k|11500|11\.?4[0-9]*k/.test(t);
+
+  if (fromButton || correct) {
+    addMsg(`<b>Doc:</b> "Exactly right — 11.5kΩ. That sets the feedback divider to regulate at 5V. Let me check if we have one in the parts drawer..."`, 'success');
+    const check = skillCheck('componentKnowledge', 8);
+    addMsg(`Component Knowledge check to find the right E-series value: d20(${check.roll}) + ${check.mod} = ${check.total} vs DC 8`, 'roll');
+    if (check.success) {
+      addMsg(`You find an 11.5kΩ resistor (E96 series) in the drawer. Perfect match.`, 'success');
+      G.inventory.push('11.5kΩ Resistor (installed)');
+      gainXP(25, 'Calculated correct feedback resistor value');
+    } else {
+      addMsg(`You grab an 11kΩ (closest E24 value). It'll set Vout slightly higher than 5V — about 5.19V. Close enough for now.`, 'warning');
+      G.inventory.push('11kΩ Resistor (close match, installed)');
+      gainXP(20, 'Calculated correct value, used close match');
+    }
+    updateMastery('vdiv-feedback', 'Voltage Divider (Feedback Networks)', true);
+  } else {
+    const result = await evaluateAnswer(
+      'What value should R6 be? Vout = Vref × (1 + R5/R6), Vref=0.8V, R5=60.4kΩ, Vout=5V',
+      '11.5kΩ. Solving: 5 = 0.8 × (1 + 60.4k/R6), R6 = 60.4k / (5/0.8 - 1) = 60.4k/5.25 = 11.5kΩ',
+      text
+    );
+    if (result.grade === 'correct') {
+      addMsg(`<b>Doc:</b> "That's right! ${result.feedback}"`, 'success');
+      gainXP(25, 'Feedback resistor calculation');
+      updateMastery('vdiv-feedback', 'Voltage Divider (Feedback Networks)', true);
+    } else if (result.grade === 'partial') {
+      addMsg(`<b>Doc:</b> "${result.feedback}"`, 'warning');
+      addMsg(`The exact answer is 11.5kΩ. R6 = 60.4k / (5/0.8 - 1) = 60.4k/5.25 ≈ 11.5kΩ.`, 'system');
+      gainXP(10, 'Partial understanding of feedback network');
+      updateMastery('vdiv-feedback', 'Voltage Divider (Feedback Networks)', false);
+      takeDamage(2);
+    } else {
+      addMsg(`<b>Doc:</b> "Not quite. ${result.feedback || ''} Let me walk you through it."`, 'danger');
+      addMsg(`Vout = 0.8 × (1 + R5/R6). For 5V: 5/0.8 = 6.25, so R5/R6 = 5.25. R6 = 60.4k/5.25 = <b>11.5kΩ</b>.`, 'system');
+      if (result.misconception) addMsg(`<i>Misconception detected: ${result.misconception}</i>`, 'warning');
+      gainXP(5, 'Learning from feedback resistor mistake');
+      updateMastery('vdiv-feedback', 'Voltage Divider (Feedback Networks)', false);
+      takeDamage(5);
+    }
+  }
+
+  G.flags.waitingFor = null;
+  await delay(500);
+  await startEncounter_Z1_E2();
+}
+
+async function startEncounter_Z1_E2() {
+  addMsg(`<hr><b>Encounter: Blown Output Capacitor</b>`, 'narrator');
+  addMsg(`With R6 installed, you power on the circuit. The 5V rail flickers — present but unstable. You notice C18 (the output capacitor) has a bulging top.`, 'narrator');
+  addMsg(`<b>Doc:</b> "Blown electrolytic. Classic. The original was 47µF, 25V rated. But the input can spike to 28V during hot-plug. What went wrong, and what would you replace it with?"`, 'npc');
+
+  // Fetch capacitor knowledge from DB
+  const capInfo = await apiGet('/api/search?q=capacitor+voltage+rating');
+  if (capInfo && capInfo[0]?.tldr) {
+    addMsg(`<i>From your notes: "${capInfo[0].tldr.slice(0, 120)}..."</i>`, 'system');
+  }
+
+  setChoices([
+    { text: 'The 25V rating is too close to the 28V spike — use a 50V rated cap', action: () => z1e2Answer('voltage rating too low, need 50V', true) },
+    { text: 'Replace with same value: 47µF 25V', action: () => z1e2Answer('same 47uF 25V', false) },
+    { text: 'Explain the failure to Doc', action: () => { showInput(true); addMsg('Type your explanation of why the capacitor failed and what you\'d replace it with.', 'system'); } },
+  ]);
+  showInput(true);
+  G.currentEncounter = 2;
+  G.flags.waitingFor = 'z1e2';
+  saveGame();
+}
+
+async function z1e2Answer(text, goodChoice) {
+  if (goodChoice || /50v|higher.?volt|volt.?rat|derat|margin/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Good thinking. The voltage rating must exceed the worst-case input with margin. 50V gives us headroom. You always derate — never run a cap at its rated voltage."`, 'success');
+    G.inventory.push('47µF 50V Capacitor (installed)');
+    gainXP(20, 'Correct capacitor selection with derating');
+    updateMastery('cap-derating', 'Capacitor Voltage Derating', true);
+  } else if (/same|25v/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Same value? The 25V cap already failed because the input spikes to 28V. That exceeds the rating. You need to derate — use a 50V cap minimum."`, 'danger');
+    takeDamage(5);
+    gainXP(5, 'Learned about voltage derating the hard way');
+    updateMastery('cap-derating', 'Capacitor Voltage Derating', false);
+  } else {
+    const result = await evaluateAnswer(
+      'Why did a 47µF 25V capacitor fail on a rail that spikes to 28V? What replacement would you choose?',
+      'The 28V spike exceeds the 25V rating, overstressing the dielectric and causing failure. Replace with 47µF rated at 50V for proper derating margin.',
+      text
+    );
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : result.grade === 'partial' ? 'warning' : 'danger');
+    if (result.grade === 'correct') {
+      gainXP(20, 'Capacitor failure analysis');
+      updateMastery('cap-derating', 'Capacitor Voltage Derating', true);
+    } else {
+      gainXP(8, 'Partial capacitor understanding');
+      updateMastery('cap-derating', 'Capacitor Voltage Derating', false);
+      if (result.grade === 'incorrect') takeDamage(3);
+    }
+  }
+
+  G.flags.waitingFor = null;
+  await delay(500);
+  await startEncounter_Z1_E3();
+}
+
+async function startEncounter_Z1_E3() {
+  addMsg(`<hr><b>Encounter: Inductor Saturation</b>`, 'narrator');
+  addMsg(`The 5V rail is stable now at light load. But when you connect the motors (3A draw), the voltage drops to 3.2V and the inductor L1 gets burning hot.`, 'narrator');
+  addMsg(`You check: L1 is 10µH rated for only 500mA saturation current. The original spec calls for 3A+ saturation current.`, 'narrator');
+
+  addCircuit(`  Buck Converter Output Stage:
+
+    SW pin ──── L1 (10µH, 500mA sat) ──── Vout
+                     ↑ HOT!                  │
+                  saturating                C18
+                  at 3A load                 │
+                                           GND`);
+
+  addMsg(`<b>Doc:</b> "Someone used the wrong inductor. At 3A, it saturates — inductance drops to near zero, current spikes, efficiency tanks. What do we need?"`, 'npc');
+
+  setChoices([
+    { text: 'Replace with 10µH inductor rated for ≥3A saturation current', action: () => z1e3Answer('10uH 3A+', true) },
+    { text: 'Use a bigger inductance value like 100µH', action: () => z1e3Answer('100uH', false) },
+    { text: 'Explain the saturation problem', action: () => { addMsg('Type what happens when an inductor saturates and what spec matters.', 'system'); } },
+  ]);
+  showInput(true);
+  G.currentEncounter = 3;
+  G.flags.waitingFor = 'z1e3';
+  saveGame();
+}
+
+async function z1e3Answer(text, goodChoice) {
+  if (goodChoice || /3a|sat.?cur|current.?rat|higher.?current/i.test(text.toLowerCase())) {
+    addMsg(`<b>Doc:</b> "Right — same inductance, higher current rating. When the core saturates, permeability drops and it acts like a wire. The saturation current must exceed your max load current."`, 'success');
+    gainXP(25, 'Understood inductor saturation');
+    updateMastery('inductor-sat', 'Inductor Saturation Current', true);
+  } else if (/100/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Higher inductance isn't the fix. That would actually make the converter slower to respond. The problem is the saturation CURRENT rating, not the inductance value. You need 10µH rated for ≥3A saturation."`, 'danger');
+    takeDamage(3);
+    gainXP(8, 'Misconception about inductor saturation corrected');
+    updateMastery('inductor-sat', 'Inductor Saturation Current', false);
+  } else {
+    const result = await evaluateAnswer(
+      'An inductor rated for 500mA saturation is used in a circuit drawing 3A. What happens and what should replace it?',
+      'The inductor saturates — its core permeability drops, inductance approaches zero, and current spikes uncontrolled. Replace with same 10µH value but rated for ≥3A saturation current.',
+      text
+    );
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    const success = result.grade === 'correct';
+    gainXP(success ? 25 : 10, 'Inductor saturation encounter');
+    updateMastery('inductor-sat', 'Inductor Saturation Current', success);
+    if (result.grade === 'incorrect') takeDamage(3);
+  }
+
+  G.flags.waitingFor = null;
+  await delay(500);
+  await startEncounter_Z1_E4();
+}
+
+async function startEncounter_Z1_E4() {
+  addMsg(`<hr><b>Encounter: Reverse Polarity Protection</b>`, 'narrator');
+  addMsg(`Final check: D1 — the Schottky diode for reverse polarity protection — is installed backwards. The silkscreen marking doesn't match the component.`, 'narrator');
+
+  addCircuit(`  Correct orientation:
+
+    Battery + ──►|── D1 (Schottky) ──── Circuit
+                 cathode band
+                 faces AWAY from battery
+
+  Current installed (WRONG):
+
+    Battery + ──|◄── D1 (backwards) ──── Circuit
+                 cathode band
+                 faces TOWARD battery`);
+
+  addMsg(`If someone plugs the battery in backwards with D1 installed this way, <b>what happens?</b>`, 'narrator');
+
+  setChoices([
+    { text: 'Current flows freely in reverse — no protection, could damage the circuit', action: () => z1e4Answer('no protection reverse current', true) },
+    { text: 'The diode blocks all current — nothing works', action: () => z1e4Answer('blocks all current', false) },
+    { text: 'Let me think about this...', action: () => { addMsg('Type your analysis of what happens with the diode reversed.', 'system'); } },
+  ]);
+  showInput(true);
+  G.currentEncounter = 4;
+  G.flags.waitingFor = 'z1e4';
+  saveGame();
+}
+
+async function z1e4Answer(text, goodChoice) {
+  if (goodChoice || /no.?protect|reverse.?cur|damage|flow.?backwards/i.test(text.toLowerCase())) {
+    addMsg(`<b>Doc:</b> "Exactly. With D1 backwards, it's forward-biased during a reverse-polarity event — current flows straight through and fries everything downstream. In normal operation, it actually blocks forward current, so nothing works at all. Classic two-failure mode."`, 'success');
+    gainXP(25, 'Understood diode orientation and protection');
+    updateMastery('diode-polarity', 'Diode Polarity & Protection Circuits', true);
+  } else {
+    const result = await evaluateAnswer(
+      'A Schottky diode for reverse polarity protection is installed backwards. What happens during normal operation and during a reverse polarity event?',
+      'During normal operation: the diode blocks current (wrong direction), so nothing works. During reverse polarity: the diode is forward-biased, allowing reverse current to flow and potentially damaging the circuit. The protection fails in both scenarios.',
+      text
+    );
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    const success = result.grade !== 'incorrect';
+    gainXP(success ? 20 : 5, 'Diode orientation encounter');
+    updateMastery('diode-polarity', 'Diode Polarity & Protection Circuits', result.grade === 'correct');
+    if (result.grade === 'incorrect') takeDamage(3);
+  }
+
+  G.flags.waitingFor = null;
+  await delay(500);
+  await completeZone(0);
+}
+
+async function completeZone(zoneIdx) {
+  addMsg(`<hr><b>${ZONES[zoneIdx].icon} Zone ${zoneIdx + 1} Complete!</b>`, 'success');
+  addMsg(`The ${ZONES[zoneIdx].name} is fully repaired and operational.`, 'success');
+  gainXP(50, `Completed ${ZONES[zoneIdx].name}`);
+  gainGold(25);
+
+  // Check for fading mastery topics — spaced repetition
+  const fadingTopics = Object.entries(G.mastery).filter(([_, m]) => getMasteryStrength(_) < 0.5);
+  if (fadingTopics.length > 0) {
+    addMsg(`<b>Doc:</b> "Before we move on, let me quiz you on something from earlier..."`, 'npc');
+    // Quick spaced repetition encounter
+    await spacedRepetitionEncounter();
+  }
+
+  if (zoneIdx < 4) {
+    const nextZone = zoneIdx + 1;
+    addMsg(`<b>Zone ${nextZone + 1}: ${ZONES[nextZone].name}</b> is now unlocked!`, 'system');
+    setChoices([
+      { text: `Enter Zone ${nextZone + 1}: ${ZONES[nextZone].name}`, action: () => enterZone(nextZone) },
+      { text: 'Rest and review mastery', action: () => { showTab('mastery'); renderMasteryPanel(); } },
+    ]);
+  } else {
+    addMsg(`<b>CONGRATULATIONS!</b> Pupper v3 is fully repaired! The robot stands up and takes its first steps.`, 'success');
+    addMsg(`<b>Doc:</b> "Outstanding work, ${G.player.name}. You've got real talent. The robot lives because of your electronics knowledge."`, 'npc');
+    addMsg(`<b>Premium zones (RF Communications, Advanced Power, Signal Integrity) coming soon!</b>`, 'system');
+    setChoices([
+      { text: 'Review all mastery', action: () => { showTab('mastery'); renderMasteryPanel(); } },
+      { text: 'Start New Game+', action: () => { if (confirm('Start over with bonus XP?')) { localStorage.removeItem(SAVE_KEY); location.reload(); } } },
+    ]);
+  }
+  showInput(false);
+  saveGame();
+}
+
+// ── Zone 2: Sensor Network ──────────────────────────────────────
+async function zone2Intro(dbResults) {
+  addMsg(`Power is restored! But the IMU (BNO086) and battery ADC (ADS1110) aren't responding. The I2C bus is dead.`, 'narrator');
+  addMsg(`<b>Doc:</b> "I2C is a two-wire protocol — SDA for data, SCL for clock. Both are open-drain, which means they need external pull-up resistors. Check if they're there."`, 'npc');
+
+  if (dbResults && dbResults[0]?.tldr) {
+    addMsg(`<i>Your notes mention: "${dbResults[0].tldr.slice(0, 150)}..."</i>`, 'system');
+  }
+
+  await startEncounter_Z2_E1();
+}
+
+async function startEncounter_Z2_E1() {
+  addMsg(`<hr><b>Encounter: Missing Pull-ups</b>`, 'narrator');
+  addMsg(`You probe the SDA and SCL lines. Both are floating near 0V. There are no pull-up resistors on the board.`, 'narrator');
+
+  addCircuit(`  I2C Bus (current state - BROKEN):
+
+    MCU ──── SDA ─────────── BNO086 (IMU)
+    MCU ──── SCL ─────────── ADS1110 (ADC)
+
+    Both lines floating at ~0V
+    (Open-drain outputs with no pull-ups = stuck LOW)`);
+
+  addMsg(`<b>Why does I2C need pull-up resistors, and what value should they be for 400kHz operation?</b>`, 'narrator');
+
+  setChoices([
+    { text: 'I2C is open-drain — needs pull-ups to VCC. 4.7kΩ for 400kHz.', action: () => z2e1Answer('4.7k open drain pull-up', true) },
+    { text: 'Check the I2C spec in my notes', action: async () => {
+      const info = await apiGet('/api/search?q=I2C+pull-up+resistor');
+      if (info && info[0]) addMsg(`<i>From your notes on ${info[0].topic}: "${(info[0].tldr || '').slice(0, 200)}"</i>`, 'system');
+      else addMsg(`<i>No specific I2C notes found. Think about open-drain outputs...</i>`, 'system');
+    }},
+  ]);
+  showInput(true);
+  G.currentEncounter = 1;
+  G.flags.waitingFor = 'z2e1';
+  saveGame();
+}
+
+async function z2e1Answer(text, goodChoice) {
+  if (goodChoice || (/4\.?7k|4700/i.test(text) && /pull/i.test(text))) {
+    addMsg(`<b>Doc:</b> "Perfect. Open-drain means the device can only pull the line LOW. The pull-up resistor pulls it HIGH when no device is driving. 4.7kΩ is standard for 400kHz I2C."`, 'success');
+    gainXP(25, 'I2C pull-up resistor knowledge');
+    updateMastery('i2c-pullup', 'I2C Pull-up Resistors', true);
+  } else {
+    const result = await evaluateAnswer(
+      'Why does I2C need pull-up resistors and what value for 400kHz?',
+      'I2C uses open-drain/open-collector outputs that can only pull LOW. Pull-up resistors to VCC are needed to define the HIGH state. 4.7kΩ is standard for 400kHz operation (lower values for higher speed, but too low wastes current).',
+      text
+    );
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    gainXP(result.grade === 'correct' ? 25 : 10, 'I2C pull-up encounter');
+    updateMastery('i2c-pullup', 'I2C Pull-up Resistors', result.grade === 'correct');
+    if (result.grade === 'incorrect') takeDamage(3);
+  }
+
+  G.flags.waitingFor = null;
+  await delay(300);
+
+  // Simplified: go through remaining encounters then complete zone
+  addMsg(`<hr><b>Encounter: Address Conflict</b>`, 'narrator');
+  addMsg(`Pull-ups installed! But only one device responds. Both the IMU and ADC are configured to I2C address 0x48.`, 'narrator');
+  addMsg(`<b>How do you resolve an I2C address conflict?</b>`, 'narrator');
+
+  setChoices([
+    { text: 'Change one device\'s address via its ADDR pin configuration', action: () => z2Remaining('addr', true) },
+    { text: 'Use an I2C multiplexer', action: () => z2Remaining('mux', true) },
+    { text: 'Type your solution...', action: () => { showInput(true); } },
+  ]);
+  G.flags.waitingFor = 'z2rest';
+  showInput(true);
+}
+
+async function z2Remaining(text, goodChoice) {
+  if (goodChoice || /addr|address|pin|mux|multi/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Good. Most I2C devices have address pins you can tie high or low to change their address. The ADS1110 has an ADDR pin — tie it to VCC to shift it to 0x49."`, 'success');
+    gainXP(20, 'I2C address resolution');
+    updateMastery('i2c-addr', 'I2C Addressing', true);
+  } else {
+    const result = await evaluateAnswer('How do you resolve an I2C address conflict?',
+      'Change one device\'s address using ADDR pins (physical configuration), or use an I2C multiplexer/switch like TCA9548A.',
+      text);
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    gainXP(result.grade === 'correct' ? 20 : 8, 'I2C addressing');
+    updateMastery('i2c-addr', 'I2C Addressing', result.grade === 'correct');
+  }
+
+  G.flags.waitingFor = null;
+  await delay(300);
+  await completeZone(1);
+}
+
+// ── Zone 3: Motor Control Hub ───────────────────────────────────
+async function zone3Intro(dbResults) {
+  addMsg(`Legs 1-3 work but Leg 4's three servos are unresponsive. The CAN bus for that leg has issues.`, 'narrator');
+  addMsg(`<b>Doc:</b> "CAN bus uses differential signaling — CANH and CANL. Check the termination first."`, 'npc');
+
+  addMsg(`<hr><b>Encounter: Missing Termination</b>`, 'narrator');
+  addMsg(`You see intermittent communication errors on Bus 4, worse at higher baud rates. Classic sign of signal reflections.`, 'narrator');
+
+  addCircuit(`  CAN Bus 4:
+
+    MCU ──[Transceiver]──── CANH ────────── [Transceiver]── Motor
+          MAX3051           CANL              MAX3051
+
+    Missing: 120Ω termination resistors at each end of the bus`);
+
+  addMsg(`<b>Why does CAN bus need 120Ω termination, and where does it go?</b>`, 'narrator');
+
+  setChoices([
+    { text: '120Ω at each end matches the bus impedance, preventing reflections', action: () => z3Answer('termination impedance match', true) },
+    { text: 'Check CAN bus notes', action: async () => {
+      const info = await apiGet('/api/search?q=CAN+bus+termination');
+      if (info && info[0]) addMsg(`<i>${info[0].topic}: "${(info[0].tldr || '').slice(0, 200)}"</i>`, 'system');
+    }},
+  ]);
+  showInput(true);
+  G.currentEncounter = 1;
+  G.flags.waitingFor = 'z3';
+  saveGame();
+}
+
+async function z3Answer(text, goodChoice) {
+  if (goodChoice || /120|terminat|impedance|reflect/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Correct. The bus has ~120Ω characteristic impedance. Termination resistors at each end absorb the signal energy instead of reflecting it back. Without them, reflected signals corrupt data."`, 'success');
+    gainXP(25, 'CAN bus termination');
+    updateMastery('can-term', 'CAN Bus Termination', true);
+  } else {
+    const result = await evaluateAnswer('Why does CAN bus need 120Ω termination and where?',
+      '120Ω resistors at each end of the bus match its characteristic impedance (~120Ω), absorbing signal energy and preventing reflections that corrupt data. Two resistors in parallel = 60Ω differential impedance.',
+      text);
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    gainXP(result.grade === 'correct' ? 25 : 8, 'CAN termination');
+    updateMastery('can-term', 'CAN Bus Termination', result.grade === 'correct');
+    if (result.grade === 'incorrect') takeDamage(3);
+  }
+  G.flags.waitingFor = null;
+  await delay(300);
+  await completeZone(2);
+}
+
+// ── Zone 4: Communication Bridge ────────────────────────────────
+async function zone4Intro(dbResults) {
+  addMsg(`The Raspberry Pi can't talk to the main MCU. The SPI link between them is garbled.`, 'narrator');
+  addMsg(`<b>Doc:</b> "SPI has four signals: MOSI, MISO, SCLK, and CS. Plus you need to match clock polarity and phase."`, 'npc');
+
+  addMsg(`<hr><b>Encounter: Clock Mode Mismatch</b>`, 'narrator');
+  addMsg(`The Pi is sending data, but the MCU receives garbage. You check: Pi is configured for SPI Mode 0 (CPOL=0, CPHA=0), but the MCU expects Mode 3 (CPOL=1, CPHA=1).`, 'narrator');
+  addMsg(`<b>What is the difference between SPI Mode 0 and Mode 3, and why does the mismatch cause garbled data?</b>`, 'narrator');
+
+  setChoices([
+    { text: 'Mode 0: data sampled on rising edge. Mode 3: sampled on falling edge. Mismatch = wrong sampling point.', action: () => z4Answer('sampling edge mismatch', true) },
+    { text: 'Research SPI modes', action: async () => {
+      const info = await apiGet('/api/search?q=SPI+mode+CPOL+CPHA');
+      if (info && info[0]) addMsg(`<i>${info[0].topic}: "${(info[0].tldr || '').slice(0, 200)}"</i>`, 'system');
+    }},
+  ]);
+  showInput(true);
+  G.flags.waitingFor = 'z4';
+  saveGame();
+}
+
+async function z4Answer(text, goodChoice) {
+  if (goodChoice || /sampl|edge|cpol|cpha|polarity|phase/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Exactly. CPOL sets idle clock state, CPHA sets which edge samples data. If they don't match, the receiver samples at the wrong moment and reads garbage. Fix: set both to the same mode."`, 'success');
+    gainXP(25, 'SPI mode configuration');
+    updateMastery('spi-modes', 'SPI Clock Modes (CPOL/CPHA)', true);
+  } else {
+    const result = await evaluateAnswer('What is the difference between SPI Mode 0 and Mode 3?',
+      'SPI Mode 0 (CPOL=0,CPHA=0): clock idles low, data sampled on rising edge. Mode 3 (CPOL=1,CPHA=1): clock idles high, data sampled on falling edge. Both sample on the same edge but idle state differs. Mismatch means data is sampled at wrong times.',
+      text);
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    gainXP(result.grade === 'correct' ? 25 : 8, 'SPI modes');
+    updateMastery('spi-modes', 'SPI Clock Modes (CPOL/CPHA)', result.grade === 'correct');
+  }
+  G.flags.waitingFor = null;
+  await delay(300);
+  await completeZone(3);
+}
+
+// ── Zone 5: Full Integration ────────────────────────────────────
+async function zone5Intro(dbResults) {
+  addMsg(`All subsystems are individually working, but Pupper still won't walk. Multiple interacting issues remain.`, 'narrator');
+  addMsg(`<b>Doc:</b> "This is the real test. System-level debugging. Everything interacts."`, 'npc');
+
+  addMsg(`<hr><b>Encounter: Decoupling Nightmare</b>`, 'narrator');
+  addMsg(`Random crashes under load. When all four legs move simultaneously, the MCU resets. You measure the 3.3V rail at the MCU: it dips to 2.8V during motor commands.`, 'narrator');
+
+  addCircuit(`  MCU Power (current state):
+
+    3.3V rail ──────────────── VDD (MCU)
+                                │
+    No local decoupling!       GND
+
+  Long trace from regulator, no caps near MCU pins.
+  Transient current demands cause voltage dips.`);
+
+  addMsg(`<b>What's causing the crashes and how do you fix it?</b>`, 'narrator');
+
+  setChoices([
+    { text: 'Add 100nF ceramic decoupling caps close to every MCU VDD pin', action: () => z5Answer('decoupling caps near MCU', true) },
+    { text: 'The power supply is too weak — upgrade the regulator', action: () => z5Answer('bigger regulator', false) },
+  ]);
+  showInput(true);
+  G.flags.waitingFor = 'z5';
+  saveGame();
+}
+
+async function z5Answer(text, goodChoice) {
+  if (goodChoice || /decoupl|100n|bypass|cap.?near|local.?cap/i.test(text)) {
+    addMsg(`<b>Doc:</b> "Exactly right. The MCU draws sharp current spikes during I/O operations. Without local decoupling capacitors, the long trace inductance causes voltage drops. 100nF ceramic caps right at each VDD pin provide a local charge reservoir."`, 'success');
+    gainXP(30, 'Decoupling capacitor placement');
+    updateMastery('decoupling', 'Decoupling Capacitors', true);
+  } else {
+    const result = await evaluateAnswer(
+      'MCU crashes when motors run. 3.3V rail dips to 2.8V at MCU. No decoupling caps near MCU. Cause and fix?',
+      'Transient current demands from the MCU (digital switching) cause voltage dips due to trace inductance. Fix: add 100nF ceramic decoupling capacitors as close as possible to each VDD/GND pin pair on the MCU. They act as local charge reservoirs.',
+      text);
+    addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+    gainXP(result.grade === 'correct' ? 30 : 10, 'Decoupling encounter');
+    updateMastery('decoupling', 'Decoupling Capacitors', result.grade === 'correct');
+    if (result.grade === 'incorrect') takeDamage(5);
+  }
+  G.flags.waitingFor = null;
+  await delay(300);
+  await completeZone(4);
+}
+
+// ── Spaced Repetition Encounter ─────────────────────────────────
+async function spacedRepetitionEncounter() {
+  // Find the weakest mastery topic
+  const entries = Object.entries(G.mastery);
+  if (entries.length === 0) return;
+
+  entries.sort((a, b) => getMasteryStrength(a[0]) - getMasteryStrength(b[0]));
+  const [topicId, mastery] = entries[0];
+
+  // Fetch a quiz question related to this topic
+  const quiz = await apiGet(`/api/quiz/similar?q=${encodeURIComponent(mastery.topic)}`);
+  if (quiz && quiz.length > 0) {
+    const q = quiz[0];
+    addMsg(`<b>Doc:</b> "Quick review — ${mastery.topic}."`, 'npc');
+    addMsg(`<b>${q.question}</b>`, 'narrator');
+
+    return new Promise(resolve => {
+      const handler = async () => {
+        const answer = input.value.trim();
+        if (!answer) return;
+        input.value = '';
+        const result = await evaluateAnswer(q.question, q.answer, answer);
+        addMsg(`<b>Doc:</b> "${result.feedback}"`, result.grade === 'correct' ? 'success' : 'warning');
+        const success = result.grade === 'correct';
+        updateMastery(topicId, mastery.topic, success);
+        gainXP(success ? 15 : 5, `Spaced review: ${mastery.topic}`);
+        $('send-btn').removeEventListener('click', handler);
+        resolve();
+      };
+      $('send-btn').addEventListener('click', handler);
+      setChoices([]);
+      showInput(true);
+    });
+  }
+}
+
+// ── Tab Navigation ──────────────────────────────────────────────
+function showTab(tabName) {
+  $('narrative').style.display = tabName === 'narrative' ? 'block' : 'none';
+  $('mastery-panel').style.display = tabName === 'mastery' ? 'block' : 'none';
+  $('inventory-panel').style.display = tabName === 'inventory' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+  if (tabName === 'mastery') renderMasteryPanel();
+  if (tabName === 'inventory') renderInventoryPanel();
+}
+
+// ── Input Handler ───────────────────────────────────────────────
+function handleInput() {
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  addMsg(`<b>You:</b> ${text}`, 'narrator');
+
+  if (G.phase === 'tutorial') {
+    handleTutorialInput(text);
+    return;
+  }
+
+  // Route to current encounter handler
+  const wf = G.flags.waitingFor;
+  if (wf === 'z1e1') z1e1Answer(text);
+  else if (wf === 'z1e2') z1e2Answer(text);
+  else if (wf === 'z1e3') z1e3Answer(text);
+  else if (wf === 'z1e4') z1e4Answer(text);
+  else if (wf === 'z2e1') z2e1Answer(text);
+  else if (wf === 'z2rest') z2Remaining(text);
+  else if (wf === 'z3') z3Answer(text);
+  else if (wf === 'z4') z4Answer(text);
+  else if (wf === 'z5') z5Answer(text);
+  else {
+    addMsg(`<b>Doc:</b> "Focus on the task at hand, ${G.player?.name || 'apprentice'}."`, 'npc');
+  }
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── Event Listeners ─────────────────────────────────────────────
+$('send-btn').addEventListener('click', handleInput);
+input.addEventListener('keydown', e => { if (e.key === 'Enter') handleInput(); });
+$('help-btn').addEventListener('click', () => $('help-modal').classList.add('open'));
+$('help-modal').addEventListener('click', e => { if (e.target === $('help-modal')) $('help-modal').classList.remove('open'); });
+document.querySelector('.close-help').addEventListener('click', () => $('help-modal').classList.remove('open'));
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => showTab(btn.dataset.tab));
+});
+
+// Keyboard shortcuts for choices
+document.addEventListener('keydown', e => {
+  if (e.target === input) return;
+  const num = parseInt(e.key);
+  if (num >= 1 && num <= 9) {
+    const btns = choices.querySelectorAll('.choice-btn');
+    if (btns[num - 1]) btns[num - 1].click();
+  }
+});
+
+// ── Initialization ──────────────────────────────────────────────
+async function init() {
+  // Check API health
+  const health = await apiGet('/api/health');
+  if (!health || health.status !== 'ok') {
+    addMsg('Warning: Cannot connect to game server. Some features may not work.', 'danger');
+  }
+
+  // Get DB stats
+  G.stats = await apiGet('/api/stats');
+  if (G.stats) {
+    addMsg(`Knowledge base loaded: ${G.stats.documents} documents, ${G.stats.terms} terms, ${G.stats.quiz_questions} quiz questions, ${G.stats.embedded_documents} embeddings.`, 'system');
+  }
+
+  // Try to load saved game
+  if (loadGame() && G.player) {
+    $('char-create').style.display = 'none';
+    $('hud').style.display = 'block';
+    $('actions').style.display = 'block';
+    $('help-btn').style.display = 'block';
+    $('tab-bar').classList.add('show');
+    updateHUD();
+    addMsg(`Welcome back, <b>${G.player.name}</b>! (Level ${G.level} ${G.player.specName})`, 'system');
+
+    if (G.phase === 'tutorial') {
+      addMsg('Resuming tutorial...', 'system');
+      startTutorial();
+    } else {
+      addMsg(`You are in <b>${ZONES[G.currentZone]?.name || 'the Lab'}</b>.`, 'system');
+      setChoices([
+        { text: `Continue in ${ZONES[G.currentZone]?.name || 'current zone'}`, action: () => enterZone(G.currentZone) },
+        { text: 'Review mastery', action: () => showTab('mastery') },
+      ]);
+      showInput(true);
+    }
+  } else {
+    initCharCreate();
+  }
+}
+
+init();
+</script>
+</body>
+</html>
