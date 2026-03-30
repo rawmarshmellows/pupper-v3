@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Knowledge Quest</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #161b22;
+    --bg-card: #1c2333;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent-glow: rgba(88,166,255,0.15);
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #f85149;
+    --streak-bar: #f0883e;
+    --mastery: #a371f7;
+    --combo: #f778ba;
+    --achievement: #d4a72c;
+    --node-off: #30363d;
+    --node-on: #3fb950;
+    --node-fading: #f85149;
+    --trace-off: #21262d;
+    --trace-on: #58a6ff;
+    --power-glow: rgba(63,185,80,0.3);
+    --radius: 8px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --border: #30363d;
+    --font-scale: 1;
+  }
+
+  [data-fontsize="small"] { --font-scale: 0.875; }
+  [data-fontsize="medium"] { --font-scale: 1; }
+  [data-fontsize="large"] { --font-scale: 1.15; }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #ffffff; --bg-panel: #f6f8fa; --bg-card: #f0f2f5;
+      --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+      --accent-glow: rgba(9,105,218,0.1); --success: #1a7f37;
+      --warning: #9a6700; --danger: #cf222e;
+      --streak-bar: #bc4c00; --mastery: #8250df; --combo: #bf3989;
+      --achievement: #9a6700; --border: #d0d7de;
+      --node-off: #d0d7de; --node-on: #1a7f37; --node-fading: #cf222e;
+      --trace-off: #eaeef2; --trace-on: #0969da;
+      --power-glow: rgba(26,127,55,0.2);
+    }
+  }
+  [data-theme="light"] {
+    --bg: #ffffff; --bg-panel: #f6f8fa; --bg-card: #f0f2f5;
+    --text: #1f2328; --text-dim: #59636e; --accent: #0969da;
+    --accent-glow: rgba(9,105,218,0.1); --success: #1a7f37;
+    --warning: #9a6700; --danger: #cf222e;
+    --streak-bar: #bc4c00; --mastery: #8250df; --combo: #bf3989;
+    --achievement: #9a6700; --border: #d0d7de;
+    --node-off: #d0d7de; --node-on: #1a7f37; --node-fading: #cf222e;
+    --trace-off: #eaeef2; --trace-on: #0969da;
+    --power-glow: rgba(26,127,55,0.2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; line-height: 1.6; }
+
+  /* HUD */
+  #hud {
+    display: none; position: sticky; top: 0; z-index: 100;
+    background: var(--bg-panel); border-bottom: 1px solid var(--border);
+    padding: calc(4px + var(--safe-top)) 12px 4px;
+    font-size: 0.8rem;
+  }
+  .hud-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: space-between; }
+  .hud-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1; min-width: 0; }
+  .hud-right { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+  #hud-name { font-weight: 700; color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
+  .hud-stat { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+  .hud-bar { width: 50px; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; position: relative; }
+  .hud-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+  .hud-bar-fill.streak { background: var(--streak-bar); }
+  .hud-bar-fill.mastery { background: var(--mastery); }
+  #hud-streak-text, #hud-mastery-text { font-size: 0.7rem; color: var(--text-dim); }
+  #hud-title { color: var(--mastery); font-weight: 600; font-size: 0.75rem; }
+  #hud-combo { display: none; color: var(--combo); font-weight: 700; font-size: 0.85rem; animation: comboPulse 0.3s ease; }
+  @keyframes comboPulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+  #hud-power { color: var(--success); font-weight: 700; font-size: 0.8rem; }
+  .hud-btn { background: transparent; border: 1px solid var(--border); color: var(--text-dim); border-radius: 4px; padding: 2px 6px; font-size: 0.75rem; cursor: pointer; min-width: 28px; min-height: 28px; display: flex; align-items: center; justify-content: center; }
+  .hud-btn:hover, .hud-btn:focus { color: var(--accent); border-color: var(--accent); }
+
+  /* Main Content */
+  main { flex: 1; display: flex; flex-direction: column; max-width: 640px; width: 100%; margin: 0 auto; padding: 0 12px; }
+  #loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; gap: 12px; }
+  #loading h1 { font-size: 1.5rem; color: var(--accent); }
+  #loading p { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* Character Creation */
+  #char-creation { display: none; padding: 24px 0; }
+  #char-creation h2 { color: var(--accent); margin-bottom: 8px; text-align: center; }
+  #char-creation p { color: var(--text-dim); text-align: center; margin-bottom: 16px; font-size: 0.9rem; }
+  .creation-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+  .creation-card label { display: block; color: var(--text-dim); font-size: 0.85rem; margin-bottom: 6px; }
+  #name-input { width: 100%; padding: 10px 12px; font-size: 1rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); }
+  #name-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  #db-stats { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 8px; }
+  #start-btn { width: 100%; padding: 12px; font-size: 1.1rem; font-weight: 700; background: var(--accent); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; margin-top: 16px; }
+  #start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  #start-btn:not(:disabled):hover { filter: brightness(1.1); }
+
+  /* Narrative */
+  #narrative { display: none; flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 12px 0 80px; }
+  .msg { padding: 8px 12px; margin-bottom: 8px; border-radius: var(--radius); line-height: 1.6; animation: fadeIn 0.2s ease; font-size: 0.95rem; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .msg-narrator { color: var(--text); }
+  .msg-system { color: var(--text-dim); font-size: 0.85rem; }
+  .msg-challenge { background: var(--bg-card); border-left: 3px solid var(--accent); padding: 12px; }
+  .msg-success { color: var(--success); font-weight: 600; }
+  .msg-combat { color: var(--danger); }
+  .msg-hint { color: var(--warning); font-style: italic; font-size: 0.9rem; }
+  .msg-lore { color: var(--text); background: var(--bg-card); border-left: 3px solid var(--mastery); padding: 10px 12px; }
+  .msg-mastery { color: var(--mastery); font-weight: 600; }
+  .msg-reward { color: var(--achievement); font-weight: 600; }
+  .msg-evaluating { color: var(--text-dim); font-style: italic; }
+  .msg-cascade { background: var(--bg-card); border-left: 3px solid var(--warning); padding: 12px; }
+  .msg-misconception { background: var(--bg-card); border-left: 3px solid var(--danger); padding: 12px; font-size: 0.9rem; }
+  .msg-tutorial { background: var(--bg-card); border-left: 3px solid var(--accent); padding: 12px; }
+
+  /* Circuit board node flash */
+  .node-powered { animation: nodePower 1s ease; }
+  @keyframes nodePower { 0% { box-shadow: none; } 50% { box-shadow: 0 0 12px var(--node-on); } 100% { box-shadow: none; } }
+  .trace-powered { animation: tracePower 1.5s ease; }
+  @keyframes tracePower { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
+
+  /* Achievement banner */
+  .achievement-banner { background: linear-gradient(135deg, rgba(212,167,44,0.15), rgba(212,167,44,0.05)); border: 1px solid var(--achievement); border-radius: var(--radius); padding: 12px; margin-bottom: 8px; text-align: center; animation: achievementSlide 0.5s ease; }
+  @keyframes achievementSlide { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  .achievement-banner h4 { color: var(--achievement); margin-bottom: 4px; }
+  .achievement-banner p { color: var(--text-dim); font-size: 0.85rem; }
+
+  /* Eureka banner -- for cascade discoveries */
+  .eureka-banner { background: linear-gradient(135deg, rgba(88,166,255,0.15), rgba(163,113,247,0.1)); border: 1px solid var(--accent); border-radius: var(--radius); padding: 14px; margin-bottom: 8px; text-align: center; animation: eurekaFlash 0.8s ease; }
+  @keyframes eurekaFlash { 0% { transform: scale(0.95); opacity: 0; box-shadow: none; } 50% { transform: scale(1.02); box-shadow: 0 0 20px var(--accent-glow); } 100% { transform: scale(1); opacity: 1; box-shadow: none; } }
+  .eureka-banner h4 { color: var(--accent); margin-bottom: 4px; font-size: 1rem; }
+  .eureka-banner .eureka-trace { color: var(--mastery); font-size: 0.85rem; margin-top: 4px; }
+
+  /* Progress bar */
+  .progress-bar { width: 100%; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+  .progress-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .progress-bar-fill.mastery { background: var(--mastery); }
+  .progress-bar-fill.collection { background: var(--achievement); }
+  .progress-bar-fill.power { background: var(--success); }
+
+  /* NPC */
+  .npc-name { color: var(--warning); font-weight: 600; }
+
+  /* Knowledge reveal */
+  .knowledge-reveal { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin: 6px 0; }
+  .knowledge-reveal h4 { color: var(--accent); margin-bottom: 4px; font-size: 0.95rem; }
+  .knowledge-reveal p { font-size: 0.9rem; color: var(--text-dim); }
+
+  /* Mastery card */
+  .mastery-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin: 6px 0; }
+  .mastery-card h4 { color: var(--accent); margin-bottom: 6px; }
+
+  /* Mastery bars */
+  .mastery-bar-container { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 0.8rem; }
+  .mastery-bar-label { width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-dim); }
+  .mastery-bar-outer { flex: 1; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+  .mastery-bar-inner { height: 100%; border-radius: 4px; transition: width 0.5s ease; background: var(--mastery); }
+  .mastery-fading .mastery-bar-inner { background: var(--danger); }
+  .mastery-strong .mastery-bar-inner { background: var(--success); }
+  .mastery-medium .mastery-bar-inner { background: var(--mastery); }
+  .mastery-bar-value { width: 36px; text-align: right; color: var(--text-dim); }
+
+  /* Circuit board mini-map */
+  .circuit-board { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin: 6px 0; overflow-x: auto; }
+  .circuit-board h4 { color: var(--accent); margin-bottom: 8px; font-size: 0.95rem; }
+  .circuit-nodes { display: flex; flex-wrap: wrap; gap: 6px; }
+  .circuit-node { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; border: 1px solid var(--border); cursor: default; transition: all 0.3s ease; }
+  .circuit-node.powered { background: var(--power-glow); border-color: var(--node-on); color: var(--node-on); }
+  .circuit-node.fading { background: rgba(248,81,73,0.1); border-color: var(--node-fading); color: var(--node-fading); animation: flicker 2s infinite; }
+  @keyframes flicker { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .circuit-node.dark { background: transparent; border-color: var(--node-off); color: var(--text-dim); }
+  .circuit-node .node-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .circuit-node.powered .node-dot { background: var(--node-on); box-shadow: 0 0 4px var(--node-on); }
+  .circuit-node.fading .node-dot { background: var(--node-fading); }
+  .circuit-node.dark .node-dot { background: var(--node-off); }
+
+  /* Subsystem cards (replace region cards) */
+  .subsystem-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin: 6px 0; transition: border-color 0.2s, box-shadow 0.3s; }
+  .subsystem-card:hover { border-color: var(--accent); }
+  .subsystem-card.powered-up { border-color: var(--node-on); box-shadow: 0 0 8px var(--power-glow); }
+  .subsystem-card h4 { color: var(--accent); font-size: 0.95rem; margin-bottom: 4px; }
+  .subsystem-card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 2px; }
+  .subsystem-card.locked { opacity: 0.6; }
+  .subsystem-status { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+  .subsystem-status .power-indicator { width: 8px; height: 8px; border-radius: 50%; }
+  .subsystem-status .power-indicator.on { background: var(--node-on); box-shadow: 0 0 6px var(--node-on); }
+  .subsystem-status .power-indicator.partial { background: var(--warning); }
+  .subsystem-status .power-indicator.off { background: var(--node-off); }
+
+  /* Region cards kept for compatibility */
+  .region-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin: 6px 0; transition: border-color 0.2s; }
+  .region-card:hover { border-color: var(--accent); }
+  .region-card h4 { color: var(--accent); font-size: 0.95rem; margin-bottom: 4px; }
+  .region-card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 2px; }
+  .region-card.locked { opacity: 0.6; }
+  .region-rank { font-weight: 600; font-size: 0.8rem; }
+
+  /* Signal degrading alert */
+  .signal-alert { background: rgba(248,81,73,0.08); border: 1px solid var(--danger); border-radius: var(--radius); padding: 10px 12px; margin: 6px 0; animation: flicker 2s infinite; }
+  .signal-alert h4 { color: var(--danger); font-size: 0.9rem; margin-bottom: 4px; }
+  .signal-alert p { font-size: 0.85rem; color: var(--text-dim); }
+
+  /* Journal */
+  .journal-entry { background: var(--bg-card); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 8px 12px; margin: 4px 0; font-size: 0.85rem; }
+  .journal-connection { color: var(--mastery); font-size: 0.8rem; }
+
+  /* Collection cards */
+  .collection-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin: 4px 0; }
+  .collection-card h4 { font-size: 0.9rem; color: var(--achievement); margin-bottom: 4px; }
+  .collection-card .collected-items { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .collection-item { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-size: 0.75rem; color: var(--text-dim); }
+  .collection-item.collected { border-color: var(--achievement); color: var(--achievement); }
+
+  /* Actions area */
+  #actions { display: none; position: sticky; bottom: 0; background: var(--bg-panel); border-top: 1px solid var(--border); padding: 8px 12px calc(8px + var(--safe-bottom)); }
+  #choice-container { display: flex; flex-direction: column; gap: 6px; max-width: 640px; margin: 0 auto; width: 100%; }
+  .choice-btn { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; font-size: 0.9rem; text-align: left; cursor: pointer; min-height: 44px; transition: border-color 0.15s, background 0.15s; }
+  .choice-btn:hover, .choice-btn:focus { border-color: var(--accent); background: var(--accent-glow); outline: none; }
+  .choice-btn:active { transform: scale(0.98); }
+  .key-hint { color: var(--accent); font-weight: 700; margin-right: 4px; font-size: 0.8rem; }
+  .premium-badge { background: var(--mastery); color: #fff; font-size: 0.65rem; padding: 1px 4px; border-radius: 3px; vertical-align: middle; }
+  #input-row { display: flex; gap: 6px; margin-top: 6px; max-width: 640px; margin-left: auto; margin-right: auto; width: 100%; }
+  #freeform { flex: 1; padding: 10px; font-size: 0.9rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); min-height: 44px; font-family: inherit; resize: vertical; }
+  #freeform:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  #submit-btn { background: var(--accent); color: #fff; border: none; border-radius: var(--radius); padding: 10px 16px; font-weight: 700; cursor: pointer; min-width: 44px; min-height: 44px; }
+  #submit-btn:hover { filter: brightness(1.1); }
+
+  /* Footer */
+  footer { text-align: center; padding: 8px; font-size: 0.7rem; color: var(--text-dim); border-top: 1px solid var(--border); }
+
+  /* Eval spinner */
+  .eval-spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid var(--text-dim); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Tutorial overlay */
+  .tutorial-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .tutorial-panel { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; max-width: 500px; width: 100%; max-height: 85vh; overflow-y: auto; }
+  .tutorial-panel h2 { color: var(--accent); margin-bottom: 12px; font-size: 1.2rem; }
+  .tutorial-panel p { margin-bottom: 8px; font-size: 0.9rem; line-height: 1.6; }
+  .tutorial-highlight { background: var(--accent-glow); border: 1px solid var(--accent); border-radius: var(--radius); padding: 10px; margin: 8px 0; font-size: 0.9rem; }
+  .tutorial-example { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; margin: 8px 0; font-size: 0.85rem; line-height: 1.6; }
+  .tutorial-mechanic-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; margin: 8px 0; }
+  .tutorial-mechanic-card h4 { color: var(--accent); font-size: 0.9rem; margin-bottom: 4px; }
+  .tutorial-mechanic-card p { font-size: 0.85rem; }
+  .tutorial-skip { float: right; background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 0.8rem; padding: 4px 8px; }
+  .tutorial-skip:hover { color: var(--accent); }
+  .tutorial-step-indicator { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 8px; }
+  .tutorial-progress-bar { height: 4px; background: var(--bg); border-radius: 2px; overflow: hidden; margin-bottom: 12px; }
+  .tutorial-progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s ease; }
+  .tutorial-btn { background: var(--accent); color: #fff; border: none; border-radius: var(--radius); padding: 10px 16px; font-weight: 700; cursor: pointer; font-size: 0.9rem; min-height: 44px; }
+  .tutorial-btn:hover { filter: brightness(1.1); }
+  .tutorial-btn-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+  .tutorial-btn-secondary:hover { border-color: var(--accent); }
+  .tutorial-practice-input { width: 100%; padding: 10px; font-size: 0.9rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); margin: 8px 0; font-family: inherit; resize: vertical; }
+  .tutorial-practice-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  /* Help panel overlay */
+  .help-panel-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .help-panel { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; max-width: 500px; width: 100%; max-height: 85vh; overflow-y: auto; }
+  .help-panel h2 { color: var(--accent); margin-bottom: 12px; }
+  .help-panel h3 { color: var(--text); margin-top: 12px; margin-bottom: 4px; font-size: 0.95rem; }
+  .help-panel p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 6px; line-height: 1.5; }
+  .help-close { float: right; background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 0.8rem; padding: 4px 8px; }
+  .help-close:hover { color: var(--accent); }
+
+  /* Circuit wiring */
+  .wiring-ui-container { margin: 8px 0; }
+  .wiring-slot { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px; margin: 4px 0; cursor: pointer; font-size: 0.85rem; transition: border-color 0.15s; }
+  .wiring-slot:hover { border-color: var(--accent); }
+  .wiring-slot.filled { border-color: var(--success); }
+  .wiring-slot.selected-slot { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
+  .slot-label { color: var(--text-dim); }
+  .slot-component { color: var(--text); font-weight: 600; }
+  .correct-slot { border-color: var(--success); }
+  .wrong-slot { border-color: var(--danger); }
+  .wiring-parts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .wiring-part { background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: var(--radius); padding: 6px 10px; font-size: 0.8rem; cursor: pointer; min-height: 36px; }
+  .wiring-part:hover:not(:disabled) { border-color: var(--accent); }
+  .wiring-part.used { opacity: 0.4; }
+
+  /* Fault tree */
+  .fault-step-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: var(--radius); padding: 10px; margin: 4px 0; cursor: pointer; font-size: 0.85rem; width: 100%; text-align: left; min-height: 44px; transition: border-color 0.15s; }
+  .fault-step-btn:hover:not(:disabled) { border-color: var(--accent); }
+  .fault-step-btn.used-step { opacity: 0.5; border-color: var(--success); }
+  .fault-info { background: var(--bg-card); border-radius: var(--radius); padding: 8px; margin: 4px 0; font-size: 0.85rem; }
+  .fault-label { color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+  .fault-data { color: var(--text-dim); }
+
+  /* Daily challenge badge */
+  .daily-badge { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--mastery)); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+
+  /* Boss encounter */
+  .boss-card { background: linear-gradient(135deg, rgba(248,81,73,0.05), rgba(163,113,247,0.05)); border: 2px solid var(--mastery); border-radius: var(--radius); padding: 14px; margin: 8px 0; }
+  .boss-card h4 { color: var(--mastery); font-size: 1rem; margin-bottom: 6px; }
+  .boss-card .boss-phase { font-size: 0.85rem; color: var(--text-dim); }
+  .boss-hp { height: 10px; background: var(--bg); border-radius: 5px; overflow: hidden; margin-top: 6px; }
+  .boss-hp-fill { height: 100%; background: linear-gradient(90deg, var(--danger), var(--mastery)); border-radius: 5px; transition: width 0.5s ease; }
+</style>
+</head>
+<body>
+<header id="hud" role="banner">
+  <div class="hud-row">
+    <div class="hud-left">
+      <span id="hud-name" aria-label="Character name"></span>
+      <span id="hud-title" aria-label="Current title"></span>
+      <div class="hud-stat" title="Answer streak">
+        <span style="font-size:0.75rem;">Streak</span>
+        <div class="hud-bar"><div class="hud-bar-fill streak" id="hud-streak-bar"></div></div>
+        <span id="hud-streak-text">0</span>
+      </div>
+      <span id="hud-combo" aria-label="Combo multiplier"></span>
+      <span id="hud-power" aria-label="Board power level"></span>
+    </div>
+    <div class="hud-right">
+      <button class="hud-btn" id="help-toggle" aria-label="How to play - opens help panel" title="Help">?</button>
+      <button class="hud-btn" id="theme-toggle" aria-label="Toggle light/dark theme" title="Theme">T</button>
+      <button class="hud-btn" id="font-toggle" aria-label="Change font size" title="Font size">Aa</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="loading" role="status">
+    <h1>Knowledge Quest</h1>
+    <p>Power up the Circuit Citadel through understanding</p>
+    <p style="font-size:0.8rem;">Connecting to knowledge base...</p>
+  </div>
+
+  <div id="char-creation" aria-label="Character creation">
+    <h2>Knowledge Quest</h2>
+    <p>The Circuit Citadel's power grid has gone dark. Every node you master brings it back to life.</p>
+    <div class="creation-card">
+      <label for="name-input">Choose your engineer name:</label>
+      <input type="text" id="name-input" placeholder="Enter a name..." autocomplete="off" maxlength="24" aria-label="Character name">
+    </div>
+    <div id="db-stats" aria-label="Knowledge base statistics"></div>
+    <button id="start-btn" disabled aria-label="Start exploring">Power On</button>
+  </div>
+
+  <div id="narrative" role="main" aria-label="Game narrative" aria-live="polite"></div>
+</main>
+
+<div id="actions" role="navigation" aria-label="Actions">
+  <div id="choice-container"></div>
+  <div id="input-row">
+    <textarea id="freeform" rows="1" placeholder="Type your answer here..." aria-label="Type your answer or action here" autocomplete="off"></textarea>
+    <button id="submit-btn" aria-label="Submit answer">Go</button>
+  </div>
+</div>
+
+<footer id="footer" style="display:none" role="contentinfo">
+  <p>Knowledge Quest v11 -- Power up through understanding</p>
+</footer>
+
+<script>
+'use strict';
+
+// ============================================================
+// TITLES -- evolve with board power level
+// ============================================================
+const TITLES = [
+  { threshold: 0, name: 'Novice', color: '#8b949e' },
+  { threshold: 0.05, name: 'Technician', color: '#58a6ff' },
+  { threshold: 0.15, name: 'Apprentice', color: '#3fb950' },
+  { threshold: 0.30, name: 'Engineer', color: '#d29922' },
+  { threshold: 0.50, name: 'Specialist', color: '#a371f7' },
+  { threshold: 0.70, name: 'Architect', color: '#f778ba' },
+  { threshold: 0.85, name: 'Master', color: '#f0883e' },
+  { threshold: 0.95, name: 'Chief Engineer', color: '#d4a72c' },
+];
+
+// ============================================================
+// SUBSYSTEMS -- each is a circuit on the board you power up
+// A subsystem powers on when all its core nodes are mastered
+// ============================================================
+const SUBSYSTEMS = {
+  'Power Supply': { nodes: ['resistor', 'capacitor', 'inductor', 'diode', 'voltage'], category: 'electronics', desc: 'The foundation -- converts and regulates raw energy into clean power', reward: 'Power Supply online. Clean DC flows through the Citadel.', bossName: 'The Surge -- Unstable Power Grid', bossPrompt: 'A cascading power failure is propagating through the Citadel. The input voltage is fluctuating between 8V and 16V, the load demands constant 5V at 2A, and the output capacitor is bulging. Design a robust fix: what components do you need, how do you size them, and what protections prevent this from happening again?' },
+  'Signal Bus': { nodes: ['i2c', 'spi', 'can-bus', 'pwm'], category: 'protocols', desc: 'Communication backbone -- carries data between every chip', reward: 'Signal Bus active. Data packets flow without corruption.', bossName: 'The Crosstalk -- Signal Interference', bossPrompt: 'Three different communication protocols are interfering with each other on the same PCB. The I2C bus locks up when the SPI clock is running, and the CAN bus error counter keeps incrementing. How would you diagnose and fix the interference between these protocols? Consider physical layer, timing, and routing.' },
+  'Logic Core': { nodes: ['transistor', 'mosfet', 'bjt', 'op-amp'], category: 'semiconductors', desc: 'Processing heart -- switches, amplifies, and computes', reward: 'Logic Core activated. Semiconductor junctions conduct precisely.', bossName: 'The Saturation -- Analog Distortion', bossPrompt: 'An amplifier chain produces clean output at low signal levels but clips asymmetrically at higher levels. The first stage is a BJT common-emitter, the second is a MOSFET source-follower, and the third is an op-amp inverting stage. Where is the distortion being introduced and how would you fix the biasing across all three stages?' },
+  'Fabrication Bay': { nodes: ['pcb', 'soldering', 'smd', '3d-printing', 'cnc'], category: 'manufacturing', desc: 'Construction wing -- turns designs into physical reality', reward: 'Fabrication Bay operational. Boards populate perfectly.', bossName: 'The Cold Joint -- Production Failure', bossPrompt: 'A batch of 100 PCBs has a 30% failure rate. Failures are intermittent -- boards pass initial testing but fail after thermal cycling. The BGA package shows no visible defects. Walk through your root cause analysis: what tests would you run, what manufacturing parameters would you check, and how would you fix the process?' },
+  'Control Center': { nodes: ['stm32', 'clock', 'adc', 'imu'], category: 'embedded', desc: 'The brain -- microcontrollers that orchestrate everything', reward: 'Control Center booted. Microcontrollers initialize cleanly.', bossName: 'The Glitch -- Firmware Chaos', bossPrompt: 'An STM32-based system works perfectly on the bench but exhibits random resets in the field. The watchdog timer triggers approximately once per hour. The system reads an IMU over I2C and an analog sensor through the ADC. Clock configuration uses an external 8MHz crystal with PLL to 72MHz. Systematically diagnose all possible causes and propose fixes for each.' },
+  'Motion Array': { nodes: ['pid', 'kinematics', 'gait'], category: 'robotics', desc: 'Locomotion system -- makes the robots move', reward: 'Motion Array engaged. Servos respond with precision.', bossName: 'The Oscillation -- Unstable Robot', bossPrompt: 'A quadruped robot walks forward but oscillates wildly after 5 seconds, eventually falling over. The PID gains were tuned on flat ground but the robot is now on carpet. The IMU shows increasing pitch oscillation. The inverse kinematics solver returns valid joint angles. What is causing the instability and how would you redesign the control system to be robust across surfaces?' },
+};
+
+// ============================================================
+// CONCEPT CASCADES -- connections between nodes
+// ============================================================
+const CONCEPT_CASCADES = {
+  'resistor+capacitor': { name: 'RC Time Constants', prompt: 'How do resistors and capacitors interact to create timing circuits? Explain RC time constants.', answer: 'When a resistor and capacitor are in series, they create an RC circuit where the capacitor charges/discharges through the resistor exponentially. The time constant tau = R * C determines how fast this happens. After 5 time constants, the capacitor is ~99% charged. This is fundamental for timing circuits, filters (low-pass RC filter cutoff = 1/(2*pi*R*C)), and smoothing.' },
+  'resistor+inductor': { name: 'RL Circuits', prompt: 'How do resistors and inductors work together? What is an RL time constant?', answer: 'In an RL circuit, the inductor opposes changes in current while the resistor dissipates energy. The time constant tau = L/R determines how quickly current reaches steady state. Inductors store energy in magnetic fields, and when current changes, the inductor generates a back-EMF. RL circuits are used in filters, relay coils, and motor drivers.' },
+  'capacitor+inductor': { name: 'LC Resonance', prompt: 'What happens when you combine an inductor and capacitor? Explain LC resonance.', answer: 'An LC circuit creates a resonant oscillator. Energy bounces between the capacitor electric field and the inductor magnetic field at the resonant frequency f = 1/(2*pi*sqrt(L*C)). With no resistance, this oscillation would continue forever. LC circuits are the basis of radio tuners, filters, and oscillators.' },
+  'transistor+resistor': { name: 'Biasing Networks', prompt: 'Why do transistors need resistors, and what is biasing?', answer: 'Transistors need resistors to set their operating point (bias point) in the correct region. For a BJT amplifier, base and collector resistors set the DC operating point so the transistor operates in the active region where it can amplify signals linearly. Without proper biasing, the transistor either cuts off or saturates.' },
+  'pid+kinematics': { name: 'Motion Control Loop', prompt: 'How does PID control relate to robot kinematics?', answer: 'PID controllers use feedback to minimize error between desired and actual positions. In robotics, inverse kinematics calculates the joint angles needed for a desired end-effector position, and PID controllers at each joint ensure the motors actually reach those angles. The P term responds to current error, I eliminates steady-state error, and D dampens oscillation.' },
+  'pwm+mosfet': { name: 'Power Switching', prompt: 'How do PWM and MOSFETs work together for power control?', answer: 'PWM rapidly switches a MOSFET on and off at a fixed frequency. The MOSFET acts as a near-ideal switch. By varying the duty cycle, average power is precisely controlled. This is more efficient than linear regulation because the MOSFET dissipates minimal power in either fully-on or fully-off states.' },
+  'i2c+stm32': { name: 'Peripheral Communication', prompt: 'How does an STM32 microcontroller communicate with sensors via I2C?', answer: 'The STM32 acts as I2C master, generating clock (SCL) and sending/receiving data (SDA). It addresses slave devices with their 7-bit address. The protocol handles arbitration, acknowledgment, and data framing in hardware, but firmware must configure GPIO alternate functions, enable pull-ups, and handle the I2C state machine.' },
+  'adc+capacitor': { name: 'Signal Conditioning', prompt: 'Why do ADC inputs need capacitors, and how does signal conditioning work?', answer: 'ADC inputs need decoupling capacitors to reduce noise on the reference voltage and anti-aliasing RC filters on the signal input. The capacitor on VREF smooths switching noise. The RC filter removes frequencies above half the sampling rate (Nyquist), preventing aliasing. Without these capacitors, the digitized signal would contain noise and frequency artifacts.' },
+};
+
+// ============================================================
+// MISCONCEPTION POOLS (preserved from iteration 10)
+// ============================================================
+const MISCONCEPTION_POOLS = {
+  'resistor': [
+    { text: 'Resistors consume or use up electricity. The electrons go in but don\'t come out.', correction: 'Resistors convert electrical energy to heat, but current in equals current out. They limit current but do not consume charge.' },
+    { text: 'Resistance and resistivity are the same thing.', correction: 'Resistivity is a material property. Resistance depends on resistivity AND geometry (length, cross-section).' },
+  ],
+  'capacitor': [
+    { text: 'Capacitors store electrons -- they fill up like a bucket.', correction: 'Capacitors store ENERGY in an electric field between plates. One plate gains electrons while the other loses them. Total charge is conserved.' },
+    { text: 'A capacitor blocks DC and passes AC because it has a hole in the middle.', correction: 'No physical hole. The changing electric field on one plate induces charge movement on the other. DC creates a static field that cannot induce further current once charged.' },
+  ],
+  'inductor': [
+    { text: 'An inductor stores charge like a capacitor stores charge.', correction: 'An inductor stores energy in a MAGNETIC FIELD created by current flow, not in charge accumulation. Energy is 0.5*L*I^2.' },
+  ],
+  'voltage': [
+    { text: 'Voltage is the amount of electricity flowing through a wire.', correction: 'Voltage is electrical PRESSURE (potential difference), not flow. Current (amps) measures flow. Voltage is the force that pushes current.' },
+  ],
+  'transistor': [
+    { text: 'Transistors are just fancy switches -- either on or off.', correction: 'Transistors can be switches (digital) but also linear amplifiers in the active region. Most analog circuits depend on operation between fully on and off.' },
+  ],
+  'mosfet': [
+    { text: 'MOSFETs are current-controlled devices like BJTs.', correction: 'MOSFETs are VOLTAGE-controlled. The gate draws almost zero current because of the oxide insulation layer.' },
+  ],
+  'pcb': [
+    { text: 'PCB traces can handle any current since they are made of copper.', correction: 'Trace width, thickness, and temperature all limit current capacity. A standard 1oz, 10mil trace handles only about 0.5A.' },
+  ],
+  'pid': [
+    { text: 'Just increase all three PID gains to make it faster and more accurate.', correction: 'High P causes overshoot. High I causes windup. High D amplifies noise. PID tuning is about BALANCE.' },
+  ],
+  'adc': [
+    { text: 'Higher ADC bit resolution always means more accurate.', correction: 'Resolution sets smallest detectable change, but accuracy depends on reference stability, noise, linearity, and calibration.' },
+    { text: 'Sampling rate does not matter if resolution is high.', correction: 'Nyquist theorem requires sampling at 2x the highest signal frequency to avoid aliasing.' },
+  ],
+  'imu': [
+    { text: 'The accelerometer measures speed directly.', correction: 'Accelerometer measures acceleration. Integrate once for velocity, twice for position. Each integration accumulates error.' },
+    { text: 'Gyroscope drift is not a real problem with modern sensors.', correction: 'Even the best consumer MEMS gyroscopes drift 1-10 degrees/hour. Practical systems need sensor fusion.' },
+  ],
+  'clock': [
+    { text: 'Any crystal works for any microcontroller.', correction: 'The crystal must match the oscillator circuit specs. Wrong parameters can prevent oscillator startup.' },
+  ],
+  'stm32': [
+    { text: 'Run all peripherals at max clock without worrying about power.', correction: 'Power in CMOS scales linearly with frequency (P=CV^2f). Max speed dramatically increases power and heat.' },
+  ],
+  'pwm': [
+    { text: 'PWM duty cycle directly sets voltage -- 50% always means half Vcc.', correction: 'PWM produces a square wave. Average voltage IS duty_cycle * Vcc, but ONLY after low-pass filtering.' },
+  ],
+  'kinematics': [
+    { text: 'Forward and inverse kinematics are the same, just in different directions.', correction: 'Forward kinematics has a unique closed-form solution. Inverse kinematics may have multiple solutions, none, or require iterative methods.' },
+  ],
+};
+
+const CIRCUIT_WIRING_CHALLENGES = [
+  { goal: 'Build a voltage regulator: convert 12V input to stable 5V output', slots: ['Input filter', 'Voltage conversion', 'Output filter', 'Load decoupling'], correctOrder: ['Bulk capacitor', 'Buck converter IC', 'Output inductor + capacitor', 'Ceramic decoupling cap'], distractors: ['Zener diode', 'Pull-up resistor', 'Crystal oscillator', 'Flyback transformer'], explanation: 'Input bulk capacitor smooths battery impedance. Buck converter steps down voltage. Output LC filter smooths switching waveform. Ceramic caps suppress high-frequency noise.', category: 'electronics' },
+  { goal: 'Build an I2C sensor interface', slots: ['Bus pull-ups', 'Data line', 'Clock line', 'Power bypass'], correctOrder: ['4.7k pull-up resistors to Vcc', 'SDA (bidirectional data)', 'SCL (clock from master)', '100nF ceramic cap near sensor'], distractors: ['Termination resistor', 'MOSI line', 'Chip select', 'Bootstrap capacitor'], explanation: 'I2C requires pull-ups because SDA/SCL are open-drain. SDA carries bidirectional data. SCL carries clock from master. Bypass cap filters power noise.', category: 'protocols' },
+  { goal: 'Build an H-bridge motor driver', slots: ['High-side switch A', 'Low-side switch B', 'Motor connection', 'Flyback protection'], correctOrder: ['P-channel MOSFET (or N-ch with bootstrap)', 'N-channel MOSFET to ground', 'Motor between half-bridge outputs', 'Flyback diodes across each MOSFET'], distractors: ['Zener regulator', 'Crystal oscillator', 'I2C pull-up', 'Coupling capacitor'], explanation: 'H-bridge uses complementary MOSFET pairs. High-side connects to Vcc, low-side to ground. Diagonal activation reverses motor. Flyback diodes protect from inductive spikes.', category: 'semiconductors' },
+  { goal: 'Build a signal conditioning chain for ADC', slots: ['Input protection', 'Amplification', 'Anti-alias filtering', 'ADC input'], correctOrder: ['TVS diode + series resistor', 'Non-inverting op-amp (gain stage)', 'RC low-pass filter (Nyquist)', 'ADC channel with reference voltage'], distractors: ['PWM output', 'SPI clock', 'Watchdog timer', 'CAN transceiver'], explanation: 'Input protection clamps overvoltage. Op-amp amplifies weak signal. Anti-aliasing filter removes frequencies above Nyquist. ADC digitizes conditioned signal.', category: 'embedded' },
+];
+
+const FAULT_TREE_CHALLENGES = [
+  { title: 'Motor Not Spinning', symptoms: 'A DC motor connected to an H-bridge does not spin. Power LED is on.', steps: [
+    { action: 'Measure supply voltage at driver input', result: '12.1V -- power supply good.', eliminates: 'power supply failure' },
+    { action: 'Check PWM signal at MCU output', result: '25kHz PWM at 50% duty present.', eliminates: 'firmware / PWM config' },
+    { action: 'Measure voltage at motor terminals', result: '0V across motor terminals.', reveals: 'Problem between driver IC and motor.' },
+    { action: 'Check gate drive on H-bridge MOSFETs', result: 'High-side gate only 8V (needs 10V for full Rds_on).', reveals: 'Bootstrap cap not charging.' },
+    { action: 'Inspect bootstrap capacitor', result: '100nF bootstrap cap has hairline crack.', reveals: 'ROOT CAUSE found.' },
+  ], rootCause: 'The bootstrap capacitor for the high-side MOSFET gate driver is cracked, preventing it from charging.', minStepsToSolve: 3, category: 'electronics' },
+  { title: 'I2C Bus Lockup', symptoms: 'STM32 reads 0xFF from all I2C slaves after running a few hours.', steps: [
+    { action: 'Check I2C pull-up resistors', result: '4.7k pull-ups present on SDA and SCL.', eliminates: 'missing pull-ups' },
+    { action: 'Monitor SDA with oscilloscope', result: 'SDA stuck LOW permanently. SCL toggling.', reveals: 'A slave is holding SDA low.' },
+    { action: 'Disconnect slaves one at a time', result: 'Removing humidity sensor releases SDA.', reveals: 'Humidity sensor is culprit.' },
+    { action: 'Check sensor datasheet lockup conditions', result: '"If master resets during transaction, slave may hold SDA."', reveals: 'Sensor stuck mid-transaction.' },
+    { action: 'Implement I2C bus recovery (9 clocks)', result: '9 clocks on SCL clears stuck condition.', reveals: 'ROOT CAUSE found.' },
+  ], rootCause: 'Humidity sensor stuck mid-byte after MCU reset. Without bus recovery (9 SCL clocks), SDA stays LOW.', minStepsToSolve: 3, category: 'protocols' },
+  { title: 'Robot Drifts Left', symptoms: 'Quadruped robot drifts left when commanded forward. All 12 servos respond.', steps: [
+    { action: 'Check servo calibration offsets', result: 'All 12 servos correct within 0.5 degrees.', eliminates: 'servo miscalibration' },
+    { action: 'Read IMU during straight walk', result: '0.3 deg/s yaw drift to left.', reveals: 'Possible IMU bias or robot asymmetry.' },
+    { action: 'Swap left and right leg assemblies', result: 'After swap, robot drifts RIGHT.', reveals: 'Problem is mechanical.' },
+    { action: 'Measure leg link lengths with calipers', result: 'Right front thigh 0.8mm shorter (print warping).', reveals: 'Asymmetric geometry.' },
+    { action: 'Update IK with measured link lengths', result: 'Actual measurements correct the drift.', reveals: 'ROOT CAUSE found.' },
+  ], rootCause: 'A 3D-printed thigh link warped 0.8mm shorter than spec. IK solver used nominal dimensions.', minStepsToSolve: 3, category: 'robotics' },
+  { title: 'ADC Readings Are Noisy', symptoms: 'STM32 ADC fluctuates +/- 50 LSB. Multimeter shows stable sensor output.', steps: [
+    { action: 'Check ADC reference voltage with scope', result: 'VREF shows 30mV ripple from switching regulator.', reveals: 'ADC reference is noisy.' },
+    { action: 'Add 100nF + 1uF caps at VREF pin', result: 'Ripple drops to 5mV. Noise reduces to +/- 15 LSB.', reveals: 'VREF filtering helps but not enough.' },
+    { action: 'Check sensor trace routing on PCB', result: 'Analog trace runs parallel to SPI clock for 3cm.', reveals: 'Digital crosstalk into analog trace.' },
+    { action: 'Enable ADC hardware averaging (16 samples)', result: 'Noise reduces to +/- 4 LSB.', reveals: 'Software mitigation works.' },
+    { action: 'Reroute analog trace away from digital', result: 'With guard ground trace, noise drops to +/- 2 LSB.', reveals: 'ROOT CAUSE found.' },
+  ], rootCause: 'Two issues: VREF ripple from switching regulator + analog trace coupling from adjacent SPI clock.', minStepsToSolve: 3, category: 'embedded' },
+];
+
+const REGIONS = [
+  { id: 'workshop', name: 'The Workshop', desc: 'Basic components: resistors, capacitors, inductors, diodes', categories: ['electronics'], difficulty: 1, mystery: 'A power supply keeps failing. Something draws too much current...', mysteryAnswer: 'The capacitor has degraded, reducing capacitance. Without filtering, the voltage regulator oscillates and draws excessive current.', topics: ['resistor', 'capacitor', 'inductor', 'diode', 'voltage'], subsystem: 'Power Supply' },
+  { id: 'lab', name: 'The Laboratory', desc: 'Semiconductors: transistors, MOSFETs, BJTs, op-amps', categories: ['semiconductors'], difficulty: 2, mystery: 'A signal amplifier produces distorted output...', mysteryAnswer: 'The BJT operates in saturation rather than active region because the base bias resistor is too low.', topics: ['transistor', 'mosfet', 'bjt', 'op-amp'], subsystem: 'Logic Core' },
+  { id: 'foundry', name: 'The Foundry', desc: 'Manufacturing: PCBs, soldering, 3D printing, CNC', categories: ['manufacturing'], difficulty: 3, mystery: 'Boards fail intermittently after production...', mysteryAnswer: 'Cold solder joints on BGA package cause intermittent connections due to thermal cycling.', topics: ['pcb', 'soldering', 'smd', '3d-printing', 'cnc'], subsystem: 'Fabrication Bay' },
+  { id: 'nexus', name: 'The Signal Nexus', desc: 'Protocols: I2C, SPI, CAN bus, PWM', categories: ['protocols'], difficulty: 4, mystery: 'Devices send corrupted data...', mysteryAnswer: 'The CAN bus is missing its 120-ohm termination resistors, causing signal reflections.', topics: ['i2c', 'spi', 'can-bus', 'pwm'], subsystem: 'Signal Bus' },
+  { id: 'sanctum', name: 'The Control Sanctum', desc: 'Embedded: STM32, clocks, ADC, IMU', categories: ['embedded'], difficulty: 5, mystery: 'A microcontroller keeps resetting...', mysteryAnswer: 'External crystal lacks load capacitors, causing frequency drift. When clock fails, watchdog resets MCU.', topics: ['stm32', 'clock', 'adc', 'imu'], subsystem: 'Control Center' },
+  { id: 'arena', name: 'The Motion Arena', desc: 'Robotics: PID, kinematics, gait, RL', categories: ['robotics'], difficulty: 6, mystery: 'A robot walks erratically. Its control loop oscillates...', mysteryAnswer: 'PID derivative gain amplifies IMU noise into motor PWM, combined with gait phase timing error.', topics: ['pid', 'kinematics', 'gait', 'reinforcement-learning'], subsystem: 'Motion Array' },
+];
+
+const NPC_NAMES = {
+  dealer: ['Vex the Vendor', 'Ohma the Supplier', 'Zenna Circuits', 'Rho the Trader', 'Flux Fiona', 'Watt the Merchant'],
+  apprentice: ['Pip the Curious', 'Niko the Learner', 'Sera Sparkwire', 'Jolt Junior', 'Kit the Eager', 'Lumen the New'],
+  engineer: ['Chief Volta', 'Dr. Kirchhoff', 'Master Ampere', 'Professor Gauss', 'Director Hertz', 'Warden Faraday'],
+};
+
+const REGION_QUIZ_SOURCES = {
+  1: 'term_definition,term_reverse',
+  2: 'term_definition,term_reverse,key_insight',
+  3: 'key_insight,section_content',
+  4: 'section_content,key_insight,test_your_understanding',
+  5: 'section_analysis,test_your_understanding',
+  6: 'section_analysis,test_your_understanding',
+};
+
+const TOTAL_MASTERY_TOPICS_ESTIMATE = 185;
+const HALF_LIFE_INITIAL_MS = 2 * 24 * 60 * 60 * 1000;
+const MASTERY_FADING_THRESHOLD = 0.5;
+const FONT_SIZES = ['small', 'medium', 'large'];
+
+let state = {
+  phase: 'loading',
+  char: null,
+  currentRegion: null,
+  masteredTopics: {},
+  visitedRegions: [],
+  mysteryProgress: {},
+  turnCount: 0,
+  dbStats: null,
+  hintsUsed: 0,
+  crossTopicSolved: 0,
+  conceptCascadesTriggered: [],
+  knowledgeJournal: [],
+  tutorialComplete: false,
+  regionNPCs: {},
+  lastEncounteredCategory: null,
+  lastEncounteredTopic: null,
+  cascadeEncountersSinceLastTrigger: {},
+  streak: 0,
+  bestStreak: 0,
+  combo: 0,
+  comboTimer: null,
+  achievements: [],
+  totalCorrect: 0,
+  totalAttempts: 0,
+  dailyChallengesCompleted: {},
+  apprenticeTeachCount: 0,
+  // Iteration 11: subsystem boss tracking
+  bossesDefeated: [],
+  discoveredTraces: [],
+};
+
+// ============================================================
+// API
+// ============================================================
+async function api(endpoint, opts) {
+  const res = await fetch(endpoint, opts);
+  if (!res.ok) throw new Error(`API ${endpoint}: ${res.status}`);
+  return res.json();
+}
+
+async function evaluateAnswer(playerAnswer, correctAnswer, question) {
+  const evalMsg = addMsg(`<span class="msg-evaluating"><span class="eval-spinner"></span> Evaluating your understanding...</span>`, 'system');
+  try {
+    const res = await api('/api/evaluate-llm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerAnswer, correctAnswer, question: question || '' }),
+    });
+    if (evalMsg && evalMsg.parentNode) evalMsg.remove();
+    return res;
+  } catch (e) {
+    if (evalMsg && evalMsg.parentNode) evalMsg.remove();
+    try {
+      const res = await api('/api/evaluate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ playerAnswer, correctAnswer }),
+      });
+      return { grade: res.grade, feedback: '', misconception: null, source: 'cosine-fallback' };
+    } catch (e2) {
+      return fallbackEvaluate(playerAnswer, correctAnswer);
+    }
+  }
+}
+
+function fallbackEvaluate(playerAnswer, correctAnswer) {
+  const stopWords = new Set(['the','a','an','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','to','of','in','for','on','with','at','by','from','it','this','that','and','or','but','not','so','as','if']);
+  const keywords = correctAnswer.toLowerCase().split(/\s+/).map(w => w.replace(/[^a-z0-9]/g, '')).filter(w => w.length > 3 && !stopWords.has(w));
+  const unique = [...new Set(keywords)];
+  const inputLower = playerAnswer.toLowerCase();
+  const matches = unique.filter(kw => inputLower.includes(kw));
+  const score = unique.length > 0 ? matches.length / unique.length : 0;
+  if (score >= 0.50) return { grade: 'correct', feedback: '', misconception: null, source: 'keyword-fallback' };
+  if (score >= 0.25) return { grade: 'partial', feedback: '', misconception: null, source: 'keyword-fallback' };
+  return { grade: 'incorrect', feedback: '', misconception: null, source: 'keyword-fallback' };
+}
+
+async function matchMisconception(playerAnswer, topicName) {
+  const topicLower = (topicName || '').toLowerCase();
+  let misconceptions = [];
+  for (const [key, pool] of Object.entries(MISCONCEPTION_POOLS)) {
+    if (topicLower.includes(key)) misconceptions = misconceptions.concat(pool);
+  }
+  if (misconceptions.length === 0) return null;
+  try {
+    const result = await api('/api/misconception-match', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ playerAnswer, misconceptions: misconceptions.map(m => ({ text: m.text, correction: m.correction })) }),
+    });
+    if (result.matched && result.misconception) return result.misconception;
+  } catch (e) {
+    for (const m of misconceptions) {
+      const mWords = m.text.toLowerCase().split(/\s+/);
+      const pWords = playerAnswer.toLowerCase().split(/\s+/);
+      const overlap = mWords.filter(w => pWords.includes(w) && w.length > 4).length;
+      if (overlap >= 3) return m;
+    }
+  }
+  return null;
+}
+
+// ============================================================
+// STREAK, COMBO, ACHIEVEMENT
+// ============================================================
+function onCorrectAnswer() {
+  state.streak++;
+  state.totalCorrect++;
+  state.totalAttempts++;
+  if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+  state.combo++;
+  if (state.comboTimer) clearTimeout(state.comboTimer);
+  state.comboTimer = setTimeout(() => { state.combo = 0; updateHUD(); }, 30000);
+  if (state.combo >= 2) {
+    const comboEl = document.getElementById('hud-combo');
+    comboEl.style.display = 'inline';
+    comboEl.textContent = `x${state.combo}`;
+    comboEl.style.animation = 'none';
+    comboEl.offsetHeight;
+    comboEl.style.animation = '';
+  }
+  checkAchievement('first_correct');
+  if (state.streak >= 3) checkAchievement('streak_3');
+  if (state.streak >= 5) checkAchievement('streak_5');
+  if (state.streak >= 10) checkAchievement('streak_10');
+  updateHUD();
+  saveState();
+}
+
+function onIncorrectAnswer() {
+  state.streak = 0;
+  state.combo = 0;
+  state.totalAttempts++;
+  document.getElementById('hud-combo').style.display = 'none';
+  updateHUD();
+  saveState();
+}
+
+function onPartialAnswer() {
+  state.totalAttempts++;
+  if (state.comboTimer) clearTimeout(state.comboTimer);
+  state.comboTimer = setTimeout(() => { state.combo = 0; updateHUD(); }, 30000);
+  updateHUD();
+  saveState();
+}
+
+const ACHIEVEMENTS = {
+  first_correct: { name: 'First Light', desc: 'Power your first node on the board' },
+  streak_3: { name: 'Current Flow', desc: '3 correct in a row -- electrons are moving' },
+  streak_5: { name: 'Power Surge', desc: '5 in a row -- sustained current' },
+  streak_10: { name: 'Superconductor', desc: '10 in a row -- zero resistance' },
+  master_5: { name: 'First Circuit', desc: 'Power 5 nodes on the board' },
+  master_20: { name: 'PCB Designer', desc: 'Power 20 nodes' },
+  master_50: { name: 'Board Architect', desc: 'Power 50 nodes' },
+  visit_all: { name: 'Full Schematic', desc: 'Visit all 6 subsystem regions' },
+  mystery_1: { name: 'Root Cause Found', desc: 'Solve your first mystery' },
+  mystery_all: { name: 'Master Debugger', desc: 'Solve all 6 mysteries' },
+  cascade_1: { name: 'Trace Connected', desc: 'Discover your first connection between topics' },
+  cascade_5: { name: 'Bus Architect', desc: 'Discover 5 connections' },
+  circuit_wiring: { name: 'Soldering Iron', desc: 'Complete a circuit wiring challenge' },
+  fault_tree: { name: 'Logic Probe', desc: 'Solve a fault tree challenge' },
+  daily_1: { name: 'Morning Test', desc: 'Complete your first daily challenge' },
+  daily_7: { name: 'Burn-In Test', desc: 'Daily challenges 7 days running' },
+  subsystem_1: { name: 'Subsystem Online', desc: 'Power up a complete subsystem' },
+  boss_1: { name: 'Boss Defeated', desc: 'Defeat your first subsystem boss' },
+  bloom_4: { name: 'Deep Analysis', desc: 'Reach Bloom level 4 on a topic' },
+  teach_5: { name: 'Training Mode', desc: 'Teach the apprentice 5 times' },
+  review_fading: { name: 'Signal Restored', desc: 'Repair a fading node' },
+};
+
+function checkAchievement(id) {
+  if (state.achievements.includes(id)) return;
+  const achievement = ACHIEVEMENTS[id];
+  if (!achievement) return;
+  state.achievements.push(id);
+  saveState();
+  const banner = document.createElement('div');
+  banner.className = 'achievement-banner';
+  banner.innerHTML = `<h4>Achievement: ${achievement.name}</h4><p>${achievement.desc}</p>`;
+  document.getElementById('narrative').appendChild(banner);
+  banner.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+// ============================================================
+// DAILY CHALLENGE
+// ============================================================
+function getDailyKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function isDailyChallengeCompleted() { return state.dailyChallengesCompleted[getDailyKey()] === true; }
+function completeDailyChallenge() {
+  state.dailyChallengesCompleted[getDailyKey()] = true;
+  checkAchievement('daily_1');
+  if (Object.keys(state.dailyChallengesCompleted).length >= 7) checkAchievement('daily_7');
+  saveState();
+}
+
+// ============================================================
+// CIRCUIT BOARD STATE -- the core gamification
+// ============================================================
+function getBoardPower() {
+  let total = 0, powered = 0;
+  for (const [, sub] of Object.entries(SUBSYSTEMS)) {
+    total += sub.nodes.length;
+    powered += sub.nodes.filter(n => isMastered(state.masteredTopics[n])).length;
+  }
+  return total > 0 ? powered / total : 0;
+}
+
+function getSubsystemPower(subsystemName) {
+  const sub = SUBSYSTEMS[subsystemName];
+  if (!sub) return 0;
+  const powered = sub.nodes.filter(n => isMastered(state.masteredTopics[n])).length;
+  return powered / sub.nodes.length;
+}
+
+function isSubsystemFullyPowered(subsystemName) {
+  return getSubsystemPower(subsystemName) >= 1.0;
+}
+
+function getSubsystemsFading() {
+  const result = [];
+  for (const [name, sub] of Object.entries(SUBSYSTEMS)) {
+    const fadingNodes = sub.nodes.filter(n => {
+      const entry = state.masteredTopics[n];
+      return entry && entry.correct >= 2 && getMasteryStrength(entry) < MASTERY_FADING_THRESHOLD;
+    });
+    if (fadingNodes.length > 0) result.push({ name, fadingNodes });
+  }
+  return result;
+}
+
+function renderCircuitBoard() {
+  let html = '<div class="circuit-board"><h4>Circuit Board Status</h4>';
+  const boardPower = Math.round(getBoardPower() * 100);
+  html += `<div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:6px;">Board Power: ${boardPower}%</div>`;
+  html += `<div class="progress-bar"><div class="progress-bar-fill power" style="width:${boardPower}%"></div></div>`;
+
+  for (const [name, sub] of Object.entries(SUBSYSTEMS)) {
+    const power = getSubsystemPower(name);
+    const isPowered = power >= 1.0;
+    html += `<div style="margin-top:8px;"><span style="font-size:0.8rem; color:${isPowered ? 'var(--node-on)' : 'var(--text-dim)'}; font-weight:600;">${name} ${isPowered ? '(ONLINE)' : `(${Math.round(power*100)}%)`}</span></div>`;
+    html += '<div class="circuit-nodes">';
+    for (const node of sub.nodes) {
+      const entry = state.masteredTopics[node];
+      const mastered = isMastered(entry);
+      const fading = entry && entry.correct >= 2 && getMasteryStrength(entry) < MASTERY_FADING_THRESHOLD;
+      const cls = mastered ? 'powered' : (fading ? 'fading' : 'dark');
+      html += `<span class="circuit-node ${cls}"><span class="node-dot"></span>${node}</span>`;
+    }
+    html += '</div>';
+  }
+
+  // Show discovered traces
+  if (state.conceptCascadesTriggered.length > 0) {
+    html += `<div style="margin-top:10px; font-size:0.8rem; color:var(--trace-on);">Traces: ${state.conceptCascadesTriggered.map(p => {
+      const c = CONCEPT_CASCADES[p];
+      return c ? c.name : p;
+    }).join(', ')}</div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ============================================================
+// Persistent NPC system
+// ============================================================
+function getRegionNPC(region, role) {
+  if (!state.regionNPCs[region.id]) state.regionNPCs[region.id] = {};
+  if (!state.regionNPCs[region.id][role]) {
+    const names = NPC_NAMES[role] || ['Unknown NPC'];
+    const idx = Math.abs(hashStr(region.id + role)) % names.length;
+    state.regionNPCs[region.id][role] = { name: names[idx], interactions: 0, topicsDiscussed: [], lastTopic: null };
+  }
+  return state.regionNPCs[region.id][role];
+}
+
+function hashStr(s) { let h = 0; for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i); return h; }
+
+function npcGreeting(npc, role) {
+  if (npc.interactions === 0) {
+    if (role === 'dealer') return `A merchant steps forward: "<span class="npc-name">${npc.name}</span> here. Need components?"`;
+    if (role === 'apprentice') return `A young technician approaches: "<span class="npc-name">${npc.name}</span>. Can you help me understand something?"`;
+    if (role === 'engineer') return `A senior engineer turns from their workbench. "<span class="npc-name">${npc.name}</span>. Show me what you know."`;
+  } else if (npc.topicsDiscussed.length >= 3) {
+    const recent = npc.topicsDiscussed.slice(-3).join(', ');
+    if (role === 'dealer') return `<span class="npc-name">${npc.name}</span> waves: "My best customer! ${npc.topicsDiscussed.length} topics discussed."`;
+    if (role === 'apprentice') return `<span class="npc-name">${npc.name}</span> rushes over: "You've taught me ${recent} and more! I see connections now."`;
+    if (role === 'engineer') return `<span class="npc-name">${npc.name}</span> nods with respect: "You've proven yourself on ${npc.topicsDiscussed.length} topics."`;
+  } else {
+    const ref = npc.lastTopic ? ` Last time: ${npc.lastTopic}.` : '';
+    if (role === 'dealer') return `<span class="npc-name">${npc.name}</span>: "Back for more?${ref}"`;
+    if (role === 'apprentice') return `<span class="npc-name">${npc.name}</span> lights up: "I've been practicing!${ref}"`;
+    if (role === 'engineer') return `<span class="npc-name">${npc.name}</span>: "Ready for another challenge?${ref}"`;
+  }
+  return `You encounter <span class="npc-name">${npc.name}</span>.`;
+}
+
+function updateNPC(npc, topicName) {
+  npc.interactions++;
+  npc.lastTopic = topicName;
+  if (topicName && !npc.topicsDiscussed.includes(topicName)) npc.topicsDiscussed.push(topicName);
+  saveState();
+}
+
+// ============================================================
+// HALF-LIFE MASTERY DECAY
+// ============================================================
+function getMasteryStrength(topicEntry) {
+  if (!topicEntry || !topicEntry.lastReviewed) return 0;
+  const timeSince = Date.now() - topicEntry.lastReviewed;
+  const halfLife = topicEntry.halfLife || HALF_LIFE_INITIAL_MS;
+  return Math.pow(2, -timeSince / halfLife);
+}
+
+function isMastered(topicEntry) {
+  if (!topicEntry) return false;
+  return topicEntry.correct >= 2 && getMasteryStrength(topicEntry) >= MASTERY_FADING_THRESHOLD;
+}
+
+function getMasteredCount() { return Object.values(state.masteredTopics).filter(v => isMastered(v)).length; }
+
+function getFadingTopics() {
+  return Object.entries(state.masteredTopics)
+    .filter(([, v]) => v.correct >= 2 && getMasteryStrength(v) < MASTERY_FADING_THRESHOLD)
+    .sort((a, b) => getMasteryStrength(a[1]) - getMasteryStrength(b[1]));
+}
+
+function getMasteryPercent() { return Math.min(100, Math.round((getMasteredCount() / TOTAL_MASTERY_TOPICS_ESTIMATE) * 100)); }
+
+function getRegionMastery(region) {
+  let total = 0, mastered = 0;
+  for (const t of region.topics) { total++; if (isMastered(state.masteredTopics[t])) mastered++; }
+  return total > 0 ? mastered / total : 0;
+}
+
+function getTitle() {
+  const pct = getBoardPower();
+  let title = TITLES[0];
+  for (const t of TITLES) { if (pct >= t.threshold) title = t; }
+  return title;
+}
+
+function getBloomProgress() {
+  const levels = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+  Object.values(state.masteredTopics).forEach(v => { if (v.bloomMax) levels[v.bloomMax] = (levels[v.bloomMax] || 0) + 1; });
+  return levels;
+}
+
+function checkConceptCascade(topicName) {
+  const masteredKeys = Object.keys(state.masteredTopics).filter(k => isMastered(state.masteredTopics[k]));
+  const normalizedTopic = topicName.toLowerCase().replace(/\s+/g, '-');
+  for (const [pair, cascade] of Object.entries(CONCEPT_CASCADES)) {
+    if (state.conceptCascadesTriggered.includes(pair)) continue;
+    const [a, b] = pair.split('+');
+    const hasA = masteredKeys.some(k => k === a);
+    const hasB = masteredKeys.some(k => k === b);
+    const justMasteredOne = (normalizedTopic === a || normalizedTopic === b);
+    if (hasA && hasB && justMasteredOne) return { pair, cascade };
+  }
+  return null;
+}
+
+function addJournalEntry(topic, insight, connections) {
+  state.knowledgeJournal.push({ topic, insight: insight ? insight.slice(0, 200) : '', connections: connections || [], timestamp: Date.now() });
+  if (state.knowledgeJournal.length > 50) state.knowledgeJournal.shift();
+}
+
+// ============================================================
+// TOPIC MASTERY TRACKING
+// ============================================================
+async function trackMastery(topicName, correct, bloomLevel, topicData) {
+  const key = topicName.toLowerCase().replace(/\s+/g, '-');
+  if (!state.masteredTopics[key]) state.masteredTopics[key] = { correct: 0, incorrect: 0, lastReviewed: null, halfLife: HALF_LIFE_INITIAL_MS, bloomMax: 0 };
+  const entry = state.masteredTopics[key];
+
+  if (correct) {
+    entry.correct++;
+    entry.lastReviewed = Date.now();
+    entry.halfLife = (entry.halfLife || HALF_LIFE_INITIAL_MS) * 2;
+    if (bloomLevel && bloomLevel > (entry.bloomMax || 0)) entry.bloomMax = bloomLevel;
+    if (bloomLevel >= 4) checkAchievement('bloom_4');
+
+    onCorrectAnswer();
+
+    const masteredCount = getMasteredCount();
+    if (masteredCount >= 5) checkAchievement('master_5');
+    if (masteredCount >= 20) checkAchievement('master_20');
+    if (masteredCount >= 50) checkAchievement('master_50');
+
+    // Check subsystem completion
+    for (const [name, sub] of Object.entries(SUBSYSTEMS)) {
+      if (isSubsystemFullyPowered(name) && !state.bossesDefeated.includes('sub_' + name)) {
+        addMsg(`<div class="eureka-banner"><h4>SUBSYSTEM ONLINE: ${name}!</h4><p>${sub.reward}</p><p class="eureka-trace">All nodes powered. Boss encounter unlocked!</p></div>`);
+        checkAchievement('subsystem_1');
+      }
+    }
+
+    // Check concept cascade
+    const cascade = checkConceptCascade(key);
+    if (cascade) {
+      state.conceptCascadesTriggered.push(cascade.pair);
+      checkAchievement('cascade_1');
+      if (state.conceptCascadesTriggered.length >= 5) checkAchievement('cascade_5');
+      addMsg(`<div class="eureka-banner"><h4>Trace Connected: ${cascade.cascade.name}!</h4><p>You discovered a connection: ${cascade.cascade.prompt}</p><p class="eureka-trace">${cascade.pair.replace('+', ' -- ')} now linked on your board</p></div>`);
+      addJournalEntry(cascade.cascade.name, cascade.cascade.answer.slice(0, 150), cascade.pair.split('+'));
+    }
+
+    if (topicData) {
+      const connections = [];
+      try { const links = await api(`/api/links/${topicData.id}`); connections.push(...links.slice(0, 3).map(l => l.topic)); } catch (e) {}
+      addJournalEntry(topicName, topicData.key_insight || topicData.tldr || '', connections);
+    }
+  } else {
+    entry.incorrect++;
+    entry.halfLife = Math.max(HALF_LIFE_INITIAL_MS / 4, (entry.halfLife || HALF_LIFE_INITIAL_MS) / 2);
+    onIncorrectAnswer();
+  }
+  saveState();
+  updateHUD();
+}
+
+function getInterleavedSearchTerm(region) {
+  const topics = region.topics;
+  if (!state.lastEncounteredTopic || topics.length <= 1) return topics[Math.floor(Math.random() * topics.length)];
+  const remaining = topics.filter(t => t !== state.lastEncounteredTopic);
+  return remaining.length > 0 ? remaining[Math.floor(Math.random() * remaining.length)] : topics[Math.floor(Math.random() * topics.length)];
+}
+
+// ============================================================
+// CHARACTER CREATION
+// ============================================================
+function initCharCreation() {
+  state.phase = 'creation';
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('char-creation').style.display = 'block';
+  if (state.dbStats) {
+    document.getElementById('db-stats').innerHTML = `Knowledge base: ${state.dbStats.documents} nodes | ${state.dbStats.essential_terms} terms | ${state.dbStats.quiz_questions} challenges`;
+  }
+  const nameInput = document.getElementById('name-input');
+  nameInput.oninput = () => { document.getElementById('start-btn').disabled = nameInput.value.trim().length === 0; };
+  document.getElementById('start-btn').onclick = () => {
+    state.char = { name: nameInput.value.trim() };
+    state.phase = 'playing';
+    saveState();
+    showTutorial();
+  };
+}
+
+// ============================================================
+// TUTORIAL
+// ============================================================
+const TUTORIAL_STEPS = [
+  {
+    id: 'welcome',
+    title: 'Welcome to Knowledge Quest!',
+    content: (char) => `
+      <p>You are <strong>${char.name}</strong>, an engineer tasked with restoring the <strong>Circuit Citadel</strong> -- a massive circuit board whose nodes have gone dark.</p>
+      <div class="tutorial-highlight">
+        <strong>Your goal:</strong> Power up each node by demonstrating your understanding of the topic it represents. When all nodes in a subsystem are powered, the subsystem comes online and you unlock a boss encounter.
+      </div>
+      <p>Mastery is not permanent. Nodes fade over time if you do not review them -- like a capacitor losing charge. Keep your board lit!</p>
+    `,
+  },
+  {
+    id: 'how-encounters-work',
+    title: 'How Encounters Work',
+    content: () => `
+      <p>As you explore, you face <strong>encounters</strong> that test your engineering knowledge.</p>
+      <div class="tutorial-highlight">
+        <strong>How to respond:</strong>
+        <ul style="margin:6px 0 0 16px; line-height:1.8;">
+          <li>Click a <strong>numbered button</strong> to choose an action</li>
+          <li>Or <strong>type your answer</strong> in the text box and press <strong>Go</strong></li>
+        </ul>
+      </div>
+      <p>Most encounters ask you to <strong>explain a concept</strong>. The game uses AI to check understanding, not exact wording.</p>
+      <div class="tutorial-example">
+        <strong>Example:</strong> "What is a capacitor?"<br><br>
+        <strong>Good answer:</strong> "Stores energy in an electric field between two plates separated by a dielectric."<br>
+        <strong>Also OK:</strong> "Two plates that hold charge. More voltage = more energy."
+      </div>
+    `,
+  },
+  {
+    id: 'practice-encounter',
+    title: 'Try It Yourself!',
+    content: () => `<p>Quick practice. This will not affect your board.</p>`,
+    interactive: true,
+  },
+  {
+    id: 'circuit-board',
+    title: 'Your Circuit Board',
+    content: () => `
+      <div class="tutorial-mechanic-card">
+        <h4>Nodes Power Up</h4>
+        <p>Each topic is a <strong>node</strong> on your circuit board. Correct answers power nodes on (they glow green). Your board shows all 6 subsystems with their nodes.</p>
+      </div>
+      <div class="tutorial-mechanic-card">
+        <h4>Nodes Fade Over Time</h4>
+        <p>Like a capacitor discharging, mastery decays (2-day half-life). Fading nodes <span style="color:var(--danger);">flicker red</span>. Review them to recharge -- this is <strong>signal maintenance</strong>, not boring review!</p>
+      </div>
+      <div class="tutorial-mechanic-card">
+        <h4>Traces Connect</h4>
+        <p>When you master two related topics, you might discover a <strong>trace</strong> -- a connection between them. These are eureka moments!</p>
+      </div>
+      <div class="tutorial-mechanic-card">
+        <h4>Subsystems Power On</h4>
+        <p>When ALL nodes in a subsystem are powered, it comes online and unlocks a <strong>boss encounter</strong> -- a multi-topic synthesis challenge.</p>
+      </div>
+    `,
+  },
+  {
+    id: 'regions-and-more',
+    title: 'Regions, NPCs, and Mysteries',
+    content: () => `
+      <div class="tutorial-mechanic-card">
+        <h4>6 Regions</h4>
+        <p>Each region maps to a subsystem. Harder regions unlock as you power up easier ones. Each has a <strong>mystery</strong> to solve.</p>
+      </div>
+      <div class="tutorial-mechanic-card">
+        <h4>NPCs Remember You</h4>
+        <p>Dealers, apprentices, and engineers remember your visits and what you discussed.</p>
+      </div>
+      <div class="tutorial-highlight">
+        <strong>Tip:</strong> Press <strong>[?]</strong> to review these instructions anytime.
+      </div>
+    `,
+  },
+];
+
+function showTutorial() {
+  document.getElementById('char-creation').style.display = 'none';
+  document.getElementById('narrative').style.display = 'block';
+  document.getElementById('actions').style.display = 'block';
+  document.getElementById('footer').style.display = 'block';
+  updateHUD();
+
+  addMsg(`<div class="msg-tutorial"><strong>Welcome to the Circuit Citadel, ${state.char.name}!</strong><br>The board is dark. Your knowledge will bring it back to life. Ready for a guided tour?</div>`);
+
+  showChoices([
+    { text: 'Yes, show me how to play (recommended, ~2 min)', id: 'tutorial' },
+    { text: 'Skip -- I already know how to play', id: 'skip' },
+  ], async (choice) => {
+    if (choice.id === 'skip') { state.tutorialComplete = true; saveState(); clearNarrative(); startGame(); return; }
+    runInteractiveTutorial(0);
+  });
+}
+
+function runInteractiveTutorial(stepIndex) {
+  const totalSteps = TUTORIAL_STEPS.length;
+  if (stepIndex >= totalSteps) { state.tutorialComplete = true; saveState(); const el = document.querySelector('.tutorial-overlay'); if (el) el.remove(); clearNarrative(); startGame(); return; }
+  const step = TUTORIAL_STEPS[stepIndex];
+  const progressPct = Math.round(((stepIndex + 1) / totalSteps) * 100);
+  const existing = document.querySelector('.tutorial-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'tutorial-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-label', `Tutorial step ${stepIndex + 1} of ${totalSteps}: ${step.title}`);
+  const panel = document.createElement('div');
+  panel.className = 'tutorial-panel';
+  const skipBtn = document.createElement('button');
+  skipBtn.className = 'tutorial-skip';
+  skipBtn.textContent = 'Skip Tutorial';
+  skipBtn.setAttribute('aria-label', 'Skip tutorial');
+  skipBtn.onclick = () => { overlay.remove(); state.tutorialComplete = true; saveState(); clearNarrative(); startGame(); };
+  panel.appendChild(skipBtn);
+  const indicator = document.createElement('div');
+  indicator.className = 'tutorial-step-indicator';
+  indicator.textContent = `Step ${stepIndex + 1} of ${totalSteps}`;
+  panel.appendChild(indicator);
+  const progressBar = document.createElement('div');
+  progressBar.className = 'tutorial-progress-bar';
+  progressBar.innerHTML = `<div class="tutorial-progress-fill" style="width:${progressPct}%"></div>`;
+  panel.appendChild(progressBar);
+  const title = document.createElement('h2');
+  title.textContent = step.title;
+  panel.appendChild(title);
+  const content = document.createElement('div');
+  content.innerHTML = step.content(state.char);
+  panel.appendChild(content);
+  if (step.interactive) { buildPracticeEncounter(panel, overlay, stepIndex); }
+  else {
+    const btnContainer = document.createElement('div');
+    btnContainer.style.cssText = 'display:flex; gap:8px; margin-top:16px;';
+    if (stepIndex > 0) {
+      const backBtn = document.createElement('button');
+      backBtn.className = 'tutorial-btn tutorial-btn-secondary';
+      backBtn.textContent = 'Back';
+      backBtn.style.flex = '1';
+      backBtn.onclick = () => { overlay.remove(); runInteractiveTutorial(stepIndex - 1); };
+      btnContainer.appendChild(backBtn);
+    }
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'tutorial-btn';
+    nextBtn.textContent = stepIndex === totalSteps - 1 ? 'Start Playing!' : 'Next';
+    nextBtn.style.flex = '2';
+    nextBtn.onclick = () => { overlay.remove(); runInteractiveTutorial(stepIndex + 1); };
+    btnContainer.appendChild(nextBtn);
+    panel.appendChild(btnContainer);
+  }
+  overlay.appendChild(panel);
+  document.body.appendChild(overlay);
+  const focusTarget = panel.querySelector('.tutorial-btn:not(.tutorial-btn-secondary)') || panel.querySelector('.tutorial-practice-input');
+  if (focusTarget) setTimeout(() => focusTarget.focus(), 100);
+}
+
+function buildPracticeEncounter(panel, overlay, stepIndex) {
+  const totalSteps = TUTORIAL_STEPS.length;
+  const questionBox = document.createElement('div');
+  questionBox.className = 'tutorial-highlight';
+  questionBox.innerHTML = `<strong>Practice Question:</strong> What is a resistor and what does it do in a circuit?`;
+  panel.appendChild(questionBox);
+  const instruction = document.createElement('p');
+  instruction.innerHTML = `<strong>Type your answer below.</strong> A sentence or two is fine.`;
+  instruction.style.fontSize = '0.9rem';
+  panel.appendChild(instruction);
+  const input = document.createElement('textarea');
+  input.className = 'tutorial-practice-input';
+  input.placeholder = 'Type your answer here...';
+  input.rows = 2;
+  input.setAttribute('aria-label', 'Type your practice answer here');
+  panel.appendChild(input);
+  const btnContainer = document.createElement('div');
+  btnContainer.style.cssText = 'display:flex; gap:8px; margin-top:8px;';
+  const backBtn = document.createElement('button');
+  backBtn.className = 'tutorial-btn tutorial-btn-secondary';
+  backBtn.textContent = 'Back';
+  backBtn.style.flex = '1';
+  backBtn.onclick = () => { overlay.remove(); runInteractiveTutorial(stepIndex - 1); };
+  btnContainer.appendChild(backBtn);
+  const checkBtn = document.createElement('button');
+  checkBtn.className = 'tutorial-btn';
+  checkBtn.textContent = 'Check My Answer';
+  checkBtn.style.flex = '2';
+  btnContainer.appendChild(checkBtn);
+  panel.appendChild(btnContainer);
+  const resultArea = document.createElement('div');
+  resultArea.style.cssText = 'display:none; margin-top:12px;';
+  panel.appendChild(resultArea);
+  checkBtn.onclick = async () => {
+    const answer = input.value.trim();
+    if (!answer) { input.style.borderColor = 'var(--danger)'; input.placeholder = 'Please type something!'; return; }
+    checkBtn.disabled = true;
+    checkBtn.textContent = 'Evaluating...';
+    const correctAnswer = 'A resistor limits current flow in a circuit. It converts electrical energy to heat. Resistance in ohms determines current via Ohm\'s law (V=IR).';
+    try {
+      const result = await evaluateAnswer(answer, correctAnswer, 'What is a resistor?');
+      resultArea.style.display = 'block';
+      if (result.grade === 'correct') {
+        resultArea.innerHTML = `<div class="tutorial-example"><strong>Node powered!</strong> ${result.feedback || 'You understand the concept.'}<br><br><em>In the real game, this would light up the resistor node on your circuit board.</em></div>`;
+      } else if (result.grade === 'partial') {
+        resultArea.innerHTML = `<div class="tutorial-highlight"><strong>Partial signal.</strong> ${result.feedback || 'You got part of it.'}<br><br><strong>Full answer:</strong> A resistor limits current, converting energy to heat via Ohm's law (V=IR).<br><em>Partial answers still advance you!</em></div>`;
+      } else {
+        resultArea.innerHTML = `<div class="tutorial-highlight" style="border-color:var(--danger);"><strong>Node stays dark.</strong> ${result.feedback || ''}<br><br><strong>Answer:</strong> A resistor limits current, converting energy to heat via Ohm's law (V=IR).<br><em>Wrong answers always show the correct explanation.</em></div>`;
+      }
+    } catch (e) {
+      resultArea.style.display = 'block';
+      resultArea.innerHTML = `<div class="tutorial-example"><strong>Evaluation unavailable</strong> -- reference: A resistor limits current via Ohm's law (V=IR).</div>`;
+    }
+    const continueBtn = document.createElement('button');
+    continueBtn.className = 'tutorial-btn';
+    continueBtn.textContent = stepIndex === totalSteps - 1 ? 'Start Playing!' : 'Continue';
+    continueBtn.style.marginTop = '8px';
+    continueBtn.onclick = () => { overlay.remove(); runInteractiveTutorial(stepIndex + 1); };
+    resultArea.appendChild(continueBtn);
+    continueBtn.focus();
+  };
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); checkBtn.click(); } });
+}
+
+// ============================================================
+// HELP PANEL
+// ============================================================
+function showHelpPanel() {
+  const existing = document.querySelector('.help-panel-overlay');
+  if (existing) { existing.remove(); return; }
+  const overlay = document.createElement('div');
+  overlay.className = 'help-panel-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-label', 'How to Play help panel');
+  const panel = document.createElement('div');
+  panel.className = 'help-panel';
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'help-close';
+  closeBtn.textContent = 'Close (Esc)';
+  closeBtn.setAttribute('aria-label', 'Close help panel');
+  closeBtn.onclick = () => overlay.remove();
+  panel.appendChild(closeBtn);
+  panel.innerHTML += `
+    <h2>How to Play</h2>
+    <h3>The Circuit Board</h3>
+    <p>Your circuit board has 6 subsystems, each with topic nodes. <strong>Power nodes by demonstrating understanding.</strong> When all nodes in a subsystem are powered, it comes online.</p>
+    <h3>How to Respond</h3>
+    <p><strong>Click a button</strong> or <strong>type your answer</strong> and press Go. AI evaluates understanding, not exact wording.</p>
+    <h3>Mastery Decay</h3>
+    <p>Nodes fade over time (2-day half-life). Fading nodes flicker red. Review them to recharge. Each successful review doubles the half-life.</p>
+    <h3>Traces and Discoveries</h3>
+    <p>Master two related topics to discover <strong>traces</strong> -- connections between them. These are eureka moments that deepen understanding.</p>
+    <h3>Boss Encounters</h3>
+    <p>When a subsystem is fully powered, you unlock a <strong>boss encounter</strong> -- a multi-topic synthesis challenge.</p>
+    <h3>Streaks and Combos</h3>
+    <p>Consecutive correct answers build streaks. Quick answers build combos. Wrong answers reset both.</p>
+    <h3>Regions</h3>
+    <p>6 regions from easy to hard. Each has a mystery and NPCs who remember you.</p>
+    <h3>Daily Challenges</h3>
+    <p>A new challenge each day for bonus achievements.</p>
+    <h3>Controls</h3>
+    <p><strong>[?]</strong> = help | <strong>T</strong> = theme | <strong>Aa</strong> = font size</p>
+  `;
+  const replayBtn = document.createElement('button');
+  replayBtn.className = 'tutorial-btn';
+  replayBtn.textContent = 'Replay Tutorial';
+  replayBtn.style.cssText = 'margin-top:12px; width:100%;';
+  replayBtn.onclick = () => { overlay.remove(); state.tutorialComplete = false; saveState(); showTutorial(); };
+  panel.appendChild(replayBtn);
+  overlay.appendChild(panel);
+  document.body.appendChild(overlay);
+  const escHandler = (e) => { if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', escHandler); } };
+  document.addEventListener('keydown', escHandler);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+  closeBtn.focus();
+}
+
+function initHelpToggle() { document.getElementById('help-toggle').addEventListener('click', showHelpPanel); }
+
+// ============================================================
+// HUD
+// ============================================================
+function updateHUD() {
+  if (!state.char) return;
+  document.getElementById('hud').style.display = 'flex';
+  document.getElementById('hud-name').textContent = state.char.name;
+  const title = getTitle();
+  const titleEl = document.getElementById('hud-title');
+  titleEl.textContent = title.name;
+  titleEl.style.color = title.color;
+  const streakPct = Math.min(100, (state.streak / 10) * 100);
+  document.getElementById('hud-streak-bar').style.width = `${streakPct}%`;
+  document.getElementById('hud-streak-text').textContent = state.streak;
+  const comboEl = document.getElementById('hud-combo');
+  if (state.combo >= 2) { comboEl.style.display = 'inline'; comboEl.textContent = `x${state.combo}`; }
+  else { comboEl.style.display = 'none'; }
+  const boardPower = Math.round(getBoardPower() * 100);
+  document.getElementById('hud-power').textContent = `${boardPower}%`;
+}
+
+// ============================================================
+// NARRATIVE
+// ============================================================
+function addMsg(text, cls = 'narrator') {
+  const div = document.createElement('div');
+  div.className = `msg msg-${cls}`;
+  div.innerHTML = text;
+  document.getElementById('narrative').appendChild(div);
+  div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  return div;
+}
+function clearNarrative() { document.getElementById('narrative').innerHTML = ''; }
+
+function showChoices(choices, handler) {
+  const container = document.getElementById('choice-container');
+  container.innerHTML = '';
+  choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="key-hint">[${i + 1}]</span> ${choice.text}`;
+    if (choice.premium) btn.innerHTML += ' <span class="premium-badge">PRO</span>';
+    btn.setAttribute('aria-label', choice.text);
+    btn.onclick = () => handler(choice);
+    container.appendChild(btn);
+  });
+  const keyHandler = (e) => {
+    const num = parseInt(e.key);
+    if (num >= 1 && num <= choices.length) { document.removeEventListener('keydown', keyHandler); handler(choices[num - 1]); }
+  };
+  document.addEventListener('keydown', keyHandler);
+  const freeform = document.getElementById('freeform');
+  const submitBtn = document.getElementById('submit-btn');
+  freeform.value = '';
+  const submitFreeform = () => { const text = freeform.value.trim(); if (text) { document.removeEventListener('keydown', keyHandler); handler({ text, id: 'freeform', freeformInput: text }); } };
+  submitBtn.onclick = submitFreeform;
+  freeform.onkeydown = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitFreeform(); } };
+}
+
+// ============================================================
+// GAME START
+// ============================================================
+function startGame() {
+  document.getElementById('char-creation').style.display = 'none';
+  document.getElementById('narrative').style.display = 'block';
+  document.getElementById('actions').style.display = 'block';
+  document.getElementById('footer').style.display = 'block';
+  updateHUD();
+  const title = getTitle();
+  addMsg(`Welcome, <strong>${state.char.name} the ${title.name}</strong>!`);
+  addMsg(`The Circuit Citadel is dark. ${Object.keys(SUBSYSTEMS).length} subsystems need power. Your understanding is the only way to bring them online.`);
+
+  // Show signal degradation alerts
+  const fading = getFadingTopics();
+  if (fading.length > 0) {
+    addMsg(`<div class="signal-alert"><h4>Signal Degrading</h4><p>${fading.length} node(s) losing power -- review them before they go dark!</p></div>`);
+  }
+  if (!isDailyChallengeCompleted()) addMsg(`<span class="daily-badge">DAILY</span> Daily diagnostic challenge available!`, 'system');
+  showWorldMap();
+}
+
+// ============================================================
+// WORLD MAP
+// ============================================================
+function showWorldMap() {
+  // Show circuit board
+  addMsg(renderCircuitBoard());
+  addMsg(`<strong>--- Subsystem Status ---</strong>`, 'system');
+
+  const choices = [];
+  REGIONS.forEach(region => {
+    const unlocked = isRegionUnlocked(region);
+    const visited = state.visitedRegions.includes(region.id);
+    const mastery = getRegionMastery(region);
+    const subPower = getSubsystemPower(region.subsystem);
+    const fullyPowered = isSubsystemFullyPowered(region.subsystem);
+    const mysteryState = state.mysteryProgress[region.id];
+    const solved = mysteryState?.solved;
+    const mysteryStr = solved ? ' [SOLVED]' : (mysteryState?.cluesFound?.length > 0 ? ` [${mysteryState.cluesFound.length} clues]` : '');
+    const powerClass = fullyPowered ? 'powered-up' : '';
+
+    if (unlocked) {
+      const powerIndicator = fullyPowered ? '<span class="power-indicator on"></span>' : (subPower > 0 ? '<span class="power-indicator partial"></span>' : '<span class="power-indicator off"></span>');
+      addMsg(`<div class="subsystem-card ${powerClass}"><h4>${region.name} ${visited ? '' : '(new)'}${mysteryStr}</h4><p>${region.desc}</p><div class="subsystem-status">${powerIndicator}<span style="font-size:0.8rem; color:var(--text-dim);">${region.subsystem}: ${Math.round(subPower*100)}% powered</span></div><p style="color:var(--warning); font-size:0.8rem;">${solved ? 'Mystery solved!' : region.mystery}</p><div class="progress-bar"><div class="progress-bar-fill power" style="width:${Math.round(subPower*100)}%"></div></div></div>`);
+      choices.push({ text: `Enter ${region.name}`, id: 'enter_region', region });
+      // Boss encounter option if subsystem fully powered and boss not defeated
+      if (fullyPowered && !state.bossesDefeated.includes(region.subsystem)) {
+        choices.push({ text: `BOSS: ${SUBSYSTEMS[region.subsystem].bossName}`, id: 'boss', region });
+      }
+    } else {
+      const required = getUnlockRequirement(region);
+      addMsg(`<div class="subsystem-card locked"><h4>${region.name} (locked)</h4><p>${region.desc}</p><p style="color:var(--mastery); font-size:0.8rem;">Unlock: ${required}</p></div>`);
+    }
+  });
+
+  if (!isDailyChallengeCompleted()) choices.push({ text: 'Daily Diagnostic Challenge', id: 'daily_challenge' });
+
+  const fadingCount = getFadingTopics().length;
+  if (fadingCount > 0) choices.push({ text: `Repair fading nodes (${fadingCount} degrading)`, id: 'review_fading' });
+
+  const regionsWithClues = REGIONS.filter(r => { const mp = state.mysteryProgress[r.id]; return mp && mp.cluesFound && mp.cluesFound.length >= 2; });
+  if (regionsWithClues.length >= 2) choices.push({ text: 'Cross-Domain Synthesis', id: 'cross_topic' });
+
+  choices.push({ text: 'View board status and achievements', id: 'achievements' });
+  choices.push({ text: 'Open Knowledge Journal', id: 'journal' });
+  choices.push({ text: 'Knowledge Library (search)', id: 'library' });
+
+  showChoices(choices, handleMapChoice);
+}
+
+function isRegionUnlocked(region) {
+  if (region.difficulty <= 1) return true;
+  const prevRegion = REGIONS.find(r => r.difficulty === region.difficulty - 1);
+  if (!prevRegion) return true;
+  return getRegionMastery(prevRegion) >= 0.4;
+}
+
+function getUnlockRequirement(region) {
+  const prevRegion = REGIONS.find(r => r.difficulty === region.difficulty - 1);
+  if (!prevRegion) return 'Unknown';
+  return `Power ${prevRegion.subsystem} to 40% (currently ${Math.round(getSubsystemPower(prevRegion.subsystem) * 100)}%)`;
+}
+
+async function handleMapChoice(choice) {
+  if (choice.id === 'enter_region') {
+    state.currentRegion = choice.region;
+    if (!state.visitedRegions.includes(choice.region.id)) {
+      state.visitedRegions.push(choice.region.id);
+      if (state.visitedRegions.length >= 6) checkAchievement('visit_all');
+    }
+    clearNarrative();
+    await enterRegion(choice.region);
+  } else if (choice.id === 'boss') {
+    clearNarrative();
+    await bossEncounter(choice.region);
+  } else if (choice.id === 'achievements') {
+    showAchievements();
+    showWorldMap();
+  } else if (choice.id === 'journal') {
+    showKnowledgeJournal();
+    showWorldMap();
+  } else if (choice.id === 'library') {
+    await visitLibrary();
+  } else if (choice.id === 'cross_topic') {
+    await crossTopicChallenge();
+  } else if (choice.id === 'review_fading') {
+    await reviewFadingTopic();
+  } else if (choice.id === 'daily_challenge') {
+    await dailyChallenge();
+  } else if (choice.freeformInput) {
+    addMsg(`Choose a region to explore.`, 'system');
+    showWorldMap();
+  }
+}
+
+// ============================================================
+// ACHIEVEMENTS VIEW
+// ============================================================
+function showAchievements() {
+  const earned = state.achievements.length;
+  const total = Object.keys(ACHIEVEMENTS).length;
+  addMsg(`<div class="mastery-card"><h4>Achievements (${earned}/${total})</h4></div>`);
+  for (const [id, ach] of Object.entries(ACHIEVEMENTS)) {
+    const unlocked = state.achievements.includes(id);
+    addMsg(`<div style="font-size:0.85rem; padding:3px 0; color:${unlocked ? 'var(--achievement)' : 'var(--text-dim)'};">${unlocked ? '[*]' : '[ ]'} ${ach.name}: ${ach.desc}</div>`, 'system');
+  }
+  addMsg(`<div style="font-size:0.85rem; color:var(--text-dim); margin-top:8px;">Best streak: ${state.bestStreak} | Correct: ${state.totalCorrect} | Accuracy: ${state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 0}% | Bosses: ${state.bossesDefeated.length}/${Object.keys(SUBSYSTEMS).length}</div>`, 'system');
+}
+
+// ============================================================
+// BOSS ENCOUNTER -- multi-step synthesis
+// ============================================================
+async function bossEncounter(region) {
+  const sub = SUBSYSTEMS[region.subsystem];
+  if (!sub || state.bossesDefeated.includes(region.subsystem)) { clearNarrative(); showWorldMap(); return; }
+
+  addMsg(`<div class="boss-card"><h4>BOSS ENCOUNTER: ${sub.bossName}</h4><p class="boss-phase">This challenge requires synthesis across all topics in ${region.subsystem}.</p><p style="font-size:0.9rem; margin-top:8px;">${sub.bossPrompt}</p><div class="boss-hp"><div class="boss-hp-fill" style="width:100%"></div></div></div>`);
+
+  showChoices([{ text: 'Provide your complete analysis (type below)', id: 'answer' }], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, sub.bossPrompt + ' ' + sub.reward, sub.bossPrompt);
+      if (result.grade === 'correct') {
+        state.bossesDefeated.push(region.subsystem);
+        checkAchievement('boss_1');
+        addMsg(`<div class="eureka-banner"><h4>BOSS DEFEATED: ${sub.bossName}</h4><p>${sub.reward}</p><p class="eureka-trace">${region.subsystem} is now fully operational!</p></div>`);
+        if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        onCorrectAnswer();
+        for (const t of sub.nodes) await trackMastery(t, true, 5, null);
+      } else if (result.grade === 'partial') {
+        addMsg(`Close, but a boss requires complete understanding.`, 'system');
+        if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        addMsg(`<div class="knowledge-reveal"><h4>What was needed</h4><p>A complete solution addressing all components: ${sub.nodes.join(', ')}. Try again after reviewing the individual topics.</p></div>`);
+        onPartialAnswer();
+      } else {
+        addMsg(`The boss stands. More preparation needed.`, 'system');
+        if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        onIncorrectAnswer();
+      }
+    }
+    saveState(); updateHUD();
+    clearNarrative(); showWorldMap();
+  });
+}
+
+// ============================================================
+// DAILY CHALLENGE
+// ============================================================
+async function dailyChallenge() {
+  clearNarrative();
+  addMsg(`<div class="msg-challenge"><strong><span class="daily-badge">DAILY</span> Daily Diagnostic</strong><br>One question. Answer correctly to log today's diagnostic.</div>`);
+  try {
+    const quizData = await api(`/api/quiz/random`);
+    if (!quizData) { addMsg('No challenges available.', 'system'); clearNarrative(); showWorldMap(); return; }
+    addMsg(`<div class="msg-challenge"><strong>${quizData.document_topic}</strong><br>${quizData.question}</div>`);
+    showChoices([{ text: 'Answer (type below)', id: 'answer' }], async (choice) => {
+      if (choice.freeformInput) {
+        const result = await evaluateAnswer(choice.freeformInput, quizData.answer, quizData.question);
+        if (result.grade === 'correct') {
+          addMsg(`Diagnostic passed!`, 'success');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          completeDailyChallenge();
+          await trackMastery(quizData.document_topic, true, quizData.level || 2, quizData);
+        } else if (result.grade === 'partial') {
+          addMsg(`Partial pass.`, 'system');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          completeDailyChallenge();
+          onPartialAnswer();
+        } else {
+          addMsg(`Diagnostic failed.`, 'system');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          addMsg(`<div class="knowledge-reveal"><h4>${quizData.document_topic}</h4><p>${quizData.answer}</p></div>`);
+          onIncorrectAnswer();
+        }
+      }
+      saveState(); updateHUD();
+      clearNarrative(); showWorldMap();
+    });
+  } catch (e) { addMsg('Could not load challenge.', 'system'); clearNarrative(); showWorldMap(); }
+}
+
+// ============================================================
+// FADING NODE REVIEW
+// ============================================================
+async function reviewFadingTopic() {
+  clearNarrative();
+  const fading = getFadingTopics();
+  if (fading.length === 0) { addMsg('All nodes stable!', 'success'); showWorldMap(); return; }
+  const [topicKey, entry] = fading[0];
+  const strength = Math.round(getMasteryStrength(entry) * 100);
+  addMsg(`<div class="signal-alert"><h4>Signal Degrading: ${topicKey}</h4><p>Node power at ${strength}%. Demonstrate understanding to recharge.</p></div>`);
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(topicKey)}`);
+    if (results.length > 0 && results[0].tldr) addMsg(`Fading memory: <em>"${results[0].tldr.slice(0, 80)}..."</em>`, 'hint');
+    addMsg(`Explain what ${topicKey} is and why it matters.`, 'challenge');
+    showChoices([{ text: 'Explain (type below)', id: 'explain' }], async (choice) => {
+      if (choice.freeformInput) {
+        const correctAnswer = results.length > 0 ? (results[0].tldr || results[0].definition || topicKey) : topicKey;
+        const result = await evaluateAnswer(choice.freeformInput, correctAnswer, `Explain ${topicKey}`);
+        if (result.grade === 'correct') {
+          addMsg(`Node recharged! Signal restored.`, 'success');
+          entry.halfLife = (entry.halfLife || HALF_LIFE_INITIAL_MS) * 2;
+          entry.lastReviewed = Date.now();
+          entry.correct++;
+          onCorrectAnswer();
+          checkAchievement('review_fading');
+          addMsg(`<span class="msg-mastery">Half-life doubled to ${Math.round(entry.halfLife / (24*60*60*1000))} day(s).</span>`, 'mastery');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        } else if (result.grade === 'partial') {
+          addMsg(`Partial recharge.`, 'system');
+          entry.lastReviewed = Date.now();
+          onPartialAnswer();
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          addMsg(`<div class="knowledge-reveal"><h4>${topicKey}</h4><p>${correctAnswer}</p></div>`);
+        } else {
+          entry.halfLife = Math.max(HALF_LIFE_INITIAL_MS / 4, (entry.halfLife || HALF_LIFE_INITIAL_MS) / 2);
+          entry.lastReviewed = Date.now();
+          addMsg(`Signal still degrading.`, 'system');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          onIncorrectAnswer();
+          addMsg(`<div class="knowledge-reveal"><h4>${topicKey}</h4><p>${correctAnswer}</p></div>`);
+        }
+      }
+      saveState(); updateHUD();
+      clearNarrative(); showWorldMap();
+    });
+  } catch (e) { addMsg('Could not load review.', 'system'); clearNarrative(); showWorldMap(); }
+}
+
+// ============================================================
+// ENCOUNTER SYSTEM
+// ============================================================
+async function enterRegion(region) {
+  const descriptions = {
+    workshop: `The Workshop hums. Copper wires stretch across benches, and smoke curls from a burnt component.`,
+    lab: `The Lab glows with semiconductor diagrams. An amplifier on the bench produces a garbled waveform.`,
+    foundry: `The Foundry thunders. Freshly fabricated PCBs sit on the inspection table.`,
+    nexus: `The Signal Nexus pulses. Packets drop and signals corrupt across the network.`,
+    sanctum: `The Control Sanctum flickers. The STM32 on the central pedestal keeps resetting.`,
+    arena: `The Motion Arena echoes with stumbling robots. A quadruped oscillates wildly.`,
+  };
+  addMsg(descriptions[region.id] || `You enter ${region.name}.`);
+  addMsg(`<em>${region.mystery}</em>`, 'hint');
+  if (!state.mysteryProgress[region.id]) state.mysteryProgress[region.id] = { cluesFound: [], solved: false };
+
+  const apprentice = getRegionNPC(region, 'apprentice');
+  if (!state.cascadeEncountersSinceLastTrigger[region.id]) state.cascadeEncountersSinceLastTrigger[region.id] = 0;
+  state.cascadeEncountersSinceLastTrigger[region.id]++;
+  if (apprentice.topicsDiscussed.length >= 5 && state.cascadeEncountersSinceLastTrigger[region.id] >= 4) {
+    state.cascadeEncountersSinceLastTrigger[region.id] = 0;
+    saveState();
+    await npcCascadeTrigger(apprentice, region);
+    return;
+  }
+
+  if (state.visitedRegions.length <= 1 && state.turnCount === 0) {
+    addMsg(`<div class="msg-tutorial">First encounter. Type your answer below to power the node.</div>`);
+  }
+  await generateEncounter(region);
+}
+
+async function npcCascadeTrigger(npc, region) {
+  addMsg(npcGreeting(npc, 'apprentice'), 'lore');
+  const discussed = npc.topicsDiscussed;
+  const shuffled = [...discussed].sort(() => Math.random() - 0.5);
+  const topicA = shuffled[0], topicB = shuffled[1];
+  const pairKey = `${topicA}+${topicB}`, reversePairKey = `${topicB}+${topicA}`;
+  const cascade = CONCEPT_CASCADES[pairKey] || CONCEPT_CASCADES[reversePairKey];
+
+  if (cascade && !state.conceptCascadesTriggered.includes(pairKey) && !state.conceptCascadesTriggered.includes(reversePairKey)) {
+    addMsg(`<span class="npc-name">${npc.name}</span>: "You taught me ${topicA} and ${topicB}. How do they connect?"`, 'challenge');
+    addMsg(`<div class="msg-cascade"><h4>Trace Discovery: ${cascade.name}</h4><p>${cascade.prompt}</p></div>`);
+    showChoices([{ text: 'Explain the connection (type below)', id: 'explain' }], async (choice) => {
+      if (choice.freeformInput) {
+        const result = await evaluateAnswer(choice.freeformInput, cascade.answer, cascade.prompt);
+        if (result.grade === 'correct') {
+          addMsg(`${npc.name}: "Now I see it!"`, 'success');
+          state.conceptCascadesTriggered.push(pairKey);
+          checkAchievement('cascade_1');
+          if (state.conceptCascadesTriggered.length >= 5) checkAchievement('cascade_5');
+          addMsg(`<div class="eureka-banner"><h4>Trace Connected: ${cascade.name}</h4><p class="eureka-trace">${topicA} -- ${topicB} now linked!</p></div>`);
+          addJournalEntry(cascade.name, cascade.answer.slice(0, 150), [topicA, topicB]);
+          updateNPC(npc, cascade.name);
+          state.apprenticeTeachCount++;
+          if (state.apprenticeTeachCount >= 5) checkAchievement('teach_5');
+          onCorrectAnswer();
+        } else {
+          addMsg(`${npc.name}: "I see part of it..."`, 'system');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          addMsg(`<div class="knowledge-reveal"><h4>${cascade.name}</h4><p>${cascade.answer}</p></div>`);
+          if (result.grade === 'partial') onPartialAnswer(); else onIncorrectAnswer();
+        }
+      }
+      saveState(); updateHUD();
+      await continueOrMap(region);
+    });
+    return;
+  }
+  addMsg(`<span class="npc-name">${npc.name}</span>: "I've learned ${topicA} and ${topicB}. How do they relate?"`, 'challenge');
+  showChoices([{ text: 'Explain (type below)', id: 'explain' }, { text: 'Continue exploring', id: 'skip' }], async (choice) => {
+    if (choice.freeformInput) {
+      try {
+        const results = await api(`/api/search?q=${encodeURIComponent(topicA + ' ' + topicB)}`);
+        const correctAnswer = results.length > 0 ? (results[0].key_insight || results[0].tldr || `${topicA} and ${topicB}`) : `${topicA} and ${topicB}`;
+        const result = await evaluateAnswer(choice.freeformInput, correctAnswer, `How do ${topicA} and ${topicB} relate?`);
+        if (result.grade === 'correct') {
+          addMsg(`${npc.name}: "That makes sense!"`, 'success');
+          updateNPC(npc, `${topicA}+${topicB}`);
+          state.apprenticeTeachCount++;
+          if (state.apprenticeTeachCount >= 5) checkAchievement('teach_5');
+          onCorrectAnswer();
+        } else {
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          if (result.grade === 'partial') onPartialAnswer(); else onIncorrectAnswer();
+        }
+      } catch (e) {}
+    }
+    saveState(); updateHUD();
+    await generateEncounter(region);
+  });
+}
+
+async function generateEncounter(region) {
+  state.turnCount++;
+  const cats = region.categories.join(',');
+  const searchTerm = getInterleavedSearchTerm(region);
+  let topicData = null, termData = null, quizData = null;
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(searchTerm)}&categories=${encodeURIComponent(cats)}`);
+    if (results.length > 0) topicData = await api(`/api/topics/${results[0].id}`);
+    if (!topicData) { const fb = await api(`/api/search?q=${encodeURIComponent(searchTerm)}`); if (fb.length > 0) topicData = await api(`/api/topics/${fb[0].id}`); }
+  } catch (e) {}
+
+  if (topicData && topicData.id) {
+    try {
+      const prereqs = await api(`/api/topics/${topicData.id}/prerequisites?depth=2`);
+      if (prereqs.length > 0) {
+        const unmasteredPrereq = prereqs.find(p => { const key = p.topic.toLowerCase().replace(/\s+/g, '-'); return !isMastered(state.masteredTopics[key]); });
+        if (unmasteredPrereq) {
+          addMsg(`<div class="msg-tutorial"><strong>Prerequisite:</strong> Power up <em>${unmasteredPrereq.topic}</em> before tackling <em>${topicData.topic}</em>.</div>`);
+          topicData = await api(`/api/topics/${unmasteredPrereq.id}`);
+        }
+      }
+    } catch (e) {}
+  }
+
+  const quizSources = REGION_QUIZ_SOURCES[region.difficulty] || '';
+  try { termData = await api(`/api/terms/random?categories=${encodeURIComponent(cats)}`); } catch (e) {}
+  try {
+    const quizUrl = `/api/quiz/random?categories=${encodeURIComponent(cats)}${quizSources ? '&sources=' + encodeURIComponent(quizSources) : ''}`;
+    quizData = await api(quizUrl);
+  } catch (e) { try { quizData = await api(`/api/quiz/random?categories=${encodeURIComponent(cats)}`); } catch (e2) {} }
+
+  state.lastEncounteredTopic = searchTerm;
+
+  const fadingTopics = getFadingTopics();
+  if (fadingTopics.length > 0 && Math.random() < 0.3) {
+    await reviewEncounterInRegion(fadingTopics[0], region);
+    return;
+  }
+
+  const types = [];
+  if (topicData) types.push('diagnosis', 'predict_behavior', 'component_choice');
+  if (termData) types.push('negotiate', 'decode');
+  if (quizData) types.push('apply_knowledge', 'teach_apprentice');
+  types.push('circuit_wiring', 'fault_tree');
+  if (types.length === 0) types.push('explore');
+  const type = types[Math.floor(Math.random() * types.length)];
+
+  switch (type) {
+    case 'diagnosis': await diagnosisEncounter(topicData, region); break;
+    case 'predict_behavior': await predictBehaviorEncounter(topicData, region); break;
+    case 'component_choice': await componentChoiceEncounter(topicData, region); break;
+    case 'negotiate': await negotiateEncounter(termData, region); break;
+    case 'decode': await decodeEncounter(termData, region); break;
+    case 'apply_knowledge': await applyKnowledgeEncounter(quizData, region); break;
+    case 'teach_apprentice': await teachApprenticeEncounter(quizData, region); break;
+    case 'circuit_wiring': await circuitWiringEncounter(region); break;
+    case 'fault_tree': await faultTreeEncounter(region); break;
+    default: await exploreEncounter(region);
+  }
+}
+
+async function reviewEncounterInRegion(fadingEntry, region) {
+  const [topicKey, entry] = fadingEntry;
+  const strength = Math.round(getMasteryStrength(entry) * 100);
+  addMsg(`<div class="signal-alert"><h4>Node Degrading: ${topicKey}</h4><p>Power at ${strength}%. Recharge it now!</p></div>`);
+  try {
+    const results = await api(`/api/search?q=${encodeURIComponent(topicKey)}`);
+    if (results.length > 0 && results[0].tldr) addMsg(`Fragment: <em>"${results[0].tldr.slice(0, 80)}..."</em>`, 'hint');
+    addMsg(`Explain ${topicKey} to recharge the node.`, 'challenge');
+    showChoices([{ text: 'Explain (type below)', id: 'explain' }], async (choice) => {
+      if (choice.freeformInput) {
+        const correctAnswer = results.length > 0 ? (results[0].tldr || results[0].definition || topicKey) : topicKey;
+        const result = await evaluateAnswer(choice.freeformInput, correctAnswer, `Explain ${topicKey}`);
+        if (result.grade === 'correct') {
+          addMsg(`Node recharged!`, 'success');
+          entry.halfLife = (entry.halfLife || HALF_LIFE_INITIAL_MS) * 2;
+          entry.lastReviewed = Date.now();
+          entry.correct++;
+          onCorrectAnswer();
+          checkAchievement('review_fading');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        } else {
+          entry.halfLife = Math.max(HALF_LIFE_INITIAL_MS / 4, (entry.halfLife || HALF_LIFE_INITIAL_MS) / 2);
+          entry.lastReviewed = Date.now();
+          addMsg(`Node still degrading.`, 'system');
+          if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+          if (results.length > 0) addMsg(`<div class="knowledge-reveal"><h4>${topicKey}</h4><p>${correctAnswer}</p></div>`);
+          if (result.grade === 'partial') onPartialAnswer(); else onIncorrectAnswer();
+        }
+      }
+      saveState(); updateHUD();
+      await continueOrMap(region);
+    });
+  } catch (e) { await continueOrMap(region); }
+}
+
+// ============================================================
+// ENCOUNTERS (same types as i10 -- all preserved)
+// ============================================================
+function generateTopicSymptom(topic) {
+  const c = (topic.key_insight || topic.definition || topic.tldr || '').toLowerCase();
+  if (c.includes('capacit')) return `Output voltage shows excessive ripple.`;
+  if (c.includes('resist') && (c.includes('ohm') || c.includes('current'))) return `Current exceeds expected values. Components overheat.`;
+  if (c.includes('induct')) return `Large voltage spikes on switching.`;
+  if (c.includes('diode') || c.includes('rectif')) return `Circuit only works with one polarity.`;
+  if (c.includes('transistor') || c.includes('amplif')) return `Output signal is clipped at both rails.`;
+  if (c.includes('clock') || c.includes('oscillat')) return `System timing is erratic.`;
+  if (c.includes('bus') || c.includes('protocol')) return `Data transfers return corrupted values.`;
+  if (c.includes('solder') || c.includes('pcb')) return `Board passes bench testing but fails in field.`;
+  if (c.includes('pid') || c.includes('control')) return `System overshoots its target.`;
+  if (c.includes('sensor') || c.includes('adc')) return `Readings are noisy and drift.`;
+  return `The ${topic.topic} subsystem behaves unexpectedly.`;
+}
+
+async function diagnosisEncounter(topic, region) {
+  const npc = getRegionNPC(region, 'engineer');
+  addMsg(npcGreeting(npc, 'engineer'));
+  const symptom = generateTopicSymptom(topic);
+  addMsg(`<div class="msg-challenge"><strong>Node: ${topic.topic}</strong><br><strong>Symptoms:</strong> ${symptom}</div>`);
+  if (topic.tldr) addMsg(`Context: <em>"${topic.tldr.slice(0, 100)}..."</em>`, 'hint');
+  addMsg(`Diagnose the root cause to power this node.`);
+  showChoices([{ text: 'Diagnose (type below)', id: 'diagnose' }, { text: 'Request more info (hint)', id: 'hint' }], async (choice) => {
+    if (choice.freeformInput) {
+      const correctAnswer = topic.key_insight || topic.definition || topic.tldr || '';
+      const result = await evaluateAnswer(choice.freeformInput, correctAnswer, `Diagnose: ${topic.topic}`);
+      if (result.grade === 'correct') {
+        addMsg(`Excellent diagnosis! Node powered.`, 'success');
+        if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        await trackMastery(topic.topic, true, 4, topic);
+        addClue(region, topic.topic);
+        updateNPC(npc, topic.topic);
+      } else if (result.grade === 'partial') {
+        addMsg(`Partial -- missing key details.`, 'system');
+        if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        addMsg(`<div class="knowledge-reveal"><h4>Full diagnosis</h4><p>${correctAnswer}</p></div>`);
+        onPartialAnswer();
+      } else {
+        const misc = await matchMisconception(choice.freeformInput, topic.topic);
+        if (misc) addMsg(`<div class="msg-misconception"><strong>Misconception:</strong> "${misc.text}"<br><br><strong>Correction:</strong> ${misc.correction}</div>`);
+        else if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+        addMsg(`<div class="knowledge-reveal"><h4>Root cause</h4><p>${correctAnswer}</p></div>`);
+        await trackMastery(topic.topic, false, null, topic);
+      }
+    } else if (choice.id === 'hint') {
+      state.hintsUsed++;
+      if (topic.tldr) addMsg(`Additional: <em>${topic.tldr.slice(0, 150)}...</em>`, 'hint');
+      showChoices([{ text: 'Diagnose (type below)', id: 'diagnose' }], async (c) => {
+        if (c.freeformInput) {
+          const correctAnswer = topic.key_insight || topic.definition || topic.tldr || '';
+          const result = await evaluateAnswer(c.freeformInput, correctAnswer, `Diagnose: ${topic.topic}`);
+          if (result.grade === 'correct') { addMsg(`Identified with hints!`, 'success'); await trackMastery(topic.topic, true, 4, topic); addClue(region, topic.topic); updateNPC(npc, topic.topic); }
+          else { addMsg(`Root cause unclear.`, 'system'); await trackMastery(topic.topic, false, null, topic); addMsg(`<div class="knowledge-reveal"><h4>Cause</h4><p>${correctAnswer}</p></div>`); }
+        }
+        await continueOrMap(region);
+      });
+      return;
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function predictBehaviorEncounter(topic, region) {
+  const npc = getRegionNPC(region, 'engineer');
+  addMsg(npcGreeting(npc, 'engineer'));
+  const c = (topic.key_insight || topic.definition || topic.tldr || '').toLowerCase();
+  let scenario = `Predict what happens to ${topic.topic} if a key parameter changes.`;
+  if (c.includes('capacit')) scenario = `Double the capacitance in an RC filter. What happens to cutoff frequency?`;
+  else if (c.includes('resist')) scenario = `Replace a resistor with double the value. Effect on current and power?`;
+  else if (c.includes('pid')) scenario = `Triple the proportional gain. What happens to step response?`;
+  addMsg(`<div class="msg-challenge"><strong>Prediction Challenge</strong></div>`);
+  addMsg(`"${scenario}"`, 'lore');
+  showChoices([{ text: 'Predict (type below)', id: 'predict' }], async (choice) => {
+    if (choice.freeformInput) {
+      const correctAnswer = topic.key_insight || topic.definition || topic.tldr || '';
+      const result = await evaluateAnswer(choice.freeformInput, correctAnswer, scenario);
+      if (result.grade === 'correct') { addMsg(`Spot on!`, 'success'); await trackMastery(topic.topic, true, 4, topic); addClue(region, topic.topic); updateNPC(npc, topic.topic); }
+      else { addMsg(`<div class="knowledge-reveal"><h4>Prediction</h4><p>${correctAnswer}</p></div>`); if (result.grade === 'partial') onPartialAnswer(); else await trackMastery(topic.topic, false, null, topic); }
+      if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function componentChoiceEncounter(topic, region) {
+  addMsg(`<div class="msg-challenge"><strong>Component Selection</strong><br>A broken node needs the right component.</div>`);
+  let options = [];
+  try { const d = await api(`/api/distractors/${topic.id}?count=3`); options = d.map(x => x.topic); } catch (e) {}
+  const correctAnswer = topic.topic;
+  options = options.filter(o => o !== correctAnswer);
+  while (options.length < 3) options.push(['Flux Capacitor', 'Quantum Resonator', 'Phase Inverter'][options.length]);
+  options = options.slice(0, 3);
+  const allOptions = [...options, correctAnswer].sort(() => Math.random() - 0.5);
+  addMsg(`The display reads: <strong>"${topic.definition || topic.tldr || `Requires: ${topic.topic}`}"</strong>`, 'lore');
+  const choices = allOptions.map(opt => ({ text: opt, id: 'component', value: opt }));
+  showChoices(choices, async (choice) => {
+    if (choice.value === correctAnswer) { addMsg(`Correct! Node powered.`, 'success'); await trackMastery(topic.topic, true, 3, topic); addClue(region, topic.topic); }
+    else { addMsg(`Wrong component.`, 'system'); await trackMastery(topic.topic, false, null, topic); addMsg(`<div class="knowledge-reveal"><h4>Correct: ${correctAnswer}</h4><p>${topic.definition || topic.tldr || ''}</p></div>`); }
+    await continueOrMap(region);
+  });
+}
+
+async function negotiateEncounter(termData, region) {
+  const npc = getRegionNPC(region, 'dealer');
+  addMsg(npcGreeting(npc, 'dealer'));
+  addMsg(`<div class="msg-challenge"><strong>${npc.name}</strong>: "Define <strong>${termData.term}</strong> in context of <strong>${termData.document_topic}</strong>."</div>`);
+  showChoices([{ text: 'Define (type below)', id: 'define' }], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, termData.definition, `Define ${termData.term}`);
+      if (result.grade === 'correct') { addMsg(`"${npc.name}: 'You know your stuff.'"`, 'success'); await trackMastery(termData.document_topic, true, 2, termData); addClue(region, termData.document_topic); updateNPC(npc, termData.document_topic); }
+      else { addMsg(`<div class="knowledge-reveal"><h4>${termData.term}</h4><p>${termData.definition}</p></div>`); if (result.grade === 'partial') onPartialAnswer(); else onIncorrectAnswer(); }
+      if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function decodeEncounter(termData, region) {
+  addMsg(`<div class="msg-challenge"><strong>Decode:</strong> <em>"${termData.definition}"</em><br><br>What term is this?</div>`);
+  showChoices([{ text: 'Name it (type below)', id: 'decode' }], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, termData.term, `What term: ${termData.definition}`);
+      if (result.grade === 'correct') { addMsg(`Correct: <strong>${termData.term}</strong>`, 'success'); await trackMastery(termData.document_topic, true, 1, termData); }
+      else { addMsg(`Answer: <strong>${termData.term}</strong>`, 'system'); if (result.grade === 'partial') onPartialAnswer(); else onIncorrectAnswer(); }
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function applyKnowledgeEncounter(quizData, region) {
+  addMsg(`<div class="msg-challenge"><strong>${quizData.document_topic}</strong><br>${quizData.question}</div>`);
+  showChoices([{ text: 'Answer (type below)', id: 'answer' }], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, quizData.answer, quizData.question);
+      if (result.grade === 'correct') { addMsg(`Node powered!`, 'success'); await trackMastery(quizData.document_topic, true, quizData.level || 2, quizData); addClue(region, quizData.document_topic); }
+      else {
+        if (result.grade === 'incorrect') { const misc = await matchMisconception(choice.freeformInput, quizData.document_topic); if (misc) addMsg(`<div class="msg-misconception"><strong>Misconception:</strong> "${misc.text}"<br><strong>Correction:</strong> ${misc.correction}</div>`); }
+        addMsg(`<div class="knowledge-reveal"><h4>Answer</h4><p>${quizData.answer}</p></div>`);
+        if (result.grade === 'partial') onPartialAnswer(); else await trackMastery(quizData.document_topic, false, null, quizData);
+      }
+      if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function teachApprenticeEncounter(quizData, region) {
+  const npc = getRegionNPC(region, 'apprentice');
+  addMsg(npcGreeting(npc, 'apprentice'));
+  addMsg(`<div class="msg-challenge"><span class="npc-name">${npc.name}</span>: "${quizData.question}"</div>`);
+  showChoices([{ text: 'Teach (type below)', id: 'teach' }], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, quizData.answer, quizData.question);
+      if (result.grade === 'correct') { addMsg(`${npc.name}: "That makes sense!"`, 'success'); await trackMastery(quizData.document_topic, true, quizData.level || 2, quizData); addClue(region, quizData.document_topic); updateNPC(npc, quizData.document_topic); state.apprenticeTeachCount++; if (state.apprenticeTeachCount >= 5) checkAchievement('teach_5'); }
+      else { addMsg(`<div class="knowledge-reveal"><h4>Explanation</h4><p>${quizData.answer}</p></div>`); if (result.grade === 'partial') onPartialAnswer(); else await trackMastery(quizData.document_topic, false, null, quizData); }
+      if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+    }
+    await continueOrMap(region);
+  });
+}
+
+async function circuitWiringEncounter(region) {
+  const regionCat = region.categories[0];
+  let candidates = CIRCUIT_WIRING_CHALLENGES.filter(c => c.category === regionCat);
+  if (candidates.length === 0) candidates = CIRCUIT_WIRING_CHALLENGES;
+  const challenge = candidates[Math.floor(Math.random() * candidates.length)];
+  addMsg(`<div class="msg-challenge"><strong>Build Subsystem Component</strong><br>Goal: <em>${challenge.goal}</em></div>`);
+  const allParts = [...challenge.correctOrder, ...challenge.distractors].sort(() => Math.random() - 0.5);
+  const slotFills = new Array(challenge.slots.length).fill(null);
+  let usedParts = new Set();
+  let selectedSlotIdx = null;
+
+  function renderWiringUI() {
+    document.querySelectorAll('.wiring-ui-container').forEach(el => el.remove());
+    const container = document.createElement('div');
+    container.className = 'wiring-ui-container';
+    const instr = document.createElement('p');
+    instr.style.cssText = 'font-size:0.85rem; color:var(--text-dim); margin-bottom:6px;';
+    instr.textContent = selectedSlotIdx !== null ? `Slot ${selectedSlotIdx + 1} selected -- tap a part.` : 'Tap a slot, then a part.';
+    container.appendChild(instr);
+    const slotsDiv = document.createElement('div');
+    slotsDiv.setAttribute('aria-label', 'Circuit slots');
+    challenge.slots.forEach((slotName, i) => {
+      const slot = document.createElement('div');
+      slot.className = 'wiring-slot' + (slotFills[i] ? ' filled' : '') + (selectedSlotIdx === i ? ' selected-slot' : '');
+      slot.innerHTML = `<span class="slot-label">${i+1}. ${slotName}:</span> <span class="slot-component">${slotFills[i] || '(empty)'}</span>`;
+      slot.setAttribute('aria-label', `Slot ${i+1}: ${slotName}`);
+      slot.onclick = () => { if (slotFills[i]) { usedParts.delete(slotFills[i]); slotFills[i] = null; selectedSlotIdx = i; } else { selectedSlotIdx = i; } renderWiringUI(); };
+      slotsDiv.appendChild(slot);
+    });
+    container.appendChild(slotsDiv);
+    const partsDiv = document.createElement('div');
+    partsDiv.className = 'wiring-parts';
+    allParts.forEach(part => {
+      const btn = document.createElement('button');
+      btn.className = 'wiring-part' + (usedParts.has(part) ? ' used' : '');
+      btn.textContent = part;
+      btn.disabled = usedParts.has(part);
+      btn.onclick = () => {
+        if (usedParts.has(part)) return;
+        let idx = selectedSlotIdx;
+        if (idx === null || slotFills[idx] !== null) idx = slotFills.indexOf(null);
+        if (idx >= 0 && idx < slotFills.length) { slotFills[idx] = part; usedParts.add(part); selectedSlotIdx = slotFills.indexOf(null); renderWiringUI(); }
+      };
+      partsDiv.appendChild(btn);
+    });
+    container.appendChild(partsDiv);
+    document.getElementById('narrative').appendChild(container);
+    container.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
+  renderWiringUI();
+  showChoices([{ text: 'Submit build', id: 'submit_wiring' }, { text: 'Clear all', id: 'clear_wiring' }], async function wiringHandler(choice) {
+    if (choice.id === 'clear_wiring') { slotFills.fill(null); usedParts.clear(); selectedSlotIdx = null; renderWiringUI(); showChoices([{ text: 'Submit build', id: 'submit_wiring' }, { text: 'Clear all', id: 'clear_wiring' }], wiringHandler); return; }
+    let correctCount = 0;
+    document.querySelectorAll('.wiring-ui-container').forEach(el => el.remove());
+    for (let i = 0; i < challenge.slots.length; i++) {
+      const isCorrect = slotFills[i] === challenge.correctOrder[i];
+      if (isCorrect) correctCount++;
+      addMsg(`<div class="wiring-slot ${isCorrect ? 'correct-slot' : 'wrong-slot'}"><span class="slot-label">${challenge.slots[i]}:</span> <span class="slot-component">${slotFills[i] || '(empty)'} -- ${isCorrect ? 'Correct' : 'Wrong'}</span>${!isCorrect ? `<br><small style="color:var(--text-dim)">Needed: ${challenge.correctOrder[i]}</small>` : ''}</div>`);
+    }
+    if (correctCount === challenge.slots.length) {
+      addMsg(`All connections correct! Component built successfully.`, 'success');
+      checkAchievement('circuit_wiring');
+      for (const topic of region.topics) await trackMastery(topic, true, 3, null);
+      addClue(region, 'circuit-wiring');
+    } else if (correctCount >= challenge.slots.length / 2) {
+      addMsg(`${correctCount}/${challenge.slots.length} correct. Almost.`, 'system');
+      onPartialAnswer();
+    } else {
+      addMsg(`Only ${correctCount}/${challenge.slots.length}. Build fails.`, 'combat');
+      onIncorrectAnswer();
+    }
+    addMsg(`<div class="knowledge-reveal"><h4>How It Works</h4><p>${challenge.explanation}</p></div>`);
+    await continueOrMap(region);
+  });
+}
+
+async function faultTreeEncounter(region) {
+  const regionCat = region.categories[0];
+  let candidates = FAULT_TREE_CHALLENGES.filter(c => c.category === regionCat);
+  if (candidates.length === 0) candidates = FAULT_TREE_CHALLENGES;
+  const challenge = candidates[Math.floor(Math.random() * candidates.length)];
+  addMsg(`<div class="msg-challenge"><strong>Fault Diagnosis: ${challenge.title}</strong><br>${challenge.symptoms}</div>`);
+  const usedSteps = new Set();
+  let stepsUsed = 0;
+  function showDiagnosticSteps() {
+    const container = document.getElementById('choice-container');
+    container.innerHTML = '';
+    challenge.steps.forEach((step, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'fault-step-btn' + (usedSteps.has(i) ? ' used-step' : '');
+      btn.innerHTML = `${usedSteps.has(i) ? 'Done: ' : ''}${step.action}`;
+      btn.setAttribute('aria-label', `${step.action}`);
+      btn.disabled = usedSteps.has(i);
+      btn.onclick = () => {
+        if (usedSteps.has(i)) return;
+        usedSteps.add(i); stepsUsed++;
+        const resultText = step.eliminates ? `<span style="color:var(--success)">Ruled out: ${step.eliminates}</span>` : `<span style="color:var(--warning)">Clue: ${step.reveals}</span>`;
+        addMsg(`<div class="fault-info"><div class="fault-label">${step.action}</div><div class="fault-data">${step.result}<br>${resultText}</div></div>`);
+        if (step.reveals && step.reveals.includes('ROOT CAUSE')) { addMsg(`Root cause found!`, 'success'); finalizeFaultTree(true); return; }
+        showDiagnosticSteps();
+      };
+      container.appendChild(btn);
+    });
+    if (stepsUsed >= challenge.minStepsToSolve) {
+      const diagnoseBtn = document.createElement('button');
+      diagnoseBtn.className = 'choice-btn';
+      diagnoseBtn.innerHTML = `<span class="key-hint">[D]</span> Declare root cause`;
+      diagnoseBtn.onclick = () => {
+        addMsg(`State your diagnosis.`, 'challenge');
+        showChoices([{ text: 'Diagnose (type below)', id: 'diagnose' }], async (choice) => {
+          if (choice.freeformInput) {
+            const result = await evaluateAnswer(choice.freeformInput, challenge.rootCause, challenge.title);
+            if (result.grade === 'correct') finalizeFaultTree(true);
+            else { if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system'); finalizeFaultTree(false); }
+          } else showDiagnosticSteps();
+        });
+      };
+      container.appendChild(diagnoseBtn);
+    }
+    const giveUpBtn = document.createElement('button');
+    giveUpBtn.className = 'choice-btn';
+    giveUpBtn.innerHTML = `<span class="key-hint">[X]</span> Give up`;
+    giveUpBtn.onclick = () => finalizeFaultTree(false);
+    container.appendChild(giveUpBtn);
+    document.getElementById('input-row').style.display = 'none';
+  }
+  async function finalizeFaultTree(solved) {
+    document.getElementById('input-row').style.display = 'flex';
+    if (solved) {
+      addMsg(`<div class="mastery-card"><h4>Fault Diagnosed!</h4><p>${challenge.rootCause}</p></div>`);
+      checkAchievement('fault_tree');
+      for (const topic of region.topics) await trackMastery(topic, true, 4, null);
+      addClue(region, 'fault-tree');
+    } else {
+      addMsg(`<div class="knowledge-reveal"><h4>Root Cause</h4><p>${challenge.rootCause}</p></div>`);
+      onIncorrectAnswer();
+    }
+    await continueOrMap(region);
+  }
+  showDiagnosticSteps();
+}
+
+async function exploreEncounter(region) {
+  addMsg(`You explore ${region.name}. Systems hum quietly.`);
+  await continueOrMap(region);
+}
+
+// ============================================================
+// CLUES + MYSTERY + CROSS-TOPIC
+// ============================================================
+function addClue(region, clueKey) {
+  const mp = state.mysteryProgress[region.id];
+  if (!mp || mp.solved) return;
+  if (!mp.cluesFound.includes(clueKey)) {
+    mp.cluesFound.push(clueKey);
+    addMsg(`<span class="msg-reward">Clue found! (${mp.cluesFound.length} for ${region.name}'s mystery)</span>`, 'reward');
+    if (mp.cluesFound.length >= 3) addMsg(`Enough clues to attempt the mystery!`, 'system');
+  }
+  saveState();
+}
+
+async function crossTopicChallenge() {
+  clearNarrative();
+  addMsg(`<div class="msg-challenge"><strong>Cross-Domain Synthesis</strong><br>Combine knowledge from multiple subsystems!</div>`);
+  try {
+    const cats = REGIONS.filter(r => { const mp = state.mysteryProgress[r.id]; return mp && mp.cluesFound && mp.cluesFound.length >= 2; }).map(r => r.categories[0]);
+    if (cats.length < 2) { addMsg('Not enough domain experience.', 'system'); clearNarrative(); showWorldMap(); return; }
+    const insights = await api(`/api/topics/insights?categories=${encodeURIComponent(cats.join(','))}`);
+    if (insights.length < 2) { addMsg('Could not find topics.', 'system'); clearNarrative(); showWorldMap(); return; }
+    const [topicA, topicB] = [insights[0], insights[1]];
+    const question = `How does ${topicA.topic} relate to ${topicB.topic}?`;
+    addMsg(`<div class="msg-cascade"><h4>Cross-Domain</h4><p>${question}</p></div>`);
+    showChoices([{ text: 'Explain (type below)', id: 'explain' }], async (choice) => {
+      if (choice.freeformInput) {
+        const correctAnswer = `${topicA.key_insight || topicA.tldr || topicA.topic} connects to ${topicB.key_insight || topicB.tldr || topicB.topic}`;
+        const result = await evaluateAnswer(choice.freeformInput, correctAnswer, question);
+        if (result.grade === 'correct') { addMsg(`Excellent cross-domain insight!`, 'success'); state.crossTopicSolved++; onCorrectAnswer(); }
+        else { addMsg(`<div class="knowledge-reveal"><h4>Connection</h4><p>${correctAnswer}</p></div>`); if (result.grade === 'partial') onPartialAnswer(); else onIncorrectAnswer(); }
+        if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+      }
+      saveState(); updateHUD(); clearNarrative(); showWorldMap();
+    });
+  } catch (e) { addMsg('Failed to load.', 'system'); clearNarrative(); showWorldMap(); }
+}
+
+// ============================================================
+// CONTINUE OR MAP
+// ============================================================
+async function continueOrMap(region) {
+  const mp = state.mysteryProgress[region.id];
+  if (mp && !mp.solved && mp.cluesFound && mp.cluesFound.length >= 3) {
+    addMsg(`<div class="msg-cascade"><strong>Mystery ready!</strong></div>`);
+    showChoices([
+      { text: 'Attempt the mystery', id: 'mystery' },
+      { text: 'Continue exploring', id: 'continue' },
+      { text: 'Return to board', id: 'map' },
+    ], async (choice) => {
+      if (choice.id === 'mystery') await attemptMystery(region);
+      else if (choice.id === 'continue') { clearNarrative(); await enterRegion(region); }
+      else { clearNarrative(); showWorldMap(); }
+    });
+    return;
+  }
+  showChoices([
+    { text: 'Continue exploring', id: 'continue' },
+    { text: 'Return to board', id: 'map' },
+  ], async (choice) => {
+    if (choice.id === 'continue') { clearNarrative(); await enterRegion(region); }
+    else { clearNarrative(); showWorldMap(); }
+  });
+}
+
+async function attemptMystery(region) {
+  addMsg(`<div class="msg-challenge"><strong>Mystery: ${region.name}</strong><br>${region.mystery}</div>`);
+  showChoices([{ text: 'Solve (type below)', id: 'solve' }], async (choice) => {
+    if (choice.freeformInput) {
+      const result = await evaluateAnswer(choice.freeformInput, region.mysteryAnswer, region.mystery);
+      if (result.grade === 'correct' || result.grade === 'partial') {
+        state.mysteryProgress[region.id].solved = true;
+        addMsg(`<div class="achievement-banner"><h4>Mystery Solved: ${region.name}!</h4><p>${region.mysteryAnswer}</p></div>`);
+        checkAchievement('mystery_1');
+        if (REGIONS.every(r => state.mysteryProgress[r.id]?.solved)) checkAchievement('mystery_all');
+        onCorrectAnswer();
+      } else { addMsg(`Not quite. Keep gathering clues.`, 'system'); onIncorrectAnswer(); }
+      if (result.feedback) addMsg(`<em>${result.feedback}</em>`, 'system');
+    }
+    saveState(); updateHUD();
+    await continueOrMap(region);
+  });
+}
+
+// ============================================================
+// LIBRARY + JOURNAL
+// ============================================================
+async function visitLibrary() {
+  clearNarrative();
+  addMsg(`The <strong>Knowledge Library</strong> glows. Search for any topic.`);
+  showChoices([
+    { text: 'Search (type below)', id: 'search' },
+    { text: 'Return to board', id: 'back' },
+  ], async (choice) => {
+    if (choice.id === 'search' || choice.freeformInput) {
+      const query = choice.freeformInput || '';
+      if (query) {
+        try {
+          const results = await api(`/api/search?q=${encodeURIComponent(query)}`);
+          if (results.length > 0) results.slice(0, 5).forEach(r => { addMsg(`<div class="knowledge-reveal"><h4>${r.topic} <small>(${r.tier})</small></h4><p>${r.tldr || r.definition || ''}</p></div>`); });
+          else addMsg(`No results for "${query}".`, 'system');
+        } catch (e) { addMsg('Search failed.', 'system'); }
+      }
+      await visitLibrary();
+    } else { clearNarrative(); showWorldMap(); }
+  });
+}
+
+function showKnowledgeJournal() {
+  addMsg(`<div class="mastery-card"><h4>Knowledge Journal -- ${state.knowledgeJournal.length} entries</h4></div>`);
+  if (state.knowledgeJournal.length === 0) { addMsg(`Journal empty. Power nodes to fill it.`, 'system'); return; }
+  state.knowledgeJournal.slice(-10).reverse().forEach(entry => {
+    const conn = entry.connections.length > 0 ? `<br><span class="journal-connection">Traces to: ${entry.connections.join(', ')}</span>` : '';
+    addMsg(`<div class="journal-entry"><strong>${entry.topic}</strong>: ${entry.insight}${conn}</div>`);
+  });
+  if (state.conceptCascadesTriggered.length > 0) {
+    addMsg(`<div class="journal-entry" style="border-color:var(--warning);"><strong>Discovered Traces:</strong><br>${state.conceptCascadesTriggered.map(p => { const c = CONCEPT_CASCADES[p]; return c ? `${c.name} (${p.replace('+', ' -- ')})` : p; }).join('<br>')}</div>`);
+  }
+}
+
+// ============================================================
+// SAVE / LOAD
+// ============================================================
+function saveState() {
+  try {
+    localStorage.setItem('knowledge-quest-save', JSON.stringify({
+      char: state.char,
+      masteredTopics: state.masteredTopics,
+      visitedRegions: state.visitedRegions,
+      turnCount: state.turnCount,
+      mysteryProgress: state.mysteryProgress,
+      hintsUsed: state.hintsUsed,
+      crossTopicSolved: state.crossTopicSolved || 0,
+      conceptCascadesTriggered: state.conceptCascadesTriggered || [],
+      knowledgeJournal: state.knowledgeJournal || [],
+      tutorialComplete: state.tutorialComplete || false,
+      regionNPCs: state.regionNPCs || {},
+      lastEncounteredTopic: state.lastEncounteredTopic || null,
+      cascadeEncountersSinceLastTrigger: state.cascadeEncountersSinceLastTrigger || {},
+      streak: state.streak || 0,
+      bestStreak: state.bestStreak || 0,
+      combo: 0,
+      achievements: state.achievements || [],
+      totalCorrect: state.totalCorrect || 0,
+      totalAttempts: state.totalAttempts || 0,
+      dailyChallengesCompleted: state.dailyChallengesCompleted || {},
+      apprenticeTeachCount: state.apprenticeTeachCount || 0,
+      bossesDefeated: state.bossesDefeated || [],
+      discoveredTraces: state.discoveredTraces || [],
+    }));
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem('knowledge-quest-save');
+    if (saved) {
+      const data = JSON.parse(saved);
+      Object.assign(state, {
+        char: data.char,
+        masteredTopics: data.masteredTopics || {},
+        visitedRegions: data.visitedRegions || [],
+        turnCount: data.turnCount || 0,
+        mysteryProgress: data.mysteryProgress || {},
+        hintsUsed: data.hintsUsed || 0,
+        crossTopicSolved: data.crossTopicSolved || 0,
+        conceptCascadesTriggered: data.conceptCascadesTriggered || [],
+        knowledgeJournal: data.knowledgeJournal || [],
+        tutorialComplete: data.tutorialComplete || false,
+        regionNPCs: data.regionNPCs || {},
+        lastEncounteredTopic: data.lastEncounteredTopic || null,
+        cascadeEncountersSinceLastTrigger: data.cascadeEncountersSinceLastTrigger || {},
+        streak: data.streak || 0,
+        bestStreak: data.bestStreak || 0,
+        combo: 0,
+        achievements: data.achievements || [],
+        totalCorrect: data.totalCorrect || 0,
+        totalAttempts: data.totalAttempts || 0,
+        dailyChallengesCompleted: data.dailyChallengesCompleted || {},
+        apprenticeTeachCount: data.apprenticeTeachCount || 0,
+        bossesDefeated: data.bossesDefeated || [],
+        discoveredTraces: data.discoveredTraces || [],
+      });
+      Object.values(state.masteredTopics).forEach(entry => {
+        if (!entry.halfLife) entry.halfLife = HALF_LIFE_INITIAL_MS;
+        if (!entry.lastReviewed) entry.lastReviewed = entry.lastSeen || Date.now();
+      });
+      // Migration: strip old class system
+      if (state.char && state.char.class) {
+        state.char = { name: state.char.name };
+      }
+      // BUG-001 FIX: persist migration immediately
+      saveState();
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+// ============================================================
+// PREMIUM
+// ============================================================
+const premiumFeatures = { enabled: false, features: { bonusRegions: ['Quantum Realm', 'Electromagnetic Field'], cosmetics: ['Golden Traces', 'Plasma Glow'], challengeModes: ['No-Hint', 'Speedrun', 'Master'] } };
+
+// ============================================================
+// THEME + FONT
+// ============================================================
+function initThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('kq-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('kq-theme', next);
+  });
+}
+
+function initFontToggle() {
+  const btn = document.getElementById('font-toggle');
+  const saved = localStorage.getItem('kq-fontsize') || 'medium';
+  document.documentElement.setAttribute('data-fontsize', saved);
+  updateFontToggleLabel(saved);
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-fontsize') || 'medium';
+    const idx = FONT_SIZES.indexOf(current);
+    const next = FONT_SIZES[(idx + 1) % FONT_SIZES.length];
+    document.documentElement.setAttribute('data-fontsize', next);
+    localStorage.setItem('kq-fontsize', next);
+    updateFontToggleLabel(next);
+  });
+}
+
+function updateFontToggleLabel(size) {
+  const btn = document.getElementById('font-toggle');
+  btn.textContent = { small: 'Aa-', medium: 'Aa', large: 'Aa+' }[size] || 'Aa';
+  btn.title = `Font size: ${size}`;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  initThemeToggle();
+  initFontToggle();
+  initHelpToggle();
+  try {
+    state.dbStats = await api('/api/stats');
+    if (state.dbStats.documents === 0) { document.getElementById('loading').innerHTML = '<p>Knowledge base empty. Run importer.</p>'; return; }
+    if (loadState()) {
+      document.getElementById('loading').style.display = 'none';
+      state.phase = 'playing';
+      document.getElementById('narrative').style.display = 'block';
+      document.getElementById('actions').style.display = 'block';
+      document.getElementById('footer').style.display = 'block';
+      updateHUD();
+      const title = getTitle();
+      addMsg(`Welcome back, ${state.char.name}! Board at ${Math.round(getBoardPower()*100)}% power. Title: ${title.name}.`, 'system');
+      const fading = getFadingTopics();
+      if (fading.length > 0) addMsg(`<div class="signal-alert"><h4>Signal Degrading</h4><p>${fading.length} node(s) losing power!</p></div>`);
+      if (!isDailyChallengeCompleted()) addMsg(`<span class="daily-badge">DAILY</span> Daily diagnostic available!`, 'system');
+      showWorldMap();
+    } else {
+      initCharCreation();
+    }
+  } catch (err) {
+    document.getElementById('loading').innerHTML = `<p>Could not connect. Is Docker running?</p><p style="color:var(--danger)">${err.message}</p>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
