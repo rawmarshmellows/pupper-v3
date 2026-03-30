@@ -186,6 +186,31 @@
       ],
       "biggest_risk": "Tutorial overlay system introduces a new DOM code path; mitigated by try/catch with static fallback and always-accessible skip button",
       "status": "pass"
+    },
+    {
+      "iteration": 10,
+      "timestamp": "2026-03-30T12:00:00Z",
+      "generator_action": "User-directed redesign: removed class system, simplified entry, added achievements/streaks/combos/collections/daily challenges/evolving titles",
+      "scores": {
+        "intrinsic_integration": "deep",
+        "pedagogical_soundness": "strong",
+        "narrative_structure": "compelling",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "strong",
+        "freemium_monetisation": "learning-first",
+        "rpg_mechanical_integrity": "cosmetic"
+      },
+      "failing_dimensions": [],
+      "improvements": [
+        "Removed class system entirely — name-only character creation",
+        "Added 20 achievements, streak/combo system, 6 knowledge collections, daily challenges, 8-tier evolving titles",
+        "Simplified mechanics: no HP/MP/Gold/dice rolls, streak resets replace HP loss",
+        "rpg_mechanical_integrity: mechanically-rich → cosmetic (intentional by user direction)"
+      ],
+      "biggest_risk": "Removal of RPG mechanics risks quiz-app feel; richer interaction modalities needed to maintain game feel",
+      "status": "pass",
+      "note": "rpg_mechanical_integrity 'cosmetic' is by design — user explicitly directed removal of class system in favor of lighter gamification"
     }
   ]
 }
