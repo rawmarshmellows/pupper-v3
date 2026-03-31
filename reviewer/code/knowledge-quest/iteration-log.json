@@ -1,7 +1,7 @@
 {
   "game_name": "knowledge-quest",
   "topic": "electronics, electrical engineering, robotics, manufacturing, and applied physics — covering topics from basic circuit components (resistors, capacitors, inductors, diodes, transistors, MOSFETs) through PCB design, microcontrollers (STM32), communication protocols (I2C, SPI, CAN bus), 3D printing, CNC machining, and robot control (PID, forward/inverse kinematics, gait control, reinforcement learning)",
-  "max_iterations": 12,
+  "max_iterations": 13,
   "pass_threshold": {
     "intrinsic_integration": "deep",
     "pedagogical_soundness": "strong",
@@ -266,6 +266,33 @@
         "System log tracking player journey"
       ],
       "biggest_risk": "Circuit board provides strategic information without strategic action (can't choose nodes to target)",
+      "status": "pass"
+    },
+    {
+      "iteration": 13,
+      "timestamp": "2026-03-31T17:00:00Z",
+      "generator_action": "Strategic agency: clickable node targeting (power up/repair/review), topic-aware certifications, system log HUD button, 3 iter-12 polish fixes",
+      "scores": {
+        "intrinsic_integration": "deep",
+        "pedagogical_soundness": "strong",
+        "narrative_structure": "compelling",
+        "motivation_engagement": "intrinsic",
+        "assessment_design": "hybrid",
+        "accessibility": "strong",
+        "freemium_monetisation": "learning-first",
+        "rpg_mechanical_integrity": "mechanically-rich"
+      },
+      "failing_dimensions": [],
+      "all_dimensions_at_max": true,
+      "improvements": [
+        "rpg_mechanical_integrity: partially-functional → mechanically-rich",
+        "Node targeting: click dark/fading/powered nodes to start targeted encounters",
+        "Repair vs explore tradeoff (hints vs harder encounters)",
+        "Topic-aware certifications (subsystem-specific, 80% threshold)",
+        "System log via [L] HUD button",
+        "45/45 Playwright tests pass"
+      ],
+      "biggest_risk": "No resource cost for targeting makes strategic choices trivially obvious",
       "status": "pass"
     }
   ]
