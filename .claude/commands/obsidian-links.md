@@ -24,6 +24,6 @@ Generate Obsidian-style wiki links for all `.md` files in the following folders:
 - [[folder-name/subfolder/file-three|file-three]]
 ```
 
-If no folders are specified, default to: `quick-context`
+If no folders are specified, default to: `learning/notes/quick-context`
 
 Output the links directly to the chat so I can copy them. Do not create a file unless I ask.

@@ -1,0 +1,77 @@
+{
+  "iteration": 8,
+  "verdict": "pass-but-user-requested-improvement",
+  "reason": "All 8 dimensions pass at highest or threshold levels. However, the USER has explicitly reported that the game is NOT CLEAR about what to do. New players cannot figure out how to play. The tutorial/onboarding is insufficient. This is the #1 priority for iteration 9.",
+  "failing_dimensions": [],
+  "user_requested_changes": [
+    {
+      "priority": 1,
+      "category": "CRITICAL: Full Interactive Tutorial / Onboarding",
+      "problem": "A new player landing on the game cannot figure out what to do. The user says 'right now it's not clear what to do.' The current tutorial (if it exists) is a wall of text or insufficient guidance. Players need to understand within 30 seconds what this game is and what they should do.",
+      "action_required": [
+        "Add a dedicated, multi-step INTERACTIVE tutorial that walks the player through their FIRST encounter after character creation",
+        "The tutorial must include an actual practice encounter with guided annotations — not just text explaining mechanics",
+        "Show an example of a good answer so players know what format/quality is expected",
+        "Explain what kind of input is expected: Is it freeform text? Buttons? What format? Make this CRYSTAL CLEAR",
+        "Explain EVERY core mechanic one at a time with progressive disclosure: (1) encounters and how to respond, (2) mastery tracking and what the bars mean, (3) knowledge journal and where to find it, (4) regions/zones and progression, (5) inventory/stats and how they affect gameplay",
+        "The tutorial must take < 3 minutes and be skippable by returning players (Skip Tutorial button)",
+        "Add a PERSISTENT 'Help' / 'How to Play' button in the HUD that is accessible at ANY time during gameplay, which opens a panel explaining all mechanics",
+        "The 30-second clarity test: within 30 seconds of starting, a brand new player must understand (a) what this game IS, (b) what they are supposed to DO, (c) how to interact with it"
+      ]
+    },
+    {
+      "priority": 2,
+      "category": "Bug fixes from iteration 8 critique",
+      "action_required": [
+        "BUG-001: Remove 'summary' from REGION_QUIZ_SOURCES difficulty 3 — change 'key_insight,summary,section_content' to 'key_insight,section_content' at line 547",
+        "BUG-002: Remove the unused CSS icon classes (.icon-success, .icon-failure, .icon-warning, .icon-partial) — they are dead code since inline unicode is used instead",
+        "Make NPC cascade trigger DETERMINISTIC: track cascadeEncountersSinceLastTrigger per region. After apprentice has 5+ topics, trigger every 4th encounter (not 30% random). This makes it feel like a narrative milestone, not a dice roll.",
+        "Add logging when prerequisite check fails: change catch(e){} to catch(e){ console.log('Prerequisite check failed:', e.message); } for debugging"
+      ]
+    }
+  ],
+  "passing_dimensions": [
+    {
+      "dimension": "intrinsic_integration",
+      "current_score": "deep",
+      "preserve": "Prerequisite graph ordering makes learning sequence dependency-driven. Cognitive demand scaffolding aligns Bloom levels with game difficulty. Do NOT regress on this."
+    },
+    {
+      "dimension": "pedagogical_soundness",
+      "current_score": "strong",
+      "preserve": "Bloom-level scaffolding by region, prerequisite ordering, NPC cascades as synthesis assessment, 2-day half-life, topic interleaving, 2673 quiz questions, 18 misconception pools. Do NOT regress."
+    },
+    {
+      "dimension": "narrative_structure",
+      "current_score": "compelling",
+      "preserve": "Three-tier NPC greeting system (nervous → excited → synthesizing), NPC-triggered cascades, persistent NPC identity per region (18 characters). Do NOT regress."
+    },
+    {
+      "dimension": "motivation_engagement",
+      "current_score": "intrinsic",
+      "preserve": "Mastery-only progression (no XP/levels in HUD), font size controls, NPC cascade payoffs. Do NOT regress."
+    },
+    {
+      "dimension": "assessment_design",
+      "current_score": "hybrid",
+      "preserve": "Stealth assessment via circuit wiring/fault tree + overt LLM evaluation. Bloom-level filtering by region. BUG-001 Jury-Rig fix. Do NOT regress."
+    },
+    {
+      "dimension": "accessibility",
+      "current_score": "strong",
+      "preserve": "28 ARIA elements, 0 missing labels. 19/20 keyboard tab stops. Light/dark theme with auto-detection. Font size toggle. 6.1:1+ contrast ratios. prefers-reduced-motion. Do NOT regress."
+    },
+    {
+      "dimension": "freemium_monetisation",
+      "current_score": "learning-first",
+      "preserve": "All content free. Zero monetisation. No paywalls, energy gates, ads, or dark patterns. Do NOT regress."
+    },
+    {
+      "dimension": "rpg_mechanical_integrity",
+      "current_score": "mechanically-rich",
+      "preserve": "6 stats with d20 checks, 6 classes with distinct abilities, Jury-Rig consistent across all encounter types, topic interleaving, mastery decay, negotiate bartering, mystery system, knowledge journal. Do NOT regress."
+    }
+  ],
+  "biggest_risk": "Without a clear onboarding/tutorial, the game will fail the '30-second clarity test' — new players will bounce because they don't know what to do. This is the single most important fix.",
+  "priority_order": ["tutorial_onboarding", "bug_fixes", "preserve_all_passing_dimensions"]
+}

@@ -277,12 +277,31 @@ When the game starts, present character creation:
 - **Magic/Stamina**: Costs MP/Stamina. Casters (Scholar, Sage, Artificer) can spend MP to get hints. Martial classes (Engineer, Explorer, Tinker) can spend Stamina to retry failed checks.
 - **Mastery with decay**: Mastery is NOT permanent. Use a half-life decay model: each mastered topic has a `lastReviewed` timestamp and a `halfLife` (starts at 1 day, doubles on each successful review, halves on failure). Mastery strength = 2^(-timeSinceReview/halfLife). Topics with mastery < 0.5 are "fading" and should be prioritized for spaced repetition encounters. Display mastery as a fading bar, not a binary flag.
 
-### Onboarding (REQUIRED)
-After character creation, the game MUST present a guided tutorial encounter that:
-1. Explains the game world (Circuit Citadel, regions, what the player is doing here)
-2. Walks through one simple encounter step-by-step with explanatory tooltips
-3. Shows the player their HUD and explains mastery, knowledge journal, and region progression
-4. Takes < 2 minutes and can be skipped by experienced players
+### Onboarding & Tutorial (REQUIRED — CRITICAL FOR USABILITY)
+
+The game MUST include a dedicated, interactive tutorial section. Without it, new players won't understand what to do and will immediately bounce. This is the #1 reason educational games fail in playtesting.
+
+After character creation, the game MUST present a **full guided tutorial** that:
+
+1. **Welcomes and orients** — Tells the player: "Welcome to [game name]. You are [role]. Your goal is [goal]. Here's how to play."
+2. **Walks through a practice encounter step-by-step** — Not just text explanation, but an actual interactive encounter with guided annotations. Example: "This is a circuit puzzle. You'll see a schematic and a description of what's wrong. Type your diagnosis below. Try it now — what do you think is wrong with this circuit?" Then show them what a good answer looks like.
+3. **Explains EVERY core mechanic with examples:**
+   - How encounters work (what types exist, what the player is expected to do)
+   - How the answer input works (freeform text? buttons? what format is expected?)
+   - How mastery tracking works (what the mastery bar means, that it decays)
+   - How the knowledge journal works (where to find it, what it records)
+   - How regions/zones work (progression, difficulty)
+   - How inventory/tools work (if applicable)
+   - How stats/skills affect gameplay (if applicable)
+4. **Uses progressive disclosure** — introduces ONE mechanic at a time, lets the player try it, then moves to the next. Never dumps all mechanics in a wall of text.
+5. **Takes < 3 minutes and can be skipped** by returning/experienced players (with a "Skip Tutorial" button)
+6. **Provides a help reference** — After the tutorial, the game MUST have a persistent "Help" or "How to Play" button that lets players review the tutorial information at any time.
+
+**Anti-patterns to avoid:**
+- A wall of text explaining all mechanics before the player does anything
+- No tutorial at all — just dropping the player into the game cold
+- Tutorial that only explains lore/story but not game mechanics
+- Tutorial that's text-only with no interactive practice
 
 ### How the Game Uses the Database
 

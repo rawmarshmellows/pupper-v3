@@ -13,8 +13,8 @@ A coverage map is a master document that organizes all sub-topics within a domai
 
 **Before writing anything**, you MUST:
 
-1. **Glob** `quick-context/*.md` to find all existing quick-context files.
-2. **Glob** `micro-context/*.md` to find all existing micro-context files.
+1. **Glob** `learning/notes/quick-context/*.md` to find all existing quick-context files.
+2. **Glob** `learning/notes/micro-context/*.md` to find all existing micro-context files.
 3. **Read every file** (at minimum the YAML frontmatter, TL;DR, and 5 Essential Terms table) to understand what's already covered.
 4. **Identify which files fall within the domain** of `$ARGUMENTS`. Be inclusive — if a file is even partially relevant, note it.
 5. **Build a mental inventory** of:
@@ -49,7 +49,7 @@ created: [today's date YYYY-MM-DD]
 updated: [today's date YYYY-MM-DD]
 ---
 
-> **Related:** [[quick-context/related-file-1]] | [[quick-context/related-file-2]]
+> **Related:** [[learning/notes/quick-context/related-file-1]] | [[learning/notes/quick-context/related-file-2]]
 
 > **TL;DR:** [1-2 sentences: what this domain is, and what this index helps you do — navigate the sub-topics and find gaps.]
 
@@ -84,11 +84,11 @@ For EACH category in your hierarchy, include:
 ```markdown
 | Part/Topic | Existing Quick-Context? | Key Concept |
 |------------|------------------------|-------------|
-| **[[quick-context/filename\|Display Name]]** | Yes | Brief description of what the file covers |
+| **[[learning/notes/quick-context/filename\|Display Name]]** | Yes | Brief description of what the file covers |
 | **Topic Name** | ❌ No | What this file WOULD cover if created |
 ```
 
-- For existing files: use `[[quick-context/filename\|Display Name]]` wiki links and note "Yes"
+- For existing files: use `[[learning/notes/quick-context/filename\|Display Name]]` wiki links and note "Yes"
 - For gaps: just use the topic name, mark "❌ No", and describe what the file would cover
 
 #### Section: "The Key Tension — Coverage Map"
@@ -124,12 +124,12 @@ Link to related quick-context files that are adjacent to but not core to this do
 
 ## Step 4: Output
 
-Save the coverage map to `quick-context/[domain-kebab-case]-coverage-map.md`.
+Save the coverage map to `learning/notes/quick-context/[domain-kebab-case]-coverage-map.md`.
 
 **Filename examples:**
-- Domain "Electronics" → `quick-context/electronics-coverage-map.md`
-- Domain "Robotics Software" → `quick-context/robotics-software-coverage-map.md`
-- Domain "Industrial Automation" → `quick-context/industrial-automation-coverage-map.md`
+- Domain "Electronics" → `learning/notes/quick-context/electronics-coverage-map.md`
+- Domain "Robotics Software" → `learning/notes/quick-context/robotics-software-coverage-map.md`
+- Domain "Industrial Automation" → `learning/notes/quick-context/industrial-automation-coverage-map.md`
 
 ---
 
@@ -150,6 +150,6 @@ Before finishing, verify:
 - [ ] Gaps are clearly identified with ❌ markers
 - [ ] ASCII diagrams are present for each category AND the full coverage map
 - [ ] The hierarchy flows logically (foundational → advanced)
-- [ ] Wiki links use correct `[[quick-context/filename|Display Name]]` format
+- [ ] Wiki links use correct `[[learning/notes/quick-context/filename|Display Name]]` format
 - [ ] The coverage summary accurately counts files vs. gaps
 - [ ] Back-links have been added to existing files

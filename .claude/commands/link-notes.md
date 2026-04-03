@@ -5,7 +5,7 @@ description: Analyze markdown files and create Obsidian wiki links (related docs
 
 Analyze all markdown files in the following folders and propose links between them: **$ARGUMENTS**
 
-If no folders specified, scan both: `micro-context` and `quick-context`
+If no folders specified, scan both: `learning/notes/micro-context` and `learning/notes/quick-context`
 
 ## Two Types of Linking
 
@@ -14,7 +14,7 @@ If no folders specified, scan both: `micro-context` and `quick-context`
 Add/update the `> **Related:**` line after YAML frontmatter linking to topically related files.
 
 ```markdown
-> **Related:** [[quick-context/file-one]] | [[quick-context/file-two]]
+> **Related:** [[learning/notes/quick-context/file-one]] | [[learning/notes/quick-context/file-two]]
 ```
 
 ### Type 2: Inline Term Linking
@@ -28,12 +28,12 @@ The tensile strength of PLA depends on layer adhesion and hotend temperature.
 
 **After:**
 ```markdown
-The [[quick-context/tensile-strength-materials|tensile strength]] of PLA depends on [[quick-context/3d-printing-filament-types|layer adhesion]] and [[quick-context/3d-printer-hotends|hotend]] temperature.
+The [[learning/notes/quick-context/tensile-strength-materials|tensile strength]] of PLA depends on [[learning/notes/quick-context/3d-printing-filament-types|layer adhesion]] and [[learning/notes/quick-context/3d-printer-hotends|hotend]] temperature.
 ```
 
 ## Instructions
 
-1. **Read all `.md` files** in `micro-context` and `quick-context` folders
+1. **Read all `.md` files** in `learning/notes/micro-context` and `learning/notes/quick-context` folders
 2. **Build a term map** from each file's:
    - Frontmatter `topic` field
    - Main heading (H1)
@@ -64,15 +64,15 @@ Present the proposal in this format:
 For each file that would be modified:
 
 ```
-📄 quick-context/example-file.md
+📄 learning/notes/quick-context/example-file.md
   Related docs to add:
-    - [[micro-context/related-topic]]
-    - [[quick-context/another-topic]]
+    - [[learning/notes/micro-context/related-topic]]
+    - [[learning/notes/quick-context/another-topic]]
 
   Inline terms to link:
-    - "tensile strength" → [[micro-context/tensile-strength|tensile strength]]
+    - "tensile strength" → [[learning/notes/micro-context/tensile-strength|tensile strength]]
       Context: "The tensile strength of the material..."
-    - "servo motor" → [[quick-context/servo-motors|servo motor]]
+    - "servo motor" → [[learning/notes/quick-context/servo-motors|servo motor]]
       Context: "...controlled by a servo motor that..."
 ```
 

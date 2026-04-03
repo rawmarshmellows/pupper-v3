@@ -60,8 +60,8 @@ After all agents complete, provide a summary:
 
 ```
 Created [N] quick-context files:
-- [[quick-context/concept-1]] - [status]
-- [[quick-context/concept-2]] - [status]
+- [[learning/notes/quick-context/concept-1]] - [status]
+- [[learning/notes/quick-context/concept-2]] - [status]
 ...
 
 These are all linked back to: [[source-document-path]]
@@ -70,7 +70,7 @@ These are all linked back to: [[source-document-path]]
 ## Usage Examples
 
 ```
-/explode-concepts quick-context/polymer-chemical-bonds.md
+/explode-concepts learning/notes/quick-context/polymer-chemical-bonds.md
 /explode-concepts lectures/robotics-intro.md
 /explode-concepts building/servo-motor-basics.md
 ```

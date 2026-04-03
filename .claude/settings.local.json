@@ -3,7 +3,9 @@
     "allow": [
       "Skill(update-quick-context)",
       "Skill(fact-check)",
-      "Skill(ascii-fixer)"
+      "Skill(ascii-fixer)",
+      "Bash(git lfs:*)",
+      "WebSearch"
     ]
   },
   "hooks": {
@@ -27,7 +29,7 @@
         ]
       },
       {
-        "matcher": "Skill(case-study)",
+        "matcher": "Skill(small-context)",
         "hooks": [
           {
             "type": "command",

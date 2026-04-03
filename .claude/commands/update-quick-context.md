@@ -8,17 +8,17 @@ Update the quick-context file at **$ARGUMENTS**.
 ## Argument Format
 
 The argument can be:
-1. **Path only:** `quick-context/topic-name.md` — refreshes the file
-2. **Path + notes:** `quick-context/topic-name.md "my notes to add"` — adds/updates Human notes section
+1. **Path only:** `learning/notes/quick-context/topic-name.md` — refreshes the file
+2. **Path + notes:** `learning/notes/quick-context/topic-name.md "my notes to add"` — adds/updates Human notes section
 
 ## Instructions
 
-1. **Read the existing file** at the specified path (e.g., `quick-context/3d-printer-hotends.md`)
+1. **Read the existing file** at the specified path (e.g., `learning/notes/quick-context/3d-printer-hotends.md`)
 
 2. **If human notes are provided:**
    - Add or update a `## Human notes` section **immediately after the `# Title` heading** (before "The Core Problem")
    - Place the user's notes there verbatim
-   - Scan the notes for concepts that match existing files in `quick-context/` or `micro-context/`
+   - Scan the notes for concepts that match existing files in `learning/notes/quick-context/` or `learning/notes/micro-context/`
    - Add inline Obsidian links `[[folder/filename|display text]]` where concepts naturally appear
    - Don't force links—only add them where they genuinely help understanding
 
@@ -28,7 +28,12 @@ The argument can be:
    - Any related document links
    - The current depth and focus areas
 
-4. **Research and refresh** the content:
+4. **Check Obsidian vault for additional material:**
+   - Search `brain/obsidian/` for files matching the topic: `brain/obsidian/*topic*.md` (try Title Case, lowercase, abbreviations, synonyms)
+   - Also check subdirectories: `brain/obsidian/**/*topic*.md`
+   - If a matching file exists, read it and incorporate any unique content, examples, or explanations that are missing from the current context file
+
+5. **Research and refresh** the content:
    - Use web search if needed to find current/updated information
    - Look for new developments, corrections, or additional context
    - Check if any technical details need updating
@@ -72,12 +77,12 @@ If the file doesn't exist or the path is invalid, inform the user and suggest us
 When processing the user's notes:
 
 1. **Search for related files:**
-   - `quick-context/*.md` for full treatments
-   - `micro-context/*.md` for quick definitions
+   - `learning/notes/quick-context/*.md` for full treatments
+   - `learning/notes/micro-context/*.md` for quick definitions
 
 2. **Add inline links where concepts appear:**
    - Example: User writes "I found this helpful for understanding capacitor behavior"
-   - Becomes: "I found this helpful for understanding [[quick-context/capacitor|capacitor]] behavior"
+   - Becomes: "I found this helpful for understanding [[learning/notes/quick-context/capacitor|capacitor]] behavior"
 
 3. **Don't over-link:**
    - One link per concept is enough
@@ -93,7 +98,7 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
 
-> **Related:** [[quick-context/related-topic]] | ...
+> **Related:** [[learning/notes/quick-context/related-topic]] | ...
 
 > **TL;DR:** [Summary...]
 

@@ -28,7 +28,7 @@ LEVEL 4: Reference (as needed)
 ```markdown
 # Topic Name
 
-> **Related:** [[quick-context/parent-topic]] | [[quick-context/sibling-topic]]
+> **Related:** [[learning/notes/quick-context/parent-topic]] | [[learning/notes/quick-context/sibling-topic]]
 
 > **TL;DR:** [1-2 sentence summary that captures the essence. Someone should be able to read ONLY this and understand what the topic is about at a cocktail-party level.]
 ```
@@ -100,8 +100,8 @@ If there's code, show actual runnable or realistic code, not pseudocode.]
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/related-topic-1]]** — How it connects to this topic
-- **[[quick-context/related-topic-2]]** — How it connects to this topic
+- **[[learning/notes/quick-context/related-topic-1]]** — How it connects to this topic
+- **[[learning/notes/quick-context/related-topic-2]]** — How it connects to this topic
 - **Topic without file yet** — How it connects to this topic
 
 </details>
@@ -154,7 +154,7 @@ created: 2026-01-26
 
 # Example Topic
 
-> **Related:** [[quick-context/parent]] | [[quick-context/sibling]]
+> **Related:** [[learning/notes/quick-context/parent]] | [[learning/notes/quick-context/sibling]]
 
 > **TL;DR:** Example topic is X that does Y, solving the problem of Z.
 
@@ -198,8 +198,8 @@ created: 2026-01-26
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/related-1]]** — Connection explanation
-- **[[quick-context/related-2]]** — Connection explanation
+- **[[learning/notes/quick-context/related-1]]** — Connection explanation
+- **[[learning/notes/quick-context/related-2]]** — Connection explanation
 
 </details>
 
@@ -213,9 +213,23 @@ created: 2026-01-26
 
 ---
 
+## REQUIRED: Check Obsidian Vault First
+
+Before creating the context file, you MUST check if a relevant note already exists in the Obsidian vault at `brain/obsidian/`:
+
+1. **Search** for files matching the topic:
+   - Use `Glob` with patterns like `brain/obsidian/*topic*.md` (try Title Case, lowercase, abbreviations, synonyms)
+   - Also check subdirectories: `brain/obsidian/**/*topic*.md`
+   - Try alternative names — e.g., for "capacitor" also try "Capacitor", "Cap", etc.
+2. **If a matching file exists**, read it fully
+3. **Use it as a foundation** — incorporate the Obsidian note's content, structure, and insights into the new context file. Reformat to match the quick-context template, but preserve the substance, unique explanations, examples, and any human voice/perspective from the original
+4. **If no match is found**, proceed with web research as normal
+
+---
+
 ## Output
 
-Save the response to a markdown file in the `quick-context/` folder. Use a kebab-case filename based on the topic (e.g., `quick-context/industrial-plcs.md`). Create the folder if it doesn't exist. The file should include a YAML frontmatter with:
+Save the response to a markdown file in the `learning/notes/quick-context/` folder. Use a kebab-case filename based on the topic (e.g., `learning/notes/quick-context/industrial-plcs.md`). Create the folder if it doesn't exist. The file should include a YAML frontmatter with:
 - `topic`: The topic name
 - `created`: Today's date in YYYY-MM-DD format
 
@@ -225,7 +239,7 @@ Save the response to a markdown file in the `quick-context/` folder. Use a kebab
 
 **Before writing the new document**, you MUST:
 
-1. **Search all existing quick-context files** using `Glob` with pattern `quick-context/*.md`
+1. **Search all existing quick-context files** using `Glob` with pattern `learning/notes/quick-context/*.md`
 
 2. **Read all existing files** to identify related topics. When reading files with progressive disclosure structure:
    - **TL;DR and Core sections** (always visible) give you the topic summary and key terms
@@ -252,7 +266,7 @@ Save the response to a markdown file in the `quick-context/` folder. Use a kebab
 4. **Create links in the new document**:
    - Add a `> **Related:**` header with links to the most closely related existing documents (2-5 max)
    - **Every link must have a clear reason** — don't list topics just because they're tangentially related. Ask: "Would a reader of THIS document want to follow this link?"
-   - **Prefer inline links** `[[quick-context/filename|display text]]` within prose where concepts naturally appear, rather than listing links at the top without context
+   - **Prefer inline links** `[[learning/notes/quick-context/filename|display text]]` within prose where concepts naturally appear, rather than listing links at the top without context
    - Prioritize linking terms that appear in the 5 Essential Terms tables of existing files
 
 5. **Add back-links to existing documents**:
@@ -266,18 +280,18 @@ Save the response to a markdown file in the `quick-context/` folder. Use a kebab
 
 **Example workflow:**
 ```
-1. Glob: quick-context/*.md → finds 15 existing files
+1. Glob: learning/notes/quick-context/*.md → finds 15 existing files
 2. Read all 15 files:
    - transistor.md: TL;DR mentions "switching", Terms table has "Gate, Source, Drain"
    - silicon-die.md: "How It Works" section mentions MOSFETs
    - doped-silicon.md: Peripheral Knowledge links to transistor
 3. New topic "MOSFET" relates to: transistor (parent), doped-silicon (prerequisite)
 4. In new MOSFET file:
-   - Related header: [[quick-context/transistor]] | [[quick-context/doped-silicon]]
-   - Inline: "...the [[quick-context/doped-silicon|doped silicon]] regions form..."
+   - Related header: [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/doped-silicon]]
+   - Inline: "...the [[learning/notes/quick-context/doped-silicon|doped silicon]] regions form..."
 5. Back-link updates:
-   - transistor.md: Add "MOSFET" to Terms table → [[quick-context/mosfet|MOSFET]]
-   - silicon-die.md: In <details> How It Works, link "MOSFET" → [[quick-context/mosfet|MOSFET]]
+   - transistor.md: Add "MOSFET" to Terms table → [[learning/notes/quick-context/mosfet|MOSFET]]
+   - silicon-die.md: In <details> How It Works, link "MOSFET" → [[learning/notes/quick-context/mosfet|MOSFET]]
    - doped-silicon.md: Add to Peripheral Knowledge section
 ```
 
@@ -285,7 +299,7 @@ This ensures every new quick-context file is woven into the existing knowledge g
 
 ---
 
-**Inline Links:** Throughout the document, link key terms to existing quick-context files using `[[quick-context/filename|display text]]` format. This creates a connected knowledge graph. Prioritize linking:
+**Inline Links:** Throughout the document, link key terms to existing quick-context files using `[[learning/notes/quick-context/filename|display text]]` format. This creates a connected knowledge graph. Prioritize linking:
 - Terms in the 5 essential vocabulary
 - Related concepts mentioned in the text
 
@@ -308,3 +322,5 @@ After creating or updating the quick-context file, you MUST run these skills in 
 2. **ASCII-fixer:** Run `/ascii-fixer <output-file-path>` to fix any diagram alignment issues
 
 Do not consider the task complete until both post-processing steps have been run.
+
+3. **Consolidation check:** Run `/consolidate-context` to check for overlapping or redundant context files

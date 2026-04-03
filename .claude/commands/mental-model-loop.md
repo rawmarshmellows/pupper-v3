@@ -37,9 +37,9 @@ Search existing quick-context and micro-context files for a concept from a **dif
 
 Use Glob to find all existing files:
 ```
-quick-context/*.md
-micro-context/*.md
-case-study/*.md
+learning/notes/quick-context/*.md
+learning/notes/micro-context/*.md
+learning/notes/small-context/*.md
 ```
 
 Look for matches where:
@@ -91,7 +91,7 @@ Do not create any files until the user confirms:
 
 ## Step 5: After Approval — Create the Mental Model Loop File
 
-Only after user approval, create the file in `mental-model-loop/` folder.
+Only after user approval, create the file in `learning/notes/mental-model-loop/` folder.
 
 ### File Template
 
@@ -151,18 +151,18 @@ After creating the mental model loop file:
 
 1. **Update the source file**: Add a link in the Peripheral Knowledge section:
    ```markdown
-   - **[[mental-model-loop/pattern-name]]** — Shares the "[Pattern Name]" mental model with [Target Domain]
+   - **[[learning/notes/mental-model-loop/pattern-name]]** — Shares the "[Pattern Name]" mental model with [Target Domain]
    ```
 
 2. **Update the target file**: Add a similar link:
    ```markdown
-   - **[[mental-model-loop/pattern-name]]** — Shares the "[Pattern Name]" mental model with [Source Domain]
+   - **[[learning/notes/mental-model-loop/pattern-name]]** — Shares the "[Pattern Name]" mental model with [Source Domain]
    ```
 
 ## Output
 
-- **Filename:** `mental-model-loop/[pattern-name]-[source]-[target].md` (kebab-case)
-- **Folder:** Create `mental-model-loop/` if it doesn't exist
+- **Filename:** `learning/notes/mental-model-loop/[pattern-name]-[source]-[target].md` (kebab-case)
+- **Folder:** Create `learning/notes/mental-model-loop/` if it doesn't exist
 - **Only create after explicit user approval**
 
 ## Examples of Good Mental Model Loops

@@ -645,7 +645,85 @@ test.describe('Monetisation', () => {
 });
 
 // ============================================================
-// CATEGORY 7: PERFORMANCE & TECHNICAL QUALITY
+// CATEGORY 7: TUTORIAL & ONBOARDING
+// Feeds → Dimension 9 (RPG Mechanical Integrity — Onboarding)
+// ============================================================
+test.describe('Tutorial & Onboarding', () => {
+
+  test('detect tutorial or onboarding flow', async ({ page }) => {
+    await page.goto(GAME_URL);
+    await page.waitForTimeout(1000);
+
+    const onboarding = await page.evaluate(() => {
+      const bodyText = document.body.textContent?.toLowerCase() || '';
+      const bodyHTML = document.body.innerHTML.toLowerCase();
+      return {
+        hasTutorialKeyword: /tutorial|how to play|getting started|welcome|introduction|learn how|guide|walkthrough|first steps/i.test(bodyText),
+        hasHelpButton: !!document.querySelector('[class*="help"], [aria-label*="help"], [title*="help"], button:has-text("Help"), button:has-text("?"), [class*="tutorial"]'),
+        hasTooltips: !!document.querySelector('[class*="tooltip"], [data-tooltip], [title], [class*="hint"]'),
+        hasOnboardingOverlay: !!document.querySelector('[class*="onboard"], [class*="intro"], [class*="welcome"], [class*="tutorial"]'),
+        hasProgressIndicator: !!document.querySelector('[class*="step"], [class*="progress"], [class*="stage"]'),
+        firstScreenText: bodyText.slice(0, 500),
+        interactiveElements: document.querySelectorAll('button, a, input, [role="button"], [tabindex]').length,
+        hasExplicitInstructions: /click|type|enter|select|choose|tap|press/i.test(bodyText.slice(0, 500)),
+      };
+    });
+
+    console.log(`TUTORIAL: Has tutorial keyword: ${onboarding.hasTutorialKeyword}`);
+    console.log(`TUTORIAL: Has help button: ${onboarding.hasHelpButton}`);
+    console.log(`TUTORIAL: Has tooltips: ${onboarding.hasTooltips}`);
+    console.log(`TUTORIAL: Has onboarding overlay: ${onboarding.hasOnboardingOverlay}`);
+    console.log(`TUTORIAL: Has explicit instructions in first screen: ${onboarding.hasExplicitInstructions}`);
+    console.log(`TUTORIAL: Interactive elements on first screen: ${onboarding.interactiveElements}`);
+    console.log(`TUTORIAL: First 500 chars: "${onboarding.firstScreenText.slice(0, 300)}..."`);
+  });
+
+  test('30-second clarity test — can a new player figure out what to do', async ({ page }) => {
+    await page.goto(GAME_URL);
+    await page.waitForTimeout(2000);
+
+    // Check if the first screen communicates: what the game is, what to do, and how to interact
+    const clarity = await page.evaluate(() => {
+      const bodyText = document.body.textContent?.trim() || '';
+      const first500 = bodyText.slice(0, 500).toLowerCase();
+
+      // What is this game about?
+      const hasGameContext = /quest|adventure|learn|circuit|electronics|robot|pupper|puzzle|challenge|repair|diagnos/i.test(first500);
+
+      // What should I do right now?
+      const hasCallToAction = /start|begin|create|choose|enter|play|continue|new game/i.test(first500);
+
+      // How do I interact?
+      const hasInteractionHint = /click|tap|type|select|choose|press|enter your/i.test(first500);
+
+      // Are there visible, distinguishable interactive elements?
+      const buttons = document.querySelectorAll('button:not([style*="display: none"]), a:not([style*="display: none"]), [role="button"]');
+      const visibleButtons = Array.from(buttons).filter(el => {
+        const rect = el.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+      });
+
+      return {
+        hasGameContext,
+        hasCallToAction,
+        hasInteractionHint,
+        visibleInteractiveCount: visibleButtons.length,
+        visibleButtonTexts: visibleButtons.slice(0, 10).map(b => b.textContent?.trim().slice(0, 50)),
+        clarityScore: [hasGameContext, hasCallToAction, hasInteractionHint].filter(Boolean).length,
+      };
+    });
+
+    console.log(`CLARITY: Game context communicated: ${clarity.hasGameContext}`);
+    console.log(`CLARITY: Call to action present: ${clarity.hasCallToAction}`);
+    console.log(`CLARITY: Interaction hint present: ${clarity.hasInteractionHint}`);
+    console.log(`CLARITY: Visible interactive elements: ${clarity.visibleInteractiveCount}`);
+    console.log(`CLARITY: Button texts: [${clarity.visibleButtonTexts.map(t => `"${t}"`).join(', ')}]`);
+    console.log(`CLARITY_SCORE: ${clarity.clarityScore}/3 (game context + call to action + interaction hint)`);
+  });
+});
+
+// ============================================================
+// CATEGORY 8: PERFORMANCE & TECHNICAL QUALITY
 // Feeds → overall quality assessment
 // ============================================================
 test.describe('Technical', () => {
@@ -733,6 +811,7 @@ Then read `/tmp/edu-game-test-results.txt` and parse the structured log lines (p
 | Timing & pacing | `PACING[N]:`, `PACING_SUMMARY:`, `ANIM:` | Dimension 2: Pedagogy (pacing) + Dimension 4: Flow |
 | Reward systems | `GAMIFICATION:`, `ASSESSMENT_UI:` | Dimension 4: Motivation + Dimension 5: Assessment |
 | Monetisation detection | `MONETISATION:`, `MONETISATION_FLAGS:`, `AD_FREQUENCY:`, `AD_RATE:`, `PAYWALL[N]:`, `PAYWALL_SUMMARY:`, `CONFIRMSHAMING:` | Dimension 8: Freemium Monetisation |
+| Tutorial & onboarding | `TUTORIAL:`, `CLARITY:`, `CLARITY_SCORE:` | Dimension 9: RPG Mechanical Integrity (Onboarding) |
 | Technical quality | `PERF:`, `STATE:`, `CONSOLE_ERROR:` | Overall quality + Dimension 3: State tracking |
 
 **When citing test data in your critique, always include the raw numbers.** For example:
@@ -992,10 +1071,19 @@ You evaluate across **8 dimensions**, each grounded in specific research. You do
 - Does class choice create meaningfully different playthroughs?
 - Are class-specific abilities used in encounters?
 
-**Onboarding & Explanation:**
-- Is there a tutorial or guided first encounter that teaches the player how the game works?
-- Are game mechanics (mastery, encounters, knowledge journal, regions) explained before the player encounters them?
-- Can a new player understand what they're supposed to do without external guidance?
+**Onboarding, Tutorial & First-Time Player Experience (CRITICAL):**
+
+This is one of the most important sub-dimensions. A game that is unclear about what to do will lose players immediately, regardless of how good the underlying pedagogy is.
+
+- **Dedicated tutorial section:** Does the game have an explicit tutorial or guided walkthrough that teaches the player how to play BEFORE dropping them into real gameplay? This should NOT be a wall of text — it should be interactive, walking the player through one example encounter step by step.
+- **Mechanic introduction:** Are ALL core game mechanics (mastery system, encounter types, knowledge journal, regions/zones, inventory, stats/skills, how answers are evaluated) explained with concrete examples before the player encounters them in real gameplay?
+- **First encounter guidance:** Is the very first encounter scaffolded differently from later ones? Does it explicitly tell the player what kind of input is expected (freeform text? clicking buttons? selecting from options?) and what a good response looks like?
+- **"What do I do?" test:** Drop a cold player (no prior context) into the game. Within 30 seconds, can they answer: (1) What is this game about? (2) What am I supposed to do right now? (3) How do I interact? If any of these are unclear, the onboarding fails.
+- **Progressive disclosure:** Are mechanics introduced one at a time as the player needs them, or dumped all at once? Best practice: introduce one mechanic per tutorial step, let the player use it successfully once, then introduce the next.
+- **Recoverable confusion:** If a player gets confused mid-game, is there a help button, tutorial replay, or in-game reference they can consult? Or are they stuck?
+- **Visual cues and affordances:** Are interactive elements visually distinct from narrative text? Can the player tell what's clickable/actionable vs. what's just flavor text?
+
+**A game with no tutorial or unclear onboarding CANNOT score above "partially-functional" on this dimension, regardless of how rich the RPG mechanics are.** The best mechanics in the world are worthless if the player doesn't know they exist or how to use them.
 
 **Spaced Repetition & Memory Decay:**
 - Does mastery decay over time (mimicking forgetting curves)?
@@ -1039,6 +1127,8 @@ Structure your critique as follows:
 | Monetisation: Ad Frequency | [X per Y steps] | [Interstitials disrupt learning: yes/no] |
 | Monetisation: Paywall Placement | [step N / none] | [Mid-concept or at natural boundary?] |
 | Monetisation: Dark Patterns | [X found] | [Confirmshaming, timers, social pressure] |
+| Tutorial: Onboarding Present | [yes/partial/no] | [Tutorial keyword, help button, tooltips detected] |
+| Tutorial: 30-Second Clarity | [X/3] | [Game context + call to action + interaction hint] |
 | Technical: Load Time | [Xms] | [Mobile overflow: yes/no] |
 | Technical: State Persistence | [yes/partial/no] | [localStorage/cookies/URL] |
 
