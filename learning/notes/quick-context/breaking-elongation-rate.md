@@ -42,7 +42,7 @@ Stretched before breaking:
 
 Elongation at break is fundamentally about polymer chain behavior under stress. When you pull on a material, you're forcing the tangled, coiled polymer chains to straighten out and slide past each other. In high-elongation materials like TPU, the chains are long, flexible, and loosely entangled—they can uncoil extensively before the bonds within the chains themselves start breaking. In low-elongation materials like PLA, the chains are either shorter, more rigidly structured, or locked together by crystalline regions that resist chain movement. When those chains can't slip past each other, the stress concentrates and bonds break—the material snaps.
 
-The stretching process happens in stages. First, loosely organized (amorphous) regions allow chains to straighten with relatively little force. As stretching continues, chains begin sliding past each other, overcoming weak intermolecular attractions like van der Waals forces. In highly elastic materials, this sliding can continue for a long time because the chains are flexible and the intermolecular forces re-form as chains move, preventing catastrophic failure. Eventually, if you keep pulling, the chains either run out of slack, pull apart from each other completely, or the covalent bonds in the polymer backbone itself break—that's the breaking point.
+The stretching process happens in stages. First, loosely organized (amorphous) regions allow chains to straighten with relatively little force. As stretching continues, chains begin sliding past each other, overcoming weak intermolecular attractions like [[quick-context/van-der-waals-forces|van der Waals forces]]. In highly elastic materials, this sliding can continue for a long time because the chains are flexible and the intermolecular forces re-form as chains move, preventing catastrophic failure. Eventually, if you keep pulling, the chains either run out of slack, pull apart from each other completely, or the [[quick-context/covalent-bonds|covalent bonds]] in the polymer backbone itself break—that's the breaking point.
 
 ```
 WHAT HAPPENS WHEN YOU STRETCH A POLYMER
@@ -155,7 +155,7 @@ Print Temp: 220-240°C
 ```
 
 This tells you:
-- **45 MPa tensile strength**: Moderately strong (won't tear easily)
+- **45 MPa [[quick-context/tensile-strength-materials|tensile strength]]**: Moderately strong (won't tear easily)
 - **> 650% elongation**: Extremely stretchy/flexible
 - **Shore 95A**: Firm but flexible (like a car tire, not a gummy bear)
 
@@ -199,7 +199,7 @@ TPU. Despite lower tensile strength, the 650% elongation means the bumper absorb
 <details>
 <summary>Answer</summary>
 
-The freezer temperature may be below the polymer's glass transition temperature (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
+The freezer temperature may be below the polymer's [[quick-context/glass-transition-temperature|glass transition temperature]] (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
 
 </details>
 

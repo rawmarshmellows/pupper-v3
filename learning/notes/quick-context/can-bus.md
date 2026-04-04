@@ -19,8 +19,8 @@ A robot with 12 motors needs to send position commands and receive encoder feedb
 |------|------------|
 | **Frame** | A single CAN message: an 11-bit (or 29-bit extended) identifier for priority/addressing, 0-8 bytes of data, and a CRC for error detection — everything a node needs to communicate in one shot |
 | **Arbitration** | The process by which multiple nodes trying to transmit simultaneously resolve who wins — each node watches the bus while transmitting, and the message with the lowest ID (most 0-bits) wins without any data loss or collision |
-| **Differential pair (CANH/CANL)** | The two wires of the bus — a [[micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
-| **Dominant / Recessive** | CAN's two logical states: dominant (logical 0) actively drives the bus to a differential voltage; recessive (logical 1) lets the bus float to no differential voltage — dominant always overwrites recessive, which is what makes arbitration work |
+| **[[quick-context/differential-pair|Differential pair]] (CANH/CANL)** | The two wires of the bus — a [[micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
+| **Dominant / Recessive** | CAN's two logical states: dominant (logical 0) actively drives the bus to a differential [[quick-context/voltage|voltage]]; recessive (logical 1) lets the bus float to no differential voltage — dominant always overwrites recessive, which is what makes arbitration work |
 | **[[micro-context/can-bus-termination|Termination]]** | The 120$\Omega$ [[quick-context/resistor|resistors]] at each end of the bus that match the wire's characteristic [[quick-context/impedance-and-reactance|impedance]] and absorb signals to prevent reflections |
 
 ## How CAN Fits in the Protocol Landscape
@@ -297,15 +297,15 @@ CANH and CANL on a scope during one frame:
 
 - **[[micro-context/can-bus-termination]]** — The 120$\Omega$ resistors at each bus endpoint. Explains why unterminated buses fail at high speeds and how the Pupper's R1-R4 terminate its 4 CAN buses.
 
-- **[[micro-context/spi]]** — The protocol U1 uses to send joint targets to U5 on the Pupper. SPI is faster but point-to-point; CAN is slower but multi-drop and noise-immune — they complement each other.
+- **[[micro-context/spi]]** — The protocol U1 uses to send joint targets to U5 on the Pupper. [[micro-context/spi|SPI]] is faster but point-to-point; CAN is slower but multi-drop and noise-immune — they complement each other.
 
-- **[[micro-context/i2c]]** — Another 2-wire multi-device bus, but designed for short-range, low-speed sensor communication. Comparing I2C and CAN highlights why different communication needs call for different protocols.
+- **[[micro-context/i2c]]** — Another 2-wire multi-device bus, but designed for short-range, low-speed sensor communication. Comparing [[micro-context/i2c|I2C]] and CAN highlights why different communication needs call for different protocols.
 
 - **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing how CAN fits into the Pupper's control loop: Pi → U1 → SPI → U5 → CAN → 12 servos.
 
 - **[[quick-context/pupper-bom-control-board]]** — Every physical component in the CAN subsystem: the 4 MAX3051 transceivers (U3, U4, U6, U7), the 120$\Omega$ termination resistors (R1-R4), and the JST connectors (CN1, CN2) carrying CAN signals to the servo cables.
 
-- **[[quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
+- **[[quick-context/firmware]]** — The STM32 [[quick-context/firmware|firmware]] initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
 
 - **[[quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
 
@@ -325,7 +325,7 @@ The dominant/recessive encoding enables non-destructive arbitration. When two no
 **Q2:** A CAN bus has 5 nodes on a 10-meter cable. Where do you place termination resistors?
 <details>
 <summary>Answer</summary>
-Only at the two physical endpoints of the bus — the first and last node on the cable. The 3 middle nodes must NOT have termination. Placing a termination resistor at a middle node would create a parallel resistance that lowers the bus impedance below 120$\Omega$, distorting signal levels and causing reflections from the impedance mismatch. See: [[micro-context/can-bus-termination]] and the bus topology diagram.
+Only at the two physical endpoints of the bus — the first and last node on the cable. The 3 middle nodes must NOT have termination. Placing a termination [[quick-context/resistor|resistor]] at a middle node would create a parallel resistance that lowers the bus impedance below 120$\Omega$, distorting signal levels and causing reflections from the impedance mismatch. See: [[micro-context/can-bus-termination]] and the bus topology diagram.
 </details>
 
 **Q3:** Two CAN messages are transmitted at the same time — ID 0x300 and ID 0x100. Which one wins, and why?

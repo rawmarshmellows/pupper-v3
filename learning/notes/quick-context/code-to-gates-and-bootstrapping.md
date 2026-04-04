@@ -328,9 +328,9 @@ POWER-ON SEQUENCE
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a [[quick-context/transistor|transistor]] works ([[quick-context/voltage|voltage]] on gate controls current flow) is the foundation for understanding how gates compute.
 
-- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
+- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog [[quick-context/transistor-analog-to-digital|transistors]] are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — The physical packaging hierarchy from 5nm transistors to millimeter-scale connectors. Where the logic gates physically live on the die.
 
@@ -377,7 +377,7 @@ POWER-ON SEQUENCE
 **Theoretically yes, practically no.** A modern compiler like GCC has millions of lines of code. Converting that to binary by hand would take lifetimes and be essentially impossible to debug. The bootstrapping chain exists precisely because each layer makes the next layer *feasible to write*. Binary → assembler is tedious but doable (hundreds of instructions). Assembly → simple compiler is hard but manageable (thousands of instructions). Simple compiler → better compiler is routine software engineering. Each step is just barely within human capability, while skipping steps is not. See: Concrete Example (THE BOOTSTRAPPING CHAIN)
 </details>
 
-**Q5:** The Reset Vector is hardwired to point to a ROM address. But ROM is read-only — so how do modern computers update their firmware (BIOS/UEFI)?
+**Q5:** The Reset Vector is hardwired to point to a ROM address. But ROM is read-only — so how do modern computers update their [[quick-context/firmware|firmware]] (BIOS/UEFI)?
 <details>
 <summary>Answer</summary>
 **Modern "ROM" isn't truly read-only — it's flash memory (EEPROM)** that can be electrically erased and rewritten, just not during normal operation. Firmware updates write new code to this flash memory, replacing the old boot instructions. The Reset Vector address itself never changes (it's hardwired in the CPU), but the *contents* at that address can be updated. This is why firmware updates carry risk — if the update fails mid-write, the boot instructions are corrupted and the CPU will try to execute garbage at the Reset Vector address, potentially bricking the device.

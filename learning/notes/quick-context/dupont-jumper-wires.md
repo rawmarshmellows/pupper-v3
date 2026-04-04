@@ -2,6 +2,8 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[quick-context/qwiic-stemma-qt-i2c]] | [[quick-context/robot-cell-integration-best-practices]] | [[micro-context/swd-serial-wire-debug]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/fundamental-electronic-parts-index]]
+
 
 # DuPont Jumper Wires
 
@@ -9,7 +11,7 @@ created: 2026-04-03
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without soldering. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
 
 ## 5 Essential Terms
 
@@ -120,7 +122,7 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 | Current | 3A | ~1A max, 500mA comfortable |
 | Mating cycles | 500+ | 50-100 before loosening |
 | Contact resistance | 15-20 m$\Omega$ | 50-200+ m$\Omega$ (variable) |
-| Voltage | 250V AC/DC | Rarely the limiting factor |
+| [[quick-context/voltage|Voltage]] | 250V AC/DC | Rarely the limiting factor |
 | Temperature | -25$^\circ$C to +85$^\circ$C | PVC degrades above 80$^\circ$C |
 
 </details>
@@ -198,11 +200,11 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, [[micro-context/i2c|I2C]] failures, serial corruption. When debugging, suspect the physical layer first.
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
-6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from oxidation, vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
+6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from [[micro-context/oxidation|oxidation]], vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
 
 7. **Mixing 2.54mm and 2.0mm pitch** -- Some boards (certain ESP modules, fine-pitch breakouts) use 2.0mm headers. Standard DuPont connectors won't seat properly.
 
@@ -217,7 +219,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 - **Wire gauge (AWG)** -- Understanding current capacity vs wire thickness; critical for knowing when DuPont jumpers are adequate
 - **Crimping** -- The mechanical process of attaching contacts to wire; the skill needed to make custom DuPont cables
 - **RC servo connectors** -- 3-pin DuPont-compatible connectors used throughout hobby robotics and RC models
-- **I2C / Qwiic / STEMMA QT** -- Modern standardized connector ecosystems (JST SH 4-pin) replacing ad-hoc DuPont wiring for sensor buses
+- **I2C / [[quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT]]** -- Modern standardized connector ecosystems (JST SH 4-pin) replacing ad-hoc DuPont wiring for sensor buses
 
 </details>
 
@@ -243,7 +245,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 **Q1:** What pitch dimension defines a DuPont connector, and why does that number matter?
 <details>
 <summary>Answer</summary>
-2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and PCB pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
+2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and [[quick-context/pcb-printed-circuit-board|PCB]] pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
 </details>
 
 **Q2:** Why are modern "DuPont" connectors less reliable than the original Berg Mini-PV design?
