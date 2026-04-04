@@ -11,7 +11,7 @@ created: 2026-01-14
 
 ## The Core Problem: OEE Hides Unused Capacity
 
-TEEP exists because OEE lies to you by omission. OEE measures how well you use equipment *during scheduled production time*, but says nothing about the other 8,760 hours in a year. A line running one shift with 85% OEE looks great on paper, but you're only using 28% of your theoretical capacity.
+TEEP exists because [[quick-context/oee-overall-equipment-effectiveness|OEE]] lies to you by omission. OEE measures how well you use equipment *during scheduled production time*, but says nothing about the other 8,760 hours in a year. A line running one shift with 85% OEE looks great on paper, but you're only using 28% of your theoretical capacity.
 
 TEEP exposes this by measuring against *all calendar time*—24 hours a day, 365 days a year. The formula is simple: TEEP = OEE x Utilization, where Utilization is scheduled time divided by total calendar time.
 

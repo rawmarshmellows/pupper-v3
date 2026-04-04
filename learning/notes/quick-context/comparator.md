@@ -11,7 +11,7 @@ created: 2026-04-01
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
-A battery monitor needs to answer a simple question: "Is the battery voltage above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
+A battery monitor needs to answer a simple question: "Is the battery [[quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
 
 ## 5 Essential Terms
 
@@ -24,7 +24,7 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
-<summary><strong>How It Works</strong> --- From transistor pairs to digital output</summary>
+<summary><strong>How It Works</strong> --- From [[quick-context/transistor|transistor]] pairs to digital output</summary>
 
 ### The Functional View: What a Comparator Does
 
@@ -174,7 +174,7 @@ SIGNAL FLOW
 
 ### What Makes It Different from an Op-Amp
 
-An [[quick-context/op-amp|op-amp]] and a comparator have the same input stage (differential pair), but everything after that is optimized differently:
+An [[quick-context/op-amp|op-amp]] and a comparator have the same input stage ([[quick-context/differential-pair|differential pair]]), but everything after that is optimized differently:
 
 ```
 OP-AMP vs COMPARATOR: Same Input, Different Optimization
@@ -282,7 +282,7 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 | **Schmitt trigger IC** (74HC14) | 15 ns | Digital signal cleaning, debouncing |
 | **Window comparator** (LM339 pair) | 300 ns | "Is voltage between A and B?" |
 
-The other key tension is **dedicated comparator vs. op-amp used as a comparator**:
+The other key tension is **dedicated comparator vs. [[quick-context/op-amp|op-amp]] used as a comparator**:
 
 | Factor | Dedicated Comparator | Op-Amp as Comparator |
 |--------|---------------------|---------------------|
@@ -382,7 +382,7 @@ CURRENT CONSUMPTION:
     Total: ~23 μA — negligible for a battery that holds 2000+ mAh
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation capacitor that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
+**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation [[quick-context/capacitor|capacitor]] that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
 
 </details>
 
@@ -391,13 +391,13 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
-- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
+- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output [[quick-context/transistor-analog-to-digital|transistors]] for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
 - **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
-- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit ADC---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
+- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]]---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
 
 - **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] dividers create both the reference voltage and the scaled feedback signal. Divider accuracy directly determines threshold accuracy.
 
@@ -429,7 +429,7 @@ CURRENT CONSUMPTION:
 **Q4:** In a flash ADC, why do you need $2^n - 1$ comparators for n bits of resolution?
 <details>
 <summary>Answer</summary>
-**Each comparator represents one possible threshold level.** An n-bit ADC must distinguish $2^n$ voltage levels. The boundaries between adjacent levels require $2^n - 1$ comparators, each with its reference voltage set to a different point on a resistor ladder. All comparators fire simultaneously---those whose reference is below the input output HIGH, those above output LOW. A priority encoder then converts this "thermometer code" (a string of 1s followed by 0s) into a binary number. For example, an 8-bit flash ADC needs 255 comparators. This is why flash ADCs are fast (one clock cycle) but expensive (exponential hardware). See: Peripheral Knowledge (ADC connection).
+**Each comparator represents one possible threshold level.** An n-bit ADC must distinguish $2^n$ voltage levels. The boundaries between adjacent levels require $2^n - 1$ comparators, each with its reference voltage set to a different point on a [[quick-context/resistor|resistor]] ladder. All comparators fire simultaneously---those whose reference is below the input output HIGH, those above output LOW. A priority encoder then converts this "thermometer code" (a string of 1s followed by 0s) into a binary number. For example, an 8-bit flash ADC needs 255 comparators. This is why flash ADCs are fast (one clock cycle) but expensive (exponential hardware). See: Peripheral Knowledge (ADC connection).
 </details>
 
 **Q5:** A window comparator uses two comparators to detect whether a voltage is between two limits (e.g., 2.5V < Vin < 3.5V). Draw the logic: how do you combine two comparator outputs to get a single "in range" signal?

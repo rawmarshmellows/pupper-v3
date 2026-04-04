@@ -31,8 +31,8 @@ BUILDING BLOCKS - What you need to know before understanding reduction:
 | **Cation** | A positively charged ion—an atom that has *lost* one or more electrons. Examples: H^+ (hydrogen lost 1 electron), Cu^(2+) (copper lost 2 electrons), Na^+ (sodium lost 1 electron). The "+" indicates positive charge. Memory trick: "Cation" has a "t" that looks like a "+" sign. |
 | **Electron** | A subatomic particle with negative charge (written as e^- or just e). Electrons are what flow through wires as electricity. Gaining electrons makes something more negative; losing them makes it more positive. |
 | **Reduction** | The process of *gaining* electrons. When a cation is "reduced," it receives electrons and becomes less positive (or neutral). Remember "OILRIG": **R**eduction **I**s **G**ain of electrons. |
-| **Cathode** | The negative electrode in an electrolysis setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
-| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the anode is the positive one. |
+| **[[micro-context/cathode|Cathode]]** | The negative electrode in an [[quick-context/electrolysis|electrolysis]] setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
+| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the [[micro-context/anode|anode]] is the positive one. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -115,7 +115,7 @@ VISUALIZING MULTIPLE CATIONS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force (voltage) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
+The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force ([[quick-context/voltage|voltage]]) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
 
 </details>
 

@@ -9,7 +9,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Metal interconnect layers are the "parking garage" of wiring built on top of the transistors inside a computer chip—stacked layers of metal wiring (typically copper) that route electrical signals between transistors. Without metal interconnect layers, you'd have billions of transistors sitting in silence, unable to do anything: no way to deliver power, no way to get signals in or out, no way to build complex circuits.
+Metal interconnect layers are the "parking garage" of wiring built on top of the [[quick-context/transistor-analog-to-digital|transistors]] inside a computer chip—stacked layers of metal wiring (typically copper) that route electrical signals between transistors. Without metal interconnect layers, you'd have billions of transistors sitting in silence, unable to do anything: no way to deliver power, no way to get signals in or out, no way to build complex circuits.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Metal interconnect layers are the "parking garage" of wiring built on top of the
 | **Metal Layer (M1, M2... M10+)** | Horizontal wiring levels stacked above the transistors; M1 is closest to transistors, M10 is near the top |
 | **Pitch** | The spacing between adjacent wires; tighter pitch = more wires, but harder to manufacture |
 | **Dielectric** | The insulating material between wires that prevents short circuits (usually silicon dioxide or low-k materials) |
-| **Bond Pad** | Large metal squares at the top interconnect layer where the chip connects to the outside world |
+| **[[quick-context/bond-pad|Bond Pad]]** | Large metal squares at the top interconnect layer where the chip connects to the outside world |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -199,7 +199,7 @@ THE FUNDAMENTAL TRADEOFF
 | How many metal layers? | More layers = more routing flexibility but higher cost |
 | What metal to use? | Copper (fast) vs. newer materials like ruthenium/cobalt at tiny scales |
 | How tight a pitch? | Tighter = more density but manufacturing challenges |
-| Low-k dielectrics? | Lower capacitance (faster signals) but mechanically fragile |
+| Low-k dielectrics? | Lower [[quick-context/capacitance|capacitance]] (faster signals) but mechanically fragile |
 
 </details>
 
@@ -270,7 +270,7 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 
 - **RC Delay** — Resistance (R) × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
 
-- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes voltage droop and chip failure.
+- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes [[quick-context/voltage|voltage]] droop and chip failure.
 
 - **[[quick-context/electromigration|Electromigration]]** — The phenomenon where current flowing through thin wires physically moves metal atoms, eventually breaking the wire; this limits how much current each wire can safely carry and becomes more critical as wire cross-sections shrink.
 
@@ -294,7 +294,7 @@ Bottom layers connect individual transistors and need high density (many wires i
 **Q3:** If you halve the width of a wire, what happens to its resistance, and why is this problematic for chip scaling?
 <details>
 <summary>Answer</summary>
-Halving wire width reduces cross-sectional area to 1/4, causing resistance to increase 4×. This means signals travel slower and more heat is generated. As chips shrink, interconnect resistance becomes the limiting factor rather than transistor speed—this is the "interconnect bottleneck." See: The Key Tension and What Outsiders Get Wrong
+Halving wire width reduces cross-sectional area to 1/4, causing resistance to increase 4×. This means signals travel slower and more heat is generated. As chips shrink, interconnect resistance becomes the limiting factor rather than [[quick-context/transistor|transistor]] speed—this is the "interconnect bottleneck." See: The Key Tension and What Outsiders Get Wrong
 </details>
 
 **Q4:** A chip designer claims: "We added more metal layers to our chip, so it will definitely be faster." What's potentially wrong with this claim?
@@ -303,7 +303,7 @@ Halving wire width reduces cross-sectional area to 1/4, causing resistance to in
 More metal layers don't automatically mean faster. While extra layers provide more routing flexibility, signals must travel through more vias (adding resistance) to reach upper layers. If the additional layers have longer average wire lengths, RC delay could actually increase. The speed depends on how efficiently the layers are used, not just how many exist. See: The Key Tension and How It Works
 </details>
 
-**Q5:** How does the interconnect bottleneck relate to the broader trend of "More than Moore" packaging innovations like chiplets and 3D stacking mentioned in the PCB-chip hierarchy?
+**Q5:** How does the interconnect bottleneck relate to the broader trend of "More than Moore" packaging innovations like chiplets and 3D stacking mentioned in the [[quick-context/pcb-printed-circuit-board|PCB]]-chip hierarchy?
 <details>
 <summary>Answer</summary>
 As interconnects within a single die hit scaling limits, designers are moving communication *between* dies (chiplets connected via interposers or stacked vertically) rather than trying to cram everything onto one die with impossibly long wires. This "More than Moore" approach uses packaging innovation (multiple dies with shorter interconnects each) rather than fighting physics by making wires ever thinner. The interconnect bottleneck on a single die directly motivates splitting designs across multiple dies. See: What Outsiders Get Wrong and [[quick-context/pcb-chip-transistor-hierarchy]] (The Key Tension section)

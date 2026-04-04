@@ -285,7 +285,7 @@ ERA 4: FROM SCREEN TO CPU -- THE MODERN WORKFLOW
   +------------------------------------------+
 ```
 
-For embedded/firmware development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
+For embedded/[[quick-context/firmware|firmware]] development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
 
 ### Where Is Your Code Stored?
 
@@ -447,11 +447,11 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The compilation chain in full detail: how source code becomes machine instructions through 7 layers of abstraction, and how the first compiler was bootstrapped from hand-coded binary. This document covers what happens *after* you save your file and invoke the compiler.
 
-- **[[quick-context/from-code-to-running-firmware]]** — The embedded variant of the pipeline: linking, flashing, and booting on a microcontroller. What happens when your compiled code targets a chip with no OS.
+- **[[quick-context/from-code-to-running-firmware]]** — The embedded variant of the pipeline: linking, flashing, and booting on a [[micro-context/microcontroller|microcontroller]]. What happens when your compiled code targets a chip with no OS.
 
 - **[[quick-context/transistor]]** — The physical switch that replaced vacuum tubes and made modern computing possible. Every logic gate in the CPU is built from these.
 
-- **[[quick-context/transistor-design-history]]** — The evolution from point-contact transistors (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
+- **[[quick-context/transistor-design-history]]** — The evolution from point-contact [[quick-context/transistor-analog-to-digital|transistors]] (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 

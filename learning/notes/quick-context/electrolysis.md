@@ -14,7 +14,7 @@ updated: 2026-01-22
 
 Many important chemical changes won't happen on their own because they require climbing to a higher energy state. Electrolysis uses electricity to push these non-spontaneous reactions forward, supplying energy directly to move electrons against their natural flow—pushing reactions "uphill" to make otherwise impossible chemistry occur.
 
-The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, electrolyte, electron flow), opposite energy direction.
+The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components ([[quick-context/electrodes|electrodes]], [[quick-context/electrolyte|electrolyte]], electron flow), opposite energy direction.
 
 This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chemical bond energies]]: breaking bonds costs energy, forming bonds releases it. Water's O-H bonds are stable (~460 kJ/mol each)—nature doesn't want to break them. Electrolysis supplies that bond-breaking energy electrically, storing it in the separated H₂ and O₂ gases. Recombining them (in a fuel cell or combustion) releases that stored energy.
 
@@ -23,8 +23,8 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 | Term | Definition |
 |------|------------|
 | **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
-| **Cathode/Anode** | Cathode = reduction (electrons flow in, cations migrate here); Anode = oxidation (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
-| **Overpotential** | Extra voltage beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
+| **[[micro-context/cathode|Cathode]]/[[micro-context/anode|Anode]]** | Cathode = reduction (electrons flow in, cations migrate here); Anode = [[micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
+| **Overpotential** | Extra [[quick-context/voltage|voltage]] beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
 | **Current Efficiency** | Fraction of electrons doing useful chemistry vs. side reactions; industrial processes obsess over this since small losses mean millions in wasted electricity |
 
@@ -247,7 +247,7 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking covalent bonds in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
+- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking [[quick-context/covalent-bonds|covalent bonds]] in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
 
 - **[[quick-context/galvanic-cells-batteries|Galvanic/Voltaic Cells (Batteries)]]** — Spontaneous redox reactions producing electricity. Same components as electrolysis cells, opposite energy flow. Understanding one illuminates the other.
 
@@ -276,7 +276,7 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 **In solution, water reduces before sodium does.** At the cathode, both Na⁺ and H₂O can accept electrons. Water's reduction (2H₂O + 2e⁻ → H₂ + 2OH⁻) has a much more favorable potential (~-0.83V) than sodium's (Na⁺ + e⁻ → Na, E° = -2.71V). Water "wins" and hydrogen evolves instead of sodium depositing. In molten NaCl, there's no water—Na⁺ is the only option. This is why all alkali and alkaline earth metals are produced from molten salt electrolysis, never aqueous solutions. See: Connection to Other Concepts (electrochemical series)
 </details>
 
-**Q3:** Someone claims "hydrogen fuel stores energy in its chemical bonds." What's wrong with this statement, and what's the correct way to think about it?
+**Q3:** Someone claims "hydrogen fuel stores energy in its [[quick-context/chemical-bonds-spectrum|chemical bonds]]." What's wrong with this statement, and what's the correct way to think about it?
 <details>
 <summary>Answer</summary>
 **Energy is stored in the system's configuration, not "in bonds."** Breaking bonds always *costs* energy; forming bonds *releases* energy. When you electrolyze water, you put energy IN to break strong O-H bonds. The products (H₂ and O₂) are at higher chemical potential—they "want" to react. When they recombine in a fuel cell, new O-H bonds form, releasing that potential energy. The energy was stored by separating reactive species, not by putting energy "into" hydrogen's H-H bond. This is like storing energy by lifting a weight (gravitational potential) vs. claiming the energy is "in the weight." See: What Outsiders Get Wrong

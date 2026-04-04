@@ -222,7 +222,7 @@ Steps 4-5 are why the linker script exports symbols like `_sdata`, `_edata`, `_s
 <details>
 <summary><strong>The Key Tension</strong> — Flash vs. RAM and the .data problem</summary>
 
-The fundamental tension in embedded firmware is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
+The fundamental tension in embedded [[quick-context/firmware|firmware]] is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
 
 A global variable like `int speed = 100;` needs to be `100` when your code first reads it. But RAM is empty after power-on. The only persistent storage is flash. So the initial value `100` must be stored in flash, then copied to RAM before `main()` runs. This is why:
 
@@ -245,7 +245,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
@@ -334,7 +334,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
-- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
+- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via [[micro-context/swd-serial-wire-debug|SWD]]. Focuses on the debug probe side of the process.
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 

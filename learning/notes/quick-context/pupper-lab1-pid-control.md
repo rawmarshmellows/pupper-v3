@@ -206,7 +206,7 @@ With $K_p = 1.0$, $K_d = 5.0$ (too sluggish, overdamped):
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview. Lab 1's PD controller is reused directly in Labs 3 (IK trajectory tracking) and 4 (gait control), and its concepts appear in Lab 7's proportional yaw controller for visual tracking.
-- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over CAN bus to the servo motors.
+- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over [[quick-context/can-bus|CAN bus]] to the servo motors.
 - **ROS2 `sensor_msgs/JointState`** — The message type on `/joint_states`. Fields: `name[]` (joint names), `position[]` (radians), `velocity[]` (rad/s), `effort[]` (Nm). The node must index into these arrays to find the correct joint.
 - **`forward_command_controller`** — A ROS2 control plugin from `ros2_controllers`. The YAML config maps joint names to command interfaces (effort) and state interfaces (position, velocity). It bypasses any built-in PID so students implement their own.
 - **Torque vs. position control** — Most hobby servos accept position commands. The Pupper's motors accept raw torque commands, giving students direct control over the force applied — essential for learning PD control from first principles.

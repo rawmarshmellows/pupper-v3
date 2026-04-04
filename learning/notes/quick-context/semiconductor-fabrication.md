@@ -12,7 +12,7 @@ source: Branch Education video on CPU manufacturing
 
 ## The Core Problem: Building Structures Smaller Than Light Can See
 
-You need to build billions of [[quick-context/transistor|transistors]], each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You can't "see" what you're building, you can't touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
+You need to build billions of [[quick-context/transistor|transistors]], each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You can't "see" what you're building, you can't touch it (a fingerprint would destroy thousands of [[quick-context/transistor-analog-to-digital|transistors]]), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
 
 ## 5 Essential Terms
 
@@ -62,7 +62,7 @@ THE SIX TOOL CATEGORIES IN SEMICONDUCTOR FABRICATION
 
 ### The Manufacturing Cycle for ONE Layer
 
-Each layer of a chip—whether it's a transistor layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
+Each layer of a chip—whether it's a [[quick-context/transistor|transistor]] layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
 
 ```
 ONE LAYER MANUFACTURING CYCLE
@@ -508,7 +508,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar [[micro-context/mosfet|MOSFET]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 
@@ -542,7 +542,7 @@ Chip fabrication faces a fundamental tradeoff between throughput, resolution, an
 **Q5:** How does the fabrication process connect the raw material (silicon wafer) to the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]]? What would happen to the hierarchy if ion implantation suddenly became impossible?
 <details>
 <summary>Answer</summary>
-Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "silicon die" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
+Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "[[quick-context/silicon-die|silicon die]]" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
 </details>
 
 </details>

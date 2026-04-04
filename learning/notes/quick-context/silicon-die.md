@@ -11,7 +11,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-A silicon die solves the fundamental problem of cramming billions of microscopic switches (transistors) onto something small enough to fit in your devices, yet organized enough to actually compute. The die is a pre-built city of billions of transistors, already connected by microscopic metal highways, manufactured all at once through a photographic printing process—without this approach, a modern CPU would cost billions of dollars and take centuries to assemble.
+A silicon die solves the fundamental problem of cramming billions of microscopic switches ([[quick-context/transistor-analog-to-digital|transistors]]) onto something small enough to fit in your devices, yet organized enough to actually compute. The die is a pre-built city of billions of transistors, already connected by microscopic metal highways, manufactured all at once through a photographic printing process—without this approach, a modern CPU would cost billions of dollars and take centuries to assemble.
 
 ## 5 Essential Terms
 
@@ -19,8 +19,8 @@ A silicon die solves the fundamental problem of cramming billions of microscopic
 |------|------------|
 | **Die** (or "chip") | The actual piece of silicon containing all the transistors; typically 5-400 mm² in area, cut from a larger wafer |
 | **Wafer** | A thin, circular disc of ultra-pure silicon (usually 300mm diameter) on which hundreds of identical dies are manufactured simultaneously |
-| **Transistor** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
-| **Metal interconnect layers** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
+| **[[quick-context/transistor|Transistor]]** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
+| **[[quick-context/metal-interconnect-layers|Metal interconnect layers]]** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
 | **Dicing** | The process of cutting a finished wafer into individual dies using diamond saws, lasers, or plasma etching |
 
 <details>
@@ -227,7 +227,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, [[quick-context/voltage|voltage]], and resistance explains why dies consume power and generate heat.
 
 </details>
 

@@ -16,7 +16,7 @@ The substrate is the "translator" that takes a chip's tiny, densely-packed conne
 
 | Term | Definition |
 |------|------------|
-| **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of transistors; this is what people usually mean by "the chip" |
+| **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of [[quick-context/transistor-analog-to-digital|transistors]]; this is what people usually mean by "the chip" |
 | **Pitch** | The distance between the centers of adjacent connections; smaller pitch = more connections in the same space |
 | **Redistribution Layer (RDL)** | Metal routing layers inside the substrate that reroute signals from one location/pitch to another |
 | **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
@@ -121,7 +121,7 @@ SUBSTRATE MATERIALS COMPARISON
 3. **Signal travels through vias** (tiny vertical holes filled with metal) to inner layers
 4. **Redistribution layers** route the signal horizontally, spreading connections outward
 5. **More vias** bring the signal down to the bottom layer
-6. **Signal reaches a BGA ball pad** which holds a solder ball
+6. **Signal reaches a [[quick-context/bga-ball-grid-array|BGA]] ball pad** which holds a solder ball
 7. **Solder ball melts** and bonds to the circuit board when the package is assembled
 
 ### The Fan-Out Mechanism: How Redistribution Actually Works
@@ -405,7 +405,7 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
@@ -414,9 +414,9 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
-- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
+- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; [[quick-context/wire-bonding|wire bonding]] is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 
-- **Underfill** — An epoxy material injected between the die and substrate after flip-chip attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
+- **Underfill** — An epoxy material injected between the die and substrate after [[quick-context/flip-chip|flip-chip]] attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
 
 - **Interposer (2.5D Packaging)** — A silicon or glass layer placed between multiple chiplets and the substrate; enables even finer-pitch connections for high-bandwidth chip-to-chip communication.
 
