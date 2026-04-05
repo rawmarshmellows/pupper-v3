@@ -376,13 +376,13 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/electric-current|Electric Current]]** — Understanding how electrons flow helps you grasp why doping creates free charge carriers that enable current flow.
 
-- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through covalent bonds; doping works because it disrupts this sharing pattern.
+- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through [[quick-context/covalent-bonds|covalent bonds]]; doping works because it disrupts this sharing pattern.
 
 - **Band Gap Theory** — The deeper physics of why semiconductors behave differently from conductors and insulators; explains energy levels that electrons must overcome to move.
 
 - **[[quick-context/subatomic-particles]]** — The fundamental particles (protons, neutrons, electrons) that make up atoms. Silicon has 14 protons and 4 outer electrons; doping changes the electron count at specific locations to create controllable charge carriers.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from BJT (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from [[quick-context/bjt|BJT]] (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
 
 </details>
 
@@ -398,7 +398,7 @@ N-type silicon has extra free electrons (from dopants like phosphorus with 5 bon
 **Q2:** Why is pure, undoped silicon a poor conductor?
 <details>
 <summary>Answer</summary>
-In pure silicon, every electron is "locked" in covalent bonds with neighboring atoms. There are no free electrons available to carry electrical current. Doping adds either extra electrons (N-type) or creates holes (P-type) that can move and carry current. See: Step 1 in "How It Works"
+In pure silicon, every electron is "locked" in [[quick-context/covalent-bonds|covalent bonds]] with neighboring atoms. There are no free electrons available to carry electrical current. Doping adds either extra electrons (N-type) or creates holes (P-type) that can move and carry current. See: Step 1 in "How It Works"
 </details>
 
 **Q3:** Why do different regions of a transistor require different doping concentrations?

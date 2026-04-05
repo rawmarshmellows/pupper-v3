@@ -7,6 +7,7 @@ updated: 2026-03-27
 # JST Connector Families
 
 > **See also:** [[quick-context/pupper-bom-control-board]]
+> **Related:** [[quick-context/dupont-jumper-wires|DuPont Jumper Wires]] | [[quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem]]
 
 **Definition:** JST (Japan Solderless Terminal) makes dozens of wire-to-board connector series, each identified by a 2-3 letter code. The series determines pitch, current rating, locking, and mounting style. "MX 1.25mm" is **not** an official JST series -- it's a misnomer for generic 1.25mm connectors (likely Molex PicoBlade clones). The real JST 1.25mm connector is the **GH** series. **SH** (1.0mm) is official and genuine.
 

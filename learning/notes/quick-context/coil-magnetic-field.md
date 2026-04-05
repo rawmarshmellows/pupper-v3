@@ -7,7 +7,7 @@ created: 2026-02-14
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
 
-> **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
+> **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by [[quick-context/maxwell-equations|Maxwell's equations]] and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 
 ## The Core Problem
 
@@ -28,7 +28,7 @@ You've wrapped wire into a coil and run [[quick-context/electric-current|current
 
 ## The Fundamental Fact: Moving Charges Create Magnetic Fields
 
-This isn't derived from something more basic—it's a law of nature. Experiments show it. Maxwell's equations encode it. Special relativity explains it as a consequence of how electric fields transform between reference frames. But at the practical level: **any moving electric charge creates a magnetic field that circles around its direction of motion.**
+This isn't derived from something more basic—it's a law of nature. Experiments show it. [[quick-context/maxwell-equations|Maxwell's equations]] encode it. Special relativity explains it as a consequence of how electric fields transform between reference frames. But at the practical level: **any moving electric charge creates a magnetic field that circles around its direction of motion.**
 
 ```
 WHY MOVING CHARGES CREATE MAGNETIC FIELDS — The Deep Answer
@@ -656,7 +656,7 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the [[quick-context/faraday-tensor|Faraday tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 

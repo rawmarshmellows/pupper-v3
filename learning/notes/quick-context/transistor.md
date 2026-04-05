@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[micro-context/mosfet|MOSFET]]** ([[micro-context/mosfet|Metal-Oxide-Semiconductor Field-Effect Transistor]]). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -495,7 +495,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through [[quick-context/bjt|BJT]], planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
 
 </details>
 
@@ -520,7 +520,7 @@ The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal g
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
+**Q4:** If making the oxide layer thinner increases [[quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
 As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works

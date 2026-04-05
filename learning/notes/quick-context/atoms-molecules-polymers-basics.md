@@ -27,7 +27,7 @@ Everything physical you touch—including the plastic [[quick-context/3d-printin
 
 Matter builds up in layers of increasing complexity, and each layer determines different properties. At the base, atoms are the fundamental units—protons and neutrons in a nucleus, surrounded by electrons. Atoms bond together by sharing or transferring electrons, forming molecules. When a molecule has reactive "ends" that can link to other identical molecules, we call it a monomer—the building block for polymers. Through polymerization reactions, hundreds to thousands of monomers link end-to-end into long chains called polymers. The properties of the final plastic (strength, flexibility, melting point) emerge from three factors: (1) what the monomer is (determines backbone chemistry), (2) how long the chains are (determines entanglement and strength), and (3) how the chains pack together (crystalline regions are rigid; amorphous regions are flexible).
 
-In 3D printing, you exploit the thermoplastic property: heating gives polymer chains enough energy to overcome the weak intermolecular forces (van der Waals, hydrogen bonds) that hold them in place. The chains don't break—they just gain mobility to slide past each other, allowing the material to flow through the nozzle. Upon cooling, chains lose energy, intermolecular forces reassert themselves, and chains lock into new positions. The extruded material solidifies. Crucially, if chains from the new layer can interpenetrate with chains from the previous layer before cooling, you get strong layer adhesion—the layers literally tangle together at the molecular level. If the previous layer is too cold, chains can't intermix, and you get weak layer bonds.
+In 3D printing, you exploit the thermoplastic property: heating gives polymer chains enough energy to overcome the weak intermolecular forces ([[quick-context/van-der-waals-forces|van der Waals]], [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]]) that hold them in place. The chains don't break—they just gain mobility to slide past each other, allowing the material to flow through the nozzle. Upon cooling, chains lose energy, intermolecular forces reassert themselves, and chains lock into new positions. The extruded material solidifies. Crucially, if chains from the new layer can interpenetrate with chains from the previous layer before cooling, you get strong layer adhesion—the layers literally tangle together at the molecular level. If the previous layer is too cold, chains can't intermix, and you get weak layer bonds.
 
 ```
 THE HIERARCHY OF MATTER → POLYMERS
@@ -221,11 +221,10 @@ Brittle when cold.            Branched, tangled chains.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/covalent-bonds]] — The primary bond type holding atoms together within molecules and polymer chains; understanding covalent bonds explains why polymer chains are strong but the material can still melt.
+- [[quick-context/covalent-bonds]] — The primary bond type holding atoms together within molecules and polymer chains; understanding [[quick-context/covalent-bonds|covalent bonds]] explains why polymer chains are strong but the material can still melt.
 - [[quick-context/polymer-chemical-bonds|Chemical bonds]] — Deeper dive into the specific bond types that form polymer backbones and crosslinks; essential for understanding thermosets vs. thermoplastics.
 - [[quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] — Weak attractions between chains that affect melting point and layer adhesion; explains why nylon absorbs moisture and prints differently when wet.
 - [[quick-context/van-der-waals-forces|Van der Waals forces]] — The weakest intermolecular forces, but they add up across long polymer chains; crucial for understanding why longer chains = stronger parts.
-- [[quick-context/biology-fundamentals]] — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
 - [[quick-context/subatomic-particles]] — The fundamental building blocks (protons, neutrons, electrons, quarks) that make up atoms; explains why different elements have different numbers of bonds and chemical behaviors.
 
 </details>
@@ -248,7 +247,7 @@ When you heat a thermoplastic, you're not breaking the [[quick-context/covalent-
 **Q3:** Why do longer polymer chains generally produce stronger parts but require higher printing temperatures?
 <details>
 <summary>Answer</summary>
-Longer chains have more contact points with neighboring chains, creating more intermolecular attractions (van der Waals forces) that hold the solid together—hence parts with greater [[quick-context/tensile-strength-materials|tensile strength]]. However, those same additional attractions mean you need more thermal energy to free the chains from each other, resulting in higher melting/processing temperatures and more viscous melts that are harder to extrude.
+Longer chains have more contact points with neighboring chains, creating more intermolecular attractions ([[quick-context/van-der-waals-forces|van der Waals]] forces) that hold the solid together—hence parts with greater [[quick-context/tensile-strength-materials|tensile strength]]. However, those same additional attractions mean you need more thermal energy to free the chains from each other, resulting in higher melting/processing temperatures and more viscous melts that are harder to extrude.
 </details>
 
 **Q4:** A print has poor layer adhesion. Using what you know about polymer chains, what might be happening at the molecular level?

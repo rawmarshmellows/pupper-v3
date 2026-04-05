@@ -172,9 +172,9 @@ REFLOW SOLDERING PROCESS (SMD production)
 
 - **[[quick-context/pcb-layers]]** — The paste mask layer is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder volume and prevent bridging.
 
-- **[[quick-context/bga-ball-grid-array]]** — BGA packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. X-ray inspection is required because joints are hidden under the package.
+- **[[quick-context/bga-ball-grid-array]]** — [[quick-context/bga-ball-grid-array|BGA]] packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. X-ray inspection is required because joints are hidden under the package.
 
-- **[[quick-context/flip-chip]]** — Flip-chip solder bumps (C4) are a microscopic version of the same soldering principle, connecting the die directly to the substrate.
+- **[[quick-context/flip-chip]]** — [[quick-context/flip-chip|Flip-chip]] solder bumps (C4) are a microscopic version of the same soldering principle, connecting the die directly to the substrate.
 
 - **[[quick-context/common-ic-packages]]** — Package type determines soldering method. DIP = through-hole (easy hand solder). QFP = SMD (hand-solderable with care). QFN = SMD (hot air or reflow only). BGA = reflow only.
 

@@ -341,7 +341,7 @@ THIS IS WHY:
 
 - **Statistical Mechanics / Boltzmann Distribution** — The deeper physics explaining why thermal noise follows specific statistical distributions; temperature determines the probability of finding electrons at different energy levels.
 
-- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller capacitance means more thermal noise relative to signal.
+- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller [[quick-context/capacitance|capacitance]] means more thermal noise relative to signal.
 
 </details>
 
@@ -375,7 +375,7 @@ Because noise margins have shrunk dramatically. The 180nm generation operated at
 **Q5:** How does the kT thermal energy scale connect thermal noise in electronics to completely different phenomena like [[quick-context/glass-transition-temperature|polymer glass transition]] and [[quick-context/doped-silicon|transistor leakage current]]?
 <details>
 <summary>Answer</summary>
-The kT energy (~26 meV at room temperature) is the fundamental "activation energy" for random thermal processes in all systems. In electronics, kT determines the average energy of random electron motion (thermal noise) and the probability of electrons crossing barriers (subthreshold leakage current ∝ e^(V/kT)). In polymers, thermal energy must exceed intermolecular bond strengths for chains to move; at Tg, thermal energy (~10-100 kT accumulated in chain segments) becomes sufficient to overcome van der Waals forces, enabling chain mobility. All these phenomena are governed by the Boltzmann distribution—temperature determines the probability of overcoming energy barriers, whether those barriers are in silicon transistors or polymer chains. See: The kT Energy Scale.
+The kT energy (~26 meV at room temperature) is the fundamental "activation energy" for random thermal processes in all systems. In electronics, kT determines the average energy of random electron motion (thermal noise) and the probability of electrons crossing barriers (subthreshold leakage current ∝ e^(V/kT)). In polymers, thermal energy must exceed intermolecular bond strengths for chains to move; at Tg, thermal energy (~10-100 kT accumulated in chain segments) becomes sufficient to overcome [[quick-context/van-der-waals-forces|van der Waals]] forces, enabling chain mobility. All these phenomena are governed by the Boltzmann distribution—temperature determines the probability of overcoming energy barriers, whether those barriers are in silicon transistors or polymer chains. See: The kT Energy Scale.
 </details>
 
 </details>

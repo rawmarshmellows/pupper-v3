@@ -300,9 +300,9 @@ COMBINED LOADING (real-world):
 
 - **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
-- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
+- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the [[quick-context/faraday-tensor|Faraday tensor]], making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 
-- **[[quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
+- **[[quick-context/tensile-strength-materials]]** — [[quick-context/tensile-strength-materials|Tensile strength]] (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
 
 - **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
 

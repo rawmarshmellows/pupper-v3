@@ -13,7 +13,7 @@ created: 2026-01-25
 
 A modern computer chip contains **billions of transistors**, each one smaller than a virus (~5 nanometers). These transistors need to communicate with the outside world—they need power coming in and data going out. But here's the problem: you can't attach a wire to something that small. A human hair is about 70,000 nanometers wide; even the thinnest wire we can make is thousands of times larger than a transistor.
 
-**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the silicon die where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
+**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the [[quick-context/silicon-die|silicon die]] where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
 
 **What breaks without bond pads?** Everything. A chip without bond pads is like a brain with no nerves connecting it to the body—it might be doing complex computations inside, but there's no way to power it, program it, or receive any output. The chip would be an expensive, useless square of silicon.
 
@@ -24,13 +24,13 @@ A modern computer chip contains **billions of transistors**, each one smaller th
 | **Bond Pad** | A small metal square (~50 μm) on a chip's surface that serves as a connection point for wires or solder bumps to enter/exit the die |
 | **Die** | The actual silicon chip itself—a thin square of patterned silicon containing all transistors, typically ~10mm across (see [[quick-context/pcb-chip-transistor-hierarchy]]) |
 | **Wire Bond** | A thin metal wire (~25 μm diameter) ultrasonically welded from a bond pad to the package substrate—the older, cheaper connection method |
-| **Flip-chip Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the substrate—newer, denser |
+| **[[quick-context/flip-chip|Flip-chip]] Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the substrate—newer, denser |
 | **Passivation** | A protective insulating layer (like glass) covering the entire chip surface except for the bond pads, which must remain exposed for connection |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Imagine a city (the chip) with millions of buildings (transistors). Every building is connected by a network of roads (metal interconnect wires) that get progressively wider as traffic merges. Eventually, all this traffic must exit through a limited number of highway on-ramps (bond pads) that lead to the outside world.
+Imagine a city (the chip) with millions of buildings (transistors). Every building is connected by a network of roads ([[quick-context/metal-interconnect-layers|metal interconnect]] wires) that get progressively wider as traffic merges. Eventually, all this traffic must exit through a limited number of highway on-ramps (bond pads) that lead to the outside world.
 
 ```
 INSIDE A CHIP: From Transistors to Bond Pads
@@ -228,9 +228,9 @@ THE BOND PAD TRILEMMA
 
 **What practitioners argue about:**
 
-| Trade-off | Wire Bonding Camp | Flip-Chip Camp |
+| Trade-off | [[quick-context/wire-bonding|Wire Bonding]] Camp | [[quick-context/flip-chip|Flip-Chip]] Camp |
 |-----------|-------------------|----------------|
-| **Cost** | "Wire bonding is 5-10x cheaper per connection" | "But flip-chip needs fewer packages for high I/O" |
+| **Cost** | "[[quick-context/wire-bonding|Wire bonding]] is 5-10x cheaper per connection" | "But flip-chip needs fewer packages for high I/O" |
 | **Density** | "Edge pads limit us to ~1000 connections" | "Area array gives us 3000+ connections" |
 | **Performance** | "Wire loops add inductance (slows signals)" | "Short bumps = lower inductance = faster" |
 | **Reliability** | "Wire bonds flex and survive thermal cycling" | "Bumps can crack if die and substrate expand differently" |
@@ -355,7 +355,7 @@ COMPARISON: Bond Pad Requirements
 
 ---
 
-**The one thing most outsiders get wrong about this is...** thinking that making chips faster just means making transistors smaller. In reality, the bond pads often become the bottleneck. A chip with 10 billion transistors is useless if you can only get data in and out through 100 connections. The reason modern CPUs cost so much isn't just the transistors—it's the sophisticated packaging and thousands of bond pads that let all those transistors actually communicate with memory, storage, and the outside world. The "chip" you see on a motherboard is mostly packaging; the actual silicon die with its bond pads is a small square hidden inside.
+**The one thing most outsiders get wrong about this is...** thinking that making chips faster just means making transistors smaller. In reality, the bond pads often become the bottleneck. A chip with 10 billion transistors is useless if you can only get data in and out through 100 connections. The reason modern CPUs cost so much isn't just the transistors—it's the sophisticated packaging and thousands of bond pads that let all those transistors actually communicate with memory, storage, and the outside world. The "chip" you see on a motherboard is mostly packaging; the actual [[quick-context/silicon-die|silicon die]] with its bond pads is a small square hidden inside.
 
 </details>
 
@@ -366,7 +366,7 @@ COMPARISON: Bond Pad Requirements
 
 - **[[quick-context/electrodes|Electrodes]] and Metallurgy** — Bond pads are made of specific metals (aluminum, copper, gold) chosen for their electrical conductivity and ability to form reliable bonds; understanding why matters for reliability.
 
-- **Electromigration** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
+- **[[quick-context/electromigration|Electromigration]]** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
 
 - **ESD (Electrostatic Discharge) Protection** — Bond pads are the entry points for static electricity that can destroy a chip; every pad needs protection circuits that can shunt thousands of volts safely.
 

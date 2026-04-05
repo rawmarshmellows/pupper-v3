@@ -5,7 +5,7 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
+> **TL;DR:** Pure water is almost a perfect insulator - you must add an [[quick-context/electrolyte|electrolyte]] (acid, base, or salt) to create mobile ions that carry electrical current. The [[quick-context/electrolyte|electrolyte]] dissociates into charged particles that enable electricity to flow through the liquid.
 
 # How to Make an Electrolyte (Acid, Base, or Salt)
 
@@ -395,9 +395,9 @@ SOLUTION: Remove the water entirely
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding electrolysis explains WHY you need electrolytes and what happens at the electrodes once current flows.
+- **[[quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding [[quick-context/electrolysis|electrolysis]] explains WHY you need electrolytes and what happens at the electrodes once current flows.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. covalent bonds helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
+- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. [[quick-context/covalent-bonds|covalent bonds]] helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
 
 - **pH and Acid-Base Chemistry** — Acids and bases are defined by whether they release H⁺ or OH⁻ ions. The pH scale measures this ion concentration, which directly affects conductivity.
 
@@ -422,7 +422,7 @@ SOLUTION: Remove the water entirely
 **Choose Epsom salt (MgSO₄).** While both dissolve to create ions, NaCl releases chloride ions (Cl⁻) which get oxidized at the anode before water does, producing toxic chlorine gas instead of oxygen. MgSO₄ releases sulfate ions (SO₄²⁻) which are harder to oxidize than water, so they just carry current while water molecules react to form oxygen. See: The Key Tension (bad electrolyte choice example)
 </details>
 
-**Q3:** Why must aluminum be produced using molten salt electrolysis rather than dissolving an aluminum compound in water?
+**Q3:** Why must aluminum be produced using molten salt [[quick-context/electrolysis|electrolysis]] rather than dissolving an aluminum compound in water?
 <details>
 <summary>Answer</summary>
 **Aluminum is too reactive—water would be reduced instead.** Aluminum ions (Al³⁺) have a very negative reduction potential, meaning they "want" electrons less than water molecules do. In aqueous solution, the cathode would reduce water (producing hydrogen gas) before it would reduce Al³⁺ to aluminum metal. By using molten aluminum oxide (Al₂O₃) with no water present, Al³⁺ becomes the only reducible species, so aluminum metal forms. See: Special Case: Molten Salt Electrolytes

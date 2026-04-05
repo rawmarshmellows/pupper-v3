@@ -7,6 +7,7 @@ updated: 2026-03-27
 # Thermal Runaway
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[micro-context/clock-speed-vs-temperature]]
+> **Related:** [[micro-context/buck-converter|Buck Converter]] | [[micro-context/pwm-pulse-width-modulation|PWM (Pulse Width Modulation)]] | [[quick-context/pwm-controller-circuit|PWM Controller Circuit]] | [[micro-context/power-inductor|Power Inductor]] | [[quick-context/power-watts-joules|Electrical Power (Watts, Joules, Energy)]]
 
 **Definition:** A destructive feedback loop where heat increases [[quick-context/transistor-analog-to-digital|leakage current]], which generates more heat, which increases leakage further—until the chip throttles, shuts down, or permanently damages itself.
 

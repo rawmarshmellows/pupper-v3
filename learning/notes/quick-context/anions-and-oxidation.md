@@ -5,7 +5,7 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
+> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in [[quick-context/electrolysis|electrolysis]], anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
@@ -95,7 +95,7 @@ The central tradeoff practitioners navigate is **selectivity vs. energy efficien
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Here's what happens during electrolysis of brine (salt water), showing anions being oxidized at the anode:
+Here's what happens during [[quick-context/electrolysis|electrolysis]] of brine (salt water), showing anions being oxidized at the anode:
 
 ```
 THE SETUP: Electrolysis Cell

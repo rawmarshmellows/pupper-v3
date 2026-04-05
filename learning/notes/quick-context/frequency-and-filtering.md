@@ -185,13 +185,13 @@ EMI FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
+- **[[quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding [[quick-context/impedance-and-reactance|impedance]] is prerequisite to understanding filter behavior.
 
 - **[[quick-context/capacitor]]** — The primary component in most filters. Its reactance (Xc = 1/2πfC) decreasing with frequency is what makes low-pass filters work.
 
 - **[[quick-context/inductor]]** — Inductors combined with capacitors form second-order filters with -40 dB/decade rolloff and LC resonant circuits at f = 1/(2π√LC).
 
-- **[[quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
+- **[[quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the [[quick-context/impedance-and-reactance|impedance]] level and, together with C, determines the cutoff frequency.
 
 - **[[quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
 

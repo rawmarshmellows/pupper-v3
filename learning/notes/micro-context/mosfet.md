@@ -7,6 +7,7 @@ updated: 2026-03-27
 # MOSFET
 
 > **See also:** [[quick-context/transistor]]
+> **Related:** [[quick-context/transistor-analog-to-digital|Transistors - From Imperfect Analog Devices to Digital Switches]] | [[quick-context/transistor-design-history|Transistor Design History]]
 
 **Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 

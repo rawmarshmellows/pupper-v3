@@ -7,8 +7,9 @@ updated: 2026-03-27
 # SPI
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[micro-context/i2s|I2S (Inter-IC Sound)]] | [[micro-context/i2s-audio-amplifier|I2S Audio Amplifier]] | [[quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem]]
 
-**Definition:** Serial Peripheral Interface — a 4-wire full-duplex serial protocol where a master clocks data in and out of peripherals simultaneously. Unlike [[micro-context/i2c|I2C]] which uses addresses on a shared bus, SPI selects each device with a dedicated chip-select (CS) line. Runs at 1-50+ MHz — much faster than I2C, but costs an extra pin per device. In your [[quick-context/pupper-brain|Pupper]], U1 sends joint targets to U5 over SPI.
+**Definition:** Serial Peripheral Interface — a 4-wire full-duplex serial protocol where a master clocks data in and out of peripherals simultaneously. Unlike [[micro-context/i2c|I2C]] which uses addresses on a shared bus, SPI selects each device with a dedicated chip-select (CS) line. Runs at 1-50+ MHz — much faster than [[micro-context/i2c|I2C]], but costs an extra pin per device. In your [[quick-context/pupper-brain|Pupper]], U1 sends joint targets to U5 over SPI.
 
 ## How It Works
 

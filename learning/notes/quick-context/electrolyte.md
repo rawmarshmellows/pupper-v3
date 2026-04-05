@@ -134,7 +134,7 @@ Both parts MUST work for the circuit to be complete
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Practitioners constantly balance **maximizing conductivity** (more ions = lower resistance = more efficient current flow) against **avoiding unwanted reactions** (some electrolytes participate in electrode reactions you don't want). For water electrolysis, you want H₂ and O₂—but if you use NaCl as your electrolyte, chlorine gas forms at the anode instead of oxygen. The "ideal" electrolyte provides high ionic conductivity while remaining electrochemically inert at your operating voltages. Sulfuric acid (H₂SO₄) and sodium sulfate (Na₂SO₄) work well for water splitting because SO₄²⁻ is harder to oxidize than water. Concentration matters too: more electrolyte increases conductivity but can shift reaction selectivity, corrode equipment, or create disposal problems. Industrial processes carefully tune electrolyte composition, concentration, temperature, and pH to hit the sweet spot between efficiency and product purity.
+Practitioners constantly balance **maximizing conductivity** (more ions = lower resistance = more efficient current flow) against **avoiding unwanted reactions** (some electrolytes participate in electrode reactions you don't want). For water [[quick-context/electrolysis|electrolysis]], you want H₂ and O₂—but if you use NaCl as your electrolyte, chlorine gas forms at the anode instead of oxygen. The "ideal" electrolyte provides high ionic conductivity while remaining electrochemically inert at your operating voltages. Sulfuric acid (H₂SO₄) and sodium sulfate (Na₂SO₄) work well for water splitting because SO₄²⁻ is harder to oxidize than water. Concentration matters too: more electrolyte increases conductivity but can shift reaction selectivity, corrode equipment, or create disposal problems. Industrial processes carefully tune electrolyte composition, concentration, temperature, and pH to hit the sweet spot between efficiency and product purity.
 
 </details>
 
@@ -213,7 +213,7 @@ Comparison of Common Electrolytes:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — Electrolytes are essential for electrolysis; they provide the ion pathway that makes electrode reactions possible.
+- **[[quick-context/electrolysis]]** — Electrolytes are essential for [[quick-context/electrolysis|electrolysis]]; they provide the ion pathway that makes electrode reactions possible.
 
 - **[[quick-context/making-electrolytes]]** — Detailed guide on how acids, bases, and salts create electrolytes through dissociation.
 

@@ -5,7 +5,9 @@ created: 2026-04-02
 
 # Tail Current
 
-**Definition:** A fixed-value current source connected to the shared source node of a differential pair. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
+> **Related:** [[micro-context/current-mirror|Current Mirror]] | [[quick-context/differential-pair|Differential Pair]] | [[quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[quick-context/op-amp|Op-Amp (Operational Amplifier)]] | [[quick-context/comparator|Comparator]]
+
+**Definition:** A fixed-value current source connected to the shared source node of a [[quick-context/differential-pair|differential pair]]. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
 
 ## How It Works
 

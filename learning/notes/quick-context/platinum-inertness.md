@@ -5,7 +5,7 @@ created: 2026-01-25
 
 > **Related:** [[quick-context/electrodes]]
 
-> **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
+> **TL;DR:** Platinum stays unreactive in [[quick-context/electrolysis|electrolysis]] because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 
 # Why Platinum is Chemically Inert
 
@@ -143,9 +143,6 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 
 - **[[quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
 - **[[quick-context/electrolysis]]** - The broader process where platinum electrodes are commonly used
-- **[[quick-context/reduction-oxidation-reactions]]** - Redox chemistry that explains why some metals dissolve and others don't
-- **[[quick-context/noble-metals]]** - Other metals like gold and silver that share platinum's corrosion resistance
-- **[[quick-context/transition-metals-d-orbitals]]** - How d-orbital electron configurations influence metal reactivity
 
 </details>
 

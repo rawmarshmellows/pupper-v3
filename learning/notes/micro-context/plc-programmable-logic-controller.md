@@ -6,6 +6,7 @@ created: 2026-03-29
 # PLC (Programmable Logic Controller)
 
 > **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]
+> **Related:** [[quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[quick-context/preempt-rt|PREEMPT_RT]] | [[quick-context/isa-95-levels|ISA-95 Levels]]
 
 **Definition:** A PLC is a ruggedized industrial computer purpose-built to control factory machinery in real time. It contains a CPU, I/O modules for sensors and actuators, power conditioning, watchdog timers, and a scan-cycle engine that reads inputs, executes user logic (ladder logic or structured text), and writes outputs in a deterministic 1-50ms loop — all housed in an electrically isolated, vibration-tolerant enclosure with safety certification.
 
@@ -20,7 +21,7 @@ created: 2026-03-29
 
 - **PLC vs CPU (device vs component):** A CPU is a general-purpose chip that executes instructions. A PLC is a complete industrial computer that *contains* a CPU plus I/O, power conditioning, and safety hardware. Comparing them is like comparing a car to its engine — one contains the other.
 - **PLC vs PCB (controller vs substrate):** A PCB is a fiberglass-and-copper substrate that physically connects components. A PLC *contains* PCBs as internal wiring. Comparing them is like comparing a car to metal — one is a material used to build the other.
-- **PLC vs Bare Metal / RTOS (industrial computer vs MCU approaches):** Bare metal runs code directly on a microcontroller with no OS (sub-microsecond response). An RTOS adds a priority-based scheduler (~10-100us overhead). A PLC is a different class of device entirely — a self-contained industrial computer with safety certification and fail-safe behavior. Pupper uses bare metal / RTOS on an STM32; factories use PLCs where failures can kill people.
+- **PLC vs Bare Metal / RTOS (industrial computer vs MCU approaches):** Bare metal runs code directly on a microcontroller with no OS (sub-microsecond response). An RTOS adds a priority-based scheduler (~10-100us overhead). A PLC is a different class of device entirely — a self-contained industrial computer with safety certification and fail-safe behavior. Pupper uses bare metal / RTOS on an [[micro-context/stm32-microcontroller|STM32]]; factories use PLCs where failures can kill people.
 
 ```
 THREE WAYS PEOPLE CONFUSE PLCs:

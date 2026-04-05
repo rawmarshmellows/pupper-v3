@@ -19,9 +19,9 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 |------|------------|
 | **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
-| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **[[micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
+| **[[micro-context/reverse-and-forward-bias|Reverse Bias]]** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -185,7 +185,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 ### Source Micro-Contexts (Glossary Stubs)
 
 - **[[micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
-- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
+- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, [[micro-context/reverse-and-forward-bias|forward bias]] (0.7V), [[micro-context/reverse-and-forward-bias|reverse bias]], breakdown voltage.
 - **[[micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
 - **[[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
 
@@ -220,16 +220,16 @@ Transformers only work with AC, and transformers allow stepping voltage up for e
 Half-wave throws away the entire negative half of AC, wasting 50% of the available power and producing large gaps the smoothing capacitor must fill. Full-bridge uses both halves, doubling the ripple frequency (easier to filter), requiring a smaller capacitor for the same ripple, and delivering more average power to the load.
 </details>
 
-**Q4:** A full-bridge rectifier outputs ~1.4V less than the AC peak. Where does this voltage go?
+**Q4:** A [[micro-context/full-bridge-rectifier|full-bridge rectifier]] outputs ~1.4V less than the AC peak. Where does this voltage go?
 <details>
 <summary>Answer</summary>
 Two diodes are always in the current path (one on each side of the bridge). Each silicon diode drops ~0.7V, so 2 x 0.7V = 1.4V is lost as heat in the diodes. This is why low-voltage supplies use Schottky diodes (~0.3V each, 0.6V total drop) or synchronous rectification with MOSFETs (~50mV drop).
 </details>
 
-**Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
+**Q5:** You have a [[micro-context/full-bridge-rectifier|full-bridge rectifier]] feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
 <details>
 <summary>Answer</summary>
-The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the capacitance. To reduce ripple under heavier load, you need a larger capacitor.
+The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the [[quick-context/capacitance|capacitance]]. To reduce ripple under heavier load, you need a larger capacitor.
 </details>
 
 </details>

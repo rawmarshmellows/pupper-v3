@@ -9,7 +9,7 @@ created: 2026-03-10
 >
 > **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
 
-> **TL;DR:** Seven progressive labs that take you from controlling a single motor joint with PID to a fully autonomous voice-controlled quadruped that sees, tracks, and responds to spoken commands. Labs 1-4 build classical robotics foundations (PID, forward kinematics, inverse kinematics, gait control), Lab 5 replaces hand-tuned control with RL-trained neural policies, and Labs 6-7 add LLM voice control and computer vision for a complete autonomy stack.
+> **TL;DR:** Seven progressive labs that take you from controlling a single motor joint with PID to a fully autonomous voice-controlled quadruped that sees, tracks, and responds to spoken commands. Labs 1-4 build classical robotics foundations (PID, [[quick-context/pupper-lab2-forward-kinematics|forward kinematics]], [[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]], gait control), Lab 5 replaces hand-tuned control with RL-trained neural policies, and Labs 6-7 add LLM voice control and computer vision for a complete autonomy stack.
 
 ## The Core Problem
 
@@ -22,7 +22,7 @@ Building a walking, seeing, talking robot requires knowledge spanning control th
 | **PD Control** | Proportional-Derivative controller that computes torque as $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — the foundation of Labs 1, 3, and 4 |
 | **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 homogeneous transformation matrices — Lab 2's core concept, reused in every subsequent lab |
 | **Inverse Kinematics (IK)** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via gradient descent on the FK cost function |
-| **Karel** | The `KarelPupper` class (Labs 6-7) that wraps ROS2 Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
+| **Karel** | The `KarelPupper` class (Labs 6-7) that wraps [[quick-context/ros2-architecture|ROS2]] Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
 | **State Machine** | Lab 7's IDLE/SEARCH/TRACK controller that transitions between rotating to find a target, and using proportional control to follow it based on camera detections |
 
 <details>

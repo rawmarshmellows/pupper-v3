@@ -19,7 +19,7 @@ You need a metal part with precise dimensions, smooth surfaces, and full materia
 |------|-----------|
 | **CNC Milling** | Rotating cutter removes material from a stationary workpiece. Tool spins at thousands of RPM; CNC moves it along X/Y/Z axes. Produces prismatic and complex 3D shapes. |
 | **CNC Turning** | Lathe spins the workpiece while a stationary tool removes material. Inverse of milling. Produces cylindrical/rotationally symmetric parts (shafts, bolts, bushings). |
-| **EDM** | Electrical Discharge Machining -- removes metal via rapid electrical sparks between an electrode and the workpiece, vaporizing material without mechanical contact. Cuts any conductive material regardless of hardness. |
+| **[[micro-context/edm-machining|EDM]]** | Electrical Discharge Machining -- removes metal via rapid electrical sparks between an electrode and the workpiece, vaporizing material without mechanical contact. Cuts any conductive material regardless of hardness. |
 | **G-code** | The instruction language CNC machines read. CAD model is converted into a sequence of tool movement commands specifying coordinates, feed rates, and spindle speeds. |
 | **Tolerance** | The allowable deviation from a specified dimension. CNC routinely achieves $\pm 0.001"$ ($\pm 0.025\text{mm}$), far tighter than 3D printing or casting. |
 
@@ -170,7 +170,7 @@ The shaft is a cylindrical part with stepped diameters and a keyway. You start w
 **Step 2: The mounting bracket (CNC Milling)**
 The bracket is a rectangular aluminum plate with bolt holes and a central bore. A 3-axis CNC mill holds the aluminum block on a vise, and an end mill cuts the outer profile, drills the bolt holes, and bores the central pocket. Milling handles the prismatic geometry and multiple hole patterns easily.
 
-**Step 3: A hardened steel die insert (EDM)**
+**Step 3: A hardened steel die insert ([[micro-context/edm-machining|EDM]])**
 One component requires a square internal pocket with perfectly sharp corners in hardened D2 tool steel (62 HRC). An end mill would leave a radius in the corners (the tool is round), and the material is too hard for conventional cutting. A sinker EDM uses a square copper electrode to spark-erode the pocket, producing the sharp corners in the hardened steel that no rotating cutter could achieve.
 
 **Why not 3D print?** The shaft needs concentricity and surface finish that metal 3D printing cannot match. The bracket needs full aluminum strength at bolt interfaces. At 50 units, CNC is cost-effective without tooling investment.

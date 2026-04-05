@@ -1,5 +1,7 @@
 # Existing Account Management Playbook
 
+> **Related:** [[quick-context/challenger-sale-methodology|Challenger Sale Methodology]] | [[quick-context/meddpicc-qualification-framework|MEDDPICC Qualification Framework]] | [[quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman Strategic Selling / LAMP]] | [[quick-context/strategic-selling-buyer-roles|Strategic Selling Buyer Roles]] | [[quick-context/mcdonald-kam-model|Malcolm McDonald KAM Model]]
+
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---

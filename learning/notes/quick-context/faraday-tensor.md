@@ -20,7 +20,7 @@ When you learn [[quick-context/electromagnetism|electromagnetism]], electric and
 | **Faraday Tensor ($F^{\mu\nu}$)** | A rank-2 antisymmetric tensor encoding both **E** and **B** fields in a 4×4 matrix. The indices μ and ν run from 0 to 3 (time and three spatial dimensions). Antisymmetric means $F^{\mu\nu} = -F^{\nu\mu}$. |
 | **Four-Vector** | A quantity with four components (one time, three space) that transforms properly under Lorentz transformations. Examples: position $(ct, x, y, z)$, momentum $(E/c, p_x, p_y, p_z)$, current density $(c\rho, J_x, J_y, J_z)$. |
 | **Lorentz Transformation** | The rules for converting measurements between reference frames moving relative to each other at constant velocity. Length contracts, time dilates, and the Faraday tensor components mix together. |
-| **Dual Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to write the other half of Maxwell's equations. |
+| **Dual Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to write the other half of [[quick-context/maxwell-equations|Maxwell's equations]]. |
 | **Covariant** | A formulation that takes the same mathematical form in all inertial reference frames. The Faraday tensor makes electromagnetism manifestly covariant—you write the equations once, and they automatically work in any frame. |
 
 <details>
@@ -159,7 +159,7 @@ EXAMPLE: A Moving Charge Near a Wire
 
 ## Maxwell's Equations in Tensor Form
 
-The four Maxwell equations compress into just two tensor equations:
+The four [[quick-context/maxwell-equations|Maxwell equations]] compress into just two tensor equations:
 
 ```
 [[quick-context/maxwell-equations|MAXWELL'S EQUATIONS]] — From Four to Two
@@ -421,7 +421,7 @@ EXAMPLE: Current-Carrying Wire
 
 - **[[quick-context/voltage]]** — Voltage is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
 
-- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of Maxwell's equations in tensor form.
+- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of [[quick-context/maxwell-equations|Maxwell's equations]] in tensor form.
 
 - **Special Relativity** — The Lorentz transformations that mix E and B components come from special relativity. The Faraday tensor is defined to transform correctly under these transformations.
 
@@ -429,7 +429,7 @@ EXAMPLE: Current-Carrying Wire
 
 - **Differential Forms** — In advanced mathematics, the Faraday tensor is understood as a 2-form on spacetime. This explains why it has 6 independent components (ways to choose 2 dimensions from 4) and why it's antisymmetric.
 
-- **[[quick-context/maxwell-equations]]** — The four classical Maxwell equations reduce to two tensor equations when written using the Faraday tensor: ∂_μ F^μν = μ₀ J^ν and ∂_μ F̃^μν = 0. This is the most compact form of classical electromagnetism.
+- **[[quick-context/maxwell-equations]]** — The four classical [[quick-context/maxwell-equations|Maxwell equations]] reduce to two tensor equations when written using the Faraday tensor: ∂_μ F^μν = μ₀ J^ν and ∂_μ F̃^μν = 0. This is the most compact form of classical electromagnetism.
 
 - **General Relativity** — In curved spacetime, the Faraday tensor formulation generalizes naturally. You replace ordinary derivatives with covariant derivatives, and the formalism still works.
 

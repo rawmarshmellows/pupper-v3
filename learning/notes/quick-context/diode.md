@@ -12,7 +12,7 @@ updated: 2026-02-25
 
 ## Human notes
 
-The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
+The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the [[micro-context/mosfet|MOSFET]] turns off.
 
 ## The Core Problem: Making Current Flow Only One Way
 
@@ -23,8 +23,8 @@ Wall outlets provide AC power that alternates direction 50-60 times per second, 
 | Term | Definition |
 |------|------------|
 | **PN Junction** | The boundary where P-type silicon (holes) meets N-type silicon (electrons). A depletion zone forms at the boundary, creating a natural barrier to current flow. |
-| **Forward Bias** | Applying voltage in the "easy" direction (positive to P-side, negative to N-side). Overcomes the depletion zone; current flows. Requires ~0.7V for silicon, ~0.3V for Schottky, ~2V for LEDs. |
-| **Reverse Bias** | Applying voltage in the "blocking" direction. Widens the depletion zone; essentially no current flows (only tiny leakage). |
+| **[[micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying voltage in the "easy" direction (positive to P-side, negative to N-side). Overcomes the depletion zone; current flows. Requires ~0.7V for silicon, ~0.3V for Schottky, ~2V for LEDs. |
+| **[[micro-context/reverse-and-forward-bias|Reverse Bias]]** | Applying voltage in the "blocking" direction. Widens the depletion zone; essentially no current flows (only tiny leakage). |
 | **Forward Voltage Drop (Vf)** | The voltage "consumed" by the diode when conducting. Always present—a silicon diode always drops ~0.7V regardless of current (within limits). |
 | **Breakdown Voltage** | The reverse voltage at which the diode can no longer block current and conducts in reverse. Destructive for normal diodes; intentionally exploited in Zener diodes for voltage regulation. |
 
@@ -213,17 +213,17 @@ BRIDGE RECTIFIER CIRCUIT
 
 - **[[quick-context/doped-silicon]]** — The PN junction that makes diodes work is created by doping silicon with different impurities on each side. Understanding N-type and P-type silicon explains why diodes conduct in only one direction.
 
-- **[[quick-context/transistor]]** — A MOSFET contains a built-in "body diode." A BJT is essentially two PN junctions. Understanding diodes is prerequisite to understanding transistors.
+- **[[quick-context/transistor]]** — A [[micro-context/mosfet|MOSFET]] contains a built-in "body diode." A [[quick-context/bjt|BJT]] is essentially two PN junctions. Understanding diodes is prerequisite to understanding transistors.
 
 - **[[quick-context/electric-current]]** — Diodes control current direction. The forward voltage drop means diodes always consume some power (P = Vf × I).
 
-- **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/reverse bias, half-wave vs full-bridge rectification, smoothing capacitors, and the complete conversion chain inside every power supply.
+- **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/[[micro-context/reverse-and-forward-bias|reverse bias]], half-wave vs full-bridge rectification, smoothing capacitors, and the complete conversion chain inside every power supply.
 
-- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on capacitance, load current, and frequency.
+- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on [[quick-context/capacitance|capacitance]], load current, and frequency.
 
 - **[[quick-context/resistor]]** — LEDs always need a current-limiting resistor (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
 
-- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every buck converter needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
+- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every [[micro-context/buck-converter|buck converter]] needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
 
 </details>
 

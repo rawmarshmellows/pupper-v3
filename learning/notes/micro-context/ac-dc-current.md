@@ -30,3 +30,4 @@ DC (Direct Current)            AC (Alternating Current)
 **Key insight:** AC won the "war of currents" because [[quick-context/inductor|transformers]] (which only work with AC) allow stepping voltage up for efficient long-distance transmission, then down for safe household use—something DC couldn't do cheaply until modern power electronics.
 
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **Related:** [[micro-context/diode-rectification|Diode Rectification (AC → DC)]] | [[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]] | [[quick-context/electric-current|Electric Current]] | [[quick-context/voltage|Voltage]]

@@ -19,7 +19,7 @@ The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm
 |------|------------|
 | **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
 | **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
-| **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
+| **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. [[quick-context/bga-ball-grid-array|BGA]]: 0.4-1.27 mm. |
 | **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
 | **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
 
@@ -130,7 +130,7 @@ PIN NUMBERING
 | **SOT-23** | Moderate | 3-6 | Poor | Tiny | Very low |
 | **QFP** | Hard (needs flux) | 32-256 | Moderate | Medium | Low |
 | **QFN** | Hot air only | 8-100+ | Excellent (EP) | Small | Low |
-| **BGA** | Impossible | 50-3000+ | Good | Small-large | Medium |
+| **[[quick-context/bga-ball-grid-array|BGA]]** | Impossible | 50-3000+ | Good | Small-large | Medium |
 
 ```
 THE TRADEOFF IN PRACTICE
@@ -198,7 +198,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
 
-- **[[quick-context/soldering]]** — Package type dictates soldering method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
+- **[[quick-context/soldering]]** — Package type dictates [[quick-context/soldering|soldering]] method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
 
 - **[[quick-context/pcb-printed-circuit-board]]** — Package footprint (land pattern) must match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
 
@@ -216,7 +216,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q1:** Why would a commercial product use QFN instead of DIP for the same chip?
 <details>
 <summary>Answer</summary>
-**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
+**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-[[quick-context/soldering|soldering]] is needed.
 </details>
 
 **Q2:** How do you find pin 1 on an IC?

@@ -39,8 +39,8 @@ The key insight (shared by all closed-form methods) is that translation decouple
 | Method | Year | Rotation Representation | Handles Scale? | Key Matrix |
 |--------|------|------------------------|----------------|------------|
 | **Horn** | 1987 | Unit quaternion | Yes | $4 \times 4$ symmetric $N$ |
-| **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
-| **Umeyama** | 1991 | SVD with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
+| **Arun et al.** | 1987 | [[quick-context/singular-value-decomposition|SVD]] of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
+| **Umeyama** | 1991 | [[quick-context/singular-value-decomposition|SVD]] with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
 
 Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
 
@@ -272,7 +272,7 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter similarity transformation (3 rotation + 3 translation + 1 scale) that is the direct solution to the absolute orientation problem
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ between centered point sets is the key intermediate quantity in the SVD solution
+- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-[[quick-context/covariance-matrix|covariance matrix]] $H$ between centered point sets is the key intermediate quantity in the SVD solution
 - **Relative orientation** -- Finding the transformation between two camera views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
 - **Iterative Closest Point (ICP)** -- Iterative algorithm that solves absolute orientation repeatedly to align point clouds when correspondences are unknown
 - **RANSAC** -- Robust estimation framework that wraps around absolute orientation solvers to handle outlier correspondences
@@ -296,7 +296,7 @@ Centering the data decouples translation from rotation. Once you subtract centro
 Three point pairs minimum, and they must be non-collinear (not all on the same line). Three non-collinear points define a plane, providing 9 scalar equations (3 points x 3 coordinates) for the 7 unknowns (3 rotation + 3 translation + 1 scale). If the points are collinear, the rotation around the line is ambiguous. See: How It Works, Minimum Points Required table.
 </details>
 
-**Q3:** The SVD of the cross-covariance matrix produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
+**Q3:** The SVD of the cross-[[quick-context/covariance-matrix|covariance matrix]] produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
 <details>
 <summary>Answer</summary>
 $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The singular values in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.

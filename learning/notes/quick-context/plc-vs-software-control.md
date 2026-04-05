@@ -11,9 +11,9 @@ created: 2026-01-16
 
 ## The Core Problem: Who Executes the Motion Control Loop?
 
-The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
+The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For [[micro-context/plc-programmable-logic-controller|PLC]] fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
 
-The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
+The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing [[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] in Structured Text and praying.
 
 ## 5 Essential Terms
 
@@ -21,14 +21,14 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 |------|------------|
 | **Scan Cycle** | See [[quick-context/plc-vs-software]] — the PLC's deterministic read-execute-write loop (1–10ms for motion, 10–50ms for discrete I/O). |
 | **Structured Text (ST)** | The IEC 61131-3 programming language that looks like Pascal and runs on PLCs—the closest thing to "real programming" in PLC-land. |
-| **PREEMPT_RT** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
+| **[[quick-context/preempt-rt|PREEMPT_RT]]** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
 | **Soft PLC** | Software that implements PLC runtime semantics on commodity hardware (Beckhoff TwinCAT, CODESYS)—looks like a PLC to the plant, runs on a PC. |
 | **Fieldbus** | The industrial network (PROFINET, EtherNet/IP, EtherCAT) connecting PLCs to I/O, drives, and robots—the nervous system of the automation cell. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a ROS2-based vision/planning system:
+Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a [[quick-context/ros2-architecture|ROS2]]-based vision/planning system:
 
 **Architecture:**
 ```
@@ -121,7 +121,7 @@ The key insight: ROS does the smart stuff (vision, planning) on commodity hardwa
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels (PREEMPT_RT, Xenomai), careful architecture, and loses most safety certifications.
+The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with [[quick-context/sil-rated-safety-functions|SIL]]-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels (PREEMPT_RT, Xenomai), careful architecture, and loses most safety certifications.
 
 The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Windows with a real-time hypervisor, ROS2 added deterministic DDS transports, and "soft PLCs" blur the line entirely. But in regulated industries (automotive, pharma, food), auditors still want to see traditional PLC programs for anything safety-related, regardless of technical capability.
 

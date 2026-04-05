@@ -254,9 +254,9 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 
 - **[[quick-context/electric-current|Electric Current]]** — PCB traces must carry current without overheating. Wider traces carry more current; trace width calculators help designers size traces for their expected current loads.
 
-- **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
+- **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled [[quick-context/impedance-and-reactance|impedance]] traces and ground plane placement.
 
-- **Soldering and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
+- **[[quick-context/soldering|Soldering]] and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
 
 - **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 
@@ -291,7 +291,7 @@ Solid copper planes provide three major benefits: (1) **Lower resistance**—a s
 Several factors favor the 6-layer board despite higher cost: (1) **Manufacturability**—very thin traces and tight spacing require specialized (expensive) manufacturing and have higher defect rates. (2) **Signal integrity**—without dedicated ground/power planes, high-speed signals suffer from noise and crosstalk; 6 layers allows 2 signal layers plus 2 power/ground planes. (3) **Reliability**—extremely thin traces are more prone to breaking or defects. (4) **Design time**—routing 500 signals on 2 layers is a nightmare puzzle; more layers dramatically simplify routing. The key tension tradeoff often favors spending more on manufacturing to save engineering time and improve reliability. See: The Key Tension.
 </details>
 
-**Q5:** The quick-context on the packaging hierarchy shows that chips connect to PCBs via BGA (Ball Grid Array) solder balls at ~0.8mm pitch. How does this relate to PCB design, and why can't you just use a 2-layer board for a modern CPU?
+**Q5:** The quick-context on the packaging hierarchy shows that chips connect to PCBs via [[quick-context/bga-ball-grid-array|BGA]] ([[quick-context/bga-ball-grid-array|Ball Grid Array]]) solder balls at ~0.8mm pitch. How does this relate to PCB design, and why can't you just use a 2-layer board for a modern CPU?
 <details>
 <summary>Answer</summary>
 A modern CPU might have 1,500+ BGA balls in a 45mm x 45mm area. Each ball needs its own pad on the PCB, and each pad needs a trace routed away to somewhere else on the board. With balls only 0.8mm apart, there's no room to route traces between the balls on a single layer—you can only fit traces on the outer edges. The solution is **via-in-pad**: each inner ball has a via that drops the signal to an inner layer, where it can route freely without colliding with neighboring balls. This fundamentally requires multiple layers. High-end CPUs might need 8-12 layers just to "escape" all the signals from under the package, plus additional layers for power planes and other routing. The 100-400mm PCB scale mentioned in the hierarchy accommodates this complex layer stack. See: [[quick-context/pcb-chip-transistor-hierarchy]] for how the substrate fans out to ~800um pitch, and The Key Tension for why layer count correlates with complexity.
