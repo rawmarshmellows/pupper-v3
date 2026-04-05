@@ -17,9 +17,9 @@ Electronics need stable voltage to operate correctly, but power supplies fluctua
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
-| **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
-| **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
+| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 [[micro-context/coulomb-history|coulomb]] of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **Dielectric** | The insulating material between the capacitor's plates that determines [[quick-context/capacitance|capacitance]] and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
+| **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More [[quick-context/capacitance|capacitance]] or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
 | **Decoupling/Bypass Capacitor** | A capacitor placed near an IC to provide instant current during switching and filter high-frequency noise from the power supply - the most common capacitor application in digital electronics. |
 
@@ -506,7 +506,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[small-context/permanent-magnet-creation]]** - Capacitor discharge circuits store energy at high voltage (E = ½CV²) then release it in milliseconds to create 15,000+ amp pulses for magnetizing iron. A practical example of how capacitors enable high-power applications from low-power sources.
 
-- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC impedance techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
+- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC [[quick-context/impedance-and-reactance|impedance]] techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
 
 </details>
 

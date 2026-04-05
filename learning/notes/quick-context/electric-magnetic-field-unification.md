@@ -18,7 +18,7 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 | Term | Definition |
 |------|------------|
 | **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
-| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
+| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/[[micro-context/coulomb-history|coulomb]]). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
 | **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
@@ -495,9 +495,9 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[quick-context/electrolysis|electrolysis]] and circuits.
 
 - **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 

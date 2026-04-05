@@ -11,13 +11,13 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Inside every computer chip is a tiny silicon die with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
+Inside every computer chip is a tiny [[quick-context/silicon-die|silicon die]] with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
 
 ## 5 Essential Terms
 
 | Term | Plain English Definition |
 |------|--------------------------|
-| **Bond pad** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
+| **[[quick-context/bond-pad|Bond pad]]** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
 | **Substrate** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
 | **Ultrasonic welding** | Using high-frequency vibrations (like a tiny tuning fork) to melt/fuse the wire to the metal pad without traditional heat |
 | **Loop height** | How tall the wire arc is above the chip; taller loops are more forgiving but add electrical interference |
@@ -219,7 +219,7 @@ WHY INDUCTANCE MATTERS (for complete beginners):
     At high speeds (>1 GHz): wire bonds become a bottleneck
 ```
 
-The industry uses wire bonding when **cost matters more than speed**—which is most chips! Only high-performance processors, graphics cards, and specialized high-frequency chips need the more expensive flip-chip technology.
+The industry uses wire bonding when **cost matters more than speed**—which is most chips! Only high-performance processors, graphics cards, and specialized high-frequency chips need the more expensive [[quick-context/flip-chip|flip-chip]] technology.
 
 </details>
 

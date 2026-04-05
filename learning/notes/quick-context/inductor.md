@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[micro-context/buck-converter|buck converter]] uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -642,20 +642,20 @@ BUCK CONVERTER OPERATION
     The output capacitor smooths this ripple into steady DC.
 ```
 
-**Why not just use a resistor to drop voltage?** A resistor dropping 12V to 3.3V at 1A would waste P = 8.7V × 1A = 8.7W as heat. The buck converter wastes only ~0.5W for the same job. At scale (millions of devices, 24/7 operation), this efficiency difference is enormous.
+**Why not just use a resistor to drop voltage?** A resistor dropping 12V to 3.3V at 1A would waste P = 8.7V × 1A = 8.7W as heat. The [[micro-context/buck-converter|buck converter]] wastes only ~0.5W for the same job. At scale (millions of devices, 24/7 operation), this efficiency difference is enormous.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic capacitance interacts with inductance in real circuits.
+- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic [[quick-context/capacitance|capacitance]] interacts with inductance in real circuits.
 
 - **[[quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as charge flow is essential.
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 

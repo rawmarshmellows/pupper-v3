@@ -17,7 +17,7 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 
 | Term | Definition |
 |------|------------|
-| **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
+| **Farad (F)** | The unit of capacitance. 1 farad = 1 [[micro-context/coulomb-history|coulomb]] stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
 | **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
 | **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
@@ -191,7 +191,7 @@ COMBINING CAPACITANCES
 
 Every device connected to a shared signal line adds its input capacitance in parallel. This is the direct consequence of the parallel rule above: $C_{\text{total}} = C_1 + C_2 + C_3 + \ldots$. Add enough devices and the total bus capacitance becomes so large that the signal can't transition fast enough to be read correctly.
 
-The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
+The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The [[micro-context/i2c|I2C]] spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
 
 ```
 WHY DAISY CHAINS HIT A WALL
@@ -273,7 +273,7 @@ WHY DAISY CHAINS HIT A WALL
     • Use bus expanders (I2C multiplexers like TCA9548A)
 ```
 
-The key insight: **the 400 pF I2C limit isn't arbitrary -- it's a direct consequence of $t_{\text{rise}} = RC$.** The pull-up resistor and total bus capacitance form an RC circuit. More devices = more C = slower rise time = eventually the signal can't keep up with the clock. This is parasitic capacitance in parallel, setting a hard ceiling on how many devices can share a wire.
+The key insight: **the 400 pF [[micro-context/i2c|I2C]] limit isn't arbitrary -- it's a direct consequence of $t_{\text{rise}} = RC$.** The pull-up resistor and total bus capacitance form an RC circuit. More devices = more C = slower rise time = eventually the signal can't keep up with the clock. This is parasitic capacitance in parallel, setting a hard ceiling on how many devices can share a wire.
 
 </details>
 
@@ -322,7 +322,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -410,13 +410,13 @@ DYNAMIC POWER IN A CMOS INVERTER
 
 - **[[quick-context/transistor]]** -- Gate capacitance ($C_{gs}$, $C_{gd}$) determines switching speed and dynamic power. Miller capacitance ($C_{gd}$ multiplied by gain) is the dominant speed limiter in analog amplifiers.
 
-- **[[quick-context/pcb-printed-circuit-board]]** -- PCB trace geometry creates parasitic capacitance that sets characteristic impedance, causes crosstalk between traces, and affects signal integrity at high frequencies.
+- **[[quick-context/pcb-printed-circuit-board]]** -- PCB trace geometry creates parasitic capacitance that sets characteristic [[quick-context/impedance-and-reactance|impedance]], causes crosstalk between traces, and affects signal integrity at high frequencies.
 
 - **[[quick-context/voltage]]** -- Voltage is what drives charge onto capacitance ($Q = CV$). The energy stored in any capacitance is $E = \frac{1}{2}CV^2$ -- voltage squared makes this highly sensitive to supply voltage.
 
 - **[[quick-context/power-watts-joules]]** -- Dynamic power $P = CV^2f$ directly ties capacitance to energy consumption. Reducing capacitance is one of the few ways to reduce power without sacrificing speed or voltage.
 
-- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitance is actually *measured* in sensors (humidity, accelerometers, touchscreens). Covers the three measurement families: RC timing, sigma-delta charge-balance, and AC impedance.
+- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitance is actually *measured* in sensors (humidity, accelerometers, touchscreens). Covers the three measurement families: RC timing, sigma-delta charge-balance, and AC [[quick-context/impedance-and-reactance|impedance]].
 
 </details>
 
@@ -435,13 +435,13 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).
 </details>
 
-**Q4:** A MOSFET has 2 pF of gate-drain capacitance ($C_{gd}$) and a voltage gain of 100. Why does the input see 200 pF, not 2 pF?
+**Q4:** A [[micro-context/mosfet|MOSFET]] has 2 pF of gate-drain capacitance ($C_{gd}$) and a voltage gain of 100. Why does the input see 200 pF, not 2 pF?
 <details>
 <summary>Answer</summary>
 **Miller effect.** When the gate voltage changes by $\Delta V$, the drain swings by $-100 \times \Delta V$ (inverted by the gain). The voltage across $C_{gd}$ changes by $(1 + 100) \times \Delta V = 101 \times \Delta V$. The current through $C_{gd}$ is therefore 101x what you'd expect from 2 pF alone, making it look like ~200 pF from the input's perspective. This is why high-gain amplifier stages are slower than their raw gate capacitance would suggest. See: 5 Essential Terms (Miller Capacitance).

@@ -24,7 +24,7 @@ Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM
 | **State Machine** | A controller with discrete modes (IDLE, SEARCH, TRACK) and well-defined transitions between them — the decision-making core of Lab 7's tracking behavior |
 | **YOLO (You Only Look Once)** | A single-shot object detection architecture that predicts bounding boxes and class labels in one forward pass; Lab 7 uses YOLOv5 trained on the 80-class COCO dataset |
 | **Hailo Accelerator** | An edge AI inference chip (~26 TOPS) mounted on the Pupper that runs the YOLOv5 network at low power, enabling on-robot detection without cloud connectivity |
-| **Detection2DArray** | A ROS2 message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
+| **Detection2DArray** | A [[quick-context/ros2-architecture|ROS2]] message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
 | **Proportional Tracking Controller** | A P-controller that converts the horizontal pixel offset of a detected object into a yaw rate command: $\omega = -K_p \cdot x_{\text{normalized}}$, steering the robot to center the target in frame |
 
 <details>
@@ -338,7 +338,7 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual [[micro-context/stm32-microcontroller|STM32]] + Raspberry Pi + [[quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 

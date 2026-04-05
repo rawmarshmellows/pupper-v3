@@ -174,7 +174,7 @@ SIGNAL FLOW
 
 ### What Makes It Different from an Op-Amp
 
-An [[quick-context/op-amp|op-amp]] and a comparator have the same input stage (differential pair), but everything after that is optimized differently:
+An [[quick-context/op-amp|op-amp]] and a comparator have the same input stage ([[quick-context/differential-pair|differential pair]]), but everything after that is optimized differently:
 
 ```
 OP-AMP vs COMPARATOR: Same Input, Different Optimization
@@ -282,9 +282,9 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 | **Schmitt trigger IC** (74HC14) | 15 ns | Digital signal cleaning, debouncing |
 | **Window comparator** (LM339 pair) | 300 ns | "Is voltage between A and B?" |
 
-The other key tension is **dedicated comparator vs. op-amp used as a comparator**:
+The other key tension is **dedicated comparator vs. [[quick-context/op-amp|op-amp]] used as a comparator**:
 
-| Factor | Dedicated Comparator | Op-Amp as Comparator |
+| Factor | Dedicated Comparator | [[quick-context/op-amp|Op-Amp]] as Comparator |
 |--------|---------------------|---------------------|
 | Speed | 1-500 ns | 1-50 $\mu$s (compensation cap slows it) |
 | Output | Logic-compatible or open-drain | Analog (may not reach rails) |
@@ -391,17 +391,17 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
-- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
+- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: [[quick-context/differential-pair|differential pair]] for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
-- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
+- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the [[micro-context/pwm-pulse-width-modulation|PWM]] pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
-- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit ADC---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
+- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]]---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
 
 - **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] dividers create both the reference voltage and the scaled feedback signal. Divider accuracy directly determines threshold accuracy.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** --- ADCs are built from comparators. A successive-approximation ADC uses one comparator with a DAC; a flash ADC uses many comparators in parallel.
+- **[[micro-context/adc-analog-to-digital-converter]]** --- ADCs are built from comparators. A successive-approximation [[micro-context/adc-analog-to-digital-converter|ADC]] uses one comparator with a DAC; a flash ADC uses many comparators in parallel.
 
 </details>
 

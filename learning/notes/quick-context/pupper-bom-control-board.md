@@ -7,11 +7,11 @@ created: 2026-02-25
 
 > **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
 
-> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
+> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual [[micro-context/stm32-microcontroller|STM32]] microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
-A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
+A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the [[micro-context/buck-converter|buck converter]] output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
 ## 5 Essential Terms
 
@@ -83,13 +83,13 @@ FUNCTIONAL BLOCK DIAGRAM — Pupper v3 Control Board Rev 3.5
 **[[micro-context/stm32-microcontroller|STM32F446RET6]]** — ARM Cortex-M4 @ 180 MHz, 512 KB flash, 128 KB RAM, LQFP-64 package (10 × 10 mm, 0.5 mm pitch).
 
 Two are used with distinct roles:
-- **U1 (Main MCU):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC, communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over I2S.
+- **U1 (Main MCU):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] [[micro-context/adc-analog-to-digital-converter|ADC]], communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over [[micro-context/i2s|I2S]].
 - **U5 (Motor MCU):** Dedicated to the 1 kHz motor control loop — receives joint targets from U1 over [[micro-context/spi|SPI]], sends/receives CAN messages to all 12 servos via the 4 MAX3051 transceivers.
 
 Each MCU requires:
 - One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its clock source
 - Multiple decoupling capacitors on its power pins (100nF + 1μF + 4.7μF)
-- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as CAN bus termination
+- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as [[quick-context/can-bus|CAN bus]] termination
 
 ### Category 2: Communication — CAN Transceivers (U3, U4, U6, U7)
 
@@ -101,7 +101,7 @@ The 120Ω resistors (R1-R4) are CAN bus termination [[quick-context/resistor|res
 
 ### Category 3: Sensing — IMU and ADC (U15, U16)
 
-**BNO086** (U15) — 9-axis IMU (accelerometer + gyroscope + magnetometer) with onboard Cortex-M0+ processor running sensor fusion. Outputs quaternions over I2C/SPI. LGA-28 package (5.2 × 3.8 mm). This tells the robot which way is up — essential for balance control.
+**BNO086** (U15) — 9-axis IMU (accelerometer + gyroscope + magnetometer) with onboard Cortex-M0+ processor running sensor fusion. Outputs quaternions over [[micro-context/i2c|I2C]]/[[micro-context/spi|SPI]]. LGA-28 package (5.2 × 3.8 mm). This tells the robot which way is up — essential for balance control.
 
 **ADS1110A0IDBVR** (U16) — 16-bit delta-sigma ADC with I2C interface, SOT-23-6 package. Monitors battery voltage through a [[quick-context/resistor|voltage divider]] so the system can warn of low battery and prevent over-discharge.
 
@@ -165,7 +165,7 @@ The 10μH [[quick-context/inductor|inductor]] (L1, Sunlord MWSA1004S-100MT) is t
 | 47μF | 2 | C18,C19 | Buck converter output filter |
 | 3nF, 6.8pF, 2.7nF | 3 | C13,C14,C15 | Buck converter compensation |
 
-All small caps are C0402 (1.0 × 0.5 mm) — too small to hand-solder. The 47μF caps are C0805 and the 10μF C16 is C1206, both using higher-capacitance [[quick-context/capacitor|MLCC]] (ceramic) technology.
+All small caps are C0402 (1.0 × 0.5 mm) — too small to hand-solder. The 47μF caps are C0805 and the 10μF C16 is C1206, both using higher-[[quick-context/capacitance|capacitance]] [[quick-context/capacitor|MLCC]] (ceramic) technology.
 
 **Resistors by function:**
 
@@ -177,7 +177,7 @@ All small caps are C0402 (1.0 × 0.5 mm) — too small to hand-solder. The 47μF
 | 10kΩ | 3 | R18,R21,R23 | Pull-up resistors (I2C, reset) |
 | 2.2kΩ | 4 | R19,R20,R24,R25 | I2C pull-ups / current limit |
 | 200kΩ | 1 | R22 | Buck enable / soft-start |
-| 1MΩ | 1 | R39 | Bootstrap / high-impedance bias |
+| 1MΩ | 1 | R39 | Bootstrap / high-[[quick-context/impedance-and-reactance|impedance]] bias |
 
 All resistors are R0402 (1.0 × 0.5 mm) from UNI-ROYAL or YAGEO. The odd values (60.4kΩ, 11.5kΩ, 174kΩ) come from the E96 precision series — they're calculated from the buck converter datasheet's feedback formula, not chosen arbitrarily.
 
@@ -191,7 +191,7 @@ CBG160808U501T — 50Ω impedance at 100 MHz, L0603 package. These aren't [[quic
 |------|-----|------------|----------|
 | BM07B-SRSS-TB ([[micro-context/jst-connector-families|JST]], 7-pin) | 2 | CN1, CN2 | Servo bus connectors (CAN + power) |
 | HC-ZH-10PWT (10-pin) | 1 | CN17 | Multi-signal connector |
-| BM04B-SRSS-TB (JST, 4-pin) | 1 | CN18 | I2C / peripheral connector |
+| BM04B-SRSS-TB ([[micro-context/jst-connector-families|JST]], 4-pin) | 1 | CN18 | I2C / peripheral connector |
 | HC-PH-2ALT (2-pin) | 1 | CN21 | Battery power input |
 | HC-PH-3ALT (3-pin) | 2 | H4, H5 | Servo signal connectors (S, +5V, GND) |
 | FH-00339 (40-pin header) | 1 | U2 | Raspberry Pi GPIO header |
@@ -339,13 +339,13 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH [[micro-context/power-inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 
 - **[[quick-context/common-ic-packages]]** — This BOM uses LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages. Understanding package types explains why certain parts can't be hand-soldered.
 
-- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow soldering. The paste mask layer defines the stencil apertures for solder paste deposition.
+- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow [[quick-context/soldering|soldering]]. The paste mask layer defines the stencil apertures for solder paste deposition.
 
 - **[[quick-context/frequency-and-filtering]]** — The ferrite beads (L2, L3) and multi-value capacitor network form a distributed filter that suppresses switching noise across a wide bandwidth.
 

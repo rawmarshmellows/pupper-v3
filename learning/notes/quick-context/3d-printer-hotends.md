@@ -179,7 +179,7 @@ Stainless steel makes sense for food-safe applications (cookie cutters, kitchen 
 **Q3:** What is heat creep and why does it cause more problems with all-metal hotends printing PLA?
 <details>
 <summary>Answer</summary>
-Heat creep occurs when thermal energy travels upward past the heat break into the "cold zone" where filament should stay solid. This prematurely softens the filament, causing it to swell and jam. All-metal hotends are more susceptible because metal conducts heat better than PTFE-lined heat breaks. PLA has a low glass transition temperature (~60°C), so it softens at relatively low temps—much easier for creeping heat to affect than higher-Tg materials like PETG or nylon.
+Heat creep occurs when thermal energy travels upward past the heat break into the "cold zone" where filament should stay solid. This prematurely softens the filament, causing it to swell and jam. All-metal hotends are more susceptible because metal conducts heat better than PTFE-lined heat breaks. PLA has a low [[quick-context/glass-transition-temperature|glass transition temperature]] (~60°C), so it softens at relatively low temps—much easier for creeping heat to affect than higher-Tg materials like PETG or nylon.
 </details>
 
 **Q4:** Why does the Bambu high-flow hotend cost nearly 3x more than the standard version?

@@ -22,15 +22,15 @@ You see this symbol everywhere in schematics:
        │  ╱
 ```
 
-Datasheets tell you the gain is 100,000x, input impedance is infinite, and output impedance is zero. But what's actually *inside*? How does a voltage difference of 1 mV become a 3.3V output swing? Why do [[quick-context/op-amp|op-amps]] need negative feedback to be stable but [[quick-context/comparator|comparators]] don't? The answers come from understanding the three-stage signal path that every op-amp and comparator shares.
+Datasheets tell you the gain is 100,000x, input [[quick-context/impedance-and-reactance|impedance]] is infinite, and output [[quick-context/impedance-and-reactance|impedance]] is zero. But what's actually *inside*? How does a voltage difference of 1 mV become a 3.3V output swing? Why do [[quick-context/op-amp|op-amps]] need negative feedback to be stable but [[quick-context/comparator|comparators]] don't? The answers come from understanding the three-stage signal path that every [[quick-context/op-amp|op-amp]] and [[quick-context/comparator|comparator]] shares.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + tail current source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
-| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | Current mirror active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
-| **Stage 3: Output buffer** | Drives the external load. Push-pull (op-amp) or open-drain/open-collector (comparator). Provides low output impedance so the signal doesn't droop under load. |
+| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + [[micro-context/tail-current|tail current]] source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
+| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | [[micro-context/current-mirror|Current mirror]] active load on the [[quick-context/differential-pair|differential pair]]. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
+| **Stage 3: Output buffer** | Drives the external load. Push-pull ([[quick-context/op-amp|op-amp]]) or open-drain/open-collector ([[quick-context/comparator|comparator]]). Provides low output impedance so the signal doesn't droop under load. |
 | **Compensation capacitor ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a comparator.** |
 | **Bias network** | Current mirrors and voltage references that set the DC operating point for every transistor. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |
 
@@ -333,7 +333,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **[[quick-context/differential-pair]]** --- Stage 1 in detail. How matched transistors steer current, why the tail current source is essential, and how common-mode rejection works.
+- **[[quick-context/differential-pair]]** --- Stage 1 in detail. How matched transistors steer current, why the [[micro-context/tail-current|tail current]] source is essential, and how common-mode rejection works.
 
 - **[[quick-context/high-gain-amplifier-stage]]** --- Stage 2 in detail. How current mirrors create high impedance, why $V = I \times R$ with a 2 M$\Omega$ impedance produces huge gain, and the gain-vs-headroom tradeoff with cascodes.
 
@@ -343,7 +343,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 
 - **[[quick-context/transistor]]** --- Every element in all three stages is a [[quick-context/transistor|MOSFET or BJT]]. The gate-oxide capacitor structure explains Rule 1 (no input current); saturation-mode output impedance explains the gain mechanism.
 
-- **[[quick-context/pwm-controller-circuit]]** --- A real-world system where both an op-amp (error amplifier) and a comparator (PWM generator) work together inside the same IC, each using the same three-stage topology.
+- **[[quick-context/pwm-controller-circuit]]** --- A real-world system where both an op-amp (error amplifier) and a comparator ([[micro-context/pwm-pulse-width-modulation|PWM]] generator) work together inside the same IC, each using the same three-stage topology.
 
 </details>
 
@@ -353,7 +353,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 **Q1:** What are the three stages inside an op-amp or comparator, and what does each convert?
 <details>
 <summary>Answer</summary>
-**Stage 1: Differential pair** — converts a voltage difference into a current difference (V → I). **Stage 2: High-gain amplifier** — converts the current difference into a large voltage swing (I → V). **Stage 3: Output buffer** — converts the high-impedance voltage into a low-impedance output that can drive loads (V → V, with impedance transformation). See: How It Works (Signal Path diagram).
+**Stage 1: [[quick-context/differential-pair|Differential pair]]** — converts a voltage difference into a current difference (V → I). **Stage 2: High-gain amplifier** — converts the current difference into a large voltage swing (I → V). **Stage 3: Output buffer** — converts the high-impedance voltage into a low-impedance output that can drive loads (V → V, with impedance transformation). See: How It Works (Signal Path diagram).
 </details>
 
 **Q2:** What single component differentiates an op-amp from a comparator?
@@ -371,7 +371,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 **Q4:** An engineer measures an LM358 op-amp's response time when used as a comparator and gets 10 $\mu$s. An LM393 comparator responds in ~1.3 $\mu$s. Both have similar transistor counts. Why the ~8× speed difference?
 <details>
 <summary>Answer</summary>
-**The LM358's internal 30 pF compensation capacitor limits its slew rate.** The cap must charge/discharge through the tail current: $SR = 100\ \mu A / 30\ pF = 3.3\ V/\mu s$. To swing 3.3V takes $\sim 1\ \mu s$, and overdrive recovery adds more delay, pushing total response to ~10 $\mu$s. The LM393 has no compensation cap, so node A charges only the parasitic capacitance, giving much faster slewing. Additionally, the LM393's output stage and input stage are designed for overdrive recovery, while the LM358's are not. See: Concrete Example (What Happens When You Swap Them).
+**The LM358's internal 30 pF compensation capacitor limits its slew rate.** The cap must charge/discharge through the tail current: $SR = 100\ \mu A / 30\ pF = 3.3\ V/\mu s$. To swing 3.3V takes $\sim 1\ \mu s$, and overdrive recovery adds more delay, pushing total response to ~10 $\mu$s. The LM393 has no compensation cap, so node A charges only the parasitic [[quick-context/capacitance|capacitance]], giving much faster slewing. Additionally, the LM393's output stage and input stage are designed for overdrive recovery, while the LM358's are not. See: Concrete Example (What Happens When You Swap Them).
 </details>
 
 **Q5:** Could you build a "universal" IC that works as both an op-amp and a comparator by adding a switch to connect/disconnect the compensation capacitor?

@@ -173,7 +173,7 @@ When the [[micro-context/stm32-microcontroller|STM32]] powers on (or resets), th
 1. Loads the value at address `0x00000000` into the **Main Stack Pointer** (MSP)
 2. Loads the value at address `0x00000004` into the **Program Counter** (PC) — this is the `Reset_Handler` address
 
-On STM32, flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
+On [[micro-context/stm32-microcontroller|STM32]], flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
 
 Then `Reset_Handler` (assembly code in `startup_stm32f446retx.s`) runs:
 
@@ -334,7 +334,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
-- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
+- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via [[micro-context/swd-serial-wire-debug|SWD]]. Focuses on the debug probe side of the process.
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
@@ -344,7 +344,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **Relocatable vs. Position-Independent Code** — Object files (`.o`) contain relocatable code with placeholder addresses. The linker resolves these. Position-independent code (PIC) can run at any address — useful for bootloaders but rarely needed on bare-metal MCUs with fixed memory maps.
 
-- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
+- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The [[micro-context/stm32-microcontroller|STM32]] has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The big-picture story: how programming interfaces evolved from plugboards and punch cards to typing code on screens. Explains the historical context for *why* we have compilers, operating systems, and the whole toolchain that produces the ELF files described here.
 

@@ -9,14 +9,14 @@ created: 2026-01-22
 
 ## The Core Problem
 
-Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no electrolysis, no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
+Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no [[quick-context/electrolysis|electrolysis]], no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Ampere (A)** | The unit of current. 1 ampere = 1 coulomb of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
-| **Coulomb (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in electrolysis. |
+| **Ampere (A)** | The unit of current. 1 ampere = 1 [[micro-context/coulomb-history|coulomb]] of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
+| **[[micro-context/coulomb-history|Coulomb]] (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in [[quick-context/electrolysis|electrolysis]]. |
 | **Direct Current (DC)** | Current that flows in ONE direction only—like water flowing downhill. [[quick-context/galvanic-cells-batteries|Batteries]] produce DC. Electrolysis requires DC (electrons must consistently enter at [[quick-context/electrodes|cathode]], exit at [[quick-context/electrodes|anode]]). |
 | **Alternating Current (AC)** | Current that reverses direction many times per second (60 Hz in US = 60 reversals/second). Wall outlets provide AC. Must convert to DC for electrolysis. |
 | **Current Density** | Current per unit area (A/cm² or A/m²). Critical for electrolysis (too low = slow; too high = electrode damage) and [[quick-context/electromigration|electromigration]] in chip wires (too high = wire failure). |
@@ -344,7 +344,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
-- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: [[micro-context/electromagnetic-induction|electromagnetic induction]] (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
 
 - **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
 

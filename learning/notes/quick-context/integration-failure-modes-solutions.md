@@ -13,7 +13,7 @@ created: 2026-01-17
 
 These five failure modes—deadlock, race conditions, cascade failures, unrecoverable states, and integration drift—are fundamentally **coordination failures in distributed real-time systems**. Unlike software distributed systems where you can retry, buffer, or eventually converge, a robot cell operates in physical space with millisecond timing constraints and thousand-pound machines that can't "roll back."
 
-The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get OEE (Overall Equipment Effectiveness) numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
+The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get [[quick-context/oee-overall-equipment-effectiveness|OEE]] (Overall Equipment Effectiveness) numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
 
 The architectural patterns that solve these problems aren't new; they're borrowed from decades of real-time systems theory, distributed computing, and process control—but adapted for environments where "the network partition" might be a severed pneumatic line and "eventual consistency" means a crashed conveyor.
 
@@ -49,7 +49,7 @@ CASE RobotHandshake OF
 END_CASE
 ```
 
-The pattern: one side (typically the PLC) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
+The pattern: one side (typically the [[micro-context/plc-programmable-logic-controller|PLC]]) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for [[micro-context/plc-programmable-logic-controller|PLC]] signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
 
 **Race Conditions: Two-phase handshake with explicit acknowledgment**
 
@@ -157,7 +157,7 @@ The architectural patterns exist on a spectrum, and knowing where your applicati
 
 ## ROS2 Approaches to These Failure Modes
 
-ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
+[[quick-context/ros2-architecture|ROS2]] brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what [[quick-context/ros2-architecture|ROS2]] should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
 
 **Deadlock: DDS QoS Liveliness + Deadline Policies**
 
@@ -513,7 +513,7 @@ The architecture from [[quick-context/plc-vs-software-control]] applies directly
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding the boundary between PLC and software layers for applying these patterns appropriately
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - The metric that quantifies the cost of these failure modes (40-60% OEE vs. 85%+ target)
+- **[[quick-context/oee-overall-equipment-effectiveness]]** - The metric that quantifies the cost of these failure modes (40-60% [[quick-context/oee-overall-equipment-effectiveness|OEE]] vs. 85%+ target)
 - **[[quick-context/preempt-rt]]** - Real-time Linux foundations for when ROS2 needs deterministic timing
 - **[[quick-context/sil-rated-safety-functions]]** - When failure modes become safety-critical and require certified solutions
 

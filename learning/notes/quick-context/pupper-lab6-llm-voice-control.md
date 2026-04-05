@@ -7,7 +7,7 @@ created: 2026-03-10
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
 
-> **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
+> **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps [[quick-context/ros2-architecture|ROS2]] Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
 ## The Core Problem
 
@@ -89,7 +89,7 @@ VOICE-TO-ACTION PIPELINE
 
 6. **Karel execution**: The matched method (e.g., `move_forward()`) publishes a Twist message to `/cmd_vel` with the appropriate linear and angular velocities, held for a duration (typically 1-2 seconds per movement step).
 
-7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via CAN bus.
+7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via [[quick-context/can-bus|CAN bus]].
 
 ### Audio muting for echo prevention
 
@@ -193,7 +193,7 @@ The Realtime API also returns an audio version of "Time to bust a move!" as `res
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 6 sits between the neural controller (Lab 5) and vision tracking (Lab 7), adding the voice-to-command layer.
-- **[[quick-context/pupper-brain]]** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
+- **[[quick-context/pupper-brain]]** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the [[micro-context/stm32-microcontroller|STM32]] microcontrollers handle the real-time motor loop.
 - **WebSocket protocol** — Lab 6 uses a persistent WebSocket (`wss://`) rather than REST API calls. WebSockets provide full-duplex communication: audio streams up while responses stream down simultaneously, which is essential for real-time voice interaction. REST would require "record, send, wait, receive" — far too slow for conversational feel.
 - **PCM16 audio format** — Pulse-Code Modulation at 16-bit depth. Each sample is a signed 16-bit integer (-32768 to +32767) representing the instantaneous amplitude. At 24 kHz, this produces 48,000 bytes/second of raw audio. No compression (unlike MP3/Opus), which means low latency but high bandwidth.
 - **Echo cancellation** — In production voice systems, acoustic echo cancellation (AEC) algorithms subtract the known speaker output from the microphone input in real time. Lab 6 uses a simpler approach (mute during playback) because full AEC requires DSP expertise beyond the lab's scope. The tradeoff: the robot cannot hear new commands while it is speaking.

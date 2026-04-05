@@ -5,7 +5,7 @@ created: 2026-01-25
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
+> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and [[quick-context/metal-interconnect-layers|metal interconnect]] layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
 # Silicon Die
 

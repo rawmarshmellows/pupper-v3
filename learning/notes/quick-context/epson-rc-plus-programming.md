@@ -97,7 +97,7 @@ Fend
 
 The `Jump` command is doing the heavy lifting here—it automatically retracts in Z before moving in X/Y, then descends at the target, creating the "arch" motion that avoids dragging parts across surfaces. `P1`, `P2`, and `P0` are point numbers defined in the Point Editor, not coordinates hardcoded in the program. The `LimZ(50)` parameter overrides the default arch height to 50mm.
 
-**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a PLC with motion coprocessors than a Python interpreter.
+**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a [[micro-context/plc-programmable-logic-controller|PLC]] with motion coprocessors than a Python interpreter.
 
 </details>
 
@@ -106,7 +106,7 @@ The `Jump` command is doing the heavy lifting here—it automatically retracts i
 
 - **[[quick-context/robotic-arm-api-levels]]** - Understanding where EPSON RC+ fits in the hierarchy from low-level servo control to high-level task planning
 - **[[quick-context/robot-cell-integration-best-practices]]** - How to integrate EPSON robots with PLCs, vision systems, and other cell equipment
-- **[[quick-context/plc-vs-software-control]]** - When to use PLC logic vs. robot-native programming for cell coordination
+- **[[quick-context/plc-vs-software-control]]** - When to use [[micro-context/plc-programmable-logic-controller|PLC]] logic vs. robot-native programming for cell coordination
 - **[[quick-context/sil-rated-safety-functions]]** - Safety considerations for industrial robot programming
 
 </details>
