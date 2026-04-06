@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # SWD (Serial Wire Debug)
 
+> **Related:** [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/quick-context/firmware]]
+
 > **See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]
 
 **Definition:** A 2-signal debug protocol designed by ARM for Cortex-M microcontrollers. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.

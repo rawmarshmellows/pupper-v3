@@ -5,6 +5,8 @@ created: 2026-04-02
 
 # MOSFET
 
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/quick-context/bjt]]
+
 **Definition:** A voltage-controlled switch/valve for electric current. It has three terminals — **gate**, **drain**, and **source** — and the voltage applied to the gate controls how much current flows between drain and source. "M1", "M2", etc. are just labels for individual MOSFETs in a circuit (like naming resistors R1, R2).
 
 ## How It Works

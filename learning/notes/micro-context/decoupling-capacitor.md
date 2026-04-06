@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Decoupling Capacitor
 
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/pupper-bom-control-board]]
+
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
 
 **Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.

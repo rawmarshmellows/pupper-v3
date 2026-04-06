@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # SMD Resistor
 
+> **Related:** [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/pupper-bom-control-board]]
+
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
 
 **Definition:** Surface-mount resistors are tiny rectangular components that limit current flow. The "0402" size (1.0mm × 0.5mm) used in your Pupper BOM is about the size of a grain of sand. Values like "10kΩ" set voltage dividers, pull-ups, current limits, and feedback networks throughout the circuit.

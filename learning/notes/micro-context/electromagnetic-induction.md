@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Electromagnetic Induction
 
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/lenzs-law]]
+
 > **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]
 
 **Definition:** The phenomenon where a changing magnetic field through a conductor induces a voltage (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.

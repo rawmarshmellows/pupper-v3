@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Buck Converter
 
+> **Related:** [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/pwm-controller-circuit]]
+
 ## Human notes
 
 Make the ASCII diagrams clearer, in particular on the relationship between [[quick-context/transistor|MOSFET]] and [[quick-context/diode|diode]] — what is connected to the source, drain, and gate?
