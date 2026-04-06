@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # ADC (Analog-to-Digital Converter)
 
+> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/spi]]
+
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]]
 
 **Definition:** A circuit that converts continuous analog voltage into discrete digital numbers. The ADS1110 in your Pupper is a 16-bit ADC, meaning it divides its input range into 65,536 levels—if measuring 0–3.3V, each step is ~50 microvolts. Used for precise measurements like battery voltage, current sensing, or analog sensor readings.
