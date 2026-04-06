@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Current Behavior with Inductors vs Capacitors
 
+> **Related:** [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/decoupling-capacitor]]
+
 **Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
 
 ## How It Works

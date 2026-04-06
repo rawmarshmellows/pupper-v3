@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Oxidation
 
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/electrolysis]]
+
 > **See also:** [[quick-context/anions-and-oxidation]]
 
 **Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.

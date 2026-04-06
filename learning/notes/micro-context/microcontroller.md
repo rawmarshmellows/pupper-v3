@@ -6,9 +6,11 @@ updated: 2026-03-27
 
 # Microcontroller
 
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]
+
 > **See also:** [[quick-context/embedded-communication-protocols]]
 
-**Definition:** A complete computer on a single chip — CPU, memory (RAM + flash), and I/O peripherals all integrated into one package. Unlike a general-purpose CPU that needs external RAM, storage, and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[micro-context/stm32-microcontroller|STM32]] (ARM), [[quick-context/wifi-chip-arduino-uno-r4|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.
+**Definition:** A complete computer on a single chip — CPU, memory (RAM + flash), and I/O peripherals all integrated into one package. Unlike a general-purpose CPU that needs external RAM, storage, and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[learning/notes/micro-context/stm32-microcontroller|STM32]] (ARM), [[quick-context/wifi-chip-arduino-uno-r4|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.
 
 ## How It Works
 
@@ -33,4 +35,4 @@ MICROCONTROLLER vs GENERAL-PURPOSE CPU:
        $0.20 - $15+                     needs a motherboard
 ```
 
-**Key insight:** A microcontroller trades raw power for integration and real-time determinism — it runs [[micro-context/plc-programmable-logic-controller|bare metal or RTOS]] code with microsecond timing, which is why robots, cars, and appliances use them instead of full computers for control tasks.
+**Key insight:** A microcontroller trades raw power for integration and real-time determinism — it runs [[learning/notes/micro-context/plc-programmable-logic-controller|bare metal or RTOS]] code with microsecond timing, which is why robots, cars, and appliances use them instead of full computers for control tasks.

@@ -6,9 +6,11 @@ updated: 2026-03-27
 
 # STM32 Microcontroller
 
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/pupper-bom-control-board]]
+
 > **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]]
 
-**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The STM32F446 in your Pupper runs at 180MHz with 512KB flash and hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], and USB.
+**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The STM32F446 in your Pupper runs at 180MHz with 512KB flash and hardware support for [[learning/notes/quick-context/can-bus|CAN bus]], [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], and USB.
 
 ## How It Works
 
@@ -36,4 +38,4 @@ STM32 MICROCONTROLLER BLOCK DIAGRAM:
      Motors  IMU    Flash  Debug   LEDs
 ```
 
-**Key insight:** Unlike a Raspberry Pi (which runs Linux), microcontrollers run [[micro-context/plc-programmable-logic-controller|"bare metal" or RTOS]] code with microsecond-level timing precision—essential for real-time motor control in robots.
+**Key insight:** Unlike a Raspberry Pi (which runs Linux), microcontrollers run [[learning/notes/micro-context/plc-programmable-logic-controller|"bare metal" or RTOS]] code with microsecond-level timing precision—essential for real-time motor control in robots.

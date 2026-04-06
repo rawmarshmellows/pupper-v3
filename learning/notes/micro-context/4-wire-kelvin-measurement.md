@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # 4-Wire Kelvin Measurement
 
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]]
+
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
 **Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
