@@ -21,14 +21,14 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 |------|------------|
 | **Scan Cycle** | See [[quick-context/plc-vs-software]] — the PLC's deterministic read-execute-write loop (1–10ms for motion, 10–50ms for discrete I/O). |
 | **Structured Text (ST)** | The IEC 61131-3 programming language that looks like Pascal and runs on PLCs—the closest thing to "real programming" in PLC-land. |
-| **PREEMPT_RT** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
+| **[[learning/notes/quick-context/preempt-rt|PREEMPT_RT]]** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
 | **Soft PLC** | Software that implements PLC runtime semantics on commodity hardware (Beckhoff TwinCAT, CODESYS)—looks like a PLC to the plant, runs on a PC. |
 | **Fieldbus** | The industrial network (PROFINET, EtherNet/IP, EtherCAT) connecting PLCs to I/O, drives, and robots—the nervous system of the automation cell. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a ROS2-based vision/planning system:
+Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a [[learning/notes/quick-context/ros2-architecture|ROS2]]-based vision/planning system:
 
 **Architecture:**
 ```

@@ -7,11 +7,11 @@ created: 2026-03-29
 
 > **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady [[learning/notes/quick-context/voltage|voltage]].
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[learning/notes/quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
@@ -19,9 +19,9 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 |------|------------|
 | **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
+| **[[learning/notes/micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[learning/notes/quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -172,7 +172,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 1. **120V AC from the wall** -- alternating 60 times/second
 2. **Transformer steps down** to ~7V AC (modern chargers use high-frequency switching instead)
 3. **Bridge rectifier** flips both halves positive: ~7V pulsating DC, minus 1.4V diode drop = ~5.6V pulsating
-4. **Filter capacitor** smooths the pulses into ~5.6V with small ripple
+4. **Filter [[learning/notes/quick-context/capacitor|capacitor]]** smooths the pulses into ~5.6V with small ripple
 5. **Voltage regulator** (linear or switching) locks the output at exactly 5.0V
 
 **The one thing most outsiders get wrong about this is...** that a "DC adapter" does not just magically change AC to DC. There is real power lost in every stage -- especially the diode drops. Two silicon diodes always in the current path means 1.4V gone as heat before you even start regulating. This is why cheap chargers get warm and why the industry moved to switch-mode power supplies with synchronous rectification (MOSFETs replacing diodes) for better efficiency.
@@ -220,7 +220,7 @@ Transformers only work with AC, and transformers allow stepping voltage up for e
 Half-wave throws away the entire negative half of AC, wasting 50% of the available power and producing large gaps the smoothing capacitor must fill. Full-bridge uses both halves, doubling the ripple frequency (easier to filter), requiring a smaller capacitor for the same ripple, and delivering more average power to the load.
 </details>
 
-**Q4:** A full-bridge rectifier outputs ~1.4V less than the AC peak. Where does this voltage go?
+**Q4:** A [[learning/notes/micro-context/full-bridge-rectifier|full-bridge rectifier]] outputs ~1.4V less than the AC peak. Where does this voltage go?
 <details>
 <summary>Answer</summary>
 Two diodes are always in the current path (one on each side of the bridge). Each silicon diode drops ~0.7V, so 2 x 0.7V = 1.4V is lost as heat in the diodes. This is why low-voltage supplies use Schottky diodes (~0.3V each, 0.6V total drop) or synchronous rectification with MOSFETs (~50mV drop).

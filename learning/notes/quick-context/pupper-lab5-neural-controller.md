@@ -32,7 +32,7 @@ The sim-to-real gap is the central challenge. A policy that works perfectly in M
 | **Sim-to-Real Transfer** | Deploying a policy trained entirely in simulation to a physical robot. Bridged by domain randomization (varying sim physics) and careful config matching (`config.yaml` gains, timing). |
 | **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides fast, differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
 | **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from BNO086 IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
-| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the STM32 tracks these targets at the full 520 Hz update rate. |
+| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the [[learning/notes/micro-context/stm32-microcontroller|STM32]] tracks these targets at the full 520 Hz update rate. |
 
 <details>
 <summary><strong>How It Works</strong> — RL policy deployment pipeline</summary>
@@ -58,7 +58,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How [[learning/notes/quick-context/ppo-proximal-policy-optimization|PPO]] uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)

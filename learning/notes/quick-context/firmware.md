@@ -11,16 +11,16 @@ created: 2026-03-26
 
 ## The Core Problem
 
-Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert PCB. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
+Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[micro-context/plc-programmable-logic-controller\|bare metal or under an RTOS]] with no general-purpose OS |
-| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a microcontroller's flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
+| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a [[learning/notes/micro-context/microcontroller|microcontroller]]'s flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
 | **ELF file (.elf)** | Executable and Linkable Format — the compiler's output containing machine code, memory layout, and debug symbols; the flash tool extracts the code sections and writes them to the chip |
-| **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
+| **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on [[learning/notes/micro-context/stm32-microcontroller|STM32]], this is `0x08000000`, the start of flash memory |
 | **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/UART before jumping to the application code; some STM32 projects skip this and flash the application directly |
 
 <details>
@@ -311,7 +311,7 @@ The ELF file contains not just machine code but also metadata telling the flash 
 **Q3:** The Pupper has two STM32 MCUs (U1 and U5). Do they run the same firmware?
 <details>
 <summary>Answer</summary>
-No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery voltage, communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
+No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery voltage, communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `[[learning/notes/micro-context/spinev1-elf|SPIneV1]]` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
 </details>
 
 **Q4:** If firmware runs from flash memory, why does the STM32 also need SRAM?
@@ -323,7 +323,7 @@ Code executes from flash, but runtime data needs RAM. The stack (function call f
 **Q5:** A firmware update fails halfway — power was lost during the flash erase step. What happens when the chip powers back on, and how would you recover?
 <details>
 <summary>Answer</summary>
-The CPU reads the reset vector from `0x08000000`, but that flash sector was erased and now contains `0xFFFFFFFF` (erased flash reads as all-ones). The CPU attempts to execute at address `0xFFFFFFFF`, which is invalid — the chip immediately hard-faults and hangs. However, it is NOT permanently bricked: the SWD debug interface is implemented in hardware, not firmware, so the ST-Link can still connect, erase the corrupted flash, and write fresh firmware. This is why SWD is the recovery mechanism of last resort — it works regardless of what's in flash. Production devices avoid this with dual-bank flash or bootloaders that verify firmware integrity before jumping to application code. See: [[micro-context/swd-serial-wire-debug]] and The Key Tension — The Update Problem.
+The CPU reads the reset vector from `0x08000000`, but that flash sector was erased and now contains `0xFFFFFFFF` (erased flash reads as all-ones). The CPU attempts to execute at address `0xFFFFFFFF`, which is invalid — the chip immediately hard-faults and hangs. However, it is NOT permanently bricked: the [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] debug interface is implemented in hardware, not firmware, so the ST-Link can still connect, erase the corrupted flash, and write fresh firmware. This is why SWD is the recovery mechanism of last resort — it works regardless of what's in flash. Production devices avoid this with dual-bank flash or bootloaders that verify firmware integrity before jumping to application code. See: [[micro-context/swd-serial-wire-debug]] and The Key Tension — The Update Problem.
 </details>
 
 </details>

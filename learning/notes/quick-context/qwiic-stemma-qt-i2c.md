@@ -7,11 +7,11 @@ created: 2026-03-28
 
 > **Related:** [[micro-context/i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate soldering and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
+> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate [[learning/notes/quick-context/soldering|soldering]] and wiring errors for sensor hookup — just plug in a cable and start reading data over [[learning/notes/micro-context/i2c|I2C]]. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
 
 ## The Core Problem
 
-Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply voltage, typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
+Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply [[learning/notes/quick-context/voltage|voltage]], typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
 
 ## 5 Essential Terms
 
@@ -237,13 +237,13 @@ void loop() {
 
 - **[[micro-context/jst-connector-families]]** — JST SH (1.0mm) is the connector used by Qwiic/STEMMA QT. This micro-context covers the full range of JST families and common mix-ups (like "MX 1.25mm" being a misnomer).
 
-- **[[quick-context/embedded-communication-protocols]]** — Where I2C sits in the landscape of UART, SPI, CAN, and Ethernet. Explains why I2C is the right choice for short-range sensor communication.
+- **[[quick-context/embedded-communication-protocols]]** — Where I2C sits in the landscape of UART, [[learning/notes/micro-context/spi|SPI]], CAN, and Ethernet. Explains why I2C is the right choice for short-range sensor communication.
 
 - **[[small-context/imu-robot-balance-sensing]]** — The BNO086 IMU is one of the most popular Qwiic/STEMMA QT devices. The Pupper v3 uses this sensor for balance control.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** — ADC breakouts (ADS1115, ADS1015) are common Qwiic devices for reading analog sensors that a digital-only MCU can't measure directly.
+- **[[micro-context/adc-analog-to-digital-converter]]** — [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] breakouts (ADS1115, ADS1015) are common Qwiic devices for reading analog sensors that a digital-only MCU can't measure directly.
 
-- **[[quick-context/pupper-bom-control-board]]** — The Pupper control board has a 4-pin JST connector (CN18) for I2C peripherals, following the same 4-wire pattern as Qwiic/STEMMA QT.
+- **[[quick-context/pupper-bom-control-board]]** — The Pupper control board has a 4-pin [[learning/notes/micro-context/jst-connector-families|JST connector]] (CN18) for I2C peripherals, following the same 4-wire pattern as Qwiic/STEMMA QT.
 
 - **TCA9548A I2C Multiplexer** — When you have address conflicts (two identical sensors), this chip creates 8 independent I2C buses behind a single address, letting you talk to devices with the same address by switching channels.
 
@@ -261,7 +261,7 @@ No — SparkFun Qwiic boards are 3.3V only. The Arduino Uno's I2C lines run at 5
 **Q2:** You've daisy-chained 3 Qwiic sensors and the last one in the chain isn't responding. What's likely wrong?
 <details>
 <summary>Answer</summary>
-Most likely **bus capacitance**. Each breakout board adds ~10-30 pF of capacitance, plus each cable adds capacitance proportional to its length. Beyond ~400 pF total, I2C signal edges become too slow for the pull-up resistors to restore the bus voltage in time. Fixes: use shorter cables, reduce the number of boards, use stronger pull-ups (lower resistance, e.g., 4.7k$\Omega$ instead of 10k$\Omega$), or use an I2C bus extender chip.
+Most likely **bus [[learning/notes/quick-context/capacitance|capacitance]]**. Each breakout board adds ~10-30 pF of capacitance, plus each cable adds capacitance proportional to its length. Beyond ~400 pF total, I2C signal edges become too slow for the pull-up resistors to restore the bus voltage in time. Fixes: use shorter cables, reduce the number of boards, use stronger pull-ups (lower resistance, e.g., 4.7k$\Omega$ instead of 10k$\Omega$), or use an I2C bus extender chip.
 </details>
 
 **Q3:** You want to connect two identical BME280 temperature sensors to measure two different locations. Both have address 0x77. How do you solve this with Qwiic?
@@ -279,7 +279,7 @@ Size. JST SH 1.0mm connectors are roughly half the footprint of PH 2.0mm, allowi
 **Q5:** The Pupper v3 control board has a 4-pin JST connector (CN18) for I2C peripherals. Could you plug a standard Qwiic cable into it?
 <details>
 <summary>Answer</summary>
-Only if CN18 is a JST SH 1.0mm connector with the same pinout (GND, VCC, SDA, SCL). Looking at the Pupper BOM, CN18 is a BM04B-SRSS-TB — which is a JST **SH** 4-pin receptacle. However, you need to verify the pin order matches Qwiic's standard (GND, 3.3V, SDA, SCL). If the board designer used a different pin order (e.g., VCC first instead of GND first), plugging in a Qwiic cable directly would connect the wrong signals to the wrong pins. Always check the schematic before assuming connector compatibility.
+Only if CN18 is a JST SH 1.0mm connector with the same pinout (GND, VCC, SDA, SCL). Looking at the [[learning/notes/quick-context/pupper-bom-control-board|Pupper BOM]], CN18 is a BM04B-SRSS-TB — which is a JST **SH** 4-pin receptacle. However, you need to verify the pin order matches Qwiic's standard (GND, 3.3V, SDA, SCL). If the board designer used a different pin order (e.g., VCC first instead of GND first), plugging in a Qwiic cable directly would connect the wrong signals to the wrong pins. Always check the schematic before assuming connector compatibility.
 </details>
 
 </details>

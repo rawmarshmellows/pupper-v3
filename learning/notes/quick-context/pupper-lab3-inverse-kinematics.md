@@ -268,7 +268,7 @@ Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ reduction in one step. 
 - **Newton's Method** — Uses second-order information (the Hessian $\nabla^2 C$) for faster convergence: $\theta \leftarrow \theta - (\nabla^2 C)^{-1} \nabla C$. Converges quadratically near the solution vs. gradient descent's linear convergence, but each step is more expensive and the Hessian can be singular.
 - **Levenberg-Marquardt Algorithm** — A damped least-squares method that interpolates between gradient descent (far from solution) and Gauss-Newton (near solution). The standard workhorse for nonlinear least-squares problems in robotics, vision, and SLAM.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 3 builds directly on Lab 2's FK implementation and feeds into Lab 4's multi-leg gait controller.
-- **[[quick-context/pupper-brain]]** — The hardware executing these loops: the STM32 microcontrollers running the 200 Hz PD loop, and the Raspberry Pi running the 20 Hz IK solver in Python via [[quick-context/ros2-architecture|ROS2]].
+- **[[quick-context/pupper-brain]]** — The hardware executing these loops: the [[learning/notes/micro-context/stm32-microcontroller|STM32]] microcontrollers running the 200 Hz PD loop, and the Raspberry Pi running the 20 Hz IK solver in Python via [[quick-context/ros2-architecture|ROS2]].
 - **Optimization Theory** — Lab 3's gradient descent is a first-order unconstrained optimizer. The broader field includes constrained optimization (Lagrange multipliers, interior-point methods), stochastic gradient descent (used in ML), and convex optimization (where global minima are guaranteed). Boyd & Vandenberghe's *Convex Optimization* is the standard reference.
 
 </details>

@@ -405,16 +405,16 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[learning/notes/quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
-- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
+- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; [[learning/notes/quick-context/wire-bonding|wire bonding]] is older and cheaper, [[learning/notes/quick-context/flip-chip|flip-chip]] enables higher density and is used in most modern processors.
 
 - **Underfill** — An epoxy material injected between the die and substrate after flip-chip attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
 
@@ -433,7 +433,7 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 Organic substrates (fiberglass + epoxy) and ceramic substrates (alumina or aluminum nitride). Organic substrates are far more common (~95% of the market) in consumer electronics because they're much cheaper to manufacture. Ceramic is reserved for high-reliability or high-power applications. See: How It Works (Substrate Materials Comparison)
 </details>
 
-**Q2:** What is the typical pitch ratio between a die's bumps and a package's BGA balls?
+**Q2:** What is the typical pitch ratio between a die's bumps and a package's [[learning/notes/quick-context/bga-ball-grid-array|BGA]] balls?
 <details>
 <summary>Answer</summary>
 About 8:1. Die bumps are typically ~100μm pitch, while BGA balls are ~800μm pitch. The substrate's job is to "fan out" connections to bridge this 8× scale difference. See: How It Works (The Size Difference Visualized)

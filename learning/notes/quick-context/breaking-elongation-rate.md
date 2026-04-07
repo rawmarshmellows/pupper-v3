@@ -155,7 +155,7 @@ Print Temp: 220-240°C
 ```
 
 This tells you:
-- **45 MPa tensile strength**: Moderately strong (won't tear easily)
+- **45 MPa [[learning/notes/quick-context/tensile-strength-materials|tensile strength]]**: Moderately strong (won't tear easily)
 - **> 650% elongation**: Extremely stretchy/flexible
 - **Shore 95A**: Firm but flexible (like a car tire, not a gummy bear)
 
@@ -199,7 +199,7 @@ TPU. Despite lower tensile strength, the 650% elongation means the bumper absorb
 <details>
 <summary>Answer</summary>
 
-The freezer temperature may be below the polymer's glass transition temperature (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
+The freezer temperature may be below the polymer's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
 
 </details>
 
