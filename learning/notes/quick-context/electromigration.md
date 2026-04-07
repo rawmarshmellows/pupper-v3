@@ -352,7 +352,7 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] (random electron motion creating [[learning/notes/quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
@@ -390,7 +390,7 @@ Temperature affects electromigration rate but doesn't eliminate it. The exponent
 **Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
-The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
+The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but [[learning/notes/quick-context/transistor|transistor]] current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
 </details>
 
 </details>

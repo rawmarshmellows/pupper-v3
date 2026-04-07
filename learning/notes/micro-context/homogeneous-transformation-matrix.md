@@ -3,6 +3,8 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **See also:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics]] | [[learning/notes/quick-context/similarity-transform|Similarity Transform]] | [[learning/notes/quick-context/tensor|Tensor]]
+
 
 # Homogeneous Transformation Matrix
 

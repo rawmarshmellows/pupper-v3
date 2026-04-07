@@ -20,7 +20,7 @@ A modern electronic system spans nine orders of magnitude (5 nm transistors to 5
 |------|------------|
 | **Passive component** | A part that cannot amplify or switch signals—it can only store or dissipate energy. Resistors, capacitors, and inductors are the three fundamental passives. |
 | **Active component** | A part that can amplify or switch—it adds energy from a power supply into a signal path. Transistors and diodes are the primary examples. |
-| **Discrete component** | A single part in its own package soldered to a PCB (a standalone resistor, a single transistor). Contrast with "integrated," where billions of components are fabricated together on one die. |
+| **Discrete component** | A single part in its own package soldered to a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] (a standalone [[learning/notes/quick-context/resistor|resistor]], a single [[learning/notes/quick-context/transistor|transistor]]). Contrast with "integrated," where billions of components are fabricated together on one die. |
 | **Integrated circuit (IC)** | Billions of transistors (plus resistors, capacitors, and wiring) fabricated together on a single [[quick-context/silicon-die|silicon die]]—a complete functional block like a CPU, memory chip, or sensor. |
 | **Packaging hierarchy** | The chain of physical structures (die → substrate → package → PCB) that connects nanometer-scale transistors to the centimeter-scale world. See [[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]. |
 
@@ -281,9 +281,9 @@ Every signal in every electronic device passes through some combination of these
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/transistor]]** — The most important active component. Understanding the MOSFET is the gateway to understanding all digital electronics, from logic gates to CPUs.
+- **[[quick-context/transistor]]** — The most important active component. Understanding the [[learning/notes/micro-context/mosfet|MOSFET]] is the gateway to understanding all digital electronics, from logic gates to CPUs.
 
-- **[[quick-context/capacitor]]** — The most important passive for digital electronics. Decoupling capacitors are on every board; the MOS capacitor is inside every transistor.
+- **[[quick-context/capacitor]]** — The most important passive for digital electronics. Decoupling capacitors are on every board; the MOS [[learning/notes/quick-context/capacitor|capacitor]] is inside every transistor.
 
 - **[[quick-context/electric-current]]** — The foundational concept that connects all components. Current flows through resistors, charges capacitors, creates magnetic fields in inductors, and drives transistor switching.
 
@@ -305,13 +305,13 @@ Every signal in every electronic device passes through some combination of these
 **Q1:** What are the three fundamental passive components, and what form of energy does each store or dissipate?
 <details>
 <summary>Answer</summary>
-**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **Inductor** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
+**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × [[learning/notes/quick-context/capacitance|capacitance]] × voltage²). **[[learning/notes/quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
 </details>
 
 **Q2:** What is the difference between a passive and an active component?
 <details>
 <summary>Answer</summary>
-A **passive component** can only store or dissipate energy—it cannot amplify a signal. Resistors, capacitors, and inductors are passive. An **active component** can amplify or switch signals by drawing energy from a power supply and injecting it into the signal path. Transistors are the primary example: a small voltage on the gate controls a much larger current between source and drain.
+A **passive component** can only store or dissipate energy—it cannot amplify a signal. Resistors, capacitors, and inductors are passive. An **active component** can amplify or switch signals by drawing energy from a power supply and injecting it into the signal path. Transistors are the primary example: a small [[learning/notes/quick-context/voltage|voltage]] on the gate controls a much larger current between source and drain.
 </details>
 
 **Q3:** A capacitor "blocks DC but passes AC" and an inductor "blocks AC but passes DC." Why are these behaviors exactly opposite?
@@ -320,7 +320,7 @@ A **passive component** can only store or dissipate energy—it cannot amplify a
 They store energy in dual forms: capacitors in electric fields (voltage-dependent), inductors in magnetic fields (current-dependent). A capacitor opposes voltage changes (I = C × dV/dt: current = capacitance × rate of voltage change)—DC has no voltage change, so no current passes. An inductor opposes current changes (V = L × dI/dt: voltage = inductance × rate of current change)—DC has no current change, so the inductor acts like a wire. At higher frequencies, voltage and current change faster, amplifying these opposing behaviors. This duality is why LC combinations create resonance and second-order filters.
 </details>
 
-**Q4:** In the packaging hierarchy, why are there multiple connection technologies (wire bonding vs. flip-chip) rather than just one?
+**Q4:** In the packaging hierarchy, why are there multiple connection technologies ([[learning/notes/quick-context/wire-bonding|wire bonding]] vs. [[learning/notes/quick-context/flip-chip|flip-chip]]) rather than just one?
 <details>
 <summary>Answer</summary>
 They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-understood, but limited in density and adds inductance (wires are long). **Flip-chip** offers higher density and lower inductance (shorter connections), but requires more complex manufacturing and underfill to handle thermal stress. Cost-sensitive, low-pin-count chips use wire bonding; high-performance processors use flip-chip. See [[quick-context/wire-bonding]] and [[quick-context/flip-chip]].
@@ -329,7 +329,7 @@ They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-un
 **Q5:** If you had to explain to someone the purpose of the entire packaging hierarchy in one sentence, what would it be?
 <details>
 <summary>Answer</summary>
-The packaging hierarchy is a chain of progressively coarser "adapters" that bridge nine orders of magnitude in scale—from 5 nm transistors on a silicon die to 5 mm connectors on a PCB—so that nanometer-scale computation can connect to the human-scale world with reliable electrical and thermal paths. See [[quick-context/pcb-chip-transistor-hierarchy]].
+The packaging hierarchy is a chain of progressively coarser "adapters" that bridge nine orders of magnitude in scale—from 5 nm transistors on a [[learning/notes/quick-context/silicon-die|silicon die]] to 5 mm connectors on a PCB—so that nanometer-scale computation can connect to the human-scale world with reliable electrical and thermal paths. See [[quick-context/pcb-chip-transistor-hierarchy]].
 </details>
 
 </details>

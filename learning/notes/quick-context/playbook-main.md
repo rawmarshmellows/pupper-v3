@@ -1,3 +1,5 @@
+> **Related:** [[learning/notes/quick-context/sandler-kare-segmentation|Sandler KARE Segmentation]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman LAMP]] | [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] | [[learning/notes/quick-context/post-sale-account-engagement|Post-Sale Account Engagement]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.

@@ -7,7 +7,7 @@ created: 2026-03-10
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
 
-> **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
+> **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps [[learning/notes/quick-context/ros2-architecture|ROS2]] Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
 ## The Core Problem
 

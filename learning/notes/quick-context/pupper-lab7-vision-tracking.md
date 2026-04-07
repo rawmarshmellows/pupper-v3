@@ -24,7 +24,7 @@ Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM
 | **State Machine** | A controller with discrete modes (IDLE, SEARCH, TRACK) and well-defined transitions between them — the decision-making core of Lab 7's tracking behavior |
 | **YOLO (You Only Look Once)** | A single-shot object detection architecture that predicts bounding boxes and class labels in one forward pass; Lab 7 uses YOLOv5 trained on the 80-class COCO dataset |
 | **Hailo Accelerator** | An edge AI inference chip (~26 TOPS) mounted on the Pupper that runs the YOLOv5 network at low power, enabling on-robot detection without cloud connectivity |
-| **Detection2DArray** | A ROS2 message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
+| **Detection2DArray** | A [[learning/notes/quick-context/ros2-architecture|ROS2]] message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
 | **Proportional Tracking Controller** | A P-controller that converts the horizontal pixel offset of a detected object into a yaw rate command: $\omega = -K_p \cdot x_{\text{normalized}}$, steering the robot to center the target in frame |
 
 <details>

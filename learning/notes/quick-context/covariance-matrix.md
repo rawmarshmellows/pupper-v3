@@ -206,7 +206,7 @@ print(R)
 
 The cross-covariance matrix $H$ encodes all the rotational information. The [[quick-context/singular-value-decomposition|SVD]] extracts it cleanly.
 
-**The one thing most outsiders get wrong about this is...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by SVD to find the rotation.
+**The one thing most outsiders get wrong about this is...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by [[learning/notes/quick-context/singular-value-decomposition|SVD]] to find the rotation.
 
 </details>
 
@@ -216,7 +216,7 @@ The cross-covariance matrix $H$ encodes all the rotational information. The [[qu
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses the cross-covariance matrix $H$ as the key input to SVD-based rotation estimation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of finding the best rigid-body transform between two point sets, solved through cross-covariance + SVD
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The decomposition $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the Helmert transform with scale; covariance is used in least-squares estimation of all parameters
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the [[learning/notes/quick-context/helmert-transform|Helmert transform]] with scale; covariance is used in least-squares estimation of all parameters
 - **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal components; the dominant eigenvectors capture the most variance
 - **Mahalanobis distance** -- Distance metric $d = \sqrt{(\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)}$ that accounts for covariance structure, used in outlier detection and Kalman filter gating
 - **Kalman filter** -- Propagates a state estimate and its covariance matrix through time; the covariance matrix tracks uncertainty at every step

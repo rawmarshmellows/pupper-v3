@@ -266,7 +266,7 @@ The compiler produces `can.o` with four sections — but no fixed addresses yet.
 
 ### Step 2: Linking
 
-The linker reads `STM32F446RETX_FLASH.ld` and stitches together `main.o`, `can.o`, `spi.o`, `startup_stm32f446retx.o`, and HAL library objects:
+The linker reads `STM32F446RETX_FLASH.ld` and stitches together `main.o`, `can.o`, `[[learning/notes/micro-context/spi|spi]].o`, `startup_stm32f446retx.o`, and HAL library objects:
 
 ```
 arm-none-eabi-ld -T STM32F446RETX_FLASH.ld \
@@ -380,7 +380,7 @@ STM32 uses **memory aliasing**: the flash region at `0x08000000` is also mapped 
 **Q5:** The ELF file for SPIneV1 is ~250KB, but the actual flash usage is ~55KB. Where does the other ~195KB go?
 <details>
 <summary>Answer</summary>
-The extra ~195KB is almost entirely **DWARF debug information** (`.debug_info`, `.debug_line`, `.debug_abbrev`, `.debug_str`, etc.) — the symbol tables, source line mappings, and type information that let you do step-through debugging in STM32CubeIDE or GDB. These sections have no LMA (Load Memory Address) — the flash programmer skips them entirely. They exist only in the ELF file on your PC, where the debugger reads them to map between machine addresses and your source code. A stripped `.bin` file (produced by `arm-none-eabi-objcopy -O binary SPIneV1.elf SPIneV1.bin`) would be ~55KB — just the raw bytes that actually go into flash. See: Concrete Example (Step 3: ELF File Contents)
+The extra ~195KB is almost entirely **DWARF debug information** (`.debug_info`, `.debug_line`, `.debug_abbrev`, `.debug_str`, etc.) — the symbol tables, source line mappings, and type information that let you do step-through debugging in STM32CubeIDE or GDB. These sections have no LMA (Load Memory Address) — the flash programmer skips them entirely. They exist only in the ELF file on your PC, where the debugger reads them to map between machine addresses and your source code. A stripped `.bin` file (produced by `arm-none-eabi-objcopy -O binary [[learning/notes/micro-context/spinev1-elf|SPIneV1]].elf SPIneV1.bin`) would be ~55KB — just the raw bytes that actually go into flash. See: Concrete Example (Step 3: ELF File Contents)
 </details>
 
 </details>

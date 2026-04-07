@@ -7,19 +7,19 @@ created: 2026-02-25
 
 > **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
 
-> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
+> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual [[learning/notes/micro-context/stm32-microcontroller|STM32]] microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
-A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
+A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd [[learning/notes/quick-context/resistor|resistor]] values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a [[learning/notes/quick-context/voltage|voltage]] divider setting the [[learning/notes/micro-context/buck-converter|buck converter]] output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
-| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
+| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a [[learning/notes/quick-context/capacitor|capacitor]] in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
 | **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
 
@@ -318,14 +318,14 @@ NOW TRACE IT ON THE BOARD:
      → exposed pad soldered to ground plane for heat sinking
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a BOM is just a shopping list. It's actually a complete specification that encodes deep design decisions. The 60.4kΩ feedback resistor isn't "approximately 60k" — it's calculated to 3 significant figures from the voltage reference. The 100nF decoupling caps aren't "some capacitors near the chip" — each one is placed within 2mm of a specific power pin, and their impedance at the STM32's switching frequencies determines whether the MCU runs reliably. The BOM is the bridge between the schematic's electrical design and the physical board that gets built.
+**The one thing most outsiders get wrong about this is...** thinking a BOM is just a shopping list. It's actually a complete specification that encodes deep design decisions. The 60.4kΩ feedback resistor isn't "approximately 60k" — it's calculated to 3 significant figures from the voltage reference. The 100nF decoupling caps aren't "some capacitors near the chip" — each one is placed within 2mm of a specific power pin, and their [[learning/notes/quick-context/impedance-and-reactance|impedance]] at the STM32's switching frequencies determines whether the MCU runs reliably. The BOM is the bridge between the schematic's electrical design and the physical board that gets built.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-brain]]** — The architectural overview of this same board: why dual MCUs, why CAN bus, how the 1 kHz control loop works. This BOM document explains WHAT parts are used; the brain document explains WHY.
+- **[[quick-context/pupper-brain]]** — The architectural overview of this same board: why dual MCUs, why [[learning/notes/quick-context/can-bus|CAN bus]], how the 1 kHz control loop works. This BOM document explains WHAT parts are used; the brain document explains WHY.
 
 - **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum that runs on this hardware. Labs 1-4 directly control the motors via CAN bus and read the IMU; Lab 5 deploys RL policies through the neural controller; Labs 6-7 add voice and vision on the Raspberry Pi side.
 
@@ -339,13 +339,13 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH [[learning/notes/micro-context/power-inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
-- **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
+- **[[quick-context/diode]]** — The SS56 Schottky [[learning/notes/quick-context/diode|diode]] protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 
 - **[[quick-context/common-ic-packages]]** — This BOM uses LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages. Understanding package types explains why certain parts can't be hand-soldered.
 
-- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow soldering. The paste mask layer defines the stencil apertures for solder paste deposition.
+- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow [[learning/notes/quick-context/soldering|soldering]]. The paste mask layer defines the stencil apertures for solder paste deposition.
 
 - **[[quick-context/frequency-and-filtering]]** — The ferrite beads (L2, L3) and multi-value capacitor network form a distributed filter that suppresses switching noise across a wide bandwidth.
 
@@ -380,7 +380,7 @@ NOW TRACE IT ON THE BOARD:
 **Three options:** (1) Use JLCPCB's consignment service — order the BNO086 from Mouser/Digi-Key and ship it to JLCPCB, who will place it during assembly. (2) Have JLCPCB assemble everything except the BNO086, then solder it yourself with a hot-air station (the LGA-28 package has pads only on the bottom — impossible with a soldering iron). (3) Find an alternative assembly house that stocks Bosch sensors. Option 1 is most common. This sourcing gap is typical for specialized sensors not in mainstream Chinese distributor catalogs.
 </details>
 
-**Q5:** If you removed the 10μH inductor (L1) from the buck converter circuit, what would happen?
+**Q5:** If you removed the 10μH [[learning/notes/quick-context/inductor|inductor]] (L1) from the buck converter circuit, what would happen?
 <details>
 <summary>Answer</summary>
 **The 5V output would collapse into violent pulses instead of smooth DC.** The TPS54561's internal switch chops the battery voltage on and off at hundreds of kHz. The [[quick-context/inductor|inductor]] smooths these pulses by storing energy in its magnetic field during the "on" phase and releasing it during "off." Without L1, the output would be a square wave between battery voltage and 0V — no IC on the board could survive that. The output capacitors (C18, C19) would see massive ripple current and likely fail. The inductor is not optional in a buck converter; it IS the converter's fundamental energy storage element. See [[quick-context/inductor]] for the buck converter explanation.

@@ -126,7 +126,7 @@ In practice, if batch A-2024-004 enters your injection molding process, you'd se
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than amorphous ones.
 - **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
 - **[[quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
-- **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
+- **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower [[learning/notes/quick-context/tensile-strength-materials|tensile strength]] due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
 
 </details>
 

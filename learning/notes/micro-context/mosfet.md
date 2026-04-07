@@ -8,13 +8,13 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A [[learning/notes/quick-context/voltage|voltage]]-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a [[learning/notes/quick-context/capacitor|capacitor]]—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 
 - Applying voltage to the gate creates an electric field through the oxide insulator, attracting charge carriers into the channel region.
 - Above the threshold voltage ($V_{th}$), enough carriers accumulate to form a conductive channel between source and drain.
-- Removing the gate voltage collapses the channel, turning the transistor off — no gate current flows because the oxide is an insulator.
+- Removing the gate voltage collapses the channel, turning the [[learning/notes/quick-context/transistor|transistor]] off — no gate current flows because the oxide is an insulator.
 - In CMOS logic, NMOS and PMOS transistors are paired so that one is always off, minimizing static power consumption.
 
 ```

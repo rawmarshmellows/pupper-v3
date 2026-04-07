@@ -64,7 +64,7 @@ High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up 
 
 Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
 
-The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
+The rise of "real-time capable" middleware (EtherCAT, [[learning/notes/quick-context/ros2-architecture|ROS2]] with DDS) is an attempt to have both, but the [[learning/notes/quick-context/impedance-and-reactance|impedance]] mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 
 </details>
 

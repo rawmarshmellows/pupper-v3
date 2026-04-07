@@ -1,3 +1,5 @@
+> **Related:** [[learning/notes/quick-context/sandler-kare-segmentation|Sandler KARE Segmentation]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman LAMP]] | [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]] | [[learning/notes/quick-context/challenger-sale-methodology|Challenger Sale Methodology]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -570,4 +572,4 @@ Rate 1-5 for each dimension quarterly:
 
 ---
 
-*This playbook synthesizes frameworks from: Miller Heiman (LAMP/Strategic Selling), Malcolm McDonald (KAM Model), Sandler (KARE), CEB/Gartner (Challenger Sale), and post-sale engagement best practices.*
+*This playbook synthesizes frameworks from: Miller Heiman (LAMP/Strategic Selling), Malcolm McDonald (KAM Model), Sandler (KARE), CEB/Gartner ([[learning/notes/quick-context/challenger-sale-methodology|Challenger Sale]]), and post-sale engagement best practices.*

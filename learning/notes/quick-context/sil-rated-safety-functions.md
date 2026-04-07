@@ -183,8 +183,8 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
-- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
+- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why [[learning/notes/quick-context/ros2-architecture|ROS2]] cannot replace safety PLCs
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
 - **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 
 </details>

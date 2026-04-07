@@ -8,7 +8,7 @@ updated: 2026-03-27
 
 > **See also:** [[micro-context/swd-serial-wire-debug|SWD]] | [[quick-context/firmware|Flashing Firmware]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/spinev1-elf|SPIneV1.elf]]
 
-**Definition:** A debug probe — a USB device that acts as a translator between your PC and an [[micro-context/stm32-microcontroller|STM32]] [[micro-context/microcontroller|microcontroller]]. It speaks USB on one side and the [[micro-context/swd-serial-wire-debug|SWD]] protocol (2 wires: SWDIO + SWCLK) on the other. Its primary role is [[quick-context/firmware|flashing firmware]] — getting compiled code like [[micro-context/spinev1-elf|SPIneV1.elf]] from your computer into the STM32's flash memory. It also enables live debugging via GDB: hardware breakpoints (Cortex-M4 has 6), single-stepping, and real-time register/memory inspection — all through the same 2-wire connection. The official ST-LINK/V2 (~$22-25) supports SWD + JTAG + SWO trace. Cheap $7-13 clones like the **HiLetgo ST-Link V2** (aluminum USB stick) use an STM32F103C8T6 internally and support SWD only. "Emulator" in clone listings is a translation artifact from Chinese 仿真器 (historically meant in-circuit emulator, now means any debug probe).
+**Definition:** A debug probe — a USB device that acts as a translator between your PC and an [[micro-context/stm32-microcontroller|STM32]] [[micro-context/microcontroller|microcontroller]]. It speaks USB on one side and the [[micro-context/swd-serial-wire-debug|SWD]] protocol (2 wires: SWDIO + SWCLK) on the other. Its primary role is [[quick-context/firmware|flashing firmware]] — getting compiled code like [[micro-context/spinev1-elf|SPIneV1.elf]] from your computer into the [[learning/notes/micro-context/stm32-microcontroller|STM32]]'s flash memory. It also enables live debugging via GDB: hardware breakpoints (Cortex-M4 has 6), single-stepping, and real-time register/memory inspection — all through the same 2-wire connection. The official ST-LINK/V2 (~$22-25) supports [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] + JTAG + SWO trace. Cheap $7-13 clones like the **HiLetgo ST-Link V2** (aluminum USB stick) use an STM32F103C8T6 internally and support SWD only. "Emulator" in clone listings is a translation artifact from Chinese 仿真器 (historically meant in-circuit emulator, now means any debug probe).
 
 ## How It Works
 
@@ -64,7 +64,7 @@ INSIDE THE ST-LINK CLONE (HiLetgo):
 
 ### The signal flow step by step
 
-Here's what happens when you run `openocd -c "program firmware.bin"`:
+Here's what happens when you run `openocd -c "program [[learning/notes/quick-context/firmware|firmware]].bin"`:
 
 **1. USB layer — PC to ST-Link**
 

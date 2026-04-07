@@ -5,7 +5,7 @@ created: 2026-01-26
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
+> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each [[learning/notes/quick-context/transistor|transistor]] sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not [[learning/notes/quick-context/voltage|voltage]].
 
 # Why Billions of Transistors Don't Need Billions of Volts
 
@@ -320,7 +320,7 @@ THE MATH THAT MATTERS:
 
 - **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] through package substrate to the die. Each level has dedicated power planes.
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 

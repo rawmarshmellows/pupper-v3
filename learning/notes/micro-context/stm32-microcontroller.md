@@ -13,8 +13,8 @@ updated: 2026-03-27
 ## How It Works
 
 - The ARM Cortex-M4 core fetches instructions from on-chip flash (512KB), executes them in a pipelined architecture at up to 180MHz, and stores working data in SRAM (128KB).
-- Built-in hardware peripherals (CAN, SPI, I2C, UART, ADC, PWM timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
-- Firmware runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
+- Built-in hardware peripherals (CAN, [[learning/notes/micro-context/spi|SPI]], [[learning/notes/micro-context/i2c|I2C]], UART, [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]], [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
+- [[learning/notes/quick-context/firmware|Firmware]] runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
 
 ```
 STM32 MICROCONTROLLER BLOCK DIAGRAM:

@@ -5,7 +5,7 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
+> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum [[learning/notes/quick-context/voltage|voltage]] needed for [[learning/notes/quick-context/electrolysis|electrolysis]], with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 
 # Voltage and Thermodynamic Relationship in Electrolysis
 
@@ -18,7 +18,7 @@ created: 2026-01-22
 | Term | Definition |
 |------|------------|
 | **Gibbs Free Energy (ΔG)** | The total energy a reaction needs (positive) or releases (negative)—think of it as the "energy price tag" of a chemical change |
-| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish electrodes and resistance |
+| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish [[learning/notes/quick-context/electrodes|electrodes]] and resistance |
 | **Faraday Constant (F)** | A conversion factor (96,485 C/mol) that translates between "chemistry units" (moles of electrons) and "electricity units" (coulombs) |
 | **Cell Potential (E)** | The voltage that corresponds to a reaction's energy requirement—directly calculated from Gibbs free energy |
 | **Non-spontaneous** | A reaction that won't happen unless you force it with external energy (like pushing a ball uphill) |

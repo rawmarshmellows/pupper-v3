@@ -31,7 +31,7 @@ Here's the critical insight: when plastic cools, crystalline regions **shrink mo
 
 When molten plastic exits the printer nozzle, its polymer chains are in a disordered, high-energy state—like a pot of boiling spaghetti. As the plastic cools, two competing processes happen simultaneously. First, thermal contraction: all materials shrink when they lose heat, just like a hot air balloon deflating. Second, and this is the key differentiator, semi-crystalline polymers undergo **crystallization**: their chains spontaneously reorganize from random tangles into tightly packed, ordered arrangements. This reorganization releases additional heat (latent heat of crystallization) and causes extra shrinkage beyond simple thermal contraction.
 
-The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the glass transition temperature and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
+The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
 
 ```
 WHAT HAPPENS WHEN PLASTIC COOLS: Two Paths
@@ -209,7 +209,7 @@ Draft shields               │ Block air currents, even cooling      │ ABS, N
 
 - **[[quick-context/polymer-chemical-bonds]]** — The types of bonds holding polymer chains together determine whether chains can pack into crystalline structures or remain tangled and amorphous.
 
-- **[[quick-context/tensile-strength-materials|Tensile strength]]** — Crystalline regions dramatically increase tensile strength by creating dense, ordered molecular packing that resists pulling forces.
+- **[[quick-context/tensile-strength-materials|Tensile strength]]** — Crystalline regions dramatically increase [[learning/notes/quick-context/tensile-strength-materials|tensile strength]] by creating dense, ordered molecular packing that resists pulling forces.
 
 - **[[quick-context/melt-index]]** — A measure of how easily a polymer flows when melted. Semi-crystalline materials often behave differently during melting because crystalline regions must fully break down before flow begins.
 

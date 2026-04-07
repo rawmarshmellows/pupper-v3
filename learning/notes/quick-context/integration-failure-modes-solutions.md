@@ -495,7 +495,7 @@ analyzers:
 
 ## When to Use ROS2 vs. PLC for Failure Mode Handling
 
-| Failure Mode | ROS2 Good For | PLC Required For |
+| Failure Mode | [[learning/notes/quick-context/ros2-architecture|ROS2]] Good For | PLC Required For |
 |--------------|---------------|------------------|
 | **Deadlock** | Coordination timeouts, non-safety handshakes | Safety interlocks, E-stop circuits |
 | **Race Conditions** | High-level sequencing, goal management | Microsecond I/O timing, fieldbus sync |

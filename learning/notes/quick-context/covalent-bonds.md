@@ -294,7 +294,7 @@ Related concepts that connect to covalent bonds:
 **Q1:** Why don't covalent bonds break when you melt PLA filament in a 3D printer?
 <details>
 <summary>Answer</summary>
-Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak intermolecular forces between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak van der Waals forces between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
+Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak intermolecular forces between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
 </details>
 
 **Q2:** What is the "octet rule" and why does it drive covalent bond formation?
