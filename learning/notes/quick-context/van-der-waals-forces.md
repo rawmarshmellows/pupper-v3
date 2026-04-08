@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -384,15 +384,15 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-1. **[[quick-context/dipole-dipole-interactions]]** — Dipole-dipole interactions are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
+1. **[[quick-context/dipole-dipole-interactions]]** — [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-dipole interactions]] are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
 
 2. **[[quick-context/hydrogen-bonds-beginners]]** — Hydrogen bonds are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
 
-3. **[[quick-context/pi-pi-stacking-aromatic-interactions]]** — Pi-pi stacking in aromatic rings relies heavily on van der Waals forces between the electron clouds of flat ring structures, explaining why molecules like DNA bases stack so neatly.
+3. **[[quick-context/pi-pi-stacking-aromatic-interactions]]** — [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions|Pi-pi stacking]] in aromatic rings relies heavily on van der Waals forces between the electron clouds of flat ring structures, explaining why molecules like DNA bases stack so neatly.
 
 4. **[[quick-context/polymer-chemical-bonds]]** — In polymers, van der Waals forces between chains determine properties like flexibility and melting point—chains held only by van der Waals are easier to pull apart than those with stronger intermolecular bonds.
 
-5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
+5. **[[quick-context/glass-transition-temperature]]** — The [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
 6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 

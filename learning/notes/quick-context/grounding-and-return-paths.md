@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -17,7 +17,7 @@ Many beginners think of ground as a place where current "goes to die"—electron
 
 | Term | Definition |
 |------|------------|
-| **Ground (GND)** | The common reference voltage (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
+| **Ground (GND)** | The common reference [[learning/notes/quick-context/voltage|voltage]] (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
 | **Return Path** | The route current takes back to the source. At DC and low frequencies, current follows the path of least resistance. At high frequencies, it follows the path of least inductance (which is directly under the signal trace). |
 | **Ground Plane** | A solid copper layer on a [[quick-context/pcb-printed-circuit-board|PCB]] dedicated to ground. Provides a low-impedance return path, reduces noise, and acts as an electromagnetic shield. |
 | **Ground Loop** | When two points that should be at the same potential are connected by multiple paths, creating a loop that acts as an antenna. Picks up magnetic interference and creates noise currents. |

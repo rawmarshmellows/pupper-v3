@@ -3,7 +3,7 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]]
 
 > **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
@@ -26,9 +26,9 @@ Every material property you care about—melting point, strength, flexibility, w
 <details>
 <summary><strong>How It Works</strong></summary>
 
-All chemical bonds and intermolecular forces arise from the same fundamental phenomenon: the electromagnetic attraction between positive and negative charges. The difference lies in how electrons are distributed. In covalent bonds, two atoms share electrons so intimately that neither can claim full ownership—the shared electron cloud holds them together. In ionic bonds, one atom completely surrenders electrons to another, creating opposite charges that attract. In intermolecular forces, the electrons stay on their respective molecules but create local charge imbalances (partial charges) that attract neighboring molecules.
+All chemical bonds and intermolecular forces arise from the same fundamental phenomenon: the electromagnetic attraction between positive and negative charges. The difference lies in how electrons are distributed. In [[learning/notes/quick-context/covalent-bonds|covalent bonds]], two atoms share electrons so intimately that neither can claim full ownership—the shared electron cloud holds them together. In ionic bonds, one atom completely surrenders electrons to another, creating opposite charges that attract. In intermolecular forces, the electrons stay on their respective molecules but create local charge imbalances (partial charges) that attract neighboring molecules.
 
-The strength of any attraction depends on three factors: the magnitude of the charges involved, the distance between them, and how permanent versus temporary those charges are. Covalent bonds involve electrons sitting directly between nuclei—strong, permanent, and close. Ionic bonds involve full +/- charges but at slightly larger distances. Hydrogen bonds involve partial charges (delta+ and delta-) held in fixed orientations. Van der Waals forces involve fleeting, randomly appearing partial charges. The energy required to overcome each type scales accordingly: ~350 kJ/mol for covalent, ~20 kJ/mol for hydrogen bonds, ~2 kJ/mol for van der Waals.
+The strength of any attraction depends on three factors: the magnitude of the charges involved, the distance between them, and how permanent versus temporary those charges are. Covalent bonds involve electrons sitting directly between nuclei—strong, permanent, and close. Ionic bonds involve full +/- charges but at slightly larger distances. Hydrogen bonds involve partial charges (delta+ and delta-) held in fixed orientations. [[learning/notes/quick-context/van-der-waals-forces|Van der Waals forces]] involve fleeting, randomly appearing partial charges. The energy required to overcome each type scales accordingly: ~350 kJ/mol for covalent, ~20 kJ/mol for hydrogen bonds, ~2 kJ/mol for van der Waals.
 
 ```
 WHAT MAKES BONDS STRONGER OR WEAKER
