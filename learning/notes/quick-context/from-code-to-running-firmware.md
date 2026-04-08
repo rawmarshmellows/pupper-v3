@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
+> **Related:** [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/micro-context/stm32-microcontroller]]
 
 > **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
@@ -222,7 +222,7 @@ Steps 4-5 are why the linker script exports symbols like `_sdata`, `_edata`, `_s
 <details>
 <summary><strong>The Key Tension</strong> — Flash vs. RAM and the .data problem</summary>
 
-The fundamental tension in embedded firmware is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
+The fundamental tension in embedded [[learning/notes/quick-context/firmware|firmware]] is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
 
 A global variable like `int speed = 100;` needs to be `100` when your code first reads it. But RAM is empty after power-on. The only persistent storage is flash. So the initial value `100` must be stored in flash, then copied to RAM before `main()` runs. This is why:
 
@@ -245,7 +245,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 

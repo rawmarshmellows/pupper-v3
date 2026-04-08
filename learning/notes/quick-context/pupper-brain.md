@@ -3,7 +3,7 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/firmware]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
@@ -15,7 +15,7 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 [[learning/notes/micro-context/microcontroller|microcontroller]] @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
 | **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
 | **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
 | **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
@@ -34,7 +34,7 @@ When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
 4. **Command transmission**: U1 sends joint targets to U5 (motor MCU) over SPI. U5 packages these into CAN messages.
 
-5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
+5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential [[learning/notes/quick-context/can-bus|CAN bus]] signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
 6. **Audio feedback**: If enabled, U1 sends audio samples over I2S to the MAX98357A amplifier for sound output (beeps, status indicators).
 
@@ -154,7 +154,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
-- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards
+- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from [[learning/notes/quick-context/transistor-analog-to-digital|transistors]] to boards
 - [[quick-context/electric-current]] — Fundamentals of current flow
 - **[[quick-context/pupper-bom-control-board]]** — Every part on this board explained: what it does, why that value, and how it connects to the system. The BOM companion to this architectural overview.
 - **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/inverse kinematics, gait generation, RL policies, LLM voice control, and vision tracking.
@@ -177,10 +177,10 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 <details>
 <summary>Answer</summary>
 
-These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
+These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing [[learning/notes/quick-context/voltage|voltage]] dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
-**Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
+**Q3:** The [[learning/notes/micro-context/buck-converter|buck converter]] uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
 
 <details>
 <summary>Answer</summary>

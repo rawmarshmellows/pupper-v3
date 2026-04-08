@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # From Human Calculators to Coding on Screens
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/transistor]] | [[quick-context/transistor-design-history]]
+> **Related:** [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/semiconductor-fabrication]]
 
 > **TL;DR:** Computing evolved through five eras of human-machine interfaces: teams of human "computers" doing arithmetic by hand with pencils and desk calculators (1600s-1940s), rewiring plugboards on vacuum-tube machines (1940s), feeding punch cards to stored-program computers (1950s), typing on teletype terminals connected to time-sharing systems (1960s), and editing code on CRT screens with compilers running locally (1970s+). The word "computer" originally meant a *person* — rooms full of people, mostly women, who performed calculations as assembly lines of arithmetic. Electronic computers replaced them because ENIAC could compute a ballistics trajectory in 30 seconds that took a human 20 hours. Today, when you type code on a screen, the keystrokes become characters stored in RAM then saved to disk; the compiler reads that file, translates it through the [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] into machine code, and the OS (or a [[quick-context/firmware|flash programmer]], for embedded systems) loads those binary instructions into memory where the CPU fetches and executes them.
 
@@ -127,7 +127,7 @@ ERA 1: PLUGBOARD PROGRAMMING (1940s)
 
 ### Era 2: Punch Cards and the Stored-Program Revolution (1950s)
 
-The breakthrough was the **stored-program concept** (von Neumann, 1945): store instructions in the same memory as data. Now programs were sequences of numbers in memory, not physical wires. EDSAC (1949) was the first stored-program computer to enter routine service (the Manchester Baby ran a stored program in 1948, but EDSAC was the first used for real work). By the 1950s, vacuum tubes were being replaced by [[quick-context/transistor|transistors]] (first transistor: 1947; first transistorized computer: Manchester University's 1953 prototype), making machines smaller, more reliable, and cheaper.
+The breakthrough was the **stored-program concept** (von Neumann, 1945): store instructions in the same memory as data. Now programs were sequences of numbers in memory, not physical wires. EDSAC (1949) was the first stored-program computer to enter routine service (the Manchester Baby ran a stored program in 1948, but EDSAC was the first used for real work). By the 1950s, vacuum tubes were being replaced by [[quick-context/transistor|transistors]] (first [[learning/notes/quick-context/transistor|transistor]]: 1947; first transistorized computer: Manchester University's 1953 prototype), making machines smaller, more reliable, and cheaper.
 
 But how do you get a program into memory? **Punch cards.** Each card had 80 columns of holes representing characters. A programmer wrote code on paper, a keypunch operator punched it onto cards, the card reader fed them into memory, and hours later you got printed output. This was **batch processing** — no interaction with the running machine.
 
@@ -285,7 +285,7 @@ ERA 4: FROM SCREEN TO CPU -- THE MODERN WORKFLOW
   +------------------------------------------+
 ```
 
-For embedded/firmware development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
+For embedded/[[learning/notes/quick-context/firmware|firmware]] development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
 
 ### Where Is Your Code Stored?
 
@@ -436,7 +436,7 @@ CPU EXECUTING THE ADDITION (nanosecond timescale)
   The same addition on ENIAC: ~200 microseconds (600,000x slower)
 ```
 
-For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] microcontroller (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
+For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] [[learning/notes/micro-context/microcontroller|microcontroller]] (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
 
 **The one thing most outsiders get wrong about this is...** thinking that "interactive programming" means the computer understands your keystrokes directly. The screen, keyboard, text editor, filesystem, compiler, and OS are all elaborate layers of software that translate your intent into the only thing the CPU can do: fetch a binary instruction, decode it, and execute it through [[quick-context/code-to-gates-and-bootstrapping|logic gates]]. When you type on a screen and see output, you're interacting with at least six software layers — each one was [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, going all the way back to binary on punch cards.
 
@@ -451,7 +451,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/transistor]]** — The physical switch that replaced vacuum tubes and made modern computing possible. Every logic gate in the CPU is built from these.
 
-- **[[quick-context/transistor-design-history]]** — The evolution from point-contact transistors (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
+- **[[quick-context/transistor-design-history]]** — The evolution from point-contact [[learning/notes/quick-context/transistor-analog-to-digital|transistors]] (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 
