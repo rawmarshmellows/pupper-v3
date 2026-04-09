@@ -123,7 +123,7 @@ TPU 95A         | 220-250°C   | 40-60°C  | Optional  | 50-100%      | 15-30mm/
 - **ABS**: Automotive parts, enclosures near heat sources, anything needing acetone smoothing
 - **TPU**: Phone cases, drone bumpers, gaskets, vibration dampeners, watch bands, anything that needs to flex or absorb impact
 
-The one thing most outsiders get wrong about this is **assuming "stronger" or "more advanced" filaments are always better**. A PLA part printed with good layer adhesion often outperforms a poorly-printed ABS part, and the dimensional accuracy of easy-printing PLA frequently matters more than raw material strength. Similarly, people try TPU expecting rubber-like flexibility and get frustrated when their Bowden setup jams constantly—check your hardware first. The best filament is the one you can actually print well on your machine.
+The one thing most outsiders get wrong about this is **assuming "stronger" or "more advanced" filaments are always better**. A PLA part printed with good layer adhesion often outperforms a poorly-printed ABS part, and the dimensional accuracy of easy-printing PLA frequently matters more than raw material strength. Similarly, people try TPU expecting rubber-like flexibility and get frustrated when their Bowden setup jams constantly—check your hardware first. The best filament is the one you [[micro-context/can-bus-termination|can]] actually print well on your machine.
 
 </details>
 

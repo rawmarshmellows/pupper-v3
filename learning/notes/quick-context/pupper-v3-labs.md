@@ -13,14 +13,14 @@ created: 2026-03-10
 
 ## The Core Problem
 
-Building a walking, seeing, talking robot requires knowledge spanning control theory, kinematics, machine learning, and systems integration. No single course can teach all of this at once. These 7 labs scaffold the learning: each lab builds on the previous one's code and concepts, progressively unlocking new capabilities while reusing FK/IK/gait code from earlier labs. By Lab 7, every subsystem (motors, IMU, camera, microphone, speaker, neural network, LLM) runs simultaneously on the Pupper.
+Building a walking, seeing, talking robot requires knowledge spanning control theory, kinematics, machine learning, and systems integration. No single course [[micro-context/can-bus-termination|can]] teach all of this at once. These 7 labs scaffold the learning: each lab builds on the previous one's code and concepts, progressively unlocking new capabilities while reusing FK/IK/gait code from earlier labs. By Lab 7, every subsystem (motors, IMU, [[quick-context/camera-fundamentals|camera]], microphone, speaker, neural network, LLM) runs simultaneously on the Pupper.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **PD Control** | Proportional-Derivative controller that computes torque as $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — the foundation of Labs 1, 3, and 4 |
-| **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 homogeneous transformation matrices — Lab 2's core concept, reused in every subsequent lab |
+| **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 [[micro-context/homogeneous-transformation-matrix|homogeneous transformation]] matrices — Lab 2's core concept, reused in every subsequent lab |
 | **Inverse Kinematics (IK)** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via gradient descent on the FK cost function |
 | **Karel** | The `KarelPupper` class (Labs 6-7) that wraps ROS2 Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
 | **State Machine** | Lab 7's IDLE/SEARCH/TRACK controller that transitions between rotating to find a target, and using proportional control to follow it based on camera detections |

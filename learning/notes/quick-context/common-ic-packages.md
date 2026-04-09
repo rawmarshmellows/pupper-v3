@@ -11,16 +11,16 @@ created: 2026-02-06
 
 ## The Core Problem: Bridging Microscopic to Human-Scale
 
-The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines can work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you can actually solder it by hand.
+The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines [[micro-context/can-bus-termination|can]] work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you can actually solder it by hand.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
+| **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by [[micro-context/smd-resistor|SMD]] in production. |
 | **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
 | **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
+| **Pin count** | Total number of electrical connections. A simple [[quick-context/voltage|voltage]] regulator: 3-5 pins. [[micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
 | **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
 
 <details>
@@ -196,7 +196,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — [[micro-context/i2s|IC]] packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
 
 - **[[quick-context/soldering]]** — Package type dictates soldering method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
 

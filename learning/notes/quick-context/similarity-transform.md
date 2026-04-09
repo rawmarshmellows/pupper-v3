@@ -11,7 +11,7 @@ created: 2026-04-04
 
 ## The Core Problem
 
-Many tasks in science and engineering require comparing or aligning objects that have the same shape but differ in position, orientation, and size. A biologist compares two protein structures measured at different scales. A surveyor reconciles GPS coordinates with a local map. A computer vision system matches a 3D model to a scene viewed from an unknown angle and distance. In every case you need a transform that can absorb differences in pose and scale while guaranteeing that the intrinsic geometry -- all angles, all distance ratios -- stays untouched. Without similarity transforms, you would need to manually strip away each degree of freedom (translation, rotation, scale) in separate ad-hoc steps with no unified mathematical framework.
+Many tasks in science and engineering require comparing or aligning objects that have the same shape but differ in position, orientation, and size. A biologist compares two protein structures measured at different scales. A surveyor reconciles GPS coordinates with a local map. A computer vision system matches a 3D model to a scene viewed from an unknown angle and distance. In every case you need a transform that [[micro-context/can-bus-termination|can]] absorb differences in pose and scale while guaranteeing that the intrinsic geometry -- all angles, all distance ratios -- stays untouched. Without similarity transforms, you would need to manually strip away each degree of freedom (translation, rotation, scale) in separate ad-hoc steps with no unified mathematical framework.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Many tasks in science and engineering require comparing or aligning objects that
 |------|------------|
 | **Similarity transform** | A map $T(\mathbf{x}) = sR\mathbf{x} + \mathbf{t}$ combining uniform scale $s > 0$, orthogonal rotation $R$, and translation $\mathbf{t}$, preserving angles and distance ratios |
 | **Isometry** | A similarity transform with $s = 1$ (also called a rigid transform or Euclidean motion) -- preserves absolute distances, not just ratios |
-| **Degrees of freedom** | The number of independent parameters defining a transform; a similarity in $n$ dimensions has $\frac{n(n+1)}{2} + 1$ DOF |
+| **Degrees of freedom** | The number of independent parameters defining a transform; a similarity in $n$ dimensions has $\frac{n(n+1)}{2} + 1$ [[quick-context/pupper-lab2-forward-kinematics|DOF]] |
 | **Conformal map** | Any smooth map that preserves angles locally; similarity transforms are the *global* conformal maps of Euclidean space (angle-preserving everywhere, not just infinitesimally) |
 | **Procrustes analysis** | A statistical method that finds the optimal similarity transform to superimpose two or more point configurations, minimizing the sum of squared distances between corresponding points |
 

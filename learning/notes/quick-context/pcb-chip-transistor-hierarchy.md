@@ -12,7 +12,7 @@ created: 2026-01-23
 
 ## The Core Problem
 
-Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
+[[quick-context/transistor-analog-to-digital|Transistors]] are ~5 nanometers; your USB port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
 
 ## 5 Essential Terms
 
@@ -27,9 +27,9 @@ Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines can handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), metal interconnect layers within the die are branches gathering signals, [[quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
+The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines [[micro-context/can-bus-termination|can]] handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), metal interconnect layers within the die are branches gathering signals, [[quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
 
-At the transistor level, signals exist as voltage changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's BGA balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
+At the [[quick-context/transistor|transistor]] level, signals exist as [[quick-context/voltage|voltage]] changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's BGA balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
 
 ```
 THE FAN-OUT PRINCIPLE: How Connections Scale Up
@@ -216,13 +216,13 @@ TRACING A MEMORY READ: CPU → DRAM
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are actually built on silicon wafers using photolithography; explains why die size and yield matter for cost.
 
-- **Signal Integrity** — The study of how electrical signals degrade as they travel through packages and PCBs; why trace length, impedance matching, and layer stackup matter.
+- **Signal Integrity** — The study of how electrical signals degrade as they travel through packages and PCBs; why trace length, [[quick-context/impedance-and-reactance|impedance]] matching, and layer stackup matter.
 
 - **Power Delivery Network (PDN)** — How voltage is delivered from wall outlet → PCB → package → die; critical because modern chips draw 100+ amps at <1V.
 
 - **Thermal Management** — Heat generated in the die must escape through the package and into heatsinks; packaging choices directly affect thermal resistance.
 
-- **SMT (Surface Mount Technology)** — The automated process of placing and soldering packaged components onto PCBs; constrains what package types are practical.
+- **SMT (Surface Mount Technology)** — The automated process of placing and [[quick-context/soldering|soldering]] packaged components onto PCBs; constrains what package types are practical.
 
 </details>
 

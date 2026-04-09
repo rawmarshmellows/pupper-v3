@@ -23,7 +23,7 @@ Complex B2B sales involve multiple stakeholders with different priorities, and r
 | Term | Definition |
 |------|------------|
 | **Gold Sheet** | A structured multi-page document that captures the complete strategic picture of a large account—situation appraisal, charter statement, stakeholder map, goals, focus/stop investments, and revenue targets |
-| **Economic Buyer** | The person with final authority to release funds and approve the purchase; they can say "yes" when everyone else says "no" |
+| **Economic Buyer** | The person with final authority to release funds and approve the purchase; they [[micro-context/can-bus-termination|can]] say "yes" when everyone else says "no" |
 | **User Buyer** | The person(s) who will actually use your product day-to-day and judge success based on job impact |
 | **Technical Buyer** | The gatekeeper who screens vendors against specifications, compliance, or technical requirements—they can't approve but can veto |
 | **Coach** | An internal advocate who provides intelligence about the organization's decision process and guides your strategy |

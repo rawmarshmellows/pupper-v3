@@ -175,7 +175,7 @@ GEOMETRY MATTERS:
 
 ## The Key Tension: Strength vs. Processability
 
-Here's the tradeoff that drives 3D printing temperatures: **the same stacking forces that make ABS strong also make it hard to melt**. Each individual pi-pi interaction is weak (about 50x weaker than a normal chemical bond), but there are millions of them per cubic millimeter. To get ABS flowing through a printer nozzle, you need enough heat energy to temporarily break all these stacking interactions so the chains can slide past each other:
+Here's the tradeoff that drives 3D printing temperatures: **the same stacking forces that make ABS strong also make it hard to melt**. Each individual pi-pi interaction is weak (about 50x weaker than a normal chemical bond), but there are millions of them per cubic millimeter. To get ABS flowing through a printer nozzle, you need enough heat energy to temporarily break all these stacking interactions so the chains [[micro-context/can-bus-termination|can]] slide past each other:
 
 ```
     COLD ABS (solid, strong)              HOT ABS (melted, flowable)

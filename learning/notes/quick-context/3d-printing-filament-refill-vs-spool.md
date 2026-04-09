@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-3D printing [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
+3D printing [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare [[quick-context/coil-magnetic-field|coil]] you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
 
 ## 5 Essential Terms
 
@@ -20,7 +20,7 @@ updated: 2026-01-21
 |------|------------|
 | **Master spool** | A reusable spool designed to accept refill coils—usually sturdier than disposable spools. |
 | **Refill coil** | Filament wound without a spool, held together with cardboard inserts or zip ties. |
-| **Cardboard core** | Some refills come on a cardboard tube you can print directly from (no rewinding). |
+| **Cardboard core** | Some refills come on a cardboard tube you [[micro-context/can-bus-termination|can]] print directly from (no rewinding). |
 | **Tangle** | When filament loops cross over each other—can jam your printer or snap the filament. |
 | **Dry box** | Sealed container with desiccant to keep filament moisture-free (refills are more exposed). |
 
@@ -29,7 +29,7 @@ updated: 2026-01-21
 
 When manufacturers produce filament, the plastic is extruded as a continuous strand and wound onto something for storage and shipping. With traditional spooled filament, that "something" is a molded plastic reel that becomes part of the product you buy—and then discard. With refills, the filament is wound into a self-supporting coil (held together with cardboard inserts, zip ties, or shrink wrap) that you transfer onto your own reusable spool at home. The filament itself is identical; only the packaging differs.
 
-The **master spool system** is the key innovation that makes refills practical. A master spool is a reusable reel—typically made of two halves that snap or screw together—designed to accept refill coils. You open the spool, place the refill coil inside, close it, and mount it on your printer exactly like a regular spool. Some refills come on lightweight cardboard cores that fit directly into certain printer systems without requiring a master spool at all. The workflow adds 30-60 seconds of handling time per roll in exchange for the cost savings and waste reduction.
+The **master spool system** is the key innovation that makes refills practical. A master spool is a reusable reel—typically made of two halves that snap or screw together—designed to accept refill coils. You open the spool, place the refill coil inside, close it, and mount it on your printer exactly like a regular spool. Some refills come on lightweight cardboard cores that fit directly into certain printer systems without requiring a master spool at all. The workflow adds 30-60 seconds of handling time per roll in exchange for the cost savings and waste [[quick-context/cations-and-reduction|reduction]].
 
 ```
 THE REFILL WORKFLOW: From Purchase to Print

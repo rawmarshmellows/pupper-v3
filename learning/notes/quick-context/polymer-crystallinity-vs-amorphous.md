@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that can arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
+Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that [[micro-context/can-bus-termination|can]] arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
 
 Here's the critical insight: when plastic cools, crystalline regions **shrink more** than amorphous regions. If your print cools unevenly (which it always does - the bottom touches the cold bed while the top is still hot), different parts shrink by different amounts at different times. The result? Your print warps, delaminates, or pops off the bed entirely. Materials like PLA are mostly amorphous and print easily. Materials like Nylon or PEEK are semi-crystalline and will warp aggressively if you don't manage cooling carefully.
 

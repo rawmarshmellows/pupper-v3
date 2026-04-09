@@ -194,7 +194,7 @@ Good: The custom scenario distracts from the core value prop and will waste both
 **Q4:** Why might Challenger be especially powerful for unknown SaaS vendors competing against incumbents?
 <details>
 <summary>Answer</summary>
-Unknown vendors can't compete on brand trust or existing relationships—the incumbent wins those by default. But they CAN win on insight if they bring a perspective the incumbent doesn't. Challengers differentiate through ideas, not reputation, making it an equalizing methodology for startups.
+Unknown vendors [[micro-context/can-bus-termination|can]]'t compete on brand trust or existing relationships—the incumbent wins those by default. But they CAN win on insight if they bring a perspective the incumbent doesn't. Challengers differentiate through ideas, not reputation, making it an equalizing methodology for startups.
 </details>
 
 **Q5:** A sales manager says "We tried Challenger but our reps came off as arrogant and pushy." Diagnose the likely failure mode.

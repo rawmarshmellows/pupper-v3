@@ -15,7 +15,7 @@ ISA-95 exists to solve the communication chaos between the factory floor and bus
 
 The standard defines a five-level hierarchy: **Level 0** is the physical process itself—chemical reactions, material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your PLCs and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
 
-A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the PLC maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
+A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the [[micro-context/plc-programmable-logic-controller|PLC]] maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
 
 ## 5 Essential Terms
 
@@ -66,7 +66,7 @@ The other perpetual argument is about the data model: ISA-95 defines standard ob
 
 When the batch completes, data flows back up: actual temperatures, durations, and quality results recorded in MES, production confirmation sent to SAP to update inventory and mark the order ready for fulfillment.
 
-**The one thing most outsiders get wrong about this is...** thinking ISA-95 prescribes specific software products or architectures. It doesn't—it's a vocabulary and conceptual framework. The levels aren't about which vendor's system you buy; they're about creating a shared language so automation engineers, IT architects, and business analysts can actually communicate about integration boundaries without talking past each other.
+**The one thing most outsiders get wrong about this is...** thinking ISA-95 prescribes specific software products or architectures. It doesn't—it's a vocabulary and conceptual framework. The levels aren't about which vendor's system you buy; they're about creating a shared language so automation engineers, IT architects, and business analysts [[micro-context/can-bus-termination|can]] actually communicate about integration boundaries without talking past each other.
 
 </details>
 

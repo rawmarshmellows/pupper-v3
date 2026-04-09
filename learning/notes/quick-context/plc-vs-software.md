@@ -11,7 +11,7 @@ created: 2026-01-14
 
 ## The Core Problem: When Computers Crash, People Die
 
-A **Programmable Logic Controller (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
+A **[[micro-context/plc-programmable-logic-controller|Programmable Logic Controller]] ([[micro-context/plc-programmable-logic-controller|PLC]])** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
 
 Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The failure mode isn't "restart the app"—it's "call the coroner."
 
@@ -46,7 +46,7 @@ The PLC executes in a **scan cycle**: read all inputs, execute all logic top-to-
 
 Modern PLCs support IEC 61131-3 languages:
 - **Ladder Logic** - Visual, looks like relay circuits
-- **Structured Text (ST)** - Looks like Pascal, closest to "real programming"
+- **Structured Text ([[micro-context/st-link-v2-programmer|ST]])** - Looks like Pascal, closest to "real programming"
 - **Function Block Diagram (FBD)** - Visual dataflow
 
 The key difference from software: a PLC doesn't "crash" in the traditional sense. If the program has a bug, the scan cycle still runs. If hardware fails, the system goes to a defined fail-safe state. There's no blue screen, no segfault, no "application not responding."
@@ -59,7 +59,7 @@ The key difference from software: a PLC doesn't "crash" in the traditional sense
 The central tension in PLC work is **determinism vs. flexibility**. Traditional PLC programming uses Ladder Logic, which executes in a fixed scan cycle making timing behavior absolutely predictable—but makes complex algorithms painful.
 
 Modern practitioners argue constantly about:
-- When to use IEC 61131-3 languages (Structured Text looks like Pascal) versus sticking with ladder logic that any maintenance electrician can troubleshoot at 3am
+- When to use IEC 61131-3 languages (Structured Text looks like Pascal) versus sticking with ladder logic that any maintenance electrician [[micro-context/can-bus-termination|can]] troubleshoot at 3am
 - Whether to stay in proprietary vendor ecosystems (Allen-Bradley, Siemens, Mitsubishi all have incompatible tooling) versus pushing toward more open, software-like approaches
 
 The industry philosophy is inverted from software: in software, you optimize for features and fix bugs with patches; in PLC programming, you optimize for *never needing to change it* and for *any failure to be obvious and recoverable*. The code isn't clever—it's deliberately simple, because cleverness kills people when a maintenance tech has to debug it during an emergency at 2am with the plant manager screaming.
@@ -105,7 +105,7 @@ The Python version:
 
 - **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
 - **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + [[quick-context/ros2-architecture|ROS2]], including production hardware and real factory deployments
 - **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
 - **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
 

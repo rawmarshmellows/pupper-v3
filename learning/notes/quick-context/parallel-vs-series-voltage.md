@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: A Common Misconception About Electricity
 
-If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that voltage is a *difference in potential*, not a quantity that accumulates like water in a tank.
+If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that [[quick-context/voltage|voltage]] is a *difference in potential*, not a quantity that accumulates like water in a tank.
 
 ## 5 Essential Terms
 
@@ -340,7 +340,7 @@ THE MATH THAT MATTERS:
 **Q2:** A chip redesign doubles the transistor count from 25 billion to 50 billion. If voltage stays at 0.65V, what approximately happens to (a) total current draw and (b) power consumption?
 <details>
 <summary>Answer</summary>
-**(a) Current approximately doubles.** More transistors in parallel means more paths for current, so total current increases. **(b) Power approximately doubles.** Since Power = Voltage × Current, and voltage stays constant while current doubles, power doubles too. This is exactly why modern chips are power-limited—you can't keep adding transistors forever without hitting thermal limits. See: Concrete Example (The Math That Matters).
+**(a) Current approximately doubles.** More transistors in parallel means more paths for current, so total current increases. **(b) Power approximately doubles.** Since Power = Voltage × Current, and voltage stays constant while current doubles, power doubles too. This is exactly why modern chips are power-limited—you [[micro-context/can-bus-termination|can]]'t keep adding transistors forever without hitting thermal limits. See: Concrete Example (The Math That Matters).
 </details>
 
 **Q3:** Why do modern CPUs have hundreds of power and ground pins, when in theory one of each would complete the circuit?

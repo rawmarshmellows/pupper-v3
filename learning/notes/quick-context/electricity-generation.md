@@ -21,13 +21,13 @@ There are fundamentally three ways to force electrons to move:
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
-Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
+Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always [[micro-context/electromagnetic-induction|electromagnetic induction]].
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
@@ -337,7 +337,7 @@ Every electricity source trades off between three goals:
                                        BUT high emissions
 ```
 
-**The storage problem:** Solar produces peak power at noon; demand peaks in evening. Wind is unpredictable. Without massive energy storage (batteries, pumped hydro, hydrogen), renewables can't provide baseload power. This is why the grid still needs "dispatchable" sources (gas, nuclear, hydro) that can ramp up on demand.
+**The storage problem:** Solar produces peak power at noon; demand peaks in evening. Wind is unpredictable. Without massive energy storage (batteries, pumped hydro, hydrogen), renewables [[micro-context/can-bus-termination|can]]'t provide baseload power. This is why the grid still needs "dispatchable" sources (gas, nuclear, hydro) that can ramp up on demand.
 
 | Source | Dispatchable? | Capacity Factor | CO₂ (g/kWh) |
 |--------|---------------|-----------------|-------------|
@@ -481,7 +481,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 
 - **[[quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
 
-- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
+- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of [[micro-context/ac-dc-current|AC]] power systems and grid stabilization.
 
 - **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
 
@@ -500,7 +500,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **The energy source and conversion chain.** Coal burns to heat water into steam, which expands through a steam turbine connected to the generator (chemical → thermal → mechanical → electrical). Wind directly pushes turbine blades connected to the generator (kinetic → mechanical → electrical). The generator itself works identically in both cases—electromagnetic induction converts rotation to electricity. The difference is what provides the rotation.
 </details>
 
-**Q2:** Solar panels produce DC electricity, but the grid runs on AC. Why do we use AC for the grid instead of DC?
+**Q2:** Solar panels produce [[micro-context/ac-dc-current|DC]] electricity, but the grid runs on AC. Why do we use AC for the grid instead of DC?
 <details>
 <summary>Answer</summary>
 **AC can be easily transformed to different voltages.** Transformers only work with AC (they rely on changing magnetic fields). To minimize transmission losses (P = I²R), we step voltage up to hundreds of thousands of volts for long-distance transmission, then step it down for distribution and household use. With DC, voltage conversion requires expensive power electronics. Historically, AC won because transformers were cheap and efficient. Modern HVDC (high-voltage DC) is now used for very long distances and undersea cables, but the grid remains predominantly AC.

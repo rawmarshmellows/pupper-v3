@@ -52,7 +52,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 
 The core tension in EPSON robot programming is **cycle time vs. motion smoothness vs. positional accuracy**.
 
-You can move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `Fine` motion termination, but the robot decelerates to zero velocity at every point, killing throughput.
+You [[micro-context/can-bus-termination|can]] move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `Fine` motion termination, but the robot decelerates to zero velocity at every point, killing throughput.
 
 Practitioners spend real effort tuning `CP` (Continuous Path) motion, `Arch` parameters for pick-and-place Z-clearances, and acceleration curves to thread this needle.
 
@@ -97,7 +97,7 @@ Fend
 
 The `Jump` command is doing the heavy lifting here—it automatically retracts in Z before moving in X/Y, then descends at the target, creating the "arch" motion that avoids dragging parts across surfaces. `P1`, `P2`, and `P0` are point numbers defined in the Point Editor, not coordinates hardcoded in the program. The `LimZ(50)` parameter overrides the default arch height to 50mm.
 
-**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a PLC with motion coprocessors than a Python interpreter.
+**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a [[micro-context/plc-programmable-logic-controller|PLC]] with motion coprocessors than a Python interpreter.
 
 </details>
 

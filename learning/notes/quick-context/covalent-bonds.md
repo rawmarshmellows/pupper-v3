@@ -44,7 +44,7 @@ Everything around you—your desk, your skin, your 3D printer filament—is made
 
 Covalent bonding happens when two atoms get close enough that their outer electron clouds overlap. Instead of one atom stealing electrons from the other (that would be ionic bonding), they set up a "time-share" arrangement: the shared electrons spend time orbiting both nuclei simultaneously. This shared electron pair creates a region of negative charge between the two positively charged nuclei, and electrostatic attraction pulls the nuclei toward this shared region, holding the atoms together. The bond length (distance between nuclei) settles at the point where attraction and repulsion balance out.
 
-The number of bonds an atom can form depends on how many electrons it needs to complete its outer shell. Hydrogen needs 1 electron, so it forms 1 bond. Oxygen needs 2, so it forms 2 bonds. Nitrogen needs 3, forming 3 bonds. Carbon needs 4 electrons and forms 4 bonds—this versatility is why carbon is the backbone of all organic chemistry and polymer science. Atoms can share more than one pair of electrons: a double bond shares 4 electrons (2 pairs), and a triple bond shares 6 electrons (3 pairs). More shared electrons means stronger, shorter, and more rigid bonds.
+The number of bonds an atom [[micro-context/can-bus-termination|can]] form depends on how many electrons it needs to complete its outer shell. Hydrogen needs 1 electron, so it forms 1 bond. Oxygen needs 2, so it forms 2 bonds. Nitrogen needs 3, forming 3 bonds. Carbon needs 4 electrons and forms 4 bonds—this versatility is why carbon is the backbone of all organic chemistry and polymer science. Atoms can share more than one pair of electrons: a double bond shares 4 electrons (2 pairs), and a triple bond shares 6 electrons (3 pairs). More shared electrons means stronger, shorter, and more rigid bonds.
 
 ```
 HOW COVALENT BONDS FORM: The Electron Sharing Process
@@ -282,7 +282,7 @@ Related concepts that connect to covalent bonds:
 - [[quick-context/hydrogen-bonds-beginners]] — A weaker type of bond that works alongside covalent bonds to influence material behavior (like water's unique properties)
 - [[quick-context/van-der-waals-forces]] — The weak attractions between polymer chains that you overcome when melting thermoplastics
 - [[quick-context/dipole-dipole-interactions]] — Another type of intermolecular force that affects how polymer chains interact with each other
-- [[quick-context/biology-fundamentals]] — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
+-  — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
 - [[quick-context/subatomic-particles]] — Explains what electrons are, why atoms have specific numbers of them in outer shells, and why carbon with 4 outer electrons can form 4 bonds
 - [[small-context/glass-vs-plastic-uv-degradation]] — Bond dissociation energy in action: UV photons break C–C covalent bonds (346 kJ/mol) in plastics but can't reach Si–O bonds (452 kJ/mol) in glass
 

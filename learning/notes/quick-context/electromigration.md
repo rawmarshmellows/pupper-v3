@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: Electrons Are Tiny But Relentless
 
-When [[quick-context/electric-current|current flows through a wire]], it's not just energy moving—it's billions of electrons physically colliding with metal atoms. Each collision transfers a tiny bit of momentum. At low current densities, this is negligible. But in modern chip [[quick-context/metal-interconnect-layers|interconnects]], current densities reach 10⁶ to 10⁷ A/cm²—a million times higher than household wiring. At these densities, the cumulative "electron wind" pushes metal atoms like sand grains in a river, slowly eroding wire from one end and depositing it downstream. Over months or years of operation, this creates **voids** (gaps where atoms left) and **hillocks** (bumps where atoms accumulated). Voids increase resistance until the wire fails open; hillocks can short-circuit to neighboring wires. Without designing around electromigration, chips would fail within days. It's the reason copper replaced aluminum in chips, why wire widths can't shrink indefinitely, and why every chip has strict current limits for each wire.
+When [[quick-context/electric-current|current flows through a wire]], it's not just energy moving—it's billions of electrons physically colliding with metal atoms. Each collision transfers a tiny bit of momentum. At low current densities, this is negligible. But in modern chip [[quick-context/metal-interconnect-layers|interconnects]], current densities reach 10⁶ to 10⁷ A/cm²—a million times higher than household wiring. At these densities, the cumulative "electron wind" pushes metal atoms like sand grains in a river, slowly eroding wire from one end and depositing it downstream. Over months or years of operation, this creates **voids** (gaps where atoms left) and **hillocks** (bumps where atoms accumulated). Voids increase resistance until the wire fails open; hillocks [[micro-context/can-bus-termination|can]] short-circuit to neighboring wires. Without designing around electromigration, chips would fail within days. It's the reason copper replaced aluminum in chips, why wire widths can't shrink indefinitely, and why every chip has strict current limits for each wire.
 
 ## 5 Essential Terms
 
@@ -264,7 +264,7 @@ THE TRADEOFF MAP:
 
 ### Electromigration in a Power Distribution Network
 
-The power grid on a chip must deliver enormous total current to billions of transistors. This is where electromigration is most critical.
+The power grid on a chip must deliver enormous total current to billions of [[quick-context/transistor-analog-to-digital|transistors]]. This is where electromigration is most critical.
 
 ```
 CHIP POWER GRID: A CASE STUDY
@@ -352,7 +352,7 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating [[quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
@@ -378,7 +378,7 @@ Electron wind pushes atoms in the direction of electron flow (opposite to conven
 **Q3:** A chip designer wants to double the current through a wire. What are three ways they could maintain the same electromigration lifetime?
 <details>
 <summary>Answer</summary>
-From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while doubling current: (1) Double the wire cross-sectional area (2× width or 2× height)—this keeps current density constant. (2) Lower operating temperature—roughly 20°C reduction doubles lifetime. (3) Use a material with higher activation energy (e.g., switch from aluminum to copper). In practice, designers typically widen the wire since the other options have system-level constraints. See: The Key Tension and Black's Equation.
+From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while doubling current: (1) Double the wire cross-sectional area (2× width or 2× height)—this keeps current density constant. (2) Lower operating temperature—roughly 20°C [[quick-context/cations-and-reduction|reduction]] doubles lifetime. (3) Use a material with higher activation energy (e.g., switch from aluminum to copper). In practice, designers typically widen the wire since the other options have system-level constraints. See: The Key Tension and Black's Equation.
 </details>
 
 **Q4:** Someone claims: "Electromigration isn't a concern for my design because our chip runs very cool (40°C)." What's wrong with this reasoning?
@@ -390,7 +390,7 @@ Temperature affects electromigration rate but doesn't eliminate it. The exponent
 **Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
-The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
+The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but [[quick-context/transistor|transistor]] current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
 </details>
 
 </details>

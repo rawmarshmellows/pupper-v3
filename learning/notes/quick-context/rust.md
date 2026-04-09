@@ -17,9 +17,9 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 
 | Term | Definition |
 |------|------------|
-| **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
+| **Corrosion** | The electrochemical degradation of metals through [[micro-context/oxidation|oxidation]] reactions with their environment—rust is specifically iron corrosion |
 | **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the [[micro-context/cathode|cathode]] (electron receiver) instead of the [[micro-context/anode|anode]], often via sacrificial metals |
 | **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
 | **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
@@ -183,7 +183,7 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
                         exposed Fe
 
 
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)
@@ -236,18 +236,18 @@ CONTRAST: What happens with a scratched TIN-PLATED can
     while galvanized steel resists rust even when scratched.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an electrolyte. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while reduction (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
+**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an electrolyte. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while [[quick-context/cations-and-reduction|reduction]] (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in electrolysis (Q3) demonstrates how iron at an anode actively dissolves.
+- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in [[quick-context/electrolysis|electrolysis]] (Q3) demonstrates how iron at an anode actively dissolves.
 
 - **[[quick-context/anions-and-oxidation]]** — At anodic regions, iron loses electrons (oxidation: Fe → Fe²⁺ + 2e⁻). Understanding oxidation as electron loss clarifies why the iron dissolves rather than staying solid.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery voltage also predict which metal corrodes when two are in contact.
+- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery [[quick-context/voltage|voltage]] also predict which metal corrodes when two are in contact.
 
 - **[[quick-context/electrolyte]]** — Water (especially with dissolved salts) acts as the electrolyte enabling ion transport between anodic and cathodic regions. No water = no electrolyte = no rust.
 
@@ -273,7 +273,7 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 **Q3:** Why does salt water cause iron to rust faster than pure water?
 <details>
 <summary>Answer</summary>
-**Salt increases the electrolyte conductivity.** Dissolved salt (NaCl → Na⁺ + Cl⁻) provides more ions in solution, reducing electrical resistance and allowing faster ion transport between anodic and cathodic regions. This increases the "current" of the corrosion cell, accelerating both oxidation and reduction reactions. Additionally, chloride ions can penetrate and destabilize protective oxide layers. See: How It Works (water acts as electrolyte) and [[quick-context/electrolyte]].
+**Salt increases the electrolyte conductivity.** Dissolved salt (NaCl → Na⁺ + Cl⁻) provides more ions in solution, reducing electrical resistance and allowing faster ion transport between anodic and cathodic regions. This increases the "current" of the corrosion cell, accelerating both oxidation and reduction reactions. Additionally, chloride ions [[micro-context/can-bus-termination|can]] penetrate and destabilize protective oxide layers. See: How It Works (water acts as electrolyte) and [[quick-context/electrolyte]].
 </details>
 
 **Q4:** A galvanized (zinc-coated) nail and a tin-plated nail both get scratched, exposing the underlying steel. One rusts rapidly at the scratch; the other stays rust-free. Which rusts, and why?

@@ -10,13 +10,13 @@ updated: 2026-01-26
 
 ## The Core Problem
 
-The substrate is the "translator" that takes a chip's tiny, densely-packed connections (100 micrometers apart) and fans them out to larger, more widely-spaced connections (800 micrometers apart) that can actually be soldered to a circuit board. Without a substrate, there is no way to use a modern chip—you couldn't get power into it or data out of it.
+The substrate is the "translator" that takes a chip's tiny, densely-packed connections (100 micrometers apart) and fans them out to larger, more widely-spaced connections (800 micrometers apart) that [[micro-context/can-bus-termination|can]] actually be soldered to a circuit board. Without a substrate, there is no way to use a modern chip—you couldn't get power into it or data out of it.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of transistors; this is what people usually mean by "the chip" |
+| **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of [[quick-context/transistor-analog-to-digital|transistors]]; this is what people usually mean by "the chip" |
 | **Pitch** | The distance between the centers of adjacent connections; smaller pitch = more connections in the same space |
 | **Redistribution Layer (RDL)** | Metal routing layers inside the substrate that reroute signals from one location/pitch to another |
 | **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
@@ -405,7 +405,7 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
@@ -427,7 +427,7 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** What are the two main materials used to make IC substrates, and which is more common in consumer electronics?
+**Q1:** What are the two main materials used to make [[micro-context/i2s|IC]] substrates, and which is more common in consumer electronics?
 <details>
 <summary>Answer</summary>
 Organic substrates (fiberglass + epoxy) and ceramic substrates (alumina or aluminum nitride). Organic substrates are far more common (~95% of the market) in consumer electronics because they're much cheaper to manufacture. Ceramic is reserved for high-reliability or high-power applications. See: How It Works (Substrate Materials Comparison)

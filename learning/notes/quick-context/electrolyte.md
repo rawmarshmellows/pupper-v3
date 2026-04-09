@@ -54,16 +54,16 @@ Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS
 |------|------------|
 | **Ion** | An atom or molecule with net electric charge from gaining or losing electrons (Na⁺, Cl⁻, SO₄²⁻) |
 | **Dissociation** | The process where ionic compounds split into free ions when dissolved or melted |
-| **Conductivity** | A measure of how well a solution carries electric current, measured in siemens per centimeter (S/cm) |
+| **Conductivity** | A measure of how well a solution carries [[quick-context/electric-current|electric current]], measured in siemens per centimeter (S/cm) |
 | **Strong electrolyte** | Substances that fully dissociate into ions (NaCl, HCl, NaOH)—high conductivity |
 | **Weak electrolyte** | Substances that only partially dissociate (acetic acid, ammonia)—lower conductivity |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The mechanism of electrolytic conduction is fundamentally different from how metals conduct electricity. In a metal wire, electrons flow freely while atoms stay fixed in place. In an electrolyte solution, the opposite happens: electrons stay bound to atoms, but the entire ions physically migrate through the liquid. When you apply voltage across two electrodes immersed in an electrolyte, you create an electric field that pushes positive ions (cations) toward the negative electrode (cathode) and negative ions (anions) toward the positive electrode (anode). This mass migration of charged particles IS the current.
+The mechanism of electrolytic conduction is fundamentally different from how metals conduct electricity. In a metal wire, electrons flow freely while atoms stay fixed in place. In an electrolyte solution, the opposite happens: electrons stay bound to atoms, but the entire ions physically migrate through the liquid. When you apply [[quick-context/voltage|voltage]] across two electrodes immersed in an electrolyte, you create an electric field that pushes positive ions (cations) toward the negative electrode ([[micro-context/cathode|cathode]]) and negative ions (anions) toward the positive electrode ([[micro-context/anode|anode]]). This mass migration of charged particles IS the current.
 
-The process begins with dissociation: when an ionic compound like NaCl dissolves in water, the polar water molecules surround and separate the Na⁺ and Cl⁻ ions that were locked together in the crystal lattice. Each ion becomes "solvated"—wrapped in a shell of water molecules with their opposite charges facing inward. These solvated ions are now free to move independently through the solution. The number of ions and how fast they can move determines the solution's conductivity. Temperature matters because warmer solutions have lower viscosity, allowing ions to migrate faster.
+The process begins with dissociation: when an ionic compound like NaCl dissolves in water, the polar water molecules surround and separate the Na⁺ and Cl⁻ ions that were locked together in the crystal lattice. Each ion becomes "solvated"—wrapped in a shell of water molecules with their opposite charges facing inward. These solvated ions are now free to move independently through the solution. The number of ions and how fast they [[micro-context/can-bus-termination|can]] move determines the solution's conductivity. Temperature matters because warmer solutions have lower viscosity, allowing ions to migrate faster.
 
 ```
 HOW ELECTROLYTES CONDUCT ELECTRICITY
@@ -245,7 +245,7 @@ Seawater contains ~3.5% dissolved salts (primarily NaCl, plus MgCl₂, MgSO₄, 
 **Q3:** Why is sodium sulfate considered a "better" electrolyte than sodium chloride for water electrolysis, even though both fully dissociate and provide similar conductivity?
 <details>
 <summary>Answer</summary>
-Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a higher oxidation potential than water and remain inert at the anode. Chloride ions (Cl⁻) oxidize more easily than water, producing chlorine gas instead of oxygen. The electrolyte must conduct current without chemically participating in the electrode reactions. See: The Key Tension
+Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a higher [[micro-context/oxidation|oxidation]] potential than water and remain inert at the anode. Chloride ions (Cl⁻) oxidize more easily than water, producing chlorine gas instead of oxygen. The electrolyte must conduct current without chemically participating in the electrode reactions. See: The Key Tension
 </details>
 
 **Q4:** Acetic acid (vinegar) is a weak electrolyte while hydrochloric acid is a strong electrolyte. If you made two solutions with equal molar concentrations, which would have higher conductivity and why?
@@ -254,7 +254,7 @@ Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a hi
 Hydrochloric acid would have much higher conductivity. Strong electrolytes like HCl dissociate 100% into ions (H⁺ and Cl⁻), while weak electrolytes like acetic acid only partially dissociate (~1%). Same concentration of acid, but far fewer free ions in the acetic acid solution. See: 5 Essential Terms (strong vs. weak electrolyte)
 </details>
 
-**Q5:** In a lead-acid car battery, why does battery performance drop dramatically in cold weather?
+**Q5:** In a lead-acid car [[quick-context/galvanic-cells-batteries|battery]], why does battery performance drop dramatically in cold weather?
 <details>
 <summary>Answer</summary>
 The electrolyte (dilute sulfuric acid) has reduced ion mobility at low temperatures—ions move more slowly through the cold, viscous solution, increasing internal resistance and reducing the current the battery can deliver. This is why "cold cranking amps" is a key battery specification. See: The Key Tension (conductivity depends on conditions)

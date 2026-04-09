@@ -11,11 +11,11 @@ created: 2026-03-10
 
 ## The Core Problem
 
-A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The inverse kinematics solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The LLM voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
+A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The [[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The [[quick-context/pupper-lab6-llm-voice-control|LLM]] voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
 
-ROS2 (Robot Operating System 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node can subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
+ROS2 (Robot Operating System 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node [[micro-context/can-bus-termination|can]] subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
 
-This architecture is what makes the 7-lab progression possible. Each lab adds new nodes and topics to the graph without touching the nodes from previous labs. Lab 1 creates the PD controller node. Lab 2 adds an FK visualization node. Lab 3 adds an IK node that publishes to the same joint target topic. Lab 5 swaps in a neural controller node. Lab 6 adds a voice node. Lab 7 adds a vision node and state machine. At every stage, the existing infrastructure keeps working — you are composing a robot from modular building blocks, not rewriting a monolith.
+This architecture is what makes the 7-lab progression possible. Each lab adds new nodes and topics to the graph without touching the nodes from previous labs. Lab 1 creates the PD controller node. Lab 2 adds an FK visualization node. Lab 3 adds an IK node that publishes to the same joint target topic. Lab 5 swaps in a [[quick-context/pupper-lab5-neural-controller|neural controller]] node. Lab 6 adds a voice node. Lab 7 adds a vision node and state machine. At every stage, the existing infrastructure keeps working — you are composing a robot from modular building blocks, not rewriting a monolith.
 
 ## 5 Essential Terms
 
@@ -150,7 +150,7 @@ PUPPER v3 COMPLETE ROS2 NODE GRAPH
 | `/detections` | `vision_msgs/Detection2DArray` | hailo_detection | Lab 7 state machine | ~5 Hz | 7 |
 | `/tracking_control` | `std_msgs/String` | realtime_voice / Karel | hailo_detection (filter), Lab 7 state machine | event | 7 |
 | `/gpt4_response_topic` | `std_msgs/String` | realtime_voice | Karel command parser | event | 6+ |
-| `/camera/image_raw` | `sensor_msgs/Image` | camera driver | hailo_detection | 30 Hz | 7 |
+| `/camera/image_raw` | `sensor_msgs/Image` | [[quick-context/camera-fundamentals|camera]] driver | hailo_detection | 30 Hz | 7 |
 | `/annotated_image` | `sensor_msgs/Image` | hailo_detection | RViz (debug) | ~5 Hz | 7 |
 | RViz marker topic | `visualization_msgs/Marker` | FK node (green sphere) | RViz | 20 Hz | 2 |
 
@@ -231,7 +231,7 @@ CONTROL FREQUENCY TIERS
   "never miss a deadline"          "usually meets deadlines"
 ```
 
-The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
+The [[micro-context/stm32-microcontroller|STM32]] microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over [[micro-context/spi|SPI]] at a fixed rate.
 
 This split explains a recurring pattern in the labs: **you never write code that directly talks to motors**. Your ROS2 nodes publish joint targets or velocity commands, and the ros2_control + STM32 stack translates those into actual motor current at rates your ROS2 node could never sustain reliably.
 

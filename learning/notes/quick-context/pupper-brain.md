@@ -9,34 +9,34 @@ created: 2026-01-27
 
 ## The Core Problem
 
-A quadruped robot like Pupper needs to simultaneously know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized components—IMU, CAN transceivers, microcontrollers, power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure reliable operation.
+A quadruped robot like Pupper needs to simultaneously know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized components—IMU, [[micro-context/can-bus-termination|CAN]] transceivers, microcontrollers, power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure reliable operation.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 [[micro-context/microcontroller|microcontroller]] @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
 | **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
 | **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
-| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V [[quick-context/galvanic-cells-batteries|battery]] to 5V logic power at 90%+ efficiency |
+| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every [[micro-context/i2s|IC]]—provide instant local charge when chips switch, preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The BNO086 IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C to the main STM32 (U1).
+1. **Orientation sensing**: The BNO086 IMU continuously measures acceleration, rotation, and [[quick-context/coil-magnetic-field|magnetic field]]. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over [[micro-context/i2c|I2C]] to the main STM32 (U1).
 
 2. **State estimation**: U1 combines IMU data with motor feedback to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
 
 3. **Control calculation**: U1 runs a balance controller that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: U1 sends joint targets to U5 (motor MCU) over SPI. U5 packages these into CAN messages.
+4. **Command transmission**: U1 sends joint targets to U5 (motor [[micro-context/microcontroller|MCU]]) over [[micro-context/spi|SPI]]. U5 packages these into CAN messages.
 
-5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
+5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential [[quick-context/can-bus|CAN bus]] signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
-6. **Audio feedback**: If enabled, U1 sends audio samples over I2S to the MAX98357A amplifier for sound output (beeps, status indicators).
+6. **Audio feedback**: If enabled, U1 sends audio samples over [[micro-context/i2s|I2S]] to the MAX98357A amplifier for sound output (beeps, status indicators).
 
 ```
 1ms CONTROL LOOP TIMING:
@@ -154,10 +154,10 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
-- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards
+- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from [[quick-context/transistor-analog-to-digital|transistors]] to boards
 - [[quick-context/electric-current]] — Fundamentals of current flow
 - **[[quick-context/pupper-bom-control-board]]** — Every part on this board explained: what it does, why that value, and how it connects to the system. The BOM companion to this architectural overview.
-- **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/inverse kinematics, gait generation, RL policies, LLM voice control, and vision tracking.
+- **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: [[quick-context/pupper-lab1-pid-control|PID control]], forward/[[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]], gait generation, RL policies, [[quick-context/pupper-lab6-llm-voice-control|LLM]] voice control, and vision tracking.
 
 </details>
 
@@ -177,7 +177,7 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 <details>
 <summary>Answer</summary>
 
-These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
+These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing [[quick-context/voltage|voltage]] dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
 **Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?

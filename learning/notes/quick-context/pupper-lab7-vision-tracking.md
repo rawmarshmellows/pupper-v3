@@ -139,7 +139,7 @@ COMPLETE LAB 7 ROS2 ARCHITECTURE
                                               └──────────────────┘
 ```
 
-The pipeline latency from photon to motor command is roughly: camera capture (~30 ms) + fisheye undistortion (~10 ms) + Hailo inference (~150 ms) + state machine + ROS2 transport (~5 ms) + neural controller (~20 ms) = **~215 ms**. This is fast enough for tracking walking-speed targets but too slow for catching thrown objects.
+The pipeline latency from photon to motor command is roughly: camera capture (~30 ms) + fisheye undistortion (~10 ms) + Hailo inference (~150 ms) + state machine + ROS2 transport (~5 ms) + [[quick-context/pupper-lab5-neural-controller|neural controller]] (~20 ms) = **~215 ms**. This is fast enough for tracking walking-speed targets but too slow for catching thrown objects.
 
 </details>
 
@@ -156,11 +156,11 @@ The IDLE/SEARCH/TRACK state machine is purely **reactive** — it responds to th
 - **Predictable:** Behavior is fully determined by the current state + input
 - **Fragile:** It cannot reason about occlusion ("the dog went behind the couch, I should walk around"), plan paths, or handle ambiguity ("there are two dogs, which one did the human mean?")
 
-The proportional controller $\omega = -K_p \cdot x_{\text{norm}}$ is the simplest possible feedback law. A PD controller adding a derivative term $-K_d \cdot \dot{x}_{\text{norm}}$ would reduce oscillation, and a PID controller with an integral term would eliminate steady-state offset. But at 5 FPS detection rate, derivative estimation is noisy and integral windup is a risk, so pure P-control is a pragmatic choice.
+The proportional controller $\omega = -K_p \cdot x_{\text{norm}}$ is the simplest possible feedback law. A PD controller adding a derivative term $-K_d \cdot \dot{x}_{\text{norm}}$ would reduce oscillation, and a [[quick-context/pupper-lab1-pid-control|PID]] controller with an integral term would eliminate steady-state offset. But at 5 FPS detection rate, derivative estimation is noisy and integral windup is a risk, so pure P-control is a pragmatic choice.
 
 ### Deliberative Control (LLM)
 
-The LLM from Lab 6 operates at the opposite extreme — it **reasons** about goals, context, and multi-step plans. When the user says "find my keys and come back," the LLM can decompose this into: (1) `begin_tracking("keyboard")` or perhaps recognize that keys aren't a COCO class and suggest an alternative, (2) wait for tracking to succeed, (3) `end_tracking()`, (4) `turn_around()`, (5) `move_forward()`. No reactive state machine could generate this plan.
+The LLM from Lab 6 operates at the opposite extreme — it **reasons** about goals, context, and multi-step plans. When the user says "find my keys and come back," the LLM [[micro-context/can-bus-termination|can]] decompose this into: (1) `begin_tracking("keyboard")` or perhaps recognize that keys aren't a COCO class and suggest an alternative, (2) wait for tracking to succeed, (3) `end_tracking()`, (4) `turn_around()`, (5) `move_forward()`. No reactive state machine could generate this plan.
 
 But the LLM runs at ~500 ms per response and cannot sustain the tight control loop needed to physically follow a moving target. Hence the layered architecture:
 
@@ -333,12 +333,12 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **COCO Dataset** — "Common Objects in Context," the 80-class benchmark dataset YOLOv5 is trained on. Includes everyday objects (person, car, dog, bottle, chair) but notably lacks many useful categories (keys, phone, specific breeds). This limits what Lab 7 can track out of the box. See: [cocodataset.org](https://cocodataset.org)
-- **Edge AI Inference** — Running neural networks on low-power devices (Hailo, Coral TPU, Jetson Nano) rather than cloud GPUs. Key tradeoff: limited model size and throughput, but zero network latency and full privacy. The Hailo-8 achieves ~26 TOPS (tera-operations per second) at ~2.5W.
+- **Edge AI Inference** — Running neural networks on low-power devices (Hailo, Coral [[quick-context/3d-printing-filament-types|TPU]], Jetson Nano) rather than cloud GPUs. Key tradeoff: limited model size and throughput, but zero network latency and full privacy. The Hailo-8 achieves ~26 TOPS (tera-operations per second) at ~2.5W.
 - **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The intrinsic matrix $K$ and distortion coefficients used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, focal length/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual [[micro-context/stm32-microcontroller|STM32]] + Raspberry Pi + [[quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 

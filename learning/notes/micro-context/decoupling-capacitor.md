@@ -8,13 +8,13 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
 
-**Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.
+**Definition:** Small capacitors (typically 100nF ceramic) placed near [[micro-context/i2s|IC]] power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source [[micro-context/can-bus-termination|can]] respond.
 
 ## How It Works
 
 - When an IC switches states, it demands a sudden spike of current from the power rail.
-- The distant power supply can't respond instantly because PCB trace inductance limits current slew rate.
-- A small capacitor placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
+- The distant power supply can't respond instantly because [[quick-context/pcb-chip-transistor-hierarchy|PCB]] trace inductance limits current slew rate.
+- A small [[quick-context/capacitor|capacitor]] placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
 - The capacitor then slowly recharges from the power supply, ready for the next switching event.
 
 ```
