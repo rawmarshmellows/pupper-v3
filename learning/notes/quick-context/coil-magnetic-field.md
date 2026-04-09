@@ -18,7 +18,7 @@ You've wrapped wire into a coil and run [[quick-context/electric-current|current
 | Term | Definition |
 |------|------------|
 | **Ampère's Law** | A circulating current creates a magnetic field that curls around the current. Mathematically: ∮B·dl = μ₀I (the line integral of B around any closed loop equals μ₀ times the enclosed current). |
-| **Permeability (μ₀)** | The fundamental constant relating current to magnetic field in a vacuum: μ₀ = 4π × 10⁻⁷ T·m/A. In magnetic materials like iron, effective permeability μ can be 1000-100,000× higher. |
+| **Permeability (μ₀)** | The fundamental constant relating current to magnetic field in a vacuum: μ₀ = 4π × 10⁻⁷ T·m/A. In magnetic materials like iron, effective permeability μ [[micro-context/can-bus-termination|can]] be 1000-100,000× higher. |
 | **Solenoid** | A coil of wire wound in a helix. When current flows, it creates a nearly uniform magnetic field inside and near-zero field outside—an ideal electromagnet geometry. |
 | **Magnetic Field (B)** | The vector field created by moving charges. Measured in tesla (T). Earth's field: ~50 μT. Strong permanent magnet: ~1 T. MRI machine: 1.5-7 T. |
 | **Right-Hand Rule** | Point thumb in current direction; fingers curl in direction of magnetic field. For a coil: curl fingers in current direction; thumb points to north pole (field direction inside). |
@@ -499,7 +499,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 
@@ -633,7 +633,7 @@ FINAL DESIGN:
     └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed voltage supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
+**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed [[quick-context/voltage|voltage]] supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
 
 </details>
 
@@ -656,14 +656,14 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday [[quick-context/tensor|tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A compass needle deflects when placed near a wire carrying DC current. What would happen if you reversed the current direction?
+**Q1:** A compass needle deflects when placed near a wire carrying [[micro-context/ac-dc-current|DC]] current. What would happen if you reversed the current direction?
 <details>
 <summary>Answer</summary>
 **The compass would deflect in the opposite direction.** The magnetic field direction follows the right-hand rule: thumb points in current direction, fingers curl in field direction. Reverse the current, and the field circles the other way. The compass needle (a small magnet) aligns with this field, so it deflects opposite to before.

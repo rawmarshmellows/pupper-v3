@@ -33,4 +33,4 @@ CLOCK SPEED = How many edges per second
   Light travels just 6 cm in that time.
 ```
 
-**Key insight:** Clock speed is limited by how fast transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.
+**Key insight:** Clock speed is limited by how fast transistors [[micro-context/can-bus-termination|can]] switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.

@@ -19,7 +19,7 @@ A single variable has variance -- one number that describes how spread out it is
 |------|------------|
 | **Variance** | The expected squared deviation of a single variable from its mean: $\sigma^2 = E[(X - \mu)^2]$ -- the diagonal entries of a covariance matrix |
 | **Covariance** | The expected product of deviations of two variables from their means: $\text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]$ -- the off-diagonal entries |
-| **Positive semi-definite** | A matrix property guaranteeing $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all vectors $\mathbf{v}$ -- every covariance matrix must satisfy this because variance can never be negative |
+| **Positive semi-definite** | A matrix property guaranteeing $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all vectors $\mathbf{v}$ -- every covariance matrix must satisfy this because variance [[micro-context/can-bus-termination|can]] never be negative |
 | **Cross-covariance** | A covariance matrix between *two different* vectors $\mathbf{x}$ and $\mathbf{y}$, written $H = E[(\mathbf{x} - \bar{\mathbf{x}})(\mathbf{y} - \bar{\mathbf{y}})^T]$ -- not necessarily square or symmetric, and central to the [[quick-context/helmert-transform|Helmert transform]] |
 | **Correlation matrix** | The covariance matrix normalized so every diagonal entry is 1: $R_{ij} = \Sigma_{ij} / (\sigma_i \sigma_j)$ -- strips out magnitude, leaving only the strength and direction of linear relationships |
 

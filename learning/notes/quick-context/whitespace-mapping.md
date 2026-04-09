@@ -148,7 +148,7 @@ Whitespace mapping creates a choice: go wide (many buying centers, few products 
 | Factor | Go Wide | Go Deep |
 |--------|---------|---------|
 | Product complexity | Low (easy to deploy anywhere) | High (needs investment to work) |
-| Support capacity | High (can service many) | Limited (focus required) |
+| Support capacity | High ([[micro-context/can-bus-termination|can]] service many) | Limited (focus required) |
 | Champion strength | Strong in multiple BCs | Strong in one BC |
 | Competitive threat | High (need to block land-grabs) | Low (time to develop) |
 | Account maturity | Early (exploring fit) | Established (expanding success) |

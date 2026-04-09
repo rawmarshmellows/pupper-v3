@@ -20,7 +20,7 @@ Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (
 |------|------------|
 | **MFI/MFR (Melt Flow Index/Rate)** | Grams of polymer extruded in 10 minutes through a 2.095mm die at specified temperature and load (e.g., 190°C/2.16kg for polyethylene). |
 | **Shear rate** | How fast polymer layers slide past each other during flow—real processing involves much higher shear than the MFI test, so MFI is only an approximation. |
-| **Molecular weight distribution (MWD)** | The range of chain lengths in a polymer batch; two materials with identical MFI can behave differently if their MWD differs. |
+| **Molecular weight distribution (MWD)** | The range of chain lengths in a polymer batch; two materials with identical MFI [[micro-context/can-bus-termination|can]] behave differently if their MWD differs. |
 | **Load (kg)** | The weight applied during testing (common: 2.16kg, 5kg, 21.6kg)—higher loads for stiffer materials; your result is meaningless without knowing the load used. |
 | **ASTM D1238 / ISO 1133** | The standardized test methods defining exactly how MFI is measured—critical for comparing values across suppliers. |
 

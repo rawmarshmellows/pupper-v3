@@ -406,7 +406,7 @@ EXAMPLE: Current-Carrying Wire
         E' · B' = 0          (still zero!)
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that since E and B transform into each other, you could boost to a frame where a magnetic field completely disappears, or where any electric field becomes purely magnetic. You can't—the invariants constrain what's possible. For electromagnetic waves, both E and B are always present in every frame (B² - E²/c² = 0 means neither dominates). For a pure electric field (B² - E²/c² < 0), you can find a frame with B = 0 but never B without E. The Faraday tensor respects these invariants under all transformations.
+**The one thing most outsiders get wrong about this is...** thinking that since E and B transform into each other, you could boost to a frame where a magnetic field completely disappears, or where any electric field becomes purely magnetic. You [[micro-context/can-bus-termination|can]]'t—the invariants constrain what's possible. For electromagnetic waves, both E and B are always present in every frame (B² - E²/c² = 0 means neither dominates). For a pure electric field (B² - E²/c² < 0), you can find a frame with B = 0 but never B without E. The Faraday tensor respects these invariants under all transformations.
 
 </details>
 

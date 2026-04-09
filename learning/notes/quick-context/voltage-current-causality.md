@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple [[micro-context/ac-dc-current|DC]] circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -309,7 +309,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 
 - **[[quick-context/resistor]]** --- The simplest V-I relationship (V = IR). In a resistor, V and I are proportional and in phase---no time delay, no stored energy, so the "cause" question is purely about what's driving the circuit.
 
-- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, capacitors and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
+- **[[quick-context/impedance-and-reactance]]** --- In [[micro-context/ac-dc-current|AC]] circuits, capacitors and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
 
 - **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an inductor creates back-EMF. The current change comes first; the voltage is the response.
 
@@ -331,7 +331,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Q2:** You suddenly open a switch in a circuit carrying current through an inductor. What happens, and which "causes" which?
 <details>
 <summary>Answer</summary>
-**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
+**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This [[micro-context/can-bus-termination|can]] be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
 </details>
 
 **Q3:** In an AC circuit with a capacitor, current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
@@ -346,7 +346,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Equation arrangement doesn't imply causation.** You can equally write I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
 </details>
 
-**Q5:** A piezoelectric sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
+**Q5:** A [[micro-context/piezoelectric-effect|piezoelectric]] sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
 <details>
 <summary>Answer</summary>
 **They demonstrate that neither voltage nor current is always the root cause---other physical phenomena are.** A piezoelectric crystal converts mechanical stress into charge separation (and thus voltage). A thermocouple converts thermal energy into voltage via the Seebeck effect. In both cases, the "cause" is something entirely outside the V-I framework: force and heat respectively. This reinforces the field-centric view: various energy sources create electric fields through different mechanisms. Voltage and current are both *downstream consequences* of those fields. The real question is always "what creates the field?"---and the answer varies: chemistry (batteries), magnetism (generators), mechanical stress (piezo), heat (thermocouples), light (photovoltaics).

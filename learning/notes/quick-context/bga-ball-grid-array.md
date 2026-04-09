@@ -18,7 +18,7 @@ Imagine you have a computer chip containing millions of microscopic circuits, an
 | Term | Definition |
 |------|------------|
 | **Solder Ball** | A tiny sphere of metal alloy (~0.5-0.8 mm diameter) that melts during assembly to form an electrical and mechanical connection between the chip package and the circuit board |
-| **Pitch** | The distance from the center of one solder ball to the center of the next; smaller pitch = more balls can fit, but harder to manufacture (typical: 0.5-0.8 mm) |
+| **Pitch** | The distance from the center of one solder ball to the center of the next; smaller pitch = more balls [[micro-context/can-bus-termination|can]] fit, but harder to manufacture (typical: 0.5-0.8 mm) |
 | **Reflow** | The process of heating the entire assembly in an oven until solder balls melt and form permanent joints, then cooling to solidify |
 | **Pad** | A flat copper circle on the circuit board or chip package where a solder ball attaches; pads on both sides must align precisely |
 | **X-ray Inspection** | Since BGA connections are hidden underneath, you can't visually check them—X-ray imaging is used to verify solder joints aren't cracked, bridged, or missing |
@@ -129,7 +129,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
+The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a [[quick-context/soldering|soldering]] iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 
 </details>
 
@@ -221,7 +221,7 @@ X-RAY VIEW: What Inspectors See
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB/Chip Packaging Hierarchy]]** — BGAs are one package type in the larger system that connects silicon dies to circuit boards; understanding the full hierarchy shows where BGA fits in the scale from transistors to systems.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB/Chip Packaging Hierarchy]]** — BGAs are one package type in the larger system that connects silicon dies to circuit boards; understanding the full hierarchy shows where BGA fits in the scale from [[quick-context/transistor-analog-to-digital|transistors]] to systems.
 
 - **Surface Mount Technology (SMT)** — The broader manufacturing process that includes BGA; covers how pick-and-place machines, stencils, and reflow ovens work together to assemble entire circuit boards.
 

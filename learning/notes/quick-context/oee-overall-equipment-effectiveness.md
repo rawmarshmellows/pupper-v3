@@ -87,7 +87,7 @@ A beverage company's bottling line shows 68% OEE. Breaking it down:
 3. Startup rejects: 4% of total losses (tune fill parameters for faster startup)
 4. Breakdowns: 3% of total losses (preventive maintenance on the problematic filler valve)
 
-Without OEE decomposition, management might have blamed "old equipment" and requested capital for a new line. The data showed the existing line could reach 80%+ OEE with changeover reduction and jam elimination—no capital required.
+Without OEE decomposition, management might have blamed "old equipment" and requested capital for a new line. The data showed the existing line could reach 80%+ OEE with changeover [[quick-context/cations-and-reduction|reduction]] and jam elimination—no capital required.
 
 **The one thing most outsiders get wrong about this is...** thinking 85% OEE is a universal target. World-class for a dedicated single-product line might be 95%; world-class for a high-mix job shop with 50 changeovers per day might be 55%. The number is meaningless without context—OEE is a diagnostic tool for identifying loss categories, not a leaderboard for comparing dissimilar operations.
 

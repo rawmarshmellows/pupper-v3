@@ -100,7 +100,7 @@ WHAT BIT-BANGING LOOKS LIKE (simplified):
       set_gpio(SWCLK, LOW)
 ```
 
-The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per clock edge for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
+The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per [[micro-context/clock-edges|clock edge]] for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
 
 **3. Wire layer — ST-Link to target**
 
@@ -124,6 +124,6 @@ COMPLETE ROUND-TRIP (e.g., "write 0xDEADBEEF to address 0x20000000"):
 
 ### Why this matters
 
-The ST-Link's simplicity is the point — it's just a $1 MCU bit-banging GPIOs. That's why clones can cost $7-13 and still work. The intelligence lives in **OpenOCD on your PC** (which knows how to orchestrate flash erase/write sequences, manage breakpoints, etc.) and in the **target chip's CoreSight debug hardware** (which provides the memory-mapped access). The ST-Link in the middle is a relatively dumb USB-to-SWD bridge.
+The ST-Link's simplicity is the point — it's just a $1 MCU bit-banging GPIOs. That's why clones [[micro-context/can-bus-termination|can]] cost $7-13 and still work. The intelligence lives in **OpenOCD on your PC** (which knows how to orchestrate flash erase/write sequences, manage breakpoints, etc.) and in the **target chip's CoreSight debug hardware** (which provides the memory-mapped access). The ST-Link in the middle is a relatively dumb USB-to-SWD bridge.
 
-**Key insight:** The ST-Link is the essential bridge for getting code onto the Pupper's brain — without it, there's no way to program the STM32. For hobbyist use, a $10 clone + OpenOCD provides the same flash/debug experience as official tools. ST's CubeIDE (1.9+) actively blocks clones via firmware checks, but open-source `stlink` utilities work fine. Clone pinouts vary between units — always verify with a multimeter.
+**Key insight:** The ST-Link is the essential bridge for getting code onto the Pupper's brain — without it, there's no way to program the STM32. For hobbyist use, a $10 clone + OpenOCD provides the same flash/debug experience as official tools. ST's CubeIDE (1.9+) actively blocks clones via firmware checks, but open-source `stlink` utilities work fine. Clone pinouts vary between units — always verify with a [[quick-context/oscilloscope-and-multimeter|multimeter]].

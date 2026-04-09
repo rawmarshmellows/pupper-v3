@@ -1,5 +1,7 @@
 # Existing Account Management Playbook
 
+> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/sales-methodology-layering]]
+
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
@@ -139,7 +141,7 @@ Track these metrics to measure account management effectiveness:
 
 | Stage | Characteristics | Focus Question |
 |---|---|---|
-| **EXPLORATORY** | Testing fit, limited trust, no commitment | "Can we work together?" |
+| **EXPLORATORY** | Testing fit, limited trust, no commitment | "[[micro-context/can-bus-termination|Can]] we work together?" |
 | **BASIC** | Transaction-focused, price-driven, low switching costs | "What's the cost?" |
 | **COOPERATIVE** | Preferred supplier, sharing information, multiple contacts | "How can we work better?" |
 | **INTERDEPENDENT** | Joint planning, high switching costs, shared goals | "How do we grow together?" |
@@ -232,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
@@ -440,7 +442,7 @@ Anticipate pushback scenarios:
 |---|---|
 | "What motion am I running?" (Defend/Hunt/Re-engage/Grow) | KARE Segmentation |
 | "How much CSM investment for this customer?" | Value/Potential Matrix |
-| "Where does this relationship stand?" | McDonald KAM Model |
+| "Where does this relationship stand?" | McDonald [[quick-context/mcdonald-kam-model|KAM]] Model |
 | "Who should I be talking to?" | Miller Heiman LAMP |
 | "What are we trying to achieve?" | LAMP Charter Statement |
 | "How should I structure this conversation?" | Challenger |

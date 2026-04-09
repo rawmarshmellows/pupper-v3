@@ -11,7 +11,7 @@ created: 2026-02-17
 
 ## The Core Problem: Why the Minus Sign?
 
-Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
+Faraday discovered that changing magnetic flux through a coil induces [[quick-context/voltage|voltage]]. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
 
 ## 5 Essential Terms
 
@@ -751,10 +751,10 @@ COMBINED EFFECT:
 **The generator would spin freely and produce no useful energy.** Without opposition, there would be no magnetic braking. The coil would spin with no resistance, but also no energy transfer. Current might flow, but it wouldn't come from your mechanical work — it would be "free energy" from nothing, violating conservation of energy. Lenz's Law ensures that the mechanical work you do against magnetic braking equals the electrical energy produced. See: Why Opposition is Inevitable.
 </details>
 
-**Q3:** An inductor carries steady DC current. Is Lenz's Law active?
+**Q3:** An inductor carries steady [[micro-context/ac-dc-current|DC]] current. Is Lenz's Law active?
 <details>
 <summary>Answer</summary>
-**No, Lenz's Law requires change.** With steady DC, dI/dt = 0, so there's no changing flux, so no induced EMF. The inductor acts like a simple wire (just its DC resistance). Lenz's Law only activates when current changes — during turn-on, turn-off, or AC operation. At steady state, all the "opposition" has already happened, and the inductor is doing nothing but maintaining its magnetic field.
+**No, Lenz's Law requires change.** With steady DC, dI/dt = 0, so there's no changing flux, so no induced EMF. The inductor acts like a simple wire (just its DC resistance). Lenz's Law only activates when current changes — during turn-on, turn-off, or [[micro-context/ac-dc-current|AC]] operation. At steady state, all the "opposition" has already happened, and the inductor is doing nothing but maintaining its magnetic field.
 </details>
 
 **Q4:** You drop two identical magnets: one through air, one through a copper tube. Both start at the same height. Which hits the ground first, and why?

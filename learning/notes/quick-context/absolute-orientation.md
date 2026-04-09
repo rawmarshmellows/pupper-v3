@@ -118,7 +118,7 @@ $$\mathbf{t} = \bar{\mathbf{q}} - s R \, \bar{\mathbf{p}}$$
 
 | Scenario | Minimum Points | Why |
 |----------|---------------|-----|
-| Rigid (6 DOF: 3 rotation + 3 translation) | 3 non-collinear | 3 points define a plane, giving 9 equations for 6 unknowns |
+| Rigid (6 [[quick-context/pupper-lab2-forward-kinematics|DOF]]: 3 rotation + 3 translation) | 3 non-collinear | 3 points define a plane, giving 9 equations for 6 unknowns |
 | [[quick-context/similarity-transform|Similarity]] (7 DOF: + scale) | 3 non-collinear | Scale adds 1 DOF but 3 points still provide enough constraints |
 | Robust estimation | 5+ recommended | Redundancy allows outlier detection and error estimation |
 
@@ -146,7 +146,7 @@ In practice, correspondences are often unknown. The **Iterative Closest Point (I
 
 ### The Outlier Problem
 
-Closed-form solutions are least-squares methods -- a single mismatched correspondence can badly skew the result. Practitioners use **RANSAC** (Random Sample Consensus) to handle this:
+Closed-form solutions are least-squares methods -- a single mismatched correspondence [[micro-context/can-bus-termination|can]] badly skew the result. Practitioners use **RANSAC** (Random Sample Consensus) to handle this:
 
 1. Randomly select the minimum subset (3 point pairs)
 2. Compute the transformation using a closed-form solver
@@ -273,7 +273,7 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ between centered point sets is the key intermediate quantity in the SVD solution
-- **Relative orientation** -- Finding the transformation between two camera views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
+- **Relative orientation** -- Finding the transformation between two [[quick-context/camera-fundamentals|camera]] views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
 - **Iterative Closest Point (ICP)** -- Iterative algorithm that solves absolute orientation repeatedly to align point clouds when correspondences are unknown
 - **RANSAC** -- Robust estimation framework that wraps around absolute orientation solvers to handle outlier correspondences
 - **Procrustes analysis** -- The statistical name for the same problem; orthogonal Procrustes = rigid alignment, generalized Procrustes = aligning multiple shapes simultaneously

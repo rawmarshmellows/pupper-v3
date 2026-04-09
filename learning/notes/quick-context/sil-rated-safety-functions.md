@@ -11,7 +11,7 @@ created: 2026-01-17
 
 ## The Core Problem
 
-Industrial machinery can maim and kill. A robotic arm moving at speed has the kinetic energy to crush a skull; a valve failing open can cause a chemical release; a conveyor that doesn't stop when someone falls on it will drag them into a pinch point.
+Industrial machinery [[micro-context/can-bus-termination|can]] maim and kill. A robotic arm moving at speed has the kinetic energy to crush a skull; a valve failing open can cause a chemical release; a conveyor that doesn't stop when someone falls on it will drag them into a pinch point.
 
 **Safety Integrity Level (SIL)** is a quantified measure of how reliably a safety function will work when demanded—not "will this code crash?" but "what's the probability this emergency stop fails to stop the machine before the operator dies?"
 
@@ -26,8 +26,8 @@ Without this framework, there's no way to systematically design, verify, and cer
 | **PFD (Probability of Failure on Demand)** | The likelihood the safety function fails to act when triggered—SIL levels are defined by PFD ranges (SIL 3 = 10^-4 to 10^-3). |
 | **Safe Failure Fraction (SFF)** | The proportion of failures that leave the system in a safe state (e.g., valve fails closed)—higher SFF allows higher SIL with less redundancy. |
 | **Dual-Channel Architecture (1oo2)** | Two independent systems that must both agree to allow operation; either can independently trigger shutdown—the standard pattern for SIL 2/3. |
-| **Diagnostic Coverage (DC)** | The percentage of dangerous failures detectable by automatic diagnostics—higher DC reduces the "undetected dangerous failure" rate that drives PFD. |
-| **Safety PLC** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
+| **Diagnostic Coverage ([[micro-context/ac-dc-current|DC]])** | The percentage of dangerous failures detectable by automatic diagnostics—higher DC reduces the "undetected dangerous failure" rate that drives PFD. |
+| **Safety [[micro-context/plc-programmable-logic-controller|PLC]]** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -183,7 +183,7 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
-- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
+- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why [[quick-context/ros2-architecture|ROS2]] cannot replace safety PLCs
 - **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
 - **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 

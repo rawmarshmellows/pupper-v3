@@ -28,7 +28,7 @@ Every matrix encodes a linear transformation, but looking at the raw numbers tel
 
 ### The Decomposition
 
-Any real $m \times n$ matrix $A$ can be factored as:
+Any real $m \times n$ matrix $A$ [[micro-context/can-bus-termination|can]] be factored as:
 
 $$A = U \Sigma V^T$$
 
@@ -153,7 +153,7 @@ For an $m \times n$ matrix, the full SVD costs roughly $O(mn^2)$ when $m \geq n$
 - **When SVD is overkill:** If you just need to solve $Ax = b$ and $A$ is well-conditioned and square, use LU or QR. Don't reach for SVD.
 - **When SVD is essential:** If $A$ might be rank-deficient, if you need the pseudoinverse, if you want to know the condition number, or if you need the best rank-$k$ approximation, SVD is the only tool that handles all of these correctly.
 
-**Truncated SVD for dimensionality reduction:** By the Eckart-Young-Mirsky theorem, the best rank-$k$ approximation to $A$ (in both the Frobenius norm and the spectral norm) is:
+**Truncated SVD for dimensionality [[quick-context/cations-and-reduction|reduction]]:** By the Eckart-Young-Mirsky theorem, the best rank-$k$ approximation to $A$ (in both the Frobenius norm and the spectral norm) is:
 
 $$A_k = U_k \Sigma_k V_k^T = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^T$$
 

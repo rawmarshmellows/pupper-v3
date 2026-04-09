@@ -33,4 +33,4 @@ updated: 2026-03-27
    TURNING              MILLING                      EDM
 ```
 
-**Key insight:** CNC is the default for precision metal parts in low volumes—only consider alternatives when you need internal cavities (3D print), high volumes (molding), or can sacrifice precision (casting).
+**Key insight:** CNC is the default for precision metal parts in low volumes—only consider alternatives when you need internal cavities (3D print), high volumes (molding), or [[micro-context/can-bus-termination|can]] sacrifice precision (casting).

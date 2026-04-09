@@ -11,7 +11,7 @@ created: 2026-03-27
 
 ## How It Works
 
-- The MCU selects one of several clock sources at startup: an internal [[quick-context/rc-oscillator|RC oscillator]] (HSI, ~16 MHz, ±1% accuracy at 25°C but degrades over temperature) or an external crystal/resonator (HSE, higher accuracy).
+- The [[micro-context/microcontroller|MCU]] selects one of several clock sources at startup: an internal [[quick-context/rc-oscillator|RC oscillator]] (HSI, ~16 MHz, ±1% accuracy at 25°C but degrades over temperature) or an external crystal/resonator (HSE, higher accuracy).
 - The selected source feeds into the PLL (phase-locked loop), which multiplies the frequency up — e.g., $8\text{ MHz} \times 22.5 = 180\text{ MHz}$ for the Pupper's STM32F446.
 - The PLL output then drives the system clock (SYSCLK), which is further divided down for peripheral buses (APB1 at 45 MHz max, APB2 at 90 MHz max).
 

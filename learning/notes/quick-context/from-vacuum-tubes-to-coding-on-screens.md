@@ -11,7 +11,7 @@ created: 2026-03-26
 
 ## The Core Problem
 
-You sit in front of a screen, type `x = 2 + 3`, press a button, and your program runs. But the computer is just a pile of [[quick-context/transistor|transistors]] switching on and off — it has no concept of "screens," "keyboards," or "files." Someone had to build every layer between your keystrokes and the CPU's fetch-execute cycle: the keyboard controller that converts key presses to character codes, the operating system that buffers those characters in RAM, the filesystem that persists them to disk, the compiler that translates them to machine code, and the loader that places those instructions where the CPU can find them. Each of these layers was itself [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, stretching back to an era when "programming" meant physically rewiring cables between [[quick-context/transistor-design-history|vacuum tube]] circuits — and before that, when "computer" meant a *person* sitting at a desk with a pencil and a mechanical calculator.
+You sit in front of a screen, type `x = 2 + 3`, press a button, and your program runs. But the computer is just a pile of [[quick-context/transistor|transistors]] switching on and off — it has no concept of "screens," "keyboards," or "files." Someone had to build every layer between your keystrokes and the CPU's fetch-execute cycle: the keyboard controller that converts key presses to character codes, the operating system that buffers those characters in RAM, the filesystem that persists them to disk, the compiler that translates them to machine code, and the loader that places those instructions where the CPU [[micro-context/can-bus-termination|can]] find them. Each of these layers was itself [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, stretching back to an era when "programming" meant physically rewiring cables between [[quick-context/transistor-design-history|vacuum tube]] circuits — and before that, when "computer" meant a *person* sitting at a desk with a pencil and a mechanical calculator.
 
 ## 5 Essential Terms
 
@@ -451,7 +451,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/transistor]]** — The physical switch that replaced vacuum tubes and made modern computing possible. Every logic gate in the CPU is built from these.
 
-- **[[quick-context/transistor-design-history]]** — The evolution from point-contact transistors (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
+- **[[quick-context/transistor-design-history]]** — The evolution from point-contact [[quick-context/transistor-analog-to-digital|transistors]] (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 

@@ -11,7 +11,7 @@ created: 2026-02-17
 
 ## The Core Question
 
-If the magnetic flux is created BY the current, how can the flux oppose the current? Isn't that circular?
+If the magnetic flux is created BY the current, how [[micro-context/can-bus-termination|can]] the flux oppose the current? Isn't that circular?
 
 The answer: **the flux doesn't oppose the current directly — the *changing* flux creates a voltage that opposes the *change* in current.** This is self-induction, and understanding it resolves the apparent paradox.
 
@@ -19,7 +19,7 @@ The answer: **the flux doesn't oppose the current directly — the *changing* fl
 
 | Term | Definition |
 |------|------------|
-| **Self-Induction** | When a coil's own changing current induces a voltage in itself. The coil's flux links with its own turns, so any current change creates back-EMF. |
+| **Self-Induction** | When a [[quick-context/coil-magnetic-field|coil]]'s own changing current induces a voltage in itself. The coil's flux links with its own turns, so any current change creates back-EMF. |
 | **Back-EMF** | The voltage induced in a coil that opposes the change in current. Equal to V = L × dI/dt. It's called "back" because it opposes the applied voltage. |
 | **Flux Linkage** | The total magnetic flux linking with a coil: Λ = N × Φ = L × I. For a coil, each turn links with flux from all turns, multiplying the effect. |
 | **Mutual Induction** | When changing current in one coil induces voltage in a nearby coil. Self-induction is the special case where the coil induces voltage in itself. |
@@ -64,7 +64,7 @@ THE CAUSAL CHAIN
 
 ## Complete Circuit Analysis: Inductor + Load
 
-Let's trace through the COMPLETE cycle with actual voltages, including what happens when you disconnect the battery.
+Let's trace through the COMPLETE cycle with actual voltages, including what happens when you disconnect the [[quick-context/galvanic-cells-batteries|battery]].
 
 ```
 THE CIRCUIT
@@ -459,9 +459,9 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 
 - **[[quick-context/capacitor]]** — The dual of an inductor. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the magnetic field that stores energy.
+- **[[quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the [[quick-context/coil-magnetic-field|magnetic field]] that stores energy.
 
-- **[[micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the switch is on and releases it when the switch is off, enabling efficient DC-DC conversion.
+- **[[micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the switch is on and releases it when the switch is off, enabling efficient [[micro-context/ac-dc-current|DC]]-DC conversion.
 
 </details>
 
@@ -474,7 +474,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction only matters when current is *changing*.
 </details>
 
-**Q2:** At the instant you connect a battery to an inductor-resistor circuit, why does the load see 0V even though the battery is 10V?
+**Q2:** At the instant you connect a battery to an inductor-[[quick-context/resistor|resistor]] circuit, why does the load see 0V even though the battery is 10V?
 <details>
 <summary>Answer</summary>
 **The inductor absorbs all the voltage as back-EMF.** At t=0, current is zero but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire source voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.

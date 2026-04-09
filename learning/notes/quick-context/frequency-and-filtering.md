@@ -18,7 +18,7 @@ A microphone picks up a voice (300 Hz - 3 kHz) plus a 60 Hz hum from nearby powe
 | Term | Definition |
 |------|------------|
 | **Frequency (f)** | How many times a signal repeats per second, measured in hertz (Hz). Period T = 1/f. Human hearing: 20 Hz - 20 kHz. WiFi: 2.4 GHz. |
-| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% voltage, 50% power). Defines the boundary between "pass" and "stop." |
+| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% [[quick-context/voltage|voltage]], 50% power). Defines the boundary between "pass" and "stop." |
 | **Decibel (dB)** | A logarithmic ratio: dB = 20 × log₁₀(Vout/Vin). -3 dB = half power. -20 dB = 1/10 voltage. -40 dB = 1/100 voltage. |
 | **Low-pass / High-pass** | Low-pass: passes below fc, blocks above. High-pass: passes above fc, blocks below. Band-pass: passes a range. Band-stop/notch: blocks a range. |
 | **Order** | How many reactive elements (C or L) in the filter. Higher order = sharper cutoff slope. 1st order = -20 dB/decade. 2nd order = -40 dB/decade. |
@@ -130,7 +130,7 @@ FILTER ORDER AND ROLLOFF
 
 A 1st-order filter is simple (one R + one C) but its -20 dB/decade slope means unwanted signals only 10× above the cutoff are only attenuated 10×. For many applications, that's not enough.
 
-Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[quick-context/op-amp|op-amps]]) can achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
+Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[quick-context/op-amp|op-amps]]) [[micro-context/can-bus-termination|can]] achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
 
 ```
 FILTER TOPOLOGY TRADEOFFS
@@ -191,7 +191,7 @@ EMI FILTER
 
 - **[[quick-context/inductor]]** — Inductors combined with capacitors form second-order filters with -40 dB/decade rolloff and LC resonant circuits at f = 1/(2π√LC).
 
-- **[[quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
+- **[[quick-context/resistor]]** — [[quick-context/epson-rc-plus-programming|RC]] filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
 
 - **[[quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
 

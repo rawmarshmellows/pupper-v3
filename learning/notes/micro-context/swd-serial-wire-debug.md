@@ -8,13 +8,13 @@ updated: 2026-03-27
 
 > **See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]
 
-**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M microcontrollers. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.
+**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M microcontrollers. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a [[micro-context/4-wire-kelvin-measurement|4-wire]] connection total.
 
 ## How It Works
 
 - The debugger drives SWCLK and exchanges data bidirectionally on SWDIO using a rigid request→ACK→data packet protocol.
 - Each SWD transaction accesses the chip's Debug Access Port (DAP), which bridges to the internal bus — giving the debugger the same memory access as the CPU.
-- Through this bus access, the debugger can erase and write flash (programming), set hardware breakpoints, single-step instructions, and inspect registers/memory in real time.
+- Through this bus access, the debugger [[micro-context/can-bus-termination|can]] erase and write flash (programming), set hardware breakpoints, single-step instructions, and inspect registers/memory in real time.
 - All of this happens over just 2 signal wires (plus power and ground), replacing the older 4+ wire JTAG interface.
 
 ## Physical Connection
@@ -117,7 +117,7 @@ SWD gives the debugger the same bus access as the CPU. Here's what that enables:
 | Capability | How it works via SWD |
 |---|---|
 | **Flash programming** | Write to flash controller registers to unlock flash, erase sectors, then write 32-bit words. The debug probe's software (OpenOCD, STM32CubeProgrammer) automates this sequence. |
-| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) comparator registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
+| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) [[quick-context/comparator|comparator]] registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
 | **Software breakpoints** | Replace an instruction with `BKPT` (0xBExx). Unlimited count but only works in RAM, not flash (without erasing). |
 | **Single-stepping** | Set the STEP bit in the Debug Halting Control register (DHCSR). CPU executes one instruction then halts again. |
 | **Register inspection** | Read/write all CPU registers (R0-R15, PSR, etc.) through the DCRSR/DCRDR register pair while the CPU is halted. |
@@ -152,7 +152,7 @@ Use JTAG when: Multiple devices on one debug chain, need boundary
                scan for board-level testing, or targeting Cortex-A/R
 ```
 
-**Why SWD won for Cortex-M:** ARM designed SWD specifically for the microcontroller market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
+**Why SWD won for Cortex-M:** ARM designed SWD specifically for the [[micro-context/microcontroller|microcontroller]] market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
 
 ## SWD in the Pupper
 

@@ -11,14 +11,14 @@ created: 2026-04-01
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
-A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and both wires pick up 50 mV of 60 Hz noise from nearby power lines. You need to amplify the 2 mV signal and ignore the 1.55V of unwanted voltage. A single transistor amplifier can't do this---it amplifies everything. A differential pair amplifies only the *difference* between its two inputs, naturally rejecting noise and DC offsets that appear on both wires equally. This is why every op-amp, comparator, and instrumentation amplifier starts with a differential pair at its input.
+A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode [[quick-context/voltage|voltage]], and both wires pick up 50 mV of 60 Hz noise from nearby power lines. You need to amplify the 2 mV signal and ignore the 1.55V of unwanted voltage. A single transistor amplifier [[micro-context/can-bus-termination|can]]'t do this---it amplifies everything. A differential pair amplifies only the *difference* between its two inputs, naturally rejecting noise and [[micro-context/ac-dc-current|DC]] offsets that appear on both wires equally. This is why every op-amp, comparator, and instrumentation amplifier starts with a differential pair at its input.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Matched transistors (Q1, Q2)** | Two transistors fabricated identically (same geometry, same process, physically adjacent on the die) so they have the same threshold voltage, transconductance, and temperature behavior. Matching is what makes the circuit reject common-mode signals. |
-| **Tail current source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
+| **Matched [[quick-context/transistor-analog-to-digital|transistors]] (Q1, Q2)** | Two transistors fabricated identically (same geometry, same process, physically adjacent on the die) so they have the same threshold voltage, transconductance, and temperature behavior. Matching is what makes the circuit reject common-mode signals. |
+| **[[micro-context/tail-current|Tail current]] source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
 | **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the tail current can't increase, so nothing changes at the output. |
 | **Differential signal** | The difference between the two inputs: $V_{DIFF} = V_+ - V_-$. This is what the pair amplifies. A 1 mV differential signal on top of a 1.5V common-mode voltage produces the same output as a 1 mV signal on top of 0V. |
 | **Common-Mode Rejection Ratio (CMRR)** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
@@ -177,7 +177,7 @@ COMMON-MODE REJECTION
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
 - **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **[[micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in [[micro-context/i2s|IC]] design
 
 </details>
 
@@ -188,10 +188,10 @@ The differential pair's performance depends on three competing goals:
 
 | Want | Problem |
 |------|---------|
-| **Better matching** (lower offset) | Requires larger transistors → slower, more capacitance |
+| **Better matching** (lower offset) | Requires larger transistors → slower, more [[quick-context/capacitance|capacitance]] |
 | **Higher gain** ($g_m$) | Requires more tail current → more power, more heat |
 | **Faster response** | Requires smaller transistors → worse matching, more offset |
-| **Higher CMRR** | Requires a perfect tail current source (infinite output impedance), which doesn't exist |
+| **Higher CMRR** | Requires a perfect tail current source (infinite output [[quick-context/impedance-and-reactance|impedance]]), which doesn't exist |
 
 ```
 MATCHING AND OFFSET
@@ -267,7 +267,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 
 - **[[quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
 
-- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
+- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a [[micro-context/current-mirror|current mirror]] at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
 
 </details>
 

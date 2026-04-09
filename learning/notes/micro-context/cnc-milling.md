@@ -36,4 +36,4 @@ SUBTRACTIVE vs ADDITIVE:
       ╚═╝    cuts into material
 ```
 
-**Key insight:** CNC milling produces parts with full material strength (no layer adhesion weakness like FDM prints), but wastes material as chips and can't create fully enclosed internal cavities.
+**Key insight:** CNC milling produces parts with full material strength (no layer adhesion weakness like FDM prints), but wastes material as chips and [[micro-context/can-bus-termination|can]]'t create fully enclosed internal cavities.

@@ -128,7 +128,7 @@ The transform is named after **Friedrich Robert Helmert** (1843--1917), a German
 
 ### 7-Parameter vs Time-Dependent Helmert
 
-The classic Helmert uses 7 parameters (3 translations, 3 rotations, 1 scale) and assumes a single, consistent transformation across the entire domain. But the Earth's crust is not rigid -- tectonic plates move, local subsidence warps regions, and the relationship between coordinate frames can change over time.
+The classic Helmert uses 7 parameters (3 translations, 3 rotations, 1 scale) and assumes a single, consistent transformation across the entire domain. But the Earth's crust is not rigid -- tectonic plates move, local subsidence warps regions, and the relationship between coordinate frames [[micro-context/can-bus-termination|can]] change over time.
 
 | Factor | 7-Parameter Helmert | 15-Parameter (time-dependent) |
 |--------|-------------------|--------------------------|
@@ -302,7 +302,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 **Q1:** What are the 7 parameters of a Helmert Transform, and why is 7 the minimum for a 3D similarity transform?
 <details>
 <summary>Answer</summary>
-3 translations ($t_x, t_y, t_z$), 3 rotations ($r_x, r_y, r_z$), and 1 uniform scale ($s$). This is the minimum because a similarity transform must specify where to move (3 DOF), how to reorient (3 DOF), and how to resize (1 DOF). Any fewer and you can't fully specify the mapping; any more and you introduce shear or non-uniform scale, which would no longer be a similarity transform. See: 5 Essential Terms, How It Works.
+3 translations ($t_x, t_y, t_z$), 3 rotations ($r_x, r_y, r_z$), and 1 uniform scale ($s$). This is the minimum because a similarity transform must specify where to move (3 [[quick-context/pupper-lab2-forward-kinematics|DOF]]), how to reorient (3 DOF), and how to resize (1 DOF). Any fewer and you can't fully specify the mapping; any more and you introduce shear or non-uniform scale, which would no longer be a similarity transform. See: 5 Essential Terms, How It Works.
 </details>
 
 **Q2:** Why does the algorithm center the point sets before computing rotation and scale?

@@ -12,11 +12,11 @@ updated: 2026-03-11
 
 ## The Core Problem
 
-In Lab 2 you solved forward kinematics: plug in joint angles $\theta_1, \theta_2, \theta_3$, get foot position $p \in \mathbb{R}^3$. That's a clean, closed-form mapping. But a walking robot doesn't think in joint angles — it thinks in foot positions. You want to say "put the foot here" and have the robot figure out which angles achieve that. This is the **inverse kinematics** problem, and for most robots it's far harder than FK because the mapping from Cartesian space back to joint space can be nonlinear, non-unique, or even nonexistent (if the target is out of reach).
+In Lab 2 you solved forward kinematics: plug in joint angles $\theta_1, \theta_2, \theta_3$, get foot position $p \in \mathbb{R}^3$. That's a clean, closed-form mapping. But a walking robot doesn't think in joint angles — it thinks in foot positions. You want to say "put the foot here" and have the robot figure out which angles achieve that. This is the **inverse kinematics** problem, and for most robots it's far harder than FK because the mapping from Cartesian space back to joint space [[micro-context/can-bus-termination|can]] be nonlinear, non-unique, or even nonexistent (if the target is out of reach).
 
 Pupper's 3-DOF leg actually does have a closed-form analytical IK solution — you could derive it with trigonometry. But Lab 3 deliberately uses **numerical gradient descent** instead, for two reasons. First, the gradient descent approach generalizes: it works for any robot geometry (6-DOF arms, redundant manipulators, humanoid legs) without rederiving equations. Second, it teaches the optimization-based thinking that underlies modern robotics — trajectory optimization, model-predictive control, and even neural network training all share the same gradient-based core.
 
-The lab also introduces a critical systems concept: **dual-rate control**. The IK solver runs at 20 Hz because each solve requires multiple FK evaluations (one per joint per gradient step), making it computationally expensive. But the motors need smooth, high-frequency commands to avoid jerky motion. So a separate PD control loop runs at 200 Hz, tracking whatever joint targets the IK solver most recently produced. This separation of planning rate from execution rate is standard in real robot architectures — Lab 5's neural controller uses the same pattern at 50 Hz policy / 500 Hz PD.
+The lab also introduces a critical systems concept: **dual-rate control**. The IK solver runs at 20 Hz because each solve requires multiple FK evaluations (one per joint per gradient step), making it computationally expensive. But the motors need smooth, high-frequency commands to avoid jerky motion. So a separate PD control loop runs at 200 Hz, tracking whatever joint targets the IK solver most recently produced. This separation of planning rate from execution rate is standard in real robot architectures — Lab 5's [[quick-context/pupper-lab5-neural-controller|neural controller]] uses the same pattern at 50 Hz policy / 500 Hz PD.
 
 ## 5 Essential Terms
 
@@ -255,7 +255,7 @@ $p_{new} = FK([0.22, -0.462, 0.851]) = [0.0495, -0.0988, -0.1483]$
 
 $C_{new} = (0.0495 - 0.05)^2 + (-0.0988 + 0.10)^2 + (-0.1483 + 0.15)^2 = 0.0000063$
 
-Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ reduction in one step. A few more iterations and the cost will be below the convergence tolerance, at which point the IK solver returns $\theta_{new}$ as the solution and the 200 Hz PD loop begins driving the motors to these angles.
+Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ [[quick-context/cations-and-reduction|reduction]] in one step. A few more iterations and the cost will be below the convergence tolerance, at which point the IK solver returns $\theta_{new}$ as the solution and the 200 Hz PD loop begins driving the motors to these angles.
 
 **Computation cost of this one step:** 4 FK evaluations (1 base + 3 perturbations). A typical solve takes 5-15 steps, so 20-60 FK evaluations total. Each FK evaluation chains three 4x4 matrix multiplications (from Lab 2), which is why this is too expensive to run at 200 Hz.
 
@@ -268,7 +268,7 @@ Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ reduction in one step. 
 - **Newton's Method** — Uses second-order information (the Hessian $\nabla^2 C$) for faster convergence: $\theta \leftarrow \theta - (\nabla^2 C)^{-1} \nabla C$. Converges quadratically near the solution vs. gradient descent's linear convergence, but each step is more expensive and the Hessian can be singular.
 - **Levenberg-Marquardt Algorithm** — A damped least-squares method that interpolates between gradient descent (far from solution) and Gauss-Newton (near solution). The standard workhorse for nonlinear least-squares problems in robotics, vision, and SLAM.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 3 builds directly on Lab 2's FK implementation and feeds into Lab 4's multi-leg gait controller.
-- **[[quick-context/pupper-brain]]** — The hardware executing these loops: the STM32 microcontrollers running the 200 Hz PD loop, and the Raspberry Pi running the 20 Hz IK solver in Python via [[quick-context/ros2-architecture|ROS2]].
+- **[[quick-context/pupper-brain]]** — The hardware executing these loops: the [[micro-context/stm32-microcontroller|STM32]] microcontrollers running the 200 Hz PD loop, and the Raspberry Pi running the 20 Hz IK solver in Python via [[quick-context/ros2-architecture|ROS2]].
 - **Optimization Theory** — Lab 3's gradient descent is a first-order unconstrained optimizer. The broader field includes constrained optimization (Lagrange multipliers, interior-point methods), stochastic gradient descent (used in ML), and convex optimization (where global minima are guaranteed). Boyd & Vandenberghe's *Convex Optimization* is the standard reference.
 
 </details>

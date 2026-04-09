@@ -241,7 +241,7 @@ Beyond the 2x2 matrix, account characteristics influence engagement tactics:
 
 | Characteristic | Engagement Implication |
 |----------------|------------------------|
-| **Tech-native** | Self-service preferred; deep integration expectations; want API access and docs, not hand-holding; engage via technical content |
+| **Tech-native** | Self-service preferred; deep integration expectations; want [[quick-context/pupper-lab6-llm-voice-control|API]] access and docs, not hand-holding; engage via technical content |
 | **Tech-adopter** | Balanced mix; want guidance but not micromanagement; case studies and best practices resonate |
 | **Tech-reluctant** | High-touch required; change management support; training investment; executive sponsorship critical for adoption |
 
@@ -275,7 +275,7 @@ The fundamental tension in post-sale engagement:
 | CSMs become account therapists | Customers feel like tickets |
 | Unsustainable unit economics | Miss expansion signals |
 | Heroic effort, inconsistent results | Low NPS, high churn |
-| Can't scale the team | Competitors outmaneuver with relationships |
+| [[micro-context/can-bus-termination|Can]]'t scale the team | Competitors outmaneuver with relationships |
 
 **The practitioner debate:**
 

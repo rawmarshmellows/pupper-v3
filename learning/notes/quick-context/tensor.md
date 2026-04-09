@@ -291,7 +291,7 @@ COMBINED LOADING (real-world):
     tensors are designed to handle.
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
+**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor [[micro-context/can-bus-termination|can]] be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
 
 </details>
 

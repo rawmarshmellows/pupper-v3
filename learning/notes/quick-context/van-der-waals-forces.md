@@ -19,8 +19,8 @@ Imagine you have two neutral atoms—no positive or negative charge, just sittin
 | Term | Definition |
 |------|------------|
 | **Dispersion forces (London forces)** | The specific type of van der Waals force caused by temporary, random electron movements creating instant dipoles—this is what we focus on here |
-| **Dipole** | An uneven distribution of electrical charge, like a tiny battery with a + end and a - end |
-| **Polarizability** | How easily an atom's electron cloud can be distorted—larger atoms with more electrons are more polarizable and have stronger van der Waals forces |
+| **Dipole** | An uneven distribution of electrical charge, like a tiny [[quick-context/galvanic-cells-batteries|battery]] with a + end and a - end |
+| **Polarizability** | How easily an atom's electron cloud [[micro-context/can-bus-termination|can]] be distorted—larger atoms with more electrons are more polarizable and have stronger van der Waals forces |
 | **Instantaneous dipole** | A temporary, fleeting moment when electrons randomly cluster on one side of an atom, creating a brief + and - end |
 | **Induced dipole** | When one atom's instantaneous dipole causes a neighboring atom's electrons to shift in response, creating a second dipole |
 
@@ -394,7 +394,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

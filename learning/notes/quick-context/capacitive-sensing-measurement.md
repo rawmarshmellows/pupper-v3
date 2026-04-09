@@ -11,15 +11,15 @@ created: 2026-03-28
 
 ## The Core Problem
 
-Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a voltage or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
+Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- [[micro-context/can-bus-termination|can]] be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a [[quick-context/voltage|voltage]] or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Capacitance-to-Digital Converter (CDC)** | An IC or on-chip block that directly converts a capacitance value to a digital number, typically using a sigma-delta charge-balancing architecture. Found inside sensor ICs like the SHT40 ([[small-context/humidity-temperature-sensor|humidity sensor]]) and MEMS accelerometer readout ASICs. |
+| **Capacitance-to-Digital Converter (CDC)** | An [[micro-context/i2s|IC]] or on-chip block that directly converts a capacitance value to a digital number, typically using a sigma-delta charge-balancing architecture. Found inside sensor ICs like the SHT40 ([[small-context/humidity-temperature-sensor|humidity sensor]]) and MEMS accelerometer readout ASICs. |
 | **Charge Transfer** | A measurement technique where charge is repeatedly shuttled from an unknown capacitor ($C_x$) to a known accumulator capacitor ($C_s$), counting cycles until $C_s$ reaches a threshold. The count is proportional to $C_x$. Used in touchscreen controllers (e.g., Microchip QTouch). |
-| **Excitation Signal** | The AC voltage or switched-capacitor clock applied to the sensor to create measurable current flow. Without excitation, a capacitor at steady state passes zero current ($I = C \cdot dV/dt$, and $dV/dt = 0$ at DC). |
+| **Excitation Signal** | The [[micro-context/ac-dc-current|AC]] voltage or switched-capacitor clock applied to the sensor to create measurable current flow. Without excitation, a capacitor at steady state passes zero current ($I = C \cdot dV/dt$, and $dV/dt = 0$ at [[micro-context/ac-dc-current|DC]]). |
 | **Sigma-Delta Modulation** | An oversampling technique that encodes the ratio $C_{\text{sensor}} / C_{\text{ref}}$ as the density of 1s in a high-speed bitstream. A digital decimation filter extracts a high-resolution result (16-24 bits) from this noisy 1-bit stream. |
 | **Differential Capacitance** | A sensor architecture with two capacitors ($C_1$, $C_2$) that change in opposite directions when the measurand changes. The readout measures $\Delta C = C_1 - C_2$, which doubles sensitivity and cancels common-mode drift -- the same principle as [[quick-context/can-bus|CAN bus]] differential signaling. |
 
@@ -64,7 +64,7 @@ THREE FAMILIES OF CAPACITANCE MEASUREMENT
 
 ### Family 1: RC Timing
 
-The simplest approach: charge $C_x$ through a known [[quick-context/resistor|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = RC$, the time is directly proportional to capacitance.
+The simplest approach: charge $C_x$ through a known [[quick-context/resistor|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = [[quick-context/epson-rc-plus-programming|RC]]$, the time is directly proportional to capacitance.
 
 ```
 RC TIMING — HOW TOUCHSCREEN CONTROLLERS WORK
@@ -396,7 +396,7 @@ The RC time constants are $\tau_{\text{no touch}} = 10\text{k}\Omega \times 10\t
 Resolution and accuracy are different. The 16-bit sigma-delta CDC can *resolve* tiny capacitance changes (0.01% RH steps) because oversampling averages noise effectively. But *accuracy* is limited by the physical sensor: the polymer film's response to humidity is nonlinear, hysteretic, temperature-dependent, and changes with aging. Even with perfect calibration at the factory, these physical effects introduce ±1.8% systematic error that no amount of digital resolution can fix. Resolution tells you the smallest *change* you can detect; accuracy tells you how close the *absolute* reading is to truth. See: Concrete Example.
 </details>
 
-**Q5:** The $kT/C$ thermal noise limit gives $V_{\text{noise}} = \sqrt{kT/C}$. A MEMS accelerometer has comb-finger capacitance of ~1 pF, while a humidity sensor has ~190 pF. Which has a harder time with thermal noise, and what does this mean for readout circuit design?
+**Q5:** The $kT/C$ [[quick-context/thermal-noise-electronics|thermal noise]] limit gives $V_{\text{noise}} = \sqrt{kT/C}$. A MEMS accelerometer has comb-finger capacitance of ~1 pF, while a humidity sensor has ~190 pF. Which has a harder time with thermal noise, and what does this mean for readout circuit design?
 <details>
 <summary>Answer</summary>
 The accelerometer. At 1 pF: $V_{\text{noise}} = \sqrt{1.38 \times 10^{-23} \times 300 / 10^{-12}} \approx 64\ \mu\text{V}$ rms. At 190 pF: $V_{\text{noise}} \approx 4.7\ \mu\text{V}$ rms -- about 14x lower. The smaller capacitance means the charge per measurement cycle is tiny and noise is relatively large. This is why MEMS accelerometers use differential sensing (doubles signal, cancels common-mode noise), shielded readout paths, and often correlated double sampling. The humidity sensor's large base capacitance gives it a natural noise advantage, so simpler readout suffices. The $kT/C$ limit also explains why DRAM capacitors can't shrink indefinitely -- see [[quick-context/capacitor|capacitor thermal noise discussion]].

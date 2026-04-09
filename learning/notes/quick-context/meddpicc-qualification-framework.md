@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | 
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 
@@ -18,7 +18,7 @@ Sales teams waste enormous effort on deals that were never going to close. Reps 
 | Term | Definition |
 |------|------------|
 | **Metrics** | The quantifiable business outcomes the customer expects; "success" defined in numbers they'll measure you against |
-| **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who can say "yes" alone |
+| **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who [[micro-context/can-bus-termination|can]] say "yes" alone |
 | **Champion** | An internal advocate with power and influence who actively sells on your behalf when you're not in the room |
 | **Paper Process** | The legal, procurement, security, and administrative steps between verbal agreement and signed contract |
 | **Decision Process** | The sequence of events, approvals, and stakeholders between "interested" and "decision made" |

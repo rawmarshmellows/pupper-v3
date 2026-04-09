@@ -11,14 +11,14 @@ created: 2026-02-25
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
-A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
+A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping [[micro-context/i2s|IC]] power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a [[quick-context/voltage|voltage]] divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and [[quick-context/pcb-chip-transistor-hierarchy|PCB]]: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
 | **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
 | **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
@@ -83,13 +83,13 @@ FUNCTIONAL BLOCK DIAGRAM — Pupper v3 Control Board Rev 3.5
 **[[micro-context/stm32-microcontroller|STM32F446RET6]]** — ARM Cortex-M4 @ 180 MHz, 512 KB flash, 128 KB RAM, LQFP-64 package (10 × 10 mm, 0.5 mm pitch).
 
 Two are used with distinct roles:
-- **U1 (Main MCU):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC, communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over I2S.
-- **U5 (Motor MCU):** Dedicated to the 1 kHz motor control loop — receives joint targets from U1 over [[micro-context/spi|SPI]], sends/receives CAN messages to all 12 servos via the 4 MAX3051 transceivers.
+- **U1 (Main [[micro-context/microcontroller|MCU]]):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads [[quick-context/galvanic-cells-batteries|battery]] voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC, communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over [[micro-context/i2s|I2S]].
+- **U5 (Motor MCU):** Dedicated to the 1 kHz motor control loop — receives joint targets from U1 over [[micro-context/spi|SPI]], sends/receives [[micro-context/can-bus-termination|CAN]] messages to all 12 servos via the 4 MAX3051 transceivers.
 
 Each MCU requires:
-- One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its clock source
+- One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its [[micro-context/clock-source|clock source]]
 - Multiple decoupling capacitors on its power pins (100nF + 1μF + 4.7μF)
-- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as CAN bus termination
+- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as [[micro-context/can-bus-termination|CAN bus termination]]
 
 ### Category 2: Communication — CAN Transceivers (U3, U4, U6, U7)
 
@@ -150,7 +150,7 @@ BUCK CONVERTER CIRCUIT (simplified)
     C16 (10μF): input bypass
 ```
 
-The 10μH [[quick-context/inductor|inductor]] (L1, Sunlord MWSA1004S-100MT) is the energy storage element — it smooths the chopped voltage from the buck converter's internal switch into steady DC. The 47μF output capacitors (C18, C19) further smooth the output ripple.
+The 10μH [[quick-context/inductor|inductor]] (L1, Sunlord MWSA1004S-100MT) is the energy storage element — it smooths the chopped voltage from the buck converter's internal switch into steady [[micro-context/ac-dc-current|DC]]. The 47μF output capacitors (C18, C19) further smooth the output ripple.
 
 ### Category 6: Passive Components — Capacitors, Resistors, Ferrite Beads
 
@@ -160,12 +160,12 @@ The 10μH [[quick-context/inductor|inductor]] (L1, Sunlord MWSA1004S-100MT) is t
 |-------|-----|-------------|----------|
 | 100nF | 13 | C2,C5,C6,C8,C11,C12,C17,C53-C58 | IC decoupling (one per power pin) |
 | 1μF | 4 | C1,C3,C7,C9 | Medium-frequency decoupling |
-| 4.7μF | 2 | C4,C10 | Bulk decoupling near MCUs |
+| 4.7μF | 2 | [[quick-context/flip-chip|C4]],C10 | Bulk decoupling near MCUs |
 | 10μF | 2 | C16,C68 | Input bypass for buck converter |
 | 47μF | 2 | C18,C19 | Buck converter output filter |
 | 3nF, 6.8pF, 2.7nF | 3 | C13,C14,C15 | Buck converter compensation |
 
-All small caps are C0402 (1.0 × 0.5 mm) — too small to hand-solder. The 47μF caps are C0805 and the 10μF C16 is C1206, both using higher-capacitance [[quick-context/capacitor|MLCC]] (ceramic) technology.
+All small caps are C0402 (1.0 × 0.5 mm) — too small to hand-solder. The 47μF caps are C0805 and the 10μF C16 is C1206, both using higher-[[quick-context/capacitance|capacitance]] [[quick-context/capacitor|MLCC]] (ceramic) technology.
 
 **Resistors by function:**
 
@@ -327,7 +327,7 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/pupper-brain]]** — The architectural overview of this same board: why dual MCUs, why CAN bus, how the 1 kHz control loop works. This BOM document explains WHAT parts are used; the brain document explains WHY.
 
-- **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum that runs on this hardware. Labs 1-4 directly control the motors via CAN bus and read the IMU; Lab 5 deploys RL policies through the neural controller; Labs 6-7 add voice and vision on the Raspberry Pi side.
+- **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum that runs on this hardware. Labs 1-4 directly control the motors via CAN bus and read the IMU; Lab 5 deploys RL policies through the [[quick-context/pupper-lab5-neural-controller|neural controller]]; Labs 6-7 add voice and vision on the Raspberry Pi side.
 
 - **[[quick-context/pcb-printed-circuit-board]]** — How all these components physically connect — traces carry signals between ICs, vias connect layers, and the copper pour provides the [[quick-context/grounding-and-return-paths|ground plane]] return path for every signal.
 
@@ -339,13 +339,13 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH [[micro-context/power-inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 
 - **[[quick-context/common-ic-packages]]** — This BOM uses LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages. Understanding package types explains why certain parts can't be hand-soldered.
 
-- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow soldering. The paste mask layer defines the stencil apertures for solder paste deposition.
+- **[[quick-context/soldering]]** — All 0402 passives and [[micro-context/smd-resistor|SMD]] ICs require reflow soldering. The paste mask layer defines the stencil apertures for solder paste deposition.
 
 - **[[quick-context/frequency-and-filtering]]** — The ferrite beads (L2, L3) and multi-value capacitor network form a distributed filter that suppresses switching noise across a wide bandwidth.
 
@@ -383,7 +383,7 @@ NOW TRACE IT ON THE BOARD:
 **Q5:** If you removed the 10μH inductor (L1) from the buck converter circuit, what would happen?
 <details>
 <summary>Answer</summary>
-**The 5V output would collapse into violent pulses instead of smooth DC.** The TPS54561's internal switch chops the battery voltage on and off at hundreds of kHz. The [[quick-context/inductor|inductor]] smooths these pulses by storing energy in its magnetic field during the "on" phase and releasing it during "off." Without L1, the output would be a square wave between battery voltage and 0V — no IC on the board could survive that. The output capacitors (C18, C19) would see massive ripple current and likely fail. The inductor is not optional in a buck converter; it IS the converter's fundamental energy storage element. See [[quick-context/inductor]] for the buck converter explanation.
+**The 5V output would collapse into violent pulses instead of smooth DC.** The TPS54561's internal switch chops the battery voltage on and off at hundreds of kHz. The [[quick-context/inductor|inductor]] smooths these pulses by storing energy in its [[quick-context/coil-magnetic-field|magnetic field]] during the "on" phase and releasing it during "off." Without L1, the output would be a square wave between battery voltage and 0V — no IC on the board could survive that. The output capacitors (C18, C19) would see massive ripple current and likely fail. The inductor is not optional in a buck converter; it IS the converter's fundamental energy storage element. See [[quick-context/inductor]] for the buck converter explanation.
 </details>
 
 </details>

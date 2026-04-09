@@ -17,7 +17,7 @@ Sales reps often sell to whoever will take a meeting, then discover they've been
 
 | Term | Definition |
 |------|------------|
-| **Economic Buyer** | The single person with discretionary authority to approve the purchase—can say "yes" when everyone else says "no," and controls the budget |
+| **Economic Buyer** | The single person with discretionary authority to approve the purchase—[[micro-context/can-bus-termination|can]] say "yes" when everyone else says "no," and controls the budget |
 | **User Buyer** | The person(s) who will work with your solution day-to-day and judges success based on job impact and personal convenience |
 | **Technical Buyer** | The gatekeeper who screens against specifications, compliance, or technical requirements—can veto but cannot approve alone |
 | **Coach** | An internal advocate who provides intelligence about the organization's decision process, politics, and how to navigate to the Economic Buyer |
