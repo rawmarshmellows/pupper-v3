@@ -4,9 +4,11 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/micro-context/swd-serial-wire-debug]]
+
 # SPIneV1.elf
 
-**Definition:** The compiled firmware binary for the Pupper v3's motor control [[micro-context/stm32-microcontroller|STM32F446]] (U5). It receives joint angle targets from the main MCU (U1) over [[micro-context/spi|SPI]], translates them into [[micro-context/can-bus-transceiver|CAN bus]] messages, and sends position commands to all 12 servo motors at 1 kHz. The name "SPIne" likely reflects SPI + CAN interface (the "spine" connecting brain to legs).
+**Definition:** The compiled firmware binary for the Pupper v3's motor control [[learning/notes/micro-context/stm32-microcontroller|STM32F446]] (U5). It receives joint angle targets from the main MCU (U1) over [[learning/notes/micro-context/spi|SPI]], translates them into [[learning/notes/micro-context/can-bus-transceiver|CAN bus]] messages, and sends position commands to all 12 servo motors at 1 kHz. The name "SPIne" likely reflects SPI + CAN interface (the "spine" connecting brain to legs).
 
 ## How It Works
 
@@ -28,4 +30,4 @@ SPIneV1 FIRMWARE — WHAT IT DOES ON U5:
                                               12 motors
 ```
 
-**Key insight:** The `.elf` format contains both machine code and debug symbols — it gets [[quick-context/firmware|flashed]] onto U5's 512KB flash via [[micro-context/swd-serial-wire-debug|SWD]], but unlike a stripped `.bin`, you can also use it for step-through debugging in STM32CubeIDE.
+**Key insight:** The `.elf` format contains both machine code and debug symbols — it gets [[learning/notes/quick-context/firmware|flashed]] onto U5's 512KB flash via [[learning/notes/micro-context/swd-serial-wire-debug|SWD]], but unlike a stripped `.bin`, you can also use it for step-through debugging in STM32CubeIDE.

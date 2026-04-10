@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/bga-ball-grid-array]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
@@ -315,7 +315,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
 
 - **Flip-Chip (C4) Bonding** — The main alternative to wire bonding; uses solder bumps under the chip for higher density and performance.
 
@@ -323,7 +323,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 
 - **Ultrasonic Welding** — The core joining technology behind wire bonding; uses vibration instead of heat to fuse metals.
 
-- **[[quick-context/electric-current|Electric Current]]** — Understanding how electricity flows helps explain why wire length, diameter, and inductance matter for signal quality.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** — Understanding how electricity flows helps explain why wire length, diameter, and inductance matter for signal quality.
 
 </details>
 
@@ -357,7 +357,7 @@ Wire bonds can only connect around the edges of the chip (perimeter bonding), li
 **Q5:** Given what you know about the chip packaging hierarchy, why might a memory chip (DRAM) use wire bonding while the CPU that accesses it uses flip-chip?
 <details>
 <summary>Answer</summary>
-Memory chips have fewer I/O connections (80-200 wires for DRAM vs. thousands for CPUs) and operate at lower signal frequencies than CPU-to-memory buses. The cost savings of wire bonding are significant when you have multiple memory chips per system. CPUs, however, need thousands of connections for power delivery and high-speed data lanes running at multi-GHz frequencies—wire bonding's inductance and limited density make flip-chip essential. The packaging hierarchy shows that each level is optimized for its specific requirements; wire bonding is "good enough" for memory but not for the processor. See: [[quick-context/pcb-chip-transistor-hierarchy]] and The Key Tension
+Memory chips have fewer I/O connections (80-200 wires for DRAM vs. thousands for CPUs) and operate at lower signal frequencies than CPU-to-memory buses. The cost savings of wire bonding are significant when you have multiple memory chips per system. CPUs, however, need thousands of connections for power delivery and high-speed data lanes running at multi-GHz frequencies—wire bonding's inductance and limited density make flip-chip essential. The packaging hierarchy shows that each level is optimized for its specific requirements; wire bonding is "good enough" for memory but not for the processor. See: [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] and The Key Tension
 </details>
 
 </details>

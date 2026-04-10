@@ -3,7 +3,7 @@ topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/schematic-reading]]
 
 > **TL;DR:** PCBs replace the nightmare of hand-soldered wire connections with thin copper pathways printed onto a rigid fiberglass board, providing the physical foundation for reliable, manufacturable, and repairable electronics in every smartphone, computer, and electronic device.
 
@@ -39,7 +39,7 @@ BEFORE PCBs: Point-to-Point Wiring (1950s)      AFTER PCBs: Clean, Reliable Conn
 | **Via** | A tiny hole drilled through the board with copper plating inside, connecting traces on different layers—like an elevator between floors |
 | **Pad** | A copper area where a component's pin or ball gets soldered—the "parking spot" where components attach to the board |
 | **Layer** | One level of copper traces; simple boards have 2 layers (top and bottom), complex ones can have 16+ layers sandwiched together |
-| **Soldermask** | The colored coating (usually green) that covers most of the copper, leaving only pads exposed—prevents accidental short circuits. See [[quick-context/pcb-layers]] for all layer types. |
+| **Soldermask** | The colored coating (usually green) that covers most of the copper, leaving only pads exposed—prevents accidental short circuits. See [[learning/notes/quick-context/pcb-layers]] for all layer types. |
 
 ```
 ANATOMY OF A PCB (Side View Cross-Section)
@@ -130,7 +130,7 @@ A REAL 4-LAYER PCB STACK-UP
     ├─────────────────────────────────────────────────────────────────────────┤
     │ LAYER 4 (BOTTOM): More signal traces and component pads                │
     │         ═══════════════════════════════════════════                    │
-    │    ●    ●    ●    ●    ●    ●    ●    ●    ●    ●   ← [[quick-context/capacitor|decoupling caps]]  │
+    │    ●    ●    ●    ●    ●    ●    ●    ●    ●    ●   ← [[learning/notes/quick-context/capacitor|decoupling caps]]  │
     └─────────────────────────────────────────────────────────────────────────┘
 
     Why planes instead of traces for power/ground?
@@ -250,15 +250,15 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|The Packaging Hierarchy]]** — PCBs are one level in the hierarchy from transistors to complete systems. Understanding how chips, substrates, and PCBs connect gives context for why PCBs exist at the 100-400mm scale.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|The Packaging Hierarchy]]** — PCBs are one level in the hierarchy from transistors to complete systems. Understanding how chips, substrates, and PCBs connect gives context for why PCBs exist at the 100-400mm scale.
 
-- **[[quick-context/electric-current|Electric Current]]** — PCB traces must carry current without overheating. Wider traces carry more current; trace width calculators help designers size traces for their expected current loads.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** — PCB traces must carry current without overheating. Wider traces carry more current; trace width calculators help designers size traces for their expected current loads.
 
 - **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
 
 - **Soldering and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
 
-- **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
+- **[[learning/notes/quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 
 - **EDA (Electronic Design Automation) Software** — Tools like KiCad, Altium, or Eagle where designers draw schematics and lay out PCBs. The software enforces design rules and generates the files sent to PCB manufacturers.
 
@@ -294,7 +294,7 @@ Several factors favor the 6-layer board despite higher cost: (1) **Manufacturabi
 **Q5:** The quick-context on the packaging hierarchy shows that chips connect to PCBs via BGA (Ball Grid Array) solder balls at ~0.8mm pitch. How does this relate to PCB design, and why can't you just use a 2-layer board for a modern CPU?
 <details>
 <summary>Answer</summary>
-A modern CPU might have 1,500+ BGA balls in a 45mm x 45mm area. Each ball needs its own pad on the PCB, and each pad needs a trace routed away to somewhere else on the board. With balls only 0.8mm apart, there's no room to route traces between the balls on a single layer—you can only fit traces on the outer edges. The solution is **via-in-pad**: each inner ball has a via that drops the signal to an inner layer, where it can route freely without colliding with neighboring balls. This fundamentally requires multiple layers. High-end CPUs might need 8-12 layers just to "escape" all the signals from under the package, plus additional layers for power planes and other routing. The 100-400mm PCB scale mentioned in the hierarchy accommodates this complex layer stack. See: [[quick-context/pcb-chip-transistor-hierarchy]] for how the substrate fans out to ~800um pitch, and The Key Tension for why layer count correlates with complexity.
+A modern CPU might have 1,500+ BGA balls in a 45mm x 45mm area. Each ball needs its own pad on the PCB, and each pad needs a trace routed away to somewhere else on the board. With balls only 0.8mm apart, there's no room to route traces between the balls on a single layer—you can only fit traces on the outer edges. The solution is **via-in-pad**: each inner ball has a via that drops the signal to an inner layer, where it can route freely without colliding with neighboring balls. This fundamentally requires multiple layers. High-end CPUs might need 8-12 layers just to "escape" all the signals from under the package, plus additional layers for power planes and other routing. The 100-400mm PCB scale mentioned in the hierarchy accommodates this complex layer stack. See: [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] for how the substrate fans out to ~800um pitch, and The Key Tension for why layer count correlates with complexity.
 </details>
 
 </details>

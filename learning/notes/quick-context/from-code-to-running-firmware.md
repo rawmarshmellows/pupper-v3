@@ -3,15 +3,15 @@ topic: From Code to Running Firmware — Linking, Flashing, and Booting on an MC
 created: 2026-03-26
 ---
 
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/spinev1-elf]]
+
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
-
-> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
+> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[learning/notes/quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
 ## The Core Problem
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
+The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[learning/notes/micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains
 
 ### The Full Pipeline
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] gets you from source to object files. This document picks up from there:
+The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] gets you from source to object files. This document picks up from there:
 
 ```
 THE LINK → FLASH → BOOT PIPELINE
@@ -168,7 +168,7 @@ FLASH (0x08000000)                    RAM (0x20000000)
 
 ### The Boot Sequence — What Happens at Power-On
 
-When the [[micro-context/stm32-microcontroller|STM32]] powers on (or resets), the hardware does two things with zero software involvement:
+When the [[learning/notes/micro-context/stm32-microcontroller|STM32]] powers on (or resets), the hardware does two things with zero software involvement:
 
 1. Loads the value at address `0x00000000` into the **Main Stack Pointer** (MSP)
 2. Loads the value at address `0x00000004` into the **Program Counter** (PC) — this is the `Reset_Handler` address
@@ -247,7 +247,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 <details>
 <summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
 
-Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
+Here's the exact journey for the Pupper's [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
 ### Step 1: Compilation
 
@@ -291,7 +291,7 @@ SYMBOL RESOLUTION EXAMPLE:
 
 ### Step 3: ELF File Contents
 
-The resulting [[micro-context/spinev1-elf|SPIneV1.elf]] contains:
+The resulting [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] contains:
 
 | Section | Address (VMA) | Size | Contents |
 |---------|--------------|------|----------|
@@ -304,7 +304,7 @@ The resulting [[micro-context/spinev1-elf|SPIneV1.elf]] contains:
 
 ### Step 4: Flashing
 
-OpenOCD reads the ELF, extracts the loadable sections, and writes them to flash via the [[micro-context/st-link-v2-programmer|ST-Link]] over [[micro-context/swd-serial-wire-debug|SWD]]:
+OpenOCD reads the ELF, extracts the loadable sections, and writes them to flash via the [[learning/notes/micro-context/st-link-v2-programmer|ST-Link]] over [[learning/notes/micro-context/swd-serial-wire-debug|SWD]]:
 
 ```bash
 openocd -f interface/stlink.cfg -f target/stm32f4x.cfg \
@@ -330,23 +330,23 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
 
-- **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
+- **[[learning/notes/micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
-- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
+- **[[learning/notes/quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
 
-- **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
+- **[[learning/notes/micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[learning/notes/micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
 
-- **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 
 - **Relocatable vs. Position-Independent Code** — Object files (`.o`) contain relocatable code with placeholder addresses. The linker resolves these. Position-independent code (PIC) can run at any address — useful for bootloaders but rarely needed on bare-metal MCUs with fixed memory maps.
 
 - **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
 
-- **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The big-picture story: how programming interfaces evolved from plugboards and punch cards to typing code on screens. Explains the historical context for *why* we have compilers, operating systems, and the whole toolchain that produces the ELF files described here.
+- **[[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The big-picture story: how programming interfaces evolved from plugboards and punch cards to typing code on screens. Explains the historical context for *why* we have compilers, operating systems, and the whole toolchain that produces the ELF files described here.
 
 </details>
 

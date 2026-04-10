@@ -3,13 +3,13 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/electrodes]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/galvanic-cells-batteries]]
 
 > **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
 
 ## The Core Problem
 
-Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms can lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[quick-context/electrolysis|electrolysis]], cations travel toward the negative [[quick-context/electrodes|electrode]] ([[quick-context/electrodes|cathode]]), where they receive [[quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
+Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms can lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[learning/notes/quick-context/electrolysis|electrolysis]], cations travel toward the negative [[learning/notes/quick-context/electrodes|electrode]] ([[learning/notes/quick-context/electrodes|cathode]]), where they receive [[learning/notes/quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
 
 ## 5 Essential Terms
 
@@ -235,15 +235,15 @@ PATTERN: The charge number tells you how many electrons are needed!
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and why they're attracted to the negative electrode.
+- **[[learning/notes/quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and why they're attracted to the negative electrode.
 
-- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
+- **[[learning/notes/quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
+- **[[learning/notes/quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
+- **[[learning/notes/quick-context/cations-and-reduction|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
 
-- **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
+- **[[learning/notes/quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[learning/notes/quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 
 </details>
 

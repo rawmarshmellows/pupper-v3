@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/melt-index]]
 
 > **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
@@ -27,7 +27,7 @@ A slicer converts 3D models into printer instructions by cutting models into lay
 
 The slicer performs three essential transformations on your 3D model. First, **slicing**: it cuts your model into horizontal layers (like slicing a loaf of bread), with each slice becoming one pass of the print head. Second, **pathing**: for each layer, it plans the exact route the nozzle will travel—where to start, which direction to move, when to extrude plastic, when to retract. Third, **parameter application**: it applies your settings (temperature, speed, infill pattern, etc.) to generate the final machine instructions. The output is G-code, a text file of line-by-line commands that tell motors exactly where to move and heaters exactly what temperature to maintain.
 
-The relationship between settings is multiplicative, not independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[quick-context/3d-printer-hotends|hotend's]] melting capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the hardware can't fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
+The relationship between settings is multiplicative, not independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[learning/notes/quick-context/3d-printer-hotends|hotend's]] melting capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the hardware can't fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
 
 ```
 THE SLICING PROCESS: From Model to Machine Instructions
@@ -153,13 +153,13 @@ People think "more infill = stronger part." Not really. A part with **3 walls an
 
 Concepts that connect to slicer settings and deepen your understanding:
 
-- **[[quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. PLA prints cooler and faster; PETG needs higher temps and slower speeds; ABS requires enclosures. Your material choice drives half your slicer decisions.
+- **[[learning/notes/quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. PLA prints cooler and faster; PETG needs higher temps and slower speeds; ABS requires enclosures. Your material choice drives half your slicer decisions.
 
-- **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
+- **[[learning/notes/quick-context/3d-printer-hotends]]** — The [[learning/notes/quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
 
-- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High melt index plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
+- **[[learning/notes/quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High melt index plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
 
-- **[[quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines both print bed temperature (to help adhesion without warping) and the max operating temperature of your finished part.
+- **[[learning/notes/quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines both print bed temperature (to help adhesion without warping) and the max operating temperature of your finished part.
 
 </details>
 

@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/ros2-architecture]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -162,10 +162,10 @@ This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's a
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
-- **[[quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
-- **[[quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
+- **[[learning/notes/quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
+- **[[learning/notes/quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
+- **[[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
 - **Xenomai** - A dual-kernel alternative providing harder real-time guarantees than PREEMPT_RT
 - **LinuxCNC** - The canonical example of PREEMPT_RT enabling industrial control in userspace
 

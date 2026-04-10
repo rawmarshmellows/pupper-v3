@@ -3,24 +3,24 @@ topic: Maxwell's Equations
 created: 2026-02-20
 ---
 
-# Maxwell's Equations
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/capacitor]]
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+# Maxwell's Equations
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[learning/notes/quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[learning/notes/quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Electric Field (E)** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
-| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
+| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[learning/notes/quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
 | **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates total flux to enclosed charge. |
-| **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[quick-context/lenzs-law|Faraday's law]]). |
+| **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[learning/notes/quick-context/lenzs-law|Faraday's law]]). |
 | **Displacement Current** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
 
 <details>
@@ -49,7 +49,7 @@ MAXWELL'S EQUATIONS — Differential Form (Vacuum)
    • Positive charges are sources of E-field lines
    • Negative charges are sinks of E-field lines
    • Total flux out of any closed surface = enclosed charge / ε₀
-   • This is why [[quick-context/capacitor|capacitors]] work: charges on plates create
+   • This is why [[learning/notes/quick-context/capacitor|capacitors]] work: charges on plates create
      field between them
 
 
@@ -83,12 +83,12 @@ MAXWELL'S EQUATIONS — Differential Form (Vacuum)
 
    • ∇ × E = curl of E (how much E-field circulates around a point)
    • ∂B/∂t = rate of change of magnetic field
-   • The minus sign is [[quick-context/lenzs-law|Lenz's Law]]: induced E opposes the change
+   • The minus sign is [[learning/notes/quick-context/lenzs-law|Lenz's Law]]: induced E opposes the change
 
    IMPLICATIONS:
    • This is why generators work: rotating coil in magnetic field
      experiences changing B, which induces E, which drives current
-   • This is why [[quick-context/inductor|inductors]] oppose current changes: changing I
+   • This is why [[learning/notes/quick-context/inductor|inductors]] oppose current changes: changing I
      creates changing B, which induces opposing E (back-EMF)
    • This is why transformers transfer power between isolated coils
 
@@ -135,7 +135,7 @@ THE KEY INSIGHT: MAXWELL'S DISPLACEMENT CURRENT
 
 Before Maxwell, Ampère's law was just: ∇ × B = μ₀J
 
-Problem: Consider a charging [[quick-context/capacitor|capacitor]]:
+Problem: Consider a charging [[learning/notes/quick-context/capacitor|capacitor]]:
 
     ┌───────────────────────────────────────────────┐
     │                                               │
@@ -311,8 +311,8 @@ EQUATION 3: FARADAY'S LAW
      negative rate of change of magnetic
      flux through the loop"
 
-    Best for: Generators, [[quick-context/inductor|inductors]],
-    [[quick-context/electricity-generation|transformers]]
+    Best for: Generators, [[learning/notes/quick-context/inductor|inductors]],
+    [[learning/notes/quick-context/electricity-generation|transformers]]
 
     DIFFERENTIAL:    ∇ × E = -∂B/∂t
 
@@ -348,7 +348,7 @@ EQUATION 4: AMPÈRE-MAXWELL LAW
 | Deriving wave equations | Awkward | Required |
 | Circuit analysis (EMF, flux) | Better | Works |
 | Numerical simulation | Possible | Required |
-| Relativistic formulation | Possible | Natural ([[quick-context/tensor|tensor]] form) |
+| Relativistic formulation | Possible | Natural ([[learning/notes/quick-context/tensor|tensor]] form) |
 | Conceptual understanding | Often clearer | More compact |
 
 </details>
@@ -366,7 +366,7 @@ EQUATION 1: GAUSS'S LAW → CAPACITORS AND SHIELDING
 
     ∮ E · dA = Q_enc / ε₀
 
-    APPLICATION: Electric field of a parallel plate [[quick-context/capacitor|capacitor]]
+    APPLICATION: Electric field of a parallel plate [[learning/notes/quick-context/capacitor|capacitor]]
 
     Draw a Gaussian surface (box) with one face between the plates:
 
@@ -385,7 +385,7 @@ EQUATION 1: GAUSS'S LAW → CAPACITORS AND SHIELDING
     Therefore: E × A = σA / ε₀
                E = σ / ε₀
 
-    This is how we derive the [[quick-context/capacitor|capacitor]] formula C = ε₀A/d
+    This is how we derive the [[learning/notes/quick-context/capacitor|capacitor]] formula C = ε₀A/d
 
 
 EQUATION 2: GAUSS'S LAW (MAGNETIC) → NO MAGNETIC MONOPOLES
@@ -414,7 +414,7 @@ EQUATION 2: GAUSS'S LAW (MAGNETIC) → NO MAGNETIC MONOPOLES
     If you cut the magnet, you get two smaller magnets, not N and S separately!
 
 
-EQUATION 3: FARADAY'S LAW → [[quick-context/electricity-generation|GENERATORS]] AND [[quick-context/inductor|INDUCTORS]]
+EQUATION 3: FARADAY'S LAW → [[learning/notes/quick-context/electricity-generation|GENERATORS]] AND [[learning/notes/quick-context/inductor|INDUCTORS]]
 ══════════════════════════════════════════════════════════════════════════════
 
     ∮ E · dl = -dΦ_B/dt       or       EMF = -N × dΦ/dt
@@ -439,13 +439,13 @@ EQUATION 3: FARADAY'S LAW → [[quick-context/electricity-generation|GENERATORS]
     One rotation = one complete AC cycle
 
 
-    APPLICATION: [[quick-context/inductor|Inductor]] back-EMF
+    APPLICATION: [[learning/notes/quick-context/inductor|Inductor]] back-EMF
 
     Current through coil creates flux: Φ = L × I
     If current changes: dΦ/dt = L × dI/dt
     Faraday's law: EMF = -L × dI/dt (back-EMF)
 
-    This is [[quick-context/lenzs-law|Lenz's Law]] in action—the minus sign means
+    This is [[learning/notes/quick-context/lenzs-law|Lenz's Law]] in action—the minus sign means
     the induced EMF opposes the change that caused it.
 
 
@@ -454,7 +454,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
     ∮ B · dl = μ₀I_enc + μ₀ε₀ dΦ_E/dt
 
-    APPLICATION: [[quick-context/coil-magnetic-field|Magnetic field of a solenoid]]
+    APPLICATION: [[learning/notes/quick-context/coil-magnetic-field|Magnetic field of a solenoid]]
 
     Draw an Amperian loop through the solenoid:
 
@@ -473,7 +473,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
     Therefore: B × L = μ₀ × n × L × I
                B = μ₀nI
 
-    This is the [[quick-context/coil-magnetic-field|solenoid field formula]].
+    This is the [[learning/notes/quick-context/coil-magnetic-field|solenoid field formula]].
 
 
     APPLICATION: Electromagnetic waves (displacement current)
@@ -490,23 +490,23 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — Conceptual treatment of electromagnetic phenomena without heavy mathematics. Covers the same physics from a more intuitive angle.
+- **[[learning/notes/quick-context/electromagnetism]]** — Conceptual treatment of electromagnetic phenomena without heavy mathematics. Covers the same physics from a more intuitive angle.
 
-- **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
+- **[[learning/notes/quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
+- **[[learning/notes/quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
 
-- **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
+- **[[learning/notes/quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/capacitor]]** — Stores energy in electric fields. Displacement current flows "through" capacitors during charging, completing the circuit conceptually.
+- **[[learning/notes/quick-context/capacitor]]** — Stores energy in electric fields. Displacement current flows "through" capacitors during charging, completing the circuit conceptually.
 
-- **[[quick-context/lenzs-law]]** — The physics behind the minus sign in Faraday's law: induced effects always oppose the change that caused them, enforcing energy conservation.
+- **[[learning/notes/quick-context/lenzs-law]]** — The physics behind the minus sign in Faraday's law: induced effects always oppose the change that caused them, enforcing energy conservation.
 
-- **[[quick-context/electricity-generation]]** — How generators convert mechanical energy to electricity using Faraday's law. The practical workhorse application of Maxwell's equations.
+- **[[learning/notes/quick-context/electricity-generation]]** — How generators convert mechanical energy to electricity using Faraday's law. The practical workhorse application of Maxwell's equations.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
 
-- **[[quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
+- **[[learning/notes/quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
@@ -538,7 +538,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?
 <details>
 <summary>Answer</summary>
-**Changing current creates changing B, which creates opposing E.** In an [[quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced voltage opposes the change in current.
+**Changing current creates changing B, which creates opposing E.** In an [[learning/notes/quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[learning/notes/quick-context/lenzs-law|Lenz's Law]]) ensures the induced voltage opposes the change in current.
 </details>
 
 **Q5:** In empty space with no charges or currents, Maxwell's equations still allow solutions. What are these solutions?

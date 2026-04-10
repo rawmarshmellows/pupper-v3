@@ -3,9 +3,9 @@ topic: MEDDPICC Qualification Framework
 created: 2026-02-10
 ---
 
-# MEDDPICC Qualification Framework
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/sandler-kare-segmentation]]
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+# MEDDPICC Qualification Framework
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 
@@ -178,9 +178,9 @@ NEXT ACTIONS:
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides account-level strategy; MEDDPICC validates deal-level viability. They're complementary.
-- **[[quick-context/challenger-sale-methodology]]** — Once MEDDPICC confirms a deal is qualified, Challenger informs how to engage stakeholders
-- **[[quick-context/sandler-kare-segmentation]]** — KARE decides which accounts to pursue; MEDDPICC qualifies specific opportunities within those accounts
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides account-level strategy; MEDDPICC validates deal-level viability. They're complementary.
+- **[[learning/notes/quick-context/challenger-sale-methodology]]** — Once MEDDPICC confirms a deal is qualified, Challenger informs how to engage stakeholders
+- **[[learning/notes/quick-context/sandler-kare-segmentation]]** — KARE decides which accounts to pursue; MEDDPICC qualifies specific opportunities within those accounts
 - **BANT** — The predecessor qualification framework (Budget, Authority, Need, Timeline); MEDDPICC is its enterprise evolution
 - **Force Management** — The consulting firm that popularized MEDDPICC and trains Fortune 500 sales teams
 
@@ -210,7 +210,7 @@ Competition includes "do nothing"—if you don't know what alternatives they're 
 **Q4:** Why would a company using MEDDPICC still lose winnable deals?
 <details>
 <summary>Answer</summary>
-MEDDPICC qualifies deals but doesn't teach you how to sell. You might have perfect information about the Decision Process but execute poorly in meetings. MEDDPICC pairs with selling methodologies like [[quick-context/challenger-sale-methodology|Challenger]] or SPIN that guide customer interactions.
+MEDDPICC qualifies deals but doesn't teach you how to sell. You might have perfect information about the Decision Process but execute poorly in meetings. MEDDPICC pairs with selling methodologies like [[learning/notes/quick-context/challenger-sale-methodology|Challenger]] or SPIN that guide customer interactions.
 </details>
 
 **Q5:** A startup founder says "MEDDPICC is overhead we can't afford at our stage." When would you agree vs. disagree?
