@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/silicon-die]]
 
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
@@ -19,8 +19,8 @@ The substrate is the "translator" that takes a chip's tiny, densely-packed conne
 | **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of transistors; this is what people usually mean by "the chip" |
 | **Pitch** | The distance between the centers of adjacent connections; smaller pitch = more connections in the same space |
 | **Redistribution Layer (RDL)** | Metal routing layers inside the substrate that reroute signals from one location/pitch to another |
-| **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
-| **[[quick-context/flip-chip|Flip-chip]]** | A mounting method where the die faces downward with solder bumps connecting directly to the substrate (as opposed to [[quick-context/wire-bonding|wire bonding]] from the die edges) |
+| **[[learning/notes/quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
+| **[[learning/notes/quick-context/flip-chip|Flip-chip]]** | A mounting method where the die faces downward with solder bumps connecting directly to the substrate (as opposed to [[learning/notes/quick-context/wire-bonding|wire bonding]] from the die edges) |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -412,9 +412,9 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
-- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
+- **[[learning/notes/quick-context/wire-bonding|Wire Bonding]] vs. [[learning/notes/quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 
 - **Underfill** — An epoxy material injected between the die and substrate after flip-chip attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
 

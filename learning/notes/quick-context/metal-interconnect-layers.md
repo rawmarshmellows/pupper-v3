@@ -3,7 +3,7 @@ topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/electromigration]] | [[learning/notes/quick-context/silicon-die]]
 
 > **TL;DR:** Metal interconnect layers are stacked wiring levels built on top of transistors that route signals and power throughout a chip—they've become the limiting factor in chip performance as transistors shrink faster than wires can scale.
 
@@ -264,7 +264,7 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
 
 - **Photolithography** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.
 
@@ -272,7 +272,7 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 
 - **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes voltage droop and chip failure.
 
-- **[[quick-context/electromigration|Electromigration]]** — The phenomenon where current flowing through thin wires physically moves metal atoms, eventually breaking the wire; this limits how much current each wire can safely carry and becomes more critical as wire cross-sections shrink.
+- **[[learning/notes/quick-context/electromigration|Electromigration]]** — The phenomenon where current flowing through thin wires physically moves metal atoms, eventually breaking the wire; this limits how much current each wire can safely carry and becomes more critical as wire cross-sections shrink.
 
 </details>
 
@@ -306,7 +306,7 @@ More metal layers don't automatically mean faster. While extra layers provide mo
 **Q5:** How does the interconnect bottleneck relate to the broader trend of "More than Moore" packaging innovations like chiplets and 3D stacking mentioned in the PCB-chip hierarchy?
 <details>
 <summary>Answer</summary>
-As interconnects within a single die hit scaling limits, designers are moving communication *between* dies (chiplets connected via interposers or stacked vertically) rather than trying to cram everything onto one die with impossibly long wires. This "More than Moore" approach uses packaging innovation (multiple dies with shorter interconnects each) rather than fighting physics by making wires ever thinner. The interconnect bottleneck on a single die directly motivates splitting designs across multiple dies. See: What Outsiders Get Wrong and [[quick-context/pcb-chip-transistor-hierarchy]] (The Key Tension section)
+As interconnects within a single die hit scaling limits, designers are moving communication *between* dies (chiplets connected via interposers or stacked vertically) rather than trying to cram everything onto one die with impossibly long wires. This "More than Moore" approach uses packaging innovation (multiple dies with shorter interconnects each) rather than fighting physics by making wires ever thinner. The interconnect bottleneck on a single die directly motivates splitting designs across multiple dies. See: What Outsiders Get Wrong and [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] (The Key Tension section)
 </details>
 
 </details>

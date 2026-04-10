@@ -3,7 +3,7 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/metal-interconnect-layers]] | [[learning/notes/quick-context/wire-bonding]]
 
 > **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
@@ -219,15 +219,15 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
 
-- **[[quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
 
-- **[[quick-context/semiconductor-fabrication|Photolithography]]** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors can be.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Photolithography]]** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors can be.
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
 
 </details>
 

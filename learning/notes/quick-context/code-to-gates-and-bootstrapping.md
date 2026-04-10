@@ -3,13 +3,13 @@ topic: Code to Gates - The Full Compilation Chain and Bootstrapping
 created: 2026-02-14
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]
 
-> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
+> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[learning/notes/quick-context/transistor|transistors]]. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
 
 ## The Core Problem
 
-You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|transistors]] on a [[quick-context/silicon-die|silicon die]] physically switch on and off to make that happen. How? There are roughly **7 layers of abstraction** between your code and the hardware, each translating the layer above into simpler instructions for the layer below. And there's a deeper puzzle: the very first layer (the compiler) is itself a program—so what compiled *it*? The answer is bootstrapping, a process that started with humans manually encoding binary on punch cards.
+You type `x = 2 + 3` in Python. Somehow, billions of [[learning/notes/quick-context/transistor|transistors]] on a [[learning/notes/quick-context/silicon-die|silicon die]] physically switch on and off to make that happen. How? There are roughly **7 layers of abstraction** between your code and the hardware, each translating the layer above into simpler instructions for the layer below. And there's a deeper puzzle: the very first layer (the compiler) is itself a program—so what compiled *it*? The answer is bootstrapping, a process that started with humans manually encoding binary on punch cards.
 
 ## 5 Essential Terms
 
@@ -18,7 +18,7 @@ You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|
 | **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
 | **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
 | **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction tells the CPU to do one thing: load data, store data, jump to an address, or run an ALU operation. |
-| **Logic Gate** | A circuit built from [[quick-context/transistor|transistors]] that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
+| **Logic Gate** | A circuit built from [[learning/notes/quick-context/transistor|transistors]] that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
 | **Bootstrapping** | The process of building complex tools from simpler ones, starting from nothing. In computing: hand-coded binary → first assembler → first compiler → better compiler → modern toolchains. |
 
 <details>
@@ -321,22 +321,22 @@ POWER-ON SEQUENCE
   it's physically part of the hardware.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching [[quick-context/transistor|transistors]] on and off.
+**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching [[learning/notes/quick-context/transistor|transistors]] on and off.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[learning/notes/quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
 
-- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
+- **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The physical packaging hierarchy from 5nm transistors to millimeter-scale connectors. Where the logic gates physically live on the die.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]** — The physical packaging hierarchy from 5nm transistors to millimeter-scale connectors. Where the logic gates physically live on the die.
 
-- **[[quick-context/semiconductor-fabrication]]** — How billions of transistors (and therefore gates) are manufactured on silicon wafers through photolithography.
+- **[[learning/notes/quick-context/semiconductor-fabrication]]** — How billions of transistors (and therefore gates) are manufactured on silicon wafers through photolithography.
 
-- **[[quick-context/silicon-die]]** — The actual piece of silicon containing the transistors, ALU, registers, and cache that execute your compiled instructions.
+- **[[learning/notes/quick-context/silicon-die]]** — The actual piece of silicon containing the transistors, ALU, registers, and cache that execute your compiled instructions.
 
 - **Two's Complement** — How negative numbers are represented in binary, enabling the ALU to perform subtraction using only addition circuits. Elegant hack: flip all bits and add 1.
 
@@ -344,9 +344,9 @@ POWER-ON SEQUENCE
 
 - **HDL (Hardware Description Language)** — Languages like VHDL and Verilog used to design and verify logic gate implementations before manufacturing. The "source code" for hardware.
 
-- **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
+- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
+- **[[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 
 </details>
 
