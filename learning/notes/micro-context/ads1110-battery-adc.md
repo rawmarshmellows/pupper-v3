@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # ADS1110 (Battery Voltage ADC)
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/i2c]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/resistor]]
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]
 

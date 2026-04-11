@@ -114,7 +114,7 @@ Every Qwiic/STEMMA QT breakout board includes:
 3. **3.3V voltage regulator** — so you can power from 3.3-5V
 4. **I2C pull-up resistors** (typically 2.2–10k$\Omega$) — already on the board
 5. **Address jumper** — solder bridge to change the I2C address if you have two of the same sensor
-6. **Decoupling capacitor** — for stable power to the sensor
+6. **[[micro-context/decoupling-capacitor|Decoupling capacitor]]** — for stable power to the sensor
 
 This means the breakout board handles all the electrical details. You just plug in the cable.
 
@@ -138,7 +138,7 @@ This means the breakout board handles all the electrical details. You just plug 
 **The tradeoff:** Qwiic/STEMMA QT optimizes for I2C simplicity — one connector type, one protocol, zero configuration. Grove is more flexible (supports analog, digital, UART) but at the cost of a larger connector and needing to know which Grove port type to use.
 
 **When Qwiic/STEMMA QT doesn't work:**
-- **SPI sensors** — these ecosystems are I2C only. High-speed sensors that need SPI require traditional wiring.
+- **[[micro-context/spi|SPI]] sensors** — these ecosystems are I2C only. High-speed sensors that need SPI require traditional wiring.
 - **Long cable runs** — I2C is limited to ~1 m. For longer distances, you need [[quick-context/can-bus|CAN bus]] or RS-485.
 - **High-current devices** — the JST SH connector is rated for ~1A. Motors, heaters, or solenoids need separate power wiring.
 - **Address conflicts** — if two identical sensors have the same fixed I2C address and no address jumper, you need a TCA9548A I2C multiplexer.

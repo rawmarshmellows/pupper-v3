@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # Power Inductor
+> **Related:** [[micro-context/buck-converter]] | [[quick-context/electric-current]]
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]
 
@@ -14,7 +15,7 @@ updated: 2026-03-27
 
 - When current flows through the coil, it generates a magnetic field that stores energy ($E = \frac{1}{2}LI^2$).
 - If current tries to change suddenly, the collapsing or growing magnetic field induces a voltage that opposes the change ($V = L \times dI/dt$).
-- In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling diode.
+- In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling [[quick-context/diode|diode]].
 
 ```
 INDUCTOR IN BUCK CONVERTER:

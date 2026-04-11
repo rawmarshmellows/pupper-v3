@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # 4-Wire Kelvin Measurement
+> **Related:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 

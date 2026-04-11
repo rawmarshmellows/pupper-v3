@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/melt-index]]
+> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printing-slicer-settings]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/glass-transition-temperature]] | [[quick-context/melt-index]]
 
 > **TL;DR:** The hotend is the precision melting chamber that transforms solid filament into molten plastic. Its volumetric flow rate (mm3/s) determines maximum print speed - high-flow hotends melt plastic 2x faster, enabling faster prints with larger nozzles.
 

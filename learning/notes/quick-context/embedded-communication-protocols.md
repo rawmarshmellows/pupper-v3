@@ -11,7 +11,7 @@ created: 2026-03-27
 
 ## The Core Problem
 
-A microcontroller needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do).
+A [[micro-context/microcontroller|microcontroller]] needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do).
 
 ## 5 Essential Terms
 
@@ -202,7 +202,7 @@ PUPPER v3 — FOUR PROTOCOLS WORKING TOGETHER:
 ```
 
 Each protocol is chosen for its sweet spot:
-- **SPI** between U1↔U5: needs speed (joint targets at 1 kHz), both chips are on the same PCB
+- **SPI** between U1↔U5: needs speed (joint targets at 1 kHz), both chips are on the same [[quick-context/pcb-printed-circuit-board|PCB]]
 - **I2C** for IMU and ADC: low data volume, sensors come with I2C interfaces, only 2 wires
 - **CAN** for servos: signals travel through leg cables where motors generate EMI, differential signaling is essential
 - **UART** for debug: simple printf-style logging to a terminal, no configuration needed

@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # Coulomb (Unit History)
+> **Related:** [[micro-context/current-electrons-per-second]] | [[quick-context/electric-current]]
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]
 

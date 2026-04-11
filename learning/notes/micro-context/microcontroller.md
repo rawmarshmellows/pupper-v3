@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # Microcontroller
+> **Related:** [[micro-context/stm32-microcontroller]] | [[micro-context/plc-programmable-logic-controller]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/wifi-chip-arduino-uno-r4]]
 
 > **See also:** [[quick-context/embedded-communication-protocols]]
 
@@ -13,7 +14,7 @@ updated: 2026-03-27
 ## How It Works
 
 - On power-up, the CPU core begins fetching instructions from a fixed address in on-chip flash memory (the reset vector).
-- The program runs in a loop, reading sensor data through peripheral interfaces (ADC, I2C, SPI), processing it, and driving outputs (PWM, GPIO, CAN).
+- The program runs in a loop, reading sensor data through peripheral interfaces ([[micro-context/adc-analog-to-digital-converter|ADC]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]]), processing it, and driving outputs ([[micro-context/pwm-pulse-width-modulation|PWM]], GPIO, CAN).
 - Hardware interrupts allow the MCU to respond to external events (timer tick, incoming data, pin change) within microseconds, pausing the main loop and jumping to a handler.
 - All of this — CPU, memory, and peripherals — runs on a single chip costing $0.20–$15, powered by milliwatts.
 

@@ -3,7 +3,7 @@ topic: Bond Pad
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index]] | [[quick-context/pcb-chip-transistor-hierarchy]]
 
 > **TL;DR:** Bond pads are the tiny metal squares (~50 micrometers) on a chip's surface that serve as the "doorways" where all internal wiring converges, enabling billions of transistors to connect with the outside world for power and data.
 
@@ -13,7 +13,7 @@ created: 2026-01-25
 
 A modern computer chip contains **billions of transistors**, each one smaller than a virus (~5 nanometers). These transistors need to communicate with the outside world—they need power coming in and data going out. But here's the problem: you can't attach a wire to something that small. A human hair is about 70,000 nanometers wide; even the thinnest wire we can make is thousands of times larger than a transistor.
 
-**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the silicon die where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
+**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the [[quick-context/silicon-die|silicon die]] where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
 
 **What breaks without bond pads?** Everything. A chip without bond pads is like a brain with no nerves connecting it to the body—it might be doing complex computations inside, but there's no way to power it, program it, or receive any output. The chip would be an expensive, useless square of silicon.
 
@@ -327,7 +327,7 @@ TYPICAL BOND PAD DIMENSIONS:
                       │                │ prevent edge damage
 ```
 
-**Example: A Simple Microcontroller vs. A Modern CPU**
+**Example: A Simple [[micro-context/microcontroller|Microcontroller]] vs. A Modern CPU**
 
 ```
 COMPARISON: Bond Pad Requirements

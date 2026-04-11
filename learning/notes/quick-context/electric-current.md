@@ -338,7 +338,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Ohm's Law (V = I x R)** — The fundamental relationship connecting voltage, current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
 
-- **Electrical Power (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
+- **[[quick-context/power-watts-joules|Electrical Power]] (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
 
 - **Conductivity and Electrolytes** — Why some materials allow current to flow (conductors, ionic solutions) while others don't (insulators). Pure water has almost no conductivity, which is why electrolysis requires added [[quick-context/making-electrolytes|electrolyte]].
 

@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # JST Connector Families
+> **Related:** [[quick-context/pupper-bom-control-board]]
 
 > **See also:** [[quick-context/pupper-bom-control-board]]
 

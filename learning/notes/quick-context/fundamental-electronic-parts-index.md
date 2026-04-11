@@ -20,7 +20,7 @@ A modern electronic system spans nine orders of magnitude (5 nm transistors to 5
 |------|------------|
 | **Passive component** | A part that cannot amplify or switch signals—it can only store or dissipate energy. Resistors, capacitors, and inductors are the three fundamental passives. |
 | **Active component** | A part that can amplify or switch—it adds energy from a power supply into a signal path. Transistors and diodes are the primary examples. |
-| **Discrete component** | A single part in its own package soldered to a PCB (a standalone resistor, a single transistor). Contrast with "integrated," where billions of components are fabricated together on one die. |
+| **Discrete component** | A single part in its own package soldered to a PCB (a standalone [[quick-context/resistor|resistor]], a single transistor). Contrast with "integrated," where billions of components are fabricated together on one die. |
 | **Integrated circuit (IC)** | Billions of transistors (plus resistors, capacitors, and wiring) fabricated together on a single [[quick-context/silicon-die|silicon die]]—a complete functional block like a CPU, memory chip, or sensor. |
 | **Packaging hierarchy** | The chain of physical structures (die → substrate → package → PCB) that connects nanometer-scale transistors to the centimeter-scale world. See [[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]. |
 
@@ -96,8 +96,8 @@ ACTIVE COMPONENT FAMILY TREE
 | **[[quick-context/bjt\|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
 | **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
 | **[[quick-context/comparator\|Comparator]]** | Yes | Op-amp's sibling optimized for binary output; bridges analog signals to digital logic |
-| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + tail current source; the universal input stage of op-amps, comparators, and ADCs |
-| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | Current mirror active load on a differential pair; converts μA current difference into full-rail voltage swing |
+| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + [[micro-context/tail-current|tail current]] source; the universal input stage of op-amps, comparators, and ADCs |
+| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | [[micro-context/current-mirror|Current mirror]] active load on a differential pair; converts μA current difference into full-rail voltage swing |
 
 ## 3. Semiconductor Materials — What Parts Are Made Of
 
@@ -125,7 +125,7 @@ FROM SAND TO SWITCH
 | **[[quick-context/impedance-and-reactance\|Impedance and Reactance]]** | Yes | Z = R + jX (impedance = resistance + imaginary unit × reactance), capacitive/inductive reactance, phase angle |
 | **[[quick-context/frequency-and-filtering\|Frequency and Filtering]]** | Yes | Cutoff frequency, dB (decibels), low-pass/high-pass, filter order |
 | **[[quick-context/power-watts-joules\|Electrical Power]]** | Yes | P = VI (power = voltage × current), watts, joules, efficiency, thermal dissipation |
-| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | Maxwell's equations, magnetic fields, Faraday's law, EM waves |
+| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | [[quick-context/maxwell-equations|Maxwell's equations]], magnetic fields, Faraday's law, EM waves |
 | **[[quick-context/electric-magnetic-field-unification\|Field Unification]]** | Yes | How V, I, E, B connect—the conceptual map |
 | **[[quick-context/grounding-and-return-paths\|Grounding and Return Paths]]** | Yes | Return paths, ground planes, ground loops, star grounding |
 
@@ -226,7 +226,7 @@ All fundamental electronic parts now have quick-context files. Total: 34 electro
 
 ## Tracing a Signal Through Fundamental Parts
 
-Here's a simplified path from a sensor to a microcontroller, showing which parts you'd encounter and which quick-context files explain them:
+Here's a simplified path from a sensor to a [[micro-context/microcontroller|microcontroller]], showing which parts you'd encounter and which quick-context files explain them:
 
 ```
 SENSOR SIGNAL PATH

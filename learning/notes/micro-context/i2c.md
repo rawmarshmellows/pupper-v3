@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # I2C
+> **Related:** [[quick-context/embedded-communication-protocols]] | [[micro-context/smd-resistor]] | [[quick-context/can-bus]] | [[quick-context/capacitance]] | [[quick-context/pupper-bom-control-board]]
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
 
