@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # CNC Turning
+> **Related:** [[micro-context/cnc-milling]] | [[quick-context/cnc-machining]]
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
 

@@ -177,7 +177,7 @@ COMMON-MODE REJECTION
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
 - **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **[[micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 

@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # ADC (Analog-to-Digital Converter)
+> **Related:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]]
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]]
 
@@ -14,7 +15,7 @@ updated: 2026-03-27
 
 - The ADC samples the analog input voltage at regular intervals determined by the sample rate.
 - Each sample is compared against an internal reference voltage and quantized to the nearest digital level (e.g., one of 65,536 levels for 16-bit).
-- The resulting binary number is stored in a register and made available to the MCU via a bus interface (I2C, SPI, or internal peripheral).
+- The resulting binary number is stored in a register and made available to the MCU via a bus interface ([[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], or internal peripheral).
 - Higher bit resolution means finer voltage steps, but noise floor and reference stability ultimately limit practical accuracy.
 
 ```

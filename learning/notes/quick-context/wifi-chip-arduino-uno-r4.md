@@ -21,7 +21,7 @@ You want your [[micro-context/microcontroller|microcontroller]] to talk to the i
 | **Modulation / Demodulation** | Modulation encodes digital bits onto an analog carrier wave by varying its amplitude, frequency, or phase. Demodulation reverses the process to recover the bits. WiFi uses OFDM with QAM — encoding multiple bits per symbol across many subcarriers simultaneously. |
 | **OFDM (Orthogonal Frequency-Division Multiplexing)** | WiFi's core modulation scheme: splits the 20 MHz channel into 48+ narrow subcarriers (each 312.5 kHz wide), transmitting data on all of them in parallel. This resists multipath interference (signals bouncing off walls) because each subcarrier is narrow enough to experience flat fading. |
 | **MAC (Media Access Control)** | The protocol layer that manages who gets to transmit and when. WiFi uses CSMA/CA: "listen before you talk." If the channel is busy, wait a random backoff time, then try again. The MAC also handles encryption (WPA), association with access points, and retransmissions. |
-| **PHY (Physical Layer)** | The hardware that converts between digital bits and analog radio signals. Includes the baseband processor (FFT/IFFT for OFDM), DAC/ADC converters, and the RF front-end (mixers, filters, amplifiers). |
+| **PHY (Physical Layer)** | The hardware that converts between digital bits and analog radio signals. Includes the baseband processor (FFT/IFFT for OFDM), DAC/[[micro-context/adc-analog-to-digital-converter|ADC]] converters, and the RF front-end (mixers, filters, amplifiers). |
 
 <details>
 <summary><strong>How It Works</strong> — From bits to radio waves and back</summary>
@@ -332,7 +332,7 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 

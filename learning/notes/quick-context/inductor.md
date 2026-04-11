@@ -655,7 +655,7 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 

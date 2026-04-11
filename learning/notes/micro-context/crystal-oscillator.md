@@ -4,6 +4,7 @@ created: 2026-03-27
 ---
 
 # Crystal Oscillator
+> **Related:** [[quick-context/rc-oscillator]] | [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[micro-context/clock-speed]] | [[micro-context/stm32-microcontroller]]
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 

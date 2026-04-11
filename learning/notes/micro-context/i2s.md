@@ -4,6 +4,7 @@ created: 2026-03-27
 ---
 
 # I2S (Inter-IC Sound)
+> **Related:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/pupper-bom-control-board]]
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]
 

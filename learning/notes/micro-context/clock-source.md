@@ -4,6 +4,7 @@ created: 2026-03-27
 ---
 
 # Clock Source
+> **Related:** [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing]] | [[micro-context/ceramic-resonator]] | [[micro-context/stm32-microcontroller]] | [[quick-context/rc-oscillator]]
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 

@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Precise Analog Signal Processing
 
-A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. You need to amplify the signal exactly 330×, without adding noise or distortion, regardless of what's connected to the output. Doing this with discrete [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] requires careful design and the gain drifts with temperature. An op-amp solves this: it has enormous internal gain (100,000× or more), and by wrapping it in a negative feedback loop with resistors, the gain becomes determined entirely by the resistor ratio—which is stable, predictable, and easy to calculate. Op-amps make analog design almost as straightforward as digital. https://www.youtube.com/watch?v=_ZuJgt4NfFI
+A sensor outputs 10 mV when it detects something. Your [[micro-context/adc-analog-to-digital-converter|ADC]] needs 0-3.3V input. You need to amplify the signal exactly 330×, without adding noise or distortion, regardless of what's connected to the output. Doing this with discrete [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] requires careful design and the gain drifts with temperature. An op-amp solves this: it has enormous internal gain (100,000× or more), and by wrapping it in a negative feedback loop with resistors, the gain becomes determined entirely by the resistor ratio—which is stable, predictable, and easy to calculate. Op-amps make analog design almost as straightforward as digital. https://www.youtube.com/watch?v=_ZuJgt4NfFI
 
 ## 5 Essential Terms
 
@@ -545,7 +545,7 @@ Rail-to-rail output             Often 1-2V from rails
 
 | Op-Amp | GBW (MHz) | Input Type | Cost | Best For |
 |--------|----------|------------|------|----------|
-| **LM741** | 1 | BJT | $0.30 | Learning, non-critical |
+| **LM741** | 1 | [[quick-context/bjt|BJT]] | $0.30 | Learning, non-critical |
 | **LM358** | 1 | BJT | $0.20 | Single-supply, cheap |
 | **TL072** | 3 | JFET | $0.50 | Audio, low noise |
 | **MCP6002** | 1 | CMOS | $0.40 | Low power, rail-to-rail |
@@ -613,7 +613,7 @@ SIGNAL CONDITIONING CHAIN
 
 - **[[quick-context/electric-current]]** — The golden rule "no current into the inputs" means all current through the input resistor must flow through the feedback resistor—this is how you derive gain formulas using Kirchhoff's current law.
 
-- **[[quick-context/pwm-controller-circuit]]** — Inside every buck converter IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
+- **[[quick-context/pwm-controller-circuit]]** — Inside every [[micro-context/buck-converter|buck converter]] IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
 
 - **[[quick-context/comparator]]** — A comparator shares the same differential-pair input stage as an op-amp but is optimized for speed and digital output. Removing the op-amp's negative feedback and compensation capacitor gives you a comparator—intentionally.
 

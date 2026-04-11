@@ -11,7 +11,7 @@ created: 2026-03-26
 
 ## The Core Problem
 
-Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert PCB. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
+Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert [[quick-context/pcb-printed-circuit-board|PCB]]. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
 
 ## 5 Essential Terms
 

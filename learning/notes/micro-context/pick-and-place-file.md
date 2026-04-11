@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # Pick and Place File
+> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
 

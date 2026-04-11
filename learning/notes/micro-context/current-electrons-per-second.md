@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # Current and Electrons Per Second
+> **Related:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 

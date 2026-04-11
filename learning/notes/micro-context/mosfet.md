@@ -5,10 +5,11 @@ updated: 2026-03-27
 ---
 
 # MOSFET
+> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]]
 
 > **See also:** [[quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a [[quick-context/capacitor|capacitor]]—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 

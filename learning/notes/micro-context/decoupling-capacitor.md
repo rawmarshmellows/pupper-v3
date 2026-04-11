@@ -5,6 +5,7 @@ updated: 2026-03-27
 ---
 
 # Decoupling Capacitor
+> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]]
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
 

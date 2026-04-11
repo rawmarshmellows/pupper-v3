@@ -4,6 +4,7 @@ created: 2026-03-28
 ---
 
 # Coriolis Effect
+> **Related:** [[quick-context/pupper-bom-control-board]]
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]
 

@@ -3,7 +3,7 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
 
