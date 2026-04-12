@@ -3,8 +3,6 @@ topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
-
 > **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
 
 # TEEP (Total Effective Equipment Performance)
@@ -103,8 +101,8 @@ The new line isn't needed—the hidden capacity was always there. Without TEEP, 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - The foundation metric that TEEP extends; must understand OEE's three factors before TEEP makes sense
-- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions (Level 4) meet production execution (Level 3)
+- **[[learning/notes/quick-context/oee-overall-equipment-effectiveness]]** - The foundation metric that TEEP extends; must understand OEE's three factors before TEEP makes sense
+- **[[learning/notes/quick-context/isa-95-levels]]** - Where capacity planning decisions (Level 4) meet production execution (Level 3)
 
 </details>
 

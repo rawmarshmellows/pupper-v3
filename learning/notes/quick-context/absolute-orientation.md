@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Absolute Orientation Problem
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/similarity-transform]]
 
 > **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 
@@ -42,11 +42,11 @@ The key insight (shared by all closed-form methods) is that translation decouple
 | **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
 | **Umeyama** | 1991 | SVD with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
 
-Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
+Umeyama's extension fixed a flaw in Arun's method where the [[learning/notes/quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
 
 ### Step-by-Step: SVD Solution (Arun/Umeyama)
 
-This is the most widely implemented approach and the one used in the [[quick-context/helmert-transform|Helmert Transform]].
+This is the most widely implemented approach and the one used in the [[learning/notes/quick-context/helmert-transform|Helmert Transform]].
 
 **Step 1 -- Compute centroids and center the data**
 
@@ -54,7 +54,7 @@ $$\bar{\mathbf{p}} = \frac{1}{n}\sum_{i=1}^{n} \mathbf{p}_i, \qquad \bar{\mathbf
 
 $$\mathbf{p}'_i = \mathbf{p}_i - \bar{\mathbf{p}}, \qquad \mathbf{q}'_i = \mathbf{q}_i - \bar{\mathbf{q}}$$
 
-**Step 2 -- Build the cross-[[quick-context/covariance-matrix|covariance matrix]]**
+**Step 2 -- Build the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]]**
 
 $$H = \sum_{i=1}^{n} \mathbf{p}'_i \, \mathbf{q}'^T_i$$
 
@@ -119,7 +119,7 @@ $$\mathbf{t} = \bar{\mathbf{q}} - s R \, \bar{\mathbf{p}}$$
 | Scenario | Minimum Points | Why |
 |----------|---------------|-----|
 | Rigid (6 DOF: 3 rotation + 3 translation) | 3 non-collinear | 3 points define a plane, giving 9 equations for 6 unknowns |
-| [[quick-context/similarity-transform|Similarity]] (7 DOF: + scale) | 3 non-collinear | Scale adds 1 DOF but 3 points still provide enough constraints |
+| [[learning/notes/quick-context/similarity-transform|Similarity]] (7 DOF: + scale) | 3 non-collinear | Scale adds 1 DOF but 3 points still provide enough constraints |
 | Robust estimation | 5+ recommended | Redundancy allows outlier detection and error estimation |
 
 </details>
@@ -269,10 +269,10 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter similarity transformation (3 rotation + 3 translation + 1 scale) that is the direct solution to the absolute orientation problem
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
-- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ between centered point sets is the key intermediate quantity in the SVD solution
+- **[[learning/notes/quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter similarity transformation (3 rotation + 3 translation + 1 scale) that is the direct solution to the absolute orientation problem
+- **[[learning/notes/quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
+- **[[learning/notes/quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
+- **[[learning/notes/quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] $H$ between centered point sets is the key intermediate quantity in the SVD solution
 - **Relative orientation** -- Finding the transformation between two camera views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
 - **Iterative Closest Point (ICP)** -- Iterative algorithm that solves absolute orientation repeatedly to align point clouds when correspondences are unknown
 - **RANSAC** -- Robust estimation framework that wraps around absolute orientation solvers to handle outlier correspondences
@@ -305,7 +305,7 @@ $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T
 **Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a [[learning/notes/quick-context/similarity-transform|similarity transform]] when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?

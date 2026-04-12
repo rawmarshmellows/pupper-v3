@@ -5,13 +5,13 @@ created: 2026-02-14
 
 # Subatomic Particles
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+> **Related:** [[learning/notes/quick-context/electric-current]]
 
 > **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
 ## The Core Problem
 
-Everything around you—your body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What holds an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear power.
+Everything around you—your body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What holds an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[learning/notes/quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[learning/notes/quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[learning/notes/quick-context/doped-silicon|semiconductor electronics]] to [[learning/notes/quick-context/electrolysis|electrochemistry]] to nuclear power.
 
 ## 5 Essential Terms
 
@@ -19,9 +19,9 @@ Everything around you—your body, your computer, the air you breathe—is made 
 |------|------------|
 | **Proton** | A positively charged particle in the nucleus; its count defines the element (1 proton = hydrogen, 6 = carbon, 79 = gold). Mass: ~1.67 × 10⁻²⁷ kg. Charge: +1 elementary charge. |
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
-| **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
+| **Electron** | A negatively charged particle that orbits the nucleus; participates in [[learning/notes/quick-context/covalent-bonds|chemical bonding]] and [[learning/notes/quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[learning/notes/quick-context/electromagnetism|electromagnetism]] but only works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -262,7 +262,7 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
             ∙                  ∙                    ∙──∙
             H                  H                    H   H
 
-    This is [[quick-context/covalent-bonds|covalent bonding]]—the basis of
+    This is [[learning/notes/quick-context/covalent-bonds|covalent bonding]]—the basis of
     molecules, polymers, and all of organic chemistry.
 
 
@@ -270,7 +270,7 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
     ─────────────────────────────────────────────────────────────────────────
 
     In metals, outer electrons are loosely held—they can move freely.
-    Apply voltage → electrons flow → [[quick-context/electric-current|electric current]].
+    Apply voltage → electrons flow → [[learning/notes/quick-context/electric-current|electric current]].
 
     ┌─────────────────────────────────────────────────────────────────┐
     │  Metal conductor (e.g., copper wire)                            │
@@ -283,7 +283,7 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
     └─────────────────────────────────────────────────────────────────┘
 
 
-    SEMICONDUCTORS ([[quick-context/doped-silicon|doped silicon]]):
+    SEMICONDUCTORS ([[learning/notes/quick-context/doped-silicon|doped silicon]]):
     ─────────────────────────────────────────────────────────────────────────
 
     Silicon holds its electrons more tightly than metals.
@@ -298,10 +298,10 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
     ELECTROLYSIS AND BATTERIES:
     ─────────────────────────────────────────────────────────────────────────
 
-    In [[quick-context/electrolysis|electrolysis]], electrons are forced to move
+    In [[learning/notes/quick-context/electrolysis|electrolysis]], electrons are forced to move
     where they don't naturally want to go, driving chemical reactions.
 
-    In [[quick-context/galvanic-cells-batteries|batteries]], electrons naturally
+    In [[learning/notes/quick-context/galvanic-cells-batteries|batteries]], electrons naturally
     flow from one material to another, and we capture that flow as current.
 
     All of this is electrons moving between atoms.
@@ -366,7 +366,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding [[learning/notes/quick-context/doped-silicon|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 
@@ -458,7 +458,7 @@ SILICON (Si) — The Element of Electronics
     This makes silicon a SEMICONDUCTOR:
     • Not as conductive as metal
     • Not as insulating as glass
-    • Conductivity controllable by [[quick-context/doped-silicon|doping]]
+    • Conductivity controllable by [[learning/notes/quick-context/doped-silicon|doping]]
 
     This is why silicon is the basis of all computer chips.
 
@@ -544,17 +544,17 @@ SODIUM IN WATER — A Subatomic Explanation
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/atoms-molecules-polymers-basics]]** — Builds on atomic structure to explain how atoms combine into molecules and polymers. The electron behavior described here is what enables covalent bonding.
+- **[[learning/notes/quick-context/atoms-molecules-polymers-basics]]** — Builds on atomic structure to explain how atoms combine into molecules and polymers. The electron behavior described here is what enables covalent bonding.
 
-- **[[quick-context/covalent-bonds]]** — The sharing of electrons between atoms to form molecules. Understanding electron shells explains why carbon forms 4 bonds, oxygen forms 2, hydrogen forms 1.
+- **[[learning/notes/quick-context/covalent-bonds]]** — The sharing of electrons between atoms to form molecules. Understanding electron shells explains why carbon forms 4 bonds, oxygen forms 2, hydrogen forms 1.
 
-- **[[quick-context/doped-silicon]]** — Manipulating electron counts at the atomic level (adding dopants) to create controllable semiconductors. The free electrons and holes are literally extra or missing electrons relative to pure silicon.
+- **[[learning/notes/quick-context/doped-silicon]]** — Manipulating electron counts at the atomic level (adding dopants) to create controllable semiconductors. The free electrons and holes are literally extra or missing electrons relative to pure silicon.
 
-- **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
+- **[[learning/notes/quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[learning/notes/quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[learning/notes/micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
+- **[[learning/notes/quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
 
 - **Radioactivity and Nuclear Physics** — When the nucleus is unstable (too many or too few neutrons), it decays by emitting particles. Alpha decay, beta decay, and gamma radiation all involve subatomic particle transformations.
 
@@ -589,7 +589,7 @@ SODIUM IN WATER — A Subatomic Explanation
 **Sodium's outer electron is much easier to remove.** While both have 1 outer electron, sodium's electron is in the 3rd shell far from a nucleus with only +11 charge. Copper's electron is effectively in a higher shell but with +29 nuclear charge (and d-orbital effects make it even harder to remove). The ionization energy (energy to remove that electron) is much lower for sodium, making it violently reactive. See: "Why Sodium Explodes in Water" example.
 </details>
 
-**Q5:** How does understanding subatomic particles help explain why [[quick-context/doped-silicon|doping silicon]] creates n-type and p-type semiconductors?
+**Q5:** How does understanding subatomic particles help explain why [[learning/notes/quick-context/doped-silicon|doping silicon]] creates n-type and p-type semiconductors?
 <details>
 <summary>Answer</summary>
 **Doping adds or removes electrons at the atomic level.** Pure silicon has 4 outer electrons, all used for bonding with neighbors. Adding phosphorus (5 outer electrons) provides one extra electron that's free to conduct—this is n-type (negative charge carriers). Adding boron (3 outer electrons) creates a "hole" (missing electron) that acts like a positive charge carrier—this is p-type. Understanding that electrical properties come from electron counts, and that we can surgically modify those counts by adding specific atoms, explains how semiconductor devices work.

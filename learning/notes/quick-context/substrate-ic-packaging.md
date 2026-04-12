@@ -4,8 +4,6 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
-
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
 ## The Core Problem
@@ -19,8 +17,8 @@ The substrate is the "translator" that takes a chip's tiny, densely-packed conne
 | **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of transistors; this is what people usually mean by "the chip" |
 | **Pitch** | The distance between the centers of adjacent connections; smaller pitch = more connections in the same space |
 | **Redistribution Layer (RDL)** | Metal routing layers inside the substrate that reroute signals from one location/pitch to another |
-| **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
-| **[[quick-context/flip-chip|Flip-chip]]** | A mounting method where the die faces downward with solder bumps connecting directly to the substrate (as opposed to [[quick-context/wire-bonding|wire bonding]] from the die edges) |
+| **[[learning/notes/quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
+| **[[learning/notes/quick-context/flip-chip|Flip-chip]]** | A mounting method where the die faces downward with solder bumps connecting directly to the substrate (as opposed to [[learning/notes/quick-context/wire-bonding|wire bonding]] from the die edges) |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -405,16 +403,16 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[learning/notes/quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
-- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
+- **[[learning/notes/quick-context/wire-bonding|Wire Bonding]] vs. [[learning/notes/quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; [[learning/notes/quick-context/wire-bonding|wire bonding]] is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 
 - **Underfill** — An epoxy material injected between the die and substrate after flip-chip attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
 
