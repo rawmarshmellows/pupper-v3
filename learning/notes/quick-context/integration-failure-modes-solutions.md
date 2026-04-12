@@ -3,8 +3,6 @@ topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
-
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 
 # Solving Robot Cell Integration Failure Modes
@@ -157,7 +155,7 @@ The architectural patterns exist on a spectrum, and knowing where your applicati
 
 ## ROS2 Approaches to These Failure Modes
 
-ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
+ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[learning/notes/quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
 
 **Deadlock: DDS QoS Liveliness + Deadline Policies**
 
@@ -503,7 +501,7 @@ analyzers:
 | **Unrecoverable States** | State persistence, recovery workflows | Retentive memory, safety state machine |
 | **Integration Drift** | Diagnostics, trending, alerting | Scan cycle jitter monitoring |
 
-The architecture from [[quick-context/plc-vs-software-control]] applies directly: ROS2 handles the coordination and monitoring layer where soft real-time and rich tooling matter; the PLC handles the execution layer where determinism and safety certification are non-negotiable. ROS2's lifecycle nodes can detect that the vision system failed, but the PLC's safety function stops the robot arm within 50ms when the light curtain breaks.
+The architecture from [[learning/notes/quick-context/plc-vs-software-control]] applies directly: ROS2 handles the coordination and monitoring layer where soft real-time and rich tooling matter; the PLC handles the execution layer where determinism and safety certification are non-negotiable. ROS2's lifecycle nodes can detect that the vision system failed, but the PLC's safety function stops the robot arm within 50ms when the light curtain breaks.
 
 **The one thing most outsiders get wrong about this is...** thinking these are programming problems solvable with better code. They're actually systems design problems that require upfront architectural decisions about ownership, timing, and recovery. You can't bolt on deadlock prevention after the fact—it has to be baked into the handshake protocol from day one. The patterns above aren't clever tricks; they're the industrial automation equivalent of "use transactions" or "make it idempotent"—fundamental architectural constraints that every experienced integrator applies automatically.
 
@@ -512,10 +510,10 @@ The architecture from [[quick-context/plc-vs-software-control]] applies directly
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/plc-vs-software-control]]** - Understanding the boundary between PLC and software layers for applying these patterns appropriately
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - The metric that quantifies the cost of these failure modes (40-60% OEE vs. 85%+ target)
-- **[[quick-context/preempt-rt]]** - Real-time Linux foundations for when ROS2 needs deterministic timing
-- **[[quick-context/sil-rated-safety-functions]]** - When failure modes become safety-critical and require certified solutions
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - Understanding the boundary between PLC and software layers for applying these patterns appropriately
+- **[[learning/notes/quick-context/oee-overall-equipment-effectiveness]]** - The metric that quantifies the cost of these failure modes (40-60% OEE vs. 85%+ target)
+- **[[learning/notes/quick-context/preempt-rt]]** - Real-time Linux foundations for when ROS2 needs deterministic timing
+- **[[learning/notes/quick-context/sil-rated-safety-functions]]** - When failure modes become safety-critical and require certified solutions
 
 </details>
 

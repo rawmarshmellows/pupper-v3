@@ -5,13 +5,13 @@ created: 2026-03-27
 
 # Embedded Communication Protocols
 
-> **Related:** [[quick-context/can-bus]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/can-bus]]
 
-> **TL;DR:** Embedded systems choose between a handful of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, and noise immunity. The Pupper v3 uses four of them simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
+> **TL;DR:** Embedded systems choose between a handful of serial protocols — UART, [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], [[learning/notes/quick-context/can-bus|CAN]], and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, and noise immunity. The Pupper v3 uses four of them simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
 
 ## The Core Problem
 
-A microcontroller needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do).
+A [[learning/notes/micro-context/microcontroller|microcontroller]] needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[learning/notes/micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do).
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ A microcontroller needs to talk to other chips — sensors, motors, displays, ot
 |------|------------|
 | **Synchronous vs. Asynchronous** | Synchronous protocols (SPI, I2C) send a clock signal alongside data so both sides stay in lockstep. Asynchronous protocols (UART) pre-agree on a baud rate and each side runs its own clock — simpler wiring but requires matched clock accuracy. |
 | **Full-duplex vs. Half-duplex** | Full-duplex (SPI, UART) can send and receive simultaneously on separate wires. Half-duplex (I2C, CAN) shares the same wire(s) for both directions, taking turns. |
-| **Differential signaling** | Encoding data as the voltage *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN and Ethernet use this; UART, I2C, and SPI don't. |
+| **Differential signaling** | Encoding data as the [[learning/notes/quick-context/voltage|voltage]] *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN and Ethernet use this; UART, I2C, and SPI don't. |
 | **Bus topology** | How multiple devices connect. Point-to-point (UART): one sender, one receiver. Multi-drop bus (I2C, CAN): many devices on shared wires. Star (SPI): one master with a dedicated select line per device. |
 | **Baud rate / Bit rate** | The number of signal transitions (baud) or data bits (bit rate) per second. For most embedded protocols these are equal. UART's 115200 baud = 115.2 kbps; CAN's 1 Mbps means each bit is 1 $\mu$s wide. |
 
@@ -76,7 +76,7 @@ UART — Asynchronous, point-to-point:
 
 ### I2C — The Sensor Bus
 
-[[micro-context/i2c|I2C]] (Inter-Integrated Circuit) uses 2 wires — SDA (data) and SCL (clock) — with open-drain drivers and pull-up [[quick-context/resistor|resistors]]. A master generates the clock and addresses devices by their 7-bit address (up to 128 devices on one bus, though typically 10-20).
+[[learning/notes/micro-context/i2c|I2C]] (Inter-Integrated Circuit) uses 2 wires — SDA (data) and SCL (clock) — with open-drain drivers and pull-up [[learning/notes/quick-context/resistor|resistors]]. A master generates the clock and addresses devices by their 7-bit address (up to 128 devices on one bus, though typically 10-20).
 
 ```
 I2C — Synchronous, multi-drop, half-duplex:
@@ -105,7 +105,7 @@ I2C — Synchronous, multi-drop, half-duplex:
 
 ### SPI — The Fast On-Board Bus
 
-[[micro-context/spi|SPI]] (Serial Peripheral Interface) uses 4 wires: SCLK (clock), MOSI (master-out-slave-in), MISO (master-in-slave-out), and CS (chip select — one per slave). Full-duplex at speeds from 1 to 50+ MHz.
+[[learning/notes/micro-context/spi|SPI]] (Serial Peripheral Interface) uses 4 wires: SCLK (clock), MOSI (master-out-slave-in), MISO (master-in-slave-out), and CS (chip select — one per slave). Full-duplex at speeds from 1 to 50+ MHz.
 
 ```
 SPI — Synchronous, star topology, full-duplex:
@@ -135,7 +135,7 @@ SPI — Synchronous, star topology, full-duplex:
 
 ### CAN — The Noise-Immune Motor Bus
 
-[[quick-context/can-bus|CAN]] (Controller Area Network) uses 2-wire differential signaling (CANH/CANL) with hardware arbitration, CRC error detection, and automatic retransmission. See the dedicated [[quick-context/can-bus|CAN bus article]] for the deep dive.
+[[learning/notes/quick-context/can-bus|CAN]] (Controller Area Network) uses 2-wire differential signaling (CANH/CANL) with hardware arbitration, CRC error detection, and automatic retransmission. See the dedicated [[learning/notes/quick-context/can-bus|CAN bus article]] for the deep dive.
 
 ```
 CAN — Asynchronous*, differential, linear bus:
@@ -156,7 +156,7 @@ CAN — Asynchronous*, differential, linear bus:
 ```
 
 **Strengths:** Differential = noise-immune, 40 m range, hardware arbitration (no collisions), 5-layer error detection, multi-master, 2 wires only.
-**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
+**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[learning/notes/micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[learning/notes/micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
 
 ### Ethernet — The High-Bandwidth Option
 
@@ -316,27 +316,27 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/can-bus]]** — Deep dive into CAN: arbitration, frame format, differential signaling, error detection, and the Pupper's 4-bus motor architecture. This is the most complex protocol in the comparison and gets its own article.
+- **[[learning/notes/quick-context/can-bus]]** — Deep dive into CAN: arbitration, frame format, differential signaling, error detection, and the Pupper's 4-bus motor architecture. This is the most complex protocol in the comparison and gets its own article.
 
-- **[[micro-context/i2c]]** — I2C protocol details: addressing, open-drain signaling, pull-up resistors, clock stretching. The standard sensor bus on embedded boards.
+- **[[learning/notes/micro-context/i2c]]** — I2C protocol details: addressing, open-drain signaling, pull-up resistors, clock stretching. The standard sensor bus on embedded boards.
 
-- **[[micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
+- **[[learning/notes/micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
 
-- **[[micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
+- **[[learning/notes/micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
 
-- **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential CAN bus voltages. Every CAN node needs one.
+- **[[learning/notes/micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential [[learning/notes/quick-context/can-bus|CAN bus]] voltages. Every CAN node needs one.
 
-- **[[micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a CAN bus to prevent signal reflections.
+- **[[learning/notes/micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a CAN bus to prevent signal reflections.
 
-- **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing all four protocols in action: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
+- **[[learning/notes/quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing all four protocols in action: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical components implementing these protocols: STM32s with hardware CAN/SPI/I2C peripherals, MAX3051 transceivers, pull-up resistors, connectors.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — The physical components implementing these protocols: STM32s with hardware CAN/SPI/I2C peripherals, MAX3051 transceivers, pull-up resistors, connectors.
 
-- **[[quick-context/oscilloscope-and-multimeter]]** — How to debug protocol issues: oscilloscope shows signal integrity (rise times, reflections, noise), logic analyzer decodes the actual data frames.
+- **[[learning/notes/quick-context/oscilloscope-and-multimeter]]** — How to debug protocol issues: oscilloscope shows signal integrity (rise times, reflections, noise), logic analyzer decodes the actual data frames.
 
 - **RS-485** — An industrial differential protocol similar to UART but with multi-drop capability and ~1200 m range. Common in factory automation where CAN isn't fast enough or Ethernet is overkill. Not used on the Pupper but frequently compared to CAN.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: radio transceiver, OFDM modulation, MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: radio transceiver, OFDM modulation, MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
 
 </details>
 
@@ -358,7 +358,7 @@ The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kb
 **Q3:** Why can't I2C be used to communicate with the Pupper's servo motors instead of CAN?
 <details>
 <summary>Answer</summary>
-Three reasons: (1) **Distance** — I2C is limited to ~1 m due to bus capacitance from pull-up resistors and trace length; servo cables run through robot legs at 30+ cm each. (2) **Noise immunity** — I2C uses single-ended signaling (voltage relative to ground), so motor EMI on the ground wire directly corrupts data; CAN's differential signaling rejects common-mode noise. (3) **Error handling** — I2C has only ACK/NACK; CAN has 5-layer error detection with automatic retransmission, critical for real-time motor control where a lost command could cause the robot to fall.
+Three reasons: (1) **Distance** — I2C is limited to ~1 m due to bus [[learning/notes/quick-context/capacitance|capacitance]] from pull-up resistors and trace length; servo cables run through robot legs at 30+ cm each. (2) **Noise immunity** — I2C uses single-ended signaling (voltage relative to ground), so motor EMI on the ground wire directly corrupts data; CAN's differential signaling rejects common-mode noise. (3) **Error handling** — I2C has only ACK/NACK; CAN has 5-layer error detection with automatic retransmission, critical for real-time motor control where a lost command could cause the robot to fall.
 </details>
 
 **Q4:** SPI is listed as having "no standard." What practical problem does this cause?

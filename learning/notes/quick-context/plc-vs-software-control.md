@@ -3,15 +3,13 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
-
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
 # PLC vs Software Control in Robotic Arm Systems
 
 ## The Core Problem: Who Executes the Motion Control Loop?
 
-The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
+The robotic arm API stack described in [[learning/notes/quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[learning/notes/quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
 
 The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
 
@@ -19,9 +17,9 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 
 | Term | Definition |
 |------|------------|
-| **Scan Cycle** | See [[quick-context/plc-vs-software]] — the PLC's deterministic read-execute-write loop (1–10ms for motion, 10–50ms for discrete I/O). |
+| **Scan Cycle** | See [[learning/notes/quick-context/plc-vs-software]] — the PLC's deterministic read-execute-write loop (1–10ms for motion, 10–50ms for discrete I/O). |
 | **Structured Text (ST)** | The IEC 61131-3 programming language that looks like Pascal and runs on PLCs—the closest thing to "real programming" in PLC-land. |
-| **PREEMPT_RT** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
+| **[[learning/notes/quick-context/preempt-rt|PREEMPT_RT]]** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
 | **Soft PLC** | Software that implements PLC runtime semantics on commodity hardware (Beckhoff TwinCAT, CODESYS)—looks like a PLC to the plant, runs on a PC. |
 | **Fieldbus** | The industrial network (PROFINET, EtherNet/IP, EtherCAT) connecting PLCs to I/O, drives, and robots—the nervous system of the automation cell. |
 
@@ -141,11 +139,11 @@ This division means: software does the "thinking" (where to move, what to pick u
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/robotic-arm-api-levels]]** - The full API stack from high-level task planning down to servo control
-- **[[quick-context/preempt-rt]]** - The Linux kernel patch that enables soft real-time, bridging the gap between software and PLC
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
-- **[[quick-context/plc-vs-software]]** - Deeper dive into PLC architecture and why it differs fundamentally from software
-- **[[quick-context/sil-rated-safety-functions]]** - Why safety-critical functions still require certified hardware
+- **[[learning/notes/quick-context/robotic-arm-api-levels]]** - The full API stack from high-level task planning down to servo control
+- **[[learning/notes/quick-context/preempt-rt]]** - The Linux kernel patch that enables soft real-time, bridging the gap between software and PLC
+- **[[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
+- **[[learning/notes/quick-context/plc-vs-software]]** - Deeper dive into PLC architecture and why it differs fundamentally from software
+- **[[learning/notes/quick-context/sil-rated-safety-functions]]** - Why safety-critical functions still require certified hardware
 
 </details>
 
@@ -161,7 +159,7 @@ Because Linux (without PREEMPT_RT) provides no guarantees about when your callba
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?
 <details>
 <summary>Answer</summary>
-Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for SIL-rated safety functions. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
+Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
 </details>
 
 **Q3:** What's the role of OPC-UA in this architecture?

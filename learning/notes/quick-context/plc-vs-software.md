@@ -3,8 +3,6 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
-
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
 # PLC: Why It's Different From Software
@@ -103,11 +101,11 @@ The Python version:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
-- **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
-- **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
-- **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
+- **[[learning/notes/quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
+- **[[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, including production hardware and real factory deployments
+- **[[learning/notes/quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
+- **[[learning/notes/quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
 
 </details>
 

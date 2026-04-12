@@ -3,8 +3,6 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
-
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 
 # ISA-95 Levels
@@ -73,8 +71,8 @@ When the batch completes, data flows back up: actual temperatures, durations, an
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - The key metric that Level 3 MES systems calculate from production data
-- **[[quick-context/plc-vs-software-control]]** - Understanding what happens at Level 2 and the tradeoffs in control architectures
+- **[[learning/notes/quick-context/oee-overall-equipment-effectiveness]]** - The key metric that Level 3 MES systems calculate from production data
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - Understanding what happens at Level 2 and the tradeoffs in control architectures
 
 </details>
 

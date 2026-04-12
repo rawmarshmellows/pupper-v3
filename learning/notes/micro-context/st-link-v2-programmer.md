@@ -6,9 +6,9 @@ updated: 2026-03-27
 
 # ST-Link V2 Programmer
 
-> **See also:** [[micro-context/swd-serial-wire-debug|SWD]] | [[quick-context/firmware|Flashing Firmware]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/spinev1-elf|SPIneV1.elf]]
+> **See also:** [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] | [[learning/notes/quick-context/firmware|Flashing Firmware]] | [[learning/notes/micro-context/stm32-microcontroller|STM32]] | [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]]
 
-**Definition:** A debug probe — a USB device that acts as a translator between your PC and an [[micro-context/stm32-microcontroller|STM32]] [[micro-context/microcontroller|microcontroller]]. It speaks USB on one side and the [[micro-context/swd-serial-wire-debug|SWD]] protocol (2 wires: SWDIO + SWCLK) on the other. Its primary role is [[quick-context/firmware|flashing firmware]] — getting compiled code like [[micro-context/spinev1-elf|SPIneV1.elf]] from your computer into the STM32's flash memory. It also enables live debugging via GDB: hardware breakpoints (Cortex-M4 has 6), single-stepping, and real-time register/memory inspection — all through the same 2-wire connection. The official ST-LINK/V2 (~$22-25) supports SWD + JTAG + SWO trace. Cheap $7-13 clones like the **HiLetgo ST-Link V2** (aluminum USB stick) use an STM32F103C8T6 internally and support SWD only. "Emulator" in clone listings is a translation artifact from Chinese 仿真器 (historically meant in-circuit emulator, now means any debug probe).
+**Definition:** A debug probe — a USB device that acts as a translator between your PC and an [[learning/notes/micro-context/stm32-microcontroller|STM32]] [[learning/notes/micro-context/microcontroller|microcontroller]]. It speaks USB on one side and the [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] protocol (2 wires: SWDIO + SWCLK) on the other. Its primary role is [[learning/notes/quick-context/firmware|flashing firmware]] — getting compiled code like [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] from your computer into the STM32's flash memory. It also enables live debugging via GDB: hardware breakpoints (Cortex-M4 has 6), single-stepping, and real-time register/memory inspection — all through the same 2-wire connection. The official ST-LINK/V2 (~$22-25) supports SWD + JTAG + SWO trace. Cheap $7-13 clones like the **HiLetgo ST-Link V2** (aluminum USB stick) use an STM32F103C8T6 internally and support SWD only. "Emulator" in clone listings is a translation artifact from Chinese 仿真器 (historically meant in-circuit emulator, now means any debug probe).
 
 ## How It Works
 
@@ -43,7 +43,7 @@ updated: 2026-03-27
 
 ## What's Inside the ST-Link
 
-The ST-Link isn't magic — it's just another [[micro-context/microcontroller|microcontroller]] acting as a middleman. Crack open a clone and you'll find an **STM32F103C8T6** (a cheaper, smaller STM32) running proprietary firmware. That internal MCU does two jobs: speak USB to your PC and bit-bang the [[micro-context/swd-serial-wire-debug|SWD]] protocol out its GPIO pins to the target chip.
+The ST-Link isn't magic — it's just another [[learning/notes/micro-context/microcontroller|microcontroller]] acting as a middleman. Crack open a clone and you'll find an **STM32F103C8T6** (a cheaper, smaller STM32) running proprietary [[learning/notes/quick-context/firmware|firmware]]. That internal MCU does two jobs: speak USB to your PC and bit-bang the [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] protocol out its GPIO pins to the target chip.
 
 ```
 INSIDE THE ST-LINK CLONE (HiLetgo):
@@ -74,7 +74,7 @@ OpenOCD sends commands over USB **bulk transfers** (not HID, not serial — raw 
 
 The STM32F103's firmware receives the USB packet, parses the command, and translates it into GPIO operations. For an SWD write, the firmware must:
 - Drive SWCLK low/high in sequence (the clock)
-- Set SWDIO high/low to send each bit of the [[micro-context/swd-serial-wire-debug|SWD packet]] (request phase: 8 bits)
+- Set SWDIO high/low to send each bit of the [[learning/notes/micro-context/swd-serial-wire-debug|SWD packet]] (request phase: 8 bits)
 - Release SWDIO and read back the target's ACK (3 bits)
 - Drive SWDIO again to send the 32-bit data + parity
 
@@ -100,11 +100,11 @@ WHAT BIT-BANGING LOOKS LIKE (simplified):
       set_gpio(SWCLK, LOW)
 ```
 
-The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per clock edge for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
+The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per [[learning/notes/micro-context/clock-edges|clock edge]] for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
 
 **3. Wire layer — ST-Link to target**
 
-The GPIO toggles appear as [[micro-context/swd-serial-wire-debug|SWD]] signals on the 4-pin cable. The target STM32F446's Debug Port (DP) receives these, interprets the SWD packet, and performs the requested operation — writing to flash controller registers, reading memory, setting breakpoints, etc. The response travels back the same way: target drives SWDIO → ST-Link firmware reads GPIO → firmware packages USB response → OpenOCD gets the result.
+The GPIO toggles appear as [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] signals on the 4-pin cable. The target STM32F446's Debug Port (DP) receives these, interprets the SWD packet, and performs the requested operation — writing to flash controller registers, reading memory, setting breakpoints, etc. The response travels back the same way: target drives SWDIO → ST-Link firmware reads GPIO → firmware packages USB response → OpenOCD gets the result.
 
 ```
 COMPLETE ROUND-TRIP (e.g., "write 0xDEADBEEF to address 0x20000000"):
