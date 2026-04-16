@@ -92,7 +92,7 @@ PCB MANUFACTURING SEQUENCE (2-layer board)
 
 **1. Top Copper** — `Gerber_TopLayer.GTL`
 
-*What it is:* The primary signal and component layer — shown in red on the Pupper board viewer. Contains signal traces, [[micro-context/smd-pad|component pads]] (SMD and through-hole), copper pours/fills, and via pads. This is where the actual circuit lives.
+*What it is:* The primary signal and component layer — shown in red on the Pupper board viewer. Contains signal traces, component pads (SMD and through-hole), copper pours/fills, and via pads. This is where the actual circuit lives.
 
 *How it's manufactured:* The factory starts with a sheet of FR-4 fiberglass with solid copper foil laminated to both sides (typically 1 oz/ft², ~35 μm thick). The copper pattern from the Gerber file is transferred using **photolithography**: a UV-sensitive photoresist is applied over the copper, UV light is shone through a film mask of the trace pattern, then the board is dipped in developer solution to wash away unexposed resist. Finally, a chemical etchant (ferric chloride or cupric chloride) dissolves the unprotected copper, leaving only the traces and pads behind. The remaining photoresist is then stripped off.
 
@@ -175,7 +175,7 @@ DRILL HOLE TYPES
 
 **4. Top Soldermask** — `Gerber_TopSolderMaskLayer.GTS`
 
-*What it is:* A polymer coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only [[micro-context/smd-pad|pads]] where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
+*What it is:* A polymer coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only pads where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
 
 *How it's manufactured:* Modern PCBs use **LPI (Liquid Photo-Imageable)** soldermask. The liquid polymer is applied to the entire board surface by curtain coating or screen printing. It's then "tack cured" (partially dried) so it can be handled. Next, the soldermask Gerber film is aligned over the board and UV light is shone through it — the UV **hardens** the mask everywhere EXCEPT where the film blocks light (over pads). The unhardened soldermask over pads is washed away in an alkaline developer bath, exposing the copper pads underneath. A final thermal cure (~150°C) fully hardens the remaining soldermask permanently.
 
@@ -255,7 +255,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **10. Top Paste Mask** — `Gerber_TopPasteMaskLayer.GTP`
 
-*What it is:* Defines [[micro-context/paste-mask-and-solder-stencil|stencil]] openings for solder paste application during [[quick-context/soldering#reflow|reflow assembly]]. Paste openings are typically 5-20% smaller than the actual pad (depending on component pitch) to prevent excess solder bridging.
+*What it is:* Defines stencil openings for solder paste application during [[quick-context/soldering#reflow|reflow assembly]]. Paste openings are typically 5-20% smaller than the actual pad (depending on component pitch) to prevent excess solder bridging.
 
 *How it's used (NOT manufactured on the board):* The paste mask Gerber is sent to a stencil vendor who **laser-cuts** matching apertures in a thin stainless steel sheet (0.1-0.15 mm thick). During assembly, this stencil is aligned over the bare PCB and solder paste (a mixture of tiny solder balls suspended in flux) is squeegeed across the stencil surface. Paste fills the apertures but can't reach areas where the steel blocks it — so only the pads receive paste. The stencil is then lifted straight up off the board, and the paste stays behind on the pads due to adhesion (it's a thick, sticky consistency, like toothpaste). The result is precise rectangular deposits of solder paste sitting on each pad, with the height controlled by stencil thickness and the footprint controlled by aperture size. From here, a pick-and-place machine positions components onto the pasted pads (the paste is tacky enough to hold them), and then the whole board goes through a [[quick-context/soldering#reflow|reflow oven]] that melts the paste into permanent solder joints.
 
