@@ -3,6 +3,8 @@ term: MOSFET
 created: 2026-04-02
 ---
 
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/quick-context/doped-silicon]]
+
 # MOSFET
 
 **Definition:** A voltage-controlled switch/valve for electric current. It has three terminals — **gate**, **drain**, and **source** — and the voltage applied to the gate controls how much current flows between drain and source. "M1", "M2", etc. are just labels for individual MOSFETs in a circuit (like naming resistors R1, R2).

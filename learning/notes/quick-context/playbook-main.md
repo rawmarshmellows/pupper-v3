@@ -1,6 +1,8 @@
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]]
+
+> A step-by-step guide for managing and growing accounts using [[learning/notes/quick-context/sandler-kare-segmentation|KARE Segmentation]] as the primary classification, synthesized with [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman LAMP]], [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]], [[learning/notes/quick-context/challenger-sale-methodology|Challenger methodology]], and [[learning/notes/quick-context/post-sale-account-engagement|Post-Sale Engagement]] frameworks.
 
 ---
 

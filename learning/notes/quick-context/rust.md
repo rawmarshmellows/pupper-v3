@@ -183,7 +183,7 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
                         exposed Fe
 
 
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)
