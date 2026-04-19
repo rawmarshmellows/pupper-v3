@@ -176,8 +176,8 @@ COMMON-MODE REJECTION
 ```
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
-- **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **[[quick-context/bjt|BJT]] pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
+- **[[micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 
@@ -289,7 +289,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 **Q3:** What happens if you apply a negative voltage to the gate of Q1 in the differential pair?
 <details>
 <summary>Answer</summary>
-**Q1 turns completely OFF** (no current, not reversed current). A negative $V_{gs}$ repels electrons from the channel surface and attracts holes, reinforcing the p-type barrier. With Q1 off, the entire 100 $\mu$A flows through Q2. The current is fully steered to one side. See: How It Works (Why Negative Gate Voltage Turns It OFF).
+**Q1 turns completely OFF** (no current, not reversed current). A negative $V_{gs}$ repels electrons from the channel surface and attracts holes, reinforcing the p-type barrier. With Q1 off, the entire 100 $\mu$A flows through Q2. The current is fully steered to one side. See: How It Works (Why Negative Gate [[quick-context/voltage|Voltage]] Turns It OFF).
 </details>
 
 **Q4:** Why do IC designers make the differential pair transistors physically large, even though smaller transistors are faster?

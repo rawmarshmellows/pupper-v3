@@ -238,7 +238,7 @@ RULE 2: "V+ = V-" (with negative feedback)
 
 The entire difference between an op-amp and a comparator comes down to **one capacitor** and the design choices that follow from it:
 
-| Feature | Op-Amp | Comparator | Why Different |
+| Feature | [[quick-context/op-amp|Op-Amp]] | Comparator | Why Different |
 |---------|--------|------------|---------------|
 | Compensation cap | 10--30 pF | None | Op-amp needs stability under feedback |
 | Output transition | 1--50 $\mu$s | 1--500 ns | Cap limits slew rate |
@@ -343,7 +343,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 
 - **[[quick-context/transistor]]** --- Every element in all three stages is a [[quick-context/transistor|MOSFET or BJT]]. The gate-oxide capacitor structure explains Rule 1 (no input current); saturation-mode output impedance explains the gain mechanism.
 
-- **[[quick-context/pwm-controller-circuit]]** --- A real-world system where both an op-amp (error amplifier) and a comparator (PWM generator) work together inside the same IC, each using the same three-stage topology.
+- **[[quick-context/pwm-controller-circuit]]** --- A real-world system where both an op-amp (error amplifier) and a comparator ([[micro-context/pwm-pulse-width-modulation|PWM]] generator) work together inside the same IC, each using the same three-stage topology.
 
 </details>
 

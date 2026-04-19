@@ -64,7 +64,7 @@ High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up 
 
 Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
 
-The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
+The rise of "real-time capable" middleware (EtherCAT, [[quick-context/ros2-architecture|ROS2]] with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 
 </details>
 
@@ -139,7 +139,7 @@ void realtime_loop() {
 
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
-- **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
+- **[[quick-context/plc-vs-software-control]]** - The [[micro-context/plc-programmable-logic-controller|PLC]] side of the robot-to-cell coordination problem
 - **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
 
 </details>

@@ -17,7 +17,7 @@ Imagine you have energy in one place (a battery, a power plant) and you need to 
 |------|------------|
 | **Ampere (A)** | The unit of current. 1 ampere = 1 coulomb of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
 | **Coulomb (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in electrolysis. |
-| **Direct Current (DC)** | Current that flows in ONE direction only—like water flowing downhill. [[quick-context/galvanic-cells-batteries|Batteries]] produce DC. Electrolysis requires DC (electrons must consistently enter at [[quick-context/electrodes|cathode]], exit at [[quick-context/electrodes|anode]]). |
+| **Direct Current (DC)** | Current that flows in ONE direction only—like water flowing downhill. [[quick-context/galvanic-cells-batteries|Batteries]] produce DC. [[quick-context/electrolysis|Electrolysis]] requires DC (electrons must consistently enter at [[quick-context/electrodes|cathode]], exit at [[quick-context/electrodes|anode]]). |
 | **Alternating Current (AC)** | Current that reverses direction many times per second (60 Hz in US = 60 reversals/second). Wall outlets provide AC. Must convert to DC for electrolysis. |
 | **Current Density** | Current per unit area (A/cm² or A/m²). Critical for electrolysis (too low = slow; too high = electrode damage) and [[quick-context/electromigration|electromigration]] in chip wires (too high = wire failure). |
 
@@ -299,7 +299,7 @@ WHAT IF WE DOUBLE THE CURRENT?
     This is why industrial electrolysis uses THOUSANDS of amperes!
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing current with voltage. Voltage is the "push" (electrical pressure), while current is the "flow" (how much charge actually moves). A static shock is high voltage (thousands of volts) but tiny current (microamps)—annoying but harmless. A car battery is low voltage (12V) but can deliver enormous current (400+ amps)—enough to weld metal or stop your heart. In electrolysis, voltage determines *whether* the reaction can happen (you need minimum ~1.23V to split water), but current determines *how fast* it happens. You can have high voltage with low current (nothing much happens) or appropriate voltage with high current (rapid production). The Q = I x t relationship shows why: charge (which does the actual chemistry) accumulates based on current, not voltage.
+**The one thing most outsiders get wrong about this is...** confusing current with voltage. [[quick-context/voltage|Voltage]] is the "push" (electrical pressure), while current is the "flow" (how much charge actually moves). A static shock is high voltage (thousands of volts) but tiny current (microamps)—annoying but harmless. A car battery is low voltage (12V) but can deliver enormous current (400+ amps)—enough to weld metal or stop your heart. In electrolysis, voltage determines *whether* the reaction can happen (you need minimum ~1.23V to split water), but current determines *how fast* it happens. You can have high voltage with low current (nothing much happens) or appropriate voltage with high current (rapid production). The Q = I x t relationship shows why: charge (which does the actual chemistry) accumulates based on current, not voltage.
 
 ```
 VOLTAGE vs. CURRENT: THE CRITICAL DIFFERENCE
@@ -338,7 +338,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Ohm's Law (V = I x R)** — The fundamental relationship connecting voltage, current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
 
-- **Electrical Power (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
+- **[[quick-context/power-watts-joules|Electrical Power]] (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
 
 - **Conductivity and Electrolytes** — Why some materials allow current to flow (conductors, ionic solutions) while others don't (insulators). Pure water has almost no conductivity, which is why electrolysis requires added [[quick-context/making-electrolytes|electrolyte]].
 

@@ -21,7 +21,7 @@ Why does this matter? Without understanding anions and oxidation, we couldn't ex
 | **Ion** | An atom that has gained or lost electrons, giving it an electrical charge |
 | **Anion** | A negatively-charged ion (has extra electrons); moves toward positive electrodes |
 | **Oxidation** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
-| **Anode** | The positive electrode where oxidation occurs; anions migrate here |
+| **[[micro-context/anode|Anode]]** | The positive electrode where oxidation occurs; anions migrate here |
 
 <details>
 <summary><strong>How It Works</strong></summary>

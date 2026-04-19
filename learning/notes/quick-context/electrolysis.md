@@ -22,8 +22,8 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 
 | Term | Definition |
 |------|------------|
-| **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
-| **Cathode/Anode** | Cathode = reduction (electrons flow in, cations migrate here); Anode = oxidation (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
+| **[[quick-context/electrolyte|Electrolyte]]** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
+| **[[micro-context/cathode|Cathode]]/[[micro-context/anode|Anode]]** | Cathode = reduction (electrons flow in, cations migrate here); Anode = oxidation (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
 | **Overpotential** | Extra voltage beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
 | **Current Efficiency** | Fraction of electrons doing useful chemistry vs. side reactions; industrial processes obsess over this since small losses mean millions in wasted electricity |

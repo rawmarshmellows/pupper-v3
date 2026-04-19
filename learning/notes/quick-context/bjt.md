@@ -18,7 +18,7 @@ MOSFETs are voltage-controlled switches that dominate digital electronics (billi
 | Term | Definition |
 |------|------------|
 | **NPN / PNP** | The two BJT types. NPN: current flows collector→emitter when base current flows in. PNP: current flows emitter→collector when base current flows out. NPN is more common. |
-| **Base (B)** | The control terminal. A small current into the base (for NPN) turns the transistor on. Unlike a MOSFET gate, the base draws continuous current. |
+| **Base (B)** | The control terminal. A small current into the base (for NPN) turns the transistor on. Unlike a [[micro-context/mosfet|MOSFET]] gate, the base draws continuous current. |
 | **Collector (C) / Emitter (E)** | The high-current terminals. Current flows from collector to emitter (NPN) when the transistor is on. The emitter has the arrow in the schematic symbol. |
 | **Current Gain (β / hFE)** | Ic = β × Ib. Typical β = 50-300. A BJT with β=100 and Ib=100μA passes Ic=10mA. β varies with temperature and current—not a precision parameter. |
 | **Saturation** | When the BJT is fully "on" (both junctions forward biased). Vce drops to ~0.1-0.3V. Used for switching. Contrast with the "active" region used for linear amplification. |

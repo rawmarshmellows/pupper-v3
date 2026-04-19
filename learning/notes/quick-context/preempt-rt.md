@@ -15,7 +15,7 @@ Standard Linux is a time-sharing system optimized for throughput, not response t
 
 If you're interpolating trajectory waypoints at 1kHz and one cycle takes 15ms instead of 1ms, your robot arm doesn't smoothly trace an arc—it jerks, overshoots, or faults the drive. PREEMPT_RT patches the Linux kernel to make nearly all kernel code preemptible, meaning your real-time task can interrupt almost anything the kernel is doing.
 
-The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
+The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a [[micro-context/plc-programmable-logic-controller|PLC]]. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
 
 ## 5 Essential Terms
 
@@ -153,7 +153,7 @@ Consider a CNC machine controller running on Linux:
 - Timer callback runs within 50us of schedule
 - Tool path remains smooth, part comes out correctly
 
-This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like ROS2's real-time capabilities and CODESYS-on-Linux depend on it.
+This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like [[quick-context/ros2-architecture|ROS2]]'s real-time capabilities and CODESYS-on-Linux depend on it.
 
 **The one thing most outsiders get wrong about this is...** assuming PREEMPT_RT turns Linux into a PLC. It doesn't. It gives you *bounded* latency, not *zero* latency—and those bounds (50-100us typical, potentially worse with bad drivers or hardware) aren't certified or guaranteed. A SIL-rated safety function still needs a proper safety PLC. What PREEMPT_RT actually enables is running the "soft" parts of automation—trajectory interpolation, sensor fusion, high-level coordination—in userspace Linux at 1kHz without random multi-millisecond stalls.
 

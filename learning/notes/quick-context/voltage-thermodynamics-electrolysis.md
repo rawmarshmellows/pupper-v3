@@ -282,7 +282,7 @@ Because 1.23V is only the thermodynamic minimum—the energy the chemistry funda
 **Q5:** If overpotential is "wasted" energy, where does that energy actually go?
 <details>
 <summary>Answer</summary>
-It becomes heat. The extra voltage beyond 1.23V drives current through resistive materials and overcomes kinetic barriers, both of which convert electrical energy to thermal energy. This is why electrolyzers need cooling systems and why reducing overpotential improves both efficiency and thermal management. See: The Key Tension (Voltage Breakdown diagram)
+It becomes heat. The extra voltage beyond 1.23V drives current through resistive materials and overcomes kinetic barriers, both of which convert electrical energy to thermal energy. This is why electrolyzers need cooling systems and why reducing overpotential improves both efficiency and thermal management. See: The Key Tension ([[quick-context/voltage|Voltage]] Breakdown diagram)
 </details>
 
 </details>

@@ -231,7 +231,7 @@ CONTROL FREQUENCY TIERS
   "never miss a deadline"          "usually meets deadlines"
 ```
 
-The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
+The [[micro-context/stm32-microcontroller|STM32]] microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over [[micro-context/spi|SPI]] at a fixed rate.
 
 This split explains a recurring pattern in the labs: **you never write code that directly talks to motors**. Your ROS2 nodes publish joint targets or velocity commands, and the ros2_control + STM32 stack translates those into actual motor current at rates your ROS2 node could never sustain reliably.
 

@@ -499,7 +499,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 

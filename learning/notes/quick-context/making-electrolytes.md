@@ -18,7 +18,7 @@ Here is a fact that surprises most people: **pure water is almost a perfect insu
 | Term | Definition |
 |------|------------|
 | **Ion** | An atom or molecule with an electrical charge (+ or -) because it lost or gained electrons. Like a person carrying either a positive or negative flag. |
-| **Electrolyte** | A substance that creates free-moving ions when dissolved in water (or melted), allowing the liquid to conduct electricity. Like adding "electricity carriers" to water. |
+| **[[quick-context/electrolyte|Electrolyte]]** | A substance that creates free-moving ions when dissolved in water (or melted), allowing the liquid to conduct electricity. Like adding "electricity carriers" to water. |
 | **Dissociation** | The process where a compound splits into its component ions when dissolved. Like a team breaking into individual players who can now run around the field. |
 | **Conductivity** | A measure of how well a solution carries electrical current (more ions = higher conductivity). Like measuring how wide a highway is for traffic. |
 | **Molten salt** | A salt heated until it melts into liquid form, where ions can move freely without needing water. Like melting ice so the water molecules can flow. |

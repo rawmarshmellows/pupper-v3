@@ -17,7 +17,7 @@ When you learn [[quick-context/electromagnetism|electromagnetism]], electric and
 
 | Term | Definition |
 |------|------------|
-| **Faraday Tensor ($F^{\mu\nu}$)** | A rank-2 antisymmetric tensor encoding both **E** and **B** fields in a 4×4 matrix. The indices μ and ν run from 0 to 3 (time and three spatial dimensions). Antisymmetric means $F^{\mu\nu} = -F^{\nu\mu}$. |
+| **Faraday [[quick-context/tensor|Tensor]] ($F^{\mu\nu}$)** | A rank-2 antisymmetric tensor encoding both **E** and **B** fields in a 4×4 matrix. The indices μ and ν run from 0 to 3 (time and three spatial dimensions). Antisymmetric means $F^{\mu\nu} = -F^{\nu\mu}$. |
 | **Four-Vector** | A quantity with four components (one time, three space) that transforms properly under Lorentz transformations. Examples: position $(ct, x, y, z)$, momentum $(E/c, p_x, p_y, p_z)$, current density $(c\rho, J_x, J_y, J_z)$. |
 | **Lorentz Transformation** | The rules for converting measurements between reference frames moving relative to each other at constant velocity. Length contracts, time dilates, and the Faraday tensor components mix together. |
 | **Dual Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to write the other half of Maxwell's equations. |
@@ -419,7 +419,7 @@ EXAMPLE: Current-Carrying Wire
 
 - **[[quick-context/coil-magnetic-field]]** — The relativistic explanation section discusses how magnetism is "relativistic electricity"—what the Faraday tensor makes mathematically precise.
 
-- **[[quick-context/voltage]]** — Voltage is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
+- **[[quick-context/voltage]]** — [[quick-context/voltage|Voltage]] is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
 
 - **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of Maxwell's equations in tensor form.
 

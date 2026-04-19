@@ -36,7 +36,7 @@ created: 2026-03-27
 
 Both effects working together is what makes a [[micro-context/ceramic-resonator|ceramic resonator]] vibrate at a precise frequency:
 
-1. **Voltage applied** → converse effect → crystal physically deforms (expands or contracts depending on field direction)
+1. **[[quick-context/voltage|Voltage]] applied** → converse effect → crystal physically deforms (expands or contracts depending on field direction)
 2. **Voltage removed/reversed** → the crystal's lattice has elastic restoring force (like a spring), so it doesn't just return to rest — it **overshoots** past its equilibrium position
 3. **Overshoot generates a voltage** → direct effect — the mechanical motion creates charge separation, which feeds back into the oscillator amplifier circuit
 4. **Amplifier returns that energy** at just the right phase, pushing the crystal again — sustaining the oscillation

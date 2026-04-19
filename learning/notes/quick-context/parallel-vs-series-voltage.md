@@ -17,7 +17,7 @@ If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs
 
 | Term | Definition |
 |------|------------|
-| **Voltage (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
+| **[[quick-context/voltage|Voltage]] (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
 | **Series Circuit** | Components connected end-to-end, so [[quick-context/electric-current\|current]] flows through each one sequentially. Voltages ADD across series elements. |
 | **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME voltage; currents add instead. |
 | **Power Rails (Vdd/GND)** | The two voltage levels that supply power to all transistors in a chip. Every transistor connects between these same two rails. |
@@ -320,7 +320,7 @@ THE MATH THAT MATTERS:
 
 - **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from [[quick-context/pcb-printed-circuit-board|PCB]] through package substrate to the die. Each level has dedicated power planes.
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 

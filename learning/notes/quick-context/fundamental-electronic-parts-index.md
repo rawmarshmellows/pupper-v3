@@ -20,7 +20,7 @@ A modern electronic system spans nine orders of magnitude (5 nm transistors to 5
 |------|------------|
 | **Passive component** | A part that cannot amplify or switch signals—it can only store or dissipate energy. Resistors, capacitors, and inductors are the three fundamental passives. |
 | **Active component** | A part that can amplify or switch—it adds energy from a power supply into a signal path. Transistors and diodes are the primary examples. |
-| **Discrete component** | A single part in its own package soldered to a PCB (a standalone resistor, a single transistor). Contrast with "integrated," where billions of components are fabricated together on one die. |
+| **Discrete component** | A single part in its own package soldered to a [[quick-context/pcb-printed-circuit-board|PCB]] (a standalone resistor, a single transistor). Contrast with "integrated," where billions of components are fabricated together on one die. |
 | **Integrated circuit (IC)** | Billions of transistors (plus resistors, capacitors, and wiring) fabricated together on a single [[quick-context/silicon-die|silicon die]]—a complete functional block like a CPU, memory chip, or sensor. |
 | **Packaging hierarchy** | The chain of physical structures (die → substrate → package → PCB) that connects nanometer-scale transistors to the centimeter-scale world. See [[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]. |
 
@@ -91,7 +91,7 @@ ACTIVE COMPONENT FAMILY TREE
 |------|------------------------|-------------|
 | **[[quick-context/transistor\|Transistor (MOSFET)]]** | Yes | Gate-controlled switch, MOS capacitor, NAND gates, CMOS |
 | **[[quick-context/transistor-analog-to-digital\|Transistor: Analog → Digital]]** | Yes | Leakage, noise margins, regenerative logic, clocking |
-| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → BJT → planar MOSFET → FinFET → GAA |
+| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → [[quick-context/bjt|BJT]] → planar [[micro-context/mosfet|MOSFET]] → FinFET → GAA |
 | **[[quick-context/diode\|Diode]]** | Yes | PN junction, forward/reverse bias, rectification, LEDs |
 | **[[quick-context/bjt\|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
 | **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
@@ -183,7 +183,7 @@ PACKAGING HIERARCHY (nano → macro)
 | **[[quick-context/soldering\|Soldering]]** | Yes | Solder alloys, flux, wetting, reflow, hand vs machine |
 | **[[quick-context/oscilloscope-and-multimeter\|Oscilloscope and Multimeter]]** | Yes | DMM for static values, scope for time-domain waveforms |
 | **[[quick-context/schematic-reading\|Schematic Reading]]** | Yes | Symbols, reference designators, nets, signal tracing |
-| **[[quick-context/common-ic-packages\|Common IC Packages]]** | Yes | DIP, SOIC, QFP, QFN, BGA—size/pin/thermal tradeoffs |
+| **[[quick-context/common-ic-packages\|Common IC Packages]]** | Yes | DIP, SOIC, QFP, QFN, [[quick-context/bga-ball-grid-array|BGA]]—size/pin/thermal tradeoffs |
 
 </details>
 
@@ -305,7 +305,7 @@ Every signal in every electronic device passes through some combination of these
 **Q1:** What are the three fundamental passive components, and what form of energy does each store or dissipate?
 <details>
 <summary>Answer</summary>
-**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **Inductor** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
+**[[quick-context/resistor|Resistor]]** dissipates energy as heat. **[[quick-context/capacitor|Capacitor]]** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **[[quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
 </details>
 
 **Q2:** What is the difference between a passive and an active component?

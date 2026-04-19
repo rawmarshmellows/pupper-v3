@@ -19,7 +19,7 @@ If we actually treated transistors as the messy analog devices they are, digital
 
 | Term | Definition |
 |------|------------|
-| **Threshold Voltage (Vth)** | The gate voltage at which a transistor begins to conduct; below this, it should be "off"—but leakage still occurs |
+| **Threshold [[quick-context/voltage|Voltage]] (Vth)** | The gate voltage at which a transistor begins to conduct; below this, it should be "off"—but leakage still occurs |
 | **Leakage Current** | Current that flows through a transistor even when it's supposed to be off; worsens at smaller process nodes due to quantum tunneling |
 | **Noise Margin** | The voltage buffer between a valid logic level and the point where it might be misinterpreted; larger margins = more robust digital operation |
 | **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't turn off instantly—conductivity drops exponentially but never hits zero |
@@ -421,7 +421,7 @@ NOISE AND VARIATION IN REAL CHIPS:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
+- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic [[micro-context/mosfet|MOSFET]] structure (gate, source, drain, channel) is prerequisite.
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
 

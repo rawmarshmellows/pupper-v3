@@ -22,7 +22,7 @@ The traditional solution was **wire bonding**: attach the chip right-side up and
 | Term | Definition |
 |------|------------|
 | **Die** | The tiny square of silicon that IS the actual chip—containing all the transistors; typically 10-20mm on a side |
-| **Substrate** | The intermediate "translation layer" between the die and the circuit board; it fans out the chip's microscopic connections to larger, solderable pads |
+| **[[quick-context/substrate-ic-packaging|Substrate]]** | The intermediate "translation layer" between the die and the circuit board; it fans out the chip's microscopic connections to larger, solderable pads |
 | **Solder bump** | A tiny ball of metal alloy (originally lead-tin, now lead-free) that creates both the electrical and mechanical connection between die and substrate |
 | **Underfill** | Epoxy material injected between the flipped die and substrate after connection; it mechanically reinforces the solder bumps and protects against cracking |
 | **C4 (Controlled Collapse Chip Connection)** | IBM's original name for flip-chip technology; the "controlled collapse" refers to how solder bumps melt and flatten during connection |
@@ -226,8 +226,8 @@ Here's what each layer does:
 | Silicon die | ~10-15mm per side | The actual processor with billions of transistors |
 | Solder bumps | ~100 μm diameter, ~100 μm pitch | Electrical/mechanical connection between die and substrate |
 | Underfill | Fills ~50 μm gap | Epoxy that prevents bump cracking from thermal stress |
-| Substrate | ~1.5mm thick, ~40mm square | Routes signals from dense die pitch to sparse BGA pitch |
-| BGA balls | ~500-800 μm diameter | Connect package to motherboard PCB |
+| Substrate | ~1.5mm thick, ~40mm square | Routes signals from dense die pitch to sparse [[quick-context/bga-ball-grid-array|BGA]] pitch |
+| BGA balls | ~500-800 μm diameter | Connect package to motherboard [[quick-context/pcb-printed-circuit-board|PCB]] |
 
 **The one thing most outsiders get wrong about this is...** assuming "flip-chip" means the whole package is upside-down or looks different from the outside. From the outside, a flip-chip package looks nearly identical to a wire-bonded package—they both have solder balls on the bottom and connect the same way to a circuit board. The "flip" happens invisibly inside the package: the silicon die is mounted face-down onto the substrate. You'd never know the difference by looking at the package externally; the innovation is entirely hidden within.
 
@@ -242,7 +242,7 @@ Here's what each layer does:
 
 - **Thermal Management** — Flip-chip enables better heat extraction because the die backside can directly contact cooling solutions; critical for high-power processors.
 
-- **Ball Grid Array (BGA)** — The package-to-PCB connection method that flip-chip packages typically use; BGA balls are much larger than flip-chip bumps.
+- **[[quick-context/bga-ball-grid-array|Ball Grid Array]] (BGA)** — The package-to-PCB connection method that flip-chip packages typically use; BGA balls are much larger than flip-chip bumps.
 
 - **Coefficient of Thermal Expansion (CTE)** — Why different materials expand at different rates when heated; the root cause of why underfill is necessary in flip-chip.
 

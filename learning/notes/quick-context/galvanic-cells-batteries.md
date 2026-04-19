@@ -18,7 +18,7 @@ This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysi
 | Term | Definition |
 |------|------------|
 | **[[quick-context/reduction-potential\|Electrode potential (E°)]]** | A measure of how strongly a material wants to gain or lose electrons, measured in volts relative to a standard hydrogen electrode. Zinc (E° = -0.76V) readily gives up electrons; copper (E° = +0.34V) readily accepts them. The *difference* between two electrodes determines cell voltage. |
-| **Anode/Cathode** | In a galvanic cell, the **anode** is where [[quick-context/anions-and-oxidation\|oxidation]] occurs (electrons leave, metal dissolves)—it's the *negative* terminal. The **cathode** is where [[quick-context/cations-and-reduction\|reduction]] occurs (electrons arrive, ions deposit)—it's the *positive* terminal. **Warning**: This is reversed from electrolysis, where cathode is negative. The definitions follow electron flow direction, which reverses when you flip from spontaneous to forced reactions. |
+| **[[micro-context/anode|Anode]]/[[micro-context/cathode|Cathode]]** | In a galvanic cell, the **anode** is where [[quick-context/anions-and-oxidation\|oxidation]] occurs (electrons leave, metal dissolves)—it's the *negative* terminal. The **cathode** is where [[quick-context/cations-and-reduction\|reduction]] occurs (electrons arrive, ions deposit)—it's the *positive* terminal. **Warning**: This is reversed from electrolysis, where cathode is negative. The definitions follow electron flow direction, which reverses when you flip from spontaneous to forced reactions. |
 | **[[quick-context/making-electrolytes\|Electrolyte]]** | The ionic medium (liquid, gel, or solid) that allows ions to move between [[quick-context/electrodes\|electrodes]], completing the internal circuit. Electrons flow through the external wire; ions flow through the electrolyte. Without both paths, no current flows. |
 | **State of Charge (SoC)** | The percentage of remaining capacity in a battery (100% = full, 0% = empty). As the battery discharges, reactants are consumed and SoC drops. Most batteries shouldn't be fully discharged—lithium-ion degrades rapidly below ~20% SoC. |
 | **Internal resistance** | The opposition to current flow within the battery itself. Higher internal resistance means more energy lost as heat, lower efficiency, and reduced power output. Internal resistance increases as batteries age and as temperature drops (why your phone dies faster in cold weather). |
@@ -214,7 +214,7 @@ The salt bridge allows ions to migrate:
 
 **Practical battery comparison:**
 
-| Chemistry | Voltage | Energy Density | Cycle Life | Use Case |
+| Chemistry | [[quick-context/voltage|Voltage]] | Energy Density | Cycle Life | Use Case |
 |-----------|---------|----------------|------------|----------|
 | Zinc-Carbon | 1.5V | 30 Wh/kg | 1 (primary) | TV remotes |
 | Alkaline | 1.5V | 80 Wh/kg | 1 (primary) | Flashlights |

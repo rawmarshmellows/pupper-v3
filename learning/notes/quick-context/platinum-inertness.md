@@ -19,7 +19,7 @@ In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct el
 |------|------------|
 | **Inert** | Chemically unreactive; doesn't participate in reactions |
 | **Ionization energy** | Energy required to remove an electron from an atom |
-| **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
+| **Reduction potential (E°)** | [[quick-context/voltage|Voltage]] indicating how much a species "wants" electrons; positive = wants to stay as metal |
 | **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
 | **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 

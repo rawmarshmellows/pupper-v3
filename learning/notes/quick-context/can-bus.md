@@ -297,15 +297,15 @@ CANH and CANL on a scope during one frame:
 
 - **[[micro-context/can-bus-termination]]** — The 120$\Omega$ resistors at each bus endpoint. Explains why unterminated buses fail at high speeds and how the Pupper's R1-R4 terminate its 4 CAN buses.
 
-- **[[micro-context/spi]]** — The protocol U1 uses to send joint targets to U5 on the Pupper. SPI is faster but point-to-point; CAN is slower but multi-drop and noise-immune — they complement each other.
+- **[[micro-context/spi]]** — The protocol U1 uses to send joint targets to U5 on the Pupper. [[micro-context/spi|SPI]] is faster but point-to-point; CAN is slower but multi-drop and noise-immune — they complement each other.
 
-- **[[micro-context/i2c]]** — Another 2-wire multi-device bus, but designed for short-range, low-speed sensor communication. Comparing I2C and CAN highlights why different communication needs call for different protocols.
+- **[[micro-context/i2c]]** — Another 2-wire multi-device bus, but designed for short-range, low-speed sensor communication. Comparing [[micro-context/i2c|I2C]] and CAN highlights why different communication needs call for different protocols.
 
 - **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing how CAN fits into the Pupper's control loop: Pi → U1 → SPI → U5 → CAN → 12 servos.
 
 - **[[quick-context/pupper-bom-control-board]]** — Every physical component in the CAN subsystem: the 4 MAX3051 transceivers (U3, U4, U6, U7), the 120$\Omega$ termination resistors (R1-R4), and the JST connectors (CN1, CN2) carrying CAN signals to the servo cables.
 
-- **[[quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
+- **[[quick-context/firmware]]** — The [[micro-context/stm32-microcontroller|STM32]] firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
 
 - **[[quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
 

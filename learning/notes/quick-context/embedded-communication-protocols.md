@@ -7,7 +7,7 @@ created: 2026-03-27
 
 > **Related:** [[quick-context/can-bus]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Embedded systems choose between a handful of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, and noise immunity. The Pupper v3 uses four of them simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
+> **TL;DR:** Embedded systems choose between a handful of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, and noise immunity. The Pupper v3 uses four of them simultaneously: [[micro-context/spi|SPI]] between MCUs, [[micro-context/i2c|I2C]] for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
 
 ## The Core Problem
 
@@ -135,7 +135,7 @@ SPI — Synchronous, star topology, full-duplex:
 
 ### CAN — The Noise-Immune Motor Bus
 
-[[quick-context/can-bus|CAN]] (Controller Area Network) uses 2-wire differential signaling (CANH/CANL) with hardware arbitration, CRC error detection, and automatic retransmission. See the dedicated [[quick-context/can-bus|CAN bus article]] for the deep dive.
+[[quick-context/can-bus|CAN]] ([[quick-context/can-bus|Controller Area Network]]) uses 2-wire differential signaling (CANH/CANL) with hardware arbitration, CRC error detection, and automatic retransmission. See the dedicated [[quick-context/can-bus|CAN bus article]] for the deep dive.
 
 ```
 CAN — Asynchronous*, differential, linear bus:
@@ -202,8 +202,8 @@ PUPPER v3 — FOUR PROTOCOLS WORKING TOGETHER:
 ```
 
 Each protocol is chosen for its sweet spot:
-- **SPI** between U1↔U5: needs speed (joint targets at 1 kHz), both chips are on the same PCB
-- **I2C** for IMU and ADC: low data volume, sensors come with I2C interfaces, only 2 wires
+- **SPI** between U1↔U5: needs speed (joint targets at 1 kHz), both chips are on the same [[quick-context/pcb-printed-circuit-board|PCB]]
+- **I2C** for IMU and [[micro-context/adc-analog-to-digital-converter|ADC]]: low data volume, sensors come with I2C interfaces, only 2 wires
 - **CAN** for servos: signals travel through leg cables where motors generate EMI, differential signaling is essential
 - **UART** for debug: simple printf-style logging to a terminal, no configuration needed
 
@@ -322,7 +322,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
 
-- **[[micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
+- **[[micro-context/i2s]]** — [[micro-context/i2s|I2S]] (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
 
 - **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential CAN bus voltages. Every CAN node needs one.
 
@@ -346,7 +346,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 **Q1:** Why does the Pupper use I2C instead of SPI for the BNO086 IMU, even though SPI is ~32x faster?
 <details>
 <summary>Answer</summary>
-The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kbps has 50 kB/s of bandwidth, using ~1.2% capacity. The "slow" protocol is more than sufficient. Meanwhile, I2C saves pins (2 shared wires vs. 4 + CS), shares the bus with the ADS1110 ADC, and the board already has pull-up resistors. Speed only matters when data volume demands it.
+The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kbps has 50 kB/s of bandwidth, using ~1.2% capacity. The "slow" protocol is more than sufficient. Meanwhile, I2C saves pins (2 shared wires vs. 4 + CS), shares the bus with the [[micro-context/ads1110-battery-adc|ADS1110]] ADC, and the board already has pull-up resistors. Speed only matters when data volume demands it.
 </details>
 
 **Q2:** A designer wants to connect 8 temperature sensors on a single PCB. Which protocol would you recommend and why?

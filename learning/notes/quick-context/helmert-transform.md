@@ -18,7 +18,7 @@ You have two sets of corresponding 3D points -- one in a local survey frame, one
 | Term | Definition |
 |------|------------|
 | **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[quick-context/similarity-transform|similarity transform]] in 3D |
-| **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
+| **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that [[quick-context/singular-value-decomposition|SVD]] decomposes to extract the rotation |
 | **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
 | **Scale factor** | The scalar $s$ that accounts for uniform size differences between coordinate frames -- computed from the ratio of output to input point spread |
 | **Procrustes analysis** | The statistical shape analysis framework that generalizes the Helmert Transform -- "Procrustes" finds optimal alignment by minimizing squared distances, and Helmert is its geodetic instantiation |

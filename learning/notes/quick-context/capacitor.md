@@ -303,7 +303,7 @@ WANT HIGHER VOLTAGE RATING?
 
 ### Capacitor Types and Their Tradeoffs
 
-| Type | Capacitance Range | Voltage Range | Speed (ESR) | Best Use Case |
+| Type | [[quick-context/capacitance|Capacitance]] Range | [[quick-context/voltage|Voltage]] Range | Speed (ESR) | Best Use Case |
 |------|------------------|---------------|-------------|---------------|
 | **Ceramic (MLCC)** | 1 pF - 100 uF | 6V - 100V | Excellent (<10 mOhm) | Decoupling, high-frequency filtering |
 | **Aluminum Electrolytic** | 1 uF - 10,000 uF | 6V - 450V | Poor (10-1000 mOhm) | Bulk energy storage, power supply filtering |
@@ -494,13 +494,13 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[quick-context/galvanic-cells-batteries]]** - Both store energy, but through fundamentally different mechanisms. Batteries: chemical energy, high density, slow. Capacitors: electric field energy, low density, instant response.
 
-- **[[quick-context/pcb-printed-circuit-board]]** - PCB design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
+- **[[quick-context/pcb-printed-circuit-board]]** - [[quick-context/pcb-printed-circuit-board|PCB]] design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
 
 - **[[quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental noise floor: V_noise = sqrt(kT/C). This limits how small DRAM storage capacitors can be, because thermal noise would overwhelm the stored signal.
 
 - **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- [[quick-context/resistor|Resistor]]-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 
