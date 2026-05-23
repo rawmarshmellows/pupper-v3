@@ -8,7 +8,7 @@ updated: 2026-02-21
 
 > **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
 
-> **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
+> **TL;DR:** A [[quick-context/pcb-printed-circuit-board|PCB]] is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
 > **Reference Board:** Pupper v3 Control Board Rev 3.5.2 (Gabrael & Nathan) — all examples in this document reference this 2-layer board.
 > ![Pupper PCB Gerber View](quick-context/Pupper%20PCB.png)
@@ -240,7 +240,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 |--------|---------|------|----------|
 | **HASL** | Board dipped in molten solder, leveled with hot air | Low | General purpose, through-hole |
 | **Lead-free HASL** | Same, with lead-free solder | Low | RoHS-compliant general purpose |
-| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, BGA, flat pads |
+| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, [[quick-context/bga-ball-grid-array|BGA]], flat pads |
 | **OSP** | Thin organic coating on copper | Lowest | Short shelf life, reflow-only |
 
 ---
@@ -325,7 +325,7 @@ For fine-pitch components (0.4-0.5mm pitch [[quick-context/common-ic-packages|QF
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Reading the Pupper Control Board Gerbers</summary>
+<summary><strong>Concrete Example</strong> — Reading the [[quick-context/pupper-bom-control-board|Pupper Control Board]] Gerbers</summary>
 
 The Pupper v3 Control Board (Rev 3.5.2) is a 2-layer board. Here's how to interpret what you see in a Gerber viewer with all layers overlaid:
 

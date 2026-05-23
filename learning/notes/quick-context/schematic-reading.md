@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Understanding a Circuit Without Building It
 
-You download a datasheet or open-source hardware project and need to understand how it works, modify it, or debug it. The information is in the schematic—a diagram where every component is represented by a standard symbol and connections are shown as lines. Unlike a physical PCB layout (which shows where components are), a schematic shows the logical connections. Learning to read schematics is like learning to read sheet music: the symbols are unfamiliar at first, but once you know them, you can "hear" the circuit without building it.
+You download a datasheet or open-source hardware project and need to understand how it works, modify it, or debug it. The information is in the schematic—a diagram where every component is represented by a standard symbol and connections are shown as lines. Unlike a physical [[quick-context/pcb-printed-circuit-board|PCB]] layout (which shows where components are), a schematic shows the logical connections. Learning to read schematics is like learning to read sheet music: the symbols are unfamiliar at first, but once you know them, you can "hear" the circuit without building it.
 
 ## 5 Essential Terms
 
@@ -186,7 +186,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[micro-context/mosfet|MOSFET]] and [[quick-context/bjt|BJT]] have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 

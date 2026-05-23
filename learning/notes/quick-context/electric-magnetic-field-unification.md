@@ -18,7 +18,7 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 | Term | Definition |
 |------|------------|
 | **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
-| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
+| **[[quick-context/voltage|Voltage]] (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
 | **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
@@ -347,8 +347,8 @@ WHICH IS "TRUE"?
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
-| Capacitor charging | electric field building between plates |
-| Inductor charging | magnetic field building in coil |
+| [[quick-context/capacitor|Capacitor]] charging | electric field building between plates |
+| [[quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
 | Radio transmission | E and B waves propagating through space |
 | Lightning | Charges discharge, massive current, huge magnetic field |

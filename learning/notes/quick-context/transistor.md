@@ -25,7 +25,7 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 | **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
 | **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
-| **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
+| **MOS [[quick-context/capacitor|Capacitor]]** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -495,7 +495,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through [[quick-context/bjt|BJT]], planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
 
 </details>
 
@@ -529,7 +529,7 @@ As the oxide becomes extremely thin (approaching atomic scales), **quantum tunne
 **Q5:** A colleague claims that transistors work by "current flowing through the gate to control the channel." Explain why this is fundamentally wrong and what actually happens.
 <details>
 <summary>Answer</summary>
-This is a common misconception. The gate draws **almost no current** because it's insulated by the oxide layer—it's one plate of a capacitor, not part of a current path. What actually happens: (1) Voltage applied to the gate stores charge on the gate electrode, (2) This charge creates an electric field that passes through the oxide, (3) The field attracts or repels electrons in the semiconductor below, (4) This creates or destroys a conductive channel between source and drain. The switching mechanism is electrostatic (charge inducing charge via a field), not current flow. This is why MOSFETs are called "field-effect" transistors and why they're so power-efficient—the control signal uses almost no power. See: How It Works (Key Insight, Oxide Layer as Capacitor)
+This is a common misconception. The gate draws **almost no current** because it's insulated by the oxide layer—it's one plate of a capacitor, not part of a current path. What actually happens: (1) [[quick-context/voltage|Voltage]] applied to the gate stores charge on the gate electrode, (2) This charge creates an electric field that passes through the oxide, (3) The field attracts or repels electrons in the semiconductor below, (4) This creates or destroys a conductive channel between source and drain. The switching mechanism is electrostatic (charge inducing charge via a field), not current flow. This is why MOSFETs are called "field-effect" transistors and why they're so power-efficient—the control signal uses almost no power. See: How It Works (Key Insight, Oxide Layer as Capacitor)
 </details>
 
 </details>

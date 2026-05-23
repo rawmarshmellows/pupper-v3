@@ -692,7 +692,7 @@ BUCK CONVERTER OPERATION
 **36%.** Duty cycle D = Vout/Vin = 1.8/5 = 0.36 = 36%. The switch is ON for 36% of each cycle, during which the inductor charges, and OFF for 64%, during which it discharges.
 </details>
 
-**Q4:** Why are inductors typically the largest component on a power supply PCB?
+**Q4:** Why are inductors typically the largest component on a power supply [[quick-context/pcb-printed-circuit-board|PCB]]?
 <details>
 <summary>Answer</summary>
 **Magnetic energy storage requires physical volume.** More inductance needs more turns of wire. Higher current needs a larger core to avoid saturation. Lower losses need thicker wire (lower DCR). All of these push toward larger size. Unlike capacitors (which can be made very thin with ceramic layers), inductors fundamentally need 3D volume for their magnetic field.

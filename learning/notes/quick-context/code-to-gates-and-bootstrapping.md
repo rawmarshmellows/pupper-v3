@@ -15,7 +15,7 @@ You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|
 
 | Term | Definition |
 |------|------------|
-| **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
+| **Compiler** | A program that translates high-level source code (C, [[quick-context/rust|Rust]]) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
 | **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
 | **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction tells the CPU to do one thing: load data, store data, jump to an address, or run an ALU operation. |
 | **Logic Gate** | A circuit built from [[quick-context/transistor|transistors]] that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
@@ -380,7 +380,7 @@ POWER-ON SEQUENCE
 **Q5:** The Reset Vector is hardwired to point to a ROM address. But ROM is read-only — so how do modern computers update their firmware (BIOS/UEFI)?
 <details>
 <summary>Answer</summary>
-**Modern "ROM" isn't truly read-only — it's flash memory (EEPROM)** that can be electrically erased and rewritten, just not during normal operation. Firmware updates write new code to this flash memory, replacing the old boot instructions. The Reset Vector address itself never changes (it's hardwired in the CPU), but the *contents* at that address can be updated. This is why firmware updates carry risk — if the update fails mid-write, the boot instructions are corrupted and the CPU will try to execute garbage at the Reset Vector address, potentially bricking the device.
+**Modern "ROM" isn't truly read-only — it's flash memory (EEPROM)** that can be electrically erased and rewritten, just not during normal operation. [[quick-context/firmware|Firmware]] updates write new code to this flash memory, replacing the old boot instructions. The Reset Vector address itself never changes (it's hardwired in the CPU), but the *contents* at that address can be updated. This is why firmware updates carry risk — if the update fails mid-write, the boot instructions are corrupted and the CPU will try to execute garbage at the Reset Vector address, potentially bricking the device.
 </details>
 
 </details>

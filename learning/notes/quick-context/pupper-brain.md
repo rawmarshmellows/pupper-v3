@@ -5,7 +5,7 @@ created: 2026-01-27
 
 > **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
 
-> **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
+> **TL;DR:** The Pupper control board is a custom [[quick-context/pcb-printed-circuit-board|PCB]] that combines dual [[micro-context/stm32-microcontroller|STM32]] microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
 ## The Core Problem
 
@@ -26,17 +26,17 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The BNO086 IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C to the main STM32 (U1).
+1. **Orientation sensing**: The BNO086 IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over [[micro-context/i2c|I2C]] to the main STM32 (U1).
 
 2. **State estimation**: U1 combines IMU data with motor feedback to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
 
 3. **Control calculation**: U1 runs a balance controller that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: U1 sends joint targets to U5 (motor MCU) over SPI. U5 packages these into CAN messages.
+4. **Command transmission**: U1 sends joint targets to U5 (motor MCU) over [[micro-context/spi|SPI]]. U5 packages these into CAN messages.
 
 5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
-6. **Audio feedback**: If enabled, U1 sends audio samples over I2S to the MAX98357A amplifier for sound output (beeps, status indicators).
+6. **Audio feedback**: If enabled, U1 sends audio samples over [[micro-context/i2s|I2S]] to the MAX98357A amplifier for sound output (beeps, status indicators).
 
 ```
 1ms CONTROL LOOP TIMING:
@@ -151,7 +151,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/can-bus-transceiver]] — How differential signaling enables reliable motor communication
 - [[micro-context/buck-converter]] — Switching power supply converting battery to 5V
 - [[small-context/imu-robot-balance-sensing]] — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
-- [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
+- [[micro-context/adc-analog-to-digital-converter]] — 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
 - [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards

@@ -6,7 +6,7 @@ created: 2026-01-23
 
 > **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
+> **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, [[quick-context/pcb-printed-circuit-board|PCB]]) handling different concerns like computation, signal redistribution, and power delivery.
 
 # PCB, Chip, Transistor, and Substrate Packaging Hierarchy
 
@@ -29,7 +29,7 @@ Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor 
 
 The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines can handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), metal interconnect layers within the die are branches gathering signals, [[quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
 
-At the transistor level, signals exist as voltage changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's BGA balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
+At the transistor level, signals exist as voltage changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's [[quick-context/bga-ball-grid-array|BGA]] balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
 
 ```
 THE FAN-OUT PRINCIPLE: How Connections Scale Up

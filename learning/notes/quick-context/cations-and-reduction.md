@@ -31,7 +31,7 @@ BUILDING BLOCKS - What you need to know before understanding reduction:
 | **Cation** | A positively charged ion—an atom that has *lost* one or more electrons. Examples: H^+ (hydrogen lost 1 electron), Cu^(2+) (copper lost 2 electrons), Na^+ (sodium lost 1 electron). The "+" indicates positive charge. Memory trick: "Cation" has a "t" that looks like a "+" sign. |
 | **Electron** | A subatomic particle with negative charge (written as e^- or just e). Electrons are what flow through wires as electricity. Gaining electrons makes something more negative; losing them makes it more positive. |
 | **Reduction** | The process of *gaining* electrons. When a cation is "reduced," it receives electrons and becomes less positive (or neutral). Remember "OILRIG": **R**eduction **I**s **G**ain of electrons. |
-| **Cathode** | The negative electrode in an electrolysis setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
+| **[[micro-context/cathode|Cathode]]** | The negative electrode in an electrolysis setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
 | **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the anode is the positive one. |
 
 <details>

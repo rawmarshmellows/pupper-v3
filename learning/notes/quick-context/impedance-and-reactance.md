@@ -122,7 +122,7 @@ FREQUENCY DEPENDENCE: THE KEY INSIGHT
 
 ## Impedance Matching
 
-When a signal travels through a cable or PCB trace, reflections occur at any point where impedance changes. Maximizing power transfer or minimizing reflections requires matching impedances.
+When a signal travels through a cable or [[quick-context/pcb-printed-circuit-board|PCB]] trace, reflections occur at any point where impedance changes. Maximizing power transfer or minimizing reflections requires matching impedances.
 
 ```
 WHY 50Ω AND 75Ω?

@@ -7,7 +7,7 @@ created: 2026-03-28
 
 > **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
 
-> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
+> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: [[quick-context/pcb-printed-circuit-board|PCB]] traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
 ## The Core Problem
 
@@ -191,7 +191,7 @@ COMBINING CAPACITANCES
 
 Every device connected to a shared signal line adds its input capacitance in parallel. This is the direct consequence of the parallel rule above: $C_{\text{total}} = C_1 + C_2 + C_3 + \ldots$. Add enough devices and the total bus capacitance becomes so large that the signal can't transition fast enough to be read correctly.
 
-The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
+The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The [[micro-context/i2c|I2C]] spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
 
 ```
 WHY DAISY CHAINS HIT A WALL
@@ -322,7 +322,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -412,7 +412,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 
 - **[[quick-context/pcb-printed-circuit-board]]** -- PCB trace geometry creates parasitic capacitance that sets characteristic impedance, causes crosstalk between traces, and affects signal integrity at high frequencies.
 
-- **[[quick-context/voltage]]** -- Voltage is what drives charge onto capacitance ($Q = CV$). The energy stored in any capacitance is $E = \frac{1}{2}CV^2$ -- voltage squared makes this highly sensitive to supply voltage.
+- **[[quick-context/voltage]]** -- [[quick-context/voltage|Voltage]] is what drives charge onto capacitance ($Q = CV$). The energy stored in any capacitance is $E = \frac{1}{2}CV^2$ -- voltage squared makes this highly sensitive to supply voltage.
 
 - **[[quick-context/power-watts-joules]]** -- Dynamic power $P = CV^2f$ directly ties capacitance to energy consumption. Reducing capacitance is one of the few ways to reduce power without sacrificing speed or voltage.
 
@@ -450,7 +450,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Q5:** As transistors shrink to 3 nm and below, wire (interconnect) capacitance increasingly dominates over gate capacitance. Why doesn't shrinking the transistor also shrink the wire capacitance proportionally?
 <details>
 <summary>Answer</summary>
-**Wires don't scale the same way as transistors.** Transistor gate area shrinks with the square of the feature size, directly reducing gate capacitance. But interconnect wires must still span the full chip to connect distant blocks -- you can make them thinner, but then resistance increases (more delay, more [[quick-context/electromigration|electromigration]] risk). And thinner wires packed closer together actually *increase* capacitance between neighbors ($C = \varepsilon A / d$ with smaller $d$). The semiconductor industry now spends more effort on "back-end" interconnect optimization (low-k dielectrics, air gaps between wires) than on transistor improvements.
+**Wires don't scale the same way as transistors.** [[quick-context/transistor|Transistor]] gate area shrinks with the square of the feature size, directly reducing gate capacitance. But interconnect wires must still span the full chip to connect distant blocks -- you can make them thinner, but then resistance increases (more delay, more [[quick-context/electromigration|electromigration]] risk). And thinner wires packed closer together actually *increase* capacitance between neighbors ($C = \varepsilon A / d$ with smaller $d$). The semiconductor industry now spends more effort on "back-end" interconnect optimization (low-k dielectrics, air gaps between wires) than on transistor improvements.
 </details>
 
 </details>

@@ -121,7 +121,7 @@ SUBSTRATE MATERIALS COMPARISON
 3. **Signal travels through vias** (tiny vertical holes filled with metal) to inner layers
 4. **Redistribution layers** route the signal horizontally, spreading connections outward
 5. **More vias** bring the signal down to the bottom layer
-6. **Signal reaches a BGA ball pad** which holds a solder ball
+6. **Signal reaches a [[quick-context/bga-ball-grid-array|BGA]] ball pad** which holds a solder ball
 7. **Solder ball melts** and bonds to the circuit board when the package is assembled
 
 ### The Fan-Out Mechanism: How Redistribution Actually Works

@@ -201,7 +201,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **3.75 hours.** Time = Energy / Power = 15 Wh / 4W = 3.75 hours. In practice it varies because power consumption fluctuates (screen brightness, radio activity, CPU load).
 </details>
 
-**Q4:** A PCB trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
+**Q4:** A [[quick-context/pcb-printed-circuit-board|PCB]] trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
 <details>
 <summary>Answer</summary>
 **0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider (lower resistance) or use multiple layers.

@@ -19,7 +19,7 @@ Before the 1800s, electricity and magnetism seemed unrelated. Static electricity
 |------|------------|
 | **Magnetic Field (B)** | A vector field created by moving charges (current) or changing electric fields. Measured in tesla (T). Earth's field: ~50 μT. Strong magnet: 1 T. MRI machine: 1.5-3 T. |
 | **Electric Field (E)** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
-| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
+| **[[micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
 | **Lorentz Force** | The force on a moving charge in electromagnetic fields: F = q(E + v × B). Electric fields push charges; magnetic fields deflect moving charges perpendicular to their velocity. This is how motors and CRT screens work. |
 | **Electromagnetic Wave** | Self-propagating oscillations of electric and magnetic fields, traveling at the speed of light (c = 3×10⁸ m/s in vacuum). Radio, microwaves, infrared, visible light, UV, X-rays, and gamma rays are all electromagnetic waves at different frequencies. |
 
@@ -334,7 +334,7 @@ GENERATOR OPERATION — Step by Step
     You can't get electrical energy without putting in mechanical work.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking generators "create" energy from magnets. They don't. The magnetic field is just a medium for transferring energy from mechanical motion to electrical current. When you spin the generator faster, you don't "get more energy from the magnet"—you're putting in more mechanical work, which becomes electrical energy. Lenz's Law guarantees this: the generator pushes back against you exactly as hard as the electrical load demands. A generator with nothing connected spins freely; connect a heavy load and it becomes hard to turn. The energy always comes from whatever is spinning the shaft.
+**The one thing most outsiders get wrong about this is...** thinking generators "create" energy from magnets. They don't. The magnetic field is just a medium for transferring energy from mechanical motion to electrical current. When you spin the generator faster, you don't "get more energy from the magnet"—you're putting in more mechanical work, which becomes electrical energy. [[quick-context/lenzs-law|Lenz's Law]] guarantees this: the generator pushes back against you exactly as hard as the electrical load demands. A generator with nothing connected spins freely; connect a heavy load and it becomes hard to turn. The energy always comes from whatever is spinning the shaft.
 
 </details>
 

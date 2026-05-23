@@ -106,7 +106,7 @@ Covariance is based on squared deviations, making it highly sensitive to outlier
 
 ### Cross-covariance: no Bessel's correction needed?
 
-In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the SVD's $U$ or $V$ matrices.
+In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the [[quick-context/singular-value-decomposition|SVD]]'s $U$ or $V$ matrices.
 
 </details>
 

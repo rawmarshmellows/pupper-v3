@@ -28,7 +28,7 @@ Why does this matter? Modern transistors operate at voltages below 1V with noise
 <details>
 <summary><strong>How It Works</strong></summary>
 
-From Random Motion to Voltage Fluctuations
+From Random Motion to [[quick-context/voltage|Voltage]] Fluctuations
 
 ### The Microscopic Picture
 

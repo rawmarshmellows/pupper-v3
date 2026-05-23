@@ -7,7 +7,7 @@ created: 2026-02-25
 
 > **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
 
-> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
+> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual [[micro-context/stm32-microcontroller|STM32]] microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
@@ -18,7 +18,7 @@ A robot control board BOM (Bill of Materials) is intimidating — dozens of cryp
 | Term | Definition |
 |------|------------|
 | **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and [[quick-context/pcb-printed-circuit-board|PCB]]: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
 | **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
 | **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
@@ -83,7 +83,7 @@ FUNCTIONAL BLOCK DIAGRAM — Pupper v3 Control Board Rev 3.5
 **[[micro-context/stm32-microcontroller|STM32F446RET6]]** — ARM Cortex-M4 @ 180 MHz, 512 KB flash, 128 KB RAM, LQFP-64 package (10 × 10 mm, 0.5 mm pitch).
 
 Two are used with distinct roles:
-- **U1 (Main MCU):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC, communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over I2S.
+- **U1 (Main MCU):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] [[micro-context/adc-analog-to-digital-converter|ADC]], communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over [[micro-context/i2s|I2S]].
 - **U5 (Motor MCU):** Dedicated to the 1 kHz motor control loop — receives joint targets from U1 over [[micro-context/spi|SPI]], sends/receives CAN messages to all 12 servos via the 4 MAX3051 transceivers.
 
 Each MCU requires:
@@ -101,7 +101,7 @@ The 120Ω resistors (R1-R4) are CAN bus termination [[quick-context/resistor|res
 
 ### Category 3: Sensing — IMU and ADC (U15, U16)
 
-**BNO086** (U15) — 9-axis IMU (accelerometer + gyroscope + magnetometer) with onboard Cortex-M0+ processor running sensor fusion. Outputs quaternions over I2C/SPI. LGA-28 package (5.2 × 3.8 mm). This tells the robot which way is up — essential for balance control.
+**BNO086** (U15) — 9-axis IMU (accelerometer + gyroscope + magnetometer) with onboard Cortex-M0+ processor running sensor fusion. Outputs quaternions over [[micro-context/i2c|I2C]]/[[micro-context/spi|SPI]]. LGA-28 package (5.2 × 3.8 mm). This tells the robot which way is up — essential for balance control.
 
 **ADS1110A0IDBVR** (U16) — 16-bit delta-sigma ADC with I2C interface, SOT-23-6 package. Monitors battery voltage through a [[quick-context/resistor|voltage divider]] so the system can warn of low battery and prevent over-discharge.
 

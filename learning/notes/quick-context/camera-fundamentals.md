@@ -535,7 +535,7 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[micro-context/homogeneous-transformation-matrix]]** — The extrinsic matrix $[R|\mathbf{t}]$ is a homogeneous transformation — the same $4 \times 4$ matrix used in [[quick-context/pupper-lab2-forward-kinematics|robot kinematics]]. Camera pose estimation and robot forward kinematics use identical math.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip ADC. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
+- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip [[micro-context/adc-analog-to-digital-converter|ADC]]. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
 
 - **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 

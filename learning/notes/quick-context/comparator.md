@@ -284,7 +284,7 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 
 The other key tension is **dedicated comparator vs. op-amp used as a comparator**:
 
-| Factor | Dedicated Comparator | Op-Amp as Comparator |
+| Factor | Dedicated Comparator | [[quick-context/op-amp|Op-Amp]] as Comparator |
 |--------|---------------------|---------------------|
 | Speed | 1-500 ns | 1-50 $\mu$s (compensation cap slows it) |
 | Output | Logic-compatible or open-drain | Analog (may not reach rails) |
@@ -393,11 +393,11 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
-- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
+- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the [[micro-context/pwm-pulse-width-modulation|PWM]] pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
-- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit ADC---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
+- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]]---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
 
 - **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] dividers create both the reference voltage and the scaled feedback signal. Divider accuracy directly determines threshold accuracy.
 

@@ -18,7 +18,7 @@ Inside every computer chip is a tiny silicon die with connection points only abo
 | Term | Plain English Definition |
 |------|--------------------------|
 | **Bond pad** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
-| **Substrate** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
+| **[[quick-context/substrate-ic-packaging|Substrate]]** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
 | **Ultrasonic welding** | Using high-frequency vibrations (like a tiny tuning fork) to melt/fuse the wire to the metal pad without traditional heat |
 | **Loop height** | How tall the wire arc is above the chip; taller loops are more forgiving but add electrical interference |
 | **Ball bond / Wedge bond** | The two ends of a wire bond—the "ball" is a melted sphere at the start, the "wedge" is a flat pressed connection at the end |
@@ -317,7 +317,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
 
-- **Flip-Chip (C4) Bonding** — The main alternative to wire bonding; uses solder bumps under the chip for higher density and performance.
+- **[[quick-context/flip-chip|Flip-Chip]] (C4) Bonding** — The main alternative to wire bonding; uses solder bumps under the chip for higher density and performance.
 
 - **Die Attach** — How the silicon chip is physically glued to the substrate before wire bonding; affects thermal performance.
 

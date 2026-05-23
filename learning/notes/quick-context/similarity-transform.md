@@ -133,7 +133,7 @@ Umeyama's algorithm (1991) solves this in closed form:
 6. **Scale:** $s = \frac{\text{tr}(\Sigma S)}{\sigma_p^2}$, where $\sigma_p^2 = \frac{1}{m}\sum \|\mathbf{p}_i - \bar{\mathbf{p}}\|^2$
 7. **Translation:** $\mathbf{t} = \bar{\mathbf{q}} - sR\bar{\mathbf{p}}$
 
-The reflection-correction step (step 4) is Umeyama's key contribution -- earlier SVD-based methods (Arun et al., 1987) could produce improper rotations (reflections) when point data was noisy or nearly coplanar.
+The reflection-correction step (step 4) is Umeyama's key contribution -- earlier [[quick-context/singular-value-decomposition|SVD]]-based methods (Arun et al., 1987) could produce improper rotations (reflections) when point data was noisy or nearly coplanar.
 
 </details>
 

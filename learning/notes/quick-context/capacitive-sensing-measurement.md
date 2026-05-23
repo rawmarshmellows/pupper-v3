@@ -7,7 +7,7 @@ created: 2026-03-28
 
 > **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[micro-context/adc-analog-to-digital-converter]]
 
-> **TL;DR:** Capacitance can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
+> **TL;DR:** [[quick-context/capacitance|Capacitance]] can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
 
 ## The Core Problem
 
@@ -296,7 +296,7 @@ The dominant trend in modern sensor design is sigma-delta CDC integration: put t
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- From polymer film to "%RH" over I2C</summary>
+<summary><strong>Concrete Example</strong> -- From polymer film to "%RH" over [[micro-context/i2c|I2C]]</summary>
 
 The [[small-context/humidity-temperature-sensor|SHT40 humidity sensor]] demonstrates the full capacitive sensing chain. Here's every step from physical stimulus to digital readout:
 
@@ -349,7 +349,7 @@ The same sigma-delta CDC architecture appears in MEMS accelerometers, but measur
 
 - **[[quick-context/capacitance]]** -- The physics of $C = \varepsilon A / d$, parasitic capacitance, and why capacitance shows up everywhere in electronics. This article covers how capacitance is *created*; the current article covers how it's *measured*.
 
-- **[[quick-context/capacitor]]** -- Capacitor types, charge/discharge curves, and RC time constants. The RC charge curve ($V(t) = V_s(1 - e^{-t/RC})$) is the mathematical basis of RC timing measurement.
+- **[[quick-context/capacitor]]** -- [[quick-context/capacitor|Capacitor]] types, charge/discharge curves, and RC time constants. The RC charge curve ($V(t) = V_s(1 - e^{-t/RC})$) is the mathematical basis of RC timing measurement.
 
 - **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An RC oscillator is essentially a capacitive sensor that measures its own capacitance continuously.
 
@@ -372,7 +372,7 @@ The same sigma-delta CDC architecture appears in MEMS accelerometers, but measur
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Why can't you measure capacitance with a DC voltage and an ADC?
+**Q1:** Why can't you measure capacitance with a DC voltage and an [[micro-context/adc-analog-to-digital-converter|ADC]]?
 <details>
 <summary>Answer</summary>
 A capacitor at steady-state DC is an open circuit -- no current flows, so there's nothing for the ADC to measure. Current only flows when voltage is *changing*: $I = C \cdot dV/dt$. At DC, $dV/dt = 0$, so $I = 0$ regardless of the capacitance value. You need AC excitation (charge/discharge cycles, switched capacitors, or sine wave drive) to create measurable current. See: How It Works -- "Why DC Doesn't Work."
