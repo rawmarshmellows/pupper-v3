@@ -13,6 +13,7 @@ The user is explaining a concept in their own words. Your job is to:
 2. Fact-check every claim against web sources AND existing context files
 3. Fix inaccuracies directly in the text, annotating what changed
 4. Link terms to existing `learning/notes/micro-context/` and `learning/notes/quick-context/` files
+5. Produce a digestible summary (clean bullet-point reference + corrections-at-a-glance table) so the user can quickly re-absorb the right model
 
 The goal is a **verified, linked version of the human's own understanding** — not a rewrite. Preserve their voice and framing. Only change what's factually wrong.
 
@@ -137,7 +138,51 @@ For each context file linked from the human-context file, consider whether a bac
 
 ---
 
-## Step 5: Summary Footer
+## Step 5: Digestible Summary
+
+After the verified prose (which contains inline correction annotations and is dense to read), add a **digestible summary** that lets the user quickly re-absorb the corrected mental model without parsing the inline `[~~...~~]` markup.
+
+This summary has two parts:
+
+### 5a: Quick Reference
+
+A clean bullet-point version of the verified concept — corrections silently applied, no annotations, no blockquote markers. Each bullet is one atomic fact or step. Aim for 5–10 bullets that together cover the same ground as the verified prose.
+
+```markdown
+## Quick Reference
+
+- [Atomic, corrected fact 1]
+- [Atomic, corrected fact 2]
+- ...
+```
+
+Rules:
+- **No correction markup** in this section — it's the clean, "as it should be understood" version
+- **Match the user's mental order** — don't reorganize unless their order was confusing
+- **Stay concrete** — keep specific values, names, and chip/term references the user used (corrected if needed)
+- Inline links are still allowed (and encouraged) where they help
+
+### 5b: Corrections at a Glance
+
+A table summarizing every correction so the user can scan their misconceptions at speed:
+
+```markdown
+## Corrections at a Glance
+
+| What I said | What's actually correct | Why |
+|---|---|---|
+| [Original claim, brief] | [Corrected claim, brief] | [One-clause reason] |
+| ... | ... | ... |
+```
+
+Rules:
+- One row per inline correction in the verified prose
+- Keep each cell short — long explanations stay in the inline annotation
+- If there are zero corrections, omit the table entirely and add a single line: `**No corrections needed — verified as written.**`
+
+---
+
+## Step 6: Summary Footer
 
 At the bottom of the file, add a verification summary:
 
@@ -174,6 +219,22 @@ status: verified
 
 ---
 
+## Quick Reference
+
+- A [[learning/notes/quick-context/capacitor|capacitor]] is two conductive plates separated by an insulator (the [[learning/notes/micro-context/dielectric|dielectric]])
+- It stores charge on the plates when a voltage is applied across them
+- In a circuit it charges and discharges **exponentially**
+- The [[learning/notes/micro-context/rc-time-constant|time constant]] is $\tau = RC$
+- Energy stored is $E = \tfrac{1}{2}CV^2$ — the $\tfrac{1}{2}$ comes from integrating $V$ as the cap charges
+
+## Corrections at a Glance
+
+| What I said | What's actually correct | Why |
+|---|---|---|
+| $E = CV$ | $E = \tfrac{1}{2}CV^2$ | Voltage rises linearly as the cap charges, so energy is the integral, not the product |
+
+---
+
 **Verification:** 4 claims checked. 3 correct, 1 corrected. Sources: learning/notes/quick-context/capacitor.md, Wikipedia (capacitor energy formula)
 ```
 
@@ -186,3 +247,12 @@ status: verified
 - **Annotations should teach.** Each correction annotation should help the user understand *why* they were wrong, not just *that* they were wrong.
 - **Link generously but accurately.** The linking transforms a personal note into a connected node in the knowledge graph.
 - **The blockquoted original is sacred.** Never modify the text inside the `> **My understanding:**` blockquote.
+
+---
+
+## Post-Processing (REQUIRED)
+
+After creating or updating the human-context file, you MUST:
+
+1. **Fact-check:** Run `/fact-check <output-file-path>` to verify all factual claims
+2. **Update embeddings (manual):** Remind the user to run `python tools/embed.py sync` to update the embedding cache for semantic linking

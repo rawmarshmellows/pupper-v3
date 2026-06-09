@@ -5,7 +5,11 @@
       "Skill(fact-check)",
       "Skill(ascii-fixer)",
       "Bash(git lfs:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(find /Users/kevinlu/Documents/Learning/pupper-v3 -type f -name \"*.py\" ! -path \"*/node_modules/*\" ! -path \"*/.git/*\" -exec grep -l \"GPIO\\\\|SPI\\\\|I2C\\\\|UART\\\\|CAN\\\\|pin\\\\|Pin\" {} \\\\;)",
+      "Bash(find:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(open:*)"
     ]
   },
   "hooks": {

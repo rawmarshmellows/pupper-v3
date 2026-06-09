@@ -31,6 +31,24 @@ The [[learning/notes/quick-context/tensile-strength-materials|tensile strength]]
 
 ## Instructions
 
+### Semantic search path (preferred)
+
+If `learning/.embeddings/embeddings.db` exists:
+
+1. Run `python tools/link_semantic.py propose` to get semantic link proposals (JSON)
+2. Parse the JSON output — each file entry has `related` (docs by TLDR similarity) and `inline_links` (terms by embedding match)
+3. **Apply all link changes directly** to each file (do NOT wait for approval):
+   - Add/update `> **Related:**` headers from `related` array (top 5)
+   - Add inline wiki links from `inline_links` array (first occurrence only)
+4. **If any files were modified**, create a new branch named `auto/link-notes-YYYY-MM-DD` and open a pull request with:
+   - Title: "Auto link-notes: update Obsidian wiki links"
+   - Body listing which files were modified and a summary of links added
+5. **If no files needed changes**, do nothing
+
+### Fallback path (no embeddings)
+
+If the embeddings database does not exist, fall back to string matching:
+
 1. **Read all `.md` files** in `learning/notes/micro-context` and `learning/notes/quick-context` folders
 2. **Build a term map** from each file's:
    - Frontmatter `topic` field

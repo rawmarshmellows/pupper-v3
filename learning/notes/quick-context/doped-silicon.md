@@ -370,6 +370,8 @@ Step 5: Repeat many times with different masks and dopants
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor Hierarchy]]** — Doped silicon is what makes transistors possible; this document explains how transistors fit into the larger hierarchy of chips, packages, and circuit boards.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication (Photolithography)]]** — The process of patterning and doping silicon to create billions of transistors; explains how light is used to "print" circuit patterns at nanometer scales.

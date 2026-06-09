@@ -330,6 +330,8 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]** — Explains the critical difference between series circuits (voltages add) and parallel circuits (currents add). All transistors in a chip share the same voltage.
 
 - **[[quick-context/electrolysis]]** — The application that uses current to drive non-spontaneous chemical reactions. Understanding current is essential for Faraday's laws and calculating production rates.

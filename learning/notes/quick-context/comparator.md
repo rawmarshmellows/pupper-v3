@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
@@ -69,6 +69,56 @@ TRANSFER CHARACTERISTIC (Comparator vs Op-Amp)
     Op-amp + feedback: smooth, proportional    Comparator: binary snap
     output that tracks input linearly          HIGH or LOW, nothing between
 ```
+
+### The Two Inputs: Non-Inverting (+) and Inverting (−)
+
+Every comparator has exactly two analog inputs, and their names describe how each one steers the output. The **non-inverting input** `V(+)` pushes the output the *same* direction it moves; the **inverting input** `V(−)` pushes it the *opposite* direction.
+
+```
+THE TWO INPUTS AND HOW THEY STEER THE OUTPUT
+==============================================================================
+
+    NON-INVERTING INPUT   V(+) ───┤+  ╲
+                                  │    ╲
+                                  │     ╲──── Vout
+                                  │     ╱
+    INVERTING INPUT       V(-) ───┤-  ╱
+                                  │  ╱
+
+    Decision rule:   Vout = HIGH   when  V(+) > V(-)
+                     Vout = LOW    when  V(+) < V(-)
+
+    NON-INVERTING (+):  output moves the SAME way as this input.
+                        Push V(+) up → output heads toward HIGH.
+
+    INVERTING (-):      output moves the OPPOSITE way.
+                        Push V(-) up → output heads toward LOW.
+
+    Only the SIGN of V(+) - V(-) matters, never the size. 1 mV past
+    the crossover gives the same full HIGH/LOW as 1 V past it.
+```
+
+Which pin gets the **signal** and which gets the **reference** is a free design choice---and swapping them flips the output logic. Put the reference on the inverting input and the comparator answers "is the signal *above* the reference?" (output HIGH = yes). Put the reference on the non-inverting input instead and you get the inverted question: "is the signal *below* the reference?"
+
+**Real pinout --- TI LMC7211-N** (a tiny CMOS rail-to-rail comparator). The two inputs carry exactly these names on the physical package:
+
+```
+LMC7211-N PIN ASSIGNMENTS (same die, two packages)
+==============================================================================
+
+    8-Pin SOIC-8                       5-Pin SOT23-5
+    ─────────────                      ──────────────
+    Pin 1   NC                         Pin 1   OUTPUT
+    Pin 2   INVERTING INPUT (-)        Pin 2   V+   (positive supply)
+    Pin 3   NON-INVERTING INPUT (+)    Pin 3   NON-INVERTING INPUT (+)
+    Pin 4   V-   (negative supply)     Pin 4   INVERTING INPUT (-)
+    Pin 5   NC                         Pin 5   V-   (negative supply)
+    Pin 6   OUTPUT
+    Pin 7   V+   (positive supply)
+    Pin 8   NC
+```
+
+See [[quick-context/comparator-specification]] for how to read this part's full datasheet---supply range, input offset, propagation delay, and the rest.
 
 ### How It's Built Inside: The Transistor-Level Circuit
 
@@ -389,6 +439,10 @@ CURRENT CONSUMPTION:
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
+- **[[quick-context/comparator-specification]]** --- How to read a real comparator datasheet (the TI LMC7211-N): what each spec section (Absolute Maximum Ratings, Operating Ratings, DC/AC Electrical Characteristics, Typical Characteristics) actually means, and which numbers are guaranteed versus typical.
+
 - **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
 - **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
@@ -402,6 +456,10 @@ CURRENT CONSUMPTION:
 - **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] dividers create both the reference voltage and the scaled feedback signal. Divider accuracy directly determines threshold accuracy.
 
 - **[[micro-context/adc-analog-to-digital-converter]]** --- ADCs are built from comparators. A successive-approximation ADC uses one comparator with a DAC; a flash ADC uses many comparators in parallel.
+
+- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down resistors define the "rest" voltage that comparator sees when nothing else is driving the pin.
+
+- **[[learning/notes/quick-context/bare-minimal-data-storage-circuit]]** --- Where the comparator earns its place as a 1-bit ADC inside a minimal data-storage circuit: it converts the analog input voltage into the clean `in_bit` signal that a [[learning/notes/quick-context/d-flip-flop|register]] can capture on each [[learning/notes/micro-context/clock-edges|clock edge]].
 
 </details>
 

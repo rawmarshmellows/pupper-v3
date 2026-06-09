@@ -184,6 +184,7 @@ Concepts that deepen understanding of polymer chemical bonds:
 - **[[quick-context/pi-pi-stacking-aromatic-interactions]]** — The aromatic ring interactions that give ABS and PETG their elevated Tg and heat resistance.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — How chain packing affects shrinkage, transparency, and thermal behavior; explains why PETG's glycol modification matters.
 - **[[small-context/glass-vs-plastic-uv-degradation]]** — What happens when UV breaks the same C–C backbone bonds that hold polymer chains together: free-radical chain reaction with O₂ causes yellowing, embrittlement, and fragmentation.
+- **[[quick-context/bambu-p2s-print-quality]]** — Layer adhesion in 3D printing is exactly chain interdiffusion across layer boundaries via these same intermolecular forces; viscoelastic melt behavior driven by chain entanglement is why pressure advance (K-value) calibration is needed per filament.
 
 </details>
 

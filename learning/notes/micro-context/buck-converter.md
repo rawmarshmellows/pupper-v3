@@ -21,6 +21,7 @@ Make the ASCII diagrams clearer, in particular on the relationship between [[qui
 ---
 
 ## Circuit Topology
+![Buck Converter topology](buck-converter.png)
 
 ```
              GATE ◄── PWM controller
@@ -187,3 +188,49 @@ Example: 12V input, want 5V output → $D = 5/12 = 0.417$ (41.7% duty cycle). At
 ---
 
 **Key insight:** The MOSFET's drain connects to VIN and its source connects to the "switch node," where it meets the diode's cathode and the inductor input. This three-way junction is the heart of the converter — it swings between VIN (switch on) and below GND (switch off, diode conducts). The inductor stores energy magnetically when the switch is ON and releases it when OFF, achieving 85–95% efficiency.
+
+---
+
+## Real Example — Pupper v3 Control Board
+
+The Pupper v3 Control Board Rev 3.5 uses a textbook asynchronous buck. Open [pupper-control-board-interactive.html](pupper-control-board-interactive.html) and hover U8 / D1 / L1 / R5 / R6 to see wiring in-browser.
+
+| Role in topology | Part on board | Value / designator |
+|---|---|---|
+| Buck IC (integrated high-side MOSFET + PWM controller) | TPS54561DPRR | **U8**, WSON-10 |
+| Inductor (energy storage) | Sunlord MWSA1004S-100MT | **L1**, 10µH |
+| Catch / freewheeling diode | SS56 Schottky | **D1**, SMA, 5A/60V, Vf≈0.5V |
+| Output caps (ripple filter) | 2× 47µF X5R | **C18, C19**, 0805 |
+| Feedback divider top | 60.4kΩ (E96) | **R5** |
+| Feedback divider bottom | 11.5kΩ (E96) | **R6** |
+| Battery input connector | 2-pin PH | **CN21** (7–24V VBAT) |
+
+**Wiring (correct order — the board uses this exact topology):**
+
+```
+   CN21 (VBAT) ───► U8 VIN                              5V OUTPUT
+                    │                                     ▲
+                    │ (integrated MOSFET + PWM controller)│
+                    ▼                                     │
+                  U8 SW ───────┬──────► L1 (10µH) ────────┼────── to logic rail
+                               │                          │
+                          D1 cathode                  C18 ╪ C19 (47µF × 2)
+                          ╲│                              │
+                           │ D1 (SS56)                    ▼
+                          ╱│                             GND
+                          D1 anode
+                               │
+                              GND
+
+   Feedback:  5V rail ── R5 (60.4k) ── U8 FB pin ── R6 (11.5k) ── GND
+```
+
+**D1 is NOT a series reverse-polarity diode.** CN21 connects directly to U8's VIN. D1 sits between U8's SW node and GND as the catch diode — it conducts only during the MOSFET off-phase (Phase 2 above), when L1's collapsing field pulls SW below GND.
+
+**Output voltage math:** U8's internal $V_{REF} = 0.8\text{V}$. The feedback pin is regulated to $V_{REF}$, so:
+
+$$V_{OUT} = V_{REF} \times \left(1 + \frac{R5}{R6}\right) = 0.8 \times \left(1 + \frac{60.4\text{k}}{11.5\text{k}}\right) = 0.8 \times 6.252 \approx 5.0\text{V}$$
+
+E96 values (60.4k, 11.5k) land within ~0.1% of target — using E24 round numbers like 56k/10k would give 5.28V.
+
+**Where is "the PWM"?** It's inside U8. See [[quick-context/pwm-controller-circuit]] for the sawtooth-oscillator + error-amp + comparator chain that generates the gate signal. The STM32s (U1, U5) don't touch it — the buck regulates autonomously at ~500kHz.

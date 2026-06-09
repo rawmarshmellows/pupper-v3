@@ -226,6 +226,8 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 **Source micro-context files (glossary stubs consolidated here):**
 
 - **[[micro-context/clock-source|Clock Source]]** -- HSI vs HSE selection, PLL multiplication, the full clock tree from source to peripheral buses.

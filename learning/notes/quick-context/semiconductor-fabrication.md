@@ -498,6 +498,8 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 
 - **[[quick-context/transistor|Transistors]]** — The fundamental components being fabricated. Knowing how a transistor works (gate, source, drain, channel) clarifies why specific fabrication steps exist.

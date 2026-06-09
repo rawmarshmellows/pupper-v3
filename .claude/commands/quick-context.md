@@ -239,6 +239,18 @@ Save the response to a markdown file in the `learning/notes/quick-context/` fold
 
 **Before writing the new document**, you MUST:
 
+### Semantic search path (preferred)
+
+If `learning/.embeddings/embeddings.db` exists, use semantic search to find related files efficiently:
+
+1. Run `python tools/embed.py related learning/notes/quick-context/<new-topic>.md` (or the closest existing topic) to get top-5 semantically similar documents
+2. Read only the returned files (not all files) to identify linking opportunities
+3. Proceed to step 3 below ("Build a link map")
+
+If the embeddings DB does not exist, fall back to the full scan:
+
+### Full scan path (fallback)
+
 1. **Search all existing quick-context files** using `Glob` with pattern `learning/notes/quick-context/*.md`
 
 2. **Read all existing files** to identify related topics. When reading files with progressive disclosure structure:
@@ -324,3 +336,4 @@ After creating or updating the quick-context file, you MUST run these skills in 
 Do not consider the task complete until both post-processing steps have been run.
 
 3. **Consolidation check:** Run `/consolidate-context` to check for overlapping or redundant context files
+4. **Update embeddings (manual):** Remind the user to run `python tools/embed.py sync` to update the embedding cache for semantic linking

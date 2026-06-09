@@ -150,6 +150,150 @@ ERA 2: PUNCH CARD BATCH PROCESSING (1950s)
   Bug in your code? Fix it -> re-punch -> re-submit -> wait hours again.
 ```
 
+**But how did holes in cardboard become numbers in memory?** The physical chain had four links:
+
+```
+FROM HOLES TO MEMORY — THE PUNCH CARD READ PATH
+================================================================================
+
+  1. THE CARD
+     80 columns, 12 punch positions per column (rows 12, 11, 0-9).
+     Characters encoded by combinations of holes (Hollerith code):
+       "A" = holes in row 12 + row 1
+       "0" = hole in row 0
+       "+" = holes in row 12 + row 8 + row 6
+
+     +------------------------------------------------------+
+     | 12 ·  ·  ●  ·  ·  ·  ·  ·  ·  ·  ...  (80 columns) |
+     | 11 ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ...               |
+     |  0 ·  ·  ·  ●  ·  ·  ·  ·  ·  ·  ...               |
+     |  1 ·  ·  ●  ·  ·  ·  ·  ·  ·  ·  ...               |
+     |  2 ·  ·  ·  ·  ●  ·  ·  ·  ·  ·  ...               |
+     |  3 ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ...               |
+     |  . .  .  .  .  .  .  .  .  .  .  ...               |
+     |  9 ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ...               |
+     +------------------------------------------------------+
+       ● = hole punched     · = no hole
+
+  2. THE CARD READER (electromechanical)
+     The card is pulled past a "read station" at ~250-1000 cards/minute.
+     Two sensing methods were common:
+
+     BRUSH SENSING (IBM 711, IBM 1402):
+     +-----------card moving this way--------->-----------+
+     |                                                    |
+     |    metal brush                                     |
+     |       |                                            |
+     |       v        card                                |
+     |     .-/-.   +---------+                            |
+     |     | / |===| ● hole  |=== metal roller behind     |
+     |     '-\-'   +---------+                            |
+     |                                                    |
+     |  Brush presses against the card. Where there's     |
+     |  a hole, the brush touches the metal roller ->     |
+     |  circuit closes -> current flows -> bit = 1.       |
+     |  No hole -> brush blocked by cardboard -> bit = 0. |
+     +----------------------------------------------------+
+
+     PHOTOELECTRIC SENSING (faster, later machines):
+     +----------------------------------------------------+
+     |     light source                                    |
+     |       |                                             |
+     |       v        card                                 |
+     |     [LED]   +---------+                             |
+     |     ~~~~~~~ | ● hole  |                             |
+     |             +---------+                             |
+     |                 |                                   |
+     |                 v                                   |
+     |            [photocell]                              |
+     |                                                     |
+     |  Light passes through hole -> photocell fires -> 1  |
+     |  Cardboard blocks light -> photocell dark -> 0      |
+     +----------------------------------------------------+
+
+     One read station scans all 12 rows of a column simultaneously
+     (12 brushes or 12 photocells in a vertical line). The card
+     advances column by column, producing 80 characters per card.
+
+  3. CHARACTER ENCODING
+     The reader's circuitry converts each column's 12-bit hole
+     pattern into the machine's character code:
+
+       Holes in card     ->  Hollerith code  ->  BCD / EBCDIC byte
+       (row 12 + row 1)  ->  "A"             ->  0xC1 (EBCDIC)
+
+     Early machines used the card's own Hollerith encoding directly.
+     Later machines translated to BCD (6-bit) or EBCDIC (8-bit).
+     ASCII came later with time-sharing systems.
+
+  4. INTO MEMORY — THE BOOTSTRAP LOADER
+     The card reader placed each character in a hardware buffer
+     register. But something had to tell the CPU: "read that
+     register and store its contents at memory address X."
+
+     That something was a BOOTSTRAP LOADER — a tiny program
+     (often just 20-30 instructions) that performed:
+
+       LOOP:
+         Read one character from card reader register
+         Store it at current memory address
+         Increment memory address
+         If more characters, go to LOOP
+
+     But here's the chicken-and-egg: how do you load the loader?
+
+     FRONT PANEL SWITCHES (the real bootstrap):
+     +----------------------------------------------------+
+     |  FRONT PANEL                                        |
+     |  +----------------------------------------------+  |
+     |  | ADDR: [↑][↓][↑][↓][↓][↓][↑][↓][↓][↓][↓][↓] | <-- toggle switch
+     |  |                                              |  |     per bit
+     |  | DATA: [↓][↑][↓][↓][↑][↑][↓][↑][↑][↓][↓][↑] |  |
+     |  |                                              |  |
+     |  | [DEPOSIT]  [NEXT]  [RUN]                     |  |
+     |  +----------------------------------------------+  |
+     |                                                    |
+     |  1. Set ADDRESS switches to memory location 0      |
+     |  2. Set DATA switches to first instruction's       |
+     |     binary encoding (e.g., "read card reader")     |
+     |  3. Press DEPOSIT (writes data into that address)  |
+     |  4. Press NEXT (increments address)                |
+     |  5. Repeat for each instruction of the loader      |
+     |     (~20-30 instructions, entered by hand)         |
+     |  6. Press RUN -> CPU executes from address 0       |
+     |     -> loader runs -> reads rest of program from   |
+     |        punch cards into memory                     |
+     +----------------------------------------------------+
+
+     An operator did this EVERY TIME the machine was powered on.
+     Later machines stored the bootstrap in a small read-only
+     memory (ROM) so the operator just pressed one LOAD button.
+
+  MEMORY AT THIS TIME: MAGNETIC CORE
+  +----------------------------------------------------+
+  |  Tiny ferrite rings (~1mm diameter) threaded on a   |
+  |  grid of wires. Each ring stores one bit.           |
+  |                                                     |
+  |        X wire                                       |
+  |          |                                          |
+  |    ------●------  Y wire                            |
+  |          |                                          |
+  |        sense wire (diagonal, for reading)           |
+  |                                                     |
+  |  WRITE 1: Current pulse through X + Y wires        |
+  |           magnetizes core clockwise                 |
+  |  WRITE 0: Opposite current -> counterclockwise     |
+  |  READ:    Send current pulse, detect if core flips  |
+  |           (destructive -- must rewrite after read)  |
+  |                                                     |
+  |  A 4096-word memory = tens of thousands of tiny     |
+  |  rings, hand-threaded by workers under microscopes. |
+  |  Core memory was the dominant RAM from 1955-1975.   |
+  +----------------------------------------------------+
+```
+
+So the full path was: **holes in cardboard → brush/photocell electrical signal → character code in buffer register → bootstrap loader copies to magnetic core memory → CPU fetches from same memory to execute.**
+
 The stored-program concept also made [[quick-context/code-to-gates-and-bootstrapping|bootstrapping]] possible: instructions and data were just numbers in the same memory, so a program could read text (assembly mnemonics) and output numbers (machine code) — that's the first assembler. The first assemblers were hand-coded in binary on punch cards.
 
 ```
@@ -203,6 +347,194 @@ ERA 3: TIME-SHARING AND TERMINALS (1960s)
   |  |  ASDFGHJKL...         |      |
   |  +------------------------+      |
   +----------------------------------+
+```
+
+**But how did keystrokes on a teletype become bytes in the computer's memory — and how did output get back to the printer?** This was the first real-time I/O loop, and it required new hardware and software working together:
+
+```
+FROM KEYPRESS TO MEMORY — THE TELETYPE I/O PATH
+================================================================================
+
+  1. THE KEYBOARD (mechanical encoding)
+     Each key on the ASR-33 teletype was wired to a set of
+     contact bars. Pressing a key mechanically closed a specific
+     combination of 7 switches, directly encoding a 7-bit ASCII
+     value — no software needed.
+
+       Key "A" pressed
+          |
+          v
+       +---------------------------+
+       | Contact bars encode:      |
+       | bit 6: ON  (1)            |    1000001 = ASCII 65 = "A"
+       | bit 5: OFF (0)            |
+       | bit 4: OFF (0)            |    The keyboard is a mechanical
+       | bit 3: OFF (0)            |    binary encoder — each key
+       | bit 2: OFF (0)            |    closes a unique combination
+       | bit 1: OFF (0)            |    of switch contacts.
+       | bit 0: ON  (1)            |
+       +---------------------------+
+
+  2. SERIAL TRANSMISSION (current loop)
+     The teletype transmitted one bit at a time over a wire pair
+     using 20mA current loop signaling, at 110 baud (~10 chars/sec):
+
+       Idle state: current ON continuously ("mark" = 1)
+
+       To send "A" (1000001):
+       +---+   +---+                       +---+-------
+       | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | stop
+       +---+   +---+---+---+---+---+   +---+   bits
+       start   <-- 7 data bits (LSB first) -->
+        bit
+
+       start bit = current OFF (space) — tells receiver: "byte coming"
+       data bits = current ON (1) or OFF (0) for each bit
+       stop bits = current ON (mark) — gap before next character
+
+       At 110 baud: each bit lasts ~9.09 ms
+       Full character (1 start + 7 data + 2 stop = 10 bits): ~91 ms
+
+       Wire from teletype ran to the computer (could be hundreds
+       of feet through the building, or miles over phone lines).
+
+     HOW CURRENT LOOP PHYSICALLY CARRIES BITS
+     +----------------------------------------------------+
+     |  A current loop is a simple series circuit:         |
+     |                                                     |
+     |  +-------+                              +--------+  |
+     |  | Power |---wire--->  SENDER ---wire-->|RECEIVER|  |
+     |  | Supply|           (switch)           |(detect)|  |
+     |  | (20mA)|<----------wire (return)------|        |  |
+     |  +-------+                              +--------+  |
+     |                                                     |
+     |  The sender is a mechanical switch inside the       |
+     |  teletype's keyboard mechanism. Pressing a key      |
+     |  triggers a rotating cam/contact assembly that      |
+     |  opens and closes the circuit in the pattern of     |
+     |  start bit + data bits + stop bits.                 |
+     |                                                     |
+     |    Switch CLOSED -> current flows (20mA) = 1 "mark" |
+     |    Switch OPEN   -> no current   (0mA)  = 0 "space" |
+     |                                                     |
+     |  The receiver is a sensitive relay (or later, an    |
+     |  optocoupler) that detects current vs. no current:  |
+     |    - Current flowing -> relay pulls in  -> bit = 1  |
+     |    - No current      -> relay releases  -> bit = 0  |
+     |                                                     |
+     |  WHY CURRENT (not voltage)?                         |
+     |    Voltage drops over long wires due to resistance  |
+     |    (V = IR). A 5V signal might arrive as 2V after   |
+     |    hundreds of feet. But in a series circuit,       |
+     |    current is the SAME everywhere — 20mA at the     |
+     |    sender = 20mA at the receiver, regardless of     |
+     |    wire length or resistance (the power supply      |
+     |    just increases voltage to compensate). This      |
+     |    made current loop reliable over thousands of     |
+     |    feet, even miles over leased phone lines.        |
+     |                                                     |
+     |  The 20mA level was an industry standard inherited  |
+     |  from telegraph circuits — high enough to reliably  |
+     |  trip electromechanical relays, low enough to be    |
+     |  safe and power-efficient.                          |
+     +----------------------------------------------------+
+
+  3. [[quick-context/uart|UART]] — THE BRIDGE BETWEEN SERIAL AND PARALLEL
+     On the computer side, a UART (Universal Asynchronous
+     Receiver/Transmitter) chip converted the serial bit
+     stream into parallel bytes the CPU could read.
+
+     At the highest level, a UART has two jobs:
+
+       RECEIVE:  serial bits in (from wire)  -->  parallel byte out (to CPU)
+       TRANSMIT: parallel byte in (from CPU) -->  serial bits out (onto wire)
+
+     Inside, a **shift register** (chain of flip-flops) captures
+     one bit per baud clock tick. After 8 bits, the completed byte
+     latches into a **data register** the CPU reads. The shift
+     register then immediately starts on the next byte.
+
+     For the full internal mechanics — how the shift register
+     fills bit by bit, how oversampling at 16× finds the center
+     of each bit, and how the parallel latch transfers the
+     completed byte — see [[quick-context/uart|UART deep dive]].
+
+     The summary for this I/O path:
+
+     +----------------------------------------------------+
+     |  serial bits  -->  [shift register]  -->  [data     |
+     |  from wire         (8 flip-flops)         register] |
+     |                                              |      |
+     |                                    INTERRUPT  |      |
+     |                                       to CPU  v      |
+     |                                     reads 0x41 "A"  |
+     +----------------------------------------------------+
+
+  4. INTERRUPT → OS → MEMORY BUFFER
+     The UART's interrupt signal triggers the CPU to pause its
+     current work and jump to an interrupt service routine:
+
+     +----------------------------------------------------+
+     |  CPU is running User B's program                    |
+     |       |                                             |
+     |       | <-- UART interrupt fires                    |
+     |       v                                             |
+     |  CPU saves current state (registers, PC)            |
+     |       |                                             |
+     |       v                                             |
+     |  INTERRUPT SERVICE ROUTINE (in OS kernel):          |
+     |    1. Read byte from UART data register (0x41)      |
+     |    2. Identify which terminal sent it               |
+     |       (each terminal has its own UART / port)       |
+     |    3. Store byte in that user's INPUT BUFFER in RAM |
+     |       +---+---+---+---+---+---+                     |
+     |       | P | R | I | N | T | A | <-- "A" appended   |
+     |       +---+---+---+---+---+---+                     |
+     |       User A's input buffer                         |
+     |    4. Echo the character back (send 0x41 to UART    |
+     |       transmitter so user sees what they typed)     |
+     |       |                                             |
+     |       v                                             |
+     |  CPU restores saved state, resumes User B's program |
+     |                                                     |
+     |  Total interrupt handling time: ~50-100 microseconds|
+     |  User perceives: typed "A", saw "A" on paper        |
+     +----------------------------------------------------+
+
+  5. OUTPUT: MEMORY → UART → PRINT MECHANISM
+     When the program produces output (e.g., "5"), the reverse:
+
+     +----------------------------------------------------+
+     |  Program calls: print("5")                          |
+     |       |                                             |
+     |       v                                             |
+     |  OS writes 0x35 ("5") to UART transmit register     |
+     |       |                                             |
+     |       v                                             |
+     |  UART serializes: start + 0110101 + stop            |
+     |  Sends as current pulses over wire to teletype      |
+     |       |                                             |
+     |       v                                             |
+     |  TELETYPE PRINT MECHANISM:                          |
+     |  +----------------------------------------------+  |
+     |  |  Receives serial data -> decodes ASCII        |  |
+     |  |  Rotates type cylinder to "5" position        |  |
+     |  |  Solenoid fires hammer -> strikes character   |  |
+     |  |  through inked ribbon onto paper              |  |
+     |  |  Carriage advances one position               |  |
+     |  +----------------------------------------------+  |
+     |                                                     |
+     |  Same mechanism as a typewriter, but driven by      |
+     |  electrical signals instead of finger force.        |
+     +----------------------------------------------------+
+
+  FULL ROUND TRIP:
+  +---------+   serial   +------+  interrupt  +--------+  serial  +---------+
+  |  Key    |----------->| UART |------------>|  CPU   |--------->| Print   |
+  | pressed |  (110 baud)| chip | (byte ready)|  + OS  | (output) | hammer  |
+  +---------+            +------+             +--------+          +---------+
+      "A"     ~91ms wire   0x41    ~50us ISR   store in   ~91ms    "A" on
+                                               RAM buffer  wire     paper
 ```
 
 Key milestones:
@@ -445,6 +777,8 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The compilation chain in full detail: how source code becomes machine instructions through 7 layers of abstraction, and how the first compiler was bootstrapped from hand-coded binary. This document covers what happens *after* you save your file and invoke the compiler.
 
 - **[[quick-context/from-code-to-running-firmware]]** — The embedded variant of the pipeline: linking, flashing, and booting on a microcontroller. What happens when your compiled code targets a chip with no OS.
@@ -454,6 +788,8 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 - **[[quick-context/transistor-design-history]]** — The evolution from point-contact transistors (1947) through FinFETs to Gate-All-Around — the hardware side of the story that parallels the software interface evolution described here.
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
+
+- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
 
 - **Von Neumann Architecture** — The stored-program concept that made the transition from plugboards to software possible. Instructions and data share the same memory, enabling programs to be loaded and replaced without rewiring.
 

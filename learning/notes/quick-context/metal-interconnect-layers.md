@@ -264,6 +264,8 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
 
 - **Photolithography** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.

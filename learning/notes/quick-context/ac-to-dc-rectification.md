@@ -182,6 +182,8 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 ### Source Micro-Contexts (Glossary Stubs)
 
 - **[[micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.

@@ -213,6 +213,8 @@ Draft shields               │ Block air currents, even cooling      │ ABS, N
 
 - **[[quick-context/melt-index]]** — A measure of how easily a polymer flows when melted. Semi-crystalline materials often behave differently during melting because crystalline regions must fully break down before flow begins.
 
+- **[[quick-context/bambu-p2s-print-quality]]** — Why semi-crystalline filaments (PA, PP, PE) need an enclosed chamber and minimal fan on the P2S, while amorphous PLA tolerates 100% cooling — crystallization kinetics drive cooling-strategy choices.
+
 </details>
 
 <details>

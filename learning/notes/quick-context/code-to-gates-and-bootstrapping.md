@@ -1,11 +1,18 @@
 ---
 topic: Code to Gates - The Full Compilation Chain and Bootstrapping
 created: 2026-02-14
+updated: 2026-04-07
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
 
-> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
+> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
+
+# Code to Gates — The Full Compilation Chain and Bootstrapping
+
+## Human notes
+
+How does machine code actually get written — what is the encoding process that turns assembly into binary? And where does the resulting machine code physically end up?
 
 ## The Core Problem
 
@@ -17,7 +24,8 @@ You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|
 |------|------------|
 | **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
 | **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
-| **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction tells the CPU to do one thing: load data, store data, jump to an address, or run an ALU operation. |
+| **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM) whose bit fields encode the opcode, registers, and operands according to the ISA. |
+| **ISA (Instruction Set Architecture)** | The contract between software and hardware. It defines every instruction the CPU supports, its binary encoding (which bits mean what), the available registers, and addressing modes. ARM, x86, RISC-V, and Hack are all different ISAs. |
 | **Logic Gate** | A circuit built from [[quick-context/transistor|transistors]] that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
 | **Bootstrapping** | The process of building complex tools from simpler ones, starting from nothing. In computing: hand-coded binary → first assembler → first compiler → better compiler → modern toolchains. |
 
@@ -66,13 +74,13 @@ LAYER 3: CPU MICROARCHITECTURE         Program Counter → fetch instruction fro
               ▼
 LAYER 2: LOGIC GATES                   ALU is built from: Adders ← Full Adders
          (AND, OR, NOT, NAND,          ← Half Adders ← XOR + AND gates
-          XOR, MUX, DMUX)             Registers ← MUX + Data Flip-Flop
+          XOR, MUX, DMUX)             Registers ← MUX + [[quick-context/d-flip-flop|Data Flip-Flop]]
               │                        RAM ← DMUX + Registers + MUX
               │  GATES ARE BUILT FROM...
               ▼
-LAYER 1: TRANSISTORS                   NAND gate = 2 transistors in series
-         (MOSFET switches on           Each transistor: voltage on gate →
-          doped silicon)               channel conducts (ON) or blocks (OFF)
+LAYER 1: TRANSISTORS                   NAND gate = 4 transistors (2 NMOS
+         (MOSFET switches on           series + 2 PMOS parallel). Voltage
+          doped silicon)               on gate → conducts (ON) or blocks (OFF)
 ```
 
 The Fetch-Execute Cycle (Layer 3 in detail)
@@ -164,6 +172,136 @@ These combine into arithmetic circuits:
         (add, subtract via two's complement, AND, OR, NOT, etc.)
         Control bits from the instruction's opcode configure which
         gates are active for each operation.
+```
+
+How Machine Code Gets Written: The Encoding Process
+
+The assembler's job is to turn human-readable mnemonics into the exact binary patterns the CPU expects. But these patterns aren't arbitrary — they're defined by the CPU's **Instruction Set Architecture (ISA)**, which specifies the bit-field layout of every instruction.
+
+Each machine instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM/RISC-V, variable on x86) divided into **fields**:
+
+```
+HOW THE ASSEMBLER ENCODES AN INSTRUCTION
+================================================================================
+
+Example: ARM Thumb "ADDS R1, R2, R3" (add R2 + R3, store in R1)
+
+The ISA manual says Thumb ADD (register) format is:
+
+  15  14  13  12  11  10   9   8   7   6   5   4   3   2   1   0
+ ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+ │ 0 │ 0 │ 0 │ 1 │ 1 │ 0 │ 0 │  Rm   │   Rn  │   Rd  │
+ └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
+  └─── opcode (7 bits) ───┘   │Rm=R3│ Rn=R2 │ Rd=R1 │
+  "this is an ADD register"    = 011   = 010   = 001
+
+  Assembler output: 0001100 011 010 001 → 0x18D1 (two bytes in flash)
+
+Example: Hack CPU "D=D+A" (add D and A registers, store in D)
+
+The Hack ISA says C-instruction format is:
+
+  15  14  13  12  11  10   9   8   7   6   5   4   3   2   1   0
+ ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+ │ 1 │ 1 │ 1 │ a │ c1│ c2│ c3│ c4│ c5│ c6│ d1│ d2│ d3│ j1│ j2│ j3│
+ └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
+  "C-type"   │  a=0    comp=000010    │ d=010 │  j=000  │
+              │  (use A, not M)  (D+A) │ (dest │ (no     │
+              │                        │  = D) │  jump)  │
+
+  Assembler output: 1110000010010000 → stored as 16 bits in ROM
+```
+
+The assembler is essentially a **lookup table + symbol resolver**:
+
+1. **Parse** the mnemonic: split `ADDS R1, R2, R3` into opcode (`ADDS`), destination (`R1`), operands (`R2`, `R3`)
+2. **Look up** the opcode in the ISA encoding table → get the bit pattern for the opcode field
+3. **Encode** register names as numbers: `R1`=001, `R2`=010, `R3`=011
+4. **Pack** the fields into a binary word according to the ISA format
+5. **Resolve labels**: if the instruction references a label like `loop:`, substitute the address where that label was defined
+
+For a compiler (not assembler), the process is more complex — one high-level statement may generate many machine instructions, requiring register allocation, instruction selection, and optimization. But every instruction still ends up encoded through the same ISA bit-field rules.
+
+Where Machine Code Ends Up: From Object File to Final Destination
+
+The assembler doesn't write directly to the CPU. The encoded bytes go through several stages before reaching their final home:
+
+```
+WHERE MACHINE CODE GETS WRITTEN
+================================================================================
+
+STAGE 1: OBJECT FILE (on disk)
+─────────────────────────────────────────────────────────
+  The assembler (or compiler backend) writes encoded instructions
+  into an object file (.o on Unix, .obj on Windows).
+
+  The .o file contains:
+  • .text section  — the machine code bytes
+  • .data section  — initialized global variables
+  • .bss section   — space reserved for uninitialized globals
+  • Symbol table   — "function can_transmit starts at offset 0x40"
+  • Relocation entries — "at offset 0x0C, insert the address of
+                          can_transmit when you know it"
+
+  Addresses are NOT final yet — the object file uses relative
+  offsets. The linker assigns real addresses later.
+
+
+STAGE 2: LINKED EXECUTABLE (on disk)
+─────────────────────────────────────────────────────────
+  The linker combines multiple .o files into one executable:
+  • Resolves cross-references (main.o calling can.o's function)
+  • Assigns final memory addresses using a linker script
+  • Produces an ELF (Linux), PE (Windows), or Mach-O (macOS) file
+
+  The executable is still on disk. The machine code isn't
+  "running" yet — it's just a file with a specific layout.
+
+
+STAGE 3: FINAL DESTINATION (depends on the target)
+─────────────────────────────────────────────────────────
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  DESKTOP / SERVER (Linux, Windows, macOS)                   │
+  │                                                             │
+  │  OS Loader reads the executable from disk:                  │
+  │  1. Allocates virtual memory pages                          │
+  │  2. Copies .text (code) into executable memory pages        │
+  │  3. Copies .data into writable memory pages                 │
+  │  4. Zeros .bss pages                                        │
+  │  5. Resolves dynamic library references (shared .so/.dll)   │
+  │  6. Sets Program Counter to the entry point                 │
+  │                                                             │
+  │  Machine code lives in RAM. Lost on power-off.              │
+  │  Reloaded from disk every time you run the program.         │
+  └─────────────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  EMBEDDED (MCU like STM32, ESP32)                           │
+  │                                                             │
+  │  Flash programmer (OpenOCD / ST-Link) reads the ELF:        │
+  │  1. Extracts loadable sections (.text, .data init values)   │
+  │  2. Erases flash memory on the chip                         │
+  │  3. Writes bytes to flash via SWD/JTAG debug probe          │
+  │  4. Machine code persists without power (flash is NV)       │
+  │                                                             │
+  │  CPU executes code directly from flash (XIP).               │
+  │  Startup code copies .data to RAM, zeros .bss.              │
+  │  See: [[quick-context/from-code-to-running-firmware]]       │
+  └─────────────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  HISTORICAL (1950s–1970s)                                   │
+  │                                                             │
+  │  Assembler output written to:                               │
+  │  • Punch cards — one instruction per card, holes = bits     │
+  │  • Paper tape — continuous roll, holes punched in columns   │
+  │  • Magnetic tape — sequential binary on reels               │
+  │                                                             │
+  │  Card reader or tape reader feeds instructions into memory. │
+  │  Machine code lives in core memory (magnetic rings that     │
+  │  retain state without power — the original "non-volatile"). │
+  └─────────────────────────────────────────────────────────────┘
 ```
 
 </details>
@@ -274,7 +412,7 @@ STEP 4: FIRST COMPILER → SELF-HOSTING COMPILER
 STEP 5: MODERN TOOLCHAINS
 ────────────────────────────────────────────────────────────────────────────────
   Self-hosting compilers evolve:
-  GCC (C compiler written in C), LLVM/Clang, rustc (Rust compiler
+  GCC (C/C++ compiler, now written in C++), LLVM/Clang, rustc (Rust compiler
   bootstraps from a previous rustc version), Go compiler (now in Go,
   originally bootstrapped from C).
 
@@ -328,6 +466,8 @@ POWER-ON SEQUENCE
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
@@ -346,23 +486,27 @@ POWER-ON SEQUENCE
 
 - **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
+
+- **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit (switches + clock + 74HC574 register chip) that makes Layer 2's "Registers = MUX + Data Flip-Flop" tangible. Demonstrates how the register pattern scales from 8 LEDs to a CPU's register file to RAM.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Why is the NAND gate called "universal"?
+**Q1:** What does the assembler actually do when it encodes `ADD R1, R2`?
 <details>
 <summary>Answer</summary>
-**Because any boolean function can be built using only NAND gates.** NOT(x) = x NAND x. AND(x,y) = NOT(x NAND y). OR can be built from NOT and AND. Since AND, OR, and NOT can represent any boolean function (proven by constructing expressions from truth tables), and NAND can build all three, NAND alone is sufficient to build any logic circuit — including an entire CPU. See: How It Works (FROM NAND GATES TO AN ALU)
+The assembler looks up the ISA encoding for `ADD` to get the opcode bit pattern, converts register names to their numeric encodings (`R1`=001, `R2`=010), and packs these fields into a fixed-width binary word according to the ISA's instruction format. The result is a sequence of bytes (e.g., 2 bytes for Thumb, 4 bytes for ARM) that gets written into the `.text` section of an object file. It's essentially a lookup table + field packer — no optimization, no interpretation, just 1-to-1 encoding. See: How It Works (How Machine Code Gets Written)
 </details>
 
-**Q2:** What's the difference between a compiler and an assembler?
+**Q2:** Where does machine code physically end up on a desktop vs. an embedded MCU?
 <details>
 <summary>Answer</summary>
-**An assembler does 1-to-1 translation** (each assembly mnemonic maps to exactly one binary instruction), while **a compiler does many-to-many translation** (one line of high-level code may become dozens of machine instructions, with optimization, register allocation, etc.). An assembler is essentially a lookup table; a compiler is a complex program with parsing, optimization passes, and code generation stages. See: 5 Essential Terms
+On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug probe ([[micro-context/swd-serial-wire-debug|SWD]]/JTAG). The code persists without power and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
 </details>
 
 **Q3:** If a CPU only understands binary, how can Python — an interpreted language — run on it?
@@ -371,16 +515,16 @@ POWER-ON SEQUENCE
 **Python never runs directly on the CPU.** The Python interpreter (e.g., CPython) is a C program that was compiled to machine code. When you run Python, the CPU is actually executing the *interpreter's* machine code, which reads your Python source, converts it to bytecode, and then the interpreter's compiled C code handles each bytecode operation by executing the corresponding machine instructions. Your Python code is *data* being processed by the interpreter program, not instructions being executed by the CPU. See: How It Works (THE COMPILATION CHAIN, Layers 7→4)
 </details>
 
-**Q4:** Could you skip the bootstrapping chain and write a modern compiler directly in binary?
+**Q4:** Why can't the assembler write machine code directly into the CPU's memory? Why does it go through object files and a linker first?
 <details>
 <summary>Answer</summary>
-**Theoretically yes, practically no.** A modern compiler like GCC has millions of lines of code. Converting that to binary by hand would take lifetimes and be essentially impossible to debug. The bootstrapping chain exists precisely because each layer makes the next layer *feasible to write*. Binary → assembler is tedious but doable (hundreds of instructions). Assembly → simple compiler is hard but manageable (thousands of instructions). Simple compiler → better compiler is routine software engineering. Each step is just barely within human capability, while skipping steps is not. See: Concrete Example (THE BOOTSTRAPPING CHAIN)
+Because a real program is split across multiple source files, and the assembler processes them independently. When `main.o` calls a function in `can.o`, the assembler doesn't know that function's final address yet — it leaves a placeholder and a **relocation entry** saying "fill in the address of `can_transmit` here." Only the **linker** can resolve these cross-references, because it sees all object files at once and assigns final memory addresses using the linker script. On embedded targets, the linker also needs to know the physical memory map (flash at `0x08000000`, RAM at `0x20000000`) to place code correctly. See: How It Works (Where Machine Code Ends Up) and [[quick-context/from-code-to-running-firmware|From Code to Running Firmware]]
 </details>
 
-**Q5:** The Reset Vector is hardwired to point to a ROM address. But ROM is read-only — so how do modern computers update their firmware (BIOS/UEFI)?
+**Q5:** The bootstrapping chain starts with humans hand-encoding binary on punch cards. But even that requires knowing the ISA — how did the first CPU designers know what bit patterns to encode, and what would happen if the ISA changed between CPU revisions?
 <details>
 <summary>Answer</summary>
-**Modern "ROM" isn't truly read-only — it's flash memory (EEPROM)** that can be electrically erased and rewritten, just not during normal operation. Firmware updates write new code to this flash memory, replacing the old boot instructions. The Reset Vector address itself never changes (it's hardwired in the CPU), but the *contents* at that address can be updated. This is why firmware updates carry risk — if the update fails mid-write, the boot instructions are corrupted and the CPU will try to execute garbage at the Reset Vector address, potentially bricking the device.
+The ISA is defined *by* the hardware designers — they choose the bit-field layout when they design the CPU's control unit (the decoder circuit). The truth table of the decoder *is* the ISA: input bit pattern X produces control signals Y. So the first programmers didn't "discover" the encoding — they read the hardware specification written by the people who wired the logic gates. If the ISA changes between revisions (new instructions, different encodings), all existing machine code breaks — it would decode to wrong operations or illegal instructions. This is why ISA backward compatibility is sacred: x86 CPUs in 2026 can still run 8086 binary from 1978. ARM maintains compatibility within architecture versions. Breaking the ISA means every assembler, compiler, and existing binary must be rebuilt — essentially restarting the bootstrapping chain. See: Concrete Example (THE BOOTSTRAPPING CHAIN) and 5 Essential Terms (ISA)
 </details>
 
 </details>

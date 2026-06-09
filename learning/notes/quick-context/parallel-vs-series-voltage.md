@@ -314,6 +314,8 @@ THE MATH THAT MATTERS:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/transistor]]** — How individual transistors work. Each one switches between conducting and non-conducting based on gate voltage, drawing current when active.
 
 - **[[quick-context/electric-current]]** — Understanding current as charge flow. In parallel circuits, currents from each branch add at the power supply.

@@ -303,6 +303,8 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes electrons; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
 
 - **[[quick-context/electric-current]]** --- Current is the flow of charge in response to the electric field. In different materials, the same field produces different currents (J = $\sigma$E), which is why resistance matters.

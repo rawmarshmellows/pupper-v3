@@ -33,6 +33,22 @@ The [[learning/notes/quick-context/tensile-strength-materials|tensile strength]]
 
 ## Instructions
 
+### Semantic search path (preferred)
+
+If `learning/.embeddings/embeddings.db` exists:
+
+1. Run `python tools/link_semantic.py propose` to get semantic link proposals (JSON)
+2. Parse the JSON output — each file entry has `related` (docs by TLDR similarity) and `inline_links` (terms by embedding match)
+3. **Create a proposal** listing all proposed links (do NOT modify files yet):
+   - Group by target file
+   - Show proposed `> **Related:**` links for each file (from `related` array, top 5)
+   - Show proposed inline term links with context (from `inline_links` array — find the sentence where each term appears)
+4. **Wait for user approval** before making any changes
+
+### Fallback path (no embeddings)
+
+If the embeddings database does not exist, fall back to string matching:
+
 1. **Read all `.md` files** in `learning/notes/micro-context` and `learning/notes/quick-context` folders
 2. **Build a term map** from each file's:
    - Frontmatter `topic` field

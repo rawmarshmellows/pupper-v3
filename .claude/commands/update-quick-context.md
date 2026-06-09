@@ -112,3 +112,13 @@ updated: YYYY-MM-DD
 
 [Rest of document...]
 ```
+
+---
+
+## Post-Processing (REQUIRED)
+
+After updating the quick-context file, you MUST:
+
+1. **Fact-check:** Run `/fact-check <output-file-path>` to verify all factual claims
+2. **ASCII-fixer:** Run `/ascii-fixer <output-file-path>` to fix any diagram alignment issues
+3. **Update embeddings (manual):** Remind the user to run `python tools/embed.py sync` to update the embedding cache for semantic linking

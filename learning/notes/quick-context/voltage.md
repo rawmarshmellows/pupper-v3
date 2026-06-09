@@ -287,6 +287,8 @@ THE FIELD-CURRENT RELATIONSHIP:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/voltage-current-causality]]** — Does voltage cause current or current cause voltage? Neither, universally. The electric field is the mediator; which quantity is "cause" depends on what's driving the circuit.
 
 - **[[quick-context/electric-current]]** — Current is what flows as a result of the electric field pushing electrons. Voltage defines the field; current is the response.

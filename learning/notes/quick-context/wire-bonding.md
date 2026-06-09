@@ -315,6 +315,8 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+
 - **[[quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
 
 - **Flip-Chip (C4) Bonding** — The main alternative to wire bonding; uses solder bumps under the chip for higher density and performance.

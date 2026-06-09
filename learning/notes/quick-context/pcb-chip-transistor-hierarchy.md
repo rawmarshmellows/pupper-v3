@@ -214,6 +214,8 @@ TRACING A MEMORY READ: CPU → DRAM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are actually built on silicon wafers using photolithography; explains why die size and yield matter for cost.
 
 - **Signal Integrity** — The study of how electrical signals degrade as they travel through packages and PCBs; why trace length, impedance matching, and layer stackup matter.

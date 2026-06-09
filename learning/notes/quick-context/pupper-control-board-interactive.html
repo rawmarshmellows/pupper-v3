@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pupper v3 Control Board Rev 3.5.2 — Interactive Map</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; background: #0d1117; color: #c9d1d9; min-height: 100vh; }
+h1 { padding: 16px 24px 4px; font-size: 18px; color: #58a6ff; font-weight: 600; }
+.subtitle { padding: 0 24px 12px; font-size: 12px; color: #8b949e; }
+.layout { display: flex; gap: 16px; padding: 0 24px 24px; flex-wrap: wrap; }
+.board-section { flex: 1; min-width: 600px; }
+.info-section { width: 380px; min-width: 320px; }
+svg#board { width: 100%; height: auto; border-radius: 8px; background: #0d1117; }
+.comp { cursor: pointer; transition: opacity 0.15s; }
+.comp:hover { opacity: 0.85; }
+.comp-rect { stroke-width: 2.5; transition: stroke 0.15s, stroke-width 0.15s; filter: url(#shadow); }
+.comp.highlighted .comp-rect { stroke-width: 4; filter: url(#glow); }
+.comp-label { font-size: 9px; fill: #fff; text-anchor: middle; pointer-events: none; font-family: 'SF Mono', monospace; font-weight: 600; }
+.comp-label-sm { font-size: 7px; }
+.conn-line { stroke-width: 2; fill: none; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.conn-line.visible { opacity: 0.7; }
+.conn-line.highlighted { opacity: 1; stroke-width: 3; filter: url(#glow); }
+.silkscreen { font-family: 'SF Mono', monospace; fill: #ffffff; opacity: 0.85; pointer-events: none; font-weight: 600; }
+.board-outline { fill: #2a6496; stroke: #3d7ab5; stroke-width: 2; }
+.mounting-hole { fill: #1a1a1a; stroke: #3d7ab5; stroke-width: 1.5; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+.proto-toggle { display: flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 4px; border: 1px solid #30363d; background: #161b22; cursor: pointer; font-size: 11px; color: #c9d1d9; transition: all 0.2s; }
+.proto-toggle:hover { border-color: #58a6ff; }
+.proto-toggle.active { border-color: var(--proto-color); background: color-mix(in srgb, var(--proto-color) 15%, #161b22); }
+.proto-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.legend-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: #8b949e; }
+.legend-swatch { width: 12px; height: 8px; border-radius: 2px; }
+.info-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+.info-card h2 { font-size: 14px; color: #58a6ff; margin-bottom: 8px; }
+.info-card h3 { font-size: 12px; color: #79c0ff; margin: 10px 0 4px; }
+.info-card p, .info-card li { font-size: 11px; line-height: 1.6; color: #c9d1d9; }
+.info-card ul { padding-left: 16px; }
+.info-card .pkg { color: #8b949e; font-size: 10px; display: inline-block; background: #21262d; padding: 1px 6px; border-radius: 3px; margin-top: 2px; }
+.info-card .tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; margin-right: 4px; }
+.info-placeholder { color: #484f58; font-size: 12px; text-align: center; padding: 24px 0; }
+.gpio-grid { display: grid; grid-template-columns: 80px 28px 28px 80px; gap: 2px; font-size: 9px; margin-top: 8px; }
+.gpio-pin { width: 26px; height: 20px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 8px; color: #fff; cursor: pointer; transition: transform 0.1s; }
+.gpio-pin:hover { transform: scale(1.2); z-index: 1; }
+.gpio-label { display: flex; align-items: center; font-size: 9px; color: #8b949e; }
+.gpio-label.left { justify-content: flex-end; padding-right: 4px; }
+.gpio-label.right { justify-content: flex-start; padding-left: 4px; }
+.gpio-label.used { color: #c9d1d9; font-weight: 600; }
+.pin-power { background: #c62828; }
+.pin-gnd { background: #212121; border: 1px solid #424242; }
+.pin-spi { background: #1565c0; }
+.pin-i2c { background: #2e7d32; }
+.pin-uart { background: #e65100; }
+.pin-i2s { background: #6a1b9a; }
+.pin-gpio { background: #ef6c00; }
+.pin-unused { background: #263238; border: 1px solid #37474f; }
+.pin-id { background: #263238; border: 1px solid #37474f; }
+.proto-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #21262d; font-size: 11px; }
+.proto-row:last-child { border-bottom: none; }
+.proto-badge { padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; color: #fff; min-width: 40px; text-align: center; }
+/* Buck module encapsulation */
+.buck-frame { transition: opacity 0.25s, stroke-width 0.25s; }
+.buck-label-bg, .buck-label { cursor: pointer; transition: opacity 0.25s; }
+.buck-label-bg:hover + .buck-label, .buck-label:hover { fill: #ffe95a; }
+.buck-annotations { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.buck-annotations text { font-family: 'SF Mono', monospace; font-weight: 700; }
+svg#board.buck-focus .comp:not(.buck-member) { opacity: 0.06; pointer-events: none; }
+svg#board.buck-focus .conn-line:not(.buck-conn) { opacity: 0; }
+svg#board.buck-focus .buck-annotations { opacity: 1; pointer-events: auto; }
+svg#board.buck-focus .buck-frame { stroke-width: 3.5; opacity: 1; }
+svg#board.buck-focus .silkscreen { opacity: 0.2; }
+.buck-hint { margin-left: 10px; padding: 3px 8px; border: 1px dashed #ffd600; border-radius: 4px; color: #ffd600; font-size: 11px; cursor: pointer; background: transparent; }
+.buck-hint:hover { background: rgba(255,214,0,0.08); }
+</style>
+</head>
+<body>
+<h1>Pupper v3 Control Board Rev 3.5.2</h1>
+<p class="subtitle">71mm x 60mm &bull; 2-layer PCB &bull; ~80 components &bull; Blue soldermask &bull; Designed by Gabrael &amp; Nathan &bull; EasyEDA Pro</p>
+<div class="layout">
+<div class="board-section">
+  <svg id="board" viewBox="0 0 720 620" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="shadow"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.5"/></filter>
+      <pattern id="grid" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="none"/><circle cx="0" cy="0" r="0.3" fill="#4a8abf" opacity="0.25"/></pattern>
+    </defs>
+  </svg>
+  <div class="controls">
+    <button class="proto-toggle active" data-proto="spi" style="--proto-color:#ef5350" onclick="toggleProto('spi')"><span class="proto-dot" style="background:#ef5350"></span>SPI</button>
+    <button class="proto-toggle active" data-proto="i2c" style="--proto-color:#66bb6a" onclick="toggleProto('i2c')"><span class="proto-dot" style="background:#66bb6a"></span>I2C</button>
+    <button class="proto-toggle active" data-proto="can" style="--proto-color:#ffa726" onclick="toggleProto('can')"><span class="proto-dot" style="background:#ffa726"></span>CAN</button>
+    <button class="proto-toggle active" data-proto="i2s" style="--proto-color:#ab47bc" onclick="toggleProto('i2s')"><span class="proto-dot" style="background:#ab47bc"></span>I2S</button>
+    <button class="proto-toggle active" data-proto="power" style="--proto-color:#ffd600" onclick="toggleProto('power')"><span class="proto-dot" style="background:#ffd600"></span>Power</button>
+    <button class="proto-toggle active" data-proto="uart" style="--proto-color:#26c6da" onclick="toggleProto('uart')"><span class="proto-dot" style="background:#26c6da"></span>UART</button>
+    <button class="buck-hint" id="buck-hint-btn" onclick="toggleBuckFocus()">⚡ Buck Module — click to focus</button>
+  </div>
+  <div class="legend">
+    <span class="legend-item"><span class="legend-swatch" style="background:#111;border:1px solid #4fc3f7"></span>MCU</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#1a1a1a;border:1px solid #ce93d8"></span>CAN Xcvr</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#2a2a2a;border:1px solid #ffb74d"></span>Power</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#0d1f0d;border:1px solid #66bb6a"></span>Sensor</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#1a0a1a;border:1px solid #f48fb1"></span>Audio</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#e8e8e8;border:1px solid #fff"></span>Connector</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#3e2723;border:1px solid #a1887f"></span>Passive</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#0a2020;border:1px solid #26c6da"></span>Clock</span>
+  </div>
+</div>
+<div class="info-section">
+  <div class="info-card" id="comp-info">
+    <h2>Component Details</h2>
+    <p class="info-placeholder">Hover over a component on the board to see its details, connections, and protocols.</p>
+  </div>
+  <div class="info-card">
+    <h2>Communication Protocols</h2>
+    <div class="proto-row"><span class="proto-badge" style="background:#ef5350">SPI</span><span>Pi &harr; U1 (CS1) + U5 (CS2) shared bus</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#66bb6a">I2C1</span><span>Pi &harr; BNO086 (IMU) + ADS1110 (ADC) directly</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#66bb6a">I2C3</span><span>Pi pins 8,10 &harr; CN18 external I2C connector</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#ffa726">CAN</span><span>MCUs &harr; 4x MAX3051 &rarr; 12 servos via CN17</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#ab47bc">I2S</span><span>Pi &rarr; MAX98357A &rarr; Speaker (4 pins)</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#ef6c00;color:#fff">GPIO</span><span>Pi &rarr; LED_DIN (NeoPixel) + 2x ear servo PWM</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#26c6da">SWD</span><span>CN1/CN2 &harr; MCU debug (no UART on Pi header)</span></div>
+    <div class="proto-row"><span class="proto-badge" style="background:#ffd600;color:#000">PWR</span><span>CN21 &rarr; U8 (TPS54561) &rarr; L1 &rarr; 5V rail; D1 catches SW&harr;GND; R5/R6 set FB</span></div>
+  </div>
+  <div class="info-card">
+    <h2>40-Pin Raspberry Pi Header (U2)</h2>
+    <p style="font-size:10px;color:#8b949e;margin-bottom:8px">All pins CONFIRMED from Gerber FlyingProbeTesting.json net names. 17 active + 8 GND + 4 power = 29 used, 11 NC.</p>
+    <div class="gpio-grid" id="gpio-grid"></div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">
+      <span class="legend-item"><span class="legend-swatch pin-power" style="width:10px;height:10px;border-radius:2px"></span>Power</span>
+      <span class="legend-item"><span class="legend-swatch pin-gnd" style="width:10px;height:10px;border-radius:2px"></span>GND</span>
+      <span class="legend-item"><span class="legend-swatch pin-spi" style="width:10px;height:10px;border-radius:2px"></span>SPI</span>
+      <span class="legend-item"><span class="legend-swatch pin-i2c" style="width:10px;height:10px;border-radius:2px"></span>I2C</span>
+      <span class="legend-item"><span class="legend-swatch pin-uart" style="width:10px;height:10px;border-radius:2px"></span>UART</span>
+      <span class="legend-item"><span class="legend-swatch pin-i2s" style="width:10px;height:10px;border-radius:2px"></span>I2S</span>
+      <span class="legend-item"><span class="legend-swatch pin-gpio" style="width:10px;height:10px;border-radius:2px"></span>GPIO/PWM</span>
+      <span class="legend-item"><span class="legend-swatch pin-unused" style="width:10px;height:10px;border-radius:2px"></span>NC</span>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+const SCALE = 9, MARGIN = 35;
+function px(pcbX) { return MARGIN + (pcbX + 38.5) * SCALE; }
+function py(pcbY) { return MARGIN + (29 - pcbY) * SCALE; }
+
+const components = [
+  { id:'U1', label:'U1\nSTM32', part:'STM32F446RET6', cat:'mcu', cx:px(-4.902), cy:py(6.212), w:90, h:90,
+    desc:'Main MCU — ARM Cortex-M4 @ 180MHz, 512KB flash',
+    role:'Reads BNO086 IMU (I2C), battery voltage via ADS1110 (I2C), communicates with Raspberry Pi (SPI), sends joint commands to U5 (SPI), drives audio amplifier (I2S), runs state estimator.',
+    pkg:'LQFP-64 (10x10mm)', protocols:['SPI to Pi','SPI to U5','I2C to IMU/ADC','I2S to audio'], conns:['U2','U5','U15','U16','U18','CN1'] },
+  { id:'U5', label:'U5\nSTM32', part:'STM32F446RET6', cat:'mcu', cx:px(11.848), cy:py(6.212), w:90, h:90,
+    desc:'Motor MCU — ARM Cortex-M4 @ 180MHz, 512KB flash',
+    role:'Dedicated to the 1kHz motor control loop. Receives joint targets from U1 via SPI, sends/receives CAN messages to 12 servos through MAX3051 transceivers. Firmware: SPIneV1.',
+    pkg:'LQFP-64 (10x10mm)', protocols:['SPI from U1','CAN1','CAN2','USART2 debug'], conns:['U1','U3','U4','U6','U7','CN2'] },
+  { id:'U4', label:'U4', part:'MAX3051EKA+T', cat:'can', cx:px(-9.402), cy:py(-2.288), w:27, h:15,
+    desc:'CAN Transceiver — 3.3V, 1Mbps',
+    role:'Converts MCU single-ended CAN TX/RX into differential CANH/CANL. Drives one CAN bus to 3 servo motors. 120\u03A9 termination (R1) prevents signal reflections.',
+    pkg:'SOT-23-8', protocols:['CAN bus 1'], conns:['U1','R1','CN17'] },
+  { id:'U3', label:'U3', part:'MAX3051EKA+T', cat:'can', cx:px(-1.152), cy:py(-2.288), w:27, h:15,
+    desc:'CAN Transceiver — 3.3V, 1Mbps',
+    role:'Second CAN bus transceiver. Each bus handles 3 motors with collision-free arbitration at 1Mbps.',
+    pkg:'SOT-23-8', protocols:['CAN bus 2'], conns:['U1','R2','CN17'] },
+  { id:'U6', label:'U6', part:'MAX3051EKA+T', cat:'can', cx:px(7.348), cy:py(-2.288), w:27, h:15,
+    desc:'CAN Transceiver — 3.3V, 1Mbps',
+    role:'Third CAN bus transceiver, paired with U5 (Motor MCU) based on physical proximity. Serves 3 servo motors.',
+    pkg:'SOT-23-8', protocols:['CAN bus 3'], conns:['U5','R3','CN17'] },
+  { id:'U7', label:'U7', part:'MAX3051EKA+T', cat:'can', cx:px(15.598), cy:py(-2.288), w:27, h:15,
+    desc:'CAN Transceiver — 3.3V, 1Mbps',
+    role:'Fourth CAN bus transceiver, paired with U5. Together the 4 transceivers create 4 independent CAN buses (3 servos each = 12 total).',
+    pkg:'SOT-23-8', protocols:['CAN bus 4'], conns:['U5','R4','CN17'] },
+  { id:'U15', label:'U15\nBNO086', part:'BNO086', cat:'sensor', cx:px(-23.777), cy:py(16.588), w:47, h:34,
+    desc:'9-Axis IMU — accel + gyro + magnetometer',
+    role:'Bosch IMU with onboard Cortex-M0+ running sensor fusion. Outputs quaternions over I2C telling the robot its 3D orientation \u2014 essential for balance. No LCSC part \u2014 requires manual sourcing.',
+    pkg:'LGA-28 (5.2x3.8mm)', protocols:['I2C to U1'], conns:['U1'] },
+  { id:'U16', label:'U16\nADC', part:'ADS1110A0IDBVR', cat:'sensor', cx:px(-15.927), cy:py(13.521), w:26, h:14,
+    desc:'16-bit Delta-Sigma ADC',
+    role:'Monitors battery voltage through a resistor divider (R22 200k\u03A9). Gives accurate battery level readings so the system can warn before the battery dies.',
+    pkg:'SOT-23-6', protocols:['I2C to U1'], conns:['U1','R22'] },
+  { id:'U18', label:'U18\nAudio', part:'MAX98357AEWL+T', cat:'audio', cx:px(-22), cy:py(-18), w:18, h:18,
+    desc:'I2S Class-D Audio Amplifier \u2014 3.2W',
+    role:'Takes digital I2S audio from U1 and drives a speaker directly \u2014 no external DAC needed. Used for beeps, status tones, and potentially LLM voice synthesis.',
+    pkg:'WLP-9 (1.4x1.3mm)', protocols:['I2S from U1'], conns:['U1'] },
+  { id:'U8', label:'U8\nTPS54561', part:'TPS54561DPRR', cat:'power', cx:px(-20.282), cy:py(-3.72), w:36, h:36,
+    desc:'Wide-Input Buck Converter IC \u2014 4.5-60V in, 5A out; integrated high-side MOSFET + PWM controller',
+    role:'Main power supply. VIN pin takes battery voltage from CN21 (7-24V). Internal PWM controller switches the integrated MOSFET at ~500kHz, chopping VIN onto the SW pin. SW drives L1; D1 catches SW to GND during MOSFET off-time. Output set by R5 (60.4k\u03A9) / R6 (11.5k\u03A9) feedback divider into the FB pin: Vout = 0.8V \u00d7 (1 + 60.4k/11.5k) = 5.0V. PWM is internal to U8 \u2014 no MCU involvement. See pwm-controller-circuit.md for how the feedback loop works.',
+    pkg:'WSON-10 (4x4mm)', protocols:['Power'], conns:['CN21','L1','D1','R5','R6','C18','C19'] },
+  { id:'D1', label:'D1\nSS56', part:'SS56', cat:'power', cx:px(-23.854), cy:py(-2.782), w:39, h:23,
+    desc:'5A/60V Schottky Catch Diode',
+    role:'Freewheeling (catch) diode for the TPS54561 buck. Cathode ties to U8 SW pin + L1; anode to GND. When the internal MOSFET turns off, L1 collapsing field pulls SW below GND, forward-biasing D1 and providing the return path for inductor current. Low Vf (~0.5V) minimizes switching loss. NOT a reverse-polarity series diode \u2014 CN21 wires directly to U8 VIN.',
+    pkg:'SMA', protocols:['Power'], conns:['U8','L1'] },
+  { id:'L1', label:'L1\n10\u03BCH', part:'MWSA1004S-100MT', cat:'inductor', cx:px(-23.354), cy:py(5.968), w:104, h:90,
+    desc:'10\u03BCH Power Inductor \u2014 the big silver square',
+    role:'Energy storage element of the buck converter. Input side ties to U8 SW pin + D1 cathode; output side is the 5V rail feeding C18/C19. Stores energy in its magnetic field while the MOSFET is ON; releases it through D1 when OFF. Smooths the chopped SW waveform into steady 5V DC. Largest component on board.',
+    pkg:'SMMS1040 (11.5x10mm)', protocols:['Power'], conns:['U8','D1','C18','C19'] },
+  { id:'U2', label:'U2 \u2014 40-Pin Raspberry Pi Header', part:'FH-00339', cat:'connector', cx:px(0), cy:py(24.5), w:434, h:46,
+    desc:'40-Pin Female GPIO Header (2x20, 2.54mm pitch)',
+    role:'The Raspberry Pi plugs directly into this. Carries: 5V power to Pi, SPI for control commands, UART for debug, possibly I2C and I2S. The Pi handles WiFi, Python, ROS2, neural networks, vision.',
+    pkg:'2x20 pin header', protocols:['SPI','UART','I2C','I2S','Power'], conns:['U1'] },
+  { id:'CN1', label:'CN1', part:'BM07B-SRSS-TB', cat:'connector', cx:px(-4.902), cy:py(17.962), w:60, h:22,
+    desc:'7-Pin JST SH \u2014 SWD/Debug for U1',
+    role:'Programming and debug connector for U1 (Main MCU). Pins: TCK, TMS (SWD), NRST (reset), USART TX/RX (serial debug), VCC (3.3V), GND.',
+    pkg:'JST SH 1.0mm pitch', protocols:['SWD','UART'], conns:['U1'] },
+  { id:'CN2', label:'CN2', part:'BM07B-SRSS-TB', cat:'connector', cx:px(11.848), cy:py(17.962), w:60, h:22,
+    desc:'7-Pin JST SH \u2014 SWD/Debug for U5',
+    role:'Programming and debug connector for U5 (Motor MCU). Same pinout as CN1. Used to flash SPIneV1 firmware via SWD.',
+    pkg:'JST SH 1.0mm pitch', protocols:['SWD','UART'], conns:['U5'] },
+  { id:'CN18', label:'CN18', part:'BM04B-SRSS-TB', cat:'connector', cx:px(-15.25), cy:py(17.75), w:40, h:22,
+    desc:'4-Pin JST SH Connector',
+    role:'Likely I2C peripheral connector \u2014 4 pins = SDA, SCL, VCC, GND. May connect to external sensors.',
+    pkg:'JST SH 1.0mm pitch', protocols:['I2C'], conns:['U1'] },
+  { id:'CN17', label:'CN17\n10-pin', part:'HC-ZH-10PWT', cat:'connector', cx:px(28), cy:py(0), w:45, h:120,
+    desc:'10-Pin ZH Connector \u2014 Motor Bus',
+    role:'Main motor bus connector. Carries all 4 CAN differential pairs (8 pins) + power and ground (2 pins) to the motor controller daisy chains in each leg.',
+    pkg:'ZH 1.5mm pitch', protocols:['CAN x4','Power'], conns:['U3','U4','U6','U7'] },
+  { id:'CN21', label:'CN21\nBATT', part:'HC-PH-2ALT', cat:'connector', cx:px(-26.5), cy:py(-15), w:40, h:45,
+    desc:'2-Pin PH Connector \u2014 Battery Input',
+    role:'Main power input. LiPo battery (2S-3S, 7.4-11.1V) plugs here. VBAT wires directly to U8 VIN \u2192 U8 SW \u2192 L1 \u2192 5V rail (D1 catches SW to GND during off-time). C68/C16 input caps sit on VIN rail.',
+    pkg:'PH 2.0mm pitch', protocols:['Power'], conns:['U8'] },
+  { id:'H5', label:'H5\nR Ear', part:'HC-PH-3ALT', cat:'connector', cx:px(-4), cy:py(-12.5), w:55, h:32,
+    desc:'3-Pin PH \u2014 Right Ear Servo',
+    role:'PWM servo for the right ear, driven directly by Pi GPIO26 (RIGHT_EAR_SERVO net). Pins: Signal, +5V, GND.',
+    pkg:'PH 2.0mm pitch', protocols:['PWM from Pi GPIO26'], conns:['U2'] },
+  { id:'H4', label:'H4\nL Ear', part:'HC-PH-3ALT', cat:'connector', cx:px(7.5), cy:py(-12.5), w:55, h:32,
+    desc:'3-Pin PH \u2014 Left Ear Servo',
+    role:'PWM servo for the left ear, driven directly by Pi GPIO16 (LEFT_EAR_SERVO net). Pins: Signal, +5V, GND.',
+    pkg:'PH 2.0mm pitch', protocols:['PWM from Pi GPIO16'], conns:['U2'] },
+  { id:'X1', label:'X1', part:'CSTNE8M00G55A000R0', cat:'clock', cx:px(-2.152), cy:py(14.712), w:29, h:12,
+    desc:'8MHz Ceramic Resonator',
+    role:'Clock source for U1. STM32 PLL multiplies 8MHz \u2192 180MHz CPU clock. Ceramic resonator with built-in load caps.',
+    pkg:'3.2x1.3mm', protocols:[], conns:['U1'] },
+  { id:'X2', label:'X2', part:'CSTNE8M00G55A000R0', cat:'clock', cx:px(14.598), cy:py(14.712), w:29, h:12,
+    desc:'8MHz Ceramic Resonator',
+    role:'Clock source for U5. Each MCU needs its own clock for CAN bus bit timing accuracy.',
+    pkg:'3.2x1.3mm', protocols:[], conns:['U5'] },
+  { id:'LED9', label:'', part:'XL-1005UWC', cat:'led', cx:px(-12.152), cy:py(5.462), w:7, h:5,
+    desc:'White LED \u2014 Status Indicator', role:'Status LED near U1.', pkg:'0402', protocols:[], conns:['U1'] },
+  { id:'LED10', label:'', part:'XL-1005UWC', cat:'led', cx:px(4.598), cy:py(5.462), w:7, h:5,
+    desc:'White LED \u2014 Status Indicator', role:'Status LED between U1 and U5.', pkg:'0402', protocols:[], conns:['U5'] },
+  { id:'L2', label:'', part:'CBG160808U501T', cat:'passive', cx:px(-9.601), cy:py(14.213), w:14, h:7,
+    desc:'Ferrite Bead \u2014 EMI Filter',
+    role:'50\u03A9 at 100MHz. Blocks switching noise from analog sensors (IMU, ADC). Frequency-dependent resistor \u2014 absorbs noise as heat.',
+    pkg:'0603', protocols:[], conns:['U1','U15'] },
+  { id:'L3', label:'', part:'CBG160808U501T', cat:'passive', cx:px(7.149), cy:py(14.213), w:14, h:7,
+    desc:'Ferrite Bead \u2014 EMI Filter', role:'Isolates U5 power from digital switching noise.', pkg:'0603', protocols:[], conns:['U5'] },
+  { id:'R1', label:'', part:'120\u03A9', cat:'passive', cx:px(-11.902), cy:py(-2.288), w:9, h:5,
+    desc:'120\u03A9 CAN Termination', role:'Matches CAN bus characteristic impedance. Prevents signal reflections.', pkg:'R0402', protocols:['CAN'], conns:['U4'] },
+  { id:'R2', label:'', part:'120\u03A9', cat:'passive', cx:px(-3.652), cy:py(-2.288), w:9, h:5,
+    desc:'120\u03A9 CAN Termination', role:'CAN bus 2 termination.', pkg:'R0402', protocols:['CAN'], conns:['U3'] },
+  { id:'R3', label:'', part:'120\u03A9', cat:'passive', cx:px(4.848), cy:py(-2.288), w:9, h:5,
+    desc:'120\u03A9 CAN Termination', role:'CAN bus 3 termination.', pkg:'R0402', protocols:['CAN'], conns:['U6'] },
+  { id:'R4', label:'', part:'120\u03A9', cat:'passive', cx:px(13.098), cy:py(-2.288), w:9, h:5,
+    desc:'120\u03A9 CAN Termination', role:'CAN bus 4 termination.', pkg:'R0402', protocols:['CAN'], conns:['U7'] },
+  { id:'R5', label:'', part:'60.4k\u03A9', cat:'passive', cx:px(-16.604), cy:py(-0.282), w:9, h:5,
+    desc:'60.4k\u03A9 Feedback Resistor (E96)',
+    role:'Top leg of TPS54561 feedback divider: from 5V rail down to the FB pin. U8 internal error amp regulates FB to 0.8V; R5/R6 ratio programs Vout = 0.8V \u00d7 (1 + R5/R6) = 5.0V. Odd value is E96 precision series.',
+    pkg:'R0402', protocols:[], conns:['U8','R6','L1'] },
+  { id:'R6', label:'', part:'11.5k\u03A9', cat:'passive', cx:px(-17.604), cy:py(-2.282), w:9, h:5,
+    desc:'11.5k\u03A9 Feedback Resistor (E96)', role:'Bottom leg of feedback divider: FB pin to GND. Sets buck output to 5.0V together with R5.', pkg:'R0402', protocols:[], conns:['U8','R5'] },
+  { id:'R19', label:'', part:'2.2k\u03A9', cat:'passive', cx:px(-20.5), cy:py(14), w:9, h:5,
+    desc:'2.2k\u03A9 I2C Pull-up', role:'Pulls I2C SDA high when idle. Standard for 400kHz I2C with BNO086 and ADS1110.', pkg:'R0402', protocols:['I2C'], conns:['U1','U15','U16'] },
+  { id:'R20', label:'', part:'2.2k\u03A9', cat:'passive', cx:px(-20.527), cy:py(17.838), w:9, h:5,
+    desc:'2.2k\u03A9 I2C Pull-up', role:'Pulls I2C SCL high. One pull-up per I2C line.', pkg:'R0402', protocols:['I2C'], conns:['U1','U15','U16'] },
+  { id:'C18', label:'', part:'47\u03BCF', cat:'passive', cx:px(-27.229), cy:py(-2.907), w:18, h:11,
+    desc:'47\u03BCF Output Capacitor', role:'Buck output filter on 5V rail (after L1). Smooths 5V ripple and supplies instant current during load transients.', pkg:'C0805', protocols:[], conns:['L1','U8'] },
+  { id:'C19', label:'', part:'47\u03BCF', cat:'passive', cx:px(-27.229), cy:py(-4.657), w:18, h:11,
+    desc:'47\u03BCF Output Capacitor', role:'Second output cap on 5V rail. Two in parallel halves ESR for better ripple.', pkg:'C0805', protocols:[], conns:['L1','U8'] },
+  { id:'C16', label:'', part:'10\u03BCF', cat:'passive', cx:px(-24.8), cy:py(-8.0), w:18, h:11,
+    desc:'10\u03BCF Input Bypass Capacitor (C1206)', role:'Bulk input bypass on U8 VIN. Supplies instantaneous switching current so battery wire inductance doesn\u2019t cause VIN to sag each cycle. Larger C1206 package handles higher ripple current.', pkg:'C1206', protocols:[], conns:['CN21','U8'] },
+  { id:'C68', label:'', part:'10\u03BCF', cat:'passive', cx:px(-21.8), cy:py(-9.0), w:10, h:6,
+    desc:'10\u03BCF Additional Input Capacitor (C0402)', role:'Small-package input bypass in parallel with C16. Lower ESL at high frequency \u2014 shunts the fastest switching transients close to U8 VIN pin.', pkg:'C0402', protocols:[], conns:['U8'] },
+  { id:'R22', label:'', part:'200k\u03A9', cat:'passive', cx:px(-13.25), cy:py(11), w:9, h:5,
+    desc:'200k\u03A9 Voltage Divider', role:'Scales battery voltage down to ADS1110 ADC input range for monitoring.', pkg:'R0402', protocols:[], conns:['U16'] },
+];
+
+const catColors = {
+  mcu:       { fill:'#0e2233', stroke:'#4fc3f7', accent:'#4fc3f7' },
+  can:       { fill:'#2a1245', stroke:'#ce93d8', accent:'#ce93d8' },
+  sensor:    { fill:'#0c3320', stroke:'#66bb6a', accent:'#66bb6a' },
+  audio:     { fill:'#3b0a2a', stroke:'#f48fb1', accent:'#f48fb1' },
+  power:     { fill:'#3a2508', stroke:'#ffb74d', accent:'#ffb74d' },
+  connector: { fill:'#37474f', stroke:'#b0bec5', accent:'#90a4ae' },
+  clock:     { fill:'#073333', stroke:'#26c6da', accent:'#26c6da' },
+  led:       { fill:'#ffee58', stroke:'#fdd835', accent:'#fdd835', text:'#111' },
+  passive:   { fill:'#4e342e', stroke:'#bcaaa4', accent:'#a1887f' },
+  inductor:  { fill:'#78909c', stroke:'#cfd8dc', accent:'#ffb74d' },
+};
+
+const connDefs = [
+  // SPI: Pi talks to BOTH MCUs via shared bus (CS1=U1, CS2=U5)
+  { id:'spi1', proto:'spi', from:'U2', to:'U1', color:'#ef5350', label:'SPI0 CS1' },
+  { id:'spi2', proto:'spi', from:'U2', to:'U5', color:'#ef5350', label:'SPI0 CS2' },
+  // I2C1: Pi reads sensors DIRECTLY (not through U1)
+  { id:'i2c1', proto:'i2c', from:'U2', to:'U15', color:'#66bb6a', label:'I2C1' },
+  { id:'i2c2', proto:'i2c', from:'U2', to:'U16', color:'#66bb6a' },
+  // I2C3: Pi pins 8,10 to external connector CN18
+  { id:'i2c3', proto:'i2c', from:'U2', to:'CN18', color:'#66bb6a', label:'I2C3' },
+  // CAN: MCUs to transceivers
+  { id:'can1', proto:'can', from:'U1', to:'U4', color:'#ffa726', label:'CAN1' },
+  { id:'can2', proto:'can', from:'U1', to:'U3', color:'#ffa726', label:'CAN2' },
+  { id:'can3', proto:'can', from:'U5', to:'U6', color:'#ffa726', label:'CAN1' },
+  { id:'can4', proto:'can', from:'U5', to:'U7', color:'#ffa726', label:'CAN2' },
+  { id:'can5', proto:'can', from:'U4', to:'CN17', color:'#ffa726', dash:'4,3' },
+  { id:'can6', proto:'can', from:'U3', to:'CN17', color:'#ffa726', dash:'4,3' },
+  { id:'can7', proto:'can', from:'U6', to:'CN17', color:'#ffa726', dash:'4,3' },
+  { id:'can8', proto:'can', from:'U7', to:'CN17', color:'#ffa726', dash:'4,3' },
+  // I2S: Pi to audio amp
+  { id:'i2s1', proto:'i2s', from:'U2', to:'U18', color:'#ab47bc', label:'I2S' },
+  // Power \u2014 buck: CN21 \u2192 U8 VIN; U8 SW \u2192 L1 \u2192 5V rail; D1 catches SW\u2194GND; R5/R6 feedback
+  { id:'pwr1', proto:'power', from:'CN21', to:'U8', color:'#ffd600', label:'VBAT' },
+  { id:'pwr2', proto:'power', from:'U8', to:'L1', color:'#ffd600', label:'SW' },
+  { id:'pwr3', proto:'power', from:'U8', to:'D1', color:'#ffd600', dash:'2,3', label:'catch' },
+  { id:'pwr4', proto:'power', from:'L1', to:'C18', color:'#ffd600', dash:'2,4' },
+  { id:'pwr5', proto:'power', from:'L1', to:'C19', color:'#ffd600', dash:'2,4' },
+  { id:'pwr6', proto:'power', from:'L1', to:'R5', color:'#ffd600', dash:'1,4' },
+  { id:'pwr7', proto:'power', from:'R5', to:'U8', color:'#ffd600', dash:'1,4', label:'FB' },
+  { id:'pwr8', proto:'power', from:'CN21', to:'C16', color:'#ffd600', dash:'2,4' },
+  { id:'pwr9', proto:'power', from:'C16', to:'U8', color:'#ffd600', dash:'2,4' },
+  { id:'pwr10', proto:'power', from:'C68', to:'U8', color:'#ffd600', dash:'2,4' },
+  { id:'pwr11', proto:'power', from:'U2', to:'U1', color:'#ffd600', dash:'2,4', label:'5V' },
+  // UART: debug connectors only (NO UART through Pi header)
+  { id:'uart1', proto:'uart', from:'U1', to:'CN1', color:'#26c6da', label:'SWD+UART' },
+  { id:'uart2', proto:'uart', from:'U5', to:'CN2', color:'#26c6da', label:'SWD+UART' },
+  // PWM: Pi drives ear servos directly
+  { id:'pwm1', proto:'uart', from:'U2', to:'H4', color:'#26c6da', dash:'3,3', label:'PWM' },
+  { id:'pwm2', proto:'uart', from:'U2', to:'H5', color:'#26c6da', dash:'3,3', label:'PWM' },
+];
+
+// Build SVG
+const svg = document.getElementById('board');
+const ns = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(ns, tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k, v);
+  (parent || svg).appendChild(e);
+  return e;
+}
+
+// Board
+el('rect', { x:35, y:35, width:639, height:540, rx:8, class:'board-outline' });
+el('rect', { x:35, y:35, width:639, height:540, rx:8, fill:'url(#grid)' });
+
+// Mounting holes
+[[55,55],[55,555],[655,55],[655,555]].forEach(([x,y]) =>
+  el('circle', { cx:x, cy:y, r:12, class:'mounting-hole' }));
+
+// Silkscreen
+function silk(x, y, text, size, anchor) {
+  const t = el('text', { x, y, class:'silkscreen', 'font-size':size||7, 'text-anchor':anchor||'start' });
+  t.textContent = text;
+}
+silk(346, 500, 'S  +5  GND', 6, 'middle');
+silk(346, 508, 'Left Servo', 5, 'middle');
+silk(449, 500, 'S  +5  GND', 6, 'middle');
+silk(449, 508, 'Right Servo', 5, 'middle');
+silk(px(-24), py(-16), 'Speaker NP', 6, 'middle');
+silk(480, 555, 'Control Board Rev 3.5.2', 7, 'middle');
+silk(480, 565, 'Gabrael & Nathan', 6, 'middle');
+
+// Buck module definition — encapsulates the TPS54561 converter subsystem
+const BUCK_MEMBERS = new Set(['U8','D1','L1','C16','C18','C19','C68','R5','R6']);
+const BUCK_INPUT = 'CN21';
+const BUCK_ALL = new Set([...BUCK_MEMBERS, BUCK_INPUT]);
+
+function isBuckConn(c) {
+  return BUCK_ALL.has(c.from) && BUCK_ALL.has(c.to);
+}
+
+// Connection lines (behind components)
+const connGroup = el('g', { id:'connections' });
+connDefs.forEach(c => {
+  const fc = components.find(x => x.id === c.from);
+  const tc = components.find(x => x.id === c.to);
+  if (!fc || !tc) return;
+  // Offset duplicate lines slightly
+  let ox = 0, oy = 0;
+  if (c.id === 'pwr11') { ox = 0; oy = 8; }
+  const lineClass = 'conn-line visible' + (isBuckConn(c) ? ' buck-conn' : '');
+  el('line', {
+    x1: fc.cx+ox, y1: fc.cy+oy, x2: tc.cx+ox, y2: tc.cy+oy,
+    stroke: c.color, class:lineClass, 'data-proto': c.proto,
+    'data-from': c.from, 'data-to': c.to,
+    'stroke-dasharray': c.dash || '6,3',
+  }, connGroup);
+  if (c.label) {
+    const mx = (fc.cx+tc.cx)/2 + ox, my = (fc.cy+tc.cy)/2 + oy - 5;
+    const t = el('text', {
+      x: mx, y: my, 'font-size': 6, fill: c.color, 'text-anchor': 'middle',
+      class: lineClass, 'data-proto': c.proto, opacity: 0.9,
+      'font-family': 'SF Mono, monospace'
+    }, connGroup);
+    t.textContent = c.label;
+  }
+});
+
+// Components
+const compGroup = el('g', { id:'components' });
+components.forEach(c => {
+  const colors = catColors[c.cat];
+  const cls = 'comp' + (BUCK_MEMBERS.has(c.id) ? ' buck-member' : '');
+  const g = el('g', { class:cls, 'data-id':c.id }, compGroup);
+  el('rect', {
+    x: c.cx - c.w/2, y: c.cy - c.h/2, width: c.w, height: c.h,
+    rx: c.cat === 'connector' ? 3 : 2,
+    fill: colors.fill, stroke: colors.stroke, class:'comp-rect',
+  }, g);
+  if (c.label) {
+    const lines = c.label.split('\n');
+    lines.forEach((line, i) => {
+      const fontSize = (c.w < 30 || c.h < 20) ? 6 : (c.w < 50 ? 7 : 8);
+      const yOff = c.cy + (i - (lines.length-1)/2) * (fontSize + 2);
+      const t = el('text', {
+        x: c.cx, y: yOff + fontSize/3,
+        class: 'comp-label' + (fontSize < 8 ? ' comp-label-sm' : ''),
+        fill: colors.text || '#e0e0e0', 'font-size': fontSize,
+      }, g);
+      t.textContent = line;
+    });
+  }
+  g.addEventListener('mouseenter', () => showInfo(c));
+  g.addEventListener('mouseleave', clearHighlights);
+});
+
+// ─── Buck Converter module: grouping frame + label + IN/OUT annotations ───
+(function renderBuckModule() {
+  const members = [...BUCK_MEMBERS].map(id => components.find(c => c.id === id)).filter(Boolean);
+  const inputComp = components.find(c => c.id === BUCK_INPUT);
+  const all = [...members, inputComp];
+  const pad = 14;
+  const minX = Math.min(...all.map(c => c.cx - c.w/2)) - pad;
+  const minY = Math.min(...all.map(c => c.cy - c.h/2)) - pad - 14;
+  const maxX = Math.max(...all.map(c => c.cx + c.w/2)) + pad;
+  const maxY = Math.max(...all.map(c => c.cy + c.h/2)) + pad;
+
+  const modGroup = el('g', { id:'buck-module', class:'buck-module' });
+  // Dashed frame — pointer-events:none so it doesn't block component clicks
+  el('rect', {
+    x:minX, y:minY, width:maxX-minX, height:maxY-minY, rx:8,
+    fill:'none', stroke:'#ffd600', 'stroke-width':2,
+    'stroke-dasharray':'8,4', opacity:0.55,
+    class:'buck-frame', 'pointer-events':'none',
+  }, modGroup);
+  // Label pill — 2 lines, sized to fit frame width
+  const labelLine1 = 'BUCK (click to focus)';
+  const labelLine2 = 'U8·D1·L1·C16·C18·C19·C68·R5·R6';
+  const frameW = maxX - minX;
+  const labelW = Math.max(140, Math.min(frameW - 12, 200));
+  const labelH = 26;
+  const labelBg = el('rect', {
+    x:minX+6, y:minY+3, width:labelW, height:labelH, rx:4,
+    fill:'#0d1117', stroke:'#ffd600', 'stroke-width':1, opacity:0.95,
+    class:'buck-label-bg',
+  }, modGroup);
+  const label1 = el('text', {
+    x:minX+12, y:minY+13,
+    'font-size':9, fill:'#ffd600', 'font-weight':700,
+    'font-family':'SF Mono, monospace', class:'buck-label',
+  }, modGroup);
+  label1.textContent = labelLine1;
+  const label2 = el('text', {
+    x:minX+12, y:minY+24,
+    'font-size':7, fill:'#ffd600', 'font-weight':600, opacity:0.85,
+    'font-family':'SF Mono, monospace', class:'buck-label',
+  }, modGroup);
+  label2.textContent = labelLine2;
+  labelBg.addEventListener('click', toggleBuckFocus);
+  label1.addEventListener('click', toggleBuckFocus);
+  label2.addEventListener('click', toggleBuckFocus);
+
+  // IN/OUT annotations — hidden until focus mode
+  const annGroup = el('g', { class:'buck-annotations', id:'buck-annotations' });
+  // IN arrow — from CN21 into U8 VIN (left-bottom → up-right)
+  const u8 = components.find(c => c.id === 'U8');
+  const cn21 = inputComp;
+  const l1 = components.find(c => c.id === 'L1');
+  // IN arrow marker def
+  const defs = svg.querySelector('defs');
+  defs.insertAdjacentHTML('beforeend',
+    '<marker id="in-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4fc3f7"/></marker>' +
+    '<marker id="out-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ffd600"/></marker>'
+  );
+  // INPUT label (left of CN21)
+  el('text', {
+    x:cn21.cx - 50, y:cn21.cy - 20, 'font-size':13, fill:'#4fc3f7', 'text-anchor':'start',
+  }, annGroup).textContent = 'INPUT:  VBAT (7–24V)';
+  el('text', {
+    x:cn21.cx - 50, y:cn21.cy - 5, 'font-size':10, fill:'#8be9fd', 'text-anchor':'start',
+  }, annGroup).textContent = 'from battery (LiPo 2S-3S)  →  CN21  →  U8 VIN';
+  // IN arrow: from label area into CN21
+  el('line', {
+    x1:cn21.cx - 55, y1:cn21.cy + 5, x2:cn21.cx - cn21.w/2 - 2, y2:cn21.cy + 5,
+    stroke:'#4fc3f7', 'stroke-width':2.5, 'marker-end':'url(#in-arrow)',
+  }, annGroup);
+
+  // OUTPUT label (to right/above L1, going toward rest of board)
+  const outX = l1.cx + l1.w/2 + 20;
+  const outY = l1.cy - 20;
+  el('text', {
+    x:outX, y:outY, 'font-size':13, fill:'#ffd600', 'text-anchor':'start',
+  }, annGroup).textContent = 'OUTPUT:  5V rail';
+  el('text', {
+    x:outX, y:outY + 15, 'font-size':10, fill:'#ffea80', 'text-anchor':'start',
+  }, annGroup).textContent = 'to Pi header, STM32s, BNO086, MAX98357A …';
+  // OUT arrow: from L1 right edge to label
+  el('line', {
+    x1:l1.cx + l1.w/2 + 2, y1:l1.cy, x2:outX - 4, y2:outY + 4,
+    stroke:'#ffd600', 'stroke-width':2.5, 'marker-end':'url(#out-arrow)',
+  }, annGroup);
+
+  // Signal-path inline labels for focus mode
+  const u8cx = u8.cx, u8cy = u8.cy;
+  el('text', { x:u8cx, y:u8cy + u8.h/2 + 14, 'font-size':9, fill:'#ffd600', 'text-anchor':'middle',
+  }, annGroup).textContent = 'U8 VIN (battery in) →  SW (chopped) →  L1';
+  el('text', { x:(u8cx + l1.cx)/2 - 4, y:(u8cy + l1.cy)/2, 'font-size':9, fill:'#ffd600', 'text-anchor':'middle',
+  }, annGroup).textContent = 'SW node';
+  // D1 catch label
+  const d1 = components.find(c => c.id === 'D1');
+  el('text', { x:d1.cx, y:d1.cy + d1.h/2 + 12, 'font-size':8, fill:'#ffb74d', 'text-anchor':'middle',
+  }, annGroup).textContent = 'D1 catch (freewheel)';
+  // Feedback label near R5/R6
+  const r5 = components.find(c => c.id === 'R5');
+  const r6 = components.find(c => c.id === 'R6');
+  el('text', { x:(r5.cx+r6.cx)/2 + 22, y:(r5.cy+r6.cy)/2, 'font-size':9, fill:'#ffd600',
+  }, annGroup).textContent = 'R5/R6 → FB pin (sets 5.0V)';
+
+  // Close button (shown only in focus) — bottom-right of frame to avoid label overlap
+  const closeG = el('g', { class:'buck-annotations', id:'buck-close', style:'cursor:pointer' });
+  el('rect', { x:maxX - 76, y:maxY - 22, width:72, height:18, rx:3,
+    fill:'#161b22', stroke:'#ffd600', 'stroke-width':1 }, closeG);
+  el('text', { x:maxX - 40, y:maxY - 9, 'font-size':11, fill:'#ffd600', 'text-anchor':'middle',
+    'font-family':'SF Mono, monospace', 'font-weight':700 }, closeG).textContent = '✕ exit focus';
+  closeG.addEventListener('click', toggleBuckFocus);
+
+  svg.appendChild(modGroup);
+  svg.appendChild(annGroup);
+  svg.appendChild(closeG);
+})();
+
+function toggleBuckFocus() {
+  svg.classList.toggle('buck-focus');
+  const on = svg.classList.contains('buck-focus');
+  const btn = document.getElementById('buck-hint-btn');
+  if (btn) btn.textContent = on ? '⚡ Buck Module — click to exit focus' : '⚡ Buck Module — click to focus';
+}
+
+// Info panel
+const infoDiv = document.getElementById('comp-info');
+function showInfo(c) {
+  const colors = catColors[c.cat];
+  const protoTags = (c.protocols||[]).map(p => {
+    let bg = '#555';
+    if (p.includes('SPI')) bg = '#ef5350';
+    else if (p.includes('I2C')) bg = '#66bb6a';
+    else if (p.includes('CAN')) bg = '#ffa726';
+    else if (p.includes('I2S')) bg = '#ab47bc';
+    else if (p.includes('UART') || p.includes('SWD')) bg = '#26c6da';
+    else if (p.includes('Power')) bg = '#ffd600';
+    return '<span class="tag" style="background:'+bg+';color:#fff">'+p+'</span>';
+  }).join('');
+  const connList = (c.conns||[]).map(id => {
+    const other = components.find(x => x.id === id);
+    return other ? '<li><strong>'+id+'</strong> \u2014 '+other.part+'</li>' : '<li>'+id+'</li>';
+  }).join('');
+  infoDiv.innerHTML =
+    '<h2 style="color:'+colors.accent+'">'+c.id+' \u2014 '+c.part+'</h2>'+
+    '<p>'+c.desc+'</p>'+
+    '<p class="pkg">'+c.pkg+'</p>'+
+    '<h3>Role on This Board</h3><p>'+c.role+'</p>'+
+    (protoTags ? '<h3>Protocols</h3><p>'+protoTags+'</p>' : '')+
+    (connList ? '<h3>Connected To</h3><ul>'+connList+'</ul>' : '');
+  document.querySelectorAll('.comp').forEach(g => {
+    const id = g.dataset.id;
+    if (id === c.id || (c.conns||[]).includes(id))
+      g.classList.add('highlighted');
+    else
+      g.style.opacity = '0.3';
+  });
+  document.querySelectorAll('.conn-line').forEach(line => {
+    if (line.dataset.from === c.id || line.dataset.to === c.id)
+      line.classList.add('highlighted');
+  });
+}
+function clearHighlights() {
+  document.querySelectorAll('.comp').forEach(g => {
+    g.classList.remove('highlighted'); g.style.opacity = '';
+  });
+  document.querySelectorAll('.conn-line').forEach(l => l.classList.remove('highlighted'));
+  infoDiv.innerHTML = '<h2>Component Details</h2><p class="info-placeholder">Hover over a component on the board to see its details, connections, and protocols.</p>';
+}
+
+// Protocol toggles
+const protoState = { spi:true, i2c:true, can:true, i2s:true, power:true, uart:true };
+function toggleProto(proto) {
+  protoState[proto] = !protoState[proto];
+  document.querySelector('[data-proto="'+proto+'"]').classList.toggle('active', protoState[proto]);
+  document.querySelectorAll('.conn-line[data-proto="'+proto+'"]').forEach(l =>
+    l.classList.toggle('visible', protoState[proto]));
+}
+
+// GPIO diagram
+// ALL PIN DATA CONFIRMED from Gerber/FlyingProbeTesting.json net names
+const gpioData = [
+  [1,'3V3','pin-power','VCC \u2014 3.3V Power','used'],
+  [2,'5V','pin-power','+5V from buck converter to Pi','used'],
+  [3,'GPIO2','pin-i2c','SDA \u2014 I2C1 data to BNO086 + ADS1110 (Pi reads sensors directly)','used'],
+  [4,'5V','pin-power','+5V Power','used'],
+  [5,'GPIO3','pin-i2c','SCL \u2014 I2C1 clock to BNO086 + ADS1110','used'],
+  [6,'GND','pin-gnd','Ground',''],
+  [7,'GPIO4','pin-unused','NOT CONNECTED (net: U2_7)',''],
+  [8,'GPIO14','pin-i2c','I2C3_SDA \u2014 to CN18 external I2C connector (NOT UART!)','used'],
+  [9,'GND','pin-gnd','Ground',''],
+  [10,'GPIO15','pin-i2c','I2C3_SCL \u2014 to CN18 external I2C connector (NOT UART!)','used'],
+  [11,'GPIO17','pin-unused','NOT CONNECTED',''],
+  [12,'GPIO18','pin-i2s','I2S_BCK \u2014 bit clock to MAX98357A (U18)','used'],
+  [13,'GPIO27','pin-unused','NOT CONNECTED',''],
+  [14,'GND','pin-gnd','Ground',''],
+  [15,'GPIO22','pin-unused','NOT CONNECTED',''],
+  [16,'GPIO23','pin-unused','NOT CONNECTED',''],
+  [17,'3V3','pin-power','VCC \u2014 3.3V Power','used'],
+  [18,'GPIO24','pin-unused','NOT CONNECTED',''],
+  [19,'GPIO10','pin-spi','MOSI \u2014 SPI0 data to U1 + U5','used'],
+  [20,'GND','pin-gnd','Ground',''],
+  [21,'GPIO9','pin-spi','MISO \u2014 SPI0 data from U1 + U5','used'],
+  [22,'GPIO25','pin-unused','NOT CONNECTED',''],
+  [23,'GPIO11','pin-spi','SCK \u2014 SPI0 clock (shared bus to U1 pin 21 + U5 pin 21)','used'],
+  [24,'GPIO8','pin-spi','CS1 \u2014 SPI0 CE0 chip select for U1 (Main MCU)','used'],
+  [25,'GND','pin-gnd','Ground',''],
+  [26,'GPIO7','pin-spi','CS2 \u2014 SPI0 CE1 chip select for U5 (Motor MCU)','used'],
+  [27,'GPIO0','pin-unused','NOT CONNECTED',''],
+  [28,'GPIO1','pin-unused','NOT CONNECTED',''],
+  [29,'GPIO5','pin-unused','NOT CONNECTED',''],
+  [30,'GND','pin-gnd','Ground',''],
+  [31,'GPIO6','pin-unused','NOT CONNECTED',''],
+  [32,'GPIO12','pin-gpio','LED_DIN \u2014 WS2812/NeoPixel addressable LED data','used'],
+  [33,'GPIO13','pin-unused','NOT CONNECTED',''],
+  [34,'GND','pin-gnd','Ground',''],
+  [35,'GPIO19','pin-i2s','I2S_LRCK \u2014 word select to MAX98357A','used'],
+  [36,'GPIO16','pin-gpio','LEFT_EAR_SERVO \u2014 PWM to H4 connector','used'],
+  [37,'GPIO26','pin-gpio','RIGHT_EAR_SERVO \u2014 PWM to H5 connector','used'],
+  [38,'GPIO20','pin-i2s','I2S_DIN \u2014 I2S data input (mic/feedback)','used'],
+  [39,'GND','pin-gnd','Ground',''],
+  [40,'GPIO21','pin-i2s','I2S_DOUT \u2014 I2S data output to MAX98357A','used'],
+];
+
+const gpioGrid = document.getElementById('gpio-grid');
+for (let row = 0; row < 20; row++) {
+  const lp = gpioData[row * 2], rp = gpioData[row * 2 + 1];
+  const ll = document.createElement('div');
+  ll.className = 'gpio-label left' + (lp[4] ? ' used' : '');
+  ll.textContent = lp[1]; gpioGrid.appendChild(ll);
+  const lpd = document.createElement('div');
+  lpd.className = 'gpio-pin ' + lp[2];
+  lpd.textContent = lp[0]; lpd.title = 'Pin '+lp[0]+': '+lp[1]+' \u2014 '+lp[3];
+  gpioGrid.appendChild(lpd);
+  const rpd = document.createElement('div');
+  rpd.className = 'gpio-pin ' + rp[2];
+  rpd.textContent = rp[0]; rpd.title = 'Pin '+rp[0]+': '+rp[1]+' \u2014 '+rp[3];
+  gpioGrid.appendChild(rpd);
+  const rl = document.createElement('div');
+  rl.className = 'gpio-label right' + (rp[4] ? ' used' : '');
+  rl.textContent = rp[1]; gpioGrid.appendChild(rl);
+}
+</script>
+</body>
+</html>

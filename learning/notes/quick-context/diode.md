@@ -211,6 +211,8 @@ BRIDGE RECTIFIER CIRCUIT
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/doped-silicon]]** — The PN junction that makes diodes work is created by doping silicon with different impurities on each side. Understanding N-type and P-type silicon explains why diodes conduct in only one direction.
 
 - **[[quick-context/transistor]]** — A MOSFET contains a built-in "body diode." A BJT is essentially two PN junctions. Understanding diodes is prerequisite to understanding transistors.

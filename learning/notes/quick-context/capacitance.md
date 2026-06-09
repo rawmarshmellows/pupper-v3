@@ -105,6 +105,72 @@ PARASITIC (unintended, unavoidable):
             │  │  │  │
 ```
 
+### Where $I = C \cdot dV/dt$ Comes From
+
+Start from the **definition** of capacitance — charge stored per volt:
+
+$$C = \frac{Q}{V} \quad \Rightarrow \quad Q = C \cdot V$$
+
+Now ask: what is **current**? Current is rate of charge flow:
+
+$$I = \frac{dQ}{dt}$$
+
+Differentiate $Q = C \cdot V$ with respect to time (C is constant for a fixed capacitor — geometry doesn't change):
+
+$$\frac{dQ}{dt} = C \cdot \frac{dV}{dt}$$
+
+Substitute → **$I = C \cdot \frac{dV}{dt}$**. That's it. Three steps: definition of C, definition of I, derivative.
+
+```
+DERIVATION AT A GLANCE
+==============================================================================
+
+    Q = C·V          (definition: capacitance = charge per volt)
+        │
+        │  d/dt both sides
+        ▼
+    dQ/dt = C·dV/dt  (C constant, pulls out of derivative)
+        │
+        │  but dQ/dt IS current
+        ▼
+    I = C·dV/dt
+```
+
+**Physical intuition** — think of voltage as the *height* of charge piled on the plates:
+
+- $V$ rising = charge being *pumped onto* the plate. Pump rate = current.
+- $V$ falling = charge *draining off*. Drain rate = current (other direction).
+- $V$ constant = no charge moving = **zero current**, even if V is huge. A fully charged capacitor with steady V sees no current. This is why caps **block DC** but pass AC: DC has dV/dt = 0, AC has dV/dt ≠ 0.
+
+The C factor is the "exchange rate" between charge and voltage. Big C = lots of charge per volt = need lots of current to move V quickly. Small C = little charge per volt = small current changes V fast.
+
+```
+WATER ANALOGY
+==============================================================================
+
+    Capacitor = water tank with cross-sectional area A (= capacitance C)
+    Voltage V = water height
+    Charge Q = water volume
+    Current I = flow rate (volume per second)
+
+        ┌─────────┐
+        │         │ ← water level rising = dV/dt > 0
+        │ ~~~~~~~ │
+        │ ~~~~~~~ │
+        │ ~~~~~~~ │
+        └────┬────┘
+             │  ← flow rate I = A × dh/dt
+             ▼
+                    (Wide tank A = big C: need big flow to raise level fast)
+                    (Narrow tank = small C: tiny flow raises level fast)
+                    (Level constant = no flow, no matter how full)
+
+    Volume = Area × height       ↔  Q = C × V
+    Flow rate = Area × dh/dt     ↔  I = C × dV/dt
+```
+
+This equation is **the** capacitor equation — every speed limit, RC time constant, switching power calculation, and decoupling-cap sizing comes from it.
+
 ### Why Parasitic Capacitance Limits Speed
 
 To change the [[quick-context/voltage|voltage]] on any node, you must charge or discharge its capacitance. The equation $I = C \times dV/dt$ means:
@@ -186,6 +252,152 @@ COMBINING CAPACITANCES
 
         C_total = (C1 × C2) / (C1 + C2)    (always LESS than smallest)
 ```
+
+**Why "less than smallest"?** Let C1 be the smaller cap. Then:
+
+$$\frac{C_{\text{total}}}{C_1} = \frac{C_2}{C_1 + C_2} < 1 \quad \text{(since } C_1 > 0 \Rightarrow C_1 + C_2 > C_2\text{)}$$
+
+So $C_{\text{total}} < C_1$ = smallest. Numeric sanity: C1 = 1 µF, C2 = 1000 µF → C_total ≈ 0.999 µF. Even C2 → ∞ gives C_total → C1, never exceeds it.
+
+**Physical intuition:** series stack adds plate-to-plate distance. Same charge Q sits on each cap (charge can't flow through dielectric — what enters one plate must leave the other), but voltage across stack = V1 + V2. Bigger V for same Q → smaller C (since C = Q/V). Series cap stack acts like one cap with thicker dielectric.
+
+### Where Parasitic Capacitance on a Bus Comes From
+
+Before the daisy-chain limit, understand where the ~10 pF per device actually lives. Four physical sources, all in parallel on the signal node:
+
+```
+ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
+==============================================================================
+
+    PCB trace/pad           Package pin              Die
+    ───────────────         ───────────              ───
+                         ┌─────────────────────────────────┐
+                         │                                 │
+    ┌──────┐    ┌───┐    │  ┌──────┐    ┌──────────────┐  │
+    │ Pad  │────│Via│────┼──│ Pin  │────│ Bond wire    │──┼── Gate input
+    └──┬───┘    └─┬─┘    │  └──┬───┘    └──────┬───────┘  │       │
+       │          │      │     │               │          │       │
+      ═╪═        ═╪═     │    ═╪═             ═╪═        ═╪═      │
+    ~1-2pF     trace   │  ~1-2pF           ~0.5pF      ESD       │
+    to GND     C       │  to GND           wire        diode     │
+                       │                   to GND      ~2-5pF    │
+                       └─────────────────────────────────┘       │
+                                                                 │
+                                                       Gate C ~1-3pF
+                                                       (transistor input)
+
+
+    Sources, in series along the path from PCB to silicon:
+
+      • PCB pad + trace stub  : copper-over-ground-plane parallel plate
+                                 (the pad itself is a tiny capacitor to GND)
+      • Package pin           : metal lead surrounded by plastic, near other
+                                 pins and the ground paddle below
+      • Bond wire             : thin gold wire from pin to die, capacitive
+                                 to adjacent wires and the substrate
+      • ESD protection diode  : every input pin has clamp diodes to VCC/GND
+                                 — reverse-biased diodes are capacitors
+                                 (depletion-region capacitance, ~2-5 pF)
+      • Gate capacitance      : the actual MOSFET input on the die
+                                 (oxide capacitance — see [[quick-context/code-to-gates-and-bootstrapping|code-to-gates]])
+
+    All sit between the signal node and AC ground (VCC or GND, same thing
+    for AC since VCC is bypassed). So they ADD in parallel:
+
+        C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
+```
+
+The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+
+### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
+
+Two parallel traces don't just each have a cap to ground. There's also a **coupling cap between them** (C_AB). That third capacitor means trace A's discharge speed depends on what trace B is doing at the same moment.
+
+```
+TWO PARALLEL TRACES = THREE CAPACITORS
+==============================================================================
+
+    Driver A ──┬─── Trace A ──────────────────────────────
+               │                  │           │
+               │                 ═╪═ C_AB    ═╪═ C_AB      ← coupling
+               │                  │           │              between traces
+    Driver B ──┼─── Trace B ──────────────────────────────
+               │                  │           │
+              ═╪═ C_self,A       ═╪═ C_BG    ═╪═ C_AG       ← each trace also
+               │                  │           │              has C to ground
+              GND                GND         GND
+```
+
+**What "scenario" means** — the *voltage waveform* on each trace at the same moment. Three cases:
+
+```
+SCENARIO 1: BOTH TRACES SWITCH SAME DIRECTION, AT SAME TIME
+──────────────────────────────────────────────────────────────────────────
+e.g. both go HIGH → LOW together
+
+    Trace A:   ▔▔▔▔▔╲___________      both fall together
+    Trace B:   ▔▔▔▔▔╲___________
+
+    Voltage ACROSS C_AB:  V_A − V_B = constant (both drop by same ΔV)
+    → No charge moves through C_AB
+    → C_AB invisible to drivers
+    → C_eff,A = C_self,A only         ◄── FASTEST discharge
+
+
+SCENARIO 2: ONE TRACE SWITCHES, NEIGHBOR HELD STILL
+──────────────────────────────────────────────────────────────────────────
+e.g. A goes HIGH → LOW, B stays at LOW (quiet)
+
+    Trace A:   ▔▔▔▔▔╲___________      A falls
+    Trace B:   ________________       B doesn't move
+
+    Voltage ACROSS C_AB:  changes by full ΔV (A side moved, B side didn't)
+    → Driver A must dump charge off C_self AND through C_AB
+    → C_eff,A = C_self,A + C_AB       ◄── MEDIUM discharge
+
+    Side effect: charge flowing through C_AB injects current into B
+    → quiet trace B sees a GLITCH (crosstalk).
+
+
+SCENARIO 3: TRACES SWITCH OPPOSITE DIRECTIONS
+──────────────────────────────────────────────────────────────────────────
+e.g. A goes HIGH → LOW, B goes LOW → HIGH at same time
+
+    Trace A:   ▔▔▔▔▔╲___________      A falls
+    Trace B:   _____╱▔▔▔▔▔▔▔▔▔▔▔      B rises
+
+    Voltage ACROSS C_AB:  changes by 2·ΔV
+        (one plate goes down by ΔV, other goes up by ΔV)
+    → C_AB looks TWICE AS BIG from A's perspective (Miller effect)
+    → C_eff,A = C_self,A + 2·C_AB     ◄── SLOWEST discharge
+```
+
+**General formula:**
+
+$$C_{\text{eff,A}} = C_{\text{self,A}} + C_{AB} \cdot \left(1 - \frac{dV_B/dt}{dV_A/dt}\right)$$
+
+| Scenario | $dV_B/dV_A$ | Coupling multiplier | $C_{\text{eff,A}}$ |
+|---|---|---|---|
+| Same direction together | +1 | 0 × C_AB | C_self (fastest) |
+| Neighbor quiet | 0 | 1 × C_AB | C_self + C_AB |
+| Opposite directions | −1 | 2 × C_AB | C_self + 2·C_AB (Miller, slowest) |
+
+**Physical intuition — what's really going on:**
+
+Charge on a capacitor only moves when the voltage *across* it changes. C_AB sits between two traces, so what matters is the *difference* V_A − V_B, not either voltage alone.
+
+- Both plates moving together = no change across C_AB = no current through it = cap effectively absent.
+- One plate stationary = full ΔV across C_AB = full charge must flow.
+- Plates moving opposite = double ΔV across C_AB = double the charge must flow, even though C_AB physically didn't change. The cap *looks* bigger because the driver does more work per unit of A's own voltage change.
+
+**Why this matters in real design:**
+
+- **Differential pairs** (USB, Ethernet, HDMI, LVDS) deliberately use opposite switching. Drivers are sized for the 2·C_AB hit. In exchange: common-mode noise on both wires cancels at the receiver.
+- **Parallel buses** (DDR, parallel flash): a switching "aggressor" line slows down *and* injects a glitch into a quiet "victim" line. Routing rules space high-speed lines apart to shrink C_AB.
+- **Data Bus Inversion (DBI):** DDR4+ optionally flips a whole byte if it would cause too many adjacent lines to switch opposite. Forces more same-direction switching → smaller effective C → faster, lower power.
+- **Miller effect in amplifiers:** same physics. Capacitance between input and output of an inverting stage looks bigger by gain factor (1 + A_v) because the output swings opposite to the input.
+
+Same $I = C \cdot dV/dt$ as always — but *C* is now an *effective* C that depends on the neighbor's waveform.
 
 ### Why Daisy Chains Have a Device Limit
 

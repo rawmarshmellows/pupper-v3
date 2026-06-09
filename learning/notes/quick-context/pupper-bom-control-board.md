@@ -13,6 +13,9 @@ created: 2026-02-25
 
 A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
+BOM: learning/notes/quick-context/BOM_Control Board Rev 3.5_PCB1_3_2025-02-20.xlsx
+Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
+
 ## 5 Essential Terms
 
 | Term | Definition |
@@ -83,7 +86,7 @@ FUNCTIONAL BLOCK DIAGRAM — Pupper v3 Control Board Rev 3.5
 **[[micro-context/stm32-microcontroller|STM32F446RET6]]** — ARM Cortex-M4 @ 180 MHz, 512 KB flash, 128 KB RAM, LQFP-64 package (10 × 10 mm, 0.5 mm pitch).
 
 Two are used with distinct roles:
-- **U1 (Main MCU):** Reads the BNO086 IMU over [[micro-context/i2c|I2C]], reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC, communicates with the Raspberry Pi via the 40-pin header (U2), runs the state estimator, and sends audio to the MAX98357A over I2S.
+- **U1 (Main MCU):** Receives joint commands from the Raspberry Pi over [[micro-context/spi|SPI]] via the 40-pin header (U2), relays them to U5, reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC over [[micro-context/i2c|I2C]], and sends audio to the MAX98357A over I2S. (Note: the Pi reads the IMU directly over I2C through the 40-pin header, not through U1 — see [source](https://github.com/Nate711/pupperv3-monorepo/tree/main/ros2_ws/src/control_board_hardware_interface/src/rt).)
 - **U5 (Motor MCU):** Dedicated to the 1 kHz motor control loop — receives joint targets from U1 over [[micro-context/spi|SPI]], sends/receives CAN messages to all 12 servos via the 4 MAX3051 transceivers.
 
 Each MCU requires:
@@ -196,7 +199,7 @@ CBG160808U501T — 50Ω impedance at 100 MHz, L0603 package. These aren't [[quic
 | HC-PH-3ALT (3-pin) | 2 | H4, H5 | Servo signal connectors (S, +5V, GND) |
 | FH-00339 (40-pin header) | 1 | U2 | Raspberry Pi GPIO header |
 
-The 40-pin header (U2) is the physical interface to the Raspberry Pi — it carries SPI, I2C, UART, and GPIO signals between the Pi (high-level commands, WiFi, ML) and U1 (real-time control). See [[quick-context/pupper-brain]] for the dual-MCU + Pi architecture.
+The 40-pin header (U2) is the physical interface to the Raspberry Pi — it carries SPI signals for motor commands between the Pi and the MCU (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz), and I2C signals for the Pi to read the IMU directly (via `/dev/i2c-N`). Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp) and [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp). See [[quick-context/pupper-brain]] for the dual-MCU + Pi architecture.
 
 **LEDs (LED9, LED10):** XL-1005UWC — white 0402-size LEDs for status indication. Connected through current-limiting resistors (likely from the 2.2kΩ set).
 
@@ -330,6 +333,8 @@ NOW TRACE IT ON THE BOARD:
 - **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum that runs on this hardware. Labs 1-4 directly control the motors via CAN bus and read the IMU; Lab 5 deploys RL policies through the neural controller; Labs 6-7 add voice and vision on the Raspberry Pi side.
 
 - **[[quick-context/pcb-printed-circuit-board]]** — How all these components physically connect — traces carry signals between ICs, vias connect layers, and the copper pour provides the [[quick-context/grounding-and-return-paths|ground plane]] return path for every signal.
+
+- **[[quick-context/pcb-assembly-files-bom-cpl]]** — How to *read* the BOM and CPL (pick-and-place) file pair itself, column by column. This note explains what each part on the board is; that one explains the file formats the assembler consumes.
 
 - **[[quick-context/pcb-layers]]** — The Gerber files that define where each component lands on the board. The paste mask layer determines which pads get solder paste during assembly — critical for the 0402-size passives on this board.
 

@@ -87,6 +87,16 @@ When processing the user's notes:
    - Only link if the target file actually helps understanding
    - Prefer inline links over listing them separately
 
+---
+
+## Post-Processing (REQUIRED)
+
+After updating the micro-context file, you MUST:
+
+1. **Fact-check:** Run `/fact-check <output-file-path>` to verify all factual claims
+2. **ASCII-fixer:** Run `/ascii-fixer <output-file-path>` to fix any diagram alignment issues
+3. **Update embeddings (manual):** Remind the user to run `python tools/embed.py sync` to update the embedding cache for semantic linking
+
 ## If File Doesn't Exist
 
 Inform the user and suggest using `/micro-context [topic]` to create a new one instead.

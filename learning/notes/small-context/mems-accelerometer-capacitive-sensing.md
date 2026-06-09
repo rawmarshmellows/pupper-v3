@@ -12,6 +12,8 @@ created: 2026-03-28
 
 > **In brief:** A MEMS accelerometer measures acceleration by detecting femtofarad-scale [[quick-context/capacitance|capacitance]] changes between microscopic interleaved comb fingers. A proof mass suspended on silicon springs shifts when accelerated, changing the air gap between its fingers and fixed electrodes. The chip reads the *difference* between two capacitances on opposite sides -- the same "subtract to cancel noise" principle that makes [[quick-context/can-bus|CAN bus]] differential signaling immune to electromagnetic interference.
 
+https://www.youtube.com/watch?v=KuekQ-m9xpw
+
 ## The Situation
 
 A robot needs to know which way is "down" and how fast it's accelerating. Gravity is always present at $9.8\text{ m/s}^2$, so a sensor that measures acceleration also measures the direction of gravity. But the physical displacement caused by gravity on a microscopic proof mass is *nanometers*. You need a transduction mechanism that converts nanometer motion into an electrical signal -- and capacitive sensing is ideal because it's simple to integrate on-chip, requires no external optics, and consumes very little power. [[quick-context/capacitance|Capacitance]] -- where $C = \varepsilon A / d$ makes the signal inversely proportional to gap distance -- provides exactly this.

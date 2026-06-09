@@ -192,6 +192,8 @@ THE CLASSIC GROUND LOOP PROBLEM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+
 - **[[quick-context/electric-current]]** — Current flows in loops. The return current through ground is equal in magnitude to the signal current. This is Kirchhoff's current law in action.
 
 - **[[quick-context/pcb-printed-circuit-board]]** — PCB ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.

@@ -26,13 +26,13 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The BNO086 IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C to the main STM32 (U1).
+1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
 
-2. **State estimation**: U1 combines IMU data with motor feedback to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
+2. **State estimation**: The Pi combines IMU data with motor feedback (received over SPI) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
 
-3. **Control calculation**: U1 runs a balance controller that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
+3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: U1 sends joint targets to U5 (motor MCU) over SPI. U5 packages these into CAN messages.
+4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
 
 5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 

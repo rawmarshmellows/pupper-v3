@@ -168,6 +168,8 @@ REFLOW SOLDERING PROCESS (SMD production)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+
 - **[[quick-context/pcb-printed-circuit-board]]** — PCB pad design, soldermask openings, and copper finish (HASL, ENIG, OSP) all affect solder joint quality. The PCB and soldering process are designed together.
 
 - **[[quick-context/pcb-layers]]** — The paste mask layer is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder volume and prevent bridging.

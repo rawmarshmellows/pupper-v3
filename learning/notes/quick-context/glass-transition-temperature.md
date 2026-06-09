@@ -245,6 +245,8 @@ Related concepts that deepen your understanding of glass transition temperature:
 
 - **[[quick-context/polymer-chemical-bonds|Chemical bonds]]** — The molecular-level interactions ([[quick-context/van-der-waals-forces|van der Waals forces]], [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]]) that must be overcome at Tg, explaining why different polymers have different transition temperatures.
 
+- **[[quick-context/bambu-p2s-print-quality]]** — Layer adhesion in 3D printing depends on polymer chain interdiffusion above Tg; cooling settings, chamber temperature, and overhang fan speed are all really about controlling time spent above Tg.
+
 </details>
 
 <details>

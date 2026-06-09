@@ -250,6 +250,8 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+
 - **[[quick-context/pcb-chip-transistor-hierarchy|The Packaging Hierarchy]]** — PCBs are one level in the hierarchy from transistors to complete systems. Understanding how chips, substrates, and PCBs connect gives context for why PCBs exist at the 100-400mm scale.
 
 - **[[quick-context/electric-current|Electric Current]]** — PCB traces must carry current without overheating. Wider traces carry more current; trace width calculators help designers size traces for their expected current loads.

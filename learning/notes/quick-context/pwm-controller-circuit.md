@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # PWM Controller Circuit
 
-> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]]
+> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
@@ -217,6 +217,25 @@ Use nearest standard value: $R_1 = 52.3k\Omega$ (E96 series) or $51k\Omega$ (E24
 **Changing VOUT is just changing R1.** Want 3.3V instead? $R_1 = 10k \times (3.3/0.8 - 1) = 31.25k\Omega$. The IC doesn't know or care what the output voltage is — it just regulates the FB pin to equal $V_{REF}$.
 
 **The one thing most outsiders get wrong about this is...** thinking the [[micro-context/stm32-microcontroller|microcontroller]] or software generates the PWM for power conversion. In reality, the buck converter IC is a fully autonomous analog control system — it has its own oscillator, error amplifier, comparator, and gate driver on a single chip. The MCU doesn't even know the PWM exists. Software-generated PWM (from timer peripherals) is used for different things: [[micro-context/pwm-pulse-width-modulation|motor speed control]], LED dimming, and servo positioning — not power supply regulation, which requires the nanosecond-precision analog loop described here.
+
+### Real Example on the Pupper v3 Control Board
+
+The TPS54561 at **U8** on the Pupper v3 control board is exactly this circuit in silicon. Open [pupper-control-board-interactive.html](pupper-control-board-interactive.html) and hover U8 / R5 / R6 to see the feedback divider.
+
+| Generic part above | Pupper board part |
+|---|---|
+| "Buck converter IC" (oscillator + error amp + comparator + gate driver) | **U8** — TPS54561DPRR (WSON-10) |
+| High-side MOSFET (Q1) | **integrated inside U8** |
+| $V_{REF}$ | 0.8V internal bandgap |
+| R1 (top of feedback divider) | **R5** — 60.4kΩ (E96) |
+| R2 (bottom of feedback divider) | **R6** — 11.5kΩ (E96) |
+| External inductor | **L1** — 10µH |
+| Catch/freewheeling diode | **D1** — SS56 Schottky |
+| Output caps | **C18, C19** — 2× 47µF |
+
+$V_{OUT} = 0.8\text{V} \times (1 + 60.4\text{k}/11.5\text{k}) \approx 5.0\text{V}$. R5 and R6 aren't some separate "PWM-setting" resistors — they are literally the feedback divider that programs the setpoint of the analog loop inside U8. The PWM itself never leaves U8; the only externally visible power-loop signals are SW (switching node, at L1), FB (the divider midpoint), and VOUT.
+
+See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for the full Pupper buck topology.
 
 </details>
 

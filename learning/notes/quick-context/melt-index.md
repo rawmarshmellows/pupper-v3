@@ -127,6 +127,7 @@ In practice, if batch A-2024-004 enters your injection molding process, you'd se
 - **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
 - **[[quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
 - **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
+- **[[quick-context/bambu-p2s-print-quality]]**: MFI variation between batches drives why per-spool flow ratio and pressure advance (K-value) calibration matters on the P2S—different MFI means different optimal extrusion settings.
 
 </details>
 

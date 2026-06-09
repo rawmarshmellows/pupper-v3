@@ -208,3 +208,6 @@ After creating or updating the small-context file, you MUST run these skills in 
 2. **ASCII-fixer:** Run `/ascii-fixer <output-file-path>` to fix any diagram alignment issues
 
 Do not consider the task complete until both post-processing steps have been run.
+
+3. **Consolidation check:** Run `/consolidate-context` to check for overlapping or redundant context files
+4. **Update embeddings (manual):** Remind the user to run `python tools/embed.py sync` to update the embedding cache for semantic linking
