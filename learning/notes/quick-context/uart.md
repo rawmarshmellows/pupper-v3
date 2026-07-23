@@ -259,7 +259,7 @@ For the full teletype-to-computer I/O path (keyboard encoding → current loop �
 
 UART sits at the "dead simple" end of the [[quick-context/embedded-communication-protocols|protocol spectrum]]:
 
-| | UART | SPI | I2C | CAN |
+| | UART | [[micro-context/spi|SPI]] | [[micro-context/i2c|I2C]] | CAN |
 |---|---|---|---|---|
 | **Wires** | 2 (TX, RX) | 4+ (SCLK, MOSI, MISO, CS) | 2 (SDA, SCL) | 2 (CANH, CANL) |
 | **Clock** | None (async) | Shared clock wire | Shared clock wire | None (async) |
@@ -376,13 +376,13 @@ About **±3-4%**. At 16× oversampling, the receiver samples at the center of ea
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?
 <details>
 <summary>Answer</summary>
-Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — signal integrity becomes critical. TTL-level UART over more than a few centimeters of PCB trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
+Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — signal integrity becomes critical. TTL-level UART over more than a few centimeters of [[quick-context/pcb-printed-circuit-board|PCB]] trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
 </details>
 
 </details>

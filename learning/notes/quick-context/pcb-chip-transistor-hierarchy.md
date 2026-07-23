@@ -12,7 +12,7 @@ created: 2026-01-23
 
 ## The Core Problem
 
-Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
+Transistors are ~5 nanometers; your [[quick-context/usb-peripheral-hardware|USB]] port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
 
 ## 5 Essential Terms
 
@@ -224,7 +224,7 @@ TRACING A MEMORY READ: CPU → DRAM
 
 - **Thermal Management** — Heat generated in the die must escape through the package and into heatsinks; packaging choices directly affect thermal resistance.
 
-- **SMT (Surface Mount Technology)** — The automated process of placing and soldering packaged components onto PCBs; constrains what package types are practical.
+- **SMT (Surface Mount Technology)** — The automated process of placing and [[quick-context/soldering|soldering]] packaged components onto PCBs; constrains what package types are practical.
 
 </details>
 

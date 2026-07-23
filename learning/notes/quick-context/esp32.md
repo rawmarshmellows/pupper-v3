@@ -7,11 +7,11 @@ created: 2026-05-28
 
 > **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
+> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of [[micro-context/sram|SRAM]], dozens of peripherals ([[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[micro-context/i2s|I2S]], [[micro-context/adc-analog-to-digital-converter|ADC]], [[micro-context/pwm-pulse-width-modulation|PWM]], CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
 ## The Core Problem
 
-Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
+Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over [[quick-context/uart|UART]] — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
 
 ## 5 Essential Terms
 
@@ -122,7 +122,7 @@ You can override this with `xTaskCreatePinnedToCore()` — but if you starve Cor
 | Variant | CPU | RAM | Radio | Killer feature | When to pick |
 |---------|-----|-----|-------|----------------|--------------|
 | **ESP32** (classic, 2016) | Xtensa LX6 dual @ 240 MHz | 520 KB | WiFi 4 + BT 4.2 + BLE | Cheapest dual-core | Legacy designs, generic IoT |
-| **ESP32-S2** (2020) | Xtensa LX7 single @ 240 MHz | 320 KB | WiFi 4 only (no BT) | USB OTG built-in | USB peripherals when BT not needed |
+| **ESP32-S2** (2020) | Xtensa LX7 single @ 240 MHz | 320 KB | WiFi 4 only (no BT) | [[quick-context/usb-peripheral-hardware|USB]] OTG built-in | USB peripherals when BT not needed |
 | **ESP32-S3** (2021) | Xtensa LX7 dual @ 240 MHz | 512 KB | WiFi 4 + BLE 5.0 | Vector instructions for AI/DSP, USB OTG | Edge ML, audio, the Arduino Uno R4 WiFi |
 | **ESP32-C3** (2021) | RISC-V single @ 160 MHz | 400 KB | WiFi 4 + BLE 5.0 | Cheapest BLE 5 chip (~$1) | Cost-sensitive BLE devices |
 | **ESP32-C6** (2023) | RISC-V HP @ 160 MHz + LP @ 20 MHz | 512 KB | WiFi 6 + BLE 5 + 802.15.4 | WiFi 6 + Thread/Matter/Zigbee in one | Smart-home (Matter), future-proof IoT |

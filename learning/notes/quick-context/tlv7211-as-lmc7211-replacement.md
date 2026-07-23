@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 
@@ -185,7 +185,7 @@ Order the **TLV7211A** (SOT23-5 is the **DBV** package → TLV7211AIDBVR). The l
 **Q3:** How can you be confident the TLV7211 is a true drop-in without bench-testing every spec, unlike the MCP6541 which needed a careful spec-by-spec vet?
 <details>
 <summary>Answer</summary>
-Because the TLV7211 is **the same silicon re-named** (National → TI), its datasheet's 4.x tables are *identical* to the LMC7211-N's — supply range, offset grades, currents, delays, CMVR, ISC, temperature, even the same typical-characteristic graphs. It's an *equals*, not a *meets-or-beats*. The MCP6541 is a *different design* from a different vendor, so every spec genuinely had to be checked against the original. See: How It Works (FUNCTION) and the spectrum diagram.
+Because the TLV7211 is **the same silicon re-named** (National → TI), its datasheet's 4.x tables are *identical* to the LMC7211-N's — supply range, offset grades, currents, delays, [[micro-context/input-common-mode-range|CMVR]], ISC, temperature, even the same typical-characteristic graphs. It's an *equals*, not a *meets-or-beats*. The MCP6541 is a *different design* from a different vendor, so every spec genuinely had to be checked against the original. See: How It Works (FUNCTION) and the spectrum diagram.
 </details>
 
 **Q4:** Name the two non-identical details between the LMC7211-N and TLV7211, and say whether either is a regression.

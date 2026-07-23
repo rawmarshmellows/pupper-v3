@@ -338,7 +338,7 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual [[micro-context/stm32-microcontroller|STM32]] + Raspberry Pi + [[quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 
@@ -366,7 +366,7 @@ The mismatch is acceptable because the state machine **holds** its last Twist co
 <details>
 <summary>Answer</summary>
 
-At 5 FPS, each frame arrives every 200 ms. A 1.5-second timeout tolerates $1.5 / 0.2 = 7.5$, so approximately **7 consecutive missed frames** before transitioning to SEARCH. A time-based threshold is preferable to a frame-count threshold because the detection frame rate is not guaranteed to be constant — Hailo inference time varies with scene complexity, and frames can be dropped due to USB bandwidth or CPU load. If the detector temporarily slows to 2 FPS, a "3 missed frames" threshold would wait 1.5 seconds, but if it speeds up to 10 FPS, the same threshold would only wait 0.3 seconds — causing premature SEARCH transitions during brief occlusions. A time-based timeout provides consistent behavior regardless of frame rate variation. This is a general principle: time-based thresholds are more robust than count-based thresholds when the event rate is variable.
+At 5 FPS, each frame arrives every 200 ms. A 1.5-second timeout tolerates $1.5 / 0.2 = 7.5$, so approximately **7 consecutive missed frames** before transitioning to SEARCH. A time-based threshold is preferable to a frame-count threshold because the detection frame rate is not guaranteed to be constant — Hailo inference time varies with scene complexity, and frames can be dropped due to [[quick-context/usb-peripheral-hardware|USB]] bandwidth or CPU load. If the detector temporarily slows to 2 FPS, a "3 missed frames" threshold would wait 1.5 seconds, but if it speeds up to 10 FPS, the same threshold would only wait 0.3 seconds — causing premature SEARCH transitions during brief occlusions. A time-based timeout provides consistent behavior regardless of frame rate variation. This is a general principle: time-based thresholds are more robust than count-based thresholds when the event rate is variable.
 </details>
 
 </details>

@@ -113,7 +113,7 @@ THE THERMAL CONSTRAINT
 | Power Source | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |
@@ -176,7 +176,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to [[quick-context/galvanic-cells-batteries|batteries]], but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 
@@ -185,7 +185,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A USB device draws 500 mA at 5V. How much power does it consume?
+**Q1:** A [[quick-context/usb-peripheral-hardware|USB]] device draws 500 mA at 5V. How much power does it consume?
 <details>
 <summary>Answer</summary>
 **2.5W.** P = V × I = 5V × 0.5A = 2.5W. This is the standard USB 2.0 power budget per port.
@@ -203,7 +203,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **3.75 hours.** Time = Energy / Power = 15 Wh / 4W = 3.75 hours. In practice it varies because power consumption fluctuates (screen brightness, radio activity, CPU load).
 </details>
 
-**Q4:** A PCB trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
+**Q4:** A [[quick-context/pcb-printed-circuit-board|PCB]] trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
 <details>
 <summary>Answer</summary>
 **0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider (lower resistance) or use multiple layers.

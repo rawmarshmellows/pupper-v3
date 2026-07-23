@@ -447,7 +447,7 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
-- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
+- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the [[micro-context/pwm-pulse-width-modulation|PWM]] pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 

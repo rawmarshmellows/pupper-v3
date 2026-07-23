@@ -20,7 +20,7 @@ You have a component (resistor, IC, connector) and a PCB with copper pads. You n
 | **Solder** | A metal alloy that melts at 180-220°C (far below copper's 1085°C). Traditional: 63% tin / 37% lead (melts at 183°C). Lead-free: SAC305 (Sn96.5/Ag3.0/Cu0.5, melts at 217°C). |
 | **Flux** | A chemical agent (rosin or acid-based) that removes oxide layers from metal surfaces so solder can wet them. Without flux, solder beads up and won't stick. Flux is in the core of solder wire and in solder paste. |
 | **Wetting** | When molten solder flows onto and adheres to a metal surface, forming a concave fillet. Good wetting = shiny, smooth, concave joint. Poor wetting = balled-up solder that barely touches the pad. |
-| **Reflow** | Machine soldering process: solder paste (tiny solder balls + flux) is printed onto PCB pads, components are placed by pick-and-place machines, then the whole board goes through an oven that melts the paste. Used for SMD production. |
+| **Reflow** | Machine soldering process: solder paste (tiny solder balls + flux) is printed onto PCB pads, components are placed by [[quick-context/pcb-assembly-files-bom-cpl|pick-and-place]] machines, then the whole board goes through an oven that melts the paste. Used for [[micro-context/smd-resistor|SMD]] production. |
 | **Cold Joint** | A defective solder joint where the solder didn't fully melt or the parts moved during cooling. Looks dull and grainy instead of shiny and smooth. Has high resistance or is intermittent. |
 
 <details>

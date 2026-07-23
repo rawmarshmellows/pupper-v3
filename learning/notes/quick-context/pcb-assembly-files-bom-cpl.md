@@ -127,9 +127,9 @@ Designator│ Device       │ Mid X │ Mid Y  │ Pad X  │ Pad Y │Pins│L
 - **Mid X / Mid Y** = the part's center — where the nozzle aims.
 - **Ref X / Ref Y** = the placement origin (here same as Mid).
 - **Pad X / Pad Y** = location of pin-1 pad — lets you verify orientation independent of rotation.
-- **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **SMD = Yes**.
+- **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **[[micro-context/smd-resistor|SMD]] = Yes**.
 
-Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a comparator (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
+Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a [[quick-context/comparator|comparator]] (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
 
 **The one thing most outsiders get wrong about this is...** thinking the two files are redundant, or that the BOM contains positions. They're complementary halves: the BOM has zero geometry, the CPL has zero purchasing info, and the **reference designator is the only thing connecting them**. Lose the join (rename `Q1`→`Q3` in one file but not the other) and the assembler places a part it can't identify, or orders a part it can't place.
 

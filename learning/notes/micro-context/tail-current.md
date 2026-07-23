@@ -5,7 +5,9 @@ created: 2026-04-02
 
 # Tail Current
 
-**Definition:** A fixed-value current source connected to the shared source node of a differential pair. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
+> **Related:** [[micro-context/ac-dc-current]] | [[micro-context/current-electrons-per-second]] | [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/current-mirror]] | [[micro-context/input-bias-current]]
+
+**Definition:** A fixed-value current source connected to the shared source node of a [[quick-context/differential-pair|differential pair]]. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
 
 ## How It Works
 
