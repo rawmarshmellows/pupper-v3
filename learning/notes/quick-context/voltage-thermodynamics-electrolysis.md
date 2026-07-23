@@ -11,7 +11,7 @@ created: 2026-01-22
 
 ## The Core Problem
 
-[[quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
+[[quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, [[quick-context/galvanic-cells-batteries|batteries]], fuel cells, or industrial hydrogen production.
 
 ## 5 Essential Terms
 
@@ -69,7 +69,7 @@ ENERGY FLOW IN ELECTROLYSIS
     ┌─────────────────────────────────────────────────────────┐
     │                   ELECTROLYSIS CELL                     │
     │                                                         │
-    │   CATHODE (-)              ANODE (+)                    │
+    │   [[micro-context/cathode|CATHODE]] (-)              [[micro-context/anode|ANODE]] (+)                    │
     │   ┌─────────┐              ┌─────────┐                  │
     │   │  2H⁺ +  │              │  H₂O →  │                  │
     │   │  2e⁻ →  │              │ ½O₂ +   │                  │
@@ -77,7 +77,7 @@ ENERGY FLOW IN ELECTROLYSIS
     │   │         │              │   2e⁻   │                  │
     │   └────┬────┘              └────┬────┘                  │
     │        │    ←── H⁺ ions ───     │                       │
-    │        │       (electrolyte)    │                       │
+    │        │       ([[quick-context/electrolyte|electrolyte]])    │                       │
     │        └────────────────────────┘                       │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
@@ -95,7 +95,7 @@ ENERGY FLOW IN ELECTROLYSIS
     │  (2 mol e⁻)(96,485 C/mol)(1.23 V) = 237,000 J          │
     │                                                        │
     │  Voltage is just energy-per-electron translated        │
-    │  into volts (joules per coulomb)                       │
+    │  into volts (joules per [[micro-context/coulomb-history|coulomb]])                       │
     └────────────────────────────────────────────────────────┘
 ```
 

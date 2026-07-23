@@ -1,5 +1,7 @@
 # Existing Account Management Playbook
 
+> **Related:** [[quick-context/existing-account-management-playbook]]
+
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
@@ -101,7 +103,7 @@ VALUE           │    MAINTAIN     │    GROWTH       │
 
 - **KEEP accounts** land in Protect (high value, defend) or Maintain (low value, efficient)
 - **EXPAND accounts** land in Strategic (high value + potential) or Growth (low value but high potential)
-- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification (MEDDPICC) instead
+- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification ([[quick-context/meddpicc-qualification-framework|MEDDPICC]]) instead
 
 **Decision flow:**
 1. **First:** Assign KARE category (portfolio motion)
@@ -232,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 

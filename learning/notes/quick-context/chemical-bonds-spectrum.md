@@ -11,7 +11,7 @@ created: 2026-01-21
 
 ## The Core Problem: Why Do Things Stick Together?
 
-Every material property you care about—melting point, strength, flexibility, whether your 3D print survives in a hot car—comes down to one question: **how strongly are the atoms and molecules holding onto each other?** The answer isn't binary ("bonded" or "not bonded") but a *spectrum* of interaction strengths spanning three orders of magnitude. At one end: [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that share electrons and literally hold atoms together into molecules—break these and you've destroyed the material. At the other end: [[quick-context/van-der-waals-forces|van der Waals forces]] (~0.5-5 kJ/mol) so weak they exist between *everything*, even noble gases that refuse to bond chemically. In between: ionic bonds, [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]], [[quick-context/dipole-dipole-interactions|dipole-dipole interactions]], and [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]—each with distinct strengths and behaviors. Understanding this spectrum explains why water is liquid at room temperature (hydrogen bonds), why geckos climb walls (accumulated van der Waals), why PLA melts at 180°C but ABS needs 240°C (different intermolecular force profiles), and why diamonds are forever (covalent network).
+Every [[quick-context/breaking-elongation-rate|material property]] you care about—melting point, strength, flexibility, whether your 3D print survives in a hot car—comes down to one question: **how strongly are the atoms and molecules holding onto each other?** The answer isn't binary ("bonded" or "not bonded") but a *spectrum* of interaction strengths spanning three orders of magnitude. At one end: [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that share electrons and literally hold atoms together into molecules—break these and you've destroyed the material. At the other end: [[quick-context/van-der-waals-forces|van der Waals forces]] (~0.5-5 kJ/mol) so weak they exist between *everything*, even noble gases that refuse to bond chemically. In between: ionic bonds, [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]], [[quick-context/dipole-dipole-interactions|dipole-dipole interactions]], and [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]—each with distinct strengths and behaviors. Understanding this spectrum explains why water is liquid at room temperature (hydrogen bonds), why geckos climb walls (accumulated van der Waals), why PLA melts at 180°C but ABS needs 240°C (different intermolecular force profiles), and why diamonds are forever (covalent network).
 
 ## 5 Essential Terms
 
@@ -348,7 +348,7 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
-- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+- **** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
 
 </details>
 

@@ -132,7 +132,7 @@ READING COLOR CODES (4-band)
 | **Carbon film** | ±5% | 1/8-1/2W | Lowest | Hobby, general purpose |
 | **Metal film** | ±1%, ±0.1% | 1/8-1W | Low | Precision, most production |
 | **Wirewound** | ±0.01% | 1-100W+ | High | Power resistors, precision refs |
-| **SMD thick film** | ±1-5% | 1/16-1W | Very low | Production PCBs |
+| **[[micro-context/smd-resistor|SMD]] thick film** | ±1-5% | 1/16-1W | Very low | Production PCBs |
 | **SMD thin film** | ±0.1% | 1/16-1/4W | Medium | Precision SMD |
 
 ```
@@ -167,7 +167,7 @@ Values like 4.7kΩ and 2.2kΩ come from the E12/E24 series—logarithmically spa
 
 ## Pull-Up Resistors: Making Digital Signals Reliable
 
-Every I2C bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
+Every [[micro-context/i2c|I2C]] bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
 
 ```
 THE PROBLEM: FLOATING INPUTS
@@ -253,7 +253,7 @@ I2C BUS PULL-UPS
 **Q5:** Why can't you use a very high-value pull-up resistor (e.g., 10MΩ) on a digital input?
 <details>
 <summary>Answer</summary>
-**The RC time constant becomes too large.** Every wire has parasitic capacitance. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
+**The RC time constant becomes too large.** Every wire has parasitic [[quick-context/capacitance|capacitance]]. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
 </details>
 
 </details>

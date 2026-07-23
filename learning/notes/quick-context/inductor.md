@@ -574,7 +574,7 @@ THE CORE TRADEOFFS
 | **Ferrite core** | High (μH-mH) | Limited by saturation | kHz-MHz | Power supplies, filters |
 | **Powdered iron** | Medium (μH) | High (gradual saturation) | kHz-MHz | High-current power |
 | **Toroidal** | High (contained field) | Medium-high | kHz-MHz | Low EMI, audio |
-| **SMD power** | Low-medium (μH) | Medium | MHz | Compact DC-DC converters |
+| **[[micro-context/smd-resistor|SMD]] power** | Low-medium (μH) | Medium | MHz | Compact DC-DC converters |
 | **Molded/shielded** | Low-medium (μH) | Medium | MHz | Dense PCBs, low EMI |
 
 </details>
@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[micro-context/buck-converter|buck converter]] uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -655,7 +655,7 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
@@ -701,7 +701,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

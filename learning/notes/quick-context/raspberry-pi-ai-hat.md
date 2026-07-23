@@ -17,7 +17,7 @@ Running AI models (object detection, pose estimation, image classification) on a
 
 | Term | Definition |
 |------|------------|
-| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
+| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, [[micro-context/i2c|I2C]] [[micro-context/eeprom|EEPROM]] for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
 | **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively parallel datapaths that a general-purpose CPU cannot match |
 | **TOPS (Tera Operations Per Second)** | NPU throughput metric — how many trillion math operations per second the chip can perform. Caveat: TOPS depends on precision (INT4 vs INT8) and does not capture memory bandwidth or software efficiency |
 | **Hailo** | Israeli semiconductor company that manufactures the NPU chips used in all Pi AI HATs: Hailo-8L (13 TOPS), Hailo-8 (26 TOPS), and Hailo-10H (40 TOPS) |
@@ -28,7 +28,7 @@ Running AI models (object detection, pose estimation, image classification) on a
 
 ### Physical Connection
 
-The AI HAT+ mounts on top of the Pi 5 via standoffs and a 40-pin stacking header. A flat ribbon cable (FPC) plugs into the Pi 5's PCIe connector (the 16-pin FPC port labeled J20 on the [[quick-context/raspberry-pi-5-components|Pi 5 board]]). This gives the Hailo NPU a direct PCIe Gen 3 link to the SoC — much faster than USB.
+The AI HAT+ mounts on top of the Pi 5 via standoffs and a 40-pin stacking header. A flat ribbon cable (FPC) plugs into the Pi 5's PCIe connector (the 16-pin FPC port labeled J20 on the [[quick-context/raspberry-pi-5-components|Pi 5 board]]). This gives the Hailo NPU a direct PCIe Gen 3 link to the SoC — much faster than [[quick-context/usb-peripheral-hardware|USB]].
 
 ```
 PHYSICAL STACK (side view)
@@ -244,11 +244,11 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 
 **Geekworm M901 + Hailo-8L (M-key)** is the simplest path:
 - ~$15-20 for the adapter + ~$45-55 for the Hailo-8L M.2 module
-- FPC-only: all 40 GPIO pins free for motor control, IMU, CAN bus
+- FPC-only: all 40 GPIO pins free for motor control, IMU, [[quick-context/can-bus|CAN bus]]
 - 13 TOPS is sufficient for real-time YOLOv8 at ~15 FPS
 - Power draw stays well within FPC's 5W budget
 - One line in config.txt: `dtparam=pciex1_gen=3`
-- Trade-off: no auto-detect EEPROM (trivial) and the official AI HAT+ has slightly better thermal design (the soldered Hailo chip has a heatsink integrated into the PCB)
+- Trade-off: no auto-detect EEPROM (trivial) and the official AI HAT+ has slightly better thermal design (the soldered Hailo chip has a heatsink integrated into the [[quick-context/pcb-printed-circuit-board|PCB]])
 
 </details>
 
@@ -264,7 +264,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 | AI HAT+ 26T | Oct 2024 | Hailo-8 (soldered) | 26 | INT8 | None | ~$110 | High-perf vision |
 | AI HAT+ 2 | Apr 2026 | Hailo-10H (soldered) | 40 | INT4 | 8GB DDR | $180 | LLMs + vision |
 
-The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of soldering the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
+The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of [[quick-context/soldering|soldering]] the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
 
 ### Which One to Buy?
 
@@ -463,7 +463,7 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 - **[[quick-context/camera-fundamentals]]** — How cameras capture the frames that the AI HAT processes — sensors, lenses, intrinsics
 - **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
 - **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
-- **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
+- **[[quick-context/common-ic-packages]]** — The Hailo chips use [[quick-context/bga-ball-grid-array|BGA]] packages soldered to the HAT PCB
 - **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level
 - **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep topic in its own right
 - **ONNX (Open Neural Network Exchange)** — The intermediate model format used as input to Hailo's compiler

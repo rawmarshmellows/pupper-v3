@@ -7,7 +7,7 @@ created: 2026-03-29
 
 > **Related:** [[quick-context/rc-oscillator|RC Oscillator]] | [[micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]
 
-> **TL;DR:** A microcontroller's clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
+> **TL;DR:** A [[micro-context/microcontroller|microcontroller]]'s clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
 
 ## The Core Problem
 
@@ -101,8 +101,8 @@ $$f_{SYSCLK} = f_{source} \times \frac{N}{M \times P}$$
 For the Pupper v3 STM32F446:
 - $f_{source} = 8\text{ MHz}$ (ceramic resonator)
 - PLL multiplies to: $8\text{ MHz} \times 22.5 = 180\text{ MHz}$
-- APB1 = $180 \div 4 = 45\text{ MHz}$ (timers, UART, I2C, CAN)
-- APB2 = $180 \div 2 = 90\text{ MHz}$ (SPI, ADC)
+- APB1 = $180 \div 4 = 45\text{ MHz}$ (timers, [[quick-context/uart|UART]], [[micro-context/i2c|I2C]], CAN)
+- APB2 = $180 \div 2 = 90\text{ MHz}$ ([[micro-context/spi|SPI]], [[micro-context/adc-analog-to-digital-converter|ADC]])
 
 ### Clock Edges and Signal Settling
 
@@ -134,7 +134,7 @@ WHY CLOCK SPEED HAS A CEILING
 $$P_{dynamic} = C \times V^2 \times f$$
 
 Where:
-- $C$ = total switched capacitance (fixed by chip design)
+- $C$ = total switched [[quick-context/capacitance|capacitance]] (fixed by chip design)
 - $V$ = supply voltage (dominates because it's squared)
 - $f$ = clock frequency (linear relationship)
 
@@ -172,7 +172,7 @@ The clock source selection is a four-way tradeoff between accuracy, cost, power,
 
 **Startup Speed vs. Accuracy:** The internal RC oscillator (HSI) is ready in microseconds; an external resonator takes ~0.1-0.5 ms; a crystal takes ~1-10 ms. The STM32 boots on HSI immediately, then switches to the external source once the PLL locks. If the external source fails, the MCU can fall back to HSI.
 
-**Protocol Requirements Drive the Choice:** CAN bus tolerates ±1.58% clock error -- ceramic resonators (±0.5%) pass easily, even RC oscillators are marginal. USB requires ±0.25% -- only crystals and good resonators qualify. RF communication needs ±0.01% or better -- crystals with temperature compensation (TCXO) are mandatory.
+**Protocol Requirements Drive the Choice:** CAN bus tolerates ±1.58% clock error -- ceramic resonators (±0.5%) pass easily, even RC oscillators are marginal. [[quick-context/usb-peripheral-hardware|USB]] requires ±0.25% -- only crystals and good resonators qualify. RF communication needs ±0.01% or better -- crystals with temperature compensation (TCXO) are mandatory.
 
 </details>
 
@@ -239,7 +239,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 
 **Related quick-context files:**
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: resistor-capacitor charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: resistor-capacitor charging loops. Covers the HSI internal oscillator and why it's "good enough" for [[micro-context/pwm-pulse-width-modulation|PWM]] but not for CAN.
 - **[[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]** -- The full BOM including the two muRata CSTNE8M00G55A000R0 ceramic resonators (X1, X2).
 - **[[quick-context/can-bus|CAN Bus]]** -- The communication protocol that drives the Pupper's clock source choice: its ±1.58% tolerance makes ceramic resonators sufficient.
 - **[[quick-context/firmware|Firmware]]** -- The code that configures the clock tree at startup: selecting HSE, configuring PLL multipliers, switching SYSCLK.
@@ -290,7 +290,7 @@ About 3x more power -- nearly triple. The frequency doubling contributes 2x, and
 
 **Speed:** The RC oscillator (HSI) is ready in microseconds because it's purely electronic -- just transistors oscillating. The external ceramic resonator needs ~0.1-0.5 ms for the piezoelectric element to build up stable mechanical vibration, and the PLL needs additional time to lock onto that reference. The MCU can begin executing startup code immediately on HSI rather than waiting.
 
-**Reliability:** If the external resonator fails (bad solder joint, cracked component, PCB damage), the MCU can detect this and fall back to the HSI clock. It runs at reduced accuracy (±1% instead of ±0.5%) and lower speed (no PLL multiplication), but it still runs -- enough to blink an error LED or send a diagnostic message. If the MCU *required* the external source to start, a resonator failure would brick the board entirely. See: The Key Tension (startup speed).
+**Reliability:** If the external resonator fails (bad solder joint, cracked component, [[quick-context/pcb-printed-circuit-board|PCB]] damage), the MCU can detect this and fall back to the HSI clock. It runs at reduced accuracy (±1% instead of ±0.5%) and lower speed (no PLL multiplication), but it still runs -- enough to blink an error LED or send a diagnostic message. If the MCU *required* the external source to start, a resonator failure would brick the board entirely. See: The Key Tension (startup speed).
 </details>
 
 **Q5:** A colleague suggests replacing the Pupper's two ceramic resonators with a single quartz crystal oscillator module shared between both STM32s. What are the tradeoffs?

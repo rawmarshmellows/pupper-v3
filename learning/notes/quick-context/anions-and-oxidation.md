@@ -5,13 +5,13 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
+> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and [[micro-context/oxidation|oxidation]] is the process of losing electrons—in electrolysis, anions migrate to the positive [[micro-context/anode|anode]] where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
 Everything in the universe is made of atoms, and atoms can gain or lose tiny particles called **electrons** (which carry negative charge). When atoms lose or gain electrons, they become **ions**—charged particles that can move through liquids and conduct electricity. **Anions** are atoms that have *gained* extra electrons, making them negatively charged (think: "**A**nion = **A**dded electrons = negative"). **Oxidation** is the process where something *loses* electrons.
 
-Why does this matter? Without understanding anions and oxidation, we couldn't explain how batteries work, how [[quick-context/rust|metals rust]], how we extract aluminum from ore, or how our bodies generate energy. In [[quick-context/electrolysis|electrolysis]] specifically—using electricity to drive chemical reactions—anions migrate toward the positive [[quick-context/electrodes|electrode]] and undergo oxidation, releasing [[quick-context/electric-current|electrons]] into the circuit. This is how we split water, purify metals, and manufacture chlorine gas. If oxidation didn't happen at the electrode, the electrical circuit would be incomplete and nothing would work.
+Why does this matter? Without understanding anions and oxidation, we couldn't explain how [[quick-context/galvanic-cells-batteries|batteries]] work, how [[quick-context/rust|metals rust]], how we extract aluminum from ore, or how our bodies generate energy. In [[quick-context/electrolysis|electrolysis]] specifically—using electricity to drive chemical reactions—anions migrate toward the positive [[quick-context/electrodes|electrode]] and undergo oxidation, releasing [[quick-context/electric-current|electrons]] into the circuit. This is how we split water, purify metals, and manufacture chlorine gas. If oxidation didn't happen at the electrode, the electrical circuit would be incomplete and nothing would work.
 
 ## 5 Essential Terms
 

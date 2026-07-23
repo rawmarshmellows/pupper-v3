@@ -1,5 +1,7 @@
 # Existing Account Management Playbook
 
+> **Related:** [[quick-context/playbook-main]] | [[quick-context/post-sale-account-engagement]]
+
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
@@ -532,7 +534,7 @@ When you're stuck, remember which framework to consult:
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | [[quick-context/meddpicc-qualification-framework|MEDDPICC]] | (separate qualification framework) |
 
 ---
 

@@ -175,9 +175,9 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 
 - **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
 
-- **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
+- **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, [[micro-context/common-mode-rejection-ratio|CMRR]], [[micro-context/power-supply-rejection-ratio|PSRR]], [[micro-context/input-common-mode-range|CMVR]]); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
 
 - **[[micro-context/adc-analog-to-digital-converter]]** — A comparator is a 1-bit ADC; this is the one use where the MCP6541's *built-in hysteresis* is a liability rather than a feature.
 
@@ -215,7 +215,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 **Q5:** The LMC7211-N's propagation delay is ~450 ns; the MCP6541's is ~4 µs. For which kind of signal does this 9× gap *not* matter, and why?
 <details>
 <summary>Answer</summary>
-**Slow-moving signals** — a battery voltage sagging over seconds, a thermostat, a sensor threshold. The output only needs to switch "eventually," so 4 µs of delay is invisible. The gap *does* matter for fast edges (PWM feedback, high-frequency switching, precise edge timing), where 4 µs is an eternity. This is why Case A (slow battery monitor) passes despite the speed loss, while a fast logic-edge design would not. See: The Key Tension and Concrete Example.
+**Slow-moving signals** — a battery voltage sagging over seconds, a thermostat, a sensor threshold. The output only needs to switch "eventually," so 4 µs of delay is invisible. The gap *does* matter for fast edges ([[micro-context/pwm-pulse-width-modulation|PWM]] feedback, high-frequency switching, precise edge timing), where 4 µs is an eternity. This is why Case A (slow battery monitor) passes despite the speed loss, while a fast logic-edge design would not. See: The Key Tension and Concrete Example.
 </details>
 
 </details>

@@ -351,7 +351,7 @@ THE MATH THAT MATTERS:
 **To minimize resistance and voltage drop.** Ohm's Law says V = I × R. At 150+ amps, even a tiny resistance (say, 0.001Ω) would cause a 0.15V drop—23% of the 0.65V supply! By using hundreds of parallel power pins, each pin carries only a fraction of an amp, and the effective resistance is divided by the number of pins. This keeps the voltage stable across the entire die. See: The Key Tension (Current Delivery Problem).
 </details>
 
-**Q4:** If transistors were connected in series instead of parallel (like batteries in a flashlight), what would happen?
+**Q4:** If transistors were connected in series instead of parallel (like [[quick-context/galvanic-cells-batteries|batteries]] in a flashlight), what would happen?
 <details>
 <summary>Answer</summary>
 **You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
