@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[quick-context/oee-overall-equipment-effectiveness|OEE]] | [[quick-context/plc-vs-software|PLC and why it's different to software and how it's implemented]] | [[quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[quick-context/robotic-arm-api-levels|Different Levels of APIs for Controlling Robotic Arms]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 

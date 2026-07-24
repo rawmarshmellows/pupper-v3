@@ -4,6 +4,8 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem]]
+
 # JST Connector Families
 
 > **See also:** [[quick-context/pupper-bom-control-board]]

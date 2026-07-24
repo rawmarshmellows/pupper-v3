@@ -4,6 +4,8 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/esp32|ESP32]] | [[micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[micro-context/plc-programmable-logic-controller|PLC]] | [[quick-context/uart|UART — Universal Asynchronous Receiver/Transmitter]] | [[micro-context/can-bus-transceiver|CAN Bus Transceiver]]
+
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]

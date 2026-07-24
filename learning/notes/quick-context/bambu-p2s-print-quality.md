@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[quick-context/bambu-ams-automatic-material-system|Bambu AMS]] | [[quick-context/glass-transition-temperature|Glass Transition Temperature]] | [[quick-context/melt-index|Melt Index]] | [[quick-context/3d-printer-hotends|3D Printer Hotends]] | [[quick-context/covalent-bonds|Covalent Bonds]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -131,7 +131,7 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 

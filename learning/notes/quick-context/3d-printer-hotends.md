@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/melt-index]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[quick-context/melt-index|Melt Index]] | [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]] | [[quick-context/glass-transition-temperature|Glass Transition Temperature]] | [[quick-context/bambu-p2s-print-quality|Bambu P2S Print Quality]]
 
 > **TL;DR:** The hotend is the precision melting chamber that transforms solid filament into molten plastic. Its volumetric flow rate (mm3/s) determines maximum print speed - high-flow hotends melt plastic 2x faster, enabling faster prints with larger nozzles.
 
@@ -179,7 +179,7 @@ Stainless steel makes sense for food-safe applications (cookie cutters, kitchen 
 **Q3:** What is heat creep and why does it cause more problems with all-metal hotends printing PLA?
 <details>
 <summary>Answer</summary>
-Heat creep occurs when thermal energy travels upward past the heat break into the "cold zone" where filament should stay solid. This prematurely softens the filament, causing it to swell and jam. All-metal hotends are more susceptible because metal conducts heat better than PTFE-lined heat breaks. PLA has a low glass transition temperature (~60°C), so it softens at relatively low temps—much easier for creeping heat to affect than higher-Tg materials like PETG or nylon.
+Heat creep occurs when thermal energy travels upward past the heat break into the "cold zone" where filament should stay solid. This prematurely softens the filament, causing it to swell and jam. All-metal hotends are more susceptible because metal conducts heat better than PTFE-lined heat breaks. PLA has a low [[quick-context/glass-transition-temperature|glass transition temperature]] (~60°C), so it softens at relatively low temps—much easier for creeping heat to affect than higher-Tg materials like PETG or nylon.
 </details>
 
 **Q4:** Why does the Bambu high-flow hotend cost nearly 3x more than the standard version?

@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/cnc-milling|CNC Milling]] | [[quick-context/cnc-machining|CNC Machining]] | [[micro-context/cnc-process-selection|CNC Process Selection]]
+
 # CNC Turning
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
