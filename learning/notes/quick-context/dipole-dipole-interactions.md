@@ -5,7 +5,7 @@ updated: 2026-01-21
 clarification: 2026-01-21
 ---
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/covalent-bonds|Covalent Bonds]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds in 3D Printing Filaments]] | [[quick-context/van-der-waals-forces|Van der Waals Forces]] | [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds for Beginners]] | [[quick-context/bambu-p2s-print-quality|Bambu P2S Print Quality]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 

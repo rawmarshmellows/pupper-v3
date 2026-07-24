@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[quick-context/robot-cell-integration-best-practices|Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential]] | [[quick-context/robotic-arm-api-levels|Different Levels of APIs for Controlling Robotic Arms]] | [[quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[quick-context/plc-vs-software|PLC and why it's different to software and how it's implemented]] | [[quick-context/sil-rated-safety-functions|SIL-Rated Safety Functions]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 

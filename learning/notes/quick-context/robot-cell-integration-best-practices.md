@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[quick-context/integration-failure-modes-solutions|Solving Robot Cell Integration Failure Modes]] | [[quick-context/epson-rc-plus-programming|EPSON RC+ Programming]] | [[quick-context/oee-overall-equipment-effectiveness|OEE]] | [[quick-context/robotic-arm-api-levels|Different Levels of APIs for Controlling Robotic Arms]] | [[quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 

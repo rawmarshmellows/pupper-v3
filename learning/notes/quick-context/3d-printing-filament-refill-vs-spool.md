@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]] | [[quick-context/3d-printer-hotends|3D Printer Hotends]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds in 3D Printing Filaments]] | [[quick-context/melt-index|Melt Index]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 

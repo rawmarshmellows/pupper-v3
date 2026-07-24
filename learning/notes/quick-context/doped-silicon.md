@@ -3,9 +3,9 @@ topic: Doped Silicon
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/semiconductor-fabrication|Semiconductor Fabrication - Manufacturing Process and Tools]] | [[quick-context/transistor-design-history|Transistor Design History]] | [[quick-context/covalent-bonds|Covalent Bonds]] | [[quick-context/electric-current|Electric Current]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]]
 
-> **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as voltage-controlled switches.
+> **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as [[quick-context/voltage|voltage]]-controlled switches.
 
 # Doped Silicon
 
@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
@@ -378,7 +378,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/electric-current|Electric Current]]** — Understanding how electrons flow helps you grasp why doping creates free charge carriers that enable current flow.
 
-- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through covalent bonds; doping works because it disrupts this sharing pattern.
+- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through [[quick-context/covalent-bonds|covalent bonds]]; doping works because it disrupts this sharing pattern.
 
 - **Band Gap Theory** — The deeper physics of why semiconductors behave differently from conductors and insulators; explains energy levels that electrons must overcome to move.
 

@@ -3,6 +3,8 @@ term: CAN Bus Termination
 created: 2026-03-27
 ---
 
+> **Related:** [[quick-context/can-bus|CAN Bus]] | [[quick-context/resistor|Resistor]] | [[micro-context/can-bus-transceiver|CAN Bus Transceiver]] | [[quick-context/embedded-communication-protocols|Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, I3C, and When to Use Each]] | [[quick-context/differential-pair|Differential Pair]]
+
 # CAN Bus Termination
 
 > **See also:** [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
@@ -11,9 +13,9 @@ created: 2026-03-27
 
 ## How It Works
 
-- A CAN bus is a differential pair (CANH/CANL) with ~120Ω characteristic impedance set by the wire geometry.
+- A [[quick-context/can-bus|CAN bus]] is a [[quick-context/differential-pair|differential pair]] (CANH/CANL) with ~120Ω characteristic impedance set by the wire geometry.
 - When a signal reaches an unterminated end, the impedance mismatch causes it to bounce back as a reflection, corrupting data.
-- A 120Ω resistor across CANH and CANL at each bus end absorbs the signal energy, eliminating reflections.
+- A 120Ω [[quick-context/resistor|resistor]] across CANH and CANL at each bus end absorbs the signal energy, eliminating reflections.
 - Only the two endpoints need termination — nodes in the middle of the bus must **not** add termination resistors, or they'll reduce the bus impedance and distort signals.
 
 ```
@@ -31,4 +33,4 @@ CAN bus with termination (Pupper: one bus of four)
   (board end)                  at middle nodes
 ```
 
-**Key insight:** Without termination, CAN may work on very short buses at low speeds — but at 1 Mbps, reflected signals overlap with subsequent bits and distort voltage levels during sampling, causing data corruption. The 120Ω value isn't arbitrary; it matches the physical impedance of a twisted wire pair.
+**Key insight:** Without termination, CAN may work on very short buses at low speeds — but at 1 Mbps, reflected signals overlap with subsequent bits and distort [[quick-context/voltage|voltage]] levels during sampling, causing data corruption. The 120Ω value isn't arbitrary; it matches the physical impedance of a twisted wire pair.

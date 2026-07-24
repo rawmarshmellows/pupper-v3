@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[micro-context/i2s|I2S]] | [[micro-context/pwm-pulse-width-modulation|PWM]] | [[quick-context/electric-current|Electric Current]] | [[quick-context/pcb-printed-circuit-board|PCB]]
+
 # I2S Audio Amplifier
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]

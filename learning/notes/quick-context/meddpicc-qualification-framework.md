@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/challenger-sale-methodology|Challenger Sale Methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman Strategic Selling / LAMP]] | [[quick-context/sandler-kare-segmentation|Sandler KARE Account Segmentation]] | [[quick-context/mcdonald-kam-model|Malcolm McDonald KAM Model]] | [[quick-context/sales-methodology-layering|Sales Methodology Layering]]
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 

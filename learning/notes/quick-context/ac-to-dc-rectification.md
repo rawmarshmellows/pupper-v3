@@ -5,13 +5,13 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[micro-context/ac-dc-current|AC vs DC Current]] | [[micro-context/diode-rectification|Diode Rectification]] | [[quick-context/diode|Diode]] | [[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]] | [[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady [[quick-context/voltage|voltage]].
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -126,7 +126,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):

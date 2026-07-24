@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[quick-context/bambu-p2s-print-quality|Bambu P2S Print Quality]] | [[quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[quick-context/3d-printer-hotends|3D Printer Hotends]] | [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -27,7 +27,7 @@ The AMS (Automatic Material System) solves two problems that plague FDM 3D print
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's firmware. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the hotend and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
+The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's [[quick-context/firmware|firmware]]. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the hotend and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
 
 For loading, the AMS uses motorized rollers to feed the selected filament through its internal path, into the hub, and down the reverse-Bowden tube to the extruder. The extruder gears then grip the filament and push it through the hotend. Before printing resumes, the printer must **purge** the old color from the nozzle—this is done by extruding material into a waste tower or into the model's infill until only the new color emerges. RFID readers at each slot detect Bambu-branded spools and automatically configure temperature, flow rate, and material type; third-party filaments require manual profile selection in the slicer software.
 

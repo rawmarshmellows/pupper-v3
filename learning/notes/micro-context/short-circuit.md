@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[quick-context/voltage|Voltage]] | [[quick-context/grounding-and-return-paths|Grounding and Return Paths]] | [[quick-context/voltage-current-causality|Voltage-Current Causality]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]

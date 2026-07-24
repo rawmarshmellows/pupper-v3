@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[quick-context/electric-current|Electric Current]]
+
 # Coulomb (Unit History)
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]
