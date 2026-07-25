@@ -2,12 +2,13 @@
 term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/ads1110-battery-adc|ADS1110 (Battery Voltage ADC)]] | [[micro-context/capacitive-voltage-sensing]] | [[micro-context/input-offset-voltage|Input Offset Voltage ($V_{OS}$)]] | [[micro-context/offset-voltage-drift|Offset Voltage Drift ($TCV_{OS}$)]] | [[micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain ($A_V$)]]
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
-**Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
+**Definition:** How close a comparator's or [[quick-context/op-amp|op-amp]]'s output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
 

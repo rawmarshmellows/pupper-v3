@@ -3,7 +3,7 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/doped-silicon]]
 
 > **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
@@ -19,8 +19,8 @@ A silicon die solves the fundamental problem of cramming billions of microscopic
 |------|------------|
 | **Die** (or "chip") | The actual piece of silicon containing all the transistors; typically 5-400 mm² in area, cut from a larger wafer |
 | **Wafer** | A thin, circular disc of ultra-pure silicon (usually 300mm diameter) on which hundreds of identical dies are manufactured simultaneously |
-| **Transistor** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
-| **Metal interconnect layers** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
+| **[[quick-context/transistor|Transistor]]** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
+| **[[quick-context/metal-interconnect-layers|Metal interconnect layers]]** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
 | **Dicing** | The process of cutting a finished wafer into individual dies using diamond saws, lasers, or plasma etching |
 
 <details>
@@ -229,7 +229,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, [[quick-context/voltage|voltage]], and resistance explains why dies consume power and generate heat.
 
 </details>
 

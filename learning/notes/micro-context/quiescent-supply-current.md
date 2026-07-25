@@ -2,12 +2,13 @@
 term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/ac-dc-current|AC vs DC Current]] | [[micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[micro-context/current-mirror]] | [[micro-context/input-bias-current|Input Bias Current ($I_B$)]]
 
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]
 
-**Definition:** The standing current a comparator or op-amp draws from its supply just to stay biased and ready, even when its output isn't switching. For micropower parts it is microamps.
+**Definition:** The standing current a comparator or [[quick-context/op-amp|op-amp]] draws from its supply just to stay biased and ready, even when its output isn't switching. For micropower parts it is microamps.
 
 ## How It Works
 

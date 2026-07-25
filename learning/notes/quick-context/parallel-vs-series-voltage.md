@@ -3,7 +3,7 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/ads1110-battery-adc|ADS1110 (Battery Voltage ADC)]] | [[micro-context/capacitive-voltage-sensing]] | [[micro-context/input-offset-voltage|Input Offset Voltage ($V_{OS}$)]] | [[micro-context/offset-voltage-drift|Offset Voltage Drift ($TCV_{OS}$)]] | [[micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain ($A_V$)]]
 
 > **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
 
@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: A Common Misconception About Electricity
 
-If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that voltage is a *difference in potential*, not a quantity that accumulates like water in a tank.
+If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that [[quick-context/voltage|voltage]] is a *difference in potential*, not a quantity that accumulates like water in a tank.
 
 ## 5 Essential Terms
 
@@ -351,7 +351,7 @@ THE MATH THAT MATTERS:
 **To minimize resistance and voltage drop.** Ohm's Law says V = I × R. At 150+ amps, even a tiny resistance (say, 0.001Ω) would cause a 0.15V drop—23% of the 0.65V supply! By using hundreds of parallel power pins, each pin carries only a fraction of an amp, and the effective resistance is divided by the number of pins. This keeps the voltage stable across the entire die. See: The Key Tension (Current Delivery Problem).
 </details>
 
-**Q4:** If transistors were connected in series instead of parallel (like batteries in a flashlight), what would happen?
+**Q4:** If transistors were connected in series instead of parallel (like [[quick-context/galvanic-cells-batteries|batteries]] in a flashlight), what would happen?
 <details>
 <summary>Answer</summary>
 **You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).

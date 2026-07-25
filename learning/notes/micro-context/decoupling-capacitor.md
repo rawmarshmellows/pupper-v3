@@ -3,6 +3,7 @@ term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[quick-context/capacitor]]
 
 # Decoupling Capacitor
 

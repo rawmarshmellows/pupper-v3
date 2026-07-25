@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/power-watts-joules]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[micro-context/mosfet]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]]
 >
 > **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
@@ -19,7 +19,7 @@ A BJT that switches your LED perfectly at 5 V can be destroyed instantly by a 30
 
 | Term | Definition |
 |------|------------|
-| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less voltage." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
+| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less [[quick-context/voltage|voltage]]." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
 | **$V_{CEO}$ (Collector–Emitter Breakdown, base Open)** | The maximum voltage the transistor can hold across collector→emitter while **off** before it avalanche-breaks-down. When the BJT is off, nearly the full supply $V_{CC}$ appears across it, so you need $V_{CEO} > V_{CC}$ (with margin). |
 | **$I_C$ (Max Collector Current)** | The largest continuous current the collector can carry without the bond wires or silicon failing. Your load current must stay below this. |
 | **$P_C$ / $P_D$ (Power Dissipation)** | The most heat the package can shed before the junction overheats. The heat made *inside* the BJT is $P = V_{CE}\cdot I_C$. This rating shrinks as the part gets hotter (thermal derating). |
@@ -52,7 +52,7 @@ THE BJT SPEC CHECKLIST
 The single most common beginner myth is "NPN needs less voltage to turn on." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
 
 - **Direction of control.** NPN turns on when the base is pulled *more positive* than the emitter; PNP turns on when the base is pulled *more negative* than the emitter.
-- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a microcontroller pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
+- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a [[micro-context/microcontroller|microcontroller]] pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
 - **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives higher gain, faster switching, and a lower saturation voltage. That physics — not voltage — is why NPN is the default.
 
 ```
@@ -228,7 +228,7 @@ Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs
 - **[[quick-context/resistor]]** — The base resistor sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
 - **[[quick-context/transistor]]** — The MOSFET sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
 - **[[quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
-- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
+- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a [[quick-context/comparator|comparator]] IC (absolute-max vs. guaranteed limits, typical vs. boldface).
 
 </details>
 
