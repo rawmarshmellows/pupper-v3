@@ -2,6 +2,7 @@
 term: Clock Source
 created: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-edges|Clock Edge]] | [[micro-context/clock-speed]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/clock-sources-and-timing]]
 
 # Clock Source
 

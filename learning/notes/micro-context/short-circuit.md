@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/pcb-printed-circuit-board|PCB (Printed Circuit Board)]] | [[quick-context/pwm-controller-circuit]]
 
 # Short Circuit
 

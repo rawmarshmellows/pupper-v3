@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics (3-DOF Leg)]]
 
 > **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
@@ -89,7 +89,7 @@ VOICE-TO-ACTION PIPELINE
 
 6. **Karel execution**: The matched method (e.g., `move_forward()`) publishes a Twist message to `/cmd_vel` with the appropriate linear and angular velocities, held for a duration (typically 1-2 seconds per movement step).
 
-7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via CAN bus.
+7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via [[quick-context/can-bus|CAN bus]].
 
 ### Audio muting for echo prevention
 

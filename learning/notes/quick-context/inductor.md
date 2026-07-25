@@ -3,7 +3,7 @@ topic: Inductor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[micro-context/power-inductor]]
 
 > **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Smoothing and Converting Power
 
-A switching power supply chops a DC voltage on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
+A switching power supply chops a DC [[quick-context/voltage|voltage]] on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
 
 ## 5 Essential Terms
 
@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[micro-context/buck-converter|buck converter]] uses a switch, [[quick-context/diode|diode]], inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -701,7 +701,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

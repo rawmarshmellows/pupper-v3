@@ -3,7 +3,7 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[micro-context/anode]] | [[micro-context/cathode]]
 
 > **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
 
@@ -23,7 +23,7 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 | **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
 | **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
 | **Reduction** | A chemical reaction where something GAINS electrons. Happens at the cathode. (Think: the charge is "reduced"—becomes less positive or more negative) |
-| **Oxidation** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
+| **[[micro-context/oxidation|Oxidation]]** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
 
 ### The OILRIG Memory Trick
 
@@ -241,7 +241,7 @@ STEP 4: THE CIRCUIT COMPLETES
 
 - **Redox Reactions** — The broader category of chemistry involving electron transfer. Electrolysis is just one way to make redox reactions happen; electrodes are where you physically see oxidation and reduction occurring at separate locations.
 
-- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the electrolyte provides the mobile ions that complete the circuit internally.
+- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the [[quick-context/electrolyte|electrolyte]] provides the mobile ions that complete the circuit internally.
 
 - **Electroplating** — A practical application where the anode IS the metal you want to deposit (it dissolves) and the cathode IS the object you're coating (metal deposits onto it). Same electrode principles, different purpose.
 

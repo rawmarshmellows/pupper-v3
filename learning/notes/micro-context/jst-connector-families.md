@@ -3,6 +3,7 @@ term: JST Connector Families
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C]]
 
 # JST Connector Families
 

@@ -3,12 +3,13 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]]
 
 # 4-Wire Kelvin Measurement
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
-**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
+**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures [[quick-context/voltage|voltage]] directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works
 
