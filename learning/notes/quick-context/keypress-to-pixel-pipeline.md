@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware|From Code to Running Firmware — Linking, Flashing, and Booting on an MCU]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|From Human Calculators to Coding on Screens — How Programming Interfaces Evolved]] | [[learning/notes/quick-context/python-to-machine-code-pipeline|Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates - The Full Compilation Chain and Bootstrapping]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|Physics of Writing Data to Memory — How Bits Become Charges, Voltages, and Trapped Electrons]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 
@@ -110,7 +110,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 4. **Encode to a scancode.** The keyboard chip converts "row 3, column 5 just went down" into a **scancode** — a number that names the key. Crucially it is *not* the letter: the key labeled "A" sends the same scancode whether or not Shift is held. Meaning is added much later.
 
-5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or microcontroller, the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
+5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or [[learning/notes/micro-context/microcontroller|microcontroller]], the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
 
 6. **Transport.** The packet rides a [[learning/notes/quick-context/embedded-communication-protocols|serial protocol]] — [[learning/notes/quick-context/usb-peripheral-hardware|USB]] or [[learning/notes/quick-context/uart|UART]] — across a wire to the host's controller, which handles framing, addressing, and error checks.
 
@@ -208,7 +208,7 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 <details>
 <summary><strong>Peripheral Knowledge</strong> — The rungs this capstone ties together</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
+- **how a computer works index** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — The bottom anchor: a switch makes a bit, flip-flops store it, registers/RAM are scaled-up versions — i.e. both the key switch (rung 1) and the framebuffer (rung 13).
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The engine that runs the interrupt handler, the keymap lookup, and the application's drawing code (rungs 8-11). *(sibling — may not exist yet)*
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — How an address selects one cell; the top-bit dmux/mux in the anchor is exactly this, and it is what makes a memory-mapped keyboard/screen possible. *(sibling — may not exist yet)*

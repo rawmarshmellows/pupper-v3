@@ -3,9 +3,9 @@ topic: Doped Silicon
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/bjt]]
 
-> **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as voltage-controlled switches.
+> **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as [[learning/notes/quick-context/voltage|voltage]]-controlled switches.
 
 # Doped Silicon
 
@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[learning/notes/quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
@@ -370,7 +370,7 @@ Step 5: Repeat many times with different masks and dopants
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor Hierarchy]]** — Doped silicon is what makes transistors possible; this document explains how transistors fit into the larger hierarchy of chips, packages, and circuit boards.
 
@@ -378,7 +378,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/electric-current|Electric Current]]** — Understanding how electrons flow helps you grasp why doping creates free charge carriers that enable current flow.
 
-- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through covalent bonds; doping works because it disrupts this sharing pattern.
+- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through [[learning/notes/quick-context/covalent-bonds|covalent bonds]]; doping works because it disrupts this sharing pattern.
 
 - **Band Gap Theory** — The deeper physics of why semiconductors behave differently from conductors and insulators; explains energy levels that electrons must overcome to move.
 

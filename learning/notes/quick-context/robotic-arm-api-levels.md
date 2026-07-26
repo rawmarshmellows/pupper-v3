@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/isa-95-levels|ISA-95 Levels]] | [[learning/notes/quick-context/hydrogen-bonds-beginners|Hydrogen Bonds for Beginners]] | [[learning/notes/quick-context/plc-vs-software|PLC and why it's different to software and how it's implemented]] | [[learning/notes/quick-context/ros2-architecture|ROS2 Architecture — Robot Operating System 2 for Pupper v3]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 

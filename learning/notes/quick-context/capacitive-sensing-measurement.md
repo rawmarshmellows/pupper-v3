@@ -5,19 +5,19 @@ created: 2026-03-28
 
 # Capacitive Sensing and Measurement
 
-> **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[micro-context/adc-analog-to-digital-converter]]
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]]
 
-> **TL;DR:** Capacitance can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
+> **TL;DR:** [[learning/notes/quick-context/capacitance|Capacitance]] can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a [[learning/notes/quick-context/capacitor|capacitor]] and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from humidity films and MEMS accelerometers to touchscreens and proximity detectors.
 
 ## The Core Problem
 
-Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a voltage or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
+Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a [[learning/notes/quick-context/voltage|voltage]] or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Capacitance-to-Digital Converter (CDC)** | An IC or on-chip block that directly converts a capacitance value to a digital number, typically using a sigma-delta charge-balancing architecture. Found inside sensor ICs like the SHT40 ([[small-context/humidity-temperature-sensor|humidity sensor]]) and MEMS accelerometer readout ASICs. |
+| **Capacitance-to-Digital Converter (CDC)** | An IC or on-chip block that directly converts a capacitance value to a digital number, typically using a sigma-delta charge-balancing architecture. Found inside sensor ICs like the SHT40 (humidity sensor) and MEMS accelerometer readout ASICs. |
 | **Charge Transfer** | A measurement technique where charge is repeatedly shuttled from an unknown capacitor ($C_x$) to a known accumulator capacitor ($C_s$), counting cycles until $C_s$ reaches a threshold. The count is proportional to $C_x$. Used in touchscreen controllers (e.g., Microchip QTouch). |
 | **Excitation Signal** | The AC voltage or switched-capacitor clock applied to the sensor to create measurable current flow. Without excitation, a capacitor at steady state passes zero current ($I = C \cdot dV/dt$, and $dV/dt = 0$ at DC). |
 | **Sigma-Delta Modulation** | An oversampling technique that encodes the ratio $C_{\text{sensor}} / C_{\text{ref}}$ as the density of 1s in a high-speed bitstream. A digital decimation filter extracts a high-resolution result (16-24 bits) from this noisy 1-bit stream. |
@@ -158,7 +158,7 @@ SIGMA-DELTA CAPACITANCE-TO-DIGITAL CONVERTER
 - Works directly with capacitance -- no need to convert to voltage first
 - The same architecture works for resistance (thermistors) and voltage (strain gauges)
 
-**Where it's used:** [[small-context/humidity-temperature-sensor|Humidity sensors]] (SHT40, HDC1080), [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] (ADXL345, BNO086's accel), MEMS gyroscopes, capacitive pressure sensors, precision touch interfaces.
+**Where it's used:** Humidity sensors (SHT40, HDC1080), MEMS accelerometers (ADXL345, BNO086's accel), MEMS gyroscopes, capacitive pressure sensors, precision touch interfaces.
 
 ---
 
@@ -298,7 +298,7 @@ The dominant trend in modern sensor design is sigma-delta CDC integration: put t
 <details>
 <summary><strong>Concrete Example</strong> -- From polymer film to "%RH" over I2C</summary>
 
-The [[small-context/humidity-temperature-sensor|SHT40 humidity sensor]] demonstrates the full capacitive sensing chain. Here's every step from physical stimulus to digital readout:
+The SHT40 humidity sensor demonstrates the full capacitive sensing chain. Here's every step from physical stimulus to digital readout:
 
 ```
 COMPLETE CAPACITIVE SENSING CHAIN (SHT40 humidity measurement)
@@ -338,7 +338,7 @@ COMPLETE CAPACITIVE SENSING CHAIN (SHT40 humidity measurement)
     Resolution: 0.01% RH (far finer than sensor accuracy of ±1.8% RH)
 ```
 
-The same sigma-delta CDC architecture appears in MEMS accelerometers, but measuring femtofarads (not picofarads) from comb-finger displacement instead of dielectric change. See [[small-context/mems-accelerometer-capacitive-sensing]] for that chain.
+The same sigma-delta CDC architecture appears in MEMS accelerometers, but measuring femtofarads (not picofarads) from comb-finger displacement instead of dielectric change. See mems accelerometer capacitive sensing for that chain.
 
 **The one thing most outsiders get wrong about this is...** thinking that capacitive sensors "measure capacitance" the way a multimeter measures resistance -- as a static property you read once. In reality, capacitance measurement is always *dynamic*: the circuit is constantly cycling excitation signals through the sensor at kHz-MHz rates, integrating tiny charge packets, and averaging millions of samples to extract a stable reading. A "single measurement" from an SHT40 actually involves millions of charge-balance cycles executed in 8 milliseconds. The sensor is never at rest -- it's continuously pumping charge to track a moving target.
 
@@ -351,15 +351,15 @@ The same sigma-delta CDC architecture appears in MEMS accelerometers, but measur
 
 - **[[quick-context/capacitor]]** -- Capacitor types, charge/discharge curves, and RC time constants. The RC charge curve ($V(t) = V_s(1 - e^{-t/RC})$) is the mathematical basis of RC timing measurement.
 
-- **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An RC oscillator is essentially a capacitive sensor that measures its own capacitance continuously.
+- **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An [[learning/notes/quick-context/rc-oscillator|RC oscillator]] is essentially a capacitive sensor that measures its own capacitance continuously.
 
 - **[[quick-context/impedance-and-reactance]]** -- Capacitive reactance $X_C = 1/(2\pi fC)$ is the basis of AC impedance measurement, and explains why capacitive sensors need AC excitation.
 
-- **[[small-context/humidity-temperature-sensor]]** -- Full walkthrough of the SHT40 humidity sensor: polymer dielectric, sigma-delta CDC, calibration, and I2C readout.
+- **humidity temperature sensor** -- Full walkthrough of the SHT40 humidity sensor: polymer dielectric, sigma-delta CDC, calibration, and I2C readout.
 
-- **[[small-context/mems-accelerometer-capacitive-sensing]]** -- Full walkthrough of MEMS accelerometer comb-finger capacitive sensing with differential readout.
+- **mems accelerometer capacitive sensing** -- Full walkthrough of MEMS accelerometer comb-finger capacitive sensing with differential readout.
 
-- **[[small-context/imu-robot-balance-sensing]]** -- How the capacitive accelerometer fits into the BNO086's sensor fusion for robot balance.
+- **imu robot balance sensing** -- How the capacitive accelerometer fits into the BNO086's sensor fusion for robot balance.
 
 - **[[quick-context/camera-fundamentals]]** -- Photodiode-based image sensors are *not* capacitive sensors, but charge storage on junction capacitance is central to how they work. Contrasts with capacitive transduction.
 
@@ -381,10 +381,10 @@ A capacitor at steady-state DC is an open circuit -- no current flows, so there'
 **Q2:** A MEMS accelerometer measures femtofarad changes, while a humidity sensor measures picofarad changes. Both use sigma-delta CDCs. Why does the accelerometer need differential sensing but the humidity sensor doesn't?
 <details>
 <summary>Answer</summary>
-The accelerometer's signal ($\Delta C \approx 0.1$ fF) is ~1000x smaller than the humidity sensor's ($\Delta C \approx 0.1$ pF = 100 fF). At femtofarad levels, thermal drift, aging, and manufacturing variation in the base capacitance would swamp the tiny signal. Differential sensing ($C_1 - C_2$) cancels these common-mode effects because both capacitors drift equally. The humidity sensor's signal is large enough relative to drift that single-ended measurement works. See: 5 Essential Terms (Differential Capacitance) and [[small-context/mems-accelerometer-capacitive-sensing]].
+The accelerometer's signal ($\Delta C \approx 0.1$ fF) is ~1000x smaller than the humidity sensor's ($\Delta C \approx 0.1$ pF = 100 fF). At femtofarad levels, thermal drift, aging, and manufacturing variation in the base capacitance would swamp the tiny signal. Differential sensing ($C_1 - C_2$) cancels these common-mode effects because both capacitors drift equally. The humidity sensor's signal is large enough relative to drift that single-ended measurement works. See: 5 Essential Terms (Differential Capacitance) and mems accelerometer capacitive sensing.
 </details>
 
-**Q3:** You're designing a capacitive touch button using an MCU GPIO pin and a 10 k$\Omega$ resistor. The pad capacitance is ~10 pF untouched and ~15 pF when touched. Your MCU timer runs at 48 MHz. Can you reliably detect a touch?
+**Q3:** You're designing a capacitive touch button using an MCU GPIO pin and a 10 k$\Omega$ [[learning/notes/quick-context/resistor|resistor]]. The pad capacitance is ~10 pF untouched and ~15 pF when touched. Your MCU timer runs at 48 MHz. Can you reliably detect a touch?
 <details>
 <summary>Answer</summary>
 The RC time constants are $\tau_{\text{no touch}} = 10\text{k}\Omega \times 10\text{pF} = 100\text{ns}$ and $\tau_{\text{touch}} = 10\text{k}\Omega \times 15\text{pF} = 150\text{ns}$. At 48 MHz, one timer tick = 20.8 ns. Charging to a threshold at ~0.69$\tau$ (50% of VCC): no-touch ≈ 69 ns ≈ 3.3 counts; touch ≈ 104 ns ≈ 5 counts. The difference (2 counts) is small but detectable. In practice you'd average many samples or use a lower resistance to spread the counts further apart. See: How It Works (Family 1: RC Timing).

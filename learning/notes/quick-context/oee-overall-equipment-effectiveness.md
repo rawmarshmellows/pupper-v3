@@ -24,7 +24,7 @@ The brilliance is the decomposition: when OEE drops, you immediately know which 
 | **Six Big Losses** | The canonical taxonomy: breakdowns, setup/changeover, minor stops, slow cycles, startup rejects, and production rejects—OEE exists to quantify these |
 | **Ideal Cycle Time** | The theoretical minimum time to produce one unit, against which actual cycle times are compared for Performance calculation |
 | **Planned Production Time** | The scheduled hours minus planned downtime like meals or maintenance windows—your denominator for Availability |
-| **TEEP** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
+| **[[learning/notes/quick-context/teep|TEEP]]** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
 | **Pareto of Losses** | The analysis technique of ranking losses by impact to focus improvement efforts—"we're losing 12% to changeovers and 3% to breakdowns, so attack changeovers first" |
 
 <details>

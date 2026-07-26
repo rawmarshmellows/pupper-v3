@@ -4,6 +4,8 @@ created: 2026-02-07
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/diode]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
+
 # Diode Rectification (AC → DC)
 
 **Definition:** Using [[quick-context/diode|diodes]] as one-way valves to convert AC to DC. Since diodes only let current flow in one direction, they block or flip the negative portions of AC, producing output that's always positive.
@@ -13,7 +15,7 @@ updated: 2026-03-27
 - During the positive half of the AC cycle, the diode is forward-biased and passes current through to the load.
 - During the negative half, the diode blocks current (reverse-biased), preventing reverse flow.
 - The result is pulsating DC — all-positive but still bumpy with gaps where the negative half was removed.
-- A smoothing capacitor fills in the gaps by storing charge during peaks and releasing it during dips, producing steady DC.
+- A smoothing [[learning/notes/quick-context/capacitor|capacitor]] fills in the gaps by storing charge during peaks and releasing it during dips, producing steady DC.
 
 ```
 AC input               After diodes            + Capacitor

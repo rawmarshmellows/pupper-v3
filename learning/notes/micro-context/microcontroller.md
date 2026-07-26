@@ -4,6 +4,8 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]]
+
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]

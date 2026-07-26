@@ -3,11 +3,13 @@ term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]]
+
 # Open-Loop Voltage Gain ($A_V$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
+> **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | decibels across domains
 
-**Definition:** The enormous gain a comparator or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
+**Definition:** The enormous gain a [[learning/notes/quick-context/comparator|comparator]] or [[learning/notes/quick-context/op-amp|op-amp]] applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
 
 ## How It Works
 
