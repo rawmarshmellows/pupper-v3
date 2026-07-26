@@ -6,7 +6,7 @@ updated: 2026-02-10
 
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/micro-context/push-pull-vs-open-drain|Push-Pull vs Open-Collector / Open-Drain]] | [[learning/notes/quick-context/inside-the-triangle|Inside the Triangle — Complete Op-Amp / Comparator Signal Path]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|TLV7211 / TLV7211A as an LMC7211-N Replacement]]
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 

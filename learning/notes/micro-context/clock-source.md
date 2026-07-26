@@ -3,6 +3,8 @@ term: Clock Source
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/crystal-oscillator]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]]
+
 # Clock Source
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]

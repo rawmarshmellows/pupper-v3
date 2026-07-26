@@ -4,11 +4,13 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110]] | [[learning/notes/quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] | [[learning/notes/quick-context/wire-bonding]]
+
 # 4-Wire Kelvin Measurement
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
-**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
+**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures [[learning/notes/quick-context/voltage|voltage]] directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works
 
