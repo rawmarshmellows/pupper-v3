@@ -3,6 +3,7 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

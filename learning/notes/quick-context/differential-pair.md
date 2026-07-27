@@ -5,13 +5,13 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/capacitance]]
 
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single [[learning/notes/micro-context/tail-current|tail current]] source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a [[learning/notes/quick-context/voltage|voltage]] difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
-A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and both wires pick up 50 mV of 60 Hz noise from nearby power lines. You need to amplify the 2 mV signal and ignore the 1.55V of unwanted voltage. A single transistor amplifier can't do this---it amplifies everything. A differential pair amplifies only the *difference* between its two inputs, naturally rejecting noise and DC offsets that appear on both wires equally. This is why every op-amp, comparator, and instrumentation amplifier starts with a differential pair at its input.
+A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and both wires pick up 50 mV of 60 Hz noise from nearby power lines. You need to amplify the 2 mV signal and ignore the 1.55V of unwanted voltage. A single [[learning/notes/quick-context/transistor|transistor]] amplifier can't do this---it amplifies everything. A differential pair amplifies only the *difference* between its two inputs, naturally rejecting noise and DC offsets that appear on both wires equally. This is why every op-amp, [[learning/notes/quick-context/comparator|comparator]], and instrumentation amplifier starts with a differential pair at its input.
 
 ## 5 Essential Terms
 
@@ -177,7 +177,7 @@ COMMON-MODE REJECTION
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
 - **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **[[learning/notes/micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 
@@ -188,7 +188,7 @@ The differential pair's performance depends on three competing goals:
 
 | Want | Problem |
 |------|---------|
-| **Better matching** (lower offset) | Requires larger transistors → slower, more capacitance |
+| **Better matching** (lower offset) | Requires larger transistors → slower, more [[learning/notes/quick-context/capacitance|capacitance]] |
 | **Higher gain** ($g_m$) | Requires more tail current → more power, more heat |
 | **Faster response** | Requires smaller transistors → worse matching, more offset |
 | **Higher CMRR** | Requires a perfect tail current source (infinite output impedance), which doesn't exist |
@@ -261,13 +261,13 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 
 - **[[quick-context/op-amp]]** --- An [[quick-context/op-amp|op-amp]] is a differential pair followed by gain stages and an output buffer, wrapped in negative feedback. The differential pair IS the op-amp's input.
 
-- **[[quick-context/comparator]]** --- A [[quick-context/comparator|comparator]] is a differential pair followed by gain stages and a digital output stage, with no compensation capacitor. Same input, different optimization.
+- **[[quick-context/comparator]]** --- A [[quick-context/comparator|comparator]] is a differential pair followed by gain stages and a digital output stage, with no compensation [[learning/notes/quick-context/capacitor|capacitor]]. Same input, different optimization.
 
 - **[[quick-context/bjt]]** --- [[quick-context/bjt|BJT]] differential pairs were the original (1960s). They have higher $g_m$ per unit current and lower offset than MOSFETs, which is why precision analog ICs still use BJT input stages.
 
 - **[[quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
 
-- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
+- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a [[learning/notes/micro-context/current-mirror|current mirror]] at the drain, trading gain for simplicity. The tail current source is often implemented with a [[learning/notes/quick-context/resistor|resistor]] + voltage reference in simple designs.
 
 </details>
 

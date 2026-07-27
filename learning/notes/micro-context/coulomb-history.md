@@ -4,6 +4,7 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/subatomic-particles]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/cations-and-reduction]]
 # Coulomb (Unit History)
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]
