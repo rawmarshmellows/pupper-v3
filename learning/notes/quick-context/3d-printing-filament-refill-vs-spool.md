@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 

@@ -4,6 +4,7 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/inductor]]
 # Full-Wave Bridge Rectifier
 
 > **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]
@@ -51,7 +52,7 @@ WHEN AC SWINGS + ON LEFT:        WHEN AC SWINGS − ON LEFT:
      SAME DIRECTION THROUGH LOAD BOTH TIMES!
 ```
 
-**Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-voltage supplies.
+**Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-[[learning/notes/quick-context/voltage|voltage]] supplies.
 
 ---
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

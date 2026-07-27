@@ -3,11 +3,12 @@ term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/high-gain-amplifier-stage]]
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
+**Definition:** The range of input [[learning/notes/quick-context/voltage|voltage]] (common to both pins) over which a [[learning/notes/quick-context/comparator|comparator]] or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 
 ## How It Works
 

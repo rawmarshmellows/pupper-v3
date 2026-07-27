@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # N-Dimensional Similarity Transform
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/covariance-matrix]]
 
 > **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most general transform that keeps "similar" figures similar, in any number of dimensions.
 
@@ -297,9 +297,9 @@ print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter 3D similarity transform used in geodesy to convert between coordinate datums (WGS 84, NAD 83, etc.)
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of recovering a similarity (or rigid) transform from matched 3D point pairs; Umeyama's method is a standard solution
-- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-covariance matrix to extract rotation
+- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] to extract rotation
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between source and destination points encodes the rotation and scale information that SVD extracts
-- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves absolute orientation via a quaternion eigenproblem instead of SVD
+- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves [[learning/notes/quick-context/absolute-orientation|absolute orientation]] via a quaternion eigenproblem instead of SVD
 - **Lie groups** -- The similarity group $\text{Sim}(n)$ is a Lie group; its Lie algebra $\mathfrak{sim}(n)$ parameterizes infinitesimal similarities, useful for optimization on the group manifold
 - **RANSAC** -- When point correspondences contain outliers, RANSAC wraps around Umeyama to robustly estimate the similarity transform from a minimal sample
 

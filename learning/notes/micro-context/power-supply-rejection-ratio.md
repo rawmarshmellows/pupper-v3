@@ -3,11 +3,12 @@ term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/transistor-analog-to-digital]]
 # Power-Supply Rejection Ratio ($PSRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]
 
-**Definition:** A measure (in dB) of how well a comparator or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
+**Definition:** A measure (in dB) of how well a [[learning/notes/quick-context/comparator|comparator]] or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
 
 ## How It Works
 

@@ -4,6 +4,7 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/data-bus-and-arbitration]]
 # I2C
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]

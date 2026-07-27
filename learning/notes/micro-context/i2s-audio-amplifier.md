@@ -4,6 +4,7 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]
 # I2S Audio Amplifier
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]

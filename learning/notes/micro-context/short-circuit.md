@@ -3,6 +3,7 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]
