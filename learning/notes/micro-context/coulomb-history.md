@@ -3,6 +3,8 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/transistor-design-history]] | [[quick-context/transistor]] | [[micro-context/current-electrons-per-second]]
+
 
 # Coulomb (Unit History)
 

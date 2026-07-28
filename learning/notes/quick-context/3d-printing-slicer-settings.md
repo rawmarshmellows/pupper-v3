@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[quick-context/glass-transition-temperature]] | [[quick-context/melt-index]] | [[quick-context/3d-printing-filament-refill-vs-spool]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/polymer-chemical-bonds]]
 
 > **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
@@ -157,7 +157,7 @@ Concepts that connect to slicer settings and deepen your understanding:
 
 - **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
 
-- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High melt index plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
+- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High [[quick-context/melt-index|melt index]] plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
 
 - **[[quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines both print bed temperature (to help adhesion without warping) and the max operating temperature of your finished part.
 
@@ -175,7 +175,7 @@ The outer walls carry most of the structural load in real-world use because forc
 **Q2:** If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
 <details>
 <summary>Answer</summary>
-You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher glass transition temperature and different flow characteristics.
+You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher [[quick-context/glass-transition-temperature|glass transition temperature]] and different flow characteristics.
 </details>
 
 **Q3:** When would you choose a 0.2mm layer height over a 0.3mm setting?

@@ -3,6 +3,8 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/stm32-microcontroller]] | [[micro-context/plc-programmable-logic-controller]] | [[quick-context/esp32]] | [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/i2c]]
+
 
 # Microcontroller
 

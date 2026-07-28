@@ -3,6 +3,8 @@ term: ST-Link V2 Programmer
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-edges]] | [[micro-context/microcontroller]] | [[micro-context/spinev1-elf]] | [[micro-context/sram]] | [[micro-context/swd-serial-wire-debug]]
+
 
 # ST-Link V2 Programmer
 
@@ -14,7 +16,7 @@ updated: 2026-03-27
 
 - Your PC runs OpenOCD (or similar), which sends flash/debug commands over USB bulk transfers to the ST-Link probe.
 - Inside the probe, an STM32F103 MCU translates USB commands into SWD signals by bit-banging its GPIO pins (toggling SWDIO and SWCLK in the correct protocol sequence).
-- The SWD signals reach the target STM32's Debug Port, which routes read/write requests to the chip's internal flash, SRAM, and peripheral registers.
+- The SWD signals reach the target STM32's Debug Port, which routes read/write requests to the chip's internal flash, [[micro-context/sram|SRAM]], and peripheral registers.
 - Responses travel back the same path: target → SWD → ST-Link GPIO → USB → OpenOCD → your screen.
 
 ```
@@ -43,7 +45,7 @@ updated: 2026-03-27
 
 ## What's Inside the ST-Link
 
-The ST-Link isn't magic — it's just another [[micro-context/microcontroller|microcontroller]] acting as a middleman. Crack open a clone and you'll find an **STM32F103C8T6** (a cheaper, smaller STM32) running proprietary firmware. That internal MCU does two jobs: speak USB to your PC and bit-bang the [[micro-context/swd-serial-wire-debug|SWD]] protocol out its GPIO pins to the target chip.
+The ST-Link isn't magic — it's just another [[micro-context/microcontroller|microcontroller]] acting as a middleman. Crack open a clone and you'll find an **STM32F103C8T6** (a cheaper, smaller STM32) running proprietary [[quick-context/firmware|firmware]]. That internal MCU does two jobs: speak USB to your PC and bit-bang the [[micro-context/swd-serial-wire-debug|SWD]] protocol out its GPIO pins to the target chip.
 
 ```
 INSIDE THE ST-LINK CLONE (HiLetgo):
@@ -100,7 +102,7 @@ WHAT BIT-BANGING LOOKS LIKE (simplified):
       set_gpio(SWCLK, LOW)
 ```
 
-The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per clock edge for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
+The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per [[micro-context/clock-edges|clock edge]] for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
 
 **3. Wire layer — ST-Link to target**
 

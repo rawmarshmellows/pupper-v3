@@ -3,6 +3,8 @@ term: CNC Turning
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/cnc-machining]] | [[micro-context/cnc-milling]] | [[micro-context/cnc-process-selection]]
+
 
 # CNC Turning
 

@@ -5,7 +5,7 @@ created: 2026-02-14
 
 # Subatomic Particles
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+> **Related:** [[micro-context/cathode]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[quick-context/electrolysis]] | [[quick-context/electromagnetism]]
 
 > **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
@@ -191,7 +191,7 @@ INSIDE PROTONS AND NEUTRONS: QUARKS
 
 ## Why the Nucleus Doesn't Fly Apart
 
-Here's a puzzle: protons are all positively charged. Positive charges repel each other (electromagnetism). So why doesn't the nucleus explode?
+Here's a puzzle: protons are all positively charged. Positive charges repel each other ([[quick-context/electromagnetism|electromagnetism]]). So why doesn't the nucleus explode?
 
 ```
 THE NUCLEAR STABILITY PUZZLE
@@ -366,7 +366,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding semiconductors | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 
@@ -552,7 +552,7 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
 - **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
 

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
+> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/melt-index]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/3d-printer-hotends]] | [[quick-context/3d-printing-filament-types]]
 
 > **TL;DR:** Glass transition temperature (Tg) is the temperature where polymer chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
 
@@ -27,7 +27,7 @@ Plastics are made of **[[quick-context/atoms-molecules-polymers-basics|polymers]
 <details>
 <summary><strong>How It Works</strong></summary>
 
-At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **intermolecular forces**—weak attractions like van der Waals forces and hydrogen bonds between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
+At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **intermolecular forces**—weak attractions like [[quick-context/van-der-waals-forces|van der Waals forces]] and hydrogen bonds between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
 
 This transition is not a sharp phase change like ice melting to water. Instead, it occurs over a temperature range (typically 10-30°C wide) where the material progressively softens. The Tg value reported is usually the midpoint of this transition. What matters practically is that mechanical properties change dramatically: the **modulus** (stiffness) can drop by a factor of 1000 between the glassy state and the rubbery state. Time also becomes a factor above Tg—even small loads will cause the material to slowly **creep** and permanently deform over hours or days as chains gradually slide past each other.
 
@@ -239,7 +239,7 @@ Related concepts that deepen your understanding of glass transition temperature:
 
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Understanding why amorphous polymers have a distinct Tg while semi-crystalline polymers have both Tg and a melting point (Tm).
 
-- **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high melt index means easier flow, which connects to how far above Tg you need to go for processing.
+- **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high [[quick-context/melt-index|melt index]] means easier flow, which connects to how far above Tg you need to go for processing.
 
 - **[[quick-context/3d-printing-filament-types]]** — Practical comparison of filament materials and their Tg values, helping you choose the right material for your application's thermal environment.
 

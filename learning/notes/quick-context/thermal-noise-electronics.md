@@ -3,15 +3,15 @@ topic: Thermal Noise in Electronics
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/thermal-runaway]] | [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]]
 
-> **TL;DR:** Thermal noise is the unavoidable random voltage fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
+> **TL;DR:** Thermal noise is the unavoidable random [[quick-context/voltage|voltage]] fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
 
 # Thermal Noise: Why Heat Makes Electrons Misbehave
 
 ## The Core Problem: Random Motion Creates Random Signals
 
-Every conductor above absolute zero (−273°C) contains electrons in constant, chaotic thermal motion. This isn't a flaw—it's fundamental physics. The same thermal energy that keeps water liquid and polymers flexible also causes electrons to jiggle randomly in every wire, resistor, and [[quick-context/transistor|transistor]]. These random movements create tiny, unpredictable voltage fluctuations called **thermal noise** (or Johnson-Nyquist noise). In [[quick-context/transistor-analog-to-digital|digital circuits]], thermal noise randomly perturbs the voltage levels that represent "0" and "1". If a signal is supposed to be 0.9V but noise adds +0.05V or −0.08V at random moments, the actual measured voltage fluctuates unpredictably.
+Every conductor above absolute zero (−273°C) contains electrons in constant, chaotic thermal motion. This isn't a flaw—it's fundamental physics. The same thermal energy that keeps water liquid and polymers flexible also causes electrons to jiggle randomly in every wire, [[quick-context/resistor|resistor]], and [[quick-context/transistor|transistor]]. These random movements create tiny, unpredictable voltage fluctuations called **thermal noise** (or Johnson-Nyquist noise). In [[quick-context/transistor-analog-to-digital|digital circuits]], thermal noise randomly perturbs the voltage levels that represent "0" and "1". If a signal is supposed to be 0.9V but noise adds +0.05V or −0.08V at random moments, the actual measured voltage fluctuates unpredictably.
 
 Why does this matter? Modern transistors operate at voltages below 1V with noise margins of only ~0.1-0.2V. At these scales, thermal noise (typically microvolts to millivolts) becomes a significant fraction of the operating margin. If noise exceeds the margin, a "1" might be misread as "0" or vice versa—a **bit flip**. In a chip with 50 billion transistors switching billions of times per second, even rare noise-induced errors accumulate. Without engineering around thermal noise, digital computing would produce unreliable garbage.
 
@@ -341,7 +341,7 @@ THIS IS WHY:
 
 - **Statistical Mechanics / Boltzmann Distribution** — The deeper physics explaining why thermal noise follows specific statistical distributions; temperature determines the probability of finding electrons at different energy levels.
 
-- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller capacitance means more thermal noise relative to signal.
+- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller [[quick-context/capacitance|capacitance]] means more thermal noise relative to signal.
 
 </details>
 
@@ -375,7 +375,7 @@ Because noise margins have shrunk dramatically. The 180nm generation operated at
 **Q5:** How does the kT thermal energy scale connect thermal noise in electronics to completely different phenomena like [[quick-context/glass-transition-temperature|polymer glass transition]] and [[quick-context/doped-silicon|transistor leakage current]]?
 <details>
 <summary>Answer</summary>
-The kT energy (~26 meV at room temperature) is the fundamental "activation energy" for random thermal processes in all systems. In electronics, kT determines the average energy of random electron motion (thermal noise) and the probability of electrons crossing barriers (subthreshold leakage current ∝ e^(V/kT)). In polymers, thermal energy must exceed intermolecular bond strengths for chains to move; at Tg, thermal energy (~10-100 kT accumulated in chain segments) becomes sufficient to overcome van der Waals forces, enabling chain mobility. All these phenomena are governed by the Boltzmann distribution—temperature determines the probability of overcoming energy barriers, whether those barriers are in silicon transistors or polymer chains. See: The kT Energy Scale.
+The kT energy (~26 meV at room temperature) is the fundamental "activation energy" for random thermal processes in all systems. In electronics, kT determines the average energy of random electron motion (thermal noise) and the probability of electrons crossing barriers (subthreshold leakage current ∝ e^(V/kT)). In polymers, thermal energy must exceed intermolecular bond strengths for chains to move; at Tg, thermal energy (~10-100 kT accumulated in chain segments) becomes sufficient to overcome [[quick-context/van-der-waals-forces|van der Waals forces]], enabling chain mobility. All these phenomena are governed by the Boltzmann distribution—temperature determines the probability of overcoming energy barriers, whether those barriers are in silicon transistors or polymer chains. See: The kT Energy Scale.
 </details>
 
 </details>

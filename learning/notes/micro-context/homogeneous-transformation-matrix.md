@@ -3,6 +3,8 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/switch-matrix]] | [[quick-context/covariance-matrix]] | [[quick-context/camera-fundamentals]] | [[quick-context/pupper-lab2-forward-kinematics]]
+
 
 # Homogeneous Transformation Matrix
 

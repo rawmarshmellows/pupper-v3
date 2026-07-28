@@ -3,18 +3,20 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/swd-serial-wire-debug]] | [[quick-context/voltage]] | [[quick-context/wire-bonding]] | [[quick-context/capacitive-sensing-measurement]] | [[quick-context/embedded-communication-protocols]]
+
 
 # 4-Wire Kelvin Measurement
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
-**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
+**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures [[quick-context/voltage|voltage]] directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works
 
 - Two "force" wires supply a known current through the unknown resistance from an external current source.
 - Two separate "sense" wires connect directly across the resistance to a high-impedance voltmeter.
-- Because the voltmeter draws negligible current, the sense wire resistance contributes essentially zero voltage drop.
+- Because the voltmeter draws negligible current, the sense wire resistance contributes essentially zero [[quick-context/voltage|voltage]] drop.
 - The unknown resistance is calculated as $R = V_{measured} / I_{known}$, free from lead wire error.
 
 ```

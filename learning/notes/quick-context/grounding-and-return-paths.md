@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[quick-context/capacitor]] | [[quick-context/differential-pair]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/voltage]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -236,7 +236,7 @@ THE CLASSIC GROUND LOOP PROBLEM
 **Q5:** How does a ground loop cause audio hum, and why is the hum at 60 Hz?
 <details>
 <summary>Answer</summary>
-**The ground loop forms an antenna loop that intercepts the 60 Hz magnetic field from nearby AC power wiring.** By Faraday's law, a changing magnetic field through a loop induces a voltage (EMF) proportional to the rate of change and loop area. Since the power grid runs at 60 Hz (50 Hz in Europe), the induced noise is at 60 Hz and its harmonics (120 Hz, 180 Hz). The fix is to break the loop or minimize its area.
+**The ground loop forms an antenna loop that intercepts the 60 Hz magnetic field from nearby AC power wiring.** By Faraday's law, a changing magnetic field through a loop induces a [[quick-context/voltage|voltage]] (EMF) proportional to the rate of change and loop area. Since the power grid runs at 60 Hz (50 Hz in Europe), the induced noise is at 60 Hz and its harmonics (120 Hz, 180 Hz). The fix is to break the loop or minimize its area.
 </details>
 
 </details>
