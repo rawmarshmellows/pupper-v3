@@ -3,7 +3,7 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/op-amp]] | [[quick-context/resistor]] | [[quick-context/voltage]]
 
 > **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 
@@ -211,7 +211,7 @@ EMI FILTER
 **Q2:** A signal at 100 kHz is passed through a 1st-order low-pass filter with fc = 1 kHz. How much is it attenuated?
 <details>
 <summary>Answer</summary>
-**-40 dB (1/100th voltage).** The signal is 100× above the cutoff (2 decades). A 1st-order filter rolls off at -20 dB/decade, so 2 decades × -20 = -40 dB. In voltage, that's a factor of 100: a 1V signal would be reduced to 10 mV.
+**-40 dB (1/100th [[quick-context/voltage|voltage]]).** The signal is 100× above the cutoff (2 decades). A 1st-order filter rolls off at -20 dB/decade, so 2 decades × -20 = -40 dB. In voltage, that's a factor of 100: a 1V signal would be reduced to 10 mV.
 </details>
 
 **Q3:** What does "-3 dB" actually mean in practical terms?
@@ -229,7 +229,7 @@ EMI FILTER
 **Q5:** To make an RC high-pass filter from an RC low-pass filter, what do you change?
 <details>
 <summary>Answer</summary>
-**Swap the resistor and capacitor positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
+**Swap the [[quick-context/resistor|resistor]] and [[quick-context/capacitor|capacitor]] positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
 </details>
 
 </details>

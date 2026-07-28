@@ -3,6 +3,8 @@ term: EDM Machining
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/cnc-machining]] | [[quick-context/electrodes]] | [[quick-context/electrolysis]] | [[quick-context/voltage]]
+
 
 # EDM Machining (Electrical Discharge Machining)
 
@@ -13,7 +15,7 @@ updated: 2026-03-27
 ## How It Works
 
 - A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid.
-- High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+- High-[[quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 - The dielectric fluid flushes away debris and re-insulates the gap between discharges.
 - The electrode slowly advances as material is removed, reproducing its shape as a cavity in the workpiece.
 

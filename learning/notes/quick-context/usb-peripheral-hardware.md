@@ -3,9 +3,9 @@ topic: USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[quick-context/voltage]] | [[micro-context/i2c]] | [[micro-context/input-offset-voltage]] | [[micro-context/microcontroller]] | [[micro-context/mosfet]]
 
-> **TL;DR:** When firmware writes a byte to a USB endpoint buffer, a dedicated hardware block inside the MCU — the **Serial Interface Engine (SIE)** — autonomously serializes it into a bitstream, encodes it using NRZI (where a "0" bit = voltage transition, "1" = no transition), inserts bit-stuffing to guarantee clock recovery, appends a CRC, and drives the D+/D- lines through push-pull [[learning/notes/micro-context/mosfet|MOSFET]] pairs that toggle between 3.3V and 0V at 12 MHz. The CPU's job ends at writing bytes to a buffer in SRAM; the SIE's transistor-level logic gates handle the rest in hardware, responding to host requests within ~500 ns — far too fast for firmware. The device can never transmit spontaneously; the host PC initiates every transaction.
+> **TL;DR:** When [[quick-context/firmware|firmware]] writes a byte to a USB endpoint buffer, a dedicated hardware block inside the MCU — the **Serial Interface Engine (SIE)** — autonomously serializes it into a bitstream, encodes it using NRZI (where a "0" bit = [[quick-context/voltage|voltage]] transition, "1" = no transition), inserts bit-stuffing to guarantee clock recovery, appends a CRC, and drives the D+/D- lines through push-pull [[learning/notes/micro-context/mosfet|MOSFET]] pairs that toggle between 3.3V and 0V at 12 MHz. The CPU's job ends at writing bytes to a buffer in [[micro-context/sram|SRAM]]; the SIE's [[quick-context/transistor|transistor]]-level logic gates handle the rest in hardware, responding to host requests within ~500 ns — far too fast for firmware. The device can never transmit spontaneously; the host PC initiates every transaction.
 
 ## The Core Problem
 
@@ -352,7 +352,7 @@ OUTPUT DRIVER — ONE PER DATA LINE (D+ and D-)
   same transistor physics as any digital circuit.
 ```
 
-The 22 $\Omega$ series resistor (external on some MCUs, integrated on others) plus the MOSFET's on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
+The 22 $\Omega$ series [[quick-context/resistor|resistor]] (external on some MCUs, integrated on others) plus the [[micro-context/mosfet|MOSFET]]'s on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
 
 </details>
 
@@ -476,7 +476,7 @@ TRACING ONE BIT THROUGH THE HARDWARE PIPELINE
 
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — Where the bytes in the endpoint buffer physically live (SRAM = cross-coupled inverter pairs) and how the firmware itself exists as trapped electrons in the MCU's flash. The keyboard MCU section of that document is what spawned this one.
 
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], UART, and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], [[quick-context/uart|UART]], and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
 
 - **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switches in the output drivers that physically create the voltage transitions on D+/D-. Same transistor physics as any digital output, just switching at 12 MHz.
 

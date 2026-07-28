@@ -2,6 +2,8 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** [[micro-context/mosfet]] | [[micro-context/piezoelectric-effect]]
+
 
 # Coriolis Effect
 

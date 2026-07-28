@@ -2,6 +2,8 @@
 term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
+> **Related:** [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/esp32]] | [[micro-context/spi]] | [[micro-context/i2s-audio-amplifier]] | [[quick-context/embedded-communication-protocols]]
+
 
 # I2S (Inter-IC Sound)
 

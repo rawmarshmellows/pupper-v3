@@ -3,6 +3,8 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/op-amp]] | [[micro-context/i2s]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/pcb-printed-circuit-board]]
+
 
 # I2S Audio Amplifier
 

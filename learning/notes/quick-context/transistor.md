@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/mosfet]] | [[quick-context/bjt]] | [[quick-context/transistor-design-history]] | [[quick-context/bjt-specifications]] | [[quick-context/pcb-chip-transistor-hierarchy]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -30,11 +30,11 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A transistor is fundamentally a **voltage-controlled switch**. Apply a small voltage to the gate, and the transistor "closes" (conducts electricity between source and drain). Remove the gate voltage, and the transistor "opens" (blocks current). This simple on/off behavior is the foundation of all digital computing: on = 1, off = 0.
+A transistor is fundamentally a **[[quick-context/voltage|voltage]]-controlled switch**. Apply a small voltage to the gate, and the transistor "closes" (conducts electricity between source and drain). Remove the gate voltage, and the transistor "opens" (blocks current). This simple on/off behavior is the foundation of all digital computing: on = 1, off = 0.
 
 The magic happens through semiconductor physics. Pure silicon is a poor conductor. But by adding tiny amounts of impurities (doping), we create two types of silicon: n-type (with extra free electrons that can carry current) and p-type (with "holes" where electrons are missing, which also carry current by moving in the opposite direction). A transistor arranges these differently-doped regions so that the gate can create or destroy a conductive path.
 
-**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate capacitor. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
+**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate [[quick-context/capacitor|capacitor]]. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
 
 ```
 THE TRANSISTOR: A Voltage-Controlled Switch
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -522,7 +522,7 @@ The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal g
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
+**Q4:** If making the oxide layer thinner increases [[quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
 As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works

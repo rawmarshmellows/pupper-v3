@@ -3,9 +3,9 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/substrate-ic-packaging]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[quick-context/metal-interconnect-layers]] | [[quick-context/pcb-printed-circuit-board]]
 
-> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
+> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and [[quick-context/metal-interconnect-layers|metal interconnect layers]], manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
 # Silicon Die
 
@@ -34,7 +34,7 @@ A silicon die is manufactured through a process that's essentially "printing" ci
 
 **Step 2: Slice into wafers.** The crystal ingot is sliced into thin discs called wafers (about 0.75mm thick, 300mm diameter). Each wafer will become hundreds of dies.
 
-**Step 3: Print the transistors.** Using photolithography (like darkroom photography, but with UV light and masks), patterns are projected onto the wafer. Chemicals are deposited and etched away, building up transistor structures atom-layer by atom-layer. This repeats hundreds of times.
+**Step 3: Print the transistors.** Using photolithography (like darkroom photography, but with UV light and masks), patterns are projected onto the wafer. Chemicals are deposited and etched away, building up [[quick-context/transistor|transistor]] structures atom-layer by atom-layer. This repeats hundreds of times.
 
 **Step 4: Add metal wiring.** After transistors are complete, copper wiring layers are added on top—typically 10-15 layers of microscopic metal lines connecting the transistors together.
 
@@ -229,7 +229,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, [[quick-context/voltage|voltage]], and resistance explains why dies consume power and generate heat.
 
 </details>
 
