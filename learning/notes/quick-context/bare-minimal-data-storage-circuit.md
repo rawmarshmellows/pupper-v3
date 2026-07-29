@@ -18,10 +18,10 @@ The 1-bit version of this circuit had no clock — pressing a button instantly f
 
 Most digital-logic curricula draw the clock as a small triangle on a schematic and state "the register updates here." That's a *behavioural* description — true, but unsatisfying. What gets hidden:
 
-1. The clock is a **physical voltage waveform** produced by an oscillator (a 555 timer, an [[learning/notes/quick-context/rc-oscillator|RC oscillator]], or a [[learning/notes/micro-context/crystal-oscillator|crystal]]). It has a frequency, a duty cycle, and a real wire you can poke with a scope.
+1. The clock is a **physical [[quick-context/voltage|voltage]] waveform** produced by an oscillator (a 555 timer, an [[learning/notes/quick-context/rc-oscillator|RC oscillator]], or a [[learning/notes/micro-context/crystal-oscillator|crystal]]). It has a frequency, a duty cycle, and a real wire you can poke with a scope.
 2. The clock signal is **broadcast** to every register in the system at the same time — that's how 32 D flip-flops in one register file all update on a single instant.
 3. **The clock does not choose *what* to store.** The data lines (the D inputs) do. The clock only chooses *when* the storage element samples those data lines.
-4. **Whether a given clock edge "counts" for a given register** is itself controlled by combinational logic — usually an AND gate that says "this register only updates when *its* enable line is HIGH right now."
+4. **Whether a given [[micro-context/clock-edges|clock edge]] "counts" for a given register** is itself controlled by combinational logic — usually an AND gate that says "this register only updates when *its* enable line is HIGH right now."
 
 Once you see all four facts on a breadboard with their own LEDs, "the clock controls the computer" stops being mystical and becomes: *the clock is a metronome every register listens to, and combinational logic picks which registers actually clap on each beat.*
 
@@ -47,7 +47,7 @@ The clock is a square-wave voltage signal toggling between LOW (~0 V) and HIGH (
             T = 1/f, e.g. 500 ms for 2 Hz, or 1 ns for 1 GHz
 ```
 
-For our circuit we use a **555 timer in astable mode** running at ~2 Hz so you can *see* each cycle on an LED. A real CPU runs the same waveform at $10^9$ Hz (1 GHz = 1 cycle per nanosecond), but the geometry is identical — only the time axis is compressed by ~$5×10^8$. The 555's output is a single wire that fans out to every register in the system. See [[learning/notes/quick-context/rc-oscillator]] for how the oscillator generates this waveform from an RC charging loop, and [[learning/notes/micro-context/clock-source]] for the spectrum of clock generators (RC → ceramic resonator → crystal → PLL).
+For our circuit we use a **555 timer in astable mode** running at ~2 Hz so you can *see* each cycle on an LED. A real CPU runs the same waveform at $10^9$ Hz (1 GHz = 1 cycle per nanosecond), but the geometry is identical — only the time axis is compressed by ~$5×10^8$. The 555's output is a single wire that fans out to every register in the system. See [[learning/notes/quick-context/rc-oscillator]] for how the oscillator generates this waveform from an RC charging loop, and [[learning/notes/micro-context/clock-source]] for the spectrum of clock generators (RC → [[micro-context/ceramic-resonator|ceramic resonator]] → crystal → PLL).
 
 A D flip-flop's clock input is **edge-sensitive** — it only does anything at the moment the clock voltage transitions from LOW to HIGH (the **rising edge**). For the rest of the cycle, the input D can wiggle freely; the flip-flop ignores it. This is the entire mechanism behind "synchronous" digital logic. See [[learning/notes/micro-context/clock-edges]] for why edge-triggering exists rather than level-triggering.
 
@@ -55,10 +55,10 @@ A D flip-flop's clock input is **edge-sensitive** — it only does anything at t
 
 | Term | What it is | Role in this circuit |
 |------|-----------|----------------------|
-| **555 timer (astable mode)** | An 8-pin chip that, with two resistors and a capacitor on its timing pins, produces a continuous square wave on its output pin. Frequency $f \approx 1.44 / ((R_1 + 2R_2) \cdot C)$. | Generates the system clock — a free-running ~2 Hz square wave broadcast to the register's CLK input (via a gate). |
+| **555 timer (astable mode)** | An 8-pin chip that, with two resistors and a [[quick-context/capacitor|capacitor]] on its timing pins, produces a continuous square wave on its output pin. Frequency $f \approx 1.44 / ((R_1 + 2R_2) \cdot C)$. | Generates the system clock — a free-running ~2 Hz square wave broadcast to the register's CLK input (via a gate). |
 | **74HC574 octal D flip-flop** | An 8-bit register: 8 D flip-flops sharing one CLK pin and one $\overline{\text{OE}}$ (output enable) pin. On each rising clock edge, all 8 D inputs are sampled and their values appear on the 8 Q outputs. | The 8-bit storage element. Holds the captured ASCII byte until the next gated rising edge replaces it. |
 | **74C922 keyboard encoder** | A 16-key (4×4 matrix) decoder chip that auto-scans the keypad, debounces the contacts internally, and outputs (a) a 4-bit binary code identifying which key is pressed, and (b) a **DA (Data Available)** pin that goes HIGH for as long as a key is held. | Translates "physical keypress" into "4-bit identifier + valid-data strobe." Without it you'd have to hand-build a scan + debounce circuit. |
-| **EEPROM lookup (28C16 or similar)** | A small non-volatile memory chip you pre-program with a 16-byte table mapping 4-bit address → 8-bit ASCII code. With A0–A3 driven by the encoder and A4–A10 tied LOW, it reads out the right ASCII byte on D0–D7 within ~150 ns. | Converts the keypad's internal 4-bit key index into actual ASCII (e.g. key index $2 \to$ ASCII `'2'` $= 0x32 = 0011\,0010$). See [[learning/notes/micro-context/eeprom]]. |
+| **[[micro-context/eeprom|EEPROM]] lookup (28C16 or similar)** | A small non-volatile memory chip you pre-program with a 16-byte table mapping 4-bit address → 8-bit ASCII code. With A0–A3 driven by the encoder and A4–A10 tied LOW, it reads out the right ASCII byte on D0–D7 within ~150 ns. | Converts the keypad's internal 4-bit key index into actual ASCII (e.g. key index $2 \to$ ASCII `'2'` $= 0x32 = 0011\,0010$). See [[learning/notes/micro-context/eeprom]]. |
 | **Clock gating (AND gate)** | A 74HC08 AND gate whose two inputs are (a) the raw 555 clock and (b) the encoder's DA strobe. Output `GATED_CLK = 555_CLK ∧ DA`. | The "should this register update *this* cycle?" decision. When no key is held, DA is LOW, so GATED_CLK never rises and the register holds its last value. When a key is held, GATED_CLK passes the 555 waveform through. |
 
 ## The Circuit Architecture
@@ -121,7 +121,7 @@ Three independent signal *families* meet at the 74HC574:
 | NE555 timer | 1 | DIP-8. Clock generator. |
 | 74HC08 quad AND | 1 | DIP-14. We use 1 of 4 gates for clock-gating; tie unused inputs LOW. |
 | 74HC574 octal D flip-flop | 1 | DIP-20. The 8-bit register itself. Tie $\overline{\text{OE}}$ (pin 1) LOW so outputs are always driven. |
-| LED + ~330 Ω resistor | 8 | One per output bit Q0–Q7. Wire them anode-to-Q, cathode-to-GND-via-resistor. |
+| LED + ~330 Ω [[quick-context/resistor|resistor]] | 8 | One per output bit Q0–Q7. Wire them [[micro-context/anode|anode]]-to-Q, [[micro-context/cathode|cathode]]-to-GND-via-resistor. |
 | LED + ~330 Ω resistor | 1 | "Clock heartbeat" indicator on the 555 output — invaluable for visualizing the metronome. |
 | LED + ~330 Ω resistor | 1 | "Key pressed" indicator on the DA line. |
 | 10 kΩ resistor | several | Pull-ups, encoder timing, 555 timing. |
@@ -218,7 +218,7 @@ In Nand2Tetris the clock seems gratuitous — "why not just have the keypress di
 
 1. **Synchronization across many registers.** A real CPU has thousands of registers — program counter, instruction register, ALU input/output latches, register file slots. They all need to update in *lockstep* so data flowing through combinational logic from register A reaches register B before B's next sample. The shared clock guarantees this. Without it, every register would update on its own schedule and you'd have race conditions everywhere.
 2. **Sequencing pipelined operations.** "Fetch instruction → decode → execute → writeback" is four clock cycles. Each cycle, the data physically moves one stage forward through the pipeline because each stage's output register samples on the same clock edge. The clock is the *peristalsis* that pushes data through the chip.
-3. **Bounded settling time.** Combinational logic (gates, multiplexers, ALU adders) has propagation delay. Inputs change → outputs glitch chaotically for some time → outputs eventually settle to the correct value. The clock period must be longer than the longest combinational path so that *by the next rising edge*, everything has settled. "Clock speed" is literally how short you can make the period before paths fail to settle in time. See [[learning/notes/micro-context/clock-speed]].
+3. **Bounded settling time.** Combinational logic (gates, multiplexers, ALU adders) has propagation delay. Inputs change → outputs glitch chaotically for some time → outputs eventually settle to the correct value. The clock period must be longer than the longest combinational path so that *by the next rising edge*, everything has settled. "[[micro-context/clock-speed|Clock speed]]" is literally how short you can make the period before paths fail to settle in time. See [[learning/notes/micro-context/clock-speed]].
 4. **Per-register write enable.** This is the part our circuit makes most concrete. Every register in a real CPU has its own enable line, gated against the global clock with an AND gate (or built-in clock-enable input). On every clock edge, *every* register sees the edge — but only those whose enable is HIGH actually update. The instruction decoder drives those enables. **The clock doesn't pick which register writes — combinational logic does. The clock just fires the gun simultaneously for all of them.**
 
 When you internalize point 4, "the clock controls the computer" stops meaning "the clock decides what happens" and starts meaning *"the clock provides the synchronized firing instants; the rest of the circuit decides who responds."*

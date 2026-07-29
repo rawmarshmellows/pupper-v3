@@ -245,7 +245,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
@@ -336,11 +336,11 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
-- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
+- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via [[micro-context/swd-serial-wire-debug|SWD]]. Focuses on the debug probe side of the process.
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[micro-context/sram|SRAM]], and peripherals.
 
 - **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 

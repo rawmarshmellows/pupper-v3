@@ -7,7 +7,7 @@ created: 2026-06-02
 
 > **See also:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/transistor]]
 
-**Definition:** The three main power-transistor families used as electronic switches and amplifiers. A [[learning/notes/quick-context/bjt|BJT]] is current-controlled, a [[learning/notes/micro-context/mosfet|MOSFET]] is voltage-controlled and fast, and an IGBT is a hybrid—a MOSFET-style insulated gate driving a BJT-style high-power output.
+**Definition:** The three main power-[[quick-context/transistor|transistor]] families used as electronic switches and amplifiers. A [[learning/notes/quick-context/bjt|BJT]] is current-controlled, a [[learning/notes/micro-context/mosfet|MOSFET]] is [[quick-context/voltage|voltage]]-controlled and fast, and an IGBT is a hybrid—a [[micro-context/mosfet|MOSFET]]-style insulated gate driving a [[quick-context/bjt|BJT]]-style high-power output.
 
 ## How It Works
 
