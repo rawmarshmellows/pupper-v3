@@ -10,10 +10,10 @@ updated: 2026-03-27
 
 ## How It Works
 
-- During the positive half of the AC cycle, the diode is forward-biased and passes current through to the load.
+- During the positive half of the AC cycle, the [[quick-context/diode|diode]] is forward-biased and passes current through to the load.
 - During the negative half, the diode blocks current (reverse-biased), preventing reverse flow.
 - The result is pulsating DC — all-positive but still bumpy with gaps where the negative half was removed.
-- A smoothing capacitor fills in the gaps by storing charge during peaks and releasing it during dips, producing steady DC.
+- A smoothing [[quick-context/capacitor|capacitor]] fills in the gaps by storing charge during peaks and releasing it during dips, producing steady DC.
 
 ```
 AC input               After diodes            + Capacitor
@@ -29,4 +29,4 @@ AC input               After diodes            + Capacitor
 
 **Key insight:** Every phone charger and power supply does this—diodes make the current all-positive, then a [[quick-context/capacitor|capacitor]] smooths out the bumps into steady DC.
 
-> **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **See also:** [[quick-context/ac-to-dc-rectification]] | [[micro-context/ac-dc-current]] | [[quick-context/diode]]

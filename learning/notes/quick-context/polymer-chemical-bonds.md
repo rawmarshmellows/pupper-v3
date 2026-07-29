@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
+> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printing-filament-refill-vs-spool]]
 
 > **TL;DR:** Polymer behavior (melt temperature, flexibility, layer adhesion) is governed by intermolecular forces between chains - van der Waals (weak), dipole-dipole (moderate), and hydrogen bonds (strong). Understanding these forces explains why PLA melts at 180C but ABS needs 240C, and why TPU flexes while PLA snaps.
 
@@ -20,14 +20,14 @@ Understanding [[quick-context/chemical-bonds-spectrum|chemical bonds]] explains 
 |------|------------|
 | **Covalent bond** | Strong electron-sharing bond holding atoms together within molecules—breaking these (>300°C) means degradation, not melting; printing operates below this threshold. |
 | **Hydrogen bond** | Moderate intermolecular attraction between H attached to O/N and a nearby O/N—gives PLA its moderate Tg, gives TPU hard segments their cohesion, gives Nylon its strength and hygroscopicity. |
-| **Van der Waals forces** | Weak, universal attractions between all molecules from temporary electron fluctuations—always present but only dominant when stronger forces are absent (like in PE/PP). |
+| **[[quick-context/van-der-waals-forces|Van der Waals forces]]** | Weak, universal attractions between all molecules from temporary electron fluctuations—always present but only dominant when stronger forces are absent (like in PE/PP). |
 | **[[quick-context/glass-transition-temperature|Glass transition temperature]] (Tg)** | The temperature where amorphous regions mobilize and the polymer softens—controlled entirely by intermolecular force strength; below Tg = glassy/rigid, above Tg = rubbery/flexible. |
 | **[[quick-context/polymer-crystallinity-vs-amorphous|Crystallinity]]** | Degree of ordered chain packing—higher crystallinity = stronger intermolecular forces = higher shrinkage/warping; PETG's "G" (glycol) intentionally disrupts this for easier printing. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Polymer behavior emerges from a two-level bonding hierarchy. At the first level, strong covalent bonds link atoms into long chains—the polymer backbone. These bonds are so strong (300-400 kJ/mol) that they never break during normal 3D printing; breaking them means burning the plastic. At the second level, weaker intermolecular forces hold neighboring chains together. When you heat filament, you're adding enough thermal energy to overcome these weaker forces, allowing chains to slide past each other and flow. The type and strength of intermolecular forces present determine the exact temperature needed.
+Polymer behavior emerges from a two-level bonding hierarchy. At the first level, strong [[quick-context/covalent-bonds|covalent bonds]] link atoms into long chains—the polymer backbone. These bonds are so strong (300-400 kJ/mol) that they never break during normal 3D printing; breaking them means burning the plastic. At the second level, weaker intermolecular forces hold neighboring chains together. When you heat filament, you're adding enough thermal energy to overcome these weaker forces, allowing chains to slide past each other and flow. The type and strength of intermolecular forces present determine the exact temperature needed.
 
 The printing process is essentially: heat to break intermolecular forces (chains become mobile), extrude the flowing polymer, then cool to re-establish intermolecular forces (chains lock in place). Layer adhesion depends on chains from the new layer entangling and forming intermolecular bonds with chains from the previous layer before cooling "freezes" them apart. Materials with stronger intermolecular forces (like ABS's aromatic stacking) create stronger layer bonds—but also require higher temperatures to achieve that chain mobility in the first place.
 
@@ -194,7 +194,7 @@ Concepts that deepen understanding of polymer chemical bonds:
 **Q1:** Why does PLA deform in a hot car (~60°C) while ABS parts survive?
 <details>
 <summary>Answer</summary>
-PLA has a glass transition temperature (Tg) of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
+PLA has a [[quick-context/glass-transition-temperature|glass transition temperature]] (Tg) of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
 </details>
 
 **Q2:** TPU is flexible and elastic, yet it has strong hydrogen bonds. How is this possible?
@@ -218,7 +218,7 @@ Nylon contains amide groups (-NH-C=O-) with both N-H donors and C=O acceptors fo
 **Q5:** ABS prints at ~240°C while PLA prints at ~200°C, but ABS doesn't necessarily make stronger parts. Explain why.
 <details>
 <summary>Answer</summary>
-Print temperature only determines how well polymer chains mobilize for layer fusion—it doesn't determine final part strength. What matters is the strength of intermolecular forces that re-establish as the layer cools. ABS's higher print temperature is needed to overcome its strong π-π stacking and dipole-dipole interactions. Once cooled, those same forces provide excellent layer adhesion and heat resistance, but not necessarily higher ultimate tensile strength than PLA. In fact, PLA often has higher tensile strength than ABS—ABS's advantage is impact resistance (from the butadiene rubber phase) and thermal performance, not raw strength.
+Print temperature only determines how well polymer chains mobilize for layer fusion—it doesn't determine final part strength. What matters is the strength of intermolecular forces that re-establish as the layer cools. ABS's higher print temperature is needed to overcome its strong π-π stacking and [[quick-context/dipole-dipole-interactions|dipole-dipole interactions]]. Once cooled, those same forces provide excellent layer adhesion and heat resistance, but not necessarily higher ultimate tensile strength than PLA. In fact, PLA often has higher tensile strength than ABS—ABS's advantage is impact resistance (from the butadiene rubber phase) and thermal performance, not raw strength.
 </details>
 
 </details>

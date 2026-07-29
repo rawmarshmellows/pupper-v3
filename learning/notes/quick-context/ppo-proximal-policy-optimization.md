@@ -17,7 +17,7 @@ Policy gradient methods learn by trial and error: try actions, measure how good 
 
 | Term | Definition |
 |------|------------|
-| **Policy $\pi_\theta(a \mid s)$** | The neural network being trained — maps an observation (state) $s$ to a probability distribution over actions $a$. In [[quick-context/pupper-lab5-neural-controller\|Pupper Lab 5]], this is a small MLP that outputs 12 joint position targets. |
+| **Policy $\pi_\theta(a \mid s)$** | The neural network being trained — maps an observation (state) $s$ to a probability distribution over actions $a$. In [[quick-context/pupper-lab5-neural-controller|Pupper Lab 5]], this is a small MLP that outputs 12 joint position targets. |
 | **Advantage $\hat{A}_t$** | A scalar estimate of "how much better was the action I took compared to what I usually do in this state?" Positive advantage means the action was above average; negative means below. |
 | **Clipped Surrogate Objective** | PPO's core innovation: the loss function that limits how much $\pi_\theta$ can change per update by clipping the probability ratio $r_t(\theta)$ to $[1 - \epsilon, 1 + \epsilon]$. |
 | **Probability Ratio $r_t(\theta)$** | $\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{old}}(a_t \mid s_t)}$ — how much more or less likely the new policy is to take the same action as the old policy. A ratio of 1.0 means no change; 1.3 means 30% more likely. |

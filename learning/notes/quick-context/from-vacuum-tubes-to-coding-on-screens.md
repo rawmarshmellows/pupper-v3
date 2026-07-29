@@ -127,7 +127,7 @@ ERA 1: PLUGBOARD PROGRAMMING (1940s)
 
 ### Era 2: Punch Cards and the Stored-Program Revolution (1950s)
 
-The breakthrough was the **stored-program concept** (von Neumann, 1945): store instructions in the same memory as data. Now programs were sequences of numbers in memory, not physical wires. EDSAC (1949) was the first stored-program computer to enter routine service (the Manchester Baby ran a stored program in 1948, but EDSAC was the first used for real work). By the 1950s, vacuum tubes were being replaced by [[quick-context/transistor|transistors]] (first transistor: 1947; first transistorized computer: Manchester University's 1953 prototype), making machines smaller, more reliable, and cheaper.
+The breakthrough was the **stored-program concept** (von Neumann, 1945): store instructions in the same memory as data. Now programs were sequences of numbers in memory, not physical wires. EDSAC (1949) was the first stored-program computer to enter routine service (the Manchester Baby ran a stored program in 1948, but EDSAC was the first used for real work). By the 1950s, vacuum tubes were being replaced by [[quick-context/transistor|transistors]] (first [[quick-context/transistor|transistor]]: 1947; first transistorized computer: Manchester University's 1953 prototype), making machines smaller, more reliable, and cheaper.
 
 But how do you get a program into memory? **Punch cards.** Each card had 80 columns of holes representing characters. A programmer wrote code on paper, a keypunch operator punched it onto cards, the card reader fed them into memory, and hours later you got printed output. This was **batch processing** — no interaction with the running machine.
 
@@ -768,7 +768,7 @@ CPU EXECUTING THE ADDITION (nanosecond timescale)
   The same addition on ENIAC: ~200 microseconds (600,000x slower)
 ```
 
-For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] microcontroller (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
+For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] [[micro-context/microcontroller|microcontroller]] (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
 
 **The one thing most outsiders get wrong about this is...** thinking that "interactive programming" means the computer understands your keystrokes directly. The screen, keyboard, text editor, filesystem, compiler, and OS are all elaborate layers of software that translate your intent into the only thing the CPU can do: fetch a binary instruction, decode it, and execute it through [[quick-context/code-to-gates-and-bootstrapping|logic gates]]. When you type on a screen and see output, you're interacting with at least six software layers — each one was [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, going all the way back to binary on punch cards.
 

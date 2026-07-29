@@ -17,7 +17,7 @@ Many beginners think of ground as a place where current "goes to die"—electron
 
 | Term | Definition |
 |------|------------|
-| **Ground (GND)** | The common reference voltage (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
+| **Ground (GND)** | The common reference [[quick-context/voltage|voltage]] (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
 | **Return Path** | The route current takes back to the source. At DC and low frequencies, current follows the path of least resistance. At high frequencies, it follows the path of least inductance (which is directly under the signal trace). |
 | **Ground Plane** | A solid copper layer on a [[quick-context/pcb-printed-circuit-board|PCB]] dedicated to ground. Provides a low-impedance return path, reduces noise, and acts as an electromagnetic shield. |
 | **Ground Loop** | When two points that should be at the same potential are connected by multiple paths, creating a loop that acts as an antenna. Picks up magnetic interference and creates noise currents. |
@@ -196,7 +196,7 @@ THE CLASSIC GROUND LOOP PROBLEM
 
 - **[[quick-context/electric-current]]** — Current flows in loops. The return current through ground is equal in magnitude to the signal current. This is Kirchhoff's current law in action.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — PCB ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
+- **[[quick-context/pcb-printed-circuit-board]]** — [[quick-context/pcb-printed-circuit-board|PCB]] ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
 
 - **[[quick-context/capacitor]]** — Decoupling capacitors connect between power and ground, providing a local return path for high-frequency switching currents. They're part of the grounding strategy.
 

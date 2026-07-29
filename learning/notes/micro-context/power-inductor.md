@@ -6,15 +6,15 @@ updated: 2026-03-27
 
 # Power Inductor
 
-> **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]
+> **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]] | [[quick-context/inductor]]
 
-**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your buck converter, the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
+**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your [[micro-context/buck-converter|buck converter]], the 10µH [[quick-context/inductor|inductor]] smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
 
 ## How It Works
 
 - When current flows through the coil, it generates a magnetic field that stores energy ($E = \frac{1}{2}LI^2$).
-- If current tries to change suddenly, the collapsing or growing magnetic field induces a voltage that opposes the change ($V = L \times dI/dt$).
-- In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling diode.
+- If current tries to change suddenly, the collapsing or growing magnetic field induces a [[quick-context/voltage|voltage]] that opposes the change ($V = L \times dI/dt$).
+- In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling [[quick-context/diode|diode]].
 
 ```
 INDUCTOR IN BUCK CONVERTER:
