@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]] | [[quick-context/can-bus|CAN Bus]]
 
 > **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
@@ -89,7 +89,7 @@ VOICE-TO-ACTION PIPELINE
 
 6. **Karel execution**: The matched method (e.g., `move_forward()`) publishes a Twist message to `/cmd_vel` with the appropriate linear and angular velocities, held for a duration (typically 1-2 seconds per movement step).
 
-7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via CAN bus.
+7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via [[quick-context/can-bus|CAN bus]].
 
 ### Audio muting for echo prevention
 
@@ -180,7 +180,7 @@ def dance(self):
 Each method call publishes a Twist to `/cmd_vel` and sleeps for the movement duration before the next step.
 
 **T=1400-8000ms (in parallel) — Neural controller executes**
-While `dance()` sequences through its moves, the Lab 5 neural policy continuously reads `/cmd_vel` at ~50 Hz. For each Twist command, it generates 12 joint position targets that make the robot physically spin, strafe, and bob. The CAN bus carries these targets to the servo motors at 1 kHz.
+While `dance()` sequences through its moves, the Lab 5 neural policy continuously reads `/cmd_vel` at ~50 Hz. For each Twist command, it generates 12 joint position targets that make the robot physically spin, strafe, and bob. The [[quick-context/can-bus|CAN bus]] carries these targets to the servo motors at 1 kHz.
 
 **T=1400-2000ms (in parallel) — Audio playback**
 The Realtime API also returns an audio version of "Time to bust a move!" as `response.audio.delta` events. The client decodes these and plays them through the speaker. During playback, the microphone input is muted to prevent echo.

@@ -510,7 +510,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[quick-context/electromagnetism|electromagnetism]].
 
 </details>
 
@@ -526,13 +526,13 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q2:** Why did Maxwell add the displacement current term (ε₀ ∂E/∂t) to Ampère's law?
 <details>
 <summary>Answer</summary>
-**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a capacitor would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
+**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a [[quick-context/capacitor|capacitor]] would show I ≠ 0, but the same loop using a surface passing through the [[quick-context/capacitor|capacitor]] gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
 </details>
 
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?
 <details>
 <summary>Answer</summary>
-**It matched the known speed of light exactly.** μ₀ and ε₀ were measured independently through electric and magnetic experiments—nothing to do with light. Yet when combined, they gave 3×10⁸ m/s, the speed of light. This couldn't be coincidence. Maxwell concluded that light IS an electromagnetic wave. This unified optics with electromagnetism and predicted the entire electromagnetic spectrum (radio, infrared, UV, X-rays) before most were discovered.
+**It matched the known speed of light exactly.** μ₀ and ε₀ were measured independently through electric and magnetic experiments—nothing to do with light. Yet when combined, they gave 3×10⁸ m/s, the speed of light. This couldn't be coincidence. Maxwell concluded that light IS an electromagnetic wave. This unified optics with [[quick-context/electromagnetism|electromagnetism]] and predicted the entire electromagnetic spectrum (radio, infrared, UV, X-rays) before most were discovered.
 </details>
 
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?

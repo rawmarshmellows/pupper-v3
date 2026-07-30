@@ -5,20 +5,20 @@ created: 2026-04-06
 
 # Butyric Acid
 
-> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]
+> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]] | [[micro-context/oxidation|oxidation]] | [[quick-context/substrate-ic-packaging|Substrate]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 
 ## The Core Problem
 
-Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate oxidation, not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
+Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate [[micro-context/oxidation|oxidation]], not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Short-chain fatty acid (SCFA)** | Fatty acids with 2--6 carbon atoms produced by anaerobic bacterial fermentation of fiber in the colon; the three main SCFAs are acetate (~60%), propionate (~20%), and butyrate (~20%) |
-| **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its primary energy source via $\beta$-oxidation in mitochondria |
+| **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its primary energy source via $\beta$-[[micro-context/oxidation|oxidation]] in mitochondria |
 | **HDAC inhibitor** | A molecule that blocks histone deacetylase enzymes, loosening chromatin and activating gene expression --- butyrate's key epigenetic mechanism |
 | **Gut barrier** | The single-cell-thick epithelial layer separating the colonic lumen (trillions of bacteria) from the bloodstream; butyrate strengthens its tight junctions |
 | **Fermentation** | Anaerobic bacterial metabolism of dietary fiber and resistant starch in the colon, producing SCFAs (primarily acetate, propionate, and butyrate), $CO_2$, and $H_2$ |
@@ -137,14 +137,14 @@ The emerging consensus: fiber first, supplements as a targeted intervention for 
 ### Scenario: High-fiber diet vs. low-fiber diet
 
 **Person A** eats 35g of fiber/day (lentils, oats, vegetables, resistant starch from cooled rice):
-- Colonic bacteria receive abundant substrate
+- Colonic bacteria receive abundant [[quick-context/substrate-ic-packaging|substrate]]
 - *Faecalibacterium prausnitzii* and *Roseburia* populations thrive
 - Estimated total SCFA production: ~400--600 mmol/day
 - Butyrate fraction (~20%): ~80--120 mmol/day
 - Colonocytes well-fueled, tight junctions intact, low inflammation
 
 **Person B** eats 10g of fiber/day (processed foods, white bread, few vegetables):
-- Limited substrate reaches the colon
+- Limited [[quick-context/substrate-ic-packaging|substrate]] reaches the colon
 - Butyrate-producing bacteria decline; proteolytic bacteria increase
 - Estimated total SCFA production: ~100--200 mmol/day
 - Butyrate fraction drops further (bacteria shift to other pathways)

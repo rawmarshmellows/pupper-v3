@@ -3,7 +3,7 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[quick-context/electrolysis]] | [[micro-context/anode|Anode]] | [[micro-context/cathode|Cathode]] | [[quick-context/electrolyte|Electrolyte]] | [[quick-context/galvanic-cells-batteries|Galvanic Cells]]
 
 > **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
 
@@ -20,10 +20,10 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 | Term | Definition |
 |------|------------|
 | **Electrode** | Any conductive solid surface where electrons enter or leave a liquid/solution to make chemistry happen—the "meeting point" of electricity and chemistry |
-| **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
-| **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
-| **Reduction** | A chemical reaction where something GAINS electrons. Happens at the cathode. (Think: the charge is "reduced"—becomes less positive or more negative) |
-| **Oxidation** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
+| **[[micro-context/cathode|Cathode]]** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
+| **[[micro-context/anode|Anode]]** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
+| **Reduction** | A chemical reaction where something GAINS electrons. Happens at the [[micro-context/cathode|cathode]]. (Think: the charge is "reduced"—becomes less positive or more negative) |
+| **[[micro-context/oxidation|Oxidation]]** | A chemical reaction where something LOSES electrons. Happens at the [[micro-context/anode|anode]]. Originally named because oxygen was often involved, but it's really about electron loss |
 
 ### The OILRIG Memory Trick
 
@@ -45,7 +45,7 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 
 The electrode system operates through a coordinated dance between the external circuit (wires and power supply) and the internal circuit (ions moving through the liquid). The power supply acts like a pump, pushing electrons out one terminal and pulling them in the other. Electrons cannot travel through the liquid itself—liquids don't conduct electrons the way metals do. Instead, electrons enter the liquid phase by reacting with chemicals at one electrode (the cathode), and leave by taking electrons from chemicals at the other electrode (the anode). The circuit is completed inside the liquid by ions—charged atoms or molecules—that drift through the solution carrying charge between electrodes.
 
-At the cathode, electrons arriving from the power supply need somewhere to go. They transfer to nearby ions or molecules, causing **reduction** (electron gain). Positive ions like H+ or Cu2+ are attracted here, grab the electrons, and transform—hydrogen ions become hydrogen gas, copper ions become solid copper metal. Meanwhile, at the anode, the opposite occurs: chemicals give up electrons to the electrode surface, undergoing **oxidation** (electron loss). Negative ions like OH- or Cl- migrate here and surrender electrons, becoming oxygen gas, chlorine gas, or other products.
+At the cathode, electrons arriving from the power supply need somewhere to go. They transfer to nearby ions or molecules, causing **reduction** (electron gain). Positive ions like H+ or Cu2+ are attracted here, grab the electrons, and transform—hydrogen ions become hydrogen gas, copper ions become solid copper metal. Meanwhile, at the anode, the opposite occurs: chemicals give up electrons to the electrode surface, undergoing **[[micro-context/oxidation|oxidation]]** (electron loss). Negative ions like OH- or Cl- migrate here and surrender electrons, becoming oxygen gas, chlorine gas, or other products.
 
 ```
 THE ELECTRODE SYSTEM: TWO CIRCUITS WORKING TOGETHER
@@ -104,7 +104,7 @@ The other tension: **surface area vs. practicality**. More surface area = more r
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Water Electrolysis with Platinum Electrodes
+Water [[quick-context/electrolysis|Electrolysis]] with Platinum Electrodes
 
 Let's walk through exactly what happens when you split water into hydrogen and oxygen gases:
 
@@ -227,7 +227,7 @@ STEP 4: THE CIRCUIT COMPLETES
 | **Electron flow** | Electrons flow IN | Electrons flow OUT |
 | **Ions attracted** | Cations (+ions) | Anions (-ions) |
 | **Reaction type** | REDUCTION (gain e⁻) | OXIDATION (lose e⁻) |
-| **In water electrolysis** | H₂ gas forms | O₂ gas forms |
+| **In water [[quick-context/electrolysis|electrolysis]]** | H₂ gas forms | O₂ gas forms |
 | **Easy memory** | **C**athode → **C**ations | **A**node → **A**nions |
 
 **The one thing most outsiders get wrong about this is...** confusing which electrode is which based on the words "positive" and "negative." People assume "negative = bad place for reactions" or get confused because in *batteries* (which produce electricity), the labels flip—the terminal you call "negative" on a battery is actually operating as an anode internally! The foolproof way: **follow the electrons**. If electrons flow INTO an electrode from the external circuit, it's a cathode (reduction happens). If electrons flow OUT to the external circuit, it's an anode (oxidation happens). This is true regardless of what you call it or how confusing the situation seems.
@@ -241,11 +241,11 @@ STEP 4: THE CIRCUIT COMPLETES
 
 - **Redox Reactions** — The broader category of chemistry involving electron transfer. Electrolysis is just one way to make redox reactions happen; electrodes are where you physically see oxidation and reduction occurring at separate locations.
 
-- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the electrolyte provides the mobile ions that complete the circuit internally.
+- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the [[quick-context/electrolyte|electrolyte]] provides the mobile ions that complete the circuit internally.
 
 - **Electroplating** — A practical application where the anode IS the metal you want to deposit (it dissolves) and the cathode IS the object you're coating (metal deposits onto it). Same electrode principles, different purpose.
 
-- **Batteries and Galvanic Cells** — The reverse situation: spontaneous chemical reactions that PRODUCE electricity. Same electrode concepts, but energy flows out instead of in. Confusingly, the naming conventions flip because current direction reverses.
+- **Batteries and [[quick-context/galvanic-cells-batteries|Galvanic Cells]]** — The reverse situation: spontaneous chemical reactions that PRODUCE electricity. Same electrode concepts, but energy flows out instead of in. Confusingly, the naming conventions flip because current direction reverses.
 
 </details>
 

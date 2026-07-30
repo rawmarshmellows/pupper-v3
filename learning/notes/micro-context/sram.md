@@ -3,6 +3,7 @@ term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
 
+> **Related:** [[micro-context/mosfet|MOSFET]] | [[quick-context/capacitor|Capacitor]] | [[quick-context/voltage|Voltage]] | [[micro-context/eeprom|EEPROM]] | [[micro-context/st-link-v2-programmer|ST-Link V2 Programmer]]
 # SRAM (Static Random-Access Memory)
 
 **Definition:** A volatile memory technology that stores each bit using six cross-coupled [[learning/notes/micro-context/mosfet|MOSFETs]] arranged as two inverters in a feedback loop. "Static" means the data stays stable as long as power is on — no refresh needed, unlike [[learning/notes/quick-context/physics-of-writing-data-to-memory|DRAM's leaking capacitors]].
@@ -12,7 +13,7 @@ created: 2026-04-07
 - Two CMOS inverters are wired output-to-input in a loop, creating two stable states: if Q = HIGH then Q' = LOW, which drives Q back to HIGH (self-reinforcing).
 - Two access transistors connect the cell to bitlines; the wordline turns them on during reads/writes.
 - To write, the bitline is driven to the desired voltage and the wordline is pulsed — the external driver overwhelms the cell's internal state, flipping it in <1 ns.
-- No charge transfer through oxide barriers (unlike flash) and no capacitor leakage (unlike DRAM), so writes are unlimited and data is stable without refresh.
+- No charge transfer through oxide barriers (unlike flash) and no [[quick-context/capacitor|capacitor]] leakage (unlike DRAM), so writes are unlimited and data is stable without refresh.
 
 ```
         Vdd ────┬────────────┬──── Vdd

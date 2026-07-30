@@ -25,7 +25,7 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 | **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
 | **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
-| **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
+| **MOS [[quick-context/capacitor|Capacitor]]** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -34,7 +34,7 @@ A transistor is fundamentally a **voltage-controlled switch**. Apply a small vol
 
 The magic happens through semiconductor physics. Pure silicon is a poor conductor. But by adding tiny amounts of impurities (doping), we create two types of silicon: n-type (with extra free electrons that can carry current) and p-type (with "holes" where electrons are missing, which also carry current by moving in the opposite direction). A transistor arranges these differently-doped regions so that the gate can create or destroy a conductive path.
 
-**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate capacitor. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
+**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate [[quick-context/capacitor|capacitor]]. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
 
 ```
 THE TRANSISTOR: A Voltage-Controlled Switch
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -497,7 +497,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar [[micro-context/mosfet|MOSFET]], FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
 
 </details>
 
@@ -522,10 +522,10 @@ The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal g
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
+**Q4:** If making the oxide layer thinner increases [[quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
-As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
+As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher [[quick-context/capacitance|capacitance]] = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
 </details>
 
 **Q5:** A colleague claims that transistors work by "current flowing through the gate to control the channel." Explain why this is fundamentally wrong and what actually happens.

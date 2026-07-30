@@ -3,7 +3,7 @@ topic: Doped Silicon
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]] | [[quick-context/transistor-design-history|Transistor Design History]]
 
 > **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as voltage-controlled switches.
 
@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
@@ -288,7 +288,7 @@ Different parts of a transistor need different doping:
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-How a Transistor Is Actually Made
+How a [[quick-context/transistor|Transistor]] Is Actually Made
 
 Here's a simplified view of how doping is done in real chip manufacturing:
 
@@ -378,7 +378,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/electric-current|Electric Current]]** — Understanding how electrons flow helps you grasp why doping creates free charge carriers that enable current flow.
 
-- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through covalent bonds; doping works because it disrupts this sharing pattern.
+- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through [[quick-context/covalent-bonds|covalent bonds]]; doping works because it disrupts this sharing pattern.
 
 - **Band Gap Theory** — The deeper physics of why semiconductors behave differently from conductors and insulators; explains energy levels that electrons must overcome to move.
 
@@ -400,7 +400,7 @@ N-type silicon has extra free electrons (from dopants like phosphorus with 5 bon
 **Q2:** Why is pure, undoped silicon a poor conductor?
 <details>
 <summary>Answer</summary>
-In pure silicon, every electron is "locked" in covalent bonds with neighboring atoms. There are no free electrons available to carry electrical current. Doping adds either extra electrons (N-type) or creates holes (P-type) that can move and carry current. See: Step 1 in "How It Works"
+In pure silicon, every electron is "locked" in [[quick-context/covalent-bonds|covalent bonds]] with neighboring atoms. There are no free electrons available to carry electrical current. Doping adds either extra electrons (N-type) or creates holes (P-type) that can move and carry current. See: Step 1 in "How It Works"
 </details>
 
 **Q3:** Why do different regions of a transistor require different doping concentrations?

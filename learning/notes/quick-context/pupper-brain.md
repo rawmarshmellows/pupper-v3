@@ -15,7 +15,7 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 [[micro-context/microcontroller|microcontroller]] @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
 | **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
 | **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
 | **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
@@ -26,15 +26,15 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
+1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over [[micro-context/i2c|I2C]] directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
 
-2. **State estimation**: The Pi combines IMU data with motor feedback (received over SPI) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
+2. **State estimation**: The Pi combines IMU data with motor feedback (received over [[micro-context/spi|SPI]]) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
 
 3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
+4. **Command transmission**: The Pi sends joint targets to the MCU over [[micro-context/spi|SPI]] (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
 
-5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
+5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential [[quick-context/can-bus|CAN bus]] signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
 6. **Audio feedback**: If enabled, U1 sends audio samples over I2S to the MAX98357A amplifier for sound output (beeps, status indicators).
 
@@ -180,7 +180,7 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
-**Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
+**Q3:** The [[micro-context/buck-converter|buck converter]] uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
 
 <details>
 <summary>Answer</summary>

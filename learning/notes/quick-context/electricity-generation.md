@@ -21,13 +21,13 @@ There are fundamentally three ways to force electrons to move:
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
-Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
+Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always [[micro-context/electromagnetic-induction|electromagnetic induction]].
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **[[micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
@@ -291,7 +291,7 @@ THE LENZ'S LAW INSIGHT:
     • Energy is stored in the magnetic field, not created or destroyed
 ```
 
-**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a passive component. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An inductor creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
+**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a passive component. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An [[quick-context/inductor|inductor]] creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
 
 </details>
 
@@ -515,7 +515,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q4:** Why can't we simply store solar electricity in giant capacitors instead of batteries?
 <details>
 <summary>Answer</summary>
-**Capacitors have far lower energy density than batteries.** Energy stored in a capacitor is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
+**Capacitors have far lower energy density than batteries.** Energy stored in a [[quick-context/capacitor|capacitor]] is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
 </details>
 
 **Q5:** Hydroelectric dams achieve 85-90% efficiency while coal plants achieve only 33-37%. What's the fundamental reason for this difference?
@@ -524,7 +524,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-scale generation technology.
 </details>
 
-**Q6:** A generator and an inductor both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
+**Q6:** A generator and an [[quick-context/inductor|inductor]] both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
 <details>
 <summary>Answer</summary>
 **The source of the changing magnetic flux is different.** In a generator, mechanical rotation moves the coil through an external magnetic field—the flux changes because the coil's orientation changes. In an inductor, the coil creates its own magnetic field from the current flowing through it—the flux changes because the current changes (Φ = L × I, so dΦ/dt = L × dI/dt). Same equation (EMF = -N × dΦ/dt), but generator converts mechanical motion to electricity, while inductor opposes changes in current by generating back-EMF. See: Generators and Inductors section.

@@ -718,9 +718,9 @@ COMBINED EFFECT:
 
 - **[[quick-context/electromagnetism]]** — Lenz's Law is part of Faraday's Law (the minus sign), which is one of [[quick-context/maxwell-equations|Maxwell's four equations]]. Understanding the full electromagnetic framework shows how electric and magnetic fields create each other.
 
-- **[[quick-context/inductor]]** — Inductors are the primary application of Lenz's Law in circuits. The back-EMF that opposes current changes (V = -L × dI/dt) is a direct consequence of Lenz's Law applied to self-induction.
+- **[[quick-context/inductor]]** — Inductors are the primary application of Lenz's Law in circuits. The back-EMF that opposes current changes (V = -L × dI/dt) is a direct consequence of Lenz's Law applied to [[quick-context/self-induction|self-induction]].
 
-- **[[quick-context/self-induction]]** — Complete walkthrough of the self-induction cycle: current creates flux, changing flux creates back-EMF, and what happens during charging, steady state, and field collapse. Includes voltages across both inductor and load at each phase.
+- **[[quick-context/self-induction]]** — Complete walkthrough of the [[quick-context/self-induction|self-induction]] cycle: current creates flux, changing flux creates back-EMF, and what happens during charging, steady state, and field collapse. Includes voltages across both [[quick-context/inductor|inductor]] and load at each phase.
 
 - **[[quick-context/electricity-generation]]** — Generators convert mechanical energy to electrical energy through Lenz's Law: the induced current creates magnetic braking that requires work to overcome, and that work becomes electrical energy.
 
@@ -728,7 +728,7 @@ COMBINED EFFECT:
 
 - **[[quick-context/power-watts-joules]]** — The energy perspective on Lenz's Law: the work done against magnetic opposition equals the electrical energy generated. Power = work/time connects mechanical and electrical domains.
 
-- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and electromagnetic induction, of which Lenz's Law specifies the direction.
+- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and [[micro-context/electromagnetic-induction|electromagnetic induction]], of which Lenz's Law specifies the direction.
 
 - **[[small-context/inductor-current-magnetic-field-emf]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
 
@@ -751,7 +751,7 @@ COMBINED EFFECT:
 **The generator would spin freely and produce no useful energy.** Without opposition, there would be no magnetic braking. The coil would spin with no resistance, but also no energy transfer. Current might flow, but it wouldn't come from your mechanical work — it would be "free energy" from nothing, violating conservation of energy. Lenz's Law ensures that the mechanical work you do against magnetic braking equals the electrical energy produced. See: Why Opposition is Inevitable.
 </details>
 
-**Q3:** An inductor carries steady DC current. Is Lenz's Law active?
+**Q3:** An [[quick-context/inductor|inductor]] carries steady DC current. Is Lenz's Law active?
 <details>
 <summary>Answer</summary>
 **No, Lenz's Law requires change.** With steady DC, dI/dt = 0, so there's no changing flux, so no induced EMF. The inductor acts like a simple wire (just its DC resistance). Lenz's Law only activates when current changes — during turn-on, turn-off, or AC operation. At steady state, all the "opposition" has already happened, and the inductor is doing nothing but maintaining its magnetic field.

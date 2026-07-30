@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # Decoupling Capacitor
 
-> **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
+> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[quick-context/capacitor|capacitor]] | [[quick-context/voltage|Voltage]] | [[micro-context/power-supply-rejection-ratio|Power-Supply Rejection Ratio]]
 
 **Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.
 
@@ -14,8 +14,8 @@ updated: 2026-03-27
 
 - When an IC switches states, it demands a sudden spike of current from the power rail.
 - The distant power supply can't respond instantly because PCB trace inductance limits current slew rate.
-- A small capacitor placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
-- The capacitor then slowly recharges from the power supply, ready for the next switching event.
+- A small [[quick-context/capacitor|capacitor]] placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
+- The [[quick-context/capacitor|capacitor]] then slowly recharges from the power supply, ready for the next switching event.
 
 ```
 WHY DECOUPLING IS NEEDED:

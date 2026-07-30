@@ -229,7 +229,7 @@ EMI FILTER
 **Q5:** To make an RC high-pass filter from an RC low-pass filter, what do you change?
 <details>
 <summary>Answer</summary>
-**Swap the resistor and capacitor positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
+**Swap the [[quick-context/resistor|resistor]] and [[quick-context/capacitor|capacitor]] positions.** In a low-pass, the [[quick-context/resistor|resistor]] is in series and the [[quick-context/capacitor|capacitor]] shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
 </details>
 
 </details>

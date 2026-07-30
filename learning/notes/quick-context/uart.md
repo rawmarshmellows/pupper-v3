@@ -5,7 +5,7 @@ created: 2026-04-08
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
-> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
+> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]] | [[micro-context/microcontroller|Microcontroller]] | [[quick-context/capacitance|Capacitance]]
 
 > **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
 
@@ -259,7 +259,7 @@ For the full teletype-to-computer I/O path (keyboard encoding → current loop �
 
 UART sits at the "dead simple" end of the [[quick-context/embedded-communication-protocols|protocol spectrum]]:
 
-| | UART | SPI | I2C | CAN |
+| | UART | [[micro-context/spi|SPI]] | [[micro-context/i2c|I2C]] | CAN |
 |---|---|---|---|---|
 | **Wires** | 2 (TX, RX) | 4+ (SCLK, MOSI, MISO, CS) | 2 (SDA, SCL) | 2 (CANH, CANL) |
 | **Clock** | None (async) | Shared clock wire | Shared clock wire | None (async) |
@@ -272,7 +272,7 @@ UART sits at the "dead simple" end of the [[quick-context/embedded-communication
 
 **UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
 
-The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
+The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols ([[micro-context/spi|SPI]], [[micro-context/i2c|I2C]]) avoid this entirely by sending a clock wire — but that's one more wire to route.
 
 </details>
 
@@ -376,7 +376,7 @@ About **±3-4%**. At 16× oversampling, the receiver samples at the center of ea
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?
