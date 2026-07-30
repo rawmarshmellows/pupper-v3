@@ -5,7 +5,7 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]]
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
@@ -298,13 +298,13 @@ COMBINED LOADING (real-world):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The most important tensor in [[quick-context/electromagnetism|electromagnetism]]: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
-- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
+- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the [[quick-context/faraday-tensor|Faraday tensor]], making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 
 - **[[quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
 
-- **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
+- **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the [[quick-context/faraday-tensor|Faraday tensor]]).
 
 - **[[quick-context/electric-magnetic-field-unification]]** — The physical motivation for why E and B need tensor packaging: they transform into each other under velocity changes, which is precisely what the Faraday tensor's transformation law describes.
 

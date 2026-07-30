@@ -18,7 +18,7 @@ created: 2026-04-05
 | **BCM2712 SoC** | Broadcom system-on-chip — quad-core ARM Cortex-A76 @ 2.4GHz, the main processor that runs Linux and applications |
 | **RP1** | Raspberry Pi's custom I/O controller chip — a "southbridge" that manages USB, Ethernet, GPIO, camera, and display interfaces so the SoC doesn't have to |
 | **LPDDR4X** | Low-Power Double Data Rate 4X RAM — the board's working memory (1/2/4/8GB variants, marked on the PCB silkscreen) |
-| **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via I2C, SPI, UART, and raw digital pins |
+| **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], UART, and raw digital pins |
 | **PCIe** | Peripheral Component Interconnect Express — a high-speed serial bus (1-lane Gen 2 on Pi 5) used to connect NVMe SSDs or other expansion cards |
 
 ## Every Component on the Board
@@ -42,7 +42,7 @@ Starting from the top-left and working around the board:
 | **USB 3.0** | 2x USB 3.0 Type-A | SuperSpeed 5 Gbps ports (the blue-tabbed pair) — via RP1 |
 | **USB 2.0** | 2x USB 2.0 Type-A | 480 Mbps ports (the white-tabbed pair) — via RP1 |
 | **PCIe (J20)** | PCIe FPC connector | 16-pin FPC for a PCIe x1 Gen 2 (5 GT/s) link — used with an NVMe HAT or [[quick-context/raspberry-pi-ai-hat|AI HAT+]] for neural network acceleration |
-| **HAT+ GPIO** | 40-pin header | Standard Raspberry Pi GPIO header with I2C, SPI, UART, PWM, and 26 general-purpose pins |
+| **HAT+ GPIO** | 40-pin header | Standard Raspberry Pi GPIO header with [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], UART, PWM, and 26 general-purpose pins |
 | **FAN** | 4-pin fan connector | JST connector for the official active cooler — PWM speed control and tach feedback |
 
 ### Major ICs (chips on the board)

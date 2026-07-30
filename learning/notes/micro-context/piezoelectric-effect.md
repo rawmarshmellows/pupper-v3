@@ -3,6 +3,7 @@ term: Piezoelectric Effect
 created: 2026-03-27
 ---
 
+> **Related:** [[micro-context/ceramic-resonator|Ceramic Resonator]] | [[quick-context/voltage|Voltage]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 # Piezoelectric Effect
 
 **Definition:** The ability of certain crystals (quartz, ceramics like PZT, some polymers) to generate an electric voltage when mechanically stressed, and conversely, to deform when an electric field is applied. The first direction is the *direct* effect (sensing); the reverse is the *converse* effect (actuation).

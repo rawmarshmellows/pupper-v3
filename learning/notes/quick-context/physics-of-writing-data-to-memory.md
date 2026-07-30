@@ -3,7 +3,7 @@ topic: Physics of Writing Data to Memory — How Bits Become Charges, Voltages, 
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]] | [[micro-context/microcontroller|Microcontroller]] | [[micro-context/mosfet|MOSFET]]
 
 > **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
@@ -175,7 +175,7 @@ The speed difference is physical: SRAM just flips transistor states (fast), DRAM
 
 No single memory technology is best at everything. The physics forces a three-way tradeoff:
 
-| Property | SRAM | DRAM | Flash |
+| Property | [[micro-context/sram|SRAM]] | DRAM | Flash |
 |----------|------|------|-------|
 | **Speed** | Fastest (<1 ns) | Fast (~15 ns) | Slowest (~200 $\mu$s write) |
 | **Density** | Worst (6T/bit) | Good (1T+1C/bit) | Best (1T/bit, multi-level) |
@@ -360,11 +360,11 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The linking and flashing pipeline: how compiled code goes from an ELF file on your PC to bytes in an MCU's flash memory. Covers the software toolchain (linker, flash programmer) that drives the physical write process described here.
 
-- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
+- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. [[micro-context/sram|SRAM]] uses 6 MOSFETs per bit, DRAM uses 1 [[micro-context/mosfet|MOSFET]] + 1 [[quick-context/capacitor|capacitor]], and flash uses a modified [[micro-context/mosfet|MOSFET]] with a floating gate.
 
-- **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM capacitor or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
+- **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM [[quick-context/capacitor|capacitor]] or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
 
-- **[[learning/notes/quick-context/doped-silicon]]** — The [[learning/notes/micro-context/reverse-and-forward-bias|PN junctions]] that make charge storage possible. The DRAM access transistor and the flash floating-gate transistor both rely on doped regions to control current flow.
+- **[[learning/notes/quick-context/doped-silicon]]** — The [[learning/notes/micro-context/reverse-and-forward-bias|PN junctions]] that make charge storage possible. The DRAM access [[quick-context/transistor|transistor]] and the flash floating-gate [[quick-context/transistor|transistor]] both rely on doped regions to control current flow.
 
 - **[[learning/notes/quick-context/silicon-die]]** — Where the memory cells physically live. Flash memory on an SSD die, SRAM in a CPU cache die, DRAM on a separate die — all manufactured via [[learning/notes/quick-context/semiconductor-fabrication|photolithography]].
 

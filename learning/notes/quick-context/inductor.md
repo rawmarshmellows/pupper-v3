@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[micro-context/buck-converter|buck converter]] uses a switch, [[quick-context/diode|diode]], inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a [[quick-context/resistor|resistor]] voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -642,26 +642,26 @@ BUCK CONVERTER OPERATION
     The output capacitor smooths this ripple into steady DC.
 ```
 
-**Why not just use a resistor to drop voltage?** A resistor dropping 12V to 3.3V at 1A would waste P = 8.7V × 1A = 8.7W as heat. The buck converter wastes only ~0.5W for the same job. At scale (millions of devices, 24/7 operation), this efficiency difference is enormous.
+**Why not just use a [[quick-context/resistor|resistor]] to drop voltage?** A resistor dropping 12V to 3.3V at 1A would waste P = 8.7V × 1A = 8.7W as heat. The [[micro-context/buck-converter|buck converter]] wastes only ~0.5W for the same job. At scale (millions of devices, 24/7 operation), this efficiency difference is enormous.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic capacitance interacts with inductance in real circuits.
+- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic [[quick-context/capacitance|capacitance]] interacts with inductance in real circuits.
 
 - **[[quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as charge flow is essential.
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
-- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
+- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid [[quick-context/electricity-generation|electricity generation]].
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field, and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
+- **[[quick-context/coil-magnetic-field]]** — [[quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]], and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
 
 - **[[quick-context/lenzs-law]]** — The physics behind back-EMF: why the induced voltage always opposes current changes. This is conservation of energy enforced electromagnetically.
 
@@ -680,7 +680,7 @@ BUCK CONVERTER OPERATION
 **V = L × dI/dt. If dt approaches zero (instant cutoff), the voltage approaches infinity.** The inductor's magnetic field is collapsing and it will do whatever it takes to keep current flowing—even generating hundreds of volts across a small inductor. This is why flyback diodes are placed across inductive loads like motors and relays: they give the current a safe path to flow during turn-off.
 </details>
 
-**Q2:** An inductor and a capacitor are "duals." What does this mean practically?
+**Q2:** An inductor and a [[quick-context/capacitor|capacitor]] are "duals." What does this mean practically?
 <details>
 <summary>Answer</summary>
 **They have opposite behaviors in every way.** Capacitors block DC and pass AC; inductors pass DC and block AC. Capacitors oppose voltage changes; inductors oppose current changes. Their series/parallel formulas are swapped. Their time constant formulas are inverted (τ = RC vs τ = L/R). Together they create resonance at f = 1/(2π√LC).
@@ -701,7 +701,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

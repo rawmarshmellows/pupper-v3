@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]] | [[micro-context/buck-converter|Buck Converter]] | [[micro-context/smd-resistor|SMD Resistor]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 
@@ -172,11 +172,11 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 
-- **[[quick-context/resistor]]** — Every resistor in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
+- **[[quick-context/resistor]]** — Every [[quick-context/resistor|resistor]] in a circuit converts power to heat (P = I²R). Power ratings determine how much current a [[quick-context/resistor|resistor]] can safely carry.
 
-- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
+- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The [[quick-context/inductor|inductor]] stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a [[quick-context/capacitor|capacitor]] is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 
@@ -194,7 +194,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q2:** A linear regulator converts 12V to 3.3V at 200 mA. How much power is wasted as heat?
 <details>
 <summary>Answer</summary>
-**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a buck converter (90%+ efficient) is preferred for large voltage drops.
+**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a [[micro-context/buck-converter|buck converter]] (90%+ efficient) is preferred for large voltage drops.
 </details>
 
 **Q3:** Your phone battery is 15 Wh. At 4W average power consumption, how long does it last?
@@ -212,7 +212,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q5:** Why did fast charging standards move to higher voltages (9V, 12V, 20V) instead of higher current?
 <details>
 <summary>Answer</summary>
-**To reduce I²R losses in the cable.** For the same power, doubling voltage halves current, which reduces cable heating by 4× (since P_loss = I²R). Delivering 60W at 5V requires 12A (massive cable losses), but 60W at 20V requires only 3A (manageable losses with standard cables). The phone internally converts the high voltage down to battery voltage using an efficient buck converter.
+**To reduce I²R losses in the cable.** For the same power, doubling voltage halves current, which reduces cable heating by 4× (since P_loss = I²R). Delivering 60W at 5V requires 12A (massive cable losses), but 60W at 20V requires only 3A (manageable losses with standard cables). The phone internally converts the high voltage down to battery voltage using an efficient [[micro-context/buck-converter|buck converter]].
 </details>
 
 </details>

@@ -14,7 +14,7 @@ updated: 2026-01-22
 
 Many important chemical changes won't happen on their own because they require climbing to a higher energy state. Electrolysis uses electricity to push these non-spontaneous reactions forward, supplying energy directly to move electrons against their natural flow—pushing reactions "uphill" to make otherwise impossible chemistry occur.
 
-The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, electrolyte, electron flow), opposite energy direction.
+The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components ([[quick-context/electrodes|electrodes]], [[quick-context/electrolyte|electrolyte]], electron flow), opposite energy direction.
 
 This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chemical bond energies]]: breaking bonds costs energy, forming bonds releases it. Water's O-H bonds are stable (~460 kJ/mol each)—nature doesn't want to break them. Electrolysis supplies that bond-breaking energy electrically, storing it in the separated H₂ and O₂ gases. Recombining them (in a fuel cell or combustion) releases that stored energy.
 
@@ -22,8 +22,8 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 
 | Term | Definition |
 |------|------------|
-| **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
-| **Cathode/Anode** | Cathode = reduction (electrons flow in, cations migrate here); Anode = oxidation (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
+| **[[quick-context/electrolyte|Electrolyte]]** | The ionic conductor that carries current between [[quick-context/electrodes|electrodes]]; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
+| **[[micro-context/cathode|Cathode]]/[[micro-context/anode|Anode]]** | [[micro-context/cathode|Cathode]] = reduction (electrons flow in, cations migrate here); [[micro-context/anode|Anode]] = [[micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
 | **Overpotential** | Extra voltage beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
 | **Current Efficiency** | Fraction of electrons doing useful chemistry vs. side reactions; industrial processes obsess over this since small losses mean millions in wasted electricity |
@@ -33,7 +33,7 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 
 Electrolysis operates through a coordinated dance of electrons and ions across two electrodes immersed in a conducting solution. When you connect a power supply, it acts as an "electron pump"—pulling electrons away from one electrode (the anode) and pushing them onto the other (the cathode). This creates an electrical imbalance that drives chemical change. At the cathode, the excess electrons need somewhere to go, so they transfer to positive ions (cations) in the solution, reducing them. At the anode, the electron deficiency pulls electrons away from negative ions (anions) or neutral molecules, oxidizing them. The solution itself doesn't conduct electrons—instead, ions physically migrate through the liquid to carry the current between electrodes, completing the circuit.
 
-The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where reduction needs to happen, and removing electrons where oxidation needs to happen. The minimum voltage required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
+The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where reduction needs to happen, and removing electrons where [[micro-context/oxidation|oxidation]] needs to happen. The minimum voltage required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
 
 ```
 THE ELECTROLYSIS CIRCUIT: Electron and Ion Flow
@@ -247,7 +247,7 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking covalent bonds in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
+- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking [[quick-context/covalent-bonds|covalent bonds]] in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
 
 - **[[quick-context/galvanic-cells-batteries|Galvanic/Voltaic Cells (Batteries)]]** — Spontaneous redox reactions producing electricity. Same components as electrolysis cells, opposite energy flow. Understanding one illuminates the other.
 

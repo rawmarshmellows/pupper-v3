@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Schmitt Trigger & Hysteresis
 
-> **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
+> **Related:** [[learning/notes/quick-context/comparator|comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[quick-context/comparator|Comparator]] | [[quick-context/voltage|Voltage]]
 
 **Definition:** A [[learning/notes/quick-context/comparator|comparator]]-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
 
@@ -28,4 +28,4 @@ created: 2026-06-07
              hysteresis band
 ```
 
-**Key insight:** A single-threshold comparator *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.
+**Key insight:** A single-threshold [[quick-context/comparator|comparator]] *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.
