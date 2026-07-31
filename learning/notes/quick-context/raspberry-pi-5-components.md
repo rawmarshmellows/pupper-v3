@@ -3,7 +3,7 @@ topic: Raspberry Pi 5 — Board Components
 created: 2026-04-05
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-brain]] | [[micro-context/stm32-microcontroller]] | [[quick-context/common-ic-packages]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/raspberry-pi-ai-hat]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
 > **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[micro-context/stm32-microcontroller|STM32 microcontrollers]].
 
@@ -53,7 +53,7 @@ Starting from the top-left and working around the board:
 | **RP1** | Dark chip with Raspberry Pi logo, center-right | Custom southbridge IC designed by Raspberry Pi. Manages: 2x USB 3.0, 2x USB 2.0, Gigabit Ethernet MAC, 2x MIPI camera/display transceivers, GPIO bank, SPI, I2C, UART. Connected to BCM2712 via a PCIe Gen 2 x4 link |
 | **LPDDR4X RAM** | Chip adjacent to BCM2712, with silkscreen markers "8G / 4G / 2G / 1G" | Working memory — the PCB has solder pads for different density packages; your variant has one populated (the markers indicate which is active) |
 | **WiFi/BT module** | Metal RF shield, top-right area | Dual-band 802.11ac Wi-Fi 5 and Bluetooth 5.0 / BLE — likely Infineon CYW43455 under the shield |
-| **PMIC** | Smaller IC near bottom-center area | Power Management IC — generates the multiple voltage rails (1.1V core, 1.8V I/O, 3.3V peripherals) from the 5V USB-C input |
+| **PMIC** | Smaller IC near bottom-center area | Power Management IC — generates the multiple [[learning/notes/quick-context/voltage|voltage]] rails (1.1V core, 1.8V I/O, 3.3V peripherals) from the 5V USB-C input |
 | **Ethernet PHY** | Small IC near the Ethernet jack (J14 area) | Physical layer transceiver for Gigabit Ethernet — converts digital signals to/from the cable |
 
 ```

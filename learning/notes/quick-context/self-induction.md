@@ -5,7 +5,7 @@ created: 2026-02-17
 
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+> **Related:** [[learning/notes/micro-context/electromagnetic-induction]]
 
 > **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
 
@@ -13,7 +13,7 @@ created: 2026-02-17
 
 If the magnetic flux is created BY the current, how can the flux oppose the current? Isn't that circular?
 
-The answer: **the flux doesn't oppose the current directly — the *changing* flux creates a voltage that opposes the *change* in current.** This is self-induction, and understanding it resolves the apparent paradox.
+The answer: **the flux doesn't oppose the current directly — the *changing* flux creates a [[learning/notes/quick-context/voltage|voltage]] that opposes the *change* in current.** This is self-induction, and understanding it resolves the apparent paradox.
 
 ## 5 Essential Terms
 
@@ -23,7 +23,7 @@ The answer: **the flux doesn't oppose the current directly — the *changing* fl
 | **Back-EMF** | The voltage induced in a coil that opposes the change in current. Equal to V = L × dI/dt. It's called "back" because it opposes the applied voltage. |
 | **Flux Linkage** | The total magnetic flux linking with a coil: Λ = N × Φ = L × I. For a coil, each turn links with flux from all turns, multiplying the effect. |
 | **Mutual Induction** | When changing current in one coil induces voltage in a nearby coil. Self-induction is the special case where the coil induces voltage in itself. |
-| **Steady State** | When current is constant (dI/dt = 0), so there's no changing flux, no back-EMF, and the inductor acts like a plain wire. |
+| **Steady State** | When current is constant (dI/dt = 0), so there's no changing flux, no back-EMF, and the [[learning/notes/quick-context/inductor|inductor]] acts like a plain wire. |
 
 <details>
 <summary><strong>How It Works</strong> — The complete cycle with voltages</summary>
@@ -474,7 +474,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction only matters when current is *changing*.
 </details>
 
-**Q2:** At the instant you connect a battery to an inductor-resistor circuit, why does the load see 0V even though the battery is 10V?
+**Q2:** At the instant you connect a battery to an inductor-[[learning/notes/quick-context/resistor|resistor]] circuit, why does the load see 0V even though the battery is 10V?
 <details>
 <summary>Answer</summary>
 **The inductor absorbs all the voltage as back-EMF.** At t=0, current is zero but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire source voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.

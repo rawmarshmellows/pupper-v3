@@ -11,7 +11,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the anode because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
+In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the [[learning/notes/micro-context/anode|anode]] because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
 
 ## 5 Essential Terms
 
@@ -19,8 +19,8 @@ In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct el
 |------|------------|
 | **Inert** | Chemically unreactive; doesn't participate in reactions |
 | **Ionization energy** | Energy required to remove an electron from an atom |
-| **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
-| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
+| **Reduction potential (E°)** | [[learning/notes/quick-context/voltage|Voltage]] indicating how much a species "wants" electrons; positive = wants to stay as metal |
+| **[[learning/notes/micro-context/oxidation|Oxidation]]** | Losing electrons (what happens to reactive metals at anodes) |
 | **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 
 <details>
@@ -158,7 +158,7 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 **Iron** is more likely to dissolve. The negative reduction potential means iron "prefers" to give up electrons and become Fe²⁺ ions. Platinum's positive potential means it strongly prefers to keep its electrons and stay as solid metal.
 </details>
 
-**Q2:** If platinum is so inert, how can electricity flow through it during electrolysis?
+**Q2:** If platinum is so inert, how can electricity flow through it during [[learning/notes/quick-context/electrolysis|electrolysis]]?
 <details>
 <summary>Answer</summary>
 Platinum conducts electricity by allowing electrons to flow *through* its metallic structure without the platinum atoms themselves reacting. The electrons enter one side, pass through the metal's "sea of electrons," and exit the other side. At the electrode surface, other species (like water or hydroxide ions) react instead of the platinum.

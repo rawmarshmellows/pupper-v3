@@ -4,9 +4,11 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/quiescent-supply-current]]
+
 # I2C
 
-> **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/micro-context/smd-resistor]]
 
 **Definition:** Inter-Integrated Circuit — a 2-wire serial protocol (SDA for data, SCL for clock) that lets a master chip talk to many peripheral chips on the same bus. Each device has a unique 7-bit address, so the master selects who to talk to. Runs at 100 kHz (standard) or 400 kHz (fast mode). Used in your Pupper for the [[quick-context/pupper-brain|BNO086 IMU and ADS1110 ADC]] communicating with the main STM32.
 
