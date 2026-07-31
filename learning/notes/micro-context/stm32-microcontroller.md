@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-04-05
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]]
+
 # STM32 Microcontroller
 
 > **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
@@ -58,7 +60,7 @@ The Pupper PCB has two STM32 MCUs, each with a 7-pin JST SH connector (CN1) expo
 | 3   | NRST     | Negative Reset (active-low)      | Resets the MCU when pulled low; the programmer can force a reset |
 | 4   | USART TX | USART Transmit                   | Serial output from MCU — for debug logging or communication     |
 | 5   | USART RX | USART Receive                    | Serial input to MCU — for receiving commands or data             |
-| 6   | VCC      | Voltage Common Collector         | Positive supply voltage (3.3V) — powers the MCU and provides voltage reference to programmer |
+| 6   | VCC      | [[learning/notes/quick-context/voltage|Voltage]] Common Collector         | Positive supply voltage (3.3V) — powers the MCU and provides voltage reference to programmer |
 | 7   | GND      | Ground                           | 0V reference — completes the circuit                             |
 
 ### Programming with ST-Link V2

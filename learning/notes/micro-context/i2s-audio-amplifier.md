@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/dipole-dipole-interactions]]
+
 # I2S Audio Amplifier
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
