@@ -6,13 +6,14 @@ updated: 2026-03-27
 
 # AC vs DC Current
 
+> **Related:** [[quick-context/coil-magnetic-field]] | [[micro-context/current-electrons-per-second]] | [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/current-mirror]] | [[quick-context/electric-current]]
 **Definition:** DC (direct current) flows in one direction constantly—[[quick-context/galvanic-cells-batteries|batteries]] produce DC. AC (alternating current) reverses direction periodically, typically 50-60 times per second—wall outlets provide AC. Most electronics need DC internally but the grid uses AC because it's easily transformed to different voltages.
 
 ## How It Works
 
 - DC is produced by chemical reactions (batteries) or photovoltaic cells, pushing electrons in a constant direction.
-- AC is produced by rotating a coil in a magnetic field (generator), which naturally creates a sinusoidal alternating voltage.
-- Transformers — which only work with AC — step voltage up for efficient long-distance transmission and down for safe household use.
+- AC is produced by rotating a coil in a magnetic field (generator), which naturally creates a sinusoidal alternating [[quick-context/voltage|voltage]].
+- Transformers — which only work with AC — step [[quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use.
 - Electronics internally convert AC to DC using rectifier diodes and filter capacitors (the power supply).
 
 ```

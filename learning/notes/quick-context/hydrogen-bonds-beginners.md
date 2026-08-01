@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/polymer-chemical-bonds]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -27,7 +27,7 @@ Imagine you have a bowl of spaghetti. The individual noodles are "polymer chains
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the covalent bonds holding atoms together within molecules, but strong enough to significantly affect how materials behave.
+Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together within molecules, but strong enough to significantly affect how materials behave.
 
 The key to understanding hydrogen bonds is recognizing the players: you need a "donor" (an H attached to O or N, making it slightly positive) and an "acceptor" (a lone O or N with negative charge that attracts the H). The hydrogen essentially acts as a bridge between two electronegative atoms. Water is the classic example: each water molecule can donate two hydrogen bonds (from its two H atoms) and accept two hydrogen bonds (at its oxygen), creating an extensive network that explains water's unusually high boiling point and surface tension.
 
@@ -425,13 +425,13 @@ TPU at 60C:
 
 - **[[quick-context/dipole-dipole-interactions]]**: Hydrogen bonds are actually a special, extra-strong type of dipole-dipole interaction - understanding the general case helps clarify why H-bonds are uniquely powerful.
 
-- **[[quick-context/covalent-bonds]]**: The strong bonds holding atoms together *within* polymer chains - hydrogen bonds connect chains *between* each other, but covalent bonds are what make the chains themselves.
+- **[[quick-context/covalent-bonds]]**: The strong bonds holding atoms together *within* polymer chains - hydrogen bonds connect chains *between* each other, but [[quick-context/covalent-bonds|covalent bonds]] are what make the chains themselves.
 
 - **[[quick-context/glass-transition-temperature]]**: The temperature where polymer chains gain enough energy to overcome intermolecular forces (including H-bonds) and begin moving freely - directly explains why PLA softens in a hot car.
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
-- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
+- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-[[quick-context/substrate-ic-packaging|substrate]] recognition all depend on H-bonding.
 
 - **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 
@@ -467,7 +467,7 @@ Hydrogen (H) - slight positive charge, "sticks out" from chains. Oxygen (O) - sl
 **Q5:** Why doesn't TPU deform in a hot car (60C) while PLA does?
 <details>
 <summary>Answer</summary>
-PLA's glass transition temperature is around 55-60C, so at 60C its hydrogen bonds start breaking and chains can slide, causing deformation. TPU's soft segments are already above their Tg at room temperature (that's why they're flexible), but the hard segments that hold the shape together have a much higher Tg (100-150C). At 60C, the hard segment H-bonds remain intact, so TPU keeps its shape. See: WHY PLA DEFORMS IN A HOT CAR BUT TPU DOESN'T
+PLA's [[quick-context/glass-transition-temperature|glass transition temperature]] is around 55-60C, so at 60C its hydrogen bonds start breaking and chains can slide, causing deformation. TPU's soft segments are already above their Tg at room temperature (that's why they're flexible), but the hard segments that hold the shape together have a much higher Tg (100-150C). At 60C, the hard segment H-bonds remain intact, so TPU keeps its shape. See: WHY PLA DEFORMS IN A HOT CAR BUT TPU DOESN'T
 </details>
 
 </details>

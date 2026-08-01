@@ -3,7 +3,7 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/coulomb-history]] | [[quick-context/bjt]] | [[quick-context/bjt-specifications]] | [[micro-context/mosfet]] | [[quick-context/pcb-chip-transistor-hierarchy]]
 
 > **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
@@ -11,15 +11,15 @@ created: 2026-01-30
 
 ## The Core Problem: Keeping Moore's Law Alive
 
-Every few years, transistor designs hit fundamental physical limits. The planar MOSFET that powered computing from 1960-2011 couldn't scale below ~28nm without catastrophic leakage. FinFET saved another decade but struggles below 5nm. Each generation requires reinventing how the gate controls the channel—from sitting on top, to wrapping three sides, to surrounding all four sides. Without these architectural revolutions, Moore's Law would have died decades ago. Understanding this history reveals that "smaller transistors" isn't about shrinking the same thing—it's about fundamentally redesigning the switch itself.
+Every few years, [[quick-context/transistor|transistor]] designs hit fundamental physical limits. The planar [[micro-context/mosfet|MOSFET]] that powered computing from 1960-2011 couldn't scale below ~28nm without catastrophic leakage. FinFET saved another decade but struggles below 5nm. Each generation requires reinventing how the gate controls the channel—from sitting on top, to wrapping three sides, to surrounding all four sides. Without these architectural revolutions, Moore's Law would have died decades ago. Understanding this history reveals that "smaller transistors" isn't about shrinking the same thing—it's about fundamentally redesigning the switch itself.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Point-contact transistor** | The first transistor (1947): two metal points touching a germanium crystal; unreliable but proved amplification was possible without vacuum tubes |
-| **Bipolar Junction Transistor (BJT)** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
-| **Planar MOSFET** | Voltage-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
+| **Point-contact [[quick-context/transistor|transistor]]** | The first transistor (1947): two metal points touching a germanium crystal; unreliable but proved amplification was possible without vacuum tubes |
+| **Bipolar Junction Transistor ([[quick-context/bjt|BJT]])** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
+| **Planar [[micro-context/mosfet|MOSFET]]** | [[quick-context/voltage|Voltage]]-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
 | **FinFET** | 3D transistor (2011+) where the channel is a vertical "fin" with the gate wrapped around three sides; dramatically reduced leakage at 22nm and below |
 | **Gate-All-Around (GAA/GAAFET)** | Latest architecture (2022+) using stacked horizontal nanosheets with the gate surrounding the channel on all four sides; enables 3nm and beyond |
 
@@ -415,7 +415,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 
 - **[[quick-context/transistor|Transistor Fundamentals]]** — How MOSFETs actually work (gate, source, drain, channel). Essential prerequisite for understanding why architectural changes matter.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both BJT and MOSFET rely on carefully controlled doping.
+- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both [[quick-context/bjt|BJT]] and MOSFET rely on carefully controlled doping.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different [[quick-context/semiconductor-fabrication|photolithography]] and etching processes.
 
@@ -433,7 +433,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 **Q1:** What was the key advantage of BJT over point-contact transistors, and why did MOSFET eventually replace BJT for digital logic?
 <details>
 <summary>Answer</summary>
-BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-semiconductor point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is voltage-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"
+BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-semiconductor point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is [[quick-context/voltage|voltage]]-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"
 </details>
 
 **Q2:** What fundamental limitation of planar MOSFETs made FinFET necessary?

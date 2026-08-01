@@ -6,6 +6,7 @@ updated: 2026-03-27
 
 # Clock Speed
 
+> **Related:** [[micro-context/clock-speed-vs-temperature]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing]]
 > **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
 **Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.

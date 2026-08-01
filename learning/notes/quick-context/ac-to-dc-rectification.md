@@ -5,23 +5,23 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[micro-context/diode-rectification]]
 
 > **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
+| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step [[quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
+| **Forward Bias** | Applying positive [[quick-context/voltage|voltage]] to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -43,7 +43,7 @@ AC from the wall (e.g. 120V, 60 Hz):
 
 ### Step 2: The PN Junction -- Forward and Reverse Bias
 
-A diode is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
+A [[quick-context/diode|diode]] is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
 
 ```
 Forward bias: current flows           Reverse bias: current blocked
@@ -126,7 +126,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):
@@ -137,7 +137,7 @@ After bridge (bumpy):            + Capacitor (smooth):
  still pulsating                  nearly flat DC output
 ```
 
-The RC time constant (R_load x C) determines how much ripple remains. Bigger capacitor or lighter load = smoother DC. Full-wave rectification helps too -- the capacitor only has to bridge half the gap compared to half-wave.
+The RC time constant (R_load x C) determines how much ripple remains. Bigger [[quick-context/capacitor|capacitor]] or lighter load = smoother DC. Full-wave rectification helps too -- the capacitor only has to bridge half the gap compared to half-wave.
 
 </details>
 
@@ -231,7 +231,7 @@ Two diodes are always in the current path (one on each side of the bridge). Each
 **Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
 <details>
 <summary>Answer</summary>
-The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the capacitance. To reduce ripple under heavier load, you need a larger capacitor.
+The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the [[quick-context/capacitance|capacitance]]. To reduce ripple under heavier load, you need a larger capacitor.
 </details>
 
 </details>

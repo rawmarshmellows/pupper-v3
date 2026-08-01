@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/power-watts-joules]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/bjt]] | [[quick-context/comparator-specification]] | [[micro-context/bjt-mosfet-igbt]] | [[micro-context/mosfet]] | [[quick-context/pcb-chip-transistor-hierarchy]]
 >
 > **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
@@ -13,14 +13,14 @@ created: 2026-06-07
 
 ## The Core Problem: A Transistor That Works on the Bench Can Still Burn Up
 
-A BJT that switches your LED perfectly at 5 V can be destroyed instantly by a 30 V inductive spike, cooked by a motor that pulls more current than rated, or simply fail to turn fully on because you starved its base. Every one of those failures is predicted by a number printed in the datasheet. Reading those numbers *before* you solder is the difference between a circuit that ships and one that releases [the magic smoke](https://en.wikipedia.org/wiki/Magic_smoke). This note is the five-item checklist.
+A [[quick-context/bjt|BJT]] that switches your LED perfectly at 5 V can be destroyed instantly by a 30 V inductive spike, cooked by a motor that pulls more current than rated, or simply fail to turn fully on because you starved its base. Every one of those failures is predicted by a number printed in the datasheet. Reading those numbers *before* you solder is the difference between a circuit that ships and one that releases [the magic smoke](https://en.wikipedia.org/wiki/Magic_smoke). This note is the five-item checklist.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less voltage." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
-| **$V_{CEO}$ (Collector–Emitter Breakdown, base Open)** | The maximum voltage the transistor can hold across collector→emitter while **off** before it avalanche-breaks-down. When the BJT is off, nearly the full supply $V_{CC}$ appears across it, so you need $V_{CEO} > V_{CC}$ (with margin). |
+| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less [[quick-context/voltage|voltage]]." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
+| **$V_{CEO}$ (Collector–Emitter Breakdown, base Open)** | The maximum [[quick-context/voltage|voltage]] the [[quick-context/transistor|transistor]] can hold across collector→emitter while **off** before it avalanche-breaks-down. When the [[quick-context/bjt|BJT]] is off, nearly the full supply $V_{CC}$ appears across it, so you need $V_{CEO} > V_{CC}$ (with margin). |
 | **$I_C$ (Max Collector Current)** | The largest continuous current the collector can carry without the bond wires or silicon failing. Your load current must stay below this. |
 | **$P_C$ / $P_D$ (Power Dissipation)** | The most heat the package can shed before the junction overheats. The heat made *inside* the BJT is $P = V_{CE}\cdot I_C$. This rating shrinks as the part gets hotter (thermal derating). |
 | **$\beta$ / $h_{FE}$ (DC Current Gain)** | The amplification factor: $I_C = \beta \cdot I_B$. Typically 50–300. It tells you the **minimum base current** you must inject to support a given collector current: $I_B \ge I_C / \beta_{min}$. It drifts with current and temperature — never a precision number. |
@@ -52,7 +52,7 @@ THE BJT SPEC CHECKLIST
 The single most common beginner myth is "NPN needs less voltage to turn on." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
 
 - **Direction of control.** NPN turns on when the base is pulled *more positive* than the emitter; PNP turns on when the base is pulled *more negative* than the emitter.
-- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a microcontroller pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
+- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a [[micro-context/microcontroller|microcontroller]] pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
 - **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives higher gain, faster switching, and a lower saturation voltage. That physics — not voltage — is why NPN is the default.
 
 ```
@@ -91,11 +91,11 @@ B ─►┤  PNP  │
 ```
 
 **2. $V_{CEO}$ — the off-state voltage ceiling.**
-When a switch transistor is *off*, it is blocking the supply: almost the entire $V_{CC}$ drops across the collector–emitter terminals. $V_{CEO}$ is how much it can block before the junction avalanche-breaks-down and conducts uncontrollably (often destroying the part). The subscript spells out the test condition: **C**ollector–**E**mitter, base **O**pen.
+When a switch [[quick-context/transistor|transistor]] is *off*, it is blocking the supply: almost the entire $V_{CC}$ drops across the collector–emitter terminals. $V_{CEO}$ is how much it can block before the junction avalanche-breaks-down and conducts uncontrollably (often destroying the part). The subscript spells out the test condition: **C**ollector–**E**mitter, base **O**pen.
 
 $$V_{CEO} > V_{CC} \quad(\text{always — with margin, ideally } V_{CEO} \ge 2\times V_{CC})$$
 
-The margin matters because inductive loads (motors, relays, solenoids) generate spikes *far* above $V_{CC}$ when switched off ($V = L \,di/dt$). A 12 V motor can fling a 60 V+ spike at a transistor rated $V_{CEO} = 40$ V and kill it — which is exactly why the [[quick-context/bjt|BJT motor-driver]] needs a flyback diode.
+The margin matters because inductive loads (motors, relays, solenoids) generate spikes *far* above $V_{CC}$ when switched off ($V = L \,di/dt$). A 12 V motor can fling a 60 V+ spike at a transistor rated $V_{CEO} = 40$ V and kill it — which is exactly why the [[quick-context/bjt|BJT motor-driver]] needs a flyback [[quick-context/diode|diode]].
 
 > There are three breakdown specs and they are not interchangeable: **$V_{CEO}$** (collector–emitter, base open — the one quoted for switching), **$V_{CBO}$** (collector–base, emitter open — usually the highest), and **$V_{EBO}$** (emitter–base, base–emitter reverse breakdown — usually only ~5–7 V, easy to exceed by accident).
 
@@ -164,7 +164,7 @@ The five specs pull against each other; choosing a BJT is balancing them.
 | **$P_C$** | Bigger package or a heatsink — board area, cost | Heat capacity vs. size/cost |
 | **$\beta$** | High-$\beta$ parts trade off voltage and ruggedness | Easy drive vs. robustness |
 
-**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a MOSFET gate is a [[quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
+**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a [[micro-context/mosfet|MOSFET]] gate is a [[quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
 
 ```
 PICKING THE PART — the decision order
@@ -182,7 +182,7 @@ PICKING THE PART — the decision order
 <details>
 <summary><strong>Concrete Example</strong> — Reading the 2N2222 spec line for a 0.3 A relay driver</summary>
 
-You want a generic small NPN to switch a 12 V, 300 mA relay from a 3.3 V microcontroller pin. You grab a **2N2222A** (a classic jellybean NPN) and check the five numbers against the circuit.
+You want a generic small NPN to switch a 12 V, 300 mA relay from a 3.3 V [[micro-context/microcontroller|microcontroller]] pin. You grab a **2N2222A** (a classic jellybean NPN) and check the five numbers against the circuit.
 
 ```
 PN2222A / TO-92 plastic  (ON Semi limits)  YOUR CIRCUIT NEEDS
@@ -194,9 +194,9 @@ PN2222A / TO-92 plastic  (ON Semi limits)  YOUR CIRCUIT NEEDS
   h_FE     : 100 (min @ I_C=150mA) ... 300 use 100 (min) for the switch
 ```
 
-> **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're soldering. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
+> **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're [[quick-context/soldering|soldering]]. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
 
-**Step 1 — Voltage fence.** Off-state, the relay coil pulls the collector to ~12 V, so $V_{CE}\approx 12$ V $< 40$ V $V_{CEO}$. Plus margin for the coil's inductive turn-off spike → add a flyback diode and you're safe. PASS.
+**Step 1 — Voltage fence.** Off-state, the relay coil pulls the collector to ~12 V, so $V_{CE}\approx 12$ V $< 40$ V $V_{CEO}$. Plus margin for the coil's inductive turn-off spike → add a flyback [[quick-context/diode|diode]] and you're safe. PASS.
 
 **Step 2 — Current fence.** $I_C = 300$ mA $< 600$ mA rating. PASS (but only 2× margin — fine for a relay, derate harder for continuous loads).
 
@@ -225,10 +225,10 @@ Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs
 
 - **[[quick-context/bjt]]** — The companion note: the physics (NPN/PNP structure, the three operating regions, why the base is thin). Read it to understand *why* these specs exist; read this note to *use* them.
 - **[[quick-context/power-watts-joules]]** — $P_C$ is just $P = V \cdot I$ applied to the transistor, plus thermal resistance ($R_{\theta JA}$) deciding how fast that heat escapes. The heat ceiling is really a thermal problem.
-- **[[quick-context/resistor]]** — The base resistor sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
-- **[[quick-context/transistor]]** — The MOSFET sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
+- **[[quick-context/resistor]]** — The base [[quick-context/resistor|resistor]] sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
+- **[[quick-context/transistor]]** — The [[micro-context/mosfet|MOSFET]] sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
 - **[[quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
-- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
+- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a [[quick-context/comparator|comparator]] IC (absolute-max vs. guaranteed limits, typical vs. boldface).
 
 </details>
 

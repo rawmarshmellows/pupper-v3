@@ -494,7 +494,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
+- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two [[quick-context/tensor|tensor]] equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
 
 - **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
 
@@ -506,11 +506,11 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
 
-- **[[quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
+- **[[quick-context/voltage]]** — Electric field integrated along a path gives [[quick-context/voltage|voltage]]. Maxwell's equations govern the field; [[quick-context/voltage|voltage]] is how we measure it in circuits.
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[quick-context/electromagnetism|electromagnetism]].
 
 </details>
 
@@ -526,13 +526,13 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q2:** Why did Maxwell add the displacement current term (ε₀ ∂E/∂t) to Ampère's law?
 <details>
 <summary>Answer</summary>
-**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a capacitor would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
+**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a [[quick-context/capacitor|capacitor]] would show I ≠ 0, but the same loop using a surface passing through the [[quick-context/capacitor|capacitor]] gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
 </details>
 
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?
 <details>
 <summary>Answer</summary>
-**It matched the known speed of light exactly.** μ₀ and ε₀ were measured independently through electric and magnetic experiments—nothing to do with light. Yet when combined, they gave 3×10⁸ m/s, the speed of light. This couldn't be coincidence. Maxwell concluded that light IS an electromagnetic wave. This unified optics with electromagnetism and predicted the entire electromagnetic spectrum (radio, infrared, UV, X-rays) before most were discovered.
+**It matched the known speed of light exactly.** μ₀ and ε₀ were measured independently through electric and magnetic experiments—nothing to do with light. Yet when combined, they gave 3×10⁸ m/s, the speed of light. This couldn't be coincidence. Maxwell concluded that light IS an electromagnetic wave. This unified optics with [[quick-context/electromagnetism|electromagnetism]] and predicted the entire electromagnetic spectrum (radio, infrared, UV, X-rays) before most were discovered.
 </details>
 
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?

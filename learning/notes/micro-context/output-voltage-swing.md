@@ -5,9 +5,10 @@ created: 2026-06-07
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
+> **Related:** [[micro-context/ads1110-battery-adc]] | [[micro-context/capacitive-voltage-sensing]] | [[micro-context/input-offset-voltage]] | [[micro-context/offset-voltage-drift]] | [[micro-context/open-loop-voltage-gain]]
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
-**Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
+**Definition:** How close a [[quick-context/comparator|comparator]]'s or [[quick-context/op-amp|op-amp]]'s output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
 

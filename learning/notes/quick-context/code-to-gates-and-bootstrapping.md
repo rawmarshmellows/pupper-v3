@@ -4,7 +4,7 @@ created: 2026-02-14
 updated: 2026-04-07
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
+> **Related:** [[quick-context/from-code-to-running-firmware]] | [[quick-context/how-source-code-is-stored]] | [[quick-context/python-to-machine-code-pipeline]]
 
 > **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
 
@@ -22,7 +22,7 @@ You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|
 
 | Term | Definition |
 |------|------------|
-| **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
+| **Compiler** | A program that translates high-level source code (C, [[quick-context/rust|Rust]]) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
 | **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
 | **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM) whose bit fields encode the opcode, registers, and operands according to the ISA. |
 | **ISA (Instruction Set Architecture)** | The contract between software and hardware. It defines every instruction the CPU supports, its binary encoding (which bits mean what), the available registers, and addressing modes. ARM, x86, RISC-V, and Hack are all different ISAs. |
@@ -321,7 +321,7 @@ The compilation chain is a tower of abstractions, and the core tension is: **eac
 | Hand-coded binary (Layer 4) | Terrible — error-prone, unreadable | Identical to assembly (same output) | Total — but impractical |
 | Custom hardware / FPGA (Layer 2) | Lowest — design gates directly in HDL | Fastest — no instruction overhead | Absolute — but weeks of development |
 
-The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or Rust. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
+The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or [[quick-context/rust|Rust]]. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
 
 The other tension is **hardware vs. software implementation**. Any function can be implemented in either:
 - **Hardware** (dedicated circuit): faster but fixed, costs die area
@@ -468,7 +468,7 @@ POWER-ON SEQUENCE
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a [[quick-context/transistor|transistor]] works ([[quick-context/voltage|voltage]] on gate controls current flow) is the foundation for understanding how gates compute.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
 
@@ -486,7 +486,7 @@ POWER-ON SEQUENCE
 
 - **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[micro-context/sram|SRAM]], DRAM, and flash at the [[quick-context/transistor|transistor]]/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 

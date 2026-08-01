@@ -6,7 +6,7 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -58,7 +58,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How [[quick-context/ppo-proximal-policy-optimization|PPO]] uses these tuples:** Thousands of tuples are collected across parallel simulated robots. [[quick-context/ppo-proximal-policy-optimization|PPO]] estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)
@@ -322,7 +322,7 @@ The $K_p = 7.5$ and $K_d = 0.25$ gains (from `init_kps` and `init_kds` in config
 
 ### Step 5: Motor Execution
 
-The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN bus (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
+The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ [[quick-context/can-bus|CAN bus]] (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
 
 ```
 ONE FULL INFERENCE CYCLE (out of ~52 per second)
@@ -362,7 +362,7 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
 - **[[quick-context/ppo-proximal-policy-optimization|PPO (Proximal Policy Optimization)]]** — The RL algorithm used to train the policy. PPO constrains each gradient update to stay close to the previous policy (via a clipped surrogate objective), preventing catastrophic policy collapse. It is the standard algorithm for continuous control tasks like locomotion because it balances training stability with simplicity.
 - **Domain Randomization** — During training, simulation parameters (friction $\mu \in [0.3, 1.5]$, link masses $\pm 20\%$, motor strength, observation delay) are randomized each episode. The policy cannot overfit to any single configuration, forcing it to learn robust strategies that transfer to the real robot's unknown true parameters.
 - **Reward Shaping** — The art of designing $r_t$ to elicit desired behavior. Naive rewards (e.g., just forward velocity) produce degenerate gaits — the robot may learn to fall forward. Careful penalty terms for energy, joint acceleration, body orientation, and foot contact patterns guide the optimizer toward natural locomotion.
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
+- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the [[quick-context/can-bus|CAN bus]]; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab CS123 curriculum. Lab 5 is the pivot point: Labs 1-4 build understanding of what the neural network replaces, Labs 6-7 build on top of the neural controller for voice control and vision tracking.
 - **Emergency Stop System** — The `estop_controller.cpp` node (C++) subscribes to `/joy` and monitors PS4 controller buttons. Pressing the right joystick (button 12) instantly deactivates all neural controllers and publishes to `/emergency_stop`. The start button (button 9) reactivates the last-used controller. Buttons X/O/Triangle/Square switch between the four controller modes (normal, three-legged, parkour, test).
 - **Weights & Biases (wandb)** — MLOps platform used for experiment tracking. Each training run logs reward curves, episode statistics, and policy checkpoints to the `pupperv3-mjx-rl` project. Students download specific runs by number: `python3 download_latest_policy.py --run_number 42`. The script auto-detects the logged-in user's wandb entity.
@@ -431,7 +431,7 @@ Lab 5 uses MuJoCo, which is excellent for accuracy but runs environments sequent
 | Parallelism | Tens of envs (CPU) or hundreds (MJX/GPU) | 4,096-8,192 parallel envs (GPU) |
 | Throughput | ~10K steps/sec | ~90K frames/sec (RTX A6000) |
 | Training time | Hours to days | Minutes to hours |
-| Tensor pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
+| [[quick-context/tensor|Tensor]] pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
 | Physics fidelity | Excellent (MuJoCo gold standard) | Good (PhysX-based, improving) |
 
 Isaac Lab exposes physics results directly as PyTorch tensors, eliminating CPU-GPU data transfer. Training a locomotion policy for ANYmal or Spot typically takes 30-60 minutes on a single GPU. Lab 5's MuJoCo approach is pedagogically clearer (easier to understand one environment) but wouldn't scale to the thousands of terrain variations that production systems train on.

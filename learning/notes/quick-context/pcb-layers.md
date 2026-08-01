@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -15,14 +15,14 @@ updated: 2026-02-21
 
 ## The Core Problem: One Board, Many Manufacturing Steps
 
-A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a different material and purpose, manufactured in a precise sequence. Designers must think in layers because the manufacturer needs separate instructions (Gerber files) for each one: where to etch copper, where to apply solder paste, where to print labels, where to drill holes. Getting any single layer wrong — a missing soldermask opening, a misaligned drill, a silkscreen covering a pad — produces a board that can't be assembled or doesn't work. Understanding what each layer does is the key to reading Gerber files, reviewing PCB designs, and diagnosing manufacturing problems.
+A [[quick-context/pcb-printed-circuit-board|PCB]] isn't a single thing — it's a stack of 10+ distinct layers, each with a different material and purpose, manufactured in a precise sequence. Designers must think in layers because the manufacturer needs separate instructions (Gerber files) for each one: where to etch copper, where to apply solder paste, where to print labels, where to drill holes. Getting any single layer wrong — a missing soldermask opening, a misaligned drill, a silkscreen covering a pad — produces a board that can't be assembled or doesn't work. Understanding what each layer does is the key to reading Gerber files, reviewing [[quick-context/pcb-printed-circuit-board|PCB]] designs, and diagnosing manufacturing problems.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
 | **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
@@ -209,7 +209,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **5. Bottom Soldermask** — `Gerber_BottomSolderMaskLayer.GBS`
 
-*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole soldering and any bottom-side SMD components.
+*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole [[quick-context/soldering|soldering]] and any bottom-side SMD components.
 
 *How it's manufactured:* Applied simultaneously with the top soldermask — both sides are coated, exposed, and developed in the same process steps.
 
@@ -240,7 +240,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 |--------|---------|------|----------|
 | **HASL** | Board dipped in molten solder, leveled with hot air | Low | General purpose, through-hole |
 | **Lead-free HASL** | Same, with lead-free solder | Low | RoHS-compliant general purpose |
-| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, BGA, flat pads |
+| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, [[quick-context/bga-ball-grid-array|BGA]], flat pads |
 | **OSP** | Thin organic coating on copper | Lowest | Short shelf life, reflow-only |
 
 ---
@@ -405,11 +405,11 @@ The Gerber file list maps directly to the layer stack:
 
 - **[[quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
 
-- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
+- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow [[quick-context/soldering|soldering]] process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
 
 - **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial ground plane; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
 
-- **[[quick-context/common-ic-packages]]** — Package type (DIP, QFP, QFN, BGA) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
+- **[[quick-context/common-ic-packages]]** — Package type (DIP, QFP, QFN, [[quick-context/bga-ball-grid-array|BGA]]) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
 
 - **[[quick-context/schematic-reading]]** — The schematic defines WHAT is connected; the PCB layers define HOW and WHERE those connections are physically implemented as copper traces, pads, and vias.
 
