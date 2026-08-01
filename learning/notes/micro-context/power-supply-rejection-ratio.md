@@ -5,9 +5,10 @@ created: 2026-06-07
 
 # Power-Supply Rejection Ratio ($PSRR$)
 
+> **Related:** [[micro-context/common-mode-rejection-ratio]] | [[micro-context/quiescent-supply-current]] | [[micro-context/power-inductor]] | [[quick-context/power-watts-joules]]
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]
 
-**Definition:** A measure (in dB) of how well a comparator or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
+**Definition:** A measure (in dB) of how well a [[quick-context/comparator|comparator]] or [[quick-context/op-amp|op-amp]] ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
 
 ## How It Works
 

@@ -5,22 +5,22 @@ created: 2026-04-01
 
 # High-Gain Amplifier Stage
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/transistor]]
+> **Related:** [[micro-context/open-loop-voltage-gain]] | [[micro-context/i2s-audio-amplifier]] | [[quick-context/op-amp]]
 
 > **TL;DR:** The high-gain amplifier stage sits between the [[quick-context/differential-pair|differential pair]] input and the output buffer in [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---it converts the differential pair's small current difference (microamps) into a large voltage swing (volts) by forcing that current through a very high impedance node, achieving 60--100 dB of voltage gain with just a few [[quick-context/transistor|transistors]].
 
 ## The Core Problem: A Current Difference Isn't Useful Yet
 
-The [[quick-context/differential-pair|differential pair]] senses the voltage difference between two inputs and converts it into a current difference---say 60 $\mu$A vs. 40 $\mu$A, a 20 $\mu$A difference. But downstream circuits (output stages, logic gates, MOSFET drivers) need a large *voltage* swing, not a current difference. You need to convert 20 $\mu$A of current imbalance into a voltage swing approaching the full supply rails (0V to 3.3V). That's the job of the high-gain amplifier stage: it multiplies the small signal by 1,000--100,000x by exploiting one simple principle---push a small current through a very high impedance and you get a large voltage ($V = I \times R$).
+The [[quick-context/differential-pair|differential pair]] senses the [[quick-context/voltage|voltage]] difference between two inputs and converts it into a current difference---say 60 $\mu$A vs. 40 $\mu$A, a 20 $\mu$A difference. But downstream circuits (output stages, logic gates, [[micro-context/mosfet|MOSFET]] drivers) need a large *[[quick-context/voltage|voltage]]* swing, not a current difference. You need to convert 20 $\mu$A of current imbalance into a voltage swing approaching the full supply rails (0V to 3.3V). That's the job of the high-gain amplifier stage: it multiplies the small signal by 1,000--100,000x by exploiting one simple principle---push a small current through a very high impedance and you get a large voltage ($V = I \times R$).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Current mirror** | A circuit that copies a current from one branch to another using matched [[quick-context/transistor\|transistors]]. In the gain stage, it acts as an "active load" with extremely high output impedance---much higher than any [[quick-context/resistor\|resistor]] could practically provide. |
-| **Active load** | Using a transistor (current mirror) instead of a resistor as the drain load. A resistor's impedance is just R (e.g., 10 k$\Omega$). A transistor in saturation has output impedance of 100 k$\Omega$--10 M$\Omega$, giving 10--1000x more gain from the same current. |
-| **High-impedance node** | The point where the differential pair's drain current meets the current mirror's output. Both sides present high impedance, so even a tiny current mismatch creates a large voltage change. This node is where gain happens. |
-| **Voltage gain ($A_v$)** | The ratio of output voltage swing to input voltage difference. For the gain stage: $A_v = g_m \times (r_{o,n} \| r_{o,p})$, where $g_m$ is the differential pair's transconductance and $r_o$ is the output resistance. Typical: 60--100 dB (1,000--100,000x). |
+| **[[micro-context/current-mirror|Current mirror]]** | A circuit that copies a current from one branch to another using matched [[quick-context/transistor\|transistors]]. In the gain stage, it acts as an "active load" with extremely high output impedance---much higher than any [[quick-context/resistor\|resistor]] could practically provide. |
+| **Active load** | Using a [[quick-context/transistor|transistor]] ([[micro-context/current-mirror|current mirror]]) instead of a [[quick-context/resistor|resistor]] as the drain load. A [[quick-context/resistor|resistor]]'s impedance is just R (e.g., 10 k$\Omega$). A [[quick-context/transistor|transistor]] in saturation has output impedance of 100 k$\Omega$--10 M$\Omega$, giving 10--1000x more gain from the same current. |
+| **High-impedance node** | The point where the [[quick-context/differential-pair|differential pair]]'s drain current meets the current mirror's output. Both sides present high impedance, so even a tiny current mismatch creates a large voltage change. This node is where gain happens. |
+| **Voltage gain ($A_v$)** | The ratio of [[micro-context/output-voltage-swing|output voltage swing]] to input voltage difference. For the gain stage: $A_v = g_m \times (r_{o,n} \| r_{o,p})$, where $g_m$ is the [[quick-context/differential-pair|differential pair]]'s transconductance and $r_o$ is the output resistance. Typical: 60--100 dB (1,000--100,000x). |
 | **Cascode** | Stacking a second transistor on top of the first to increase the output impedance (and therefore gain) even further. Common in precision op-amps where 100+ dB gain is needed. Adds complexity but doesn't add more current consumption. |
 
 <details>
@@ -36,7 +36,7 @@ The trick is: you can't use a 5 M$\Omega$ resistor (it would be physically huge 
 
 ### The 5-Transistor Gain Stage (Simplest Complete Amplifier)
 
-This is the most common building block inside op-amps and comparators. It combines the [[quick-context/differential-pair|differential pair]] (Q1, Q2) with a current mirror active load (Q3, Q4) and a tail current source (Q5):
+This is the most common building block inside op-amps and comparators. It combines the [[quick-context/differential-pair|differential pair]] (Q1, Q2) with a current mirror active load (Q3, Q4) and a [[micro-context/tail-current|tail current]] source (Q5):
 
 ```
 5-TRANSISTOR OTA (Operational Transconductance Amplifier)
@@ -182,7 +182,7 @@ GAIN EQUATION:
 
 ### Why This Is Different in Op-Amps vs. Comparators
 
-In an [[quick-context/op-amp|op-amp]], a **compensation capacitor** is connected at the high-impedance output node. This capacitor deliberately slows the voltage transition (limits the slew rate) to prevent oscillation when negative feedback is applied. The capacitor trades speed for stability.
+In an [[quick-context/op-amp|op-amp]], a **compensation [[quick-context/capacitor|capacitor]]** is connected at the high-impedance output node. This [[quick-context/capacitor|capacitor]] deliberately slows the voltage transition (limits the slew rate) to prevent oscillation when negative feedback is applied. The capacitor trades speed for stability.
 
 In a [[quick-context/comparator|comparator]], there is **no compensation capacitor**. The high-impedance node is free to swing as fast as the transistors allow. This is why comparators are much faster than op-amps---the gain stage isn't deliberately slowed down.
 
@@ -217,8 +217,8 @@ OP-AMP vs COMPARATOR GAIN STAGE
 | Want | Problem |
 |------|---------|
 | **Higher gain** | Need higher output impedance → use cascode → adds voltage headroom loss, reduces output swing |
-| **Faster response** | Need lower parasitic capacitance at output node → smaller transistors → worse matching, lower gain |
-| **Lower power** | Need less tail current → lower $g_m$ → lower gain. $g_m \propto \sqrt{I_{tail}}$ for MOSFETs. |
+| **Faster response** | Need lower parasitic [[quick-context/capacitance|capacitance]] at output node → smaller transistors → worse matching, lower gain |
+| **Lower power** | Need less [[micro-context/tail-current|tail current]] → lower $g_m$ → lower gain. $g_m \propto \sqrt{I_{tail}}$ for MOSFETs. |
 | **Wider output swing** | Need transistors to stay in saturation over a wide voltage range → longer channel lengths → slower |
 
 ```
@@ -253,7 +253,7 @@ At low supply voltages (1.2V or below), the headroom problem becomes severe. Sta
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> --- Following a signal through the LM393 comparator</summary>
+<summary><strong>Concrete Example</strong> --- Following a signal through the LM393 [[quick-context/comparator|comparator]]</summary>
 
 The LM393 is one of the most common comparators. Let's trace a signal through its gain stage:
 
@@ -299,7 +299,7 @@ LM393 SIGNAL PATH (simplified)
     Result: output = HIGH
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the gain stage is some exotic circuit. It's just **two current sources fighting at a node**. The mirror says "push 60 $\mu$A," the differential pair says "pull 40 $\mu$A." The 20 $\mu$A mismatch has nowhere to go except to charge/discharge the node's parasitic capacitance, swinging the voltage to the rail. That's all gain is: a current mismatch at a high-impedance point. The same principle works in op-amps, comparators, voltage regulators, and any analog IC with gain.
+**The one thing most outsiders get wrong about this is...** thinking the gain stage is some exotic circuit. It's just **two current sources fighting at a node**. The mirror says "push 60 $\mu$A," the differential pair says "pull 40 $\mu$A." The 20 $\mu$A mismatch has nowhere to go except to charge/discharge the node's parasitic [[quick-context/capacitance|capacitance]], swinging the voltage to the rail. That's all gain is: a current mismatch at a high-impedance point. The same principle works in op-amps, comparators, voltage regulators, and any analog IC with gain.
 
 </details>
 
@@ -333,22 +333,22 @@ LM393 SIGNAL PATH (simplified)
 **Not enough impedance.** A practical resistor might be 10 k$\Omega$. With a 10 $\mu$A current difference, you get $V = 10\ \mu A \times 10\ k\Omega = 0.1\ V$ --- not enough to swing the output to the rails. A current mirror in saturation has output impedance of 500 k$\Omega$--10 M$\Omega$, giving 50--1000x more gain. Also, a large resistor would drop too much DC voltage (10 k$\Omega$ at 50 $\mu$A = 0.5V, eating into headroom), while a transistor in saturation only needs ~0.2V. See: The Core Problem.
 </details>
 
-**Q3:** What does the compensation capacitor in an op-amp do to the gain stage, and why doesn't a comparator have one?
+**Q3:** What does the compensation capacitor in an [[quick-context/op-amp|op-amp]] do to the gain stage, and why doesn't a [[quick-context/comparator|comparator]] have one?
 <details>
 <summary>Answer</summary>
-**The compensation cap limits how fast the output node voltage can change** (slew rate = $I_{tail} / C_c$). In an op-amp, this prevents the loop from oscillating when negative feedback is applied---without it, the high gain and speed would cause instability. A comparator has no negative feedback loop (it operates open-loop or with positive feedback for hysteresis), so there's no stability concern. Removing the cap lets the output swing as fast as the parasitic capacitance allows, which is why comparators are 100--1000x faster than op-amps. See: How It Works (Op-Amp vs Comparator Gain Stage).
+**The compensation cap limits how fast the output node voltage can change** (slew rate = $I_{tail} / C_c$). In an [[quick-context/op-amp|op-amp]], this prevents the loop from oscillating when negative feedback is applied---without it, the high gain and speed would cause instability. A comparator has no negative feedback loop (it operates open-loop or with positive feedback for hysteresis), so there's no stability concern. Removing the cap lets the output swing as fast as the parasitic capacitance allows, which is why comparators are 100--1000x faster than op-amps. See: How It Works (Op-Amp vs Comparator Gain Stage).
 </details>
 
 **Q4:** In the 5-transistor OTA, what happens if Q3 and Q4 are poorly matched (Q4 copies 62 $\mu$A instead of 60 $\mu$A)?
 <details>
 <summary>Answer</summary>
-**The output has a DC offset.** Even with equal inputs (V+ = V-), the current mismatch between Q4 (62 $\mu$A) and Q2 (50 $\mu$A) drives the output away from mid-rail. This appears as an **input offset voltage**---the comparator or op-amp will trip at a slightly different threshold than intended. In an op-amp, negative feedback corrects for this somewhat, but it still degrades precision. In a comparator, it shifts the trip point by a millivolt or so. This is why matching is critical. See: [[quick-context/differential-pair]] (The Key Tension: Matching).
+**The output has a DC offset.** Even with equal inputs (V+ = V-), the current mismatch between Q4 (62 $\mu$A) and Q2 (50 $\mu$A) drives the output away from mid-rail. This appears as an **[[micro-context/input-offset-voltage|input offset voltage]]**---the comparator or op-amp will trip at a slightly different threshold than intended. In an op-amp, negative feedback corrects for this somewhat, but it still degrades precision. In a comparator, it shifts the trip point by a millivolt or so. This is why matching is critical. See: [[quick-context/differential-pair]] (The Key Tension: Matching).
 </details>
 
 **Q5:** An engineer wants more gain from the 5-transistor OTA without adding more power. What can they do?
 <details>
 <summary>Answer</summary>
-**Add cascode transistors** (stack a second transistor on top of Q2 and Q4). This increases the output impedance from $r_o$ to $g_m \times r_o^2$ (gain squared), boosting voltage gain from ~50 dB to ~80--90 dB with the same tail current. The cost is reduced output voltage swing (each cascode eats ~0.2V of headroom) and slightly more complexity. At very low supply voltages (<1.5V), this headroom loss becomes a problem, which is why folded-cascode and gain-boosted architectures were invented. See: The Key Tension (Gain vs. Headroom Tradeoff).
+**Add cascode transistors** (stack a second transistor on top of Q2 and Q4). This increases the output impedance from $r_o$ to $g_m \times r_o^2$ (gain squared), boosting voltage gain from ~50 dB to ~80--90 dB with the same tail current. The cost is reduced [[micro-context/output-voltage-swing|output voltage swing]] (each cascode eats ~0.2V of headroom) and slightly more complexity. At very low supply voltages (<1.5V), this headroom loss becomes a problem, which is why folded-cascode and gain-boosted architectures were invented. See: The Key Tension (Gain vs. Headroom Tradeoff).
 </details>
 
 </details>

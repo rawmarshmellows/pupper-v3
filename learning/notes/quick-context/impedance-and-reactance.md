@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Resistance Alone Can't Describe AC Behavior
 
-Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that voltage and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
+Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that [[quick-context/voltage|voltage]] and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-
 | **Reactance (X)** | The frequency-dependent opposition to current from capacitors or inductors. Unlike resistance, reactance doesn't dissipate energy—it stores and returns it. |
 | **Capacitive Reactance (Xc)** | Xc = 1/(2πfC). Decreases with frequency—[[quick-context/capacitance|capacitance]] causes capacitors to pass high frequencies and block low frequencies. |
 | **Inductive Reactance (XL)** | XL = 2πfL. Increases with frequency—inductors pass low frequencies and block high frequencies. |
-| **Phase Angle** | The time shift between voltage and current waveforms. In a capacitor, current leads voltage by 90°. In an inductor, voltage leads current by 90°. In a resistor, they're in phase (0°). |
+| **Phase Angle** | The time shift between [[quick-context/voltage|voltage]] and current waveforms. In a [[quick-context/capacitor|capacitor]], current leads voltage by 90°. In an [[quick-context/inductor|inductor]], voltage leads current by 90°. In a [[quick-context/resistor|resistor]], they're in phase (0°). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -122,7 +122,7 @@ FREQUENCY DEPENDENCE: THE KEY INSIGHT
 
 ## Impedance Matching
 
-When a signal travels through a cable or PCB trace, reflections occur at any point where impedance changes. Maximizing power transfer or minimizing reflections requires matching impedances.
+When a signal travels through a cable or [[quick-context/pcb-printed-circuit-board|PCB]] trace, reflections occur at any point where impedance changes. Maximizing power transfer or minimizing reflections requires matching impedances.
 
 ```
 WHY 50Ω AND 75Ω?
@@ -196,11 +196,11 @@ RC LOW-PASS FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Capacitive reactance (Xc = 1/2πfC) explains why decoupling capacitors work: they have very low impedance at high frequencies, shorting noise to ground while leaving DC unaffected. See also [[quick-context/capacitance]] for how parasitic capacitance affects impedance in PCB traces and IC packages.
+- **[[quick-context/capacitor]]** — Capacitive reactance (Xc = 1/2πfC) explains why decoupling capacitors work: they have very low impedance at high frequencies, shorting noise to ground while leaving DC unaffected. See also [[quick-context/capacitance]] for how parasitic [[quick-context/capacitance|capacitance]] affects impedance in [[quick-context/pcb-printed-circuit-board|PCB]] traces and IC packages.
 
 - **[[quick-context/inductor]]** — Inductive reactance (XL = 2πfL) explains why inductors are used in power supply filters: they have high impedance at switching frequencies, blocking ripple while passing DC.
 
-- **[[quick-context/resistor]]** — Resistance is the real (non-frequency-dependent) part of impedance. A pure resistor has Z = R at all frequencies with zero phase shift.
+- **[[quick-context/resistor]]** — Resistance is the real (non-frequency-dependent) part of impedance. A pure [[quick-context/resistor|resistor]] has Z = R at all frequencies with zero phase shift.
 
 - **[[quick-context/pcb-printed-circuit-board]]** — At high frequencies, PCB traces behave as transmission lines with characteristic impedance. Controlled-impedance routing (50Ω, 100Ω differential) is essential for signal integrity.
 
@@ -211,7 +211,7 @@ RC LOW-PASS FILTER
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A 1μF capacitor is in an AC circuit at 1 kHz. What is its reactance?
+**Q1:** A 1μF [[quick-context/capacitor|capacitor]] is in an AC circuit at 1 kHz. What is its reactance?
 <details>
 <summary>Answer</summary>
 **159Ω.** Xc = 1/(2πfC) = 1/(2π × 1000 × 1×10⁻⁶) = 159Ω. At 10 kHz, it would be 15.9Ω. At 100 Hz, it would be 1590Ω. The reactance scales inversely with frequency.
@@ -220,7 +220,7 @@ RC LOW-PASS FILTER
 **Q2:** Why does "ELI the ICE man" help remember phase relationships?
 <details>
 <summary>Answer</summary>
-**ELI: in an inductor (L), voltage (E) leads current (I). ICE: in a capacitor (C), current (I) leads voltage (E).** This comes directly from the fundamental equations: V = L×dI/dt means voltage is proportional to the rate of current change (peaks earlier), and I = C×dV/dt means current is proportional to the rate of voltage change (peaks earlier).
+**ELI: in an [[quick-context/inductor|inductor]] (L), voltage (E) leads current (I). ICE: in a capacitor (C), current (I) leads voltage (E).** This comes directly from the fundamental equations: V = L×dI/dt means voltage is proportional to the rate of current change (peaks earlier), and I = C×dV/dt means current is proportional to the rate of voltage change (peaks earlier).
 </details>
 
 **Q3:** A series circuit has R = 100Ω and Xc = 100Ω. What is the magnitude of the total impedance?
@@ -235,7 +235,7 @@ RC LOW-PASS FILTER
 **At high frequencies, PCB traces act as transmission lines.** If the trace impedance doesn't match the driver and receiver impedance, signals reflect back and forth, causing ringing, overshoot, and data errors. A 1 GHz signal has wavelengths comparable to PCB trace lengths (~15 cm), so wave effects dominate. Matching impedances (typically 50Ω single-ended or 100Ω differential) eliminates reflections.
 </details>
 
-**Q5:** A decoupling capacitor has 1.6Ω of reactance at 1 MHz. Is it doing its job?
+**Q5:** A [[micro-context/decoupling-capacitor|decoupling capacitor]] has 1.6Ω of reactance at 1 MHz. Is it doing its job?
 <details>
 <summary>Answer</summary>
 **Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the capacitor provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.

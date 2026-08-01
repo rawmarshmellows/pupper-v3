@@ -5,6 +5,7 @@ created: 2026-04-17
 
 # Short Circuit
 
+> **Related:** [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pwm-controller-circuit]]
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]
 
 **Definition:** An unintended low-resistance path between two points in a circuit (typically power and ground) that bypasses the intended load. By [[learning/notes/quick-context/voltage-current-causality|Ohm's law]] $I = V/R$, near-zero resistance produces a near-infinite current surge.

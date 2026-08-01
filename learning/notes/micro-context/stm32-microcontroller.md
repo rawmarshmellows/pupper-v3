@@ -6,15 +6,16 @@ updated: 2026-04-05
 
 # STM32 Microcontroller
 
+> **Related:** [[micro-context/microcontroller]]
 > **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
 
-**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom PCB. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], USART, and USB.
+**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom [[quick-context/pcb-printed-circuit-board|PCB]]. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], USART, and USB.
 
 ## How It Works
 
-- The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in SRAM.
-- Built-in hardware peripherals (CAN, SPI, I2C, USART, ADC, PWM timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
-- Firmware runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
+- The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in [[micro-context/sram|SRAM]].
+- Built-in hardware peripherals (CAN, [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], USART, [[micro-context/adc-analog-to-digital-converter|ADC]], [[micro-context/pwm-pulse-width-modulation|PWM]] timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
+- [[quick-context/firmware|Firmware]] runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
 
 ```
 STM32 MICROCONTROLLER BLOCK DIAGRAM:
@@ -37,7 +38,7 @@ STM32 MICROCONTROLLER BLOCK DIAGRAM:
 
 ## Programming & Debug Interface
 
-The Pupper PCB has two STM32 MCUs, each with a 7-pin JST SH connector (CN1) exposing the SWD debug/programming interface plus serial. You flash firmware using an **ST-Link V2** programmer.
+The Pupper [[quick-context/pcb-printed-circuit-board|PCB]] has two STM32 MCUs, each with a 7-pin JST SH connector (CN1) exposing the [[micro-context/swd-serial-wire-debug|SWD]] debug/programming interface plus serial. You flash [[quick-context/firmware|firmware]] using an **ST-Link V2** programmer.
 
 ### 7-Pin Connector Pinout
 
@@ -53,12 +54,12 @@ The Pupper PCB has two STM32 MCUs, each with a 7-pin JST SH connector (CN1) expo
 
 | Pin | Name     | Full Name                        | What It Does                                                     |
 |-----|----------|----------------------------------|------------------------------------------------------------------|
-| 1   | TCK      | Test Clock                       | Clock signal for the SWD/JTAG debug interface (= SWCLK on ST-Link) |
+| 1   | TCK      | Test Clock                       | Clock signal for the [[micro-context/swd-serial-wire-debug|SWD]]/JTAG debug interface (= SWCLK on ST-Link) |
 | 2   | TMS      | Test Mode Select                 | Bidirectional data line for SWD (= SWDIO on ST-Link)            |
 | 3   | NRST     | Negative Reset (active-low)      | Resets the MCU when pulled low; the programmer can force a reset |
 | 4   | USART TX | USART Transmit                   | Serial output from MCU — for debug logging or communication     |
 | 5   | USART RX | USART Receive                    | Serial input to MCU — for receiving commands or data             |
-| 6   | VCC      | Voltage Common Collector         | Positive supply voltage (3.3V) — powers the MCU and provides voltage reference to programmer |
+| 6   | VCC      | [[quick-context/voltage|Voltage]] Common Collector         | Positive supply [[quick-context/voltage|voltage]] (3.3V) — powers the MCU and provides voltage reference to programmer |
 | 7   | GND      | Ground                           | 0V reference — completes the circuit                             |
 
 ### Programming with ST-Link V2

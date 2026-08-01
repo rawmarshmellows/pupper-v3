@@ -5,7 +5,7 @@ created: 2026-02-14
 
 # Why Current Through a Coil Creates a Magnetic Field
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
+> **Related:** [[quick-context/electric-magnetic-field-unification]] | [[micro-context/ac-dc-current]] | [[micro-context/current-electrons-per-second]] | [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/current-mirror]]
 
 > **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 
@@ -28,7 +28,7 @@ You've wrapped wire into a coil and run [[quick-context/electric-current|current
 
 ## The Fundamental Fact: Moving Charges Create Magnetic Fields
 
-This isn't derived from something more basic—it's a law of nature. Experiments show it. Maxwell's equations encode it. Special relativity explains it as a consequence of how electric fields transform between reference frames. But at the practical level: **any moving electric charge creates a magnetic field that circles around its direction of motion.**
+This isn't derived from something more basic—it's a law of nature. Experiments show it. [[quick-context/maxwell-equations|Maxwell's equations]] encode it. Special relativity explains it as a consequence of how electric fields transform between reference frames. But at the practical level: **any moving electric charge creates a magnetic field that circles around its direction of motion.**
 
 ```
 WHY MOVING CHARGES CREATE MAGNETIC FIELDS — The Deep Answer
@@ -499,7 +499,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 
@@ -633,16 +633,16 @@ FINAL DESIGN:
     └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed voltage supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
+**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed [[quick-context/voltage|voltage]] supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; electromagnetism covers the universal principles.
+- **[[quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; [[quick-context/electromagnetism|electromagnetism]] covers the universal principles.
 
-- **[[quick-context/inductor]]** — An inductor is a coil designed to store energy in its magnetic field. The inductor equation V = L×dI/dt comes directly from how changing current changes the magnetic flux through the coil (Faraday's Law).
+- **[[quick-context/inductor]]** — An [[quick-context/inductor|inductor]] is a coil designed to store energy in its magnetic field. The [[quick-context/inductor|inductor]] equation V = L×dI/dt comes directly from how changing current changes the magnetic flux through the coil (Faraday's Law).
 
 - **[[quick-context/electric-current]]** — Current is moving charge, and moving charge is what creates the magnetic field. Understanding current as "coulombs per second" connects to calculating the field strength.
 
@@ -656,7 +656,7 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the [[quick-context/faraday-tensor|Faraday tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the [[quick-context/tensor|tensor]] transforms correctly between frames.
 
 </details>
 

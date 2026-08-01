@@ -1,6 +1,7 @@
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
+> **Related:** [[quick-context/existing-account-management-playbook]] | [[quick-context/post-sale-account-engagement]] | [[quick-context/sandler-kare-segmentation]]
+> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, [[quick-context/mcdonald-kam-model|McDonald KAM Model]], Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
 
@@ -232,7 +233,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
@@ -440,7 +441,7 @@ Anticipate pushback scenarios:
 |---|---|
 | "What motion am I running?" (Defend/Hunt/Re-engage/Grow) | KARE Segmentation |
 | "How much CSM investment for this customer?" | Value/Potential Matrix |
-| "Where does this relationship stand?" | McDonald KAM Model |
+| "Where does this relationship stand?" | [[quick-context/mcdonald-kam-model|McDonald KAM Model]] |
 | "Who should I be talking to?" | Miller Heiman LAMP |
 | "What are we trying to achieve?" | LAMP Charter Statement |
 | "How should I structure this conversation?" | Challenger |
