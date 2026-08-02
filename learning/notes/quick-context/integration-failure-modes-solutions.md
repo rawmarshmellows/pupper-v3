@@ -157,7 +157,7 @@ The architectural patterns exist on a spectrum, and knowing where your applicati
 
 ## ROS2 Approaches to These Failure Modes
 
-ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
+[[quick-context/ros2-architecture|ROS2]] brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
 
 **Deadlock: DDS QoS Liveliness + Deadline Policies**
 

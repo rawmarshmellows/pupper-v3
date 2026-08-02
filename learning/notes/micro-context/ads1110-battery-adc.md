@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/resistor]] | [[quick-context/voltage]] | [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/i2c]] | [[micro-context/stm32-microcontroller]]
+
 # ADS1110 (Battery Voltage ADC)
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]

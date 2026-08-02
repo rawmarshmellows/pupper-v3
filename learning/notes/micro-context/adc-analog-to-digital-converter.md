@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/voltage]] | [[micro-context/ads1110-battery-adc]]
+
 # ADC (Analog-to-Digital Converter)
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]

@@ -3,6 +3,8 @@ term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/comparator]] | [[quick-context/differential-pair]] | [[quick-context/voltage]] | [[quick-context/op-amp]]
+
 # Open-Loop Voltage Gain ($A_V$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]

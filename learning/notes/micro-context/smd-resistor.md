@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/buck-converter]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/soldering]] | [[quick-context/voltage]]
+
 # SMD Resistor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
@@ -12,7 +14,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for soldering.
+- A thin film or thick film of resistive material is deposited on a ceramic [[quick-context/substrate-ic-packaging|substrate]], with metal terminations on each end for soldering.
 - Current flowing through the resistive film converts electrical energy to heat according to $P = I^2R$.
 - The resistance value is set during manufacturing by the film's composition, thickness, and laser-trimmed geometry.
 

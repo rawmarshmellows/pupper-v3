@@ -3,6 +3,8 @@ term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
 
+> **Related:** [[micro-context/tail-current]] | [[quick-context/comparator]] | [[quick-context/op-amp]]
+
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]

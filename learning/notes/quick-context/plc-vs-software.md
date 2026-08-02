@@ -105,7 +105,7 @@ The Python version:
 
 - **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
 - **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + [[quick-context/ros2-architecture|ROS2]], including production hardware and real factory deployments
 - **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
 - **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
 

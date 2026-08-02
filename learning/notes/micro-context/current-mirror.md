@@ -3,6 +3,8 @@ term: Current Mirror
 created: 2026-04-02
 ---
 
+> **Related:** [[micro-context/tail-current]] | [[quick-context/diode]] | [[quick-context/resistor]] | [[quick-context/transistor]] | [[quick-context/voltage]]
+
 # Current Mirror
 
 **Definition:** A circuit that copies a reference current from one transistor to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in differential pairs.

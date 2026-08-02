@@ -15,7 +15,7 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 [[micro-context/microcontroller|microcontroller]] @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
 | **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
 | **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
 | **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
@@ -177,7 +177,7 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 <details>
 <summary>Answer</summary>
 
-These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
+These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing [[quick-context/voltage|voltage]] dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
 **Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?

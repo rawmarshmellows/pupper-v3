@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/clock-speed-vs-temperature]] | [[micro-context/clock-speed]] | [[quick-context/transistor]] | [[quick-context/clock-sources-and-timing]]
+
 # Thermal Runaway
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[micro-context/clock-speed-vs-temperature]]

@@ -115,7 +115,7 @@ VISUALIZING MULTIPLE CATIONS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force (voltage) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
+The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force ([[quick-context/voltage|voltage]]) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
 
 </details>
 

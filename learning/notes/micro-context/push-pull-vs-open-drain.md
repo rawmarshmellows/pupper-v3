@@ -4,6 +4,8 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
+> **Related:** [[quick-context/comparator]] | [[quick-context/resistor]] | [[quick-context/transistor]] | [[quick-context/voltage]] | [[micro-context/mosfet]]
+
 # Push-Pull vs Open-Collector / Open-Drain
 
 ## Human notes

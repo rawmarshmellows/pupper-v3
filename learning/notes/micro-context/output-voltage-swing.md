@@ -3,6 +3,8 @@ term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/comparator]] | [[quick-context/voltage]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/op-amp]]
+
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]

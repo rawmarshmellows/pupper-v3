@@ -4,6 +4,8 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/esp32]] | [[micro-context/stm32-microcontroller]] | [[quick-context/embedded-communication-protocols]] | [[micro-context/can-bus-transceiver]] | [[micro-context/ceramic-resonator]]
+
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]
