@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-06-08
 ---
 
+> **Related:** [[quick-context/diode]] | [[quick-context/transistor]] | [[quick-context/capacitor]] | [[quick-context/doped-silicon]] | [[quick-context/voltage]]
+
 # MOSFET
 
 > **See also:** [[quick-context/transistor]]
@@ -62,7 +64,7 @@ Once charged, the gate charge stays put for **two reasons working together**:
 
 The tiny pA leakage is exactly the small failure of "no road out": a few electrons *tunnel* through the wall (worse the thinner the oxide), plus a trickle sneaks around it via reverse-biased junctions and PCB surface paths.
 
-> **Tie-in — flash / EEPROM:** a *floating* gate (no wire at all) holds its charge for years on this same principle. It uses a **thicker** oxide so even tunneling is negligible → the stored bit survives a decade. A logic MOSFET uses a thin oxide for speed, so it leaks a little more.
+> **Tie-in — flash / [[micro-context/eeprom|EEPROM]]:** a *floating* gate (no wire at all) holds its charge for years on this same principle. It uses a **thicker** oxide so even tunneling is negligible → the stored bit survives a decade. A logic MOSFET uses a thin oxide for speed, so it leaks a little more.
 
 ## Turning It On and Off — the Gate Driver
 

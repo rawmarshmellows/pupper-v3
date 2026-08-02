@@ -6,13 +6,13 @@ updated: 2026-02-25
 
 > **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, voltage protection, and light emission (LEDs).
+> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, [[quick-context/voltage|voltage]] protection, and light emission (LEDs).
 
 # Diode
 
 ## Human notes
 
-The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
+The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the [[micro-context/cathode|cathode]] (at the switch node) drops below the [[micro-context/anode|anode]] (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the [[micro-context/mosfet|MOSFET]] turns off.
 
 ## The Core Problem: Making Current Flow Only One Way
 
@@ -221,7 +221,7 @@ BRIDGE RECTIFIER CIRCUIT
 
 - **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/reverse bias, half-wave vs full-bridge rectification, smoothing capacitors, and the complete conversion chain inside every power supply.
 
-- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on capacitance, load current, and frequency.
+- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on [[quick-context/capacitance|capacitance]], load current, and frequency.
 
 - **[[quick-context/resistor]]** — LEDs always need a current-limiting resistor (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
 

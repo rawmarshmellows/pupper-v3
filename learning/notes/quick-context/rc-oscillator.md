@@ -17,10 +17,10 @@ Many circuits need a periodic signal -- a clock, a ramp, a trigger -- but don't 
 
 | Term | Definition |
 |------|------------|
-| **RC Time Constant ($\tau = RC$)** | The time it takes a [[quick-context/capacitor\|capacitor]] charging through a [[quick-context/resistor\|resistor]] to reach ~63% of its final voltage. This is the fundamental timing element -- $R$ and $C$ values set the oscillation frequency. |
+| **RC Time Constant ($\tau = RC$)** | The time it takes a [[quick-context/capacitor\|capacitor]] charging through a [[quick-context/resistor\|resistor]] to reach ~63% of its final [[quick-context/voltage|voltage]]. This is the fundamental timing element -- $R$ and $C$ values set the oscillation frequency. |
 | **Threshold / Trip Point** | A voltage level (set by a [[quick-context/comparator\|comparator]] or [[quick-context/transistor\|transistor]] switch) at which the circuit changes state -- triggering a reset, discharge, or direction change in the waveform. |
 | **Sawtooth Wave** | A waveform that ramps linearly from low to high, then snaps back to zero. Produced when a constant current charges a capacitor, then a switch discharges it instantly. This is the waveform inside [[quick-context/pwm-controller-circuit\|PWM controller ICs]]. |
-| **Relaxation Oscillator** | The general class of oscillator that works by charging a capacitor to a threshold, then rapidly discharging it and repeating. The 555 timer and the sawtooth generator inside buck converter ICs are both relaxation oscillators. |
+| **Relaxation Oscillator** | The general class of oscillator that works by charging a capacitor to a threshold, then rapidly discharging it and repeating. The 555 timer and the sawtooth generator inside [[micro-context/buck-converter|buck converter]] ICs are both relaxation oscillators. |
 | **Frequency Accuracy** | How close the actual output frequency is to the target. RC oscillators are typically ±1-5% due to component tolerances and temperature drift, vs. ±0.002% for [[micro-context/crystal-oscillator\|crystals]] and ±0.5% for [[micro-context/ceramic-resonator\|ceramic resonators]]. |
 
 <details>
@@ -186,7 +186,7 @@ The core tradeoff is between frequency precision and the ability to integrate ev
 | **Cost** | Free (built into IC) | ~$0.10-0.30 | ~$0.20-1.00 + caps |
 | **Board space** | Zero | Small | Medium |
 | **Startup time** | Microseconds | ~0.1-0.5 ms | ~1-10 ms |
-| **Good enough for** | PWM switching, fallback clock, timing delays | CAN, UART, I2C, SPI | USB, Ethernet, RF, precision timing |
+| **Good enough for** | PWM switching, fallback clock, timing delays | CAN, [[quick-context/uart|UART]], I2C, SPI | USB, Ethernet, RF, precision timing |
 
 **When RC is fine:**
 - [[quick-context/pwm-controller-circuit|PWM controllers]] in buck converters -- the feedback loop compensates for switching frequency drift. Whether it's 480 kHz or 520 kHz, the output voltage is the same.
@@ -299,7 +299,7 @@ An RC oscillator's frequency depends on resistor and capacitor values, which dri
 **Q2:** A buck converter IC has an internal oscillator running at 500 kHz ±5%. Does this 5% frequency error affect the output voltage?
 <details>
 <summary>Answer</summary>
-**No.** The output voltage is set by the feedback loop, not the switching frequency. If the oscillator runs at 475 kHz instead of 500 kHz, the error amplifier simply adjusts the duty cycle to maintain $V_{OUT} = V_{IN} \times D$. The frequency changes how often the MOSFET switches, but the feedback loop ensures the correct duty cycle regardless. This is exactly why an RC oscillator is "good enough" for PWM controllers. See: The Key Tension.
+**No.** The output voltage is set by the feedback loop, not the switching frequency. If the oscillator runs at 475 kHz instead of 500 kHz, the error amplifier simply adjusts the duty cycle to maintain $V_{OUT} = V_{IN} \times D$. The frequency changes how often the [[micro-context/mosfet|MOSFET]] switches, but the feedback loop ensures the correct duty cycle regardless. This is exactly why an RC oscillator is "good enough" for PWM controllers. See: The Key Tension.
 </details>
 
 **Q3:** You want to build a 555 timer oscillator at 10 kHz with C = 10 nF. What values of R1 and R2 should you choose?

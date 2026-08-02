@@ -7,7 +7,7 @@ created: 2026-03-27
 
 > **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
+> **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output [[quick-context/voltage|voltage]] to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
 ## The Core Problem
 
@@ -83,7 +83,7 @@ $$V_{FB} = V_{OUT} \times \frac{R_2}{R_1 + R_2} \quad \xrightarrow{\text{IC regu
 
 **Step 3 — Comparator intersects ramp and error.** The comparator outputs HIGH when $V_{ERR} > V_{RAMP}$ and LOW when $V_{ERR} < V_{RAMP}$. Because the ramp is a linearly rising signal, a higher $V_{ERR}$ means the ramp takes longer to "catch up" — producing a wider pulse (longer ON time, higher [[micro-context/pwm-pulse-width-modulation|duty cycle]]).
 
-**Step 4 — Gate driver amplifies the pulse.** The comparator output is a weak logic signal. The gate driver (a push-pull buffer) amplifies it to charge/discharge the [[micro-context/mosfet|MOSFET]] gate capacitance fast enough for clean switching transitions (nanoseconds).
+**Step 4 — Gate driver amplifies the pulse.** The comparator output is a weak logic signal. The gate driver (a push-pull buffer) amplifies it to charge/discharge the [[micro-context/mosfet|MOSFET]] gate [[quick-context/capacitance|capacitance]] fast enough for clean switching transitions (nanoseconds).
 
 ### The Comparator Intersection — This IS How PWM Width Is Set
 
@@ -230,7 +230,7 @@ The TPS54561 at **U8** on the Pupper v3 control board is exactly this circuit in
 | R1 (top of feedback divider) | **R5** — 60.4kΩ (E96) |
 | R2 (bottom of feedback divider) | **R6** — 11.5kΩ (E96) |
 | External inductor | **L1** — 10µH |
-| Catch/freewheeling diode | **D1** — SS56 Schottky |
+| Catch/freewheeling [[quick-context/diode|diode]] | **D1** — SS56 Schottky |
 | Output caps | **C18, C19** — 2× 47µF |
 
 $V_{OUT} = 0.8\text{V} \times (1 + 60.4\text{k}/11.5\text{k}) \approx 5.0\text{V}$. R5 and R6 aren't some separate "PWM-setting" resistors — they are literally the feedback divider that programs the setpoint of the analog loop inside U8. The PWM itself never leaves U8; the only externally visible power-loop signals are SW (switching node, at L1), FB (the divider midpoint), and VOUT.

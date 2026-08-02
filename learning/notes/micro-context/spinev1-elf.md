@@ -4,6 +4,8 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/st-link-v2-programmer]] | [[quick-context/firmware]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/can-bus]]
+
 # SPIneV1.elf
 
 **Definition:** The compiled firmware binary for the Pupper v3's motor control [[micro-context/stm32-microcontroller|STM32F446]] (U5). It receives joint angle targets from the main MCU (U1) over [[micro-context/spi|SPI]], translates them into [[micro-context/can-bus-transceiver|CAN bus]] messages, and sends position commands to all 12 servo motors at 1 kHz. The name "SPIne" likely reflects SPI + CAN interface (the "spine" connecting brain to legs).

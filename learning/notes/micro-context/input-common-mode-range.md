@@ -3,6 +3,8 @@ term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/comparator]] | [[quick-context/differential-pair]] | [[quick-context/voltage]] | [[quick-context/comparator-specification]] | [[quick-context/op-amp]]
+
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]

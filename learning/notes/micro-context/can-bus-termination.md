@@ -3,6 +3,8 @@ term: CAN Bus Termination
 created: 2026-03-27
 ---
 
+> **Related:** [[quick-context/can-bus]] | [[quick-context/differential-pair]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/resistor]] | [[quick-context/voltage]]
+
 # CAN Bus Termination
 
 > **See also:** [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]

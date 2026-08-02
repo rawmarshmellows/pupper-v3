@@ -3,6 +3,8 @@ term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
 
+> **Related:** [[micro-context/microcontroller]] | [[micro-context/stm32-microcontroller]] | [[quick-context/ros2-architecture]] | [[quick-context/substrate-ic-packaging]]
+
 # PLC (Programmable Logic Controller)
 
 > **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]

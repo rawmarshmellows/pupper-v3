@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/cnc-machining]] | [[quick-context/electrolysis]] | [[quick-context/voltage]] | [[micro-context/cnc-process-selection]] | [[quick-context/electrodes]]
+
 # EDM Machining (Electrical Discharge Machining)
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/electrolysis]] | [[quick-context/electrodes]]

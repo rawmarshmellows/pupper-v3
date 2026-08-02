@@ -5,13 +5,13 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
+> **TL;DR:** Pure water is almost a perfect insulator - you must add an [[quick-context/electrolyte|electrolyte]] (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
 
 # How to Make an Electrolyte (Acid, Base, or Salt)
 
 ## The Core Problem: Pure Water Does Not Conduct Electricity
 
-Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply voltage, almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
+Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply [[quick-context/voltage|voltage]], almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
 
 ## 5 Essential Terms
 
@@ -397,7 +397,7 @@ SOLUTION: Remove the water entirely
 
 - **[[quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding electrolysis explains WHY you need electrolytes and what happens at the electrodes once current flows.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. covalent bonds helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
+- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. [[quick-context/covalent-bonds|covalent bonds]] helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
 
 - **pH and Acid-Base Chemistry** — Acids and bases are defined by whether they release H⁺ or OH⁻ ions. The pH scale measures this ion concentration, which directly affects conductivity.
 

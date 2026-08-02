@@ -27,7 +27,7 @@ Every power plant, battery, and solar panel is fundamentally an energy converter
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |

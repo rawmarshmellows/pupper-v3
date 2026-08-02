@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/capacitance]] | [[micro-context/ads1110-battery-adc]] | [[micro-context/stm32-microcontroller]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
+
 # I2C
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
