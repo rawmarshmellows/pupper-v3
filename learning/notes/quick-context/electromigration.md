@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -28,7 +28,7 @@ When [[quick-context/electric-current|current flows through a wire]], it's not j
 
 ### The Physics: Momentum Transfer at the Atomic Level
 
-When electrons flow through a metal, they scatter off the lattice of metal atoms. Each scattering event transfers momentum from the electron to the atom. In equilibrium, these momentum transfers average out in all directions—no net force. But when there's a net electron flow (current), there's a net momentum transfer in the direction of electron flow. This is the "electron wind."
+When electrons flow through a metal, they scatter off the lattice of metal atoms. Each scattering event transfers momentum from the electron to the atom. In equilibrium, these momentum transfers average out in all directions—no net force. But when there's a net [[learning/notes/quick-context/electrodes|electron flow]] (current), there's a net momentum transfer in the direction of electron flow. This is the "electron wind."
 
 ```
 THE ELECTRON WIND MECHANISM
@@ -252,7 +252,7 @@ THE TRADEOFF MAP:
 | Debate | Trade-off |
 |--------|-----------|
 | Wire material | Copper (better conductivity) vs. Cobalt/Ruthenium (better EM resistance at thin dimensions) |
-| Barrier layers | Thicker barriers (better EM protection) vs. thinner barriers (more copper, lower resistance) |
+| Barrier layers | Thicker barriers (better EM protection) vs. thinner barriers (more copper, [[learning/notes/quick-context/pcb-printed-circuit-board|lower resistance]]) |
 | Redundant wiring | Multiple parallel paths (EM-safe) vs. single wires (area-efficient) |
 | Current limits | Conservative limits (reliable) vs. aggressive limits (faster, smaller chips) |
 | Operating temperature | Higher temp (cheaper cooling) vs. lower temp (longer lifetime) |
@@ -352,7 +352,7 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
@@ -372,7 +372,7 @@ The electron wind is the net momentum transfer from flowing electrons to metal a
 **Q2:** Why does electromigration cause both voids AND hillocks, and why are both failure modes?
 <details>
 <summary>Answer</summary>
-Electron wind pushes atoms in the direction of electron flow (opposite to conventional current). Atoms leave upstream regions (creating voids) and accumulate downstream (creating hillocks). Voids are dangerous because they reduce wire cross-section, increasing resistance and current density in remaining material—a positive feedback loop leading to open-circuit failure. Hillocks are dangerous because they can grow tall enough to short-circuit to neighboring wires, causing unexpected current paths. See: How It Works - Void and Hillock Formation diagram.
+Electron wind pushes atoms in the direction of electron flow (opposite to conventional current). Atoms leave upstream regions (creating voids) and accumulate downstream (creating hillocks). Voids are dangerous because they reduce wire cross-section, increasing resistance and current density in remaining material—a [[learning/notes/quick-context/pupper-lab7-vision-tracking|positive feedback]] loop leading to open-circuit failure. Hillocks are dangerous because they can grow tall enough to short-circuit to neighboring wires, causing unexpected current paths. See: How It Works - Void and Hillock Formation diagram.
 </details>
 
 **Q3:** A chip designer wants to double the current through a wire. What are three ways they could maintain the same electromigration lifetime?
@@ -390,7 +390,7 @@ Temperature affects electromigration rate but doesn't eliminate it. The exponent
 **Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
-The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
+The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new [[learning/notes/quick-context/silicon-die|process node]] requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
 </details>
 
 </details>

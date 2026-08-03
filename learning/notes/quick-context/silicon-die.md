@@ -3,7 +3,7 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/cnc-process-selection]]
 
 > **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
@@ -30,13 +30,13 @@ From Sand to Thinking Stone
 
 A silicon die is manufactured through a process that's essentially "printing" circuits onto ultra-pure silicon. Here's the journey:
 
-**Step 1: Start with sand.** Silicon (Si) is extracted from quartz sand and purified to 99.9999999% purity—one of the purest materials humans manufacture. This is melted and grown into a single crystal ingot.
+**Step 1: Start with sand.** [[learning/notes/quick-context/doped-silicon|Silicon (Si)]] is extracted from quartz sand and purified to 99.9999999% purity—one of the purest materials humans manufacture. This is melted and grown into a single crystal ingot.
 
 **Step 2: Slice into wafers.** The crystal ingot is sliced into thin discs called wafers (about 0.75mm thick, 300mm diameter). Each wafer will become hundreds of dies.
 
 **Step 3: Print the transistors.** Using photolithography (like darkroom photography, but with UV light and masks), patterns are projected onto the wafer. Chemicals are deposited and etched away, building up transistor structures atom-layer by atom-layer. This repeats hundreds of times.
 
-**Step 4: Add metal wiring.** After transistors are complete, copper wiring layers are added on top—typically 10-15 layers of microscopic metal lines connecting the transistors together.
+**Step 4: Add metal wiring.** After transistors are complete, copper wiring layers are added [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]]—typically 10-15 layers of microscopic metal lines connecting the transistors together.
 
 **Step 5: Cut into dies.** The finished wafer is cut (diced) along grid lines into individual dies. Each die is a complete chip.
 
@@ -219,9 +219,9 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a [[learning/notes/quick-context/fundamental-electronic-parts-index|packaging hierarchy]] that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
 
 - **[[quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
 
@@ -263,7 +263,7 @@ They didn't receive a "chip" in the sense of the silicon die—they received a *
 **Q5:** Given that transistors are at the *top* surface of the silicon (not distributed throughout), and that heat must escape through the package, what design challenge does this create for high-performance dies, and how might it relate to why modern chips have features like "efficiency cores"?
 <details>
 <summary>Answer</summary>
-Since billions of transistors concentrate their heat generation at the top surface of a thin layer, and that heat must conduct through the silicon bulk and then through the package to a heatsink, there's a severe thermal bottleneck. High-performance cores running at maximum speed generate intense, localized heat that can't dissipate fast enough, leading to thermal throttling. "Efficiency cores" help by providing lower-power alternatives for light workloads, allowing the chip to avoid constantly running power-hungry cores. This is part of why simply "making bigger dies" doesn't scale—you can't cool them effectively. See: Cross-section diagram (transistors at top), The Key Tension (harder to cool larger dies), and the Apple M2 example (performance vs. efficiency cores).
+Since billions of transistors concentrate their [[learning/notes/quick-context/electric-current|heat generation]] at the top surface of a thin layer, and that heat must conduct through the silicon bulk and then through the package to a heatsink, there's a severe thermal bottleneck. High-performance cores running at maximum speed generate intense, localized heat that can't dissipate fast enough, leading to thermal throttling. "Efficiency cores" help by providing lower-power alternatives for light workloads, allowing the chip to avoid constantly running power-hungry cores. This is part of why simply "making bigger dies" doesn't scale—you can't cool them effectively. See: Cross-section diagram (transistors at top), The Key Tension (harder to cool larger dies), and the Apple M2 example (performance vs. efficiency cores).
 </details>
 
 </details>

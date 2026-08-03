@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Sandler KARE Account Segmentation
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), Recapture (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
 
@@ -18,10 +18,10 @@ Every sales rep has finite hours. Treating all accounts equally means under-inve
 | Term | Definition |
 |------|------------|
 | **Keep** | Core accounts generating reliable revenue that must be protected from churn or competitive displacement |
-| **Attain** | Net-new logos and greenfield accounts that represent growth beyond the existing customer base |
-| **Recapture** | Former customers or lost opportunities that warrant re-engagement based on changed circumstances |
-| **Expand** | Existing customers with [[quick-context/whitespace-mapping|whitespace]]—additional products, users, departments, or use cases to sell into |
-| **Portfolio Velocity** | The concept that accounts should move between KARE categories over time as relationships evolve |
+| **[[learning/notes/quick-context/existing-account-management-playbook|Attain]]** | Net-new logos and greenfield accounts that represent [[learning/notes/quick-context/existing-account-management-playbook|growth]] beyond the existing customer base |
+| **[[learning/notes/quick-context/existing-account-management-playbook|Recapture]]** | Former customers or lost opportunities that warrant re-engagement based on changed circumstances |
+| **[[learning/notes/quick-context/existing-account-management-playbook|Expand]]** | Existing customers with [[quick-context/whitespace-mapping|whitespace]]—additional products, users, departments, or use cases to sell into |
+| **Portfolio Velocity** | The concept that accounts should move between [[learning/notes/quick-context/playbook-main|KARE]] categories over time as relationships evolve |
 
 <details>
 <summary><strong>How It Works</strong> — Categorizing and actioning your account base</summary>
@@ -172,9 +172,9 @@ Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the account planning framework for KEEP and EXPAND accounts
+- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the [[learning/notes/quick-context/sales-methodology-layering|account planning framework]] for KEEP and [[learning/notes/quick-context/playbook-main|EXPAND accounts]]
 - **[[quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; MEDDPICC qualifies specific opportunities within those accounts
-- **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model helps understand where KEEP vs. EXPAND accounts stand
+- **[[quick-context/mcdonald-kam-model]]** — McDonald's [[learning/notes/quick-context/mcdonald-kam-model|relationship maturity]] model helps understand where KEEP vs. EXPAND accounts stand
 - **Territory Management** — The broader discipline of dividing accounts across reps; KARE informs territory strategy
 - **Net Revenue Retention (NRR)** — The SaaS metric that makes EXPAND strategy visible; companies with NRR >110% are essentially KARE-optimized
 - **[[quick-context/whitespace-mapping]]** — The visual tool for identifying exactly where EXPAND opportunities exist within accounts
@@ -187,7 +187,7 @@ Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 **Q1:** What's the difference between a KEEP account and an EXPAND account?
 <details>
 <summary>Answer</summary>
-KEEP accounts are at or near full usage with no major expansion path—the goal is protecting existing revenue. EXPAND accounts are existing customers with whitespace (new departments, products, users) representing growth opportunities. The difference is potential: KEEP is defensive, EXPAND is offensive. See: 5 Essential Terms.
+[[learning/notes/quick-context/playbook-main|KEEP accounts]] are at or near full usage with no major expansion path—the goal is protecting existing revenue. EXPAND accounts are existing customers with whitespace (new departments, products, users) representing growth opportunities. The difference is potential: KEEP is defensive, EXPAND is offensive. See: 5 Essential Terms.
 </details>
 
 **Q2:** Why should RECAPTURE typically get the smallest time allocation?

@@ -3,7 +3,7 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/sil-rated-safety-functions]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -13,7 +13,7 @@ created: 2026-01-14
 
 A **Programmable Logic Controller (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
 
-Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The failure mode isn't "restart the app"—it's "call the coroner."
+Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The [[learning/notes/quick-context/pupper-lab5-neural-controller|failure mode]] isn't "restart the app"—it's "call the coroner."
 
 ## 5 Essential Terms
 
@@ -47,7 +47,7 @@ The PLC executes in a **scan cycle**: read all inputs, execute all logic top-to-
 Modern PLCs support IEC 61131-3 languages:
 - **Ladder Logic** - Visual, looks like relay circuits
 - **Structured Text (ST)** - Looks like Pascal, closest to "real programming"
-- **Function Block Diagram (FBD)** - Visual dataflow
+- **[[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Function]] Block Diagram (FBD)** - Visual dataflow
 
 The key difference from software: a PLC doesn't "crash" in the traditional sense. If the program has a bug, the scan cycle still runs. If hardware fails, the system goes to a defined fail-safe state. There's no blue screen, no segfault, no "application not responding."
 
@@ -105,8 +105,8 @@ The Python version:
 
 - **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
 - **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
-- **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + [[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]], including production hardware and real factory deployments
+- **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|safety-critical functions]]
 - **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
 
 </details>
@@ -123,13 +123,13 @@ Ladder logic was designed for electricians who understood relay circuits, not pr
 **Q2:** What happens if a PLC program has an infinite loop?
 <details>
 <summary>Answer</summary>
-The PLC's watchdog timer detects that the scan cycle exceeded its maximum allowed time and forces the system into a fail-safe state (usually stopping all outputs). Unlike a computer that would freeze, the PLC has hardware-level protection against runaway code. This is why scan cycle time is monitored and bounded.
+The PLC's [[learning/notes/quick-context/integration-failure-modes-solutions|watchdog timer]] detects that the scan cycle exceeded its maximum allowed time and forces the system into a fail-safe state (usually stopping all outputs). Unlike a computer that would freeze, the PLC has hardware-level protection against runaway code. This is why scan cycle time is monitored and bounded.
 </details>
 
 **Q3:** Why can't you just run PLC logic on a Raspberry Pi with careful programming?
 <details>
 <summary>Answer</summary>
-Three reasons: (1) Linux on a Pi has non-deterministic timing—garbage collection, kernel interrupts, or SD card writes can cause multi-millisecond delays. (2) A Pi lacks the electrical hardening (noise immunity, wide temperature range, vibration resistance) for industrial environments. (3) No safety certification—regulators won't accept it for safety-critical functions regardless of how well it works in testing.
+Three reasons: (1) Linux on a Pi has non-deterministic timing—garbage collection, kernel interrupts, or SD card writes can cause multi-millisecond delays. (2) A Pi lacks the electrical hardening ([[learning/notes/quick-context/embedded-communication-protocols|noise immunity]], wide temperature range, vibration resistance) for industrial environments. (3) No safety certification—regulators won't accept it for safety-critical functions regardless of how well it works in testing.
 </details>
 
 **Q4:** What is the scan cycle, and why is its predictability important?

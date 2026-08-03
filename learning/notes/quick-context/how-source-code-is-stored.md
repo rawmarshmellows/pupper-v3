@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 
-> **Related:** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/cnc-process-selection]]
 
 > **TL;DR:** A source file like `hello.py` is not magic — it is plain **text**, a sequence of characters. Each character is turned into one or more **bytes** by an **encoding** (ASCII for the basics, UTF-8 in practice), and those bytes are stored exactly like any other data: as numbers in addressable memory (a file on disk/flash, copied into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] when you open it). The big idea is **code is data** — the same bytes-in-memory mechanism holds your text, the compiled artifact, and the final machine code. Nothing about the bytes themselves makes them "code"; that depends only on how they are later interpreted or executed.
 
@@ -21,7 +21,7 @@ Before a single thing gets *compiled* or *run*, your program has to *exist somew
 | **Byte** | A group of 8 bits, holding a number from 0 to 255 (`0x00`–`0xFF`). The smallest unit memory and disks address. Everything stored is ultimately a string of bytes. |
 | **Encoding** | The agreed-upon lookup table that maps each character to one or more byte values (and back). **ASCII** covers the basic 128 symbols in 1 byte each; **UTF-8** extends this to every Unicode character using 1–4 bytes, while staying byte-for-byte identical to ASCII for the basics. |
 | **Plain text** | A file that *is* just the encoded characters, with no hidden formatting — exactly what an editor shows you, glyph for glyph. Source code is plain text; a `.docx` or `.png` is not. |
-| **Code is data** | The reframe at the heart of B1: source text, compiled output, and runnable machine code are *all* just bytes in the same kind of [[learning/notes/quick-context/ram-addressing-decoder|addressable memory]]. What makes some bytes "code" is only that something later *interprets or executes* them. |
+| **Code is data** | The [[learning/notes/quick-context/playbook-main|reframe]] at the heart of B1: source text, compiled output, and runnable [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]] are *all* just bytes in the same kind of [[learning/notes/quick-context/ram-addressing-decoder|addressable memory]]. What makes some bytes "code" is only that something later *interprets or executes* them. |
 
 <details>
 <summary><strong>How It Works</strong> — From a glyph you see to a number in a memory cell</summary>
@@ -70,7 +70,7 @@ Left column: where in the file each chunk starts (the *offset*, like an address)
 
 ### Step 4 — Those bytes live in addressable memory
 
-When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
+When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|operating system]] copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
 
 ```
 RAM as a numbered array of byte-cells (the file loaded at address 1000)
@@ -177,10 +177,10 @@ The transformation (a) → (b) → (c) is the SOFTWARE tower above B1; the [[lea
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — The rung directly below: how "addressable memory" is actually built — an array of registers picked one at a time by a numeric address. The cells your file's bytes land in.
-- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — One level deeper still: how a single byte's bits are *physically* held — a voltage in SRAM, a charge in DRAM, trapped electrons in the flash that stores `hello.py` on an SSD.
+- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — One level deeper still: how a single byte's bits are *physically* held — a voltage in [[learning/notes/micro-context/sram|SRAM]], a charge in [[learning/notes/quick-context/ram-addressing-decoder|DRAM]], trapped electrons in the flash that stores `hello.py` on an SSD.
 - **[[learning/notes/quick-context/python-to-machine-code-pipeline]]** — The rung directly above: how the source bytes from B1 get transformed into bytecode and machine code — artifacts (b) and (c).
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain that turns these source bytes all the way down into binary instructions the CPU's gates execute.
-- **[[learning/notes/index/how-a-computer-works-index]]** — The spine hub: the full ladder from electricity up to running code. This note is B1, the foot of the SOFTWARE tower.
+- **how-a-computer-works-index** — The spine hub: the full ladder from electricity up to running code. This note is B1, the foot of the SOFTWARE tower.
 - **Unicode & code points** — The character-numbering standard that UTF-8 encodes; the layer above "which encoding" that defines *which* characters exist in the first place.
 
 </details>
@@ -197,7 +197,7 @@ A sequence of **bytes** stored as a file on disk/flash. Those bytes are the **ch
 **Q2:** The line `x = 2 + 3` (with no newline) has 9 characters. In ASCII, how many bytes is that, and why?
 <details>
 <summary>Answer</summary>
-9 bytes — one byte per character, because ASCII encodes each of its 128 characters in exactly one byte (and `x`, space, `=`, `2`, `+`, `3` are all ASCII). Add a trailing newline `\n` and it becomes 10 bytes. See the hexdump in "How It Works," step 3.
+9 bytes — one byte per character, because ASCII encodes each of its 128 characters in [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] byte (and `x`, space, `=`, `2`, `+`, `3` are all ASCII). Add a trailing newline `\n` and it becomes 10 bytes. See the hexdump in "How It Works," step 3.
 </details>
 
 **Q3:** Why do `wc -m` (characters) and `wc -c` (bytes) report the *same* number for `hello.py` but *different* numbers for a file containing `café`?

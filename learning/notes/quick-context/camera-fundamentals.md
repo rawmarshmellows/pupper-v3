@@ -5,7 +5,7 @@ created: 2026-03-23
 
 # Camera Fundamentals — Sensors, Lenses, and Calibration
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/switch-matrix]]
 
 > **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
@@ -17,7 +17,7 @@ Without understanding how cameras actually form images — the physics of sensor
 
 | Term | Definition |
 |------|------------|
-| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
+| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of photodiodes that convert incoming photons into electrical charge, which is then digitized into [[learning/notes/quick-context/keypress-to-pixel-pipeline|pixel values]] by on-chip ADCs |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
 | **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
@@ -123,7 +123,7 @@ SENSOR SIZE COMPARISON (to scale relative to full frame)
 | **1-inch** | 13.2 x 8.8 mm | 2.7x | Premium compacts, drones (DJI) |
 | **1/2.3-inch** | 6.2 x 4.6 mm | 5.6x | Smartphones, action cameras |
 
-**Why size matters:** A larger sensor has larger pixels (or more of them). Larger pixels capture more photons before saturating, giving better signal-to-noise ratio — directly improving dynamic range and low-light performance. The [[quick-context/thermal-noise-electronics|thermal noise floor]] is roughly constant regardless of pixel size, so bigger pixels mean a better signal-to-noise ratio.
+**Why size matters:** A larger sensor has larger pixels (or more of them). Larger pixels capture more photons before saturating, giving better [[learning/notes/quick-context/thermal-noise-electronics|signal-to-noise ratio]] — directly improving dynamic range and low-light performance. The [[quick-context/thermal-noise-electronics|thermal noise floor]] is roughly constant regardless of pixel size, so bigger pixels mean a better signal-to-noise ratio.
 
 **Crop factor** describes how a smaller sensor "crops" the image compared to full frame. A 50 mm lens on a 2x crop sensor gives the same field of view as a 100 mm lens on full frame.
 

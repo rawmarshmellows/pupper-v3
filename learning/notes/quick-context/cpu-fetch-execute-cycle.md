@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/switches-to-registers-storing-data]]
 
 > **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
 
@@ -21,7 +21,7 @@ You've built [[learning/notes/quick-context/switches-to-registers-storing-data|r
 | **Instruction** | A single number (16 bits on the Hack CPU, 32 on ARM) stored in memory. Its individual bit-fields *are* control signals — they directly drive mux selects, ALU operation bits, and register load-enables. An instruction is a list of switch settings. |
 | **Fetch** | Use the PC as an address to read RAM, pulling the instruction number into the CPU so its bits are available as control wires. |
 | **Decode** | There is no separate "decoder brain" — decode is just *wiring*. The instruction's bits are fed straight to the control inputs of the muxes, ALU, and registers. Routing, not interpreting. |
-| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the clock edge a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
+| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the [[learning/notes/micro-context/clock-edges|clock edge]] a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
@@ -202,7 +202,7 @@ ADDRESS   ASSEMBLY      MACHINE CODE (the bits)   MEANING
 
 The leading bit tells the two instruction types apart: `0...` is an
 A-instruction (just "put this number in the A register"), `1...` is a
-C-instruction (a compute instruction whose lower bits are the ALU controls
+C-instruction (a compute instruction whose [[learning/notes/quick-context/ram-addressing-decoder|lower bits]] are the ALU controls
 `a c1..c6 d1..d3 j1..j3`). In the real CPU,
 `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/cpu.py`
 does this split with literally one NOT gate:
@@ -245,7 +245,7 @@ Result: RAM[0] = 5. The machine never "understood" addition — bit f=1 just
 The dual role of the A register is worth pausing on: in tick 0 it holds an
 *operand* (the number 2); in tick 4 it holds an *address* (where to store). Same
 register, different bits routing it. In `cpu.py`, the mux that feeds the ALU's
-`y` input is selected by exactly one bit of the instruction (`a_flag`): it picks
+`y` input is selected by [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] bit of the instruction (`a_flag`): it picks
 between "the A register's value" and "the value read from RAM." One instruction
 bit, one mux — decode as routing, again.
 
@@ -275,7 +275,7 @@ happen to play.
 
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Where the PC, instruction register, and data registers come from: 8 D flip-flops capturing at a clock edge. The fetch-execute loop is just "register → logic → register" running forever; this note builds that on a breadboard.
 
-- **[[learning/notes/quick-context/ram-addressing-decoder]]** — How "PC points to an address in RAM" physically works: an address decoder (DMUX in, MUX out) selecting one cell among thousands. Fetch is one read from this structure. *(sibling note — may not exist yet.)*
+- **[[learning/notes/quick-context/ram-addressing-decoder]]** — How "PC points to an address in RAM" physically works: an [[learning/notes/quick-context/ram-addressing-decoder|address decoder]] ([[learning/notes/quick-context/ram-addressing-decoder|DMUX]] in, MUX out) selecting one cell among thousands. Fetch is one read from this structure. *(sibling note — may not exist yet.)*
 
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream chain: how source code becomes the exact 16-bit numbers traced above, including the Hack C-instruction bit-field layout and how the ALU is built from NAND gates.
 
@@ -285,13 +285,13 @@ happen to play.
 
 - **[[learning/notes/quick-context/firmware]]** — What the program *is* on a real chip: instructions sitting in flash that the CPU fetch-executes straight from non-volatile memory at power-on.
 
-- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — How those instruction numbers get placed at real addresses (linker), written to the chip (flash), and reached (reset vector → first fetch). Picks up where this loop starts.
+- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — How those instruction numbers get placed at real addresses (linker), written to the chip (flash), and reached ([[learning/notes/quick-context/firmware|reset vector]] → first fetch). Picks up where this loop starts.
 
 - **Von Neumann architecture** — Why instructions and data share one memory (so the PC's "address" and an operand's "address" index the same RAM), and what the alternative (Harvard, separate instruction/data memory) buys you.
 
 - **Pipelining / caches / microcode** — The same loop, scaled: overlapping stages, fast local copies of memory, and a tiny program inside the decoder. More machinery, identical meaning.
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity up to running code. This note is rung L8, the rung where "registers + ALU + RAM" becomes "a running program."
+- **how-a-computer-works-index** — The hub: the full ladder from electricity up to running code. This note is rung L8, the rung where "registers + ALU + RAM" becomes "a running program."
 
 </details>
 

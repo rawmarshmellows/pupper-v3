@@ -2,6 +2,7 @@
 term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]]
 
 # Quiescent Supply Current ($I_S$)
 
@@ -13,8 +14,8 @@ created: 2026-06-07
 
 - Internal stages — the [[micro-context/tail-current|tail current source]], the mirror load, the output bias — burn a steady current to keep their transistors in the active region.
 - This quiescent draw exists independent of the signal: it's the cost of being "on" and ready to respond instantly.
-- Micropower parts (LMC7211-N: 7 µA typ) trade speed for tiny standing current, enabling battery and coin-cell operation for years.
-- Total supply current climbs above $I_S$ only when the output actively drives a load.
+- Micropower parts ([[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|LMC7211-N]]: 7 µA typ) trade speed for tiny standing current, enabling battery and coin-cell operation for years.
+- Total [[learning/notes/quick-context/comparator-specification|supply current]] climbs above $I_S$ only when the output actively drives a load.
 
 ```
    coin cell
@@ -29,4 +30,4 @@ created: 2026-06-07
    7 uA -> years off a single coin cell.
 ```
 
-**Key insight:** Quiescent current is the price of always-on readiness — it's why a micropower comparator can watch a battery for years off the same cell it monitors, while a fast comparator might drain that cell in days.
+**Key insight:** [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Quiescent current]] is the price of always-on readiness — it's why a micropower comparator can watch a battery for years off the same cell it monitors, while a fast comparator might drain that cell in days.

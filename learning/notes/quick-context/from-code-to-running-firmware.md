@@ -5,13 +5,13 @@ created: 2026-03-26
 
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]]
 
 > **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
 ## The Core Problem
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
+The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]]. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains
 |------|------------|
 | **Linker** | The tool (e.g., `arm-none-eabi-ld`) that combines compiled object files (`.o`) into a single executable, resolving symbol references (e.g., connecting a `call motor_update` to the actual function address) and placing everything at the correct memory addresses. |
 | **Linker Script** (`.ld`) | A configuration file that tells the linker where physical memory lives — flash origin, RAM origin, their sizes — and which code/data sections go where. It's the bridge between the software world (sections) and the hardware world (memory addresses). |
-| **ELF** (Executable and Linkable Format) | The output file format containing machine code (`.text`), initialized data (`.data`), the vector table (`.isr_vector`), debug symbols (DWARF), and a header describing where each section belongs in memory. The flash tool reads the ELF to know what bytes go where. |
+| **ELF** (Executable and Linkable Format) | The output file format containing [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]] (`.text`), initialized data (`.data`), the vector table (`.isr_vector`), debug symbols (DWARF), and a header describing where each section belongs in memory. The flash tool reads the ELF to know what bytes go where. |
 | **Vector Table** | An array of 32-bit addresses at the very start of flash. Entry 0 is the initial stack pointer, entry 1 is the `Reset_Handler` address, and entries 2+ are exception/interrupt handler addresses. The CPU reads entries 0 and 1 from hardware on every reset — no software involved. |
 | **Startup Code** (`startup_*.s`) | Assembly code that runs before `main()`. It defines the vector table, copies initialized globals from flash to RAM (`.data`), zeros uninitialized globals (`.bss`), calls `SystemInit()` to configure clocks, then calls `main()`. |
 
@@ -330,7 +330,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
 
@@ -340,13 +340,13 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[learning/notes/micro-context/sram|SRAM]], and peripherals.
 
-- **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 
 - **Relocatable vs. Position-Independent Code** — Object files (`.o`) contain relocatable code with placeholder addresses. The linker resolves these. Position-independent code (PIC) can run at any address — useful for bootloaders but rarely needed on bare-metal MCUs with fixed memory maps.
 
-- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
+- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over [[learning/notes/quick-context/embedded-communication-protocols|UART]] or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
 
 - **[[quick-context/physics-of-writing-data-to-memory]]** — The physics beneath this pipeline: how the flash programmer's bytes actually become trapped electrons on floating gates inside the MCU's flash cells, and why flash has erase-before-write constraints and limited P/E cycles.
 

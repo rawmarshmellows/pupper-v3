@@ -2,6 +2,7 @@
 term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/pwm-controller-circuit]] | [[learning/notes/micro-context/ads1110-battery-adc]]
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
@@ -13,7 +14,7 @@ created: 2026-06-07
 
 - The output stage is a [[micro-context/push-pull-vs-open-drain|push-pull]] pair of transistors (Q6) with nonzero on-resistance.
 - Under load, the load current times that on-resistance drops a few hundred millivolts, so the output can't quite reach the rail.
-- $V_{OH}$ is the highest the output reaches near $V^+$; $V_{OL}$ the lowest near ground — both quoted at a given load (e.g. 2.5 mA).
+- $V_{OH}$ is the highest the output reaches near $V^+$; $V_{OL}$ the lowest near ground — both quoted at a given load (e.g. 2.[[learning/notes/quick-context/comparator-specification|5 mA]]).
 - The harder you load it, the worse the swing — which is why these numbers are *always* specified at a load current.
 
 ```
@@ -30,4 +31,4 @@ created: 2026-06-07
    Bigger load current -> bigger gaps.
 ```
 
-**Key insight:** "Rail-to-rail output" never means *exactly* the rail under load — the output transistors' on-resistance always leaves a small gap, and that gap decides whether the next logic gate reads a clean HIGH/LOW.
+**Key insight:** "Rail-to-rail output" never means *exactly* the rail under load — the output transistors' on-resistance always leaves a small gap, and that gap decides whether the next [[learning/notes/quick-context/code-to-gates-and-bootstrapping|logic gate]] reads a clean HIGH/LOW.

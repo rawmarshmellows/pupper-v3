@@ -29,7 +29,7 @@ updated: 2026-01-21
 
 Filament printing is fundamentally a controlled melting and re-solidification process. Solid plastic enters the hotend as a rigid rod, gets heated past its [[quick-context/glass-transition-temperature|glass transition temperature]] (Tg) where the polymer chains gain enough energy to slide past each other, and exits the nozzle as a viscous fluid that immediately begins cooling. The cooling rate and ambient temperature determine how the material re-solidifies—too fast and you get internal stresses (warping), too slow and the part sags before setting. Each filament type has different molecular structures that dictate how much energy is needed to achieve flow and how the material behaves during cooling.
 
-The key to understanding filament differences lies in their polymer chain architecture and intermolecular forces. PLA has short, relatively simple chains with weak intermolecular attractions—easy to melt, quick to solidify, minimal shrinkage. ABS contains aromatic styrene rings that engage in [[quick-context/pi-pi-stacking-aromatic-interactions|pi-pi stacking]], creating stronger inter-chain attractions that require more heat to overcome and cause significant shrinkage when those attractions reform during cooling. PETG has a balance of chain flexibility and polar groups that make it sticky when molten (hence stringing) but dimensionally stable. TPU's elasticity comes from alternating hard and soft polymer segments—the soft segments stay flexible while hard segments provide structure.
+The key to understanding filament differences lies in their polymer chain architecture and [[learning/notes/quick-context/chemical-bonds-spectrum|intermolecular forces]]. PLA has short, relatively simple chains with weak intermolecular attractions—easy to melt, quick to solidify, minimal shrinkage. ABS contains aromatic styrene rings that engage in [[quick-context/pi-pi-stacking-aromatic-interactions|pi-pi stacking]], creating stronger inter-chain attractions that require more heat to overcome and cause significant shrinkage when those attractions reform during cooling. PETG has a balance of chain flexibility and polar groups that make it sticky when molten (hence stringing) but dimensionally stable. TPU's elasticity comes from alternating hard and soft polymer segments—the soft segments stay flexible while hard segments provide structure.
 
 ```
 FILAMENT PRINTING PROCESS:
@@ -118,7 +118,7 @@ TPU 95A         | 220-250°C   | 40-60°C  | Optional  | 50-100%      | 15-30mm/
 **When to use what:**
 - **PLA Basic**: Prototypes, decorative items, anything that stays indoors at room temp
 - **PLA Matte**: Visible parts where you want to hide layer lines without post-processing
-- **PLA Silk+**: Vases, display pieces, anything where aesthetics trump function
+- **PLA Silk+**: Vases, display pieces, anything where aesthetics trump [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]]
 - **PETG (any)**: Functional parts with moderate heat/stress—phone cases, brackets, outdoor items
 - **ABS**: Automotive parts, enclosures near heat sources, anything needing acetone smoothing
 - **TPU**: Phone cases, drone bumpers, gaskets, vibration dampeners, watch bands, anything that needs to flex or absorb impact
@@ -133,7 +133,7 @@ The one thing most outsiders get wrong about this is **assuming "stronger" or "m
 Related concepts that deepen understanding of filament types:
 
 - [[quick-context/glass-transition-temperature]] — Why PLA fails in hot cars and ABS survives; the critical temperature threshold for each material
-- [[quick-context/polymer-crystallinity-vs-amorphous]] — Explains warping behavior differences between materials and why some filaments shrink more than others
+- [[quick-context/polymer-crystallinity-vs-amorphous]] — Explains warping behavior differences between materials and why some filaments [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|shrink more]] than others
 - [[quick-context/melt-index]] — How filament flow characteristics affect printability and why PETG HF exists
 - [[quick-context/3d-printer-hotends]] — Hardware requirements for different filaments; why all-metal hotends matter for PETG/ABS temps
 - [[quick-context/3d-printing-slicer-settings]] — Translating filament properties into actual print profiles
@@ -146,7 +146,7 @@ Related concepts that deepen understanding of filament types:
 **Q1:** You need to print a bracket that will be mounted inside a car dashboard in summer. Which filament should you use and why?
 <details>
 <summary>Answer</summary>
-ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
+ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
 </details>
 
 **Q2:** Your PETG prints have thin wisps of plastic connecting different parts of the model. What's happening and how do you fix it?

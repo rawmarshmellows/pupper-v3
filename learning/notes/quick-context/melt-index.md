@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]
 
 > **TL;DR:** Melt Index (MFI/MFR) measures how easily a polymer flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
 
@@ -20,16 +20,16 @@ Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (
 |------|------------|
 | **MFI/MFR (Melt Flow Index/Rate)** | Grams of polymer extruded in 10 minutes through a 2.095mm die at specified temperature and load (e.g., 190°C/2.16kg for polyethylene). |
 | **Shear rate** | How fast polymer layers slide past each other during flow—real processing involves much higher shear than the MFI test, so MFI is only an approximation. |
-| **Molecular weight distribution (MWD)** | The range of chain lengths in a polymer batch; two materials with identical MFI can behave differently if their MWD differs. |
+| **[[learning/notes/quick-context/atoms-molecules-polymers-basics|Molecular weight]] distribution (MWD)** | The range of chain lengths in a polymer batch; two materials with identical MFI can behave differently if their MWD differs. |
 | **Load (kg)** | The weight applied during testing (common: 2.16kg, 5kg, 21.6kg)—higher loads for stiffer materials; your result is meaningless without knowing the load used. |
 | **ASTM D1238 / ISO 1133** | The standardized test methods defining exactly how MFI is measured—critical for comparing values across suppliers. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The MFI test uses a device called a **melt flow indexer** (or extrusion plastometer). A small sample of polymer pellets (typically 4-5 grams) is loaded into a heated barrel set to a standardized temperature—190°C for polyethylene and polypropylene, 220°C for ABS, and so on depending on the material standard. Once the polymer melts (usually after a 5-minute preheat), a weighted piston is placed on top, applying a standardized load (commonly 2.16 kg, 5 kg, or 21.6 kg). Gravity forces the piston down, pushing the molten polymer through a precision die with a 2.095 mm diameter opening.
+The MFI test uses a device called a **melt flow indexer** (or extrusion plastometer). A small sample of polymer pellets (typically 4-5 grams) is loaded into a heated barrel set to a standardized temperature—190°C for polyethylene and polypropylene, 220°C for ABS, and so on depending on the material standard. Once the polymer melts (usually after a 5-minute preheat), a weighted piston is placed [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]], applying a standardized load (commonly 2.16 kg, 5 kg, or 21.6 kg). Gravity forces the piston down, pushing the molten polymer through a precision die with a 2.095 mm diameter opening.
 
-The operator collects the extrudate that oozes out over a timed interval, typically cutting samples every 30 seconds to 1 minute. These "cuts" are weighed, and the mass is extrapolated to determine how many grams would extrude in 10 minutes. Higher MFI means the polymer flows more easily under the test conditions—shorter molecular chains slide past each other readily. Lower MFI indicates longer chains that tangle and resist flow, requiring more force or higher temperatures to process.
+The operator collects the extrudate that oozes out over a timed interval, typically cutting samples every [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|30 seconds]] to 1 minute. These "cuts" are weighed, and the mass is extrapolated to determine how many grams would extrude in 10 minutes. Higher MFI means the polymer flows more easily under the test conditions—shorter molecular chains slide past each other readily. Lower MFI indicates longer chains that tangle and resist flow, requiring more force or higher temperatures to process.
 
 ```
 MELT FLOW INDEX TEST APPARATUS
@@ -124,10 +124,10 @@ In practice, if batch A-2024-004 enters your injection molding process, you'd se
 
 - **[[quick-context/glass-transition-temperature]]**: The temperature at which a polymer transitions from rigid/glassy to flexible/rubbery—MFI testing must occur well above this point for meaningful flow measurements.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than amorphous ones.
-- **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
+- **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, [[learning/notes/quick-context/3d-printing-filament-types|PETG]]) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
 - **[[quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
 - **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
-- **[[quick-context/bambu-p2s-print-quality]]**: MFI variation between batches drives why per-spool flow ratio and pressure advance (K-value) calibration matters on the P2S—different MFI means different optimal extrusion settings.
+- **[[quick-context/bambu-p2s-print-quality]]**: MFI variation between batches drives why per-spool [[learning/notes/quick-context/bambu-p2s-print-quality|flow ratio]] and pressure advance (K-value) calibration matters on the P2S—different MFI means different optimal extrusion settings.
 
 </details>
 

@@ -3,7 +3,7 @@ topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/cnc-process-selection]]
 
 > **TL;DR:** Rust is an electrochemical process where iron spontaneously oxidizes back to its ore state (Fe₂O₃) when exposed to oxygen and water, costing over $2.5 trillion annually in infrastructure damage.
 
@@ -183,7 +183,7 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
                         exposed Fe
 
 
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)

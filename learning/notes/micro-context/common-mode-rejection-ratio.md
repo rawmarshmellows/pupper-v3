@@ -2,19 +2,20 @@
 term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/power-supply-rejection-ratio]]
 
 # Common-Mode Rejection Ratio ($CMRR$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/differential-pair]] | [[small-context/decibels-across-domains]]
+> **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/differential-pair]] | decibels-across-domains
 
-**Definition:** A measure (in dB) of how well a differential amplifier or comparator ignores a voltage applied *equally* to both inputs, responding only to the *difference* between them.
+**Definition:** A measure (in dB) of how well a differential amplifier or comparator ignores a [[learning/notes/micro-context/piezoelectric-effect|voltage applied]] *equally* to both inputs, responding only to the *difference* between them.
 
 ## How It Works
 
 - An ideal [[quick-context/differential-pair|differential pair]] responds only to $V(+) - V(-)$ and is blind to a common voltage that moves both inputs together.
 - A real [[micro-context/tail-current|tail current source]] (Q5) isn't perfect, so moving both inputs together leaks a little change into the output — CMRR quantifies how little.
 - Higher dB = better rejection: 75 dB attenuates a common-mode swing by about 5600× at the output.
-- CMRR usually improves with more supply headroom (LMC7211-N: 75 dB at 5 V → 82 dB at 15 V).
+- CMRR usually improves with more supply headroom ([[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|LMC7211-N]]: 75 dB at 5 V → [[learning/notes/quick-context/comparator-specification|82 dB at 15 V]]).
 
 ```
   Both inputs move TOGETHER (common-mode):

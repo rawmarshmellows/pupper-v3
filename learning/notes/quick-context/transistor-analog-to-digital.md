@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -11,7 +11,7 @@ created: 2026-01-25
 
 ## The Core Problem: Reality Is Messy, But Computers Need Perfection
 
-Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs voltage levels.
+Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. [[learning/notes/quick-context/transistor|Quantum effects]] cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs voltage levels.
 
 If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" transistor might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
 
@@ -20,10 +20,10 @@ If we actually treated transistors as the messy analog devices they are, digital
 | Term | Definition |
 |------|------------|
 | **Threshold Voltage (Vth)** | The gate voltage at which a transistor begins to conduct; below this, it should be "off"—but leakage still occurs |
-| **Leakage Current** | Current that flows through a transistor even when it's supposed to be off; worsens at smaller process nodes due to quantum tunneling |
+| **Leakage Current** | Current that flows through a transistor even when it's supposed to be off; worsens at smaller process nodes due to [[learning/notes/quick-context/transistor|quantum tunneling]] |
 | **Noise Margin** | The voltage buffer between a valid logic level and the point where it might be misinterpreted; larger margins = more robust digital operation |
-| **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't turn off instantly—conductivity drops exponentially but never hits zero |
-| **Regenerative Logic** | Circuit technique where each logic gate "refreshes" a degraded signal back to a clean 0 or 1, preventing error accumulation |
+| **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't [[learning/notes/micro-context/mosfet|turn off]] instantly—conductivity drops exponentially but never hits zero |
+| **Regenerative Logic** | Circuit technique where each [[learning/notes/quick-context/code-to-gates-and-bootstrapping|logic gate]] "refreshes" a degraded signal back to a clean 0 or 1, preventing error accumulation |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -286,7 +286,7 @@ The fundamental tradeoff in making analog transistors behave digitally:
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[learning/notes/micro-context/clock-speed-vs-temperature|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 
@@ -421,9 +421,9 @@ NOISE AND VARIATION IN REAL CHIPS:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
+- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic [[learning/notes/micro-context/mosfet|MOSFET]] structure (gate, source, drain, channel) is prerequisite.
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
 
@@ -457,7 +457,7 @@ Noise margin is the voltage buffer between what a circuit produces as a valid lo
 **Q3:** Why does CMOS (Complementary MOS) logic produce "clean" digital outputs even though individual transistors are imperfect?
 <details>
 <summary>Answer</summary>
-CMOS uses paired NMOS and PMOS transistors arranged so that for any valid input, one transistor is strongly ON and connects the output to either Vdd or GND. The output is never floating or weakly driven. When input is LOW, PMOS turns ON and pulls output to Vdd (clean "1"). When input is HIGH, NMOS turns ON and pulls output to GND (clean "0"). This "regenerative" property means each gate restores degraded signals to clean rail voltages, preventing noise from accumulating through a chain of gates. See: "Strategy 3: Complementary MOS (CMOS) Design."
+CMOS uses paired [[learning/notes/micro-context/push-pull-vs-open-drain|NMOS]] and PMOS transistors arranged so that for any valid input, one transistor is strongly ON and connects the output to either Vdd or GND. The output is never floating or weakly driven. When input is LOW, PMOS turns ON and pulls output to Vdd (clean "1"). When input is HIGH, NMOS turns ON and pulls output to GND (clean "0"). This "regenerative" property means each gate restores degraded signals to clean rail voltages, preventing noise from accumulating through a chain of gates. See: "Strategy 3: Complementary MOS (CMOS) Design."
 </details>
 
 **Q4:** Someone claims: "As transistors get smaller, digital circuits become more reliable because there's less material to fail." What's wrong with this reasoning?

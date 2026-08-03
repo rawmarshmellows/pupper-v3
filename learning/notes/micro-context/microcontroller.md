@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/uart]]
 
 # Microcontroller
 
@@ -12,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- On power-up, the CPU core begins fetching instructions from a fixed address in on-chip flash memory (the reset vector).
+- On power-up, the CPU core begins fetching instructions from a fixed address in on-chip flash memory (the [[learning/notes/quick-context/firmware|reset vector]]).
 - The program runs in a loop, reading sensor data through peripheral interfaces (ADC, I2C, SPI), processing it, and driving outputs (PWM, GPIO, CAN).
 - Hardware interrupts allow the MCU to respond to external events (timer tick, incoming data, pin change) within microseconds, pausing the main loop and jumping to a handler.
 - All of this — CPU, memory, and peripherals — runs on a single chip costing $0.20–$15, powered by milliwatts.

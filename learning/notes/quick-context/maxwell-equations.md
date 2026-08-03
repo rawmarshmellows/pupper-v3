@@ -5,20 +5,20 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/electricity-generation]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an [[learning/notes/quick-context/electromagnetism|electromagnetic wave]]. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Electric Field (E)** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
-| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
+| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by currents (moving charges) and by changing electric fields. Measured in tesla (T). |
 | **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates total flux to enclosed charge. |
 | **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[quick-context/lenzs-law|Faraday's law]]). |
 | **Displacement Current** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
@@ -178,7 +178,7 @@ MAXWELL'S SOLUTION:
 
 ## How the Equations Predict Electromagnetic Waves
 
-The revolutionary consequence: combining Faraday's law and the Ampère-Maxwell law shows that E and B fields can sustain each other through empty space.
+The revolutionary consequence: combining [[learning/notes/quick-context/lenzs-law|Faraday's law]] and the Ampère-Maxwell law shows that E and B fields can sustain each other through empty space.
 
 ```
 DERIVING ELECTROMAGNETIC WAVES
@@ -454,7 +454,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
     ∮ B · dl = μ₀I_enc + μ₀ε₀ dΦ_E/dt
 
-    APPLICATION: [[quick-context/coil-magnetic-field|Magnetic field of a solenoid]]
+    APPLICATION: [[learning/notes/quick-context/coil-magnetic-field|Magnetic field of a solenoid]]
 
     Draw an Amperian loop through the solenoid:
 
@@ -473,7 +473,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
     Therefore: B × L = μ₀ × n × L × I
                B = μ₀nI
 
-    This is the [[quick-context/coil-magnetic-field|solenoid field formula]].
+    This is the [[learning/notes/quick-context/coil-magnetic-field|solenoid field formula]].
 
 
     APPLICATION: Electromagnetic waves (displacement current)
@@ -490,7 +490,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — Conceptual treatment of electromagnetic phenomena without heavy mathematics. Covers the same physics from a more intuitive angle.
+- **[[learning/notes/quick-context/electromagnetism]]** — Conceptual treatment of electromagnetic phenomena without heavy mathematics. Covers the same physics from a more intuitive angle.
 
 - **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
@@ -504,7 +504,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/electricity-generation]]** — How generators convert mechanical energy to electricity using Faraday's law. The practical workhorse application of Maxwell's equations.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from [[learning/notes/quick-context/coil-magnetic-field|Ampère's law]].
 
 - **[[quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
 

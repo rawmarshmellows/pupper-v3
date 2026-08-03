@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Inside the Triangle
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 
 > **TL;DR:** The triangle symbol on a schematic hides 5--20 [[quick-context/transistor|transistors]] wired in three stages: a [[quick-context/differential-pair|differential pair]] that senses the input difference, a [[quick-context/high-gain-amplifier-stage|current-mirror gain stage]] that amplifies it to a full-rail swing, and an output stage that drives the load. The same three stages appear in both [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---the only difference is whether a compensation capacitor is added between stages 2 and 3.
 
@@ -22,14 +22,14 @@ You see this symbol everywhere in schematics:
        │  ╱
 ```
 
-Datasheets tell you the gain is 100,000x, input impedance is infinite, and output impedance is zero. But what's actually *inside*? How does a voltage difference of 1 mV become a 3.3V output swing? Why do [[quick-context/op-amp|op-amps]] need negative feedback to be stable but [[quick-context/comparator|comparators]] don't? The answers come from understanding the three-stage signal path that every op-amp and comparator shares.
+Datasheets tell you the gain is 100,000x, input impedance is infinite, and output impedance is zero. But what's actually *inside*? How does a voltage difference of 1 mV become a 3.3V output swing? Why do [[quick-context/op-amp|op-amps]] need [[learning/notes/quick-context/op-amp|negative feedback]] to be stable but [[quick-context/comparator|comparators]] don't? The answers come from understanding the three-stage signal path that every op-amp and comparator shares.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + tail current source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
-| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | Current mirror active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
+| **Stage 1: Differential pair** | Two [[learning/notes/quick-context/differential-pair|matched transistors]] + [[learning/notes/quick-context/differential-pair|tail current source]]. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
+| **Stage 2: High-gain amplifier** | [[learning/notes/micro-context/current-mirror|Current mirror]] [[learning/notes/quick-context/high-gain-amplifier-stage|active load]] on the [[learning/notes/quick-context/differential-pair|differential pair]]. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
 | **Stage 3: Output buffer** | Drives the external load. Push-pull (op-amp) or open-drain/open-collector (comparator). Provides low output impedance so the signal doesn't droop under load. |
 | **Compensation capacitor ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a comparator.** |
 | **Bias network** | Current mirrors and voltage references that set the DC operating point for every transistor. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |
@@ -244,7 +244,7 @@ The entire difference between an op-amp and a comparator comes down to **one cap
 | Output transition | 1--50 $\mu$s | 1--500 ns | Cap limits slew rate |
 | Output stage | Push-pull (linear) | Open-drain or push-pull (digital) | Op-amp needs proportional output; comparator needs rail-to-rail snap |
 | Overdrive recovery | Slow (input stage saturates) | Fast (designed for it) | Op-amp never expects large Vdiff; comparator always has it |
-| Intended use | Negative feedback loop | Open-loop or positive feedback | Fundamentally different operating mode |
+| Intended use | Negative feedback loop | Open-loop or [[learning/notes/quick-context/pupper-lab7-vision-tracking|positive feedback]] | Fundamentally different operating mode |
 
 ```
 THE SAME 5 TRANSISTORS, TWO DIFFERENT PRODUCTS
@@ -276,7 +276,7 @@ This is why you should never use an op-amp as a comparator: the compensation cap
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> --- Building intuition with the LM358 (op-amp) vs. LM393 (comparator)</summary>
+<summary><strong>Concrete Example</strong> --- Building intuition with the [[learning/notes/quick-context/op-amp|LM358]] (op-amp) vs. LM393 (comparator)</summary>
 
 These two ICs are often sold together and have nearly identical pinouts. Internally, they share the same basic three-stage topology but with different optimizations:
 

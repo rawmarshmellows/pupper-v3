@@ -1,4 +1,5 @@
-# Existing Account Management Playbook
+
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/playbook-main]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/current-electrons-per-second]]# Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
 
@@ -323,8 +324,8 @@ For each key stakeholder persona, prepare an insight that:
 
 | Element | Content |
 |---|---|
-| **Warmer** | "Here's what we see in your industry..." |
-| **Reframe** | "But here's what most companies miss..." |
+| **[[learning/notes/quick-context/playbook-main|Warmer]]** | "Here's what we see in your industry..." |
+| **[[learning/notes/quick-context/playbook-main|Reframe]]** | "But here's what most companies miss..." |
 | **Rational Drowning** | "Here's the cost of the problem you didn't know you had..." |
 | **Emotional Impact** | "And here's what happens when this goes wrong..." |
 | **New Way** | "Companies solving this do X differently..." |
@@ -334,9 +335,9 @@ For each key stakeholder persona, prepare an insight that:
 
 | Stakeholder | Their Priority | Tailored Insight Angle |
 |---|---|---|
-| Economic Buyer | | |
-| User Buyer | | |
-| Technical Buyer | | |
+| [[learning/notes/quick-context/meddpicc-qualification-framework|Economic Buyer]] | | |
+| [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|User Buyer]] | | |
+| [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Technical Buyer]] | | |
 
 ### 6.3 Take Control Preparation
 
@@ -370,8 +371,8 @@ Anticipate where you'll need to push back:
 ### Quarterly (1-2 hours)
 
 - [ ] Full account plan review and refresh
-- [ ] KARE re-classification check - should segment change?
-- [ ] Relationship maturity re-diagnosis
+- [ ] [[learning/notes/quick-context/playbook-main|KARE]] re-classification check - should segment change?
+- [ ] [[learning/notes/quick-context/mcdonald-kam-model|Relationship maturity]] re-diagnosis
 - [ ] QBR preparation (for Strategic/Protect accounts)
 - [ ] Competitive intel update
 - [ ] Whitespace analysis refresh
@@ -528,11 +529,11 @@ When you're stuck, remember which framework to consult:
 | Question | Framework | Answer Location |
 |---|---|---|
 | "How much time should this account get?" | KARE + Post-Sale Segmentation | Step 1 |
-| "Where does this relationship actually stand?" | McDonald KAM Model | Step 2 |
+| "Where does this relationship actually stand?" | [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]] | Step 2 |
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | MEDDPICC | (separate [[learning/notes/quick-context/sales-methodology-layering|qualification framework]]) |
 
 ---
 

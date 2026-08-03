@@ -3,6 +3,7 @@ term: CNC Milling
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/quick-context/pcb-layers]]
 
 # CNC Milling
 
@@ -36,4 +37,4 @@ SUBTRACTIVE vs ADDITIVE:
       ╚═╝    cuts into material
 ```
 
-**Key insight:** CNC milling produces parts with full material strength (no layer adhesion weakness like FDM prints), but wastes material as chips and can't create fully enclosed internal cavities.
+**Key insight:** CNC milling produces parts with full material strength (no [[learning/notes/quick-context/3d-printing-filament-types|layer adhesion]] weakness like FDM prints), but wastes material as chips and can't create fully enclosed [[learning/notes/quick-context/cnc-machining|internal cavities]].

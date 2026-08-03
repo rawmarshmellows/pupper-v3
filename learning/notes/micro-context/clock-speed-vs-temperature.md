@@ -3,19 +3,20 @@ term: Clock Speed vs Temperature
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/uart]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
 
 # Clock Speed vs Temperature
 
-> **See also:** [[micro-context/clock-speed]] | [[micro-context/thermal-runaway]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[micro-context/thermal-runaway]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** Every clock edge causes transistors to switch, and switching dissipates energy as heat. Power scales with frequency (P ∝ f) and voltage squared (P ∝ V²), so higher clock speeds generate more heat—which is why CPUs need cooling and why "turbo boost" is temporary.
+**Definition:** Every [[learning/notes/micro-context/clock-edges|clock edge]] causes transistors to switch, and switching dissipates energy as heat. Power scales with frequency (P ∝ f) and voltage squared (P ∝ V²), so higher clock speeds generate more heat—which is why CPUs need cooling and why "turbo boost" is temporary.
 
 ## How It Works
 
 - Every clock edge causes transistors to charge and discharge gate capacitances, converting electrical energy into heat ($P = CV^2f$).
-- Higher clock speeds require more switching events per second, linearly increasing dynamic power dissipation.
+- Higher clock speeds require more switching events per second, linearly increasing dynamic [[learning/notes/quick-context/resistor|power dissipation]].
 - Pushing clocks higher often demands raising supply voltage too, which increases power quadratically ($V^2$).
-- When junction temperature rises too high, firmware thermal throttling reduces clock speed to bring power back under the cooling budget.
+- When junction temperature rises too high, firmware thermal throttling reduces [[learning/notes/micro-context/clock-speed-vs-temperature|clock speed]] to bring power back under the cooling budget.
 
 ```
 THE HEAT-SPEED RELATIONSHIP

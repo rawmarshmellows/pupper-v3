@@ -5,13 +5,13 @@ created: 2026-02-17
 
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/micro-context/power-inductor]]
 
 > **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
 
 ## The Core Question
 
-If the magnetic flux is created BY the current, how can the flux oppose the current? Isn't that circular?
+If the [[learning/notes/quick-context/lenzs-law|magnetic flux]] is created BY the current, how can the flux oppose the current? Isn't that circular?
 
 The answer: **the flux doesn't oppose the current directly — the *changing* flux creates a voltage that opposes the *change* in current.** This is self-induction, and understanding it resolves the apparent paradox.
 
@@ -453,13 +453,13 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 
 - **[[quick-context/lenzs-law]]** — Why the induced EMF always opposes the change: energy conservation requires it. Includes detailed explanation of increasing vs. decreasing flux.
 
-- **[[quick-context/voltage]]** — The electric field perspective on voltage. The back-EMF in an inductor is a real voltage created by the changing magnetic flux.
+- **[[quick-context/voltage]]** — The [[learning/notes/quick-context/electric-magnetic-field-unification|electric field]] perspective on voltage. The back-EMF in an inductor is a real voltage created by the changing magnetic flux.
 
-- **[[quick-context/electromagnetism]]** — The unified picture: changing magnetic fields create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
+- **[[learning/notes/quick-context/electromagnetism]]** — The unified picture: changing magnetic fields create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
 
 - **[[quick-context/capacitor]]** — The dual of an inductor. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the magnetic field that stores energy.
+- **[[quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] that stores energy.
 
 - **[[micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the switch is on and releases it when the switch is off, enabling efficient DC-DC conversion.
 

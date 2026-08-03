@@ -5,7 +5,7 @@ created: 2026-02-13
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/micro-context/power-inductor]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -28,7 +28,7 @@ You have a battery, and you want current to flow through a wire to do useful wor
 
 The key insight: **voltage doesn't cause the electric field—the electric field defines the voltage.**
 
-When you connect a battery, chemical reactions inside create a charge imbalance. Positive charges accumulate at one terminal, negative at the other. This charge separation creates an electric field that extends through the circuit. The voltage between any two points equals the work done by this field on a unit charge moving between those points.
+When you connect a battery, [[learning/notes/quick-context/electricity-generation|chemical reactions]] inside create a charge imbalance. Positive charges accumulate at one terminal, negative at the other. This charge separation creates an electric field that extends through the circuit. The voltage between any two points equals the work done by this field on a unit charge moving between those points.
 
 ```
 THE ELECTRIC FIELD IS THE FUNDAMENTAL DRIVER
@@ -195,7 +195,7 @@ This is why:
 - **Power transmission** uses high voltage: same power with less current (P = IV), reducing I²R losses
 - **Capacitors** can fail: thin dielectric + high voltage = field exceeds breakdown strength
 
-The practitioner tension: high voltage is efficient for power transmission but dangerous for safety. Field strength (V/m) determines breakdown and safety, while voltage (V) determines energy delivery.
+The practitioner tension: high voltage is efficient for power transmission but dangerous for safety. Field strength (V/m) determines breakdown and safety, while [[learning/notes/quick-context/electric-magnetic-field-unification|voltage (V)]] determines energy delivery.
 
 </details>
 
@@ -287,25 +287,25 @@ THE FIELD-CURRENT RELATIONSHIP:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/voltage-current-causality]]** — Does voltage cause current or current cause voltage? Neither, universally. The electric field is the mediator; which quantity is "cause" depends on what's driving the circuit.
 
 - **[[quick-context/electric-current]]** — Current is what flows as a result of the electric field pushing electrons. Voltage defines the field; current is the response.
 
-- **[[quick-context/resistor]]** — Resistance determines how much current flows for a given field strength. Ohm's Law (V=IR) is the circuit-level expression of the field-current relationship.
+- **[[quick-context/resistor]]** — Resistance determines how much current flows for a given field strength. [[learning/notes/quick-context/parallel-vs-series-voltage|Ohm's Law]] (V=IR) is the circuit-level expression of the field-current relationship.
 
-- **[[quick-context/electromagnetism]]** — The electric field is one component of the electromagnetic field. Moving charges create magnetic fields; changing magnetic fields create electric fields.
+- **[[learning/notes/quick-context/electromagnetism]]** — The electric field is one component of the electromagnetic field. Moving charges create magnetic fields; changing magnetic fields create electric fields.
 
 - **[[quick-context/parallel-vs-series-voltage]]** — In series, voltages add (same current, field adds up). In parallel, voltages are equal (current divides).
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through [[learning/notes/quick-context/lenzs-law|Faraday's Law]]. The collapsing [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 
-- **[[small-context/electric-charge-origin]]** — Where positive and negative charges come from at the atomic level, and why electrons are what actually move in circuits.
+- **electric-charge-origin** — Where positive and negative charges come from at the atomic level, and why electrons are what actually move in circuits.
 
 </details>
 
@@ -327,7 +327,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 **Q3:** Two wires carry the same current: one copper, one nichrome (resistive). Which has the stronger electric field inside?
 <details>
 <summary>Answer</summary>
-**Nichrome has the stronger field.** From J = σE, current density J is the same (same current, assume same wire thickness). Nichrome has lower conductivity σ, so to maintain the same J, you need a higher E. This higher field corresponds to a higher voltage drop across the nichrome wire—which is exactly how resistors work.
+**Nichrome has the stronger field.** From J = σE, [[learning/notes/quick-context/electric-current|current density]] J is the same (same current, assume same wire thickness). Nichrome has lower conductivity σ, so to maintain the same J, you need a higher E. This higher field corresponds to a higher voltage drop across the nichrome wire—which is exactly how resistors work.
 </details>
 
 **Q4:** A spark plug has a 0.5mm gap and requires 20,000V to fire. What's the field strength?

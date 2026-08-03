@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/sil-rated-safety-functions]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
@@ -11,9 +11,9 @@ created: 2026-01-16
 
 ## The Core Problem: Who Executes the Motion Control Loop?
 
-The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
+The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, [[learning/notes/quick-context/plc-vs-software|ladder logic]], fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
 
-The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
+The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] in Structured Text and praying.
 
 ## 5 Essential Terms
 
@@ -88,7 +88,7 @@ IF trajectoryActive THEN
 END_IF;
 ```
 
-**Software Side (ROS2 Python) - Computing and sending trajectory:**
+**Software Side ([[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]] Python) - Computing and sending trajectory:**
 ```python
 # ROS2 node: compute trajectory, hand off to PLC for execution
 class TrajectoryPlanner(Node):
@@ -130,7 +130,7 @@ The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Window
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-The architecture diagram above shows a real-world split: the Linux IPC running ROS2 handles vision processing at 30fps, ML-based object detection, and MoveIt trajectory planning. None of this needs real-time guarantees. The computed trajectory waypoints are sent via OPC-UA to the Siemens S7-1500 PLC, which runs a 2ms scan cycle handling safety monitoring, conveyor control, and the actual motion interpolation. The PLC then commands servo drives over PROFINET IRT at 250 microsecond cycles.
+The architecture diagram above shows a real-world split: the Linux IPC running ROS2 handles vision processing at 30fps, ML-based object detection, and MoveIt trajectory planning. None of this needs real-time guarantees. The computed trajectory waypoints are sent via [[learning/notes/quick-context/robot-cell-integration-best-practices|OPC-UA]] to the Siemens S7-1500 PLC, which runs a 2ms scan cycle handling safety monitoring, conveyor control, and the actual motion interpolation. The PLC then commands servo drives over PROFINET IRT at 250 microsecond cycles.
 
 This division means: software does the "thinking" (where to move, what to pick up), PLC does the "doing" (actually moving safely and precisely). The PLC code is deliberately simple—interpolate waypoints, check safety every scan, command drives. The software code can be arbitrarily complex without risking motion quality.
 
@@ -143,9 +143,9 @@ This division means: software does the "thinking" (where to move, what to pick u
 
 - **[[quick-context/robotic-arm-api-levels]]** - The full API stack from high-level task planning down to servo control
 - **[[quick-context/preempt-rt]]** - The Linux kernel patch that enables soft real-time, bridging the gap between software and PLC
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|ADLINK ROScube]], [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|Beckhoff TwinCAT on Linux]]) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
 - **[[quick-context/plc-vs-software]]** - Deeper dive into PLC architecture and why it differs fundamentally from software
-- **[[quick-context/sil-rated-safety-functions]]** - Why safety-critical functions still require certified hardware
+- **[[quick-context/sil-rated-safety-functions]]** - Why [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|safety-critical functions]] still require certified hardware
 
 </details>
 
@@ -161,7 +161,7 @@ Because Linux (without PREEMPT_RT) provides no guarantees about when your callba
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?
 <details>
 <summary>Answer</summary>
-Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for SIL-rated safety functions. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
+Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
 </details>
 
 **Q3:** What's the role of OPC-UA in this architecture?

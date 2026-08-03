@@ -5,7 +5,7 @@ created: 2026-01-30
 
 # Capacitor
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/current-mirror]]
 
 > **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
 
@@ -26,7 +26,7 @@ Electronics need stable voltage to operate correctly, but power supplies fluctua
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A capacitor consists of two conductive plates separated by an insulator (dielectric). When you apply voltage across the plates, electrons accumulate on one plate (making it negative) and are depleted from the other plate (making it positive). This charge separation creates an electric field stored in the dielectric. The field itself holds energy - no chemical reaction needed, unlike [[quick-context/galvanic-cells-batteries|batteries]].
+A capacitor consists of two conductive plates separated by an insulator (dielectric). When you apply voltage across the plates, electrons accumulate on one plate (making it negative) and are depleted from the other plate (making it positive). This charge separation creates an [[learning/notes/quick-context/electric-magnetic-field-unification|electric field]] stored in the dielectric. The field itself holds energy - no chemical reaction needed, unlike [[quick-context/galvanic-cells-batteries|batteries]].
 
 ```
 BASIC CAPACITOR STRUCTURE AND OPERATION
@@ -370,7 +370,7 @@ TYPICAL PCB POWER SUPPLY FILTERING:
 
 ## Decoupling Capacitors: Keeping CPUs from Crashing
 
-Every [[quick-context/pcb-printed-circuit-board|PCB]] with digital ICs is covered in small ceramic capacitors placed next to chip power pins. These "decoupling" or "bypass" capacitors are the unsung heroes preventing circuit chaos.
+Every [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] with digital ICs is covered in small ceramic capacitors placed next to chip power pins. These "decoupling" or "bypass" capacitors are the unsung heroes preventing circuit chaos.
 
 ```
 THE PROBLEM: SUDDEN CURRENT DEMANDS
@@ -486,9 +486,9 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** - The transistor's gate-oxide-semiconductor structure forms a MOS capacitor. Understanding capacitors is essential for understanding how transistors switch: applying gate voltage charges this capacitor, creating the electric field that forms the channel.
+- **[[quick-context/transistor]]** - The transistor's gate-oxide-semiconductor structure forms a [[learning/notes/quick-context/transistor|MOS capacitor]]. Understanding capacitors is essential for understanding how transistors switch: applying gate voltage charges this capacitor, creating the electric field that forms the channel.
 
 - **[[quick-context/electric-current]]** - Current and capacitors are intimately related. Current equals the rate of charge flow: I = dQ/dt = C × dV/dt. A capacitor only "conducts" when voltage is changing.
 
@@ -496,17 +496,17 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[quick-context/galvanic-cells-batteries]]** - Both store energy, but through fundamentally different mechanisms. Batteries: chemical energy, high density, slow. Capacitors: electric field energy, low density, instant response.
 
-- **[[quick-context/pcb-printed-circuit-board]]** - PCB design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** - PCB design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for [[learning/notes/quick-context/bga-ball-grid-array|signal integrity]].
 
-- **[[quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental noise floor: V_noise = sqrt(kT/C). This limits how small DRAM storage capacitors can be, because thermal noise would overwhelm the stored signal.
+- **[[quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental [[learning/notes/quick-context/thermal-noise-electronics|noise floor]]: V_noise = sqrt(kT/C). This limits how small [[learning/notes/quick-context/ram-addressing-decoder|DRAM]] storage capacitors can be, because [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] would overwhelm the stored signal.
 
-- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
+- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including [[learning/notes/quick-context/capacitance|parasitic capacitance]] in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
 - **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 
-- **[[small-context/permanent-magnet-creation]]** - Capacitor discharge circuits store energy at high voltage (E = ½CV²) then release it in milliseconds to create 15,000+ amp pulses for magnetizing iron. A practical example of how capacitors enable high-power applications from low-power sources.
+- **permanent-magnet-creation** - Capacitor discharge circuits store energy at high voltage (E = ½CV²) then release it in milliseconds to create 15,000+ amp pulses for magnetizing iron. A practical example of how capacitors enable high-power applications from low-power sources.
 
 - **[[quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC impedance techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
 

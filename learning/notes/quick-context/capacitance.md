@@ -5,13 +5,13 @@ created: 2026-03-28
 
 # Capacitance
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
 > **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
 ## The Core Problem
 
-Every pair of conductors separated by an insulator has capacitance. Discrete [[quick-context/capacitor|capacitors]] exploit this intentionally, but *parasitic* capacitance -- the unintended capacitance baked into every wire, trace, connector, and [[quick-context/transistor|transistor]] gate -- is what limits how fast digital circuits can switch, how far analog signals can travel without distortion, and how much power a CPU burns. Understanding capacitance as a *property of geometry and materials* (not just a component spec) is the key to understanding signal integrity, switching speed, and power dissipation in modern electronics.
+Every pair of conductors separated by an insulator has capacitance. Discrete [[quick-context/capacitor|capacitors]] exploit this intentionally, but *parasitic* capacitance -- the unintended capacitance baked into every wire, trace, connector, and [[quick-context/transistor|transistor]] gate -- is what limits how fast digital circuits can switch, how far analog signals can travel without distortion, and how much power a CPU burns. Understanding capacitance as a *property of geometry and materials* (not just a component spec) is the key to understanding [[learning/notes/quick-context/bga-ball-grid-array|signal integrity]], switching speed, and [[learning/notes/quick-context/resistor|power dissipation]] in modern electronics.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 |------|------------|
 | **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
-| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
+| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
 | **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
@@ -622,7 +622,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 
 - **[[quick-context/transistor]]** -- Gate capacitance ($C_{gs}$, $C_{gd}$) determines switching speed and dynamic power. Miller capacitance ($C_{gd}$ multiplied by gain) is the dominant speed limiter in analog amplifiers.
 
-- **[[quick-context/pcb-printed-circuit-board]]** -- PCB trace geometry creates parasitic capacitance that sets characteristic impedance, causes crosstalk between traces, and affects signal integrity at high frequencies.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** -- PCB trace geometry creates parasitic capacitance that sets characteristic impedance, causes crosstalk between traces, and affects signal integrity at high frequencies.
 
 - **[[quick-context/voltage]]** -- Voltage is what drives charge onto capacitance ($Q = CV$). The energy stored in any capacitance is $E = \frac{1}{2}CV^2$ -- voltage squared makes this highly sensitive to supply voltage.
 

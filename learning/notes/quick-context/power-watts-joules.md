@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/smd-resistor]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Where Does the Energy Go?
 
-A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
+A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a [[learning/notes/quick-context/bga-ball-grid-array|thermal management]] problem.
 
 ## 5 Essential Terms
 
@@ -168,7 +168,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 
@@ -185,10 +185,10 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A USB device draws 500 mA at 5V. How much power does it consume?
+**Q1:** A [[learning/notes/quick-context/embedded-communication-protocols|USB device]] draws 500 mA at 5V. How much power does it consume?
 <details>
 <summary>Answer</summary>
-**2.5W.** P = V × I = 5V × 0.5A = 2.5W. This is the standard USB 2.0 power budget per port.
+**2.5W.** P = V × I = 5V × 0.5A = 2.5W. This is the standard [[learning/notes/quick-context/raspberry-pi-5-components|USB 2.0]] power budget per port.
 </details>
 
 **Q2:** A linear regulator converts 12V to 3.3V at 200 mA. How much power is wasted as heat?
@@ -206,7 +206,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q4:** A PCB trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
 <details>
 <summary>Answer</summary>
-**0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider (lower resistance) or use multiple layers.
+**0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider ([[learning/notes/quick-context/pcb-printed-circuit-board|lower resistance]]) or use multiple layers.
 </details>
 
 **Q5:** Why did fast charging standards move to higher voltages (9V, 12V, 20V) instead of higher current?

@@ -3,16 +3,17 @@ term: Pick and Place File
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
 
 # Pick and Place File
 
-> **See also:** [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
+> **See also:** [[quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
-**Definition:** A spreadsheet (CSV/Excel) exported from PCB design software that tells automated assembly machines exactly where to place each component on a [[quick-context/pcb-printed-circuit-board|PCB]]—including XY coordinates, rotation angle, and which side of the board. Used by contract manufacturers (JLCPCB, PCBWay) to populate your bare PCB with components.
+**Definition:** A spreadsheet (CSV/Excel) exported from PCB design software that tells automated assembly machines exactly where to place each component on a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]—including XY coordinates, rotation angle, and which side of the board. Used by contract manufacturers (JLCPCB, PCBWay) to populate your bare PCB with components.
 
 ## How It Works
 
-- PCB design software exports a spreadsheet listing every component's reference designator, XY position, rotation, and board side.
+- PCB design software exports a spreadsheet listing every component's [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|reference designator]], XY position, rotation, and board side.
 - The assembly house loads this file into the pick-and-place machine's software alongside the component reels.
 - The machine's vacuum nozzle picks each component from its feeder, rotates it to the correct angle, and places it on the solder-pasted PCB pad.
 - After all components are placed, the board passes through a reflow oven to permanently solder them.

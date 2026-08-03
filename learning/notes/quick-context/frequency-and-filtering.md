@@ -3,7 +3,7 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/impedance-and-reactance]]
 
 > **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 
@@ -185,7 +185,7 @@ EMI FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
+- **[[quick-context/impedance-and-reactance]]** — Filters work because capacitive and [[learning/notes/quick-context/impedance-and-reactance|inductive reactance]] change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
 
 - **[[quick-context/capacitor]]** — The primary component in most filters. Its reactance (Xc = 1/2πfC) decreasing with frequency is what makes low-pass filters work.
 

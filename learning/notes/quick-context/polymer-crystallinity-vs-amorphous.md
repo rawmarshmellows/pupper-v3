@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/melt-index]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 
@@ -31,7 +31,7 @@ Here's the critical insight: when plastic cools, crystalline regions **shrink mo
 
 When molten plastic exits the printer nozzle, its polymer chains are in a disordered, high-energy state—like a pot of boiling spaghetti. As the plastic cools, two competing processes happen simultaneously. First, thermal contraction: all materials shrink when they lose heat, just like a hot air balloon deflating. Second, and this is the key differentiator, semi-crystalline polymers undergo **crystallization**: their chains spontaneously reorganize from random tangles into tightly packed, ordered arrangements. This reorganization releases additional heat (latent heat of crystallization) and causes extra shrinkage beyond simple thermal contraction.
 
-The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the glass transition temperature and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
+The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
 
 ```
 WHAT HAPPENS WHEN PLASTIC COOLS: Two Paths
@@ -74,7 +74,7 @@ MOLTEN STATE (all plastics start here):
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff practitioners argue about: **crystallinity gives you strength, heat resistance, and chemical resistance - but it also gives you warping headaches**. Semi-crystalline plastics (Nylon, PEEK, PP, POM) are engineering-grade materials that can replace metal parts. But they shrink 1.5-3% when cooling, versus 0.3-0.5% for amorphous plastics like PLA or PETG.
+The fundamental tradeoff practitioners argue about: **crystallinity gives you strength, heat resistance, and chemical resistance - but it also gives you warping headaches**. Semi-crystalline plastics (Nylon, PEEK, PP, POM) are engineering-grade materials that can replace metal parts. But they shrink 1.5-3% when cooling, versus 0.3-0.5% for amorphous plastics like PLA or [[learning/notes/quick-context/3d-printing-filament-types|PETG]].
 
 This creates a constant optimization battle:
 - **Want easy printing?** Use amorphous materials (PLA, PETG, ABS). Accept weaker, less heat-resistant parts.
@@ -257,7 +257,7 @@ A heated bed only addresses part of the warping problem. While it slows cooling 
 
 3. **Air currents** — Drafts can cause uneven cooling on different sides of the part, which a heated bed cannot fix.
 
-For highly crystalline materials like Nylon or PEEK, you typically also need a heated chamber, controlled cooling rates, draft shields, and potentially post-print annealing. The heated bed is necessary but not sufficient.
+For highly crystalline materials like Nylon or PEEK, you typically also need a heated chamber, controlled cooling rates, draft shields, and potentially post-print annealing. The heated bed is necessary but [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|not sufficient]].
 </details>
 
 **Q5:** Looking at the material comparison table, why might someone choose PETG over Nylon for a functional part, despite Nylon being "stronger"?
@@ -269,7 +269,7 @@ PETG offers a practical middle ground with several advantages:
 
 2. **No heated chamber required** — Nylon often requires expensive enclosed heated chambers for reliable printing, while PETG prints well on standard machines.
 
-3. **Good enough for many applications** — While Nylon is stronger and more wear-resistant, PETG still makes functional parts suitable for many uses. The strength difference only matters if you actually need that extra performance.
+3. **[[learning/notes/quick-context/rc-oscillator|Good enough for]] many applications** — While Nylon is stronger and more wear-resistant, PETG still makes functional parts suitable for many uses. The strength difference only matters if you actually need that extra performance.
 
 4. **Less moisture-sensitive** — Nylon absorbs moisture aggressively and must be dried before printing, adding complexity.
 

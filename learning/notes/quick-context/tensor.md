@@ -5,13 +5,13 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/quick-context/electric-magnetic-field-unification]]
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
 ## The Core Problem
 
-Physics and engineering need quantities that exist independently of how you choose to measure them. A force doesn't change just because you rotate your ruler. Stress inside a material doesn't depend on which direction you call "x." But the *numbers* you use to describe these quantities do change with your coordinate choice. Tensors solve this: they package multi-directional information with built-in transformation rules, so the underlying reality is preserved even as the description changes.
+Physics and engineering need quantities that exist independently of how you choose to measure them. A force doesn't change just because you rotate your ruler. Stress inside a material doesn't depend on [[learning/notes/quick-context/differential-pair|which direction]] you call "x." But the *numbers* you use to describe these quantities do change with your coordinate choice. Tensors solve this: they package multi-directional information with built-in transformation rules, so the underlying reality is preserved even as the description changes.
 
 ## 5 Essential Terms
 
@@ -210,7 +210,7 @@ APPROACH 2: GEOMETRIC/ABSTRACT (modern math, general relativity)
 | Numerical computation (FEM, CFD) | Required | Background |
 | General relativity | Needed for calculation | Needed for understanding |
 | Machine learning ("tensors" in PyTorch) | It's just arrays | N/A (not real tensors) |
-| Building physical intuition | Start here | Graduate to this |
+| Building [[learning/notes/quick-context/capacitance|physical intuition]] | Start here | Graduate to this |
 
 The deepest understanding comes from fluency in both: knowing *what* a tensor represents geometrically, and being able to *compute* with its components.
 
@@ -291,7 +291,7 @@ COMBINED LOADING (real-world):
     tensors are designed to handle.
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
+**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A [[learning/notes/quick-context/helmert-transform|rotation matrix]] R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
 
 </details>
 
@@ -300,11 +300,11 @@ COMBINED LOADING (real-world):
 
 - **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
-- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
+- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]], making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 
 - **[[quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
 
-- **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
+- **[[learning/notes/quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
 
 - **[[quick-context/electric-magnetic-field-unification]]** — The physical motivation for why E and B need tensor packaging: they transform into each other under velocity changes, which is precisely what the Faraday tensor's transformation law describes.
 

@@ -3,7 +3,7 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/output-voltage-swing]]
 
 > **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 
@@ -11,7 +11,7 @@ created: 2026-01-22
 
 ## The Core Problem
 
-[[quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
+[[quick-context/electrolysis|Electrolysis]] forces [[learning/notes/quick-context/electricity-generation|chemical reactions]] that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
 
 ## 5 Essential Terms
 
@@ -270,7 +270,7 @@ They reduced the overpotential by 0.3V. The theoretical minimum (1.23V) is fixed
 **Q3:** In the equation ΔG = -nFE, what does "n" represent and why does it matter for calculating voltage?
 <details>
 <summary>Answer</summary>
-"n" represents the number of electrons transferred per molecule in the reaction. It matters because voltage is energy *per electron*—more electrons means the same total energy (ΔG) is spread across more charge carriers, resulting in a lower voltage requirement per electron. For water, n=2 because each water molecule requires 2 electrons to split. See: A Concrete Example
+"n" represents the number of electrons transferred per molecule in the reaction. It matters because voltage is energy *per electron*—more electrons means the same total energy (ΔG) is spread across more charge carriers, resulting in a [[learning/notes/quick-context/transistor-analog-to-digital|lower voltage]] requirement per electron. For water, n=2 because each water molecule requires 2 electrons to split. See: A Concrete Example
 </details>
 
 **Q4:** Why can't you run a commercial water electrolyzer at exactly 1.23 volts, even with perfect equipment?
@@ -282,7 +282,7 @@ Because 1.23V is only the thermodynamic minimum—the energy the chemistry funda
 **Q5:** If overpotential is "wasted" energy, where does that energy actually go?
 <details>
 <summary>Answer</summary>
-It becomes heat. The extra voltage beyond 1.23V drives current through resistive materials and overcomes kinetic barriers, both of which convert electrical energy to thermal energy. This is why electrolyzers need cooling systems and why reducing overpotential improves both efficiency and thermal management. See: The Key Tension (Voltage Breakdown diagram)
+It becomes heat. The extra voltage beyond 1.23V drives current through resistive materials and overcomes kinetic barriers, both of which convert electrical energy to thermal energy. This is why electrolyzers need cooling systems and why reducing overpotential improves both efficiency and [[learning/notes/quick-context/bga-ball-grid-array|thermal management]]. See: The Key Tension (Voltage Breakdown diagram)
 </details>
 
 </details>

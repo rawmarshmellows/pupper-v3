@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/integration-failure-modes-solutions]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -13,7 +13,7 @@ created: 2026-01-16
 
 Robot cell integration best practices exist to solve the coordination problem: making sure a robot, PLC, vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
 
-Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
+Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), [[learning/notes/quick-context/integration-failure-modes-solutions|race conditions]] (conveyor starts before gripper clears), [[learning/notes/quick-context/integration-failure-modes-solutions|unrecoverable states]] (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
 
 The core methods are: **structured handshakes** (explicit signal exchanges where both parties acknowledge state transitions), **state machines** (PackML-style models where the cell is always in a defined state with defined transitions), **simulation-first development** (virtual commissioning in tools like RoboDK, Visual Components, or vendor simulators before touching hardware), and **standardized I/O mapping** (documents that become the single source of truth for every signal between devices).
 
@@ -40,7 +40,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 **The integration workflow typically follows:**
 
 1. **I/O Mapping Document**: Create the single source of truth for every signal between devices before writing any code
-2. **State Machine Design**: Define cell states (Idle, Running, Held, Faulted) and valid transitions using PackML as a template
+2. **[[learning/notes/quick-context/integration-failure-modes-solutions|State Machine]] Design**: Define cell states (Idle, Running, Held, Faulted) and valid transitions using PackML as a template
 3. **Handshake Definition**: Specify the signal exchange protocol for each device interaction
 4. **Virtual Commissioning**: Build and debug in simulation—test handshake timing, collision paths, and edge cases
 5. **Physical Commissioning**: Deploy to hardware with confidence, knowing the logic is already debugged

@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]]
 
 # SPIneV1.elf
 
@@ -10,7 +11,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- At boot, U5's Cortex-M4 core begins executing SPIneV1 code from flash, initializing SPI (slave to U1) and four CAN bus interfaces.
+- At boot, U5's Cortex-M4 core begins executing SPIneV1 code from flash, initializing SPI (slave to U1) and four [[learning/notes/quick-context/can-bus|CAN bus]] interfaces.
 - U1 sends 12 joint angle targets over SPI at 1 kHz; SPIneV1 unpacks them into individual motor commands.
 - Each motor command is formatted as a CAN frame and dispatched to the correct bus (one bus per leg, 3 motors each).
 - The servo motors receive their CAN position commands and close their own internal PID loops to reach the target angles.
@@ -28,4 +29,4 @@ SPIneV1 FIRMWARE — WHAT IT DOES ON U5:
                                               12 motors
 ```
 
-**Key insight:** The `.elf` format contains both machine code and debug symbols — it gets [[quick-context/firmware|flashed]] onto U5's 512KB flash via [[micro-context/swd-serial-wire-debug|SWD]], but unlike a stripped `.bin`, you can also use it for step-through debugging in STM32CubeIDE.
+**Key insight:** The `.elf` format contains both [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]] and debug symbols — it gets [[quick-context/firmware|flashed]] onto U5's 512KB flash via [[micro-context/swd-serial-wire-debug|SWD]], but unlike a stripped `.bin`, you can also use it for step-through debugging in STM32CubeIDE.

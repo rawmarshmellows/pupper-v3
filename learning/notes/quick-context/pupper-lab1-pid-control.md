@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 1 — PID Control (Single Joint)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab2-forward-kinematics]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]]
 
 > **TL;DR:** Lab 1 introduces closed-loop motor control by having students implement and tune a PD controller for a single joint — computing torque from position and velocity error at 200 Hz — which becomes the foundational control primitive reused in every subsequent lab.
 
@@ -15,7 +15,7 @@ A robot motor does not move to a desired angle on its own. Given a raw torque co
 
 In this lab, students work with a single joint (`leg_front_l_1`) on the Pupper quadruped. The ROS2 node subscribes to `/joint_states` (which provides the current joint position $q$ and velocity $\dot{q}$) and publishes torque commands through a `forward_command_controller` that exposes effort, kp, and kd interfaces via YAML configuration. Students implement two functions — `get_target_joint_info()`, which returns the desired position and velocity at the current time, and `calculate_torque()`, which applies the PD formula $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — then tune the gains so the joint tracks a sinusoidal or step trajectory without oscillation or sluggishness. All torque output is clamped to $\pm 3.0$ Nm for safety.
 
-This lab is deliberately scoped to one joint so students can build intuition for gain tuning before the complexity of multi-joint kinematics (Lab 2), inverse kinematics (Lab 3), and full-body gait control (Lab 4) enter the picture. The 200 Hz PD loop implemented here reappears in Labs 3 and 4, where it tracks joint angle targets produced by the IK solver and gait planner.
+This lab is deliberately scoped to one joint so students can build intuition for gain tuning before the complexity of multi-joint kinematics (Lab 2), [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] (Lab 3), and full-body gait control (Lab 4) enter the picture. The 200 Hz PD loop implemented here reappears in Labs 3 and 4, where it tracks joint angle targets produced by the IK solver and gait planner.
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ This lab is deliberately scoped to one joint so students can build intuition for
 | **`forward_command_controller`** | ROS2 controller plugin that accepts raw effort (torque) commands and forwards them directly to the motor driver — bypasses any built-in position controller so students implement PD themselves |
 
 <details>
-<summary><strong>How It Works</strong> — PD control loop</summary>
+<summary><strong>How It Works</strong> — [[learning/notes/quick-context/pupper-v3-labs|PD control]] loop</summary>
 
 The control loop runs at 200 Hz (every 5 ms). Each cycle executes the same sequence:
 
@@ -76,7 +76,7 @@ BLOCK DIAGRAM:
                     └──────────────────────────────┘
 ```
 
-The `get_target_joint_info()` function typically returns a sinusoidal trajectory for testing:
+The `get_target_joint_info()` [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] typically returns a sinusoidal trajectory for testing:
 - $q_{target}(t) = A \sin(2\pi f t)$
 - $\dot{q}_{target}(t) = 2\pi f A \cos(2\pi f t)$
 
@@ -206,8 +206,8 @@ With $K_p = 1.0$, $K_d = 5.0$ (too sluggish, overdamped):
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview. Lab 1's PD controller is reused directly in Labs 3 (IK trajectory tracking) and 4 (gait control), and its concepts appear in Lab 7's proportional yaw controller for visual tracking.
-- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over CAN bus to the servo motors.
-- **ROS2 `sensor_msgs/JointState`** — The message type on `/joint_states`. Fields: `name[]` (joint names), `position[]` (radians), `velocity[]` (rad/s), `effort[]` (Nm). The node must index into these arrays to find the correct joint.
+- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over [[learning/notes/quick-context/can-bus|CAN bus]] to the servo motors.
+- **ROS2 `sensor_msgs/JointState`** — The [[learning/notes/quick-context/ros2-architecture|message type]] on `/joint_states`. Fields: `name[]` (joint names), `position[]` (radians), `velocity[]` (rad/s), `effort[]` (Nm). The node must index into these arrays to find the correct joint.
 - **`forward_command_controller`** — A ROS2 control plugin from `ros2_controllers`. The YAML config maps joint names to command interfaces (effort) and state interfaces (position, velocity). It bypasses any built-in PID so students implement their own.
 - **Torque vs. position control** — Most hobby servos accept position commands. The Pupper's motors accept raw torque commands, giving students direct control over the force applied — essential for learning PD control from first principles.
 - **200 Hz control rate** — A tradeoff: fast enough for smooth joint control, slow enough to run comfortably on the Raspberry Pi in Python. Lab 5's neural controller runs at ~50 Hz; the underlying hardware supports up to 1000 Hz via the STM32.
@@ -232,7 +232,7 @@ If $\dot{q}_{target} = 0$ always, the derivative term becomes $K_d(0 - \dot{q}) 
 **Q3:** The torque output is clamped to $\pm 3.0$ Nm. What would happen if there were no clamp and a student accidentally set $K_p = 500$?
 <details>
 <summary>Answer</summary>
-With $K_p = 500$ and even a modest position error of 0.1 rad, the computed torque would be 50 Nm — far beyond the motor's rated torque. Three things could happen: (1) the motor driver's own current limit might cap the output, but potentially at a level that still damages the gearbox; (2) the gears could strip or the motor could overheat from sustained stall current; (3) the leg could slam into mechanical hard stops at high speed, damaging the 3D-printed structure. The software clamp at 3.0 Nm is a first line of defense that keeps the motor in a safe operating range regardless of gain values. It also prevents the control board from commanding currents that exceed the motor driver's safe limits.
+With $K_p = 500$ and even a modest position error of 0.1 rad, the computed torque would be 50 Nm — far beyond the motor's rated torque. Three things could happen: (1) the motor driver's own current limit might cap the output, but potentially at a level that still damages the gearbox; (2) the gears could strip or the motor could overheat from sustained stall current; (3) the leg could [[learning/notes/quick-context/camera-fundamentals|slam]] into mechanical hard stops at high speed, damaging the 3D-printed structure. The software clamp at 3.0 Nm is a first line of defense that keeps the motor in a safe operating range regardless of gain values. It also prevents the control board from commanding currents that exceed the motor driver's safe limits.
 </details>
 
 </details>

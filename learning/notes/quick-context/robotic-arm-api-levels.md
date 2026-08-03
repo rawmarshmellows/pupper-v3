@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Bridging Human Intent to Motor Commands
 
-Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
+Robotic arms are fundamentally dumb servo motors arranged in a [[learning/notes/quick-context/pupper-lab2-forward-kinematics|kinematic chain]]. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
 
 The abstraction layers exist because manufacturing needs both determinism (a welding robot must follow the exact same path every cycle) and flexibility (reprogramming for a new product shouldn't require a PhD in control theory). Without these layers, you'd either have unmaintainable low-level code or be locked into vendor-specific high-level tools with no escape hatch.
 
@@ -30,21 +30,21 @@ The abstraction layers exist because manufacturing needs both determinism (a wel
 
 The API stack for robotic arms typically has three main levels:
 
-**Level 1: Vendor High-Level Scripts**
+**[[learning/notes/quick-context/isa-95-levels|Level 1]]: Vendor High-Level Scripts**
 - Languages like KUKA KRL, Fanuc TP, ABB RAPID
 - Teach pendant programmable
 - Motion primitives like PTP (point-to-point), LIN (linear), CIRC (circular)
 - Vendor handles IK, trajectory generation, and safety
 - Limited customization but fast deployment
 
-**Level 2: Middleware Abstraction (ROS/MoveIt)**
+**[[learning/notes/quick-context/isa-95-levels|Level 2]]: Middleware Abstraction (ROS/MoveIt)**
 - Language-agnostic (Python, C++)
 - Automatic collision checking and motion planning
 - IK solved by configurable solvers
 - Works across robot brands with driver plugins
 - Higher latency, less deterministic than Level 1
 
-**Level 3: Direct Servo Control**
+**[[learning/notes/quick-context/isa-95-levels|Level 3]]: Direct Servo Control**
 - Raw joint position/velocity/torque commands
 - Real-time loop at 1kHz or faster
 - You implement IK, trajectory generation, safety
@@ -64,7 +64,7 @@ High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up 
 
 Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
 
-The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
+The rise of "real-time capable" middleware (EtherCAT, [[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]] with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 
 </details>
 

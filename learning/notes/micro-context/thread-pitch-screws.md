@@ -9,7 +9,7 @@ created: 2026-05-04
 
 ## How It Works
 
-- Threads are a helical ramp; one full rotation moves the screw axially by exactly one pitch.
+- Threads are a helical ramp; one full rotation moves the screw axially by [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] pitch.
 - **Coarse** pitch (large value, e.g. $M3 \times 0.5$, 1/4-20) installs fast and tolerates dirty or damaged threads — used in softer materials and general assembly.
 - **Fine** pitch (small value, e.g. $M3 \times 0.35$, 1/4-28) gives more thread engagement per length, higher clamp force at a given torque, and resists vibration loosening — used in thin walls, precision adjustments, and aerospace.
 - Pitch must match between screw and tapped hole; mixing $M3 \times 0.5$ into an $M3 \times 0.35$ hole strips threads.

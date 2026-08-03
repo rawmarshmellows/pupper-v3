@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/hydrogen-bonds-beginners]]
 
 > **TL;DR:** Covalent bonds form when atoms share electrons to complete their outer shells, creating the strong intra-molecular connections that hold polymer chains together—these bonds never break during normal 3D printing.
 
@@ -33,8 +33,8 @@ Everything around you—your desk, your skin, your 3D printer filament—is made
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/subatomic-particles\|Electron]]** | A tiny negatively-charged [[quick-context/subatomic-particles\|subatomic particle]] that orbits atoms and gets shared in covalent bonds |
-| **[[quick-context/atoms-molecules-polymers-basics\|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
+| **Electron** | A tiny negatively-charged subatomic particle that orbits atoms and gets shared in covalent bonds |
+| **Polymer** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
 | **Monomer** | The single repeating unit that links together to form a polymer chain (like a single LEGO brick) |
 | **Cross-linking** | When polymer chains form covalent bonds sideways to neighboring chains, creating a rigid network |
 | **Thermoplastic** | A polymer that softens when heated and hardens when cooled (reversible)—what FDM 3D printing uses |
@@ -281,10 +281,10 @@ Related concepts that connect to covalent bonds:
 - [[quick-context/polymer-chemical-bonds]] — Deeper dive into how covalent bonds specifically work within polymer chains and determine material properties
 - [[quick-context/hydrogen-bonds-beginners]] — A weaker type of bond that works alongside covalent bonds to influence material behavior (like water's unique properties)
 - [[quick-context/van-der-waals-forces]] — The weak attractions between polymer chains that you overcome when melting thermoplastics
-- [[quick-context/dipole-dipole-interactions]] — Another type of intermolecular force that affects how polymer chains interact with each other
-- [[quick-context/biology-fundamentals]] — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
+- [[quick-context/dipole-dipole-interactions]] — Another type of [[learning/notes/quick-context/chemical-bonds-spectrum|intermolecular force]] that affects how polymer chains interact with each other
+- biology-fundamentals — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
 - [[quick-context/subatomic-particles]] — Explains what electrons are, why atoms have specific numbers of them in outer shells, and why carbon with 4 outer electrons can form 4 bonds
-- [[small-context/glass-vs-plastic-uv-degradation]] — Bond dissociation energy in action: UV photons break C–C covalent bonds (346 kJ/mol) in plastics but can't reach Si–O bonds (452 kJ/mol) in glass
+- glass-vs-plastic-uv-degradation — Bond dissociation energy in action: UV photons break C–C covalent bonds (346 kJ/mol) in plastics but can't reach Si–O bonds (452 kJ/mol) in glass
 
 </details>
 
@@ -294,10 +294,10 @@ Related concepts that connect to covalent bonds:
 **Q1:** Why don't covalent bonds break when you melt PLA filament in a 3D printer?
 <details>
 <summary>Answer</summary>
-Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak intermolecular forces between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak van der Waals forces between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
+Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak [[learning/notes/quick-context/chemical-bonds-spectrum|intermolecular forces]] between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
 </details>
 
-**Q2:** What is the "octet rule" and why does it drive covalent bond formation?
+**Q2:** What is the "octet rule" and why does it drive [[learning/notes/quick-context/polymer-chemical-bonds|covalent bond]] formation?
 <details>
 <summary>Answer</summary>
 The octet rule states that atoms are most stable when they have 8 electrons in their outer shell. Most atoms don't naturally have this configuration, so they "solve" this problem by sharing electrons with neighboring atoms. When two atoms share electrons, both atoms get to count those shared electrons toward their octet, making both more stable. This sharing creates an attractive force—the covalent bond—that holds the atoms together.

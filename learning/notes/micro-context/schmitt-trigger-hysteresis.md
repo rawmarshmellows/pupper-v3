@@ -2,6 +2,7 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/comparator]]
 
 # Schmitt Trigger & Hysteresis
 
@@ -14,7 +15,7 @@ created: 2026-06-07
 - Instead of one trip point, there are two — an upper $V_{T+}$ and a lower $V_{T-}$; the gap between them is the hysteresis.
 - A rising input must climb past $V_{T+}$ to switch the output HIGH; a falling input must drop below $V_{T-}$ to switch it LOW.
 - While the input sits *between* the two thresholds, the output holds its last state — this "memory" makes it immune to small noise wiggles.
-- Positive feedback (the output fed back to the input) shifts which threshold is active after each switch, which is what physically creates the gap.
+- [[learning/notes/quick-context/pupper-lab7-vision-tracking|Positive feedback]] (the output fed back to the input) shifts which threshold is active after each switch, which is what physically creates the gap.
 
 ```
   Vout

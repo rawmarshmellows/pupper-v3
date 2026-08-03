@@ -5,7 +5,7 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/full-bridge-rectifier]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/input-bias-current]]
 
 > **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
 
@@ -17,18 +17,18 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 
 | Term | Definition |
 |------|------------|
-| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
-| **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
-| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **AC ([[learning/notes/quick-context/electric-current|Alternating Current]])** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
+| **DC ([[learning/notes/quick-context/electric-current|Direct Current]])** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
+| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a [[learning/notes/quick-context/diode|PN junction]]. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
+| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until [[learning/notes/quick-context/diode|breakdown voltage]] is reached. |
+| **Ripple Voltage** | The residual AC variation [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC [[learning/notes/quick-context/capacitor|time constant]]). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 ### Step 1: AC from the Grid
 
-AC is produced by rotating a coil in a magnetic field (generator), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
+AC is produced by rotating a coil in a [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] (generator), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
 
 ```
 AC from the wall (e.g. 120V, 60 Hz):
@@ -43,7 +43,7 @@ AC from the wall (e.g. 120V, 60 Hz):
 
 ### Step 2: The PN Junction -- Forward and Reverse Bias
 
-A diode is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
+A diode is a PN junction: [[learning/notes/quick-context/differential-pair|P-type silicon]] (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
 
 ```
 Forward bias: current flows           Reverse bias: current blocked
@@ -182,7 +182,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 ### Source Micro-Contexts (Glossary Stubs)
 
@@ -193,9 +193,9 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 
 ### Related Quick-Contexts
 
-- **[[quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
+- **[[quick-context/diode]]** -- The component itself: PN junction types, [[learning/notes/quick-context/diode|forward voltage drop]], Schottky vs silicon, LEDs, Zener, freewheeling diodes.
 - **[[quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
-- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs electron flow.
+- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs [[learning/notes/quick-context/electrodes|electron flow]].
 - **[[quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
 - **[[quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
 

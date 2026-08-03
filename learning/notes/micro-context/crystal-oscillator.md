@@ -2,12 +2,13 @@
 term: Crystal Oscillator
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 
 # Crystal Oscillator
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** A circuit that uses a quartz crystal's piezoelectric resonance to generate a precise, stable frequency — the universal clock source for CPUs. Every digital processor, from a laptop's Intel chip to a Pupper's [[micro-context/stm32-microcontroller|STM32]], derives its [[micro-context/clock-speed|clock]] from some form of crystal or resonator oscillator, with PLLs multiplying the base frequency up to operating speed. Far more accurate than [[quick-context/rc-oscillator|RC oscillators]] (±20 ppm vs. ±1-5%), but requires an external component.
+**Definition:** A circuit that uses a quartz crystal's piezoelectric resonance to generate a precise, stable frequency — the universal [[learning/notes/micro-context/clock-source|clock source]] for CPUs. Every digital processor, from a laptop's Intel chip to a Pupper's [[micro-context/stm32-microcontroller|STM32]], derives its [[learning/notes/micro-context/clock-speed-vs-temperature|clock]] from some form of crystal or resonator oscillator, with PLLs multiplying the base frequency up to operating speed. Far more accurate than [[quick-context/rc-oscillator|RC oscillators]] (±20 ppm vs. ±1-5%), but requires an external component.
 
 ## How It Works
 

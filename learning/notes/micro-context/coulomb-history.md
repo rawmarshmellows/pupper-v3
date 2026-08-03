@@ -3,12 +3,13 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/raspberry-pi-ai-hat]]
 
 # Coulomb (Unit History)
 
-> **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]
+> **See also:** [[quick-context/electric-current]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
-**Definition:** The coulomb (C) is the SI unit of electric charge, named after French physicist Charles-Augustin de Coulomb (1736–1806). Originally defined by electrostatic force experiments, it's now defined as the charge transported by 1 ampere in 1 second.
+**Definition:** The [[learning/notes/quick-context/electric-current|coulomb (C)]] is the SI unit of electric charge, named after French physicist Charles-Augustin de Coulomb (1736–1806). Originally defined by electrostatic force experiments, it's now defined as the charge transported by 1 ampere in 1 second.
 
 ## How It Works
 

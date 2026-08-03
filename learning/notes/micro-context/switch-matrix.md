@@ -2,6 +2,7 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]]
 
 # Switch Matrix
 
@@ -27,4 +28,4 @@ Row 2 ────┤────────┤────────┤
   (vs. 9 pins if wired individually)
 ```
 
-**Key insight:** The matrix trick works because each switch is uniquely addressed by activating its row and reading its column — the same multiplexing principle used in [[learning/notes/micro-context/sram|SRAM]] and DRAM arrays, where wordlines and bitlines address individual memory cells.
+**Key insight:** The matrix trick works because each switch is uniquely addressed by activating its row and reading its column — the same multiplexing principle used in [[learning/notes/micro-context/sram|SRAM]] and [[learning/notes/quick-context/ram-addressing-decoder|DRAM]] arrays, where wordlines and bitlines address individual memory cells.

@@ -5,7 +5,7 @@ created: 2026-04-07
 
 # Raspberry Pi AI HAT+ — Edge AI Acceleration
 
-> **Related:** [[quick-context/raspberry-pi-5-components]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/camera-fundamentals]]
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
 > **TL;DR:** The Raspberry Pi AI HAT+ is a family of add-on boards that snap onto a [[quick-context/raspberry-pi-5-components|Raspberry Pi 5]] and provide a dedicated NPU (Neural Processing Unit) for running AI inference locally — 10-40x faster than the CPU alone at a fraction of the power. The lineup ranges from a 13 TOPS vision-focused board ($70) to the AI HAT+ 2 with 40 TOPS and its own 8GB RAM for running small LLMs on-device ($180).
 
@@ -17,7 +17,7 @@ Running AI models (object detection, pose estimation, image classification) on a
 
 | Term | Definition |
 |------|------------|
-| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
+| **HAT (Hardware Attached [[learning/notes/quick-context/pupper-lab5-neural-controller|on Top]])** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C [[learning/notes/micro-context/eeprom|EEPROM]] for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
 | **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively parallel datapaths that a general-purpose CPU cannot match |
 | **TOPS (Tera Operations Per Second)** | NPU throughput metric — how many trillion math operations per second the chip can perform. Caveat: TOPS depends on precision (INT4 vs INT8) and does not capture memory bandwidth or software efficiency |
 | **Hailo** | Israeli semiconductor company that manufactures the NPU chips used in all Pi AI HATs: Hailo-8L (13 TOPS), Hailo-8 (26 TOPS), and Hailo-10H (40 TOPS) |
@@ -104,7 +104,7 @@ DATA FLOW — LLM INFERENCE (AI HAT+ 2)
 
 The Raspberry Pi OS auto-detects the Hailo NPU at boot. The software ecosystem includes:
 
-- **`rpicam-apps` / `picamera2`** — Camera frameworks with native Hailo integration. Adding `--post-process-file detect.json` to a camera command runs YOLO inference automatically.
+- **`rpicam-apps` / `picamera2`** — Camera frameworks with native Hailo integration. Adding `--post-process-file detect.json` to a camera command runs [[learning/notes/quick-context/pupper-lab7-vision-tracking|YOLO]] inference automatically.
 - **HailoRT** — Low-level runtime and API for loading compiled models (`.hef` files) and running inference.
 - **Hailo Model Zoo** — Pre-compiled models for common tasks: YOLOv5/v8 detection, pose estimation, segmentation, image classification.
 - **Hailo Dataflow Compiler** — Converts models from ONNX/TensorFlow to Hailo's `.hef` format, applying quantization (FP32 → INT8/INT4) and layer fusion.
@@ -121,7 +121,7 @@ The official AI HAT+ mounts on top of the Pi 5 via the 40-pin GPIO stacking head
 
 ### What the GPIO Header Actually Does on the AI HAT+
 
-| Function | Pins Used | Required for Inference? |
+| [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Function]] | Pins Used | Required for Inference? |
 |----------|-----------|----------------------|
 | Mechanical mounting / alignment | All 40 | No |
 | Power delivery (5V from Pi) | 5V + GND pins | No (FPC carries 5V too) |
@@ -226,7 +226,7 @@ If you already have the official AI HAT+, you can use extra-tall stacking header
 ### Option 3: USB-Based (Not Recommended for Pi 5)
 
 Hailo-8 M.2 modules can work inside USB3-to-NVMe enclosures, and Hailo has confirmed basic functionality. However:
-- Pi 5 lacks USB4/Thunderbolt — stuck with USB 3.0 bandwidth
+- Pi 5 lacks USB4/Thunderbolt — stuck with [[learning/notes/quick-context/raspberry-pi-5-components|USB 3.0]] bandwidth
 - Added CPU overhead defeats the purpose of a dedicated accelerator
 - Hailo does not recommend this configuration for Pi 5
 
@@ -244,7 +244,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 
 **Geekworm M901 + Hailo-8L (M-key)** is the simplest path:
 - ~$15-20 for the adapter + ~$45-55 for the Hailo-8L M.2 module
-- FPC-only: all 40 GPIO pins free for motor control, IMU, CAN bus
+- FPC-only: all 40 GPIO pins free for motor control, IMU, [[learning/notes/quick-context/can-bus|CAN bus]]
 - 13 TOPS is sufficient for real-time YOLOv8 at ~15 FPS
 - Power draw stays well within FPC's 5W budget
 - One line in config.txt: `dtparam=pciex1_gen=3`
@@ -458,10 +458,10 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/raspberry-pi-5-components]]** — The host board: PCIe connector, GPIO header, BCM2712 SoC, LPDDR4X RAM — everything the AI HAT connects to
+- **[[quick-context/raspberry-pi-5-components]]** — The host board: PCIe connector, GPIO header, [[learning/notes/quick-context/raspberry-pi-5-components|BCM2712 SoC]], [[learning/notes/quick-context/raspberry-pi-5-components|LPDDR4X RAM]] — everything the AI HAT connects to
 - **[[quick-context/pupper-lab7-vision-tracking]]** — Real-world use: Hailo 26T running YOLOv5 for autonomous object tracking on the Pupper robot
 - **[[quick-context/camera-fundamentals]]** — How cameras capture the frames that the AI HAT processes — sensors, lenses, intrinsics
-- **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
+- **[[quick-context/pupper-lab5-neural-controller]]** — [[learning/notes/quick-context/pupper-lab5-neural-controller|Neural network inference]] for locomotion — a different kind of on-device AI (policy networks vs. vision models)
 - **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
 - **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
 - **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level

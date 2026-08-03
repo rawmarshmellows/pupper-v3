@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Post-Sale Account Engagement
 
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
 
@@ -20,7 +20,7 @@ Most organizations treat post-sale like a handoff: sales closes, success onboard
 | **Account Segmentation** | Categorizing accounts by characteristics (revenue potential, strategic value, relationship maturity) to determine engagement intensity |
 | **Time-to-Value (TTV)** | How quickly a customer realizes the core benefit of your product; the primary goal of early engagement |
 | **Expansion Revenue** | Additional revenue from existing customers through upsells (higher tiers), cross-sells (new products), and seat expansion—identified via [[quick-context/whitespace-mapping|whitespace mapping]] |
-| **Customer Health Score** | A composite metric combining usage, engagement, support patterns, and satisfaction signals to predict retention and growth |
+| **Customer Health Score** | A composite metric combining usage, engagement, support patterns, and satisfaction signals to predict retention and [[learning/notes/quick-context/existing-account-management-playbook|growth]] |
 | **Relationship Maturity** | The depth of partnership, from transactional vendor-buyer to strategic business partner (see [[quick-context/mcdonald-kam-model|KAM Model]]) |
 
 <details>
@@ -28,7 +28,7 @@ Most organizations treat post-sale like a handoff: sales closes, success onboard
 
 Effective post-sale engagement starts with segmentation, then applies appropriate playbooks.
 
-**Note:** This matrix determines *engagement intensity* for existing customers. It layers on top of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. KEEP accounts typically land in Protect/Maintain; EXPAND accounts in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
+**Note:** This matrix determines *engagement intensity* for existing customers. It layers [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. [[learning/notes/quick-context/playbook-main|KEEP accounts]] typically land in Protect/Maintain; [[learning/notes/quick-context/playbook-main|EXPAND accounts]] in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -250,8 +250,8 @@ Beyond the 2x2 matrix, account characteristics influence engagement tactics:
 | Origin | Engagement Implication |
 |--------|------------------------|
 | **Champion-led sale** | Protect the champion; they're your internal advocate; their success = your retention |
-| **Executive mandate** | Find operational champions fast; exec sponsorship is necessary but not sufficient for adoption |
-| **Bottom-up adoption** | Expand footprint before formalizing; usage is your leverage; beware of shadow IT concerns |
+| **Executive mandate** | Find operational champions fast; exec sponsorship is necessary but [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|not sufficient]] for adoption |
+| **Bottom-up adoption** | [[learning/notes/quick-context/existing-account-management-playbook|Expand]] footprint before formalizing; usage is your leverage; beware of shadow IT concerns |
 | **RFP/Procurement-led** | Often transactional mindset; work to establish relationships beyond purchasing; value realization messaging critical |
 
 **By Growth Trajectory:**
@@ -490,7 +490,7 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
 
 - **[[quick-context/sales-methodology-layering]]** — How pre-sale methodology connects to post-sale engagement
 - **[[quick-context/mcdonald-kam-model]]** — Relationship maturity framework for deepening strategic partnerships
-- **[[quick-context/sandler-kare-segmentation]]** — KARE model that informs growth vs. protect designations
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]] model that informs growth vs. protect designations
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Account planning for strategic accounts continues post-sale
 - **Customer Health Scoring** — Building the metrics that trigger engagement actions
 - **[[quick-context/whitespace-mapping]]** — The visual tool for identifying which products can be sold to which buying centers

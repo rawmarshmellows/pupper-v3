@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/robotic-arm-api-levels]] | [[learning/notes/quick-context/isa-95-levels]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -30,7 +30,7 @@ The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+
 
 EPSON RC+ provides a complete workflow for robot programming:
 
-1. **Point Teaching**: Define positions using the teach pendant or 3D simulation, storing them as point numbers (P1, P2, etc.) in a point file separate from code.
+1. **Point Teaching**: Define positions using the [[learning/notes/quick-context/robotic-arm-api-levels|teach pendant]] or 3D simulation, storing them as point numbers (P1, P2, etc.) in a point file separate from code.
 
 2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)

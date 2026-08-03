@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/capacitance]]
 
 # Short Circuit
 

@@ -2,6 +2,7 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
 # DuPont Jumper Wires
 
@@ -98,7 +99,7 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 
 | Factor | DuPont Jumpers | Soldered / Latched Connectors |
 |--------|---------------|-------------------------------|
-| Setup time | Seconds | Minutes to hours |
+| [[learning/notes/quick-context/d-flip-flop|Setup time]] | Seconds | Minutes to hours |
 | Reconfigurability | Unlimited | Destructive to change |
 | Connection reliability | Poor (friction only) | Excellent |
 | Vibration resistance | Very poor | Good to excellent |
@@ -198,7 +199,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the [[learning/notes/quick-context/uart|physical layer]] first.
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
