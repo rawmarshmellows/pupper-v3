@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 
@@ -10,9 +11,9 @@ updated: 2026-06-07
 
 **What does "This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight)" mean?**
 
-An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] does that, holding the line HIGH whenever everyone has released.
+An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared pull-up resistor does that, holding the line HIGH whenever everyone has released.
 
-- **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving transistor, so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
+- **"none fight"** → [[learning/notes/quick-context/data-bus-and-arbitration|Bus contention]] (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving transistor, so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
 - **"any device can pull LOW"** → One device turning on its NMOS drags the *whole* shared line LOW, regardless of what the others do. Low always wins.
 - **"wired-AND"** → Treat *released* = logic 1, *pulling LOW* = logic 0. The line reads HIGH **only if every device releases** (all 1s). If *any one* pulls LOW, the line is LOW. That is a logical AND of all the devices' states — computed by the wire itself, no gate needed. Hence "wired-AND."
 
@@ -42,7 +43,7 @@ The pull-up is *weak* (e.g. 4.7 kΩ); an NMOS turned on is a *strong* path to GN
                    pulls LOW
 ```
 
-Read one column top-to-bottom: the shared FAULT line → that comparator's **OUT** pin → its internal **NMOS (Q6)** → GND. CMP A's Q6 is ON (solid path to GND), so it pulls FAULT LOW; CMP B and C are released (Q6 off, OUT open) and just float with whatever the line does. Even if all three tripped, they'd be parallel paths to GND — still LOW, no short. **No number of released devices beats one that's pulling.** Only an *open-drain* comparator (LMC7221) can sit here — a push-pull part (LMC7211-N) has a high-side transistor too and would fight (contention). The leftmost `●` is just where the single pull-up taps the line, not a device.
+Read one column top-to-bottom: the shared FAULT line → that comparator's **OUT** pin → its internal **NMOS (Q6)** → GND. CMP A's Q6 is ON (solid path to GND), so it pulls FAULT LOW; CMP B and C are released (Q6 off, OUT open) and just float with whatever the line does. Even if all three tripped, they'd be parallel paths to GND — still LOW, no short. **No number of released devices beats one that's pulling.** Only an *open-drain* comparator ([[learning/notes/quick-context/comparator-specification|LMC7221]]) can sit here — a push-pull part ([[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|LMC7211-N]]) has a high-side transistor too and would fight (contention). The leftmost `●` is just where the single pull-up taps the line, not a device.
 
 Examples:
 - **Fault/alarm bus** (the diagram above) — several open-drain comparators, each watching a different rail; any one tripping pulls FAULT LOW, so the MCU watches a single pin for "something's wrong."
@@ -83,21 +84,21 @@ In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carr
                             driven by the OUTPUT STAGE (Q6)
 ```
 
-- **Push-pull OUT** (LMC7211-N): actively driven HIGH *and* LOW — clean levels, drives an LED or logic gate directly, but can't share a wire.
+- **Push-pull OUT** (LMC7211-N): actively driven HIGH *and* LOW — clean levels, drives an LED or [[learning/notes/quick-context/code-to-gates-and-bootstrapping|logic gate]] directly, but can't share a wire.
 - **Open-drain OUT** (its cousin the LMC7221): only pulls LOW, needs a pull-up to go HIGH — lets the pull-up set the HIGH level from a different rail (level-shifting) and lets many outputs share one line.
 
 The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$` (how hard OUT drives) both grade this exact pin.
 
-> **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | pull-up-pull-down-resistors
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** ([[learning/notes/micro-context/mosfet|MOSFET]]) output uses a single transistor that can only pull LOW — going HIGH relies on an external [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|pull-up resistor]].
 
 ## How It Works
 
 - **Push-pull:** a high-side transistor connects the pin to VCC (sources current, drives HIGH) and a low-side transistor connects it to GND (sinks current, drives LOW); only one is on at a time.
 - Push-pull gives strong, fast drive in both directions, but two such outputs must never share a wire — one driving HIGH against another driving LOW is a near-short (bus contention).
-- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] raises it HIGH.
-- This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different logic voltage — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
+- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external pull-up resistor raises it HIGH.
+- This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different [[learning/notes/quick-context/qwiic-stemma-qt-i2c|logic voltage]] — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
 
 ```
    PUSH-PULL (totem-pole)            OPEN-DRAIN / OPEN-COLLECTOR

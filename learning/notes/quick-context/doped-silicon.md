@@ -3,7 +3,7 @@ topic: Doped Silicon
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/subatomic-particles]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/diode]]
 
 > **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as voltage-controlled switches.
 
@@ -15,7 +15,7 @@ Silicon is the second most abundant element in Earth's crust (after oxygen), fou
 
 Here's the problem: pure silicon is a "semiconductor"—it's not a good conductor like copper wire, and it's not a good insulator like rubber. It's stuck in the middle, which sounds useful but actually isn't. To make transistors (the tiny on/off switches inside every computer chip), we need silicon that we can precisely control—sometimes conducting, sometimes not, exactly where we want it.
 
-Without doping, we couldn't make transistors. Without transistors, no computers, no smartphones, no modern electronics. Every microchip in existence—from the processor in your phone to the controller in your microwave—relies on carefully doped silicon to function.
+Without doping, we couldn't make transistors. Without transistors, no computers, no smartphones, no modern electronics. Every microchip in existence—from the processor in your phone to the controller in your microwave—relies on carefully doped silicon to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]].
 
 ## 5 Essential Terms
 
@@ -370,7 +370,7 @@ Step 5: Repeat many times with different masks and dopants
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor Hierarchy]]** — Doped silicon is what makes transistors possible; this document explains how transistors fit into the larger hierarchy of chips, packages, and circuit boards.
 
@@ -378,13 +378,13 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/electric-current|Electric Current]]** — Understanding how electrons flow helps you grasp why doping creates free charge carriers that enable current flow.
 
-- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through covalent bonds; doping works because it disrupts this sharing pattern.
+- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through [[learning/notes/quick-context/covalent-bonds|covalent bonds]]; doping works because it disrupts this sharing pattern.
 
 - **Band Gap Theory** — The deeper physics of why semiconductors behave differently from conductors and insulators; explains energy levels that electrons must overcome to move.
 
 - **[[quick-context/subatomic-particles]]** — The fundamental particles (protons, neutrons, electrons) that make up atoms. Silicon has 14 protons and 4 outer electrons; doping changes the electron count at specific locations to create controllable charge carriers.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from BJT (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from BJT (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by [[learning/notes/quick-context/semiconductor-fabrication|ion implantation]].
 
 </details>
 

@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** how-a-computer-works-index | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 
@@ -141,7 +141,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 The central design tension of this whole pipeline is **how late to add meaning**, and **interrupts vs. polling** for moving the data.
 
-**Add meaning late (scancodes), not early.** The keyboard could, in principle, send the letter `A` directly. Almost no general-purpose keyboard does. Instead it sends a meaningless **scancode** and lets the host's keymap decide what it means. Why? Because "what key X means" depends on context the keyboard cannot know: the user's layout (QWERTY vs. AZERTY vs. Dvorak), whether Shift/Ctrl/Alt are held, and what the focused app wants. Keeping the keyboard "dumb" and pushing meaning up to software makes one keyboard work for every language and every app. The cost is more layers and more lookups.
+**Add meaning late (scancodes), not early.** The keyboard could, in principle, send the letter `A` directly. Almost no general-purpose keyboard does. Instead it sends a meaningless **scancode** and lets the host's keymap decide what it means. Why? Because "what key X means" depends on context the keyboard cannot know: the user's layout (QWERTY vs. AZERTY vs. Dvorak), whether Shift/Ctrl/Alt are held, and what the focused app wants. Keeping the keyboard "dumb" and pushing meaning up to software makes one keyboard work for every language and every app. The cost is [[learning/notes/quick-context/pcb-printed-circuit-board|more layers]] and more lookups.
 
 | Approach | Where meaning is added | Pro | Con |
 |----------|------------------------|-----|-----|
@@ -181,7 +181,7 @@ HACK MEMORY MAP (the kernel of the whole pipeline)
                                               ASCII code, collapsing 4 & 9)
 ```
 
-In this repo's implementation, `Memory.__call__` is built from **two stacked 16K RAM chips** selected by the top address bit (`address0`). That top-bit split *is* the address decoder — the exact mechanism the full Hack machine uses to route an address to RAM vs. Screen vs. Keyboard:
+In this repo's implementation, `Memory.__call__` is built from **two stacked 16K RAM chips** selected by the top address bit (`address0`). That top-bit split *is* the [[learning/notes/quick-context/ram-addressing-decoder|address decoder]] — the exact mechanism the full Hack machine uses to route an address to RAM vs. Screen vs. Keyboard:
 
 ```python
 # learning/references/courses/python-nand-to-tetris-part-1/
@@ -208,7 +208,7 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 <details>
 <summary><strong>Peripheral Knowledge</strong> — The rungs this capstone ties together</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
+- **how-a-computer-works-index** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — The bottom anchor: a switch makes a bit, flip-flops store it, registers/RAM are scaled-up versions — i.e. both the key switch (rung 1) and the framebuffer (rung 13).
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The engine that runs the interrupt handler, the keymap lookup, and the application's drawing code (rungs 8-11). *(sibling — may not exist yet)*
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — How an address selects one cell; the top-bit dmux/mux in the anchor is exactly this, and it is what makes a memory-mapped keyboard/screen possible. *(sibling — may not exist yet)*
@@ -250,7 +250,7 @@ There are no "letters" in the framebuffer — it stores **pixel values**, one pe
 **Q5:** In the Nand-to-Tetris Hack machine, the keyboard and screen are just memory addresses, yet a real PC has USB controllers, interrupts, and a GPU. What is the single shared mechanism that makes both work, and why is the toy a faithful kernel of the real thing?
 <details>
 <summary>Answer</summary>
-The shared mechanism is **memory-mapped I/O via address decoding**: a peripheral is reachable by reading/writing a fixed address, and a decoder routes that address to the right physical thing. In the repo's `Memory`, the top address bit (`address0`) dmux/mux-routes reads and writes between two RAM blocks — the same decode the full Hack machine uses to pick RAM vs. Screen vs. Keyboard. A real PC adds protocol transport (USB), interrupts (instead of polling), and a GPU for fast scan-out, but the *core idea* — "a device is an address; talking to it is reading/writing memory" — is identical. The toy strips away the transport and leaves the kernel. See: Concrete Example; and [[learning/notes/quick-context/ram-addressing-decoder]].
+The shared mechanism is **[[learning/notes/quick-context/data-bus-and-arbitration|memory-mapped I/O]] via address decoding**: a peripheral is reachable by reading/writing a fixed address, and a decoder routes that address to the right physical thing. In the repo's `Memory`, the top address bit (`address0`) dmux/mux-routes reads and writes between two RAM blocks — the same decode the full Hack machine uses to pick RAM vs. Screen vs. Keyboard. A real PC adds protocol transport (USB), interrupts (instead of polling), and a GPU for fast scan-out, but the *core idea* — "a device is an address; talking to it is reading/writing memory" — is identical. The toy strips away the transport and leaves the kernel. See: Concrete Example; and [[learning/notes/quick-context/ram-addressing-decoder]].
 </details>
 
 </details>

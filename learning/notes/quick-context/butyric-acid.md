@@ -5,7 +5,7 @@ created: 2026-04-06
 
 # Butyric Acid
 
-> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]
+> **Related:** [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 
@@ -18,7 +18,7 @@ Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70
 | Term | Definition |
 |------|------------|
 | **Short-chain fatty acid (SCFA)** | Fatty acids with 2--6 carbon atoms produced by anaerobic bacterial fermentation of fiber in the colon; the three main SCFAs are acetate (~60%), propionate (~20%), and butyrate (~20%) |
-| **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its primary energy source via $\beta$-oxidation in mitochondria |
+| **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its [[learning/notes/quick-context/electricity-generation|primary energy source]] via $\beta$-oxidation in mitochondria |
 | **HDAC inhibitor** | A molecule that blocks histone deacetylase enzymes, loosening chromatin and activating gene expression --- butyrate's key epigenetic mechanism |
 | **Gut barrier** | The single-cell-thick epithelial layer separating the colonic lumen (trillions of bacteria) from the bloodstream; butyrate strengthens its tight junctions |
 | **Fermentation** | Anaerobic bacterial metabolism of dietary fiber and resistant starch in the colon, producing SCFAs (primarily acetate, propionate, and butyrate), $CO_2$, and $H_2$ |
@@ -173,7 +173,7 @@ Butter and Parmesan cheese contain small amounts of actual butyric acid directly
 - **[[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]** --- Butyric acid is a simple organic molecule; understanding molecular structure helps with grasping carboxylic acid chemistry
 - **Gut microbiome** --- The bacterial ecosystem that produces butyrate; understanding microbial ecology is key to understanding SCFA production
 - **Epigenetics / HDAC inhibition** --- Butyrate's gene-regulation mechanism; connects to cancer biology and drug development
-- **Inflammatory bowel disease (IBD)** --- Crohn's and ulcerative colitis involve reduced butyrate production and impaired barrier function
+- **Inflammatory bowel disease (IBD)** --- Crohn's and ulcerative colitis involve reduced butyrate production and impaired barrier [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]]
 - **Resistant starch** --- The primary dietary substrate for butyrate production; a key concept in nutrition science
 - **Prebiotics and probiotics** --- Prebiotics feed butyrate producers; some probiotics *are* butyrate producers (*C. butyricum*)
 

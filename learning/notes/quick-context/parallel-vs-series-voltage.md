@@ -3,7 +3,7 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
 
@@ -17,8 +17,8 @@ If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs
 
 | Term | Definition |
 |------|------------|
-| **Voltage (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
-| **Series Circuit** | Components connected end-to-end, so [[quick-context/electric-current\|current]] flows through each one sequentially. Voltages ADD across series elements. |
+| **Voltage ([[learning/notes/quick-context/voltage|Potential Difference]])** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
+| **Series Circuit** | Components connected end-to-end, so current flows through each one sequentially. Voltages ADD across series elements. |
 | **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME voltage; currents add instead. |
 | **Power Rails (Vdd/GND)** | The two voltage levels that supply power to all transistors in a chip. Every transistor connects between these same two rails. |
 | **Current (Amperes)** | The flow rate of electric charge. In parallel circuits, each branch draws its own current, and these currents add up at the power supply. |
@@ -192,7 +192,7 @@ THE CURRENT DELIVERY PROBLEM
   ─────────────────────────────────────────────────────────────────────────────
 
   1. THICK POWER PLANES: Use wide, low-resistance copper layers in the
-     [[quick-context/pcb-printed-circuit-board|PCB]] and [[quick-context/substrate-ic-packaging|package substrate]]
+     [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] and [[quick-context/substrate-ic-packaging|package substrate]]
 
   2. MANY POWER PINS: Modern CPUs have hundreds of Vdd pins to distribute
      current, reducing resistance per path
@@ -314,13 +314,13 @@ THE MATH THAT MATTERS:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/transistor]]** — How individual transistors work. Each one switches between conducting and non-conducting based on gate voltage, drawing current when active.
 
 - **[[quick-context/electric-current]]** — Understanding current as charge flow. In parallel circuits, currents from each branch add at the power supply.
 
-- **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
+- **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). [[learning/notes/quick-context/transistor-analog-to-digital|Lower voltage]] reduces power consumption and allows [[learning/notes/quick-context/transistor-analog-to-digital|smaller transistors]], but makes power delivery harder.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
 
@@ -357,7 +357,7 @@ THE MATH THAT MATTERS:
 **You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
 </details>
 
-**Q5:** A power supply provides 12V at 15A to a voltage regulator, which outputs 0.6V to a CPU. Assuming 90% efficiency, how much current can the VRM deliver to the CPU?
+**Q5:** A power supply provides 12V at 15A to a [[learning/notes/quick-context/ac-to-dc-rectification|voltage regulator]], which outputs 0.6V to a CPU. Assuming 90% efficiency, how much current can the VRM deliver to the CPU?
 <details>
 <summary>Answer</summary>
 **270 Amps.**

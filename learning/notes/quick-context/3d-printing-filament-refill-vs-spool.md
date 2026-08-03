@@ -177,7 +177,7 @@ Once mounted, it works exactly like a regular spool.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Different filament materials (PLA, PETG, ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
+- [[quick-context/3d-printing-filament-types]] — Different filament materials (PLA, [[learning/notes/quick-context/3d-printing-filament-types|PETG]], ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
 - [[quick-context/melt-index]] — Understanding [[quick-context/melt-index|melt flow rate]] helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
 - [[quick-context/3d-printer-hotends]] — [[quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
 
@@ -213,7 +213,7 @@ Recommend spooled filament when: (1) the person is new to 3D printing and should
 **Q5:** Why does moisture sensitivity matter more for refill filament than spooled filament?
 <details>
 <summary>Answer</summary>
-Refill coils lack the protective plastic spool enclosure that helps seal out humidity. Since many filaments (especially nylon, PETG, and PLA) absorb moisture from the air—leading to print defects like stringing, bubbling, and weak layer adhesion—refills require more careful storage in dry boxes with desiccant.
+Refill coils lack the protective plastic spool enclosure that helps seal out humidity. Since many filaments (especially nylon, PETG, and PLA) absorb moisture from the air—leading to print defects like stringing, bubbling, and weak [[learning/notes/quick-context/3d-printing-filament-types|layer adhesion]]—refills require more careful storage in dry boxes with desiccant.
 </details>
 
 </details>

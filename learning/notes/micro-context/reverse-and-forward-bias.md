@@ -3,6 +3,7 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/inside-the-triangle]]
 
 # Reverse and Forward Bias
 
@@ -10,10 +11,10 @@ updated: 2026-03-27
 
 ## How It Works
 
-- At equilibrium, a depletion zone forms at the PN junction where mobile carriers have diffused away, creating a built-in electric field (~0.7V for silicon).
+- At equilibrium, a depletion zone forms at the [[learning/notes/quick-context/diode|PN junction]] where mobile carriers have diffused away, creating a built-in [[learning/notes/quick-context/electric-magnetic-field-unification|electric field]] (~0.7V for silicon).
 - Forward bias applies positive voltage to the P-side, opposing the built-in field and shrinking the depletion zone until carriers flood across — current flows.
 - Reverse bias applies positive voltage to the N-side, reinforcing the built-in field and widening the depletion zone — current is blocked.
-- If reverse voltage exceeds the breakdown voltage, the field accelerates carriers enough to ionize atoms (avalanche), and current flows destructively.
+- If reverse voltage exceeds the [[learning/notes/quick-context/diode|breakdown voltage]], the field accelerates carriers enough to ionize atoms (avalanche), and current flows destructively.
 
 ```
 Forward bias:  current flows          Reverse bias:  current blocked

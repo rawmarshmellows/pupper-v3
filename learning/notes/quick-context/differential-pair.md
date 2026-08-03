@@ -5,21 +5,21 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/current-mirror]]
 
 > **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
-A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and both wires pick up 50 mV of 60 Hz noise from nearby power lines. You need to amplify the 2 mV signal and ignore the 1.55V of unwanted voltage. A single transistor amplifier can't do this---it amplifies everything. A differential pair amplifies only the *difference* between its two inputs, naturally rejecting noise and DC offsets that appear on both wires equally. This is why every op-amp, comparator, and instrumentation amplifier starts with a differential pair at its input.
+A sensor outputs a 2 mV signal sitting [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of a 1.5V common-mode voltage, and both wires pick up 50 mV of 60 Hz noise from nearby power lines. You need to amplify the 2 mV signal and ignore the 1.55V of unwanted voltage. A single transistor amplifier can't do this---it amplifies everything. A differential pair amplifies only the *difference* between its two inputs, naturally rejecting noise and DC offsets that appear on both wires equally. This is why every op-amp, comparator, and instrumentation amplifier starts with a differential pair at its input.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Matched transistors (Q1, Q2)** | Two transistors fabricated identically (same geometry, same process, physically adjacent on the die) so they have the same threshold voltage, transconductance, and temperature behavior. Matching is what makes the circuit reject common-mode signals. |
-| **Tail current source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
-| **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the tail current can't increase, so nothing changes at the output. |
+| **Matched transistors (Q1, Q2)** | Two transistors fabricated identically (same geometry, same process, physically adjacent on the die) so they have the same [[learning/notes/quick-context/transistor-analog-to-digital|threshold voltage]], transconductance, and temperature behavior. Matching is what makes the circuit reject common-mode signals. |
+| **Tail [[learning/notes/quick-context/voltage-current-causality|current source]]** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
+| **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the [[learning/notes/micro-context/tail-current|tail current]] can't increase, so nothing changes at the output. |
 | **Differential signal** | The difference between the two inputs: $V_{DIFF} = V_+ - V_-$. This is what the pair amplifies. A 1 mV differential signal on top of a 1.5V common-mode voltage produces the same output as a 1 mV signal on top of 0V. |
 | **Common-Mode Rejection Ratio (CMRR)** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
 
@@ -70,14 +70,14 @@ DIFFERENTIAL PAIR (NMOS version)
 
 ### Why Current Flows Drain → Source
 
-Drain is connected up toward Vdd (higher voltage). Source is connected down toward GND (lower voltage). Conventional current flows from high to low potential, so: drain → source.
+Drain is connected up toward Vdd (higher voltage). Source is connected down toward GND ([[learning/notes/quick-context/transistor-analog-to-digital|lower voltage]]). Conventional current flows from high to low potential, so: drain → source.
 
 At the electron level it's actually reversed: electrons flow **source → drain** (attracted toward the positive drain). That's literally why the terminals are named that way:
 
 - **Source** = source of electrons (they originate here)
 - **Drain** = where electrons drain to (collected here)
 
-Conventional current is defined opposite to electron flow.
+Conventional current is defined opposite to [[learning/notes/quick-context/electrodes|electron flow]].
 
 ### How the Voltage Difference Steers Current
 

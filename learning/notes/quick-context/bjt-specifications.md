@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/power-watts-joules]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/diode-rectification]]
 >
 > **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
@@ -19,11 +19,11 @@ A BJT that switches your LED perfectly at 5 V can be destroyed instantly by a 30
 
 | Term | Definition |
 |------|------------|
-| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less voltage." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
+| **Type ([[learning/notes/quick-context/bjt|NPN / PNP]])** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less voltage." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
 | **$V_{CEO}$ (Collector–Emitter Breakdown, base Open)** | The maximum voltage the transistor can hold across collector→emitter while **off** before it avalanche-breaks-down. When the BJT is off, nearly the full supply $V_{CC}$ appears across it, so you need $V_{CEO} > V_{CC}$ (with margin). |
 | **$I_C$ (Max Collector Current)** | The largest continuous current the collector can carry without the bond wires or silicon failing. Your load current must stay below this. |
-| **$P_C$ / $P_D$ (Power Dissipation)** | The most heat the package can shed before the junction overheats. The heat made *inside* the BJT is $P = V_{CE}\cdot I_C$. This rating shrinks as the part gets hotter (thermal derating). |
-| **$\beta$ / $h_{FE}$ (DC Current Gain)** | The amplification factor: $I_C = \beta \cdot I_B$. Typically 50–300. It tells you the **minimum base current** you must inject to support a given collector current: $I_B \ge I_C / \beta_{min}$. It drifts with current and temperature — never a precision number. |
+| **$P_C$ / $P_D$ ([[learning/notes/quick-context/resistor|Power Dissipation]])** | The most heat the package can shed before the junction overheats. The heat made *inside* the BJT is $P = V_{CE}\cdot I_C$. This rating shrinks as the part gets hotter (thermal derating). |
+| **$\beta$ / $h_{FE}$ (DC [[learning/notes/quick-context/bjt|Current Gain]])** | The amplification factor: $I_C = \beta \cdot I_B$. Typically 50–300. It tells you the **minimum base current** you must inject to support a given collector current: $I_B \ge I_C / \beta_{min}$. It drifts with current and temperature — never a precision number. |
 
 <details>
 <summary><strong>How It Works</strong> — Walking the 5 specs in the order you check them</summary>
@@ -49,11 +49,11 @@ THE BJT SPEC CHECKLIST
 ```
 
 **1. Type — NPN vs PNP (polarity, not voltage).**
-The single most common beginner myth is "NPN needs less voltage to turn on." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
+The single most common beginner myth is "NPN needs less voltage to [[learning/notes/micro-context/mosfet|turn on]]." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
 
 - **Direction of control.** NPN turns on when the base is pulled *more positive* than the emitter; PNP turns on when the base is pulled *more negative* than the emitter.
 - **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a microcontroller pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
-- **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives higher gain, faster switching, and a lower saturation voltage. That physics — not voltage — is why NPN is the default.
+- **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives [[learning/notes/quick-context/differential-pair|higher gain]], [[learning/notes/quick-context/transistor-analog-to-digital|faster switching]], and a lower saturation voltage. That physics — not voltage — is why NPN is the default.
 
 ```
 NPN — LOW-SIDE SWITCH   (emitter at GND;   drive base HIGH to turn ON)

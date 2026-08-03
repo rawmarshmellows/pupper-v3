@@ -3,9 +3,9 @@ topic: Soldering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/short-circuit]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and [[quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
+> **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
 
 # Soldering
 
@@ -168,13 +168,13 @@ REFLOW SOLDERING PROCESS (SMD production)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — PCB pad design, soldermask openings, and copper finish (HASL, ENIG, OSP) all affect solder joint quality. The PCB and soldering process are designed together.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — PCB pad design, soldermask openings, and copper finish ([[learning/notes/quick-context/pcb-layers|HASL]], [[learning/notes/quick-context/pcb-layers|ENIG]], OSP) all affect solder joint quality. The PCB and soldering process are designed together.
 
-- **[[quick-context/pcb-layers]]** — The paste mask layer is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder volume and prevent bridging.
+- **[[quick-context/pcb-layers]]** — The [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|paste mask]] layer is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder volume and prevent bridging.
 
-- **[[quick-context/bga-ball-grid-array]]** — BGA packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. X-ray inspection is required because joints are hidden under the package.
+- **[[quick-context/bga-ball-grid-array]]** — BGA packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. [[learning/notes/quick-context/bga-ball-grid-array|X-ray inspection]] is required because joints are hidden under the package.
 
 - **[[quick-context/flip-chip]]** — Flip-chip solder bumps (C4) are a microscopic version of the same soldering principle, connecting the die directly to the substrate.
 
@@ -194,7 +194,7 @@ REFLOW SOLDERING PROCESS (SMD production)
 **Q2:** What's the difference between a cold joint and a good joint, visually?
 <details>
 <summary>Answer</summary>
-**A good joint is shiny, smooth, and has a concave fillet shape.** A cold joint is dull, grainy or rough-textured, and may have an irregular or convex shape. Cold joints occur when the solder didn't fully melt, the parts moved during cooling, or there was insufficient heat. Note: lead-free solder naturally has a slightly duller finish than leaded—this is normal, not a defect.
+**A good joint is shiny, smooth, and has a concave fillet shape.** A cold joint is dull, grainy or rough-textured, and may have an irregular or convex shape. Cold joints occur when the solder didn't fully melt, the parts moved during cooling, or there was insufficient heat. Note: [[learning/notes/quick-context/bga-ball-grid-array|lead-free solder]] naturally has a slightly duller finish than leaded—this is normal, not a defect.
 </details>
 
 **Q3:** Why is the reflow oven temperature profile so critical?

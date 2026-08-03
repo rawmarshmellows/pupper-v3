@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/micro-context/smd-resistor]]
 
 > **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | Inductors (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, capacitors (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -220,7 +220,7 @@ The expert mental model: think of circuits as **systems of simultaneous constrai
 <details>
 <summary><strong>Concrete Example</strong> --- Same circuit, three causal stories</summary>
 
-Consider a simple series circuit: a source driving a [[quick-context/resistor|resistor]] (1 k$\Omega$) and an [[quick-context/inductor|inductor]] (10 mH) in series.
+Consider a simple [[learning/notes/quick-context/parallel-vs-series-voltage|series circuit]]: a source driving a [[quick-context/resistor|resistor]] (1 k$\Omega$) and an [[quick-context/inductor|inductor]] (10 mH) in series.
 
 ```
 THREE STORIES ABOUT THE SAME CIRCUIT
@@ -296,14 +296,14 @@ STORY 3: "Constraints determine everything" (the real answer)
     determined simultaneously by the constraints.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that Ohm's law ($V = IR$) tells you that voltage always comes first and current follows. This is a misreading of what the equation says. $V = IR$ is an *algebraic relationship*, not a causal arrow. It's like $F = ma$---does force cause acceleration, or does acceleration cause force? In Newtonian mechanics, force is the cause. But in general relativity, what we call "gravitational force" is actually a consequence of curved spacetime. The "causality" depends on which level of physics you're using. Similarly, in circuits: at the field level, the electric field is fundamental. At the circuit level, it depends on what you're controlling. Asking "does V cause I?" is like asking "does the left side of the equation cause the right side?" The equation doesn't have a direction.
+**The one thing most outsiders get wrong about this is...** thinking that [[learning/notes/quick-context/parallel-vs-series-voltage|Ohm's law]] ($V = IR$) tells you that voltage always comes first and current follows. This is a misreading of what the equation says. $V = IR$ is an *algebraic relationship*, not a causal arrow. It's like $F = ma$---does force cause acceleration, or does acceleration cause force? In Newtonian mechanics, force is the cause. But in [[learning/notes/quick-context/faraday-tensor|general relativity]], what we call "gravitational force" is actually a consequence of curved spacetime. The "causality" depends on which level of physics you're using. Similarly, in circuits: at the field level, the electric field is fundamental. At the circuit level, it depends on what you're controlling. Asking "does V cause I?" is like asking "does the left side of the equation cause the right side?" The equation doesn't have a direction.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes electrons; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
 
@@ -315,9 +315,9 @@ STORY 3: "Constraints determine everything" (the real answer)
 
 - **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an inductor creates back-EMF. The current change comes first; the voltage is the response.
 
-- **[[quick-context/galvanic-cells-batteries]]** --- In batteries, chemistry is the true cause. Chemical reactions create charge separation, which creates the electric field, which manifests as both voltage and current. Neither V nor I is the root cause.
+- **[[quick-context/galvanic-cells-batteries]]** --- In batteries, chemistry is the true cause. [[learning/notes/quick-context/electricity-generation|Chemical reactions]] create charge separation, which creates the electric field, which manifests as both voltage and current. Neither V nor I is the root cause.
 
-- **[[quick-context/electricity-generation]]** --- In generators, mechanical motion changes magnetic flux, which induces both voltage and current. The electromagnetic field mediates everything.
+- **[[quick-context/electricity-generation]]** --- In generators, mechanical motion changes [[learning/notes/quick-context/lenzs-law|magnetic flux]], which induces both voltage and current. The electromagnetic field mediates everything.
 
 </details>
 

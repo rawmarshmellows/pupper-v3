@@ -2,6 +2,7 @@
 term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
 ---
+> **Related:** [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/comparator-specification]]
 
 # BJT vs MOSFET vs IGBT
 
@@ -12,7 +13,7 @@ created: 2026-06-02
 ## How It Works
 
 - **BJT:** a small base current controls a much larger collector→emitter current (bipolar conduction); the base draws continuous current and switches at moderate speed.
-- **MOSFET:** an insulated gate sets up an electric field with near-zero gate current, giving the fastest switching and lowest loss at low–mid voltage—dominates logic and switch-mode supplies.
+- **[[learning/notes/micro-context/mosfet|MOSFET]]:** an insulated gate sets up an [[learning/notes/quick-context/electric-magnetic-field-unification|electric field]] with near-zero gate current, giving the fastest switching and lowest loss at low–mid voltage—dominates logic and switch-mode supplies.
 - **IGBT:** the insulated gate (easy voltage drive, like a MOSFET) feeds an internal BJT output, so it conducts like a BJT—low loss at high voltage, but slower than a MOSFET.
 - **Pick by voltage/frequency:** MOSFET for low-voltage high-frequency, IGBT for high-voltage high-power (motor drives, EV/solar inverters, welders), BJT for analog and small-signal.
 

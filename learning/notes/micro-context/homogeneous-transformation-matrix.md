@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/covariance-matrix]]
 
 # Homogeneous Transformation Matrix
 
@@ -10,10 +11,10 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A 3×3 rotation matrix is embedded in the top-left, encoding the orientation change between coordinate frames.
+- A 3×3 [[learning/notes/quick-context/helmert-transform|rotation matrix]] is embedded in the top-left, encoding the orientation change between coordinate frames.
 - A 3×1 translation vector occupies the right column, encoding the position offset.
 - The bottom row [0 0 0 1] preserves the matrix structure so that multiplying two 4×4 matrices correctly composes both rotation and translation in one step.
-- Chaining $T_{01} \cdot T_{12} \cdot T_{23}$ transforms a point from frame 3 all the way back to frame 0 — the basis of forward kinematics.
+- Chaining $T_{01} \cdot T_{12} \cdot T_{23}$ transforms a point from frame 3 all the way back to frame 0 — the basis of [[learning/notes/quick-context/pupper-v3-labs|forward kinematics]].
 
 ```
         ┌                        ┐
@@ -29,4 +30,4 @@ updated: 2026-03-27
   Chain: T_base→foot = T₀₁ · T₁₂ · T₂₃ · T₃ₑₑ
 ```
 
-**Key insight:** A $3 \times 3$ rotation matrix can't represent translation — the extra row and column in a $4 \times 4$ let you compose arbitrary rotations *and* translations by simple multiplication, which is why every joint in a kinematic chain is just another matrix in the product.
+**Key insight:** A $3 \times 3$ rotation matrix can't represent translation — the extra row and column in a $4 \times 4$ let you compose arbitrary rotations *and* translations by simple multiplication, which is why every joint in a [[learning/notes/quick-context/pupper-lab2-forward-kinematics|kinematic chain]] is just another matrix in the product.

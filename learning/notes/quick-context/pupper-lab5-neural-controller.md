@@ -6,7 +6,7 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -14,13 +14,13 @@ updated: 2026-03-12
 
 What are the current best practices in the industry for RL-based robot locomotion? How does Lab 5's approach compare to what production teams and research labs are doing now (2025-2026)?
 
-Expand on: what is the neural network actually trying to predict? What do the tuples $(o_t, a_t, r_t, o_{t+1})$ mean? What are the concrete variables in the observation and action space?
+[[learning/notes/quick-context/existing-account-management-playbook|Expand]] on: what is the neural network actually trying to predict? What do the tuples $(o_t, a_t, r_t, o_{t+1})$ mean? What are the concrete variables in the observation and action space?
 
 ## The Core Problem
 
-Labs 1-4 build a classical robotics stack: PD control drives individual joints (Lab 1), forward kinematics maps joint angles to foot positions (Lab 2), inverse kinematics solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
+Labs 1-4 build a classical robotics stack: [[learning/notes/quick-context/pupper-v3-labs|PD control]] drives individual joints (Lab 1), [[learning/notes/quick-context/pupper-v3-labs|forward kinematics]] maps joint angles to foot positions (Lab 2), [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
 
-Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward function) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
+Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]]) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
 
 The sim-to-real gap is the central challenge. A policy that works perfectly in MuJoCo can fail on the real Pupper because simulation never perfectly captures motor dynamics, sensor noise, communication delays, or floor surfaces. Lab 5's approach mitigates this through domain randomization during training — deliberately varying simulation parameters so the policy learns to be robust rather than optimal for any single configuration. The `config.yaml` on the real robot then provides the bridge: PD gains ($K_p = 7.5$, $K_d = 0.25$ for all joints), default joint poses, and timing parameters that match the assumptions baked into the trained policy.
 
@@ -31,7 +31,7 @@ The sim-to-real gap is the central challenge. A policy that works perfectly in M
 | **Reinforcement Learning Policy** | A neural network $\pi_\theta(a \mid o)$ that maps an observation vector $o$ to an action vector $a$ (12 joint position targets). Trained by maximizing cumulative reward in simulation using [[quick-context/ppo-proximal-policy-optimization|PPO]]. |
 | **Sim-to-Real Transfer** | Deploying a policy trained entirely in simulation to a physical robot. Bridged by domain randomization (varying sim physics) and careful config matching (`config.yaml` gains, timing). |
 | **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides fast, differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
-| **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from BNO086 IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
+| **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from [[learning/notes/quick-context/pupper-bom-control-board|BNO086]] IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
 | **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the STM32 tracks these targets at the full 520 Hz update rate. |
 
 <details>

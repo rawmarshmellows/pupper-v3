@@ -2,15 +2,16 @@
 term: Piezoelectric Effect
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/output-voltage-swing]]
 
 # Piezoelectric Effect
 
-**Definition:** The ability of certain crystals (quartz, ceramics like PZT, some polymers) to generate an electric voltage when mechanically stressed, and conversely, to deform when an electric field is applied. The first direction is the *direct* effect (sensing); the reverse is the *converse* effect (actuation).
+**Definition:** The ability of certain crystals (quartz, ceramics like PZT, some polymers) to generate an electric voltage when mechanically stressed, and conversely, to deform when an [[learning/notes/quick-context/electric-magnetic-field-unification|electric field]] is applied. The first direction is the *direct* effect (sensing); the reverse is the *converse* effect (actuation).
 
 ## How It Works
 
 - Certain crystal lattices lack a center of symmetry, so mechanical stress shifts positive and negative charge centers apart, creating a net polarization and measurable voltage across the material.
-- Applying an external electric field reverses the process — it displaces ions in the lattice, causing the material to physically expand or contract.
+- Applying an external electric field reverses the process — it displaces ions in the lattice, causing the material to physically [[learning/notes/quick-context/existing-account-management-playbook|expand]] or contract.
 - The relationship is linear for small deformations: $D = dT + \varepsilon E$ (electric displacement = piezoelectric coefficient $\times$ stress + permittivity $\times$ field).
 - This bidirectionality enables sustained oscillation in a [[micro-context/ceramic-resonator|ceramic resonator]]: an AC voltage deforms the crystal (converse effect), but the crystal's elastic lattice overshoots past equilibrium like a spring, and that overshoot generates a voltage (direct effect) that feeds back into the amplifier circuit — sustaining vibration at the crystal's mechanical resonant frequency, which is set by its physical dimensions, not the circuit.
 

@@ -2,6 +2,7 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]]
 
 # Scan Loop
 

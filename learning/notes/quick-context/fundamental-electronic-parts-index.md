@@ -4,7 +4,7 @@ created: 2026-02-06
 updated: 2026-02-07
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/transistor]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** This is a navigational index of all fundamental electronic components—from passive parts (resistors, capacitors, inductors) through active devices (transistors, diodes) to the physical hierarchy that connects them (dies, substrates, packages, PCBs). Use it as a map to find existing quick-context files and spot gaps in coverage.
 
@@ -63,9 +63,9 @@ THE THREE FUNDAMENTAL PASSIVES
 
 | Part | Existing Quick-Context? | Key Concept |
 |------|------------------------|-------------|
-| **[[quick-context/capacitor\|Capacitor]]** | Yes | Q=CV (charge = capacitance × voltage), dielectrics, RC time constants, decoupling |
-| **[[quick-context/resistor\|Resistor]]** | Yes | Ohm's law (V=IR: voltage = current × resistance), power dissipation (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
-| **[[quick-context/inductor\|Inductor]]** | Yes | Magnetic energy storage (E=½LI²: energy = ½ × inductance × current²), opposes current changes, used in filters/power supplies |
+| **Capacitor** | Yes | Q=CV (charge = capacitance × voltage), dielectrics, RC time constants, decoupling |
+| **Resistor** | Yes | [[learning/notes/quick-context/parallel-vs-series-voltage|Ohm's law]] (V=IR: voltage = current × resistance), [[learning/notes/quick-context/resistor|power dissipation]] (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
+| **Inductor** | Yes | Magnetic energy storage (E=½LI²: energy = ½ × inductance × current²), opposes current changes, used in filters/power supplies |
 
 ## 2. Active Components — Amplify and Switch
 
@@ -89,16 +89,16 @@ ACTIVE COMPONENT FAMILY TREE
 
 | Part | Existing Quick-Context? | Key Concept |
 |------|------------------------|-------------|
-| **[[quick-context/transistor\|Transistor (MOSFET)]]** | Yes | Gate-controlled switch, MOS capacitor, NAND gates, CMOS |
-| **[[quick-context/transistor-analog-to-digital\|Transistor: Analog → Digital]]** | Yes | Leakage, noise margins, regenerative logic, clocking |
-| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → BJT → planar MOSFET → FinFET → GAA |
-| **[[quick-context/diode\|Diode]]** | Yes | PN junction, forward/reverse bias, rectification, LEDs |
-| **[[quick-context/bjt\|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
-| **[[quick-context/bjt-specifications\|BJT Specifications]]** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
-| **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
-| **[[quick-context/comparator\|Comparator]]** | Yes | Op-amp's sibling optimized for binary output; bridges analog signals to digital logic |
-| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + tail current source; the universal input stage of op-amps, comparators, and ADCs |
-| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | Current mirror active load on a differential pair; converts μA current difference into full-rail voltage swing |
+| **Transistor (MOSFET)** | Yes | Gate-controlled switch, [[learning/notes/quick-context/transistor|MOS capacitor]], NAND gates, CMOS |
+| **Transistor: Analog → Digital** | Yes | Leakage, noise margins, [[learning/notes/quick-context/transistor-analog-to-digital|regenerative logic]], clocking |
+| **Transistor: Design History** | Yes | Point-contact → BJT → [[learning/notes/quick-context/transistor-design-history|planar MOSFET]] → FinFET → GAA |
+| **Diode** | Yes | [[learning/notes/quick-context/diode|PN junction]], forward/reverse bias, rectification, LEDs |
+| **BJT (Bipolar Junction Transistor)** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
+| **BJT Specifications** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
+| **Op-Amp** | Yes | Differential amplifier IC, [[learning/notes/quick-context/op-amp|negative feedback]], gain = Rf/Rin (feedback resistor / input resistor) |
+| **Comparator** | Yes | Op-amp's sibling optimized for binary output; bridges analog signals to digital logic |
+| **Differential Pair** | Yes | Two [[learning/notes/quick-context/differential-pair|matched transistors]] + [[learning/notes/quick-context/differential-pair|tail current source]]; the universal input stage of op-amps, comparators, and ADCs |
+| **High-Gain Amplifier Stage** | Yes | [[learning/notes/micro-context/current-mirror|Current mirror]] [[learning/notes/quick-context/high-gain-amplifier-stage|active load]] on a [[learning/notes/quick-context/differential-pair|differential pair]]; converts μA current difference into full-rail voltage swing |
 
 ## 3. Semiconductor Materials — What Parts Are Made Of
 
@@ -112,23 +112,23 @@ FROM SAND TO SWITCH
 
 | Topic | Existing Quick-Context? | Key Concept |
 |-------|------------------------|-------------|
-| **[[quick-context/doped-silicon\|Doped Silicon]]** | Yes | N-type/P-type, PN junctions, ion implantation |
-| **[[quick-context/semiconductor-fabrication\|Semiconductor Fabrication]]** | Yes | Photolithography, CVD/PVD/ALD (deposition methods), etching, CMP (chemical-mechanical polishing), EUV (extreme ultraviolet lithography) |
-| **[[quick-context/silicon-die\|Silicon Die]]** | Yes | FEOL (front-end: transistors) + BEOL (back-end: metal wiring layers), wafer dicing, yield |
+| **Doped Silicon** | Yes | N-type/P-type, PN junctions, [[learning/notes/quick-context/semiconductor-fabrication|ion implantation]] |
+| **Semiconductor Fabrication** | Yes | Photolithography, CVD/PVD/ALD (deposition methods), etching, CMP (chemical-mechanical polishing), EUV (extreme ultraviolet lithography) |
+| **Silicon Die** | Yes | FEOL (front-end: transistors) + BEOL (back-end: metal wiring layers), wafer dicing, yield |
 
 ## 4. Circuit Fundamentals — How Parts Behave Together
 
 | Topic | Existing Quick-Context? | Key Concept |
 |-------|------------------------|-------------|
-| **[[quick-context/electric-current\|Electric Current]]** | Yes | Amperes, coulombs, DC/AC, Faraday's law |
-| **[[quick-context/parallel-vs-series-voltage\|Parallel vs. Series Voltage]]** | Yes | Why billions of transistors share ~0.65V, Kirchhoff's laws |
-| **[[quick-context/thermal-noise-electronics\|Thermal Noise]]** | Yes | Johnson-Nyquist noise, kT energy scale, noise margins |
-| **[[quick-context/impedance-and-reactance\|Impedance and Reactance]]** | Yes | Z = R + jX (impedance = resistance + imaginary unit × reactance), capacitive/inductive reactance, phase angle |
-| **[[quick-context/frequency-and-filtering\|Frequency and Filtering]]** | Yes | Cutoff frequency, dB (decibels), low-pass/high-pass, filter order |
-| **[[quick-context/power-watts-joules\|Electrical Power]]** | Yes | P = VI (power = voltage × current), watts, joules, efficiency, thermal dissipation |
-| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | Maxwell's equations, magnetic fields, Faraday's law, EM waves |
-| **[[quick-context/electric-magnetic-field-unification\|Field Unification]]** | Yes | How V, I, E, B connect—the conceptual map |
-| **[[quick-context/grounding-and-return-paths\|Grounding and Return Paths]]** | Yes | Return paths, ground planes, ground loops, star grounding |
+| **Electric Current** | Yes | Amperes, coulombs, DC/AC, [[learning/notes/quick-context/lenzs-law|Faraday's law]] |
+| **Parallel vs. Series Voltage** | Yes | Why billions of transistors share ~0.65V, [[learning/notes/quick-context/voltage-current-causality|Kirchhoff's laws]] |
+| **Thermal Noise** | Yes | Johnson-Nyquist noise, kT energy scale, noise margins |
+| **Impedance and Reactance** | Yes | Z = R + jX (impedance = resistance + imaginary unit × reactance), capacitive/inductive reactance, [[learning/notes/quick-context/impedance-and-reactance|phase angle]] |
+| **Frequency and Filtering** | Yes | [[learning/notes/quick-context/frequency-and-filtering|Cutoff frequency]], dB (decibels), low-pass/high-pass, filter order |
+| **Electrical Power** | Yes | P = VI (power = voltage × current), watts, joules, efficiency, [[learning/notes/quick-context/power-watts-joules|thermal dissipation]] |
+| **Electromagnetism** | Yes | [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]], magnetic fields, Faraday's law, EM waves |
+| **Field Unification** | Yes | How V, I, E, B connect—the conceptual map |
+| **Grounding and Return Paths** | Yes | Return paths, ground planes, ground loops, star grounding |
 
 ## 5. IC Packaging Hierarchy — Connecting Nano to Macro
 
@@ -162,29 +162,29 @@ PACKAGING HIERARCHY (nano → macro)
 
 | Level | Existing Quick-Context? | Key Concept |
 |-------|------------------------|-------------|
-| **[[quick-context/pcb-chip-transistor-hierarchy\|Full Hierarchy]]** | Yes | 9 orders of magnitude, progressive fan-out |
-| **[[quick-context/metal-interconnect-layers\|Metal Interconnect Layers]]** | Yes | M1-M10+ wiring, vias, signal routing, power delivery |
-| **[[quick-context/bond-pad\|Bond Pads]]** | Yes | ~50 μm connection points, edge vs. area array |
-| **[[quick-context/wire-bonding\|Wire Bonding]]** | Yes | Ball/wedge bond, ultrasonic welding, loop height |
-| **[[quick-context/flip-chip\|Flip-Chip (C4)]]** | Yes | Solder bumps, underfill, CTE mismatch |
-| **[[quick-context/substrate-ic-packaging\|Substrate / IC Packaging]]** | Yes | RDL (redistribution layer), organic vs. ceramic, FOWLP (fan-out wafer-level packaging) |
-| **[[quick-context/bga-ball-grid-array\|BGA (Ball Grid Array)]]** | Yes | Solder balls, pitch, reflow, X-ray inspection |
-| **[[quick-context/pcb-printed-circuit-board\|PCB]]** | Yes | Traces, vias, pads, layers, soldermask |
+| **Full Hierarchy** | Yes | 9 orders of magnitude, progressive fan-out |
+| **Metal Interconnect Layers** | Yes | M1-M10+ wiring, vias, signal routing, power delivery |
+| **Bond Pads** | Yes | ~50 μm connection points, edge vs. area array |
+| **Wire Bonding** | Yes | Ball/wedge bond, [[learning/notes/quick-context/wire-bonding|ultrasonic welding]], [[learning/notes/quick-context/wire-bonding|loop height]] |
+| **Flip-Chip (C4)** | Yes | Solder bumps, underfill, CTE mismatch |
+| **Substrate / IC Packaging** | Yes | RDL ([[learning/notes/quick-context/substrate-ic-packaging|redistribution layer]]), organic vs. ceramic, FOWLP ([[learning/notes/quick-context/substrate-ic-packaging|fan-out wafer-level packaging]]) |
+| **BGA (Ball Grid Array)** | Yes | Solder balls, pitch, reflow, [[learning/notes/quick-context/bga-ball-grid-array|X-ray inspection]] |
+| **PCB** | Yes | Traces, vias, pads, layers, soldermask |
 
 ## 6. Failure Modes — How Parts Break
 
 | Topic | Existing Quick-Context? | Key Concept |
 |-------|------------------------|-------------|
-| **[[quick-context/electromigration\|Electromigration]]** | Yes | Electron wind, voids/hillocks, Black's Law |
+| **Electromigration** | Yes | [[learning/notes/quick-context/electromigration|Electron wind]], voids/hillocks, Black's Law |
 
 ## 7. Practical Skills — Tools and Techniques
 
 | Topic | Existing Quick-Context? | Key Concept |
 |-------|------------------------|-------------|
-| **[[quick-context/soldering\|Soldering]]** | Yes | Solder alloys, flux, wetting, reflow, hand vs machine |
-| **[[quick-context/oscilloscope-and-multimeter\|Oscilloscope and Multimeter]]** | Yes | DMM for static values, scope for time-domain waveforms |
-| **[[quick-context/schematic-reading\|Schematic Reading]]** | Yes | Symbols, reference designators, nets, signal tracing |
-| **[[quick-context/common-ic-packages\|Common IC Packages]]** | Yes | DIP, SOIC, QFP, QFN, BGA—size/pin/thermal tradeoffs |
+| **Soldering** | Yes | Solder alloys, flux, wetting, reflow, hand vs machine |
+| **Oscilloscope and Multimeter** | Yes | DMM for static values, scope for time-domain waveforms |
+| **Schematic Reading** | Yes | Symbols, reference designators, nets, signal tracing |
+| **Common IC Packages** | Yes | DIP, [[learning/notes/quick-context/common-ic-packages|SOIC]], QFP, QFN, BGA—size/pin/thermal tradeoffs |
 
 </details>
 
@@ -282,9 +282,9 @@ Every signal in every electronic device passes through some combination of these
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The most important active component. Understanding the MOSFET is the gateway to understanding all digital electronics, from logic gates to CPUs.
+- **[[quick-context/transistor]]** — The most important active component. Understanding the [[learning/notes/micro-context/mosfet|MOSFET]] is the gateway to understanding all digital electronics, from logic gates to CPUs.
 
 - **[[quick-context/capacitor]]** — The most important passive for digital electronics. Decoupling capacitors are on every board; the MOS capacitor is inside every transistor.
 
@@ -296,7 +296,7 @@ Every signal in every electronic device passes through some combination of these
 
 - **[[quick-context/semiconductor-fabrication]]** — How all of these components get manufactured at nanometer scales on silicon wafers.
 
-- **[[quick-context/thermal-noise-electronics]]** — The fundamental physical limit on how small and quiet electronic components can be: thermal energy (kT, where k = Boltzmann's constant and T = temperature in kelvins) sets a noise floor that constrains circuit design.
+- **[[quick-context/thermal-noise-electronics]]** — The fundamental physical limit on how small and quiet electronic components can be: thermal energy (kT, where k = Boltzmann's constant and T = temperature in kelvins) sets a [[learning/notes/quick-context/thermal-noise-electronics|noise floor]] that constrains circuit design.
 
 - **[[quick-context/galvanic-cells-batteries]]** — Batteries and capacitors are both energy storage, but through completely different mechanisms. Understanding the contrast clarifies what capacitors actually do.
 
@@ -308,7 +308,7 @@ Every signal in every electronic device passes through some combination of these
 **Q1:** What are the three fundamental passive components, and what form of energy does each store or dissipate?
 <details>
 <summary>Answer</summary>
-**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **Inductor** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
+**Resistor** dissipates energy as heat. **Capacitor** stores energy in an [[learning/notes/quick-context/electric-magnetic-field-unification|electric field]] (E = ½CV²: energy = ½ × capacitance × voltage²). **Inductor** stores energy in a [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
 </details>
 
 **Q2:** What is the difference between a passive and an active component?
@@ -326,13 +326,13 @@ They store energy in dual forms: capacitors in electric fields (voltage-dependen
 **Q4:** In the packaging hierarchy, why are there multiple connection technologies (wire bonding vs. flip-chip) rather than just one?
 <details>
 <summary>Answer</summary>
-They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-understood, but limited in density and adds inductance (wires are long). **Flip-chip** offers higher density and lower inductance (shorter connections), but requires more complex manufacturing and underfill to handle thermal stress. Cost-sensitive, low-pin-count chips use wire bonding; high-performance processors use flip-chip. See [[quick-context/wire-bonding]] and [[quick-context/flip-chip]].
+They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-understood, but limited in density and adds inductance (wires are long). **Flip-chip** offers higher density and [[learning/notes/quick-context/pcb-printed-circuit-board|lower inductance]] (shorter connections), but requires more complex manufacturing and underfill to handle thermal stress. Cost-sensitive, low-pin-count chips use wire bonding; high-performance processors use flip-chip. See [[quick-context/wire-bonding]] and [[quick-context/flip-chip]].
 </details>
 
 **Q5:** If you had to explain to someone the purpose of the entire packaging hierarchy in one sentence, what would it be?
 <details>
 <summary>Answer</summary>
-The packaging hierarchy is a chain of progressively coarser "adapters" that bridge nine orders of magnitude in scale—from 5 nm transistors on a silicon die to 5 mm connectors on a PCB—so that nanometer-scale computation can connect to the human-scale world with reliable electrical and thermal paths. See [[quick-context/pcb-chip-transistor-hierarchy]].
+The packaging hierarchy is a chain of progressively coarser "adapters" that bridge nine orders of magnitude in scale—from 5 nm transistors on a [[learning/notes/quick-context/silicon-die|silicon die]] to 5 mm connectors on a PCB—so that nanometer-scale computation can connect to the human-scale world with reliable electrical and thermal paths. See [[quick-context/pcb-chip-transistor-hierarchy]].
 </details>
 
 </details>

@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/micro-context/cnc-process-selection]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -21,10 +21,10 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 
 | Term | Definition |
 |------|------------|
-| **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
-| **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
-| **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
+| **Copper Layer** | The conductive layer where traces, pads, and planes are etched from a solid copper sheet — this IS the circuit |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at solder pads — prevents shorts and protects traces from oxidation |
+| **Silkscreen (Legend)** | White ink printed [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
+| **Paste Mask (Stencil)** | Defines where solder paste gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
 
 <details>
@@ -68,7 +68,7 @@ NOT PHYSICAL LAYERS (but still separate Gerber files):
 
 ### Layer-by-Layer: What It Is, How It's Made, and Its Gerber File
 
-The manufacturing sequence doesn't follow the layer stacking order — the factory builds the board from the inside out. Here's each layer with both its function and how it's physically manufactured:
+The manufacturing sequence doesn't follow the layer stacking order — the factory builds the board from the inside out. Here's each layer with both its [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] and how it's physically manufactured:
 
 ```
 PCB MANUFACTURING SEQUENCE (2-layer board)
@@ -92,7 +92,7 @@ PCB MANUFACTURING SEQUENCE (2-layer board)
 
 **1. Top Copper** — `Gerber_TopLayer.GTL`
 
-*What it is:* The primary signal and component layer — shown in red on the Pupper board viewer. Contains signal traces, [[micro-context/smd-pad|component pads]] (SMD and through-hole), copper pours/fills, and via pads. This is where the actual circuit lives.
+*What it is:* The primary signal and component layer — shown in red on the Pupper board viewer. Contains signal traces, component pads (SMD and through-hole), copper pours/fills, and via pads. This is where the actual circuit lives.
 
 *How it's manufactured:* The factory starts with a sheet of FR-4 fiberglass with solid copper foil laminated to both sides (typically 1 oz/ft², ~35 μm thick). The copper pattern from the Gerber file is transferred using **photolithography**: a UV-sensitive photoresist is applied over the copper, UV light is shone through a film mask of the trace pattern, then the board is dipped in developer solution to wash away unexposed resist. Finally, a chemical etchant (ferric chloride or cupric chloride) dissolves the unprotected copper, leaving only the traces and pads behind. The remaining photoresist is then stripped off.
 
@@ -137,7 +137,7 @@ On the Pupper board: most IC footprints and the large ground copper pour are on 
 
 **2. Bottom Copper** — `Gerber_BottomLayer.GBL`
 
-*What it is:* The second copper layer — shown in blue on the Pupper board viewer. Used for additional routing that couldn't fit on top, plus ground/power distribution. Traces on bottom cross under top traces freely (connected by [[quick-context/pcb-printed-circuit-board#vias|vias]]). May have its own copper pour for [[quick-context/grounding-and-return-paths#ground-plane|ground plane]] coverage.
+*What it is:* The second copper layer — shown in blue on the Pupper board viewer. Used for additional routing that couldn't fit on top, plus ground/power distribution. Traces on bottom cross under top traces freely (connected by vias). May have its own copper pour for ground plane coverage.
 
 *How it's manufactured:* Same photolithography + etching process as the top copper, performed simultaneously on the bottom side. Both sides are imaged and etched in the same manufacturing steps.
 
@@ -175,7 +175,7 @@ DRILL HOLE TYPES
 
 **4. Top Soldermask** — `Gerber_TopSolderMaskLayer.GTS`
 
-*What it is:* A polymer coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only [[micro-context/smd-pad|pads]] where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
+*What it is:* A polymer coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only pads where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
 
 *How it's manufactured:* Modern PCBs use **LPI (Liquid Photo-Imageable)** soldermask. The liquid polymer is applied to the entire board surface by curtain coating or screen printing. It's then "tack cured" (partially dried) so it can be handled. Next, the soldermask Gerber film is aligned over the board and UV light is shone through it — the UV **hardens** the mask everywhere EXCEPT where the film blocks light (over pads). The unhardened soldermask over pads is washed away in an alkaline developer bath, exposing the copper pads underneath. A final thermal cure (~150°C) fully hardens the remaining soldermask permanently.
 
@@ -231,7 +231,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 ---
 
-**8. Surface Finish** (not a separate Gerber layer — specified in fab notes)
+**8. [[learning/notes/quick-context/cnc-machining|Surface Finish]]** (not a separate Gerber layer — specified in fab notes)
 
 *What it is:* A protective coating applied to exposed copper pads AFTER soldermask. Bare copper oxidizes within hours, making it unsolderable. The surface finish preserves pad solderability during storage and assembly.
 
@@ -239,7 +239,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 | Finish | Process | Cost | Best For |
 |--------|---------|------|----------|
 | **HASL** | Board dipped in molten solder, leveled with hot air | Low | General purpose, through-hole |
-| **Lead-free HASL** | Same, with lead-free solder | Low | RoHS-compliant general purpose |
+| **Lead-free HASL** | Same, with [[learning/notes/quick-context/bga-ball-grid-array|lead-free solder]] | Low | RoHS-compliant general purpose |
 | **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, BGA, flat pads |
 | **OSP** | Thin organic coating on copper | Lowest | Short shelf life, reflow-only |
 
@@ -255,9 +255,9 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **10. Top Paste Mask** — `Gerber_TopPasteMaskLayer.GTP`
 
-*What it is:* Defines [[micro-context/paste-mask-and-solder-stencil|stencil]] openings for solder paste application during [[quick-context/soldering#reflow|reflow assembly]]. Paste openings are typically 5-20% smaller than the actual pad (depending on component pitch) to prevent excess solder bridging.
+*What it is:* Defines stencil openings for solder paste application during reflow assembly. Paste openings are typically 5-20% smaller than the actual pad (depending on component pitch) to prevent excess solder bridging.
 
-*How it's used (NOT manufactured on the board):* The paste mask Gerber is sent to a stencil vendor who **laser-cuts** matching apertures in a thin stainless steel sheet (0.1-0.15 mm thick). During assembly, this stencil is aligned over the bare PCB and solder paste (a mixture of tiny solder balls suspended in flux) is squeegeed across the stencil surface. Paste fills the apertures but can't reach areas where the steel blocks it — so only the pads receive paste. The stencil is then lifted straight up off the board, and the paste stays behind on the pads due to adhesion (it's a thick, sticky consistency, like toothpaste). The result is precise rectangular deposits of solder paste sitting on each pad, with the height controlled by stencil thickness and the footprint controlled by aperture size. From here, a pick-and-place machine positions components onto the pasted pads (the paste is tacky enough to hold them), and then the whole board goes through a [[quick-context/soldering#reflow|reflow oven]] that melts the paste into permanent solder joints.
+*How it's used (NOT manufactured on the board):* The paste mask Gerber is sent to a stencil vendor who **laser-cuts** matching apertures in a thin stainless steel sheet (0.1-0.15 mm thick). During assembly, this stencil is aligned over the bare PCB and solder paste (a mixture of tiny solder balls suspended in flux) is squeegeed across the stencil surface. Paste fills the apertures but can't reach areas where the steel blocks it — so only the pads receive paste. The stencil is then lifted straight up off the board, and the paste stays behind on the pads due to adhesion (it's a thick, sticky consistency, like toothpaste). The result is precise rectangular deposits of solder paste sitting on each pad, with the height controlled by stencil thickness and the footprint controlled by aperture size. From here, a pick-and-place machine positions components onto the pasted pads (the paste is tacky enough to hold them), and then the whole board goes through a reflow oven that melts the paste into permanent solder joints.
 
 ---
 
@@ -403,11 +403,11 @@ The Gerber file list maps directly to the layer stack:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
 
-- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
+- **[[quick-context/soldering]]** — The paste [[learning/notes/quick-context/semiconductor-fabrication|mask layer]] is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
 
-- **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial ground plane; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
+- **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial [[learning/notes/quick-context/grounding-and-return-paths|ground plane]]; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
 
 - **[[quick-context/common-ic-packages]]** — Package type (DIP, QFP, QFN, BGA) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
 
@@ -439,7 +439,7 @@ The Gerber file list maps directly to the layer stack:
 **Q4:** On the Pupper board, top copper is red and bottom copper is blue. If a trace needs to cross another trace on the same layer, how does it get from red to blue and back?
 <details>
 <summary>Answer</summary>
-**Through vias.** The trace on the top copper (red) reaches a via — a small plated hole that connects to the bottom copper (blue). The trace continues on the bottom layer, passing under the obstruction, then hits another via to return to the top layer. Each via appears in the drill file (PTH-Via) and has a pad on both copper layers. On the Pupper board, the small teal dots scattered across the board are these vias. See [[quick-context/pcb-printed-circuit-board]] for the detailed via cross-section.
+**Through vias.** The trace on the top copper (red) reaches a via — a small plated hole that connects to the bottom copper (blue). The trace continues on the bottom layer, passing under the obstruction, then hits another via to return to the top layer. Each via appears in the drill file (PTH-Via) and has a pad on both copper layers. On the Pupper board, the small teal dots scattered across the board are these vias. See [[learning/notes/quick-context/pcb-printed-circuit-board]] for the detailed via cross-section.
 </details>
 
 **Q5:** A manufacturer receives Gerber files for a board but the paste mask file is missing. Can they still manufacture and assemble the board?

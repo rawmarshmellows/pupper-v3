@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/flip-chip]]
 
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
@@ -116,12 +116,12 @@ SUBSTRATE MATERIALS COMPARISON
 
 **Step-by-step signal path through a substrate:**
 
-1. **Signal leaves the die** through a microscopic solder bump (or wire bond)
+1. **Signal leaves the die** through a microscopic [[learning/notes/quick-context/flip-chip|solder bump]] (or [[learning/notes/quick-context/bond-pad|wire bond]])
 2. **Bump connects to a landing pad** on the top surface of the substrate
 3. **Signal travels through vias** (tiny vertical holes filled with metal) to inner layers
 4. **Redistribution layers** route the signal horizontally, spreading connections outward
 5. **More vias** bring the signal down to the bottom layer
-6. **Signal reaches a BGA ball pad** which holds a solder ball
+6. **Signal reaches a BGA ball pad** which holds a [[learning/notes/quick-context/bga-ball-grid-array|solder ball]]
 7. **Solder ball melts** and bonds to the circuit board when the package is assembled
 
 ### The Fan-Out Mechanism: How Redistribution Actually Works
@@ -319,7 +319,7 @@ WHAT PRACTITIONERS ARGUE ABOUT:
     Wire bond: Cheaper, simpler substrate, but limited I/O count.
 ```
 
-As chips get more complex (modern CPUs have 2000+ connections), substrates must support finer pitches. But every step toward finer pitch dramatically increases manufacturing difficulty. A substrate with 15μm traces might cost $2; the same substrate with 5μm traces might cost $15—and half of them might fail quality testing.
+As chips get more complex (modern CPUs have 2000+ connections), substrates must support finer pitches. But every step toward finer pitch dramatically increases [[learning/notes/quick-context/transistor|manufacturing difficulty]]. A substrate with 15μm traces might cost $2; the same substrate with 5μm traces might cost $15—and half of them might fail quality testing.
 
 </details>
 
@@ -405,24 +405,24 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[learning/notes/quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics [[learning/notes/quick-context/fundamental-electronic-parts-index|packaging hierarchy]]; essential for understanding why substrates exist.
 
-- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
+- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; [[learning/notes/quick-context/wire-bonding|wire bonding]] is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 
 - **Underfill** — An epoxy material injected between the die and substrate after flip-chip attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
 
 - **Interposer (2.5D Packaging)** — A silicon or glass layer placed between multiple chiplets and the substrate; enables even finer-pitch connections for high-bandwidth chip-to-chip communication.
 
-- **Coefficient of Thermal Expansion (CTE)** — How much materials expand when heated; a critical concern because silicon, organic substrates, and solder all expand at different rates, causing stress.
+- **Coefficient of Thermal Expansion (CTE)** — How much materials [[learning/notes/quick-context/existing-account-management-playbook|expand]] when heated; a critical concern because silicon, organic substrates, and solder all expand at different rates, causing stress.
 
 </details>
 
@@ -450,7 +450,7 @@ There's a fundamental tension between density, cost, and reliability. Finer trac
 **Q4:** Someone claims "the substrate is just the plastic case around a chip—it doesn't really matter for performance." What's wrong with this?
 <details>
 <summary>Answer</summary>
-The substrate is not just packaging—it's a sophisticated multi-layer circuit with its own complex signal routing. It directly affects electrical performance (signal integrity, power delivery), thermal performance (heat path from die), and mechanical reliability. For advanced chips, substrate design and manufacturing can cost more than the silicon die itself, and substrate availability has been a major production bottleneck. See: The one thing most outsiders get wrong...
+The substrate is not just packaging—it's a sophisticated multi-layer circuit with its own complex signal routing. It directly affects electrical performance ([[learning/notes/quick-context/bga-ball-grid-array|signal integrity]], power delivery), thermal performance (heat path from die), and mechanical reliability. For advanced chips, substrate design and manufacturing can cost more than the silicon die itself, and substrate availability has been a major production bottleneck. See: The one thing most outsiders get wrong...
 </details>
 
 **Q5:** Why does the "onion" fan-out pattern mean that center die bumps are the hardest to route, and what does this imply for substrate layer count as die bump density increases?

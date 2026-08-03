@@ -3,7 +3,7 @@ topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/integration-failure-modes-solutions]]
 
 > **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
 
@@ -13,7 +13,7 @@ created: 2026-01-17
 
 Industrial machinery can maim and kill. A robotic arm moving at speed has the kinetic energy to crush a skull; a valve failing open can cause a chemical release; a conveyor that doesn't stop when someone falls on it will drag them into a pinch point.
 
-**Safety Integrity Level (SIL)** is a quantified measure of how reliably a safety function will work when demanded—not "will this code crash?" but "what's the probability this emergency stop fails to stop the machine before the operator dies?"
+**Safety Integrity Level (SIL)** is a quantified measure of how reliably a safety [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] will work when demanded—not "will this code crash?" but "what's the probability this emergency stop fails to stop the machine before the operator dies?"
 
 The IEC 61508 standard defines four levels (SIL 1-4), each representing an order of magnitude improvement in reliability. SIL 1 requires a probability of failure on demand (PFD) of 10^-1 to 10^-2, meaning the safety function can fail once in 10-100 demands. SIL 3 requires 10^-3 to 10^-4—fail once in 1,000-10,000 demands.
 
@@ -81,16 +81,16 @@ SIL certification requires proving statistical reliability of the entire hardwar
 3. **Safe Failure Fraction**: Failures should fail-safe, not fail-dangerous
 4. **Process Rigor**: Formal requirements, design reviews, testing, and change control throughout lifecycle
 
-The PFD calculation aggregates all failure rates and diagnostic coverages to prove the system achieves the target SIL level. This data comes from component manufacturers' "safety manuals" with certified MTTF (mean time to failure) values.
+The PFD calculation aggregates all failure rates and diagnostic coverages to prove the system achieves the target SIL level. This data comes from component manufacturers' "safety manuals" with certified [[learning/notes/quick-context/electromigration|MTTF (mean time to failure)]] values.
 
 </details>
 
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff is **safety assurance vs. development cost and flexibility**. Achieving SIL 2 or SIL 3 certification isn't about writing careful code—it's about proving, through rigorous process, that the entire lifecycle (requirements, design, implementation, testing, operation, modification) meets statistical reliability targets.
+The fundamental tradeoff is **safety assurance vs. [[learning/notes/quick-context/pupper-lab5-neural-controller|development cost]] and flexibility**. Achieving SIL 2 or SIL 3 certification isn't about writing careful code—it's about proving, through rigorous process, that the entire lifecycle (requirements, design, implementation, testing, operation, modification) meets statistical reliability targets.
 
-This means: redundant hardware (dual-channel sensors, cross-monitoring CPUs), diagnostic coverage calculations for every failure mode, formal methods or extensive testing to demonstrate software correctness, third-party audits, and strict change control. A SIL 3 safety PLC costs 10x a standard PLC; the engineering process costs 5-20x normal development.
+This means: redundant hardware (dual-channel sensors, cross-monitoring CPUs), diagnostic coverage calculations for every [[learning/notes/quick-context/pupper-lab5-neural-controller|failure mode]], formal methods or extensive testing to demonstrate software correctness, third-party audits, and strict change control. A SIL 3 safety PLC costs 10x a standard PLC; the engineering process costs 5-20x normal development.
 
 Practitioners constantly argue about where to draw the safety boundary—what functions genuinely need SIL rating vs. what can be "standard" with operational controls? There's also tension between the functional safety world (IEC 61508 and sector standards like 62443 for cybersecurity, 61511 for process, 62061 for machinery) and the software world's move-fast culture. You cannot iterate your way to SIL 3; you must specify correctly upfront, because every change triggers revalidation.
 
@@ -183,8 +183,8 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
-- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
+- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why [[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]] cannot replace safety PLCs
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier ([[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|Codethink CTRL OS]] achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
 - **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 
 </details>
@@ -195,7 +195,7 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 **Q1:** Why can't you achieve SIL 3 certification through careful coding and extensive testing alone?
 <details>
 <summary>Answer</summary>
-SIL certification requires proving statistical reliability of the entire hardware/software/human system, not just software quality. You need redundant hardware (dual-channel sensors, cross-monitoring CPUs), certified components with known failure rates (MTTF data), diagnostic coverage calculations for every failure mode, and a rigorous lifecycle process with change control. Perfect code running on non-redundant hardware with unknown failure characteristics cannot meet the PFD requirements.
+SIL certification requires proving statistical reliability of the entire hardware/software/human system, not just software quality. You need redundant hardware (dual-channel sensors, cross-monitoring CPUs), certified components with known failure rates ([[learning/notes/quick-context/electromigration|MTTF]] data), diagnostic coverage calculations for every failure mode, and a rigorous lifecycle process with change control. Perfect code running on non-redundant hardware with unknown failure characteristics cannot meet the PFD requirements.
 </details>
 
 **Q2:** What is the purpose of OSSD (Output Signal Switching Device) outputs on safety sensors, and how often do they self-test?

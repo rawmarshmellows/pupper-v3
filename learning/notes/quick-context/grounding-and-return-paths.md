@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -17,9 +17,9 @@ Many beginners think of ground as a place where current "goes to die"—electron
 
 | Term | Definition |
 |------|------------|
-| **Ground (GND)** | The common reference voltage (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
+| **Ground (GND)** | The common [[learning/notes/quick-context/comparator|reference voltage]] (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
 | **Return Path** | The route current takes back to the source. At DC and low frequencies, current follows the path of least resistance. At high frequencies, it follows the path of least inductance (which is directly under the signal trace). |
-| **Ground Plane** | A solid copper layer on a [[quick-context/pcb-printed-circuit-board|PCB]] dedicated to ground. Provides a low-impedance return path, reduces noise, and acts as an electromagnetic shield. |
+| **Ground Plane** | A solid [[learning/notes/quick-context/pcb-layers|copper layer]] on a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] dedicated to ground. Provides a low-impedance return path, reduces noise, and acts as an electromagnetic shield. |
 | **Ground Loop** | When two points that should be at the same potential are connected by multiple paths, creating a loop that acts as an antenna. Picks up magnetic interference and creates noise currents. |
 | **Star Ground** | A grounding topology where all ground connections meet at a single point, preventing shared return paths from coupling signals. Used in audio and mixed-signal designs. |
 
@@ -192,17 +192,17 @@ THE CLASSIC GROUND LOOP PROBLEM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Current flows in loops. The return current through ground is equal in magnitude to the signal current. This is Kirchhoff's current law in action.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — PCB ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — PCB ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
 
 - **[[quick-context/capacitor]]** — Decoupling capacitors connect between power and ground, providing a local return path for high-frequency switching currents. They're part of the grounding strategy.
 
 - **[[quick-context/impedance-and-reactance]]** — At high frequencies, ground path impedance (not just resistance) matters. A 1cm wire has ~10 nH of inductance, which is 6Ω at 100 MHz—not negligible.
 
-- **[[quick-context/thermal-noise-electronics]]** — Ground noise adds directly to signal noise. A noisy ground reference degrades the signal-to-noise ratio of every circuit sharing that ground.
+- **[[quick-context/thermal-noise-electronics]]** — Ground noise adds directly to signal noise. A noisy ground reference degrades the [[learning/notes/quick-context/thermal-noise-electronics|signal-to-noise ratio]] of every circuit sharing that ground.
 
 </details>
 
@@ -230,13 +230,13 @@ THE CLASSIC GROUND LOOP PROBLEM
 **Q4:** Why do 4-layer PCBs work better than 2-layer PCBs for digital circuits?
 <details>
 <summary>Answer</summary>
-**A dedicated internal ground plane provides an unbroken, low-impedance return path directly beneath every signal trace.** On a 2-layer board, ground traces compete with signal traces for routing space, creating gaps and long return paths. The 4-layer stackup (signal-ground-power-signal) ensures return currents always have a short, direct path, reducing EMI and improving signal integrity.
+**A dedicated internal ground plane provides an unbroken, low-impedance return path directly beneath every signal trace.** On a 2-layer board, ground traces compete with signal traces for routing space, creating gaps and long return paths. The 4-layer stackup (signal-ground-power-signal) ensures return currents always have a short, direct path, reducing EMI and improving [[learning/notes/quick-context/bga-ball-grid-array|signal integrity]].
 </details>
 
 **Q5:** How does a ground loop cause audio hum, and why is the hum at 60 Hz?
 <details>
 <summary>Answer</summary>
-**The ground loop forms an antenna loop that intercepts the 60 Hz magnetic field from nearby AC power wiring.** By Faraday's law, a changing magnetic field through a loop induces a voltage (EMF) proportional to the rate of change and loop area. Since the power grid runs at 60 Hz (50 Hz in Europe), the induced noise is at 60 Hz and its harmonics (120 Hz, 180 Hz). The fix is to break the loop or minimize its area.
+**The ground loop forms an antenna loop that intercepts the 60 Hz [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] from nearby AC power wiring.** By [[learning/notes/quick-context/lenzs-law|Faraday's law]], a changing magnetic field through a loop induces a voltage (EMF) proportional to the rate of change and loop area. Since the power grid runs at 60 Hz (50 Hz in Europe), the induced noise is at 60 Hz and its harmonics (120 Hz, 180 Hz). The fix is to break the loop or minimize its area.
 </details>
 
 </details>

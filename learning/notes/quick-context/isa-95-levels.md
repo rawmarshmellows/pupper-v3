@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/robotic-arm-api-levels]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/plc-vs-software-control]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 
@@ -13,7 +13,7 @@ created: 2026-01-14
 
 ISA-95 exists to solve the communication chaos between the factory floor and business systems. Before this standard, every integration between an ERP system (think SAP tracking inventory and orders) and the actual machines making products was a custom, brittle nightmare.
 
-The standard defines a five-level hierarchy: **Level 0** is the physical process itself—chemical reactions, material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your PLCs and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
+The standard defines a five-level hierarchy: **Level 0** is the physical process itself—[[learning/notes/quick-context/electricity-generation|chemical reactions]], material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your PLCs and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
 
 A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the PLC maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
 
@@ -105,7 +105,7 @@ A Work Order is the instruction from Level 4 to Level 3 saying "make this thing"
 B2MML (Business to Manufacturing Markup Language) is the XML schema that implements ISA-95's abstract data models for actual system integration. While ISA-95 defines concepts like "Material Lot" and "Equipment" and their relationships, B2MML provides the concrete XML structures that ERP and MES systems use to exchange this data. Without B2MML, every integration would require custom data mapping.
 </details>
 
-**Q5:** Why is genealogy tracking a critical function of Level 3 systems in regulated industries?
+**Q5:** Why is genealogy tracking a critical [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] of Level 3 systems in regulated industries?
 <details>
 <summary>Answer</summary>
 Genealogy tracks every input lot, process parameter, operator, and equipment that touched a finished product. In regulated industries (pharma, food, medical devices), this enables targeted recalls—if a contaminated ingredient lot is discovered, you can trace forward to find exactly which finished products were affected. Without genealogy, you'd have to recall everything produced during a broad time window, costing far more and eroding customer trust.

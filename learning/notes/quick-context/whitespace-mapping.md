@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Whitespace Mapping
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+> **Related:** [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/mcdonald-kam-model]]
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 
 ## The Core Problem
 
-Account teams often know they should "expand" but lack a systematic way to see where opportunities exist. Without a structured view, expansion becomes opportunistic (waiting for inbound requests) rather than strategic (proactively targeting high-potential gaps). The whitespace map makes invisible revenue visible by showing exactly which products could be sold to which buying centers within an account.
+Account teams often know they should "[[learning/notes/quick-context/existing-account-management-playbook|expand]]" but lack a systematic way to see where opportunities exist. Without a structured view, expansion becomes opportunistic (waiting for inbound requests) rather than strategic (proactively targeting high-potential gaps). The whitespace map makes invisible revenue visible by showing exactly which products could be sold to which buying centers within an account.
 
 ## 5 Essential Terms
 
@@ -247,10 +247,10 @@ Action: Wait for: Procore contract renewal, buyer turnover, or delivery failure
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/sandler-kare-segmentation]]** — KARE's EXPAND bucket identifies accounts with whitespace worth pursuing; the whitespace map shows *where* within those accounts
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the Gold Sheet's "Field of Play Opportunities" draws from whitespace
-- **[[quick-context/post-sale-account-engagement]]** — Post-sale expansion playbooks are triggered by whitespace analysis
-- **[[quick-context/mcdonald-kam-model]]** — Relationship maturity affects which whitespace cells are accessible; Cooperative+ accounts enable cross-BC selling
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]]'s EXPAND bucket identifies accounts with whitespace worth pursuing; the whitespace map shows *where* within those accounts
+- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Gold Sheet]]'s "Field of Play Opportunities" draws from whitespace
+- **[[quick-context/post-sale-account-engagement]]** — Post-sale [[learning/notes/quick-context/post-sale-account-engagement|expansion playbooks]] are triggered by whitespace analysis
+- **[[quick-context/mcdonald-kam-model]]** — [[learning/notes/quick-context/mcdonald-kam-model|Relationship maturity]] affects which whitespace cells are accessible; [[learning/notes/quick-context/existing-account-management-playbook|Cooperative]]+ accounts enable cross-BC selling
 - **[[quick-context/meddpicc-qualification-framework]]** — Each whitespace cell becoming Pipeline needs MEDDPICC qualification
 - **Total Addressable Market (TAM)** — Whitespace map shows account-level TAM; sum across accounts = expansion TAM
 - **Land-and-Expand** — The go-to-market strategy that whitespace mapping operationalizes
@@ -281,7 +281,7 @@ Prioritize cells where the champion has influence. If they're in the Engineering
 **Q4:** A cell is marked "Lost to Competitor." Should it be removed from the whitespace map?
 <details>
 <summary>Answer</summary>
-No—keep it visible but coded red. Lost cells can become RECAPTURE opportunities when triggers occur: competitor contract renewal, delivery failure, buyer turnover, or your product evolving to address the gap. Removing lost cells hides account history and prevents systematic re-engagement when circumstances change.
+No—keep it visible but coded red. Lost cells can become [[learning/notes/quick-context/existing-account-management-playbook|RECAPTURE]] opportunities when triggers occur: competitor contract renewal, delivery failure, buyer turnover, or your product evolving to address the gap. Removing lost cells hides account history and prevents systematic re-engagement when circumstances change.
 </details>
 
 **Q5:** How does [[quick-context/mcdonald-kam-model|relationship maturity]] affect whitespace strategy?

@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Challenger Sale Methodology
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** The Challenger Sale is a selling methodology where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
 
@@ -17,7 +17,7 @@ Traditional relationship-selling assumes that being likeable and responsive wins
 
 | Term | Definition |
 |------|------------|
-| **Commercial Teaching** | Delivering insights about the customer's business that reframe their understanding of their problems and lead uniquely to your solution |
+| **Commercial Teaching** | Delivering insights about the customer's business that [[learning/notes/quick-context/playbook-main|reframe]] their understanding of their problems and lead uniquely to your solution |
 | **Tailoring** | Customizing your message and insights to resonate with each stakeholder's specific priorities and concerns |
 | **Taking Control** | Assertively guiding the sales process, including pushing back on customer requests when necessary to keep deals on track |
 | **Constructive Tension** | The productive discomfort created when challenging a customer's assumptions—not conflict, but reframing that creates urgency |
@@ -197,7 +197,7 @@ Good: The custom scenario distracts from the core value prop and will waste both
 Unknown vendors can't compete on brand trust or existing relationships—the incumbent wins those by default. But they CAN win on insight if they bring a perspective the incumbent doesn't. Challengers differentiate through ideas, not reputation, making it an equalizing methodology for startups.
 </details>
 
-**Q5:** A sales manager says "We tried Challenger but our reps came off as arrogant and pushy." Diagnose the likely failure mode.
+**Q5:** A sales manager says "We tried Challenger but our reps came off as arrogant and pushy." Diagnose the likely [[learning/notes/quick-context/pupper-lab5-neural-controller|failure mode]].
 <details>
 <summary>Answer</summary>
 Most likely: reps challenged without earning the right. Challenger requires deep homework—industry data, customer-specific context, validated insights. Without that preparation, "challenging" is just opinions. The failure is usually in insight development (marketing/enablement) not rep execution. Alternatively: wrong fit—if deals are transactional/commodity, Challenger adds friction without value.

@@ -3,7 +3,7 @@ topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
 
@@ -96,7 +96,7 @@ At 19% TEEP, the plant uses less than one-fifth of its theoretical capacity. Add
 
 The new line isn't needed—the hidden capacity was always there. Without TEEP, leadership would have spent $2M solving a problem that required only hiring and training.
 
-**The one thing most outsiders get wrong about this is...** thinking low TEEP is always bad. A single-shift operation with 20% TEEP has 80% of its capacity available for growth without capital investment—that's a strategic reserve, not a failure. TEEP becomes a problem only when you're buying new equipment while existing assets sit idle, or when you're benchmarking plants without accounting for scheduling differences.
+**The one thing most outsiders get wrong about this is...** thinking low TEEP is always bad. A single-shift operation with 20% TEEP has 80% of its capacity available for [[learning/notes/quick-context/existing-account-management-playbook|growth]] without capital investment—that's a strategic reserve, not a failure. TEEP becomes a problem only when you're buying new equipment while existing assets sit idle, or when you're benchmarking plants without accounting for scheduling differences.
 
 </details>
 
@@ -104,7 +104,7 @@ The new line isn't needed—the hidden capacity was always there. Without TEEP, 
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/oee-overall-equipment-effectiveness]]** - The foundation metric that TEEP extends; must understand OEE's three factors before TEEP makes sense
-- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions (Level 4) meet production execution (Level 3)
+- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions ([[learning/notes/quick-context/isa-95-levels|Level 4]]) meet production execution ([[learning/notes/quick-context/isa-95-levels|Level 3]])
 
 </details>
 

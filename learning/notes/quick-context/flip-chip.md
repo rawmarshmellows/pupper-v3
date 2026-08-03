@@ -3,7 +3,7 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/bga-ball-grid-array]]
 
 > **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
 
@@ -42,7 +42,7 @@ Here's the step-by-step process:
 
 **Step 4: Reflow (melt the solder).** The assembly is heated to melt the solder bumps. Surface tension pulls the die into perfect alignment—this is the "controlled collapse" that gives C4 its name. The solder then cools and solidifies, creating permanent connections.
 
-**Step 5: Underfill.** Epoxy is flowed into the tiny gap between die and substrate. This protects the solder joints from cracking due to thermal expansion (the die and substrate expand at different rates when heated).
+**Step 5: Underfill.** Epoxy is flowed into the tiny gap between die and substrate. This protects the solder joints from cracking due to thermal expansion (the die and substrate [[learning/notes/quick-context/existing-account-management-playbook|expand]] at different rates when heated).
 
 ```
 THE FLIP-CHIP CONCEPT: Wire Bonding vs. Flip-Chip
@@ -128,7 +128,7 @@ The central tradeoff in flip-chip packaging is **performance versus manufacturin
 
 **More expensive substrates:** Flip-chip requires substrates with finer features and more routing layers than wire-bonded packages.
 
-**Rework is harder:** If a flip-chip connection fails, you can't easily "re-wire" it like you might repair a wire bond.
+**Rework is harder:** If a flip-chip connection fails, you can't easily "re-wire" it like you might repair a [[learning/notes/quick-context/bond-pad|wire bond]].
 
 ```
 FLIP-CHIP TRADEOFFS AT A GLANCE:
@@ -223,7 +223,7 @@ Here's what each layer does:
 |-------|------|---------|
 | Heat spreader | ~40mm x 40mm | Spreads concentrated heat from die across larger area for heatsink contact |
 | Thermal Interface Material | ~50 μm thick | Conducts heat from die to heat spreader (fills microscopic air gaps) |
-| Silicon die | ~10-15mm per side | The actual processor with billions of transistors |
+| [[learning/notes/quick-context/silicon-die|Silicon die]] | ~10-15mm per side | The actual processor with billions of transistors |
 | Solder bumps | ~100 μm diameter, ~100 μm pitch | Electrical/mechanical connection between die and substrate |
 | Underfill | Fills ~50 μm gap | Epoxy that prevents bump cracking from thermal stress |
 | Substrate | ~1.5mm thick, ~40mm square | Routes signals from dense die pitch to sparse BGA pitch |

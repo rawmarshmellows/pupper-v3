@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -163,7 +163,7 @@ Slots 5-6 are configured as backups for slots 1-2. When slot 1's white runs out 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Understanding material properties (PLA, PETG, TPU, etc.) is essential since AMS compatibility varies by filament type; soft and abrasive materials often require manual loading
+- [[quick-context/3d-printing-filament-types]] — Understanding material properties (PLA, [[learning/notes/quick-context/3d-printing-filament-types|PETG]], TPU, etc.) is essential since AMS compatibility varies by filament type; soft and abrasive materials often require manual loading
 - [[quick-context/3d-printer-hotends]] — The hotend determines purge efficiency and material compatibility; all-metal hotends handle higher temps but may require different purge volumes
 - [[quick-context/3d-printing-slicer-settings]] — Slicer configuration (flush volumes, tower placement, color sequencing) directly controls AMS waste and print time overhead
 

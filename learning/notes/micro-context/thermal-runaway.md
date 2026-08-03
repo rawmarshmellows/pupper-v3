@@ -3,6 +3,7 @@ term: Thermal Runaway
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/common-ic-packages]]
 
 # Thermal Runaway
 
@@ -12,10 +13,10 @@ updated: 2026-03-27
 
 ## How It Works
 
-- Transistor leakage current grows exponentially with temperature due to increased carrier energy in the silicon.
+- Transistor [[learning/notes/quick-context/transistor-analog-to-digital|leakage current]] grows exponentially with temperature due to increased carrier energy in the silicon.
 - More leakage means more power dissipated as heat, even when the chip is idle.
-- The extra heat further raises temperature, creating a positive feedback loop that accelerates until cooling can no longer keep up.
-- Protection circuits detect the rising temperature and throttle clock speed or shut down the chip before permanent damage occurs.
+- The extra heat further raises temperature, creating a [[learning/notes/quick-context/pupper-lab7-vision-tracking|positive feedback]] loop that accelerates until cooling can no longer keep up.
+- Protection circuits detect the rising temperature and throttle [[learning/notes/micro-context/clock-speed-vs-temperature|clock speed]] or shut down the chip before permanent damage occurs.
 
 ```
 THE THERMAL RUNAWAY FEEDBACK LOOP

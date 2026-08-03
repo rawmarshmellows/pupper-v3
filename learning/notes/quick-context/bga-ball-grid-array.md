@@ -3,7 +3,7 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/soldering]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -11,7 +11,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Imagine you have a computer chip containing millions of microscopic circuits, and you need to connect it to a circuit board (the green board inside electronics). The chip needs hundreds or even thousands of electrical connections to receive power and exchange data. The old solution was metal "legs" (pins) sticking out from the chip's edges—but there's only so much room around the edges. BGA solves this by putting connections **underneath** the chip as an array of tiny solder balls, like a grid of metallic dots on the bottom. This lets manufacturers pack far more connections into the same space. Without BGA, modern processors, memory chips, and graphics cards couldn't exist—they simply wouldn't have enough connections to function.
+Imagine you have a computer chip containing millions of microscopic circuits, and you need to connect it to a circuit board (the green board inside electronics). The chip needs hundreds or even thousands of electrical connections to receive power and exchange data. The old solution was metal "legs" (pins) sticking out from the chip's edges—but there's only so much room around the edges. BGA solves this by putting connections **underneath** the chip as an array of tiny solder balls, like a grid of metallic dots on the bottom. This lets manufacturers pack far more connections into the same space. Without BGA, modern processors, memory chips, and graphics cards couldn't exist—they simply wouldn't have enough connections to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]].
 
 ## 5 Essential Terms
 
@@ -129,7 +129,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
+The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, [[learning/notes/quick-context/soldering|cold joint]], or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 
 </details>
 
@@ -223,9 +223,9 @@ X-RAY VIEW: What Inspectors See
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB/Chip Packaging Hierarchy]]** — BGAs are one package type in the larger system that connects silicon dies to circuit boards; understanding the full hierarchy shows where BGA fits in the scale from transistors to systems.
 
-- **Surface Mount Technology (SMT)** — The broader manufacturing process that includes BGA; covers how pick-and-place machines, stencils, and reflow ovens work together to assemble entire circuit boards.
+- **[[learning/notes/quick-context/common-ic-packages|Surface Mount]] Technology (SMT)** — The broader manufacturing process that includes BGA; covers how pick-and-place machines, stencils, and reflow ovens work together to assemble entire circuit boards.
 
-- **Thermal Management** — BGA packages often include thermal balls (larger balls for heat transfer) or exposed metal pads on top; understanding heat flow explains many BGA design decisions.
+- **Thermal Management** — BGA packages often include thermal balls (larger balls for heat transfer) or exposed metal pads [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]]; understanding heat flow explains many BGA design decisions.
 
 - **Signal Integrity** — At high frequencies, the path from die through BGA ball to PCB trace matters; shorter connections (one advantage of BGA) mean less signal degradation.
 
@@ -248,10 +248,10 @@ The solder balls are located underneath the chip package, completely hidden from
 Pitch is the distance from the center of one solder ball to the center of the adjacent ball. Typical BGA pitches range from 0.5 mm to 0.8 mm (500-800 micrometers). Smaller pitch allows more connections but is harder to manufacture and inspect. See: 5 Essential Terms and How It Works diagram
 </details>
 
-**Q3:** Why do BGA packages often have many balls dedicated to power (VCC) and ground (GND) rather than using just one or two?
+**Q3:** Why do BGA packages often have many balls dedicated to power (VCC) and [[learning/notes/quick-context/grounding-and-return-paths|ground (GND)]] rather than using just one or two?
 <details>
 <summary>Answer</summary>
-Modern chips consume enormous amounts of current (sometimes 100+ amps) at very low voltages. A single ball can only carry limited current and has some resistance/inductance. Multiple parallel power and ground balls provide lower resistance paths, better current distribution, and cleaner power delivery with less electrical noise. See: Concrete Example (Ball Function Map)
+Modern chips consume enormous amounts of current (sometimes 100+ amps) at very low voltages. A single ball can only carry limited current and has some resistance/inductance. Multiple parallel power and ground balls provide [[learning/notes/quick-context/pcb-printed-circuit-board|lower resistance]] paths, better current distribution, and cleaner power delivery with less electrical noise. See: Concrete Example (Ball Function Map)
 </details>
 
 **Q4:** Someone claims: "If one BGA solder joint fails, you can just touch it up with a regular soldering iron." What's wrong with this?

@@ -3,7 +3,7 @@ topic: Schematic Reading
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like voltage dividers, decoupling networks, and pull-ups.
 
@@ -17,7 +17,7 @@ You download a datasheet or open-source hardware project and need to understand 
 
 | Term | Definition |
 |------|------------|
-| **Schematic Symbol** | A standardized graphical representation of a component. Each part type has a unique symbol (zigzag for [[quick-context/resistor|resistor]], two parallel lines for [[quick-context/capacitor|capacitor]], triangle for [[quick-context/diode|diode]], etc.). |
+| **Schematic Symbol** | A standardized graphical representation of a component. Each [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|part type]] has a unique symbol (zigzag for [[quick-context/resistor|resistor]], two parallel lines for [[quick-context/capacitor|capacitor]], triangle for [[quick-context/diode|diode]], etc.). |
 | **Reference Designator** | A unique label identifying each component: R1, R2 (resistors), C1, C2 (capacitors), U1 (ICs), Q1 (transistors), D1 (diodes), L1 (inductors), J1 (connectors). |
 | **Net** | An electrical connection between two or more pins. All points on the same net are electrically connected, even if no line is drawn between them (connected by net labels). |
 | **Value Annotation** | The component value written next to the symbol: "10kΩ", "100nF", "3.3V". Tells you what specific part to use. |
@@ -119,7 +119,7 @@ NET LABELS: CONNECTIONS WITHOUT WIRES
 
 ## Readability vs. Completeness
 
-Good schematics are organized by function (power section, digital section, analog section), not by physical location. They use net labels to avoid wire spaghetti, group related circuits into blocks, and include notes explaining non-obvious design choices.
+Good schematics are organized by [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] (power section, digital section, analog section), not by physical location. They use net labels to avoid wire spaghetti, group related circuits into blocks, and include notes explaining non-obvious design choices.
 
 ```
 BAD SCHEMATIC                      GOOD SCHEMATIC
@@ -186,13 +186,13 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[learning/notes/micro-context/mosfet|MOSFET]] and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process. See [[quick-context/pcb-layers]] for the individual Gerber files that translate a layout into manufacturing instructions.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process. See [[quick-context/pcb-layers]] for the individual Gerber files that translate a layout into manufacturing instructions.
 
-- **[[quick-context/pupper-bom-control-board]]** — A real-world BOM walkthrough showing how reference designators (R5, U8, C18) connect the schematic to the physical parts list. Demonstrates reading BOM lines and tracing designators back to circuit function.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — A real-world BOM walkthrough showing how reference designators (R5, U8, C18) connect the schematic to the physical parts list. Demonstrates reading BOM lines and tracing designators back to circuit function.
 
 </details>
 
@@ -214,7 +214,7 @@ SIMPLE LED BLINK CIRCUIT
 **Q3:** Why is there always a small capacitor (100nF) next to every IC's power pins on a schematic?
 <details>
 <summary>Answer</summary>
-**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The decoupling capacitor, placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
+**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]], placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
 </details>
 
 **Q4:** What's the difference between a junction dot (●) and a crossing without a dot?
@@ -223,7 +223,7 @@ SIMPLE LED BLINK CIRCUIT
 **A dot means the wires are connected; no dot means they just cross over each other without connecting.** This is critical. Two wires that cross without a dot are separate nets. A filled circle at the intersection means they are electrically joined. Some schematics use a small bridge/bump to make crossovers clearer, but the dot convention is standard.
 </details>
 
-**Q5:** On a schematic, signal flow is typically drawn in which direction?
+**Q5:** On a schematic, signal flow is typically drawn in [[learning/notes/quick-context/differential-pair|which direction]]?
 <details>
 <summary>Answer</summary>
 **Left to right, with inputs on the left and outputs on the right.** Power typically flows top (VCC) to bottom (GND). This convention makes schematics readable at a glance—you can trace signal flow by reading left to right, like text. Not all schematics follow this perfectly, but well-organized ones do.

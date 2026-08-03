@@ -5,7 +5,7 @@ created: 2026-05-28
 
 # ESP32
 
-> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/power-inductor]]
 
 > **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
@@ -17,7 +17,7 @@ Connecting an embedded device to WiFi used to mean pairing a microcontroller wit
 
 | Term | Definition |
 |------|------------|
-| **SoC (System-on-Chip)** | An entire computer — CPU, RAM, ROM, radio, peripherals — integrated on one [[learning/notes/quick-context/silicon-die\|silicon die]]. The ESP32 is an SoC because it's not just an MCU; it bundles a complete 2.4 GHz radio transceiver on the same chip. |
+| **SoC (System-on-Chip)** | An entire computer — CPU, RAM, ROM, radio, peripherals — integrated on one silicon die. The ESP32 is an SoC because it's not just an MCU; it bundles a complete 2.4 GHz radio transceiver on the same chip. |
 | **Espressif Systems** | Shanghai-based fabless semiconductor company that designs the ESP family. Launched the ESP8266 in 2014 (cheap WiFi MCU) and the ESP32 in 2016 (added dual-core, Bluetooth, more peripherals). |
 | **Xtensa LX6/LX7** | Tensilica's 32-bit configurable RISC CPU architecture used in the original ESP32 and S2/S3 variants. Newer ESP32-C/H/P variants use RISC-V cores instead — Espressif is migrating off proprietary Xtensa toward open RISC-V. |
 | **ESP-IDF** | Espressif IoT Development Framework — the official C/C++ SDK. FreeRTOS-based, gives you full hardware access. The alternative is Arduino-ESP32 (a wrapper layer over ESP-IDF that exposes the familiar `setup()`/`loop()` API). |
@@ -199,11 +199,11 @@ void loop() {
 }
 ```
 
-Connect over USB, flash with `arduino-cli` or Arduino IDE (which talks to `esptool.py` over UART at 921600 baud), open the serial monitor, see the IP, then `curl http://<ip>/toggle` from your laptop.
+Connect over USB, flash with `arduino-cli` or Arduino IDE (which talks to `esptool.py` over [[learning/notes/quick-context/embedded-communication-protocols|UART]] at 921600 baud), open the serial monitor, see the IP, then `curl http://<ip>/toggle` from your laptop.
 
 ### What's happening underneath
 
-That ~25 lines of user code rides on top of roughly **3 MB of compiled firmware** (FreeRTOS, LwIP TCP/IP stack, wpa_supplicant, mbedTLS, WiFi MAC, ROM driver glue) that ESP-IDF links in automatically. The LED toggle takes <1 ms; the request travels through:
+That ~25 lines of user code rides [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of roughly **3 MB of compiled firmware** (FreeRTOS, LwIP TCP/IP stack, wpa_supplicant, mbedTLS, WiFi MAC, ROM driver glue) that ESP-IDF links in automatically. The LED toggle takes <1 ms; the request travels through:
 
 ```
 HTTP GET /toggle
@@ -228,13 +228,13 @@ Almost every ESP32 dev board (the ones with a USB connector) has a two-transisto
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — Deep dive on the ESP32-S3's WiFi radio (OFDM, MAC/PHY split, antenna). Read that for what happens after `WiFi.begin()`.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — Deep dive on the ESP32-S3's WiFi radio ([[learning/notes/quick-context/wifi-chip-arduino-uno-r4|OFDM]], MAC/PHY split, antenna). Read that for what happens after `WiFi.begin()`.
 - **[[learning/notes/micro-context/microcontroller]]** — Where the ESP32 sits in the broader MCU family tree (vs STM32, AVR, PIC).
 - **[[learning/notes/micro-context/stm32-microcontroller]]** — The other MCU family used in Pupper. STM32 = hard real-time motor control; ESP32 = networking, audio, ML.
 - **[[learning/notes/quick-context/firmware]]** — The firmware concept; the ESP32's bootloader chain (ROM → 2nd-stage → app) is a worked example.
 - **[[learning/notes/quick-context/embedded-communication-protocols]]** — All the buses (SPI, I2C, I2S, CAN/TWAI, UART) the ESP32 exposes as peripherals.
 - **[[learning/notes/quick-context/raspberry-pi-5-components]]** — Higher up the stack: Pi runs Linux, ESP32 runs FreeRTOS. The ESP32 fills the gap between bare-metal MCUs and full Linux SBCs.
-- **[[learning/notes/quick-context/silicon-die]]** — The ESP32's WiFi radio, CPUs, and SRAM all share a single die — the cost magic comes from this integration.
+- **[[learning/notes/quick-context/silicon-die]]** — The ESP32's WiFi radio, CPUs, and [[learning/notes/micro-context/sram|SRAM]] all share a single die — the cost magic comes from this integration.
 - **FreeRTOS** — The preemptive RTOS the ESP32 runs by default. Tasks, queues, semaphores. ESP-IDF wraps it; Arduino-ESP32 hides it.
 - **ESPHome / Tasmota** — Pre-built firmware projects that turn an ESP32 into a YAML-configured smart-home device with no C code.
 - **Matter / Thread** — New smart-home interop protocol; the ESP32-C6 and H2 were designed around it.
@@ -253,7 +253,7 @@ Cost and process tech. The ESP32's wireless transceiver, RF front-end, and ADCs 
 **Q2:** You see `IRAM_ATTR` in front of an interrupt handler in someone's ESP32 code. What does it do and why does it matter?
 <details>
 <summary>Answer</summary>
-`IRAM_ATTR` forces the function to be linked into internal SRAM (IRAM) instead of left in external flash. Without it, the ISR would be fetched through the flash cache; a cache miss adds hundreds of nanoseconds, and if the cache is disabled (e.g., during a flash write), code in flash is literally unreachable and the chip panics. ISRs and any code that runs while flash is being written must live in IRAM. See: How It Works — Why "Execute in Place" matters.
+`IRAM_ATTR` forces the [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] to be linked into internal SRAM (IRAM) instead of left in external flash. Without it, the ISR would be fetched through the flash cache; a cache miss adds hundreds of nanoseconds, and if the cache is disabled (e.g., during a flash write), code in flash is literally unreachable and the chip panics. ISRs and any code that runs while flash is being written must live in IRAM. See: How It Works — Why "Execute in Place" matters.
 </details>
 
 **Q3:** Your ESP32 keeps panicking with "Task watchdog got triggered" whenever you call a long-running computation. What's the likely cause and fix?

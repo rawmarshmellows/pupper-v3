@@ -4,7 +4,7 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/cnc-process-selection]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -498,19 +498,19 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 
 - **[[quick-context/transistor|Transistors]]** — The fundamental components being fabricated. Knowing how a transistor works (gate, source, drain, channel) clarifies why specific fabrication steps exist.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — Ion implantation creates doped regions. Understanding n-type vs p-type silicon explains why implantation is essential.
+- **[[quick-context/doped-silicon|Doped Silicon]]** — Ion implantation creates doped regions. Understanding n-type vs [[learning/notes/quick-context/differential-pair|p-type silicon]] explains why implantation is essential.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — Where fabricated dies fit in the larger system. The die is just one level in a hierarchy from transistors to complete devices.
 
-- **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
+- **[[learning/notes/quick-context/transistor-design-history|Moore's Law]] & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from [[learning/notes/quick-context/transistor-design-history|planar MOSFET]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 
@@ -520,13 +520,13 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 **Q1:** What are the six categories of fabrication tools, and what is the primary purpose of each?
 <details>
 <summary>Answer</summary>
-(1) **Mask Layer** tools (photolithography, spin coater, developer) define patterns. (2) **Adding Material** tools (CVD, PVD, ALD, epitaxial growth) deposit thin films. (3) **Removing Material** tools (plasma etcher, wet etcher, CMP) selectively remove material. (4) **Modifying Material** tools (ion implanter, annealer) change material properties. (5) **Cleaning** tools (wet bench, ultrasonic, megasonic) remove contaminants. (6) **Inspecting** tools (optical/SEM microscopes, defect inspection) verify quality. See: The Six Tool Categories diagram
+(1) **Mask Layer** tools (photolithography, spin coater, developer) define patterns. (2) **Adding Material** tools (CVD, PVD, ALD, epitaxial [[learning/notes/quick-context/existing-account-management-playbook|growth]]) deposit thin films. (3) **Removing Material** tools (plasma etcher, wet etcher, CMP) selectively remove material. (4) **Modifying Material** tools (ion implanter, annealer) change material properties. (5) **Cleaning** tools (wet bench, ultrasonic, megasonic) remove contaminants. (6) **Inspecting** tools (optical/SEM microscopes, defect inspection) verify quality. See: The Six Tool Categories diagram
 </details>
 
 **Q2:** Why must CMP (planarization) be performed between layers?
 <details>
 <summary>Answer</summary>
-Photolithography requires a perfectly flat surface to project patterns accurately. If the surface has bumps or trenches from previous layers, the light won't focus correctly, and features will be distorted or misaligned. CMP polishes the wafer flat so each new layer can be built on a smooth foundation. Without CMP, you couldn't stack 10+ metal layers on top of each other. See: CMP explanation and "Building a FinFET" example
+Photolithography requires a perfectly flat surface to project patterns accurately. If the surface has bumps or trenches from previous layers, the light won't focus correctly, and features will be distorted or misaligned. CMP polishes the wafer flat so each new layer can be built on a smooth foundation. Without CMP, you couldn't stack 10+ metal layers [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of each other. See: CMP explanation and "Building a FinFET" example
 </details>
 
 **Q3:** Why is EUV lithography necessary for leading-edge nodes (below ~7nm), and what makes it so expensive?
@@ -538,13 +538,13 @@ Visible/UV light wavelengths (~193nm for DUV) are too large to pattern features 
 **Q4:** Someone claims: "Making chips faster just means running the machines faster." What's wrong with this understanding?
 <details>
 <summary>Answer</summary>
-Chip fabrication faces a fundamental tradeoff between throughput, resolution, and cost—you can't simply "speed up" without sacrificing something. Running faster means less time for precise alignment in lithography (causing defects), less thorough inspection (missing killer defects), and rushed processes that hurt yield. A single wafer takes ~3 months to complete through 500-1000+ steps because each step requires extreme precision. Rushing any step could turn a $10,000+ wafer into scrap. The industry optimizes for yield and quality, not raw speed. See: The Key Tension section
+Chip fabrication faces a fundamental tradeoff between throughput, resolution, and cost—you can't simply "speed up" without sacrificing something. Running faster means less time for precise alignment in lithography (causing defects), less thorough inspection (missing killer defects), and rushed processes that hurt yield. A single wafer takes ~3 months to complete through 500-1000+ steps because each step requires extreme precision. Rushing any step could turn a $10,000+ wafer into scrap. The industry optimizes for yield and quality, not [[learning/notes/quick-context/python-to-machine-code-pipeline|raw speed]]. See: The Key Tension section
 </details>
 
 **Q5:** How does the fabrication process connect the raw material (silicon wafer) to the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]]? What would happen to the hierarchy if ion implantation suddenly became impossible?
 <details>
 <summary>Answer</summary>
-Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "silicon die" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
+Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "[[learning/notes/quick-context/silicon-die|silicon die]]" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
 </details>
 
 </details>

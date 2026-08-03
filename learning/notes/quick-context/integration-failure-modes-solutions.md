@@ -3,7 +3,7 @@ topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/sil-rated-safety-functions]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]]
 
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 
@@ -13,7 +13,7 @@ created: 2026-01-17
 
 These five failure modes—deadlock, race conditions, cascade failures, unrecoverable states, and integration drift—are fundamentally **coordination failures in distributed real-time systems**. Unlike software distributed systems where you can retry, buffer, or eventually converge, a robot cell operates in physical space with millisecond timing constraints and thousand-pound machines that can't "roll back."
 
-The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get OEE (Overall Equipment Effectiveness) numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
+The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get [[learning/notes/quick-context/oee-overall-equipment-effectiveness|OEE (Overall Equipment Effectiveness)]] numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
 
 The architectural patterns that solve these problems aren't new; they're borrowed from decades of real-time systems theory, distributed computing, and process control—but adapted for environments where "the network partition" might be a severed pneumatic line and "eventual consistency" means a crashed conveyor.
 
@@ -23,7 +23,7 @@ The architectural patterns that solve these problems aren't new; they're borrowe
 |------|------------|
 | **Watchdog Timer** | A countdown that triggers a fault if not periodically reset—the universal deadlock breaker that forces "something must happen within N seconds or we assume failure." |
 | **Handshake Protocol** | A structured signal exchange (request -> acknowledge -> complete -> reset) that ensures both parties agree on state transitions before proceeding. |
-| **State Machine** | A formal model where the system is always in exactly one defined state, with explicit transitions—the antidote to "nobody knows what state we're in." |
+| **State Machine** | A formal model where the system is always in [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] defined state, with explicit transitions—the antidote to "nobody knows what state we're in." |
 | **Debounce** | Ignoring rapid signal changes for a settling period to prevent sensor noise from triggering false transitions—one glitch doesn't cascade. |
 | **Homing Sequence** | A defined procedure that returns all axes and actuators to a known position, making the physical state deterministic again after any interruption. |
 
@@ -144,7 +144,7 @@ Drift is insidious because each individual change is within tolerance. The solut
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff is **throughput vs. recoverability**. Tight coupling with minimal handshaking maximizes cycle time but makes the system fragile—one hiccup cascades everywhere. Loose coupling with explicit state machines and defensive timeouts makes recovery possible but adds overhead to every cycle.
+The central tradeoff is **throughput vs. recoverability**. Tight coupling with minimal handshaking maximizes cycle time but makes the system fragile—one hiccup cascades everywhere. Loose coupling with explicit [[learning/notes/quick-context/robot-cell-integration-best-practices|state machines]] and defensive timeouts makes recovery possible but adds overhead to every cycle.
 
 Practitioners argue endlessly about how much defensive logic is "enough." The PackML crowd wants formal state machines for everything; the old-school integrators say you're overthinking it and just need proper handshakes. The real answer is context-dependent: a high-mix cell that changes setups daily needs loose coupling and explicit recovery paths, while a dedicated line running the same part for years can optimize for speed with tighter integration.
 
@@ -157,7 +157,7 @@ The architectural patterns exist on a spectrum, and knowing where your applicati
 
 ## ROS2 Approaches to These Failure Modes
 
-ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
+[[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]] brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
 
 **Deadlock: DDS QoS Liveliness + Deadline Policies**
 
@@ -495,15 +495,15 @@ analyzers:
 
 ## When to Use ROS2 vs. PLC for Failure Mode Handling
 
-| Failure Mode | ROS2 Good For | PLC Required For |
+| [[learning/notes/quick-context/pupper-lab5-neural-controller|Failure Mode]] | ROS2 Good For | PLC Required For |
 |--------------|---------------|------------------|
 | **Deadlock** | Coordination timeouts, non-safety handshakes | Safety interlocks, E-stop circuits |
 | **Race Conditions** | High-level sequencing, goal management | Microsecond I/O timing, fieldbus sync |
 | **Cascade Failures** | Node lifecycle, dependency management | Safety-rated fault propagation |
 | **Unrecoverable States** | State persistence, recovery workflows | Retentive memory, safety state machine |
-| **Integration Drift** | Diagnostics, trending, alerting | Scan cycle jitter monitoring |
+| **Integration Drift** | Diagnostics, trending, alerting | [[learning/notes/quick-context/plc-vs-software-control|Scan cycle]] jitter monitoring |
 
-The architecture from [[quick-context/plc-vs-software-control]] applies directly: ROS2 handles the coordination and monitoring layer where soft real-time and rich tooling matter; the PLC handles the execution layer where determinism and safety certification are non-negotiable. ROS2's lifecycle nodes can detect that the vision system failed, but the PLC's safety function stops the robot arm within 50ms when the light curtain breaks.
+The architecture from [[quick-context/plc-vs-software-control]] applies directly: ROS2 handles the coordination and monitoring layer where soft real-time and rich tooling matter; the PLC handles the execution layer where determinism and safety certification are non-negotiable. ROS2's lifecycle nodes can detect that the vision system failed, but the PLC's safety [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] stops the robot arm within 50ms when the light curtain breaks.
 
 **The one thing most outsiders get wrong about this is...** thinking these are programming problems solvable with better code. They're actually systems design problems that require upfront architectural decisions about ownership, timing, and recovery. You can't bolt on deadlock prevention after the fact—it has to be baked into the handshake protocol from day one. The patterns above aren't clever tricks; they're the industrial automation equivalent of "use transactions" or "make it idempotent"—fundamental architectural constraints that every experienced integrator applies automatically.
 

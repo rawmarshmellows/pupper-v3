@@ -2,19 +2,20 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/plc-vs-software-control]]
 
 # PLC (Programmable Logic Controller)
 
-> **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]
+> **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
-**Definition:** A PLC is a ruggedized industrial computer purpose-built to control factory machinery in real time. It contains a CPU, I/O modules for sensors and actuators, power conditioning, watchdog timers, and a scan-cycle engine that reads inputs, executes user logic (ladder logic or structured text), and writes outputs in a deterministic 1-50ms loop — all housed in an electrically isolated, vibration-tolerant enclosure with safety certification.
+**Definition:** A PLC is a ruggedized industrial computer purpose-built to control factory machinery in real time. It contains a CPU, [[learning/notes/quick-context/plc-vs-software|I/O modules]] for sensors and actuators, power conditioning, watchdog timers, and a scan-cycle engine that reads inputs, executes user logic ([[learning/notes/quick-context/plc-vs-software|ladder logic]] or [[learning/notes/quick-context/plc-vs-software-control|structured text]]), and writes outputs in a deterministic 1-50ms loop — all housed in an electrically isolated, vibration-tolerant enclosure with safety certification.
 
 ## How It Works
 
 - A **scan-cycle engine** reads all inputs, runs the user program, and updates all outputs in a fixed deterministic loop (1-50ms), with hardware watchdogs that force outputs to a safe state if anything stalls.
 - PLCs are assembled from PCBs, power supplies, I/O modules, and a ruggedized enclosure — the PCB inside carries the CPU, memory, and communication chips, just as in any electronic device.
-- PLCs add industrial hardening on top of a standard CPU: wide temperature range, vibration tolerance, electrical isolation, and fail-safe I/O.
-- Programming uses domain-specific languages (ladder logic, structured text, function block diagrams) rather than general-purpose code, making them accessible to electricians and process engineers.
+- PLCs add industrial hardening [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of a standard CPU: wide temperature range, vibration tolerance, electrical isolation, and fail-safe I/O.
+- Programming uses domain-specific languages (ladder logic, structured text, [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] block diagrams) rather than general-purpose code, making them accessible to electricians and process engineers.
 
 ## Common Confusions
 

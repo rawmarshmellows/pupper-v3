@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/capacitance]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: You Can't Debug What You Can't See
 
-A circuit doesn't work. Is the power supply providing 3.3V? Is the clock signal actually toggling? Is there noise on the data line? Is the signal arriving 100 ns too late? Without instruments, you're guessing. A **multimeter** gives you steady-state readings (DC voltage, resistance, continuity). An **oscilloscope** shows you the time-domain waveform—the actual shape of a signal as it changes over nanoseconds to seconds. Most debugging starts with "what voltage is on this pin?" (multimeter) and escalates to "what does the signal look like?" (oscilloscope).
+A circuit doesn't work. Is the power supply providing 3.3V? Is the [[learning/notes/quick-context/switches-to-registers-storing-data|clock signal]] actually toggling? Is there noise on the data line? Is the signal arriving 100 ns too late? Without instruments, you're guessing. A **multimeter** gives you steady-state readings (DC voltage, resistance, continuity). An **oscilloscope** shows you the time-domain waveform—the actual shape of a signal as it changes over nanoseconds to seconds. Most debugging starts with "what voltage is on this pin?" (multimeter) and escalates to "what does the signal look like?" (oscilloscope).
 
 ## 5 Essential Terms
 
@@ -122,9 +122,9 @@ WHEN TO USE WHICH
 | Bandwidth | Price Range | Good For |
 |-----------|-----------|----------|
 | 50 MHz | $300-500 | Arduino, slow digital, audio, power supplies |
-| 100 MHz | $400-800 | SPI, I2C, UART, most embedded work |
+| 100 MHz | $400-800 | SPI, I2C, [[learning/notes/quick-context/embedded-communication-protocols|UART]], most embedded work |
 | 200 MHz | $800-2000 | Faster SPI, CAN bus, switching supply debug |
-| 500 MHz | $2000-5000 | USB, Ethernet PHY, DDR memory |
+| 500 MHz | $2000-5000 | USB, [[learning/notes/quick-context/raspberry-pi-5-components|Ethernet PHY]], DDR memory |
 | 1+ GHz | $5000-50000 | PCIe, high-speed serial, RF |
 
 Rule of thumb: scope bandwidth should be 5× the highest frequency in your signal. A 3.3V square wave at 10 MHz has significant energy at 50 MHz (5th harmonic), so a 50 MHz scope shows rounded edges. A 100 MHz scope shows it more accurately.
@@ -192,7 +192,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q1:** You connect a multimeter set to "amps" in parallel across a component. What happens?
 <details>
 <summary>Answer</summary>
-**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
+**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low [[learning/notes/quick-context/galvanic-cells-batteries|internal resistance]] (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a [[learning/notes/micro-context/short-circuit|short circuit]] with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
 </details>
 
 **Q2:** A 50 MHz oscilloscope is displaying a 10 MHz square wave that looks like a sine wave. Why?

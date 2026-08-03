@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/faraday-tensor]]
 
 > **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
 
@@ -17,11 +17,11 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
+| **Current (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
 | **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
-| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
+| **Electromagnetic Field** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -495,7 +495,7 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[learning/notes/quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
 - **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
 
@@ -509,7 +509,7 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/voltage]]** — Electric field defines voltage; field strength drives current through materials.
 
-- **[[quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
 
 - **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
 
@@ -525,13 +525,13 @@ SUMMARY: The Four Quantities in Action
 **Q1:** A wire carries steady DC current. Is there an electric field in the wire? A magnetic field? Both?
 <details>
 <summary>Answer</summary>
-**Both.** There must be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). Ohm's law in microscopic form is J = σE (current density = conductivity × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
+**Both.** There must be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). [[learning/notes/quick-context/parallel-vs-series-voltage|Ohm's law]] in microscopic form is J = σE ([[learning/notes/quick-context/electric-current|current density]] = conductivity × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
 </details>
 
 **Q2:** Why can a magnetic field deflect an electron but can't change its speed?
 <details>
 <summary>Answer</summary>
-**The Lorentz force from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.
+**The [[learning/notes/quick-context/electromagnetism|Lorentz force]] from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.
 </details>
 
 **Q3:** You measure 5V across a resistor and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
@@ -543,13 +543,13 @@ SUMMARY: The Four Quantities in Action
 **Q4:** In a transformer, no current flows between primary and secondary coils (they're electrically isolated). How does energy transfer between them?
 <details>
 <summary>Answer</summary>
-**Through the magnetic field.** Current in the primary creates a magnetic field in the core. When that current changes (AC), the magnetic field changes. By Faraday's law, changing B creates E. That induced electric field exists in the secondary coil and pushes electrons, creating current. Energy flows: electrical (primary) → magnetic (core) → electrical (secondary). The magnetic field is the intermediary that carries energy across the galvanic isolation.
+**Through the magnetic field.** Current in the primary creates a magnetic field in the core. When that current changes (AC), the magnetic field changes. By [[learning/notes/quick-context/lenzs-law|Faraday's law]], changing B creates E. That induced electric field exists in the secondary coil and pushes electrons, creating current. Energy flows: electrical (primary) → magnetic (core) → electrical (secondary). The magnetic field is the intermediary that carries energy across the galvanic isolation.
 </details>
 
 **Q5:** If electric and magnetic fields are "really the same thing" (as relativity says), why do circuits have separate capacitors (electric field storage) and inductors (magnetic field storage)?
 <details>
 <summary>Answer</summary>
-**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
+**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field [[learning/notes/quick-context/galvanic-cells-batteries|energy density]] ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
 </details>
 
 </details>

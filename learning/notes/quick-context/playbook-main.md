@@ -1,4 +1,5 @@
-# Existing Account Management Playbook
+
+> **Related:** [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/sandler-kare-segmentation]]# Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
 
@@ -116,7 +117,7 @@ Track these metrics to measure account management effectiveness:
 |---|---|---|
 | **Gross Revenue Retention (GRR)** | Revenue retained excluding expansion (churned $/starting $) | >90% |
 | **Net Revenue Retention (NRR)** | Revenue retained including expansion and contraction | >110% |
-| **Expansion Revenue %** | New revenue from existing customers / total new revenue | >30% |
+| **[[learning/notes/quick-context/post-sale-account-engagement|Expansion Revenue]] %** | New revenue from existing customers / total new revenue | >30% |
 | **Logo Retention** | Customers retained / customers at start of period | >85% |
 | **Time to First Expansion** | Days from initial close to first expansion deal | <365 days |
 
@@ -232,7 +233,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[learning/notes/quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
@@ -300,7 +301,7 @@ Anticipate pushback scenarios:
 ### Quarterly (1-2 hours)
 - Full account plan refresh
 - KARE re-classification check
-- Relationship maturity re-diagnosis
+- [[learning/notes/quick-context/mcdonald-kam-model|Relationship maturity]] re-diagnosis
 - QBR preparation
 - Competitive intel update
 - Whitespace analysis refresh
@@ -440,7 +441,7 @@ Anticipate pushback scenarios:
 |---|---|
 | "What motion am I running?" (Defend/Hunt/Re-engage/Grow) | KARE Segmentation |
 | "How much CSM investment for this customer?" | Value/Potential Matrix |
-| "Where does this relationship stand?" | McDonald KAM Model |
+| "Where does this relationship stand?" | [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]] |
 | "Who should I be talking to?" | Miller Heiman LAMP |
 | "What are we trying to achieve?" | LAMP Charter Statement |
 | "How should I structure this conversation?" | Challenger |

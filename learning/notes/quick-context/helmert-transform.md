@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Helmert Transform
 
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/similarity-transform]]
 
 > **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 
@@ -17,7 +17,7 @@ You have two sets of corresponding 3D points -- one in a local survey frame, one
 
 | Term | Definition |
 |------|------------|
-| **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[quick-context/similarity-transform|similarity transform]] in 3D |
+| **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[learning/notes/quick-context/similarity-transform|similarity transform]] in 3D |
 | **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
 | **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
 | **Scale factor** | The scalar $s$ that accounts for uniform size differences between coordinate frames -- computed from the ratio of output to input point spread |
@@ -142,7 +142,7 @@ The **time-dependent Helmert model** (EPSG method 1053) adds a rate of change fo
 
 ### Similarity vs Affine: The Shear Question
 
-The Helmert Transform is a [[quick-context/similarity-transform|similarity transform]] -- it preserves angles and shape. No shearing is allowed. This is its strength (fewer parameters, closed-form solution, physically meaningful) and its limitation.
+The Helmert Transform is a [[learning/notes/quick-context/similarity-transform|similarity transform]] -- it preserves angles and shape. No shearing is allowed. This is its strength (fewer parameters, closed-form solution, physically meaningful) and its limitation.
 
 | Transform Type | Parameters (3D) | Preserves | Allows |
 |---------------|-----------------|-----------|--------|
@@ -257,7 +257,7 @@ print(f"Translation: true={t_true}  estimated={np.round(t_est, 4)}")
 print(f"Rotation matches: {np.allclose(R_true, R_est, atol=0.01)}")
 
 # Apply to a new point
-new_local = np.array([[0.5, 0.5, 0.5]])
+new_local = np.array(0.5, 0.5, 0.5)
 transformed = apply_helmert(new_local, s_est, R_est, t_est)
 print(f"New point transformed: {np.round(transformed, 4)}")
 ```
@@ -285,7 +285,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
+- **[[learning/notes/quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem that Helmert solves: given corresponding 3D points in two frames, find the transform between them (Horn 1987 gave a closed-form quaternion solution; Arun et al. 1987 gave the SVD-based solution)
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine that extracts the rotation matrix from the cross-covariance matrix
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ is the critical intermediate representation; its SVD reveals the rotation

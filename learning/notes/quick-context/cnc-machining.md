@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # CNC Machining
 
-> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
+> **Related:** [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]] | [[learning/notes/micro-context/cnc-process-selection]]
 
 > **TL;DR:** CNC machining is subtractive manufacturing -- a computer-controlled cutting tool removes material from a solid block to create precision parts. It is the default choice for metal parts at low volumes ($1$--$1{,}000$ units) where tight tolerances ($\pm 0.001"$) and full material strength are required.
 
@@ -47,7 +47,7 @@ CNC MILLING OPERATION:
     ══════════════════════
 ```
 
-**Strengths:** Full material strength (no layer adhesion weakness like FDM), complex 3D geometries, tight tolerances.
+**Strengths:** Full material strength (no [[learning/notes/quick-context/3d-printing-filament-types|layer adhesion]] weakness like FDM), complex 3D geometries, tight tolerances.
 **Limitations:** Wastes material as chips, can't create fully enclosed internal cavities.
 
 ### Turning: Part Rotates, Tool Stays Still

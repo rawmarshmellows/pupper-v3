@@ -5,23 +5,23 @@ created: 2026-03-10
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/coulomb-history]]
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 
 ## The Core Problem
 
-A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The inverse kinematics solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The LLM voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
+A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The LLM voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
 
-ROS2 (Robot Operating System 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node can subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
+[[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]] (Robot [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|Operating System]] 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node can subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
 
-This architecture is what makes the 7-lab progression possible. Each lab adds new nodes and topics to the graph without touching the nodes from previous labs. Lab 1 creates the PD controller node. Lab 2 adds an FK visualization node. Lab 3 adds an IK node that publishes to the same joint target topic. Lab 5 swaps in a neural controller node. Lab 6 adds a voice node. Lab 7 adds a vision node and state machine. At every stage, the existing infrastructure keeps working — you are composing a robot from modular building blocks, not rewriting a monolith.
+This architecture is what makes the 7-lab progression possible. Each lab adds new nodes and topics to the graph without touching the nodes from previous labs. Lab 1 creates the PD controller node. Lab 2 adds an FK visualization node. Lab 3 adds an IK node that publishes to the same joint target topic. Lab 5 swaps in a neural controller node. Lab 6 adds a voice node. Lab 7 adds a vision node and [[learning/notes/quick-context/integration-failure-modes-solutions|state machine]]. At every stage, the existing infrastructure keeps working — you are composing a robot from modular building blocks, not rewriting a monolith.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Node** | An independent process that performs one task — e.g., `pd_controller_node`, `neural_controller`, `hailo_detection`, `realtime_voice`. Each node has its own update rate and lifecycle. Nodes are the unit of modularity in ROS2. |
+| **Node** | An independent process that performs one task — e.g., `pd_controller_node`, `neural_controller`, `hailo_detection`, `realtime_voice`. Each node has its own [[learning/notes/quick-context/pupper-lab5-neural-controller|update rate]] and lifecycle. Nodes are the unit of modularity in ROS2. |
 | **Topic** | A named communication channel — e.g., `/joint_states`, `/cmd_vel`, `/detections`. Topics are typed: only messages of the declared type can be published. Topics decouple publishers from subscribers; neither needs to know the other exists. |
 | **Publisher / Subscriber** | The two ends of a topic connection. A publisher sends messages (e.g., the vision node publishes `Detection2DArray` to `/detections`). A subscriber receives them (e.g., the state machine subscribes to `/detections`). One topic can have multiple publishers and multiple subscribers simultaneously. |
 | **Message Type** | A structured data format defined in `.msg` files — e.g., `sensor_msgs/JointState` contains `name[]`, `position[]`, `velocity[]`, `effort[]` fields. Common types on Pupper: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`, `String`. |
@@ -144,7 +144,7 @@ PUPPER v3 COMPLETE ROS2 NODE GRAPH
 
 | Topic | Message Type | Publisher(s) | Subscriber(s) | Rate | Lab |
 |-------|-------------|-------------|---------------|------|-----|
-| `/joint_states` | `sensor_msgs/JointState` | ros2_control hardware interface | PD controller, FK node | 200 Hz | 1+ |
+| `/joint_states` | `sensor_msgs/JointState` | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|ros2_control]] hardware interface | PD controller, FK node | 200 Hz | 1+ |
 | `/joint_position_targets` | `std_msgs/Float64MultiArray` | IK node, Gait node, Neural controller | PD controller (forward_command_controller) | 20-50 Hz | 1+ |
 | `/cmd_vel` | `geometry_msgs/Twist` | Lab 7 state machine, Karel parser, teleop | Neural controller | 20 Hz | 5+ |
 | `/detections` | `vision_msgs/Detection2DArray` | hailo_detection | Lab 7 state machine | ~5 Hz | 7 |
@@ -231,13 +231,13 @@ CONTROL FREQUENCY TIERS
   "never miss a deadline"          "usually meets deadlines"
 ```
 
-The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
+The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level [[learning/notes/quick-context/pupper-v3-labs|PD control]], trajectory planning, [[learning/notes/quick-context/pupper-lab5-neural-controller|neural network inference]], vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
 
 This split explains a recurring pattern in the labs: **you never write code that directly talks to motors**. Your ROS2 nodes publish joint targets or velocity commands, and the ros2_control + STM32 stack translates those into actual motor current at rates your ROS2 node could never sustain reliably.
 
 ### Why Not ROS1?
 
-ROS2 replaced ROS1 specifically to improve real-time capabilities. ROS1 used a centralized `roscore` master — if it crashed, the entire robot went down. ROS2's DDS layer is fully distributed with no single point of failure. ROS2 also adds QoS (Quality of Service) profiles that let you choose between reliable delivery (every message arrives, possibly late) and best-effort delivery (messages may drop, but never stale). The neural controller uses best-effort QoS because a dropped velocity command is better than a stale one.
+ROS2 replaced ROS1 specifically to improve real-time capabilities. ROS1 used a centralized `roscore` master — if it crashed, the entire robot went down. ROS2's DDS layer is fully distributed with no single point of failure. ROS2 also adds QoS (Quality of Service) profiles that let you choose between reliable delivery (every message arrives, possibly late) and best-effort delivery (messages may drop, but never stale). The neural controller uses best-effort QoS because a dropped [[learning/notes/quick-context/pupper-lab5-neural-controller|velocity command]] is better than a stale one.
 
 </details>
 
@@ -385,11 +385,11 @@ Each layer only knows about its immediate inputs and outputs. The neural control
 
 - **rosbag** — Records and replays ROS2 topic data. `ros2 bag record /joint_states /cmd_vel` captures all messages with timestamps; `ros2 bag play` replays them. Essential for debugging: record a failed walking attempt, then replay the data through your analysis nodes offline without needing the physical robot.
 
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32s handle the 1 kHz loops below the ROS2 layer; the Pi runs ROS2 nodes for everything above. Understanding the hardware split explains why certain control loops are in ROS2 and others are not.
+- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi [[learning/notes/quick-context/sil-rated-safety-functions|hardware architecture]]. The STM32s handle the 1 kHz loops below the ROS2 layer; the Pi runs ROS2 nodes for everything above. Understanding the hardware split explains why certain control loops are in ROS2 and others are not.
 
 - **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum. Each lab adds ROS2 nodes to the graph: Lab 1 (PD controller), Lab 2 (FK + RViz marker), Lab 3 (IK node), Lab 4 (gait node), Lab 5 (neural controller subscribing to `/cmd_vel`), Lab 6 (realtime_voice publishing to `/gpt4_response_topic`), Lab 7 (hailo_detection + state machine + `/tracking_control`).
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The SPI connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The SPI connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
 
 </details>
 
@@ -400,7 +400,7 @@ ROS 2 provides six distinct communication mechanisms, each optimized for differe
 
 ### 1. Topics — Pub/Sub for Continuous Data Streams
 
-Topics provide **asynchronous, one-to-many message broadcasting**. This is the backbone of the Pupper system — `/joint_states`, `/cmd_vel`, `/detections` are all topics.
+Topics provide **asynchronous, one-to-many message broadcasting**[[learning/notes/quick-context/glass-transition-temperature|. This is the]] backbone of the Pupper system — `/joint_states`, `/cmd_vel`, `/detections` are all topics.
 
 **Quality of Service (QoS) profiles** control delivery across six dimensions:
 
@@ -841,7 +841,7 @@ Sequence: node_a launches → configure → inactive → activate → active →
 </details>
 
 <details>
-<summary><strong>Deep Dive: Concurrency, Executors & Race Conditions</strong></summary>
+<summary><strong>Deep Dive: Concurrency, Executors & [[learning/notes/quick-context/integration-failure-modes-solutions|Race Conditions]]</strong></summary>
 
 ROS 2's concurrency model revolves around **executors** and **callback groups**. Understanding these is essential to avoiding race conditions.
 

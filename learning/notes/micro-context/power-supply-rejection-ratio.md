@@ -2,10 +2,11 @@
 term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/micro-context/quiescent-supply-current]]
 
 # Power-Supply Rejection Ratio ($PSRR$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]
+> **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | decibels-across-domains
 
 **Definition:** A measure (in dB) of how well a comparator or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
 
@@ -28,4 +29,4 @@ created: 2026-06-07
    80 dB ~ 10,000x rejection of supply wiggle.
 ```
 
-**Key insight:** PSRR is the [[micro-context/input-offset-voltage|input-offset]] twin for the supply pin — instead of "how much does an input difference matter," it answers "how much does a wiggle on the power rail leak in as if it were a real signal."
+**Key insight:** PSRR is the [[micro-context/input-offset-voltage|input-offset]] twin for the supply pin — instead of "how much does an input difference matter," it answers "how much does a wiggle on the [[learning/notes/quick-context/schematic-reading|power rail]] leak in as if it were a real signal."

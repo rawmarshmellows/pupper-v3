@@ -6,7 +6,7 @@ updated: 2026-02-10
 
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/challenger-sale-methodology]]
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 
@@ -26,7 +26,7 @@ Complex B2B sales involve multiple stakeholders with different priorities, and r
 | **Economic Buyer** | The person with final authority to release funds and approve the purchase; they can say "yes" when everyone else says "no" |
 | **User Buyer** | The person(s) who will actually use your product day-to-day and judge success based on job impact |
 | **Technical Buyer** | The gatekeeper who screens vendors against specifications, compliance, or technical requirements—they can't approve but can veto |
-| **Coach** | An internal advocate who provides intelligence about the organization's decision process and guides your strategy |
+| **Coach** | An internal advocate who provides intelligence about the organization's [[learning/notes/quick-context/meddpicc-qualification-framework|decision process]] and guides your strategy |
 
 <details>
 <summary><strong>How It Works</strong> — The LAMP three-phase process</summary>
@@ -440,7 +440,7 @@ A coach who only provides information is useful but limited—you still have to 
 **Q5:** If Precision Manufacturing's CFO (Maria) strongly prefers capex purchases but your product is subscription-only, how would you adjust the strategy using the Gold Sheet framework?
 <details>
 <summary>Answer</summary>
-The Gold Sheet reveals Maria listens to "compliance/audit angles more than ROI" (per Coach intel). The strategy adjustment: (1) Reframe the subscription as a compliance advantage—"always current = audit-ready" vs. capex software that ages, (2) Use the FAA audit timeline (Q3) to create urgency that bypasses the capex preference, (3) Have your Executive Sponsor (VP Ops) speak to Maria about how other aerospace suppliers handle this. The Gold Sheet's "Focus Investments" section should add "Finance packaging—explore annual prepay or capex-like structuring" as a resource priority.
+The Gold Sheet reveals Maria listens to "compliance/audit angles more than ROI" (per Coach intel). The strategy adjustment: (1) [[learning/notes/quick-context/playbook-main|Reframe]] the subscription as a compliance advantage—"always current = audit-ready" vs. capex software that ages, (2) Use the FAA audit timeline (Q3) to create urgency that bypasses the capex preference, (3) Have your Executive Sponsor (VP Ops) speak to Maria about how other aerospace suppliers handle this. The Gold Sheet's "Focus Investments" section should add "Finance packaging—explore annual prepay or capex-like structuring" as a resource priority.
 </details>
 
 </details>

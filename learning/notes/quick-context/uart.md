@@ -5,13 +5,13 @@ created: 2026-04-08
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
-> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
 
 > **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
 
 ## The Core Problem
 
-A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over its data bus. But wires between devices carry one bit at a time (serial). Something has to sit at the boundary and convert between these two worlds: accumulate incoming serial bits into a parallel byte, and break outgoing parallel bytes into serial bits. That something is the UART. Without it, every serial device (debug console, GPS module, Bluetooth radio, another MCU) would need custom bit-banging code that ties up the CPU for every single bit.
+A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over its [[learning/notes/quick-context/data-bus-and-arbitration|data bus]]. But wires between devices carry one bit at a time (serial). Something has to sit at the boundary and convert between these two worlds: accumulate incoming serial bits into a parallel byte, and break outgoing parallel bytes into serial bits. That something is the [[learning/notes/quick-context/embedded-communication-protocols|UART]]. Without it, every serial device (debug console, GPS module, Bluetooth radio, another MCU) would need custom bit-banging code that ties up the CPU for every single bit.
 
 ## 5 Essential Terms
 
@@ -270,7 +270,7 @@ UART sits at the "dead simple" end of the [[quick-context/embedded-communication
 
 **UART's advantage is simplicity:** two wires, no clock to route, no addressing, no protocol overhead. This makes it the default choice for debug consoles, GPS modules, and any point-to-point link where you just need to send bytes.
 
-**UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
+**UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no [[learning/notes/quick-context/embedded-communication-protocols|noise immunity]] (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
 
 The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
 
@@ -330,7 +330,7 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
 
@@ -382,7 +382,7 @@ It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?
 <details>
 <summary>Answer</summary>
-Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — signal integrity becomes critical. TTL-level UART over more than a few centimeters of PCB trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
+Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — [[learning/notes/quick-context/bga-ball-grid-array|signal integrity]] becomes critical. TTL-level UART over more than a few centimeters of PCB trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
 </details>
 
 </details>

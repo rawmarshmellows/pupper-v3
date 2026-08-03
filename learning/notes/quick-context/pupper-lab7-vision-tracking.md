@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 
@@ -15,7 +15,7 @@ A robot that walks and talks is impressive, but it is still blind. Labs 5 and 6 
 
 The design centers on a **finite state machine** with three states. In IDLE the robot stands still, awaiting a tracking command. In SEARCH it rotates in place, scanning for the target object. In TRACK it uses a proportional controller to yaw toward the detected object and advance. Transitions between states are driven entirely by the presence or absence of fresh detections: if the detector finds the target, the machine enters TRACK; if detections go stale beyond a timeout threshold, it falls back to SEARCH. This reactive architecture is lightweight enough to run at camera frame rate (~5 Hz) while being robust to the inevitable noise of real-world object detection.
 
-Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM serves as a **deliberative** planner that interprets high-level voice commands ("follow the dog") and translates them into state-machine directives (`begin_tracking("dog")`). The state machine then handles the **reactive**, real-time tracking loop that the LLM's ~500 ms latency could never sustain. This two-tier architecture — slow deliberative reasoning on top, fast reactive control underneath — mirrors how production autonomous systems (self-driving cars, warehouse robots) are built.
+Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM serves as a **deliberative** planner that interprets high-level voice commands ("follow the dog") and translates them into state-machine directives (`begin_tracking("dog")`). The state machine then handles the **reactive**, real-time tracking loop that the LLM's ~500 ms latency could never sustain. This [[learning/notes/quick-context/ros2-architecture|two-tier architecture]] — slow deliberative reasoning [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]], fast reactive control underneath — mirrors how production autonomous systems (self-driving cars, warehouse robots) are built.
 
 ## 5 Essential Terms
 
@@ -23,8 +23,8 @@ Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM
 |------|------------|
 | **State Machine** | A controller with discrete modes (IDLE, SEARCH, TRACK) and well-defined transitions between them — the decision-making core of Lab 7's tracking behavior |
 | **YOLO (You Only Look Once)** | A single-shot object detection architecture that predicts bounding boxes and class labels in one forward pass; Lab 7 uses YOLOv5 trained on the 80-class COCO dataset |
-| **[[quick-context/raspberry-pi-ai-hat|Hailo Accelerator]]** | An edge AI inference chip (~26 TOPS) mounted on the Pupper via the [[quick-context/raspberry-pi-ai-hat|AI HAT+]] that runs the YOLOv5 network at low power, enabling on-robot detection without cloud connectivity |
-| **Detection2DArray** | A ROS2 message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
+| **[[quick-context/raspberry-pi-ai-hat|Hailo Accelerator]]** | An [[learning/notes/quick-context/raspberry-pi-ai-hat|edge AI]] inference chip (~26 [[learning/notes/quick-context/raspberry-pi-ai-hat|TOPS]]) mounted on the Pupper via the [[quick-context/raspberry-pi-ai-hat|AI HAT+]] that runs the YOLOv5 network at low power, enabling on-robot detection without cloud connectivity |
+| **Detection2DArray** | A [[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]] [[learning/notes/quick-context/ros2-architecture|message type]] from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the [[learning/notes/quick-context/pupper-v3-labs|Hailo detection]] node |
 | **Proportional Tracking Controller** | A P-controller that converts the horizontal pixel offset of a detected object into a yaw rate command: $\omega = -K_p \cdot x_{\text{normalized}}$, steering the robot to center the target in frame |
 
 <details>
@@ -83,7 +83,7 @@ STATE MACHINE — Transitions driven by detection freshness
 
 ### Stage 3: Action (Twist Command Generation)
 
-Each state produces a different velocity command published to `/cmd_vel`:
+Each state produces a different [[learning/notes/quick-context/pupper-lab5-neural-controller|velocity command]] published to `/cmd_vel`:
 
 | State | `linear.x` | `angular.z` | Behavior |
 |-------|-----------|------------|----------|
@@ -334,11 +334,11 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 
 - **COCO Dataset** — "Common Objects in Context," the 80-class benchmark dataset YOLOv5 is trained on. Includes everyday objects (person, car, dog, bottle, chair) but notably lacks many useful categories (keys, phone, specific breeds). This limits what Lab 7 can track out of the box. See: [cocodataset.org](https://cocodataset.org)
 - **[[quick-context/raspberry-pi-ai-hat|Raspberry Pi AI HAT+]]** — The full product family of Hailo-based NPU boards for edge AI inference, including the 13T, 26T, and AI HAT+ 2 (with on-board RAM for LLMs). Covers TOPS benchmarks, data flow architecture, and the software stack that Lab 7's Hailo detection node runs on.
-- **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The intrinsic matrix $K$ and distortion coefficients used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, focal length/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
+- **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The [[learning/notes/quick-context/camera-fundamentals|intrinsic matrix]] $K$ and [[learning/notes/quick-context/camera-fundamentals|distortion coefficients]] used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, focal length/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The [[learning/notes/quick-context/sil-rated-safety-functions|hardware architecture]] (dual STM32 + Raspberry Pi + [[learning/notes/quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 

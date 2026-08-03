@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/challenger-sale-methodology]]
 
 > **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
@@ -20,8 +20,8 @@ Sales reps often sell to whoever will take a meeting, then discover they've been
 | **Economic Buyer** | The single person with discretionary authority to approve the purchase—can say "yes" when everyone else says "no," and controls the budget |
 | **User Buyer** | The person(s) who will work with your solution day-to-day and judges success based on job impact and personal convenience |
 | **Technical Buyer** | The gatekeeper who screens against specifications, compliance, or technical requirements—can veto but cannot approve alone |
-| **Coach** | An internal advocate who provides intelligence about the organization's decision process, politics, and how to navigate to the Economic Buyer |
-| **Buyer Mode** | The psychological stance of each buyer: Growth (seeking improvement), Trouble (reacting to pain), Even Keel (status quo), or Overconfident (dismissive) |
+| **Coach** | An internal advocate who provides intelligence about the organization's [[learning/notes/quick-context/meddpicc-qualification-framework|decision process]], politics, and how to navigate to the Economic Buyer |
+| **Buyer Mode** | The psychological stance of each buyer: [[learning/notes/quick-context/existing-account-management-playbook|Growth]] (seeking improvement), [[learning/notes/quick-context/existing-account-management-playbook|Trouble]] (reacting to pain), [[learning/notes/quick-context/existing-account-management-playbook|Even Keel]] (status quo), or [[learning/notes/quick-context/existing-account-management-playbook|Overconfident]] (dismissive) |
 
 <details>
 <summary><strong>How It Works</strong> — Identifying and engaging each role</summary>
@@ -213,7 +213,7 @@ PRIORITY ACTIONS:
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
+- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader [[learning/notes/quick-context/sales-methodology-layering|account planning framework]] where these buyer roles originate
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
 - **[[quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
 - **Org Chart Analysis** — The practical skill of mapping formal and informal power structures

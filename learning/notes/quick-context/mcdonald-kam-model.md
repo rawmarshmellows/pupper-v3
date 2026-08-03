@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Malcolm McDonald KAM Model (Cranfield)
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sales-methodology-layering]]
 
 > **TL;DR:** Malcolm McDonald's Key Account Management (KAM) model from Cranfield University provides a five-stage relationship maturity framework—Exploratory → Basic → Cooperative → Interdependent → Integrated—helping teams diagnose where each account relationship stands and what's needed to deepen it.
 
@@ -260,9 +260,9 @@ Next Stage Action: Prevent further regression
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides the account planning mechanics; McDonald's KAM model diagnoses relationship maturity to inform that planning
-- **[[quick-context/sandler-kare-segmentation]]** — KARE segments the portfolio; McDonald's model goes deeper on relationship quality within each segment
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]] segments the portfolio; McDonald's model goes deeper on relationship quality within each segment
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC qualifies deals; McDonald's model qualifies the *relationship* context in which deals occur
-- **Customer Success** — The function most responsible for relationship progression post-sale; KAM model helps CS prioritize accounts
+- **Customer Success** — The [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] most responsible for relationship progression post-sale; KAM model helps CS prioritize accounts
 - **Net Promoter Score (NPS)** — A quantitative signal that sometimes correlates with relationship maturity, though imperfect
 - **[[quick-context/whitespace-mapping]]** — Tool for identifying expansion opportunities; relationship maturity affects which whitespace cells are accessible
 
@@ -271,7 +271,7 @@ Next Stage Action: Prevent further regression
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** What's the key difference between Basic and Cooperative stages?
+**Q1:** What's the key difference between Basic and [[learning/notes/quick-context/existing-account-management-playbook|Cooperative]] stages?
 <details>
 <summary>Answer</summary>
 Basic is transaction-focused—price drives decisions, switching costs are low, you're easily replaceable. Cooperative begins preferred-supplier status—they share information and roadmaps, trust is building, multiple contacts exist. The shift is from commodity vendor to trusted partner. See: How It Works.
@@ -292,7 +292,7 @@ Basic—regardless of contact count. Contact volume doesn't indicate relationshi
 **Q4:** How would you use McDonald's KAM model together with [[quick-context/sandler-kare-segmentation|KARE]]?
 <details>
 <summary>Answer</summary>
-KARE segments your portfolio into Keep/Attain/Recapture/Expand buckets. McDonald's model then diagnoses relationship depth within those buckets. Example: a "Keep" account at Basic stage needs different protection tactics than a "Keep" at Interdependent stage. An "Expand" account at Cooperative stage is ready for upsell conversations; an "Expand" at Basic stage needs relationship development first before pitching expansion.
+KARE segments your portfolio into Keep/Attain/Recapture/Expand buckets. McDonald's model then diagnoses relationship depth within those buckets. Example: a "Keep" account at Basic stage needs different protection tactics than a "Keep" at [[learning/notes/quick-context/existing-account-management-playbook|Interdependent]] stage. An "[[learning/notes/quick-context/existing-account-management-playbook|Expand]]" account at Cooperative stage is ready for upsell conversations; an "Expand" at Basic stage needs relationship development first before pitching expansion.
 </details>
 
 **Q5:** A customer executive says "You're our strategic partner" but procurement still runs aggressive RFPs. What's the real relationship stage and what do you do?

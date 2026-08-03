@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/sil-rated-safety-functions]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/plc-vs-software]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -15,7 +15,7 @@ Standard Linux is a time-sharing system optimized for throughput, not response t
 
 If you're interpolating trajectory waypoints at 1kHz and one cycle takes 15ms instead of 1ms, your robot arm doesn't smoothly trace an arc—it jerks, overshoots, or faults the drive. PREEMPT_RT patches the Linux kernel to make nearly all kernel code preemptible, meaning your real-time task can interrupt almost anything the kernel is doing.
 
-The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
+The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many [[learning/notes/quick-context/electrolysis|industrial applications]]—though not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]].
 
 ## 5 Essential Terms
 
@@ -130,7 +130,7 @@ Practitioners argue about where the acceptable latency boundary lies:
 - Some say PREEMPT_RT's ~50-100us worst-case is fine for 1ms control loops
 - Others insist you need a dual-kernel architecture (Xenomai, RTLinux) that runs your real-time code in a separate domain where Linux can't interfere at all
 
-The 2024 mainlining of PREEMPT_RT into the official kernel (after 20 years as an out-of-tree patch) settled the "will this exist long-term?" question, but the "is soft real-time good enough for my application?" debate remains application-specific. If you need sub-10us jitter or safety certification, PREEMPT_RT is a starting point, not a destination.
+The 2024 mainlining of PREEMPT_RT into the official kernel (after 20 years as an out-of-tree patch) settled the "will this exist long-term?" question, but the "is soft real-time [[learning/notes/quick-context/rc-oscillator|good enough for]] my application?" debate remains application-specific. If you need sub-10us jitter or safety certification, PREEMPT_RT is a starting point, not a destination.
 
 </details>
 
@@ -153,9 +153,9 @@ Consider a CNC machine controller running on Linux:
 - Timer callback runs within 50us of schedule
 - Tool path remains smooth, part comes out correctly
 
-This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like ROS2's real-time capabilities and CODESYS-on-Linux depend on it.
+This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like [[learning/notes/quick-context/pupper-lab1-pid-control|ROS2]]'s real-time capabilities and CODESYS-on-Linux depend on it.
 
-**The one thing most outsiders get wrong about this is...** assuming PREEMPT_RT turns Linux into a PLC. It doesn't. It gives you *bounded* latency, not *zero* latency—and those bounds (50-100us typical, potentially worse with bad drivers or hardware) aren't certified or guaranteed. A SIL-rated safety function still needs a proper safety PLC. What PREEMPT_RT actually enables is running the "soft" parts of automation—trajectory interpolation, sensor fusion, high-level coordination—in userspace Linux at 1kHz without random multi-millisecond stalls.
+**The one thing most outsiders get wrong about this is...** assuming PREEMPT_RT turns Linux into a PLC. It doesn't. It gives you *bounded* latency, not *zero* latency—and those bounds (50-100us typical, potentially worse with bad drivers or hardware) aren't certified or guaranteed. A SIL-rated safety [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] still needs a proper [[learning/notes/quick-context/sil-rated-safety-functions|safety PLC]]. What PREEMPT_RT actually enables is running the "soft" parts of automation—trajectory interpolation, sensor fusion, high-level coordination—in userspace Linux at 1kHz without random multi-millisecond stalls.
 
 </details>
 
@@ -165,7 +165,7 @@ This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's a
 - **[[quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
 - **[[quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
 - **[[quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|ADLINK ROScube]], [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|Beckhoff TwinCAT on Linux]]) and the remaining safety certification gap
 - **Xenomai** - A dual-kernel alternative providing harder real-time guarantees than PREEMPT_RT
 - **LinuxCNC** - The canonical example of PREEMPT_RT enabling industrial control in userspace
 
@@ -189,7 +189,7 @@ Probably not. The max latency of 47us is already half your cycle budget. Cyclict
 **Q3:** Why can't PREEMPT_RT be used for SIL-rated safety functions?
 <details>
 <summary>Answer</summary>
-SIL (Safety Integrity Level) certification requires formal proof of bounded behavior, extensive testing, and hardware-level fail-safes. PREEMPT_RT provides probabilistic guarantees ("typically under 100us") not formal ones—a misbehaving driver or hardware issue could still cause an unbounded delay. Additionally, the complexity of the Linux kernel makes formal verification effectively impossible. Safety PLCs have certified hardware watchdogs, redundant processors, and audited code paths that Linux cannot match.
+SIL ([[learning/notes/quick-context/sil-rated-safety-functions|Safety Integrity Level]]) certification requires formal proof of bounded behavior, extensive testing, and hardware-level fail-safes. PREEMPT_RT provides probabilistic guarantees ("typically under 100us") not formal ones—a misbehaving driver or hardware issue could still cause an unbounded delay. Additionally, the complexity of the Linux kernel makes formal verification effectively impossible. Safety PLCs have certified hardware watchdogs, redundant processors, and audited code paths that Linux cannot match.
 </details>
 
 **Q4:** What is the difference between jitter and latency in the context of real-time systems?
@@ -198,7 +198,7 @@ SIL (Safety Integrity Level) certification requires formal proof of bounded beha
 Latency is the time from when an event occurs (e.g., a timer expiring or sensor signal arriving) to when your code responds. Jitter is the variation in that timing—if your loop runs at 1ms +/- 5us, jitter is 5us. Both matter: high latency means slow response, and high jitter means unpredictable timing that can cause motion irregularities or control instability.
 </details>
 
-**Q5:** What does cyclictest measure, and why is it not sufficient to validate a real-time control system?
+**Q5:** What does cyclictest measure, and why is it [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|not sufficient]] to validate a real-time control system?
 <details>
 <summary>Answer</summary>
 Cyclictest measures scheduling latency—how late a thread wakes up compared to when it asked to wake. This is useful for characterizing kernel behavior, but it doesn't account for your actual control code execution time, I/O latency, or application-specific timing requirements. A system passing cyclictest can still fail in production if the control loop itself is too slow or if hardware introduces additional delays.

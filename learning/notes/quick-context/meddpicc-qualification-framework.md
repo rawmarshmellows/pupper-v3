@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sandler-kare-segmentation]]
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 
 ## The Core Problem
 
-Sales teams waste enormous effort on deals that were never going to close. Reps spend months nurturing opportunities only to discover at the 11th hour that there's no budget, the wrong stakeholder was engaged, or a competitor had an insurmountable advantage. Without a systematic qualification framework, pipeline becomes fiction—inflated with "opportunities" that have no realistic path to revenue.
+Sales teams waste enormous effort on deals that were never going to close. Reps spend months nurturing opportunities only to discover at the 11th hour that there's no budget, the wrong stakeholder was engaged, or a competitor had an insurmountable advantage. Without a systematic [[learning/notes/quick-context/sales-methodology-layering|qualification framework]], pipeline becomes fiction—inflated with "opportunities" that have no realistic path to revenue.
 
 ## 5 Essential Terms
 
@@ -180,7 +180,7 @@ NEXT ACTIONS:
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides account-level strategy; MEDDPICC validates deal-level viability. They're complementary.
 - **[[quick-context/challenger-sale-methodology]]** — Once MEDDPICC confirms a deal is qualified, Challenger informs how to engage stakeholders
-- **[[quick-context/sandler-kare-segmentation]]** — KARE decides which accounts to pursue; MEDDPICC qualifies specific opportunities within those accounts
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]] decides which accounts to pursue; MEDDPICC qualifies specific opportunities within those accounts
 - **BANT** — The predecessor qualification framework (Budget, Authority, Need, Timeline); MEDDPICC is its enterprise evolution
 - **Force Management** — The consulting firm that popularized MEDDPICC and trains Fortune 500 sales teams
 

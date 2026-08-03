@@ -3,6 +3,7 @@ term: Clock Speed
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/uart]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
 
 # Clock Speed
 
@@ -13,7 +14,7 @@ updated: 2026-03-27
 ## How It Works
 
 - An oscillator circuit generates a continuous square wave at the rated frequency (e.g., 3 GHz = 3 billion toggles/sec).
-- Each rising edge triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
+- Each [[learning/notes/quick-context/bare-minimal-data-storage-circuit|rising edge]] triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
 - Faster clocks mean less time between edges, so signals must propagate and settle through all logic gates within a shrinking window.
 
 ```

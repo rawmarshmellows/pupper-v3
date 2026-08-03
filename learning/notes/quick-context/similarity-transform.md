@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # N-Dimensional Similarity Transform
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/helmert-transform]]
 
 > **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most general transform that keeps "similar" figures similar, in any number of dimensions.
 
@@ -21,7 +21,7 @@ Many tasks in science and engineering require comparing or aligning objects that
 | **Isometry** | A similarity transform with $s = 1$ (also called a rigid transform or Euclidean motion) -- preserves absolute distances, not just ratios |
 | **Degrees of freedom** | The number of independent parameters defining a transform; a similarity in $n$ dimensions has $\frac{n(n+1)}{2} + 1$ DOF |
 | **Conformal map** | Any smooth map that preserves angles locally; similarity transforms are the *global* conformal maps of Euclidean space (angle-preserving everywhere, not just infinitesimally) |
-| **Procrustes analysis** | A statistical method that finds the optimal similarity transform to superimpose two or more point configurations, minimizing the sum of squared distances between corresponding points |
+| **Procrustes analysis** | A statistical method that finds the optimal similarity transform to superimpose two or more point configurations, minimizing the sum of squared distances between [[learning/notes/quick-context/absolute-orientation|corresponding points]] |
 
 <details>
 <summary><strong>How It Works</strong> -- The essential mechanism</summary>
@@ -154,7 +154,7 @@ The fundamental tradeoff is **model simplicity vs modeling power**.
 
 **When similarity suffices:**
 - Aligning two views of the same rigid object measured at different scales (e.g., a laser scan vs a photogrammetric model)
-- Registering coordinate systems in geodesy (the [[quick-context/helmert-transform|Helmert transform]] is exactly this)
+- Registering coordinate systems in geodesy (the [[learning/notes/quick-context/helmert-transform|Helmert transform]] is exactly this)
 - Comparing biological shapes in morphometrics where growth is roughly isotropic
 - Any [[quick-context/absolute-orientation|absolute orientation]] problem where the objects are known to be geometrically similar
 
@@ -295,7 +295,7 @@ print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter 3D similarity transform used in geodesy to convert between coordinate datums (WGS 84, NAD 83, etc.)
+- **[[learning/notes/quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter 3D similarity transform used in geodesy to convert between coordinate datums (WGS 84, NAD 83, etc.)
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of recovering a similarity (or rigid) transform from matched 3D point pairs; Umeyama's method is a standard solution
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-covariance matrix to extract rotation
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between source and destination points encodes the rotation and scale information that SVD extracts
@@ -335,7 +335,7 @@ Two points in 3D define a line segment, which constrains 6 of the 7 DOF: 3 trans
 **Q5:** In Umeyama's method, step 4 checks $\det(UV^T)$ and potentially flips the sign of the last diagonal entry. What would happen if you skipped this step, and under what geometric conditions does it matter?
 <details>
 <summary>Answer</summary>
-Without the reflection correction, the SVD solution minimizes the least-squares cost but may return an improper rotation (a reflection, $\det(R) = -1$) instead of a proper rotation ($\det(R) = +1$). This happens when the point data is nearly coplanar (or nearly collinear in 2D), heavily noisy, or when the smallest singular value of $H$ is close to zero -- the SVD "flips" the weakest axis because the cost function barely distinguishes the two orientations. In practice this would produce a mirror-image alignment that is geometrically nonsensical. Umeyama's correction guarantees a proper rotation by absorbing the sign flip into the scale computation. See: How It Works, "Estimating a Similarity Transform: Umeyama's Method."
+Without the reflection correction, the SVD solution minimizes the least-squares cost but may return an improper rotation (a reflection, $\det(R) = -1$) instead of a proper rotation ($\det(R) = +1$). This happens when the point data is nearly coplanar (or nearly collinear in 2D), heavily noisy, or when the smallest singular value of $H$ is close to zero -- the SVD "flips" the weakest axis because the [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|cost function]] barely distinguishes the two orientations. In practice this would produce a mirror-image alignment that is geometrically nonsensical. Umeyama's correction guarantees a proper rotation by absorbing the sign flip into the scale computation. See: How It Works, "Estimating a Similarity Transform: Umeyama's Method."
 </details>
 
 </details>

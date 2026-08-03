@@ -3,7 +3,7 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/quick-context/electrodes]] | [[learning/notes/quick-context/galvanic-cells-batteries]]
 
 > **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
 
@@ -39,7 +39,7 @@ BUILDING BLOCKS - What you need to know before understanding reduction:
 
 Reduction at the cathode is driven by the power supply continuously pumping electrons onto the electrode surface. The cathode becomes negatively charged—a reservoir of available electrons. Cations floating in the solution are positively charged and therefore attracted to this negative electrode. When a cation reaches the cathode surface, it encounters these waiting electrons. The cation "grabs" the electrons it needs to become neutral—Cu²⁺ takes 2 electrons, H⁺ takes 1 electron, Al³⁺ takes 3 electrons. Once neutralized, metal cations typically deposit as solid metal on the electrode surface (this is electroplating), while hydrogen cations pair up as H₂ gas that bubbles away.
 
-The number of electrons transferred is determined by the cation's charge—this is the fundamental bookkeeping of electrochemistry. A +2 ion needs exactly 2 electrons to reach zero charge. The electrode doesn't "decide" how many to give; the ion takes precisely what it needs to become neutral. This predictability is what makes electrolysis so useful industrially: if you know how many coulombs of charge you've passed through the cell, you can calculate exactly how many grams of metal you've deposited (this is Faraday's law in action).
+The number of electrons transferred is determined by the cation's charge—this is the fundamental bookkeeping of electrochemistry. A +2 ion needs exactly 2 electrons to reach zero charge. The electrode doesn't "decide" how many to give; the ion takes precisely what it needs to become neutral. This predictability is what makes electrolysis so useful industrially: if you know how many coulombs of charge you've passed through the cell, you can calculate exactly how many grams of metal you've deposited (this is [[learning/notes/quick-context/lenzs-law|Faraday's law]] in action).
 
 ```
 THE REDUCTION PROCESS: Step by Step at the Cathode
@@ -239,9 +239,9 @@ PATTERN: The charge number tells you how many electrons are needed!
 
 - **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
+- **[[learning/notes/quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
+- **Electrochemical Series (Reduction Potentials)** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
 
 - **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 

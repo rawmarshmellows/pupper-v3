@@ -3,6 +3,7 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/capacitor]]
 
 # 4-Wire Kelvin Measurement
 
@@ -12,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- Two "force" wires supply a known current through the unknown resistance from an external current source.
+- Two "force" wires supply a known current through the unknown resistance from an external [[learning/notes/quick-context/voltage-current-causality|current source]].
 - Two separate "sense" wires connect directly across the resistance to a high-impedance voltmeter.
 - Because the voltmeter draws negligible current, the sense wire resistance contributes essentially zero voltage drop.
 - The unknown resistance is calculated as $R = V_{measured} / I_{known}$, free from lead wire error.

@@ -3,7 +3,7 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
 
@@ -20,7 +20,7 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 | Term | Definition |
 |------|------------|
 | **Electrode** | Any conductive solid surface where electrons enter or leave a liquid/solution to make chemistry happen—the "meeting point" of electricity and chemistry |
-| **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
+| **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] ([[learning/notes/quick-context/cations-and-reduction|gaining electrons]]) happens here. Memory trick: **C**athode attracts **C**ations |
 | **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
 | **Reduction** | A chemical reaction where something GAINS electrons. Happens at the cathode. (Think: the charge is "reduced"—becomes less positive or more negative) |
 | **Oxidation** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
@@ -281,7 +281,7 @@ STEP 4: THE CIRCUIT COMPLETES
 **Q5:** Why do we use platinum electrodes in the water electrolysis example rather than cheaper metals like copper or iron?
 <details>
 <summary>Answer</summary>
-**Platinum is inert—it doesn't react or dissolve.** We want to study water splitting, not electrode dissolution. Cheaper metals like copper or iron would oxidize at the anode (the iron nail example in Q3), contaminating the experiment and consuming the electrode. Platinum just acts as an electron highway without participating chemically. The tradeoff is cost (~$30,000/kg), which is why industrial applications often use other materials and accept some electrode degradation. See: The Key Tension (material choice vs. cost vs. reactivity) and [[quick-context/platinum-inertness|Why Platinum is Chemically Inert]].
+**Platinum is inert—it doesn't react or dissolve.** We want to study water splitting, not electrode dissolution. Cheaper metals like copper or iron would oxidize at the anode (the iron nail example in Q3), contaminating the experiment and consuming the electrode. Platinum just acts as an electron highway without participating chemically. The tradeoff is cost (~$30,000/kg), which is why [[learning/notes/quick-context/electrolysis|industrial applications]] often use other materials and accept some electrode degradation. See: The Key Tension (material choice vs. cost vs. reactivity) and [[quick-context/platinum-inertness|Why Platinum is Chemically Inert]].
 </details>
 
 </details>

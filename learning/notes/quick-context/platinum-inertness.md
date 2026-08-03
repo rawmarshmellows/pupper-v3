@@ -3,7 +3,7 @@ topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]]
+> **Related:** [[learning/notes/micro-context/oxidation]]
 
 > **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 
@@ -131,7 +131,7 @@ IRON NAIL AS ANODE                    PLATINUM AS ANODE
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often use:
+Platinum's inertness comes at a cost: ~$30,000/kg. [[learning/notes/quick-context/electrolysis|Industrial applications]] often use:
 - **Graphite** (carbon) — cheaper, reasonably inert
 - **Titanium with coatings** — good balance of cost and durability
 - **Sacrificial electrodes** — accept that the electrode will dissolve
@@ -143,9 +143,9 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 
 - **[[quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
 - **[[quick-context/electrolysis]]** - The broader process where platinum electrodes are commonly used
-- **[[quick-context/reduction-oxidation-reactions]]** - Redox chemistry that explains why some metals dissolve and others don't
-- **[[quick-context/noble-metals]]** - Other metals like gold and silver that share platinum's corrosion resistance
-- **[[quick-context/transition-metals-d-orbitals]]** - How d-orbital electron configurations influence metal reactivity
+- **reduction-oxidation-reactions** - [[learning/notes/quick-context/electrolysis|Redox chemistry]] that explains why some metals dissolve and others don't
+- **noble-metals** - Other metals like gold and silver that share platinum's corrosion resistance
+- **transition-metals-d-orbitals** - How d-orbital electron configurations influence metal reactivity
 
 </details>
 
@@ -170,7 +170,7 @@ Platinum conducts electricity by allowing electrons to flow *through* its metall
 Gold would work chemically, but it's even more expensive than platinum and is softer (less durable). Platinum offers a good balance of inertness, conductivity, mechanical strength, and cost. For most applications, platinum is "inert enough."
 </details>
 
-**Q4:** Platinum has electron configuration [Xe] 4f14 5d9 6s1. How does having a nearly-full d-subshell contribute to its inertness?
+**Q4:** Platinum has [[learning/notes/quick-context/anions-and-oxidation|electron configuration]] [Xe] 4f14 5d9 6s1. How does having a nearly-full d-subshell contribute to its inertness?
 <details>
 <summary>Answer</summary>
 The 5d subshell holds up to 10 electrons, and platinum has 9. This nearly-full configuration is very stable—there's no strong thermodynamic "drive" for platinum to gain or lose electrons. Combined with its high nuclear charge (78 protons) pulling tightly on those electrons, removing an electron requires substantial energy.

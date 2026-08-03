@@ -3,13 +3,13 @@ topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/power-inductor]]
 
 > **TL;DR:** Metal interconnect layers are stacked wiring levels built on top of transistors that route signals and power throughout a chip—they've become the limiting factor in chip performance as transistors shrink faster than wires can scale.
 
 ## The Core Problem
 
-Metal interconnect layers are the "parking garage" of wiring built on top of the transistors inside a computer chip—stacked layers of metal wiring (typically copper) that route electrical signals between transistors. Without metal interconnect layers, you'd have billions of transistors sitting in silence, unable to do anything: no way to deliver power, no way to get signals in or out, no way to build complex circuits.
+Metal interconnect layers are the "parking garage" of wiring built [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of the transistors inside a computer chip—stacked layers of metal wiring (typically copper) that route electrical signals between transistors. Without metal interconnect layers, you'd have billions of transistors sitting in silence, unable to do anything: no way to deliver power, no way to get signals in or out, no way to build complex circuits.
 
 ## 5 Essential Terms
 
@@ -196,7 +196,7 @@ THE FUNDAMENTAL TRADEOFF
 
 | Debate | Trade-off |
 |--------|-----------|
-| How many metal layers? | More layers = more routing flexibility but higher cost |
+| How many metal layers? | [[learning/notes/quick-context/pcb-printed-circuit-board|More layers]] = more routing flexibility but higher cost |
 | What metal to use? | Copper (fast) vs. newer materials like ruthenium/cobalt at tiny scales |
 | How tight a pitch? | Tighter = more density but manufacturing challenges |
 | Low-k dielectrics? | Lower capacitance (faster signals) but mechanically fragile |
@@ -257,20 +257,20 @@ VISUALIZATION: If M1 wires were roads:
 
 **The one thing most outsiders get wrong about this is...** assuming the transistors are the hard part. In reality, interconnects have become the *limiting factor* in modern chip performance. As transistors shrink to 5nm and below, the wires connecting them don't scale as well—resistance increases dramatically, signals slow down, and power consumption from wiring can exceed the transistors themselves.
 
-This is called the "interconnect bottleneck." Engineers spend enormous effort on interconnect optimization: new materials (cobalt, ruthenium), new architectures (backside power delivery), and new design techniques (local computing to minimize long wires). The transistors might be fast, but if the wires can't keep up, the chip is slow.
+This is called the "interconnect bottleneck." Engineers spend enormous effort on interconnect optimization: new materials (cobalt, ruthenium), new architectures ([[learning/notes/quick-context/electromigration|backside power delivery]]), and new design techniques (local computing to minimize long wires). The transistors might be fast, but if the wires can't keep up, the chip is slow.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
 
 - **Photolithography** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.
 
-- **RC Delay** — Resistance (R) × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
+- **RC Delay** — [[learning/notes/quick-context/resistor|Resistance (R)]] × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
 
 - **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes voltage droop and chip failure.
 
@@ -302,7 +302,7 @@ Halving wire width reduces cross-sectional area to 1/4, causing resistance to in
 **Q4:** A chip designer claims: "We added more metal layers to our chip, so it will definitely be faster." What's potentially wrong with this claim?
 <details>
 <summary>Answer</summary>
-More metal layers don't automatically mean faster. While extra layers provide more routing flexibility, signals must travel through more vias (adding resistance) to reach upper layers. If the additional layers have longer average wire lengths, RC delay could actually increase. The speed depends on how efficiently the layers are used, not just how many exist. See: The Key Tension and How It Works
+More metal layers don't automatically mean faster. While extra layers provide more routing flexibility, signals must travel through [[learning/notes/quick-context/substrate-ic-packaging|more vias]] (adding resistance) to reach upper layers. If the additional layers have longer average wire lengths, RC delay could actually increase. The speed depends on how efficiently the layers are used, not just how many exist. See: The Key Tension and How It Works
 </details>
 
 **Q5:** How does the interconnect bottleneck relate to the broader trend of "More than Moore" packaging innovations like chiplets and 3D stacking mentioned in the PCB-chip hierarchy?

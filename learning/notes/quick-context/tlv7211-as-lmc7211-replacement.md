@@ -5,9 +5,9 @@ created: 2026-06-07
 
 # Can the TLV7211 / TLV7211A Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541 (C623499) as an LMC7211 replacement]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]]
 >
-> **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
+> **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: comparator-specification → Choosing a Replacement.
 
 > **TL;DR:** **Yes — unconditionally.** The TLV7211 is TI's own re-named, *spec-identical* successor to the National-Semiconductor **LMC7211-N**: same 2.7–15 V range, same 16 V absolute max, same 7 µA, same 420/450 ns delay, the same 4.x electrical tables line for line — and the **same pinout in both SOT23-5 and SOIC-8**. It's a true drop-in in either package, no recheck needed. The *one* thing to get right is the **offset grade**: the 5 mV part is the **TLV7211A** (the "A" is the *better* grade), and the 15 mV part is the plain **TLV7211** — the reverse of what a careless reader guesses. (Bonus: TLV7211 adds a smaller SC70 package and documents an internal power-on-reset.)
 
@@ -32,7 +32,7 @@ The [[quick-context/comparator-specification|datasheet-reading note]]'s replacem
 
 ### FORM — identical pinout in both packages
 
-The LMC7211-N shipped in SOT23-5 and SOIC-8. The TLV7211 ships in **both of those plus an SC70 (DCK)**, and the two shared packages have the **same pin map**:
+The LMC7211-N shipped in [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|SOT23-5]] and SOIC-8. The TLV7211 ships in **both of those plus an SC70 (DCK)**, and the two shared packages have the **same pin map**:
 
 ```
 SOT23-5 TOP VIEW  —  pin-for-pin identical
@@ -117,7 +117,7 @@ The interesting tension here isn't a performance trade — there is none — it'
 | **Grade-suffix inversion** | "TLV7211" *looks* like the base/best part, but the unsuffixed name is the **15 mV** grade; the **A** is the 5 mV grade. | Map by *offset number*, not by which name looks "plain." 5 mV → TLV7211**A**. |
 | **Documented POR** | The TLV7211 explicitly holds OUT low for ~200 µs during supply ramp. In 99% of designs this is benign or helpful, but a circuit that sampled the output *during* power-up could see different behavior. | Confirm nothing reads the comparator output in the first ~200 µs after the rail crosses 1.7 V. |
 
-Contrast this with the **cross-vendor** case. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] also fits the SOT23-5 footprint, but it is a *different* design that trades the LMC7211's 15 V range and 450 ns speed for 10× lower current and built-in hysteresis — a swap that's valid only inside a narrow envelope. The TLV7211 has no such envelope: it *is* the LMC7211. This is the spectrum of "replacement":
+Contrast this with the **cross-vendor** case. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] also fits the SOT23-5 footprint, but it is a *different* design that trades the LMC7211's 15 V range and 450 ns speed for 10× lower current and [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|built-in hysteresis]] — a swap that's valid only inside a narrow envelope. The TLV7211 has no such envelope: it *is* the LMC7211. This is the spectrum of "replacement":
 
 ```
 THE REPLACEMENT SPECTRUM
@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[learning/notes/quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 
@@ -173,7 +173,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 **Q1:** Your board uses the 5 mV-grade LMC7211-N in SOT23-5. Which exact TI part do you order, and does the layout change?
 <details>
 <summary>Answer</summary>
-Order the **TLV7211A** (SOT23-5 is the **DBV** package → TLV7211AIDBVR). The layout changes **nothing** — same package, identical pinout, identical electrical specs. The only conscious choice is the **A** suffix, because the original was the 5 mV grade. See: How It Works (FORM) and the offset-grade map.
+Order the **TLV7211A** (SOT23-5 is the **DBV** package → TLV7211AIDBVR). The layout changes **nothing** — same package, [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|identical pinout]], identical electrical specs. The only conscious choice is the **A** suffix, because the original was the 5 mV grade. See: How It Works (FORM) and the offset-grade map.
 </details>
 
 **Q2:** A teammate orders "TLV7211" (no suffix) to replace a 5 mV LMC7211-N, reasoning that the plain name must be the base part. What's wrong?

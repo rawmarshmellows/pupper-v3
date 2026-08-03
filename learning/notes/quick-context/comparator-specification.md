@@ -5,7 +5,7 @@ created: 2026-06-06
 
 # Comparator Specifications (Reading the LMC7211-N Datasheet)
 
-> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/resistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/input-offset-voltage]]
 >
 > **Source datasheet:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) — the worked example throughout this note. Section numbers (§4.1–4.6, §5) reference this file.
 
@@ -50,7 +50,7 @@ HOW THE 4.x SECTIONS RELATE
 
 #### Every spec is grading one *stage* of the comparator
 
-These numbers are not abstract---each one measures how well a specific stage of the [[quick-context/comparator|comparator's]] internal circuit does its job. The [[quick-context/comparator|comparator]] note breaks the chip into four stages: a [[quick-context/differential-pair|differential input pair]] (Q1/Q2) that senses `V(+) − V(-)`, a current-mirror active load (Q3/Q4), a [[quick-context/high-gain-amplifier-stage|high-gain node]] that amplifies the tiny difference, and an output stage (Q6) that drives the digital level. Map each spec onto that chain and the datasheet turns into a report card on the silicon:
+These numbers are not abstract---each one measures how well a specific stage of the [[quick-context/comparator|comparator's]] internal circuit does its job. The [[quick-context/comparator|comparator]] note breaks the chip into four stages: a [[quick-context/differential-pair|differential input pair]] (Q1/Q2) that senses `V(+) − V(-)`, a current-mirror [[learning/notes/quick-context/high-gain-amplifier-stage|active load]] (Q3/Q4), a [[quick-context/high-gain-amplifier-stage|high-gain node]] that amplifies the tiny difference, and an output stage (Q6) that drives the digital level. Map each spec onto that chain and the datasheet turns into a report card on the silicon:
 
 ```
 SPEC  →  WHICH STAGE OF THE COMPARATOR IT GRADES
@@ -75,12 +75,12 @@ SPEC  →  WHICH STAGE OF THE COMPARATOR IT GRADES
 | Spec | Grades which stage (see [[quick-context/comparator]]) |
 |---|---|
 | $V_{OS}$, $TCV_{OS}$ | The [[quick-context/differential-pair|differential pair]] (Q1/Q2) --- offset *is* its built-in mismatch |
-| $I_B$ | The MOSFET input gates --- insulated, so ~zero current flows in |
-| $CMRR$ | The tail current source (Q5) --- how well it holds total current fixed and ignores common-mode |
+| $I_B$ | The [[learning/notes/micro-context/mosfet|MOSFET]] input gates --- insulated, so ~[[learning/notes/quick-context/capacitance|zero current]] flows in |
+| $CMRR$ | The [[learning/notes/quick-context/differential-pair|tail current source]] (Q5) --- how well it holds total current fixed and ignores common-mode |
 | $A_V$ | The [[quick-context/high-gain-amplifier-stage|high-gain node]] + mirror load --- the gain that slams the output to a rail |
 | $CMVR$ | The input pair's usable voltage window (the rail-to-rail-and-beyond design) |
 | $V_{OH}$, $V_{OL}$, $I_{SC}$ | The output stage (Q6 push-pull) --- how hard and how close to the rails it drives |
-| $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no compensation capacitor** --- the structural reason a comparator is fast |
+| $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no [[learning/notes/quick-context/high-gain-amplifier-stage|compensation capacitor]]** --- the structural reason a comparator is fast |
 | $I_S$ | The standing bias current (tail + mirror) the chip burns just to stay alive |
 
 ### 4.1 Absolute Maximum Ratings --- "the do-not-cross lines"
@@ -96,7 +96,7 @@ These are **stress limits, not operating specs**. Exceed any one of them---even 
 | Current at Power Supply pin | **40 mA** | Hard ceiling on what the supply pin can pass. |
 | ESD Tolerance (HBM) | **2 kV** | Survives a 2 kV human-body-model static zap (1.5 kΩ + 100 pF). |
 | Storage Temperature | **−65 to +150°C** | Survival range with no power applied. |
-| Junction Temperature | **150°C** | The silicon die itself must never get this hot. |
+| Junction Temperature | **150°C** | The [[learning/notes/quick-context/silicon-die|silicon die]] itself must never get this hot. |
 
 **Key idea:** a part is *not* designed to *operate* at these numbers---they only bound what won't break it. Notice the supply absolute max (16 V) sits just above the operating max (15 V): a deliberate 1 V margin.
 
@@ -111,7 +111,7 @@ These define the **safe operating envelope**: the conditions under which the dev
 | Supply Voltage | **2.7 V ≤ $V_{CC}$ ≤ 15 V** | Works anywhere in this range; specs are characterized at 2.7, 5, and 15 V. |
 | Junction Temp Range (–NAI, –NBI grades) | **−40 to +85°C** | The industrial temperature band over which boldface limits are guaranteed. |
 | Thermal Resistance $\theta_{JA}$ (SO-8) | **136°C/W** | Each watt dissipated raises the die 136°C above ambient. |
-| Thermal Resistance $\theta_{JA}$ (SOT23-5) | **203°C/W** | The tiny package sheds heat worse---it heats up faster per watt. |
+| Thermal Resistance $\theta_{JA}$ ([[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|SOT23-5]]) | **203°C/W** | The tiny package sheds heat worse---it heats up faster per watt. |
 
 $\theta_{JA}$ lets you check you won't blow past the 150°C junction limit: $T_J = T_A + \theta_{JA}\times P_D$. For a micropower comparator drawing microamps this is almost never a concern, but for the output driving a load it can matter.
 
@@ -145,12 +145,12 @@ Key LMC7211-N rows at 2.7 V:
 
 | Symbol | Parameter | Typ | Meaning |
 |---|---|---|---|
-| $V_{OS}$ | [[micro-context/input-offset-voltage|Input Offset Voltage]] | 3 mV (max 5 / 8) | Built-in threshold error. The "–NAI" grade guarantees ≤5 mV (≤8 mV hot); the "–NBI" grade ≤15 mV. |
+| $V_{OS}$ | [[micro-context/input-offset-voltage|Input Offset Voltage]] | 3 mV (max 5 / 8) | Built-in threshold error. The "–NAI" grade guarantees ≤[[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|5 mV]] (≤8 mV hot); the "–NBI" grade ≤[[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|15 mV]]. |
 | $TCV_{OS}$ | [[micro-context/offset-voltage-drift|Offset Drift]] | 1.0 µV/°C | How much the offset wanders per degree. |
 | $I_B$ | [[micro-context/input-bias-current|Input Current]] | 0.04 pA | Almost nothing---CMOS gates draw essentially zero current, so high-impedance sources are fine. |
 | $CMRR$ | [[micro-context/common-mode-rejection-ratio|Common-Mode Rejection]] | 75 dB | How well it ignores a voltage common to both inputs. |
 | $PSRR$ | [[micro-context/power-supply-rejection-ratio|Power-Supply Rejection]] | 80 dB | How well it ignores supply-rail wiggle. |
-| $A_V$ | [[micro-context/open-loop-voltage-gain|Voltage Gain]] | 100 dB | The open-loop gain that slams the output to a rail. |
+| $A_V$ | [[micro-context/open-loop-voltage-gain|Voltage Gain]] | 100 dB | The [[learning/notes/quick-context/op-amp|open-loop gain]] that slams the output to a rail. |
 | $CMVR$ | [[micro-context/input-common-mode-range|Input Common-Mode Range]] | −0.3 to 3.0 V | Inputs work slightly *beyond both rails*---this is the "rail-to-rail-and-beyond" feature. |
 | $V_{OH}/V_{OL}$ | [[micro-context/output-voltage-swing|Output High / Low]] | 2.5 V / 0.2 V | How close the push-pull output gets to each rail under 2.5 mA load. |
 | $I_S$ | [[micro-context/quiescent-supply-current|Supply Current]] | 7 µA (max 12 / 14) | Micropower---runs for years off a coin cell. |
@@ -338,14 +338,14 @@ FINDING A REPLACEMENT --- TWO QUESTIONS
 
 | What to check | Datasheet section | Replacement rule |
 |---|---|---|
-| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a [[quick-context/comparator\|pull-up resistor]]; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
+| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a pull-up resistor; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
 | **Supply voltage range** | §4.2 Operating Ratings | New part's operating range must *contain* your rail, with margin. |
 | **Input common-mode range** ($CMVR$) | §4.3 | Must include every voltage your inputs actually see. If you relied on rail-to-rail-and-beyond, keep it. |
-| **Input offset grade** ($V_{OS}$) | §4.3 | New boldface $V_{OS}$ ≤ your threshold-error budget (don't regress accuracy). |
+| **Input [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|offset grade]]** ($V_{OS}$) | §4.3 | New boldface $V_{OS}$ ≤ your threshold-error budget (don't regress accuracy). |
 | **Propagation delay** ($t_{PD}$) | §4.5 | Fast enough at *your* overdrive. A "5 ns" part is fine replacing a 450 ns part; the reverse may not be. |
 | **Output drive** ($I_{SC}$, $V_{OH}/V_{OL}$) | §4.4 | Must source/sink your load (LED, logic) and reach clean HIGH/LOW levels. |
 | **Supply current** ($I_S$) | §4.3 | ≤ your power budget---critical for battery designs. |
-| **Hysteresis** | [[quick-context/comparator]] | Built-in vs external changes noise behavior; match it or re-add external positive feedback. |
+| **Hysteresis** | [[quick-context/comparator]] | Built-in vs external changes noise behavior; match it or re-add external [[learning/notes/quick-context/pupper-lab7-vision-tracking|positive feedback]]. |
 | **Temperature grade** | §4.2 | Operating temp range must cover your environment (e.g. industrial −40 to +85°C). |
 | **Package + pinout + dimensions** | Mechanical section (§5/§8) | For a true *drop-in*: identical package, identical pin map, fits the same footprint and height. |
 
@@ -360,7 +360,7 @@ FINDING A REPLACEMENT --- TWO QUESTIONS
 Two comparators can be electrically identical and still not interchange:
 
 - **Same package ≠ same pinout.** The LMC7211-N itself proves it---its SOT23-5 and SOIC-8 versions put the inputs and supplies on *different* pin numbers (see the pinout in [[quick-context/comparator]]). A drop-in must match the *pin map*, not just the package name.
-- **Dimensions can be the whole reason the part was chosen.** The LMC7211-N was picked for designs where its SOT23-5 body---**3.05 mm × 3.00 mm × 1.43 mm** (§5.1)---fits a tight space (it's thin enough for PCMCIA Type III cards). An electrically perfect replacement in an SO-8 body won't physically fit that slot, so dimensions are a hard constraint, not a nicety.
+- **Dimensions can be the whole reason the part was chosen.** The LMC7211-N was picked for designs where its SOT23-5 body---**3.05 mm × 3.00 mm × [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|1.43 mm]]** (§5.1)---fits a tight space (it's thin enough for PCMCIA Type III cards). An electrically perfect replacement in an SO-8 body won't physically fit that slot, so dimensions are a hard constraint, not a nicety.
 
 ### Worked cross-reference: replacing the LMC7211-N
 
@@ -384,19 +384,19 @@ So if your LMC7211-N circuit relies on its **push-pull** output driving an LED o
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **[[quick-context/comparator]]** --- The device these specs describe. Read it first for *how a comparator works* (differential pair, hysteresis, open-drain vs push-pull); this doc covers *how to read its datasheet*. The LMC7211-N pinout and the two-inputs explanation live there.
+- **[[quick-context/comparator]]** --- The device these specs describe. Read it first for *how a comparator works* ([[learning/notes/quick-context/differential-pair|differential pair]], hysteresis, open-drain vs push-pull); this doc covers *how to read its datasheet*. The LMC7211-N pinout and the two-inputs explanation live there.
 
 - **[[quick-context/op-amp]]** --- Shares the same spec vocabulary ($V_{OS}$, CMRR, PSRR, $A_V$, CMVR). An op-amp datasheet has the same 4.x layout; the difference is op-amps add slew-rate/bandwidth specs while comparators add propagation-delay/overdrive specs.
 
 - **[[quick-context/resistor]]** --- The reference divider that sets the trip voltage is built from [[quick-context/resistor|resistors]]; their tolerance stacks with the comparator's $V_{OS}$ to set total threshold accuracy.
 
-- **[[quick-context/bjt-specifications]]** --- The same datasheet discipline applied to a discrete transistor instead of an IC: absolute-max "fences" ($V_{CEO}$, $I_C$, $P_C$) you never cross vs. design inputs ($\beta$) you work around, and the *typical ≠ guaranteed-across-temperature* trap shows up there as $h_{FE}$ spread and $P_C$ derating.
+- **[[quick-context/bjt-specifications]]** --- The same datasheet discipline applied to a discrete transistor instead of an IC: absolute-max "fences" ($V_{CEO}$, $I_C$, $P_C$) you never cross vs. [[learning/notes/quick-context/bjt-specifications|design inputs]] ($\beta$) you work around, and the *typical ≠ guaranteed-across-temperature* trap shows up there as $h_{FE}$ spread and $P_C$ derating.
 
 - **[[quick-context/pwm-controller-circuit]]** --- A real application where the comparator's *propagation delay* spec (4.5) directly limits switching frequency.
 
-- **[[quick-context/tlv7211-as-lmc7211-replacement]]** --- The *unconditional* drop-in: TI's TLV7211/TLV7211A is the renamed, spec-identical successor to the LMC7211-N (same silicon, same pinout). The easiest replacement case --- with one trap: the grade-suffix is inverted (5 mV = TLV7211**A**).
+- **[[quick-context/tlv7211-as-lmc7211-replacement]]** --- The *unconditional* drop-in: TI's TLV7211/TLV7211A is the renamed, spec-identical successor to the LMC7211-N (same silicon, same pinout). The easiest replacement case --- with one trap: the grade-suffix is inverted (5 mV = [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|TLV7211]]**A**).
 
-- **[[quick-context/mcp6541-as-lmc7211-replacement]]** --- The *conditional* cross-vendor swap: the Microchip MCP6541 (LCSC C623499) fits the same footprint but trades away half the specs. Concrete proof that form-compatibility ≠ functional replacement. Read alongside the TLV7211 note for the full replacement spectrum.
+- **[[quick-context/mcp6541-as-lmc7211-replacement]]** --- The *conditional* cross-vendor swap: the Microchip MCP6541 (LCSC [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|C623499]]) fits the same footprint but trades away half the specs. Concrete proof that form-compatibility ≠ functional replacement. Read alongside the TLV7211 note for the full replacement spectrum.
 
 - **[[micro-context/adc-analog-to-digital-converter]]** --- A comparator is a 1-bit ADC; its $V_{OS}$ and propagation-delay specs become the ADC's offset error and conversion-speed limits.
 
@@ -431,7 +431,7 @@ So if your LMC7211-N circuit relies on its **push-pull** output driving an LED o
 **82 dB is the 15 V number, not the 5 V number.** Section 4.4 lists CMRR as 75 dB at $V^+=5\text{V}$ and 82 dB at $V^+=15\text{V}$---the spec is supply-dependent. On a 5 V rail the correct figure is 75 dB. The lesson: electrical specs are characterized per supply voltage (2.7 V in 4.3, 5 V and 15 V in 4.4); always read the table/row matching your actual rail. See: How It Works (4.4).
 </details>
 
-**Q5:** The Electrical Characteristics tables give discrete guaranteed numbers, yet your design runs at 3.6 V and +60°C---a point that appears in *no* table. How do you estimate the part's behavior there, and what's the catch?
+**Q5:** The [[learning/notes/quick-context/embedded-communication-protocols|Electrical Characteristics]] tables give discrete guaranteed numbers, yet your design runs at 3.6 V and +60°C---a point that appears in *no* table. How do you estimate the part's behavior there, and what's the catch?
 <details>
 <summary>Answer</summary>
 **Use the Typical Characteristics graphs (4.6) to interpolate.** The tables only guarantee a handful of points (2.7, 5, 15 V; 25°C and the temperature extremes); the *curves* in 4.6 plot supply current, output drop, and propagation delay continuously across voltage, load, and temperature, so you can read off the approximate value at 3.6 V / 60°C. The catch: graph values are **typical, not guaranteed**---they tell you what the part will *roughly* do, but only the table limits are a promise. Use graphs to predict behavior, tables to bound worst case. See: How It Works (4.6) and The Key Tension.

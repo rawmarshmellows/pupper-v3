@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/ads1110-battery-adc]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
@@ -17,11 +17,11 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an op-amp, but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
-| **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
-| **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
+| **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by [[learning/notes/quick-context/pupper-lab7-vision-tracking|positive feedback]]. |
+| **Open-drain / open-collector output** | Many comparators have an output that can only [[learning/notes/micro-context/push-pull-vs-open-drain|pull LOW]] (sink current to ground). A pull-up resistor provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Reference voltage ($V_{REF}$)** | The fixed [[learning/notes/micro-context/piezoelectric-effect|voltage applied]] to one input, against which the signal is compared. Can come from a [[learning/notes/quick-context/pwm-controller-circuit|voltage divider]], a bandgap reference IC, or a precision [[learning/notes/quick-context/voltage-current-causality|voltage source]]. |
 
 <details>
 <summary><strong>How It Works</strong> --- From transistor pairs to digital output</summary>
@@ -100,7 +100,7 @@ THE TWO INPUTS AND HOW THEY STEER THE OUTPUT
 
 Which pin gets the **signal** and which gets the **reference** is a free design choice---and swapping them flips the output logic. Put the reference on the inverting input and the comparator answers "is the signal *above* the reference?" (output HIGH = yes). Put the reference on the non-inverting input instead and you get the inverted question: "is the signal *below* the reference?"
 
-**Real pinout --- TI LMC7211-N** (a tiny CMOS rail-to-rail comparator). The two inputs carry exactly these names on the physical package:
+**Real pinout --- TI [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|LMC7211-N]]** (a tiny CMOS rail-to-rail comparator). The two inputs carry exactly these names on the physical package:
 
 ```
 LMC7211-N PIN ASSIGNMENTS (same die, two packages)
@@ -224,7 +224,7 @@ SIGNAL FLOW
 
 ### What Makes It Different from an Op-Amp
 
-An [[quick-context/op-amp|op-amp]] and a comparator have the same input stage (differential pair), but everything after that is optimized differently:
+An [[quick-context/op-amp|op-amp]] and a comparator have the same input stage ([[learning/notes/quick-context/differential-pair|differential pair]]), but everything after that is optimized differently:
 
 ```
 OP-AMP vs COMPARATOR: Same Input, Different Optimization
@@ -253,7 +253,7 @@ OP-AMP vs COMPARATOR: Same Input, Different Optimization
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> --- Speed vs. noise immunity</summary>
+<summary><strong>The Key Tension</strong> --- Speed vs. [[learning/notes/quick-context/embedded-communication-protocols|noise immunity]]</summary>
 
 The fundamental tradeoff in comparator design: **faster response** vs. **resistance to false triggering**.
 
@@ -328,7 +328,7 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 |----------------|-------------------|----------|
 | **Ultra-fast** (ADCMP601) | 3.5 ns | High-speed data, clock recovery |
 | **Fast** (LM393) | 300 ns | General purpose, motor control |
-| **With built-in hysteresis** (LM311) | 200 ns | Noisy environments, threshold detection |
+| **With [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|built-in hysteresis]]** (LM311) | 200 ns | Noisy environments, threshold detection |
 | **Schmitt trigger IC** (74HC14) | 15 ns | Digital signal cleaning, debouncing |
 | **Window comparator** (LM339 pair) | 300 ns | "Is voltage between A and B?" |
 
@@ -432,22 +432,22 @@ CURRENT CONSUMPTION:
     Total: ~23 μA — negligible for a battery that holds 2000+ mAh
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation capacitor that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
+**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal [[learning/notes/quick-context/high-gain-amplifier-stage|compensation capacitor]] that makes op-amps stable in [[learning/notes/quick-context/d-flip-flop|feedback loops]] is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without [[learning/notes/quick-context/op-amp|negative feedback]].
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/comparator-specification]]** --- How to read a real comparator datasheet (the TI LMC7211-N): what each spec section (Absolute Maximum Ratings, Operating Ratings, DC/AC Electrical Characteristics, Typical Characteristics) actually means, and which numbers are guaranteed versus typical.
+- **[[quick-context/comparator-specification]]** --- How to read a real comparator datasheet (the TI LMC7211-N): what each spec section ([[learning/notes/quick-context/comparator-specification|Absolute Maximum Ratings]], [[learning/notes/quick-context/comparator-specification|Operating Ratings]], DC/AC [[learning/notes/quick-context/embedded-communication-protocols|Electrical Characteristics]], Typical Characteristics) actually means, and which numbers are guaranteed versus typical.
 
-- **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
+- **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules ([[learning/notes/quick-context/op-amp|virtual short]], no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
 - **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
-- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
+- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the [[learning/notes/quick-context/pwm-controller-circuit|error amplifier]]'s output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
@@ -457,7 +457,7 @@ CURRENT CONSUMPTION:
 
 - **[[micro-context/adc-analog-to-digital-converter]]** --- ADCs are built from comparators. A successive-approximation ADC uses one comparator with a DAC; a flash ADC uses many comparators in parallel.
 
-- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down resistors define the "rest" voltage that comparator sees when nothing else is driving the pin.
+- **pull-up-pull-down-resistors** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down resistors define the "rest" voltage that comparator sees when nothing else is driving the pin.
 
 - **[[learning/notes/quick-context/bare-minimal-data-storage-circuit]]** --- Where the comparator earns its place as a 1-bit ADC inside a minimal data-storage circuit: it converts the analog input voltage into the clean `in_bit` signal that a [[learning/notes/quick-context/d-flip-flop|register]] can capture on each [[learning/notes/micro-context/clock-edges|clock edge]].
 
@@ -469,7 +469,7 @@ CURRENT CONSUMPTION:
 **Q1:** What is the output of a comparator when V(+) = 2.5V and V(-) = 2.3V?
 <details>
 <summary>Answer</summary>
-**HIGH.** V(+) > V(-), so the output goes to the positive rail (or the pull-up voltage for open-drain outputs). The magnitude of the difference (0.2V) doesn't matter---any positive difference produces the same HIGH output. See: How It Works (Comparator Function).
+**HIGH.** V(+) > V(-), so the output goes to the positive rail (or the pull-up voltage for open-drain outputs). The magnitude of the difference (0.2V) doesn't matter---any positive difference produces the same HIGH output. See: How It Works (Comparator [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Function]]).
 </details>
 
 **Q2:** Why does a comparator's output "chatter" when the input signal slowly crosses the threshold in a noisy environment?
@@ -478,7 +478,7 @@ CURRENT CONSUMPTION:
 **Noise causes the input to repeatedly cross the single threshold.** If the input is hovering near $V_{REF}$ and noise adds even a few millivolts of oscillation, the signal crosses back and forth across the threshold rapidly. Each crossing triggers an output transition, producing a burst of rapid toggling. The solution is hysteresis: two separate thresholds (one for rising, one for falling) so that small noise excursions can't cause re-crossing. See: The Key Tension (The Hysteresis Dilemma).
 </details>
 
-**Q3:** An engineer uses an op-amp (LM358, GBW = 1 MHz) as a comparator in a prototype and it works fine. When they deploy it in a factory with noisy power lines, it fails. Why?
+**Q3:** An engineer uses an op-amp ([[learning/notes/quick-context/op-amp|LM358]], GBW = 1 MHz) as a comparator in a prototype and it works fine. When they deploy it in a factory with noisy power lines, it fails. Why?
 <details>
 <summary>Answer</summary>
 **Three problems compound in the noisy environment:** (1) The LM358's internal compensation capacitor limits its slew rate, so the output takes microseconds to transition---during which time noise can cause multiple crossings. (2) When the input difference is large, the op-amp's input stage saturates, and recovery from saturation takes additional microseconds (poor overdrive recovery). (3) The output may not reach clean logic levels (the LM358 can't swing to the positive rail with a resistive load), so the receiving logic sees ambiguous voltage levels. A dedicated comparator (e.g., LM393) has none of these problems: no compensation cap, designed for overdrive, and open-drain output that swings to clean GND. See: The Key Tension (Op-Amp as Comparator table).
@@ -498,7 +498,7 @@ CURRENT CONSUMPTION:
 Comparator A: V(+) = Vin, V(-) = 2.5V (lower limit). Output HIGH when Vin > 2.5V.
 Comparator B: V(+) = 3.5V (upper limit), V(-) = Vin. Output HIGH when Vin < 3.5V.
 
-Both outputs are open-drain, tied together with a single pull-up resistor. The combined output is HIGH only when BOTH comparators output HIGH (neither pulls LOW)---meaning Vin is above 2.5V AND below 3.5V. If Vin goes outside either limit, the corresponding comparator pulls the line LOW.
+Both outputs are open-drain, tied together with a single [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|pull-up resistor]]. The combined output is HIGH only when BOTH comparators output HIGH (neither pulls LOW)---meaning Vin is above 2.5V AND below 3.5V. If Vin goes outside either limit, the corresponding comparator pulls the line LOW.
 
 This is why open-drain outputs exist on comparators: wire-AND logic with no additional gate needed. See: 5 Essential Terms (Open-drain output).
 </details>
