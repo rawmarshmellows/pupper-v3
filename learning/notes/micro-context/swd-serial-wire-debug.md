@@ -117,7 +117,7 @@ SWD gives the debugger the same bus access as the CPU. Here's what that enables:
 | Capability | How it works via SWD |
 |---|---|
 | **Flash programming** | Write to flash controller registers to unlock flash, erase sectors, then write 32-bit words. The debug probe's software (OpenOCD, STM32CubeProgrammer) automates this sequence. |
-| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) comparator registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
+| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) [[quick-context/comparator|comparator]] registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
 | **Software breakpoints** | Replace an instruction with `BKPT` (0xBExx). Unlimited count but only works in RAM, not flash (without erasing). |
 | **Single-stepping** | Set the STEP bit in the Debug Halting Control register (DHCSR). CPU executes one instruction then halts again. |
 | **Register inspection** | Read/write all CPU registers (R0-R15, PSR, etc.) through the DCRSR/DCRDR register pair while the CPU is halted. |
@@ -152,7 +152,7 @@ Use JTAG when: Multiple devices on one debug chain, need boundary
                scan for board-level testing, or targeting Cortex-A/R
 ```
 
-**Why SWD won for Cortex-M:** ARM designed SWD specifically for the microcontroller market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
+**Why SWD won for Cortex-M:** ARM designed SWD specifically for the [[micro-context/microcontroller|microcontroller]] market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
 
 ## SWD in the Pupper
 

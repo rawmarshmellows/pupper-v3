@@ -7,7 +7,7 @@ created: 2026-06-07
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
-**Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
+**Definition:** How close a [[quick-context/comparator|comparator]]'s or [[quick-context/op-amp|op-amp]]'s output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
 

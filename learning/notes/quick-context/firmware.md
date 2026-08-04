@@ -17,8 +17,8 @@ Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 micr
 
 | Term | Definition |
 |------|------------|
-| **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[micro-context/plc-programmable-logic-controller\|bare metal or under an RTOS]] with no general-purpose OS |
-| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a microcontroller's flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
+| **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[micro-context/plc-programmable-logic-controller|bare metal or under an RTOS]] with no general-purpose OS |
+| **[[quick-context/firmware|Flashing]]** | Writing compiled firmware into a [[micro-context/microcontroller|microcontroller]]'s flash memory via a debug probe ([[micro-context/st-link-v2-programmer|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug|SWD]]) — erases old code, writes new code, resets the chip |
 | **ELF file (.elf)** | Executable and Linkable Format — the compiler's output containing machine code, memory layout, and debug symbols; the flash tool extracts the code sections and writes them to the chip |
 | **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
 | **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/UART before jumping to the application code; some STM32 projects skip this and flash the application directly |
@@ -313,7 +313,7 @@ The ELF file contains not just machine code but also metadata telling the flash 
 **Q3:** The Pupper has two STM32 MCUs (U1 and U5). Do they run the same firmware?
 <details>
 <summary>Answer</summary>
-No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery voltage, communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
+No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery [[quick-context/voltage|voltage]], communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
 </details>
 
 **Q4:** If firmware runs from flash memory, why does the STM32 also need SRAM?

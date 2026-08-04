@@ -11,7 +11,7 @@ created: 2026-03-27
 
 ## The Core Problem
 
-You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like voltage is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
+You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like [[quick-context/voltage|voltage]] is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
 
 ## 5 Essential Terms
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor|Inductors]] (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, [[quick-context/inductor|inductor]] back-EMF | Voltage sources, [[quick-context/capacitor|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -324,7 +324,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A 9V battery is connected to a 100$\Omega$ resistor. Does the voltage "cause" the current?
+**Q1:** A 9V battery is connected to a 100$\Omega$ [[quick-context/resistor|resistor]]. Does the voltage "cause" the current?
 <details>
 <summary>Answer</summary>
 **It depends on what you mean by "cause."** At the circuit level, the battery fixes the voltage at 9V, and current results (I = 9V/100$\Omega$ = 90 mA). In that sense, voltage is the constraint and current is the response---so yes, "V causes I" is a useful description. But at the physics level, the battery's chemical reactions create an electric field, and both the voltage (integral of the field) and the current (field pushing electrons) are consequences of that field. Neither truly "causes" the other. See: How It Works (Scenario 1).
@@ -336,7 +336,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
 </details>
 
-**Q3:** In an AC circuit with a capacitor, current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
+**Q3:** In an AC circuit with a [[quick-context/capacitor|capacitor]], current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
 <details>
 <summary>Answer</summary>
 **No---phase lead doesn't mean temporal causation.** The 90-degree phase shift is a steady-state relationship: both the voltage and current sinusoids have existed "forever" in the AC analysis. The relationship $I = C \times dV/dt$ means current is proportional to the *rate of change* of voltage. When voltage is changing fastest (zero crossing), current is at its peak. When voltage is at its peak (not changing), current is zero. This is a constraint, not a causal sequence. If forced to pick a "cause," the AC source driving the circuit is the cause of both. See: [[quick-context/impedance-and-reactance]].

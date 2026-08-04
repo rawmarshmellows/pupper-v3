@@ -70,7 +70,7 @@ Left column: where in the file each chunk starts (the *offset*, like an address)
 
 ### Step 4 — Those bytes live in addressable memory
 
-When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
+When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a [[quick-context/voltage|voltage]], a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
 
 ```
 RAM as a numbered array of byte-cells (the file loaded at address 1000)
