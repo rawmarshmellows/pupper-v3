@@ -77,7 +77,7 @@ BUS CONTENTION = A SHORT CIRCUIT
               chips heat up, data is garbage
 ```
 
-The wire ends up at some undefined middle voltage that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
+The wire ends up at some undefined middle [[quick-context/voltage|voltage]] that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
 
 ### The fix: tri-state and Output Enable
 
@@ -126,7 +126,7 @@ A SINGLE-MASTER BUS TRANSACTION (CPU reads one byte from RAM)
     RAM returns to Hi-Z. The bus is free for the next transaction.
 ```
 
-The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a comparator) that converts "an address appeared" into "this one chip's enable pin goes active."
+The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a [[quick-context/comparator|comparator]]) that converts "an address appeared" into "this one chip's enable pin goes active."
 
 **Multi-master arbitration (one paragraph).** Some buses have several would-be masters (e.g. a CPU and a DMA controller, or many nodes on [[learning/notes/quick-context/can-bus|CAN]] / [[learning/notes/micro-context/i2c|I2C]]). Then you need a tiebreak rule for simultaneous requests. Schemes include a dedicated **arbiter** that grants the bus to one requester at a time, daisy-chained **priority** lines, or — elegantly — **bitwise arbitration** as on CAN: every node transmits its message ID while listening; a dominant 0 overrides a recessive 1, so a node that sees a bit different from what it sent knows it lost and backs off, all with zero wasted time and no central referee.
 
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one [[quick-context/differential-pair|differential pair]] very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>

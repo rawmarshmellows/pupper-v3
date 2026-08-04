@@ -19,7 +19,7 @@ Before the 1800s, electricity and magnetism seemed unrelated. Static electricity
 |------|------------|
 | **Magnetic Field (B)** | A vector field created by moving charges (current) or changing electric fields. Measured in tesla (T). Earth's field: ~50 μT. Strong magnet: 1 T. MRI machine: 1.5-3 T. |
 | **Electric Field (E)** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
-| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
+| **[[micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic flux through a conductor induces [[quick-context/voltage|voltage]]: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
 | **Lorentz Force** | The force on a moving charge in electromagnetic fields: F = q(E + v × B). Electric fields push charges; magnetic fields deflect moving charges perpendicular to their velocity. This is how motors and CRT screens work. |
 | **Electromagnetic Wave** | Self-propagating oscillations of electric and magnetic fields, traveling at the speed of light (c = 3×10⁸ m/s in vacuum). Radio, microwaves, infrared, visible light, UV, X-rays, and gamma rays are all electromagnetic waves at different frequencies. |
 
@@ -236,7 +236,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 | Power generation | Faraday's law (changing B → E) | Generator, alternator |
 | Electric motors | Lorentz force (I × B → F) | DC motor, AC motor |
 | Transformers | Faraday's law (mutual induction) | Power transformer |
-| [[quick-context/inductor|Inductors]] | Faraday's law (self-induction) | Chokes, filter coils |
+| [[quick-context/inductor|Inductors]] | Faraday's law ([[quick-context/self-induction|self-induction]]) | Chokes, filter coils |
 | Wireless communication | EM wave propagation | Antennas, radio |
 | Magnetic storage | Hysteresis in magnetic materials | Hard drives, tape |
 
@@ -334,7 +334,7 @@ GENERATOR OPERATION — Step by Step
     You can't get electrical energy without putting in mechanical work.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking generators "create" energy from magnets. They don't. The magnetic field is just a medium for transferring energy from mechanical motion to electrical current. When you spin the generator faster, you don't "get more energy from the magnet"—you're putting in more mechanical work, which becomes electrical energy. Lenz's Law guarantees this: the generator pushes back against you exactly as hard as the electrical load demands. A generator with nothing connected spins freely; connect a heavy load and it becomes hard to turn. The energy always comes from whatever is spinning the shaft.
+**The one thing most outsiders get wrong about this is...** thinking generators "create" energy from magnets. They don't. The magnetic field is just a medium for transferring energy from mechanical motion to electrical current. When you spin the generator faster, you don't "get more energy from the magnet"—you're putting in more mechanical work, which becomes electrical energy. [[quick-context/lenzs-law|Lenz's Law]] guarantees this: the generator pushes back against you exactly as hard as the electrical load demands. A generator with nothing connected spins freely; connect a heavy load and it becomes hard to turn. The energy always comes from whatever is spinning the shaft.
 
 </details>
 
@@ -343,7 +343,7 @@ GENERATOR OPERATION — Step by Step
 
 - **[[quick-context/electric-current]]** — Current is moving charge, and moving charges create magnetic fields. Understanding current flow is prerequisite to understanding how electromagnets and inductors work.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of why current through a coil creates a magnetic field and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
+- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of [[quick-context/coil-magnetic-field|why current through a coil creates a magnetic field]] and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
 
 - **[[quick-context/inductor]]** — An inductor stores energy in a magnetic field created by current through a coil. The inductor equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a voltage opposing the change.
 
@@ -379,7 +379,7 @@ GENERATOR OPERATION — Step by Step
 **Q2:** Why does an [[quick-context/inductor|inductor]] oppose changes in current?
 <details>
 <summary>Answer</summary>
-**Faraday's Law and Lenz's Law.** When current through an inductor changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
+**Faraday's Law and Lenz's Law.** When current through an [[quick-context/inductor|inductor]] changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
 </details>
 
 **Q3:** A transformer has 100 turns on the primary coil and 1000 turns on the secondary. If you apply 12V AC to the primary, what voltage appears on the secondary?
@@ -397,7 +397,7 @@ GENERATOR OPERATION — Step by Step
 **Q5:** Light travels at 3×10⁸ m/s. Maxwell calculated this speed from measurements of electric and magnetic constants made in a laboratory. How did he know these were related?
 <details>
 <summary>Answer</summary>
-**He derived it from his equations.** Maxwell's equations predict that changing electric fields create magnetic fields and vice versa, allowing self-sustaining waves that propagate at speed c = 1/√(ε₀μ₀), where ε₀ (permittivity) and μ₀ (permeability) are the electric and magnetic properties of free space. When he plugged in the measured values, he got c ≈ 3×10⁸ m/s—matching the known speed of light. This was the first clue that light is an electromagnetic wave, not a separate phenomenon.
+**He derived it from his equations.** [[quick-context/maxwell-equations|Maxwell's equations]] predict that changing electric fields create magnetic fields and vice versa, allowing self-sustaining waves that propagate at speed c = 1/√(ε₀μ₀), where ε₀ (permittivity) and μ₀ (permeability) are the electric and magnetic properties of free space. When he plugged in the measured values, he got c ≈ 3×10⁸ m/s—matching the known speed of light. This was the first clue that light is an electromagnetic wave, not a separate phenomenon.
 </details>
 
 </details>

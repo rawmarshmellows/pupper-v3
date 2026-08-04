@@ -11,14 +11,14 @@ created: 2026-01-30
 
 ## The Core Problem
 
-Electronics need stable voltage to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
+Electronics need stable [[quick-context/voltage|voltage]] to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
-| **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
+| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 [[micro-context/coulomb-history|coulomb]] of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **Dielectric** | The insulating material between the capacitor's plates that determines [[quick-context/capacitance|capacitance]] and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
 | **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
 | **Decoupling/Bypass Capacitor** | A capacitor placed near an IC to provide instant current during switching and filter high-frequency noise from the power supply - the most common capacitor application in digital electronics. |
@@ -500,9 +500,9 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental noise floor: V_noise = sqrt(kT/C). This limits how small DRAM storage capacitors can be, because thermal noise would overwhelm the stored signal.
 
-- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
+- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, [[quick-context/transistor|transistor]] gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- [[quick-context/resistor|Resistor]]-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 

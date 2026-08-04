@@ -22,10 +22,10 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 |------|------------|
 | **Silicon** | The most common semiconductor material; a purified form of sand (silicon dioxide). Neither a good conductor nor a good insulator, which makes it controllable. |
 | **Doping** | Intentionally adding impurities to silicon to change its electrical properties. Adding phosphorus creates "n-type" silicon (extra electrons); adding boron creates "p-type" silicon (missing electrons, called "holes"). |
-| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
+| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying [[quick-context/voltage|voltage]] stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
 | **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
-| **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
+| **MOS [[quick-context/capacitor|Capacitor]]** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -522,7 +522,7 @@ The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal g
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
+**Q4:** If making the oxide layer thinner increases [[quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
 As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works

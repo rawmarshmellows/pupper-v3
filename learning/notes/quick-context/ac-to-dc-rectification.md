@@ -11,17 +11,17 @@ created: 2026-03-29
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
+| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step [[quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -126,7 +126,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):

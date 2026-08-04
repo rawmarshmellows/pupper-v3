@@ -245,7 +245,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
