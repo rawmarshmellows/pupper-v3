@@ -5,9 +5,9 @@ created: 2026-04-08
 
 # D Flip-Flop — The Atom of Digital Memory
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/uart]] | [[quick-context/physics-of-writing-data-to-memory]] | [[micro-context/clock-edges]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/uart]] | [[quick-context/physics-of-writing-data-to-memory]] | [[micro-context/clock-edges]] | [[learning/notes/quick-context/ram-addressing-decoder]]
 
-> **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, SRAM — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
+> **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, [[learning/notes/micro-context/sram|SRAM]] — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
 
 ## The Core Problem
 
@@ -248,7 +248,7 @@ BUILDING BLOCKS FROM D FLIP-FLOPS
 <details>
 <summary><strong>The Key Tension</strong> — Speed vs. reliability (the clock constraint)</summary>
 
-The fundamental tension in synchronous design is **clock speed vs. correctness**.
+The fundamental tension in synchronous design is **[[learning/notes/micro-context/clock-speed|clock speed]] vs. correctness**.
 
 Every combinational logic path between two flip-flops has a **propagation delay** — the time for a signal to ripple through all the gates. The clock period must be long enough for the slowest path (the "critical path") to settle before the next clock edge samples the result. Too fast → signals haven't settled → flip-flops capture wrong values → the circuit produces garbage.
 
@@ -375,19 +375,19 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 
 - **[[quick-context/uart]]** — The UART's receive shift register is a chain of 8 D flip-flops where each Q feeds the next D. On each baud clock tick, bits shift through the chain. The flip-flop is the hardware atom that makes serial-to-parallel conversion possible.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The cross-coupled inverters in SRAM are the continuous-time analog of a flip-flop's feedback loop. Both use feedback to create bistable states, but SRAM cells are optimized for density (6 transistors) while flip-flops are optimized for speed and clean edge-triggered behavior.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The cross-coupled inverters in SRAM are the continuous-time analog of a flip-flop's feedback loop. Both use feedback to create bistable states, but SRAM cells are optimized for density (6 [[learning/notes/quick-context/transistor|transistors]]) while flip-flops are optimized for speed and clean edge-triggered behavior.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are forced to behave as digital switches. The flip-flop's edge-triggered discipline is one of the key engineering tricks: by only sampling at clock edges, the circuit ignores the messy analog transitions between them.
 
 - **[[micro-context/clock-edges]]** — The precise definition of rising and falling clock edges, and why edge-triggered sampling is the foundation of synchronous digital design.
 
-- **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, ceramic resonators, internal RC oscillators. The clock tree routes this signal to every flip-flop in the system.
+- **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, [[learning/notes/micro-context/ceramic-resonator|ceramic resonators]], internal [[learning/notes/quick-context/rc-oscillator|RC oscillators]]. The clock tree routes this signal to every flip-flop in the system.
 
 - **[[micro-context/crystal-oscillator]]** — The physical component that generates the precise square wave driving all flip-flops. Crystal accuracy (~50 ppm) matters for UART baud rate generation.
 
 - **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit showing how a physical switch, clock button, and D flip-flop chip (74HC74/74HC574) store data — and how this minimal setup scales to build every register, RAM, and CPU.
 
-- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], comparator, and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
+- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], [[learning/notes/quick-context/comparator|comparator]], and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
 
 </details>
 

@@ -3,7 +3,7 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]] | [[learning/notes/quick-context/voltage-current-causality]]
 
 > **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
 
@@ -326,7 +326,7 @@ THE MATH THAT MATTERS:
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 
-- **Power Delivery Networks** — The engineering discipline of getting stable voltage to billions of transistors. Involves voltage regulators, decoupling capacitors, and careful resistance management.
+- **Power Delivery Networks** — The engineering discipline of getting stable voltage to billions of transistors. Involves voltage regulators, [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitors]], and careful resistance management.
 
 </details>
 
@@ -365,7 +365,7 @@ THE MATH THAT MATTERS:
 - After 90% efficiency: 180W × 0.9 = 162W available
 - Output current: 162W / 0.6V = 270A
 
-This illustrates why power delivery is so challenging at low voltages—the same power requires much higher current, which is why VRMs use massive inductors and MOSFETs to handle these currents. See: Concrete Example (Voltage Regulator Module).
+This illustrates why power delivery is so challenging at low voltages—the same power requires much higher current, which is why VRMs use massive [[learning/notes/quick-context/inductor|inductors]] and [[learning/notes/micro-context/mosfet|MOSFETs]] to handle these currents. See: Concrete Example (Voltage Regulator Module).
 </details>
 
 </details>

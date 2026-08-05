@@ -3,6 +3,8 @@ topic: Silymarin
 created: 2026-04-06
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/subatomic-particles]] | [[learning/notes/quick-context/rust]] | [[learning/notes/quick-context/platinum-inertness]]
+
 # Silymarin
 
 > **TL;DR:** Silymarin is a mixture of flavonolignans extracted from milk thistle (*Silybum marianum*) seeds, best known for hepatoprotection — it scavenges free radicals, stabilizes liver cell membranes, and suppresses inflammatory pathways, making it one of the most-studied herbal compounds for liver disease.

@@ -3,6 +3,8 @@ term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/quick-context/op-amp]]
+
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
@@ -11,7 +13,7 @@ created: 2026-06-07
 
 ## How It Works
 
-- The input [[quick-context/differential-pair|differential pair]] only senses correctly while its transistors stay in their active region, which requires the input voltage to sit inside a usable window.
+- The input [[quick-context/differential-pair|differential pair]] only senses correctly while its [[learning/notes/quick-context/transistor|transistors]] stay in their active region, which requires the input voltage to sit inside a usable window.
 - Outside that window the pair stops steering current properly and the output becomes invalid — regardless of how good the offset or gain is.
 - The LMC7211-N's −0.3 to 3.0 V range on a 0–2.7 V supply means inputs work slightly below ground and slightly above $V^+$.
 - That extra margin lets you sense a divider node sitting right at ground or right at the top rail without a dead zone.

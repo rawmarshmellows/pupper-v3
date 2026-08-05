@@ -3,9 +3,9 @@ topic: Doped Silicon
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]] | [[learning/notes/quick-context/silicon-die]]
 
-> **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as voltage-controlled switches.
+> **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling [[learning/notes/quick-context/transistor|transistors]] by creating PN junctions that act as voltage-controlled switches.
 
 # Doped Silicon
 
@@ -25,7 +25,7 @@ Without doping, we couldn't make transistors. Without transistors, no computers,
 | **Doping** | Intentionally adding tiny amounts of "impurity" atoms to silicon to change how electricity flows through it |
 | **N-type silicon** | Silicon doped with atoms that provide extra electrons (negative charges that can move = electrical current) |
 | **P-type silicon** | Silicon doped with atoms that create "holes" (missing electrons that act like positive charges) |
-| **PN junction** | Where N-type and P-type silicon meet; this boundary is the basic building block of all transistors and diodes |
+| **PN junction** | Where N-type and P-type silicon meet; this boundary is the basic building block of all transistors and [[learning/notes/quick-context/diode|diodes]] |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -384,7 +384,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/subatomic-particles]]** — The fundamental particles (protons, neutrons, electrons) that make up atoms. Silicon has 14 protons and 4 outer electrons; doping changes the electron count at specific locations to create controllable charge carriers.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from BJT (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from [[learning/notes/quick-context/bjt|BJT]] (which uses doped NPN/PNP junctions) to modern [[learning/notes/micro-context/mosfet|MOSFETs]], FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
 
 </details>
 
@@ -415,7 +415,7 @@ The source/drain regions need heavy doping for low resistance (so current flows 
 While more doping does increase conductivity, it also makes the silicon harder to control as a switch—it becomes "[[quick-context/transistor-analog-to-digital|leaky]]" and won't turn fully off. Transistors need to switch between ON and OFF states cleanly. Over-doped silicon conducts too well and can't be controlled by small voltage changes at the gate. The goal isn't maximum conductivity; it's controllable conductivity. See: "The Key Tension" section
 </details>
 
-**Q5:** How does the concept of doped silicon connect to the PCB-Chip-Transistor hierarchy, and what would happen to modern electronics if we could only use pure silicon?
+**Q5:** How does the concept of doped silicon connect to the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]-Chip-Transistor hierarchy, and what would happen to modern electronics if we could only use pure silicon?
 <details>
 <summary>Answer</summary>
 Doped silicon is the foundation of the entire hierarchy described in [[quick-context/pcb-chip-transistor-hierarchy]]. Transistors—the fundamental building blocks at the bottom of the hierarchy—are made by creating PN junctions in doped silicon. Without doping, we couldn't make transistors because pure silicon can't function as a controllable switch. Without transistors, we couldn't build the chips that go into packages that mount on PCBs. The entire modern electronics industry would collapse back to vacuum tubes or mechanical relays—no smartphones, no computers, no internet. The "tiny on/off switch made of doped silicon" mentioned in the hierarchy document is only possible because doping creates the controllable electrical properties that pure silicon lacks.

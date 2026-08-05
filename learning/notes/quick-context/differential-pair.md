@@ -7,7 +7,7 @@ created: 2026-04-01
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single [[learning/notes/micro-context/tail-current|tail current]] source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and [[learning/notes/micro-context/adc-analog-to-digital-converter|ADCs]]---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
@@ -21,7 +21,7 @@ A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and
 | **Tail current source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
 | **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the tail current can't increase, so nothing changes at the output. |
 | **Differential signal** | The difference between the two inputs: $V_{DIFF} = V_+ - V_-$. This is what the pair amplifies. A 1 mV differential signal on top of a 1.5V common-mode voltage produces the same output as a 1 mV signal on top of 0V. |
-| **Common-Mode Rejection Ratio (CMRR)** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
+| **[[learning/notes/micro-context/common-mode-rejection-ratio|Common-Mode Rejection Ratio]] (CMRR)** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
 
 <details>
 <summary><strong>How It Works</strong> --- Two transistors, one current budget</summary>
@@ -175,7 +175,7 @@ COMMON-MODE REJECTION
     have no effect on the current split.
 ```
 
-Both BJTs and MOSFETs can be used as Q1/Q2:
+Both BJTs and [[learning/notes/micro-context/mosfet|MOSFETs]] can be used as Q1/Q2:
 - **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
 - **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
@@ -188,7 +188,7 @@ The differential pair's performance depends on three competing goals:
 
 | Want | Problem |
 |------|---------|
-| **Better matching** (lower offset) | Requires larger transistors → slower, more capacitance |
+| **Better matching** (lower offset) | Requires larger transistors → slower, more [[learning/notes/quick-context/capacitance|capacitance]] |
 | **Higher gain** ($g_m$) | Requires more tail current → more power, more heat |
 | **Faster response** | Requires smaller transistors → worse matching, more offset |
 | **Higher CMRR** | Requires a perfect tail current source (infinite output impedance), which doesn't exist |
@@ -267,7 +267,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 
 - **[[quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
 
-- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
+- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a [[learning/notes/micro-context/current-mirror|current mirror]] at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
 
 </details>
 

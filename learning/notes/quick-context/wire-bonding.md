@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/silicon-die]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
@@ -17,7 +17,7 @@ Inside every computer chip is a tiny silicon die with connection points only abo
 
 | Term | Plain English Definition |
 |------|--------------------------|
-| **Bond pad** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
+| **[[learning/notes/quick-context/bond-pad|Bond pad]]** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
 | **Substrate** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
 | **Ultrasonic welding** | Using high-frequency vibrations (like a tiny tuning fork) to melt/fuse the wire to the metal pad without traditional heat |
 | **Loop height** | How tall the wire arc is above the chip; taller loops are more forgiving but add electrical interference |

@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/thermal-noise-electronics]]
+
 # Current and Electrons Per Second
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]

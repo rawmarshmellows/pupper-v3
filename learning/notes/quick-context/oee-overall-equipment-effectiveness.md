@@ -3,7 +3,7 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]] | [[learning/notes/quick-context/sil-rated-safety-functions]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/robotic-arm-api-levels]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 

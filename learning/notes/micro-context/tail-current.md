@@ -3,9 +3,11 @@ term: Tail Current
 created: 2026-04-02
 ---
 
+> **Related:** [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]]
+
 # Tail Current
 
-**Definition:** A fixed-value current source connected to the shared source node of a differential pair. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
+**Definition:** A fixed-value current source connected to the shared source node of a [[learning/notes/quick-context/differential-pair|differential pair]]. It sets the total current budget that the two [[learning/notes/quick-context/transistor|transistors]] must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
 
 ## How It Works
 

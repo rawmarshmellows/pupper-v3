@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/resistor]]
+
 # Coulomb (Unit History)
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]

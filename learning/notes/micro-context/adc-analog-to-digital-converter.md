@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/pwm-controller-circuit]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/esp32]]
+
 # ADC (Analog-to-Digital Converter)
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
@@ -14,7 +16,7 @@ updated: 2026-03-27
 
 - The ADC samples the analog input voltage at regular intervals determined by the sample rate.
 - Each sample is compared against an internal reference voltage and quantized to the nearest digital level (e.g., one of 65,536 levels for 16-bit).
-- The resulting binary number is stored in a register and made available to the MCU via a bus interface (I2C, SPI, or internal peripheral).
+- The resulting binary number is stored in a register and made available to the MCU via a bus interface ([[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], or internal peripheral).
 - Higher bit resolution means finer voltage steps, but noise floor and reference stability ultimately limit practical accuracy.
 
 ```

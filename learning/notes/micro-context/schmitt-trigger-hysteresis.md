@@ -3,6 +3,8 @@ term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/high-gain-amplifier-stage]]
+
 # Schmitt Trigger & Hysteresis
 
 > **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]

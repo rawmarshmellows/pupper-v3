@@ -4,6 +4,8 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
+
 # Current Behavior with Inductors vs Capacitors
 
 **Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
