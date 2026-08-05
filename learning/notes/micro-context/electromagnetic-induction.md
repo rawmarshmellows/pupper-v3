@@ -4,6 +4,8 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/faraday-tensor]]
+
 # Electromagnetic Induction
 
 > **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]

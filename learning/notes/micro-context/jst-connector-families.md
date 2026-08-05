@@ -4,6 +4,8 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/schematic-reading]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]
+
 # JST Connector Families
 
 > **See also:** [[quick-context/pupper-bom-control-board]]

@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/rc-oscillator]]
+
 # Clock Edge
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -29,4 +31,4 @@ Clock:  ───┐   ┌───┐   ┌───┐   ┌───
      Ignore data between edges → may be invalid
 ```
 
-**Key insight:** Clock edges are why billions of imperfect analog transistors can coordinate as perfect digital switches—they all agree to only "look" at signals at the same precise moments, ignoring the messy analog transitions in between.
+**Key insight:** Clock edges are why billions of imperfect analog [[learning/notes/quick-context/transistor|transistors]] can coordinate as perfect digital switches—they all agree to only "look" at signals at the same precise moments, ignoring the messy analog transitions in between.

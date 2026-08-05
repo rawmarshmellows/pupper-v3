@@ -3,9 +3,9 @@ topic: Physics of Writing Data to Memory — How Bits Become Charges, Voltages, 
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/data-bus-and-arbitration]]
 
-> **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
+> **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] ([[learning/notes/micro-context/sram|SRAM]]), a tiny charge on a ~10-30 femtofarad [[learning/notes/quick-context/capacitor|capacitor]] that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
 ## The Core Problem
 
@@ -345,7 +345,7 @@ When you [[learning/notes/quick-context/from-code-to-running-firmware|flash firm
 5. Fowler-Nordheim tunneling traps electrons on floating gates — same physics as an SSD, but the flash cells are NOR-type (individually addressable) rather than NAND-type (page-addressable)
 6. After programming, the controller reads back and verifies each word
 
-The entire process — erase block, program page, verify — takes ~100-500 ms for the full firmware image. After that, the machine code exists as trapped electrons on the [[learning/notes/quick-context/silicon-die|silicon die]], persisting without power until intentionally erased.
+The entire process — erase block, program page, verify — takes ~100-500 ms for the full [[learning/notes/quick-context/firmware|firmware]] image. After that, the machine code exists as trapped electrons on the [[learning/notes/quick-context/silicon-die|silicon die]], persisting without power until intentionally erased.
 
 **The one thing most outsiders get wrong about this is...** thinking that bits are somehow "magnetic" or "electrical" in a vague hand-wavy sense. They're not vague at all. A bit in DRAM is literally tens of thousands of electrons sitting on a capacitor plate. A bit in flash is literally electrons trapped behind an 8-nanometer oxide wall by quantum tunneling. A bit in SRAM is literally two transistor pairs holding each other's voltages stable. Every `0` and `1` in your computer is a concrete physical arrangement of electrons — and the differences between memory technologies come down to *how hard it is to put those electrons there* and *how hard it is for them to escape*.
 
@@ -376,7 +376,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/usb-peripheral-hardware]]** — Deep dive into STEP 1/STEP 4 of the keypress journey: how the keyboard MCU's Serial Interface Engine (SIE) autonomously serializes bytes from the endpoint buffer into NRZI-encoded voltage transitions on the USB data lines, using MOSFET push-pull drivers switching at 12 MHz.
 
-- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — A breadboard-level circuit (switches + clock button + 74HC574) that demonstrates data storage with real chips, and explains how this minimal pattern scales to build every register and RAM in a computer. The 74HC574's internal flip-flops use the same cross-coupled inverter pattern described here.
+- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — A breadboard-level circuit (switches + clock button + 74HC574) that demonstrates data storage with real chips, and explains how this minimal pattern scales to build every register and [[learning/notes/quick-context/ram-addressing-decoder|RAM]] in a computer. The 74HC574's internal flip-flops use the same cross-coupled inverter pattern described here.
 
 </details>
 

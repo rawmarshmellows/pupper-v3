@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]
+
 # 4-Wire Kelvin Measurement
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]

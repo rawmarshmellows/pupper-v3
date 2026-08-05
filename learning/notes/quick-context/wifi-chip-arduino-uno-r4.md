@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # WiFi Chip — How Radio Becomes Data
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/frequency-and-filtering]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/firmware]]
+> **Related:** [[quick-context/electromagnetism]] | [[quick-context/frequency-and-filtering]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/firmware]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
 
 > **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an ESP32-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
 
@@ -21,7 +21,7 @@ You want your [[micro-context/microcontroller|microcontroller]] to talk to the i
 | **Modulation / Demodulation** | Modulation encodes digital bits onto an analog carrier wave by varying its amplitude, frequency, or phase. Demodulation reverses the process to recover the bits. WiFi uses OFDM with QAM — encoding multiple bits per symbol across many subcarriers simultaneously. |
 | **OFDM (Orthogonal Frequency-Division Multiplexing)** | WiFi's core modulation scheme: splits the 20 MHz channel into 48+ narrow subcarriers (each 312.5 kHz wide), transmitting data on all of them in parallel. This resists multipath interference (signals bouncing off walls) because each subcarrier is narrow enough to experience flat fading. |
 | **MAC (Media Access Control)** | The protocol layer that manages who gets to transmit and when. WiFi uses CSMA/CA: "listen before you talk." If the channel is busy, wait a random backoff time, then try again. The MAC also handles encryption (WPA), association with access points, and retransmissions. |
-| **PHY (Physical Layer)** | The hardware that converts between digital bits and analog radio signals. Includes the baseband processor (FFT/IFFT for OFDM), DAC/ADC converters, and the RF front-end (mixers, filters, amplifiers). |
+| **PHY (Physical Layer)** | The hardware that converts between digital bits and analog radio signals. Includes the baseband processor (FFT/IFFT for OFDM), DAC/[[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] converters, and the RF front-end (mixers, filters, amplifiers). |
 
 <details>
 <summary><strong>How It Works</strong> — From bits to radio waves and back</summary>
@@ -332,13 +332,13 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 
 - **[[quick-context/impedance-and-reactance]]** — The antenna must be [[quick-context/impedance-and-reactance|impedance]]-matched to the RF front-end (typically 50$\Omega$) to maximize power transfer and minimize reflections. A mismatched antenna wastes transmit power and reduces range.
 
-- **[[quick-context/embedded-communication-protocols]]** — WiFi complements the wired protocols (SPI, I2C, CAN, UART) used in embedded systems. The Pupper architecture diagram shows WiFi on the Raspberry Pi alongside wired protocols on the STM32s — each chosen for its strengths.
+- **[[quick-context/embedded-communication-protocols]]** — WiFi complements the wired protocols (SPI, [[learning/notes/micro-context/i2c|I2C]], CAN, [[learning/notes/quick-context/uart|UART]]) used in embedded systems. The Pupper architecture diagram shows WiFi on the Raspberry Pi alongside wired protocols on the STM32s — each chosen for its strengths.
 
 - **[[quick-context/firmware]]** — The ESP32-S3 runs [[quick-context/firmware|firmware]] that implements the WiFi stack, just like the STM32s run motor control firmware. The difference: the ESP32's firmware includes a TCP/IP stack, TLS encryption, and the 802.11 protocol engine — far more complex than bare-metal motor control code.
 
@@ -346,7 +346,7 @@ void setup() {
 
 - **[[quick-context/esp32]]** — Full quick-context on the broader ESP32 family: variants (S2/S3/C3/C6/H2/P4), Xtensa vs RISC-V transition, boot sequence, dual-core asymmetry, and when to pick which chip.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The ESP32-S3's radio, CPU, and memory are all on one [[quick-context/silicon-die|silicon die]], packaged in a module with a PCB antenna. The packaging hierarchy applies here: transistors → die → module → Arduino board.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The ESP32-S3's radio, CPU, and memory are all on one [[quick-context/silicon-die|silicon die]], packaged in a module with a PCB antenna. The packaging hierarchy applies here: [[learning/notes/quick-context/transistor|transistors]] → die → module → Arduino board.
 
 - **802.11ax (WiFi 6) / 802.11be (WiFi 7)** — Newer WiFi standards add OFDMA (dividing subcarriers between users), MU-MIMO (multiple simultaneous streams), and wider channels (160+ MHz). The ESP32-S3 supports 802.11 b/g/n (WiFi 4) — sufficient for IoT but not high-bandwidth streaming.
 
@@ -384,7 +384,7 @@ Three critical reasons: (1) **Latency** — WiFi has 1-50+ ms variable latency d
 **Q5:** The ESP32-S3 has a "PCB trace antenna." How can a flat copper line on a circuit board receive radio waves?
 <details>
 <summary>Answer</summary>
-An antenna works by having a conductor whose length is a resonant fraction of the signal's wavelength. At 2.4 GHz, λ = 12.5 cm, so a quarter-wave antenna is ~3.1 cm. The PCB trace is a meandered (zigzagged) conductor that fits this electrical length into a small area. When a 2.4 GHz electromagnetic wave passes over the trace, it induces an oscillating current (by Faraday's law — the same principle behind generators and inductors). The RF front-end amplifies this tiny current and feeds it to the demodulator. The antenna must be impedance-matched to 50Ω to maximize power transfer — this is why the trace geometry is carefully calculated, not arbitrary. It works the same in reverse for transmission: the power amplifier drives current through the trace, which radiates electromagnetic waves. See: [[quick-context/electromagnetism]] and [[quick-context/impedance-and-reactance]].
+An antenna works by having a conductor whose length is a resonant fraction of the signal's wavelength. At 2.4 GHz, λ = 12.5 cm, so a quarter-wave antenna is ~3.1 cm. The PCB trace is a meandered (zigzagged) conductor that fits this electrical length into a small area. When a 2.4 GHz electromagnetic wave passes over the trace, it induces an oscillating current (by Faraday's law — the same principle behind generators and [[learning/notes/quick-context/inductor|inductors]]). The RF front-end amplifies this tiny current and feeds it to the demodulator. The antenna must be impedance-matched to 50Ω to maximize power transfer — this is why the trace geometry is carefully calculated, not arbitrary. It works the same in reverse for transmission: the power amplifier drives current through the trace, which radiates electromagnetic waves. See: [[quick-context/electromagnetism]] and [[quick-context/impedance-and-reactance]].
 </details>
 
 </details>

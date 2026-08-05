@@ -3,13 +3,15 @@ term: Scan Loop
 created: 2026-04-07
 ---
 
+> **Related:** [[learning/notes/quick-context/teep]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/sil-rated-safety-functions]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/robotic-arm-api-levels]]
+
 # Scan Loop
 
-**Definition:** A firmware routine that rapidly cycles through rows of a **switch matrix** — a grid of electrical switches wired at the intersections of row and column lines, so each switch is uniquely identified by its (row, col) coordinate — driving each row LOW in turn and reading all columns to detect which switches are closed. Used by keyboard and keypad [[learning/notes/micro-context/stm32-microcontroller|microcontrollers]] to monitor many switches with few GPIO pins.
+**Definition:** A [[learning/notes/quick-context/firmware|firmware]] routine that rapidly cycles through rows of a **[[learning/notes/micro-context/switch-matrix|switch matrix]]** — a grid of electrical switches wired at the intersections of row and column lines, so each switch is uniquely identified by its (row, col) coordinate — driving each row LOW in turn and reading all columns to detect which switches are closed. Used by keyboard and keypad [[learning/notes/micro-context/stm32-microcontroller|microcontrollers]] to monitor many switches with few GPIO pins.
 
 ## How It Works
 
-- The MCU configures row pins as outputs and column pins as inputs (with pull-up resistors so they default HIGH).
+- The MCU configures row pins as outputs and column pins as inputs (with pull-up [[learning/notes/quick-context/resistor|resistors]] so they default HIGH).
 - Each iteration drives one row LOW while keeping all other rows HIGH, then reads every column pin — a LOW column means the switch at that (row, col) intersection is closed.
 - The loop cycles through all rows every ~1–5 ms, fast enough that no human keypress is missed.
 - When a press is detected, the firmware maps the (row, col) position to a [[learning/notes/quick-context/physics-of-writing-data-to-memory|scan code]] via a lookup table stored in flash.

@@ -4,6 +4,8 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]]
+
 # Full-Wave Bridge Rectifier
 
 > **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]

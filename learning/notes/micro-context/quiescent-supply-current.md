@@ -3,6 +3,8 @@ term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/quick-context/op-amp]]
+
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]
@@ -11,7 +13,7 @@ created: 2026-06-07
 
 ## How It Works
 
-- Internal stages — the [[micro-context/tail-current|tail current source]], the mirror load, the output bias — burn a steady current to keep their transistors in the active region.
+- Internal stages — the [[micro-context/tail-current|tail current source]], the mirror load, the output bias — burn a steady current to keep their [[learning/notes/quick-context/transistor|transistors]] in the active region.
 - This quiescent draw exists independent of the signal: it's the cost of being "on" and ready to respond instantly.
 - Micropower parts (LMC7211-N: 7 µA typ) trade speed for tiny standing current, enabling battery and coin-cell operation for years.
 - Total supply current climbs above $I_S$ only when the output actively drives a load.

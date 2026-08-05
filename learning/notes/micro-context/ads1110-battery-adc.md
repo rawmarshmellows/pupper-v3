@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/pwm-controller-circuit]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/esp32]]
+
 # ADS1110 (Battery Voltage ADC)
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]

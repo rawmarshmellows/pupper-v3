@@ -5,7 +5,7 @@ created: 2026-02-13
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/voltage-current-causality]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -301,7 +301,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an [[learning/notes/quick-context/inductor|inductor]] creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 

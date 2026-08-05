@@ -16,7 +16,7 @@ The substrate is the "translator" that takes a chip's tiny, densely-packed conne
 
 | Term | Definition |
 |------|------------|
-| **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of transistors; this is what people usually mean by "the chip" |
+| **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of [[learning/notes/quick-context/transistor|transistors]]; this is what people usually mean by "the chip" |
 | **Pitch** | The distance between the centers of adjacent connections; smaller pitch = more connections in the same space |
 | **Redistribution Layer (RDL)** | Metal routing layers inside the substrate that reroute signals from one location/pitch to another |
 | **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
@@ -405,7 +405,7 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[learning/notes/quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
@@ -414,7 +414,7 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
 - **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 

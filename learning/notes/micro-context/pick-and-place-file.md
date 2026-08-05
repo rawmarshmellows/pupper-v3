@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/schematic-reading]] | [[learning/notes/quick-context/pcb-layers]]
+
 # Pick and Place File
 
 > **See also:** [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]

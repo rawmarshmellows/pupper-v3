@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/subatomic-particles]] | [[learning/notes/quick-context/silymarin]] | [[learning/notes/quick-context/rust]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 

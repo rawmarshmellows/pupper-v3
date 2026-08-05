@@ -3,6 +3,8 @@ term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/uart]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]]
+
 # I2S (Inter-IC Sound)
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]

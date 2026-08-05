@@ -3,9 +3,9 @@ topic: Anions and Oxidation
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[quick-context/electrolysis]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/subatomic-particles]]
 
-> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
+> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive [[learning/notes/micro-context/anode|anode]] where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
@@ -186,7 +186,7 @@ so they go to the Anode to lose electrons!
 
 2. **Electrochemical Series** — A ranking of how easily different species lose or gain electrons. This determines which anion gets oxidized when multiple are present (the selectivity problem mentioned above).
 
-3. **[[quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without electrolytes, anions couldn't exist in solution and electrolysis couldn't occur. See: [[quick-context/electrolysis]]
+3. **[[quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without [[learning/notes/quick-context/electrolyte|electrolytes]], anions couldn't exist in solution and electrolysis couldn't occur. See: [[quick-context/electrolysis]]
 
 4. **Electron Configuration** — Understanding *why* atoms gain or lose electrons requires knowing how electrons arrange themselves around atoms. Atoms "want" stable configurations, which drives ion formation.
 

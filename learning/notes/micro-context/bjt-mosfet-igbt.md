@@ -3,6 +3,8 @@ term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
 ---
 
+> **Related:** [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/transistor-analog-to-digital]]
+
 # BJT vs MOSFET vs IGBT
 
 > **See also:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/transistor]]
