@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/dupont-jumper-wires]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -390,7 +390,7 @@ Temperature affects electromigration rate but doesn't eliminate it. The exponent
 **Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
-The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
+The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but [[learning/notes/quick-context/transistor|transistor]] current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
 </details>
 
 </details>

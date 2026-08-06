@@ -5,9 +5,9 @@ created: 2026-03-27
 
 # CAN Bus (Controller Area Network)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/firmware]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 
-> **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire differential pair without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
+> **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire [[learning/notes/quick-context/differential-pair|differential pair]] without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
 
 ## The Core Problem
 
@@ -307,7 +307,7 @@ CANH and CANL on a scope during one frame:
 
 - **[[quick-context/pupper-bom-control-board]]** — Every physical component in the CAN subsystem: the 4 MAX3051 transceivers (U3, U4, U6, U7), the 120$\Omega$ termination resistors (R1-R4), and the JST connectors (CN1, CN2) carrying CAN signals to the servo cables.
 
-- **[[quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
+- **[[quick-context/firmware]]** — The STM32 [[learning/notes/quick-context/firmware|firmware]] initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
 
 - **[[quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
 
@@ -327,7 +327,7 @@ The dominant/recessive encoding enables non-destructive arbitration. When two no
 **Q2:** A CAN bus has 5 nodes on a 10-meter cable. Where do you place termination resistors?
 <details>
 <summary>Answer</summary>
-Only at the two physical endpoints of the bus — the first and last node on the cable. The 3 middle nodes must NOT have termination. Placing a termination resistor at a middle node would create a parallel resistance that lowers the bus impedance below 120$\Omega$, distorting signal levels and causing reflections from the impedance mismatch. See: [[micro-context/can-bus-termination]] and the bus topology diagram.
+Only at the two physical endpoints of the bus — the first and last node on the cable. The 3 middle nodes must NOT have termination. Placing a termination [[learning/notes/quick-context/resistor|resistor]] at a middle node would create a parallel resistance that lowers the bus impedance below 120$\Omega$, distorting signal levels and causing reflections from the impedance mismatch. See: [[micro-context/can-bus-termination]] and the bus topology diagram.
 </details>
 
 **Q3:** Two CAN messages are transmitted at the same time — ID 0x300 and ID 0x100. Which one wins, and why?
