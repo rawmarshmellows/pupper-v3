@@ -7,7 +7,7 @@ created: 2026-03-28
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/frequency-and-filtering]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/firmware]]
 
-> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an ESP32-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
+> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an [[learning/notes/quick-context/esp32|ESP32]]-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
 
 ## The Core Problem
 
@@ -246,7 +246,7 @@ ARDUINO UNO R4 WIFI — DUAL-CHIP ARCHITECTURE
 
 ### Why Two Chips Instead of One?
 
-The RA4M1 is the "Arduino-compatible" chip — it runs at 5V (matching classic Arduino shields), has a CAN bus peripheral, a real 12-bit DAC, and an on-chip op-amp. But it has no radio.
+The RA4M1 is the "Arduino-compatible" chip — it runs at 5V (matching classic Arduino shields), has a [[learning/notes/quick-context/can-bus|CAN bus]] peripheral, a real 12-bit DAC, and an on-chip op-amp. But it has no radio.
 
 The [[quick-context/esp32|ESP32-S3]] IS a capable [[micro-context/microcontroller|microcontroller]] in its own right (dual-core at 240 MHz!), but it runs at 3.3V and wouldn't be backward-compatible with the 5V Arduino ecosystem. So Arduino uses it as a coprocessor: it runs pre-installed [[quick-context/firmware|firmware]] that handles WiFi, Bluetooth, and also acts as the USB-to-serial bridge for programming the RA4M1.
 
@@ -325,14 +325,14 @@ void setup() {
 }
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking WiFi is simple because `WiFi.begin()` is one line of code. Behind that single function call, the chip performs channel scanning across up to 14 frequencies (11 in the US, 13 in Europe), OFDM modulation/demodulation, a 4-way cryptographic handshake (WPA2), DHCP negotiation, ARP resolution, and rate adaptation — all managed by dedicated hardware (MAC + PHY + RF) and a real-time firmware stack running on the ESP32-S3's dual 240 MHz cores. The "simplicity" is an abstraction hiding one of the most complex pieces of silicon on the board.
+**The one thing most outsiders get wrong about this is...** thinking WiFi is simple because `WiFi.begin()` is one line of code. Behind that single function call, the chip performs channel scanning across up to 14 frequencies (11 in the US, 13 in Europe), OFDM modulation/demodulation, a 4-way cryptographic handshake (WPA2), DHCP negotiation, ARP resolution, and rate adaptation — all managed by dedicated hardware (MAC + PHY + RF) and a real-time [[learning/notes/quick-context/firmware|firmware]] stack running on the ESP32-S3's dual 240 MHz cores. The "simplicity" is an abstraction hiding one of the most complex pieces of silicon on the board.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 

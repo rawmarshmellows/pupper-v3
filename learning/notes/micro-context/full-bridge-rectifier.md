@@ -4,6 +4,7 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]]
 # Full-Wave Bridge Rectifier
 
 > **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]

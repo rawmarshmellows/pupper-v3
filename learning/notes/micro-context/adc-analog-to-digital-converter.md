@@ -4,6 +4,7 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/d-flip-flop]]
 # ADC (Analog-to-Digital Converter)
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]

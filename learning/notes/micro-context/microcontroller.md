@@ -4,6 +4,7 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]]
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]
