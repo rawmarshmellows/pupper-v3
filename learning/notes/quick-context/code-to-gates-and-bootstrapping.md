@@ -4,7 +4,7 @@ created: 2026-02-14
 updated: 2026-04-07
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
+> **Related:** [[quick-context/cpu-fetch-execute-cycle]] | [[quick-context/how-source-code-is-stored]] | [[micro-context/eeprom]] | [[micro-context/sram]] | [[quick-context/bare-minimal-data-storage-circuit]]
 
 > **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
 
@@ -22,7 +22,7 @@ You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|
 
 | Term | Definition |
 |------|------------|
-| **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
+| **Compiler** | A program that translates high-level source code (C, [[quick-context/rust|Rust]]) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
 | **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
 | **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM) whose bit fields encode the opcode, registers, and operands according to the ISA. |
 | **ISA (Instruction Set Architecture)** | The contract between software and hardware. It defines every instruction the CPU supports, its binary encoding (which bits mean what), the available registers, and addressing modes. ARM, x86, RISC-V, and Hack are all different ISAs. |

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/butyric-acid]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/dipole-dipole-interactions]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -394,7 +394,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

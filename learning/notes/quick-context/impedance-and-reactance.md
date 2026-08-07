@@ -3,7 +3,7 @@ topic: Impedance and Reactance
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/capacitive-voltage-sensing]] | [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/decoupling-capacitor]] | [[micro-context/power-inductor]] | [[quick-context/capacitance]]
 
 > **TL;DR:** Impedance extends the concept of [[quick-context/resistor|resistance]] to AC circuits—[[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] oppose current flow in a frequency-dependent way called reactance, and impedance (Z = R + jX) combines resistance and reactance into a single quantity that describes how any component behaves with AC signals.
 

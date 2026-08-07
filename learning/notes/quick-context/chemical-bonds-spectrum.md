@@ -3,7 +3,7 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/butyric-acid]] | [[quick-context/covalent-bonds]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/hydrogen-bonds-beginners]]
 
 > **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
@@ -348,7 +348,7 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
-- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+- The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
 
 </details>
 

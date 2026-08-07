@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/bjt-mosfet-igbt]] | [[micro-context/current-mirror]] | [[micro-context/diode-rectification]] | [[micro-context/mosfet]] | [[micro-context/reverse-and-forward-bias]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -286,7 +286,7 @@ The fundamental tradeoff in making analog transistors behave digitally:
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[micro-context/clock-speed|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 

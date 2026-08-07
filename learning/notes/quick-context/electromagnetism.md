@@ -5,7 +5,7 @@ created: 2026-02-09
 
 # Electromagnetism
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/coriolis-effect]] | [[micro-context/coulomb-history]] | [[micro-context/current-electrons-per-second]] | [[micro-context/electromagnetic-induction]] | [[micro-context/piezoelectric-effect]]
 
 > **TL;DR:** Electromagnetism is the unified physics of electric and magnetic fields—moving charges create magnetic fields, changing magnetic fields create electric fields, and this interplay enables motors, generators, transformers, inductors, and all wireless communication. Maxwell unified these phenomena in 1865, revealing that light itself is an electromagnetic wave.
 
@@ -236,7 +236,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 | Power generation | Faraday's law (changing B → E) | Generator, alternator |
 | Electric motors | Lorentz force (I × B → F) | DC motor, AC motor |
 | Transformers | Faraday's law (mutual induction) | Power transformer |
-| [[quick-context/inductor|Inductors]] | Faraday's law (self-induction) | Chokes, filter coils |
+| [[quick-context/inductor|Inductors]] | Faraday's law ([[quick-context/self-induction|self-induction]]) | Chokes, filter coils |
 | Wireless communication | EM wave propagation | Antennas, radio |
 | Magnetic storage | Hysteresis in magnetic materials | Hard drives, tape |
 
@@ -361,7 +361,7 @@ GENERATOR OPERATION — Step by Step
 
 - **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different reference frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
 
-- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric tensor that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric [[quick-context/tensor|tensor]] that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
 
 - **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi signals are electromagnetic waves at 2.4 GHz. A WiFi chip modulates data onto these waves and radiates them via an antenna — a direct, everyday application of Maxwell's prediction that changing electric fields create self-propagating EM waves.
 

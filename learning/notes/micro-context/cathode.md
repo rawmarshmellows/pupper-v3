@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/anode]] | [[micro-context/oxidation]] | [[quick-context/anions-and-oxidation]] | [[quick-context/cations-and-reduction]] | [[quick-context/electrodes]]
+
 # Cathode
 
 > **See also:** [[quick-context/electrodes]]

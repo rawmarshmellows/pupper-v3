@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/bjt-mosfet-igbt]] | [[micro-context/current-mirror]] | [[micro-context/diode-rectification]] | [[micro-context/mosfet]] | [[micro-context/reverse-and-forward-bias]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -497,7 +497,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through [[quick-context/bjt|BJT]], planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
 
 </details>
 
@@ -522,7 +522,7 @@ The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal g
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
+**Q4:** If making the oxide layer thinner increases [[quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
 As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works

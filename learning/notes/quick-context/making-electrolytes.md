@@ -3,9 +3,9 @@ topic: How to Make an Electrolyte (Acid, Base, or Salt)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[micro-context/anode]] | [[micro-context/cathode]] | [[micro-context/oxidation]] | [[quick-context/anions-and-oxidation]] | [[quick-context/cations-and-reduction]]
 
-> **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
+> **TL;DR:** Pure water is almost a perfect insulator - you must add an [[quick-context/electrolyte|electrolyte]] (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
 
 # How to Make an Electrolyte (Acid, Base, or Salt)
 
@@ -397,7 +397,7 @@ SOLUTION: Remove the water entirely
 
 - **[[quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding electrolysis explains WHY you need electrolytes and what happens at the electrodes once current flows.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. covalent bonds helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
+- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. [[quick-context/covalent-bonds|covalent bonds]] helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
 
 - **pH and Acid-Base Chemistry** — Acids and bases are defined by whether they release H⁺ or OH⁻ ions. The pH scale measures this ion concentration, which directly affects conductivity.
 

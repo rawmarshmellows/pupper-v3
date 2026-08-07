@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/power-watts-joules]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/bjt-mosfet-igbt]] | [[micro-context/current-mirror]] | [[micro-context/diode-rectification]] | [[micro-context/mosfet]] | [[micro-context/reverse-and-forward-bias]]
 >
 > **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
@@ -52,7 +52,7 @@ THE BJT SPEC CHECKLIST
 The single most common beginner myth is "NPN needs less voltage to turn on." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
 
 - **Direction of control.** NPN turns on when the base is pulled *more positive* than the emitter; PNP turns on when the base is pulled *more negative* than the emitter.
-- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a microcontroller pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
+- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a [[micro-context/microcontroller|microcontroller]] pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
 - **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives higher gain, faster switching, and a lower saturation voltage. That physics — not voltage — is why NPN is the default.
 
 ```
@@ -194,7 +194,7 @@ PN2222A / TO-92 plastic  (ON Semi limits)  YOUR CIRCUIT NEEDS
   h_FE     : 100 (min @ I_C=150mA) ... 300 use 100 (min) for the switch
 ```
 
-> **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're soldering. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
+> **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're [[quick-context/soldering|soldering]]. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
 
 **Step 1 — Voltage fence.** Off-state, the relay coil pulls the collector to ~12 V, so $V_{CE}\approx 12$ V $< 40$ V $V_{CEO}$. Plus margin for the coil's inductive turn-off spike → add a flyback diode and you're safe. PASS.
 

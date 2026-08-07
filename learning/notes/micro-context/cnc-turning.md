@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/cnc-milling]] | [[micro-context/cnc-process-selection]] | [[micro-context/edm-machining]] | [[micro-context/thread-pitch-screws]]
+
 # CNC Turning
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]

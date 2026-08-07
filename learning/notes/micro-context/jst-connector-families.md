@@ -4,6 +4,8 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/dupont-jumper-wires]] | [[quick-context/qwiic-stemma-qt-i2c]] | [[quick-context/soldering]] | [[quick-context/usb-peripheral-hardware]]
+
 # JST Connector Families
 
 > **See also:** [[quick-context/pupper-bom-control-board]]

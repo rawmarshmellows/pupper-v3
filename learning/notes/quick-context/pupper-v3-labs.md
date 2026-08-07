@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]
+> **Related:** [[micro-context/spinev1-elf]] | [[quick-context/absolute-orientation]] | [[quick-context/camera-fundamentals]] | [[quick-context/ppo-proximal-policy-optimization]] | [[quick-context/preempt-rt]]
 >
 > **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
 

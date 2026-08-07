@@ -3,6 +3,8 @@ term: Crystal Oscillator
 created: 2026-03-27
 ---
 
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/ads1110-battery-adc]] | [[micro-context/ceramic-resonator]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]]
+
 # Crystal Oscillator
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
