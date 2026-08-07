@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Faraday Tensor
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[micro-context/coriolis-effect]] | [[micro-context/coulomb-history]] | [[micro-context/current-electrons-per-second]] | [[micro-context/electromagnetic-induction]] | [[micro-context/piezoelectric-effect]]
 
 > **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 

@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/making-electrolytes]] | [[quick-context/electrodes]]
+> **Related:** [[micro-context/anode]] | [[micro-context/cathode]] | [[micro-context/oxidation]] | [[quick-context/anions-and-oxidation]] | [[quick-context/cations-and-reduction]]
 
 > **TL;DR:** Electrolytes are substances (acids, bases, or salts) that dissolve in water to release free ions, enabling the liquid to conduct electricity; pure water is essentially an insulator, but adding an electrolyte can increase conductivity by 500,000x.
 
@@ -54,7 +54,7 @@ Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS
 |------|------------|
 | **Ion** | An atom or molecule with net electric charge from gaining or losing electrons (Na⁺, Cl⁻, SO₄²⁻) |
 | **Dissociation** | The process where ionic compounds split into free ions when dissolved or melted |
-| **Conductivity** | A measure of how well a solution carries electric current, measured in siemens per centimeter (S/cm) |
+| **Conductivity** | A measure of how well a solution carries [[quick-context/electric-current|electric current]], measured in siemens per centimeter (S/cm) |
 | **Strong electrolyte** | Substances that fully dissociate into ions (NaCl, HCl, NaOH)—high conductivity |
 | **Weak electrolyte** | Substances that only partially dissociate (acetic acid, ammonia)—lower conductivity |
 

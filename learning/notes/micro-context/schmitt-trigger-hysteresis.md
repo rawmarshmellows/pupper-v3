@@ -3,6 +3,8 @@ term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
 
+> **Related:** [[micro-context/bjt-mosfet-igbt]] | [[micro-context/current-mirror]] | [[micro-context/diode-rectification]] | [[micro-context/mosfet]] | [[micro-context/reverse-and-forward-bias]]
+
 # Schmitt Trigger & Hysteresis
 
 > **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]

@@ -4,6 +4,8 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[micro-context/i2c]] | [[micro-context/i2s]] | [[micro-context/i2s-audio-amplifier]]
+
 # Push-Pull vs Open-Collector / Open-Drain
 
 ## Human notes
@@ -12,7 +14,7 @@ updated: 2026-06-07
 
 An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] does that, holding the line HIGH whenever everyone has released.
 
-- **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving transistor, so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
+- **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving [[quick-context/transistor|transistor]], so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
 - **"any device can pull LOW"** → One device turning on its NMOS drags the *whole* shared line LOW, regardless of what the others do. Low always wins.
 - **"wired-AND"** → Treat *released* = logic 1, *pulling LOW* = logic 0. The line reads HIGH **only if every device releases** (all 1s). If *any one* pulls LOW, the line is LOW. That is a logical AND of all the devices' states — computed by the wire itself, no gate needed. Hence "wired-AND."
 
@@ -51,7 +53,7 @@ Examples:
 
 ### "Wired-AND" — the logic that fact implements
 
-With *released* = 1 and *pulling LOW* = 0, the wire computes `line = A AND B AND C` — no gate, just the resistor and the NMOS transistors:
+With *released* = 1 and *pulling LOW* = 0, the wire computes `line = A AND B AND C` — no gate, just the [[quick-context/resistor|resistor]] and the NMOS transistors:
 
 ```
   A   B   C  │ line
@@ -90,7 +92,7 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
 
 > **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** ([[quick-context/bjt|BJT]]) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 
 ## How It Works
 

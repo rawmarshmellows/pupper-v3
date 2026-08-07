@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/current-electrons-per-second]] | [[quick-context/electric-current]] | [[micro-context/coriolis-effect]] | [[micro-context/electromagnetic-induction]] | [[micro-context/piezoelectric-effect]]
+
 # Coulomb (Unit History)
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]

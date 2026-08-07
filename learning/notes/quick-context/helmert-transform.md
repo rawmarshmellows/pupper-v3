@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Helmert Transform
 
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[micro-context/homogeneous-transformation-matrix]] | [[quick-context/absolute-orientation]] | [[quick-context/covariance-matrix]] | [[quick-context/similarity-transform]] | [[quick-context/singular-value-decomposition]]
 
 > **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 

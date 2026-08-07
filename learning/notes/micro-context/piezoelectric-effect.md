@@ -3,6 +3,8 @@ term: Piezoelectric Effect
 created: 2026-03-27
 ---
 
+> **Related:** [[micro-context/coriolis-effect]] | [[micro-context/coulomb-history]] | [[micro-context/current-electrons-per-second]] | [[micro-context/electromagnetic-induction]] | [[quick-context/coil-magnetic-field]]
+
 # Piezoelectric Effect
 
 **Definition:** The ability of certain crystals (quartz, ceramics like PZT, some polymers) to generate an electric voltage when mechanically stressed, and conversely, to deform when an electric field is applied. The first direction is the *direct* effect (sensing); the reverse is the *converse* effect (actuation).

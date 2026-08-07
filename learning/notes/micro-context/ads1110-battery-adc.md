@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ceramic-resonator]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]]
+
 # ADS1110 (Battery Voltage ADC)
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]

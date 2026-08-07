@@ -3,7 +3,7 @@ topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/decoupling-capacitor]] | [[micro-context/pick-and-place-file]] | [[micro-context/smd-resistor]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bond-pad]]
 
 > **TL;DR:** PCBs replace the nightmare of hand-soldered wire connections with thin copper pathways printed onto a rigid fiberglass board, providing the physical foundation for reliable, manufacturable, and repairable electronics in every smartphone, computer, and electronic device.
 
@@ -73,7 +73,7 @@ ANATOMY OF A PCB (Side View Cross-Section)
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A PCB is essentially a **sandwich of insulating fiberglass with patterned copper layers**. The copper starts as a solid sheet bonded to the fiberglass. Manufacturers use a process similar to photography: they coat the copper with light-sensitive material, shine UV light through a mask of the desired pattern, then chemically dissolve the unwanted copper—leaving only the traces, pads, and planes you designed. This is called "etching." For multi-layer boards, these copper-fiberglass sheets are stacked and laminated together with heat and pressure, then drilled to create vias (the connections between layers). Finally, everything gets coated with soldermask except the pads, and the exposed pads get a thin coating of solder or gold to prevent oxidation and improve solderability.
+A PCB is essentially a **sandwich of insulating fiberglass with patterned copper layers**. The copper starts as a solid sheet bonded to the fiberglass. Manufacturers use a process similar to photography: they coat the copper with light-sensitive material, shine UV light through a mask of the desired pattern, then chemically dissolve the unwanted copper—leaving only the traces, pads, and planes you designed. This is called "etching." For multi-layer boards, these copper-fiberglass sheets are stacked and laminated together with heat and pressure, then drilled to create vias (the connections between layers). Finally, everything gets coated with soldermask except the pads, and the exposed pads get a thin coating of solder or gold to prevent [[micro-context/oxidation|oxidation]] and improve solderability.
 
 The magic of PCBs is that each copper layer can have its own independent pattern. Typically, you dedicate certain layers entirely to power and ground (called "planes")—these act as reservoirs of electricity that components can tap into anywhere they need. Signal traces run on other layers, weaving around each other. When a trace needs to cross another trace, it simply drops down to a different layer via a via, crosses underneath, and pops back up. This is how thousands of connections can coexist without touching each other.
 
@@ -258,7 +258,7 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 
 - **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
 
-- **Soldering and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
+- **[[quick-context/soldering|Soldering]] and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
 
 - **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 
@@ -296,7 +296,7 @@ Several factors favor the 6-layer board despite higher cost: (1) **Manufacturabi
 **Q5:** The quick-context on the packaging hierarchy shows that chips connect to PCBs via BGA (Ball Grid Array) solder balls at ~0.8mm pitch. How does this relate to PCB design, and why can't you just use a 2-layer board for a modern CPU?
 <details>
 <summary>Answer</summary>
-A modern CPU might have 1,500+ BGA balls in a 45mm x 45mm area. Each ball needs its own pad on the PCB, and each pad needs a trace routed away to somewhere else on the board. With balls only 0.8mm apart, there's no room to route traces between the balls on a single layer—you can only fit traces on the outer edges. The solution is **via-in-pad**: each inner ball has a via that drops the signal to an inner layer, where it can route freely without colliding with neighboring balls. This fundamentally requires multiple layers. High-end CPUs might need 8-12 layers just to "escape" all the signals from under the package, plus additional layers for power planes and other routing. The 100-400mm PCB scale mentioned in the hierarchy accommodates this complex layer stack. See: [[quick-context/pcb-chip-transistor-hierarchy]] for how the substrate fans out to ~800um pitch, and The Key Tension for why layer count correlates with complexity.
+A modern CPU might have 1,500+ BGA balls in a 45mm x 45mm area. Each ball needs its own pad on the PCB, and each pad needs a trace routed away to somewhere else on the board. With balls only 0.8mm apart, there's no room to route traces between the balls on a single layer—you can only fit traces on the outer edges. The solution is **via-in-pad**: each inner ball has a via that drops the signal to an inner layer, where it can route freely without colliding with neighboring balls. This fundamentally requires multiple layers. High-end CPUs might need 8-12 layers just to "escape" all the signals from under the package, plus additional layers for power planes and other routing. The 100-400mm PCB scale mentioned in the hierarchy accommodates this complex layer stack. See: [[quick-context/pcb-chip-transistor-hierarchy]] for how the [[quick-context/substrate-ic-packaging|substrate]] fans out to ~800um pitch, and The Key Tension for why layer count correlates with complexity.
 </details>
 
 </details>

@@ -1,3 +1,5 @@
+> **Related:** [[quick-context/challenger-sale-methodology]] | [[quick-context/inside-the-triangle]] | [[quick-context/integration-failure-modes-solutions]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/meddpicc-qualification-framework]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.

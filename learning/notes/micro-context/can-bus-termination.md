@@ -3,6 +3,8 @@ term: CAN Bus Termination
 created: 2026-03-27
 ---
 
+> **Related:** [[micro-context/can-bus-transceiver]] | [[micro-context/i2c]] | [[micro-context/i2s]] | [[micro-context/i2s-audio-amplifier]] | [[micro-context/push-pull-vs-open-drain]]
+
 # CAN Bus Termination
 
 > **See also:** [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
@@ -11,7 +13,7 @@ created: 2026-03-27
 
 ## How It Works
 
-- A CAN bus is a differential pair (CANH/CANL) with ~120Ω characteristic impedance set by the wire geometry.
+- A CAN bus is a [[quick-context/differential-pair|differential pair]] (CANH/CANL) with ~120Ω characteristic impedance set by the wire geometry.
 - When a signal reaches an unterminated end, the impedance mismatch causes it to bounce back as a reflection, corrupting data.
 - A 120Ω resistor across CANH and CANL at each bus end absorbs the signal energy, eliminating reflections.
 - Only the two endpoints need termination — nodes in the middle of the bus must **not** add termination resistors, or they'll reduce the bus impedance and distort signals.

@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/ads1110-battery-adc]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]] | [[micro-context/clock-speed]]
+
 # Ceramic Resonator
 
 > **See also:** [[micro-context/stm32-microcontroller]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -39,4 +41,4 @@ updated: 2026-03-27
   └──────────────────┴───────────┴──────────────────┘
 ```
 
-**Key insight:** The Pupper BOM uses ceramic resonators instead of quartz crystals because CAN bus tolerates ±0.5% clock error — the built-in load capacitors save two external components per MCU for no practical accuracy tradeoff in this application.
+**Key insight:** The Pupper BOM uses ceramic resonators instead of quartz crystals because [[quick-context/can-bus|CAN bus]] tolerates ±0.5% clock error — the built-in load capacitors save two external components per MCU for no practical accuracy tradeoff in this application.

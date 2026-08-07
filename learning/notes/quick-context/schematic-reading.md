@@ -3,7 +3,7 @@ topic: Schematic Reading
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/decoupling-capacitor]] | [[micro-context/pick-and-place-file]] | [[micro-context/smd-resistor]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bond-pad]]
 
 > **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like voltage dividers, decoupling networks, and pull-ups.
 
@@ -186,7 +186,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[micro-context/mosfet|MOSFET]] and [[quick-context/bjt|BJT]] have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 

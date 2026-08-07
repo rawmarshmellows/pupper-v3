@@ -4,6 +4,8 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/ac-dc-current]] | [[micro-context/buck-converter]] | [[micro-context/diode-rectification]] | [[micro-context/power-inductor]] | [[micro-context/pwm-pulse-width-modulation]]
+
 # Full-Wave Bridge Rectifier
 
 > **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]
