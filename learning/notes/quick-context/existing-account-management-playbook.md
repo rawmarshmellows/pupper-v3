@@ -1,3 +1,5 @@
+> **Related:** [[micro-context/spi]] | [[quick-context/playbook-main]] | [[quick-context/ppo-proximal-policy-optimization]] | [[quick-context/rust]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.

@@ -215,7 +215,7 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 - **[[learning/notes/quick-context/data-bus-and-arbitration]]** — How bytes actually travel between CPU, memory, and peripherals on shared wires. *(sibling — may not exist yet)*
 - **[[learning/notes/quick-context/uart]]** — A bare serial transport; the simplest version of "carry the scancode over a wire" (rung 6).
 - **[[learning/notes/quick-context/usb-peripheral-hardware]]** — How a real PC keyboard's HID packets reach the host (rungs 5-6).
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses (UART/SPI/I2C/USB) that move bytes between chips.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses (UART/[[micro-context/spi|SPI]]/[[micro-context/i2c|I2C]]/USB) that move bytes between chips.
 - **[[learning/notes/quick-context/firmware]]** — The keyboard MCU's code (scan/debounce/encode) and the host's interrupt handler are both firmware.
 
 </details>

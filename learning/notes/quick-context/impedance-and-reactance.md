@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Resistance Alone Can't Describe AC Behavior
 
-Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that voltage and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
+Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that [[quick-context/voltage|voltage]] and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
 
 ## 5 Essential Terms
 
@@ -122,7 +122,7 @@ FREQUENCY DEPENDENCE: THE KEY INSIGHT
 
 ## Impedance Matching
 
-When a signal travels through a cable or PCB trace, reflections occur at any point where impedance changes. Maximizing power transfer or minimizing reflections requires matching impedances.
+When a signal travels through a cable or [[quick-context/pcb-printed-circuit-board|PCB]] trace, reflections occur at any point where impedance changes. Maximizing power transfer or minimizing reflections requires matching impedances.
 
 ```
 WHY 50Ω AND 75Ω?
@@ -235,7 +235,7 @@ RC LOW-PASS FILTER
 **At high frequencies, PCB traces act as transmission lines.** If the trace impedance doesn't match the driver and receiver impedance, signals reflect back and forth, causing ringing, overshoot, and data errors. A 1 GHz signal has wavelengths comparable to PCB trace lengths (~15 cm), so wave effects dominate. Matching impedances (typically 50Ω single-ended or 100Ω differential) eliminates reflections.
 </details>
 
-**Q5:** A decoupling capacitor has 1.6Ω of reactance at 1 MHz. Is it doing its job?
+**Q5:** A [[micro-context/decoupling-capacitor|decoupling capacitor]] has 1.6Ω of reactance at 1 MHz. Is it doing its job?
 <details>
 <summary>Answer</summary>
 **Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the capacitor provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.

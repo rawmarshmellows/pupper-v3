@@ -3,13 +3,15 @@ topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
 
+> **Related:** [[micro-context/i2c]] | [[micro-context/microcontroller]] | [[micro-context/oxidation]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/pcb-printed-circuit-board]]
+
 # DuPont Jumper Wires
 
 > **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without soldering. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
 
 ## 5 Essential Terms
 
@@ -120,7 +122,7 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 | Current | 3A | ~1A max, 500mA comfortable |
 | Mating cycles | 500+ | 50-100 before loosening |
 | Contact resistance | 15-20 m$\Omega$ | 50-200+ m$\Omega$ (variable) |
-| Voltage | 250V AC/DC | Rarely the limiting factor |
+| [[quick-context/voltage|Voltage]] | 250V AC/DC | Rarely the limiting factor |
 | Temperature | -25$^\circ$C to +85$^\circ$C | PVC degrades above 80$^\circ$C |
 
 </details>
