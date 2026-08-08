@@ -19,7 +19,7 @@ Metal interconnect layers are the "parking garage" of wiring built on top of the
 | **Metal Layer (M1, M2... M10+)** | Horizontal wiring levels stacked above the transistors; M1 is closest to transistors, M10 is near the top |
 | **Pitch** | The spacing between adjacent wires; tighter pitch = more wires, but harder to manufacture |
 | **Dielectric** | The insulating material between wires that prevents short circuits (usually silicon dioxide or low-k materials) |
-| **Bond Pad** | Large metal squares at the top interconnect layer where the chip connects to the outside world |
+| **[[quick-context/bond-pad|Bond Pad]]** | Large metal squares at the top interconnect layer where the chip connects to the outside world |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -199,7 +199,7 @@ THE FUNDAMENTAL TRADEOFF
 | How many metal layers? | More layers = more routing flexibility but higher cost |
 | What metal to use? | Copper (fast) vs. newer materials like ruthenium/cobalt at tiny scales |
 | How tight a pitch? | Tighter = more density but manufacturing challenges |
-| Low-k dielectrics? | Lower capacitance (faster signals) but mechanically fragile |
+| Low-k dielectrics? | Lower [[quick-context/capacitance|capacitance]] (faster signals) but mechanically fragile |
 
 </details>
 
@@ -272,7 +272,7 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 
 - **RC Delay** — Resistance (R) × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
 
-- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes voltage droop and chip failure.
+- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes [[quick-context/voltage|voltage]] droop and chip failure.
 
 - **[[quick-context/electromigration|Electromigration]]** — The phenomenon where current flowing through thin wires physically moves metal atoms, eventually breaking the wire; this limits how much current each wire can safely carry and becomes more critical as wire cross-sections shrink.
 

@@ -5,7 +5,7 @@ created: 2026-01-25
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
+> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic [[quick-context/silicon-die|silicon die]] to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional [[quick-context/wire-bonding|wire bonding]].
 
 # Flip-Chip (C4) Packaging
 
@@ -15,7 +15,7 @@ Imagine you have a tiny piece of silicon smaller than your fingernail, containin
 
 The traditional solution was **wire bonding**: attach the chip right-side up and use incredibly thin wires (thinner than a human hair) to connect the edges of the chip to the larger circuit. But this approach has serious limitations. You can only attach wires around the *edges* of the chip, limiting how many connections you can make. Those thin wires also act like tiny antennas, picking up interference and slowing down signals. As chips got more powerful and needed more connections (modern CPUs need thousands), wire bonding became a bottleneck.
 
-**Flip-chip** solves this by literally flipping the chip upside-down and using an array of tiny solder bumps across the *entire bottom surface* of the chip to connect directly to the underlying substrate. Instead of wires looping through the air, you get direct, short connections. This enables more connections (I/O density), faster signal speeds, and better heat dissipation. Without flip-chip technology, modern high-performance processors simply couldn't exist—they'd be too slow and couldn't have enough connections to move data in and out fast enough.
+**Flip-chip** solves this by literally flipping the chip upside-down and using an array of tiny solder bumps across the *entire bottom surface* of the chip to connect directly to the underlying [[quick-context/substrate-ic-packaging|substrate]]. Instead of wires looping through the air, you get direct, short connections. This enables more connections (I/O density), faster signal speeds, and better heat dissipation. Without flip-chip technology, modern high-performance processors simply couldn't exist—they'd be too slow and couldn't have enough connections to move data in and out fast enough.
 
 ## 5 Essential Terms
 

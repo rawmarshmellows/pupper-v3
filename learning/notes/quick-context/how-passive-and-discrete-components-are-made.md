@@ -55,7 +55,7 @@ TWO ROADS TO THE SAME FOUR PARTS
 
 ### ON-CHIP — all four are patterned together on one wafer
 
-Everything below is created by the *same* cycle described in [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]]: deposit a layer, spin photoresist, expose a mask, etch or implant, repeat. The mask shapes decide whether a given patch of silicon becomes a transistor, a resistor, a capacitor, or a diode. Nothing is "added on" — it is all carved out of the layer stack.
+Everything below is created by the *same* cycle described in [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]]: deposit a layer, spin photoresist, expose a mask, etch or implant, repeat. The mask shapes decide whether a given patch of silicon becomes a [[quick-context/transistor|transistor]], a resistor, a capacitor, or a diode. Nothing is "added on" — it is all carved out of the layer stack.
 
 ```
 ON-CHIP COMPONENTS — same wafer, same litho, different mask shapes
@@ -187,7 +187,7 @@ DISCRETE DIODE  (one junction die in a 2-lead package)
 <details>
 <summary><strong>The Key Tension</strong> — Why ever choose one road over the other?</summary>
 
-The whole point of two roads is that they optimize different things. On-chip wins when you're *already making a chip* and need thousands of components essentially for free, tightly matched to each other. Discrete wins when you need **accuracy, high power, high voltage, or large values** that a chip process physically can't deliver.
+The whole point of two roads is that they optimize different things. On-chip wins when you're *already making a chip* and need thousands of components essentially for free, tightly matched to each other. Discrete wins when you need **accuracy, high power, high [[quick-context/voltage|voltage]], or large values** that a chip process physically can't deliver.
 
 ```
 WHY ON-CHIP PARTS ARE "SLOPPY" BUT DISCRETE PARTS CAN BE PRECISE
@@ -214,7 +214,7 @@ WHY ON-CHIP PARTS ARE "SLOPPY" BUT DISCRETE PARTS CAN BE PRECISE
 | **Max value** | Small (R, C) | Large (mF caps, MΩ resistors) |
 | **Tuning** | Fixed at mask design | Laser-trimmed per part |
 
-This is exactly why a comparator is an *on-chip* assembly of many transistors but you still put a *discrete* MLCC and a *discrete* pull-up resistor next to it on the board: the precise pull-up value and the bulk decoupling capacitance are things the chip process is bad at, so they live on the PCB.
+This is exactly why a comparator is an *on-chip* assembly of many transistors but you still put a *discrete* MLCC and a *discrete* pull-up resistor next to it on the board: the precise pull-up value and the bulk decoupling [[quick-context/capacitance|capacitance]] are things the chip process is bad at, so they live on the PCB.
 
 </details>
 
@@ -255,10 +255,10 @@ ONE BATTERY-MONITOR CIRCUIT — which parts are on-chip vs discrete?
 
 Walk it through:
 
-1. **The comparator chip itself** is one die fabricated like any IC — its differential pair, current mirror, *its own internal bias resistor (an on-chip poly strip)*, and *its internal PN-junction diodes* were all patterned together in the same fab. You can't buy "the resistor inside the comparator" separately; it's etched into the die.
+1. **The comparator chip itself** is one die fabricated like any IC — its [[quick-context/differential-pair|differential pair]], current mirror, *its own internal bias resistor (an on-chip poly strip)*, and *its internal PN-junction diodes* were all patterned together in the same fab. You can't buy "the resistor inside the comparator" separately; it's etched into the die.
 2. **R1 and R2** (the divider) are **discrete** thick-film [[learning/notes/micro-context/smd-resistor|SMD resistors]] precisely because the divider *ratio* sets the trip voltage and must be accurate — laser-trimmed discretes deliver the ±1% the chip process can't.
 3. **The pull-up resistor** for the open-drain output is **discrete** — its exact value (RC speed vs. power) is a board-level choice.
-4. **The decoupling capacitor** is a **discrete MLCC** — a co-fired ceramic block providing bulk capacitance no on-chip cap could match in value.
+4. **The [[micro-context/decoupling-capacitor|decoupling capacitor]]** is a **discrete MLCC** — a co-fired ceramic block providing bulk capacitance no on-chip cap could match in value.
 
 Down the ladder, every "on-chip" part above traces to the raw [[learning/notes/quick-context/semiconductor-fabrication|fabrication]] cycle on a [[learning/notes/quick-context/silicon-die|silicon die]]; every "discrete" part traces to its own screen-print / co-fire / junction-dicing line and then a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] solder joint, with the finished chips landing in their [[learning/notes/quick-context/substrate-ic-packaging|packages]] first.
 

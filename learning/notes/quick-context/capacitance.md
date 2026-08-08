@@ -7,7 +7,7 @@ created: 2026-03-28
 
 > **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
 
-> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
+> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: [[quick-context/pcb-printed-circuit-board|PCB]] traces, [[quick-context/transistor|transistor]] gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
 ## The Core Problem
 
@@ -17,9 +17,9 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 
 | Term | Definition |
 |------|------------|
-| **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
+| **Farad (F)** | The unit of capacitance. 1 farad = 1 [[micro-context/coulomb-history|coulomb]] stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
-| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
+| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] [[quick-context/substrate-ic-packaging|substrate]]): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
 | **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
@@ -647,7 +647,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).

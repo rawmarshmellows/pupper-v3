@@ -5,6 +5,8 @@ created: 2026-04-07
 
 # Switch Matrix
 
+> **See also:** [[micro-context/microcontroller]] | [[micro-context/scan-loop]] | [[micro-context/sram]] | [[quick-context/diode]] | [[quick-context/existing-account-management-playbook]]
+
 **Definition:** A grid of electrical switches wired at the intersections of row and column lines, allowing a [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] to monitor $N \times M$ switches using only $N + M$ GPIO pins instead of one pin per switch.
 
 ## How It Works

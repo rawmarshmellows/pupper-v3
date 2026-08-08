@@ -11,16 +11,16 @@ created: 2026-04-01
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
-A battery monitor needs to answer a simple question: "Is the battery voltage above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
+A battery monitor needs to answer a simple question: "Is the battery [[quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an op-amp, but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A pull-up resistor provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
@@ -451,7 +451,7 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
-- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit ADC---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
+- **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]]---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
 
 - **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] dividers create both the reference voltage and the scaled feedback signal. Divider accuracy directly determines threshold accuracy.
 

@@ -8,7 +8,7 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/electrodes]]
 
-**Definition:** The electrode where [[quick-context/anions-and-oxidation|oxidation]] occurs — species lose electrons here, and those electrons flow out through the external circuit. In electrolysis the anode is positive (+); in [[quick-context/galvanic-cells-batteries|batteries]] it's negative (−). The name comes from Greek *anodos* ("way up").
+**Definition:** The electrode where [[quick-context/anions-and-oxidation|oxidation]] occurs — species lose electrons here, and those electrons flow out through the external circuit. In [[quick-context/electrolysis|electrolysis]] the anode is positive (+); in [[quick-context/galvanic-cells-batteries|batteries]] it's negative (−). The name comes from Greek *anodos* ("way up").
 
 ## How It Works
 
