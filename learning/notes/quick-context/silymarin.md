@@ -2,6 +2,8 @@
 topic: Silymarin
 created: 2026-04-06
 ---
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/spi]]
+
 
 # Silymarin
 
@@ -112,7 +114,7 @@ The bioavailability problem drives most of the current research. Standard oral s
 
 **Amanita phalloides (death cap) poisoning:**
 
-This is silymarin's most dramatic clinical use. The Amanita toxin $\alpha$-amanitin enters hepatocytes via OATP1B3 transporters and inhibits RNA polymerase II, shutting down protein synthesis and killing liver cells. Intravenous silibinin (trade name Legalon SIL) is the standard antidote in Europe:
+This is silymarin's most dramatic clinical use. The Amanita toxin $\alpha$-amanitin enters hepatocytes via OATP1B3 transporters and inhibits RNA polymerase II, shutting down protein synthesis and killing liver cells. Intravenous silibinin (trade name Legalon [[learning/notes/quick-context/sil-rated-safety-functions|SIL]]) is the standard antidote in Europe:
 
 - Mechanism: silybin competitively blocks toxin uptake at the hepatocyte membrane transporter
 - Dose: 20-50 mg/kg/day IV, started within 48 hours of ingestion

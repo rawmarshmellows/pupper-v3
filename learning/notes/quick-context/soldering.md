@@ -3,7 +3,7 @@ topic: Soldering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/resistor]]
 
 > **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and [[quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Making Reliable Permanent Connections
 
-You have a component (resistor, IC, connector) and a PCB with copper pads. You need to create a connection that is electrically conductive, mechanically strong, and reliable for years. Breadboards and wire-wrapping are temporary. Soldering is permanent: a low-melting-point metal alloy (solder) is melted to form a metallurgical bond between the component lead and the copper pad. The joint must wet properly (solder flows and adheres to clean metal surfaces) and solidify into a reliable, low-resistance connection. Bad solder joints are the #1 cause of electronic failures in the field.
+You have a component ([[learning/notes/quick-context/resistor|resistor]], IC, connector) and a PCB with copper pads. You need to create a connection that is electrically conductive, mechanically strong, and reliable for years. Breadboards and wire-wrapping are temporary. Soldering is permanent: a low-melting-point metal alloy (solder) is melted to form a metallurgical bond between the component lead and the copper pad. The joint must wet properly (solder flows and adheres to clean metal surfaces) and solidify into a reliable, low-resistance connection. Bad solder joints are the #1 cause of electronic failures in the field.
 
 ## 5 Essential Terms
 
@@ -20,7 +20,7 @@ You have a component (resistor, IC, connector) and a PCB with copper pads. You n
 | **Solder** | A metal alloy that melts at 180-220°C (far below copper's 1085°C). Traditional: 63% tin / 37% lead (melts at 183°C). Lead-free: SAC305 (Sn96.5/Ag3.0/Cu0.5, melts at 217°C). |
 | **Flux** | A chemical agent (rosin or acid-based) that removes oxide layers from metal surfaces so solder can wet them. Without flux, solder beads up and won't stick. Flux is in the core of solder wire and in solder paste. |
 | **Wetting** | When molten solder flows onto and adheres to a metal surface, forming a concave fillet. Good wetting = shiny, smooth, concave joint. Poor wetting = balled-up solder that barely touches the pad. |
-| **Reflow** | Machine soldering process: solder paste (tiny solder balls + flux) is printed onto PCB pads, components are placed by pick-and-place machines, then the whole board goes through an oven that melts the paste. Used for SMD production. |
+| **Reflow** | Machine soldering process: solder paste (tiny solder balls + flux) is printed onto [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] pads, components are placed by pick-and-place machines, then the whole board goes through an oven that melts the paste. Used for SMD production. |
 | **Cold Joint** | A defective solder joint where the solder didn't fully melt or the parts moved during cooling. Looks dull and grainy instead of shiny and smooth. Has high resistance or is intermittent. |
 
 <details>
@@ -174,7 +174,7 @@ REFLOW SOLDERING PROCESS (SMD production)
 
 - **[[quick-context/pcb-layers]]** — The paste mask layer is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder volume and prevent bridging.
 
-- **[[quick-context/bga-ball-grid-array]]** — BGA packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. X-ray inspection is required because joints are hidden under the package.
+- **[[quick-context/bga-ball-grid-array]]** — [[learning/notes/quick-context/bga-ball-grid-array|BGA]] packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. X-ray inspection is required because joints are hidden under the package.
 
 - **[[quick-context/flip-chip]]** — Flip-chip solder bumps (C4) are a microscopic version of the same soldering principle, connecting the die directly to the substrate.
 

@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/semiconductor-fabrication]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Making Disparate Devices Act in Concert
 
-Robot cell integration best practices exist to solve the coordination problem: making sure a robot, PLC, vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
+Robot cell integration best practices exist to solve the coordination problem: making sure a robot, [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]], vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
 
 Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
 
@@ -22,7 +22,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 | Term | Definition |
 |------|------------|
 | **Handshake** | A structured signal exchange where device A asserts "ready," device B acknowledges, A proceeds; prevents race conditions. |
-| **PackML** | The ISA-TR88 standard state model (Execute, Stopped, Held, Aborted, etc.) that gives every cell a common vocabulary for operating modes. |
+| **PackML** | The [[learning/notes/quick-context/isa-95-levels|ISA]]-TR88 standard state model (Execute, Stopped, Held, Aborted, etc.) that gives every cell a common vocabulary for operating modes. |
 | **Virtual Commissioning** | Debugging integration logic in simulation before hardware arrives, catching handshake errors and collision paths early. |
 | **I/O Mapping** | The document listing every signal, its source, destination, and meaning; without this, integration debugging is archaeology. |
 | **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just discrete signals. |

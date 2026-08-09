@@ -2,6 +2,8 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/quick-context/diode]]
+
 
 # Switch Matrix
 
@@ -11,7 +13,7 @@ created: 2026-04-07
 
 - Each switch sits at a unique (row, col) intersection — pressing it electrically connects that row wire to that column wire.
 - A [[learning/notes/micro-context/scan-loop|scan loop]] drives one row LOW at a time and reads all columns; a LOW column means that intersection's switch is closed.
-- Without protection, pressing 3+ keys in an L-shape creates a "sneak path" that makes a fourth key appear pressed (**ghosting**) — adding a diode in series with each switch blocks reverse current and eliminates this.
+- Without protection, pressing 3+ keys in an L-shape creates a "sneak path" that makes a fourth key appear pressed (**ghosting**) — adding a [[learning/notes/quick-context/diode|diode]] in series with each switch blocks reverse current and eliminates this.
 
 ```
         Col 0    Col 1    Col 2
