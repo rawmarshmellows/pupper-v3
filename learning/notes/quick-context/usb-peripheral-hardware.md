@@ -3,7 +3,7 @@ topic: USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/switches-to-registers-storing-data]]
 
 > **TL;DR:** When firmware writes a byte to a USB endpoint buffer, a dedicated hardware block inside the MCU — the **Serial Interface Engine (SIE)** — autonomously serializes it into a bitstream, encodes it using NRZI (where a "0" bit = voltage transition, "1" = no transition), inserts bit-stuffing to guarantee clock recovery, appends a CRC, and drives the D+/D- lines through push-pull [[learning/notes/micro-context/mosfet|MOSFET]] pairs that toggle between 3.3V and 0V at 12 MHz. The CPU's job ends at writing bytes to a buffer in SRAM; the SIE's transistor-level logic gates handle the rest in hardware, responding to host requests within ~500 ns — far too fast for firmware. The device can never transmit spontaneously; the host PC initiates every transaction.
 
@@ -18,7 +18,7 @@ Your [[learning/notes/micro-context/stm32-microcontroller|MCU]] has a byte — a
 | **Serial Interface Engine (SIE)** | The digital logic block inside the USB peripheral that autonomously handles packet framing, NRZI encoding, bit stuffing, CRC, and handshaking. It responds to host requests without CPU involvement — the CPU only loads data and reads status. |
 | **NRZI (Non-Return-to-Zero Inverted)** | The line encoding USB uses on the wire. A data "0" causes a voltage transition (J→K or K→J); a data "1" causes no transition. This ensures clock-recovery transitions appear regularly, since bit stuffing forces a "0" after every 6 consecutive "1"s. |
 | **Endpoint Buffer** | A small block of dedicated SRAM inside the MCU (512B-4KB depending on the chip) where firmware writes outgoing data and reads incoming data. The SIE reads from / writes to this buffer autonomously during USB transactions. |
-| **D+ / D- (Differential Pair)** | The two data wires in a USB cable. Data is encoded as the voltage *difference* between them: J state = D+ HIGH, D- LOW; K state = D+ LOW, D- HIGH. Differential signaling rejects common-mode noise (EMI hits both wires equally and cancels out). |
+| **D+ / D- ([[learning/notes/quick-context/differential-pair|Differential Pair]])** | The two data wires in a USB cable. Data is encoded as the voltage *difference* between them: J state = D+ HIGH, D- LOW; K state = D+ LOW, D- HIGH. Differential signaling rejects common-mode noise (EMI hits both wires equally and cancels out). |
 | **IN Token** | A packet the host sends to request data from the device. USB is 100% host-initiated — the device can *never* transmit spontaneously. When the SIE sees an IN token matching its address, it responds with the data from the endpoint buffer (or NAK if no data is ready). |
 
 <details>
@@ -93,8 +93,7 @@ PHASE 0: KEYPRESS → SCAN CODE → ENDPOINT BUFFER
   The keyboard MCU (often a CH552, 8051, or Cortex-M0) has
   firmware stored in its flash memory — machine code that exists
   as trapped electrons on floating gates, written at the factory
-  via the same [[learning/notes/quick-context/from-code-to-running-
-  firmware|link-flash-boot pipeline]] used for any MCU. That
+  via the same [[learning/notes/quick-context/from-code-to-running-firmware|link-flash-boot pipeline]] used for any MCU. That
   firmware runs a continuous scan loop:
 
   a) KEY MATRIX SCAN — The MCU's CPU fetches instructions from
@@ -142,15 +141,12 @@ PHASE 0: KEYPRESS → SCAN CODE → ENDPOINT BUFFER
      instruction that writes these 8 bytes into the USB
      peripheral's endpoint buffer. This is a dedicated block of
      SRAM inside the MCU — the bytes now exist as voltage states
-     across cross-coupled [[learning/notes/micro-context/mosfet|
-     transistor]] pairs (see [[learning/notes/quick-context/
-     physics-of-writing-data-to-memory|physics of memory]] for
+     across cross-coupled [[learning/notes/micro-context/mosfet| transistor]] pairs (see [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics of memory]] for
      how SRAM stores bits).
 
      At the hardware level, this store instruction is a machine
      code binary pattern fetched from flash (trapped electrons)
-     by the [[learning/notes/quick-context/code-to-gates-and-
-     bootstrapping|fetch-execute cycle]], decoded by the CPU's
+     by the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch-execute cycle]], decoded by the CPU's
      control unit (logic gates), which routes the data byte
      through the internal bus to the USB peripheral's SRAM
      address.
@@ -311,7 +307,7 @@ WHY THIS MATTERS FOR CLOCK RECOVERY
 
 ### The Output Driver: MOSFETs That Create the Signal
 
-The final stage is a pair of [[learning/notes/micro-context/mosfet|CMOS push-pull drivers]] — the same transistor topology used in every digital output:
+The final stage is a pair of [[learning/notes/micro-context/mosfet|CMOS push-pull drivers]] — the same [[learning/notes/quick-context/transistor|transistor]] topology used in every digital output:
 
 ```
 OUTPUT DRIVER — ONE PER DATA LINE (D+ and D-)
@@ -352,7 +348,7 @@ OUTPUT DRIVER — ONE PER DATA LINE (D+ and D-)
   same transistor physics as any digital circuit.
 ```
 
-The 22 $\Omega$ series resistor (external on some MCUs, integrated on others) plus the MOSFET's on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
+The 22 $\Omega$ series [[learning/notes/quick-context/resistor|resistor]] (external on some MCUs, integrated on others) plus the [[learning/notes/micro-context/mosfet|MOSFET]]'s on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
 
 </details>
 
