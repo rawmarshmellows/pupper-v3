@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]]
+
 # Oxidation
 
 > **See also:** [[quick-context/anions-and-oxidation]]
