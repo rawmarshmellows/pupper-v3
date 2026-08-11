@@ -13,7 +13,7 @@ updated: 2026-03-27
 ## How It Works
 
 - PCB design software exports a spreadsheet listing every component's reference designator, XY position, rotation, and board side.
-- The assembly house loads this file into the pick-and-place machine's software alongside the component reels.
+- The assembly house loads this file into the [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]] machine's software alongside the component reels.
 - The machine's vacuum nozzle picks each component from its feeder, rotates it to the correct angle, and places it on the solder-pasted PCB pad.
 - After all components are placed, the board passes through a reflow oven to permanently solder them.
 
@@ -34,4 +34,4 @@ PICK AND PLACE WORKFLOW:
                                                               └───┘
 ```
 
-**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-soldering).
+**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-[[learning/notes/quick-context/soldering|soldering]]).

@@ -175,7 +175,7 @@ The outer walls carry most of the structural load in real-world use because forc
 **Q2:** If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
 <details>
 <summary>Answer</summary>
-You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher glass transition temperature and different flow characteristics.
+You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] and different flow characteristics.
 </details>
 
 **Q3:** When would you choose a 0.2mm layer height over a 0.3mm setting?

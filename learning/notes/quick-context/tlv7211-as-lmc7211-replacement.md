@@ -21,7 +21,7 @@ When a part comes from a *legacy* product line (here, National Semiconductor, wh
 |------|------------|
 | **Drop-in (pin-compatible)** | Same package *and* identical pin map, so it solders onto the existing footprint with zero layout change. The TLV7211 is this in *both* of the LMC7211-N's packages. |
 | **Second source / rename** | The same silicon re-released under a new part number (often after an acquisition). TLV7211 ↔ LMC7211 is the textbook case. |
-| **Offset grade** | A part binned by guaranteed $V_{OS}$. Both families ship a 5 mV and a 15 mV grade — but the *naming* differs (see below). |
+| **Offset grade** | A part binned by guaranteed [[learning/notes/micro-context/input-offset-voltage|$V_{OS}$]]. Both families ship a 5 mV and a 15 mV grade — but the *naming* differs (see below). |
 | **Grade-suffix inversion** | On the TLV, the **A** suffix marks the *tighter* 5 mV part; the plain TLV7211 is the *looser* 15 mV part. Grab the wrong one and you regress accuracy. |
 | **Power-On Reset (POR)** | A TLV7211-documented circuit that holds the output low for ~200 µs while the supply ramps past 1.7 V, guaranteeing a known state at startup. |
 
@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[learning/notes/quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 

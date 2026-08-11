@@ -5,7 +5,7 @@ created: 2026-01-25
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
+> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic [[learning/notes/quick-context/silicon-die|silicon die]] to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional [[learning/notes/quick-context/wire-bonding|wire bonding]].
 
 # Flip-Chip (C4) Packaging
 
@@ -242,7 +242,7 @@ Here's what each layer does:
 
 - **Thermal Management** — Flip-chip enables better heat extraction because the die backside can directly contact cooling solutions; critical for high-power processors.
 
-- **Ball Grid Array (BGA)** — The package-to-PCB connection method that flip-chip packages typically use; BGA balls are much larger than flip-chip bumps.
+- **[[learning/notes/quick-context/bga-ball-grid-array|Ball Grid Array]] (BGA)** — The package-to-PCB connection method that flip-chip packages typically use; BGA balls are much larger than flip-chip bumps.
 
 - **Coefficient of Thermal Expansion (CTE)** — Why different materials expand at different rates when heated; the root cause of why underfill is necessary in flip-chip.
 

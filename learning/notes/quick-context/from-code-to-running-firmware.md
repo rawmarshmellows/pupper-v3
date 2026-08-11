@@ -173,7 +173,7 @@ When the [[micro-context/stm32-microcontroller|STM32]] powers on (or resets), th
 1. Loads the value at address `0x00000000` into the **Main Stack Pointer** (MSP)
 2. Loads the value at address `0x00000004` into the **Program Counter** (PC) — this is the `Reset_Handler` address
 
-On STM32, flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
+On [[learning/notes/micro-context/stm32-microcontroller|STM32]], flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
 
 Then `Reset_Handler` (assembly code in `startup_stm32f446retx.s`) runs:
 

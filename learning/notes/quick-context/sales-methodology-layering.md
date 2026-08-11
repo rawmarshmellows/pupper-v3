@@ -11,7 +11,7 @@ created: 2026-02-10
 
 ## The Core Problem
 
-Sales leaders often pick one methodology and expect it to solve all problems. But MEDDPICC doesn't teach you how to sell, Challenger doesn't tell you who to sell to, and LAMP doesn't help you qualify deals. Using just one framework leaves gaps; using too many creates overhead and confusion. Without intentional layering, teams either under-process (missing deals they should win) or over-process (bureaucracy that slows momentum).
+Sales leaders often pick one methodology and expect it to solve all problems. But [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] doesn't teach you how to sell, Challenger doesn't tell you who to sell to, and LAMP doesn't help you qualify deals. Using just one framework leaves gaps; using too many creates overhead and confusion. Without intentional layering, teams either under-process (missing deals they should win) or over-process (bureaucracy that slows momentum).
 
 ## 5 Essential Terms
 

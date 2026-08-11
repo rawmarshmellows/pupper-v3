@@ -21,7 +21,7 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 |------|------------|
 | **Scan Cycle** | See [[quick-context/plc-vs-software]] — the PLC's deterministic read-execute-write loop (1–10ms for motion, 10–50ms for discrete I/O). |
 | **Structured Text (ST)** | The IEC 61131-3 programming language that looks like Pascal and runs on PLCs—the closest thing to "real programming" in PLC-land. |
-| **PREEMPT_RT** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
+| **[[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT]]ing/notes/quick-context/preempt-rt|PREEMPT_RT]]** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
 | **Soft PLC** | Software that implements PLC runtime semantics on commodity hardware (Beckhoff TwinCAT, CODESYS)—looks like a PLC to the plant, runs on a PC. |
 | **Fieldbus** | The industrial network (PROFINET, EtherNet/IP, EtherCAT) connecting PLCs to I/O, drives, and robots—the nervous system of the automation cell. |
 
@@ -161,7 +161,7 @@ Because Linux (without PREEMPT_RT) provides no guarantees about when your callba
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?
 <details>
 <summary>Answer</summary>
-Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for SIL-rated safety functions. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
+Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
 </details>
 
 **Q3:** What's the role of OPC-UA in this architecture?

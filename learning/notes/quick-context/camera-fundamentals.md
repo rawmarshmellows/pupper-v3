@@ -539,7 +539,7 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[quick-context/silicon-die]]** — An image sensor IS a [[learning/notes/quick-context/silicon-die|silicon die]] — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 

@@ -332,7 +332,7 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 
@@ -340,7 +340,7 @@ void setup() {
 
 - **[[quick-context/embedded-communication-protocols]]** — WiFi complements the wired protocols (SPI, I2C, CAN, UART) used in embedded systems. The Pupper architecture diagram shows WiFi on the Raspberry Pi alongside wired protocols on the STM32s — each chosen for its strengths.
 
-- **[[quick-context/firmware]]** — The ESP32-S3 runs [[quick-context/firmware|firmware]] that implements the WiFi stack, just like the STM32s run motor control firmware. The difference: the ESP32's firmware includes a TCP/IP stack, TLS encryption, and the 802.11 protocol engine — far more complex than bare-metal motor control code.
+- **[[quick-context/firmware]]** — The ESP32-S3 runs [[quick-context/firmware|firmware]] that implements the WiFi stack, just like the STM32s run motor control firmware. The difference: the [[learning/notes/quick-context/esp32|ESP32]]'s firmware includes a TCP/IP stack, TLS encryption, and the 802.11 protocol engine — far more complex than bare-metal motor control code.
 
 - **[[micro-context/microcontroller]]** — The ESP32-S3 is itself a [[micro-context/microcontroller|microcontroller]] (CPU + memory + peripherals on one chip), but with an integrated radio transceiver — making it a "wireless SoC" (System on Chip).
 
@@ -378,7 +378,7 @@ Microwave ovens operate at 2.45 GHz — right in the middle of the 2.4 GHz WiFi 
 **Q4:** WiFi can reach 54 Mbps (802.11g) while I2C maxes out at 400 kbps. Why don't embedded systems use WiFi for everything?
 <details>
 <summary>Answer</summary>
-Three critical reasons: (1) **Latency** — WiFi has 1-50+ ms variable latency due to CSMA/CA contention, packet buffering, and retransmissions; I2C/SPI complete in microseconds, deterministically. (2) **Power** — a WiFi radio draws 100-300 mA while transmitting; an I2C transaction on an STM32 uses <1 mA. (3) **Reliability** — WiFi packets can be lost to interference, requiring retransmission; wired protocols on a PCB have essentially zero packet loss. For the Pupper's 1 kHz motor control loop, a 50 ms WiFi hiccup means 50 missed motor commands — the robot falls. See: The Key Tension — WiFi vs Wired.
+Three critical reasons: (1) **Latency** — WiFi has 1-50+ ms variable latency due to CSMA/CA contention, packet buffering, and retransmissions; I2C/SPI complete in microseconds, deterministically. (2) **Power** — a WiFi radio draws 100-300 mA while transmitting; an I2C transaction on an [[learning/notes/micro-context/stm32-microcontroller|STM32]] uses <1 mA. (3) **Reliability** — WiFi packets can be lost to interference, requiring retransmission; wired protocols on a PCB have essentially zero packet loss. For the Pupper's 1 kHz motor control loop, a 50 ms WiFi hiccup means 50 missed motor commands — the robot falls. See: The Key Tension — WiFi vs Wired.
 </details>
 
 **Q5:** The ESP32-S3 has a "PCB trace antenna." How can a flat copper line on a circuit board receive radio waves?

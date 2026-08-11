@@ -87,4 +87,4 @@ The Raspberry Pi 5 is the **high-level controller**: it runs Linux, ROS 2, compu
 | Layer | Hardware | Runs | Timing |
 |-------|----------|------|--------|
 | High-level | Raspberry Pi 5 (BCM2712, Linux) | ROS 2, vision, planning, LLM | Soft real-time (~100Hz) |
-| Low-level | STM32 MCUs (Cortex-M4, bare-metal) | PID loops, motor commands, IMU fusion | Hard real-time (1000Hz) |
+| Low-level | [[learning/notes/micro-context/stm32-microcontroller|STM32]] MCUs (Cortex-M4, bare-metal) | PID loops, motor commands, IMU fusion | Hard real-time (1000Hz) |

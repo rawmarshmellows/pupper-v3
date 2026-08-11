@@ -401,7 +401,7 @@ ACCOUNT HEALTH: YELLOW (Winnable but requires active management)
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC is a qualification complement to LAMP; use MEDDPICC to validate deal viability, LAMP to plan account strategy
+- **[[quick-context/meddpicc-qualification-framework]]** — [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] is a qualification complement to LAMP; use MEDDPICC to validate deal viability, LAMP to plan account strategy
 - **[[quick-context/challenger-sale-methodology]]** — Challenger provides the *how* of customer interactions; LAMP provides the *who* and *when*
 - **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model adds a diagnostic layer to LAMP's stakeholder mapping
 - **[[quick-context/sandler-kare-segmentation]]** — KARE helps decide which accounts deserve full LAMP treatment vs. lighter touch

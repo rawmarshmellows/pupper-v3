@@ -129,7 +129,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
+The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a [[learning/notes/quick-context/soldering|soldering]] iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 
 </details>
 
@@ -223,7 +223,7 @@ X-RAY VIEW: What Inspectors See
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB/Chip Packaging Hierarchy]]** — BGAs are one package type in the larger system that connects silicon dies to circuit boards; understanding the full hierarchy shows where BGA fits in the scale from transistors to systems.
 
-- **Surface Mount Technology (SMT)** — The broader manufacturing process that includes BGA; covers how pick-and-place machines, stencils, and reflow ovens work together to assemble entire circuit boards.
+- **Surface Mount Technology (SMT)** — The broader manufacturing process that includes BGA; covers how [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]] machines, stencils, and reflow ovens work together to assemble entire circuit boards.
 
 - **Thermal Management** — BGA packages often include thermal balls (larger balls for heat transfer) or exposed metal pads on top; understanding heat flow explains many BGA design decisions.
 

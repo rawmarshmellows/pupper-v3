@@ -24,11 +24,11 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
-<summary><strong>How It Works</strong> --- From transistor pairs to digital output</summary>
+<summary><strong>How It Works</strong> --- From [[learning/notes/quick-context/transistor|transistor]] pairs to digital output</summary>
 
 ### The Functional View: What a Comparator Does
 
-A comparator is the simplest possible analog-to-digital converter: 1-bit resolution, no clock needed, continuous output.
+A comparator is the simplest possible [[learning/notes/micro-context/adc-analog-to-digital-converter|analog-to-digital converter]]: 1-bit resolution, no clock needed, continuous output.
 
 ```
 COMPARATOR FUNCTION

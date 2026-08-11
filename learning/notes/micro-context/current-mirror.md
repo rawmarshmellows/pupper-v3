@@ -5,11 +5,11 @@ created: 2026-04-02
 
 # Current Mirror
 
-**Definition:** A circuit that copies a reference current from one transistor to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in differential pairs.
+**Definition:** A circuit that copies a reference current from one [[learning/notes/quick-context/transistor|transistor]] to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in differential pairs.
 
 ## How It Works
 
-- A reference current $I_{ref}$ (set by a resistor or upstream source) flows through a diode-connected [[micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
+- A reference current $I_{ref}$ (set by a [[learning/notes/quick-context/resistor|resistor]] or upstream source) flows through a diode-connected [[micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
 - A second matched transistor shares the same $V_{gs}$ (gates tied together), so it develops the same channel conditions and conducts the same current: $I_{out} \approx I_{ref}$.
 - Because the output transistor operates in saturation, its drain current is nearly independent of drain voltage — giving high output impedance, which is what makes it a good current source.
 - Scaling the output transistor's $W/L$ ratio relative to the reference transistor scales the copied current proportionally: $I_{out} = I_{ref} \times (W/L)_{out} / (W/L)_{ref}$.

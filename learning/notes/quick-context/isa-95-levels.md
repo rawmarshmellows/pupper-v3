@@ -23,7 +23,7 @@ A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the tem
 |------|------------|
 | **MES** | Manufacturing Execution System—the Level 3 software that orchestrates production and captures what actually happened |
 | **B2MML** | Business to Manufacturing Markup Language—the XML schema that implements ISA-95's data models for actual system integration |
-| **OEE** | Overall Equipment Effectiveness—the holy trinity metric of availability x performance x quality that Level 3 systems exist to calculate |
+| **OEE** | [[learning/notes/quick-context/oee-overall-equipment-effectiveness|Overall Equipment Effectiveness]]—the holy trinity metric of availability x performance x quality that Level 3 systems exist to calculate |
 | **Work Order** | The instruction from Level 4 to Level 3 saying "make this thing" |
 | **Genealogy** | The ability to trace every input lot, process parameter, and operator that touched a finished product—critical for recalls and regulated industries |
 
