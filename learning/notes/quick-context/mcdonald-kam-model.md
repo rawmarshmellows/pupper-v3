@@ -261,7 +261,7 @@ Next Stage Action: Prevent further regression
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides the account planning mechanics; McDonald's KAM model diagnoses relationship maturity to inform that planning
 - **[[quick-context/sandler-kare-segmentation]]** — KARE segments the portfolio; McDonald's model goes deeper on relationship quality within each segment
-- **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC qualifies deals; McDonald's model qualifies the *relationship* context in which deals occur
+- **[[quick-context/meddpicc-qualification-framework]]** — [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] qualifies deals; McDonald's model qualifies the *relationship* context in which deals occur
 - **Customer Success** — The function most responsible for relationship progression post-sale; KAM model helps CS prioritize accounts
 - **Net Promoter Score (NPS)** — A quantitative signal that sometimes correlates with relationship maturity, though imperfect
 - **[[quick-context/whitespace-mapping]]** — Tool for identifying expansion opportunities; relationship maturity affects which whitespace cells are accessible

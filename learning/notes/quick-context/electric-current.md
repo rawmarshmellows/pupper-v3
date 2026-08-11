@@ -9,13 +9,13 @@ created: 2026-01-22
 
 ## The Core Problem
 
-Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no electrolysis, no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
+Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no [[learning/notes/quick-context/electrolysis|electrolysis]], no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Ampere (A)** | The unit of current. 1 ampere = 1 coulomb of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
+| **Ampere (A)** | The unit of current. 1 ampere = 1 [[learning/notes/micro-context/coulomb-history|coulomb]] of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
 | **Coulomb (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in electrolysis. |
 | **Direct Current (DC)** | Current that flows in ONE direction only—like water flowing downhill. [[quick-context/galvanic-cells-batteries|Batteries]] produce DC. Electrolysis requires DC (electrons must consistently enter at [[quick-context/electrodes|cathode]], exit at [[quick-context/electrodes|anode]]). |
 | **Alternating Current (AC)** | Current that reverses direction many times per second (60 Hz in US = 60 reversals/second). Wall outlets provide AC. Must convert to DC for electrolysis. |
@@ -346,11 +346,11 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
-- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+- **[[quick-context/electricity-generation]]** — [[learning/notes/quick-context/electricity-generation|How electricity is created]] in the first place: electromagnetic induction (generators), chemical reactions ([[learning/notes/quick-context/galvanic-cells-batteries|batteries]]), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
+- **[[quick-context/coil-magnetic-field]]** — [[learning/notes/quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]]. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
 
-- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged subatomic particles that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
+- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged [[learning/notes/quick-context/subatomic-particles|subatomic particles]] that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
 
 - **[[small-context/permanent-magnet-creation]]** — Magnetizers use high current through a coil to create strong magnetic fields that align domains in iron. The field strength scales with current: more amps = stronger field = more domain alignment force.
 
@@ -374,7 +374,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q3:** Why does electrolysis specifically require DC (direct current) rather than AC (alternating current)?
 <details>
 <summary>Answer</summary>
-**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons (oxidation). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
+**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons ([[learning/notes/micro-context/oxidation|oxidation]]). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
 </details>
 
 **Q4:** Two electrolysis cells are connected in series (current passes through both). Cell A has electrode area of 10 cm², Cell B has electrode area of 100 cm². Which cell produces more product?

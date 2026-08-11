@@ -62,7 +62,7 @@ The central tradeoff is **abstraction vs. control latency**.
 
 High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up the widget" but introduce planning latency and hide timing guarantees. Low-level APIs give you direct joint control at 1kHz+ but require you to handle everything—singularities, velocity limits, emergency stops.
 
-Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
+Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]].
 
 The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 

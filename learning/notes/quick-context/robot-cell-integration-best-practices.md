@@ -33,7 +33,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 **Tools of the trade include:**
 
 - **PLC programming environments**: Rockwell Studio 5000, Siemens TIA Portal
-- **Robot IDEs**: Fanuc Roboguide, ABB RobotStudio, EPSON RC+
+- **Robot IDEs**: Fanuc Roboguide, ABB RobotStudio, [[learning/notes/quick-context/epson-rc-plus-programming|EPSON]] RC+
 - **Industrial protocol analyzers**: Wireshark with EtherNet/IP dissectors
 - **Digital twin platforms**: Visual Components, Siemens Process Simulate, RoboDK
 

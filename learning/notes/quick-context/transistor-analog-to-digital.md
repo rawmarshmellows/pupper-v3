@@ -13,7 +13,7 @@ created: 2026-01-25
 
 Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs voltage levels.
 
-If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" transistor might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
+If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" [[learning/notes/quick-context/transistor|transistor]] might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
 
 ## 5 Essential Terms
 
@@ -286,7 +286,7 @@ The fundamental tradeoff in making analog transistors behave digitally:
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[learning/notes/micro-context/clock-speed|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 
@@ -423,7 +423,7 @@ NOISE AND VARIATION IN REAL CHIPS:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
+- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic [[learning/notes/micro-context/mosfet|MOSFET]] structure (gate, source, drain, channel) is prerequisite.
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
 

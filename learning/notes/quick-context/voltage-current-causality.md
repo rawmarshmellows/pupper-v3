@@ -184,12 +184,12 @@ WHY Ohm's Law ISN'T a causal statement:
 <details>
 <summary><strong>The Key Tension</strong> --- Voltage-source thinking vs. current-source thinking</summary>
 
-Most introductory courses teach circuits from a "voltage-source" perspective: batteries provide voltage, and current results. This is fine for simple resistive circuits but breaks down for more complex scenarios.
+Most introductory courses teach circuits from a "voltage-source" perspective: [[learning/notes/quick-context/galvanic-cells-batteries|batteries]] provide voltage, and current results. This is fine for simple resistive circuits but breaks down for more complex scenarios.
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[learning/notes/quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```

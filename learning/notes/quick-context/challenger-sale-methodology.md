@@ -162,7 +162,7 @@ The Challenger pitch never asked "what are your priorities?"—it *told* the cus
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/meddpicc-qualification-framework]]** — Use MEDDPICC to qualify whether the deal is worth pursuing; use Challenger to shape how you pursue it
+- **[[quick-context/meddpicc-qualification-framework]]** — Use [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] to qualify whether the deal is worth pursuing; use Challenger to shape how you pursue it
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP identifies stakeholders; Challenger's "Tailor" pillar customizes the insight message per stakeholder
 - **SPIN Selling** — Neil Rackham's methodology focused on questioning; Challenger shifts from questioning to teaching
 - **The Challenger Customer** — The sequel book applying Challenger principles to mobilizing customer buying groups

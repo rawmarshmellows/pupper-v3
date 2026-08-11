@@ -173,7 +173,7 @@ Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the account planning framework for KEEP and EXPAND accounts
-- **[[quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; MEDDPICC qualifies specific opportunities within those accounts
+- **[[quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] qualifies specific opportunities within those accounts
 - **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model helps understand where KEEP vs. EXPAND accounts stand
 - **Territory Management** — The broader discipline of dividing accounts across reps; KARE informs territory strategy
 - **Net Revenue Retention (NRR)** — The SaaS metric that makes EXPAND strategy visible; companies with NRR >110% are essentially KARE-optimized

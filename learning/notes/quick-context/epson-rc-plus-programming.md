@@ -35,7 +35,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)
    - `Move` - Linear interpolation (straight Cartesian path)
-   - `Jump` - Arc motion with automatic Z-retract for pick-and-place
+   - `Jump` - Arc motion with automatic Z-retract for [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]]
 
 3. **Tool Definition**: Set coordinate frame offsets from the robot flange to the actual gripper or tool tip, ensuring positions are accurate regardless of end-effector.
 

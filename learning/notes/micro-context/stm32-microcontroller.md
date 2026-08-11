@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-04-05
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]]
+
 # STM32 Microcontroller
 
 > **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
