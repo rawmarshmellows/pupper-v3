@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -62,7 +62,7 @@ The central tradeoff is **abstraction vs. control latency**.
 
 High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up the widget" but introduce planning latency and hide timing guarantees. Low-level APIs give you direct joint control at 1kHz+ but require you to handle everything—singularities, velocity limits, emergency stops.
 
-Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
+Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]].
 
 The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 
@@ -137,10 +137,10 @@ void realtime_loop() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
-- **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
-- **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
-- **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
+- **[[learning/notes/quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
+- **[[learning/notes/quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
+- **[[learning/notes/quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
 
 </details>
 

@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 1 — PID Control (Single Joint)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab2-forward-kinematics]]
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/can-bus]]
 
 > **TL;DR:** Lab 1 introduces closed-loop motor control by having students implement and tune a PD controller for a single joint — computing torque from position and velocity error at 200 Hz — which becomes the foundational control primitive reused in every subsequent lab.
 
@@ -205,8 +205,8 @@ With $K_p = 1.0$, $K_d = 5.0$ (too sluggish, overdamped):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview. Lab 1's PD controller is reused directly in Labs 3 (IK trajectory tracking) and 4 (gait control), and its concepts appear in Lab 7's proportional yaw controller for visual tracking.
-- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over CAN bus to the servo motors.
+- **[[learning/notes/quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview. Lab 1's PD controller is reused directly in Labs 3 (IK trajectory tracking) and 4 (gait control), and its concepts appear in Lab 7's proportional yaw controller for visual tracking.
+- **[[learning/notes/quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over [[learning/notes/quick-context/can-bus|CAN bus]] to the servo motors.
 - **ROS2 `sensor_msgs/JointState`** — The message type on `/joint_states`. Fields: `name[]` (joint names), `position[]` (radians), `velocity[]` (rad/s), `effort[]` (Nm). The node must index into these arrays to find the correct joint.
 - **`forward_command_controller`** — A ROS2 control plugin from `ros2_controllers`. The YAML config maps joint names to command interfaces (effort) and state interfaces (position, velocity). It bypasses any built-in PID so students implement their own.
 - **Torque vs. position control** — Most hobby servos accept position commands. The Pupper's motors accept raw torque commands, giving students direct control over the force applied — essential for learning PD control from first principles.
