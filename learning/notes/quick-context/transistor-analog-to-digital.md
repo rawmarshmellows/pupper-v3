@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -11,9 +11,9 @@ created: 2026-01-25
 
 ## The Core Problem: Reality Is Messy, But Computers Need Perfection
 
-Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs voltage levels.
+Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[learning/notes/quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[learning/notes/quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs [[learning/notes/quick-context/voltage|voltage]] levels.
 
-If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" transistor might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
+If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" [[learning/notes/quick-context/transistor|transistor]] might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
 
 ## 5 Essential Terms
 
@@ -286,7 +286,7 @@ The fundamental tradeoff in making analog transistors behave digitally:
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[learning/notes/micro-context/clock-speed|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 
@@ -423,19 +423,19 @@ NOISE AND VARIATION IN REAL CHIPS:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
+- **[[learning/notes/quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic [[learning/notes/micro-context/mosfet|MOSFET]] structure (gate, source, drain, channel) is prerequisite.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
+- **[[learning/notes/quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
 
-- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How manufacturing variation creates transistor-to-transistor differences. Process variation means no two transistors are identical.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How manufacturing variation creates transistor-to-transistor differences. Process variation means no two transistors are identical.
 
-- **[[quick-context/electric-current|Electric Current]]** — What "leakage current" actually means. Understanding that current = charge flow explains why even small leakage matters when multiplied by billions of transistors.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** — What "leakage current" actually means. Understanding that current = charge flow explains why even small leakage matters when multiplied by billions of transistors.
 
-- **[[quick-context/code-to-gates-and-bootstrapping|Code to Gates and Bootstrapping]]** — The full chain from high-level code down to logic gates. Shows how NAND gates (built from transistors) compose into half adders, ALUs, and entire CPUs, and how the first software was bootstrapped from punch cards.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates and Bootstrapping]]** — The full chain from high-level code down to logic gates. Shows how NAND gates (built from transistors) compose into half adders, ALUs, and entire CPUs, and how the first software was bootstrapped from punch cards.
 
 - **Boolean Logic and CMOS Design** — How complementary transistors create regenerative logic gates. CMOS is specifically designed to produce clean digital outputs from imperfect analog transistors.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved to combat leakage. FinFET and GAA were invented specifically because planar MOSFETs couldn't control short-channel effects at small scales.
+- **[[learning/notes/quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved to combat leakage. FinFET and GAA were invented specifically because planar MOSFETs couldn't control short-channel effects at small scales.
 
 </details>
 
@@ -451,7 +451,7 @@ Subthreshold conduction is current that flows when the gate voltage is below the
 **Q2:** What is a "noise margin" and why is it essential for digital circuits?
 <details>
 <summary>Answer</summary>
-Noise margin is the voltage buffer between what a circuit produces as a valid logic level and the threshold where a receiving circuit might misinterpret it. For example, if "1" must be above 0.7V to be recognized, but the circuit produces 0.95V, the noise margin is 0.25V. This margin allows the circuit to tolerate power supply noise, [[quick-context/thermal-noise-electronics|thermal noise]], and transistor imperfections without errors. Without noise margins, any noise would corrupt digital values. See: "Strategy 1: Voltage Rails and Noise Margins."
+Noise margin is the voltage buffer between what a circuit produces as a valid logic level and the threshold where a receiving circuit might misinterpret it. For example, if "1" must be above 0.7V to be recognized, but the circuit produces 0.95V, the noise margin is 0.25V. This margin allows the circuit to tolerate power supply noise, [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]], and transistor imperfections without errors. Without noise margins, any noise would corrupt digital values. See: "Strategy 1: Voltage Rails and Noise Margins."
 </details>
 
 **Q3:** Why does CMOS (Complementary MOS) logic produce "clean" digital outputs even though individual transistors are imperfect?

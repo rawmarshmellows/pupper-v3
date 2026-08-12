@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
@@ -11,14 +11,14 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Inside every computer chip is a tiny silicon die with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
+Inside every computer chip is a tiny [[learning/notes/quick-context/silicon-die|silicon die]] with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
 
 ## 5 Essential Terms
 
 | Term | Plain English Definition |
 |------|--------------------------|
-| **Bond pad** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
-| **Substrate** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
+| **[[learning/notes/quick-context/bond-pad|Bond pad]]** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
+| **[[learning/notes/quick-context/substrate-ic-packaging|Substrate]]** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
 | **Ultrasonic welding** | Using high-frequency vibrations (like a tiny tuning fork) to melt/fuse the wire to the metal pad without traditional heat |
 | **Loop height** | How tall the wire arc is above the chip; taller loops are more forgiving but add electrical interference |
 | **Ball bond / Wedge bond** | The two ends of a wire bond—the "ball" is a melted sphere at the start, the "wedge" is a flat pressed connection at the end |
@@ -317,7 +317,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
 
 - **Flip-Chip (C4) Bonding** — The main alternative to wire bonding; uses solder bumps under the chip for higher density and performance.
 
@@ -325,7 +325,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 
 - **Ultrasonic Welding** — The core joining technology behind wire bonding; uses vibration instead of heat to fuse metals.
 
-- **[[quick-context/electric-current|Electric Current]]** — Understanding how electricity flows helps explain why wire length, diameter, and inductance matter for signal quality.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** — Understanding how electricity flows helps explain why wire length, diameter, and inductance matter for signal quality.
 
 </details>
 
@@ -359,7 +359,7 @@ Wire bonds can only connect around the edges of the chip (perimeter bonding), li
 **Q5:** Given what you know about the chip packaging hierarchy, why might a memory chip (DRAM) use wire bonding while the CPU that accesses it uses flip-chip?
 <details>
 <summary>Answer</summary>
-Memory chips have fewer I/O connections (80-200 wires for DRAM vs. thousands for CPUs) and operate at lower signal frequencies than CPU-to-memory buses. The cost savings of wire bonding are significant when you have multiple memory chips per system. CPUs, however, need thousands of connections for power delivery and high-speed data lanes running at multi-GHz frequencies—wire bonding's inductance and limited density make flip-chip essential. The packaging hierarchy shows that each level is optimized for its specific requirements; wire bonding is "good enough" for memory but not for the processor. See: [[quick-context/pcb-chip-transistor-hierarchy]] and The Key Tension
+Memory chips have fewer I/O connections (80-200 wires for DRAM vs. thousands for CPUs) and operate at lower signal frequencies than CPU-to-memory buses. The cost savings of wire bonding are significant when you have multiple memory chips per system. CPUs, however, need thousands of connections for power delivery and high-speed data lanes running at multi-GHz frequencies—wire bonding's inductance and limited density make flip-chip essential. The packaging hierarchy shows that each level is optimized for its specific requirements; wire bonding is "good enough" for memory but not for the processor. See: [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] and The Key Tension
 </details>
 
 </details>

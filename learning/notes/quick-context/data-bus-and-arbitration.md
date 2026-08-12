@@ -5,9 +5,9 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/micro-context/clock-edges]]
 
-> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
+> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a [[learning/notes/micro-context/short-circuit|short circuit]] and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
 ## The Core Problem
 
@@ -18,7 +18,7 @@ A computer is dozens of chips that all need to exchange bytes: the CPU reads an 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data|Output Enable (OE)]] pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |
@@ -77,7 +77,7 @@ BUS CONTENTION = A SHORT CIRCUIT
               chips heat up, data is garbage
 ```
 
-The wire ends up at some undefined middle voltage that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
+The wire ends up at some undefined middle [[learning/notes/quick-context/voltage|voltage]] that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
 
 ### The fix: tri-state and Output Enable
 
@@ -126,7 +126,7 @@ A SINGLE-MASTER BUS TRANSACTION (CPU reads one byte from RAM)
     RAM returns to Hi-Z. The bus is free for the next transaction.
 ```
 
-The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a comparator) that converts "an address appeared" into "this one chip's enable pin goes active."
+The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a [[learning/notes/quick-context/comparator|comparator]]) that converts "an address appeared" into "this one chip's enable pin goes active."
 
 **Multi-master arbitration (one paragraph).** Some buses have several would-be masters (e.g. a CPU and a DMA controller, or many nodes on [[learning/notes/quick-context/can-bus|CAN]] / [[learning/notes/micro-context/i2c|I2C]]). Then you need a tiebreak rule for simultaneous requests. Schemes include a dedicated **arbiter** that grants the bus to one requester at a time, daisy-chained **priority** lines, or — elegantly — **bitwise arbitration** as on CAN: every node transmits its message ID while listening; a dominant 0 overrides a recessive 1, so a node that sees a bit different from what it sent knows it lost and backs off, all with zero wasted time and no central referee.
 
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one [[learning/notes/quick-context/differential-pair|differential pair]] very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>

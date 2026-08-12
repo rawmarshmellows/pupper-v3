@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 
@@ -23,7 +23,7 @@ A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the tem
 |------|------------|
 | **MES** | Manufacturing Execution System—the Level 3 software that orchestrates production and captures what actually happened |
 | **B2MML** | Business to Manufacturing Markup Language—the XML schema that implements ISA-95's data models for actual system integration |
-| **OEE** | Overall Equipment Effectiveness—the holy trinity metric of availability x performance x quality that Level 3 systems exist to calculate |
+| **OEE** | [[learning/notes/quick-context/oee-overall-equipment-effectiveness|Overall Equipment Effectiveness]]—the holy trinity metric of availability x performance x quality that Level 3 systems exist to calculate |
 | **Work Order** | The instruction from Level 4 to Level 3 saying "make this thing" |
 | **Genealogy** | The ability to trace every input lot, process parameter, and operator that touched a finished product—critical for recalls and regulated industries |
 
@@ -73,8 +73,8 @@ When the batch completes, data flows back up: actual temperatures, durations, an
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - The key metric that Level 3 MES systems calculate from production data
-- **[[quick-context/plc-vs-software-control]]** - Understanding what happens at Level 2 and the tradeoffs in control architectures
+- **[[learning/notes/quick-context/oee-overall-equipment-effectiveness]]** - The key metric that Level 3 MES systems calculate from production data
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - Understanding what happens at Level 2 and the tradeoffs in control architectures
 
 </details>
 

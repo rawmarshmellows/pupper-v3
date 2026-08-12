@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/electrodes]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/quick-context/electrolyte]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/electrodes]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/oxidation]]
 
 > **TL;DR:** Electrolysis uses electricity to force non-spontaneous chemical reactions (like splitting water into hydrogen and oxygen), essentially running a battery in reverse by supplying energy to break stable bonds rather than harvesting energy from spontaneous reactions.
 
@@ -14,17 +14,17 @@ updated: 2026-01-22
 
 Many important chemical changes won't happen on their own because they require climbing to a higher energy state. Electrolysis uses electricity to push these non-spontaneous reactions forward, supplying energy directly to move electrons against their natural flow—pushing reactions "uphill" to make otherwise impossible chemistry occur.
 
-The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, electrolyte, electron flow), opposite energy direction.
+The fundamental insight: **electrolysis is the reverse of a [[learning/notes/quick-context/galvanic-cells-batteries|battery]]**. In a [[learning/notes/quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components ([[learning/notes/quick-context/electrodes|electrodes]], [[learning/notes/quick-context/electrolyte|electrolyte]], electron flow), opposite energy direction.
 
-This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chemical bond energies]]: breaking bonds costs energy, forming bonds releases it. Water's O-H bonds are stable (~460 kJ/mol each)—nature doesn't want to break them. Electrolysis supplies that bond-breaking energy electrically, storing it in the separated H₂ and O₂ gases. Recombining them (in a fuel cell or combustion) releases that stored energy.
+This reversal principle connects to [[learning/notes/quick-context/chemical-bonds-spectrum|chemical bond energies]]: breaking bonds costs energy, forming bonds releases it. Water's O-H bonds are stable (~460 kJ/mol each)—nature doesn't want to break them. Electrolysis supplies that bond-breaking energy electrically, storing it in the separated H₂ and O₂ gases. Recombining them (in a fuel cell or combustion) releases that stored energy.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
-| **Cathode/Anode** | Cathode = reduction (electrons flow in, cations migrate here); Anode = oxidation (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
-| **Overpotential** | Extra voltage beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
+| **[[learning/notes/micro-context/cathode|Cathode]]/[[learning/notes/micro-context/anode|Anode]]** | Cathode = reduction (electrons flow in, cations migrate here); Anode = [[learning/notes/micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
+| **Overpotential** | Extra [[learning/notes/quick-context/voltage|voltage]] beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
 | **Current Efficiency** | Fraction of electrons doing useful chemistry vs. side reactions; industrial processes obsess over this since small losses mean millions in wasted electricity |
 
@@ -232,13 +232,13 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 
 **The research frontier**: Finding cheap catalysts that rival platinum's performance. Nickel-molybdenum alloys, cobalt phosphides, and nanostructured materials are promising. The goal: precious-metal-free electrodes that still achieve <200 mV overpotential. This is THE bottleneck for affordable green hydrogen.
 
-**Relation to [[quick-context/chemical-bonds-spectrum|bond energies]]**: Electrolysis breaks strong [[quick-context/covalent-bonds|covalent bonds]] (O-H in water, ~460 kJ/mol) that require significant energy input. The 1.23V minimum for water electrolysis directly reflects this bond energy: 1.23V × 96,485 C/mol × 2 mol e⁻ per mol H₂O = 237 kJ/mol, matching the Gibbs free energy of water splitting.
+**Relation to [[learning/notes/quick-context/chemical-bonds-spectrum|bond energies]]**: Electrolysis breaks strong [[learning/notes/quick-context/covalent-bonds|covalent bonds]] (O-H in water, ~460 kJ/mol) that require significant energy input. The 1.23V minimum for water electrolysis directly reflects this bond energy: 1.23V × 96,485 C/mol × 2 mol e⁻ per mol H₂O = 237 kJ/mol, matching the Gibbs free energy of water splitting.
 
 **Relation to oxidation states**: Track where electrons go by watching oxidation numbers change. In water (H₂O), hydrogen is +1 and oxygen is -2. After electrolysis, hydrogen in H₂ is 0 (reduced: gained electrons), oxygen in O₂ is 0 (oxidized: lost electrons). The total electron bookkeeping must balance.
 
 **Relation to electrochemical series**: Metals and ions have different "eagerness" to accept electrons ([[quick-context/reduction-potential|reduction potential]]). Copper (E° = +0.34V) reduces more easily than zinc (E° = -0.76V), which reduces more easily than sodium (E° = -2.71V). This explains why electrolyzing a copper/zinc mixture plates copper first, and why sodium can only be extracted from molten salt, not solution (water reduces first).
 
-**Relation to energy storage**: Electrolysis is half of the hydrogen energy cycle. Electricity → electrolysis → H₂ stored → fuel cell → electricity. Round-trip efficiency is ~40-50%, much worse than [[quick-context/galvanic-cells-batteries|batteries]] (~90%), but hydrogen stores energy for months without loss and can be transported. The physics of [[quick-context/chemical-bonds-spectrum|bond formation]] in the fuel cell (H₂ + O₂ → H₂O) releases exactly what electrolysis put in, minus losses.
+**Relation to energy storage**: Electrolysis is half of the hydrogen energy cycle. Electricity → electrolysis → H₂ stored → fuel cell → electricity. Round-trip efficiency is ~40-50%, much worse than [[learning/notes/quick-context/galvanic-cells-batteries|batteries]] (~90%), but hydrogen stores energy for months without loss and can be transported. The physics of [[learning/notes/quick-context/chemical-bonds-spectrum|bond formation]] in the fuel cell (H₂ + O₂ → H₂O) releases exactly what electrolysis put in, minus losses.
 
 **The one thing most outsiders get wrong about this is...** thinking the energy gets "stored in the bonds" of hydrogen. This is backwards. **Breaking** bonds costs energy; **forming** bonds releases it. The O-H bonds in water are *strong*—that's why water is stable. Electrolysis puts energy *into* the system by breaking those bonds, creating separated H₂ and O₂ at higher chemical potential. When H₂ and O₂ recombine (combustion or fuel cell), *new* O-H bonds form, releasing that stored potential energy. The energy isn't in the H-H bond of hydrogen; it's in the *system's configuration*—separated fuel and oxidizer that "want" to combine. This misconception extends to nutrition ("breaking down food releases energy")—actually, it's the *formation* of CO₂ and H₂O bonds (plus ATP) during metabolism that releases energy, not the breaking of food molecule bonds.
 
@@ -247,11 +247,11 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking covalent bonds in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
+- **[[learning/notes/quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking [[learning/notes/quick-context/covalent-bonds|covalent bonds]] in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
 
-- **[[quick-context/galvanic-cells-batteries|Galvanic/Voltaic Cells (Batteries)]]** — Spontaneous redox reactions producing electricity. Same components as electrolysis cells, opposite energy flow. Understanding one illuminates the other.
+- **[[learning/notes/quick-context/galvanic-cells-batteries|Galvanic/Voltaic Cells (Batteries)]]** — Spontaneous redox reactions producing electricity. Same components as electrolysis cells, opposite energy flow. Understanding one illuminates the other.
 
-- **Redox Chemistry** — The broader framework: any reaction where electrons transfer between species. Electrolysis forces non-spontaneous redox; batteries harvest spontaneous redox; corrosion is uncontrolled redox; metabolism is biological redox.
+- **Redox Chemistry** — The broader framework: any reaction where electrons transfer between species. Electrolysis forces non-spontaneous redox; [[learning/notes/quick-context/galvanic-cells-batteries|batteries]] harvest spontaneous redox; corrosion is uncontrolled redox; metabolism is biological redox.
 
 - **[[quick-context/reduction-potential|Electrode Potentials (E° values)]]** — The "voltage table" predicting which species reduce/oxidize preferentially. Higher E° = more easily reduced. The difference between two half-reactions gives the cell voltage.
 
@@ -264,10 +264,10 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A [[quick-context/galvanic-cells-batteries|battery]] and an electrolysis cell both have anodes, cathodes, and electrolytes. What's the fundamental difference between them?
+**Q1:** A [[learning/notes/quick-context/galvanic-cells-batteries|battery]] and an electrolysis cell both have anodes, cathodes, and electrolytes. What's the fundamental difference between them?
 <details>
 <summary>Answer</summary>
-**Energy flow direction.** In a [[quick-context/galvanic-cells-batteries|battery]], spontaneous chemical reactions drive electrons through an external circuit—chemical energy converts to electrical energy. In electrolysis, external electrical energy forces a non-spontaneous reaction to occur—electrical energy converts to chemical energy. They're thermodynamic opposites: batteries release stored chemical potential; electrolysis creates it. The same cell can often work both ways (rechargeable batteries do exactly this—discharge = galvanic, charge = electrolytic). See: The Core Problem
+**Energy flow direction.** In a [[learning/notes/quick-context/galvanic-cells-batteries|battery]], spontaneous chemical reactions drive electrons through an external circuit—chemical energy converts to electrical energy. In electrolysis, external electrical energy forces a non-spontaneous reaction to occur—electrical energy converts to chemical energy. They're thermodynamic opposites: batteries release stored chemical potential; electrolysis creates it. The same cell can often work both ways (rechargeable batteries do exactly this—discharge = galvanic, charge = electrolytic). See: The Core Problem
 </details>
 
 **Q2:** Why can't you produce sodium metal by electrolyzing a sodium chloride solution (brine), but you *can* produce it from molten sodium chloride?

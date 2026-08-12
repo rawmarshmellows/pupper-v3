@@ -3,22 +3,22 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]]
 
-> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
+> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum [[learning/notes/quick-context/voltage|voltage]] needed for [[learning/notes/quick-context/electrolysis|electrolysis]], with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 
 # Voltage and Thermodynamic Relationship in Electrolysis
 
 ## The Core Problem
 
-[[quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
+[[learning/notes/quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, [[learning/notes/quick-context/galvanic-cells-batteries|batteries]], fuel cells, or industrial hydrogen production.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Gibbs Free Energy (ΔG)** | The total energy a reaction needs (positive) or releases (negative)—think of it as the "energy price tag" of a chemical change |
-| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish electrodes and resistance |
+| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish [[learning/notes/quick-context/electrodes|electrodes]] and resistance |
 | **Faraday Constant (F)** | A conversion factor (96,485 C/mol) that translates between "chemistry units" (moles of electrons) and "electricity units" (coulombs) |
 | **Cell Potential (E)** | The voltage that corresponds to a reaction's energy requirement—directly calculated from Gibbs free energy |
 | **Non-spontaneous** | A reaction that won't happen unless you force it with external energy (like pushing a ball uphill) |
@@ -69,7 +69,7 @@ ENERGY FLOW IN ELECTROLYSIS
     ┌─────────────────────────────────────────────────────────┐
     │                   ELECTROLYSIS CELL                     │
     │                                                         │
-    │   CATHODE (-)              ANODE (+)                    │
+    │   [[learning/notes/micro-context/cathode|CATHODE]] (-)              [[learning/notes/micro-context/anode|ANODE]] (+)                    │
     │   ┌─────────┐              ┌─────────┐                  │
     │   │  2H⁺ +  │              │  H₂O →  │                  │
     │   │  2e⁻ →  │              │ ½O₂ +   │                  │
@@ -77,7 +77,7 @@ ENERGY FLOW IN ELECTROLYSIS
     │   │         │              │   2e⁻   │                  │
     │   └────┬────┘              └────┬────┘                  │
     │        │    ←── H⁺ ions ───     │                       │
-    │        │       (electrolyte)    │                       │
+    │        │       ([[learning/notes/quick-context/electrolyte|electrolyte]])    │                       │
     │        └────────────────────────┘                       │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
@@ -95,7 +95,7 @@ ENERGY FLOW IN ELECTROLYSIS
     │  (2 mol e⁻)(96,485 C/mol)(1.23 V) = 237,000 J          │
     │                                                        │
     │  Voltage is just energy-per-electron translated        │
-    │  into volts (joules per coulomb)                       │
+    │  into volts (joules per [[learning/notes/micro-context/coulomb-history|coulomb]])                       │
     └────────────────────────────────────────────────────────┘
 ```
 
@@ -240,7 +240,7 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — The broader process that this voltage relationship enables; understanding the full electrolysis cell setup ([[quick-context/electrodes|anode]], [[quick-context/electrodes|cathode]], [[quick-context/making-electrolytes|electrolyte]]) provides essential context for where these voltages are applied.
+- **[[learning/notes/quick-context/electrolysis]]** — The broader process that this voltage relationship enables; understanding the full electrolysis cell setup ([[learning/notes/quick-context/electrodes|anode]], [[learning/notes/quick-context/electrodes|cathode]], [[learning/notes/quick-context/making-electrolytes|electrolyte]]) provides essential context for where these voltages are applied.
 
 - **Electrochemistry fundamentals** — The study of chemical reactions that produce or consume electricity; this relationship is one specific application of broader electrochemical principles like the Nernst equation.
 
