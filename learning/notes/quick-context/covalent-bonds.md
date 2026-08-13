@@ -282,7 +282,7 @@ Related concepts that connect to covalent bonds:
 - [[quick-context/hydrogen-bonds-beginners]] — A weaker type of bond that works alongside covalent bonds to influence material behavior (like water's unique properties)
 - [[quick-context/van-der-waals-forces]] — The weak attractions between polymer chains that you overcome when melting thermoplastics
 - [[quick-context/dipole-dipole-interactions]] — Another type of intermolecular force that affects how polymer chains interact with each other
-- [[quick-context/biology-fundamentals]] — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
+- biology-fundamentals — Covalent bonds form the backbone of all biological molecules: peptide bonds in proteins, phosphodiester bonds in DNA, glycosidic bonds in carbohydrates
 - [[quick-context/subatomic-particles]] — Explains what electrons are, why atoms have specific numbers of them in outer shells, and why carbon with 4 outer electrons can form 4 bonds
 - [[small-context/glass-vs-plastic-uv-degradation]] — Bond dissociation energy in action: UV photons break C–C covalent bonds (346 kJ/mol) in plastics but can't reach Si–O bonds (452 kJ/mol) in glass
 

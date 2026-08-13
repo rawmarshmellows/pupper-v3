@@ -9,7 +9,7 @@ created: 2026-01-22
 
 ## The Core Problem
 
-Everything in the universe is made of atoms, and atoms can gain or lose tiny particles called **electrons** (which carry negative charge). When atoms lose or gain electrons, they become **ions**—charged particles that can move through liquids and conduct electricity. **Anions** are atoms that have *gained* extra electrons, making them negatively charged (think: "**A**nion = **A**dded electrons = negative"). **Oxidation** is the process where something *loses* electrons.
+Everything in the universe is made of atoms, and atoms can gain or lose tiny particles called **electrons** (which carry negative charge). When atoms lose or gain electrons, they become **ions**—charged particles that can move through liquids and conduct electricity. **Anions** are atoms that have *gained* extra electrons, making them negatively charged (think: "**A**nion = **A**dded electrons = negative"). **[[micro-context/oxidation|Oxidation]]** is the process where something *loses* electrons.
 
 Why does this matter? Without understanding anions and oxidation, we couldn't explain how batteries work, how [[quick-context/rust|metals rust]], how we extract aluminum from ore, or how our bodies generate energy. In [[quick-context/electrolysis|electrolysis]] specifically—using electricity to drive chemical reactions—anions migrate toward the positive [[quick-context/electrodes|electrode]] and undergo oxidation, releasing [[quick-context/electric-current|electrons]] into the circuit. This is how we split water, purify metals, and manufacture chlorine gas. If oxidation didn't happen at the electrode, the electrical circuit would be incomplete and nothing would work.
 
@@ -21,7 +21,7 @@ Why does this matter? Without understanding anions and oxidation, we couldn't ex
 | **Ion** | An atom that has gained or lost electrons, giving it an electrical charge |
 | **Anion** | A negatively-charged ion (has extra electrons); moves toward positive electrodes |
 | **Oxidation** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
-| **Anode** | The positive electrode where oxidation occurs; anions migrate here |
+| **[[micro-context/anode|Anode]]** | The positive electrode where oxidation occurs; anions migrate here |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -88,7 +88,7 @@ THIS IS OXIDATION: Loss of electrons, charge goes from negative to neutral
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and voltage applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
+The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and [[quick-context/voltage|voltage]] applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
 
 </details>
 

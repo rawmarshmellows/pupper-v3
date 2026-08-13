@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: A Common Misconception About Electricity
 
-If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that voltage is a *difference in potential*, not a quantity that accumulates like water in a tank.
+If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that [[quick-context/voltage|voltage]] is a *difference in potential*, not a quantity that accumulates like water in a tank.
 
 ## 5 Essential Terms
 
