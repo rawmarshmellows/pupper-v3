@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Sales Methodology Layering
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | e2e-sales-process-skand-80-20
 
 > **TL;DR:** No single sales methodology covers the entire account management lifecycle—the most effective organizations layer three types: a qualification framework (deal viability), a selling methodology (how to engage), and an account planning framework (long-term strategy), combining strengths while avoiding redundancy.
 

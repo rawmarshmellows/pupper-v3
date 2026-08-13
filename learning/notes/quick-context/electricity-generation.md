@@ -21,13 +21,13 @@ There are fundamentally three ways to force electrons to move:
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
-Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
+Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always [[micro-context/electromagnetic-induction|electromagnetic induction]].
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |

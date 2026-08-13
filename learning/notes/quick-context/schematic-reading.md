@@ -21,7 +21,7 @@ You download a datasheet or open-source hardware project and need to understand 
 | **Reference Designator** | A unique label identifying each component: R1, R2 (resistors), C1, C2 (capacitors), U1 (ICs), Q1 (transistors), D1 (diodes), L1 (inductors), J1 (connectors). |
 | **Net** | An electrical connection between two or more pins. All points on the same net are electrically connected, even if no line is drawn between them (connected by net labels). |
 | **Value Annotation** | The component value written next to the symbol: "10kΩ", "100nF", "3.3V". Tells you what specific part to use. |
-| **Power Rail** | A named voltage supply (VCC, 3V3, 5V, VDD) or ground (GND, VSS) symbol. Components connect to these without explicit wires, reducing visual clutter. |
+| **Power Rail** | A named [[quick-context/voltage|voltage]] supply (VCC, 3V3, 5V, VDD) or ground (GND, VSS) symbol. Components connect to these without explicit wires, reducing visual clutter. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -186,7 +186,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[micro-context/mosfet|MOSFET]] and [[quick-context/bjt|BJT]] have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 
@@ -214,7 +214,7 @@ SIMPLE LED BLINK CIRCUIT
 **Q3:** Why is there always a small capacitor (100nF) next to every IC's power pins on a schematic?
 <details>
 <summary>Answer</summary>
-**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The decoupling capacitor, placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
+**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The [[micro-context/decoupling-capacitor|decoupling capacitor]], placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
 </details>
 
 **Q4:** What's the difference between a junction dot (●) and a crossing without a dot?

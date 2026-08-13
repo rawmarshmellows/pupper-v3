@@ -139,7 +139,7 @@ void realtime_loop() {
 
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
-- **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
+- **[[quick-context/plc-vs-software-control]]** - The [[micro-context/plc-programmable-logic-controller|PLC]] side of the robot-to-cell coordination problem
 - **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
 
 </details>
