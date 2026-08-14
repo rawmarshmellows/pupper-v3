@@ -468,7 +468,7 @@ POWER-ON SEQUENCE
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works ([[quick-context/voltage|voltage]] on gate controls current flow) is the foundation for understanding how gates compute.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
 
@@ -486,7 +486,7 @@ POWER-ON SEQUENCE
 
 - **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[micro-context/sram|SRAM]], DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 

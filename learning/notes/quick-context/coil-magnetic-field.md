@@ -339,7 +339,7 @@ PRACTICAL CALCULATIONS:
     so no heating occurs.
 
 
-    EXAMPLE 3: Magnetizer (from [[small-context/permanent-magnet-creation]])
+    EXAMPLE 3: Magnetizer (from )
     ─────────────────────────────────────────────────────────────────────────
 
     Industrial magnetizers need B > 1 T for a few milliseconds.
@@ -387,7 +387,7 @@ EFFECT OF MAGNETIC CORE MATERIAL
     WHY IRON WORKS — Domain Alignment:
     ─────────────────────────────────────────────────────────────────────────
 
-    Iron has magnetic domains (see [[small-context/permanent-magnet-creation]]).
+    Iron has magnetic domains (see ).
     The external field from your coil aligns these domains.
     The aligned domains produce their OWN field that adds to the coil's field.
 
@@ -495,11 +495,11 @@ THE HEAT PROBLEM IN DETAIL:
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
 | Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
+| Inductor in power supply | Specified inductance, not field | Ferrite or powdered iron core |
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 
@@ -633,7 +633,7 @@ FINAL DESIGN:
     └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed voltage supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
+**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed [[quick-context/voltage|voltage]] supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
 
 </details>
 
@@ -650,13 +650,13 @@ FINAL DESIGN:
 
 - **[[quick-context/electricity-generation]]** — Generators use the reverse principle: moving a coil through a magnetic field induces current. Same physics, different application.
 
-- **[[small-context/permanent-magnet-creation]]** — Shows a practical application: using a high-current coil to magnetize iron. The magnetizer is just a solenoid optimized for maximum field strength during a brief pulse.
+-  — Shows a practical application: using a high-current coil to magnetize iron. The magnetizer is just a solenoid optimized for maximum field strength during a brief pulse.
 
 - **Helmholtz Coils** — Two identical coils separated by their radius create a very uniform field in the region between them. Used for calibration and research.
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday [[quick-context/tensor|tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 

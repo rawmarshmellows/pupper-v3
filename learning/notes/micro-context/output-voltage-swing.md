@@ -2,6 +2,7 @@
 term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/voltage]]
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 

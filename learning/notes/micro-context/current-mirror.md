@@ -2,6 +2,7 @@
 term: Current Mirror
 created: 2026-04-02
 ---
+> **Related:** [[micro-context/tail-current]] | [[micro-context/mosfet]] | [[quick-context/diode]] | [[quick-context/resistor]] | [[quick-context/transistor]]
 
 # Current Mirror
 
@@ -11,7 +12,7 @@ created: 2026-04-02
 
 - A reference current $I_{ref}$ (set by a resistor or upstream source) flows through a diode-connected [[micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
 - A second matched transistor shares the same $V_{gs}$ (gates tied together), so it develops the same channel conditions and conducts the same current: $I_{out} \approx I_{ref}$.
-- Because the output transistor operates in saturation, its drain current is nearly independent of drain voltage — giving high output impedance, which is what makes it a good current source.
+- Because the output transistor operates in saturation, its drain current is nearly independent of drain [[quick-context/voltage|voltage]] — giving high output impedance, which is what makes it a good current source.
 - Scaling the output transistor's $W/L$ ratio relative to the reference transistor scales the copied current proportionally: $I_{out} = I_{ref} \times (W/L)_{out} / (W/L)_{ref}$.
 
 ```

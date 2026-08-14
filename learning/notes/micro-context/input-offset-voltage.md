@@ -2,12 +2,13 @@
 term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
+> **Related:** [[quick-context/differential-pair]] | [[micro-context/tail-current]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/transistor]]
 
 # Input Offset Voltage ($V_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
+**Definition:** A small built-in [[quick-context/voltage|voltage]] error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
 
 ## How It Works
 

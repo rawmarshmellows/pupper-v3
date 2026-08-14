@@ -3,6 +3,7 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
+> **Related:** [[quick-context/firmware]] | [[micro-context/microcontroller]] | [[micro-context/sram]] | [[quick-context/can-bus]] | [[quick-context/esp32]]
 
 # STM32 Microcontroller
 
@@ -58,7 +59,7 @@ The Pupper PCB has two STM32 MCUs, each with a 7-pin JST SH connector (CN1) expo
 | 3   | NRST     | Negative Reset (active-low)      | Resets the MCU when pulled low; the programmer can force a reset |
 | 4   | USART TX | USART Transmit                   | Serial output from MCU — for debug logging or communication     |
 | 5   | USART RX | USART Receive                    | Serial input to MCU — for receiving commands or data             |
-| 6   | VCC      | Voltage Common Collector         | Positive supply voltage (3.3V) — powers the MCU and provides voltage reference to programmer |
+| 6   | VCC      | [[quick-context/voltage|Voltage]] Common Collector         | Positive supply voltage (3.3V) — powers the MCU and provides voltage reference to programmer |
 | 7   | GND      | Ground                           | 0V reference — completes the circuit                             |
 
 ### Programming with ST-Link V2

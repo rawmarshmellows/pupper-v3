@@ -19,7 +19,7 @@ Before the 1800s, electricity and magnetism seemed unrelated. Static electricity
 |------|------------|
 | **Magnetic Field (B)** | A vector field created by moving charges (current) or changing electric fields. Measured in tesla (T). Earth's field: ~50 μT. Strong magnet: 1 T. MRI machine: 1.5-3 T. |
 | **Electric Field (E)** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
-| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
+| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces [[quick-context/voltage|voltage]]: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
 | **Lorentz Force** | The force on a moving charge in electromagnetic fields: F = q(E + v × B). Electric fields push charges; magnetic fields deflect moving charges perpendicular to their velocity. This is how motors and CRT screens work. |
 | **Electromagnetic Wave** | Self-propagating oscillations of electric and magnetic fields, traveling at the speed of light (c = 3×10⁸ m/s in vacuum). Radio, microwaves, infrared, visible light, UV, X-rays, and gamma rays are all electromagnetic waves at different frequencies. |
 
@@ -236,7 +236,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 | Power generation | Faraday's law (changing B → E) | Generator, alternator |
 | Electric motors | Lorentz force (I × B → F) | DC motor, AC motor |
 | Transformers | Faraday's law (mutual induction) | Power transformer |
-| [[quick-context/inductor|Inductors]] | Faraday's law (self-induction) | Chokes, filter coils |
+| [[quick-context/inductor|Inductors]] | Faraday's law ([[quick-context/self-induction|self-induction]]) | Chokes, filter coils |
 | Wireless communication | EM wave propagation | Antennas, radio |
 | Magnetic storage | Hysteresis in magnetic materials | Hard drives, tape |
 
@@ -355,13 +355,13 @@ GENERATOR OPERATION — Step by Step
 
 - **[[quick-context/lenzs-law]]** — Why the minus sign in Faraday's Law matters: the induced EMF opposes the change that caused it, enforcing conservation of energy.
 
-- **[[small-context/permanent-magnet-creation]]** — Small-context on how unpaired electrons and exchange interaction create permanent magnets, and how magnetizers (high-current coils) align magnetic domains.
+-  — Small-context on how unpaired electrons and exchange interaction create permanent magnets, and how magnetizers (high-current coils) align magnetic domains.
 
 - **[[quick-context/maxwell-equations]]** — The complete mathematical formulation of electromagnetism in four equations. All electromagnetic phenomena—from static charges to light—emerge from these equations.
 
 - **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different reference frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
 
-- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric tensor that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric [[quick-context/tensor|tensor]] that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
 
 - **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi signals are electromagnetic waves at 2.4 GHz. A WiFi chip modulates data onto these waves and radiates them via an antenna — a direct, everyday application of Maxwell's prediction that changing electric fields create self-propagating EM waves.
 

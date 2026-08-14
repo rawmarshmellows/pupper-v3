@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[micro-context/mosfet]] | [[quick-context/comparator]] | [[quick-context/resistor]] | [[quick-context/transistor]] | [[quick-context/voltage]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 

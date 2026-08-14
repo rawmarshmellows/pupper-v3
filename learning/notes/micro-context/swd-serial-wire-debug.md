@@ -3,6 +3,7 @@ term: SWD (Serial Wire Debug)
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/microcontroller]] | [[micro-context/sram]] | [[quick-context/comparator]] | [[quick-context/firmware]]
 
 # SWD (Serial Wire Debug)
 

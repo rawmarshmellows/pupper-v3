@@ -2,6 +2,7 @@
 term: EEPROM (Electrically Erasable Programmable Read-Only Memory)
 created: 2026-04-07
 ---
+> **Related:** [[micro-context/mosfet]] | [[micro-context/microcontroller]] | [[micro-context/sram]] | [[quick-context/transistor]] | [[quick-context/voltage]]
 
 # EEPROM (Electrically Erasable Programmable Read-Only Memory)
 

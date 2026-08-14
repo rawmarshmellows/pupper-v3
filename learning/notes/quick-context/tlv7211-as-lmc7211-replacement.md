@@ -7,7 +7,7 @@ created: 2026-06-07
 
 > **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541 (C623499) as an LMC7211 replacement]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 >
-> **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
+> **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: comparator-specification → Choosing a Replacement.
 
 > **TL;DR:** **Yes — unconditionally.** The TLV7211 is TI's own re-named, *spec-identical* successor to the National-Semiconductor **LMC7211-N**: same 2.7–15 V range, same 16 V absolute max, same 7 µA, same 420/450 ns delay, the same 4.x electrical tables line for line — and the **same pinout in both SOT23-5 and SOIC-8**. It's a true drop-in in either package, no recheck needed. The *one* thing to get right is the **offset grade**: the 5 mV part is the **TLV7211A** (the "A" is the *better* grade), and the 15 mV part is the plain **TLV7211** — the reverse of what a careless reader guesses. (Bonus: TLV7211 adds a smaller SC70 package and documents an internal power-on-reset.)
 
@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 
@@ -197,7 +197,7 @@ Because the TLV7211 is **the same silicon re-named** (National → TI), its data
 **Q5:** Both the TLV7211 and the MCP6541 "fit the LMC7211-N's SOT23-5 footprint." Why is only one of them an *unconditional* replacement?
 <details>
 <summary>Answer</summary>
-**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-voltage, slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
+**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-[[quick-context/voltage|voltage]], slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
 </details>
 
 </details>

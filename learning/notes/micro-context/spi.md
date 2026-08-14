@@ -3,6 +3,7 @@ term: SPI
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-edges]]
 
 # SPI
 

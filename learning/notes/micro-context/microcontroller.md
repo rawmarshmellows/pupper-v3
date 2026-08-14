@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/esp32]] | [[quick-context/uart]]
 
 # Microcontroller
 

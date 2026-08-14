@@ -3,6 +3,7 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/anode]] | [[quick-context/diode]] | [[quick-context/electrodes]] | [[quick-context/electrolysis]]
 
 # Cathode
 

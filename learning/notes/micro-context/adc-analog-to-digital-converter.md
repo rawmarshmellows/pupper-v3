@@ -3,6 +3,7 @@ term: ADC (Analog-to-Digital Converter)
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/ads1110-battery-adc]] | [[quick-context/transistor]] | [[quick-context/voltage]]
 
 # ADC (Analog-to-Digital Converter)
 
