@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/firmware]] | [[micro-context/microcontroller]] | [[quick-context/can-bus]]
 
 # SPIneV1.elf
 

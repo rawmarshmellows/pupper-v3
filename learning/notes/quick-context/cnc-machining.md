@@ -77,7 +77,7 @@ MILLING vs TURNING:
 
 ### EDM: Sparks Instead of Cutting
 
-A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-[[quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 
 ```
 EDM SPARK EROSION:

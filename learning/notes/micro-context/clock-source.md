@@ -2,6 +2,7 @@
 term: Clock Source
 created: 2026-03-27
 ---
+> **Related:** [[quick-context/clock-sources-and-timing]] | [[quick-context/rc-oscillator]] | [[micro-context/ceramic-resonator]] | [[micro-context/microcontroller]]
 
 # Clock Source
 

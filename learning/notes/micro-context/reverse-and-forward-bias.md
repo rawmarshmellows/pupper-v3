@@ -3,6 +3,7 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/diode]] | [[quick-context/transistor]] | [[quick-context/voltage]]
 
 # Reverse and Forward Bias
 

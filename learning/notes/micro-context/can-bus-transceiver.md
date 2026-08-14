@@ -3,6 +3,7 @@ term: CAN Bus Transceiver
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/microcontroller]] | [[quick-context/can-bus]] | [[quick-context/differential-pair]] | [[quick-context/voltage]]
 
 # CAN Bus Transceiver
 

@@ -2,6 +2,7 @@
 term: Tail Current
 created: 2026-04-02
 ---
+> **Related:** [[micro-context/current-mirror]] | [[quick-context/differential-pair]] | [[quick-context/transistor]] | [[quick-context/voltage]]
 
 # Tail Current
 

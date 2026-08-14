@@ -2,6 +2,7 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** [[micro-context/microcontroller]] | [[quick-context/substrate-ic-packaging]]
 
 # PLC (Programmable Logic Controller)
 

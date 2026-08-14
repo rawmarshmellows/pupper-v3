@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[quick-context/voltage]]
 
 # Short Circuit
 

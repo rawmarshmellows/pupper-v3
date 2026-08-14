@@ -2,6 +2,7 @@
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
+> **Related:** [[micro-context/mosfet]] | [[quick-context/capacitor]] | [[quick-context/voltage]]
 
 # SRAM (Static Random-Access Memory)
 

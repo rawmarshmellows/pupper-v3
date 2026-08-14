@@ -3,6 +3,7 @@ term: Thermal Runaway
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-speed]] | [[quick-context/firmware]] | [[quick-context/transistor]]
 
 # Thermal Runaway
 

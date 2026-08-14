@@ -3,6 +3,7 @@ term: ST-Link V2 Programmer
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-edges]] | [[micro-context/microcontroller]] | [[micro-context/spinev1-elf]] | [[micro-context/sram]] | [[quick-context/firmware]]
 
 # ST-Link V2 Programmer
 

@@ -1,3 +1,5 @@
+> **Related:** [[quick-context/existing-account-management-playbook]] | [[quick-context/whitespace-mapping]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.

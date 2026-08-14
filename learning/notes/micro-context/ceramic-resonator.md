@@ -3,6 +3,7 @@ term: Ceramic Resonator
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/piezoelectric-effect]] | [[quick-context/clock-sources-and-timing]] | [[micro-context/microcontroller]] | [[quick-context/can-bus]] | [[quick-context/uart]]
 
 # Ceramic Resonator
 

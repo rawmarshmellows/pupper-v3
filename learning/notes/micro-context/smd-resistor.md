@@ -3,16 +3,17 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/buck-converter]] | [[micro-context/can-bus-termination]] | [[quick-context/can-bus]] | [[quick-context/resistor]] | [[quick-context/soldering]]
 
 # SMD Resistor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Surface-mount resistors are tiny rectangular components that limit current flow. The "0402" size (1.0mm × 0.5mm) used in your Pupper BOM is about the size of a grain of sand. Values like "10kΩ" set voltage dividers, pull-ups, current limits, and feedback networks throughout the circuit.
+**Definition:** Surface-mount resistors are tiny rectangular components that limit current flow. The "0402" size (1.0mm × 0.5mm) used in your Pupper BOM is about the size of a grain of sand. Values like "10kΩ" set [[quick-context/voltage|voltage]] dividers, pull-ups, current limits, and feedback networks throughout the circuit.
 
 ## How It Works
 
-- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for soldering.
+- A thin film or thick film of resistive material is deposited on a ceramic [[quick-context/substrate-ic-packaging|substrate]], with metal terminations on each end for soldering.
 - Current flowing through the resistive film converts electrical energy to heat according to $P = I^2R$.
 - The resistance value is set during manufacturing by the film's composition, thickness, and laser-trimmed geometry.
 

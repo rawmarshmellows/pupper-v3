@@ -2,6 +2,7 @@
 term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
 ---
+> **Related:** [[micro-context/mosfet]] | [[quick-context/transistor]] | [[quick-context/voltage]]
 
 # BJT vs MOSFET vs IGBT
 

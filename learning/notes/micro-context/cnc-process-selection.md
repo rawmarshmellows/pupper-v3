@@ -3,6 +3,7 @@ term: CNC Process Selection
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/cnc-machining]]
 
 # CNC Process Selection
 
