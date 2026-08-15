@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Controlling How Much Current Flows
 
-Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more voltage it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
+Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more [[learning/notes/quick-context/voltage|voltage]] it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
 
 ## 5 Essential Terms
 
@@ -205,7 +205,7 @@ I2C BUS PULL-UPS
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Ohm's law (V = IR) is the direct relationship between resistance and current. Understanding current flow is prerequisite to understanding resistors.
 
@@ -213,13 +213,13 @@ I2C BUS PULL-UPS
 
 - **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and frequency response.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern transistor power delivery.
+- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern [[learning/notes/quick-context/transistor|transistor]] power delivery.
 
 - **[[quick-context/transistor]]** — Resistors set bias points for transistors, limit base/gate current, and form loads in amplifier circuits.
 
 - **[[quick-context/thermal-noise-electronics]]** — Every resistor generates thermal noise: V_noise = sqrt(4kTRB). Higher resistance = more noise, setting fundamental limits on sensitive analog circuits.
 
-- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** — How a single resistor plus a button turns a floating GPIO into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
+- **** — How a single resistor plus a button turns a floating GPIO into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
 
 </details>
 
@@ -253,7 +253,7 @@ I2C BUS PULL-UPS
 **Q5:** Why can't you use a very high-value pull-up resistor (e.g., 10MΩ) on a digital input?
 <details>
 <summary>Answer</summary>
-**The RC time constant becomes too large.** Every wire has parasitic capacitance. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
+**The RC time constant becomes too large.** Every wire has parasitic [[learning/notes/quick-context/capacitance|capacitance]]. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
 </details>
 
 </details>

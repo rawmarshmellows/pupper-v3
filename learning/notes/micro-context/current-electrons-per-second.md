@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/coulomb-history]]
+
 # Current and Electrons Per Second
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]

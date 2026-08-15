@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/electrodes]]
+
 # Anode
 
 > **See also:** [[quick-context/electrodes]]

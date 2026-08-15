@@ -4,6 +4,8 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/sram]]
+
 # SWD (Serial Wire Debug)
 
 > **See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]

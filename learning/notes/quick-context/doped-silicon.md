@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[learning/notes/quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
@@ -370,7 +370,7 @@ Step 5: Repeat many times with different masks and dopants
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor Hierarchy]]** — Doped silicon is what makes transistors possible; this document explains how transistors fit into the larger hierarchy of chips, packages, and circuit boards.
 
@@ -400,13 +400,13 @@ N-type silicon has extra free electrons (from dopants like phosphorus with 5 bon
 **Q2:** Why is pure, undoped silicon a poor conductor?
 <details>
 <summary>Answer</summary>
-In pure silicon, every electron is "locked" in covalent bonds with neighboring atoms. There are no free electrons available to carry electrical current. Doping adds either extra electrons (N-type) or creates holes (P-type) that can move and carry current. See: Step 1 in "How It Works"
+In pure silicon, every electron is "locked" in [[learning/notes/quick-context/covalent-bonds|covalent bonds]] with neighboring atoms. There are no free electrons available to carry electrical current. Doping adds either extra electrons (N-type) or creates holes (P-type) that can move and carry current. See: Step 1 in "How It Works"
 </details>
 
 **Q3:** Why do different regions of a transistor require different doping concentrations?
 <details>
 <summary>Answer</summary>
-The source/drain regions need heavy doping for low resistance (so current flows easily). The channel region needs light doping so it can be easily controlled by the gate voltage (turned on/off cleanly). The well regions need medium doping to isolate components from each other. It's a tradeoff between conductivity and controllability. See: "The Key Tension" section
+The source/drain regions need heavy doping for low resistance (so current flows easily). The channel region needs light doping so it can be easily controlled by the gate [[learning/notes/quick-context/voltage|voltage]] (turned on/off cleanly). The well regions need medium doping to isolate components from each other. It's a tradeoff between conductivity and controllability. See: "The Key Tension" section
 </details>
 
 **Q4:** Someone claims: "To make silicon conduct better, you should add as much dopant as possible." What's wrong with this reasoning?

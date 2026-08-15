@@ -4,6 +4,8 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/voltage]]
+
 # Electromagnetic Induction
 
 > **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]

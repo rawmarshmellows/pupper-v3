@@ -4,11 +4,13 @@ created: 2026-02-25
 updated: 2026-06-08
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/transistor]]
+
 # MOSFET
 
 > **See also:** [[quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A [[learning/notes/quick-context/voltage|voltage]]-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 
@@ -62,7 +64,7 @@ Once charged, the gate charge stays put for **two reasons working together**:
 
 The tiny pA leakage is exactly the small failure of "no road out": a few electrons *tunnel* through the wall (worse the thinner the oxide), plus a trickle sneaks around it via reverse-biased junctions and PCB surface paths.
 
-> **Tie-in — flash / EEPROM:** a *floating* gate (no wire at all) holds its charge for years on this same principle. It uses a **thicker** oxide so even tunneling is negligible → the stored bit survives a decade. A logic MOSFET uses a thin oxide for speed, so it leaks a little more.
+> **Tie-in — flash / [[learning/notes/micro-context/eeprom|EEPROM]]:** a *floating* gate (no wire at all) holds its charge for years on this same principle. It uses a **thicker** oxide so even tunneling is negligible → the stored bit survives a decade. A logic MOSFET uses a thin oxide for speed, so it leaks a little more.
 
 ## Turning It On and Off — the Gate Driver
 

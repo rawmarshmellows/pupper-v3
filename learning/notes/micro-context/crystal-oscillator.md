@@ -3,6 +3,8 @@ term: Crystal Oscillator
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/clock-sources-and-timing]]
+
 # Crystal Oscillator
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]

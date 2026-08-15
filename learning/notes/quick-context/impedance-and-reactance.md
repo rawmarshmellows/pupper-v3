@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Resistance Alone Can't Describe AC Behavior
 
-Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that voltage and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
+Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that [[learning/notes/quick-context/voltage|voltage]] and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-
 | **Reactance (X)** | The frequency-dependent opposition to current from capacitors or inductors. Unlike resistance, reactance doesn't dissipate energy—it stores and returns it. |
 | **Capacitive Reactance (Xc)** | Xc = 1/(2πfC). Decreases with frequency—[[quick-context/capacitance|capacitance]] causes capacitors to pass high frequencies and block low frequencies. |
 | **Inductive Reactance (XL)** | XL = 2πfL. Increases with frequency—inductors pass low frequencies and block high frequencies. |
-| **Phase Angle** | The time shift between voltage and current waveforms. In a capacitor, current leads voltage by 90°. In an inductor, voltage leads current by 90°. In a resistor, they're in phase (0°). |
+| **Phase Angle** | The time shift between voltage and current waveforms. In a [[learning/notes/quick-context/capacitor|capacitor]], current leads voltage by 90°. In an [[learning/notes/quick-context/inductor|inductor]], voltage leads current by 90°. In a [[learning/notes/quick-context/resistor|resistor]], they're in phase (0°). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -235,7 +235,7 @@ RC LOW-PASS FILTER
 **At high frequencies, PCB traces act as transmission lines.** If the trace impedance doesn't match the driver and receiver impedance, signals reflect back and forth, causing ringing, overshoot, and data errors. A 1 GHz signal has wavelengths comparable to PCB trace lengths (~15 cm), so wave effects dominate. Matching impedances (typically 50Ω single-ended or 100Ω differential) eliminates reflections.
 </details>
 
-**Q5:** A decoupling capacitor has 1.6Ω of reactance at 1 MHz. Is it doing its job?
+**Q5:** A [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] has 1.6Ω of reactance at 1 MHz. Is it doing its job?
 <details>
 <summary>Answer</summary>
 **Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the capacitor provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.

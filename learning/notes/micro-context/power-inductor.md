@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/voltage]]
+
 # Power Inductor
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]
