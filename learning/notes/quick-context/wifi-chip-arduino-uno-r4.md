@@ -246,7 +246,7 @@ ARDUINO UNO R4 WIFI — DUAL-CHIP ARCHITECTURE
 
 ### Why Two Chips Instead of One?
 
-The RA4M1 is the "Arduino-compatible" chip — it runs at 5V (matching classic Arduino shields), has a CAN bus peripheral, a real 12-bit DAC, and an on-chip op-amp. But it has no radio.
+The RA4M1 is the "Arduino-compatible" chip — it runs at 5V (matching classic Arduino shields), has a [[learning/notes/quick-context/can-bus|CAN bus]] peripheral, a real 12-bit DAC, and an on-chip [[learning/notes/quick-context/op-amp|op-amp]]. But it has no radio.
 
 The [[quick-context/esp32|ESP32-S3]] IS a capable [[micro-context/microcontroller|microcontroller]] in its own right (dual-core at 240 MHz!), but it runs at 3.3V and wouldn't be backward-compatible with the 5V Arduino ecosystem. So Arduino uses it as a coprocessor: it runs pre-installed [[quick-context/firmware|firmware]] that handles WiFi, Bluetooth, and also acts as the USB-to-serial bridge for programming the RA4M1.
 
@@ -290,7 +290,7 @@ ESP32-S3 WiFi RADIO SUBSYSTEM (inside the chip):
                                             └─────────┘
 ```
 
-The antenna on the ESP32-S3-MINI-1 module is a printed copper trace on the module's [[quick-context/pcb-printed-circuit-board|PCB]] — not a separate component. It's shaped as a meandered inverted-F antenna (MIFA), tuned to resonate at 2.4 GHz. The entire radio — from digital baseband to RF power amplifier — is integrated on the same [[quick-context/silicon-die|silicon die]], which is why a complete WiFi solution costs under $3.
+The antenna on the [[learning/notes/quick-context/esp32|ESP32]]-S3-MINI-1 module is a printed copper trace on the module's [[quick-context/pcb-printed-circuit-board|PCB]] — not a separate component. It's shaped as a meandered inverted-F antenna (MIFA), tuned to resonate at 2.4 GHz. The entire radio — from digital baseband to RF power amplifier — is integrated on the same [[quick-context/silicon-die|silicon die]], which is why a complete WiFi solution costs under $3.
 
 ### Code Example: Connecting to WiFi on the Uno R4
 
@@ -332,7 +332,7 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 
@@ -366,7 +366,7 @@ OFDM splits the 20 MHz WiFi channel into 48+ narrow subcarriers (each 312.5 kHz 
 **Q2:** Why does the Arduino Uno R4 WiFi use two separate chips instead of just the ESP32-S3?
 <details>
 <summary>Answer</summary>
-Backward compatibility and voltage levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
+Backward compatibility and [[learning/notes/quick-context/voltage|voltage]] levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
 </details>
 
 **Q3:** Your WiFi connection drops when you microwave popcorn. Why?

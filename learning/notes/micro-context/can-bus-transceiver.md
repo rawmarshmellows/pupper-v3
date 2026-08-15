@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/can-bus]]
+
 # CAN Bus Transceiver
 
 > **See also:** [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/embedded-communication-protocols]]
