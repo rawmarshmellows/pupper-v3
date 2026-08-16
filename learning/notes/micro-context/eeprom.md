@@ -5,6 +5,8 @@ created: 2026-04-07
 
 # EEPROM (Electrically Erasable Programmable Read-Only Memory)
 
+> **Related:** [[quick-context/voltage|Voltage]] | [[micro-context/mosfet|MOSFET]] | [[quick-context/transistor|Transistor]] | [[micro-context/i2c|I2C]] | [[micro-context/microcontroller|Microcontroller]]
+
 **Definition:** A non-volatile memory chip that retains data without power, can be electrically rewritten byte-by-byte, and is used to store small amounts of configuration data (typically 1 KB – 64 KB). It sits between one-time-programmable ROM (write once) and [[learning/notes/micro-context/sram|SRAM]] (volatile, loses data on power-off).
 
 ## How It Works

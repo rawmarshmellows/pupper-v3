@@ -273,7 +273,7 @@ fetch-executing machine code.
 
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The destination of this whole pipeline. The VM loop here is a software re-creation of this hardware loop; the real CPU runs the *interpreter's* machine code via this exact cycle. The down-link toward hardware.
 
-- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The fuller picture: the complete 7-layer chain from a high-level statement all the way down to NAND gates and transistors, plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The fuller picture: the complete 7-layer chain from a high-level statement all the way down to NAND gates and [[quick-context/transistor|transistors]], plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
 
 - **[[learning/notes/quick-context/how-source-code-is-stored]]** — The up-link: how the `.py` text (and the `.pyc` bytecode cache) physically exist as bytes on disk before any of this translation begins. *(sibling note — may not exist yet.)*
 

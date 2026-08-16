@@ -340,7 +340,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[micro-context/sram|SRAM]], and peripherals.
 
 - **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 

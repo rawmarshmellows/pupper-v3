@@ -9,7 +9,7 @@ created: 2026-04-07
 
 ## The Core Problem
 
-The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes binary instructions, and the [[learning/notes/quick-context/from-code-to-running-firmware|firmware pipeline]] explains how those instructions reach the chip. But neither explains the *physics* of the final step: how a `1` or `0` actually gets written into a physical memory cell. What voltage is applied? What moves? What holds the bit in place? This matters because the three main memory technologies (SRAM, DRAM, flash) use fundamentally different physical mechanisms, and their tradeoffs — speed, density, volatility, endurance — all trace back to the physics of how they store charge.
+The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes binary instructions, and the [[learning/notes/quick-context/from-code-to-running-firmware|firmware pipeline]] explains how those instructions reach the chip. But neither explains the *physics* of the final step: how a `1` or `0` actually gets written into a physical memory cell. What [[quick-context/voltage|voltage]] is applied? What moves? What holds the bit in place? This matters because the three main memory technologies ([[micro-context/sram|SRAM]], DRAM, flash) use fundamentally different physical mechanisms, and their tradeoffs — speed, density, volatility, endurance — all trace back to the physics of how they store charge.
 
 ## 5 Essential Terms
 
@@ -184,7 +184,7 @@ No single memory technology is best at everything. The physics forces a three-wa
 | **Cost/bit** | $$$$ | $$ | $ |
 | **Power** | High (leakage in 6T) | Medium (refresh circuits) | Low (no power to retain) |
 
-**Why not just use the fastest?** SRAM needs 6 transistors per bit. A 16 GB SRAM module would need $16 \times 10^9 \times 8 \times 6 = 768 \times 10^9$ transistors just for storage — physically enormous and prohibitively expensive. DRAM gets the same capacity with $128 \times 10^9$ transistors + capacitors.
+**Why not just use the fastest?** SRAM needs 6 transistors per bit. A 16 GB SRAM module would need $16 \times 10^9 \times 8 \times 6 = 768 \times 10^9$ transistors just for storage — physically enormous and prohibitively expensive. DRAM gets the same capacity with $128 \times 10^9$ transistors + [[quick-context/capacitor|capacitors]].
 
 **Why not just use the densest?** Flash writes are 1000x slower than DRAM and degrade the oxide with every write. Running a program from flash (as MCUs do) is fine for reads, but you can't use flash as working memory — the write speed and endurance would be catastrophic.
 

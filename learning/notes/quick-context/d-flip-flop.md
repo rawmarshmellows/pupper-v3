@@ -248,7 +248,7 @@ BUILDING BLOCKS FROM D FLIP-FLOPS
 <details>
 <summary><strong>The Key Tension</strong> — Speed vs. reliability (the clock constraint)</summary>
 
-The fundamental tension in synchronous design is **clock speed vs. correctness**.
+The fundamental tension in synchronous design is **[[micro-context/clock-speed|clock speed]] vs. correctness**.
 
 Every combinational logic path between two flip-flops has a **propagation delay** — the time for a signal to ripple through all the gates. The clock period must be long enough for the slowest path (the "critical path") to settle before the next clock edge samples the result. Too fast → signals haven't settled → flip-flops capture wrong values → the circuit produces garbage.
 
@@ -279,7 +279,7 @@ THE CRITICAL PATH CONSTRAINT
 
 This is why CPU clock speeds plateaued around 4-5 GHz (~2005). The causes are intertwined: higher frequency means shorter clock periods, leaving less time for signals to settle (timing), *and* power consumption grows super-linearly with frequency ($P \propto fCV^2$), making thermal dissipation unsustainable (Dennard scaling breakdown). The solution was going multi-core — more flip-flops running in parallel at a manageable speed — rather than faster clocks.
 
-**Metastability** — the worst failure mode: if setup/hold times are violated, the flip-flop can enter a state that is neither 0 nor 1, hovering at a voltage in the "forbidden zone" between logic levels. This metastable state eventually resolves to 0 or 1, but it takes an unpredictable amount of time. This is a real problem at clock domain boundaries (e.g., data crossing from a [[quick-context/uart|UART's]] baud rate clock to the CPU's system clock), and is typically solved with synchronizer chains (2-3 flip-flops in series).
+**Metastability** — the worst failure mode: if setup/hold times are violated, the flip-flop can enter a state that is neither 0 nor 1, hovering at a [[quick-context/voltage|voltage]] in the "forbidden zone" between logic levels. This metastable state eventually resolves to 0 or 1, but it takes an unpredictable amount of time. This is a real problem at clock domain boundaries (e.g., data crossing from a [[quick-context/uart|UART's]] baud rate clock to the CPU's system clock), and is typically solved with synchronizer chains (2-3 flip-flops in series).
 
 </details>
 
@@ -375,19 +375,19 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 
 - **[[quick-context/uart]]** — The UART's receive shift register is a chain of 8 D flip-flops where each Q feeds the next D. On each baud clock tick, bits shift through the chain. The flip-flop is the hardware atom that makes serial-to-parallel conversion possible.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The cross-coupled inverters in SRAM are the continuous-time analog of a flip-flop's feedback loop. Both use feedback to create bistable states, but SRAM cells are optimized for density (6 transistors) while flip-flops are optimized for speed and clean edge-triggered behavior.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The cross-coupled inverters in [[micro-context/sram|SRAM]] are the continuous-time analog of a flip-flop's feedback loop. Both use feedback to create bistable states, but SRAM cells are optimized for density (6 transistors) while flip-flops are optimized for speed and clean edge-triggered behavior.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are forced to behave as digital switches. The flip-flop's edge-triggered discipline is one of the key engineering tricks: by only sampling at clock edges, the circuit ignores the messy analog transitions between them.
 
 - **[[micro-context/clock-edges]]** — The precise definition of rising and falling clock edges, and why edge-triggered sampling is the foundation of synchronous digital design.
 
-- **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, ceramic resonators, internal RC oscillators. The clock tree routes this signal to every flip-flop in the system.
+- **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, [[micro-context/ceramic-resonator|ceramic resonators]], internal [[quick-context/rc-oscillator|RC oscillators]]. The clock tree routes this signal to every flip-flop in the system.
 
 - **[[micro-context/crystal-oscillator]]** — The physical component that generates the precise square wave driving all flip-flops. Crystal accuracy (~50 ppm) matters for UART baud rate generation.
 
 - **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit showing how a physical switch, clock button, and D flip-flop chip (74HC74/74HC574) store data — and how this minimal setup scales to build every register, RAM, and CPU.
 
-- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], comparator, and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
+- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], [[quick-context/comparator|comparator]], and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
 
 </details>
 
