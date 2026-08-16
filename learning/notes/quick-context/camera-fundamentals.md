@@ -20,7 +20,7 @@ Without understanding how cameras actually form images — the physics of sensor
 | **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
-| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
+| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of [[quick-context/voltage|voltage]] ratio) |
 | **Intrinsic Matrix (K)** | A $3 \times 3$ upper-triangular matrix encoding the camera's internal geometry — focal lengths $f_x, f_y$ in pixel units, principal point $(c_x, c_y)$, and optionally skew — used to project 3D camera-frame points onto the 2D image plane |
 
 <details>
@@ -539,7 +539,7 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout [[quick-context/transistor|transistors]], and ADCs all integrated on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 

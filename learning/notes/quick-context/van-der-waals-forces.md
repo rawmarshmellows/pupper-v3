@@ -394,7 +394,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and [[quick-context/substrate-ic-packaging|substrates]].
 
 </details>
 

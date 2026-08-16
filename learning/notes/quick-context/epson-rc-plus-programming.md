@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Translating Intent into Precise, Repeatable Motion
 
-EPSON RC+ is the integrated development environment for programming Epson SCARA and 6-axis robots. It solves the fundamental problem of translating human intent—"pick this part, place it there, don't crash into the fixture"—into precise, repeatable motion that runs on Epson's robot controllers. Without it, you'd be stuck with teach pendants for point-by-point recording (tedious, inflexible) or trying to shoehorn generic PLCs into motion control they weren't designed for.
+EPSON RC+ is the integrated development environment for programming Epson SCARA and 6-axis robots. It solves the fundamental problem of translating human intent—"pick this part, place it there, don't crash into the fixture"—into precise, repeatable motion that runs on Epson's robot controllers. Without it, you'd be stuck with teach pendants for point-by-point recording (tedious, inflexible) or trying to shoehorn generic [[micro-context/plc-programmable-logic-controller|PLCs]] into motion control they weren't designed for.
 
 The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+ programming language into one environment, which matters because industrial robotics lives or dies on the integration between motion planning, sensing, and cell-level logic.
 

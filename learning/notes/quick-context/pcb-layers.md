@@ -22,7 +22,7 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
 | **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
@@ -240,7 +240,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 |--------|---------|------|----------|
 | **HASL** | Board dipped in molten solder, leveled with hot air | Low | General purpose, through-hole |
 | **Lead-free HASL** | Same, with lead-free solder | Low | RoHS-compliant general purpose |
-| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, BGA, flat pads |
+| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, [[quick-context/bga-ball-grid-array|BGA]], flat pads |
 | **OSP** | Thin organic coating on copper | Lowest | Short shelf life, reflow-only |
 
 ---

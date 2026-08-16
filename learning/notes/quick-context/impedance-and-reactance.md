@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Resistance Alone Can't Describe AC Behavior
 
-Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that voltage and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
+Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that [[quick-context/voltage|voltage]] and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
 
 ## 5 Essential Terms
 
@@ -196,7 +196,7 @@ RC LOW-PASS FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Capacitive reactance (Xc = 1/2πfC) explains why decoupling capacitors work: they have very low impedance at high frequencies, shorting noise to ground while leaving DC unaffected. See also [[quick-context/capacitance]] for how parasitic capacitance affects impedance in PCB traces and IC packages.
+- **[[quick-context/capacitor]]** — Capacitive reactance (Xc = 1/2πfC) explains why [[micro-context/decoupling-capacitor|decoupling capacitors]] work: they have very low impedance at high frequencies, shorting noise to ground while leaving DC unaffected. See also [[quick-context/capacitance]] for how parasitic capacitance affects impedance in PCB traces and IC packages.
 
 - **[[quick-context/inductor]]** — Inductive reactance (XL = 2πfL) explains why inductors are used in power supply filters: they have high impedance at switching frequencies, blocking ripple while passing DC.
 

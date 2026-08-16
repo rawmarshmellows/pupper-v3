@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: A Common Misconception About Electricity
 
-If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that voltage is a *difference in potential*, not a quantity that accumulates like water in a tank.
+If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that [[quick-context/voltage|voltage]] is a *difference in potential*, not a quantity that accumulates like water in a tank.
 
 ## 5 Essential Terms
 
@@ -326,7 +326,7 @@ THE MATH THAT MATTERS:
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 
-- **Power Delivery Networks** — The engineering discipline of getting stable voltage to billions of transistors. Involves voltage regulators, decoupling capacitors, and careful resistance management.
+- **Power Delivery Networks** — The engineering discipline of getting stable voltage to billions of transistors. Involves voltage regulators, [[micro-context/decoupling-capacitor|decoupling capacitors]], and careful resistance management.
 
 </details>
 
@@ -365,7 +365,7 @@ THE MATH THAT MATTERS:
 - After 90% efficiency: 180W × 0.9 = 162W available
 - Output current: 162W / 0.6V = 270A
 
-This illustrates why power delivery is so challenging at low voltages—the same power requires much higher current, which is why VRMs use massive inductors and MOSFETs to handle these currents. See: Concrete Example (Voltage Regulator Module).
+This illustrates why power delivery is so challenging at low voltages—the same power requires much higher current, which is why VRMs use massive [[quick-context/inductor|inductors]] and [[micro-context/mosfet|MOSFETs]] to handle these currents. See: Concrete Example (Voltage Regulator Module).
 </details>
 
 </details>

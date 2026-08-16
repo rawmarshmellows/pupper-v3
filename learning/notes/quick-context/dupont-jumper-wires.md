@@ -5,6 +5,8 @@ created: 2026-04-03
 
 # DuPont Jumper Wires
 
+> **Related:** [[micro-context/i2c|I2C]] | [[micro-context/microcontroller|Microcontroller]] | [[quick-context/soldering|Soldering]] | [[quick-context/voltage|Voltage]] | [[micro-context/pwm-pulse-width-modulation|PWM]]
+
 > **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
@@ -202,7 +204,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
-6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from oxidation, vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
+6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from [[micro-context/oxidation|oxidation]], vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
 
 7. **Mixing 2.54mm and 2.0mm pitch** -- Some boards (certain ESP modules, fine-pitch breakouts) use 2.0mm headers. Standard DuPont connectors won't seat properly.
 
@@ -212,7 +214,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
 - **Breadboards** -- The solderless prototyping boards that DuPont jumpers are designed to connect to; share the 2.54mm pitch standard
-- **Pin headers** -- The male 0.1" pitch headers on PCBs that DuPont female connectors mate with
+- **Pin headers** -- The male 0.1" pitch headers on [[quick-context/pcb-printed-circuit-board|PCBs]] that DuPont female connectors mate with
 - **JST connectors** -- The keyed, latched alternative for semi-permanent connections (XH, PH, SH families)
 - **Wire gauge (AWG)** -- Understanding current capacity vs wire thickness; critical for knowing when DuPont jumpers are adequate
 - **Crimping** -- The mechanical process of attaching contacts to wire; the skill needed to make custom DuPont cables

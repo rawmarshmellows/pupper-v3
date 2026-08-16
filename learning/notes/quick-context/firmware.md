@@ -11,14 +11,14 @@ created: 2026-03-26
 
 ## The Core Problem
 
-Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert PCB. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
+Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert [[quick-context/pcb-printed-circuit-board|PCB]]. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[micro-context/plc-programmable-logic-controller\|bare metal or under an RTOS]] with no general-purpose OS |
-| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a microcontroller's flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
+| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a [[micro-context/microcontroller|microcontroller]]'s flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
 | **ELF file (.elf)** | Executable and Linkable Format — the compiler's output containing machine code, memory layout, and debug symbols; the flash tool extracts the code sections and writes them to the chip |
 | **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
 | **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/UART before jumping to the application code; some STM32 projects skip this and flash the application directly |
@@ -185,7 +185,7 @@ The fundamental tension is **control vs. convenience**. Firmware gives you direc
 |---|---|---|
 | **Startup** | ~10 ms to main() | ~30 seconds to shell |
 | **Timing** | Deterministic microsecond loops | Non-deterministic (kernel, GC) |
-| **Memory** | 128 KB SRAM, no virtual memory | 4 GB RAM, full MMU |
+| **Memory** | 128 KB [[micro-context/sram|SRAM]], no virtual memory | 4 GB RAM, full MMU |
 | **Storage** | 512 KB flash, no filesystem | 32 GB+ SD card, ext4 |
 | **Debugging** | SWD + GDB (hardware breakpoints) | SSH, printf, strace |
 | **Updates** | Requires flash tool + physical access | `apt update && apt upgrade` |
@@ -285,7 +285,7 @@ FILE FORMAT COMPARISON:
 
 - **[[quick-context/pupper-bom-control-board]]** — Every hardware component the firmware interacts with: the STM32F446 MCUs it runs on, the CAN transceivers it drives, the IMU it reads, the audio amplifier it feeds. The BOM is the hardware; the firmware is what makes it move.
 
-- **[[micro-context/stm32-microcontroller]]** — The specific chip this firmware targets. The STM32F446's 512 KB flash, 128 KB SRAM, CAN/SPI/I2C peripherals, and 180 MHz clock define the firmware's constraints.
+- **[[micro-context/stm32-microcontroller]]** — The specific chip this firmware targets. The STM32F446's 512 KB flash, 128 KB SRAM, CAN/[[micro-context/spi|SPI]]/[[micro-context/i2c|I2C]] peripherals, and 180 MHz clock define the firmware's constraints.
 
 - **[[quick-context/firmware|flashing firmware]]** — The micro-context companion: a concise definition of the flash process itself (erase → write → verify → reset).
 
@@ -313,7 +313,7 @@ The ELF file contains not just machine code but also metadata telling the flash 
 **Q3:** The Pupper has two STM32 MCUs (U1 and U5). Do they run the same firmware?
 <details>
 <summary>Answer</summary>
-No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery voltage, communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
+No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery [[quick-context/voltage|voltage]], communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 [[quick-context/can-bus|CAN buses]]. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
 </details>
 
 **Q4:** If firmware runs from flash memory, why does the STM32 also need SRAM?

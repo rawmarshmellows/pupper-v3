@@ -17,9 +17,9 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 
 | Term | Definition |
 |------|------------|
-| **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
+| **Farad (F)** | The unit of capacitance. 1 farad = 1 [[micro-context/coulomb-history|coulomb]] stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
-| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
+| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] [[quick-context/substrate-ic-packaging|substrate]]): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
 | **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
@@ -307,7 +307,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
         C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
 ```
 
-The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+The ESD [[quick-context/diode|diode]] usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
 
 ### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
 
@@ -392,7 +392,7 @@ Charge on a capacitor only moves when the voltage *across* it changes. C_AB sits
 
 **Why this matters in real design:**
 
-- **Differential pairs** (USB, Ethernet, HDMI, LVDS) deliberately use opposite switching. Drivers are sized for the 2·C_AB hit. In exchange: common-mode noise on both wires cancels at the receiver.
+- **[[quick-context/differential-pair|Differential pairs]]** (USB, Ethernet, HDMI, LVDS) deliberately use opposite switching. Drivers are sized for the 2·C_AB hit. In exchange: common-mode noise on both wires cancels at the receiver.
 - **Parallel buses** (DDR, parallel flash): a switching "aggressor" line slows down *and* injects a glitch into a quiet "victim" line. Routing rules space high-speed lines apart to shrink C_AB.
 - **Data Bus Inversion (DBI):** DDR4+ optionally flips a whole byte if it would cause too many adjacent lines to switch opposite. Forces more same-direction switching → smaller effective C → faster, lower power.
 - **Miller effect in amplifiers:** same physics. Capacitance between input and output of an inverting stage looks bigger by gain factor (1 + A_v) because the output swings opposite to the input.
@@ -534,7 +534,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -656,7 +656,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Q4:** A MOSFET has 2 pF of gate-drain capacitance ($C_{gd}$) and a voltage gain of 100. Why does the input see 200 pF, not 2 pF?
 <details>
 <summary>Answer</summary>
-**Miller effect.** When the gate voltage changes by $\Delta V$, the drain swings by $-100 \times \Delta V$ (inverted by the gain). The voltage across $C_{gd}$ changes by $(1 + 100) \times \Delta V = 101 \times \Delta V$. The current through $C_{gd}$ is therefore 101x what you'd expect from 2 pF alone, making it look like ~200 pF from the input's perspective. This is why high-gain amplifier stages are slower than their raw gate capacitance would suggest. See: 5 Essential Terms (Miller Capacitance).
+**Miller effect.** When the gate voltage changes by $\Delta V$, the drain swings by $-100 \times \Delta V$ (inverted by the gain). The voltage across $C_{gd}$ changes by $(1 + 100) \times \Delta V = 101 \times \Delta V$. The current through $C_{gd}$ is therefore 101x what you'd expect from 2 pF alone, making it look like ~200 pF from the input's perspective. This is why [[quick-context/high-gain-amplifier-stage|high-gain amplifier stages]] are slower than their raw gate capacitance would suggest. See: 5 Essential Terms (Miller Capacitance).
 </details>
 
 **Q5:** As transistors shrink to 3 nm and below, wire (interconnect) capacitance increasingly dominates over gate capacitance. Why doesn't shrinking the transistor also shrink the wire capacitance proportionally?

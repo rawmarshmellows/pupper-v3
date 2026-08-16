@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Amplifying Signals With Current
 
-MOSFETs are voltage-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a microcontroller pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
+[[micro-context/mosfet|MOSFETs]] are [[quick-context/voltage|voltage]]-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a [[micro-context/microcontroller|microcontroller]] pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
 
 ## 5 Essential Terms
 
@@ -221,7 +221,7 @@ MOTOR DRIVER CIRCUIT
 **Q2:** Why does a BJT base always draw current, but a MOSFET gate doesn't?
 <details>
 <summary>Answer</summary>
-**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate capacitance, but no DC current flows through it.
+**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate [[quick-context/capacitance|capacitance]], but no DC current flows through it.
 </details>
 
 **Q3:** What does "saturation" mean for a BJT, and how is it different from MOSFET saturation?
@@ -233,7 +233,7 @@ MOTOR DRIVER CIRCUIT
 **Q4:** Why is a flyback diode necessary when switching an inductive load with a BJT?
 <details>
 <summary>Answer</summary>
-**Inductors generate voltage spikes when current is interrupted.** V = L × dI/dt. When the BJT turns off, the motor's inductance tries to maintain current flow by generating a large reverse voltage—potentially hundreds of volts. This exceeds the BJT's collector-emitter breakdown voltage and destroys it. The flyback diode provides a path for the inductive current to circulate safely as the magnetic field collapses.
+**[[quick-context/inductor|Inductors]] generate voltage spikes when current is interrupted.** V = L × dI/dt. When the BJT turns off, the motor's inductance tries to maintain current flow by generating a large reverse voltage—potentially hundreds of volts. This exceeds the BJT's collector-emitter breakdown voltage and destroys it. The flyback diode provides a path for the inductive current to circulate safely as the magnetic field collapses.
 </details>
 
 **Q5:** A digital circuit needs 50 million transistors. Why can't you build it with BJTs?

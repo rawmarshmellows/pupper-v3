@@ -459,7 +459,7 @@ POWER-ON SEQUENCE
   it's physically part of the hardware.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching [[quick-context/transistor|transistors]] on and off.
+**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just [[quick-context/voltage|voltages]] switching [[quick-context/transistor|transistors]] on and off.
 
 </details>
 
@@ -486,7 +486,7 @@ POWER-ON SEQUENCE
 
 - **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[micro-context/sram|SRAM]], DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 
