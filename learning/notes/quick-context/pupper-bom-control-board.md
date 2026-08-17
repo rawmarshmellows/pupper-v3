@@ -11,7 +11,7 @@ created: 2026-02-25
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
-A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
+A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are decoupling caps keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a [[learning/notes/quick-context/voltage|voltage]] divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
 BOM: learning/notes/quick-context/BOM_Control Board Rev 3.5_PCB1_3_2025-02-20.xlsx
 Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
@@ -20,11 +20,11 @@ Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
 
 | Term | Definition |
 |------|------------|
-| **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
-| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
+| **BOM (Bill of Materials)** | The complete parts list for a PCB — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
+| **Reference Designator** | The unique label for each component on the schematic and PCB: R = resistor, C = capacitor, U = IC, L = inductor, D = diode, CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See IC Packages. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
-| **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
+| **Decoupling Network** | The system of capacitors placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
 
 <details>
 <summary><strong>How It Works</strong> — The BOM organized by function</summary>
@@ -86,13 +86,13 @@ FUNCTIONAL BLOCK DIAGRAM — Pupper v3 Control Board Rev 3.5
 **[[micro-context/stm32-microcontroller|STM32F446RET6]]** — ARM Cortex-M4 @ 180 MHz, 512 KB flash, 128 KB RAM, LQFP-64 package (10 × 10 mm, 0.5 mm pitch).
 
 Two are used with distinct roles:
-- **U1 (Main MCU):** Receives joint commands from the Raspberry Pi over [[micro-context/spi|SPI]] via the 40-pin header (U2), relays them to U5, reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC over [[micro-context/i2c|I2C]], and sends audio to the MAX98357A over I2S. (Note: the Pi reads the IMU directly over I2C through the 40-pin header, not through U1 — see [source](https://github.com/Nate711/pupperv3-monorepo/tree/main/ros2_ws/src/control_board_hardware_interface/src/rt).)
+- **U1 (Main MCU):** Receives joint commands from the Raspberry Pi over [[micro-context/spi|SPI]] via the 40-pin header (U2), relays them to U5, reads battery voltage via the [[micro-context/ads1110-battery-adc|ADS1110]] ADC over [[micro-context/i2c|I2C]], and sends audio to the MAX98357A over [[learning/notes/micro-context/i2s|I2S]]. (Note: the Pi reads the IMU directly over I2C through the 40-pin header, not through U1 — see [source](https://github.com/Nate711/pupperv3-monorepo/tree/main/ros2_ws/src/control_board_hardware_interface/src/rt).)
 - **U5 (Motor MCU):** Dedicated to the 1 kHz motor control loop — receives joint targets from U1 over [[micro-context/spi|SPI]], sends/receives CAN messages to all 12 servos via the 4 MAX3051 transceivers.
 
 Each MCU requires:
-- One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its clock source
+- One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its [[learning/notes/micro-context/clock-source|clock source]]
 - Multiple decoupling capacitors on its power pins (100nF + 1μF + 4.7μF)
-- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as CAN bus termination
+- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as [[learning/notes/micro-context/can-bus-termination|CAN bus termination]]
 
 ### Category 2: Communication — CAN Transceivers (U3, U4, U6, U7)
 
@@ -100,7 +100,7 @@ Each MCU requires:
 
 Four transceivers create 4 independent CAN buses. Each bus connects to 3 servo motors (4 buses × 3 servos = 12 total). The MAX3051 converts the MCU's single-ended TX/RX signals into differential CAN_H/CAN_L pairs that are noise-immune over long wires — critical for a robot where motor cables run through legs and pick up electromagnetic interference.
 
-The 120Ω resistors (R1-R4) are CAN bus termination [[quick-context/resistor|resistors]] — they match the characteristic [[quick-context/impedance-and-reactance|impedance]] of the CAN bus to prevent signal reflections.
+The 120Ω resistors (R1-R4) are [[learning/notes/quick-context/can-bus|CAN bus]] termination [[quick-context/resistor|resistors]] — they match the characteristic [[quick-context/impedance-and-reactance|impedance]] of the CAN bus to prevent signal reflections.
 
 ### Category 3: Sensing — IMU and ADC (U15, U16)
 
@@ -344,7 +344,7 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH [[learning/notes/micro-context/power-inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 

@@ -489,7 +489,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **Q4:** An inductor stores 1 joule of energy in its magnetic field. You disconnect it from the source. Where does that 1 joule go?
 <details>
 <summary>Answer</summary>
-**It's converted to heat in whatever the current flows through.** The magnetic field collapses, inducing voltage that drives current through any available path. If a resistor is connected, the current flows through it, dissipating energy as heat (P = I²R). If NO path exists, the inductor generates enough voltage to arc through air or destroy components — the energy still dissipates, just destructively. Energy is always conserved; it transforms from magnetic field energy to thermal energy.
+**It's converted to heat in whatever the current flows through.** The magnetic field collapses, inducing voltage that drives current through any available path. If a [[learning/notes/quick-context/resistor|resistor]] is connected, the current flows through it, dissipating energy as heat (P = I²R). If NO path exists, the inductor generates enough voltage to arc through air or destroy components — the energy still dissipates, just destructively. Energy is always conserved; it transforms from magnetic field energy to thermal energy.
 </details>
 
 **Q5:** A coil has inductance L. You wind it with twice as many turns (2N instead of N), keeping everything else the same. How does the self-inductance change?

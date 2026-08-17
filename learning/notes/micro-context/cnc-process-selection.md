@@ -4,6 +4,9 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+
+> **Related:** [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/quick-context/cnc-machining]]
+
 # CNC Process Selection
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]

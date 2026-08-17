@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[learning/notes/quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
@@ -384,7 +384,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/subatomic-particles]]** — The fundamental particles (protons, neutrons, electrons) that make up atoms. Silicon has 14 protons and 4 outer electrons; doping changes the electron count at specific locations to create controllable charge carriers.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from BJT (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from [[learning/notes/quick-context/bjt|BJT]] (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
 
 </details>
 
@@ -406,7 +406,7 @@ In pure silicon, every electron is "locked" in covalent bonds with neighboring a
 **Q3:** Why do different regions of a transistor require different doping concentrations?
 <details>
 <summary>Answer</summary>
-The source/drain regions need heavy doping for low resistance (so current flows easily). The channel region needs light doping so it can be easily controlled by the gate voltage (turned on/off cleanly). The well regions need medium doping to isolate components from each other. It's a tradeoff between conductivity and controllability. See: "The Key Tension" section
+The source/drain regions need heavy doping for low resistance (so current flows easily). The channel region needs light doping so it can be easily controlled by the gate [[learning/notes/quick-context/voltage|voltage]] (turned on/off cleanly). The well regions need medium doping to isolate components from each other. It's a tradeoff between conductivity and controllability. See: "The Key Tension" section
 </details>
 
 **Q4:** Someone claims: "To make silicon conduct better, you should add as much dopant as possible." What's wrong with this reasoning?
