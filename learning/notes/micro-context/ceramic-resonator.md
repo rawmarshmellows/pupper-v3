@@ -39,4 +39,4 @@ updated: 2026-03-27
   └──────────────────┴───────────┴──────────────────┘
 ```
 
-**Key insight:** The Pupper BOM uses ceramic resonators instead of quartz crystals because CAN bus tolerates ±0.5% clock error — the built-in load capacitors save two external components per MCU for no practical accuracy tradeoff in this application.
+**Key insight:** The Pupper BOM uses ceramic resonators instead of quartz crystals because [[learning/notes/quick-context/can-bus|CAN bus]] tolerates ±0.5% clock error — the built-in load capacitors save two external components per MCU for no practical accuracy tradeoff in this application.
