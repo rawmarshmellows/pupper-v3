@@ -2,6 +2,7 @@
 term: Clock Source
 created: 2026-03-27
 ---
+> **Related:** [[micro-context/crystal-oscillator]] | [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[micro-context/ads1110-battery-adc]] | [[micro-context/spi]]
 
 # Clock Source
 

@@ -3,6 +3,7 @@ term: JST Connector Families
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/smd-resistor]] | [[micro-context/cathode]] | [[micro-context/spinev1-elf]] | [[micro-context/spi]] | [[micro-context/schmitt-trigger-hysteresis]]
 
 # JST Connector Families
 

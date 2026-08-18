@@ -2,6 +2,7 @@
 term: Crystal Oscillator
 created: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-source]] | [[micro-context/ceramic-resonator]] | [[micro-context/piezoelectric-effect]] | [[micro-context/clock-speed]] | [[micro-context/i2s-audio-amplifier]]
 
 # Crystal Oscillator
 

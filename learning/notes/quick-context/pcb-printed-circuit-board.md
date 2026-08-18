@@ -73,7 +73,7 @@ ANATOMY OF A PCB (Side View Cross-Section)
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A PCB is essentially a **sandwich of insulating fiberglass with patterned copper layers**. The copper starts as a solid sheet bonded to the fiberglass. Manufacturers use a process similar to photography: they coat the copper with light-sensitive material, shine UV light through a mask of the desired pattern, then chemically dissolve the unwanted copper—leaving only the traces, pads, and planes you designed. This is called "etching." For multi-layer boards, these copper-fiberglass sheets are stacked and laminated together with heat and pressure, then drilled to create vias (the connections between layers). Finally, everything gets coated with soldermask except the pads, and the exposed pads get a thin coating of solder or gold to prevent oxidation and improve solderability.
+A PCB is essentially a **sandwich of insulating fiberglass with patterned copper layers**. The copper starts as a solid sheet bonded to the fiberglass. Manufacturers use a process similar to photography: they coat the copper with light-sensitive material, shine UV light through a mask of the desired pattern, then chemically dissolve the unwanted copper—leaving only the traces, pads, and planes you designed. This is called "etching." For multi-layer boards, these copper-fiberglass sheets are stacked and laminated together with heat and pressure, then drilled to create vias (the connections between layers). Finally, everything gets coated with soldermask except the pads, and the exposed pads get a thin coating of solder or gold to prevent [[micro-context/oxidation|oxidation]] and improve solderability.
 
 The magic of PCBs is that each copper layer can have its own independent pattern. Typically, you dedicate certain layers entirely to power and ground (called "planes")—these act as reservoirs of electricity that components can tap into anywhere they need. Signal traces run on other layers, weaving around each other. When a trace needs to cross another trace, it simply drops down to a different layer via a via, crosses underneath, and pops back up. This is how thousands of connections can coexist without touching each other.
 
@@ -258,7 +258,7 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 
 - **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
 
-- **Soldering and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
+- **[[quick-context/soldering|Soldering]] and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
 
 - **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 

@@ -340,13 +340,13 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Ohm's Law (V = I x R)** — The fundamental relationship connecting voltage, current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
 
-- **Electrical Power (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
+- **[[quick-context/power-watts-joules|Electrical Power]] (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
 
 - **Conductivity and Electrolytes** — Why some materials allow current to flow (conductors, ionic solutions) while others don't (insulators). Pure water has almost no conductivity, which is why electrolysis requires added [[quick-context/making-electrolytes|electrolyte]].
 
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
-- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: [[micro-context/electromagnetic-induction|electromagnetic induction]] (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
 
 - **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
 
@@ -374,7 +374,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q3:** Why does electrolysis specifically require DC (direct current) rather than AC (alternating current)?
 <details>
 <summary>Answer</summary>
-**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons (oxidation). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
+**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons ([[micro-context/oxidation|oxidation]]). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
 </details>
 
 **Q4:** Two electrolysis cells are connected in series (current passes through both). Cell A has electrode area of 10 cm², Cell B has electrode area of 100 cm². Which cell produces more product?

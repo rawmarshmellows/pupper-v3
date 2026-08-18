@@ -499,7 +499,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 
@@ -656,7 +656,7 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday [[quick-context/tensor|tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 

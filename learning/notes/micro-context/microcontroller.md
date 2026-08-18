@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/stm32-microcontroller]] | [[micro-context/plc-programmable-logic-controller]] | [[micro-context/spi]] | [[micro-context/can-bus-transceiver]] | [[quick-context/raspberry-pi-5-components]]
 
 # Microcontroller
 

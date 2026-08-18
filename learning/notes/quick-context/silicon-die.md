@@ -19,8 +19,8 @@ A silicon die solves the fundamental problem of cramming billions of microscopic
 |------|------------|
 | **Die** (or "chip") | The actual piece of silicon containing all the transistors; typically 5-400 mm² in area, cut from a larger wafer |
 | **Wafer** | A thin, circular disc of ultra-pure silicon (usually 300mm diameter) on which hundreds of identical dies are manufactured simultaneously |
-| **Transistor** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
-| **Metal interconnect layers** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
+| **[[quick-context/transistor|Transistor]]** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
+| **[[quick-context/metal-interconnect-layers|Metal interconnect layers]]** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
 | **Dicing** | The process of cutting a finished wafer into individual dies using diamond saws, lasers, or plasma etching |
 
 <details>

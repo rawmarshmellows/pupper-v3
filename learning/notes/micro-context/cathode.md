@@ -3,6 +3,7 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/anode]] | [[micro-context/oxidation]] | [[micro-context/diode-rectification]] | [[micro-context/current-electrons-per-second]] | [[micro-context/ac-dc-current]]
 
 # Cathode
 

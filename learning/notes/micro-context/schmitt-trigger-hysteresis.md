@@ -2,6 +2,7 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/input-offset-voltage]] | [[micro-context/output-voltage-swing]] | [[micro-context/bjt-mosfet-igbt]] | [[micro-context/scan-loop]] | [[micro-context/input-common-mode-range]]
 
 # Schmitt Trigger & Hysteresis
 

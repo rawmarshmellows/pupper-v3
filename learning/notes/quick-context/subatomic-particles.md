@@ -21,7 +21,7 @@ Everything around you—your body, your computer, the air you breathe—is made 
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
 | **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[quick-context/electromagnetism|electromagnetism]] but only works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>

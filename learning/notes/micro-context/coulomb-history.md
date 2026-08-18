@@ -3,6 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/current-electrons-per-second]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/anode]] | [[micro-context/cathode]] | [[micro-context/diode-rectification]]
 
 # Coulomb (Unit History)
 

@@ -3,6 +3,7 @@ term: ST-Link V2 Programmer
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/swd-serial-wire-debug]] | [[micro-context/stm32-microcontroller]] | [[quick-context/firmware]] | [[quick-context/usb-peripheral-hardware]] | [[quick-context/from-code-to-running-firmware]]
 
 # ST-Link V2 Programmer
 
@@ -100,7 +101,7 @@ WHAT BIT-BANGING LOOKS LIKE (simplified):
       set_gpio(SWCLK, LOW)
 ```
 
-The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per clock edge for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
+The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per [[micro-context/clock-edges|clock edge]] for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
 
 **3. Wire layer — ST-Link to target**
 

@@ -3,6 +3,7 @@ term: CNC Process Selection
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/cnc-turning]] | [[micro-context/cnc-milling]] | [[micro-context/edm-machining]] | [[quick-context/cnc-machining]] | [[micro-context/ads1110-battery-adc]]
 
 # CNC Process Selection
 

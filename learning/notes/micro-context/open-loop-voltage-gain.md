@@ -2,6 +2,7 @@
 term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/common-mode-rejection-ratio]] | [[micro-context/input-common-mode-range]] | [[micro-context/output-voltage-swing]] | [[micro-context/input-bias-current]] | [[micro-context/power-supply-rejection-ratio]]
 
 # Open-Loop Voltage Gain ($A_V$)
 

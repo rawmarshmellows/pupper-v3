@@ -3,6 +3,7 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/i2s]] | [[micro-context/can-bus-transceiver]] | [[micro-context/crystal-oscillator]] | [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/clock-source]]
 
 # I2S Audio Amplifier
 

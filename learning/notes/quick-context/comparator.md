@@ -432,7 +432,7 @@ CURRENT CONSUMPTION:
     Total: ~23 μA — negligible for a battery that holds 2000+ mAh
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation capacitor that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
+**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation [[quick-context/capacitor|capacitor]] that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
 
 </details>
 

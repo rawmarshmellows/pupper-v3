@@ -57,7 +57,7 @@ For computer vision workloads on the original AI HAT+ (13T or 26T):
 
 1. [[quick-context/camera-fundamentals|Camera]] captures a frame via MIPI CSI
 2. Pi CPU preprocesses the image (resize, normalize, color convert)
-3. Preprocessed tensor is sent to the Hailo NPU over PCIe
+3. Preprocessed [[quick-context/tensor|tensor]] is sent to the Hailo NPU over PCIe
 4. NPU executes the neural network (e.g., YOLOv8) in its internal pipeline
 5. Results (bounding boxes, class IDs, confidence scores) return over PCIe
 6. Pi CPU post-processes results (non-max suppression, coordinate mapping)
@@ -244,7 +244,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 
 **Geekworm M901 + Hailo-8L (M-key)** is the simplest path:
 - ~$15-20 for the adapter + ~$45-55 for the Hailo-8L M.2 module
-- FPC-only: all 40 GPIO pins free for motor control, IMU, CAN bus
+- FPC-only: all 40 GPIO pins free for motor control, IMU, [[quick-context/can-bus|CAN bus]]
 - 13 TOPS is sufficient for real-time YOLOv8 at ~15 FPS
 - Power draw stays well within FPC's 5W budget
 - One line in config.txt: `dtparam=pciex1_gen=3`
@@ -264,7 +264,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 | AI HAT+ 26T | Oct 2024 | Hailo-8 (soldered) | 26 | INT8 | None | ~$110 | High-perf vision |
 | AI HAT+ 2 | Apr 2026 | Hailo-10H (soldered) | 40 | INT4 | 8GB DDR | $180 | LLMs + vision |
 
-The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of soldering the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
+The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of [[quick-context/soldering|soldering]] the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
 
 ### Which One to Buy?
 
@@ -464,7 +464,7 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 - **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
 - **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
 - **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
-- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level
+- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the [[quick-context/transistor|transistor]] level
 - **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep topic in its own right
 - **ONNX (Open Neural Network Exchange)** — The intermediate model format used as input to Hailo's compiler
 

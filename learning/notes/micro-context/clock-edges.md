@@ -3,6 +3,7 @@ term: Clock Edge
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/clock-speed]] | [[micro-context/i2s]] | [[micro-context/thermal-runaway]] | [[micro-context/crystal-oscillator]] | [[micro-context/clock-speed-vs-temperature]]
 
 # Clock Edge
 

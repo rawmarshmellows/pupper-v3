@@ -253,7 +253,7 @@ I2C BUS PULL-UPS
 **Q5:** Why can't you use a very high-value pull-up resistor (e.g., 10MΩ) on a digital input?
 <details>
 <summary>Answer</summary>
-**The RC time constant becomes too large.** Every wire has parasitic capacitance. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
+**The RC time constant becomes too large.** Every wire has parasitic [[quick-context/capacitance|capacitance]]. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
 </details>
 
 </details>

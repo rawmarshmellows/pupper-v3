@@ -3,6 +3,7 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/power-inductor]] | [[micro-context/electromagnetic-induction]] | [[micro-context/decoupling-capacitor]] | [[micro-context/diode-rectification]] | [[micro-context/current-electrons-per-second]]
 
 # Current Behavior with Inductors vs Capacitors
 

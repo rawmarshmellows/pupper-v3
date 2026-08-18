@@ -9,7 +9,7 @@ created: 2026-04-07
 
 ## The Core Problem
 
-Your [[learning/notes/micro-context/stm32-microcontroller|MCU]] has a byte — a scan code, a sensor reading, a debug message — that needs to reach a PC over USB. The CPU can't bit-bang the USB data lines because full-speed USB requires toggling voltages at 12 MHz with sub-microsecond response times, plus simultaneously computing CRCs, inserting stuff bits, and encoding NRZI — all while running your main application. So MCUs contain a dedicated USB peripheral: a block of logic gates (built from [[learning/notes/quick-context/transistor|transistors]]) that handles the entire USB protocol in hardware. Firmware just writes bytes to a buffer and sets a flag; the hardware does the rest. Understanding how this peripheral works bridges the gap between "my code writes to a register" and "voltage transitions appear on a wire."
+Your [[learning/notes/micro-context/stm32-microcontroller|MCU]] has a byte — a scan code, a sensor reading, a debug message — that needs to reach a PC over USB. The CPU can't bit-bang the USB data lines because full-speed USB requires toggling voltages at 12 MHz with sub-microsecond response times, plus simultaneously computing CRCs, inserting stuff bits, and encoding NRZI — all while running your main application. So MCUs contain a dedicated USB peripheral: a block of logic gates (built from [[learning/notes/quick-context/transistor|transistors]]) that handles the entire USB protocol in hardware. [[quick-context/firmware|Firmware]] just writes bytes to a buffer and sets a flag; the hardware does the rest. Understanding how this peripheral works bridges the gap between "my code writes to a register" and "voltage transitions appear on a wire."
 
 ## 5 Essential Terms
 
@@ -18,7 +18,7 @@ Your [[learning/notes/micro-context/stm32-microcontroller|MCU]] has a byte — a
 | **Serial Interface Engine (SIE)** | The digital logic block inside the USB peripheral that autonomously handles packet framing, NRZI encoding, bit stuffing, CRC, and handshaking. It responds to host requests without CPU involvement — the CPU only loads data and reads status. |
 | **NRZI (Non-Return-to-Zero Inverted)** | The line encoding USB uses on the wire. A data "0" causes a voltage transition (J→K or K→J); a data "1" causes no transition. This ensures clock-recovery transitions appear regularly, since bit stuffing forces a "0" after every 6 consecutive "1"s. |
 | **Endpoint Buffer** | A small block of dedicated SRAM inside the MCU (512B-4KB depending on the chip) where firmware writes outgoing data and reads incoming data. The SIE reads from / writes to this buffer autonomously during USB transactions. |
-| **D+ / D- (Differential Pair)** | The two data wires in a USB cable. Data is encoded as the voltage *difference* between them: J state = D+ HIGH, D- LOW; K state = D+ LOW, D- HIGH. Differential signaling rejects common-mode noise (EMI hits both wires equally and cancels out). |
+| **D+ / D- ([[quick-context/differential-pair|Differential Pair]])** | The two data wires in a USB cable. Data is encoded as the voltage *difference* between them: J state = D+ HIGH, D- LOW; K state = D+ LOW, D- HIGH. Differential signaling rejects common-mode noise (EMI hits both wires equally and cancels out). |
 | **IN Token** | A packet the host sends to request data from the device. USB is 100% host-initiated — the device can *never* transmit spontaneously. When the SIE sees an IN token matching its address, it responds with the data from the endpoint buffer (or NAK if no data is ready). |
 
 <details>
@@ -352,7 +352,7 @@ OUTPUT DRIVER — ONE PER DATA LINE (D+ and D-)
   same transistor physics as any digital circuit.
 ```
 
-The 22 $\Omega$ series resistor (external on some MCUs, integrated on others) plus the MOSFET's on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
+The 22 $\Omega$ series [[quick-context/resistor|resistor]] (external on some MCUs, integrated on others) plus the MOSFET's on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
 
 </details>
 
@@ -476,7 +476,7 @@ TRACING ONE BIT THROUGH THE HARDWARE PIPELINE
 
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — Where the bytes in the endpoint buffer physically live (SRAM = cross-coupled inverter pairs) and how the firmware itself exists as trapped electrons in the MCU's flash. The keyboard MCU section of that document is what spawned this one.
 
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], UART, and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], [[quick-context/uart|UART]], and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
 
 - **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switches in the output drivers that physically create the voltage transitions on D+/D-. Same transistor physics as any digital output, just switching at 12 MHz.
 

@@ -2,6 +2,7 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** [[micro-context/microcontroller]] | [[quick-context/plc-vs-software]] | [[micro-context/stm32-microcontroller]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/firmware]]
 
 # PLC (Programmable Logic Controller)
 

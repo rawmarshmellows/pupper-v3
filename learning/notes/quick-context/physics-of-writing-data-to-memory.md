@@ -188,7 +188,7 @@ No single memory technology is best at everything. The physics forces a three-wa
 
 **Why not just use the densest?** Flash writes are 1000x slower than DRAM and degrade the oxide with every write. Running a program from flash (as MCUs do) is fine for reads, but you can't use flash as working memory — the write speed and endurance would be catastrophic.
 
-**The physical root cause:** Storing a bit more *permanently* requires moving charge through a stronger barrier, which takes more energy and time. SRAM holds bits as voltages on transistor gates (fast to change, gone without power). DRAM holds charge on a capacitor (slightly harder to change, leaks away). Flash traps electrons behind an oxide wall (hard to change, stays for years). The tradeoff is inescapable because it's rooted in the physics of charge storage.
+**The physical root cause:** Storing a bit more *permanently* requires moving charge through a stronger barrier, which takes more energy and time. SRAM holds bits as voltages on transistor gates (fast to change, gone without power). DRAM holds charge on a [[quick-context/capacitor|capacitor]] (slightly harder to change, leaks away). Flash traps electrons behind an oxide wall (hard to change, stays for years). The tradeoff is inescapable because it's rooted in the physics of charge storage.
 
 This is why computers use a **memory hierarchy**: SRAM for registers/cache (tiny, fast), DRAM for main memory (big, fast enough), flash/SSD for storage (massive, persistent). Each level exploits a different point on the speed-density-persistence curve.
 
@@ -345,7 +345,7 @@ When you [[learning/notes/quick-context/from-code-to-running-firmware|flash firm
 5. Fowler-Nordheim tunneling traps electrons on floating gates — same physics as an SSD, but the flash cells are NOR-type (individually addressable) rather than NAND-type (page-addressable)
 6. After programming, the controller reads back and verifies each word
 
-The entire process — erase block, program page, verify — takes ~100-500 ms for the full firmware image. After that, the machine code exists as trapped electrons on the [[learning/notes/quick-context/silicon-die|silicon die]], persisting without power until intentionally erased.
+The entire process — erase block, program page, verify — takes ~100-500 ms for the full [[quick-context/firmware|firmware]] image. After that, the machine code exists as trapped electrons on the [[learning/notes/quick-context/silicon-die|silicon die]], persisting without power until intentionally erased.
 
 **The one thing most outsiders get wrong about this is...** thinking that bits are somehow "magnetic" or "electrical" in a vague hand-wavy sense. They're not vague at all. A bit in DRAM is literally tens of thousands of electrons sitting on a capacitor plate. A bit in flash is literally electrons trapped behind an 8-nanometer oxide wall by quantum tunneling. A bit in SRAM is literally two transistor pairs holding each other's voltages stable. Every `0` and `1` in your computer is a concrete physical arrangement of electrons — and the differences between memory technologies come down to *how hard it is to put those electrons there* and *how hard it is for them to escape*.
 

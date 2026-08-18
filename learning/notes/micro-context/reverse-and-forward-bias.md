@@ -3,6 +3,7 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/diode-rectification]] | [[micro-context/anode]] | [[micro-context/full-bridge-rectifier]] | [[micro-context/cathode]] | [[quick-context/ac-to-dc-rectification]]
 
 # Reverse and Forward Bias
 

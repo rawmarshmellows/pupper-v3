@@ -11,7 +11,7 @@ created: 2026-05-28
 
 ## The Core Problem
 
-Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
+Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over [[quick-context/uart|UART]] — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
 
 ## 5 Essential Terms
 
@@ -219,7 +219,7 @@ OFDM modulator (PHY hardware)
 
 ### Programming the chip — the auto-reset circuit
 
-Almost every ESP32 dev board (the ones with a USB connector) has a two-transistor circuit on its USB-UART bridge that toggles `EN` (reset) and `GPIO0` (boot mode) automatically when `esptool.py` opens the serial port. Without it you'd have to hold a BOOT button and tap RST every time you flash. The Arduino Uno R4 WiFi reuses the same trick — see [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|that note]] for how Arduino routes USB through the ESP32-S3 as a USB-to-serial bridge for the Renesas main MCU.
+Almost every ESP32 dev board (the ones with a USB connector) has a two-[[quick-context/transistor|transistor]] circuit on its USB-UART bridge that toggles `EN` (reset) and `GPIO0` (boot mode) automatically when `esptool.py` opens the serial port. Without it you'd have to hold a BOOT button and tap RST every time you flash. The Arduino Uno R4 WiFi reuses the same trick — see [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|that note]] for how Arduino routes USB through the ESP32-S3 as a USB-to-serial bridge for the Renesas main MCU.
 
 **The one thing most outsiders get wrong about this is...** thinking the ESP32 is "just a faster Arduino." Architecturally it's closer to a tiny Linux SoC: dual cores, MMU with flash cache, preemptive RTOS, a ~3 MB binary blob handling 802.11 in real time, hardware crypto accelerators, and watchdogs you have to feed. The Arduino `setup()`/`loop()` API is a thin shim — `loop()` is itself a FreeRTOS task that you can starve. This is why blocking `delay(5000)` calls work fine on AVR but cause "Brownout detector was triggered" or "Task watchdog got triggered" panics on ESP32 if they run on Core 0.
 

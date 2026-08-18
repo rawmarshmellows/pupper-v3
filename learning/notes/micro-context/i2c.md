@@ -3,6 +3,7 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/spi]] | [[micro-context/scan-loop]] | [[micro-context/i2s]] | [[micro-context/push-pull-vs-open-drain]] | [[micro-context/can-bus-transceiver]]
 
 # I2C
 

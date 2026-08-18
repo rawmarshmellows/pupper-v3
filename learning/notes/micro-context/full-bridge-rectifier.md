@@ -3,6 +3,7 @@ term: Full-Wave Bridge Rectifier
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/diode-rectification]] | [[micro-context/power-inductor]] | [[micro-context/electromagnetic-induction]] | [[micro-context/current-mirror]] | [[micro-context/4-wire-kelvin-measurement]]
 
 # Full-Wave Bridge Rectifier
 

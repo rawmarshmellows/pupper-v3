@@ -3,6 +3,7 @@ term: Oxidation
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/cathode]] | [[micro-context/anode]] | [[quick-context/anions-and-oxidation]] | [[quick-context/electrodes]] | [[micro-context/diode-rectification]]
 
 # Oxidation
 

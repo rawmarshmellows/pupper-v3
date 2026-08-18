@@ -3,6 +3,7 @@ term: EDM Machining
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/cnc-machining]] | [[micro-context/cnc-process-selection]] | [[micro-context/cnc-turning]] | [[micro-context/cnc-milling]] | [[micro-context/smd-resistor]]
 
 # EDM Machining (Electrical Discharge Machining)
 

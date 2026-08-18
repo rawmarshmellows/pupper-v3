@@ -3,6 +3,7 @@ term: Diode Rectification (AC → DC)
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/full-bridge-rectifier]] | [[micro-context/reverse-and-forward-bias]] | [[micro-context/cathode]] | [[micro-context/anode]] | [[micro-context/current-inductor-capacitor-relationship]]
 
 # Diode Rectification (AC → DC)
 

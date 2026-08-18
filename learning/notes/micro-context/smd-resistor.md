@@ -3,6 +3,7 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/power-inductor]] | [[micro-context/i2c]] | [[micro-context/pick-and-place-file]] | [[micro-context/can-bus-termination]]
 
 # SMD Resistor
 
@@ -12,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for soldering.
+- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for [[quick-context/soldering|soldering]].
 - Current flowing through the resistive film converts electrical energy to heat according to $P = I^2R$.
 - The resistance value is set during manufacturing by the film's composition, thickness, and laser-trimmed geometry.
 
@@ -38,4 +39,4 @@ SMD RESISTOR SIZES (to scale):
   └────────────┴─────────┴─────────────────────────┘
 ```
 
-**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the buck converter—they set the exact output voltage through a voltage divider ratio.
+**Key insight:** The odd [[quick-context/resistor|resistor]] values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the [[micro-context/buck-converter|buck converter]]—they set the exact output voltage through a voltage divider ratio.
