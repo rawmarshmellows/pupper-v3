@@ -3,6 +3,7 @@ term: SPI
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/i2c]] | [[micro-context/i2s]] | [[micro-context/can-bus-transceiver]] | [[micro-context/microcontroller]] | [[micro-context/clock-source]]
 
 # SPI
 
@@ -13,7 +14,7 @@ updated: 2026-03-27
 ## How It Works
 
 - The master asserts chip-select (CS) low to activate the target peripheral, then drives the clock (SCLK).
-- On each clock edge, the master shifts one bit out on MOSI while simultaneously reading one bit in from MISO.
+- On each [[micro-context/clock-edges|clock edge]], the master shifts one bit out on MOSI while simultaneously reading one bit in from MISO.
 - After all bits are clocked, the master de-asserts CS to end the transaction.
 - Because data flows in both directions simultaneously, SPI is full-duplex — reads and writes happen in the same clock cycle.
 

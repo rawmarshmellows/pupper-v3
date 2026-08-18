@@ -2,6 +2,7 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** [[micro-context/clock-source]] | [[micro-context/electromagnetic-induction]] | [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/capacitive-voltage-sensing]] | [[micro-context/output-voltage-swing]]
 
 # Coriolis Effect
 

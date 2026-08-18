@@ -3,6 +3,7 @@ term: Clock Speed vs Temperature
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/thermal-runaway]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing]] | [[micro-context/decoupling-capacitor]] | [[micro-context/clock-edges]]
 
 # Clock Speed vs Temperature
 
@@ -15,7 +16,7 @@ updated: 2026-03-27
 - Every clock edge causes transistors to charge and discharge gate capacitances, converting electrical energy into heat ($P = CV^2f$).
 - Higher clock speeds require more switching events per second, linearly increasing dynamic power dissipation.
 - Pushing clocks higher often demands raising supply voltage too, which increases power quadratically ($V^2$).
-- When junction temperature rises too high, firmware thermal throttling reduces clock speed to bring power back under the cooling budget.
+- When junction temperature rises too high, [[quick-context/firmware|firmware]] thermal throttling reduces clock speed to bring power back under the cooling budget.
 
 ```
 THE HEAT-SPEED RELATIONSHIP

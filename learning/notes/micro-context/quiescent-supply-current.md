@@ -2,6 +2,7 @@
 term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/input-bias-current]] | [[micro-context/input-common-mode-range]] | [[micro-context/open-loop-voltage-gain]] | [[micro-context/current-mirror]] | [[micro-context/tail-current]]
 
 # Quiescent Supply Current ($I_S$)
 

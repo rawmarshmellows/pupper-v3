@@ -248,7 +248,7 @@ BUILDING BLOCKS FROM D FLIP-FLOPS
 <details>
 <summary><strong>The Key Tension</strong> — Speed vs. reliability (the clock constraint)</summary>
 
-The fundamental tension in synchronous design is **clock speed vs. correctness**.
+The fundamental tension in synchronous design is **[[micro-context/clock-speed|clock speed]] vs. correctness**.
 
 Every combinational logic path between two flip-flops has a **propagation delay** — the time for a signal to ripple through all the gates. The clock period must be long enough for the slowest path (the "critical path") to settle before the next clock edge samples the result. Too fast → signals haven't settled → flip-flops capture wrong values → the circuit produces garbage.
 
@@ -387,7 +387,7 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 
 - **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit showing how a physical switch, clock button, and D flip-flop chip (74HC74/74HC574) store data — and how this minimal setup scales to build every register, RAM, and CPU.
 
-- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], comparator, and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
+- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], [[quick-context/comparator|comparator]], and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
 
 </details>
 

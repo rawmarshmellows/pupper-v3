@@ -2,6 +2,7 @@
 term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
 ---
+> **Related:** [[micro-context/sram]] | [[micro-context/schmitt-trigger-hysteresis]] | [[micro-context/pwm-pulse-width-modulation]] | [[micro-context/output-voltage-swing]] | [[micro-context/power-inductor]]
 
 # BJT vs MOSFET vs IGBT
 

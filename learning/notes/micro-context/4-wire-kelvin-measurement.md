@@ -3,6 +3,7 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/current-electrons-per-second]] | [[micro-context/full-bridge-rectifier]] | [[micro-context/power-supply-rejection-ratio]] | [[micro-context/input-bias-current]] | [[micro-context/ads1110-battery-adc]]
 
 # 4-Wire Kelvin Measurement
 

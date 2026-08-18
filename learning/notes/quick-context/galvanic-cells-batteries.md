@@ -242,7 +242,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 
 - **Solid-State Batteries** — The "next generation" technology replacing liquid electrolytes with solid conductors. Promises higher energy density and safety, but manufacturing challenges remain unsolved at scale.
 
-- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with electromagnetic induction and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
+- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with [[micro-context/electromagnetic-induction|electromagnetic induction]] and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
 
 </details>
 
@@ -255,7 +255,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Electrolytes conduct ions, not electrons.** The electrolyte is an ionic conductor—dissolved salts or acids that allow charged ions (like Zn²⁺, Cu²⁺, SO₄²⁻) to move through the solution. Free electrons cannot travel through ionic solutions; they must go through the metallic external circuit. This separation is what allows us to extract useful work—if electrons could shortcut through the electrolyte, the reaction would just produce heat instead of electrical current. See: The salt bridge explanation in Concrete Example
 </details>
 
-**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a microcontroller, how would you achieve this using Daniell cells?
+**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a [[micro-context/microcontroller|microcontroller]], how would you achieve this using Daniell cells?
 <details>
 <summary>Answer</summary>
 **Connect three Daniell cells in series.** When batteries are connected in series (positive terminal of one to negative terminal of the next), their voltages add: 1.10V + 1.10V + 1.10V = 3.30V. The capacity (Ah) stays the same as a single cell, but voltage stacks. This is how a 12V car battery works—six 2.1V lead-acid cells in series. See: Concrete Example (cell voltage calculation)

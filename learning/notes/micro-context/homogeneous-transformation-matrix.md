@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/pupper-lab2-forward-kinematics]] | [[micro-context/spinev1-elf]] | [[micro-context/spi]] | [[micro-context/current-electrons-per-second]] | [[micro-context/input-common-mode-range]]
 
 # Homogeneous Transformation Matrix
 

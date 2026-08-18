@@ -2,6 +2,7 @@
 term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/open-loop-voltage-gain]] | [[micro-context/input-common-mode-range]] | [[micro-context/offset-voltage-drift]] | [[micro-context/common-mode-rejection-ratio]] | [[micro-context/schmitt-trigger-hysteresis]]
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 

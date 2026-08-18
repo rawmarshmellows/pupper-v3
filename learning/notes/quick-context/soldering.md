@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Making Reliable Permanent Connections
 
-You have a component (resistor, IC, connector) and a PCB with copper pads. You need to create a connection that is electrically conductive, mechanically strong, and reliable for years. Breadboards and wire-wrapping are temporary. Soldering is permanent: a low-melting-point metal alloy (solder) is melted to form a metallurgical bond between the component lead and the copper pad. The joint must wet properly (solder flows and adheres to clean metal surfaces) and solidify into a reliable, low-resistance connection. Bad solder joints are the #1 cause of electronic failures in the field.
+You have a component ([[quick-context/resistor|resistor]], IC, connector) and a PCB with copper pads. You need to create a connection that is electrically conductive, mechanically strong, and reliable for years. Breadboards and wire-wrapping are temporary. Soldering is permanent: a low-melting-point metal alloy (solder) is melted to form a metallurgical bond between the component lead and the copper pad. The joint must wet properly (solder flows and adheres to clean metal surfaces) and solidify into a reliable, low-resistance connection. Bad solder joints are the #1 cause of electronic failures in the field.
 
 ## 5 Essential Terms
 

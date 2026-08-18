@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/spi]] | [[micro-context/stm32-microcontroller]] | [[micro-context/microcontroller]] | [[micro-context/st-link-v2-programmer]] | [[micro-context/pick-and-place-file]]
 
 # SPIneV1.elf
 

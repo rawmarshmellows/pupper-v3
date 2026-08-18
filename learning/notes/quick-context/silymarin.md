@@ -2,6 +2,7 @@
 topic: Silymarin
 created: 2026-04-06
 ---
+> **Related:** [[quick-context/butyric-acid]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/subatomic-particles]]
 
 # Silymarin
 

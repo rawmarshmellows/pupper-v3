@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[micro-context/open-loop-voltage-gain]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/thermal-runaway]] | [[micro-context/output-voltage-swing]] | [[micro-context/smd-resistor]]
 
 # Short Circuit
 

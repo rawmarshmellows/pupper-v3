@@ -2,6 +2,7 @@
 term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
+> **Related:** [[micro-context/open-loop-voltage-gain]] | [[micro-context/input-bias-current]] | [[micro-context/tail-current]] | [[micro-context/common-mode-rejection-ratio]] | [[micro-context/input-offset-voltage]]
 
 # Input Common-Mode Range ($CMVR$)
 

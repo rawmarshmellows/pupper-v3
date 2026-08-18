@@ -346,7 +346,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **Relocatable vs. Position-Independent Code** — Object files (`.o`) contain relocatable code with placeholder addresses. The linker resolves these. Position-independent code (PIC) can run at any address — useful for bootloaders but rarely needed on bare-metal MCUs with fixed memory maps.
 
-- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
+- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over [[quick-context/uart|UART]] or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
 
 - **[[quick-context/physics-of-writing-data-to-memory]]** — The physics beneath this pipeline: how the flash programmer's bytes actually become trapped electrons on floating gates inside the MCU's flash cells, and why flash has erase-before-write constraints and limited P/E cycles.
 
