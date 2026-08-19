@@ -6,13 +6,13 @@ updated: 2026-04-06
 
 # Embedded Communication Protocols
 
-> **Related:** [[quick-context/can-bus]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[micro-context/i2c]] | [[micro-context/spi]] | [[quick-context/can-bus]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]]
 
 > **TL;DR:** Embedded systems choose between a family of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], RS-232, RS-485, 1-Wire, USB, I3C, and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, noise immunity, and complexity. The Pupper v3 uses four simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
 
 ## The Core Problem
 
-A microcontroller needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do). And sometimes you need to talk to a PC (USB), reach industrial equipment 1200 m away (RS-485), or wire dozens of sensors on a single wire through a building (1-Wire).
+A [[micro-context/microcontroller|microcontroller]] needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do). And sometimes you need to talk to a PC (USB), reach industrial equipment 1200 m away (RS-485), or wire dozens of sensors on a single wire through a building (1-Wire).
 
 ## 5 Essential Terms
 
@@ -20,7 +20,7 @@ A microcontroller needs to talk to other chips — sensors, motors, displays, ot
 |------|------------|
 | **Synchronous vs. Asynchronous** | Synchronous protocols (SPI, I2C, I3C) send a clock signal alongside data so both sides stay in lockstep. Asynchronous protocols (UART, RS-232, RS-485, CAN) pre-agree on a baud rate and each side runs its own clock — simpler wiring but requires matched clock accuracy. |
 | **Full-duplex vs. Half-duplex** | Full-duplex (SPI, UART, RS-232, USB 3.x) can send and receive simultaneously on separate wires. Half-duplex (I2C, I3C, CAN, RS-485, 1-Wire) shares the same wire(s) for both directions, taking turns. |
-| **Differential signaling** | Encoding data as the voltage *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN, RS-485, USB, and Ethernet use this; UART, I2C, SPI, and 1-Wire don't. |
+| **Differential signaling** | Encoding data as the [[quick-context/voltage|voltage]] *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN, RS-485, USB, and Ethernet use this; UART, I2C, SPI, and 1-Wire don't. |
 | **Bus topology** | How multiple devices connect. Point-to-point (UART, RS-232, USB): one sender, one receiver. Multi-drop bus (I2C, I3C, CAN, RS-485, 1-Wire): many devices on shared wires. Star (SPI): one master with a dedicated select line per device. |
 | **Baud rate / Bit rate** | The number of signal transitions (baud) or data bits (bit rate) per second. For most embedded protocols these are equal. UART's 115200 baud = 115.2 kbps; CAN's 1 Mbps means each bit is 1 $\mu$s wide. USB uses encoding schemes where baud and bit rate differ. |
 
@@ -110,7 +110,7 @@ RS-232 — UART with bipolar voltage levels:
 
 The DE-9 connector (often incorrectly called "DB-9") has 9 pins, but most embedded use only needs 3: TXD, RXD, and GND. The extra pins (RTS, CTS, DTR, DSR, DCD, RI) provide hardware flow control and modem signaling — remnants of the dial-up era, but still used in industrial equipment.
 
-**Strengths:** Better noise margin than TTL UART (wider voltage swing), standardized connector (DE-9), hardware flow control pins, huge legacy ecosystem (industrial PLCs, lab instruments, CNC machines).
+**Strengths:** Better noise margin than TTL UART (wider voltage swing), standardized connector (DE-9), hardware flow control pins, huge legacy ecosystem (industrial PLCs, lab instruments, [[micro-context/cnc-milling|CNC]] machines).
 **Weaknesses:** Still single-ended and point-to-point, max ~15 m at 115200 baud, requires level-shifting IC, bulky connectors, largely obsolete for new designs (replaced by USB or RS-485).
 
 ### RS-485 — The Industrial Long-Haul Bus
@@ -520,7 +520,7 @@ Total: ~5.6 μs at 10 MHz for 6 bytes
 
 SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't share the bus with other sensors without extra CS lines. On the Pupper, the BNO086 uses I2C because the board already has I2C pull-ups and other I2C devices sharing the bus, and the IMU only sends data at ~100 Hz — 180 $\mu$s per read is negligible.
 
-**The one thing most outsiders get wrong about this is...** assuming faster protocols are always better. SPI at 50 MHz sounds impressive, but if your sensor only produces 100 bytes/second, the 400 kbps I2C bus is utilizing 0.2% of its bandwidth — the "slow" protocol is more than fast enough, and you saved 2 PCB traces and a CS pin. Protocol selection is about matching the *minimum viable protocol* to the actual data requirements, not picking the fastest option.
+**The one thing most outsiders get wrong about this is...** assuming faster protocols are always better. SPI at 50 MHz sounds impressive, but if your sensor only produces 100 bytes/second, the 400 kbps I2C bus is utilizing 0.2% of its bandwidth — the "slow" protocol is more than fast enough, and you saved 2 [[quick-context/pcb-assembly-files-bom-cpl|PCB]] traces and a CS pin. Protocol selection is about matching the *minimum viable protocol* to the actual data requirements, not picking the fastest option.
 
 </details>
 
@@ -537,7 +537,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
 
-- **[[micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
+- **[[micro-context/i2s]]** — [[micro-context/i2s-audio-amplifier|I2S]] (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
 
 - **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential CAN bus voltages. Every CAN node needs one.
 
@@ -551,7 +551,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: radio transceiver, OFDM modulation, MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
 
-- **[[quick-context/usb-peripheral-hardware]]** — Deep dive into how the USB peripheral inside an MCU works at the hardware level: the Serial Interface Engine (SIE), NRZI encoding, bit stuffing, CRC generation, and the MOSFET output drivers that create voltage transitions on D+/D- at 12 MHz. Covers the bridge between "firmware writes to a buffer" and "voltage appears on the wire."
+- **[[quick-context/usb-peripheral-hardware]]** — Deep dive into how the USB peripheral inside an MCU works at the hardware level: the Serial Interface Engine (SIE), NRZI encoding, bit stuffing, CRC generation, and the [[micro-context/mosfet|MOSFET]] output drivers that create voltage transitions on D+/D- at 12 MHz. Covers the bridge between "firmware writes to a buffer" and "voltage appears on the wire."
 
 </details>
 
@@ -561,7 +561,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 **Q1:** Why does the Pupper use I2C instead of SPI for the BNO086 IMU, even though SPI is ~32x faster?
 <details>
 <summary>Answer</summary>
-The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kbps has 50 kB/s of bandwidth, using ~1.2% capacity. The "slow" protocol is more than sufficient. Meanwhile, I2C saves pins (2 shared wires vs. 4 + CS), shares the bus with the ADS1110 ADC, and the board already has pull-up resistors. Speed only matters when data volume demands it.
+The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kbps has 50 kB/s of bandwidth, using ~1.2% capacity. The "slow" protocol is more than sufficient. Meanwhile, I2C saves pins (2 shared wires vs. 4 + CS), shares the bus with the [[micro-context/ads1110-battery-adc|ADS1110]] [[micro-context/adc-analog-to-digital-converter|ADC]], and the board already has pull-up resistors. Speed only matters when data volume demands it.
 </details>
 
 **Q2:** You need to read temperature from 50 sensors spread across a large building (cable runs up to 80 m). Which protocol and why?
@@ -587,7 +587,7 @@ RS-232's bipolar voltage swing ($\pm$3 to $\pm$15 V) provides much better noise 
 <summary>Answer</summary>
 Each interface has different distance, speed, and topology requirements that no single protocol can satisfy:
 
-1. **I3C for the accelerometer:** It's on the same PCB as the hub MCU (~cm distance), and the accelerometer supports I3C natively. I3C gives 12.5 Mbps (vs I2C's 400 kbps), in-band interrupts (the accelerometer can signal motion events without a separate IRQ wire), and dynamic addressing. I2C would also work here, but I3C is better for a new design.
+1. **I3C for the accelerometer:** It's on the same [[quick-context/pcb-chip-transistor-hierarchy|PCB]] as the hub MCU (~cm distance), and the accelerometer supports I3C natively. I3C gives 12.5 Mbps (vs I2C's 400 kbps), in-band interrupts (the accelerometer can signal motion events without a separate IRQ wire), and dynamic addressing. I2C would also work here, but I3C is better for a new design.
 
 2. **1-Wire for the 20 temperature probes:** They're spread over 50 m of cable — far beyond I2C's ~1 m range. 1-Wire DS18B20 sensors can share a single wire over 100 m, each with a unique 64-bit ID. I2C would need repeaters every meter and can only address 128 devices with potential conflicts. Running 20 individual I2C buses is impractical.
 

@@ -3,7 +3,7 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-layers]]
 
 > **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
 
@@ -11,17 +11,17 @@ created: 2026-02-06
 
 ## The Core Problem: Bridging Microscopic to Human-Scale
 
-The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines can work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you can actually solder it by hand.
+The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines [[micro-context/can-bus-termination|can]] work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you [[micro-context/can-bus-transceiver|can]] actually solder it by hand.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
-| **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
+| **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by [[micro-context/smd-resistor|SMD]] in production. |
+| **Surface mount (SMD/SMT)** | Package that sits flat on the [[quick-context/pcb-assembly-files-bom-cpl|PCB]] surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
 | **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
-| **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
+| **Pin count** | Total number of electrical connections. A simple [[quick-context/voltage|voltage]] regulator: 3-5 pins. [[micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
+| **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the [[quick-context/pcb-layers|PCB]]. Conducts heat from the die into the board—critical for power components. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -208,7 +208,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 
 - **[[quick-context/substrate-ic-packaging]]** — High-pin-count packages (BGA) use a multi-layer substrate between the die and the solder balls, acting as a miniature PCB inside the package.
 
-- **[[quick-context/pupper-bom-control-board]]** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package choice affects assembly (the LGA-28 BNO086 can't be sourced through standard JLCPCB assembly).
+- **[[quick-context/pupper-bom-control-board]]** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package choice affects assembly (the LGA-28 BNO086 [[quick-context/can-bus|can]]'t be sourced through standard JLCPCB assembly).
 
 </details>
 

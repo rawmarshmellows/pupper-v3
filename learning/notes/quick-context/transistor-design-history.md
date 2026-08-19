@@ -3,9 +3,9 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/transistor]] | [[micro-context/mosfet]] | [[quick-context/bjt]] | [[micro-context/bjt-mosfet-igbt]] | [[quick-context/bjt-specifications]]
 
-> **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
+> **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar [[micro-context/mosfet|MOSFET]] (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
 # Transistor Design History
 
@@ -18,8 +18,8 @@ Every few years, transistor designs hit fundamental physical limits. The planar 
 | Term | Definition |
 |------|------------|
 | **Point-contact transistor** | The first transistor (1947): two metal points touching a germanium crystal; unreliable but proved amplification was possible without vacuum tubes |
-| **Bipolar Junction Transistor (BJT)** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
-| **Planar MOSFET** | Voltage-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
+| **Bipolar Junction Transistor ([[micro-context/bjt-mosfet-igbt|BJT]])** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
+| **Planar MOSFET** | [[quick-context/voltage|Voltage]]-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
 | **FinFET** | 3D transistor (2011+) where the channel is a vertical "fin" with the gate wrapped around three sides; dramatically reduced leakage at 22nm and below |
 | **Gate-All-Around (GAA/GAAFET)** | Latest architecture (2022+) using stacked horizontal nanosheets with the gate surrounding the channel on all four sides; enables 3nm and beyond |
 
@@ -28,7 +28,7 @@ Every few years, transistor designs hit fundamental physical limits. The planar 
 
 The Evolution of Gate Control
 
-The history of transistor design is fundamentally about one thing: **how much of the channel can the gate control?** More gate coverage = better on/off switching = less leakage = smaller transistors possible.
+The history of transistor design is fundamentally about one thing: **how much of the channel [[micro-context/can-bus-termination|can]] the gate control?** More gate coverage = better on/off switching = less leakage = smaller transistors possible.
 
 ```
 THE FIVE ERAS OF TRANSISTOR DESIGN
@@ -415,7 +415,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 
 - **[[quick-context/transistor|Transistor Fundamentals]]** — How MOSFETs actually work (gate, source, drain, channel). Essential prerequisite for understanding why architectural changes matter.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both BJT and MOSFET rely on carefully controlled doping.
+- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both [[quick-context/bjt-specifications|BJT]] and MOSFET rely on carefully controlled doping.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different [[quick-context/semiconductor-fabrication|photolithography]] and etching processes.
 
@@ -430,7 +430,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** What was the key advantage of BJT over point-contact transistors, and why did MOSFET eventually replace BJT for digital logic?
+**Q1:** What was the key advantage of [[quick-context/bjt|BJT]] over point-contact transistors, and why did MOSFET eventually replace BJT for digital logic?
 <details>
 <summary>Answer</summary>
 BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-semiconductor point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is voltage-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"

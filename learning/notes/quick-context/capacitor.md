@@ -5,19 +5,19 @@ created: 2026-01-30
 
 # Capacitor
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/capacitance]] | [[quick-context/pcb-printed-circuit-board]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]]
 
-> **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
+> **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and [[micro-context/can-bus-termination|can]] charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
 
 ## The Core Problem
 
-Electronics need stable voltage to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
+Electronics need stable [[quick-context/voltage|voltage]] to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply [[micro-context/can-bus-transceiver|can]] respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 [[micro-context/coulomb-history|coulomb]] of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
 | **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
 | **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
@@ -479,7 +479,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
     Gets worse when cold     │ Ceramic cap loses capacitance at low temp
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking capacitors are just "smoothing" or "filtering." In digital circuits, decoupling capacitors are **local energy storage** - they're tiny batteries that can discharge in nanoseconds. The CPU doesn't draw smooth, constant current; it draws violent spikes every time transistors switch. No power supply, no matter how good, can respond fast enough. The capacitors aren't filtering anything out - they're actively injecting current into the circuit to fill demand that the power supply can't meet in time. Without them, every fast digital circuit would fail.
+**The one thing most outsiders get wrong about this is...** thinking capacitors are just "smoothing" or "filtering." In digital circuits, decoupling capacitors are **local energy storage** - they're tiny batteries that [[quick-context/can-bus|can]] discharge in nanoseconds. The CPU doesn't draw smooth, constant current; it draws violent spikes every time transistors switch. No power supply, no matter how good, can respond fast enough. The capacitors aren't filtering anything out - they're actively injecting current into the circuit to fill demand that the power supply can't meet in time. Without them, every fast digital circuit would fail.
 
 </details>
 
@@ -496,13 +496,13 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[quick-context/galvanic-cells-batteries]]** - Both store energy, but through fundamentally different mechanisms. Batteries: chemical energy, high density, slow. Capacitors: electric field energy, low density, instant response.
 
-- **[[quick-context/pcb-printed-circuit-board]]** - PCB design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
+- **[[quick-context/pcb-printed-circuit-board]]** - [[quick-context/pcb-assembly-files-bom-cpl|PCB]] design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
 
 - **[[quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental noise floor: V_noise = sqrt(kT/C). This limits how small DRAM storage capacitors can be, because thermal noise would overwhelm the stored signal.
 
-- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
+- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in [[quick-context/pcb-chip-transistor-hierarchy|PCB]] traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- [[quick-context/resistor|Resistor]]-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 
@@ -524,7 +524,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 **Q2:** Why do PCBs have both large electrolytic capacitors and small ceramic capacitors for power supply filtering?
 <details>
 <summary>Answer</summary>
-**They handle different frequency ranges due to different ESR/ESL characteristics.** Electrolytics have high capacitance for bulk energy storage but high ESR/ESL, so they respond slowly (good for low-frequency ripple). Ceramics have low capacitance but very low ESR/ESL, so they respond nearly instantly (good for high-frequency transients). Using both covers the full frequency spectrum. See: The Key Tension (typical PCB power supply filtering diagram).
+**They handle different frequency ranges due to different ESR/ESL characteristics.** Electrolytics have high capacitance for bulk energy storage but high ESR/ESL, so they respond slowly (good for low-frequency ripple). Ceramics have low capacitance but very low ESR/ESL, so they respond nearly instantly (good for high-frequency transients). Using both covers the full frequency spectrum. See: The Key Tension (typical [[quick-context/pcb-layers|PCB]] power supply filtering diagram).
 </details>
 
 **Q3:** A capacitor in an RC circuit has R = 1 kOhm and C = 10 uF. How long does it take to charge to approximately 95% of the supply voltage?

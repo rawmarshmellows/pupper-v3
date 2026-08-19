@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Singular Value Decomposition (SVD)
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/covariance-matrix|Covariance Matrix]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[quick-context/covariance-matrix]] | [[quick-context/absolute-orientation]] | [[quick-context/helmert-transform]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]]
 
 > **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of linear algebra.
 
@@ -28,7 +28,7 @@ Every matrix encodes a linear transformation, but looking at the raw numbers tel
 
 ### The Decomposition
 
-Any real $m \times n$ matrix $A$ can be factored as:
+Any real $m \times n$ matrix $A$ [[micro-context/can-bus-termination|can]] be factored as:
 
 $$A = U \Sigma V^T$$
 
@@ -163,7 +163,7 @@ This is the theoretical foundation behind Principal Component Analysis (PCA), la
 
 **Numerical algorithm:** The standard method is the Golub-Kahan bidiagonalization followed by an iterative phase:
 1. Reduce $A$ to upper bidiagonal form $B$ using Householder reflections: $U_1^T A V_1 = B$
-2. Compute SVD of $B$ -- LAPACK offers two approaches: QR iteration (`dgesvd`, the Golub-Reinsch algorithm) or divide-and-conquer (`dgesdd`, the Gu-Eisenstat algorithm, which can be an order of magnitude faster for large matrices)
+2. Compute SVD of $B$ -- LAPACK offers two approaches: QR iteration (`dgesvd`, the Golub-Reinsch algorithm) or divide-and-conquer (`dgesdd`, the Gu-Eisenstat algorithm, which [[micro-context/can-bus-transceiver|can]] be an order of magnitude faster for large matrices)
 3. Accumulate the transformations: $U = U_1 U_B$, $V = V_1 V_B$
 
 </details>
@@ -275,7 +275,7 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 The rank is 2 (number of non-zero singular values). Geometrically, the zero singular value means the transformation collapses one dimension entirely -- the 3D input space is squashed into a 2D subspace in the output. The unit sphere in $\mathbb{R}^3$ gets mapped to an ellipse (not an ellipsoid) in $\mathbb{R}^4$ with semi-axes of length 7 and 3. See: How It Works, the geometric interpretation section.
 </details>
 
-**Q2:** Why can't you use eigendecomposition instead of SVD to factorize a $5 \times 3$ matrix?
+**Q2:** Why [[quick-context/can-bus|can]]'t you use eigendecomposition instead of SVD to factorize a $5 \times 3$ matrix?
 <details>
 <summary>Answer</summary>
 Eigendecomposition requires a square matrix (it solves $A\mathbf{v} = \lambda\mathbf{v}$, which only makes sense when $A$ maps a space to itself). A $5 \times 3$ matrix maps $\mathbb{R}^3$ to $\mathbb{R}^5$ -- these are different spaces, so eigenvalues are undefined. SVD handles rectangular matrices by using *two* sets of orthogonal vectors ($U$ for the output space, $V$ for the input space) instead of one. See: How It Works, connection to eigendecomposition.

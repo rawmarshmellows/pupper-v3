@@ -3,7 +3,7 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 
@@ -18,7 +18,7 @@ A microphone picks up a voice (300 Hz - 3 kHz) plus a 60 Hz hum from nearby powe
 | Term | Definition |
 |------|------------|
 | **Frequency (f)** | How many times a signal repeats per second, measured in hertz (Hz). Period T = 1/f. Human hearing: 20 Hz - 20 kHz. WiFi: 2.4 GHz. |
-| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% voltage, 50% power). Defines the boundary between "pass" and "stop." |
+| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% [[quick-context/voltage|voltage]], 50% power). Defines the boundary between "pass" and "stop." |
 | **Decibel (dB)** | A logarithmic ratio: dB = 20 × log₁₀(Vout/Vin). -3 dB = half power. -20 dB = 1/10 voltage. -40 dB = 1/100 voltage. |
 | **Low-pass / High-pass** | Low-pass: passes below fc, blocks above. High-pass: passes above fc, blocks below. Band-pass: passes a range. Band-stop/notch: blocks a range. |
 | **Order** | How many reactive elements (C or L) in the filter. Higher order = sharper cutoff slope. 1st order = -20 dB/decade. 2nd order = -40 dB/decade. |
@@ -130,7 +130,7 @@ FILTER ORDER AND ROLLOFF
 
 A 1st-order filter is simple (one R + one C) but its -20 dB/decade slope means unwanted signals only 10× above the cutoff are only attenuated 10×. For many applications, that's not enough.
 
-Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[quick-context/op-amp|op-amps]]) can achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
+Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[quick-context/op-amp|op-amps]]) [[micro-context/can-bus-termination|can]] achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
 
 ```
 FILTER TOPOLOGY TRADEOFFS

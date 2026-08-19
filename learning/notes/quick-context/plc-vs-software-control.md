@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+> **Related:** [[micro-context/plc-programmable-logic-controller]] | [[quick-context/plc-vs-software]] | [[quick-context/ros2-architecture]] | [[quick-context/preempt-rt]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
@@ -11,9 +11,9 @@ created: 2026-01-16
 
 ## The Core Problem: Who Executes the Motion Control Loop?
 
-The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
+The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For [[micro-context/plc-programmable-logic-controller|PLC]] fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
 
-The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
+The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but [[micro-context/can-bus-termination|can]]'t guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a ROS2-based vision/planning system:
+Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a [[quick-context/ros2-architecture|ROS2]]-based vision/planning system:
 
 **Architecture:**
 ```
@@ -132,7 +132,7 @@ The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Window
 
 The architecture diagram above shows a real-world split: the Linux IPC running ROS2 handles vision processing at 30fps, ML-based object detection, and MoveIt trajectory planning. None of this needs real-time guarantees. The computed trajectory waypoints are sent via OPC-UA to the Siemens S7-1500 PLC, which runs a 2ms scan cycle handling safety monitoring, conveyor control, and the actual motion interpolation. The PLC then commands servo drives over PROFINET IRT at 250 microsecond cycles.
 
-This division means: software does the "thinking" (where to move, what to pick up), PLC does the "doing" (actually moving safely and precisely). The PLC code is deliberately simple—interpolate waypoints, check safety every scan, command drives. The software code can be arbitrarily complex without risking motion quality.
+This division means: software does the "thinking" (where to move, what to pick up), PLC does the "doing" (actually moving safely and precisely). The PLC code is deliberately simple—interpolate waypoints, check safety every scan, command drives. The software code [[micro-context/can-bus-transceiver|can]] be arbitrarily complex without risking motion quality.
 
 **The one thing most outsiders get wrong about this is...** thinking the PLC is "dumb" legacy tech being replaced by software. The PLC isn't handling motion because engineers don't know Python—it's there because when the light curtain trips, the arm must stop within 50ms regardless of what your ML model is doing. The "dumb" scan cycle that runs the same 2000 lines of ladder logic forever is a feature, not a bug. Software replaces the PLC for flexibility; it doesn't replace it for reliability.
 
@@ -152,7 +152,7 @@ This division means: software does the "thinking" (where to move, what to pick u
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Why can't you just run trajectory interpolation in a ROS2 node with a 1ms timer callback?
+**Q1:** Why [[quick-context/can-bus|can]]'t you just run trajectory interpolation in a ROS2 node with a 1ms timer callback?
 <details>
 <summary>Answer</summary>
 Because Linux (without PREEMPT_RT) provides no guarantees about when your callback will actually run. A garbage collection pause, kernel interrupt, or disk I/O could delay your "1ms" callback by 10-50ms, causing the robot arm to jerk, overshoot, or fault the servo drive. The PLC's scan cycle is deterministic—it runs every 2ms regardless of what else is happening.

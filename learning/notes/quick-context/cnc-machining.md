@@ -5,13 +5,13 @@ created: 2026-03-28
 
 # CNC Machining
 
-> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
+> **Related:** [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/cnc-process-selection]] | [[micro-context/edm-machining]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** CNC machining is subtractive manufacturing -- a computer-controlled cutting tool removes material from a solid block to create precision parts. It is the default choice for metal parts at low volumes ($1$--$1{,}000$ units) where tight tolerances ($\pm 0.001"$) and full material strength are required.
 
 ## The Core Problem
 
-You need a metal part with precise dimensions, smooth surfaces, and full material strength -- things 3D printing can't reliably deliver. But you only need a few hundred, so investing in injection mold tooling (which can cost tens of thousands of dollars) makes no sense. CNC machining fills this gap: it takes a solid block of material and carves away everything that isn't your part, using computer-controlled tools that follow instructions derived from your CAD model.
+You need a metal part with precise dimensions, smooth surfaces, and full material strength -- things 3D printing [[micro-context/can-bus-termination|can]]'t reliably deliver. But you only need a few hundred, so investing in injection mold tooling (which [[micro-context/can-bus-transceiver|can]] cost tens of thousands of dollars) makes no sense. CNC machining fills this gap: it takes a solid block of material and carves away everything that isn't your part, using computer-controlled tools that follow instructions derived from your CAD model.
 
 ## 5 Essential Terms
 
@@ -48,7 +48,7 @@ CNC MILLING OPERATION:
 ```
 
 **Strengths:** Full material strength (no layer adhesion weakness like FDM), complex 3D geometries, tight tolerances.
-**Limitations:** Wastes material as chips, can't create fully enclosed internal cavities.
+**Limitations:** Wastes material as chips, [[quick-context/can-bus|can]]'t create fully enclosed internal cavities.
 
 ### Turning: Part Rotates, Tool Stays Still
 
@@ -77,7 +77,7 @@ MILLING vs TURNING:
 
 ### EDM: Sparks Instead of Cutting
 
-A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-[[quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 
 ```
 EDM SPARK EROSION:

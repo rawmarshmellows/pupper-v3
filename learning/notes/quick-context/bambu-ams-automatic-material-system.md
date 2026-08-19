@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -76,7 +76,7 @@ FILAMENT CHANGE SEQUENCE
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[quick-context/3d-printer-hotends|hotend]] before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these materials.
+The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[quick-context/3d-printer-hotends|hotend]] before the new color [[micro-context/can-bus-termination|can]] print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) [[micro-context/can-bus-transceiver|can]] jam the AMS feeding mechanism, forcing manual loading for these materials.
 
 </details>
 
@@ -181,7 +181,7 @@ Black pigment is highly saturating—even small traces contaminate lighter color
 **Q2:** What's the difference between "purge to infill" and a standard prime tower, and when would you choose each?
 <details>
 <summary>Answer</summary>
-A **prime tower** is a separate sacrificial structure printed alongside your model solely to waste purge material—it's reliable but adds print time, uses plate space, and wastes filament. **Purge to infill** routes purge material into your model's internal infill instead, hiding waste inside the part. Choose purge-to-infill when your model has substantial infill volume and you want to minimize waste; choose a prime tower when your model is thin-walled, has minimal infill, or when you need guaranteed purge consistency (infill purging can occasionally cause surface artifacts if misconfigured).
+A **prime tower** is a separate sacrificial structure printed alongside your model solely to waste purge material—it's reliable but adds print time, uses plate space, and wastes filament. **Purge to infill** routes purge material into your model's internal infill instead, hiding waste inside the part. Choose purge-to-infill when your model has substantial infill volume and you want to minimize waste; choose a prime tower when your model is thin-walled, has minimal infill, or when you need guaranteed purge consistency (infill purging [[quick-context/can-bus|can]] occasionally cause surface artifacts if misconfigured).
 </details>
 
 **Q3:** If you have a 16-hour print using a single material, what AMS feature provides value even without multi-color printing?

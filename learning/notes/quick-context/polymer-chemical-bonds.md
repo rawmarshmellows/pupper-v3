@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/covalent-bonds]] | [[quick-context/van-der-waals-forces]]
 
 > **TL;DR:** Polymer behavior (melt temperature, flexibility, layer adhesion) is governed by intermolecular forces between chains - van der Waals (weak), dipole-dipole (moderate), and hydrogen bonds (strong). Understanding these forces explains why PLA melts at 180C but ABS needs 240C, and why TPU flexes while PLA snaps.
 
@@ -83,7 +83,7 @@ WHAT HAPPENS DURING PRINTING:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff is **intermolecular force strength vs. processability vs. flexibility**. Stronger intermolecular forces (more hydrogen bonding, [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]) mean higher [[quick-context/glass-transition-temperature|Tg]], better heat resistance, and stronger layer adhesion—but also higher print temperatures, more warping (thermal stress), and brittleness. Weaker forces mean easier printing but parts that fail in warm environments. [[quick-context/polymer-crystallinity-vs-amorphous|Crystallinity]] adds another axis: semi-crystalline polymers (like unmodified PET) pack into ordered regions with stronger interactions, improving strength and heat resistance but causing dramatic shrinkage (warping). Amorphous polymers (PETG, ABS) stay disordered, shrink less, but have no sharp melting point—they gradually soften. TPU cheats the system by being phase-separated: hard crystalline domains act as physical crosslinks providing strength, while soft amorphous regions provide elasticity. Practitioners argue about whether ABS's aromatic strength is "worth" the fumes and warping, whether PETG's glycol modification sacrifices too much crystallinity for the convenience, and whether TPU's hydrogen-bonded hard segments can ever match vulcanized rubber's covalently-crosslinked durability.
+The fundamental tradeoff is **intermolecular force strength vs. processability vs. flexibility**. Stronger intermolecular forces (more hydrogen bonding, [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]) mean higher [[quick-context/glass-transition-temperature|Tg]], better heat resistance, and stronger layer adhesion—but also higher print temperatures, more warping (thermal stress), and brittleness. Weaker forces mean easier printing but parts that fail in warm environments. [[quick-context/polymer-crystallinity-vs-amorphous|Crystallinity]] adds another axis: semi-crystalline polymers (like unmodified PET) pack into ordered regions with stronger interactions, improving strength and heat resistance but causing dramatic shrinkage (warping). Amorphous polymers (PETG, ABS) stay disordered, shrink less, but have no sharp melting point—they gradually soften. TPU cheats the system by being phase-separated: hard crystalline domains act as physical crosslinks providing strength, while soft amorphous regions provide elasticity. Practitioners argue about whether ABS's aromatic strength is "worth" the fumes and warping, whether PETG's glycol modification sacrifices too much crystallinity for the convenience, and whether TPU's hydrogen-bonded hard segments [[micro-context/can-bus-termination|can]] ever match vulcanized rubber's covalently-crosslinked durability.
 
 </details>
 
@@ -212,7 +212,7 @@ The "G" stands for glycol modification. Standard PET (polyethylene terephthalate
 **Q4:** Why does Nylon absorb moisture while PLA (also with oxygen-containing groups) absorbs much less?
 <details>
 <summary>Answer</summary>
-Nylon contains amide groups (-NH-C=O-) with both N-H donors and C=O acceptors for hydrogen bonding. Water molecules can directly hydrogen bond to these amide groups, inserting between polymer chains and plasticizing the material. PLA has ester groups (-C=O-O-) which can only act as H-bond acceptors (no N-H or O-H donors). While PLA can absorb some moisture, it lacks the strong donor-acceptor combination that makes Nylon so hygroscopic. The N-H group in Nylon is the key difference.
+Nylon contains amide groups (-NH-C=O-) with both N-H donors and C=O acceptors for hydrogen bonding. Water molecules [[micro-context/can-bus-transceiver|can]] directly hydrogen bond to these amide groups, inserting between polymer chains and plasticizing the material. PLA has ester groups (-C=O-O-) which [[quick-context/can-bus|can]] only act as H-bond acceptors (no N-H or O-H donors). While PLA can absorb some moisture, it lacks the strong donor-acceptor combination that makes Nylon so hygroscopic. The N-H group in Nylon is the key difference.
 </details>
 
 **Q5:** ABS prints at ~240°C while PLA prints at ~200°C, but ABS doesn't necessarily make stronger parts. Explain why.

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
@@ -20,8 +20,8 @@ updated: 2026-01-21
 |------|------------|
 | **Master spool** | A reusable spool designed to accept refill coils—usually sturdier than disposable spools. |
 | **Refill coil** | Filament wound without a spool, held together with cardboard inserts or zip ties. |
-| **Cardboard core** | Some refills come on a cardboard tube you can print directly from (no rewinding). |
-| **Tangle** | When filament loops cross over each other—can jam your printer or snap the filament. |
+| **Cardboard core** | Some refills come on a cardboard tube you [[micro-context/can-bus-termination|can]] print directly from (no rewinding). |
+| **Tangle** | When filament loops cross over each other—[[micro-context/can-bus-transceiver|can]] jam your printer or snap the filament. |
 | **Dry box** | Sealed container with desiccant to keep filament moisture-free (refills are more exposed). |
 
 <details>
@@ -117,7 +117,7 @@ LIFECYCLE COMPARISON
 |--------|-----------|--------|
 | **Price** | Higher (~$25-30/kg) | Lower (~$18-22/kg) |
 | **Convenience** | Plug and play | Need to wind onto spool |
-| **Storage** | Easy, self-contained | Floppy coil, can tangle |
+| **Storage** | Easy, self-contained | Floppy coil, [[quick-context/can-bus|can]] tangle |
 | **Waste** | One spool per roll | Zero (if reusing spool) |
 | **Availability** | Almost all filaments | Limited selection |
 

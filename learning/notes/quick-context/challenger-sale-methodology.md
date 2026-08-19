@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Challenger Sale Methodology
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** The Challenger Sale is a selling methodology where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
 
@@ -149,7 +149,7 @@ Challenger's emphasis on "constructive tension" creates a fine line:
 >
 > **EMOTIONAL IMPACT:** "And the CISO who's in seat during a slow recovery? Our research shows 60% are gone within 18 months."
 >
-> **NEW WAY:** "The retailers who recover fast have one thing in common: they can show customers exactly what happened, what data was affected, and what changed—within 72 hours. That transparency requires real-time behavioral analysis, not just perimeter defense."
+> **NEW WAY:** "The retailers who recover fast have one thing in common: they [[micro-context/can-bus-termination|can]] show customers exactly what happened, what data was affected, and what changed—within 72 hours. That transparency requires real-time behavioral analysis, not just perimeter defense."
 >
 > **YOUR SOLUTION:** "Our platform is the only one that gives you that forensic story in 72 hours. Here's how..."
 
@@ -194,7 +194,7 @@ Good: The custom scenario distracts from the core value prop and will waste both
 **Q4:** Why might Challenger be especially powerful for unknown SaaS vendors competing against incumbents?
 <details>
 <summary>Answer</summary>
-Unknown vendors can't compete on brand trust or existing relationships—the incumbent wins those by default. But they CAN win on insight if they bring a perspective the incumbent doesn't. Challengers differentiate through ideas, not reputation, making it an equalizing methodology for startups.
+Unknown vendors [[micro-context/can-bus-transceiver|can]]'t compete on brand trust or existing relationships—the incumbent wins those by default. But they [[quick-context/can-bus|CAN]] win on insight if they bring a perspective the incumbent doesn't. Challengers differentiate through ideas, not reputation, making it an equalizing methodology for startups.
 </details>
 
 **Q5:** A sales manager says "We tried Challenger but our reps came off as arrogant and pushy." Diagnose the likely failure mode.

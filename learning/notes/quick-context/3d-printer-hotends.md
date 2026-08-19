@@ -4,13 +4,13 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/melt-index]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/glass-transition-temperature]] | [[quick-context/melt-index]]
 
 > **TL;DR:** The hotend is the precision melting chamber that transforms solid filament into molten plastic. Its volumetric flow rate (mm3/s) determines maximum print speed - high-flow hotends melt plastic 2x faster, enabling faster prints with larger nozzles.
 
 ## The Core Problem
 
-**Yes, you absolutely need a hotend for FDM/FFF 3D printing**—it's the non-negotiable component that transforms solid filament into molten plastic. No hotend, no extrusion, no print. The hotend is the precision melting chamber that determines whether your 3D printer produces clean layers or spaghetti disasters. Without a properly functioning hotend, you get under-extrusion (not enough plastic, weak layers with gaps), clogs (filament jams inside the melt zone), heat creep (premature softening that jams the cold side), or inconsistent flow that ruins dimensional accuracy. The hotend must maintain precise temperature control (±2°C typically) while pushing viscous [[quick-context/atoms-molecules-polymers-basics|polymer]] through a tiny nozzle orifice at controlled rates. The Bambu hotends you're looking at support up to 350°C, enabling engineering materials like nylon, polycarbonate, and carbon-fiber composites that lower-temp hotends can't handle. The distinction between "standard flow" ($30) and "high flow" ($83) reflects internal geometry differences—high flow hotends have longer melt zones and optimized heat breaks to push more material per second for faster prints or larger nozzles.
+**Yes, you absolutely need a hotend for FDM/FFF 3D printing**—it's the non-negotiable component that transforms solid filament into molten plastic. No hotend, no extrusion, no print. The hotend is the precision melting chamber that determines whether your 3D printer produces clean layers or spaghetti disasters. Without a properly functioning hotend, you get under-extrusion (not enough plastic, weak layers with gaps), clogs (filament jams inside the melt zone), heat creep (premature softening that jams the cold side), or inconsistent flow that ruins dimensional accuracy. The hotend must maintain precise temperature control (±2°C typically) while pushing viscous [[quick-context/atoms-molecules-polymers-basics|polymer]] through a tiny nozzle orifice at controlled rates. The Bambu hotends you're looking at support up to 350°C, enabling engineering materials like nylon, polycarbonate, and carbon-fiber composites that lower-temp hotends [[micro-context/can-bus-termination|can]]'t handle. The distinction between "standard flow" ($30) and "high flow" ($83) reflects internal geometry differences—high flow hotends have longer melt zones and optimized heat breaks to push more material per second for faster prints or larger nozzles.
 
 *Note: Resin (SLA/DLP) printers don't use hotends—they cure liquid resin with UV light. But for filament-based printing (FDM/FFF), which is what Bambu, Prusa, Creality, and most consumer printers use, the hotend is essential.*
 
@@ -20,9 +20,9 @@ updated: 2026-01-21
 |------|------------|
 | **Nozzle diameter** | The exit hole size (0.2-0.8mm common)—determines minimum feature size and maximum flow rate; layer height should generally be ≤75% of nozzle diameter. |
 | **Heat break** | The thermal barrier between hot and cold zones—prevents heat creep; all-metal heat breaks enable higher temps but are pickier about retraction settings. |
-| **Volumetric flow rate (mm³/s)** | How much plastic volume the hotend can melt per second—related to [[quick-context/melt-index|melt index]]—high-flow hotends achieve 30+ mm³/s vs. ~15 mm³/s standard; this limits your max speed × layer height × line width. |
+| **Volumetric flow rate (mm³/s)** | How much plastic volume the hotend [[micro-context/can-bus-transceiver|can]] melt per second—related to [[quick-context/melt-index|melt index]]—high-flow hotends achieve 30+ mm³/s vs. ~15 mm³/s standard; this limits your max speed × layer height × line width. |
 | **Heat creep** | When heat travels up into the cold zone, softening filament prematurely and causing jams—worse with all-metal hotends and PLA; better cooling or slower retraction helps. |
-| **Hardened steel nozzle** | Wear-resistant nozzle material for abrasive filaments (CF, GF, metal-fill)—brass nozzles can wear out in hours with these materials; hardened steel lasts months. |
+| **Hardened steel nozzle** | Wear-resistant nozzle material for abrasive filaments (CF, GF, metal-fill)—brass nozzles [[quick-context/can-bus|can]] wear out in hours with these materials; hardened steel lasts months. |
 
 <details>
 <summary><strong>How It Works</strong></summary>

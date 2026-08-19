@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/van-der-waals-forces]] | [[quick-context/melt-index]]
 
 > **TL;DR:** Glass transition temperature (Tg) is the temperature where polymer chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
 
@@ -29,7 +29,7 @@ Plastics are made of **[[quick-context/atoms-molecules-polymers-basics|polymers]
 
 At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **intermolecular forces**—weak attractions like van der Waals forces and hydrogen bonds between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
 
-This transition is not a sharp phase change like ice melting to water. Instead, it occurs over a temperature range (typically 10-30°C wide) where the material progressively softens. The Tg value reported is usually the midpoint of this transition. What matters practically is that mechanical properties change dramatically: the **modulus** (stiffness) can drop by a factor of 1000 between the glassy state and the rubbery state. Time also becomes a factor above Tg—even small loads will cause the material to slowly **creep** and permanently deform over hours or days as chains gradually slide past each other.
+This transition is not a sharp phase change like ice melting to water. Instead, it occurs over a temperature range (typically 10-30°C wide) where the material progressively softens. The Tg value reported is usually the midpoint of this transition. What matters practically is that mechanical properties change dramatically: the **modulus** (stiffness) [[micro-context/can-bus-termination|can]] drop by a factor of 1000 between the glassy state and the rubbery state. Time also becomes a factor above Tg—even small loads will cause the material to slowly **creep** and permanently deform over hours or days as chains gradually slide past each other.
 
 ```
 MOLECULAR VIEW: WHAT HAPPENS AT Tg
@@ -221,7 +221,7 @@ Will your part experience temperatures above 60C?
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Here's what engineers constantly wrestle with: **plastics that are easy to work with (low Tg) are terrible in heat, while heat-resistant plastics (high Tg) are harder to process**. PLA prints beautifully at low temperatures and smells nice, but its Tg of ~60C means a hot car interior (easily 70-80C) will destroy your print. ABS has a Tg around 105C, so it survives hot cars—but it needs higher printing temps, a heated bed, and releases fumes. Polycarbonate goes even higher (~147C) but demands specialized equipment. The tradeoff is always: how much processing difficulty are you willing to accept for the heat resistance you need? Practitioners argue about whether to add glass fibers (raises effective heat resistance), use annealing (can raise Tg slightly for some materials), or just design around the limitation.
+Here's what engineers constantly wrestle with: **plastics that are easy to work with (low Tg) are terrible in heat, while heat-resistant plastics (high Tg) are harder to process**. PLA prints beautifully at low temperatures and smells nice, but its Tg of ~60C means a hot car interior (easily 70-80C) will destroy your print. ABS has a Tg around 105C, so it survives hot cars—but it needs higher printing temps, a heated bed, and releases fumes. Polycarbonate goes even higher (~147C) but demands specialized equipment. The tradeoff is always: how much processing difficulty are you willing to accept for the heat resistance you need? Practitioners argue about whether to add glass fibers (raises effective heat resistance), use annealing ([[micro-context/can-bus-transceiver|can]] raise Tg slightly for some materials), or just design around the limitation.
 
 </details>
 
@@ -261,7 +261,7 @@ Above Tg, polymer chains gain mobility but don't instantly rearrange. The deform
 **Q2:** PETG has a Tg of ~80C. Would you trust a PETG part for a dashboard-mounted phone holder? Why or why not?
 <details>
 <summary>Answer</summary>
-**No, you shouldn't trust it.** While PETG's Tg of ~80C is above typical car cabin temperatures (60-80C), dashboards can reach 80-100C or higher under direct sunlight. Since Tg marks the *start* of softening, not a hard cutoff, a PETG part at 80C is right at its transition zone and will begin to creep under load. For dashboard applications, ABS (Tg ~105C) or higher is recommended to provide a safety margin.
+**No, you shouldn't trust it.** While PETG's Tg of ~80C is above typical car cabin temperatures (60-80C), dashboards [[quick-context/can-bus|can]] reach 80-100C or higher under direct sunlight. Since Tg marks the *start* of softening, not a hard cutoff, a PETG part at 80C is right at its transition zone and will begin to creep under load. For dashboard applications, ABS (Tg ~105C) or higher is recommended to provide a safety margin.
 </details>
 
 **Q3:** Nylon has a relatively low Tg (~50-70C) but is used in demanding automotive applications. How is this possible?

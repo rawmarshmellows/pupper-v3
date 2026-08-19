@@ -4,7 +4,7 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/transistor]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -12,7 +12,7 @@ source: Branch Education video on CPU manufacturing
 
 ## The Core Problem: Building Structures Smaller Than Light Can See
 
-You need to build billions of [[quick-context/transistor|transistors]], each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You can't "see" what you're building, you can't touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
+You need to build billions of [[quick-context/transistor|transistors]], each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You [[micro-context/can-bus-termination|can]]'t "see" what you're building, you [[micro-context/can-bus-transceiver|can]]'t touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
 
 ## 5 Essential Terms
 
@@ -22,7 +22,7 @@ You need to build billions of [[quick-context/transistor|transistors]], each onl
 | **Deposition** | Adding thin layers of material (metals, oxides, silicon) onto the wafer using chemical vapor (CVD), physical vapor (PVD), or atomic layer deposition (ALD) |
 | **Etching** | Selectively removing material using plasma (dry etch) or chemicals (wet etch) to carve the patterns defined by photolithography |
 | **Ion Implantation** | Shooting dopant atoms (phosphorus, boron) into silicon at high velocity to create [[quick-context/doped-silicon|n-type and p-type regions]] for transistors |
-| **CMP (Chemical Mechanical Planarization)** | Polishing the wafer flat between layers so subsequent layers can be built on a smooth surface |
+| **CMP (Chemical Mechanical Planarization)** | Polishing the wafer flat between layers so subsequent layers [[quick-context/can-bus|can]] be built on a smooth surface |
 
 <details>
 <summary><strong>How It Works: The Layer-by-Layer Cycle</strong></summary>
@@ -510,7 +510,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar [[micro-context/mosfet|MOSFET]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 

@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[micro-context/plc-programmable-logic-controller]] | [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]] | [[quick-context/epson-rc-plus-programming]] | [[quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -11,9 +11,9 @@ created: 2026-01-16
 
 ## The Core Problem: Making Disparate Devices Act in Concert
 
-Robot cell integration best practices exist to solve the coordination problem: making sure a robot, PLC, vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
+Robot cell integration best practices exist to solve the coordination problem: making sure a robot, [[micro-context/plc-programmable-logic-controller|PLC]], vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
 
-Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
+Without disciplined integration practices, you get deadlocks (robot waits for [[quick-context/plc-vs-software|PLC]], PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
 
 The core methods are: **structured handshakes** (explicit signal exchanges where both parties acknowledge state transitions), **state machines** (PackML-style models where the cell is always in a defined state with defined transitions), **simulation-first development** (virtual commissioning in tools like RoboDK, Visual Components, or vendor simulators before touching hardware), and **standardized I/O mapping** (documents that become the single source of truth for every signal between devices).
 
@@ -155,7 +155,7 @@ Without an I/O mapping document, debugging becomes archaeology—tracing wires, 
 Virtual commissioning catches logic errors early and reduces on-site debugging time, but requires upfront engineering investment and simulations never capture everything (sensor noise, mechanical variation, thermal drift). Rapid physical iteration is faster to start but may require more rework. High-complexity/high-risk cells favor virtual commissioning; simpler cells may iterate faster physically.
 </details>
 
-**Q4:** Why can't VLMs replace traditional deterministic control systems for real-time operations?
+**Q4:** Why [[micro-context/can-bus-termination|can]]'t VLMs replace traditional deterministic control systems for real-time operations?
 <details>
 <summary>Answer</summary>
 VLM inference latency is too slow for real-time control loops that require millisecond or sub-millisecond response times. VLMs work as supervisors providing high-level guidance, anomaly detection, or analysis, while traditional deterministic systems handle the actual real-time control.

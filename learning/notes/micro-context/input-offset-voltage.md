@@ -3,15 +3,17 @@ term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/voltage]] | [[quick-context/comparator]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[micro-context/tail-current]]
+
 # Input Offset Voltage ($V_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
+**Definition:** A small built-in [[quick-context/voltage|voltage]] error between a comparator's (or [[quick-context/op-amp|op-amp]]'s) two inputs, caused by [[quick-context/transistor|transistor]] mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
 
 ## How It Works
 
-- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the tail current evenly at exactly $V(+) = V(-)$.
+- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the [[micro-context/tail-current|tail current]] evenly at exactly $V(+) = V(-)$.
 - The few millivolts of input difference needed to re-balance them *is* the offset voltage.
 - It's a fixed DC error per part, not noise — so it stacks directly onto any reference-divider tolerance to set total threshold accuracy.
 - Datasheets list a *Typ* (statistical center at 25°C) and guaranteed *Limit* columns; the **boldface** limit holds over the full temperature range.
@@ -30,4 +32,4 @@ created: 2026-06-07
    perfectly matched, so they don't balance at V(+)=V(-).
 ```
 
-**Key insight:** $V_{OS}$ is not noise you can average away — it's a fixed error baked into each individual part, so the only honest design number is the guaranteed **boldface** limit (e.g. ≤8 mV over temperature), never the pretty "typical" 3 mV.
+**Key insight:** $V_{OS}$ is not noise you [[micro-context/can-bus-termination|can]] average away — it's a fixed error baked into each individual part, so the only honest design number is the guaranteed **boldface** limit (e.g. ≤8 mV over temperature), never the pretty "typical" 3 mV.

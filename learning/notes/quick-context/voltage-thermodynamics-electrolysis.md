@@ -3,9 +3,9 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/electrolysis]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
-> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
+> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum [[quick-context/voltage|voltage]] needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 
 # Voltage and Thermodynamic Relationship in Electrolysis
 
@@ -52,7 +52,7 @@ Water splitting has **ΔG = +237 kJ/mol**. The "+" sign is crucial—it means yo
 
 The voltage-thermodynamics relationship operates through a straightforward energy conversion: electrical work (voltage times charge) must equal or exceed the chemical energy requirement (Gibbs free energy). When you apply voltage to an electrolysis cell, you're providing electrical potential energy that gets converted into chemical potential energy stored in the products. The equation ΔG = -nFE bridges these two energy forms, where n electrons each carrying charge F (the Faraday constant) are pushed through potential E. For the reaction to proceed, the electrical energy supplied (nFE) must at least match what the chemistry demands (ΔG).
 
-The process unfolds at two electrodes immersed in an electrolyte. At the cathode (negative electrode), electrons arrive and force a reduction reaction—in water splitting, hydrogen ions grab electrons to become hydrogen gas. At the anode (positive electrode), electrons are pulled away, forcing oxidation—water molecules lose electrons to become oxygen gas. The electrolyte provides a path for ions to migrate between electrodes, completing the circuit internally while electrons flow through the external circuit. The minimum voltage (1.23V for water) represents the thermodynamic floor: the absolute minimum electrical "push" needed to make both electrode reactions energetically possible.
+The process unfolds at two electrodes immersed in an [[quick-context/electrolyte|electrolyte]]. At the [[micro-context/cathode|cathode]] (negative electrode), electrons arrive and force a reduction reaction—in water splitting, hydrogen ions grab electrons to become hydrogen gas. At the [[micro-context/anode|anode]] (positive electrode), electrons are pulled away, forcing [[micro-context/oxidation|oxidation]]—water molecules lose electrons to become oxygen gas. The electrolyte provides a path for ions to migrate between electrodes, completing the circuit internally while electrons flow through the external circuit. The minimum voltage (1.23V for water) represents the thermodynamic floor: the absolute minimum electrical "push" needed to make both electrode reactions energetically possible.
 
 ```
 ENERGY FLOW IN ELECTROLYSIS
@@ -139,7 +139,7 @@ VOLTAGE BREAKDOWN IN REAL ELECTROLYSIS
 | Factor | Problem | Solution Approaches |
 |--------|---------|---------------------|
 | Activation overpotential | Electrode surfaces resist reaction | Better catalysts (platinum, iridium) |
-| Concentration overpotential | Reactants can't reach electrode fast enough | Better flow design, stirring |
+| Concentration overpotential | Reactants [[micro-context/can-bus-termination|can]]'t reach electrode fast enough | Better flow design, stirring |
 | Ohmic losses | Resistance in wires, electrolyte, membranes | Shorter distances, better conductors |
 
 </details>
@@ -233,7 +233,7 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
         49%              51%           (worst case)
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that "theoretical minimum voltage" means you can actually run an electrolyzer at that voltage. You can't. The 1.23V is a thermodynamic floor—the absolute minimum energy the chemistry demands. But chemistry also has *kinetics* (how fast things happen), and coaxing electrons through real materials with real surfaces at practical speeds always costs extra. It's like knowing a trip is 100 miles—that's the minimum distance—but traffic, hills, and detours mean you'll actually drive 130-150 miles. Engineers spend careers shaving fractions of a volt off that overpotential because in industrial hydrogen production, those fractions translate to millions of dollars in electricity costs.
+**The one thing most outsiders get wrong about this is...** assuming that "theoretical minimum voltage" means you [[micro-context/can-bus-transceiver|can]] actually run an electrolyzer at that voltage. You [[quick-context/can-bus|can]]'t. The 1.23V is a thermodynamic floor—the absolute minimum energy the chemistry demands. But chemistry also has *kinetics* (how fast things happen), and coaxing electrons through real materials with real surfaces at practical speeds always costs extra. It's like knowing a trip is 100 miles—that's the minimum distance—but traffic, hills, and detours mean you'll actually drive 130-150 miles. Engineers spend careers shaving fractions of a volt off that overpotential because in industrial hydrogen production, those fractions translate to millions of dollars in electricity costs.
 
 </details>
 

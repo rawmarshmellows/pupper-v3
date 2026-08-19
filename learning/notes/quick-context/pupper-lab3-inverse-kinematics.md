@@ -6,13 +6,13 @@ updated: 2026-03-11
 
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[micro-context/homogeneous-transformation-matrix]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/ros2-architecture]] | [[micro-context/stm32-microcontroller]]
 
 > **TL;DR:** Lab 3 flips the FK problem: given a desired foot position in 3D space, find the joint angles that reach it by minimizing a cost function via gradient descent, then drives a single leg through a triangle stepping trajectory using a dual-rate architecture (200 Hz PD tracking + 20 Hz IK solving).
 
 ## The Core Problem
 
-In Lab 2 you solved forward kinematics: plug in joint angles $\theta_1, \theta_2, \theta_3$, get foot position $p \in \mathbb{R}^3$. That's a clean, closed-form mapping. But a walking robot doesn't think in joint angles — it thinks in foot positions. You want to say "put the foot here" and have the robot figure out which angles achieve that. This is the **inverse kinematics** problem, and for most robots it's far harder than FK because the mapping from Cartesian space back to joint space can be nonlinear, non-unique, or even nonexistent (if the target is out of reach).
+In Lab 2 you solved forward kinematics: plug in joint angles $\theta_1, \theta_2, \theta_3$, get foot position $p \in \mathbb{R}^3$. That's a clean, closed-form mapping. But a walking robot doesn't think in joint angles — it thinks in foot positions. You want to say "put the foot here" and have the robot figure out which angles achieve that. This is the **inverse kinematics** problem, and for most robots it's far harder than FK because the mapping from Cartesian space back to joint space [[micro-context/can-bus-termination|can]] be nonlinear, non-unique, or even nonexistent (if the target is out of reach).
 
 Pupper's 3-DOF leg actually does have a closed-form analytical IK solution — you could derive it with trigonometry. But Lab 3 deliberately uses **numerical gradient descent** instead, for two reasons. First, the gradient descent approach generalizes: it works for any robot geometry (6-DOF arms, redundant manipulators, humanoid legs) without rederiving equations. Second, it teaches the optimization-based thinking that underlies modern robotics — trajectory optimization, model-predictive control, and even neural network training all share the same gradient-based core.
 
@@ -65,7 +65,7 @@ ONE IK SOLVE (runs at 20 Hz)
   Output: θ_solution
 ```
 
-Note that each gradient computation requires 3 additional FK evaluations (one per joint). If you run 10 iterations, that's $10 \times (1 + 3) = 40$ FK calls per solve. At 20 Hz, that's 800 FK evaluations per second — which is why IK can't run at the same rate as the PD loop.
+Note that each gradient computation requires 3 additional FK evaluations (one per joint). If you run 10 iterations, that's $10 \times (1 + 3) = 40$ FK calls per solve. At 20 Hz, that's 800 FK evaluations per second — which is why IK [[micro-context/can-bus-transceiver|can]]'t run at the same rate as the PD loop.
 
 ### Dual-Rate Architecture
 
@@ -101,7 +101,7 @@ DUAL-RATE CONTROL ARCHITECTURE
   PD fires every 5ms (200 Hz), tracks current θ_target
 ```
 
-The PD loop holds the last θ_target from IK and smoothly drives the motors toward it. When IK produces a new target (every 50ms), the PD loop seamlessly transitions to tracking the updated target. This decoupling means the IK solver can take variable time without causing motor jitter.
+The PD loop holds the last θ_target from IK and smoothly drives the motors toward it. When IK produces a new target (every 50ms), the PD loop seamlessly transitions to tracking the updated target. This decoupling means the IK solver [[quick-context/can-bus|can]] take variable time without causing motor jitter.
 
 ### Triangle Trajectory
 
@@ -268,7 +268,7 @@ Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ reduction in one step. 
 - **Newton's Method** — Uses second-order information (the Hessian $\nabla^2 C$) for faster convergence: $\theta \leftarrow \theta - (\nabla^2 C)^{-1} \nabla C$. Converges quadratically near the solution vs. gradient descent's linear convergence, but each step is more expensive and the Hessian can be singular.
 - **Levenberg-Marquardt Algorithm** — A damped least-squares method that interpolates between gradient descent (far from solution) and Gauss-Newton (near solution). The standard workhorse for nonlinear least-squares problems in robotics, vision, and SLAM.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 3 builds directly on Lab 2's FK implementation and feeds into Lab 4's multi-leg gait controller.
-- **[[quick-context/pupper-brain]]** — The hardware executing these loops: the STM32 microcontrollers running the 200 Hz PD loop, and the Raspberry Pi running the 20 Hz IK solver in Python via [[quick-context/ros2-architecture|ROS2]].
+- **[[quick-context/pupper-brain]]** — The hardware executing these loops: the [[micro-context/stm32-microcontroller|STM32]] microcontrollers running the 200 Hz PD loop, and the Raspberry Pi running the 20 Hz IK solver in Python via [[quick-context/ros2-architecture|ROS2]].
 - **Optimization Theory** — Lab 3's gradient descent is a first-order unconstrained optimizer. The broader field includes constrained optimization (Lagrange multipliers, interior-point methods), stochastic gradient descent (used in ML), and convex optimization (where global minima are guaranteed). Boyd & Vandenberghe's *Convex Optimization* is the standard reference.
 
 </details>

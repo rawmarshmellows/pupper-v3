@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
-> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/rust]] | [[quick-context/ram-addressing-decoder]]
 
 > **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
 
@@ -18,7 +18,7 @@ A CPU understands exactly one thing: binary machine-code instructions for *its* 
 | Term | Definition |
 |------|------------|
 | **Compile** | Translate source into a *lower* form ahead of running it. CPython compiles `.py` source into **bytecode** before execution (not into CPU machine code). A C compiler instead compiles all the way down to CPU machine code. |
-| **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip can run it directly. |
+| **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip [[micro-context/can-bus-termination|can]] run it directly. |
 | **Virtual Machine (VM)** | A program that pretends to be a CPU. CPython's VM is an **evaluation loop** (conceptually `ceval`) that reads one bytecode op and updates a **value stack**. "Interpreting bytecode" = this loop running. |
 | **Interpreter** | The whole `python` program: it compiles your source to bytecode, then its VM loop executes that bytecode. Crucially, the interpreter itself is **machine code** (a C program compiled ahead of time). |
 | **Machine code** | The binary instructions the physical CPU actually fetches and executes via the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]. Every execution route ends here — this is where software meets hardware. |
@@ -30,7 +30,7 @@ A CPU understands exactly one thing: binary machine-code instructions for *its* 
 
 People say Python is "interpreted," but the first thing CPython does is **compile**. It reads your `.py` text, tokenizes it, parses it into a tree (an AST), and emits **bytecode**: a flat list of tiny instructions for an imaginary machine. That bytecode is cached next to your file as a `.pyc` in `__pycache__/` so it doesn't have to be recompiled next time.
 
-You can see the bytecode with the standard-library `dis` ("disassemble") module:
+You [[micro-context/can-bus-transceiver|can]] see the bytecode with the standard-library `dis` ("disassemble") module:
 
 ```python
 import dis
@@ -79,7 +79,7 @@ THE VALUE STACK while running  x = a + b   (a=2, b=3)
 
 ### Step 2: the VM loop interprets the bytecode
 
-Bytecode is data, not anything a CPU can run. So *something* has to walk the
+Bytecode is data, not anything a CPU [[quick-context/can-bus|can]] run. So *something* has to walk the
 list and actually do each op. That something is CPython's **evaluation loop**,
 conceptually a giant function called `ceval` ("C eval"). In spirit it is just:
 
@@ -237,7 +237,7 @@ NAND2TETRIS PIPELINE (the full Part 1 + Part 2 tower)
 ```
 
 **Honest scope note:** this repo only contains **Part 1 (the hardware)** —
-gates, ALU, registers, RAM, and the CPU. The compiler, VM translator, and
+gates, ALU, registers, [[quick-context/ram-addressing-decoder|RAM]], and the CPU. The compiler, VM translator, and
 assembler are **Part 2**, which is not in this repo. But Part 1 *does* contain
 the thing every route in this note ultimately targets: a CPU that fetch-executes
 machine code. That CPU is real, runnable Python at
@@ -318,7 +318,7 @@ The **`python` interpreter's own machine code**. CPython's VM loop is a C progra
 No — CPython did **constant folding** at compile time. Because both operands are literal constants, the compiler computed `2 + 3 = 5` while compiling and baked the literal `5` into the bytecode, so the addition never runs at runtime. To see an actual `BINARY_ADD`/`BINARY_OP` you must use values the compiler can't know in advance, e.g. variables (`x = a + b`). See: Concrete Example (the surprise that CPython folds it).
 </details>
 
-**Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler (Rust) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?
+**Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler ([[quick-context/rust|Rust]]) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?
 <details>
 <summary>Answer</summary>
 They all **bottom out in machine-code instructions the CPU fetch-executes** — that's the fixed meeting point of the software and hardware towers. AOT compiles straight to machine code; the bytecode VM runs the interpreter's machine code; a JIT compiles hot paths to machine code at runtime; a transpiler just produces more source that still needs an engine (which itself ends in machine code). The repo proves the destination exists: `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/cpu.py` is a runnable CPU that fetch-executes machine code — the same target every route hands its output to. See: The Key Tension (four routes) and Concrete Example (Nand2Tetris mapping + cpu.py).

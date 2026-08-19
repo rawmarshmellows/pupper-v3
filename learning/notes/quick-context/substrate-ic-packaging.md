@@ -4,13 +4,13 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/bga-ball-grid-array]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]]
 
-> **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
+> **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that [[micro-context/can-bus-termination|can]] be soldered to a circuit board, making modern chips usable.
 
 ## The Core Problem
 
-The substrate is the "translator" that takes a chip's tiny, densely-packed connections (100 micrometers apart) and fans them out to larger, more widely-spaced connections (800 micrometers apart) that can actually be soldered to a circuit board. Without a substrate, there is no way to use a modern chip—you couldn't get power into it or data out of it.
+The substrate is the "translator" that takes a chip's tiny, densely-packed connections (100 micrometers apart) and fans them out to larger, more widely-spaced connections (800 micrometers apart) that [[micro-context/can-bus-transceiver|can]] actually be soldered to a circuit board. Without a substrate, there is no way to use a modern chip—you couldn't get power into it or data out of it.
 
 ## 5 Essential Terms
 
@@ -126,7 +126,7 @@ SUBSTRATE MATERIALS COMPARISON
 
 ### The Fan-Out Mechanism: How Redistribution Actually Works
 
-The fan-out isn't just "spreading things apart"—it's a geometrically constrained routing problem. The die's bumps arrive in a dense grid that must map to a sparser grid of BGA balls, but the routing layers have limited space and the signals can't cross each other on the same layer.
+The fan-out isn't just "spreading things apart"—it's a geometrically constrained routing problem. The die's bumps arrive in a dense grid that must map to a sparser grid of BGA balls, but the routing layers have limited space and the signals [[quick-context/can-bus|can]]'t cross each other on the same layer.
 
 ```
 FAN-OUT ROUTING: The Geometric Challenge
@@ -405,7 +405,7 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
@@ -414,7 +414,7 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and [[quick-context/pcb-assembly-files-bom-cpl|PCB]] in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
 - **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 

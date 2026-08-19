@@ -3,15 +3,17 @@ term: Capacitive Voltage Sensing
 created: 2026-06-08
 ---
 
+> **Related:** [[quick-context/voltage]] | [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[micro-context/adc-analog-to-digital-converter]] | [[quick-context/differential-pair]]
+
 # Capacitive Voltage Sensing
 
-> **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | [[micro-context/capacitive-sensing-measurement]]
+> **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | capacitive sensing measurement
 
 **Definition:** Detecting a voltage *without touching* the conductor — a sense plate placed near a live conductor couples to it through the electric field, and the charge induced on the plate ($Q = CV$) reveals the source voltage. Used in non-contact voltage testers and high-voltage capacitive dividers.
 
 ## How It Works
 
-- The source conductor and the sense plate form a small coupling capacitor $C_c$ across the air/dielectric gap — no metal-to-metal contact.
+- The source conductor and the sense plate form a small coupling [[quick-context/capacitor|capacitor]] $C_c$ across the air/dielectric gap — no metal-to-metal contact.
 - The source's electric field induces a proportional charge on the plate, $Q = C_c \cdot V_{source}$, so the plate "feels" the voltage through the field alone.
 - $C_c$ in series with a reference capacitor $C_{ref}$ to ground makes a capacitive divider: $V_{sense} = V_{source} \cdot \dfrac{C_c}{C_c + C_{ref}}$.
 - For a *changing* (AC) source the field drives a displacement current $I = C_c \, dV/dt$ into the plate; this tiny signal feeds a high-impedance [[quick-context/differential-pair|differential pair]], which amplifies it against a reference and rejects common-mode noise.
@@ -33,7 +35,7 @@ created: 2026-06-08
                GND
 ```
 
-**Key insight:** It is galvanically isolated — the plate never touches the wire — but that means pure DC can't be sensed continuously: a static charge passes no current ($dV/dt = 0$), so capacitive sensors detect AC or *changes* in voltage, not steady DC levels.
+**Key insight:** It is galvanically isolated — the plate never touches the wire — but that means pure DC [[micro-context/can-bus-termination|can]]'t be sensed continuously: a static charge passes no current ($dV/dt = 0$), so capacitive sensors detect AC or *changes* in voltage, not steady DC levels.
 
 ## Common Questions
 

@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Post-Sale Account Engagement
 
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/whitespace-mapping]]
 
 > **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
 
@@ -275,11 +275,11 @@ The fundamental tension in post-sale engagement:
 | CSMs become account therapists | Customers feel like tickets |
 | Unsustainable unit economics | Miss expansion signals |
 | Heroic effort, inconsistent results | Low NPS, high churn |
-| Can't scale the team | Competitors outmaneuver with relationships |
+| [[micro-context/can-bus-termination|Can]]'t scale the team | Competitors outmaneuver with relationships |
 
 **The practitioner debate:**
 
-- **"Relationships drive retention"**: Every customer wants to feel important. A CSM who knows their business prevents churn and drives expansion. You can't automate trust.
+- **"Relationships drive retention"**: Every customer wants to feel important. A CSM who knows their business prevents churn and drives expansion. You [[micro-context/can-bus-transceiver|can]]'t automate trust.
 - **"Data drives retention"**: Usage patterns predict churn better than gut feel. Scale with automation, intervene surgically. Relationships are nice but not necessary.
 
 **The pragmatic answer:** Match investment to potential. Strategic accounts get relationship investment because the ROI justifies it. Maintain accounts get efficient automation because the math doesn't support high-touch. Growth accounts get the hardest treatment—enough touch to identify winners, enough efficiency to not drown.
@@ -476,7 +476,7 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
   → Decision: Yes, treat as new logo opportunities, not expansions
 ```
 
-**The one thing most outsiders get wrong about this is...** they think the segments are about how much you *like* the customer. They're not—they're about matching investment to expected return. A $20K consultancy with a fantastic champion still can't justify monthly on-site visits. A difficult $300K rail authority with expansion potential still warrants flying to Wellington for QBRs. The model is economic, not emotional.
+**The one thing most outsiders get wrong about this is...** they think the segments are about how much you *like* the customer. They're not—they're about matching investment to expected return. A $20K consultancy with a fantastic champion still [[quick-context/can-bus|can]]'t justify monthly on-site visits. A difficult $300K rail authority with expansion potential still warrants flying to Wellington for QBRs. The model is economic, not emotional.
 
 **Asset owner-specific nuances:**
 - **Government/public sector:** Budget cycles are annual and rigid; multi-year deals need Treasury approval; political changes can restructure your buyer overnight

@@ -3,9 +3,9 @@ topic: Physics of Writing Data to Memory — How Bits Become Charges, Voltages, 
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[micro-context/sram]] | [[quick-context/voltage]] | [[quick-context/transistor]] | [[quick-context/capacitor]] | [[micro-context/mosfet]]
 
-> **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
+> **TL;DR:** Every bit stored in a computer is a physical thing — a [[quick-context/voltage|voltage]] held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] ([[micro-context/sram|SRAM]]), a tiny charge on a ~10-30 femtofarad [[quick-context/capacitor|capacitor]] that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips [[quick-context/transistor|transistor]] states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
 ## The Core Problem
 
@@ -186,7 +186,7 @@ No single memory technology is best at everything. The physics forces a three-wa
 
 **Why not just use the fastest?** SRAM needs 6 transistors per bit. A 16 GB SRAM module would need $16 \times 10^9 \times 8 \times 6 = 768 \times 10^9$ transistors just for storage — physically enormous and prohibitively expensive. DRAM gets the same capacity with $128 \times 10^9$ transistors + capacitors.
 
-**Why not just use the densest?** Flash writes are 1000x slower than DRAM and degrade the oxide with every write. Running a program from flash (as MCUs do) is fine for reads, but you can't use flash as working memory — the write speed and endurance would be catastrophic.
+**Why not just use the densest?** Flash writes are 1000x slower than DRAM and degrade the oxide with every write. Running a program from flash (as MCUs do) is fine for reads, but you [[micro-context/can-bus-termination|can]]'t use flash as working memory — the write speed and endurance would be catastrophic.
 
 **The physical root cause:** Storing a bit more *permanently* requires moving charge through a stronger barrier, which takes more energy and time. SRAM holds bits as voltages on transistor gates (fast to change, gone without power). DRAM holds charge on a capacitor (slightly harder to change, leaks away). Flash traps electrons behind an oxide wall (hard to change, stays for years). The tradeoff is inescapable because it's rooted in the physics of charge storage.
 
@@ -212,12 +212,10 @@ STEP 1: KEYBOARD → SCAN CODE → USB → PC (mechanical → electrical)
 
   Inside the keyboard is a small MCU (often a CH552 or 8051)
   whose firmware exists as trapped electrons on floating gates
-  in flash — [[learning/notes/quick-context/from-code-to-running-
-  firmware|programmed at the factory]] via the same Fowler-
+  in flash — programmed at the factory via the same Fowler-
   Nordheim tunneling physics described in STEP 5 below.
 
-  The MCU's [[learning/notes/quick-context/code-to-gates-and-
-  bootstrapping|fetch-execute cycle]] runs a scan loop:
+  The MCU's fetch-execute cycle runs a scan loop:
   drive each matrix row LOW, read columns. Row 2, Col 1 reads
   LOW → "x" detected → firmware looks up the USB HID scan
   code (0x1B) from a table in flash → packages an 8-byte HID
@@ -339,7 +337,7 @@ STEP 5: DRAM → SSD FLASH (when you hit Ctrl+S)
 When you [[learning/notes/quick-context/from-code-to-running-firmware|flash firmware]] to an [[learning/notes/micro-context/stm32-microcontroller|STM32]], the same floating-gate physics applies, but the path is different:
 
 1. The [[learning/notes/micro-context/st-link-v2-programmer|ST-Link]] debug probe sends the machine code bytes over [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] (2 wires: SWDIO + SWCLK)
-2. The SWD protocol writes to the MCU's flash controller registers via the AHB bus
+2. The [[micro-context/swd-serial-wire-debug|SWD]] protocol writes to the MCU's flash controller registers via the AHB bus
 3. The flash controller's internal charge pump generates the ~15-20V programming voltage from the 3.3V supply
 4. The charge pump drives the wordlines while the data is placed on bitlines
 5. Fowler-Nordheim tunneling traps electrons on floating gates — same physics as an SSD, but the flash cells are NOR-type (individually addressable) rather than NAND-type (page-addressable)
@@ -360,7 +358,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The linking and flashing pipeline: how compiled code goes from an ELF file on your PC to bytes in an MCU's flash memory. Covers the software toolchain (linker, flash programmer) that drives the physical write process described here.
 
-- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
+- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 [[micro-context/mosfet|MOSFET]] + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
 
 - **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM capacitor or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
 
@@ -374,9 +372,9 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **Wear Leveling** — SSD controller firmware that distributes writes evenly across flash blocks to prevent any single block from hitting its P/E cycle limit before others. Without it, frequently-written blocks would die early.
 
-- **[[learning/notes/quick-context/usb-peripheral-hardware]]** — Deep dive into STEP 1/STEP 4 of the keypress journey: how the keyboard MCU's Serial Interface Engine (SIE) autonomously serializes bytes from the endpoint buffer into NRZI-encoded voltage transitions on the USB data lines, using MOSFET push-pull drivers switching at 12 MHz.
+- **[[learning/notes/quick-context/usb-peripheral-hardware]]** — Deep dive into STEP 1/STEP 4 of the keypress journey: how the keyboard MCU's Serial Interface Engine (SIE) autonomously serializes bytes from the endpoint buffer into NRZI-encoded voltage transitions on the [[quick-context/usb-peripheral-hardware|USB]] data lines, using MOSFET push-pull drivers switching at 12 MHz.
 
-- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — A breadboard-level circuit (switches + clock button + 74HC574) that demonstrates data storage with real chips, and explains how this minimal pattern scales to build every register and RAM in a computer. The 74HC574's internal flip-flops use the same cross-coupled inverter pattern described here.
+- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — A breadboard-level circuit (switches + clock button + 74HC574) that demonstrates data storage with real chips, and explains how this minimal pattern scales to build every register and [[quick-context/ram-addressing-decoder|RAM]] in a computer. The 74HC574's internal flip-flops use the same cross-coupled inverter pattern described here.
 
 </details>
 
@@ -404,7 +402,7 @@ In DRAM, reading works by connecting the tiny storage capacitor to the long bitl
 **Q4:** An MCU's flash is NOR-type while an SSD uses NAND-type flash. Both use floating-gate transistors and Fowler-Nordheim tunneling. What's the architectural difference, and why does it matter for machine code execution?
 <details>
 <summary>Answer</summary>
-In NOR flash, each cell has its own connection to a bitline — cells are wired in parallel, allowing random byte-level access. This lets the CPU fetch individual instructions directly from flash (execute-in-place / XIP). In NAND flash, cells are wired in series (strings of 32-128 cells), which increases density but means you can only read/write entire pages (4-8 KB) at once. NAND can't support XIP because the CPU needs to fetch individual 2-4 byte instructions at arbitrary addresses. This is why MCUs use NOR flash for code storage (direct execution) while SSDs use NAND flash for data storage (page-level I/O is fine for file operations). See: Concrete Example (What about machine code on an MCU?)
+In NOR flash, each cell has its own connection to a bitline — cells are wired in parallel, allowing random byte-level access. This lets the CPU fetch individual instructions directly from flash (execute-in-place / XIP). In NAND flash, cells are wired in series (strings of 32-128 cells), which increases density but means you [[micro-context/can-bus-transceiver|can]] only read/write entire pages (4-8 KB) at once. NAND [[quick-context/can-bus|can]]'t support XIP because the CPU needs to fetch individual 2-4 byte instructions at arbitrary addresses. This is why MCUs use NOR flash for code storage (direct execution) while SSDs use NAND flash for data storage (page-level I/O is fine for file operations). See: Concrete Example (What about machine code on an MCU?)
 </details>
 
 **Q5:** Flash endurance is limited (SLC ~100K cycles, TLC ~3K cycles) because the tunnel oxide degrades with each program/erase. SRAM and DRAM have unlimited write endurance. Trace this difference back to the physics: what exactly degrades, and why don't SRAM/DRAM have the same problem?

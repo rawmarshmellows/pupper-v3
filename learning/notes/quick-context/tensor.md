@@ -5,7 +5,7 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[quick-context/faraday-tensor]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/electromagnetism]]
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
@@ -291,7 +291,7 @@ COMBINED LOADING (real-world):
     tensors are designed to handle.
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
+**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor [[micro-context/can-bus-termination|can]] be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
 
 </details>
 
@@ -334,7 +334,7 @@ COMBINED LOADING (real-world):
 **Q3:** The [[quick-context/faraday-tensor|Faraday tensor]] is antisymmetric ($F^{\mu\nu} = -F^{\nu\mu}$) and the stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). What does this difference mean physically?
 <details>
 <summary>Answer</summary>
-**Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
+**Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor [[micro-context/can-bus-transceiver|can]] represent.
 </details>
 
 **Q4:** In PyTorch, you create a "tensor" with `torch.tensor([1, 2, 3])`. Is this a tensor in the physics/math sense? Why or why not?

@@ -5,13 +5,13 @@ created: 2026-06-05
 
 # PCB Assembly Files — BOM & CPL (Pick-and-Place)
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
+> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[micro-context/mosfet]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-layers]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
 
 ## The Core Problem
 
-A bare PCB is just patterned copper — empty pads. A contract assembler (JLCPCB, PCBWay) needs two questions answered before a machine can populate it: **what** components to load, and **where/how** to drop each one. The BOM answers "what + how many + from which supplier"; the CPL answers "exact position + angle + top or bottom." Miss either file (or mismatch a designator between them) and the assembly stops. The `PDB_BOM.csv` and `PDB_CPL.csv` here are exactly this pair for the Pupper **Power Distribution Board (PDB)**.
+A bare [[quick-context/pcb-chip-transistor-hierarchy|PCB]] is just patterned copper — empty pads. A contract assembler (JLCPCB, PCBWay) needs two questions answered before a machine [[micro-context/can-bus-termination|can]] populate it: **what** components to load, and **where/how** to drop each one. The BOM answers "what + how many + from which supplier"; the CPL answers "exact position + angle + top or bottom." Miss either file (or mismatch a designator between them) and the assembly stops. The `PDB_BOM.csv` and `PDB_CPL.csv` here are exactly this pair for the Pupper **Power Distribution Board (PDB)**.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ A bare PCB is just patterned copper — empty pads. A contract assembler (JLCPCB
 |------|------------|
 | **BOM (Bill of Materials)** | The purchasing list — **one row per unique part type**, with quantity, the [[learning/notes/quick-context/resistor\|value]], [[learning/notes/quick-context/common-ic-packages\|footprint]], manufacturer part number (MPN), and supplier catalog number. It's the recipe for *buying*. |
 | **CPL / Pick-and-Place** | The placement list — **one row per physical component**, giving centroid XY, rotation, board side, and pin count. It's the instructions for *placing*. See [[learning/notes/micro-context/pick-and-place-file\|Pick and Place File]]. |
-| **Reference Designator** | The unique ID stamped on each part: `Q`=transistor, `C`=[[learning/notes/quick-context/capacitor\|cap]], `R`=[[learning/notes/quick-context/resistor\|resistor]], `D`=[[learning/notes/quick-context/diode\|diode]], `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
+| **Reference Designator** | The unique ID stamped on each part: `Q`=[[quick-context/transistor|transistor]], `C`=[[learning/notes/quick-context/capacitor\|cap]], `R`=[[learning/notes/quick-context/resistor\|resistor]], `D`=[[learning/notes/quick-context/diode\|diode]], `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
 | **Footprint** | The physical pad pattern / package the part solders to (`C0402`, `SOT-23-5`, `SMA`, `PG-TDSON-8`). Must match the real part exactly, or it won't fit. |
 | **Centroid + Rotation + Layer** | The four numbers the machine actually needs: **Mid X/Y** (part center), **Rotation** (degrees CCW), and **Layer** (`T` top / `B` bottom). `SMD = Yes/No` tells it surface-mount vs through-hole. |
 
@@ -76,7 +76,7 @@ ASSEMBLY HAND-OFF PACKAGE
 <details>
 <summary><strong>The Key Tension</strong> — Grouped vs. per-instance, and export gotchas</summary>
 
-**Why two files instead of one?** Because the two consumers want opposite shapes. The *purchasing* side wants parts grouped (you order "2 MOSFETs," not "a MOSFET at (21, 7.25)"). The *placement machine* wants them exploded (it places one part at a time and couldn't care less what it costs). Cramming both into one table would either repeat purchasing data 36 times or hide the positions.
+**Why two files instead of one?** Because the two consumers want opposite shapes. The *purchasing* side wants parts grouped (you order "2 MOSFETs," not "a [[micro-context/mosfet|MOSFET]] at (21, 7.25)"). The *placement machine* wants them exploded (it places one part at a time and couldn't care less what it costs). Cramming both into one table would either repeat purchasing data 36 times or hide the positions.
 
 | | BOM | CPL |
 |---|---|---|
@@ -89,8 +89,8 @@ ASSEMBLY HAND-OFF PACKAGE
 **The gotchas that bite people reading these files:**
 
 - **Encoding.** These exports are often **UTF-16, tab-delimited** (note the byte-order mark and "spaced-out" look in a raw viewer). Open in a spreadsheet and pick *Tab* as the delimiter, or they look like garbage.
-- **Rotation conventions differ.** Degrees are counter-clockwise, but the "zero" orientation isn't standardized across EDA tools and fab houses — a part right in your tool can land 90°/180° off at the assembler. This is the #1 cause of reversed diodes and ICs.
-- **Missing/placeholder fields.** Watch for literal placeholders like `{Manufacturer Part!}` — in this PDB that appears for **J2** and **U40**, meaning the designer never filled the field. The assembler can't source those automatically; you must supply the part manually.
+- **Rotation conventions differ.** Degrees are counter-clockwise, but the "zero" orientation isn't standardized across EDA tools and fab houses — a part right in your tool [[micro-context/can-bus-transceiver|can]] land 90°/180° off at the assembler. This is the #1 cause of reversed diodes and ICs.
+- **Missing/placeholder fields.** Watch for literal placeholders like `{Manufacturer Part!}` — in this PDB that appears for **J2** and **U40**, meaning the designer never filled the field. The assembler [[quick-context/can-bus|can]]'t source those automatically; you must supply the part manually.
 - **No supplier number = manual sourcing.** Blank `Supplier Part` rows (the passives here: caps, most resistors) aren't in the assembler's standard library and need to be specified or consigned.
 
 </details>
@@ -127,9 +127,9 @@ Designator│ Device       │ Mid X │ Mid Y  │ Pad X  │ Pad Y │Pins│L
 - **Mid X / Mid Y** = the part's center — where the nozzle aims.
 - **Ref X / Ref Y** = the placement origin (here same as Mid).
 - **Pad X / Pad Y** = location of pin-1 pad — lets you verify orientation independent of rotation.
-- **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **SMD = Yes**.
+- **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **[[micro-context/smd-resistor|SMD]] = Yes**.
 
-Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a comparator (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
+Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a [[quick-context/comparator|comparator]] (U40), a small linear regulator (U42, a 78L12), and a dozen [[micro-context/jst-connector-families|JST]] connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
 
 **The one thing most outsiders get wrong about this is...** thinking the two files are redundant, or that the BOM contains positions. They're complementary halves: the BOM has zero geometry, the CPL has zero purchasing info, and the **reference designator is the only thing connecting them**. Lose the join (rename `Q1`→`Q3` in one file but not the other) and the assembler places a part it can't identify, or orders a part it can't place.
 

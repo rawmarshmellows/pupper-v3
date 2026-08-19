@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
@@ -17,9 +17,9 @@ Sales reps often sell to whoever will take a meeting, then discover they've been
 
 | Term | Definition |
 |------|------------|
-| **Economic Buyer** | The single person with discretionary authority to approve the purchase—can say "yes" when everyone else says "no," and controls the budget |
+| **Economic Buyer** | The single person with discretionary authority to approve the purchase—[[micro-context/can-bus-termination|can]] say "yes" when everyone else says "no," and controls the budget |
 | **User Buyer** | The person(s) who will work with your solution day-to-day and judges success based on job impact and personal convenience |
-| **Technical Buyer** | The gatekeeper who screens against specifications, compliance, or technical requirements—can veto but cannot approve alone |
+| **Technical Buyer** | The gatekeeper who screens against specifications, compliance, or technical requirements—[[micro-context/can-bus-transceiver|can]] veto but cannot approve alone |
 | **Coach** | An internal advocate who provides intelligence about the organization's decision process, politics, and how to navigate to the Economic Buyer |
 | **Buyer Mode** | The psychological stance of each buyer: Growth (seeking improvement), Trouble (reacting to pain), Even Keel (status quo), or Overconfident (dismissive) |
 
@@ -137,7 +137,7 @@ The framework creates pressure to engage all buyers, but time is limited:
 
 **The practitioner debate:**
 
-- **"Always map all buyers"**: Any unmapped buyer can kill the deal. A veto from a Technical Buyer you never met is worse than a longer cycle.
+- **"Always map all buyers"**: Any unmapped buyer [[quick-context/can-bus|can]] kill the deal. A veto from a Technical Buyer you never met is worse than a longer cycle.
 - **"Focus on the money"**: Economic Buyer is the only one who can say yes. Get to them fast, let them manage their organization.
 
 **The pragmatic answer:** Scale coverage to deal size. $10K deal? Meet Economic Buyer and one User Buyer. $100K+ deal? Full stakeholder map and engagement plan for all four roles.

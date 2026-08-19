@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]]
 
 > **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -333,7 +333,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Q2:** You suddenly open a switch in a circuit carrying current through an inductor. What happens, and which "causes" which?
 <details>
 <summary>Answer</summary>
-**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
+**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This [[micro-context/can-bus-termination|can]] be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
 </details>
 
 **Q3:** In an AC circuit with a capacitor, current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
@@ -345,7 +345,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Q4:** A student says "Ohm's law proves voltage always causes current because V = IR means voltage is on the left side." What's wrong with this reasoning?
 <details>
 <summary>Answer</summary>
-**Equation arrangement doesn't imply causation.** You can equally write I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
+**Equation arrangement doesn't imply causation.** You [[micro-context/can-bus-transceiver|can]] equally write I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
 </details>
 
 **Q5:** A piezoelectric sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?

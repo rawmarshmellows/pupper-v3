@@ -6,7 +6,7 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/ppo-proximal-policy-optimization]] | [[quick-context/can-bus]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/ros2-architecture]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -22,7 +22,7 @@ Labs 1-4 build a classical robotics stack: PD control drives individual joints (
 
 Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward function) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
 
-The sim-to-real gap is the central challenge. A policy that works perfectly in MuJoCo can fail on the real Pupper because simulation never perfectly captures motor dynamics, sensor noise, communication delays, or floor surfaces. Lab 5's approach mitigates this through domain randomization during training — deliberately varying simulation parameters so the policy learns to be robust rather than optimal for any single configuration. The `config.yaml` on the real robot then provides the bridge: PD gains ($K_p = 7.5$, $K_d = 0.25$ for all joints), default joint poses, and timing parameters that match the assumptions baked into the trained policy.
+The sim-to-real gap is the central challenge. A policy that works perfectly in MuJoCo [[micro-context/can-bus-termination|can]] fail on the real Pupper because simulation never perfectly captures motor dynamics, sensor noise, communication delays, or floor surfaces. Lab 5's approach mitigates this through domain randomization during training — deliberately varying simulation parameters so the policy learns to be robust rather than optimal for any single configuration. The `config.yaml` on the real robot then provides the bridge: PD gains ($K_p = 7.5$, $K_d = 0.25$ for all joints), default joint poses, and timing parameters that match the assumptions baked into the trained policy.
 
 ## 5 Essential Terms
 
@@ -32,7 +32,7 @@ The sim-to-real gap is the central challenge. A policy that works perfectly in M
 | **Sim-to-Real Transfer** | Deploying a policy trained entirely in simulation to a physical robot. Bridged by domain randomization (varying sim physics) and careful config matching (`config.yaml` gains, timing). |
 | **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides fast, differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
 | **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from BNO086 IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
-| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the STM32 tracks these targets at the full 520 Hz update rate. |
+| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the [[micro-context/stm32-microcontroller|STM32]] tracks these targets at the full 520 Hz update rate. |
 
 <details>
 <summary><strong>How It Works</strong> — RL policy deployment pipeline</summary>
@@ -53,7 +53,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 
 | Symbol | Meaning | Concrete Pupper Example |
 |--------|---------|------------------------|
-| $o_t$ | **Observation** at time $t$ — everything the robot can sense | IMU orientation, angular velocity, 12 joint positions, 12 joint velocities, velocity command, previous action |
+| $o_t$ | **Observation** at time $t$ — everything the robot [[micro-context/can-bus-transceiver|can]] sense | IMU orientation, angular velocity, 12 joint positions, 12 joint velocities, velocity command, previous action |
 | $a_t$ | **Action** taken at time $t$ — the policy's output | 12 joint position offsets from default pose (e.g., $[+0.05, -0.02, +0.08, \ldots]$ rad) |
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
@@ -119,7 +119,7 @@ OBSERVATION VECTOR BREAKDOWN (~48 dimensions)
 - **Angular velocity + projected gravity** tell the policy the body's orientation and how fast it's rotating — essential for balance
 - **Joint position offsets** (not raw positions) are centered near zero, which helps the neural network learn faster. The offset from the default standing pose is more informative than the raw angle
 - **Joint velocities** tell the policy how fast each joint is currently moving — needed to predict where the joint will be next
-- **Previous action** provides temporal context so the policy can produce smooth, continuous motions rather than jerky independent decisions
+- **Previous action** provides temporal context so the policy [[quick-context/can-bus|can]] produce smooth, continuous motions rather than jerky independent decisions
 
 **What's NOT in the observation (and why):** foot contact sensors (not available on Pupper hardware), terrain heightmap (not available without cameras — this is what the teacher-student pipeline adds via privileged learning), and absolute position/velocity (not available without external tracking). The policy must infer ground contact and terrain from the *pattern* of joint positions and IMU readings.
 
@@ -275,7 +275,7 @@ The robot has been walking for about 1 second (after the 2.0s init + 2.0s fade-i
 
 ### Step 1: Sensor Read (tick 163 of the 520 Hz loop)
 
-The controller reads from the ROS2 hardware interface:
+The controller reads from the [[quick-context/ros2-architecture|ROS2]] hardware interface:
 
 ```
 IMU (BNO086 via I2C):
@@ -431,7 +431,7 @@ Lab 5 uses MuJoCo, which is excellent for accuracy but runs environments sequent
 | Parallelism | Tens of envs (CPU) or hundreds (MJX/GPU) | 4,096-8,192 parallel envs (GPU) |
 | Throughput | ~10K steps/sec | ~90K frames/sec (RTX A6000) |
 | Training time | Hours to days | Minutes to hours |
-| Tensor pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
+| [[quick-context/tensor|Tensor]] pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
 | Physics fidelity | Excellent (MuJoCo gold standard) | Good (PhysX-based, improving) |
 
 Isaac Lab exposes physics results directly as PyTorch tensors, eliminating CPU-GPU data transfer. Training a locomotion policy for ANYmal or Spot typically takes 30-60 minutes on a single GPU. Lab 5's MuJoCo approach is pedagogically clearer (easier to understand one environment) but wouldn't scale to the thousands of terrain variations that production systems train on.

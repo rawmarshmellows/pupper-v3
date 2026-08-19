@@ -5,7 +5,7 @@ updated: 2026-01-21
 clarification: 2026-01-21
 ---
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/covalent-bonds]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -28,7 +28,7 @@ Imagine you're trying to understand why water boils at 100°C while methane (nat
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Dipole-dipole interactions arise from the unequal sharing of electrons within molecules. When two atoms in a bond have different electronegativities (different "greediness" for electrons), the more electronegative atom pulls the shared electrons closer to itself. This creates a permanent charge imbalance: one end of the molecule becomes slightly negative (electron-rich) and the other becomes slightly positive (electron-poor). These partial charges are written as delta-minus (d-) and delta-plus (d+). Once a molecule has this permanent dipole, it can interact with other polar molecules—the positive end of one molecule attracts the negative end of another, creating an organized arrangement that requires energy to disrupt.
+Dipole-dipole interactions arise from the unequal sharing of electrons within molecules. When two atoms in a bond have different electronegativities (different "greediness" for electrons), the more electronegative atom pulls the shared electrons closer to itself. This creates a permanent charge imbalance: one end of the molecule becomes slightly negative (electron-rich) and the other becomes slightly positive (electron-poor). These partial charges are written as delta-minus (d-) and delta-plus (d+). Once a molecule has this permanent dipole, it [[micro-context/can-bus-termination|can]] interact with other polar molecules—the positive end of one molecule attracts the negative end of another, creating an organized arrangement that requires energy to disrupt.
 
 The strength of a dipole-dipole interaction depends on three factors: (1) the magnitude of the partial charges (bigger electronegativity difference = stronger dipole), (2) the distance between molecules (closer = stronger, falls off with distance squared), and (3) the orientation of the molecules (aligned dipoles attract more strongly than randomly oriented ones). In a liquid, molecules are constantly tumbling and rotating, so the orientation factor averages out—but on average, molecules spend more time in attractive orientations because those are lower-energy configurations. This is why polar liquids like water have higher boiling points than nonpolar liquids of similar molecular weight.
 
@@ -125,7 +125,7 @@ COMPARISON: POLAR vs NONPOLAR LIQUIDS
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners think about is **cohesion versus fluidity**. Strong dipole-dipole interactions mean molecules stick together well—great for creating stable liquids, biological structures, and materials that don't evaporate. But too much stickiness means high viscosity, difficulty dissolving other substances, and sluggish molecular movement. Chemists and materials scientists constantly balance this: pharmaceutical developers want drug molecules polar enough to dissolve in blood (water-based) but not so polar they can't pass through cell membranes (fatty/nonpolar). The optimization is always: "How do I get enough intermolecular attraction for stability without sacrificing the mobility I need?"
+The central tradeoff practitioners think about is **cohesion versus fluidity**. Strong dipole-dipole interactions mean molecules stick together well—great for creating stable liquids, biological structures, and materials that don't evaporate. But too much stickiness means high viscosity, difficulty dissolving other substances, and sluggish molecular movement. Chemists and materials scientists constantly balance this: pharmaceutical developers want drug molecules polar enough to dissolve in blood (water-based) but not so polar they [[micro-context/can-bus-transceiver|can]]'t pass through cell membranes (fatty/nonpolar). The optimization is always: "How do I get enough intermolecular attraction for stability without sacrificing the mobility I need?"
 
 </details>
 
@@ -239,7 +239,7 @@ Network view - each oxygen can attract MULTIPLE hydrogens from neighbors:
     (This is why water's boiling point is so high!)
 ```
 
-Each water molecule can attract multiple neighbors through its oxygen (δ-) pulling on hydrogens (δ+) from other molecules. This is why water has such a high boiling point—you have to break MANY of these δ- to δ+ attractions to separate the molecules into a gas.
+Each water molecule [[quick-context/can-bus|can]] attract multiple neighbors through its oxygen (δ-) pulling on hydrogens (δ+) from other molecules. This is why water has such a high boiling point—you have to break MANY of these δ- to δ+ attractions to separate the molecules into a gas.
 
 **Key insight:** In dipole-dipole attraction, molecules orient themselves so that OPPOSITE partial charges face each other. The molecules rotate and position themselves to maximize δ+...δ- contact and minimize δ+...δ+ or δ-...δ- repulsion.
 

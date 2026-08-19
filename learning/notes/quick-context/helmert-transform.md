@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Helmert Transform
 
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[quick-context/similarity-transform]] | [[quick-context/covariance-matrix]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/absolute-orientation]]
 
 > **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 
@@ -128,7 +128,7 @@ The transform is named after **Friedrich Robert Helmert** (1843--1917), a German
 
 ### 7-Parameter vs Time-Dependent Helmert
 
-The classic Helmert uses 7 parameters (3 translations, 3 rotations, 1 scale) and assumes a single, consistent transformation across the entire domain. But the Earth's crust is not rigid -- tectonic plates move, local subsidence warps regions, and the relationship between coordinate frames can change over time.
+The classic Helmert uses 7 parameters (3 translations, 3 rotations, 1 scale) and assumes a single, consistent transformation across the entire domain. But the Earth's crust is not rigid -- tectonic plates move, local subsidence warps regions, and the relationship between coordinate frames [[micro-context/can-bus-termination|can]] change over time.
 
 | Factor | 7-Parameter Helmert | 15-Parameter (time-dependent) |
 |--------|-------------------|--------------------------|
@@ -154,7 +154,7 @@ The Helmert Transform is a [[quick-context/similarity-transform|similarity trans
 **The practitioner debate:** When aligning point clouds from a LiDAR scanner, should you use Helmert (7 params) or a full affine (12 params)?
 
 - **Helmert camp:** The physical world doesn't shear. If your registration needs shear, something is wrong with your data (miscalibrated sensor, bad correspondences). Using more parameters just fits the noise.
-- **Affine camp:** Real sensors have anisotropic errors -- slightly different scale factors along different axes. An affine transform captures these systematic biases that Helmert can't model.
+- **Affine camp:** Real sensors have anisotropic errors -- slightly different scale factors along different axes. An affine transform captures these systematic biases that Helmert [[micro-context/can-bus-transceiver|can]]'t model.
 - **The resolution:** Use Helmert as the default. Only upgrade to affine when you have strong evidence of systematic anisotropic distortion *and* enough well-distributed control points (minimum 4 non-coplanar for affine, vs 3 non-collinear for Helmert).
 
 </details>
@@ -302,7 +302,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 **Q1:** What are the 7 parameters of a Helmert Transform, and why is 7 the minimum for a 3D similarity transform?
 <details>
 <summary>Answer</summary>
-3 translations ($t_x, t_y, t_z$), 3 rotations ($r_x, r_y, r_z$), and 1 uniform scale ($s$). This is the minimum because a similarity transform must specify where to move (3 DOF), how to reorient (3 DOF), and how to resize (1 DOF). Any fewer and you can't fully specify the mapping; any more and you introduce shear or non-uniform scale, which would no longer be a similarity transform. See: 5 Essential Terms, How It Works.
+3 translations ($t_x, t_y, t_z$), 3 rotations ($r_x, r_y, r_z$), and 1 uniform scale ($s$). This is the minimum because a similarity transform must specify where to move (3 DOF), how to reorient (3 DOF), and how to resize (1 DOF). Any fewer and you [[quick-context/can-bus|can]]'t fully specify the mapping; any more and you introduce shear or non-uniform scale, which would no longer be a similarity transform. See: 5 Essential Terms, How It Works.
 </details>
 
 **Q2:** Why does the algorithm center the point sets before computing rotation and scale?

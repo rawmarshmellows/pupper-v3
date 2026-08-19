@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/electromagnetism]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -20,7 +20,7 @@ Imagine you have two neutral atoms—no positive or negative charge, just sittin
 |------|------------|
 | **Dispersion forces (London forces)** | The specific type of van der Waals force caused by temporary, random electron movements creating instant dipoles—this is what we focus on here |
 | **Dipole** | An uneven distribution of electrical charge, like a tiny battery with a + end and a - end |
-| **Polarizability** | How easily an atom's electron cloud can be distorted—larger atoms with more electrons are more polarizable and have stronger van der Waals forces |
+| **Polarizability** | How easily an atom's electron cloud [[micro-context/can-bus-termination|can]] be distorted—larger atoms with more electrons are more polarizable and have stronger van der Waals forces |
 | **Instantaneous dipole** | A temporary, fleeting moment when electrons randomly cluster on one side of an atom, creating a brief + and - end |
 | **Induced dipole** | When one atom's instantaneous dipole causes a neighboring atom's electrons to shift in response, creating a second dipole |
 
@@ -351,7 +351,7 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners navigate is that van der Waals forces are **individually pathetically weak but collectively significant**. A single van der Waals interaction might be 100x weaker than a [[quick-context/hydrogen-bonds-beginners|hydrogen bond]]. But because *every* atom contributes, large molecules or surfaces can accumulate thousands of these tiny attractions. This is why geckos—with millions of tiny hair-like structures on their feet—can support their body weight on glass. The debate centers on: when do you need to account for these forces (drug design, nanotech, adhesives) vs. when can you safely ignore them (most everyday chemistry)? In computational chemistry, including van der Waals interactions accurately is expensive, so there's constant optimization between precision and computational cost.
+The central tradeoff practitioners navigate is that van der Waals forces are **individually pathetically weak but collectively significant**. A single van der Waals interaction might be 100x weaker than a [[quick-context/hydrogen-bonds-beginners|hydrogen bond]]. But because *every* atom contributes, large molecules or surfaces [[micro-context/can-bus-transceiver|can]] accumulate thousands of these tiny attractions. This is why geckos—with millions of tiny hair-like structures on their feet—[[quick-context/can-bus|can]] support their body weight on glass. The debate centers on: when do you need to account for these forces (drug design, nanotech, adhesives) vs. when can you safely ignore them (most everyday chemistry)? In computational chemistry, including van der Waals interactions accurately is expensive, so there's constant optimization between precision and computational cost.
 
 </details>
 
@@ -394,7 +394,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **biology fundamentals** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

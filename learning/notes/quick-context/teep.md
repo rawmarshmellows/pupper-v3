@@ -3,7 +3,7 @@ topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
+> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
 
@@ -66,7 +66,7 @@ Plant B produces 2.3x more despite "worse" OEE.
 
 The central tension is **demonstrated capacity vs. theoretical capacity** and what counts as "avoidable" downtime. Purists argue TEEP should be the primary metric because it reveals all hidden capacity—every holiday, every weekend, every maintenance window is time you *chose* not to produce.
 
-Pragmatists counter that not all calendar time is actually available: you can't run during legally mandated shutdowns, market demand might not justify additional shifts, and some processes require cooldown periods. The debate gets contentious around planned downtime: if you schedule a maintenance day, does that represent lost capacity (TEEP says yes) or responsible asset management (operations says yes)?
+Pragmatists counter that not all calendar time is actually available: you [[micro-context/can-bus-termination|can]]'t run during legally mandated shutdowns, market demand might not justify additional shifts, and some processes require cooldown periods. The debate gets contentious around planned downtime: if you schedule a maintenance day, does that represent lost capacity (TEEP says yes) or responsible asset management (operations says yes)?
 
 Organizations fight about whether TEEP is a strategic planning tool showing where to invest, or a stick that makes every site look bad regardless of business context.
 

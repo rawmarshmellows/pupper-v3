@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[quick-context/can-bus]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[micro-context/stm32-microcontroller]] | [[micro-context/spi]]
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 
@@ -13,7 +13,7 @@ created: 2026-03-10
 
 A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The inverse kinematics solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The LLM voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
 
-ROS2 (Robot Operating System 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node can subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
+ROS2 (Robot Operating System 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node [[micro-context/can-bus-termination|can]] subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
 
 This architecture is what makes the 7-lab progression possible. Each lab adds new nodes and topics to the graph without touching the nodes from previous labs. Lab 1 creates the PD controller node. Lab 2 adds an FK visualization node. Lab 3 adds an IK node that publishes to the same joint target topic. Lab 5 swaps in a neural controller node. Lab 6 adds a voice node. Lab 7 adds a vision node and state machine. At every stage, the existing infrastructure keeps working — you are composing a robot from modular building blocks, not rewriting a monolith.
 
@@ -22,8 +22,8 @@ This architecture is what makes the 7-lab progression possible. Each lab adds ne
 | Term | Definition |
 |------|------------|
 | **Node** | An independent process that performs one task — e.g., `pd_controller_node`, `neural_controller`, `hailo_detection`, `realtime_voice`. Each node has its own update rate and lifecycle. Nodes are the unit of modularity in ROS2. |
-| **Topic** | A named communication channel — e.g., `/joint_states`, `/cmd_vel`, `/detections`. Topics are typed: only messages of the declared type can be published. Topics decouple publishers from subscribers; neither needs to know the other exists. |
-| **Publisher / Subscriber** | The two ends of a topic connection. A publisher sends messages (e.g., the vision node publishes `Detection2DArray` to `/detections`). A subscriber receives them (e.g., the state machine subscribes to `/detections`). One topic can have multiple publishers and multiple subscribers simultaneously. |
+| **Topic** | A named communication channel — e.g., `/joint_states`, `/cmd_vel`, `/detections`. Topics are typed: only messages of the declared type [[micro-context/can-bus-transceiver|can]] be published. Topics decouple publishers from subscribers; neither needs to know the other exists. |
+| **Publisher / Subscriber** | The two ends of a topic connection. A publisher sends messages (e.g., the vision node publishes `Detection2DArray` to `/detections`). A subscriber receives them (e.g., the state machine subscribes to `/detections`). One topic [[quick-context/can-bus|can]] have multiple publishers and multiple subscribers simultaneously. |
 | **Message Type** | A structured data format defined in `.msg` files — e.g., `sensor_msgs/JointState` contains `name[]`, `position[]`, `velocity[]`, `effort[]` fields. Common types on Pupper: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`, `String`. |
 | **Launch File** | A Python script (`.launch.py`) that starts multiple nodes with configured parameters in one command. Launch files specify which nodes to run, remap topic names, load YAML config files, and set ROS2 parameters — they are the "recipe" for bringing up an entire lab's node graph. |
 
@@ -231,7 +231,7 @@ CONTROL FREQUENCY TIERS
   "never miss a deadline"          "usually meets deadlines"
 ```
 
-The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
+The [[micro-context/stm32-microcontroller|STM32]] microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over [[micro-context/spi|SPI]] at a fixed rate.
 
 This split explains a recurring pattern in the labs: **you never write code that directly talks to motors**. Your ROS2 nodes publish joint targets or velocity commands, and the ros2_control + STM32 stack translates those into actual motor current at rates your ROS2 node could never sustain reliably.
 

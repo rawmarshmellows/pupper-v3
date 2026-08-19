@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 
@@ -18,7 +18,7 @@ Sales teams waste enormous effort on deals that were never going to close. Reps 
 | Term | Definition |
 |------|------------|
 | **Metrics** | The quantifiable business outcomes the customer expects; "success" defined in numbers they'll measure you against |
-| **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who can say "yes" alone |
+| **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who [[micro-context/can-bus-termination|can]] say "yes" alone |
 | **Champion** | An internal advocate with power and influence who actively sells on your behalf when you're not in the room |
 | **Paper Process** | The legal, procurement, security, and administrative steps between verbal agreement and signed contract |
 | **Decision Process** | The sequence of events, approvals, and stakeholders between "interested" and "decision made" |
@@ -204,7 +204,7 @@ Paper Process—the legal, procurement, and administrative steps between verbal 
 **Q3:** Your deal scores 20/24 on MEDDPICC but you haven't identified Competition. Why is this still a red flag?
 <details>
 <summary>Answer</summary>
-Competition includes "do nothing"—if you don't know what alternatives they're considering (including status quo), you can't differentiate or create urgency. A deal with high scores elsewhere but unknown competition might lose to inertia or a vendor you never saw coming.
+Competition includes "do nothing"—if you don't know what alternatives they're considering (including status quo), you [[micro-context/can-bus-transceiver|can]]'t differentiate or create urgency. A deal with high scores elsewhere but unknown competition might lose to inertia or a vendor you never saw coming.
 </details>
 
 **Q4:** Why would a company using MEDDPICC still lose winnable deals?
@@ -213,7 +213,7 @@ Competition includes "do nothing"—if you don't know what alternatives they're 
 MEDDPICC qualifies deals but doesn't teach you how to sell. You might have perfect information about the Decision Process but execute poorly in meetings. MEDDPICC pairs with selling methodologies like [[quick-context/challenger-sale-methodology|Challenger]] or SPIN that guide customer interactions.
 </details>
 
-**Q5:** A startup founder says "MEDDPICC is overhead we can't afford at our stage." When would you agree vs. disagree?
+**Q5:** A startup founder says "MEDDPICC is overhead we [[quick-context/can-bus|can]]'t afford at our stage." When would you agree vs. disagree?
 <details>
 <summary>Answer</summary>
 Agree if: ACV <$10K, sales cycle <30 days, high volume. The qualification overhead exceeds the cost of losing some deals. Disagree if: ACV >$25K, complex multi-stakeholder sales, limited sales capacity. Here, wasting months on unwinnable deals is more expensive than qualification time. The framework can be simplified (MEDDIC without both Ps) but the mental model of systematic qualification should always apply.

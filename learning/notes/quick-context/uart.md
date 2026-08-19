@@ -5,9 +5,9 @@ created: 2026-04-08
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
-> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[micro-context/stm32-microcontroller]] | [[micro-context/i2c]]
 
-> **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
+> **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU [[micro-context/can-bus-termination|can]] read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
 
 ## The Core Problem
 
@@ -20,11 +20,11 @@ A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over i
 | **Baud Rate** | The number of signal transitions per second. Both sides must agree on this before communication. Common rates: 9600, 115200. At 115200 baud, each bit lasts ~8.68 $\mu$s. |
 | **Frame** | The packaging around each byte: 1 start bit + 8 data bits + (optional parity) + 1-2 stop bits. The most common format is **8N1** (8 data, no parity, 1 stop = 10 bits per byte). |
 | **Shift Register** | A chain of [[micro-context/clock-edges|edge-triggered]] flip-flops that captures one bit per clock tick, shifting all previous bits over. After 8 ticks, it holds a complete byte. This is the core hardware that converts serial ↔ parallel. |
-| **Data Register** | A parallel latch that holds the completed byte for the CPU to read (receive) or accepts a byte from the CPU to transmit. Decoupled from the shift register so the CPU and the serial line can work at different speeds. |
+| **Data Register** | A parallel latch that holds the completed byte for the CPU to read (receive) or accepts a byte from the CPU to transmit. Decoupled from the shift register so the CPU and the serial line [[micro-context/can-bus-transceiver|can]] work at different speeds. |
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
 <details>
-<summary><strong>How It Works</strong> — From voltage on a wire to a byte in a register</summary>
+<summary><strong>How It Works</strong> — From [[quick-context/voltage|voltage]] on a wire to a byte in a register</summary>
 
 ### High-Level: Two Jobs
 
@@ -259,7 +259,7 @@ For the full teletype-to-computer I/O path (keyboard encoding → current loop �
 
 UART sits at the "dead simple" end of the [[quick-context/embedded-communication-protocols|protocol spectrum]]:
 
-| | UART | SPI | I2C | CAN |
+| | UART | [[micro-context/spi|SPI]] | [[micro-context/i2c|I2C]] | [[quick-context/can-bus|CAN]] |
 |---|---|---|---|---|
 | **Wires** | 2 (TX, RX) | 4+ (SCLK, MOSI, MISO, CS) | 2 (SDA, SCL) | 2 (CANH, CANL) |
 | **Clock** | None (async) | Shared clock wire | Shared clock wire | None (async) |
@@ -376,13 +376,13 @@ About **±3-4%**. At 16× oversampling, the receiver samples at the center of ea
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?
 <details>
 <summary>Answer</summary>
-Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — signal integrity becomes critical. TTL-level UART over more than a few centimeters of PCB trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
+Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — signal integrity becomes critical. TTL-level UART over more than a few centimeters of [[quick-context/pcb-assembly-files-bom-cpl|PCB]] trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
 </details>
 
 </details>

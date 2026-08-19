@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Covariance Matrix
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[quick-context/helmert-transform]] | [[quick-context/absolute-orientation]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal holds variances and its off-diagonals hold covariances. It's the fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis distance, and point cloud alignment.
 
@@ -19,7 +19,7 @@ A single variable has variance -- one number that describes how spread out it is
 |------|------------|
 | **Variance** | The expected squared deviation of a single variable from its mean: $\sigma^2 = E[(X - \mu)^2]$ -- the diagonal entries of a covariance matrix |
 | **Covariance** | The expected product of deviations of two variables from their means: $\text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]$ -- the off-diagonal entries |
-| **Positive semi-definite** | A matrix property guaranteeing $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all vectors $\mathbf{v}$ -- every covariance matrix must satisfy this because variance can never be negative |
+| **Positive semi-definite** | A matrix property guaranteeing $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all vectors $\mathbf{v}$ -- every covariance matrix must satisfy this because variance [[micro-context/can-bus-termination|can]] never be negative |
 | **Cross-covariance** | A covariance matrix between *two different* vectors $\mathbf{x}$ and $\mathbf{y}$, written $H = E[(\mathbf{x} - \bar{\mathbf{x}})(\mathbf{y} - \bar{\mathbf{y}})^T]$ -- not necessarily square or symmetric, and central to the [[quick-context/helmert-transform|Helmert transform]] |
 | **Correlation matrix** | The covariance matrix normalized so every diagonal entry is 1: $R_{ij} = \Sigma_{ij} / (\sigma_i \sigma_j)$ -- strips out magnitude, leaving only the strength and direction of linear relationships |
 
@@ -98,7 +98,7 @@ The $n - 1$ denominator (Bessel's correction) accounts for the fact that using t
 
 ### Sensitivity to outliers
 
-Covariance is based on squared deviations, making it highly sensitive to outliers. A single extreme point can dominate the entire matrix. Robust alternatives include:
+Covariance is based on squared deviations, making it highly sensitive to outliers. A single extreme point [[micro-context/can-bus-transceiver|can]] dominate the entire matrix. Robust alternatives include:
 
 - **Minimum covariance determinant (MCD)** -- finds the subset of points with smallest determinant covariance
 - **Ledoit-Wolf shrinkage** -- shrinks the sample covariance toward a structured target (e.g., diagonal matrix)
@@ -239,7 +239,7 @@ The $(i, j)$ entry is the covariance between variable $i$ and variable $j$ -- ho
 The quantity $\mathbf{v}^T \Sigma \mathbf{v}$ equals the variance of the linear combination $\mathbf{v}^T \mathbf{x}$. Variance is always $\geq 0$, so $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all $\mathbf{v}$. A negative eigenvalue would imply that some linear combination of your variables has negative variance -- which is impossible. If you encounter a "covariance matrix" with a negative eigenvalue, something has gone wrong numerically. See: How It Works.
 </details>
 
-**Q3:** In the Helmert transform, why can we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
+**Q3:** In the Helmert transform, why [[quick-context/can-bus|can]] we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
 <details>
 <summary>Answer</summary>
 The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the singular values $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.

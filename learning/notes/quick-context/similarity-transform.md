@@ -5,13 +5,13 @@ created: 2026-04-04
 
 # N-Dimensional Similarity Transform
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[quick-context/absolute-orientation]] | [[quick-context/covariance-matrix]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most general transform that keeps "similar" figures similar, in any number of dimensions.
 
 ## The Core Problem
 
-Many tasks in science and engineering require comparing or aligning objects that have the same shape but differ in position, orientation, and size. A biologist compares two protein structures measured at different scales. A surveyor reconciles GPS coordinates with a local map. A computer vision system matches a 3D model to a scene viewed from an unknown angle and distance. In every case you need a transform that can absorb differences in pose and scale while guaranteeing that the intrinsic geometry -- all angles, all distance ratios -- stays untouched. Without similarity transforms, you would need to manually strip away each degree of freedom (translation, rotation, scale) in separate ad-hoc steps with no unified mathematical framework.
+Many tasks in science and engineering require comparing or aligning objects that have the same shape but differ in position, orientation, and size. A biologist compares two protein structures measured at different scales. A surveyor reconciles GPS coordinates with a local map. A computer vision system matches a 3D model to a scene viewed from an unknown angle and distance. In every case you need a transform that [[micro-context/can-bus-termination|can]] absorb differences in pose and scale while guaranteeing that the intrinsic geometry -- all angles, all distance ratios -- stays untouched. Without similarity transforms, you would need to manually strip away each degree of freedom (translation, rotation, scale) in separate ad-hoc steps with no unified mathematical framework.
 
 ## 5 Essential Terms
 
@@ -95,7 +95,7 @@ A quick reference of what is preserved and what is lost at each level:
 
 ### How Uniform Scale Distinguishes Similarity from Rigid
 
-The single parameter that separates a similarity from an isometry is the uniform scale factor $s$. "Uniform" means the same multiplier applies in every direction -- a circle maps to a circle (never an ellipse), a square maps to a square (never a rectangle). The moment you allow different scale factors along different axes, you step into the affine group, which can shear and stretch shapes.
+The single parameter that separates a similarity from an isometry is the uniform scale factor $s$. "Uniform" means the same multiplier applies in every direction -- a circle maps to a circle (never an ellipse), a square maps to a square (never a rectangle). The moment you allow different scale factors along different axes, you step into the affine group, which [[micro-context/can-bus-transceiver|can]] shear and stretch shapes.
 
 In matrix form, compare:
 
@@ -329,7 +329,7 @@ Systematic directional residuals suggest the true relationship between the point
 **Q4:** Someone claims: "I only have 2 point correspondences in 3D, but that gives me 6 equations (2 points times 3 coordinates), which is enough to solve for 7 DOF if I add one more constraint." What is wrong with this reasoning?
 <details>
 <summary>Answer</summary>
-Two points in 3D define a line segment, which constrains 6 of the 7 DOF: 3 translations (from matching one endpoint), 1 scale (from the distance ratio), and 2 rotations (aligning the line direction in 3D space requires specifying two angles). The remaining 1 DOF corresponds to arbitrary rotation *around* that line. No single algebraic constraint can substitute for the geometric information that a third non-collinear point provides -- you need a point off the line to pin down that last rotational DOF. You need at least 3 non-collinear correspondences. See: Concrete Example, "Generalizing to 3D."
+Two points in 3D define a line segment, which constrains 6 of the 7 DOF: 3 translations (from matching one endpoint), 1 scale (from the distance ratio), and 2 rotations (aligning the line direction in 3D space requires specifying two angles). The remaining 1 DOF corresponds to arbitrary rotation *around* that line. No single algebraic constraint [[quick-context/can-bus|can]] substitute for the geometric information that a third non-collinear point provides -- you need a point off the line to pin down that last rotational DOF. You need at least 3 non-collinear correspondences. See: Concrete Example, "Generalizing to 3D."
 </details>
 
 **Q5:** In Umeyama's method, step 4 checks $\det(UV^T)$ and potentially flips the sign of the last diagonal entry. What would happen if you skipped this step, and under what geometric conditions does it matter?

@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Whitespace Mapping
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 
@@ -148,7 +148,7 @@ Whitespace mapping creates a choice: go wide (many buying centers, few products 
 | Factor | Go Wide | Go Deep |
 |--------|---------|---------|
 | Product complexity | Low (easy to deploy anywhere) | High (needs investment to work) |
-| Support capacity | High (can service many) | Limited (focus required) |
+| Support capacity | High ([[micro-context/can-bus-termination|can]] service many) | Limited (focus required) |
 | Champion strength | Strong in multiple BCs | Strong in one BC |
 | Competitive threat | High (need to block land-grabs) | Low (time to develop) |
 | Account maturity | Early (exploring fit) | Established (expanding success) |
@@ -281,13 +281,13 @@ Prioritize cells where the champion has influence. If they're in the Engineering
 **Q4:** A cell is marked "Lost to Competitor." Should it be removed from the whitespace map?
 <details>
 <summary>Answer</summary>
-No—keep it visible but coded red. Lost cells can become RECAPTURE opportunities when triggers occur: competitor contract renewal, delivery failure, buyer turnover, or your product evolving to address the gap. Removing lost cells hides account history and prevents systematic re-engagement when circumstances change.
+No—keep it visible but coded red. Lost cells [[micro-context/can-bus-transceiver|can]] become RECAPTURE opportunities when triggers occur: competitor contract renewal, delivery failure, buyer turnover, or your product evolving to address the gap. Removing lost cells hides account history and prevents systematic re-engagement when circumstances change.
 </details>
 
 **Q5:** How does [[quick-context/mcdonald-kam-model|relationship maturity]] affect whitespace strategy?
 <details>
 <summary>Answer</summary>
-Relationship maturity determines *which* whitespace is accessible. At Basic/Exploratory stages, you're often limited to single buying centers (bow-tie relationship). At Cooperative/Interdependent stages, multi-threading enables cross-BC expansion—your champions can introduce you to other divisions. Trying to pursue whitespace in buying centers you can't access wastes resources. Match whitespace prioritization to relationship reach.
+Relationship maturity determines *which* whitespace is accessible. At Basic/Exploratory stages, you're often limited to single buying centers (bow-tie relationship). At Cooperative/Interdependent stages, multi-threading enables cross-BC expansion—your champions [[quick-context/can-bus|can]] introduce you to other divisions. Trying to pursue whitespace in buying centers you can't access wastes resources. Match whitespace prioritization to relationship reach.
 </details>
 
 </details>

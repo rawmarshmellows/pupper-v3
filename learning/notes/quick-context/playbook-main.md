@@ -1,3 +1,5 @@
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/existing-account-management-playbook]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -101,7 +103,7 @@ VALUE           │    MAINTAIN     │    GROWTH       │
 
 - **KEEP accounts** land in Protect (high value, defend) or Maintain (low value, efficient)
 - **EXPAND accounts** land in Strategic (high value + potential) or Growth (low value but high potential)
-- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification (MEDDPICC) instead
+- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification ([[quick-context/meddpicc-qualification-framework|MEDDPICC]]) instead
 
 **Decision flow:**
 1. **First:** Assign KARE category (portfolio motion)
@@ -139,9 +141,9 @@ Track these metrics to measure account management effectiveness:
 
 | Stage | Characteristics | Focus Question |
 |---|---|---|
-| **EXPLORATORY** | Testing fit, limited trust, no commitment | "Can we work together?" |
+| **EXPLORATORY** | Testing fit, limited trust, no commitment | "[[micro-context/can-bus-termination|Can]] we work together?" |
 | **BASIC** | Transaction-focused, price-driven, low switching costs | "What's the cost?" |
-| **COOPERATIVE** | Preferred supplier, sharing information, multiple contacts | "How can we work better?" |
+| **COOPERATIVE** | Preferred supplier, sharing information, multiple contacts | "How [[micro-context/can-bus-transceiver|can]] we work better?" |
 | **INTERDEPENDENT** | Joint planning, high switching costs, shared goals | "How do we grow together?" |
 | **INTEGRATED** | One organization, joint P&L, mutual dependency | "We win or lose together" |
 
@@ -167,7 +169,7 @@ Track these metrics to measure account management effectiveness:
 
 | Role | Definition | Key Question |
 |---|---|---|
-| **Economic Buyer** | Final authority to approve spending. Can say yes when everyone says no. | "Who controls the budget?" |
+| **Economic Buyer** | Final authority to approve spending. [[quick-context/can-bus|Can]] say yes when everyone says no. | "Who controls the budget?" |
 | **User Buyer** | Day-to-day users who judge success by job impact | "Whose life improves?" |
 | **Technical Buyer** | Screens against specs/compliance. Can veto but not approve. | "Who can block us?" |
 | **Coach** | Internal advocate who provides intel and guides strategy | "Who's helping us win?" |
@@ -232,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 

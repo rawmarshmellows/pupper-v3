@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Malcolm McDonald KAM Model (Cranfield)
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** Malcolm McDonald's Key Account Management (KAM) model from Cranfield University provides a five-stage relationship maturity framework—Exploratory → Basic → Cooperative → Interdependent → Integrated—helping teams diagnose where each account relationship stands and what's needed to deepen it.
 
 ## The Core Problem
 
-Sales teams often treat all customer relationships the same way, applying deep-partnership tactics to transactional accounts or commodity approaches to strategic partners. Without a diagnostic for relationship maturity, you can't match your investment level to the account's potential, and you can't identify what specific actions would deepen the relationship.
+Sales teams often treat all customer relationships the same way, applying deep-partnership tactics to transactional accounts or commodity approaches to strategic partners. Without a diagnostic for relationship maturity, you [[micro-context/can-bus-termination|can]]'t match your investment level to the account's potential, and you [[micro-context/can-bus-transceiver|can]]'t identify what specific actions would deepen the relationship.
 
 ## 5 Essential Terms
 
@@ -139,7 +139,7 @@ Not every account should progress to Integrated—the tension is deciding where 
 - **"Go deep everywhere"**: Every Cooperative relationship is an Integrated partnership waiting to happen. Invest in all customers.
 - **"Be selective"**: Integration requires mutual investment. Force it on Basic accounts and you waste resources; neglect it for strategic accounts and competitors steal them. Tier your approach.
 
-McDonald's model helps by providing diagnostics—not every account *can* progress, and the model helps you see why.
+McDonald's model helps by providing diagnostics—not every account *[[quick-context/can-bus|can]]* progress, and the model helps you see why.
 
 **Relationship Regression Warning:**
 

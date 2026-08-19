@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/clock-sources-and-timing]] | [[quick-context/transistor]]
+
 # Clock Speed
 
 > **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -33,4 +35,4 @@ CLOCK SPEED = How many edges per second
   Light travels just 6 cm in that time.
 ```
 
-**Key insight:** Clock speed is limited by how fast transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.
+**Key insight:** Clock speed is limited by how fast transistors [[micro-context/can-bus-termination|can]] switch AND how fast signals [[micro-context/can-bus-transceiver|can]] propagate—you [[quick-context/can-bus|can]]'t clock faster than your slowest circuit path can settle between edges.

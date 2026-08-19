@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/glass-transition-temperature]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that can arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
+Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that [[micro-context/can-bus-termination|can]] arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
 
 Here's the critical insight: when plastic cools, crystalline regions **shrink more** than amorphous regions. If your print cools unevenly (which it always does - the bottom touches the cold bed while the top is still hot), different parts shrink by different amounts at different times. The result? Your print warps, delaminates, or pops off the bed entirely. Materials like PLA are mostly amorphous and print easily. Materials like Nylon or PEEK are semi-crystalline and will warp aggressively if you don't manage cooling carefully.
 
@@ -31,7 +31,7 @@ Here's the critical insight: when plastic cools, crystalline regions **shrink mo
 
 When molten plastic exits the printer nozzle, its polymer chains are in a disordered, high-energy state—like a pot of boiling spaghetti. As the plastic cools, two competing processes happen simultaneously. First, thermal contraction: all materials shrink when they lose heat, just like a hot air balloon deflating. Second, and this is the key differentiator, semi-crystalline polymers undergo **crystallization**: their chains spontaneously reorganize from random tangles into tightly packed, ordered arrangements. This reorganization releases additional heat (latent heat of crystallization) and causes extra shrinkage beyond simple thermal contraction.
 
-The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the glass transition temperature and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
+The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the glass transition temperature and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they [[micro-context/can-bus-transceiver|can]] organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
 
 ```
 WHAT HAPPENS WHEN PLASTIC COOLS: Two Paths
@@ -74,7 +74,7 @@ MOLTEN STATE (all plastics start here):
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff practitioners argue about: **crystallinity gives you strength, heat resistance, and chemical resistance - but it also gives you warping headaches**. Semi-crystalline plastics (Nylon, PEEK, PP, POM) are engineering-grade materials that can replace metal parts. But they shrink 1.5-3% when cooling, versus 0.3-0.5% for amorphous plastics like PLA or PETG.
+The fundamental tradeoff practitioners argue about: **crystallinity gives you strength, heat resistance, and chemical resistance - but it also gives you warping headaches**. Semi-crystalline plastics (Nylon, PEEK, PP, POM) are engineering-grade materials that [[quick-context/can-bus|can]] replace metal parts. But they shrink 1.5-3% when cooling, versus 0.3-0.5% for amorphous plastics like PLA or PETG.
 
 This creates a constant optimization battle:
 - **Want easy printing?** Use amorphous materials (PLA, PETG, ABS). Accept weaker, less heat-resistant parts.

@@ -5,20 +5,20 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/voltage]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/capacitor]]
 
 > **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
-Students learn voltage, current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
+Students learn voltage, current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you [[micro-context/can-bus-termination|can]] reason with.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
-| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
+| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/[[micro-context/coulomb-history|coulomb]]). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
 | **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
@@ -497,7 +497,7 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[quick-context/electrolysis|electrolysis]] and circuits.
 
 - **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 
@@ -513,7 +513,7 @@ SUMMARY: The Four Quantities in Action
 
 - **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
 - **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 
@@ -528,7 +528,7 @@ SUMMARY: The Four Quantities in Action
 **Both.** There must be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). Ohm's law in microscopic form is J = σE (current density = conductivity × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
 </details>
 
-**Q2:** Why can a magnetic field deflect an electron but can't change its speed?
+**Q2:** Why [[micro-context/can-bus-transceiver|can]] a magnetic field deflect an electron but [[quick-context/can-bus|can]]'t change its speed?
 <details>
 <summary>Answer</summary>
 **The Lorentz force from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.

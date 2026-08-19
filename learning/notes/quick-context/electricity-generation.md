@@ -3,9 +3,9 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/inductor]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
-> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
+> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
 # How Electricity is Created
 
@@ -27,7 +27,7 @@ Every power plant, battery, and solar panel is fundamentally an energy converter
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
@@ -337,7 +337,7 @@ Every electricity source trades off between three goals:
                                        BUT high emissions
 ```
 
-**The storage problem:** Solar produces peak power at noon; demand peaks in evening. Wind is unpredictable. Without massive energy storage (batteries, pumped hydro, hydrogen), renewables can't provide baseload power. This is why the grid still needs "dispatchable" sources (gas, nuclear, hydro) that can ramp up on demand.
+**The storage problem:** Solar produces peak power at noon; demand peaks in evening. Wind is unpredictable. Without massive energy storage (batteries, pumped hydro, hydrogen), renewables [[micro-context/can-bus-termination|can]]'t provide baseload power. This is why the grid still needs "dispatchable" sources (gas, nuclear, hydro) that [[micro-context/can-bus-transceiver|can]] ramp up on demand.
 
 | Source | Dispatchable? | Capacity Factor | CO₂ (g/kWh) |
 |--------|---------------|-----------------|-------------|
@@ -475,7 +475,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 
 - **[[quick-context/galvanic-cells-batteries]]** — The chemistry of how batteries convert chemical potential energy to electrical energy. Batteries are the portable alternative to grid generation.
 
-- **[[quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
+- **[[quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity [[quick-context/can-bus|can]] electrolyze water into hydrogen, which can later be burned or run through fuel cells.
 
 - **[[quick-context/power-watts-joules]]** — Power (watts) is the rate of energy transfer. A 1 GW power plant generates 1 billion joules per second. Understanding power helps connect generation capacity to energy consumption.
 

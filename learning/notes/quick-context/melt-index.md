@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** Melt Index (MFI/MFR) measures how easily a polymer flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
 
@@ -20,7 +20,7 @@ Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (
 |------|------------|
 | **MFI/MFR (Melt Flow Index/Rate)** | Grams of polymer extruded in 10 minutes through a 2.095mm die at specified temperature and load (e.g., 190°C/2.16kg for polyethylene). |
 | **Shear rate** | How fast polymer layers slide past each other during flow—real processing involves much higher shear than the MFI test, so MFI is only an approximation. |
-| **Molecular weight distribution (MWD)** | The range of chain lengths in a polymer batch; two materials with identical MFI can behave differently if their MWD differs. |
+| **Molecular weight distribution (MWD)** | The range of chain lengths in a polymer batch; two materials with identical MFI [[micro-context/can-bus-termination|can]] behave differently if their MWD differs. |
 | **Load (kg)** | The weight applied during testing (common: 2.16kg, 5kg, 21.6kg)—higher loads for stiffer materials; your result is meaningless without knowing the load used. |
 | **ASTM D1238 / ISO 1133** | The standardized test methods defining exactly how MFI is measured—critical for comparing values across suppliers. |
 
@@ -115,7 +115,7 @@ for batch in batch_results:
 
 In practice, if batch A-2024-004 enters your injection molding process, you'd see flash at parting lines (material too runny) and possibly weaker parts from the degraded molecular weight.
 
-**The one thing most outsiders get wrong about this is...** assuming MFI tells the whole story about how a polymer will behave in real processing. MFI is measured at extremely low shear rates (~1-10 s⁻¹), while injection molding operates at 1,000-100,000 s⁻¹. Polymers are shear-thinning, so their behavior under processing conditions can diverge dramatically from what MFI predicts. Two resins with identical MFI can perform completely differently in your mold—you need rheological curves (viscosity vs. shear rate) for serious process engineering, not just a single-point MFI number.
+**The one thing most outsiders get wrong about this is...** assuming MFI tells the whole story about how a polymer will behave in real processing. MFI is measured at extremely low shear rates (~1-10 s⁻¹), while injection molding operates at 1,000-100,000 s⁻¹. Polymers are shear-thinning, so their behavior under processing conditions [[micro-context/can-bus-transceiver|can]] diverge dramatically from what MFI predicts. Two resins with identical MFI [[quick-context/can-bus|can]] perform completely differently in your mold—you need rheological curves (viscosity vs. shear rate) for serious process engineering, not just a single-point MFI number.
 
 </details>
 

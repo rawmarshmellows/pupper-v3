@@ -5,9 +5,9 @@ created: 2026-03-23
 
 # Camera Fundamentals — Sensors, Lenses, and Calibration
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[quick-context/diode]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
-> **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
+> **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor [[micro-context/can-bus-termination|can]] capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
 ## The Core Problem
 
@@ -20,7 +20,7 @@ Without understanding how cameras actually form images — the physics of sensor
 | **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
-| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
+| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor [[micro-context/can-bus-transceiver|can]] capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of [[quick-context/voltage|voltage]] ratio) |
 | **Intrinsic Matrix (K)** | A $3 \times 3$ upper-triangular matrix encoding the camera's internal geometry — focal lengths $f_x, f_y$ in pixel units, principal point $(c_x, c_y)$, and optionally skew — used to project 3D camera-frame points onto the 2D image plane |
 
 <details>
@@ -255,7 +255,7 @@ Because stops are base-2 logarithms, $n$ stops = $2^n$ linear ratio:
 
 #### Dynamic range
 
-Dynamic range is the ratio between the maximum signal a pixel can hold (full well capacity) and the minimum detectable signal (noise floor, dominated by [[quick-context/thermal-noise-electronics|thermal noise]] and read noise):
+Dynamic range is the ratio between the maximum signal a pixel [[quick-context/can-bus|can]] hold (full well capacity) and the minimum detectable signal (noise floor, dominated by [[quick-context/thermal-noise-electronics|thermal noise]] and read noise):
 
 $$\text{DR (stops)} = \log_2\!\left(\frac{\text{full well capacity}}{\text{noise floor (electrons)}}\right)$$
 

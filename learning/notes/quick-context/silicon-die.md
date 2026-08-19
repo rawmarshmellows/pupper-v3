@@ -3,9 +3,9 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/pcb-printed-circuit-board]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
-> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
+> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and [[quick-context/metal-interconnect-layers|metal interconnect layers]], manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, [[quick-context/pcb-assembly-files-bom-cpl|PCB]]) just gets power in and signals out.
 
 # Silicon Die
 
@@ -19,7 +19,7 @@ A silicon die solves the fundamental problem of cramming billions of microscopic
 |------|------------|
 | **Die** (or "chip") | The actual piece of silicon containing all the transistors; typically 5-400 mm² in area, cut from a larger wafer |
 | **Wafer** | A thin, circular disc of ultra-pure silicon (usually 300mm diameter) on which hundreds of identical dies are manufactured simultaneously |
-| **Transistor** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
+| **[[quick-context/transistor|Transistor]]** | A microscopic on/off switch made of specially treated silicon; modern dies contain billions of these, each about 5 nanometers in size |
 | **Metal interconnect layers** | 10+ layers of microscopic copper wiring stacked above the transistors, connecting them together to form circuits |
 | **Dicing** | The process of cutting a finished wafer into individual dies using diamond saws, lasers, or plasma etching |
 
@@ -223,13 +223,13 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
 
-- **[[quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
+- **[[quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies [[micro-context/can-bus-termination|can]] make leading-edge dies.
 
-- **[[quick-context/semiconductor-fabrication|Photolithography]]** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors can be.
+- **[[quick-context/semiconductor-fabrication|Photolithography]]** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors [[micro-context/can-bus-transceiver|can]] be.
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, [[quick-context/voltage|voltage]], and resistance explains why dies consume power and generate heat.
 
 </details>
 
@@ -263,7 +263,7 @@ They didn't receive a "chip" in the sense of the silicon die—they received a *
 **Q5:** Given that transistors are at the *top* surface of the silicon (not distributed throughout), and that heat must escape through the package, what design challenge does this create for high-performance dies, and how might it relate to why modern chips have features like "efficiency cores"?
 <details>
 <summary>Answer</summary>
-Since billions of transistors concentrate their heat generation at the top surface of a thin layer, and that heat must conduct through the silicon bulk and then through the package to a heatsink, there's a severe thermal bottleneck. High-performance cores running at maximum speed generate intense, localized heat that can't dissipate fast enough, leading to thermal throttling. "Efficiency cores" help by providing lower-power alternatives for light workloads, allowing the chip to avoid constantly running power-hungry cores. This is part of why simply "making bigger dies" doesn't scale—you can't cool them effectively. See: Cross-section diagram (transistors at top), The Key Tension (harder to cool larger dies), and the Apple M2 example (performance vs. efficiency cores).
+Since billions of transistors concentrate their heat generation at the top surface of a thin layer, and that heat must conduct through the silicon bulk and then through the package to a heatsink, there's a severe thermal bottleneck. High-performance cores running at maximum speed generate intense, localized heat that [[quick-context/can-bus|can]]'t dissipate fast enough, leading to thermal throttling. "Efficiency cores" help by providing lower-power alternatives for light workloads, allowing the chip to avoid constantly running power-hungry cores. This is part of why simply "making bigger dies" doesn't scale—you can't cool them effectively. See: Cross-section diagram (transistors at top), The Key Tension (harder to cool larger dies), and the Apple M2 example (performance vs. efficiency cores).
 </details>
 
 </details>

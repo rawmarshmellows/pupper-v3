@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab3-inverse-kinematics]]
+> **Related:** [[quick-context/can-bus]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/ros2-architecture]] | [[micro-context/homogeneous-transformation-matrix]]
 
 > **TL;DR:** Forward kinematics computes where the foot ends up in 3D space given three joint angles, by chaining 4x4 homogeneous transformation matrices along the leg's kinematic chain. This is the mathematical foundation reused in every subsequent Pupper lab.
 
@@ -15,7 +15,7 @@ A quadruped robot leg has three revolute joints — hip abduction (swing out/in)
 
 The naive approach would be to derive trigonometric formulas by hand — for a 3-DOF leg you could write out $x = L_1 \cos\theta_1 + L_2 \cos(\theta_1 + \theta_2) + \ldots$ — but this gets unwieldy fast and is error-prone when axes are not all parallel. Instead, Lab 2 uses **4x4 homogeneous transformation matrices**, a systematic framework where each joint-link pair is encoded as a single matrix, and the full chain is computed by multiplying them together. The approach scales cleanly: whether you have 3 joints or 30, the procedure is the same.
 
-Each transformation matrix encodes two things simultaneously: a rotation (what direction the next link points) and a translation (where the next joint is located relative to the current one). By using 4x4 matrices instead of 3x3, rotations and translations can be combined into a single matrix multiplication — this is the "homogeneous" trick. The final matrix product $T_{0 \to ee}$ contains the foot's 3D position directly in its last column, ready to be extracted and visualized as a green sphere in RViz.
+Each transformation matrix encodes two things simultaneously: a rotation (what direction the next link points) and a translation (where the next joint is located relative to the current one). By using 4x4 matrices instead of 3x3, rotations and translations [[micro-context/can-bus-termination|can]] be combined into a single matrix multiplication — this is the "homogeneous" trick. The final matrix product $T_{0 \to ee}$ contains the foot's 3D position directly in its last column, ready to be extracted and visualized as a green sphere in RViz.
 
 ## 5 Essential Terms
 
@@ -32,7 +32,7 @@ Each transformation matrix encodes two things simultaneously: a rotation (what d
 
 ### The 4x4 Homogeneous Transform
 
-A homogeneous transformation matrix packs a 3x3 rotation and a 3x1 translation into one 4x4 matrix:
+A [[micro-context/homogeneous-transformation-matrix|homogeneous transformation matrix]] packs a 3x3 rotation and a 3x1 translation into one 4x4 matrix:
 
 $$T = \begin{bmatrix} R_{3 \times 3} & \mathbf{d}_{3 \times 1} \\ \mathbf{0}_{1 \times 3} & 1 \end{bmatrix} = \begin{bmatrix} r_{11} & r_{12} & r_{13} & d_x \\ r_{21} & r_{22} & r_{23} & d_y \\ r_{31} & r_{32} & r_{33} & d_z \\ 0 & 0 & 0 & 1 \end{bmatrix}$$
 
@@ -93,7 +93,7 @@ After computing the full chain product $T_{0 \to ee}$, the foot position in the 
 
 $$\mathbf{p}_{foot} = \begin{bmatrix} T_{0 \to ee}[0, 3] \\ T_{0 \to ee}[1, 3] \\ T_{0 \to ee}[2, 3] \end{bmatrix}$$
 
-This position is published as an RViz `Marker` (green sphere) so students can visually verify their FK against the robot's actual foot location.
+This position is published as an RViz `Marker` (green sphere) so students [[micro-context/can-bus-transceiver|can]] visually verify their FK against the robot's actual foot location.
 
 </details>
 
@@ -102,7 +102,7 @@ This position is published as an RViz `Marker` (green sphere) so students can vi
 
 ### Direct Trigonometry: Simple but Fragile
 
-For a planar 2-link arm, you can write the end-effector position directly:
+For a planar 2-link arm, you [[quick-context/can-bus|can]] write the end-effector position directly:
 
 $$x = L_1 \cos\theta_1 + L_2 \cos(\theta_1 + \theta_2)$$
 $$y = L_1 \sin\theta_1 + L_2 \sin(\theta_1 + \theta_2)$$
@@ -185,7 +185,7 @@ This means: nearly directly below the hip (x close to 0), offset laterally by th
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 2 FK is reused directly in Lab 3 (IK via gradient descent on FK), Lab 4 (FK for all 4 legs), and conceptually underpins Lab 5's neural controller.
-- **[[quick-context/pupper-brain]]** — The hardware that executes FK computations at 200 Hz. Joint angles come from motor encoders via CAN bus; computed foot positions can be published as ROS2 topics.
+- **[[quick-context/pupper-brain]]** — The hardware that executes FK computations at 200 Hz. Joint angles come from motor encoders via CAN bus; computed foot positions can be published as [[quick-context/ros2-architecture|ROS2]] topics.
 - **Denavit-Hartenberg (DH) Parameters** — A standardized convention for assigning coordinate frames to each joint, reducing any serial chain to a table of 4 parameters per joint ($\theta$, $d$, $a$, $\alpha$). Lab 2 uses a slightly simplified approach, but DH is the industry standard for complex manipulators.
 - **RViz Visualization** — ROS2's 3D visualization tool. Lab 2 publishes a `visualization_msgs/Marker` (green sphere, type `SPHERE`) at the computed foot position so students can visually debug their FK against the URDF model.
 - **Rotation Conventions** — Lab 2 uses intrinsic rotations (each rotation is about the *current* frame's axis, not the fixed world axis). The distinction between intrinsic and extrinsic rotations matters when chaining: intrinsic rotations multiply right-to-left if you think in fixed-frame terms, but left-to-right if you think in body-frame terms (which is what the matrix chain does).

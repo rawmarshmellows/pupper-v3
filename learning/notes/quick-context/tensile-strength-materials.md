@@ -4,15 +4,15 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/tensor]] | [[quick-context/covalent-bonds]]
 
-> **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
+> **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material [[micro-context/can-bus-termination|can]] handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
 
 # Tensile Strength: What 27.3 ± 0.8 MPa Actually Means
 
 ## The Core Problem
 
-**The core problem tensile strength solves** is predicting when a material will break under pulling force. Without this number, you're guessing whether your part survives real-world loads—a bridge cable snaps, a [[quick-context/3d-printing-filament-types|3D printed]] bracket fails, a climbing rope breaks. Tensile strength (measured in MPa, megapascals) tells you the maximum stress a material can handle before it fractures. The "27.3 ± 0.8 MPa" format means: this material withstands ~27.3 megapascals of pulling stress, with a standard deviation of 0.8 MPa across test samples. For context: PLA filament is typically 25-65 MPa, PETG is 30-50 MPa, ABS is 30-45 MPa, mild steel is ~400 MPa, and spider silk is ~1,000 MPa. The ± value matters because real materials vary—if your safety margin doesn't account for that 0.8 MPa variance, the weakest sample in your batch might fail.
+**The core problem tensile strength solves** is predicting when a material will break under pulling force. Without this number, you're guessing whether your part survives real-world loads—a bridge cable snaps, a [[quick-context/3d-printing-filament-types|3D printed]] bracket fails, a climbing rope breaks. Tensile strength (measured in MPa, megapascals) tells you the maximum stress a material [[micro-context/can-bus-transceiver|can]] handle before it fractures. The "27.3 ± 0.8 MPa" format means: this material withstands ~27.3 megapascals of pulling stress, with a standard deviation of 0.8 MPa across test samples. For context: PLA filament is typically 25-65 MPa, PETG is 30-50 MPa, ABS is 30-45 MPa, mild steel is ~400 MPa, and spider silk is ~1,000 MPa. The ± value matters because real materials vary—if your safety margin doesn't account for that 0.8 MPa variance, the weakest sample in your batch might fail.
 
 ## 5 Essential Terms
 
@@ -161,7 +161,7 @@ High-flow hotend + 0.8mm nozzle | 70-85%         | ~20-23 MPa      | Proper melt
 
 **The high-flow hotend question:** If you're printing fast with large nozzles (0.6mm+), a high-flow hotend (~30+ mm³/s) maintains proper melt rates, preserving layer adhesion. With a standard hotend at those speeds, you're trading tensile strength for print time—sometimes 30-40% weaker parts. For slow, detailed prints with 0.4mm nozzles, standard-flow hotends achieve full material fusion and the extra cost of high-flow is wasted.
 
-**Practical rule:** If your slicer warns about volumetric flow limits or you see rough/matte layer surfaces (sign of under-extrusion), your hotend can't keep up. Either slow down, raise temperature (within material limits), or upgrade to high-flow for strength-critical parts.
+**Practical rule:** If your slicer warns about volumetric flow limits or you see rough/matte layer surfaces (sign of under-extrusion), your hotend [[quick-context/can-bus|can]]'t keep up. Either slow down, raise temperature (within material limits), or upgrade to high-flow for strength-critical parts.
 
 ---
 

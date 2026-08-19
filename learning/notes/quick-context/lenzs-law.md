@@ -5,13 +5,13 @@ created: 2026-02-17
 
 # Lenz's Law
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[quick-context/inductor]] | [[quick-context/voltage]] | [[quick-context/self-induction]] | [[quick-context/electromagnetism]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from nothing.
 
 ## The Core Problem: Why the Minus Sign?
 
-Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
+Faraday discovered that changing magnetic flux through a coil induces [[quick-context/voltage|voltage]]. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
 
 ## 5 Essential Terms
 

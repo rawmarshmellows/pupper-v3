@@ -5,13 +5,13 @@ created: 2026-03-13
 
 # PPO (Proximal Policy Optimization)
 
-> **Related:** [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab4-gait-control]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** PPO is a reinforcement learning algorithm that trains a neural network policy by collecting batches of experience in the environment, estimating which actions were better than average (advantage), and updating the policy weights — but with a clipping mechanism that prevents any single update from changing the policy too drastically, making training stable enough to work reliably on continuous control tasks like robot locomotion.
 
 ## The Core Problem
 
-Policy gradient methods learn by trial and error: try actions, measure how good they were, and adjust the policy to do more of what worked. The problem is sensitivity to step size. Take too large a gradient step and the policy changes drastically — it starts selecting completely different actions, the new experience no longer matches the assumptions of the update, and performance collapses catastrophically (this happened routinely with vanilla policy gradients). TRPO solved this with a hard KL-divergence constraint, but its implementation required conjugate gradient optimization and line searches — complex and computationally expensive. Take too small a step and training takes forever. PPO solves this with a deceptively simple idea: clip the objective function so that the policy can't change more than a small amount ($\epsilon$, typically 0.2) in any single update. This eliminates the most common failure mode — catastrophic policy collapse — while keeping the algorithm simple enough to implement in ~100 lines of code, which is why PPO has been the default RL algorithm for continuous control since its publication by OpenAI in 2017.
+Policy gradient methods learn by trial and error: try actions, measure how good they were, and adjust the policy to do more of what worked. The problem is sensitivity to step size. Take too large a gradient step and the policy changes drastically — it starts selecting completely different actions, the new experience no longer matches the assumptions of the update, and performance collapses catastrophically (this happened routinely with vanilla policy gradients). TRPO solved this with a hard KL-divergence constraint, but its implementation required conjugate gradient optimization and line searches — complex and computationally expensive. Take too small a step and training takes forever. PPO solves this with a deceptively simple idea: clip the objective function so that the policy [[micro-context/can-bus-termination|can]]'t change more than a small amount ($\epsilon$, typically 0.2) in any single update. This eliminates the most common failure mode — catastrophic policy collapse — while keeping the algorithm simple enough to implement in ~100 lines of code, which is why PPO has been the default RL algorithm for continuous control since its publication by OpenAI in 2017.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Policy gradient methods learn by trial and error: try actions, measure how good 
 |------|------------|
 | **Policy $\pi_\theta(a \mid s)$** | The neural network being trained — maps an observation (state) $s$ to a probability distribution over actions $a$. In [[quick-context/pupper-lab5-neural-controller\|Pupper Lab 5]], this is a small MLP that outputs 12 joint position targets. |
 | **Advantage $\hat{A}_t$** | A scalar estimate of "how much better was the action I took compared to what I usually do in this state?" Positive advantage means the action was above average; negative means below. |
-| **Clipped Surrogate Objective** | PPO's core innovation: the loss function that limits how much $\pi_\theta$ can change per update by clipping the probability ratio $r_t(\theta)$ to $[1 - \epsilon, 1 + \epsilon]$. |
+| **Clipped Surrogate Objective** | PPO's core innovation: the loss function that limits how much $\pi_\theta$ [[micro-context/can-bus-transceiver|can]] change per update by clipping the probability ratio $r_t(\theta)$ to $[1 - \epsilon, 1 + \epsilon]$. |
 | **Probability Ratio $r_t(\theta)$** | $\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{old}}(a_t \mid s_t)}$ — how much more or less likely the new policy is to take the same action as the old policy. A ratio of 1.0 means no change; 1.3 means 30% more likely. |
 | **Value Function $V_\phi(s)$** | A second neural network (the "critic") that estimates the expected cumulative reward from state $s$. Used to compute the advantage: $\hat{A}_t \approx r_t + \gamma V(s_{t+1}) - V(s_t)$. |
 
@@ -78,7 +78,7 @@ PPO TRAINING LOOP
 
 ### The Clipped Surrogate Objective (The Core Math)
 
-The key question PPO answers at each update step is: "should I make this action more or less likely?" The naive approach would be to just follow the policy gradient — increase the probability of actions that had positive advantage. But large gradient steps can be catastrophic.
+The key question PPO answers at each update step is: "should I make this action more or less likely?" The naive approach would be to just follow the policy gradient — increase the probability of actions that had positive advantage. But large gradient steps [[quick-context/can-bus|can]] be catastrophic.
 
 PPO's solution is the clipped surrogate objective:
 

@@ -6,7 +6,7 @@ updated: 2026-02-10
 
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 
@@ -23,9 +23,9 @@ Complex B2B sales involve multiple stakeholders with different priorities, and r
 | Term | Definition |
 |------|------------|
 | **Gold Sheet** | A structured multi-page document that captures the complete strategic picture of a large account—situation appraisal, charter statement, stakeholder map, goals, focus/stop investments, and revenue targets |
-| **Economic Buyer** | The person with final authority to release funds and approve the purchase; they can say "yes" when everyone else says "no" |
+| **Economic Buyer** | The person with final authority to release funds and approve the purchase; they [[micro-context/can-bus-termination|can]] say "yes" when everyone else says "no" |
 | **User Buyer** | The person(s) who will actually use your product day-to-day and judge success based on job impact |
-| **Technical Buyer** | The gatekeeper who screens vendors against specifications, compliance, or technical requirements—they can't approve but can veto |
+| **Technical Buyer** | The gatekeeper who screens vendors against specifications, compliance, or technical requirements—they [[micro-context/can-bus-transceiver|can]]'t approve but [[quick-context/can-bus|can]] veto |
 | **Coach** | An internal advocate who provides intelligence about the organization's decision process and guides your strategy |
 
 <details>
