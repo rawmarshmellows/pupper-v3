@@ -5,9 +5,9 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/can-bus]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/ros2-architecture]] | [[quick-context/usb-peripheral-hardware]]
 
-> **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
+> **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper [[micro-context/can-bus-termination|can]] autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 
 ## The Core Problem
 
@@ -24,7 +24,7 @@ Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM
 | **State Machine** | A controller with discrete modes (IDLE, SEARCH, TRACK) and well-defined transitions between them — the decision-making core of Lab 7's tracking behavior |
 | **YOLO (You Only Look Once)** | A single-shot object detection architecture that predicts bounding boxes and class labels in one forward pass; Lab 7 uses YOLOv5 trained on the 80-class COCO dataset |
 | **[[quick-context/raspberry-pi-ai-hat|Hailo Accelerator]]** | An edge AI inference chip (~26 TOPS) mounted on the Pupper via the [[quick-context/raspberry-pi-ai-hat|AI HAT+]] that runs the YOLOv5 network at low power, enabling on-robot detection without cloud connectivity |
-| **Detection2DArray** | A ROS2 message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
+| **Detection2DArray** | A [[quick-context/ros2-architecture|ROS2]] message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
 | **Proportional Tracking Controller** | A P-controller that converts the horizontal pixel offset of a detected object into a yaw rate command: $\omega = -K_p \cdot x_{\text{normalized}}$, steering the robot to center the target in frame |
 
 <details>
@@ -160,7 +160,7 @@ The proportional controller $\omega = -K_p \cdot x_{\text{norm}}$ is the simples
 
 ### Deliberative Control (LLM)
 
-The LLM from Lab 6 operates at the opposite extreme — it **reasons** about goals, context, and multi-step plans. When the user says "find my keys and come back," the LLM can decompose this into: (1) `begin_tracking("keyboard")` or perhaps recognize that keys aren't a COCO class and suggest an alternative, (2) wait for tracking to succeed, (3) `end_tracking()`, (4) `turn_around()`, (5) `move_forward()`. No reactive state machine could generate this plan.
+The LLM from Lab 6 operates at the opposite extreme — it **reasons** about goals, context, and multi-step plans. When the user says "find my keys and come back," the LLM [[micro-context/can-bus-transceiver|can]] decompose this into: (1) `begin_tracking("keyboard")` or perhaps recognize that keys aren't a COCO class and suggest an alternative, (2) wait for tracking to succeed, (3) `end_tracking()`, (4) `turn_around()`, (5) `move_forward()`. No reactive state machine could generate this plan.
 
 But the LLM runs at ~500 ms per response and cannot sustain the tight control loop needed to physically follow a moving target. Hence the layered architecture:
 
@@ -332,13 +332,13 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **COCO Dataset** — "Common Objects in Context," the 80-class benchmark dataset YOLOv5 is trained on. Includes everyday objects (person, car, dog, bottle, chair) but notably lacks many useful categories (keys, phone, specific breeds). This limits what Lab 7 can track out of the box. See: [cocodataset.org](https://cocodataset.org)
-- **[[quick-context/raspberry-pi-ai-hat|Raspberry Pi AI HAT+]]** — The full product family of Hailo-based NPU boards for edge AI inference, including the 13T, 26T, and AI HAT+ 2 (with on-board RAM for LLMs). Covers TOPS benchmarks, data flow architecture, and the software stack that Lab 7's Hailo detection node runs on.
+- **COCO Dataset** — "Common Objects in Context," the 80-class benchmark dataset YOLOv5 is trained on. Includes everyday objects (person, car, dog, bottle, chair) but notably lacks many useful categories (keys, phone, specific breeds). This limits what Lab 7 [[quick-context/can-bus|can]] track out of the box. See: [cocodataset.org](https://cocodataset.org)
+- **[[quick-context/raspberry-pi-ai-hat|Raspberry Pi AI HAT+]]** — The full product family of Hailo-based NPU boards for edge AI inference, including the 13T, 26T, and AI HAT+ 2 (with on-board [[quick-context/ram-addressing-decoder|RAM]] for LLMs). Covers TOPS benchmarks, data flow architecture, and the software stack that Lab 7's Hailo detection node runs on.
 - **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The intrinsic matrix $K$ and distortion coefficients used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, focal length/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual [[micro-context/stm32-microcontroller|STM32]] + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 
@@ -366,7 +366,7 @@ The mismatch is acceptable because the state machine **holds** its last Twist co
 <details>
 <summary>Answer</summary>
 
-At 5 FPS, each frame arrives every 200 ms. A 1.5-second timeout tolerates $1.5 / 0.2 = 7.5$, so approximately **7 consecutive missed frames** before transitioning to SEARCH. A time-based threshold is preferable to a frame-count threshold because the detection frame rate is not guaranteed to be constant — Hailo inference time varies with scene complexity, and frames can be dropped due to USB bandwidth or CPU load. If the detector temporarily slows to 2 FPS, a "3 missed frames" threshold would wait 1.5 seconds, but if it speeds up to 10 FPS, the same threshold would only wait 0.3 seconds — causing premature SEARCH transitions during brief occlusions. A time-based timeout provides consistent behavior regardless of frame rate variation. This is a general principle: time-based thresholds are more robust than count-based thresholds when the event rate is variable.
+At 5 FPS, each frame arrives every 200 ms. A 1.5-second timeout tolerates $1.5 / 0.2 = 7.5$, so approximately **7 consecutive missed frames** before transitioning to SEARCH. A time-based threshold is preferable to a frame-count threshold because the detection frame rate is not guaranteed to be constant — Hailo inference time varies with scene complexity, and frames can be dropped due to [[quick-context/usb-peripheral-hardware|USB]] bandwidth or CPU load. If the detector temporarily slows to 2 FPS, a "3 missed frames" threshold would wait 1.5 seconds, but if it speeds up to 10 FPS, the same threshold would only wait 0.3 seconds — causing premature SEARCH transitions during brief occlusions. A time-based timeout provides consistent behavior regardless of frame rate variation. This is a general principle: time-based thresholds are more robust than count-based thresholds when the event rate is variable.
 </details>
 
 </details>

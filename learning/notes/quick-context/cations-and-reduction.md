@@ -3,13 +3,13 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[micro-context/cathode]] | [[quick-context/electrolysis]] | [[micro-context/oxidation]] | [[quick-context/electrodes]] | [[micro-context/anode]]
 
-> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
+> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the [[micro-context/cathode|cathode]] during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
 
 ## The Core Problem
 
-Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms can lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[quick-context/electrolysis|electrolysis]], cations travel toward the negative [[quick-context/electrodes|electrode]] ([[quick-context/electrodes|cathode]]), where they receive [[quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
+Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms [[micro-context/can-bus-termination|can]] lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[quick-context/electrolysis|electrolysis]], cations travel toward the negative [[quick-context/electrodes|electrode]] ([[quick-context/electrodes|cathode]]), where they receive [[quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
 
 ## 5 Essential Terms
 
@@ -32,14 +32,14 @@ BUILDING BLOCKS - What you need to know before understanding reduction:
 | **Electron** | A subatomic particle with negative charge (written as e^- or just e). Electrons are what flow through wires as electricity. Gaining electrons makes something more negative; losing them makes it more positive. |
 | **Reduction** | The process of *gaining* electrons. When a cation is "reduced," it receives electrons and becomes less positive (or neutral). Remember "OILRIG": **R**eduction **I**s **G**ain of electrons. |
 | **Cathode** | The negative electrode in an electrolysis setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
-| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the anode is the positive one. |
+| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the [[micro-context/anode|anode]] is the positive one. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 Reduction at the cathode is driven by the power supply continuously pumping electrons onto the electrode surface. The cathode becomes negatively charged—a reservoir of available electrons. Cations floating in the solution are positively charged and therefore attracted to this negative electrode. When a cation reaches the cathode surface, it encounters these waiting electrons. The cation "grabs" the electrons it needs to become neutral—Cu²⁺ takes 2 electrons, H⁺ takes 1 electron, Al³⁺ takes 3 electrons. Once neutralized, metal cations typically deposit as solid metal on the electrode surface (this is electroplating), while hydrogen cations pair up as H₂ gas that bubbles away.
 
-The number of electrons transferred is determined by the cation's charge—this is the fundamental bookkeeping of electrochemistry. A +2 ion needs exactly 2 electrons to reach zero charge. The electrode doesn't "decide" how many to give; the ion takes precisely what it needs to become neutral. This predictability is what makes electrolysis so useful industrially: if you know how many coulombs of charge you've passed through the cell, you can calculate exactly how many grams of metal you've deposited (this is Faraday's law in action).
+The number of electrons transferred is determined by the cation's charge—this is the fundamental bookkeeping of electrochemistry. A +2 ion needs exactly 2 electrons to reach zero charge. The electrode doesn't "decide" how many to give; the ion takes precisely what it needs to become neutral. This predictability is what makes electrolysis so useful industrially: if you know how many coulombs of charge you've passed through the cell, you [[micro-context/can-bus-transceiver|can]] calculate exactly how many grams of metal you've deposited (this is Faraday's law in action).
 
 ```
 THE REDUCTION PROCESS: Step by Step at the Cathode
@@ -115,7 +115,7 @@ VISUALIZING MULTIPLE CATIONS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force (voltage) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
+The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force ([[quick-context/voltage|voltage]]) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
 
 </details>
 
@@ -237,11 +237,11 @@ PATTERN: The charge number tells you how many electrons are needed!
 
 - **[[quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and why they're attracted to the negative electrode.
 
-- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
+- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, [[micro-context/oxidation|oxidation]] is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
+- **Electrochemical Series (Reduction Potentials)** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
 
 - **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 

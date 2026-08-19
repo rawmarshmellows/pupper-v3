@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Absolute Orientation Problem
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[quick-context/covariance-matrix]] | [[quick-context/similarity-transform]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 
@@ -146,7 +146,7 @@ In practice, correspondences are often unknown. The **Iterative Closest Point (I
 
 ### The Outlier Problem
 
-Closed-form solutions are least-squares methods -- a single mismatched correspondence can badly skew the result. Practitioners use **RANSAC** (Random Sample Consensus) to handle this:
+Closed-form solutions are least-squares methods -- a single mismatched correspondence [[micro-context/can-bus-termination|can]] badly skew the result. Practitioners use **RANSAC** (Random Sample Consensus) to handle this:
 
 1. Randomly select the minimum subset (3 point pairs)
 2. Compute the transformation using a closed-form solver
@@ -305,13 +305,13 @@ $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T
 **Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points [[micro-context/can-bus-transceiver|can]] mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?
 <details>
 <summary>Answer</summary>
-At loop closure, the system has two representations of the same place -- the current scan and the earlier map. Absolute orientation (via ICP) can align these to compute the drift correction. However, the closed-form solution alone is insufficient for two reasons: (1) the correction must be distributed across all poses in the trajectory, not just applied at the closure point, requiring a graph optimization (pose-graph SLAM) that adjusts all transformations jointly; (2) the accumulated drift means correspondences between the current scan and the old map may be significantly offset, requiring ICP's iterative correspondence-estimation rather than pre-known pairs. The closed-form absolute orientation solver is a building block used inside ICP and inside pose-graph optimization, but the system-level problem requires additional machinery. See: The Key Tension (closed-form vs iterative).
+At loop closure, the system has two representations of the same place -- the current scan and the earlier map. Absolute orientation (via ICP) [[quick-context/can-bus|can]] align these to compute the drift correction. However, the closed-form solution alone is insufficient for two reasons: (1) the correction must be distributed across all poses in the trajectory, not just applied at the closure point, requiring a graph optimization (pose-graph SLAM) that adjusts all transformations jointly; (2) the accumulated drift means correspondences between the current scan and the old map may be significantly offset, requiring ICP's iterative correspondence-estimation rather than pre-known pairs. The closed-form absolute orientation solver is a building block used inside ICP and inside pose-graph optimization, but the system-level problem requires additional machinery. See: The Key Tension (closed-form vs iterative).
 </details>
 
 </details>

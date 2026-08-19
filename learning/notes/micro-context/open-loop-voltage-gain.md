@@ -3,11 +3,13 @@ term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/comparator]] | [[quick-context/voltage]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
+
 # Open-Loop Voltage Gain ($A_V$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
 
-**Definition:** The enormous gain a comparator or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
+**Definition:** The enormous gain a comparator or [[quick-context/op-amp|op-amp]] applies to the tiny [[quick-context/voltage|voltage]] difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
 
 ## How It Works
 
@@ -30,4 +32,4 @@ created: 2026-06-07
    fully to a rail -> the digital decision.
 ```
 
-**Key insight:** It's the "gain" you never use *as* gain — it's so large the output can't stay linear, which is exactly the point: a comparator wants to saturate to a rail, not amplify proportionally.
+**Key insight:** It's the "gain" you never use *as* gain — it's so large the output [[micro-context/can-bus-termination|can]]'t stay linear, which is exactly the point: a comparator wants to saturate to a rail, not amplify proportionally.

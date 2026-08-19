@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Faraday Tensor
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[quick-context/tensor]] | [[quick-context/electromagnetism]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 
@@ -406,7 +406,7 @@ EXAMPLE: Current-Carrying Wire
         E' · B' = 0          (still zero!)
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that since E and B transform into each other, you could boost to a frame where a magnetic field completely disappears, or where any electric field becomes purely magnetic. You can't—the invariants constrain what's possible. For electromagnetic waves, both E and B are always present in every frame (B² - E²/c² = 0 means neither dominates). For a pure electric field (B² - E²/c² < 0), you can find a frame with B = 0 but never B without E. The Faraday tensor respects these invariants under all transformations.
+**The one thing most outsiders get wrong about this is...** thinking that since E and B transform into each other, you could boost to a frame where a magnetic field completely disappears, or where any electric field becomes purely magnetic. You [[micro-context/can-bus-termination|can]]'t—the invariants constrain what's possible. For electromagnetic waves, both E and B are always present in every frame (B² - E²/c² = 0 means neither dominates). For a pure electric field (B² - E²/c² < 0), you [[micro-context/can-bus-transceiver|can]] find a frame with B = 0 but never B without E. The Faraday tensor respects these invariants under all transformations.
 
 </details>
 
@@ -446,7 +446,7 @@ EXAMPLE: Current-Carrying Wire
 **Antisymmetry.** $F^{\mu\nu} = -F^{\nu\mu}$ forces the diagonal entries to zero (4 entries) and pairs the off-diagonal entries as negatives of each other. Of the remaining 12 off-diagonal entries, each pair contains the same information with opposite sign, leaving 6 independent components—exactly matching the 3 components of **E** and 3 components of **B**.
 </details>
 
-**Q2:** A reference frame exists where a certain electromagnetic field is purely electric (B = 0). What can you conclude about the invariants?
+**Q2:** A reference frame exists where a certain electromagnetic field is purely electric (B = 0). What [[quick-context/can-bus|can]] you conclude about the invariants?
 <details>
 <summary>Answer</summary>
 **B² - E²/c² < 0 and E · B = 0.** In the frame where B = 0, the first invariant equals -E²/c² < 0, so it must be negative in all frames. The second invariant E · B = 0 because B = 0. These values are the same in every frame, so any observer would find B² - E²/c² < 0 (electric-dominated) and E · B = 0 (perpendicular fields).

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/glass-transition-temperature]] | [[quick-context/van-der-waals-forces]]
 
 > **TL;DR:** Pi-pi stacking is a molecular "velcro" effect where flat aromatic rings (like benzene in ABS plastic) attract each other through their electron clouds, requiring higher print temperatures to overcome and causing warping when these attractions re-form during cooling.
 
@@ -175,7 +175,7 @@ GEOMETRY MATTERS:
 
 ## The Key Tension: Strength vs. Processability
 
-Here's the tradeoff that drives 3D printing temperatures: **the same stacking forces that make ABS strong also make it hard to melt**. Each individual pi-pi interaction is weak (about 50x weaker than a normal chemical bond), but there are millions of them per cubic millimeter. To get ABS flowing through a printer nozzle, you need enough heat energy to temporarily break all these stacking interactions so the chains can slide past each other:
+Here's the tradeoff that drives 3D printing temperatures: **the same stacking forces that make ABS strong also make it hard to melt**. Each individual pi-pi interaction is weak (about 50x weaker than a normal chemical bond), but there are millions of them per cubic millimeter. To get ABS flowing through a printer nozzle, you need enough heat energy to temporarily break all these stacking interactions so the chains [[micro-context/can-bus-termination|can]] slide past each other:
 
 ```
     COLD ABS (solid, strong)              HOT ABS (melted, flowable)
@@ -256,7 +256,7 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 - **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of van der Waals interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
 - **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: covalent bonds along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
 - **[[quick-context/covalent-bonds]]** — The "real" bonds that hold atoms together within molecules; pi-pi stacking is fundamentally different—it's an attraction *between* molecules, not within them.
-- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
+- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains [[micro-context/can-bus-transceiver|can]] pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
 
 </details>
 

@@ -3,6 +3,8 @@ topic: Silymarin
 created: 2026-04-06
 ---
 
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
+
 # Silymarin
 
 > **TL;DR:** Silymarin is a mixture of flavonolignans extracted from milk thistle (*Silybum marianum*) seeds, best known for hepatoprotection — it scavenges free radicals, stabilizes liver cell membranes, and suppresses inflammatory pathways, making it one of the most-studied herbal compounds for liver disease.
@@ -173,7 +175,7 @@ Two flaws: (1) Hepatotropic distribution means liver concentrations are far high
 **Q5:** Silymarin activates Nrf2 (an antioxidant pathway) and inhibits NF-κB (an inflammatory pathway). These are often described as separate mechanisms, but why might they actually be linked at a deeper level?
 <details>
 <summary>Answer</summary>
-Nrf2 and NF-κB engage in extensive cross-talk: Nrf2 activation suppresses NF-κB signaling (and vice versa — NF-κB can inhibit Nrf2). ROS activate NF-κB and impair Nrf2; by scavenging ROS, silymarin shifts the balance toward Nrf2 dominance. So silymarin's "separate" antioxidant and anti-inflammatory effects may actually be two readouts of a single upstream intervention — reducing the oxidative stress that tips the Nrf2/NF-κB balance toward inflammation.
+Nrf2 and NF-κB engage in extensive cross-talk: Nrf2 activation suppresses NF-κB signaling (and vice versa — NF-κB [[micro-context/can-bus-termination|can]] inhibit Nrf2). ROS activate NF-κB and impair Nrf2; by scavenging ROS, silymarin shifts the balance toward Nrf2 dominance. So silymarin's "separate" antioxidant and anti-inflammatory effects may actually be two readouts of a single upstream intervention — reducing the oxidative stress that tips the Nrf2/NF-κB balance toward inflammation.
 </details>
 
 </details>

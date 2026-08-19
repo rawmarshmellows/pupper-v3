@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/covalent-bonds]] | [[quick-context/van-der-waals-forces]]
 
 > **TL;DR:** Matter builds up in layers (atoms -> molecules -> monomers -> polymers), and 3D printing works by heating thermoplastics enough to let polymer chains slide past each other without breaking them, then cooling to re-lock chains in new positions.
 
@@ -18,16 +18,16 @@ Everything physical you touch—including the plastic [[quick-context/3d-printin
 |------|------------|
 | **[[quick-context/subatomic-particles\|Atom]]** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of [[quick-context/subatomic-particles\|protons, neutrons, and electrons]]. |
 | **Molecule** | Two or more atoms bonded together; water (H₂O) is a molecule of 2 hydrogen atoms + 1 oxygen atom. |
-| **Monomer** | A small molecule that can bond repeatedly to form long chains; the "building block" unit. |
+| **Monomer** | A small molecule that [[micro-context/can-bus-termination|can]] bond repeatedly to form long chains; the "building block" unit. |
 | **Polymer** | A long chain made of many monomers bonded together; plastics are polymers. |
 | **Thermoplastic** | A polymer that softens when heated (above its [[quick-context/glass-transition-temperature\|glass transition temperature]]) and hardens when cooled, repeatedly—this is what makes [[quick-context/3d-printing-filament-types\|3D printing]] possible. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Matter builds up in layers of increasing complexity, and each layer determines different properties. At the base, atoms are the fundamental units—protons and neutrons in a nucleus, surrounded by electrons. Atoms bond together by sharing or transferring electrons, forming molecules. When a molecule has reactive "ends" that can link to other identical molecules, we call it a monomer—the building block for polymers. Through polymerization reactions, hundreds to thousands of monomers link end-to-end into long chains called polymers. The properties of the final plastic (strength, flexibility, melting point) emerge from three factors: (1) what the monomer is (determines backbone chemistry), (2) how long the chains are (determines entanglement and strength), and (3) how the chains pack together (crystalline regions are rigid; amorphous regions are flexible).
+Matter builds up in layers of increasing complexity, and each layer determines different properties. At the base, atoms are the fundamental units—protons and neutrons in a nucleus, surrounded by electrons. Atoms bond together by sharing or transferring electrons, forming molecules. When a molecule has reactive "ends" that [[micro-context/can-bus-transceiver|can]] link to other identical molecules, we call it a monomer—the building block for polymers. Through polymerization reactions, hundreds to thousands of monomers link end-to-end into long chains called polymers. The properties of the final plastic (strength, flexibility, melting point) emerge from three factors: (1) what the monomer is (determines backbone chemistry), (2) how long the chains are (determines entanglement and strength), and (3) how the chains pack together (crystalline regions are rigid; amorphous regions are flexible).
 
-In 3D printing, you exploit the thermoplastic property: heating gives polymer chains enough energy to overcome the weak intermolecular forces (van der Waals, hydrogen bonds) that hold them in place. The chains don't break—they just gain mobility to slide past each other, allowing the material to flow through the nozzle. Upon cooling, chains lose energy, intermolecular forces reassert themselves, and chains lock into new positions. The extruded material solidifies. Crucially, if chains from the new layer can interpenetrate with chains from the previous layer before cooling, you get strong layer adhesion—the layers literally tangle together at the molecular level. If the previous layer is too cold, chains can't intermix, and you get weak layer bonds.
+In 3D printing, you exploit the thermoplastic property: heating gives polymer chains enough energy to overcome the weak intermolecular forces (van der Waals, hydrogen bonds) that hold them in place. The chains don't break—they just gain mobility to slide past each other, allowing the material to flow through the nozzle. Upon cooling, chains lose energy, intermolecular forces reassert themselves, and chains lock into new positions. The extruded material solidifies. Crucially, if chains from the new layer [[quick-context/can-bus|can]] interpenetrate with chains from the previous layer before cooling, you get strong layer adhesion—the layers literally tangle together at the molecular level. If the previous layer is too cold, chains can't intermix, and you get weak layer bonds.
 
 ```
 THE HIERARCHY OF MATTER → POLYMERS
@@ -225,7 +225,7 @@ Brittle when cold.            Branched, tangled chains.
 - [[quick-context/polymer-chemical-bonds|Chemical bonds]] — Deeper dive into the specific bond types that form polymer backbones and crosslinks; essential for understanding thermosets vs. thermoplastics.
 - [[quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] — Weak attractions between chains that affect melting point and layer adhesion; explains why nylon absorbs moisture and prints differently when wet.
 - [[quick-context/van-der-waals-forces|Van der Waals forces]] — The weakest intermolecular forces, but they add up across long polymer chains; crucial for understanding why longer chains = stronger parts.
-- [[quick-context/biology-fundamentals]] — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
+- biology fundamentals — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
 - [[quick-context/subatomic-particles]] — The fundamental building blocks (protons, neutrons, electrons, quarks) that make up atoms; explains why different elements have different numbers of bonds and chemical behaviors.
 
 </details>

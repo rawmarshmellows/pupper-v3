@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/glass-transition-temperature]] | [[quick-context/melt-index]]
 
 > **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
@@ -27,7 +27,7 @@ A slicer converts 3D models into printer instructions by cutting models into lay
 
 The slicer performs three essential transformations on your 3D model. First, **slicing**: it cuts your model into horizontal layers (like slicing a loaf of bread), with each slice becoming one pass of the print head. Second, **pathing**: for each layer, it plans the exact route the nozzle will travel—where to start, which direction to move, when to extrude plastic, when to retract. Third, **parameter application**: it applies your settings (temperature, speed, infill pattern, etc.) to generate the final machine instructions. The output is G-code, a text file of line-by-line commands that tell motors exactly where to move and heaters exactly what temperature to maintain.
 
-The relationship between settings is multiplicative, not independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[quick-context/3d-printer-hotends|hotend's]] melting capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the hardware can't fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
+The relationship between settings is multiplicative, not independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[quick-context/3d-printer-hotends|hotend's]] melting capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the hardware [[micro-context/can-bus-termination|can]]'t fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
 
 ```
 THE SLICING PROCESS: From Model to Machine Instructions
@@ -135,7 +135,7 @@ HOW SETTINGS INTERACT: The Flow Rate Equation
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tension in slicer settings is **speed vs. quality vs. strength**. Thicker layers print faster but show visible stepping. Higher infill increases strength but wastes material and time. Faster print speeds reduce quality and can exceed hotend flow capacity. Every setting is a tradeoff, and the "best" profile depends entirely on what you're making—a display piece needs thin layers and slow speeds, while a functional bracket prioritizes walls and can tolerate thick layers.
+The fundamental tension in slicer settings is **speed vs. quality vs. strength**. Thicker layers print faster but show visible stepping. Higher infill increases strength but wastes material and time. Faster print speeds reduce quality and [[micro-context/can-bus-transceiver|can]] exceed hotend flow capacity. Every setting is a tradeoff, and the "best" profile depends entirely on what you're making—a display piece needs thin layers and slow speeds, while a functional bracket prioritizes walls and [[quick-context/can-bus|can]] tolerate thick layers.
 
 </details>
 

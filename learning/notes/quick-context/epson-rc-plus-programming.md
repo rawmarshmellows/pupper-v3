@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[micro-context/plc-programmable-logic-controller]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/plc-vs-software-control]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -52,7 +52,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 
 The core tension in EPSON robot programming is **cycle time vs. motion smoothness vs. positional accuracy**.
 
-You can move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `Fine` motion termination, but the robot decelerates to zero velocity at every point, killing throughput.
+You [[micro-context/can-bus-termination|can]] move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You [[micro-context/can-bus-transceiver|can]] hit positions exactly with `Fine` motion termination, but the robot decelerates to zero velocity at every point, killing throughput.
 
 Practitioners spend real effort tuning `CP` (Continuous Path) motion, `Arch` parameters for pick-and-place Z-clearances, and acceleration curves to thread this needle.
 
@@ -97,7 +97,7 @@ Fend
 
 The `Jump` command is doing the heavy lifting here—it automatically retracts in Z before moving in X/Y, then descends at the target, creating the "arch" motion that avoids dragging parts across surfaces. `P1`, `P2`, and `P0` are point numbers defined in the Point Editor, not coordinates hardcoded in the program. The `LimZ(50)` parameter overrides the default arch height to 50mm.
 
-**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a PLC with motion coprocessors than a Python interpreter.
+**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you [[quick-context/can-bus|can]] have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a [[micro-context/plc-programmable-logic-controller|PLC]] with motion coprocessors than a Python interpreter.
 
 </details>
 
@@ -106,7 +106,7 @@ The `Jump` command is doing the heavy lifting here—it automatically retracts i
 
 - **[[quick-context/robotic-arm-api-levels]]** - Understanding where EPSON RC+ fits in the hierarchy from low-level servo control to high-level task planning
 - **[[quick-context/robot-cell-integration-best-practices]]** - How to integrate EPSON robots with PLCs, vision systems, and other cell equipment
-- **[[quick-context/plc-vs-software-control]]** - When to use PLC logic vs. robot-native programming for cell coordination
+- **[[quick-context/plc-vs-software-control]]** - When to use [[quick-context/plc-vs-software|PLC]] logic vs. robot-native programming for cell coordination
 - **[[quick-context/sil-rated-safety-functions]]** - Safety considerations for industrial robot programming
 
 </details>

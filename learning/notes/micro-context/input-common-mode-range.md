@@ -3,11 +3,13 @@ term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/comparator]] | [[quick-context/voltage]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
+
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
+**Definition:** The range of input [[quick-context/voltage|voltage]] (common to both pins) over which a comparator or [[quick-context/op-amp|op-amp]] still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 
 ## How It Works
 
@@ -28,4 +30,4 @@ created: 2026-06-07
    Inputs sitting OUTSIDE this window -> invalid output.
 ```
 
-**Key insight:** CMVR is about *where the inputs are allowed to sit*, not the difference between them — a part can have great offset and gain yet output garbage if your signal sits outside its common-mode window.
+**Key insight:** CMVR is about *where the inputs are allowed to sit*, not the difference between them — a part [[micro-context/can-bus-termination|can]] have great offset and gain yet output garbage if your signal sits outside its common-mode window.

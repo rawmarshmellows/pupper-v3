@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/glass-transition-temperature]] | [[quick-context/pi-pi-stacking-aromatic-interactions]]
 
 > **TL;DR:** Different 3D printing filaments (PLA, PETG, ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
 
@@ -123,7 +123,7 @@ TPU 95A         | 220-250°C   | 40-60°C  | Optional  | 50-100%      | 15-30mm/
 - **ABS**: Automotive parts, enclosures near heat sources, anything needing acetone smoothing
 - **TPU**: Phone cases, drone bumpers, gaskets, vibration dampeners, watch bands, anything that needs to flex or absorb impact
 
-The one thing most outsiders get wrong about this is **assuming "stronger" or "more advanced" filaments are always better**. A PLA part printed with good layer adhesion often outperforms a poorly-printed ABS part, and the dimensional accuracy of easy-printing PLA frequently matters more than raw material strength. Similarly, people try TPU expecting rubber-like flexibility and get frustrated when their Bowden setup jams constantly—check your hardware first. The best filament is the one you can actually print well on your machine.
+The one thing most outsiders get wrong about this is **assuming "stronger" or "more advanced" filaments are always better**. A PLA part printed with good layer adhesion often outperforms a poorly-printed ABS part, and the dimensional accuracy of easy-printing PLA frequently matters more than raw material strength. Similarly, people try TPU expecting rubber-like flexibility and get frustrated when their Bowden setup jams constantly—check your hardware first. The best filament is the one you [[micro-context/can-bus-termination|can]] actually print well on your machine.
 
 </details>
 
@@ -146,7 +146,7 @@ Related concepts that deepen understanding of filament types:
 **Q1:** You need to print a bracket that will be mounted inside a car dashboard in summer. Which filament should you use and why?
 <details>
 <summary>Answer</summary>
-ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
+ABS or PETG, but ABS is preferred. Car interiors [[micro-context/can-bus-transceiver|can]] reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
 </details>
 
 **Q2:** Your PETG prints have thin wisps of plastic connecting different parts of the model. What's happening and how do you fix it?
@@ -170,7 +170,7 @@ TPU will likely jam. Bowden setups have a long, flexible path between the extrud
 **Q5:** A friend claims ABS is "better" than PLA because it's stronger. How would you respond?
 <details>
 <summary>Answer</summary>
-This is the common misconception addressed in the final paragraph. A well-printed PLA part often outperforms a poorly-printed ABS part. ABS requires an enclosure, fights warping, and produces toxic fumes—if you can't manage these, your ABS prints will have weak layer adhesion and dimensional inaccuracy. PLA's easy printability often matters more than raw material strength. The "best" filament is the one you can actually print well.
+This is the common misconception addressed in the final paragraph. A well-printed PLA part often outperforms a poorly-printed ABS part. ABS requires an enclosure, fights warping, and produces toxic fumes—if you [[quick-context/can-bus|can]]'t manage these, your ABS prints will have weak layer adhesion and dimensional inaccuracy. PLA's easy printability often matters more than raw material strength. The "best" filament is the one you can actually print well.
 </details>
 
 </details>

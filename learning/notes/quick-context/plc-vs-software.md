@@ -3,7 +3,7 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+> **Related:** [[micro-context/plc-programmable-logic-controller]] | [[quick-context/plc-vs-software-control]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -11,7 +11,7 @@ created: 2026-01-14
 
 ## The Core Problem: When Computers Crash, People Die
 
-A **Programmable Logic Controller (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
+A **Programmable Logic Controller ([[micro-context/plc-programmable-logic-controller|PLC]])** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
 
 Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The failure mode isn't "restart the app"—it's "call the coroner."
 
@@ -59,7 +59,7 @@ The key difference from software: a PLC doesn't "crash" in the traditional sense
 The central tension in PLC work is **determinism vs. flexibility**. Traditional PLC programming uses Ladder Logic, which executes in a fixed scan cycle making timing behavior absolutely predictable—but makes complex algorithms painful.
 
 Modern practitioners argue constantly about:
-- When to use IEC 61131-3 languages (Structured Text looks like Pascal) versus sticking with ladder logic that any maintenance electrician can troubleshoot at 3am
+- When to use IEC 61131-3 languages (Structured Text looks like Pascal) versus sticking with ladder logic that any maintenance electrician [[micro-context/can-bus-termination|can]] troubleshoot at 3am
 - Whether to stay in proprietary vendor ecosystems (Allen-Bradley, Siemens, Mitsubishi all have incompatible tooling) versus pushing toward more open, software-like approaches
 
 The industry philosophy is inverted from software: in software, you optimize for features and fix bugs with patches; in PLC programming, you optimize for *never needing to change it* and for *any failure to be obvious and recoverable*. The code isn't clever—it's deliberately simple, because cleverness kills people when a maintenance tech has to debug it during an emergency at 2am with the plant manager screaming.
@@ -87,7 +87,7 @@ allow_motion = guard_closed and motor_running and not estop_pressed
 The ladder logic version:
 - Executes every scan cycle (10ms), guaranteed
 - If any input fails (wire breaks), defaults to FALSE (safe)
-- Any electrician can read it and verify the logic
+- Any electrician [[micro-context/can-bus-transceiver|can]] read it and verify the logic
 - Has been running unchanged for 15 years
 
 The Python version:
@@ -105,7 +105,7 @@ The Python version:
 
 - **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
 - **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + [[quick-context/ros2-architecture|ROS2]], including production hardware and real factory deployments
 - **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
 - **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
 
@@ -126,7 +126,7 @@ Ladder logic was designed for electricians who understood relay circuits, not pr
 The PLC's watchdog timer detects that the scan cycle exceeded its maximum allowed time and forces the system into a fail-safe state (usually stopping all outputs). Unlike a computer that would freeze, the PLC has hardware-level protection against runaway code. This is why scan cycle time is monitored and bounded.
 </details>
 
-**Q3:** Why can't you just run PLC logic on a Raspberry Pi with careful programming?
+**Q3:** Why [[quick-context/can-bus|can]]'t you just run PLC logic on a Raspberry Pi with careful programming?
 <details>
 <summary>Answer</summary>
 Three reasons: (1) Linux on a Pi has non-deterministic timing—garbage collection, kernel interrupts, or SD card writes can cause multi-millisecond delays. (2) A Pi lacks the electrical hardening (noise immunity, wide temperature range, vibration resistance) for industrial environments. (3) No safety certification—regulators won't accept it for safety-critical functions regardless of how well it works in testing.

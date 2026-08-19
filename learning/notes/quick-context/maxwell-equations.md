@@ -5,13 +5,13 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each [[micro-context/can-bus-termination|can]] create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ Before Maxwell, electricity and magnetism seemed like separate phenomena with un
 
 ## The Four Equations: What Each Says
 
-Maxwell's equations can be written in multiple forms (integral, differential, with or without materials). Here's the differential form in vacuum, with physical meaning:
+Maxwell's equations [[micro-context/can-bus-transceiver|can]] be written in multiple forms (integral, differential, with or without materials). Here's the differential form in vacuum, with physical meaning:
 
 ```
 MAXWELL'S EQUATIONS — Differential Form (Vacuum)
@@ -178,7 +178,7 @@ MAXWELL'S SOLUTION:
 
 ## How the Equations Predict Electromagnetic Waves
 
-The revolutionary consequence: combining Faraday's law and the Ampère-Maxwell law shows that E and B fields can sustain each other through empty space.
+The revolutionary consequence: combining Faraday's law and the Ampère-Maxwell law shows that E and B fields [[quick-context/can-bus|can]] sustain each other through empty space.
 
 ```
 DERIVING ELECTROMAGNETIC WAVES

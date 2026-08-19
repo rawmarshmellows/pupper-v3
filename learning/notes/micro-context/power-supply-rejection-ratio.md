@@ -3,15 +3,17 @@ term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/capacitor]] | [[quick-context/comparator]] | [[quick-context/voltage]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]]
+
 # Power-Supply Rejection Ratio ($PSRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]
 
-**Definition:** A measure (in dB) of how well a comparator or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
+**Definition:** A measure (in dB) of how well a [[quick-context/comparator|comparator]] or [[quick-context/op-amp|op-amp]] ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
 
 ## How It Works
 
-- Internal bias currents and reference points are derived from the supply rails, so rail variation can leak through to the inputs and output.
+- Internal bias currents and reference points are derived from the supply rails, so rail variation [[micro-context/can-bus-termination|can]] leak through to the inputs and output.
 - An imperfect design passes some of that variation through; PSRR measures how much is rejected, referred back to the input.
 - Higher dB = better: 80 dB attenuates supply ripple by about 10,000×.
 - It's why a noisy or sagging battery rail doesn't directly move the switching threshold — though a [[micro-context/decoupling-capacitor|decoupling capacitor]] still helps at high frequency where PSRR falls off.

@@ -1,3 +1,5 @@
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/playbook-main]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -131,7 +133,7 @@ Our Support ─────── Their Users
 ### 3.1 Identify the Four Buyer Roles
 
 #### Economic Buyer (The Wallet)
-*Final authority to approve spending. Can say yes when everyone else says no.*
+*Final authority to approve spending. [[micro-context/can-bus-termination|Can]] say yes when everyone else says no.*
 
 | Field | Details |
 |---|---|
@@ -153,7 +155,7 @@ Our Support ─────── Their Users
 | | | | | | |
 
 #### Technical Buyer(s) (The Filter)
-*Screen against specs, compliance, security. Can veto but can't approve.*
+*Screen against specs, compliance, security. [[micro-context/can-bus-transceiver|Can]] veto but [[quick-context/can-bus|can]]'t approve.*
 
 | Name | Title | Stance | Priority | Access | Action |
 |---|---|---|---|---|---|
@@ -532,7 +534,7 @@ When you're stuck, remember which framework to consult:
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | [[quick-context/meddpicc-qualification-framework|MEDDPICC]] | (separate qualification framework) |
 
 ---
 

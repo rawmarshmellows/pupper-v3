@@ -3,7 +3,7 @@ topic: Inductor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/capacitor]] | [[quick-context/pcb-printed-circuit-board]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]]
 
 > **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Smoothing and Converting Power
 
-A switching power supply chops a DC voltage on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
+A switching power supply chops a DC [[quick-context/voltage|voltage]] on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ A switching power supply chops a DC voltage on and off millions of times per sec
 |------|------------|
 | **Inductance (L)** | The ability to store energy in a magnetic field per unit current change, measured in henrys (H). Most practical inductors are microhenrys (μH) to millihenrys (mH). |
 | **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt ([[quick-context/lenzs-law|Lenz's Law]]). Try to suddenly stop current through an inductor and it generates a voltage spike (potentially destructive). |
-| **Saturation Current** | The current at which the core's magnetic material can't hold any more flux—inductance drops sharply and the inductor stops working properly. Exceeding this is a common design mistake. |
+| **Saturation Current** | The current at which the core's magnetic material [[micro-context/can-bus-termination|can]]'t hold any more flux—inductance drops sharply and the inductor stops working properly. Exceeding this is a common design mistake. |
 | **DCR (DC Resistance)** | The resistance of the wire in the coil. Lower is better—DCR wastes power as heat. Thicker wire = lower DCR but larger inductor. |
 | **Core Material** | What the coil is wound around. Air (no saturation, low inductance), ferrite (high inductance, saturates), powdered iron (good for power, gradual saturation). |
 
@@ -574,7 +574,7 @@ THE CORE TRADEOFFS
 | **Ferrite core** | High (μH-mH) | Limited by saturation | kHz-MHz | Power supplies, filters |
 | **Powdered iron** | Medium (μH) | High (gradual saturation) | kHz-MHz | High-current power |
 | **Toroidal** | High (contained field) | Medium-high | kHz-MHz | Low EMI, audio |
-| **SMD power** | Low-medium (μH) | Medium | MHz | Compact DC-DC converters |
+| **[[micro-context/smd-resistor|SMD]] power** | Low-medium (μH) | Medium | MHz | Compact DC-DC converters |
 | **Molded/shielded** | Low-medium (μH) | Medium | MHz | Dense PCBs, low EMI |
 
 </details>
@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[micro-context/buck-converter|buck converter]] uses a switch, [[quick-context/diode|diode]], inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -655,7 +655,7 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields [[micro-context/can-bus-transceiver|can]] couple into nearby traces. [[micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
@@ -692,16 +692,16 @@ BUCK CONVERTER OPERATION
 **36%.** Duty cycle D = Vout/Vin = 1.8/5 = 0.36 = 36%. The switch is ON for 36% of each cycle, during which the inductor charges, and OFF for 64%, during which it discharges.
 </details>
 
-**Q4:** Why are inductors typically the largest component on a power supply PCB?
+**Q4:** Why are inductors typically the largest component on a power supply [[quick-context/pcb-assembly-files-bom-cpl|PCB]]?
 <details>
 <summary>Answer</summary>
-**Magnetic energy storage requires physical volume.** More inductance needs more turns of wire. Higher current needs a larger core to avoid saturation. Lower losses need thicker wire (lower DCR). All of these push toward larger size. Unlike capacitors (which can be made very thin with ceramic layers), inductors fundamentally need 3D volume for their magnetic field.
+**Magnetic energy storage requires physical volume.** More inductance needs more turns of wire. Higher current needs a larger core to avoid saturation. Lower losses need thicker wire (lower DCR). All of these push toward larger size. Unlike capacitors (which [[quick-context/can-bus|can]] be made very thin with ceramic layers), inductors fundamentally need 3D volume for their magnetic field.
 </details>
 
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

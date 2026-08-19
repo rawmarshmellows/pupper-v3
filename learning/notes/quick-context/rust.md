@@ -3,7 +3,7 @@ topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[quick-context/electrolyte]] | [[micro-context/oxidation]] | [[micro-context/anode]] | [[micro-context/cathode]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** Rust is an electrochemical process where iron spontaneously oxidizes back to its ore state (Fe₂O₃) when exposed to oxygen and water, costing over $2.5 trillion annually in infrastructure damage.
 
@@ -17,9 +17,9 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 
 | Term | Definition |
 |------|------------|
-| **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
+| **Corrosion** | The electrochemical degradation of metals through [[micro-context/oxidation|oxidation]] reactions with their environment—rust is specifically iron corrosion |
 | **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the [[micro-context/cathode|cathode]] (electron receiver) instead of the [[micro-context/anode|anode]], often via sacrificial metals |
 | **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
 | **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
@@ -183,7 +183,7 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
                         exposed Fe
 
 
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)
@@ -243,11 +243,11 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in electrolysis (Q3) demonstrates how iron at an anode actively dissolves.
+- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in [[quick-context/electrolysis|electrolysis]] (Q3) demonstrates how iron at an anode actively dissolves.
 
 - **[[quick-context/anions-and-oxidation]]** — At anodic regions, iron loses electrons (oxidation: Fe → Fe²⁺ + 2e⁻). Understanding oxidation as electron loss clarifies why the iron dissolves rather than staying solid.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery voltage also predict which metal corrodes when two are in contact.
+- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery [[quick-context/voltage|voltage]] also predict which metal corrodes when two are in contact.
 
 - **[[quick-context/electrolyte]]** — Water (especially with dissolved salts) acts as the electrolyte enabling ion transport between anodic and cathodic regions. No water = no electrolyte = no rust.
 
@@ -273,7 +273,7 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 **Q3:** Why does salt water cause iron to rust faster than pure water?
 <details>
 <summary>Answer</summary>
-**Salt increases the electrolyte conductivity.** Dissolved salt (NaCl → Na⁺ + Cl⁻) provides more ions in solution, reducing electrical resistance and allowing faster ion transport between anodic and cathodic regions. This increases the "current" of the corrosion cell, accelerating both oxidation and reduction reactions. Additionally, chloride ions can penetrate and destabilize protective oxide layers. See: How It Works (water acts as electrolyte) and [[quick-context/electrolyte]].
+**Salt increases the electrolyte conductivity.** Dissolved salt (NaCl → Na⁺ + Cl⁻) provides more ions in solution, reducing electrical resistance and allowing faster ion transport between anodic and cathodic regions. This increases the "current" of the corrosion cell, accelerating both oxidation and reduction reactions. Additionally, chloride ions [[micro-context/can-bus-termination|can]] penetrate and destabilize protective oxide layers. See: How It Works (water acts as electrolyte) and [[quick-context/electrolyte]].
 </details>
 
 **Q4:** A galvanized (zinc-coated) nail and a tin-plated nail both get scratched, exposing the underlying steel. One rusts rapidly at the scratch; the other stays rust-free. Which rusts, and why?
@@ -285,7 +285,7 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 **Q5:** Connect the concepts: How does the "hydration energy" that dissolves Fe²⁺ ions during rusting relate to the same force that makes salt dissolve in water or allows electrolytes to conduct electricity?
 <details>
 <summary>Answer</summary>
-**It's all ion-dipole attraction.** When any ionic compound dissolves—salt, iron, or electrolyte—water molecules orient with their partially charged ends toward the opposite charge of the ion. This attraction releases hydration energy that stabilizes ions in solution. For Fe²⁺, this hydration energy (~1900 kJ/mol) is what allows iron atoms to leave the solid metal and exist as dissolved ions. The same force that dissolves table salt (Na⁺ and Cl⁻ getting hydrated) enables rust formation (Fe²⁺ getting hydrated and drifting away). And once ions are hydrated and mobile, they can carry current—which is exactly how [[quick-context/electrolyte|electrolytes]] work. See: Step 2 (Why Iron Ions Dissolve) and [[quick-context/electrolyte]].
+**It's all ion-dipole attraction.** When any ionic compound dissolves—salt, iron, or electrolyte—water molecules orient with their partially charged ends toward the opposite charge of the ion. This attraction releases hydration energy that stabilizes ions in solution. For Fe²⁺, this hydration energy (~1900 kJ/mol) is what allows iron atoms to leave the solid metal and exist as dissolved ions. The same force that dissolves table salt (Na⁺ and Cl⁻ getting hydrated) enables rust formation (Fe²⁺ getting hydrated and drifting away). And once ions are hydrated and mobile, they [[micro-context/can-bus-transceiver|can]] carry current—which is exactly how [[quick-context/electrolyte|electrolytes]] work. See: Step 2 (Why Iron Ions Dissolve) and [[quick-context/electrolyte]].
 </details>
 
 </details>

@@ -5,13 +5,13 @@ created: 2026-04-06
 
 # Butyric Acid
 
-> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]
+> **Related:** [[micro-context/oxidation]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/substrate-ic-packaging]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 
 ## The Core Problem
 
-Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate oxidation, not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
+Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate [[micro-context/oxidation|oxidation]], not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
 
 ## 5 Essential Terms
 
@@ -118,14 +118,14 @@ Butyrate's effects are concentration-dependent, creating a core tension in both 
 | Low / Normal Butyrate | High / Excess Butyrate |
 |----------------------|----------------------|
 | Fuels colonocyte proliferation | Inhibits colonocyte proliferation (HDAC effect dominates) |
-| Supports gut barrier integrity | Can paradoxically weaken barrier at very high doses |
+| Supports gut barrier integrity | [[micro-context/can-bus-termination|Can]] paradoxically weaken barrier at very high doses |
 | Anti-inflammatory (blocks NF-$\kappa$B) | May suppress beneficial immune surveillance |
 | Promotes healthy cell turnover | Induces apoptosis in cancer cells (therapeutic) |
 
 **The practical debate:** Should you supplement butyrate directly, or just eat more fiber?
 
 - **Pro-fiber camp:** Fermentation produces butyrate *where it's needed* (the distal colon), at physiological concentrations, alongside other beneficial metabolites. Supplements deliver butyrate to the proximal colon or even the small intestine (wrong location) and in potentially supra-physiological doses.
-- **Pro-supplement camp:** People with dysbiosis or low-fiber diets may lack the bacterial populations to produce enough butyrate. Sodium butyrate or tributyrin supplements can bridge this gap. Tributyrin (a triglyceride of butyrate) may release butyrate more gradually and further along the GI tract.
+- **Pro-supplement camp:** People with dysbiosis or low-fiber diets may lack the bacterial populations to produce enough butyrate. Sodium butyrate or tributyrin supplements [[micro-context/can-bus-transceiver|can]] bridge this gap. Tributyrin (a triglyceride of butyrate) may release butyrate more gradually and further along the GI tract.
 
 The emerging consensus: fiber first, supplements as a targeted intervention for specific conditions (IBD, post-antibiotic recovery), not as a general replacement for a fiber-rich diet.
 
@@ -137,7 +137,7 @@ The emerging consensus: fiber first, supplements as a targeted intervention for 
 ### Scenario: High-fiber diet vs. low-fiber diet
 
 **Person A** eats 35g of fiber/day (lentils, oats, vegetables, resistant starch from cooled rice):
-- Colonic bacteria receive abundant substrate
+- Colonic bacteria receive abundant [[quick-context/substrate-ic-packaging|substrate]]
 - *Faecalibacterium prausnitzii* and *Roseburia* populations thrive
 - Estimated total SCFA production: ~400--600 mmol/day
 - Butyrate fraction (~20%): ~80--120 mmol/day
@@ -149,7 +149,7 @@ The emerging consensus: fiber first, supplements as a targeted intervention for 
 - Estimated total SCFA production: ~100--200 mmol/day
 - Butyrate fraction drops further (bacteria shift to other pathways)
 - Colonocytes energy-starved, barrier permeability increases ("leaky gut")
-- Bacterial products and endotoxins can translocate to bloodstream
+- Bacterial products and endotoxins [[quick-context/can-bus|can]] translocate to bloodstream
 
 ### Top dietary sources of butyrate precursors (fermentable fiber)
 

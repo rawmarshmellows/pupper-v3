@@ -3,7 +3,7 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-layers]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -18,10 +18,10 @@ Imagine you have a computer chip containing millions of microscopic circuits, an
 | Term | Definition |
 |------|------------|
 | **Solder Ball** | A tiny sphere of metal alloy (~0.5-0.8 mm diameter) that melts during assembly to form an electrical and mechanical connection between the chip package and the circuit board |
-| **Pitch** | The distance from the center of one solder ball to the center of the next; smaller pitch = more balls can fit, but harder to manufacture (typical: 0.5-0.8 mm) |
+| **Pitch** | The distance from the center of one solder ball to the center of the next; smaller pitch = more balls [[micro-context/can-bus-termination|can]] fit, but harder to manufacture (typical: 0.5-0.8 mm) |
 | **Reflow** | The process of heating the entire assembly in an oven until solder balls melt and form permanent joints, then cooling to solidify |
 | **Pad** | A flat copper circle on the circuit board or chip package where a solder ball attaches; pads on both sides must align precisely |
-| **X-ray Inspection** | Since BGA connections are hidden underneath, you can't visually check them—X-ray imaging is used to verify solder joints aren't cracked, bridged, or missing |
+| **X-ray Inspection** | Since BGA connections are hidden underneath, you [[micro-context/can-bus-transceiver|can]]'t visually check them—X-ray imaging is used to verify solder joints aren't cracked, bridged, or missing |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -129,7 +129,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
+The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you [[quick-context/can-bus|can]]'t see it without X-rays. You can't easily touch up one bad joint with a [[quick-context/soldering|soldering]] iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 
 </details>
 
@@ -214,7 +214,7 @@ X-RAY VIEW: What Inspectors See
     Real X-ray machines detect these at 1000+ joints per second
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming solder balls are placed individually during assembly. They're not—the balls are permanently attached to the chip package during manufacturing (by the chip vendor), and they stay there during shipping and storage. When you buy a BGA chip, it comes with balls already in place. During PCB assembly, you just add solder paste to the board, place the component, and reflow. The existing balls melt and merge with the paste to form the final joint. The balls are pre-attached to the package, not to the board.
+**The one thing most outsiders get wrong about this is...** assuming solder balls are placed individually during assembly. They're not—the balls are permanently attached to the chip package during manufacturing (by the chip vendor), and they stay there during shipping and storage. When you buy a BGA chip, it comes with balls already in place. During [[quick-context/pcb-assembly-files-bom-cpl|PCB]] assembly, you just add solder paste to the board, place the component, and reflow. The existing balls melt and merge with the paste to form the final joint. The balls are pre-attached to the package, not to the board.
 
 </details>
 
@@ -227,7 +227,7 @@ X-RAY VIEW: What Inspectors See
 
 - **Thermal Management** — BGA packages often include thermal balls (larger balls for heat transfer) or exposed metal pads on top; understanding heat flow explains many BGA design decisions.
 
-- **Signal Integrity** — At high frequencies, the path from die through BGA ball to PCB trace matters; shorter connections (one advantage of BGA) mean less signal degradation.
+- **Signal Integrity** — At high frequencies, the path from die through BGA ball to [[quick-context/pcb-layers|PCB]] trace matters; shorter connections (one advantage of BGA) mean less signal degradation.
 
 - **Lead-Free Solder (RoHS)** — Modern BGAs use lead-free alloys (typically SAC305: tin-silver-copper) which melt at higher temperatures than traditional lead solder, affecting reflow profiles and reliability.
 
@@ -263,7 +263,7 @@ This is incorrect for two reasons: (1) You can't see the joints underneath to id
 **Q5:** Given that BGA balls are pre-attached to chip packages by the manufacturer, what would happen if a circuit board assembler ran the reflow oven at too low a temperature?
 <details>
 <summary>Answer</summary>
-If the reflow temperature is too low, the solder paste on the PCB pads would melt (paste has flux that lowers melting point initially), but the pre-attached BGA balls might not fully melt or might only partially soften. This creates "head-in-pillow" defects where the ball and paste don't properly merge—they touch but don't form a true metallurgical bond. The joint looks okay from outside but fails under mechanical stress or thermal cycling. This connects to The Key Tension—such defects are invisible without X-ray and explain why temperature profile control during reflow is critical. See: The Reflow Process diagram and X-Ray View
+If the reflow temperature is too low, the solder paste on the [[quick-context/pcb-printed-circuit-board|PCB]] pads would melt (paste has flux that lowers melting point initially), but the pre-attached BGA balls might not fully melt or might only partially soften. This creates "head-in-pillow" defects where the ball and paste don't properly merge—they touch but don't form a true metallurgical bond. The joint looks okay from outside but fails under mechanical stress or thermal cycling. This connects to The Key Tension—such defects are invisible without X-ray and explain why temperature profile control during reflow is critical. See: The Reflow Process diagram and X-Ray View
 </details>
 
 </details>

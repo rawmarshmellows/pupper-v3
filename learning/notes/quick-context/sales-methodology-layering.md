@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Sales Methodology Layering
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]]
 
 > **TL;DR:** No single sales methodology covers the entire account management lifecycle—the most effective organizations layer three types: a qualification framework (deal viability), a selling methodology (how to engage), and an account planning framework (long-term strategy), combining strengths while avoiding redundancy.
 
@@ -264,7 +264,7 @@ Time: 20 minutes
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** Why can't MEDDPICC alone replace the need for other methodologies?
+**Q1:** Why [[micro-context/can-bus-termination|can]]'t MEDDPICC alone replace the need for other methodologies?
 <details>
 <summary>Answer</summary>
 MEDDPICC qualifies deals but doesn't teach you how to sell or how to manage accounts strategically. It tells you whether a deal is real, not what to say in meetings (Challenger's role) or how to develop the account over years (LAMP's role). It's Layer 2 without Layers 1 and 3.

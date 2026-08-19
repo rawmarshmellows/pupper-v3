@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/melt-index]] | [[quick-context/covalent-bonds]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -131,7 +131,7 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 
@@ -146,7 +146,7 @@ Calibration zeroes out all three sources at once.
 
 A freshly extruded bead is above the polymer's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature (Tg)]] — chains are mobile and the bead deforms under the next layer's weight. The fan must drag the bead below Tg before that next layer arrives, otherwise overhangs droop and bridges sag.
 
-But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|semi-crystalline polymers]] (PA, PP, PE) prevents proper crystal formation and reduces interlayer adhesion — the chains "freeze" before they can tangle across the layer boundary. This is why:
+But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|semi-crystalline polymers]] (PA, PP, PE) prevents proper crystal formation and reduces interlayer adhesion — the chains "freeze" before they [[micro-context/can-bus-termination|can]] tangle across the layer boundary. This is why:
 - **PLA** (mostly amorphous): blast it with 100% fan — overhangs love it, layer adhesion fine.
 - **PETG** (slow-crystallizing): 30–50% fan — full fan weakens layers.
 - **ABS / PA**: minimal fan — needs slow cooling for crystallinity and warp control. **Enclose the chamber.** This is exactly what the P2S Adaptive Airflow seals shut for engineering filaments.
@@ -157,7 +157,7 @@ Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **inter
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.
-- Print fast → less time above Tg → less interdiffusion → can be peeled apart.
+- Print fast → less time above Tg → less interdiffusion → [[micro-context/can-bus-transceiver|can]] be peeled apart.
 - Enclosed chamber keeps lower layers warmer → better interdiffusion → stronger parts.
 
 ### 6. Why outer-wall speed/accel matters — mechanical resonance, not chemistry
@@ -182,7 +182,7 @@ NOZZLE WEAR (mechanical)             →  hardened steel for CF/GF filaments
 <details>
 <summary><strong>The Key Tension</strong> — Speed vs. surface, and stock vs. custom profiles</summary>
 
-**Tension 1: Speed vs. surface finish.** P2S can hit 600 mm/s, but visible quality lives below 80 mm/s on outer walls. The trick is asymmetric: slow the outer perimeter, run everything else fast. You pay maybe 10–15% time for huge quality gains.
+**Tension 1: Speed vs. surface finish.** P2S [[quick-context/can-bus|can]] hit 600 mm/s, but visible quality lives below 80 mm/s on outer walls. The trick is asymmetric: slow the outer perimeter, run everything else fast. You pay maybe 10–15% time for huge quality gains.
 
 **Tension 2: Stock RFID profile vs. custom calibrated profile.** Bambu RFID auto-loads a generic profile per filament SKU. It's fine. A *calibrated* profile (your specific spool, your specific environment) is better. Real maker workflow: clone the stock profile, run K-value + flow rate calibrations once per spool batch, save as "Bambu PLA Matte — Spool 47."
 

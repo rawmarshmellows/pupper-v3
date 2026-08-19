@@ -3,7 +3,7 @@ topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
+> **Related:** [[micro-context/plc-programmable-logic-controller]] | [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]] | [[quick-context/ros2-architecture]] | [[micro-context/can-bus-termination]]
 
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 
@@ -11,7 +11,7 @@ created: 2026-01-17
 
 ## The Core Problem
 
-These five failure modes—deadlock, race conditions, cascade failures, unrecoverable states, and integration drift—are fundamentally **coordination failures in distributed real-time systems**. Unlike software distributed systems where you can retry, buffer, or eventually converge, a robot cell operates in physical space with millisecond timing constraints and thousand-pound machines that can't "roll back."
+These five failure modes—deadlock, race conditions, cascade failures, unrecoverable states, and integration drift—are fundamentally **coordination failures in distributed real-time systems**. Unlike software distributed systems where you [[micro-context/can-bus-termination|can]] retry, buffer, or eventually converge, a robot cell operates in physical space with millisecond timing constraints and thousand-pound machines that [[micro-context/can-bus-transceiver|can]]'t "roll back."
 
 The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get OEE (Overall Equipment Effectiveness) numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
 
@@ -49,7 +49,7 @@ CASE RobotHandshake OF
 END_CASE
 ```
 
-The pattern: one side (typically the PLC) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
+The pattern: one side (typically the [[micro-context/plc-programmable-logic-controller|PLC]]) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for [[quick-context/plc-vs-software|PLC]] signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
 
 **Race Conditions: Two-phase handshake with explicit acknowledgment**
 
@@ -63,7 +63,7 @@ Wait Sw(plcAcknowledge) = Off, 3     ' Wait for PLC to complete handshake
 Call ExecuteMotion
 ```
 
-This is the automation equivalent of TCP's three-way handshake. The conveyor can't start until the PLC sees `robotReady` drop, which can't happen until the robot sees `plcAcknowledge`, which can't happen until the PLC sees `robotReady` rise. The ordering is enforced by the protocol, not by hoping timing works out.
+This is the automation equivalent of TCP's three-way handshake. The conveyor [[quick-context/can-bus|can]]'t start until the PLC sees `robotReady` drop, which can't happen until the robot sees `plcAcknowledge`, which can't happen until the PLC sees `robotReady` rise. The ordering is enforced by the protocol, not by hoping timing works out.
 
 **Cascade Failures: Debounce + fault counters before action**
 
@@ -157,7 +157,7 @@ The architectural patterns exist on a spectrum, and knowing where your applicati
 
 ## ROS2 Approaches to These Failure Modes
 
-ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
+[[quick-context/ros2-architecture|ROS2]] brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
 
 **Deadlock: DDS QoS Liveliness + Deadline Policies**
 

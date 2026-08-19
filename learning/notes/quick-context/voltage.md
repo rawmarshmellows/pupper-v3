@@ -5,7 +5,7 @@ created: 2026-02-13
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[quick-context/resistor]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/can-bus]] | [[quick-context/electromagnetism]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -17,7 +17,7 @@ You have a battery, and you want current to flow through a wire to do useful wor
 
 | Term | Definition |
 |------|------------|
-| **Volt (V)** | The unit of voltage. 1 volt = 1 joule of energy per coulomb of charge. A AA battery: 1.5V. USB: 5V. Wall outlet (US): 120V. Car battery: 12V. |
+| **Volt (V)** | The unit of voltage. 1 volt = 1 joule of energy per [[micro-context/coulomb-history|coulomb]] of charge. A AA battery: 1.5V. [[quick-context/usb-peripheral-hardware|USB]]: 5V. Wall outlet (US): 120V. Car battery: 12V. |
 | **Electric Field (E)** | A vector field that exerts force on electric charges. Measured in volts per meter (V/m). The field is what actually pushes electrons. |
 | **Potential Difference** | Another name for voltage—the difference in electric potential energy per unit charge between two points. |
 | **Ground/Reference** | Voltage is always relative. "Ground" is the arbitrary 0V reference point. A "9V" battery means 9V *higher than* the negative terminal. |
@@ -186,14 +186,14 @@ A subtle but important distinction: voltage tells you the *total* potential diff
 
 | Scenario | Voltage | Field Strength | Effect |
 |----------|---------|----------------|--------|
-| 1V across 1mm gap | 1V | 1000 V/m | Strong field, can cause sparks |
+| 1V across 1mm gap | 1V | 1000 V/m | Strong field, [[micro-context/can-bus-termination|can]] cause sparks |
 | 1V across 1m wire | 1V | 1 V/m | Weak field, gentle current flow |
 | 10000V across 10km power line | 10kV | 1 V/m | Same weak field as above |
 
 This is why:
 - **Spark plugs** work: modest voltage (20-40kV) across tiny gap = extreme field = ionizes air
 - **Power transmission** uses high voltage: same power with less current (P = IV), reducing I²R losses
-- **Capacitors** can fail: thin dielectric + high voltage = field exceeds breakdown strength
+- **Capacitors** [[micro-context/can-bus-transceiver|can]] fail: thin dielectric + high voltage = field exceeds breakdown strength
 
 The practitioner tension: high voltage is efficient for power transmission but dangerous for safety. Field strength (V/m) determines breakdown and safety, while voltage (V) determines energy delivery.
 
@@ -280,7 +280,7 @@ THE FIELD-CURRENT RELATIONSHIP:
     └─────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking voltage is an independent "force" that exists on its own. Voltage is a *consequence* of the electric field configuration, not the cause. The battery's chemical reactions create charge separation, which creates the electric field, which is what actually pushes electrons. Voltage is our way of quantifying the total work that field does between two points. This matters because it explains why the same voltage can have very different effects depending on distance (and thus field strength): 1000V across a 1km power line is safe to work near, but 1000V across a 1mm air gap will create an arc.
+**The one thing most outsiders get wrong about this is...** thinking voltage is an independent "force" that exists on its own. Voltage is a *consequence* of the electric field configuration, not the cause. The battery's chemical reactions create charge separation, which creates the electric field, which is what actually pushes electrons. Voltage is our way of quantifying the total work that field does between two points. This matters because it explains why the same voltage [[quick-context/can-bus|can]] have very different effects depending on distance (and thus field strength): 1000V across a 1km power line is safe to work near, but 1000V across a 1mm air gap will create an arc.
 
 </details>
 
@@ -301,7 +301,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an [[quick-context/inductor|inductor]] creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 
