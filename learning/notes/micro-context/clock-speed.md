@@ -3,17 +3,18 @@ term: Clock Speed
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/ceramic-resonator]]
 
 # Clock Speed
 
 > **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
+**Definition:** The [[learning/notes/quick-context/frequency-and-filtering|frequency]] at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
 
 ## How It Works
 
 - An oscillator circuit generates a continuous square wave at the rated frequency (e.g., 3 GHz = 3 billion toggles/sec).
-- Each rising edge triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
+- Each rising edge triggers the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]]'s pipeline to advance one step — fetch, decode, or execute an instruction.
 - Faster clocks mean less time between edges, so signals must propagate and settle through all logic gates within a shrinking window.
 
 ```

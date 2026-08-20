@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 > **TL;DR:** Different 3D printing filaments (PLA, PETG, ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
 
@@ -27,7 +27,7 @@ updated: 2026-01-21
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Filament printing is fundamentally a controlled melting and re-solidification process. Solid plastic enters the hotend as a rigid rod, gets heated past its [[quick-context/glass-transition-temperature|glass transition temperature]] (Tg) where the polymer chains gain enough energy to slide past each other, and exits the nozzle as a viscous fluid that immediately begins cooling. The cooling rate and ambient temperature determine how the material re-solidifies—too fast and you get internal stresses (warping), too slow and the part sags before setting. Each filament type has different molecular structures that dictate how much energy is needed to achieve flow and how the material behaves during cooling.
+Filament printing is fundamentally a controlled melting and re-solidification process. Solid plastic enters the hotend as a rigid rod, gets heated past its [[quick-context/glass-transition-temperature|glass transition temperature]] (Tg) where the [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains gain enough energy to slide past each other, and exits the nozzle as a viscous fluid that immediately begins cooling. The cooling rate and ambient temperature determine how the material re-solidifies—too fast and you get internal stresses (warping), too slow and the part sags before setting. Each filament type has different molecular structures that dictate how much energy is needed to achieve flow and how the material behaves during cooling.
 
 The key to understanding filament differences lies in their polymer chain architecture and intermolecular forces. PLA has short, relatively simple chains with weak intermolecular attractions—easy to melt, quick to solidify, minimal shrinkage. ABS contains aromatic styrene rings that engage in [[quick-context/pi-pi-stacking-aromatic-interactions|pi-pi stacking]], creating stronger inter-chain attractions that require more heat to overcome and cause significant shrinkage when those attractions reform during cooling. PETG has a balance of chain flexibility and polar groups that make it sticky when molten (hence stringing) but dimensionally stable. TPU's elasticity comes from alternating hard and soft polymer segments—the soft segments stay flexible while hard segments provide structure.
 
@@ -146,7 +146,7 @@ Related concepts that deepen understanding of filament types:
 **Q1:** You need to print a bracket that will be mounted inside a car dashboard in summer. Which filament should you use and why?
 <details>
 <summary>Answer</summary>
-ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
+ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
 </details>
 
 **Q2:** Your PETG prints have thin wisps of plastic connecting different parts of the model. What's happening and how do you fix it?

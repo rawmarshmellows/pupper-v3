@@ -3,6 +3,7 @@ term: Clock Edge
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/ceramic-resonator]]
 
 # Clock Edge
 
@@ -12,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A clock oscillator generates a continuous square wave alternating between high and low voltage levels.
+- A clock oscillator generates a continuous square wave alternating between high and low [[learning/notes/quick-context/voltage|voltage]] levels.
 - On each transition (rising or falling edge), flip-flops and registers capture ("latch") their input signals.
 - Between edges, combinational logic computes new values that propagate and settle before the next edge arrives.
 - This edge-triggered discipline ensures all components read consistent, stable data simultaneously.

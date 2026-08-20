@@ -6,7 +6,7 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -32,7 +32,7 @@ The sim-to-real gap is the central challenge. A policy that works perfectly in M
 | **Sim-to-Real Transfer** | Deploying a policy trained entirely in simulation to a physical robot. Bridged by domain randomization (varying sim physics) and careful config matching (`config.yaml` gains, timing). |
 | **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides fast, differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
 | **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from BNO086 IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
-| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the STM32 tracks these targets at the full 520 Hz update rate. |
+| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the [[learning/notes/micro-context/stm32-microcontroller|STM32]] tracks these targets at the full 520 Hz update rate. |
 
 <details>
 <summary><strong>How It Works</strong> — RL policy deployment pipeline</summary>
@@ -58,7 +58,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How [[learning/notes/quick-context/ppo-proximal-policy-optimization|PPO]] uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)
@@ -275,7 +275,7 @@ The robot has been walking for about 1 second (after the 2.0s init + 2.0s fade-i
 
 ### Step 1: Sensor Read (tick 163 of the 520 Hz loop)
 
-The controller reads from the ROS2 hardware interface:
+The controller reads from the [[learning/notes/quick-context/ros2-architecture|ROS2]] hardware interface:
 
 ```
 IMU (BNO086 via I2C):
@@ -322,7 +322,7 @@ The $K_p = 7.5$ and $K_d = 0.25$ gains (from `init_kps` and `init_kds` in config
 
 ### Step 5: Motor Execution
 
-The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN bus (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
+The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ [[learning/notes/quick-context/can-bus|CAN bus]] (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
 
 ```
 ONE FULL INFERENCE CYCLE (out of ~52 per second)
@@ -352,7 +352,7 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
            ~19.2ms between NN inferences
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing jitter on the Raspberry Pi.
+**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing jitter on the [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]].
 
 </details>
 
@@ -428,7 +428,7 @@ Lab 5 uses MuJoCo, which is excellent for accuracy but runs environments sequent
 
 | Aspect | MuJoCo (Lab 5) | Isaac Lab (Industry) |
 |--------|----------------|---------------------|
-| Parallelism | Tens of envs (CPU) or hundreds (MJX/GPU) | 4,096-8,192 parallel envs (GPU) |
+| Parallelism | Tens of envs ([[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]]) or hundreds (MJX/GPU) | 4,096-8,192 parallel envs (GPU) |
 | Throughput | ~10K steps/sec | ~90K frames/sec (RTX A6000) |
 | Training time | Hours to days | Minutes to hours |
 | Tensor pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |

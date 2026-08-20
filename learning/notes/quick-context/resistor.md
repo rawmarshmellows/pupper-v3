@@ -3,7 +3,7 @@ topic: Resistor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
 
 > **TL;DR:** A resistor opposes the flow of [[quick-context/electric-current|electric current]], converting electrical energy into heat according to Ohm's law (V = IR)—it's the simplest and most ubiquitous electronic component, used to limit current, divide voltages, set bias points, and terminate signals in virtually every circuit ever built.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Controlling How Much Current Flows
 
-Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more voltage it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
+Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more [[learning/notes/quick-context/voltage|voltage]] it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
 
 ## 5 Essential Terms
 
@@ -167,7 +167,7 @@ Values like 4.7kΩ and 2.2kΩ come from the E12/E24 series—logarithmically spa
 
 ## Pull-Up Resistors: Making Digital Signals Reliable
 
-Every I2C bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
+Every [[learning/notes/micro-context/i2c|I2C]] bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
 
 ```
 THE PROBLEM: FLOATING INPUTS
@@ -211,9 +211,9 @@ I2C BUS PULL-UPS
 
 - **[[quick-context/voltage-current-causality]]** — V = IR is a *constraint*, not a causal arrow. Whether voltage causes current or current causes voltage depends on what's driving the circuit (voltage source vs. current source).
 
-- **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and frequency response.
+- **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and [[learning/notes/quick-context/frequency-and-filtering|frequency]] response.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern transistor power delivery.
+- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern [[learning/notes/quick-context/transistor|transistor]] power delivery.
 
 - **[[quick-context/transistor]]** — Resistors set bias points for transistors, limit base/gate current, and form loads in amplifier circuits.
 

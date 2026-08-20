@@ -253,7 +253,7 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
+- **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] of corresponding point sets
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the absolute orientation problem
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
@@ -262,7 +262,7 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 - **Condition number** -- $\kappa(A) = \sigma_1 / \sigma_r$, the ratio of largest to smallest singular value; measures how sensitive $Ax = b$ is to perturbations
 - **Eckart-Young-Mirsky theorem** -- Proves that the truncated SVD gives the optimal low-rank matrix approximation in both Frobenius and spectral norms
 - **Moore-Penrose pseudoinverse** -- Computed via SVD as $A^+ = V\Sigma^+ U^T$; generalizes matrix inversion to non-square and rank-deficient matrices
-- **Procrustes analysis** -- The statistical version of the absolute orientation problem; SVD provides the optimal orthogonal transformation between shape configurations
+- **Procrustes analysis** -- The statistical version of the [[learning/notes/quick-context/absolute-orientation|absolute orientation]] problem; SVD provides the optimal orthogonal transformation between shape configurations
 
 </details>
 
@@ -284,7 +284,7 @@ Eigendecomposition requires a square matrix (it solves $A\mathbf{v} = \lambda\ma
 **Q3:** In the Kabsch algorithm, you compute $R = VU^T$ from the SVD of the cross-covariance matrix $H$. Why do you multiply $V$ and $U^T$ rather than, say, $UV^T$ or some other combination?
 <details>
 <summary>Answer</summary>
-The SVD gives $H = U\Sigma V^T$. The matrix $H$ encodes the correlation between source and target coordinates. The optimal rotation must map the principal directions of the source (captured by $V$) to the principal directions of the target (captured by $U$). Since $VU^T = V(U^T)$ composes "rotate from standard axes to source directions" with "rotate from target directions to standard axes," the product $VU^T$ is the rotation from source to target. The alternative $UV^T$ would give the transpose (inverse) rotation. The $\Sigma$ is discarded because it only encodes stretching magnitudes, not direction. See: How It Works, SVD in the Helmert Transform context.
+The SVD gives $H = U\Sigma V^T$. The matrix $H$ encodes the correlation between source and target coordinates. The optimal rotation must map the principal directions of the source (captured by $V$) to the principal directions of the target (captured by $U$). Since $VU^T = V(U^T)$ composes "rotate from standard axes to source directions" with "rotate from target directions to standard axes," the product $VU^T$ is the rotation from source to target. The alternative $UV^T$ would give the transpose (inverse) rotation. The $\Sigma$ is discarded because it only encodes stretching magnitudes, not direction. See: How It Works, SVD in the [[learning/notes/quick-context/helmert-transform|Helmert Transform]] context.
 </details>
 
 **Q4:** You compute $R = VU^T$ and get $\det(R) = -1$. Someone suggests "just negate $R$." Why is this wrong, and what is the correct fix?
@@ -296,7 +296,7 @@ Negating $R$ gives $\det(-R) = (-1)^3 \det(R) = -1 \cdot (-1) = +1$ in 3D, so th
 **Q5:** A colleague is compressing a $1000 \times 1000$ image matrix using truncated SVD with rank $k = 50$. They claim this stores $50 \times 1000 + 50 + 50 \times 1000 = 100{,}050$ numbers instead of $1{,}000{,}000$. Is this correct? When would truncated SVD be a *poor* choice for compression compared to other methods?
 <details>
 <summary>Answer</summary>
-The storage count is correct: you store $U_k$ ($1000 \times 50$), $\sigma_1 \dots \sigma_{50}$ (50 values), and $V_k$ ($1000 \times 50$), totaling $100{,}050$ numbers -- roughly 10x compression. However, truncated SVD is a poor choice when: (1) the singular values decay slowly (all are similar magnitude), meaning you can't discard many without significant error -- this happens with high-frequency or noisy images; (2) the data has local structure that block-based methods (like JPEG's DCT) exploit better; (3) the matrix is sparse, where sparse storage formats beat SVD; (4) you need to compress/decompress quickly, since SVD computation itself costs $O(mn \cdot k)$ which is far more expensive than transform-coding methods. SVD gives the mathematically optimal rank-$k$ approximation (Eckart-Young theorem), but "optimal in Frobenius norm" doesn't always mean "best perceptual quality." See: The Key Tension, truncated SVD and Eckart-Young-Mirsky theorem.
+The storage count is correct: you store $U_k$ ($1000 \times 50$), $\sigma_1 \dots \sigma_{50}$ (50 values), and $V_k$ ($1000 \times 50$), totaling $100{,}050$ numbers -- roughly 10x compression. However, truncated SVD is a poor choice when: (1) the singular values decay slowly (all are similar magnitude), meaning you can't discard many without significant error -- this happens with high-[[learning/notes/quick-context/frequency-and-filtering|frequency]] or noisy images; (2) the data has local structure that block-based methods (like JPEG's DCT) exploit better; (3) the matrix is sparse, where sparse storage formats beat SVD; (4) you need to compress/decompress quickly, since SVD computation itself costs $O(mn \cdot k)$ which is far more expensive than transform-coding methods. SVD gives the mathematically optimal rank-$k$ approximation (Eckart-Young theorem), but "optimal in Frobenius norm" doesn't always mean "best perceptual quality." See: The Key Tension, truncated SVD and Eckart-Young-Mirsky theorem.
 </details>
 
 </details>

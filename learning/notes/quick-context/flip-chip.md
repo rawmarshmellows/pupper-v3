@@ -3,9 +3,9 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
 
-> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
+> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional [[learning/notes/quick-context/wire-bonding|wire bonding]].
 
 # Flip-Chip (C4) Packaging
 
@@ -223,7 +223,7 @@ Here's what each layer does:
 |-------|------|---------|
 | Heat spreader | ~40mm x 40mm | Spreads concentrated heat from die across larger area for heatsink contact |
 | Thermal Interface Material | ~50 μm thick | Conducts heat from die to heat spreader (fills microscopic air gaps) |
-| Silicon die | ~10-15mm per side | The actual processor with billions of transistors |
+| [[learning/notes/quick-context/silicon-die|Silicon die]] | ~10-15mm per side | The actual processor with billions of transistors |
 | Solder bumps | ~100 μm diameter, ~100 μm pitch | Electrical/mechanical connection between die and substrate |
 | Underfill | Fills ~50 μm gap | Epoxy that prevents bump cracking from thermal stress |
 | Substrate | ~1.5mm thick, ~40mm square | Routes signals from dense die pitch to sparse BGA pitch |

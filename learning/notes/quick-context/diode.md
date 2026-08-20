@@ -4,9 +4,9 @@ created: 2026-02-06
 updated: 2026-02-25
 ---
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/micro-context/mosfet]]
 
-> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, voltage protection, and light emission (LEDs).
+> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, [[learning/notes/quick-context/voltage|voltage]] protection, and light emission (LEDs).
 
 # Diode
 
@@ -215,17 +215,17 @@ BRIDGE RECTIFIER CIRCUIT
 
 - **[[quick-context/doped-silicon]]** — The PN junction that makes diodes work is created by doping silicon with different impurities on each side. Understanding N-type and P-type silicon explains why diodes conduct in only one direction.
 
-- **[[quick-context/transistor]]** — A MOSFET contains a built-in "body diode." A BJT is essentially two PN junctions. Understanding diodes is prerequisite to understanding transistors.
+- **[[quick-context/transistor]]** — A [[learning/notes/micro-context/mosfet|MOSFET]] contains a built-in "body diode." A BJT is essentially two PN junctions. Understanding diodes is prerequisite to understanding transistors.
 
 - **[[quick-context/electric-current]]** — Diodes control current direction. The forward voltage drop means diodes always consume some power (P = Vf × I).
 
 - **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/reverse bias, half-wave vs full-bridge rectification, smoothing capacitors, and the complete conversion chain inside every power supply.
 
-- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on capacitance, load current, and frequency.
+- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on [[learning/notes/quick-context/capacitance|capacitance]], load current, and frequency.
 
-- **[[quick-context/resistor]]** — LEDs always need a current-limiting resistor (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
+- **[[quick-context/resistor]]** — LEDs always need a current-limiting [[learning/notes/quick-context/resistor|resistor]] (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
 
-- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every buck converter needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
+- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every [[learning/notes/micro-context/buck-converter|buck converter]] needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
 
 </details>
 
@@ -256,10 +256,10 @@ BRIDGE RECTIFIER CIRCUIT
 **In a rectifier, the load itself limits the current.** The load resistance determines how much current flows. An LED has very low dynamic resistance once conducting—without an external resistor, the current is limited only by the source's ability to deliver it, which is usually far more than the 20 mA an LED can handle. The resistor acts as the current-controlling element: R = (Vsupply - Vf_LED) / I_desired.
 </details>
 
-**Q5:** In a [[micro-context/buck-converter|buck converter]], the MOSFET turns off and the inductor's current must keep flowing. Why does the freewheeling diode conduct, and what would happen without it?
+**Q5:** In a [[micro-context/buck-converter|buck converter]], the MOSFET turns off and the [[learning/notes/quick-context/inductor|inductor]]'s current must keep flowing. Why does the freewheeling diode conduct, and what would happen without it?
 <details>
 <summary>Answer</summary>
-**The inductor's collapsing magnetic field pulls the switch node voltage below GND.** An [[quick-context/inductor|inductor]] resists changes in current ([[quick-context/self-induction|self-induction]]) — when the MOSFET opens, the inductor generates whatever voltage is needed to keep current flowing. The switch node drops below GND by ~0.7V, forward-biasing the diode (cathode at the switch node is now more negative than the anode at GND). Current flows: GND → anode → cathode → inductor → load → GND. Without the diode, the inductor's voltage spike would have no safe path — the switch node voltage would shoot to hundreds of volts, destroying the MOSFET. The freewheeling diode is there to protect the circuit by absorbing the inductor's stored energy.
+**The inductor's collapsing magnetic field pulls the switch node voltage below GND.** An [[quick-context/inductor|inductor]] resists changes in current ([[quick-context/self-induction|self-induction]]) — when the MOSFET opens, the inductor generates whatever voltage is needed to keep current flowing. The switch node drops below GND by ~0.7V, forward-biasing the diode ([[learning/notes/micro-context/cathode|cathode]] at the switch node is now more negative than the anode at GND). Current flows: GND → anode → cathode → inductor → load → GND. Without the diode, the inductor's voltage spike would have no safe path — the switch node voltage would shoot to hundreds of volts, destroying the MOSFET. The freewheeling diode is there to protect the circuit by absorbing the inductor's stored energy.
 </details>
 
 </details>

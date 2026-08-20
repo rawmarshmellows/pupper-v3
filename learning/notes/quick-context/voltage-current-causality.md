@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/voltage]]
 
 > **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, transistor bias analysis, [[learning/notes/quick-context/inductor|inductor]] back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -324,7 +324,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A 9V battery is connected to a 100$\Omega$ resistor. Does the voltage "cause" the current?
+**Q1:** A 9V battery is connected to a 100$\Omega$ [[learning/notes/quick-context/resistor|resistor]]. Does the voltage "cause" the current?
 <details>
 <summary>Answer</summary>
 **It depends on what you mean by "cause."** At the circuit level, the battery fixes the voltage at 9V, and current results (I = 9V/100$\Omega$ = 90 mA). In that sense, voltage is the constraint and current is the response---so yes, "V causes I" is a useful description. But at the physics level, the battery's chemical reactions create an electric field, and both the voltage (integral of the field) and the current (field pushing electrons) are consequences of that field. Neither truly "causes" the other. See: How It Works (Scenario 1).
@@ -336,7 +336,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
 </details>
 
-**Q3:** In an AC circuit with a capacitor, current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
+**Q3:** In an AC circuit with a [[learning/notes/quick-context/capacitor|capacitor]], current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
 <details>
 <summary>Answer</summary>
 **No---phase lead doesn't mean temporal causation.** The 90-degree phase shift is a steady-state relationship: both the voltage and current sinusoids have existed "forever" in the AC analysis. The relationship $I = C \times dV/dt$ means current is proportional to the *rate of change* of voltage. When voltage is changing fastest (zero crossing), current is at its peak. When voltage is at its peak (not changing), current is zero. This is a constraint, not a causal sequence. If forced to pick a "cause," the AC source driving the circuit is the cause of both. See: [[quick-context/impedance-and-reactance]].
@@ -348,7 +348,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Equation arrangement doesn't imply causation.** You can equally write I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
 </details>
 
-**Q5:** A piezoelectric sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
+**Q5:** A [[learning/notes/micro-context/piezoelectric-effect|piezoelectric]] sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
 <details>
 <summary>Answer</summary>
 **They demonstrate that neither voltage nor current is always the root cause---other physical phenomena are.** A piezoelectric crystal converts mechanical stress into charge separation (and thus voltage). A thermocouple converts thermal energy into voltage via the Seebeck effect. In both cases, the "cause" is something entirely outside the V-I framework: force and heat respectively. This reinforces the field-centric view: various energy sources create electric fields through different mechanisms. Voltage and current are both *downstream consequences* of those fields. The real question is always "what creates the field?"---and the answer varies: chemistry (batteries), magnetism (generators), mechanical stress (piezo), heat (thermocouples), light (photovoltaics).

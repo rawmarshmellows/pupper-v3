@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/glass-transition-temperature]]
 
 > **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
 
@@ -27,7 +27,7 @@ updated: 2026-01-21
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Tensile strength emerges from the atomic-level bonds holding a material together. When you pull on a material, you're trying to separate atoms from each other. At low forces, atoms stretch apart slightly but spring back—this is elastic deformation. As force increases, you reach the yield point where atoms permanently slip past each other (in metals) or polymer chains begin to disentangle and slide. Push further, and you reach ultimate tensile strength—the maximum stress before bonds start breaking catastrophically and a crack propagates through the material. The failure mode depends on material structure: brittle materials (glass, ceramics, PLA) crack suddenly once any bond breaks because the crack concentrates stress at its tip; ductile materials (steel, nylon, PETG) "neck" and stretch as bonds break gradually, redistributing stress.
+Tensile strength emerges from the atomic-level bonds holding a material together. When you pull on a material, you're trying to separate atoms from each other. At low forces, atoms stretch apart slightly but spring back—this is elastic deformation. As force increases, you reach the yield point where atoms permanently slip past each other (in metals) or [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains begin to disentangle and slide. Push further, and you reach ultimate tensile strength—the maximum stress before bonds start breaking catastrophically and a crack propagates through the material. The failure mode depends on material structure: brittle materials (glass, ceramics, PLA) crack suddenly once any bond breaks because the crack concentrates stress at its tip; ductile materials (steel, nylon, PETG) "neck" and stretch as bonds break gradually, redistributing stress.
 
 The measurement process itself reveals what the numbers mean. A standardized dog-bone specimen is gripped at both ends and pulled at constant rate while sensors record force and elongation. Stress (MPa) = Force / Cross-sectional Area. The stress-strain curve that results tells the full story: the slope is Young's modulus (stiffness), the bend is yield strength, the peak is ultimate tensile strength, and the endpoint is fracture. For 3D printed parts, this curve looks different than injection-molded samples because layer boundaries create weak points—the material between layers fails before the polymer chains themselves break.
 

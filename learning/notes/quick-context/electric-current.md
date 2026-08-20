@@ -3,13 +3,13 @@ topic: Electric Current
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]]
 
 > **TL;DR:** Electric current is the flow of electric charge (electrons moving through a conductor) that carries energy from source to destination, and in electrochemistry, current directly determines reaction rate through Faraday's law (Q = I x t)—double the current means double the product.
 
 ## The Core Problem
 
-Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no electrolysis, no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
+Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no [[learning/notes/quick-context/electrolysis|electrolysis]], no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
 
 ## 5 Essential Terms
 
@@ -204,7 +204,7 @@ The central tradeoff practitioners navigate is between **high current for fast r
 
 1. **Heat generation**: Current flowing through resistance produces heat (P = I²R). Double the current, quadruple the heat. This wastes energy and can melt wires or damage components.
 2. **Larger conductors**: High current requires thicker wires to avoid overheating—copper for house wiring, massive aluminum busbars in industrial facilities.
-3. **Safety hazards**: While voltage is what causes shock, current is what kills. Just 0.1 amperes (100 milliamps) through the heart can be fatal.
+3. **Safety hazards**: While [[learning/notes/quick-context/voltage|voltage]] is what causes shock, current is what kills. Just 0.1 amperes (100 milliamps) through the heart can be fatal.
 
 In electrolysis specifically, pushing more current increases "overpotential" losses—you need extra voltage to maintain high current flow, which wastes energy as heat. Industrial plants optimize by finding the current density (amps per square centimeter of electrode) that balances production speed against energy efficiency.
 
@@ -340,17 +340,17 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Ohm's Law (V = I x R)** — The fundamental relationship connecting voltage, current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
 
-- **Electrical Power (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
+- **[[learning/notes/quick-context/power-watts-joules|Electrical Power]] (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
 
 - **Conductivity and Electrolytes** — Why some materials allow current to flow (conductors, ionic solutions) while others don't (insulators). Pure water has almost no conductivity, which is why electrolysis requires added [[quick-context/making-electrolytes|electrolyte]].
 
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
-- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+- **[[quick-context/electricity-generation]]** — [[learning/notes/quick-context/electricity-generation|How electricity is created]] in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
+- **[[quick-context/coil-magnetic-field]]** — [[learning/notes/quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]]. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
 
-- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged subatomic particles that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
+- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged [[learning/notes/quick-context/subatomic-particles|subatomic particles]] that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
 
 - **[[small-context/permanent-magnet-creation]]** — Magnetizers use high current through a coil to create strong magnetic fields that align domains in iron. The field strength scales with current: more amps = stronger field = more domain alignment force.
 
@@ -362,7 +362,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q1:** You're running electrolysis at 5 amperes and producing hydrogen gas. If you increase to 15 amperes (keeping everything else the same), how does your hydrogen production rate change?
 <details>
 <summary>Answer</summary>
-**Production rate triples.** From Q = I x t, if you triple the current while keeping time constant, you triple the charge passed, which triples the moles of electrons delivered to the cathode, which triples the hydrogen produced. This linear relationship between current and production rate is the practical power of Faraday's laws. See: Concrete Example (the "What if we double the current?" section)
+**Production rate triples.** From Q = I x t, if you triple the current while keeping time constant, you triple the charge passed, which triples the moles of electrons delivered to the [[learning/notes/micro-context/cathode|cathode]], which triples the hydrogen produced. This linear relationship between current and production rate is the practical power of Faraday's laws. See: Concrete Example (the "What if we double the current?" section)
 </details>
 
 **Q2:** A battery is rated at 12 volts. Does this tell you how much current it can supply?
@@ -374,7 +374,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q3:** Why does electrolysis specifically require DC (direct current) rather than AC (alternating current)?
 <details>
 <summary>Answer</summary>
-**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons (oxidation). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
+**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons ([[learning/notes/micro-context/oxidation|oxidation]]). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
 </details>
 
 **Q4:** Two electrolysis cells are connected in series (current passes through both). Cell A has electrode area of 10 cm², Cell B has electrode area of 100 cm². Which cell produces more product?

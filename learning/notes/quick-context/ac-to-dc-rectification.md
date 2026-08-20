@@ -5,13 +5,13 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady [[learning/notes/quick-context/voltage|voltage]].
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[learning/notes/quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
@@ -19,9 +19,9 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 |------|------------|
 | **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
+| **[[learning/notes/micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[learning/notes/quick-context/capacitance|capacitance]], load current, and rectification [[learning/notes/quick-context/frequency-and-filtering|frequency]] (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -126,7 +126,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[learning/notes/quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):
@@ -152,7 +152,7 @@ The RC time constant (R_load x C) determines how much ripple remains. Bigger cap
 | **Full-bridge** | 4 | Uses both halves, less ripple, smaller cap | 1.4V total drop (2 diodes always in series), more components |
 | **Synchronous rectification** | 0 (MOSFETs) | Lowest loss (~50mV drop), highest efficiency | Complex gate drive, expensive, used in modern switch-mode supplies |
 
-The 1.4V drop matters most at low voltages. Rectifying 120V AC? The 1.4V is negligible (1.2%). Rectifying 5V AC for USB? That 1.4V is a 28% loss -- this is why modern USB chargers use switch-mode topologies with synchronous rectification instead of simple bridge rectifiers.
+The 1.4V drop matters most at low voltages. Rectifying 120V AC? The 1.4V is negligible (1.2%). Rectifying 5V AC for [[learning/notes/quick-context/usb-peripheral-hardware|USB]]? That 1.4V is a 28% loss -- this is why modern USB chargers use switch-mode topologies with synchronous rectification instead of simple bridge rectifiers.
 
 </details>
 

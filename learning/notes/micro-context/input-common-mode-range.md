@@ -2,12 +2,13 @@
 term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
 
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
+**Definition:** The range of input [[learning/notes/quick-context/voltage|voltage]] (common to both pins) over which a comparator or [[learning/notes/quick-context/op-amp|op-amp]] still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 
 ## How It Works
 

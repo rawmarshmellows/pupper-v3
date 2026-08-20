@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 1 — PID Control (Single Joint)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab2-forward-kinematics]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]]
 
 > **TL;DR:** Lab 1 introduces closed-loop motor control by having students implement and tune a PD controller for a single joint — computing torque from position and velocity error at 200 Hz — which becomes the foundational control primitive reused in every subsequent lab.
 
@@ -13,9 +13,9 @@ created: 2026-03-10
 
 A robot motor does not move to a desired angle on its own. Given a raw torque command, the motor spins with some force, but nothing inherently drives it toward a target position or prevents it from overshooting. Proportional-Derivative (PD) control solves this by continuously measuring the gap between where the joint *is* and where it *should be*, then applying a corrective torque proportional to that error. The proportional term ($K_p$) pulls the joint toward the target; the derivative term ($K_d$) resists motion that is too fast, damping out oscillation. Together they produce smooth, stable tracking of a desired trajectory.
 
-In this lab, students work with a single joint (`leg_front_l_1`) on the Pupper quadruped. The ROS2 node subscribes to `/joint_states` (which provides the current joint position $q$ and velocity $\dot{q}$) and publishes torque commands through a `forward_command_controller` that exposes effort, kp, and kd interfaces via YAML configuration. Students implement two functions — `get_target_joint_info()`, which returns the desired position and velocity at the current time, and `calculate_torque()`, which applies the PD formula $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — then tune the gains so the joint tracks a sinusoidal or step trajectory without oscillation or sluggishness. All torque output is clamped to $\pm 3.0$ Nm for safety.
+In this lab, students work with a single joint (`leg_front_l_1`) on the Pupper quadruped. The [[learning/notes/quick-context/ros2-architecture|ROS2]] node subscribes to `/joint_states` (which provides the current joint position $q$ and velocity $\dot{q}$) and publishes torque commands through a `forward_command_controller` that exposes effort, kp, and kd interfaces via YAML configuration. Students implement two functions — `get_target_joint_info()`, which returns the desired position and velocity at the current time, and `calculate_torque()`, which applies the PD formula $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — then tune the gains so the joint tracks a sinusoidal or step trajectory without oscillation or sluggishness. All torque output is clamped to $\pm 3.0$ Nm for safety.
 
-This lab is deliberately scoped to one joint so students can build intuition for gain tuning before the complexity of multi-joint kinematics (Lab 2), inverse kinematics (Lab 3), and full-body gait control (Lab 4) enter the picture. The 200 Hz PD loop implemented here reappears in Labs 3 and 4, where it tracks joint angle targets produced by the IK solver and gait planner.
+This lab is deliberately scoped to one joint so students can build intuition for gain tuning before the complexity of multi-joint kinematics (Lab 2), [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] (Lab 3), and full-body gait control (Lab 4) enter the picture. The 200 Hz PD loop implemented here reappears in Labs 3 and 4, where it tracks joint angle targets produced by the IK solver and gait planner.
 
 ## 5 Essential Terms
 
@@ -80,7 +80,7 @@ The `get_target_joint_info()` function typically returns a sinusoidal trajectory
 - $q_{target}(t) = A \sin(2\pi f t)$
 - $\dot{q}_{target}(t) = 2\pi f A \cos(2\pi f t)$
 
-where $A$ is the amplitude (e.g., 0.5 rad) and $f$ is the frequency (e.g., 0.5 Hz). Providing both position and velocity targets lets the derivative term contribute even during smooth motion — without $\dot{q}_{target}$, the $K_d$ term would always resist motion toward the target, making the response sluggish.
+where $A$ is the amplitude (e.g., 0.5 rad) and $f$ is the [[learning/notes/quick-context/frequency-and-filtering|frequency]] (e.g., 0.5 Hz). Providing both position and velocity targets lets the derivative term contribute even during smooth motion — without $\dot{q}_{target}$, the $K_d$ term would always resist motion toward the target, making the response sluggish.
 
 </details>
 
@@ -206,11 +206,11 @@ With $K_p = 1.0$, $K_d = 5.0$ (too sluggish, overdamped):
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview. Lab 1's PD controller is reused directly in Labs 3 (IK trajectory tracking) and 4 (gait control), and its concepts appear in Lab 7's proportional yaw controller for visual tracking.
-- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over CAN bus to the servo motors.
+- **[[quick-context/pupper-brain]]** — The hardware that executes these commands. The `forward_command_controller` ultimately sends torque values through the STM32 motor MCU over [[learning/notes/quick-context/can-bus|CAN bus]] to the servo motors.
 - **ROS2 `sensor_msgs/JointState`** — The message type on `/joint_states`. Fields: `name[]` (joint names), `position[]` (radians), `velocity[]` (rad/s), `effort[]` (Nm). The node must index into these arrays to find the correct joint.
 - **`forward_command_controller`** — A ROS2 control plugin from `ros2_controllers`. The YAML config maps joint names to command interfaces (effort) and state interfaces (position, velocity). It bypasses any built-in PID so students implement their own.
 - **Torque vs. position control** — Most hobby servos accept position commands. The Pupper's motors accept raw torque commands, giving students direct control over the force applied — essential for learning PD control from first principles.
-- **200 Hz control rate** — A tradeoff: fast enough for smooth joint control, slow enough to run comfortably on the Raspberry Pi in Python. Lab 5's neural controller runs at ~50 Hz; the underlying hardware supports up to 1000 Hz via the STM32.
+- **200 Hz control rate** — A tradeoff: fast enough for smooth joint control, slow enough to run comfortably on the Raspberry Pi in Python. Lab 5's neural controller runs at ~50 Hz; the underlying hardware supports up to 1000 Hz via the [[learning/notes/micro-context/stm32-microcontroller|STM32]].
 
 </details>
 

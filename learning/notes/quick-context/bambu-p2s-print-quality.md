@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -116,7 +116,7 @@ Filaments are [[learning/notes/quick-context/atoms-molecules-polymers-basics|pol
 
 Two failure modes when wet filament hits the 200–280°C melt zone:
 1. **Steam explosion.** Trapped H₂O flashes to vapor at >100°C → micro-bubbles in the extruded bead → popping sound, pockmarked surface, weak layer bonds.
-2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker tensile strength, brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
+2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker [[learning/notes/quick-context/tensile-strength-materials|tensile strength]], brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
 
 This is why nylon needs 95°C / 7h while PLA only needs 45°C / 6h. The amide groups in nylon trap water *between* chains via H-bonds; you must heat above the H-bond rupture energy to evict it.
 
@@ -153,7 +153,7 @@ But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-
 
 ### 5. Why layer adhesion needs heat — polymer interdiffusion
 
-Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
+Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.
@@ -162,7 +162,7 @@ Practical consequences:
 
 ### 6. Why outer-wall speed/accel matters — mechanical resonance, not chemistry
 
-Ringing/ghosting is **not** a polymer issue. It's structural: the printer's gantry has natural resonance frequencies (typically 30–80 Hz on bedslingers, higher on CoreXY like P2S). A sharp accel pulse contains energy across many frequencies — if any matches a resonance, the toolhead oscillates after the move ends, leaving wavy "echoes" of corners on the wall. Slowing outer wall lowers the excitation amplitude; reducing accel removes the high-frequency components. Input shaping cancels the resonance directly. Three independent levers, one symptom.
+Ringing/ghosting is **not** a polymer issue. It's structural: the printer's gantry has natural resonance frequencies (typically 30–80 Hz on bedslingers, higher on CoreXY like P2S). A sharp accel pulse contains energy across many frequencies — if any matches a resonance, the toolhead oscillates after the move ends, leaving wavy "echoes" of corners on the wall. Slowing outer wall lowers the excitation amplitude; reducing accel removes the high-[[learning/notes/quick-context/frequency-and-filtering|frequency]] components. Input shaping cancels the resonance directly. Three independent levers, one symptom.
 
 ### Summary — chemistry → setting
 

@@ -2,12 +2,13 @@
 term: Offset Voltage Drift (TCV_OS)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/comparator]]
 
 # Offset Voltage Drift ($TCV_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[quick-context/differential-pair]]
 
-**Definition:** The rate at which a comparator's or op-amp's [[micro-context/input-offset-voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
+**Definition:** The rate at which a comparator's or [[learning/notes/quick-context/op-amp|op-amp]]'s [[learning/notes/quick-context/voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
 
 ## How It Works
 

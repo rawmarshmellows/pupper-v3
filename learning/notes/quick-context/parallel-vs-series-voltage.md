@@ -3,7 +3,7 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]]
 
 > **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
 
@@ -218,7 +218,7 @@ THE CURRENT DELIVERY PROBLEM
 
 ## A CPU's Power Delivery: The Numbers
 
-Let's trace the actual power delivery to a modern 50-billion-transistor CPU:
+Let's trace the actual power delivery to a modern 50-billion-[[learning/notes/quick-context/transistor|transistor]] CPU:
 
 ```
 FROM WALL OUTLET TO TRANSISTOR
@@ -322,7 +322,7 @@ THE MATH THAT MATTERS:
 
 - **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package [[learning/notes/quick-context/substrate-ic-packaging|substrate]] to the die. Each level has dedicated power planes.
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 
@@ -357,7 +357,7 @@ THE MATH THAT MATTERS:
 **You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
 </details>
 
-**Q5:** A power supply provides 12V at 15A to a voltage regulator, which outputs 0.6V to a CPU. Assuming 90% efficiency, how much current can the VRM deliver to the CPU?
+**Q5:** A power supply provides 12V at 15A to a voltage regulator, which outputs 0.6V to a [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]]. Assuming 90% efficiency, how much current can the VRM deliver to the CPU?
 <details>
 <summary>Answer</summary>
 **270 Amps.**

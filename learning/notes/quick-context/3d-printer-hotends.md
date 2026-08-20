@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/melt-index]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/bambu-p2s-print-quality]]
 
 > **TL;DR:** The hotend is the precision melting chamber that transforms solid filament into molten plastic. Its volumetric flow rate (mm3/s) determines maximum print speed - high-flow hotends melt plastic 2x faster, enabling faster prints with larger nozzles.
 
@@ -154,7 +154,7 @@ G1 X50 E40 F7380   ; Print at 123 mm/s (high-flow advantage)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/melt-index]] — Understanding polymer melt behavior helps predict how different filaments will flow through your hotend at various temperatures
+- [[quick-context/melt-index]] — Understanding [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] melt behavior helps predict how different filaments will flow through your hotend at various temperatures
 - [[quick-context/3d-printing-filament-types]] — Material selection directly determines hotend temperature requirements and nozzle material compatibility
 - [[quick-context/3d-printing-slicer-settings]] — Slicer parameters like print speed, layer height, and line width must stay within your hotend's volumetric flow limits
 - [[quick-context/glass-transition-temperature]] — Tg explains why heat creep ruins PLA prints (low Tg) but matters less for PETG and engineering plastics
@@ -179,7 +179,7 @@ Stainless steel makes sense for food-safe applications (cookie cutters, kitchen 
 **Q3:** What is heat creep and why does it cause more problems with all-metal hotends printing PLA?
 <details>
 <summary>Answer</summary>
-Heat creep occurs when thermal energy travels upward past the heat break into the "cold zone" where filament should stay solid. This prematurely softens the filament, causing it to swell and jam. All-metal hotends are more susceptible because metal conducts heat better than PTFE-lined heat breaks. PLA has a low glass transition temperature (~60°C), so it softens at relatively low temps—much easier for creeping heat to affect than higher-Tg materials like PETG or nylon.
+Heat creep occurs when thermal energy travels upward past the heat break into the "cold zone" where filament should stay solid. This prematurely softens the filament, causing it to swell and jam. All-metal hotends are more susceptible because metal conducts heat better than PTFE-lined heat breaks. PLA has a low [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (~60°C), so it softens at relatively low temps—much easier for creeping heat to affect than higher-Tg materials like PETG or nylon.
 </details>
 
 **Q4:** Why does the Bambu high-flow hotend cost nearly 3x more than the standard version?

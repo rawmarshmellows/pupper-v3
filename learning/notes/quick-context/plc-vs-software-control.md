@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/sil-rated-safety-functions]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
@@ -13,7 +13,7 @@ created: 2026-01-16
 
 The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
 
-The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
+The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] in Structured Text and praying.
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a ROS2-based vision/planning system:
+Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a [[learning/notes/quick-context/ros2-architecture|ROS2]]-based vision/planning system:
 
 **Architecture:**
 ```

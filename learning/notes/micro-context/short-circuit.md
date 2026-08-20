@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/quick-context/pwm-controller-circuit]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/capacitance]]
 
 # Short Circuit
 
