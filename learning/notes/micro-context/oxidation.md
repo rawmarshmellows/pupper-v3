@@ -3,6 +3,7 @@ term: Oxidation
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/micro-context/cathode]]
 
 # Oxidation
 
@@ -33,4 +34,4 @@ Oxidation = losing electrons
    2Cl⁻  → Cl₂  + 2e⁻   (electrolysis)
 ```
 
-**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[quick-context/rust|Rusting iron]], a [[quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[quick-context/electrolysis|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.
+**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[quick-context/rust|Rusting iron]], a [[quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[quick-context/[[learning/notes/quick-context/electrolysis|electrolysis]]|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.

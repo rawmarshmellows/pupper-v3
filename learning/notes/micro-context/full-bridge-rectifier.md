@@ -3,10 +3,11 @@ term: Full-Wave Bridge Rectifier
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]]
 
 # Full-Wave Bridge Rectifier
 
-> **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]
+> **See also:** [[quick-context/diode]] | [[micro-context/[[learning/notes/quick-context/diode|diode]]-rectification]]
 
 **Definition:** A circuit of four [[quick-context/diode|diodes]] arranged in a diamond that converts AC to pulsating DC by steering [[quick-context/electric-current|current]] through the load in the same direction during both halves of the AC cycle.
 
@@ -51,7 +52,7 @@ WHEN AC SWINGS + ON LEFT:        WHEN AC SWINGS − ON LEFT:
      SAME DIRECTION THROUGH LOAD BOTH TIMES!
 ```
 
-**Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-voltage supplies.
+**Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-[[learning/notes/quick-context/voltage|voltage]] supplies.
 
 ---
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

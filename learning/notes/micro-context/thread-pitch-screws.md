@@ -2,6 +2,7 @@
 term: Thread Pitch (Screws)
 created: 2026-05-04
 ---
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]]
 
 # Thread Pitch (Screws)
 

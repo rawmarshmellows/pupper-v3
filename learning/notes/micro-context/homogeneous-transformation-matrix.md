@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]]
 
 # Homogeneous Transformation Matrix
 

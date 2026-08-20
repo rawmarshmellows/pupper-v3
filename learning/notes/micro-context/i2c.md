@@ -3,6 +3,7 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/quick-context/data-bus-and-arbitration]]
 
 # I2C
 
@@ -34,4 +35,4 @@ updated: 2026-03-27
   START → [Address + R/W] → ACK → [Data] → ACK → STOP
 ```
 
-**Key insight:** I2C lines are open-drain — devices can only pull the line LOW, never drive it HIGH. The [[quick-context/resistor|pull-up resistors]] passively hold lines HIGH, which is why every I2C bus needs them and why getting the pull-up value wrong causes intermittent failures. The I2C spec limits total bus [[quick-context/capacitance|capacitance]] to 400 pF because each device adds ~10 pF in parallel — exceed this and the pull-up can't charge the line fast enough for reliable communication.
+**Key insight:** I2C lines are open-drain — devices can only pull the line LOW, never drive it HIGH. The [[quick-context/resistor|pull-up resistors]] passively hold lines HIGH, which is why every I2C bus needs them and why getting the pull-up value wrong causes intermittent failures. The I2C spec limits total bus [[quick-context/[[learning/notes/quick-context/capacitance|capacitance]]|capacitance]] to 400 pF because each device adds ~10 pF in parallel — exceed this and the pull-up can't charge the line fast enough for reliable communication.

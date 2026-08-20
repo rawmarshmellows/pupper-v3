@@ -3,20 +3,21 @@ term: Buck Converter
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
 # Buck Converter
 
 ## Human notes
 
-Make the ASCII diagrams clearer, in particular on the relationship between [[quick-context/transistor|MOSFET]] and [[quick-context/diode|diode]] — what is connected to the source, drain, and gate?
+Make the ASCII diagrams clearer, in particular on the relationship between [[quick-context/[[learning/notes/quick-context/transistor|transistor]]|MOSFET]] and [[quick-context/diode|diode]] — what is connected to the source, drain, and gate?
 
-**Why does the [[quick-context/capacitor|output capacitor]] still smooth everything to 5V?** The inductor current has a sawtooth ripple — it ramps up during Phase 1 (switch ON) and ramps down during Phase 2 (switch OFF). The output capacitor acts as a reservoir: when inductor current is above the load's demand, the excess charges the capacitor; when inductor current dips below demand, the capacitor discharges to make up the difference. Because $V = Q/C$ and the capacitor has significant capacitance, these tiny charge/discharge cycles produce only millivolts of ripple around the 5V average. The *average* voltage is set by the [[micro-context/pwm-pulse-width-modulation|duty cycle]] ($V_{OUT} = V_{IN} \times D$) — the capacitor doesn't *create* 5V, it just filters out the switching noise around that average.
+**Why does the [[quick-context/capacitor|output capacitor]] still smooth everything to 5V?** The inductor current has a sawtooth ripple — it ramps up during Phase 1 (switch ON) and ramps down during Phase 2 (switch OFF). The output capacitor acts as a reservoir: when inductor current is above the load's demand, the excess charges the capacitor; when inductor current dips below demand, the capacitor discharges to make up the difference. Because $V = Q/C$ and the capacitor has significant [[learning/notes/quick-context/capacitance|capacitance]], these tiny charge/discharge cycles produce only millivolts of ripple around the 5V average. The *average* voltage is set by the [[micro-context/pwm-pulse-width-modulation|duty cycle]] ($V_{OUT} = V_{IN} \times D$) — the capacitor doesn't *create* 5V, it just filters out the switching noise around that average.
 
-**Who controls the [[micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[micro-context/stm32-microcontroller|MCU]]. The IC connects to VIN for its own power and to drive the [[micro-context/mosfet|MOSFET]] gate (often the MOSFET is integrated *inside* the IC). A resistor divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
+**Who controls the [[micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[micro-context/stm32-[[learning/notes/micro-context/microcontroller|microcontroller]]|MCU]]. The IC connects to VIN for its own power and to drive the [[micro-context/mosfet|MOSFET]] gate (often the MOSFET is integrated *inside* the IC). A resistor divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/inductor]] | [[quick-context/capacitor]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/pwm-controller-circuit]]
 
-**Definition:** A switching power supply that efficiently steps down voltage (e.g., 12V battery → 5V for logic). Unlike linear regulators that waste excess voltage as heat, buck converters use rapid switching (100kHz–2MHz) and an inductor to achieve 85–95% efficiency.
+**Definition:** A switching power supply that efficiently steps down voltage (e.g., 12V battery → 5V for logic). Unlike linear regulators that waste excess voltage as heat, buck converters use rapid switching (100kHz–2MHz) and an [[learning/notes/quick-context/inductor|inductor]] to achieve 85–95% efficiency.
 
 ---
 
@@ -187,7 +188,7 @@ Example: 12V input, want 5V output → $D = 5/12 = 0.417$ (41.7% duty cycle). At
 
 ---
 
-**Key insight:** The MOSFET's drain connects to VIN and its source connects to the "switch node," where it meets the diode's cathode and the inductor input. This three-way junction is the heart of the converter — it swings between VIN (switch on) and below GND (switch off, diode conducts). The inductor stores energy magnetically when the switch is ON and releases it when OFF, achieving 85–95% efficiency.
+**Key insight:** The MOSFET's drain connects to VIN and its source connects to the "switch node," where it meets the diode's [[learning/notes/micro-context/cathode|cathode]] and the inductor input. This three-way junction is the heart of the converter — it swings between VIN (switch on) and below GND (switch off, diode conducts). The inductor stores energy magnetically when the switch is ON and releases it when OFF, achieving 85–95% efficiency.
 
 ---
 
@@ -197,9 +198,9 @@ The Pupper v3 Control Board Rev 3.5 uses a textbook asynchronous buck. Open [pup
 
 | Role in topology | Part on board | Value / designator |
 |---|---|---|
-| Buck IC (integrated high-side MOSFET + PWM controller) | TPS54561DPRR | **U8**, WSON-10 |
+| Buck IC (integrated high-side [[learning/notes/micro-context/mosfet|MOSFET]] + PWM controller) | TPS54561DPRR | **U8**, WSON-10 |
 | Inductor (energy storage) | Sunlord MWSA1004S-100MT | **L1**, 10µH |
-| Catch / freewheeling diode | SS56 Schottky | **D1**, SMA, 5A/60V, Vf≈0.5V |
+| Catch / freewheeling [[learning/notes/quick-context/diode|diode]] | SS56 Schottky | **D1**, SMA, 5A/60V, Vf≈0.5V |
 | Output caps (ripple filter) | 2× 47µF X5R | **C18, C19**, 0805 |
 | Feedback divider top | 60.4kΩ (E96) | **R5** |
 | Feedback divider bottom | 11.5kΩ (E96) | **R6** |
@@ -227,10 +228,10 @@ The Pupper v3 Control Board Rev 3.5 uses a textbook asynchronous buck. Open [pup
 
 **D1 is NOT a series reverse-polarity diode.** CN21 connects directly to U8's VIN. D1 sits between U8's SW node and GND as the catch diode — it conducts only during the MOSFET off-phase (Phase 2 above), when L1's collapsing field pulls SW below GND.
 
-**Output voltage math:** U8's internal $V_{REF} = 0.8\text{V}$. The feedback pin is regulated to $V_{REF}$, so:
+**Output [[learning/notes/quick-context/voltage|voltage]] math:** U8's internal $V_{REF} = 0.8\text{V}$. The feedback pin is regulated to $V_{REF}$, so:
 
 $$V_{OUT} = V_{REF} \times \left(1 + \frac{R5}{R6}\right) = 0.8 \times \left(1 + \frac{60.4\text{k}}{11.5\text{k}}\right) = 0.8 \times 6.252 \approx 5.0\text{V}$$
 
 E96 values (60.4k, 11.5k) land within ~0.1% of target — using E24 round numbers like 56k/10k would give 5.28V.
 
-**Where is "the PWM"?** It's inside U8. See [[quick-context/pwm-controller-circuit]] for the sawtooth-oscillator + error-amp + comparator chain that generates the gate signal. The STM32s (U1, U5) don't touch it — the buck regulates autonomously at ~500kHz.
+**Where is "the PWM"?** It's inside U8. See [[quick-context/pwm-controller-circuit]] for the sawtooth-oscillator + error-amp + [[learning/notes/quick-context/comparator|comparator]] chain that generates the gate signal. The STM32s (U1, U5) don't touch it — the buck regulates autonomously at ~500kHz.

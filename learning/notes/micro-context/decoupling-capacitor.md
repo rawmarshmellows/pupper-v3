@@ -3,6 +3,7 @@ term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/capacitance]]
 
 # Decoupling Capacitor
 
@@ -14,7 +15,7 @@ updated: 2026-03-27
 
 - When an IC switches states, it demands a sudden spike of current from the power rail.
 - The distant power supply can't respond instantly because PCB trace inductance limits current slew rate.
-- A small capacitor placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
+- A small [[learning/notes/quick-context/capacitor|capacitor]] placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
 - The capacitor then slowly recharges from the power supply, ready for the next switching event.
 
 ```
