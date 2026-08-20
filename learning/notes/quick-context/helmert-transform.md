@@ -18,7 +18,7 @@ You have two sets of corresponding 3D points -- one in a local survey frame, one
 | Term | Definition |
 |------|------------|
 | **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[quick-context/similarity-transform|similarity transform]] in 3D |
-| **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
+| **Cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]]** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
 | **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
 | **Scale factor** | The scalar $s$ that accounts for uniform size differences between coordinate frames -- computed from the ratio of output to input point spread |
 | **Procrustes analysis** | The statistical shape analysis framework that generalizes the Helmert Transform -- "Procrustes" finds optimal alignment by minimizing squared distances, and Helmert is its geodetic instantiation |
@@ -97,7 +97,7 @@ $$H = U\Sigma V^T$$
 
 $$R = V U^T$$
 
-The SVD decomposes $H$ into rotation-like components. The product $VU^T$ gives the optimal rotation matrix that minimizes the sum of squared residuals (the orthogonal Procrustes solution). A sign correction ensures $\det(R) = +1$ (proper rotation, not reflection):
+The [[learning/notes/quick-context/singular-value-decomposition|SVD]] decomposes $H$ into rotation-like components. The product $VU^T$ gives the optimal rotation matrix that minimizes the sum of squared residuals (the orthogonal Procrustes solution). A sign correction ensures $\det(R) = +1$ (proper rotation, not reflection):
 
 $$\text{If } \det(VU^T) < 0, \text{ negate the column of } V \text{ corresponding to the smallest singular value}$$
 
@@ -299,7 +299,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** What are the 7 parameters of a Helmert Transform, and why is 7 the minimum for a 3D similarity transform?
+**Q1:** What are the 7 parameters of a Helmert Transform, and why is 7 the minimum for a 3D [[learning/notes/quick-context/similarity-transform|similarity transform]]?
 <details>
 <summary>Answer</summary>
 3 translations ($t_x, t_y, t_z$), 3 rotations ($r_x, r_y, r_z$), and 1 uniform scale ($s$). This is the minimum because a similarity transform must specify where to move (3 DOF), how to reorient (3 DOF), and how to resize (1 DOF). Any fewer and you can't fully specify the mapping; any more and you introduce shear or non-uniform scale, which would no longer be a similarity transform. See: 5 Essential Terms, How It Works.

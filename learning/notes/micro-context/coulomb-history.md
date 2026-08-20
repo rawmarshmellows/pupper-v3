@@ -3,7 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electric-magnetic-field-unification]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electric-magnetic-field-unification]]
 
 # Coulomb (Unit History)
 

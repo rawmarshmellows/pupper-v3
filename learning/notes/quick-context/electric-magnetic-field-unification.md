@@ -5,9 +5,9 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]]
 
-> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
+> **TL;DR:** Current, [[learning/notes/quick-context/voltage|voltage]], electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
@@ -21,7 +21,7 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 | **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
-| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
+| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. [[learning/notes/quick-context/maxwell-equations|Maxwell]] unified them; Einstein explained why. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -346,9 +346,9 @@ WHICH IS "TRUE"?
 | Situation | Better Mental Model |
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
-| AC circuit analysis | Charges flow, but consider reactance |
-| Capacitor charging | electric field building between plates |
-| Inductor charging | magnetic field building in coil |
+| AC circuit analysis | Charges flow, but consider [[learning/notes/quick-context/impedance-and-reactance|reactance]] |
+| [[learning/notes/quick-context/capacitor|Capacitor]] charging | electric field building between plates |
+| [[learning/notes/quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
 | Radio transmission | E and B waves propagating through space |
 | Lightning | Charges discharge, massive current, huge magnetic field |
@@ -497,7 +497,7 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[learning/notes/quick-context/electrolysis|electrolysis]] and circuits.
 
 - **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 
@@ -534,7 +534,7 @@ SUMMARY: The Four Quantities in Action
 **The Lorentz force from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.
 </details>
 
-**Q3:** You measure 5V across a resistor and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
+**Q3:** You measure 5V across a [[learning/notes/quick-context/resistor|resistor]] and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
 <details>
 <summary>Answer</summary>
 **Almost certainly not.** Voltage is the integral of electric field over distance: V = E × d (for uniform field). If the resistor is 1 cm long and the capacitor gap is 0.1 mm, then E_resistor = 5V/0.01m = 500 V/m, while E_capacitor = 5V/0.0001m = 50,000 V/m—100× stronger! Same voltage, vastly different field strength, because of different dimensions.

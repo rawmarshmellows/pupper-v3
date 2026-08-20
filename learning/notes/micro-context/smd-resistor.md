@@ -3,7 +3,7 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
+> **Related:** [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]]
 
 # SMD Resistor
 
@@ -13,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for [[learning/notes/quick-context/soldering|soldering]].
+- A thin film or thick film of resistive material is deposited on a ceramic [[learning/notes/quick-context/substrate-ic-packaging|substrate]], with metal terminations on each end for [[learning/notes/quick-context/soldering|soldering]].
 - Current flowing through the resistive film converts electrical energy to heat according to $P = I^2R$.
 - The resistance value is set during manufacturing by the film's composition, thickness, and laser-trimmed geometry.
 

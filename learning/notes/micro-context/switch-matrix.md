@@ -2,11 +2,11 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
-> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
 # Switch Matrix
 
-**Definition:** A grid of electrical switches wired at the intersections of row and column lines, allowing a [[learning/notes/micro-context/stm32-[[learning/notes/micro-context/microcontroller|microcontroller]]|microcontroller]] to monitor $N \times M$ switches using only $N + M$ GPIO pins instead of one pin per switch.
+**Definition:** A grid of electrical switches wired at the intersections of row and column lines, allowing a [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] to monitor $N \times M$ switches using only $N + M$ GPIO pins instead of one pin per switch.
 
 ## How It Works
 

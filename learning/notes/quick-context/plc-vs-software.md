@@ -3,7 +3,7 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/sil-rated-safety-functions]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -126,7 +126,7 @@ Ladder logic was designed for electricians who understood relay circuits, not pr
 The PLC's watchdog timer detects that the scan cycle exceeded its maximum allowed time and forces the system into a fail-safe state (usually stopping all outputs). Unlike a computer that would freeze, the PLC has hardware-level protection against runaway code. This is why scan cycle time is monitored and bounded.
 </details>
 
-**Q3:** Why can't you just run PLC logic on a Raspberry Pi with careful programming?
+**Q3:** Why can't you just run PLC logic on a [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]] with careful programming?
 <details>
 <summary>Answer</summary>
 Three reasons: (1) Linux on a Pi has non-deterministic timing—garbage collection, kernel interrupts, or SD card writes can cause multi-millisecond delays. (2) A Pi lacks the electrical hardening (noise immunity, wide temperature range, vibration resistance) for industrial environments. (3) No safety certification—regulators won't accept it for safety-critical functions regardless of how well it works in testing.

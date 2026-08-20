@@ -39,7 +39,7 @@ The key insight (shared by all closed-form methods) is that translation decouple
 | Method | Year | Rotation Representation | Handles Scale? | Key Matrix |
 |--------|------|------------------------|----------------|------------|
 | **Horn** | 1987 | Unit quaternion | Yes | $4 \times 4$ symmetric $N$ |
-| **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
+| **Arun et al.** | 1987 | [[learning/notes/quick-context/singular-value-decomposition|SVD]] of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
 | **Umeyama** | 1991 | SVD with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
 
 Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.

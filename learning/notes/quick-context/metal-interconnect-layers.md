@@ -3,7 +3,7 @@ topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/flip-chip]]
 
 > **TL;DR:** Metal interconnect layers are stacked wiring levels built on top of transistors that route signals and power throughout a chip—they've become the limiting factor in chip performance as transistors shrink faster than wires can scale.
 
@@ -268,11 +268,11 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
 
-- **Photolithography** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Photolithography]]** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.
 
 - **RC Delay** — Resistance (R) × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
 
-- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes voltage droop and chip failure.
+- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes [[learning/notes/quick-context/voltage|voltage]] droop and chip failure.
 
 - **[[quick-context/electromigration|Electromigration]]** — The phenomenon where current flowing through thin wires physically moves metal atoms, eventually breaking the wire; this limits how much current each wire can safely carry and becomes more critical as wire cross-sections shrink.
 
@@ -296,7 +296,7 @@ Bottom layers connect individual transistors and need high density (many wires i
 **Q3:** If you halve the width of a wire, what happens to its resistance, and why is this problematic for chip scaling?
 <details>
 <summary>Answer</summary>
-Halving wire width reduces cross-sectional area to 1/4, causing resistance to increase 4×. This means signals travel slower and more heat is generated. As chips shrink, interconnect resistance becomes the limiting factor rather than transistor speed—this is the "interconnect bottleneck." See: The Key Tension and What Outsiders Get Wrong
+Halving wire width reduces cross-sectional area to 1/4, causing resistance to increase 4×. This means signals travel slower and more heat is generated. As chips shrink, interconnect resistance becomes the limiting factor rather than [[learning/notes/quick-context/transistor|transistor]] speed—this is the "interconnect bottleneck." See: The Key Tension and What Outsiders Get Wrong
 </details>
 
 **Q4:** A chip designer claims: "We added more metal layers to our chip, so it will definitely be faster." What's potentially wrong with this claim?
@@ -305,7 +305,7 @@ Halving wire width reduces cross-sectional area to 1/4, causing resistance to in
 More metal layers don't automatically mean faster. While extra layers provide more routing flexibility, signals must travel through more vias (adding resistance) to reach upper layers. If the additional layers have longer average wire lengths, RC delay could actually increase. The speed depends on how efficiently the layers are used, not just how many exist. See: The Key Tension and How It Works
 </details>
 
-**Q5:** How does the interconnect bottleneck relate to the broader trend of "More than Moore" packaging innovations like chiplets and 3D stacking mentioned in the PCB-chip hierarchy?
+**Q5:** How does the interconnect bottleneck relate to the broader trend of "More than Moore" packaging innovations like chiplets and 3D stacking mentioned in the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]-chip hierarchy?
 <details>
 <summary>Answer</summary>
 As interconnects within a single die hit scaling limits, designers are moving communication *between* dies (chiplets connected via interposers or stacked vertically) rather than trying to cram everything onto one die with impossibly long wires. This "More than Moore" approach uses packaging innovation (multiple dies with shorter interconnects each) rather than fighting physics by making wires ever thinner. The interconnect bottleneck on a single die directly motivates splitting designs across multiple dies. See: What Outsiders Get Wrong and [[quick-context/pcb-chip-transistor-hierarchy]] (The Key Tension section)

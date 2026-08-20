@@ -3,9 +3,9 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/electrolysis]]
 
-> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
+> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where [[learning/notes/micro-context/oxidation|oxidation]] happens.
 
 # Electrodes (Cathode and Anode)
 
@@ -269,7 +269,7 @@ STEP 4: THE CIRCUIT COMPLETES
 <summary>Answer</summary>
 **The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form rust). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from [[quick-context/rust|corrosion]]. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
 
-**Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become [[quick-context/rust|hydrated]]—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-dipole attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface atom by atom, creating microscopic craters.
+**Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become [[quick-context/rust|hydrated]]—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-[[learning/notes/quick-context/dipole-dipole-interactions|dipole]] attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface atom by atom, creating microscopic craters.
 </details>
 
 **Q4:** Using the memory tricks in this document, if you know that Na⁺ (sodium ion) is a CATION (positively charged ion), which electrode will it travel toward during electrolysis?

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -431,7 +431,7 @@ TPU at 60C:
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
-- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
+- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-[[learning/notes/quick-context/substrate-ic-packaging|substrate]] recognition all depend on H-bonding.
 
 - **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 
@@ -467,7 +467,7 @@ Hydrogen (H) - slight positive charge, "sticks out" from chains. Oxygen (O) - sl
 **Q5:** Why doesn't TPU deform in a hot car (60C) while PLA does?
 <details>
 <summary>Answer</summary>
-PLA's glass transition temperature is around 55-60C, so at 60C its hydrogen bonds start breaking and chains can slide, causing deformation. TPU's soft segments are already above their Tg at room temperature (that's why they're flexible), but the hard segments that hold the shape together have a much higher Tg (100-150C). At 60C, the hard segment H-bonds remain intact, so TPU keeps its shape. See: WHY PLA DEFORMS IN A HOT CAR BUT TPU DOESN'T
+PLA's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] is around 55-60C, so at 60C its hydrogen bonds start breaking and chains can slide, causing deformation. TPU's soft segments are already above their Tg at room temperature (that's why they're flexible), but the hard segments that hold the shape together have a much higher Tg (100-150C). At 60C, the hard segment H-bonds remain intact, so TPU keeps its shape. See: WHY PLA DEFORMS IN A HOT CAR BUT TPU DOESN'T
 </details>
 
 </details>

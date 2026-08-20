@@ -15,7 +15,7 @@ created: 2026-06-02
 - **BJT:** a small base current controls a much larger collector→emitter current (bipolar conduction); the base draws continuous current and switches at moderate speed.
 - **MOSFET:** an insulated gate sets up an electric field with near-zero gate current, giving the fastest switching and lowest loss at low–mid voltage—dominates logic and switch-mode supplies.
 - **IGBT:** the insulated gate (easy voltage drive, like a MOSFET) feeds an internal BJT output, so it conducts like a BJT—low loss at high voltage, but slower than a MOSFET.
-- **Pick by voltage/frequency:** MOSFET for low-voltage high-frequency, IGBT for high-voltage high-power (motor drives, EV/solar inverters, welders), BJT for analog and small-signal.
+- **Pick by voltage/[[learning/notes/quick-context/frequency-and-filtering|frequency]]:** MOSFET for low-voltage high-frequency, IGBT for high-voltage high-power (motor drives, EV/solar inverters, welders), BJT for analog and small-signal.
 
 ```
               BJT            MOSFET        IGBT

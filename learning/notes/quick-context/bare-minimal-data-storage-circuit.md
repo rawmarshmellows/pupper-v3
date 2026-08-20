@@ -16,9 +16,9 @@ The 1-bit version of this circuit had no clock — pressing a button instantly f
 
 ## The Core Problem: Nand2Tetris hides the clock; this circuit makes it physical
 
-Most digital-logic curricula draw the clock as a small triangle on a schematic and state "the register updates here." That's a *behavioural* description — true, but unsatisfying. What gets hidden:
+Most digital-logic curricula draw the clock as a small triangle on a [[learning/notes/quick-context/schematic-reading|schematic]] and state "the register updates here." That's a *behavioural* description — true, but unsatisfying. What gets hidden:
 
-1. The clock is a **physical [[learning/notes/quick-context/voltage|voltage]] waveform** produced by an oscillator (a 555 timer, an [[learning/notes/quick-context/rc-oscillator|RC oscillator]], or a [[learning/notes/micro-context/crystal-oscillator|crystal]]). It has a frequency, a duty cycle, and a real wire you can poke with a scope.
+1. The clock is a **physical [[learning/notes/quick-context/voltage|voltage]] waveform** produced by an oscillator (a 555 timer, an [[learning/notes/quick-context/rc-oscillator|RC oscillator]], or a [[learning/notes/micro-context/crystal-oscillator|crystal]]). It has a [[learning/notes/quick-context/frequency-and-filtering|frequency]], a duty cycle, and a real wire you can poke with a scope.
 2. The clock signal is **broadcast** to every register in the system at the same time — that's how 32 D flip-flops in one register file all update on a single instant.
 3. **The clock does not choose *what* to store.** The data lines (the D inputs) do. The clock only chooses *when* the storage element samples those data lines.
 4. **Whether a given clock edge "counts" for a given register** is itself controlled by combinational logic — usually an AND gate that says "this register only updates when *its* enable line is HIGH right now."
@@ -47,7 +47,7 @@ The clock is a square-wave voltage signal toggling between LOW (~0 V) and HIGH (
             T = 1/f, e.g. 500 ms for 2 Hz, or 1 ns for 1 GHz
 ```
 
-For our circuit we use a **555 timer in astable mode** running at ~2 Hz so you can *see* each cycle on an LED. A real CPU runs the same waveform at $10^9$ Hz (1 GHz = 1 cycle per nanosecond), but the geometry is identical — only the time axis is compressed by ~$5×10^8$. The 555's output is a single wire that fans out to every register in the system. See [[learning/notes/quick-context/rc-oscillator]] for how the oscillator generates this waveform from an RC charging loop, and [[learning/notes/micro-context/clock-source]] for the spectrum of clock generators (RC → [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]] → crystal → PLL).
+For our circuit we use a **555 timer in astable mode** running at ~2 Hz so you can *see* each cycle on an LED. A real [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]] runs the same waveform at $10^9$ Hz (1 GHz = 1 cycle per nanosecond), but the geometry is identical — only the time axis is compressed by ~$5×10^8$. The 555's output is a single wire that fans out to every register in the system. See [[learning/notes/quick-context/rc-oscillator]] for how the oscillator generates this waveform from an RC charging loop, and [[learning/notes/micro-context/clock-source]] for the spectrum of clock generators (RC → [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]] → crystal → PLL).
 
 A D flip-flop's clock input is **edge-sensitive** — it only does anything at the moment the clock voltage transitions from LOW to HIGH (the **rising edge**). For the rest of the cycle, the input D can wiggle freely; the flip-flop ignores it. This is the entire mechanism behind "synchronous" digital logic. See [[learning/notes/micro-context/clock-edges]] for why edge-triggering exists rather than level-triggering.
 
@@ -121,13 +121,13 @@ Three independent signal *families* meet at the 74HC574:
 | NE555 timer | 1 | DIP-8. Clock generator. |
 | 74HC08 quad AND | 1 | DIP-14. We use 1 of 4 gates for clock-gating; tie unused inputs LOW. |
 | 74HC574 octal D flip-flop | 1 | DIP-20. The 8-bit register itself. Tie $\overline{\text{OE}}$ (pin 1) LOW so outputs are always driven. |
-| LED + ~330 Ω [[learning/notes/quick-context/resistor|resistor]] | 8 | One per output bit Q0–Q7. Wire them anode-to-Q, cathode-to-GND-via-resistor. |
+| LED + ~330 Ω [[learning/notes/quick-context/resistor|resistor]] | 8 | One per output bit Q0–Q7. Wire them [[learning/notes/micro-context/anode|anode]]-to-Q, cathode-to-GND-via-resistor. |
 | LED + ~330 Ω resistor | 1 | "Clock heartbeat" indicator on the 555 output — invaluable for visualizing the metronome. |
 | LED + ~330 Ω resistor | 1 | "Key pressed" indicator on the DA line. |
 | 10 kΩ resistor | several | Pull-ups, encoder timing, 555 timing. |
 | 1 µF + 0.1 µF + 22 µF caps | 1 each | 1 µF on encoder KBM (sets ~10 ms debounce), 0.1 µF on encoder OSC, 22 µF for 555 timing. With $R_1 = R_2 = 10\,\text{kΩ}$ and $C = 22\,\mu\text{F}$: $f \approx 1.44 / ((R_1+2R_2) \cdot C) = 1.44 / (30\,\text{kΩ} \cdot 22\,\mu\text{F}) \approx 2.2$ Hz. Swap to $C = 47\,\mu\text{F}$ if you want ~1 Hz instead. |
 | 0.1 µF decoupling caps | 4 | One per chip, across Vcc/GND. Non-negotiable. See [[learning/notes/micro-context/decoupling-capacitor]]. |
-| 5 V supply | 1 | USB breakout, bench supply, or 4×AA. |
+| 5 V supply | 1 | [[learning/notes/quick-context/usb-peripheral-hardware|USB]] breakout, bench supply, or 4×AA. |
 
 Total: **~$15 in parts**, fits on a full-size breadboard.
 

@@ -5,19 +5,19 @@ created: 2026-03-28
 
 # Qwiic / STEMMA QT — Plug-and-Play I2C
 
-> **Related:** [[micro-context/i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/quick-context/data-bus-and-arbitration]]
 
-> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate soldering and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
+> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate [[learning/notes/quick-context/soldering|soldering]] and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
 
 ## The Core Problem
 
-Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply voltage, typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
+Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply [[learning/notes/quick-context/voltage|voltage]], typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Qwiic** | SparkFun's brand name for their I2C plug-and-play system. Uses JST SH 1.0mm 4-pin connectors. All Qwiic boards operate at 3.3V logic only. |
+| **Qwiic** | SparkFun's brand name for their I2C plug-and-play system. Uses [[learning/notes/micro-context/jst-connector-families|JST]] SH 1.0mm 4-pin connectors. All Qwiic boards operate at 3.3V logic only. |
 | **STEMMA QT** | Adafruit's equivalent system — physically identical connector and pinout to Qwiic (fully cross-compatible). STEMMA QT boards include onboard level shifting, so they work with both 3.3V and 5V logic (important for 5V Arduinos like Uno/Mega). |
 | **[[micro-context/jst-connector-families|JST SH]] 1.0mm** | The actual connector: a 4-pin, 1.0mm pitch, surface-mount JST SH receptacle. The same connector used in FPV drones and small electronics. The cable has a molded plug on each end. |
 | **Daisy-chaining** | Most Qwiic/STEMMA QT boards have two JST SH jacks — one "in" and one "out" — so you can chain multiple sensors on the same I2C bus without a hub. Each device needs a unique I2C address. |
@@ -109,12 +109,12 @@ VOLTAGE COMPATIBILITY MATRIX:
 
 Every Qwiic/STEMMA QT breakout board includes:
 
-1. **The sensor IC** (e.g., BNO085 IMU, BME280 temperature/humidity, ADS1115 ADC)
+1. **The sensor IC** (e.g., BNO085 IMU, BME280 temperature/humidity, ADS1115 [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]])
 2. **Two JST SH jacks** — for daisy-chaining
 3. **3.3V voltage regulator** — so you can power from 3.3-5V
 4. **I2C pull-up resistors** (typically 2.2–10k$\Omega$) — already on the board
 5. **Address jumper** — solder bridge to change the I2C address if you have two of the same sensor
-6. **Decoupling capacitor** — for stable power to the sensor
+6. **[[learning/notes/micro-context/decoupling-capacitor|Decoupling capacitor]]** — for stable power to the sensor
 
 This means the breakout board handles all the electrical details. You just plug in the cable.
 
@@ -130,7 +130,7 @@ This means the breakout board handles all the electrical details. You just plug 
 | **Connector** | JST SH 1.0mm | JST SH 1.0mm | HY 2.0mm |
 | **Cross-compatible** | ✓ with STEMMA QT | ✓ with Qwiic | ✗ different connector |
 | **Logic voltage** | 3.3V only | 3.3V and 5V | 3.3V and 5V |
-| **Protocols** | I2C only | I2C only | I2C, UART, analog, digital |
+| **Protocols** | I2C only | I2C only | I2C, [[learning/notes/quick-context/uart|UART]], analog, digital |
 | **Board count** | ~200+ | ~300+ | ~400+ |
 | **Pull-ups on board** | ✓ | ✓ | ✓ |
 | **Typical price** | $5-15 per board | $5-15 per board | $3-12 per board |
@@ -138,7 +138,7 @@ This means the breakout board handles all the electrical details. You just plug 
 **The tradeoff:** Qwiic/STEMMA QT optimizes for I2C simplicity — one connector type, one protocol, zero configuration. Grove is more flexible (supports analog, digital, UART) but at the cost of a larger connector and needing to know which Grove port type to use.
 
 **When Qwiic/STEMMA QT doesn't work:**
-- **SPI sensors** — these ecosystems are I2C only. High-speed sensors that need SPI require traditional wiring.
+- **[[learning/notes/micro-context/spi|SPI]] sensors** — these ecosystems are I2C only. High-speed sensors that need SPI require traditional wiring.
 - **Long cable runs** — I2C is limited to ~1 m. For longer distances, you need [[quick-context/can-bus|CAN bus]] or RS-485.
 - **High-current devices** — the JST SH connector is rated for ~1A. Motors, heaters, or solenoids need separate power wiring.
 - **Address conflicts** — if two identical sensors have the same fixed I2C address and no address jumper, you need a TCA9548A I2C multiplexer.
@@ -279,7 +279,7 @@ Size. JST SH 1.0mm connectors are roughly half the footprint of PH 2.0mm, allowi
 **Q5:** The Pupper v3 control board has a 4-pin JST connector (CN18) for I2C peripherals. Could you plug a standard Qwiic cable into it?
 <details>
 <summary>Answer</summary>
-Only if CN18 is a JST SH 1.0mm connector with the same pinout (GND, VCC, SDA, SCL). Looking at the Pupper BOM, CN18 is a BM04B-SRSS-TB — which is a JST **SH** 4-pin receptacle. However, you need to verify the pin order matches Qwiic's standard (GND, 3.3V, SDA, SCL). If the board designer used a different pin order (e.g., VCC first instead of GND first), plugging in a Qwiic cable directly would connect the wrong signals to the wrong pins. Always check the schematic before assuming connector compatibility.
+Only if CN18 is a JST SH 1.0mm connector with the same pinout (GND, VCC, SDA, SCL). Looking at the Pupper BOM, CN18 is a BM04B-SRSS-TB — which is a JST **SH** 4-pin receptacle. However, you need to verify the pin order matches Qwiic's standard (GND, 3.3V, SDA, SCL). If the board designer used a different pin order (e.g., VCC first instead of GND first), plugging in a Qwiic cable directly would connect the wrong signals to the wrong pins. Always check the [[learning/notes/quick-context/schematic-reading|schematic]] before assuming connector compatibility.
 </details>
 
 </details>

@@ -2,7 +2,7 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
-> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
+> **Related:** [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/clock-speed]]
 
 # Schmitt Trigger & Hysteresis
 

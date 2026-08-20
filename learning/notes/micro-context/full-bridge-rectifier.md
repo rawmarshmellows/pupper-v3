@@ -16,7 +16,7 @@ updated: 2026-03-27
 - Four diodes are arranged in a diamond (bridge) configuration with AC input connected across two opposite corners and DC output taken from the other two.
 - During the positive AC half-cycle, two diodes (D1, D4) conduct, steering current through the load in the forward direction.
 - During the negative AC half-cycle, the other two diodes (D2, D3) conduct, again steering current through the load in the same forward direction.
-- The result is full-wave rectified DC — both halves of the AC cycle contribute, doubling the ripple frequency compared to half-wave.
+- The result is full-wave rectified DC — both halves of the AC cycle contribute, doubling the ripple [[learning/notes/quick-context/frequency-and-filtering|frequency]] compared to half-wave.
 
 ```
 Diode = one-way valve:  ──▶|──  (current flows this way →)

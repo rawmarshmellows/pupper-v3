@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 
-> **Related:** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/ram-addressing-decoder]]
 
 > **TL;DR:** A source file like `hello.py` is not magic — it is plain **text**, a sequence of characters. Each character is turned into one or more **bytes** by an **encoding** (ASCII for the basics, UTF-8 in practice), and those bytes are stored exactly like any other data: as numbers in addressable memory (a file on disk/flash, copied into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] when you open it). The big idea is **code is data** — the same bytes-in-memory mechanism holds your text, the compiled artifact, and the final machine code. Nothing about the bytes themselves makes them "code"; that depends only on how they are later interpreted or executed.
 
@@ -70,7 +70,7 @@ Left column: where in the file each chunk starts (the *offset*, like an address)
 
 ### Step 4 — Those bytes live in addressable memory
 
-When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
+When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a [[learning/notes/quick-context/voltage|voltage]], a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
 
 ```
 RAM as a numbered array of byte-cells (the file loaded at address 1000)
@@ -165,7 +165,7 @@ B1 is only about artifact (a). It is easy to conflate these three, but they are 
 
 - **(a) Source text** — what you edit. Plain text, this note's whole subject. Lives as a file; loaded into RAM as bytes when opened.
 - **(b) Compiled artifact** — the bytecode or machine code produced *from* (a) by a compiler/assembler. *Different bytes* than the source, but still just bytes in a file (see [[learning/notes/quick-context/code-to-gates-and-bootstrapping|code to gates]]).
-- **(c) Running process** — artifact (b) loaded into RAM and actually executed by the CPU, with its live data and stack alongside. This is where "code" finally *does* something.
+- **(c) Running process** — artifact (b) loaded into RAM and actually executed by the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]], with its live data and stack alongside. This is where "code" finally *does* something.
 
 The transformation (a) → (b) → (c) is the SOFTWARE tower above B1; the [[learning/notes/quick-context/python-to-machine-code-pipeline|Python-to-machine-code pipeline]] walks it.
 
@@ -177,7 +177,7 @@ The transformation (a) → (b) → (c) is the SOFTWARE tower above B1; the [[lea
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — The rung directly below: how "addressable memory" is actually built — an array of registers picked one at a time by a numeric address. The cells your file's bytes land in.
-- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — One level deeper still: how a single byte's bits are *physically* held — a voltage in SRAM, a charge in DRAM, trapped electrons in the flash that stores `hello.py` on an SSD.
+- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — One level deeper still: how a single byte's bits are *physically* held — a voltage in [[learning/notes/micro-context/sram|SRAM]], a charge in DRAM, trapped electrons in the flash that stores `hello.py` on an SSD.
 - **[[learning/notes/quick-context/python-to-machine-code-pipeline]]** — The rung directly above: how the source bytes from B1 get transformed into bytecode and machine code — artifacts (b) and (c).
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain that turns these source bytes all the way down into binary instructions the CPU's gates execute.
 - **[[learning/notes/index/how-a-computer-works-index]]** — The spine hub: the full ladder from electricity up to running code. This note is B1, the foot of the SOFTWARE tower.

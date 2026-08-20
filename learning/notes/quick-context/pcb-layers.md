@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/quick-context/metal-interconnect-layers]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/bga-ball-grid-array]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -22,10 +22,10 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[learning/notes/micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
-| **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
-| **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
+| **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during [[learning/notes/micro-context/smd-resistor|SMD]] assembly — openings match (or slightly shrink) the pad locations |
+| **Drill File** | Instructions for the [[learning/notes/quick-context/cnc-machining|CNC]] drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
 
 <details>
 <summary><strong>How It Works</strong> — The complete layer stack</summary>
@@ -94,7 +94,7 @@ PCB MANUFACTURING SEQUENCE (2-layer board)
 
 *What it is:* The primary signal and component layer — shown in red on the Pupper board viewer. Contains signal traces, [[micro-context/smd-pad|component pads]] (SMD and through-hole), copper pours/fills, and via pads. This is where the actual circuit lives.
 
-*How it's manufactured:* The factory starts with a sheet of FR-4 fiberglass with solid copper foil laminated to both sides (typically 1 oz/ft², ~35 μm thick). The copper pattern from the Gerber file is transferred using **photolithography**: a UV-sensitive photoresist is applied over the copper, UV light is shone through a film mask of the trace pattern, then the board is dipped in developer solution to wash away unexposed resist. Finally, a chemical etchant (ferric chloride or cupric chloride) dissolves the unprotected copper, leaving only the traces and pads behind. The remaining photoresist is then stripped off.
+*How it's manufactured:* The factory starts with a sheet of FR-4 fiberglass with solid copper foil laminated to both sides (typically 1 oz/ft², ~35 μm thick). The copper pattern from the Gerber file is transferred using **photolithography**: a UV-sensitive [[learning/notes/quick-context/semiconductor-fabrication|photoresist]] is applied over the copper, UV light is shone through a film mask of the trace pattern, then the board is dipped in developer solution to wash away unexposed resist. Finally, a chemical etchant (ferric chloride or cupric chloride) dissolves the unprotected copper, leaving only the traces and pads behind. The remaining photoresist is then stripped off.
 
 ```
 COPPER ETCHING PROCESS (subtractive)
@@ -175,7 +175,7 @@ DRILL HOLE TYPES
 
 **4. Top Soldermask** — `Gerber_TopSolderMaskLayer.GTS`
 
-*What it is:* A polymer coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only [[micro-context/smd-pad|pads]] where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
+*What it is:* A [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only [[micro-context/smd-pad|pads]] where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
 
 *How it's manufactured:* Modern PCBs use **LPI (Liquid Photo-Imageable)** soldermask. The liquid polymer is applied to the entire board surface by curtain coating or screen printing. It's then "tack cured" (partially dried) so it can be handled. Next, the soldermask Gerber film is aligned over the board and UV light is shone through it — the UV **hardens** the mask everywhere EXCEPT where the film blocks light (over pads). The unhardened soldermask over pads is washed away in an alkaline developer bath, exposing the copper pads underneath. A final thermal cure (~150°C) fully hardens the remaining soldermask permanently.
 
@@ -209,7 +209,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **5. Bottom Soldermask** — `Gerber_BottomSolderMaskLayer.GBS`
 
-*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole soldering and any bottom-side SMD components.
+*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole [[learning/notes/quick-context/soldering|soldering]] and any bottom-side SMD components.
 
 *How it's manufactured:* Applied simultaneously with the top soldermask — both sides are coated, exposed, and developed in the same process steps.
 
@@ -269,7 +269,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **12. Document Layer** — `Gerber_DocumentLayer.GDL`
 
-*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, impedance control requirements, and UL markings.
+*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, [[learning/notes/quick-context/impedance-and-reactance|impedance]] control requirements, and UL markings.
 
 </details>
 

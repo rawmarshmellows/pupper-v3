@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
@@ -538,7 +538,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?
 <details>
 <summary>Answer</summary>
-**Changing current creates changing B, which creates opposing E.** In an [[quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced voltage opposes the change in current.
+**Changing current creates changing B, which creates opposing E.** In an [[quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced [[learning/notes/quick-context/voltage|voltage]] opposes the change in current.
 </details>
 
 **Q5:** In empty space with no charges or currents, Maxwell's equations still allow solutions. What are these solutions?

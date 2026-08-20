@@ -4,9 +4,9 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/glass-transition-temperature]]
 
-> **TL;DR:** Melt Index (MFI/MFR) measures how easily a polymer flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
+> **TL;DR:** Melt Index (MFI/MFR) measures how easily a [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
 
 # Melt Index: Quick Context
 
@@ -126,7 +126,7 @@ In practice, if batch A-2024-004 enters your injection molding process, you'd se
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than amorphous ones.
 - **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
 - **[[quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
-- **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
+- **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower [[learning/notes/quick-context/tensile-strength-materials|tensile strength]] due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
 - **[[quick-context/bambu-p2s-print-quality]]**: MFI variation between batches drives why per-spool flow ratio and pressure advance (K-value) calibration matters on the P2S—different MFI means different optimal extrusion settings.
 
 </details>

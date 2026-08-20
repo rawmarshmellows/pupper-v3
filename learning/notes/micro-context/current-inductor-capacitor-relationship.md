@@ -3,7 +3,7 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]]
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]]
 
 # Current Behavior with Inductors vs Capacitors
 
@@ -13,8 +13,8 @@ updated: 2026-03-27
 
 - An [[learning/notes/quick-context/inductor|inductor]] stores energy in a magnetic field; increasing current builds the field gradually ($V = L \times dI/dt$), so current can't jump instantly.
 - A capacitor stores energy in an electric field; adding charge raises [[learning/notes/quick-context/voltage|voltage]] gradually ($I = C \times dV/dt$), so voltage can't jump instantly.
-- Inductors pass DC freely (just a wire at steady state) but resist AC (high impedance at high frequency).
-- Capacitors block DC (open circuit at steady state) but pass AC (low impedance at high frequency).
+- Inductors pass DC freely (just a wire at steady state) but resist AC (high [[learning/notes/quick-context/impedance-and-reactance|impedance]] at high frequency).
+- Capacitors block DC (open circuit at steady state) but pass AC (low impedance at high [[learning/notes/quick-context/frequency-and-filtering|frequency]]).
 
 ```
              INDUCTOR                    CAPACITOR

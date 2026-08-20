@@ -3,7 +3,7 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]]
+> **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]]
 
 # 4-Wire Kelvin Measurement
 
@@ -14,7 +14,7 @@ updated: 2026-03-27
 ## How It Works
 
 - Two "force" wires supply a known current through the unknown resistance from an external current source.
-- Two separate "sense" wires connect directly across the resistance to a high-impedance voltmeter.
+- Two separate "sense" wires connect directly across the resistance to a high-[[learning/notes/quick-context/impedance-and-reactance|impedance]] voltmeter.
 - Because the voltmeter draws negligible current, the sense wire resistance contributes essentially zero voltage drop.
 - The unknown resistance is calculated as $R = V_{measured} / I_{known}$, free from lead wire error.
 

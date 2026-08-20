@@ -3,7 +3,7 @@ topic: Anions and Oxidation
 created: 2026-01-22
 ---
 
-> **Related:** [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]]
+> **Related:** [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/electrodes]]
 
 > **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in [[learning/notes/quick-context/electrolysis|electrolysis]], anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
 

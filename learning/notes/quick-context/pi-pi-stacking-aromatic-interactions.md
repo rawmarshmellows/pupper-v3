@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** Pi-pi stacking is a molecular "velcro" effect where flat aromatic rings (like benzene in ABS plastic) attract each other through their electron clouds, requiring higher print temperatures to overcome and causing warping when these attractions re-form during cooling.
 
@@ -43,7 +43,7 @@ Imagine you have flat hexagonal rings made of carbon atoms—these are called **
     └─────────┘
 ```
 
-This "pi-pi stacking" acts like molecular velcro—it's what holds polymer chains together and gives plastics their strength. Without it, ABS would be as weak as wet tissue paper. The benzene rings in ABS's styrene component stack against each other by the thousands, creating a network of weak-but-numerous attractions that collectively make the material tough and rigid.
+This "pi-pi stacking" acts like molecular velcro—it's what holds [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains together and gives plastics their strength. Without it, ABS would be as weak as wet tissue paper. The benzene rings in ABS's styrene component stack against each other by the thousands, creating a network of weak-but-numerous attractions that collectively make the material tough and rigid.
 
 ## 5 Essential Terms
 
@@ -253,7 +253,7 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 
 ## Peripheral Knowledge
 
-- **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of van der Waals interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
+- **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
 - **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: covalent bonds along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
 - **[[quick-context/covalent-bonds]]** — The "real" bonds that hold atoms together within molecules; pi-pi stacking is fundamentally different—it's an attraction *between* molecules, not within them.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
@@ -272,7 +272,7 @@ ABS contains styrene monomers with aromatic (benzene) rings that participate in 
 **Q2:** If a single pi-pi interaction is about 50x weaker than a covalent bond, why do these interactions matter so much for material properties?
 <details>
 <summary>Answer</summary>
-Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and glass transition temperature. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
+Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]]. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
 </details>
 
 **Q3:** A 3D print in ABS is warping at the corners. Based on pi-pi stacking, what are two potential solutions and why would they work?

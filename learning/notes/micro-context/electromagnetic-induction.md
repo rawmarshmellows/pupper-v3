@@ -3,7 +3,7 @@ term: Electromagnetic Induction
 created: 2026-02-08
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]]
+> **Related:** [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]]
 
 # Electromagnetic Induction
 

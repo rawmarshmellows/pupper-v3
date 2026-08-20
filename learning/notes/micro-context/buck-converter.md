@@ -3,7 +3,7 @@ term: Buck Converter
 created: 2026-01-27
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/decoupling-capacitor]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
 # Buck Converter
 
@@ -13,7 +13,7 @@ Make the ASCII diagrams clearer, in particular on the relationship between [[qui
 
 **Why does the [[quick-context/capacitor|output capacitor]] still smooth everything to 5V?** The inductor current has a sawtooth ripple — it ramps up during Phase 1 (switch ON) and ramps down during Phase 2 (switch OFF). The output capacitor acts as a reservoir: when inductor current is above the load's demand, the excess charges the capacitor; when inductor current dips below demand, the capacitor discharges to make up the difference. Because $V = Q/C$ and the capacitor has significant [[learning/notes/quick-context/capacitance|capacitance]], these tiny charge/discharge cycles produce only millivolts of ripple around the 5V average. The *average* voltage is set by the [[micro-context/pwm-pulse-width-modulation|duty cycle]] ($V_{OUT} = V_{IN} \times D$) — the capacitor doesn't *create* 5V, it just filters out the switching noise around that average.
 
-**Who controls the [[micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[micro-context/stm32-[[learning/notes/micro-context/microcontroller|microcontroller]]|MCU]]. The IC connects to VIN for its own power and to drive the [[micro-context/mosfet|MOSFET]] gate (often the MOSFET is integrated *inside* the IC). A resistor divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
+**Who controls the [[micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[micro-context/stm32-[[learning/notes/micro-context/microcontroller|microcontroller]]|MCU]]. The IC connects to VIN for its own power and to drive the [[micro-context/mosfet|MOSFET]] gate (often the MOSFET is integrated *inside* the IC). A [[learning/notes/quick-context/resistor|resistor]] divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/inductor]] | [[quick-context/capacitor]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/pwm-controller-circuit]]
 
@@ -198,7 +198,7 @@ The Pupper v3 Control Board Rev 3.5 uses a textbook asynchronous buck. Open [pup
 
 | Role in topology | Part on board | Value / designator |
 |---|---|---|
-| Buck IC (integrated high-side [[learning/notes/micro-context/mosfet|MOSFET]] + PWM controller) | TPS54561DPRR | **U8**, WSON-10 |
+| Buck IC (integrated high-side [[learning/notes/micro-context/mosfet|MOSFET]] + [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] controller) | TPS54561DPRR | **U8**, WSON-10 |
 | Inductor (energy storage) | Sunlord MWSA1004S-100MT | **L1**, 10µH |
 | Catch / freewheeling [[learning/notes/quick-context/diode|diode]] | SS56 Schottky | **D1**, SMA, 5A/60V, Vf≈0.5V |
 | Output caps (ripple filter) | 2× 47µF X5R | **C18, C19**, 0805 |

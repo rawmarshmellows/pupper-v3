@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
 >
 > **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
 
@@ -20,9 +20,9 @@ Building a walking, seeing, talking robot requires knowledge spanning control th
 | Term | Definition |
 |------|------------|
 | **PD Control** | Proportional-Derivative controller that computes torque as $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — the foundation of Labs 1, 3, and 4 |
-| **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 homogeneous transformation matrices — Lab 2's core concept, reused in every subsequent lab |
+| **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 [[learning/notes/micro-context/homogeneous-transformation-matrix|homogeneous transformation]] matrices — Lab 2's core concept, reused in every subsequent lab |
 | **Inverse Kinematics (IK)** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via gradient descent on the FK cost function |
-| **Karel** | The `KarelPupper` class (Labs 6-7) that wraps ROS2 Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
+| **Karel** | The `KarelPupper` class (Labs 6-7) that wraps [[learning/notes/quick-context/ros2-architecture|ROS2]] Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
 | **State Machine** | Lab 7's IDLE/SEARCH/TRACK controller that transitions between rotating to find a target, and using proportional control to follow it based on camera detections |
 
 <details>
@@ -234,7 +234,7 @@ The ROS2 topic graph for the full Lab 7 system:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + Raspberry Pi hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
+- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]] hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
 - **[[quick-context/pupper-bom-control-board]]** — Every physical component on the board: the [[micro-context/can-bus-transceiver|CAN transceivers]] that carry joint commands, the [[small-context/imu-robot-balance-sensing|BNO086 IMU]] that Lab 5's neural policy reads for balance, and the [[micro-context/buck-converter|buck converter]] powering it all.
 - **[[quick-context/ros2-architecture|ROS2 (Robot Operating System 2)]]** — The middleware framework all labs use. Nodes communicate via topics (pub/sub), services, and actions. Key message types: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`. See the dedicated quick-context for the full node graph and topic map.
 - **MuJoCo** — Physics simulator used in Lab 5 for training RL policies before transferring to the real robot (sim-to-real).
@@ -258,7 +258,7 @@ Numerical IK via gradient descent generalizes to any robot geometry without requ
 Diagonal pairing (trotting) keeps the robot statically stable — at any instant, two diagonally opposite feet are on the ground, forming a support line that passes under the center of mass. If same-side (ipsilateral) legs swung together (pacing), the robot would rock side to side. If both front legs and both hind legs swung together (bounding), the robot would pitch forward and backward. Trotting is the most stable two-phase gait for quadrupeds.
 </details>
 
-**Q3:** Lab 5's neural controller uses `repeat_action: 10` at a 520 Hz update rate. What effective control frequency does the neural network run at, and why not run it faster?
+**Q3:** Lab 5's neural controller uses `repeat_action: 10` at a 520 Hz update rate. What effective control [[learning/notes/quick-context/frequency-and-filtering|frequency]] does the neural network run at, and why not run it faster?
 <details>
 <summary>Answer</summary>
 $520 / 10 = 52$ Hz (the config intentionally runs slightly above 500 Hz to land at exactly ~50 Hz for the neural controller). The neural network doesn't run faster because: (1) RL policies are trained at a specific frequency in simulation — running at a different frequency changes the dynamics and the policy may fail, (2) neural network inference has non-trivial compute cost on the Pi, and (3) the policy outputs position targets that the lower-level PD controller tracks at full rate, so ~50 Hz is sufficient for locomotion commands.

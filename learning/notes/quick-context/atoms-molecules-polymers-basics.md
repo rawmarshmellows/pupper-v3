@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/breaking-elongation-rate]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **TL;DR:** Matter builds up in layers (atoms -> molecules -> monomers -> polymers), and 3D printing works by heating thermoplastics enough to let polymer chains slide past each other without breaking them, then cooling to re-lock chains in new positions.
 
@@ -19,7 +19,7 @@ Everything physical you touch—including the plastic [[quick-context/3d-printin
 | **[[quick-context/subatomic-particles\|Atom]]** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of [[quick-context/subatomic-particles\|protons, neutrons, and electrons]]. |
 | **Molecule** | Two or more atoms bonded together; water (H₂O) is a molecule of 2 hydrogen atoms + 1 oxygen atom. |
 | **Monomer** | A small molecule that can bond repeatedly to form long chains; the "building block" unit. |
-| **Polymer** | A long chain made of many monomers bonded together; plastics are polymers. |
+| **[[learning/notes/quick-context/polymer-chemical-bonds|Polymer]]** | A long chain made of many monomers bonded together; plastics are polymers. |
 | **Thermoplastic** | A polymer that softens when heated (above its [[quick-context/glass-transition-temperature\|glass transition temperature]]) and hardens when cooled, repeatedly—this is what makes [[quick-context/3d-printing-filament-types\|3D printing]] possible. |
 
 <details>

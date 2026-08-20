@@ -15,7 +15,7 @@ updated: 2026-03-27
 
 - The MCU transmits audio samples as a serial bit stream over three I2S lines: bit clock (BCLK), left/right select (LRCLK), and data (DIN).
 - The MAX98357A's internal DAC reconstructs the analog waveform from the digital samples.
-- A Class-D amplifier stage converts the analog signal into high-frequency PWM that drives the speaker coil.
+- A Class-D amplifier stage converts the analog signal into high-frequency [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] that drives the speaker coil.
 - The speaker's mechanical inertia acts as a natural low-pass filter, reproducing the original audio waveform.
 
 ```
@@ -38,4 +38,4 @@ I2S AUDIO SIGNAL CHAIN:
   DIN:   ◄──L channel──►◄──R channel──►  (audio data)
 ```
 
-**Key insight:** I2S amplifiers eliminate the analog audio path entirely—digital data goes straight to the speaker driver, avoiding noise pickup and simplifying PCB layout compared to traditional analog audio chains.
+**Key insight:** I2S amplifiers eliminate the analog audio path entirely—digital data goes straight to the speaker driver, avoiding noise pickup and simplifying [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] layout compared to traditional analog audio chains.

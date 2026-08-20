@@ -8,7 +8,7 @@ created: 2026-06-07
 
 > **See also:** [[quick-context/[[learning/notes/quick-context/comparator|comparator]]-specification]] | [[micro-context/input-offset-voltage]] | [[quick-context/differential-pair]]
 
-**Definition:** The rate at which a comparator's or op-amp's [[micro-context/input-offset-[[learning/notes/quick-context/voltage|voltage]]|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
+**Definition:** The rate at which a comparator's or [[learning/notes/quick-context/op-amp|op-amp]]'s [[micro-context/input-offset-[[learning/notes/quick-context/voltage|voltage]]|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
 
 ## How It Works
 

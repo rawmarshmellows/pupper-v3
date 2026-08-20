@@ -40,6 +40,6 @@ EEPROM CELL (floating-gate MOSFET)
 
 ## Common Uses
 
-- **Raspberry Pi HAT EEPROM:** Stores a device tree overlay telling the Pi what the board is and how to configure itself at boot (read via [[learning/notes/micro-context/i2c|I2C]] on GPIO 0 & 1)
+- **[[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]] HAT EEPROM:** Stores a device tree overlay telling the Pi what the board is and how to configure itself at boot (read via [[learning/notes/micro-context/i2c|I2C]] on GPIO 0 & 1)
 - **[[learning/notes/micro-context/microcontroller|Microcontroller]] calibration:** Factory-programmed temperature sensor offsets, oscillator trim values
 - **Serial number / MAC address storage** on network devices

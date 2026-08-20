@@ -15,7 +15,7 @@ updated: 2026-03-27
 
 - When current flows through the coil, it generates a magnetic field that stores energy ($E = \frac{1}{2}LI^2$).
 - If current tries to change suddenly, the collapsing or growing magnetic field induces a [[learning/notes/quick-context/voltage|voltage]] that opposes the change ($V = L \times dI/dt$).
-- In a buck converter's ON phase, the [[learning/notes/quick-context/inductor|inductor]] stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling diode.
+- In a buck converter's ON phase, the [[learning/notes/quick-context/inductor|inductor]] stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling [[learning/notes/quick-context/diode|diode]].
 
 ```
 INDUCTOR IN BUCK CONVERTER:

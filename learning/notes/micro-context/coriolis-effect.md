@@ -2,7 +2,7 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
-> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]]
+> **Related:** [[learning/notes/micro-context/piezoelectric-effect]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]]
 
 # Coriolis Effect
 
