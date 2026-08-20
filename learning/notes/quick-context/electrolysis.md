@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/cations-and-reduction]]
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]]
 
 > **TL;DR:** Electrolysis uses electricity to force non-spontaneous chemical reactions (like splitting water into hydrogen and oxygen), essentially running a battery in reverse by supplying energy to break stable bonds rather than harvesting energy from spontaneous reactions.
 
@@ -22,7 +22,7 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 
 | Term | Definition |
 |------|------------|
-| **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
+| **Electrolyte** | The ionic conductor that carries current between [[learning/notes/quick-context/electrodes|electrodes]]; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
 | **Cathode/Anode** | Cathode = reduction (electrons flow in, cations migrate here); Anode = [[learning/notes/micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
 | **Overpotential** | Extra [[learning/notes/quick-context/voltage|voltage]] beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
@@ -31,7 +31,7 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Electrolysis operates through a coordinated dance of electrons and ions across two electrodes immersed in a conducting solution. When you connect a power supply, it acts as an "electron pump"—pulling electrons away from one electrode (the anode) and pushing them onto the other (the cathode). This creates an electrical imbalance that drives chemical change. At the cathode, the excess electrons need somewhere to go, so they transfer to positive ions (cations) in the solution, reducing them. At the anode, the electron deficiency pulls electrons away from negative ions (anions) or neutral molecules, oxidizing them. The solution itself doesn't conduct electrons—instead, ions physically migrate through the liquid to carry the current between electrodes, completing the circuit.
+Electrolysis operates through a coordinated dance of electrons and ions across two electrodes immersed in a conducting solution. When you connect a power supply, it acts as an "electron pump"—pulling electrons away from one electrode (the anode) and pushing them onto the other (the [[learning/notes/micro-context/cathode|cathode]]). This creates an electrical imbalance that drives chemical change. At the cathode, the excess electrons need somewhere to go, so they transfer to positive ions (cations) in the solution, reducing them. At the anode, the electron deficiency pulls electrons away from negative ions (anions) or neutral molecules, oxidizing them. The solution itself doesn't conduct electrons—instead, ions physically migrate through the liquid to carry the current between electrodes, completing the circuit.
 
 The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where reduction needs to happen, and removing electrons where oxidation needs to happen. The minimum voltage required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
 
@@ -247,7 +247,7 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking covalent bonds in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
+- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking [[learning/notes/quick-context/covalent-bonds|covalent bonds]] in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
 
 - **[[quick-context/galvanic-cells-batteries|Galvanic/Voltaic Cells (Batteries)]]** — Spontaneous redox reactions producing electricity. Same components as electrolysis cells, opposite energy flow. Understanding one illuminates the other.
 

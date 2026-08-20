@@ -64,7 +64,7 @@ THREE FAMILIES OF CAPACITANCE MEASUREMENT
 
 ### Family 1: RC Timing
 
-The simplest approach: charge $C_x$ through a known [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = RC$, the time is directly proportional to capacitance.
+The simplest approach: charge $C_x$ through a known [[learning/notes/quick-context/resistor|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = RC$, the time is directly proportional to capacitance.
 
 ```
 RC TIMING — HOW TOUCHSCREEN CONTROLLERS WORK
@@ -96,7 +96,7 @@ RC TIMING — HOW TOUCHSCREEN CONTROLLERS WORK
     The MCU just watches for count changes — no analog circuitry needed.
 ```
 
-This is how the [[quick-context/rc-oscillator|RC oscillator]] principle gets repurposed for sensing: instead of generating a clock, the RC circuit measures an unknown capacitance by timing the charge curve. Simple enough to implement on a bare [[micro-context/[[learning/notes/micro-context/microcontroller|microcontroller]]|microcontroller]] GPIO pin with no external ICs.
+This is how the [[quick-context/rc-oscillator|RC oscillator]] principle gets repurposed for sensing: instead of generating a clock, the RC circuit measures an unknown capacitance by timing the charge curve. Simple enough to implement on a bare [[learning/notes/micro-context/microcontroller|microcontroller]] GPIO pin with no external ICs.
 
 **Where it's used:** Capacitive touch buttons, simple proximity sensors, liquid level probes, some low-cost humidity sensors.
 
@@ -237,7 +237,7 @@ Camera photodiode         │ NOT capacitive sensing  │ N/A             │ Ch
                           │ on junction capacitance │                 │
 ```
 
-Note: [[quick-context/camera-fundamentals|Camera photodiodes]] are *not* capacitive sensors -- they exploit the photoelectric effect (photons free electrons in [[quick-context/doped-silicon|doped silicon]]). But the accumulated charge IS stored on the junction capacitance of the reverse-biased [[quick-context/[[learning/notes/quick-context/diode|diode]]|diode]], and the readout circuit must deal with that capacitance. The underlying physics is photon-to-electron conversion, not geometry-to-capacitance transduction.
+Note: [[quick-context/camera-fundamentals|Camera photodiodes]] are *not* capacitive sensors -- they exploit the photoelectric effect (photons free electrons in [[quick-context/doped-silicon|doped silicon]]). But the accumulated charge IS stored on the junction capacitance of the reverse-biased [[learning/notes/quick-context/diode|diode]], and the readout circuit must deal with that capacitance. The underlying physics is photon-to-electron conversion, not geometry-to-capacitance transduction.
 
 </details>
 
@@ -291,7 +291,7 @@ THE RESOLUTION-SPEED TRADEOFF
     Smaller C = more noise = harder to measure precisely.
 ```
 
-The dominant trend in modern sensor design is sigma-delta CDC integration: put the converter on the same die as the sensor element, so the tiny analog signals never leave the chip. This is why modern sensor ICs (SHT40, BMP390, ADXL345) output clean digital numbers over [[micro-context/[[learning/notes/micro-context/i2c|i2c]]|I2C]] or [[micro-context/spi|SPI]] -- the entire capacitance-to-digital chain is inside the package.
+The dominant trend in modern sensor design is sigma-delta CDC integration: put the converter on the same die as the sensor element, so the tiny analog signals never leave the chip. This is why modern sensor ICs (SHT40, BMP390, ADXL345) output clean digital numbers over [[learning/notes/micro-context/i2c|I2C]] or [[micro-context/spi|SPI]] -- the entire capacitance-to-digital chain is inside the package.
 
 </details>
 

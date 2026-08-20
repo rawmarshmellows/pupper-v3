@@ -21,7 +21,7 @@ A robot with 12 motors needs to send position commands and receive encoder feedb
 | **Arbitration** | The process by which multiple nodes trying to transmit simultaneously resolve who wins — each node watches the bus while transmitting, and the message with the lowest ID (most 0-bits) wins without any data loss or collision |
 | **Differential pair (CANH/CANL)** | The two wires of the bus — a [[micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
 | **Dominant / Recessive** | CAN's two logical states: dominant (logical 0) actively drives the bus to a differential [[learning/notes/quick-context/voltage|voltage]]; recessive (logical 1) lets the bus float to no differential voltage — dominant always overwrites recessive, which is what makes arbitration work |
-| **[[micro-context/can-bus-termination|Termination]]** | The 120$\Omega$ [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|resistors]] at each end of the bus that match the wire's characteristic [[quick-context/impedance-and-reactance|impedance]] and absorb signals to prevent reflections |
+| **[[micro-context/can-bus-termination|Termination]]** | The 120$\Omega$ [[learning/notes/quick-context/resistor|resistors]] at each end of the bus that match the wire's characteristic [[quick-context/impedance-and-reactance|impedance]] and absorb signals to prevent reflections |
 
 ## How CAN Fits in the Protocol Landscape
 
@@ -38,7 +38,7 @@ CAN FD        2    8 Mbps      40 m       Bus (linear)     Next-gen automotive
 Ethernet      2-4  100 Mbps+   100 m      Star/switched    Cameras, high-bandwidth
 ```
 
-CAN occupies the sweet spot between [[micro-context/i2c|I2C]] (short-range sensor bus) and Ethernet (high-speed network): it's fast enough for real-time motor control, robust enough for long noisy cables, and simple enough that a $0.50 [[micro-context/stm32-[[learning/notes/micro-context/microcontroller|microcontroller]]|microcontroller]] peripheral handles the entire protocol in hardware.
+CAN occupies the sweet spot between [[micro-context/i2c|I2C]] (short-range sensor bus) and Ethernet (high-speed network): it's fast enough for real-time motor control, robust enough for long noisy cables, and simple enough that a $0.50 [[learning/notes/micro-context/microcontroller|microcontroller]] peripheral handles the entire protocol in hardware.
 
 <details>
 <summary><strong>How It Works</strong></summary>

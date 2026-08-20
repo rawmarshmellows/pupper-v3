@@ -7,7 +7,7 @@ updated: 2026-03-27
 
 # Clock Speed vs Temperature
 
-> **See also:** [[micro-context/clock-speed]] | [[micro-context/thermal-runaway]] | [[quick-context/[[learning/notes/quick-context/transistor|transistor]]-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** [[micro-context/clock-speed]] | [[micro-context/thermal-runaway]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
 **Definition:** Every [[learning/notes/micro-context/clock-edges|clock edge]] causes transistors to switch, and switching dissipates energy as heat. Power scales with [[learning/notes/quick-context/frequency-and-filtering|frequency]] (P ∝ f) and voltage squared (P ∝ V²), so higher clock speeds generate more heat—which is why CPUs need cooling and why "turbo boost" is temporary.
 

@@ -7,7 +7,7 @@ created: 2026-05-28
 
 > **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]]
 
-> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]], CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
+> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of [[learning/notes/micro-context/sram|SRAM]], dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
 ## The Core Problem
 
@@ -122,7 +122,7 @@ You can override this with `xTaskCreatePinnedToCore()` — but if you starve Cor
 | Variant | CPU | RAM | Radio | Killer feature | When to pick |
 |---------|-----|-----|-------|----------------|--------------|
 | **ESP32** (classic, 2016) | Xtensa LX6 dual @ 240 MHz | 520 KB | WiFi 4 + BT 4.2 + BLE | Cheapest dual-core | Legacy designs, generic IoT |
-| **ESP32-S2** (2020) | Xtensa LX7 single @ 240 MHz | 320 KB | WiFi 4 only (no BT) | [[learning/notes/quick-context/usb-peripheral-hardware|USB]] OTG built-in | USB peripherals when BT not needed |
+| **ESP32-S2** (2020) | Xtensa LX7 single @ 240 MHz | 320 KB | WiFi 4 only (no BT) | USB OTG built-in | USB peripherals when BT not needed |
 | **ESP32-S3** (2021) | Xtensa LX7 dual @ 240 MHz | 512 KB | WiFi 4 + BLE 5.0 | Vector instructions for AI/DSP, USB OTG | Edge ML, audio, the Arduino Uno R4 WiFi |
 | **ESP32-C3** (2021) | RISC-V single @ 160 MHz | 400 KB | WiFi 4 + BLE 5.0 | Cheapest BLE 5 chip (~$1) | Cost-sensitive BLE devices |
 | **ESP32-C6** (2023) | RISC-V HP @ 160 MHz + LP @ 20 MHz | 512 KB | WiFi 6 + BLE 5 + 802.15.4 | WiFi 6 + Thread/Matter/Zigbee in one | Smart-home (Matter), future-proof IoT |
@@ -234,7 +234,7 @@ Almost every ESP32 dev board (the ones with a USB connector) has a two-[[learnin
 - **[[learning/notes/quick-context/firmware]]** — The firmware concept; the ESP32's bootloader chain (ROM → 2nd-stage → app) is a worked example.
 - **[[learning/notes/quick-context/embedded-communication-protocols]]** — All the buses (SPI, [[learning/notes/micro-context/i2c|I2C]], I2S, CAN/TWAI, UART) the ESP32 exposes as peripherals.
 - **[[learning/notes/quick-context/raspberry-pi-5-components]]** — Higher up the stack: Pi runs Linux, ESP32 runs FreeRTOS. The ESP32 fills the gap between bare-metal MCUs and full Linux SBCs.
-- **[[learning/notes/quick-context/silicon-die]]** — The ESP32's WiFi radio, CPUs, and [[learning/notes/micro-context/sram|SRAM]] all share a single die — the cost magic comes from this integration.
+- **[[learning/notes/quick-context/silicon-die]]** — The ESP32's WiFi radio, CPUs, and SRAM all share a single die — the cost magic comes from this integration.
 - **FreeRTOS** — The preemptive RTOS the ESP32 runs by default. Tasks, queues, semaphores. ESP-IDF wraps it; Arduino-ESP32 hides it.
 - **ESPHome / Tasmota** — Pre-built firmware projects that turn an ESP32 into a YAML-configured smart-home device with no C code.
 - **Matter / Thread** — New smart-home interop protocol; the ESP32-C6 and H2 were designed around it.

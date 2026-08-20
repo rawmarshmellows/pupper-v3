@@ -8,7 +8,7 @@ created: 2026-03-27
 
 > **See also:** [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
 
-**Definition:** A 120Ω [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|resistor]] placed at each end of a [[quick-context/can-bus|CAN bus]] to match the cable's characteristic [[quick-context/impedance-and-reactance|impedance]] and prevent signal reflections. On the Pupper v3 control board, R1–R4 are the termination resistors for the 4 CAN buses connecting to 12 servo motors.
+**Definition:** A 120Ω [[learning/notes/quick-context/resistor|resistor]] placed at each end of a [[quick-context/can-bus|CAN bus]] to match the cable's characteristic [[quick-context/impedance-and-reactance|impedance]] and prevent signal reflections. On the Pupper v3 control board, R1–R4 are the termination resistors for the 4 CAN buses connecting to 12 servo motors.
 
 ## How It Works
 

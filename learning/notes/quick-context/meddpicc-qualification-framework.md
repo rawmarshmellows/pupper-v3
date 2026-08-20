@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/mcdonald-kam-model]]
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 

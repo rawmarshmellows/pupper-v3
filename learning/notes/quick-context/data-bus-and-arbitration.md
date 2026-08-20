@@ -11,14 +11,14 @@ created: 2026-06-07
 
 ## The Core Problem
 
-A computer is dozens of chips that all need to exchange bytes: the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]] reads an instruction from RAM, writes a pixel to the display controller, polls a keyboard. Wiring a dedicated set of data lines from every chip to every other chip would need an explosion of traces — for $N$ chips each needing to talk to all others, point-to-point links grow roughly as $N^2$. A shared **bus** collapses that to one set of wires everyone taps into, so wiring grows like $N$. But sharing wires creates a new danger: two chips driving the same wire at once is an electrical short. The whole art of the bus is letting many chips share wires *without ever driving them at the same time.*
+A computer is dozens of chips that all need to exchange bytes: the CPU reads an instruction from RAM, writes a pixel to the display controller, polls a keyboard. Wiring a dedicated set of data lines from every chip to every other chip would need an explosion of traces — for $N$ chips each needing to talk to all others, point-to-point links grow roughly as $N^2$. A shared **bus** collapses that to one set of wires everyone taps into, so wiring grows like $N$. But sharing wires creates a new danger: two chips driving the same wire at once is an electrical short. The whole art of the bus is letting many chips share wires *without ever driving them at the same time.*
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-[[learning/notes/quick-context/impedance-and-reactance|impedance]] (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |

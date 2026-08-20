@@ -5,13 +5,13 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[learning/notes/quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
@@ -348,7 +348,7 @@ EQUATION 4: AMPÈRE-MAXWELL LAW
 | Deriving wave equations | Awkward | Required |
 | Circuit analysis (EMF, flux) | Better | Works |
 | Numerical simulation | Possible | Required |
-| Relativistic formulation | Possible | Natural ([[quick-context/tensor|tensor]] form) |
+| Relativistic formulation | Possible | Natural ([[learning/notes/quick-context/tensor|tensor]] form) |
 | Conceptual understanding | Often clearer | More compact |
 
 </details>
@@ -510,7 +510,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[learning/notes/quick-context/electromagnetism|electromagnetism]].
 
 </details>
 
@@ -526,7 +526,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q2:** Why did Maxwell add the displacement current term (ε₀ ∂E/∂t) to Ampère's law?
 <details>
 <summary>Answer</summary>
-**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a capacitor would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
+**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a [[learning/notes/quick-context/capacitor|capacitor]] would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
 </details>
 
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?
@@ -538,7 +538,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?
 <details>
 <summary>Answer</summary>
-**Changing current creates changing B, which creates opposing E.** In an [[quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced [[learning/notes/quick-context/voltage|voltage]] opposes the change in current.
+**Changing current creates changing B, which creates opposing E.** In an [[learning/notes/quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced voltage opposes the change in current.
 </details>
 
 **Q5:** In empty space with no charges or currents, Maxwell's equations still allow solutions. What are these solutions?

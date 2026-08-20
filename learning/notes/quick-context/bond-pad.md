@@ -364,7 +364,7 @@ COMPARISON: Bond Pad Requirements
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|Semiconductor Packaging Hierarchy]]** — The full stack from transistors to PCB; bond pads are just one level in this chain that bridges nanometer transistors to millimeter-scale circuit boards.
 
-- **[[quick-context/[[learning/notes/quick-context/electrodes|electrodes]]|Electrodes]] and Metallurgy** — Bond pads are made of specific metals (aluminum, copper, gold) chosen for their electrical conductivity and ability to form reliable bonds; understanding why matters for reliability.
+- **[[learning/notes/quick-context/electrodes|Electrodes]] and Metallurgy** — Bond pads are made of specific metals (aluminum, copper, gold) chosen for their electrical conductivity and ability to form reliable bonds; understanding why matters for reliability.
 
 - **[[learning/notes/quick-context/electromigration|Electromigration]]** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
 

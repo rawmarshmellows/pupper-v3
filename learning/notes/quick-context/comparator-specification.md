@@ -390,7 +390,7 @@ So if your LMC7211-N circuit relies on its **push-pull** output driving an LED o
 
 - **[[quick-context/resistor]]** --- The reference divider that sets the trip voltage is built from [[quick-context/resistor|resistors]]; their tolerance stacks with the comparator's $V_{OS}$ to set total threshold accuracy.
 
-- **[[quick-context/[[learning/notes/quick-context/bjt|bjt]]-specifications]]** --- The same datasheet discipline applied to a discrete transistor instead of an IC: absolute-max "fences" ($V_{CEO}$, $I_C$, $P_C$) you never cross vs. design inputs ($\beta$) you work around, and the *typical ≠ guaranteed-across-temperature* trap shows up there as $h_{FE}$ spread and $P_C$ derating.
+- **[[quick-context/bjt-specifications]]** --- The same datasheet discipline applied to a discrete transistor instead of an IC: absolute-max "fences" ($V_{CEO}$, $I_C$, $P_C$) you never cross vs. design inputs ($\beta$) you work around, and the *typical ≠ guaranteed-across-temperature* trap shows up there as $h_{FE}$ spread and $P_C$ derating.
 
 - **[[quick-context/pwm-controller-circuit]]** --- A real application where the comparator's *propagation delay* spec (4.5) directly limits switching frequency.
 

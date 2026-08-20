@@ -9,7 +9,7 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/embedded-communication-protocols]]
 
-**Definition:** A complete computer on a single chip — [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]], memory (RAM + flash), and I/O peripherals all integrated into one package. Unlike a general-purpose CPU that needs external RAM, storage, and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[micro-context/stm32-microcontroller|STM32]] (ARM), [[quick-context/[[learning/notes/quick-context/esp32|esp32]]|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.
+**Definition:** A complete computer on a single chip — [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]], memory (RAM + flash), and I/O peripherals all integrated into one package. Unlike a general-purpose CPU that needs external RAM, storage, and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[micro-context/stm32-microcontroller|STM32]] (ARM), [[learning/notes/quick-context/esp32|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.
 
 ## How It Works
 

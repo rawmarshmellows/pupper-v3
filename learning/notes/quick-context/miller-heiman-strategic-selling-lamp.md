@@ -6,7 +6,7 @@ updated: 2026-02-10
 
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/mcdonald-kam-model]]
+> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]]
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 

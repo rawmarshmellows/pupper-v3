@@ -11,7 +11,7 @@ created: 2026-03-28
 
 ## The Core Problem
 
-Every pair of conductors separated by an insulator has capacitance. Discrete [[quick-context/[[learning/notes/quick-context/capacitor|capacitor]]|capacitors]] exploit this intentionally, but *parasitic* capacitance -- the unintended capacitance baked into every wire, trace, connector, and [[quick-context/transistor|transistor]] gate -- is what limits how fast digital circuits can switch, how far analog signals can travel without distortion, and how much power a CPU burns. Understanding capacitance as a *property of geometry and materials* (not just a component spec) is the key to understanding signal integrity, switching speed, and power dissipation in modern electronics.
+Every pair of conductors separated by an insulator has capacitance. Discrete [[learning/notes/quick-context/capacitor|capacitors]] exploit this intentionally, but *parasitic* capacitance -- the unintended capacitance baked into every wire, trace, connector, and [[quick-context/transistor|transistor]] gate -- is what limits how fast digital circuits can switch, how far analog signals can travel without distortion, and how much power a CPU burns. Understanding capacitance as a *property of geometry and materials* (not just a component spec) is the key to understanding signal integrity, switching speed, and power dissipation in modern electronics.
 
 ## 5 Essential Terms
 
@@ -20,7 +20,7 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 | **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
 | **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
-| **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/[[learning/notes/quick-context/voltage|voltage]]|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
+| **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[learning/notes/quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
 <details>
@@ -224,7 +224,7 @@ WHY CAPACITANCE = SPEED LIMIT
 
 ### Capacitance in Series and Parallel
 
-Like [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|resistors]], capacitances combine -- but with inverted rules:
+Like [[learning/notes/quick-context/resistor|resistors]], capacitances combine -- but with inverted rules:
 
 ```
 COMBINING CAPACITANCES
@@ -403,7 +403,7 @@ Same $I = C \cdot dV/dt$ as always — but *C* is now an *effective* C that depe
 
 Every device connected to a shared signal line adds its input capacitance in parallel. This is the direct consequence of the parallel rule above: $C_{\text{total}} = C_1 + C_2 + C_3 + \ldots$. Add enough devices and the total bus capacitance becomes so large that the signal can't transition fast enough to be read correctly.
 
-The clearest real-world example is [[micro-context/[[learning/notes/micro-context/i2c|i2c]]|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
+The clearest real-world example is [[learning/notes/micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
 
 ```
 WHY DAISY CHAINS HIT A WALL
@@ -662,7 +662,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Q5:** As transistors shrink to 3 nm and below, wire (interconnect) capacitance increasingly dominates over gate capacitance. Why doesn't shrinking the transistor also shrink the wire capacitance proportionally?
 <details>
 <summary>Answer</summary>
-**Wires don't scale the same way as transistors.** Transistor gate area shrinks with the square of the feature size, directly reducing gate capacitance. But interconnect wires must still span the full chip to connect distant blocks -- you can make them thinner, but then resistance increases (more delay, more [[quick-context/[[learning/notes/quick-context/electromigration|electromigration]]|electromigration]] risk). And thinner wires packed closer together actually *increase* capacitance between neighbors ($C = \varepsilon A / d$ with smaller $d$). The semiconductor industry now spends more effort on "back-end" interconnect optimization (low-k dielectrics, air gaps between wires) than on transistor improvements.
+**Wires don't scale the same way as transistors.** Transistor gate area shrinks with the square of the feature size, directly reducing gate capacitance. But interconnect wires must still span the full chip to connect distant blocks -- you can make them thinner, but then resistance increases (more delay, more [[learning/notes/quick-context/electromigration|electromigration]] risk). And thinner wires packed closer together actually *increase* capacitance between neighbors ($C = \varepsilon A / d$ with smaller $d$). The semiconductor industry now spends more effort on "back-end" interconnect optimization (low-k dielectrics, air gaps between wires) than on transistor improvements.
 </details>
 
 </details>

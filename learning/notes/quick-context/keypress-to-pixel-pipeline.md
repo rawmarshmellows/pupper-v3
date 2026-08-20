@@ -11,7 +11,7 @@ created: 2026-06-07
 
 ## The Core Problem
 
-A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, firmware — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
+A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, [[learning/notes/quick-context/firmware|firmware]] — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
 
 ## 5 Essential Terms
 

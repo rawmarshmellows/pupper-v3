@@ -11,16 +11,16 @@ created: 2026-03-26
 
 ## The Core Problem
 
-Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
+Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert PCB. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[micro-context/plc-programmable-logic-controller\|bare metal or under an RTOS]] with no general-purpose OS |
-| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a [[learning/notes/micro-context/microcontroller|microcontroller]]'s flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
+| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a microcontroller's flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
 | **ELF file (.elf)** | Executable and Linkable Format — the compiler's output containing machine code, memory layout, and debug symbols; the flash tool extracts the code sections and writes them to the chip |
-| **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on [[learning/notes/micro-context/stm32-microcontroller|STM32]], this is `0x08000000`, the start of flash memory |
+| **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
 | **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/[[learning/notes/quick-context/uart|UART]] before jumping to the application code; some STM32 projects skip this and flash the application directly |
 
 <details>
@@ -181,20 +181,20 @@ STM32F446 MEMORY MAP:
 
 The fundamental tension is **control vs. convenience**. Firmware gives you direct hardware access and deterministic timing, but you give up everything a general-purpose OS provides:
 
-| | Firmware (STM32) | Application Software ([[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]]) |
+| | Firmware (STM32) | Application Software (Raspberry Pi) |
 |---|---|---|
 | **Startup** | ~10 ms to main() | ~30 seconds to shell |
 | **Timing** | Deterministic microsecond loops | Non-deterministic (kernel, GC) |
 | **Memory** | 128 KB [[learning/notes/micro-context/sram|SRAM]], no virtual memory | 4 GB RAM, full MMU |
 | **Storage** | 512 KB flash, no filesystem | 32 GB+ SD card, ext4 |
-| **Debugging** | [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] + GDB (hardware breakpoints) | SSH, printf, strace |
+| **Debugging** | SWD + GDB (hardware breakpoints) | SSH, printf, strace |
 | **Updates** | Requires flash tool + physical access | `apt update && apt upgrade` |
-| **Languages** | C, C++, Rust (no runtime) | Python, C++, anything |
+| **Languages** | C, C++, [[learning/notes/quick-context/rust|Rust]] (no runtime) | Python, C++, anything |
 | **Libraries** | Vendor HAL, hand-rolled drivers | pip, apt, npm |
 | **Crash recovery** | Watchdog timer resets chip | systemd restarts process |
 | **Concurrency** | Interrupts, DMA, maybe RTOS tasks | Threads, processes, async |
 
-This is exactly why the Pupper uses both — the STM32s run firmware for the 1 kHz motor control loop where a missed deadline means the robot falls, and the Raspberry Pi runs Linux for [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|WiFi]], ML inference, voice processing, and everything that doesn't need hard real-time guarantees. See [[quick-context/pupper-brain]] for the full architecture.
+This is exactly why the Pupper uses both — the STM32s run firmware for the 1 kHz motor control loop where a missed deadline means the robot falls, and the Raspberry Pi runs Linux for WiFi, ML inference, voice processing, and everything that doesn't need hard real-time guarantees. See [[quick-context/pupper-brain]] for the full architecture.
 
 ### The Update Problem
 
@@ -279,7 +279,7 @@ FILE FORMAT COMPARISON:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from source code to logic gates. Firmware lives at layers 4-5 of this chain: compiled to machine code, running directly on the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]]'s fetch-execute cycle. The bootstrapping section explains the Reset Vector — the exact mechanism firmware uses to begin executing at power-on.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from source code to logic gates. Firmware lives at layers 4-5 of this chain: compiled to machine code, running directly on the CPU's fetch-execute cycle. The bootstrapping section explains the Reset Vector — the exact mechanism firmware uses to begin executing at power-on.
 
 - **[[quick-context/pupper-brain]]** — The dual-MCU + Raspberry Pi architecture. Explains why Pupper needs firmware on the STM32s (real-time motor control) alongside Linux on the Pi (WiFi, ML, voice). Firmware handles the timing-critical 1 kHz loop; the Pi handles everything else.
 

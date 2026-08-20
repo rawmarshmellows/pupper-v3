@@ -7,7 +7,7 @@ created: 2026-03-26
 
 > **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]]
 
-> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]] loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
+> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
 ## The Core Problem
 
@@ -173,7 +173,7 @@ When the [[micro-context/stm32-microcontroller|STM32]] powers on (or resets), th
 1. Loads the value at address `0x00000000` into the **Main Stack Pointer** (MSP)
 2. Loads the value at address `0x00000004` into the **Program Counter** (PC) — this is the `Reset_Handler` address
 
-On [[learning/notes/micro-context/stm32-microcontroller|STM32]], flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
+On STM32, flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
 
 Then `Reset_Handler` (assembly code in `startup_stm32f446retx.s`) runs:
 
@@ -245,7 +245,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
@@ -336,7 +336,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
-- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via [[learning/notes/micro-context/swd-serial-wire-debug|SWD]]. Focuses on the debug probe side of the process.
+- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
@@ -378,7 +378,7 @@ Flash space is limited (512KB on the STM32F446) and shared between code, constan
 **Q4:** If the vector table must be at address `0x00000000` but STM32 flash starts at `0x08000000`, how does the CPU find it?
 <details>
 <summary>Answer</summary>
-STM32 uses **memory aliasing**: the flash region at `0x08000000` is also mapped (mirrored) to address `0x00000000` by default. So the CPU reading address `0x00000000` physically accesses `0x08000000`. This aliasing is controlled by the BOOT pins — with BOOT0=0 (default), flash is aliased to 0x0. With BOOT0=1, system memory (containing ST's factory bootloader) is aliased instead, enabling firmware updates over UART/[[learning/notes/quick-context/usb-peripheral-hardware|USB]] without a debug probe. The linker script places the vector table at `0x08000000` (the real flash address), and the aliasing handles the rest. See: How It Works (The Boot Sequence)
+STM32 uses **memory aliasing**: the flash region at `0x08000000` is also mapped (mirrored) to address `0x00000000` by default. So the CPU reading address `0x00000000` physically accesses `0x08000000`. This aliasing is controlled by the BOOT pins — with BOOT0=0 (default), flash is aliased to 0x0. With BOOT0=1, system memory (containing ST's factory bootloader) is aliased instead, enabling firmware updates over UART/USB without a debug probe. The linker script places the vector table at `0x08000000` (the real flash address), and the aliasing handles the rest. See: How It Works (The Boot Sequence)
 </details>
 
 **Q5:** The ELF file for SPIneV1 is ~250KB, but the actual flash usage is ~55KB. Where does the other ~195KB go?

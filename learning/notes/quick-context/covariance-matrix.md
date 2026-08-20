@@ -206,7 +206,7 @@ print(R)
 
 The cross-covariance matrix $H$ encodes all the rotational information. The [[quick-context/singular-value-decomposition|SVD]] extracts it cleanly.
 
-**The one thing most outsiders get wrong about this is...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by [[learning/notes/quick-context/singular-value-decomposition|SVD]] to find the rotation.
+**The one thing most outsiders get wrong about this is...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by SVD to find the rotation.
 
 </details>
 

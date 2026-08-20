@@ -5,7 +5,7 @@ created: 2026-02-06
 
 > **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/micro-context/mosfet]]
 
-> **TL;DR:** A BJT is a current-controlled [[quick-context/[[learning/notes/quick-context/transistor|transistor]]|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
+> **TL;DR:** A BJT is a current-controlled [[learning/notes/quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
 
 # BJT (Bipolar Junction Transistor)
 
@@ -26,7 +26,7 @@ MOSFETs are voltage-controlled switches that dominate digital electronics (billi
 <details>
 <summary><strong>How It Works</strong></summary>
 
-An NPN BJT is a sandwich: N-type collector, thin P-type base, N-type emitter. It contains two PN junctions (like two [[quick-context/[[learning/notes/quick-context/diode|diode]]|diodes]] back-to-back), but the key is that the base layer is extremely thin—electrons injected from the emitter mostly shoot through the base into the collector instead of exiting through the base terminal.
+An NPN BJT is a sandwich: N-type collector, thin P-type base, N-type emitter. It contains two PN junctions (like two [[learning/notes/quick-context/diode|diodes]] back-to-back), but the key is that the base layer is extremely thin—electrons injected from the emitter mostly shoot through the base into the collector instead of exiting through the base terminal.
 
 ```
 NPN BJT STRUCTURE

@@ -29,6 +29,6 @@ Forward bias:  current flows          Reverse bias:  current blocked
   → current flows (Vf ≈ 0.7V Si)       → no current (until breakdown)
 ```
 
-**Key insight:** The same PN junction does both jobs—forward bias is how diodes conduct, reverse bias is how they block, and every [[quick-context/[[learning/notes/quick-context/transistor|transistor]]|transistor]] relies on biasing junctions in specific combinations to switch on and off.
+**Key insight:** The same PN junction does both jobs—forward bias is how diodes conduct, reverse bias is how they block, and every [[learning/notes/quick-context/transistor|transistor]] relies on biasing junctions in specific combinations to switch on and off.
 
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

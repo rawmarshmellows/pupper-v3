@@ -3,7 +3,7 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
 
 > **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional [[learning/notes/quick-context/wire-bonding|wire bonding]].
 
@@ -15,7 +15,7 @@ Imagine you have a tiny piece of silicon smaller than your fingernail, containin
 
 The traditional solution was **wire bonding**: attach the chip right-side up and use incredibly thin wires (thinner than a human hair) to connect the edges of the chip to the larger circuit. But this approach has serious limitations. You can only attach wires around the *edges* of the chip, limiting how many connections you can make. Those thin wires also act like tiny antennas, picking up interference and slowing down signals. As chips got more powerful and needed more connections (modern CPUs need thousands), wire bonding became a bottleneck.
 
-**Flip-chip** solves this by literally flipping the chip upside-down and using an array of tiny solder bumps across the *entire bottom surface* of the chip to connect directly to the underlying [[learning/notes/quick-context/substrate-ic-packaging|substrate]]. Instead of wires looping through the air, you get direct, short connections. This enables more connections (I/O density), faster signal speeds, and better heat dissipation. Without flip-chip technology, modern high-performance processors simply couldn't exist—they'd be too slow and couldn't have enough connections to move data in and out fast enough.
+**Flip-chip** solves this by literally flipping the chip upside-down and using an array of tiny solder bumps across the *entire bottom surface* of the chip to connect directly to the underlying substrate. Instead of wires looping through the air, you get direct, short connections. This enables more connections (I/O density), faster signal speeds, and better heat dissipation. Without flip-chip technology, modern high-performance processors simply couldn't exist—they'd be too slow and couldn't have enough connections to move data in and out fast enough.
 
 ## 5 Essential Terms
 
@@ -166,7 +166,7 @@ FLIP-CHIP TRADEOFFS AT A GLANCE:
 </details>
 
 <details>
-<summary><strong>Concrete Example: Anatomy of a Flip-Chip [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]] Package</strong></summary>
+<summary><strong>Concrete Example: Anatomy of a Flip-Chip CPU Package</strong></summary>
 
 Let's walk through what a modern flip-chip CPU package actually looks like, layer by layer:
 
@@ -227,7 +227,7 @@ Here's what each layer does:
 | Solder bumps | ~100 μm diameter, ~100 μm pitch | Electrical/mechanical connection between die and substrate |
 | Underfill | Fills ~50 μm gap | Epoxy that prevents bump cracking from thermal stress |
 | Substrate | ~1.5mm thick, ~40mm square | Routes signals from dense die pitch to sparse BGA pitch |
-| BGA balls | ~500-800 μm diameter | Connect package to motherboard [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] |
+| BGA balls | ~500-800 μm diameter | Connect package to motherboard PCB |
 
 **The one thing most outsiders get wrong about this is...** assuming "flip-chip" means the whole package is upside-down or looks different from the outside. From the outside, a flip-chip package looks nearly identical to a wire-bonded package—they both have solder balls on the bottom and connect the same way to a circuit board. The "flip" happens invisibly inside the package: the silicon die is mounted face-down onto the substrate. You'd never know the difference by looking at the package externally; the innovation is entirely hidden within.
 
@@ -278,7 +278,7 @@ Flip-chip has significant cost and complexity disadvantages: it requires tighter
 **Q5:** Given that flip-chip places the die face-down, how does this actually improve thermal performance compared to wire bonding where the die faces up?
 <details>
 <summary>Answer</summary>
-When the die is flipped face-down, the backside of the silicon (which has no circuitry, just bulk silicon) is exposed upward. This backside can be placed in direct or near-direct contact with a heat spreader or heatsink via thermal interface material. In wire bonding, the active (hot) side of the die faces up, but wires obstruct direct contact with cooling. Additionally, silicon is an excellent heat conductor, so heat generated in the [[learning/notes/quick-context/transistor|transistor]] layers (near the face) conducts efficiently through the bulk silicon to the exposed backside. The flip-chip configuration provides a shorter, lower-resistance thermal path to external cooling. See: Concrete Example (cross-section diagram) and The Key Tension (Heat Dissipation row)
+When the die is flipped face-down, the backside of the silicon (which has no circuitry, just bulk silicon) is exposed upward. This backside can be placed in direct or near-direct contact with a heat spreader or heatsink via thermal interface material. In wire bonding, the active (hot) side of the die faces up, but wires obstruct direct contact with cooling. Additionally, silicon is an excellent heat conductor, so heat generated in the transistor layers (near the face) conducts efficiently through the bulk silicon to the exposed backside. The flip-chip configuration provides a shorter, lower-resistance thermal path to external cooling. See: Concrete Example (cross-section diagram) and The Key Tension (Heat Dissipation row)
 </details>
 
 </details>

@@ -3,7 +3,7 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
 
 > **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
@@ -515,7 +515,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q4:** Why can't we simply store solar electricity in giant capacitors instead of batteries?
 <details>
 <summary>Answer</summary>
-**Capacitors have far lower energy density than batteries.** Energy stored in a capacitor is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
+**Capacitors have far lower energy density than batteries.** Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
 </details>
 
 **Q5:** Hydroelectric dams achieve 85-90% efficiency while coal plants achieve only 33-37%. What's the fundamental reason for this difference?
@@ -524,7 +524,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-scale generation technology.
 </details>
 
-**Q6:** A generator and an [[learning/notes/quick-context/inductor|inductor]] both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
+**Q6:** A generator and an inductor both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
 <details>
 <summary>Answer</summary>
 **The source of the changing magnetic flux is different.** In a generator, mechanical rotation moves the coil through an external magnetic field—the flux changes because the coil's orientation changes. In an inductor, the coil creates its own magnetic field from the current flowing through it—the flux changes because the current changes (Φ = L × I, so dΦ/dt = L × dI/dt). Same equation (EMF = -N × dΦ/dt), but generator converts mechanical motion to electricity, while inductor opposes changes in current by generating back-EMF. See: Generators and Inductors section.

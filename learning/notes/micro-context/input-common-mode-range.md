@@ -6,7 +6,7 @@ created: 2026-06-07
 
 # Input Common-Mode Range ($CMVR$)
 
-> **See also:** [[quick-context/[[learning/notes/quick-context/comparator|comparator]]-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
+> **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
 **Definition:** The range of input [[learning/notes/quick-context/voltage|voltage]] (common to both pins) over which a comparator or [[learning/notes/quick-context/op-amp|op-amp]] still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 

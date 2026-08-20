@@ -2,7 +2,7 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
-> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/resistor]]
 
 # DuPont Jumper Wires
 
@@ -16,7 +16,7 @@ Electronics prototyping requires connecting dozens of components -- sensors, mic
 
 | Term | Definition |
 |------|------------|
-| **2.54mm pitch** | The 0.1" (100 mil) spacing between adjacent pins -- the universal standard for breadboards, Arduino headers, and [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]] GPIO |
+| **2.54mm pitch** | The 0.1" (100 mil) spacing between adjacent pins -- the universal standard for breadboards, Arduino headers, and Raspberry Pi GPIO |
 | **Crimp contact** | The stamped metal pin or socket inside the plastic housing, mechanically squeezed onto the wire rather than soldered |
 | **Housing** | The small rectangular plastic shell (nylon 66) that holds crimp contacts; comes in 1P through 20P sizes for single or multi-pin groupings |
 | **Gender** | Male (pin) vs female (socket); jumper wires come in M-M, M-F, and F-F combinations depending on what endpoints you're connecting |
@@ -244,7 +244,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 **Q1:** What pitch dimension defines a DuPont connector, and why does that number matter?
 <details>
 <summary>Answer</summary>
-2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
+2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and PCB pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
 </details>
 
 **Q2:** Why are modern "DuPont" connectors less reliable than the original Berg Mini-PV design?

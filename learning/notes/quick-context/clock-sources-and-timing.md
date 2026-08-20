@@ -242,11 +242,11 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 - **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: resistor-[[learning/notes/quick-context/capacitor|capacitor]] charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
 - **[[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]** -- The full BOM including the two muRata CSTNE8M00G55A000R0 ceramic resonators (X1, X2).
 - **[[quick-context/can-bus|CAN Bus]]** -- The communication protocol that drives the Pupper's clock source choice: its ±1.58% tolerance makes ceramic resonators sufficient.
-- **[[quick-context/[[learning/notes/quick-context/firmware|firmware]]|Firmware]]** -- The code that configures the clock tree at startup: selecting HSE, configuring PLL multipliers, switching SYSCLK.
+- **[[learning/notes/quick-context/firmware|Firmware]]** -- The code that configures the clock tree at startup: selecting HSE, configuring PLL multipliers, switching SYSCLK.
 
 **Related micro-context files:**
 
-- **[[micro-context/stm32-[[learning/notes/micro-context/microcontroller|microcontroller]]|STM32 Microcontroller]]** -- The STM32F446 that receives the clock chain's output.
+- **[[learning/notes/micro-context/microcontroller|STM32 Microcontroller]]** -- The STM32F446 that receives the clock chain's output.
 - **[[micro-context/piezoelectric-effect|Piezoelectric Effect]]** -- The physics underlying both crystal and ceramic resonator operation.
 - **[[micro-context/thermal-runaway|Thermal Runaway]]** -- The extreme case of the heat-speed feedback loop.
 

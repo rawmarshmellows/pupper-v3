@@ -15,7 +15,7 @@ created: 2026-03-27
 - The master generates BCLK (bit clock) to shift audio samples out one bit at a time, and LRCLK (word select) to indicate left vs. right channel.
 - When LRCLK is low, the left channel sample is transmitted; when high, the right channel — one complete stereo frame per LRCLK cycle.
 - The receiver latches data on the rising edge of BCLK (transmitters typically transition on the falling edge so data is stable in time). MSB (most significant bit) is sent first, one clock cycle after the LRCLK transition.
-- Unlike [[micro-context/[[learning/notes/micro-context/spi|spi]]|SPI]], I2S has no chip-select — it's a dedicated point-to-point audio link, not a shared bus.
+- Unlike [[learning/notes/micro-context/spi|SPI]], I2S has no chip-select — it's a dedicated point-to-point audio link, not a shared bus.
 
 ```
 I2S TIMING (16-bit stereo):

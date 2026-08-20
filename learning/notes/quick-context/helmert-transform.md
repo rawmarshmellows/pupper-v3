@@ -97,7 +97,7 @@ $$H = U\Sigma V^T$$
 
 $$R = V U^T$$
 
-The [[learning/notes/quick-context/singular-value-decomposition|SVD]] decomposes $H$ into rotation-like components. The product $VU^T$ gives the optimal rotation matrix that minimizes the sum of squared residuals (the orthogonal Procrustes solution). A sign correction ensures $\det(R) = +1$ (proper rotation, not reflection):
+The SVD decomposes $H$ into rotation-like components. The product $VU^T$ gives the optimal rotation matrix that minimizes the sum of squared residuals (the orthogonal Procrustes solution). A sign correction ensures $\det(R) = +1$ (proper rotation, not reflection):
 
 $$\text{If } \det(VU^T) < 0, \text{ negate the column of } V \text{ corresponding to the smallest singular value}$$
 
@@ -285,7 +285,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a [[learning/notes/quick-context/similarity-transform|similarity transform]]; "Helmert" is the geodetic name for the same mathematical operation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem that Helmert solves: given corresponding 3D points in two frames, find the transform between them (Horn 1987 gave a closed-form quaternion solution; Arun et al. 1987 gave the SVD-based solution)
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine that extracts the rotation matrix from the cross-covariance matrix
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ is the critical intermediate representation; its SVD reveals the rotation
@@ -299,7 +299,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** What are the 7 parameters of a Helmert Transform, and why is 7 the minimum for a 3D [[learning/notes/quick-context/similarity-transform|similarity transform]]?
+**Q1:** What are the 7 parameters of a Helmert Transform, and why is 7 the minimum for a 3D similarity transform?
 <details>
 <summary>Answer</summary>
 3 translations ($t_x, t_y, t_z$), 3 rotations ($r_x, r_y, r_z$), and 1 uniform scale ($s$). This is the minimum because a similarity transform must specify where to move (3 DOF), how to reorient (3 DOF), and how to resize (1 DOF). Any fewer and you can't fully specify the mapping; any more and you introduce shear or non-uniform scale, which would no longer be a similarity transform. See: 5 Essential Terms, How It Works.

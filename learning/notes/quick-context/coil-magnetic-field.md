@@ -11,7 +11,7 @@ created: 2026-02-14
 
 ## The Core Problem
 
-You've wrapped wire into a coil and run [[quick-context/electric-current|current]] through it. Suddenly it acts like a magnet—attracting iron, deflecting compasses, storing energy. But *why* does moving charge create magnetism at all? And once you accept that it does, how do you calculate the resulting field strength? These questions sit at the heart of [[quick-context/[[learning/notes/quick-context/electromagnetism|electromagnetism]]|electromagnetism]]: understanding them unlocks motors, generators, [[quick-context/inductor|inductors]], transformers, MRI machines, and the physics of how all wireless communication works.
+You've wrapped wire into a coil and run [[quick-context/electric-current|current]] through it. Suddenly it acts like a magnet—attracting iron, deflecting compasses, storing energy. But *why* does moving charge create magnetism at all? And once you accept that it does, how do you calculate the resulting field strength? These questions sit at the heart of [[learning/notes/quick-context/electromagnetism|electromagnetism]]: understanding them unlocks motors, generators, [[quick-context/inductor|inductors]], transformers, MRI machines, and the physics of how all wireless communication works.
 
 ## 5 Essential Terms
 
@@ -495,7 +495,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
 | Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/[[learning/notes/quick-context/inductor|inductor]]\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
+| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |

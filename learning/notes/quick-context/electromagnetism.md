@@ -5,9 +5,9 @@ created: 2026-02-09
 
 # Electromagnetism
 
-> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/electric-current]]
 
-> **TL;DR:** Electromagnetism is the unified physics of electric and magnetic fields—moving charges create magnetic fields, changing magnetic fields create electric fields, and this interplay enables motors, generators, transformers, inductors, and all wireless communication. [[learning/notes/quick-context/maxwell-equations|Maxwell]] unified these phenomena in 1865, revealing that light itself is an electromagnetic wave.
+> **TL;DR:** Electromagnetism is the unified physics of electric and magnetic fields—moving charges create magnetic fields, changing magnetic fields create electric fields, and this interplay enables motors, generators, transformers, inductors, and all wireless communication. Maxwell unified these phenomena in 1865, revealing that light itself is an electromagnetic wave.
 
 ## The Core Problem: Two Forces That Are Really One
 
@@ -343,7 +343,7 @@ GENERATOR OPERATION — Step by Step
 
 - **[[quick-context/electric-current]]** — Current is moving charge, and moving charges create magnetic fields. Understanding current flow is prerequisite to understanding how electromagnets and inductors work.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of why current through a coil creates a magnetic field and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
+- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of [[learning/notes/quick-context/coil-magnetic-field|why current through a coil creates a magnetic field]] and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
 
 - **[[quick-context/inductor]]** — An inductor stores energy in a magnetic field created by current through a coil. The inductor equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a [[learning/notes/quick-context/voltage|voltage]] opposing the change.
 
@@ -361,7 +361,7 @@ GENERATOR OPERATION — Step by Step
 
 - **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different reference frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
 
-- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric tensor that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
 
 - **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi signals are electromagnetic waves at 2.4 GHz. A WiFi chip modulates data onto these waves and radiates them via an antenna — a direct, everyday application of Maxwell's prediction that changing electric fields create self-propagating EM waves.
 
@@ -379,7 +379,7 @@ GENERATOR OPERATION — Step by Step
 **Q2:** Why does an [[quick-context/inductor|inductor]] oppose changes in current?
 <details>
 <summary>Answer</summary>
-**Faraday's Law and Lenz's Law.** When current through an [[learning/notes/quick-context/inductor|inductor]] changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
+**Faraday's Law and Lenz's Law.** When current through an inductor changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
 </details>
 
 **Q3:** A transformer has 100 turns on the primary coil and 1000 turns on the secondary. If you apply 12V AC to the primary, what voltage appears on the secondary?
@@ -397,7 +397,7 @@ GENERATOR OPERATION — Step by Step
 **Q5:** Light travels at 3×10⁸ m/s. Maxwell calculated this speed from measurements of electric and magnetic constants made in a laboratory. How did he know these were related?
 <details>
 <summary>Answer</summary>
-**He derived it from his equations.** Maxwell's equations predict that changing electric fields create magnetic fields and vice versa, allowing self-sustaining waves that propagate at speed c = 1/√(ε₀μ₀), where ε₀ (permittivity) and μ₀ (permeability) are the electric and magnetic properties of free space. When he plugged in the measured values, he got c ≈ 3×10⁸ m/s—matching the known speed of light. This was the first clue that light is an electromagnetic wave, not a separate phenomenon.
+**He derived it from his equations.** [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] predict that changing electric fields create magnetic fields and vice versa, allowing self-sustaining waves that propagate at speed c = 1/√(ε₀μ₀), where ε₀ (permittivity) and μ₀ (permeability) are the electric and magnetic properties of free space. When he plugged in the measured values, he got c ≈ 3×10⁸ m/s—matching the known speed of light. This was the first clue that light is an electromagnetic wave, not a separate phenomenon.
 </details>
 
 </details>

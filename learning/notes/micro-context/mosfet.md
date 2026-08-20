@@ -9,7 +9,7 @@ updated: 2026-06-08
 
 > **See also:** [[quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/[[learning/notes/quick-context/transistor|transistor]]|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[learning/notes/quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 
@@ -89,4 +89,4 @@ You don't need an ever-*larger* voltage to switch off — you bring the gate *do
 
 Knob analogy: gate charge = how far you turn the knob; channel = the valve it opens. *Holding* the knob costs ~nothing; only *moving* it costs a blip.
 
-**Key insight:** The gate is one plate of a capacitor—it switches by electric field, not current flow—which is why MOSFETs are far more power-efficient than [[quick-context/[[learning/notes/quick-context/bjt|bjt]]|BJTs]] and dominate digital circuits with billions per chip.
+**Key insight:** The gate is one plate of a capacitor—it switches by electric field, not current flow—which is why MOSFETs are far more power-efficient than [[learning/notes/quick-context/bjt|BJTs]] and dominate digital circuits with billions per chip.

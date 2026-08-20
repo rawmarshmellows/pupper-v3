@@ -9,7 +9,7 @@ created: 2026-01-22
 
 ## The Core Problem
 
-Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms can lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[quick-context/electrolysis|electrolysis]], cations travel toward the negative [[quick-context/[[learning/notes/quick-context/electrodes|electrodes]]|electrode]] ([[quick-context/electrodes|cathode]]), where they receive [[quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
+Everything around you is made of atoms. Atoms are the tiny building blocks of all matter—your phone, the air, water, your body. Normally, atoms are electrically neutral (no charge). But atoms can lose or gain tiny particles called **electrons** (which carry negative charge), and when they do, they become **ions**—charged versions of atoms. A **cation** (pronounced "CAT-eye-on") is an atom that has *lost* electrons and become positively charged. Think of it like losing something negative makes you more positive. The problem is: how do we turn these positively charged cations back into neutral, usable atoms? That's what **reduction** does—it gives electrons back to cations, neutralizing them. Without this process, we couldn't extract metals from ores, electroplate jewelry, or produce hydrogen gas from water. In [[quick-context/electrolysis|electrolysis]], cations travel toward the negative [[learning/notes/quick-context/electrodes|electrode]] ([[quick-context/electrodes|cathode]]), where they receive [[quick-context/electric-current|electrons]] and transform back into neutral atoms or molecules.
 
 ## 5 Essential Terms
 
@@ -237,7 +237,7 @@ PATTERN: The charge number tells you how many electrons are needed!
 
 - **[[quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and why they're attracted to the negative electrode.
 
-- **[[quick-context/anions-and-[[learning/notes/micro-context/oxidation|oxidation]]|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
+- **[[learning/notes/micro-context/oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 

@@ -3,9 +3,9 @@ topic: Inductor
 created: 2026-02-06
 ---
 
-> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/quick-context/electric-current]]
 
-> **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
+> **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[learning/notes/quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
 
 # Inductor
 
@@ -568,13 +568,13 @@ THE CORE TRADEOFFS
     component on a power supply PCB.
 ```
 
-| Type | Inductance | Current | [[learning/notes/quick-context/frequency-and-filtering|Frequency]] | Best For |
+| Type | Inductance | Current | Frequency | Best For |
 |------|-----------|---------|-----------|----------|
 | **Air core** | Very low (nH) | Unlimited (no saturation) | GHz | RF circuits, antennas |
 | **Ferrite core** | High (μH-mH) | Limited by saturation | kHz-MHz | Power supplies, filters |
 | **Powdered iron** | Medium (μH) | High (gradual saturation) | kHz-MHz | High-current power |
 | **Toroidal** | High (contained field) | Medium-high | kHz-MHz | Low EMI, audio |
-| **[[learning/notes/micro-context/smd-resistor|SMD]] power** | Low-medium (μH) | Medium | MHz | Compact DC-DC converters |
+| **SMD power** | Low-medium (μH) | Medium | MHz | Compact DC-DC converters |
 | **Molded/shielded** | Low-medium (μH) | Medium | MHz | Dense PCBs, low EMI |
 
 </details>
@@ -649,7 +649,7 @@ BUCK CONVERTER OPERATION
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic capacitance interacts with inductance in real circuits.
+- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic [[learning/notes/quick-context/capacitance|capacitance]] interacts with inductance in real circuits.
 
 - **[[quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as charge flow is essential.
 
@@ -659,9 +659,9 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
-- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
+- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid [[learning/notes/quick-context/electricity-generation|electricity generation]].
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field, and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
+- **[[quick-context/coil-magnetic-field]]** — [[learning/notes/quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]], and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
 
 - **[[quick-context/lenzs-law]]** — The physics behind back-EMF: why the induced voltage always opposes current changes. This is conservation of energy enforced electromagnetically.
 
@@ -680,7 +680,7 @@ BUCK CONVERTER OPERATION
 **V = L × dI/dt. If dt approaches zero (instant cutoff), the voltage approaches infinity.** The inductor's magnetic field is collapsing and it will do whatever it takes to keep current flowing—even generating hundreds of volts across a small inductor. This is why flyback diodes are placed across inductive loads like motors and relays: they give the current a safe path to flow during turn-off.
 </details>
 
-**Q2:** An inductor and a [[learning/notes/quick-context/capacitor|capacitor]] are "duals." What does this mean practically?
+**Q2:** An inductor and a capacitor are "duals." What does this mean practically?
 <details>
 <summary>Answer</summary>
 **They have opposite behaviors in every way.** Capacitors block DC and pass AC; inductors pass DC and block AC. Capacitors oppose voltage changes; inductors oppose current changes. Their series/parallel formulas are swapped. Their time constant formulas are inverted (τ = RC vs τ = L/R). Together they create resonance at f = 1/(2π√LC).
@@ -692,7 +692,7 @@ BUCK CONVERTER OPERATION
 **36%.** Duty cycle D = Vout/Vin = 1.8/5 = 0.36 = 36%. The switch is ON for 36% of each cycle, during which the inductor charges, and OFF for 64%, during which it discharges.
 </details>
 
-**Q4:** Why are inductors typically the largest component on a power supply [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]?
+**Q4:** Why are inductors typically the largest component on a power supply PCB?
 <details>
 <summary>Answer</summary>
 **Magnetic energy storage requires physical volume.** More inductance needs more turns of wire. Higher current needs a larger core to avoid saturation. Lower losses need thicker wire (lower DCR). All of these push toward larger size. Unlike capacitors (which can be made very thin with ceramic layers), inductors fundamentally need 3D volume for their magnetic field.
@@ -701,7 +701,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch [[learning/notes/quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[learning/notes/micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

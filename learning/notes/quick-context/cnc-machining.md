@@ -184,8 +184,8 @@ One component requires a square internal pocket with perfectly sharp corners in 
 
 - [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] -- the additive manufacturing counterpart to CNC's subtractive approach
 - [[quick-context/tensile-strength-materials|Tensile Strength Materials]] -- why CNC parts retain full material strength while 3D printed parts have layer adhesion weaknesses
-- [[quick-context/[[learning/notes/quick-context/electrolysis|electrolysis]]|Electrolysis]] -- the electrochemical principles behind EDM's spark erosion process
-- [[quick-context/[[learning/notes/quick-context/electrodes|electrodes]]|Electrodes]] -- the shaped tool in EDM that transfers its geometry to the workpiece
+- [[learning/notes/quick-context/electrolysis|Electrolysis]] -- the electrochemical principles behind EDM's spark erosion process
+- [[learning/notes/quick-context/electrodes|Electrodes]] -- the shaped tool in EDM that transfers its geometry to the workpiece
 - [[micro-context/cnc-milling|CNC Milling (micro)]] -- concise definition
 - [[micro-context/cnc-turning|CNC Turning (micro)]] -- concise definition
 - [[micro-context/cnc-process-selection|CNC Process Selection (micro)]] -- decision framework

@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]]
 
 > **TL;DR:** A multimeter measures [[learning/notes/quick-context/voltage|voltage]], current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -17,7 +17,7 @@ A circuit doesn't work. Is the power supply providing 3.3V? Is the clock signal 
 
 | Term | Definition |
 |------|------------|
-| **DMM (Digital Multimeter)** | Measures V, I, R, continuity, and sometimes capacitance/[[learning/notes/quick-context/frequency-and-filtering|frequency]]. Displays a single number. Every electronics bench has one. |
+| **DMM (Digital Multimeter)** | Measures V, I, R, continuity, and sometimes [[learning/notes/quick-context/capacitance|capacitance]]/frequency. Displays a single number. Every electronics bench has one. |
 | **Oscilloscope** | Displays voltage vs. time on a screen. Shows signal shape, frequency, rise time, noise, glitches. Modern scopes are digital (DSO) with memory and measurement functions. |
 | **Probe** | The cable connecting the instrument to the circuit. Oscilloscope probes have a 10:1 divider (10× probe) that reduces loading on the circuit and extends voltage range. |
 | **Trigger** | The oscilloscope feature that stabilizes the display by starting each sweep at the same point on the waveform. Without triggering, signals appear to drift across the screen. |
@@ -122,9 +122,9 @@ WHEN TO USE WHICH
 | Bandwidth | Price Range | Good For |
 |-----------|-----------|----------|
 | 50 MHz | $300-500 | Arduino, slow digital, audio, power supplies |
-| 100 MHz | $400-800 | SPI, [[learning/notes/micro-context/i2c|I2C]], UART, most embedded work |
-| 200 MHz | $800-2000 | Faster [[learning/notes/micro-context/spi|SPI]], CAN bus, switching supply debug |
-| 500 MHz | $2000-5000 | [[learning/notes/quick-context/usb-peripheral-hardware|USB]], Ethernet PHY, DDR memory |
+| 100 MHz | $400-800 | SPI, I2C, [[learning/notes/quick-context/uart|UART]], most embedded work |
+| 200 MHz | $800-2000 | Faster SPI, [[learning/notes/quick-context/can-bus|CAN bus]], switching supply debug |
+| 500 MHz | $2000-5000 | USB, Ethernet PHY, DDR memory |
 | 1+ GHz | $5000-50000 | PCIe, high-speed serial, RF |
 
 Rule of thumb: scope bandwidth should be 5× the highest frequency in your signal. A 3.3V square wave at 10 MHz has significant energy at 50 MHz (5th harmonic), so a 50 MHz scope shows rounded edges. A 100 MHz scope shows it more accurately.
@@ -204,7 +204,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q3:** Why should you use a 10× probe instead of a 1× probe for most measurements?
 <details>
 <summary>Answer</summary>
-**Lower capacitive loading and higher bandwidth.** A 1× probe presents ~100 pF of capacitance to the circuit, which can change the behavior of high-[[learning/notes/quick-context/impedance-and-reactance|impedance]] or high-frequency signals. A 10× probe reduces this to ~10-15 pF. The tradeoff is 10× less signal amplitude, but the scope compensates by multiplying the display. Always use 10× for signals above ~1 MHz.
+**Lower capacitive loading and higher bandwidth.** A 1× probe presents ~100 pF of capacitance to the circuit, which can change the behavior of high-impedance or high-frequency signals. A 10× probe reduces this to ~10-15 pF. The tradeoff is 10× less signal amplitude, but the scope compensates by multiplying the display. Always use 10× for signals above ~1 MHz.
 </details>
 
 **Q4:** What does the trigger do on an oscilloscope?

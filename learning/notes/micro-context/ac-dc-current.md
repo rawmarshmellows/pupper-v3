@@ -28,6 +28,6 @@ DC (Direct Current)            AC (Alternating Current)
   USB ports, electronics         motors, generators
 ```
 
-**Key insight:** AC won the "war of currents" because [[quick-context/[[learning/notes/quick-context/inductor|inductor]]|transformers]] (which only work with AC) allow stepping voltage up for efficient long-distance transmission, then down for safe household use—something DC couldn't do cheaply until modern power electronics.
+**Key insight:** AC won the "war of currents" because [[learning/notes/quick-context/inductor|transformers]] (which only work with AC) allow stepping voltage up for efficient long-distance transmission, then down for safe household use—something DC couldn't do cheaply until modern power electronics.
 
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

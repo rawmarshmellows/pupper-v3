@@ -9,7 +9,7 @@ updated: 2026-03-27
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]
 
-**Definition:** The ADS1110A0IDBVR (U16) is a delta-sigma [[micro-context/adc-analog-to-digital-converter|ADC]] from Texas Instruments in a SOT-23-6 package with an [[micro-context/i2c|I2C]] interface, internal 2.048V reference, and programmable resolution: 16-bit at 15 SPS, down to 12-bit at 240 SPS. On the [[quick-context/pupper-bom-control-board|Pupper control board]], it reads battery voltage through a [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|voltage divider]] (scaling ~7-24V down to the ADC's input range) so the [[learning/notes/micro-context/stm32-microcontroller|STM32]] can warn of low battery.
+**Definition:** The ADS1110A0IDBVR (U16) is a delta-sigma [[micro-context/adc-analog-to-digital-converter|ADC]] from Texas Instruments in a SOT-23-6 package with an [[micro-context/i2c|I2C]] interface, internal 2.048V reference, and programmable resolution: 16-bit at 15 SPS, down to 12-bit at 240 SPS. On the [[quick-context/pupper-bom-control-board|Pupper control board]], it reads battery voltage through a [[learning/notes/quick-context/resistor|voltage divider]] (scaling ~7-24V down to the ADC's input range) so the [[learning/notes/micro-context/stm32-microcontroller|STM32]] can warn of low battery.
 
 ## How It Works
 

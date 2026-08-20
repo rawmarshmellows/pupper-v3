@@ -17,7 +17,7 @@ Electronics need stable [[learning/notes/quick-context/voltage|voltage]] to oper
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/[[learning/notes/quick-context/capacitance|capacitance]]|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **[[learning/notes/quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
 | **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
 | **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |

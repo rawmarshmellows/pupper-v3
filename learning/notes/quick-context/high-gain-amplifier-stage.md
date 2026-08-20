@@ -7,30 +7,30 @@ created: 2026-04-01
 
 > **Related:** [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/current-mirror]]
 
-> **TL;DR:** The high-gain amplifier stage sits between the [[quick-context/differential-pair|differential pair]] input and the output buffer in [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---it converts the differential pair's small current difference (microamps) into a large voltage swing (volts) by forcing that current through a very high [[learning/notes/quick-context/impedance-and-reactance|impedance]] node, achieving 60--100 dB of voltage gain with just a few [[quick-context/transistor|transistors]].
+> **TL;DR:** The high-gain amplifier stage sits between the [[quick-context/differential-pair|differential pair]] input and the output buffer in [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---it converts the [[learning/notes/quick-context/differential-pair|differential pair]]'s small current difference (microamps) into a large voltage swing (volts) by forcing that current through a very high impedance node, achieving 60--100 dB of voltage gain with just a few [[quick-context/transistor|transistors]].
 
 ## The Core Problem: A Current Difference Isn't Useful Yet
 
-The [[quick-context/differential-pair|differential pair]] senses the voltage difference between two inputs and converts it into a current difference---say 60 $\mu$A vs. 40 $\mu$A, a 20 $\mu$A difference. But downstream circuits (output stages, logic gates, [[learning/notes/micro-context/mosfet|MOSFET]] drivers) need a large *voltage* swing, not a current difference. You need to convert 20 $\mu$A of current imbalance into a voltage swing approaching the full supply rails (0V to 3.3V). That's the job of the high-gain amplifier stage: it multiplies the small signal by 1,000--100,000x by exploiting one simple principle---push a small current through a very high impedance and you get a large voltage ($V = I \times R$).
+The [[quick-context/differential-pair|differential pair]] senses the [[learning/notes/quick-context/voltage|voltage]] difference between two inputs and converts it into a current difference---say 60 $\mu$A vs. 40 $\mu$A, a 20 $\mu$A difference. But downstream circuits (output stages, logic gates, MOSFET drivers) need a large *voltage* swing, not a current difference. You need to convert 20 $\mu$A of current imbalance into a voltage swing approaching the full supply rails (0V to 3.3V). That's the job of the high-gain amplifier stage: it multiplies the small signal by 1,000--100,000x by exploiting one simple principle---push a small current through a very high impedance and you get a large voltage ($V = I \times R$).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Current mirror** | A circuit that copies a current from one branch to another using matched [[quick-context/transistor\|transistors]]. In the gain stage, it acts as an "active load" with extremely high output impedance---much higher than any [[quick-context/resistor\|resistor]] could practically provide. |
-| **Active load** | Using a transistor (current mirror) instead of a [[learning/notes/quick-context/resistor|resistor]] as the drain load. A resistor's impedance is just R (e.g., 10 k$\Omega$). A transistor in saturation has output impedance of 100 k$\Omega$--10 M$\Omega$, giving 10--1000x more gain from the same current. |
-| **High-impedance node** | The point where the [[learning/notes/quick-context/differential-pair|differential pair]]'s drain current meets the current mirror's output. Both sides present high impedance, so even a tiny current mismatch creates a large voltage change. This node is where gain happens. |
-| **[[learning/notes/quick-context/voltage|Voltage]] gain ($A_v$)** | The ratio of output voltage swing to input voltage difference. For the gain stage: $A_v = g_m \times (r_{o,n} \| r_{o,p})$, where $g_m$ is the differential pair's transconductance and $r_o$ is the output resistance. Typical: 60--100 dB (1,000--100,000x). |
-| **Cascode** | Stacking a second [[learning/notes/quick-context/transistor|transistor]] on top of the first to increase the output impedance (and therefore gain) even further. Common in precision op-amps where 100+ dB gain is needed. Adds complexity but doesn't add more current consumption. |
+| **[[learning/notes/micro-context/current-mirror|Current mirror]]** | A circuit that copies a current from one branch to another using matched [[quick-context/transistor\|transistors]]. In the gain stage, it acts as an "active load" with extremely high output impedance---much higher than any [[quick-context/resistor\|resistor]] could practically provide. |
+| **Active load** | Using a [[learning/notes/quick-context/transistor|transistor]] (current mirror) instead of a resistor as the drain load. A resistor's impedance is just R (e.g., 10 k$\Omega$). A transistor in saturation has output impedance of 100 k$\Omega$--10 M$\Omega$, giving 10--1000x more gain from the same current. |
+| **High-impedance node** | The point where the differential pair's drain current meets the current mirror's output. Both sides present high impedance, so even a tiny current mismatch creates a large voltage change. This node is where gain happens. |
+| **Voltage gain ($A_v$)** | The ratio of [[learning/notes/micro-context/output-voltage-swing|output voltage swing]] to input voltage difference. For the gain stage: $A_v = g_m \times (r_{o,n} \| r_{o,p})$, where $g_m$ is the differential pair's transconductance and $r_o$ is the output resistance. Typical: 60--100 dB (1,000--100,000x). |
+| **Cascode** | Stacking a second transistor on top of the first to increase the output impedance (and therefore gain) even further. Common in precision op-amps where 100+ dB gain is needed. Adds complexity but doesn't add more current consumption. |
 
 <details>
 <summary><strong>How It Works</strong> --- Current mirror turns current into voltage</summary>
 
 ### The Key Insight: $V = I \times R$, So Make R Enormous
 
-If you have a 20 $\mu$A current imbalance and push it through a 10 k$\Omega$ resistor, you get $V = 20\ \mu A \times 10\ k\Omega = 0.2\ V$. That's gain, but not much.
+If you have a 20 $\mu$A current imbalance and push it through a 10 k$\Omega$ [[learning/notes/quick-context/resistor|resistor]], you get $V = 20\ \mu A \times 10\ k\Omega = 0.2\ V$. That's gain, but not much.
 
-If you push that same 20 $\mu$A through a 5 M$\Omega$ impedance, you get $V = 20\ \mu A \times 5\ M\Omega = 100\ V$ --- which gets clipped to the supply rail (say 3.3V). That's the gain stage in action: the output slams to the rail with a tiny input, which is exactly what a [[quick-context/comparator|comparator]] needs.
+If you push that same 20 $\mu$A through a 5 M$\Omega$ impedance, you get $V = 20\ \mu A \times 5\ M\Omega = 100\ V$ --- which gets clipped to the supply rail (say 3.3V). That's the gain stage in action: the output slams to the rail with a tiny input, which is exactly what a [[learning/notes/quick-context/comparator|comparator]] needs.
 
 The trick is: you can't use a 5 M$\Omega$ resistor (it would be physically huge and drop the entire supply voltage). Instead, you use a **transistor in saturation** as the load. A saturated transistor acts like a current source with very high output impedance---it passes a roughly fixed current regardless of the voltage across it. Two current sources fighting at a single node creates the high-impedance condition.
 
@@ -217,7 +217,7 @@ OP-AMP vs COMPARATOR GAIN STAGE
 | Want | Problem |
 |------|---------|
 | **Higher gain** | Need higher output impedance → use cascode → adds voltage headroom loss, reduces output swing |
-| **Faster response** | Need lower parasitic capacitance at output node → smaller transistors → worse matching, lower gain |
+| **Faster response** | Need lower parasitic [[learning/notes/quick-context/capacitance|capacitance]] at output node → smaller transistors → worse matching, lower gain |
 | **Lower power** | Need less tail current → lower $g_m$ → lower gain. $g_m \propto \sqrt{I_{tail}}$ for MOSFETs. |
 | **Wider output swing** | Need transistors to stay in saturation over a wide voltage range → longer channel lengths → slower |
 
@@ -333,7 +333,7 @@ LM393 SIGNAL PATH (simplified)
 **Not enough impedance.** A practical resistor might be 10 k$\Omega$. With a 10 $\mu$A current difference, you get $V = 10\ \mu A \times 10\ k\Omega = 0.1\ V$ --- not enough to swing the output to the rails. A current mirror in saturation has output impedance of 500 k$\Omega$--10 M$\Omega$, giving 50--1000x more gain. Also, a large resistor would drop too much DC voltage (10 k$\Omega$ at 50 $\mu$A = 0.5V, eating into headroom), while a transistor in saturation only needs ~0.2V. See: The Core Problem.
 </details>
 
-**Q3:** What does the compensation capacitor in an [[learning/notes/quick-context/op-amp|op-amp]] do to the gain stage, and why doesn't a comparator have one?
+**Q3:** What does the compensation capacitor in an op-amp do to the gain stage, and why doesn't a comparator have one?
 <details>
 <summary>Answer</summary>
 **The compensation cap limits how fast the output node voltage can change** (slew rate = $I_{tail} / C_c$). In an op-amp, this prevents the loop from oscillating when negative feedback is applied---without it, the high gain and speed would cause instability. A comparator has no negative feedback loop (it operates open-loop or with positive feedback for hysteresis), so there's no stability concern. Removing the cap lets the output swing as fast as the parasitic capacitance allows, which is why comparators are 100--1000x faster than op-amps. See: How It Works (Op-Amp vs Comparator Gain Stage).
@@ -348,7 +348,7 @@ LM393 SIGNAL PATH (simplified)
 **Q5:** An engineer wants more gain from the 5-transistor OTA without adding more power. What can they do?
 <details>
 <summary>Answer</summary>
-**Add cascode transistors** (stack a second transistor on top of Q2 and Q4). This increases the output impedance from $r_o$ to $g_m \times r_o^2$ (gain squared), boosting voltage gain from ~50 dB to ~80--90 dB with the same tail current. The cost is reduced [[learning/notes/micro-context/output-voltage-swing|output voltage swing]] (each cascode eats ~0.2V of headroom) and slightly more complexity. At very low supply voltages (<1.5V), this headroom loss becomes a problem, which is why folded-cascode and gain-boosted architectures were invented. See: The Key Tension (Gain vs. Headroom Tradeoff).
+**Add cascode transistors** (stack a second transistor on top of Q2 and Q4). This increases the output impedance from $r_o$ to $g_m \times r_o^2$ (gain squared), boosting voltage gain from ~50 dB to ~80--90 dB with the same tail current. The cost is reduced output voltage swing (each cascode eats ~0.2V of headroom) and slightly more complexity. At very low supply voltages (<1.5V), this headroom loss becomes a problem, which is why folded-cascode and gain-boosted architectures were invented. See: The Key Tension (Gain vs. Headroom Tradeoff).
 </details>
 
 </details>

@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]]
 
-> **TL;DR:** Current, [[learning/notes/quick-context/voltage|voltage]], electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
+> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[learning/notes/quick-context/electromagnetism|electromagnetism]]."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
-Students learn voltage, current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
+Students learn [[learning/notes/quick-context/voltage|voltage]], current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 | **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
-| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. [[learning/notes/quick-context/maxwell-equations|Maxwell]] unified them; Einstein explained why. |
+| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -346,7 +346,7 @@ WHICH IS "TRUE"?
 | Situation | Better Mental Model |
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
-| AC circuit analysis | Charges flow, but consider [[learning/notes/quick-context/impedance-and-reactance|reactance]] |
+| AC circuit analysis | Charges flow, but consider reactance |
 | [[learning/notes/quick-context/capacitor|Capacitor]] charging | electric field building between plates |
 | [[learning/notes/quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
@@ -495,7 +495,7 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
 - **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[learning/notes/quick-context/electrolysis|electrolysis]] and circuits.
 
@@ -503,7 +503,7 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
 
-- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The resistor shows what happens when current flows but the energy isn't stored—it's dissipated.
+- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The [[learning/notes/quick-context/resistor|resistor]] shows what happens when current flows but the energy isn't stored—it's dissipated.
 
 - **[[quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical cost).
 
@@ -513,7 +513,7 @@ SUMMARY: The Four Quantities in Action
 
 - **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
 - **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 
@@ -534,7 +534,7 @@ SUMMARY: The Four Quantities in Action
 **The Lorentz force from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.
 </details>
 
-**Q3:** You measure 5V across a [[learning/notes/quick-context/resistor|resistor]] and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
+**Q3:** You measure 5V across a resistor and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
 <details>
 <summary>Answer</summary>
 **Almost certainly not.** Voltage is the integral of electric field over distance: V = E × d (for uniform field). If the resistor is 1 cm long and the capacitor gap is 0.1 mm, then E_resistor = 5V/0.01m = 500 V/m, while E_capacitor = 5V/0.0001m = 50,000 V/m—100× stronger! Same voltage, vastly different field strength, because of different dimensions.

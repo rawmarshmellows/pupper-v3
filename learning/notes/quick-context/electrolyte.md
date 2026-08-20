@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/electrodes]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/micro-context/cathode]]
 
 > **TL;DR:** Electrolytes are substances (acids, bases, or salts) that dissolve in water to release free ions, enabling the liquid to conduct electricity; pure water is essentially an insulator, but adding an electrolyte can increase conductivity by 500,000x.
 
@@ -54,14 +54,14 @@ Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS
 |------|------------|
 | **Ion** | An atom or molecule with net electric charge from gaining or losing electrons (Na⁺, Cl⁻, SO₄²⁻) |
 | **Dissociation** | The process where ionic compounds split into free ions when dissolved or melted |
-| **Conductivity** | A measure of how well a solution carries electric current, measured in siemens per centimeter (S/cm) |
+| **Conductivity** | A measure of how well a solution carries [[learning/notes/quick-context/electric-current|electric current]], measured in siemens per centimeter (S/cm) |
 | **Strong electrolyte** | Substances that fully dissociate into ions (NaCl, HCl, NaOH)—high conductivity |
 | **Weak electrolyte** | Substances that only partially dissociate (acetic acid, ammonia)—lower conductivity |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The mechanism of electrolytic conduction is fundamentally different from how metals conduct electricity. In a metal wire, electrons flow freely while atoms stay fixed in place. In an electrolyte solution, the opposite happens: electrons stay bound to atoms, but the entire ions physically migrate through the liquid. When you apply [[learning/notes/quick-context/voltage|voltage]] across two electrodes immersed in an electrolyte, you create an electric field that pushes positive ions (cations) toward the negative electrode (cathode) and negative ions (anions) toward the positive electrode (anode). This mass migration of charged particles IS the current.
+The mechanism of electrolytic conduction is fundamentally different from how metals conduct electricity. In a metal wire, electrons flow freely while atoms stay fixed in place. In an electrolyte solution, the opposite happens: electrons stay bound to atoms, but the entire ions physically migrate through the liquid. When you apply voltage across two [[learning/notes/quick-context/electrodes|electrodes]] immersed in an electrolyte, you create an electric field that pushes positive ions (cations) toward the negative electrode (cathode) and negative ions (anions) toward the positive electrode (anode). This mass migration of charged particles IS the current.
 
 The process begins with dissociation: when an ionic compound like NaCl dissolves in water, the polar water molecules surround and separate the Na⁺ and Cl⁻ ions that were locked together in the crystal lattice. Each ion becomes "solvated"—wrapped in a shell of water molecules with their opposite charges facing inward. These solvated ions are now free to move independently through the solution. The number of ions and how fast they can move determines the solution's conductivity. Temperature matters because warmer solutions have lower viscosity, allowing ions to migrate faster.
 
@@ -134,7 +134,7 @@ Both parts MUST work for the circuit to be complete
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Practitioners constantly balance **maximizing conductivity** (more ions = lower resistance = more efficient current flow) against **avoiding unwanted reactions** (some electrolytes participate in electrode reactions you don't want). For water [[learning/notes/quick-context/electrolysis|electrolysis]], you want H₂ and O₂—but if you use NaCl as your electrolyte, chlorine gas forms at the anode instead of oxygen. The "ideal" electrolyte provides high ionic conductivity while remaining electrochemically inert at your operating voltages. Sulfuric acid (H₂SO₄) and sodium sulfate (Na₂SO₄) work well for water splitting because SO₄²⁻ is harder to oxidize than water. Concentration matters too: more electrolyte increases conductivity but can shift reaction selectivity, corrode equipment, or create disposal problems. Industrial processes carefully tune electrolyte composition, concentration, temperature, and pH to hit the sweet spot between efficiency and product purity.
+Practitioners constantly balance **maximizing conductivity** (more ions = lower resistance = more efficient current flow) against **avoiding unwanted reactions** (some electrolytes participate in electrode reactions you don't want). For water electrolysis, you want H₂ and O₂—but if you use NaCl as your electrolyte, chlorine gas forms at the [[learning/notes/micro-context/anode|anode]] instead of oxygen. The "ideal" electrolyte provides high ionic conductivity while remaining electrochemically inert at your operating voltages. Sulfuric acid (H₂SO₄) and sodium sulfate (Na₂SO₄) work well for water splitting because SO₄²⁻ is harder to oxidize than water. Concentration matters too: more electrolyte increases conductivity but can shift reaction selectivity, corrode equipment, or create disposal problems. Industrial processes carefully tune electrolyte composition, concentration, temperature, and pH to hit the sweet spot between efficiency and product purity.
 
 </details>
 
@@ -217,7 +217,7 @@ Comparison of Common Electrolytes:
 
 - **[[quick-context/making-electrolytes]]** — Detailed guide on how acids, bases, and salts create electrolytes through dissociation.
 
-- **[[quick-context/electrodes]]** — The cathode and anode where ions exchange electrons; electrolytes deliver ions to these surfaces.
+- **[[quick-context/electrodes]]** — The [[learning/notes/micro-context/cathode|cathode]] and anode where ions exchange electrons; electrolytes deliver ions to these surfaces.
 
 - **[[quick-context/cations-and-reduction]]** — Positive ions (cations) in the electrolyte migrate to the cathode and gain electrons.
 

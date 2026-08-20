@@ -7,7 +7,7 @@ created: 2026-06-07
 
 > **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/micro-context/mosfet]]
 >
-> **Companion note:** [[quick-context/[[learning/notes/quick-context/bjt|bjt]]|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
+> **Companion note:** [[learning/notes/quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
 > **TL;DR:** Before you pick a [[quick-context/bjt|BJT]], five datasheet specs decide whether it survives your circuit: **type** (NPN vs PNP — polarity, not "less [[learning/notes/quick-context/voltage|voltage]]"), **$V_{CEO}$** (the off-state voltage it can hold before it breaks down), **$I_C$** (the most current it can carry), **$P_C$** (the most heat it can dissipate, $P = V_{CE}\cdot I_C$), and **$\beta$ / $h_{FE}$** (the current gain, which tells you the *minimum* base current you must supply). The first three are "do-not-cross" limits; the last is what you design *around*.
 
@@ -164,7 +164,7 @@ The five specs pull against each other; choosing a BJT is balancing them.
 | **$P_C$** | Bigger package or a heatsink — board area, cost | Heat capacity vs. size/cost |
 | **$\beta$** | High-$\beta$ parts trade off voltage and ruggedness | Easy drive vs. robustness |
 
-**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a MOSFET gate is a [[quick-context/[[learning/notes/quick-context/capacitor|capacitor]]|capacitor]], not a current-hungry, charge-storing junction.
+**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a MOSFET gate is a [[learning/notes/quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
 
 ```
 PICKING THE PART — the decision order
@@ -210,7 +210,7 @@ That's well under the 625 mW rating (even derated to ~300 mW in a warm enclosure
 
 $$I_{B,min} = \frac{I_C}{\beta_{min}} = \frac{300\,\text{mA}}{100} = 3\,\text{mA}$$
 
-Overdrive 3× for crisp saturation → design for $I_B = 9$ mA. Size the [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|base resistor]]:
+Overdrive 3× for crisp saturation → design for $I_B = 9$ mA. Size the [[learning/notes/quick-context/resistor|base resistor]]:
 
 $$R_B = \frac{V_{pin} - V_{BE}}{I_B} = \frac{3.3\,\text{V} - 0.7\,\text{V}}{9\,\text{mA}} = 289\,\Omega \rightarrow \text{use } 270\,\Omega$$
 
@@ -228,7 +228,7 @@ Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs
 - **[[quick-context/resistor]]** — The base resistor sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
 - **[[quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
 - **[[quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
-- **[[quick-context/[[learning/notes/quick-context/comparator|comparator]]-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
+- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
 
 </details>
 

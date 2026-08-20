@@ -7,9 +7,9 @@ updated: 2026-04-05
 
 # STM32 Microcontroller
 
-> **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-[[learning/notes/quick-context/transistor|transistor]]-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
+> **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
 
-**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/[[learning/notes/micro-context/i2c|i2c]]|I2C]], [[micro-context/spi|SPI]], USART, and USB.
+**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[learning/notes/micro-context/i2c|I2C]], [[micro-context/spi|SPI]], USART, and USB.
 
 ## How It Works
 

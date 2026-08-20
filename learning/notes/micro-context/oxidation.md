@@ -34,4 +34,4 @@ Oxidation = losing electrons
    2Cl⁻  → Cl₂  + 2e⁻   (electrolysis)
 ```
 
-**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[quick-context/rust|Rusting iron]], a [[quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[quick-context/[[learning/notes/quick-context/electrolysis|electrolysis]]|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.
+**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[quick-context/rust|Rusting iron]], a [[quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[learning/notes/quick-context/electrolysis|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.

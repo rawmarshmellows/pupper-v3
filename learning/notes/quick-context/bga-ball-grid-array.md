@@ -26,7 +26,7 @@ Imagine you have a computer chip containing millions of microscopic circuits, an
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Think of BGA like a bed of nails, but upside down and made of metal. The chip package has a flat bottom covered with a precise grid of solder balls—hundreds of tiny spheres arranged in rows and columns. The circuit board ([[quick-context/pcb-chip-[[learning/notes/quick-context/transistor|transistor]]-hierarchy|PCB]]) has matching copper pads in exactly the same pattern. During assembly, the chip is placed ball-side-down onto the board, and the whole thing goes into a special oven. As temperature rises, the solder balls melt, surface tension pulls them into alignment with the pads, and when cooled, each ball forms a solid electrical bridge. Every ball carries either power, ground, or a data signal between the chip and the board.
+Think of BGA like a bed of nails, but upside down and made of metal. The chip package has a flat bottom covered with a precise grid of solder balls—hundreds of tiny spheres arranged in rows and columns. The circuit board ([[quick-context/pcb-chip-transistor-hierarchy|PCB]]) has matching copper pads in exactly the same pattern. During assembly, the chip is placed ball-side-down onto the board, and the whole thing goes into a special oven. As temperature rises, the solder balls melt, surface tension pulls them into alignment with the pads, and when cooled, each ball forms a solid electrical bridge. Every ball carries either power, ground, or a data signal between the chip and the board.
 
 ```
 WHAT IS A BGA? - Side-by-side Comparison
