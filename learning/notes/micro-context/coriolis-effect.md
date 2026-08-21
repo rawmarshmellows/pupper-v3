@@ -2,7 +2,7 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
-
+> **Related:** [[learning/notes/micro-context/piezoelectric-effect]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]]
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

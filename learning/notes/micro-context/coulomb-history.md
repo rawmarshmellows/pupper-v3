@@ -3,7 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
-
+> **Related:** [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/diode-rectification]]
 # Coulomb (Unit History)
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]

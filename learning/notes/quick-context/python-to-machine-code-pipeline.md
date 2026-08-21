@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
-> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]]
 
 > **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
 
@@ -287,7 +287,7 @@ fetch-executing machine code.
 
 - **GIL / reference counting** — Other things the CPython VM loop does between ops (memory management, the Global Interpreter Lock) that make the per-instruction overhead — and Python's single-core threading limits — what they are.
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
+- **how a computer works index** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
 
 </details>
 

@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
 > **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 

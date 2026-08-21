@@ -2,10 +2,10 @@
 term: Scan Loop
 created: 2026-04-07
 ---
-
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]]
 # Scan Loop
 
-**Definition:** A firmware routine that rapidly cycles through rows of a **switch matrix** — a grid of electrical switches wired at the intersections of row and column lines, so each switch is uniquely identified by its (row, col) coordinate — driving each row LOW in turn and reading all columns to detect which switches are closed. Used by keyboard and keypad [[learning/notes/micro-context/stm32-microcontroller|microcontrollers]] to monitor many switches with few GPIO pins.
+**Definition:** A firmware routine that rapidly cycles through rows of a **[[learning/notes/micro-context/switch-matrix|switch matrix]]** — a grid of electrical switches wired at the intersections of row and column lines, so each switch is uniquely identified by its (row, col) coordinate — driving each row LOW in turn and reading all columns to detect which switches are closed. Used by keyboard and keypad [[learning/notes/micro-context/stm32-microcontroller|microcontrollers]] to monitor many switches with few GPIO pins.
 
 ## How It Works
 
