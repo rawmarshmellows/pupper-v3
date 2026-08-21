@@ -2,7 +2,7 @@
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
-
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/coulomb-history]]
 # SRAM (Static Random-Access Memory)
 
 **Definition:** A volatile memory technology that stores each bit using six cross-coupled [[learning/notes/micro-context/mosfet|MOSFETs]] arranged as two inverters in a feedback loop. "Static" means the data stays stable as long as power is on — no refresh needed, unlike [[learning/notes/quick-context/physics-of-writing-data-to-memory|DRAM's leaking capacitors]].
@@ -11,8 +11,8 @@ created: 2026-04-07
 
 - Two CMOS inverters are wired output-to-input in a loop, creating two stable states: if Q = HIGH then Q' = LOW, which drives Q back to HIGH (self-reinforcing).
 - Two access transistors connect the cell to bitlines; the wordline turns them on during reads/writes.
-- To write, the bitline is driven to the desired voltage and the wordline is pulsed — the external driver overwhelms the cell's internal state, flipping it in <1 ns.
-- No charge transfer through oxide barriers (unlike flash) and no capacitor leakage (unlike DRAM), so writes are unlimited and data is stable without refresh.
+- To write, the bitline is driven to the desired [[learning/notes/quick-context/voltage|voltage]] and the wordline is pulsed — the external driver overwhelms the cell's internal state, flipping it in <1 ns.
+- No charge transfer through oxide barriers (unlike flash) and no [[learning/notes/quick-context/capacitor|capacitor]] leakage (unlike DRAM), so writes are unlimited and data is stable without refresh.
 
 ```
         Vdd ────┬────────────┬──── Vdd

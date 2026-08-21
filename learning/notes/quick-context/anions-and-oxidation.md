@@ -3,9 +3,9 @@ topic: Anions and Oxidation
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/capacitive-sensing-measurement]]
 
-> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
+> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and [[learning/notes/micro-context/oxidation|oxidation]] is the process of losing electrons—in [[learning/notes/quick-context/electrolysis|electrolysis]], anions migrate to the positive [[learning/notes/micro-context/anode|anode]] where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
@@ -88,7 +88,7 @@ THIS IS OXIDATION: Loss of electrons, charge goes from negative to neutral
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and voltage applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
+The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and [[learning/notes/quick-context/voltage|voltage]] applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
 
 </details>
 
@@ -218,7 +218,7 @@ Factors like concentration, electrode material, and applied voltage determine se
 **Q4:** After 4 OH⁻ ions are oxidized to form O₂ + 2H₂O, how many electrons have been released into the circuit?
 <details>
 <summary>Answer</summary>
-Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the electric current in the circuit. See: The Concrete Example, hydroxide oxidation section.
+Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the [[learning/notes/quick-context/electric-current|electric current]] in the circuit. See: The Concrete Example, hydroxide oxidation section.
 </details>
 
 **Q5:** What's the relationship between the terms "anode," "anion," and "oxidation"?

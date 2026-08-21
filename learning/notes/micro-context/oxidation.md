@@ -3,7 +3,7 @@ term: Oxidation
 created: 2026-02-25
 updated: 2026-03-27
 ---
-
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]]
 # Oxidation
 
 > **See also:** [[quick-context/anions-and-oxidation]]
