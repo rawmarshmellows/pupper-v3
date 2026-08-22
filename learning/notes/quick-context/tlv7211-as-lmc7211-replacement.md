@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 
@@ -185,7 +185,7 @@ Order the **TLV7211A** (SOT23-5 is the **DBV** package → TLV7211AIDBVR). The l
 **Q3:** How can you be confident the TLV7211 is a true drop-in without bench-testing every spec, unlike the MCP6541 which needed a careful spec-by-spec vet?
 <details>
 <summary>Answer</summary>
-Because the TLV7211 is **the same silicon re-named** (National → TI), its datasheet's 4.x tables are *identical* to the LMC7211-N's — supply range, offset grades, currents, delays, CMVR, ISC, temperature, even the same typical-characteristic graphs. It's an *equals*, not a *meets-or-beats*. The MCP6541 is a *different design* from a different vendor, so every spec genuinely had to be checked against the original. See: How It Works (FUNCTION) and the spectrum diagram.
+Because the TLV7211 is **the same silicon re-named** (National → TI), its datasheet's 4.x tables are *identical* to the LMC7211-N's — supply range, offset grades, currents, delays, [[micro-context/input-common-mode-range|CMVR]], ISC, temperature, even the same typical-characteristic graphs. It's an *equals*, not a *meets-or-beats*. The MCP6541 is a *different design* from a different vendor, so every spec genuinely had to be checked against the original. See: How It Works (FUNCTION) and the spectrum diagram.
 </details>
 
 **Q4:** Name the two non-identical details between the LMC7211-N and TLV7211, and say whether either is a regression.
@@ -197,7 +197,7 @@ Because the TLV7211 is **the same silicon re-named** (National → TI), its data
 **Q5:** Both the TLV7211 and the MCP6541 "fit the LMC7211-N's SOT23-5 footprint." Why is only one of them an *unconditional* replacement?
 <details>
 <summary>Answer</summary>
-**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-voltage, slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
+**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-[[quick-context/voltage|voltage]], slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
 </details>
 
 </details>

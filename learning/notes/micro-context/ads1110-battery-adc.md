@@ -7,8 +7,9 @@ updated: 2026-03-27
 # ADS1110 (Battery Voltage ADC)
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]
+> **Related:** [[micro-context/adc-analog-to-digital-converter|ADC]] | [[micro-context/i2c|I2C]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM]] | [[quick-context/resistor|Resistor]] | [[quick-context/voltage|Voltage]]
 
-**Definition:** The ADS1110A0IDBVR (U16) is a delta-sigma [[micro-context/adc-analog-to-digital-converter|ADC]] from Texas Instruments in a SOT-23-6 package with an [[micro-context/i2c|I2C]] interface, internal 2.048V reference, and programmable resolution: 16-bit at 15 SPS, down to 12-bit at 240 SPS. On the [[quick-context/pupper-bom-control-board|Pupper control board]], it reads battery voltage through a [[quick-context/resistor|voltage divider]] (scaling ~7-24V down to the ADC's input range) so the STM32 can warn of low battery.
+**Definition:** The ADS1110A0IDBVR (U16) is a delta-sigma [[micro-context/adc-analog-to-digital-converter|ADC]] from Texas Instruments in a SOT-23-6 package with an [[micro-context/i2c|I2C]] interface, internal 2.048V reference, and programmable resolution: 16-bit at 15 SPS, down to 12-bit at 240 SPS. On the [[quick-context/pupper-bom-control-board|Pupper control board]], it reads battery [[quick-context/voltage|voltage]] through a [[quick-context/resistor|voltage divider]] (scaling ~7-24V down to the ADC's input range) so the STM32 can warn of low battery.
 
 ## How It Works
 

@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # Reverse and Forward Bias
 
-**Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
+**Definition:** The two ways to apply [[quick-context/voltage|voltage]] across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works
 
@@ -31,3 +31,4 @@ Forward bias:  current flows          Reverse bias:  current blocked
 **Key insight:** The same PN junction does both jobs—forward bias is how diodes conduct, reverse bias is how they block, and every [[quick-context/transistor|transistor]] relies on biasing junctions in specific combinations to switch on and off.
 
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **Related:** [[quick-context/diode|Diode]] | [[quick-context/doped-silicon|Doped Silicon]] | [[quick-context/transistor|Transistor]] | [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]] | [[quick-context/voltage|Voltage]]

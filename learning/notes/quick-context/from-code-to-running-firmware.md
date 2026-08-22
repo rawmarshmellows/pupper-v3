@@ -266,7 +266,7 @@ The compiler produces `can.o` with four sections — but no fixed addresses yet.
 
 ### Step 2: Linking
 
-The linker reads `STM32F446RETX_FLASH.ld` and stitches together `main.o`, `can.o`, `spi.o`, `startup_stm32f446retx.o`, and HAL library objects:
+The linker reads `STM32F446RETX_FLASH.ld` and stitches together `main.o`, `can.o`, `[[micro-context/spi|spi]].o`, `startup_stm32f446retx.o`, and HAL library objects:
 
 ```
 arm-none-eabi-ld -T STM32F446RETX_FLASH.ld \
@@ -340,7 +340,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[micro-context/sram|SRAM]], and peripherals.
 
 - **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 

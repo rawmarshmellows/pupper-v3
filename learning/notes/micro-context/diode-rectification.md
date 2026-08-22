@@ -30,3 +30,4 @@ AC input               After diodes            + Capacitor
 **Key insight:** Every phone charger and power supply does this—diodes make the current all-positive, then a [[quick-context/capacitor|capacitor]] smooths out the bumps into steady DC.
 
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **Related:** [[quick-context/diode|Diode]] | [[quick-context/capacitor|Capacitor]] | [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]

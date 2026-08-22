@@ -5,13 +5,13 @@ created: 2026-04-06
 
 # Butyric Acid
 
-> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]
+> **Related:** [[quick-context/atoms-molecules-polymers-basics|Atoms, Molecules, and Polymers Basics]] | [[micro-context/oxidation|Oxidation]] | [[quick-context/substrate-ic-packaging|Substrate]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 
 ## The Core Problem
 
-Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate oxidation, not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
+Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate [[micro-context/oxidation|oxidation]], not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
 
 ## 5 Essential Terms
 
@@ -137,7 +137,7 @@ The emerging consensus: fiber first, supplements as a targeted intervention for 
 ### Scenario: High-fiber diet vs. low-fiber diet
 
 **Person A** eats 35g of fiber/day (lentils, oats, vegetables, resistant starch from cooled rice):
-- Colonic bacteria receive abundant substrate
+- Colonic bacteria receive abundant [[quick-context/substrate-ic-packaging|substrate]]
 - *Faecalibacterium prausnitzii* and *Roseburia* populations thrive
 - Estimated total SCFA production: ~400--600 mmol/day
 - Butyrate fraction (~20%): ~80--120 mmol/day

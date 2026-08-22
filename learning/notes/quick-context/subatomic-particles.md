@@ -21,7 +21,7 @@ Everything around you—your body, your computer, the air you breathe—is made 
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
 | **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[quick-context/electromagnetism|electromagnetism]] but only works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -366,7 +366,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding [[quick-context/doped-silicon|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 
@@ -552,7 +552,7 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
 - **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
 
