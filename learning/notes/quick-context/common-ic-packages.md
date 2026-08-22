@@ -20,7 +20,7 @@ The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm
 | **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
 | **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
 | **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
+| **Pin count** | Total number of electrical connections. A simple [[quick-context/voltage|voltage]] regulator: 3-5 pins. [[micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
 | **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
 
 <details>
@@ -218,7 +218,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q1:** Why would a commercial product use QFN instead of DIP for the same chip?
 <details>
 <summary>Answer</summary>
-**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
+**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost ([[quick-context/pcb-assembly-files-bom-cpl|pick-and-place]] reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
 </details>
 
 **Q2:** How do you find pin 1 on an IC?

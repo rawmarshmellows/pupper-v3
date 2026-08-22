@@ -33,8 +33,8 @@ Everything around you—your desk, your skin, your 3D printer filament—is made
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/subatomic-particles\|Electron]]** | A tiny negatively-charged [[quick-context/subatomic-particles\|subatomic particle]] that orbits atoms and gets shared in covalent bonds |
-| **[[quick-context/atoms-molecules-polymers-basics\|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
+| **[[quick-context/subatomic-particles|Electron]]** | A tiny negatively-charged [[quick-context/subatomic-particles|subatomic particle]] that orbits atoms and gets shared in covalent bonds |
+| **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
 | **Monomer** | The single repeating unit that links together to form a polymer chain (like a single LEGO brick) |
 | **Cross-linking** | When polymer chains form covalent bonds sideways to neighboring chains, creating a rigid network |
 | **Thermoplastic** | A polymer that softens when heated and hardens when cooled (reversible)—what FDM 3D printing uses |
