@@ -7,7 +7,9 @@ created: 2026-06-07
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]
 
-**Definition:** A measure (in dB) of how well a comparator or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
+> **Related:** [[micro-context/common-mode-rejection-ratio]] | [[quick-context/power-watts-joules]] | [[micro-context/power-inductor]] | [[micro-context/quiescent-supply-current]]
+
+**Definition:** A measure (in dB) of how well a [[quick-context/comparator|comparator]] or [[quick-context/op-amp|op-amp]] ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
 
 ## How It Works
 

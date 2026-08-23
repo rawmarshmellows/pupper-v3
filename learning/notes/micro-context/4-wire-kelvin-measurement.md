@@ -8,6 +8,8 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
+> **Related:** [[quick-context/wire-bonding]] | [[quick-context/capacitive-sensing-measurement]] | [[micro-context/swd-serial-wire-debug]]
+
 **Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works

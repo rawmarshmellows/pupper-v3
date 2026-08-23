@@ -8,6 +8,8 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
+> **Related:** [[micro-context/clock-speed]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/raspberry-pi-ai-hat]]
+
 **Definition:** The precise moment when a clock signal transitions between states—either rising (0→1) or falling (1→0). Digital circuits like [[quick-context/d-flip-flop|D flip-flops]] sample data only at clock edges, avoiding the "forbidden zone" where signals are mid-transition and invalid.
 
 ## How It Works

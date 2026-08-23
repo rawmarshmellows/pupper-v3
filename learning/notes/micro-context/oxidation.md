@@ -8,6 +8,8 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/anions-and-oxidation]]
 
+> **Related:** [[quick-context/anions-and-oxidation]]
+
 **Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
 
 ## How It Works
