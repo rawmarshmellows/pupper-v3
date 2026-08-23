@@ -8,6 +8,8 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
 
+> **Related:** [[quick-context/capacitor]] | [[micro-context/current-inductor-capacitor-relationship]]
+
 **Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.
 
 ## How It Works

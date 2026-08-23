@@ -4,7 +4,7 @@ created: 2026-01-23
 ---
 
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index]] | [[quick-context/flip-chip]] | [[quick-context/transistor]]
 
 > **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
 
@@ -224,7 +224,7 @@ TRACING A MEMORY READ: CPU → DRAM
 
 - **Thermal Management** — Heat generated in the die must escape through the package and into heatsinks; packaging choices directly affect thermal resistance.
 
-- **SMT (Surface Mount Technology)** — The automated process of placing and soldering packaged components onto PCBs; constrains what package types are practical.
+- **SMT (Surface Mount Technology)** — The automated process of placing and [[quick-context/soldering|soldering]] packaged components onto PCBs; constrains what package types are practical.
 
 </details>
 

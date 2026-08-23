@@ -8,6 +8,8 @@ updated: 2026-03-27
 
 > **See also:** [[micro-context/clock-speed]] | [[micro-context/thermal-runaway]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
+> **Related:** [[micro-context/clock-speed]] | [[micro-context/clock-source]] | [[micro-context/clock-edges]] | [[quick-context/glass-transition-temperature]] | [[quick-context/clock-sources-and-timing]]
+
 **Definition:** Every clock edge causes transistors to switch, and switching dissipates energy as heat. Power scales with frequency (P ∝ f) and voltage squared (P ∝ V²), so higher clock speeds generate more heat—which is why CPUs need cooling and why "turbo boost" is temporary.
 
 ## How It Works
@@ -15,7 +17,7 @@ updated: 2026-03-27
 - Every clock edge causes transistors to charge and discharge gate capacitances, converting electrical energy into heat ($P = CV^2f$).
 - Higher clock speeds require more switching events per second, linearly increasing dynamic power dissipation.
 - Pushing clocks higher often demands raising supply voltage too, which increases power quadratically ($V^2$).
-- When junction temperature rises too high, firmware thermal throttling reduces clock speed to bring power back under the cooling budget.
+- When junction temperature rises too high, [[quick-context/firmware|firmware]] thermal throttling reduces clock speed to bring power back under the cooling budget.
 
 ```
 THE HEAT-SPEED RELATIONSHIP

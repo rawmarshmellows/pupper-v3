@@ -8,6 +8,8 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
+> **Related:** [[micro-context/ac-dc-current]] | [[quick-context/electric-current]] | [[micro-context/tail-current]] | [[micro-context/current-mirror]] | [[quick-context/voltage-current-causality]]
+
 **Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
 
 ## How It Works
