@@ -3,6 +3,7 @@ term: SWD (Serial Wire Debug)
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
 # SWD (Serial Wire Debug)
 
@@ -68,7 +69,7 @@ DAP = Debug Access Port = DP + AP together. Every Cortex-M has one.
 
 **Key terminology:**
 - **DP (Debug Port):** The SWD-facing side. Manages the wire protocol, handshake, and error detection. Every SWD transaction talks to the DP first.
-- **MEM-AP (Memory Access Port):** Bridges the DP to the chip's AHB/APB bus. This is what lets an external debugger read/write any memory address — flash, SRAM, peripheral registers — as if it were the CPU itself.
+- **MEM-AP (Memory Access Port):** Bridges the DP to the chip's AHB/APB bus. This is what lets an external debugger read/write any memory address — flash, [[learning/notes/micro-context/sram|SRAM]], peripheral registers — as if it were the CPU itself.
 - **DAP (Debug Access Port):** The DP + AP(s) together. The ARM spec name for the whole debug subsystem.
 
 ## The SWD Protocol: What Happens on the Wire

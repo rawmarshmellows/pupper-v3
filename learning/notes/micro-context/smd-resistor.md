@@ -3,6 +3,7 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/electric-current]]
 
 # SMD Resistor
 
@@ -12,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for soldering.
+- A thin film or thick film of resistive material is deposited on a ceramic [[learning/notes/quick-context/substrate-ic-packaging|substrate]], with metal terminations on each end for soldering.
 - Current flowing through the resistive film converts electrical energy to heat according to $P = I^2R$.
 - The resistance value is set during manufacturing by the film's composition, thickness, and laser-trimmed geometry.
 

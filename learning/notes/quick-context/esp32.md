@@ -5,13 +5,13 @@ created: 2026-05-28
 
 # ESP32
 
-> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/transistor]]
 
 > **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
 ## The Core Problem
 
-Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
+Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over [[learning/notes/quick-context/uart|UART]] — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
 
 ## 5 Essential Terms
 
@@ -102,7 +102,7 @@ The ESP32 has no internal flash for user code — only mask ROM. On power-up:
 
 ### Why "Execute in Place" matters
 
-The 520 KB of on-chip SRAM is too small to hold a real WiFi app. So the ESP32 uses external SPI flash mapped into the CPU's address space via the MMU — the CPU fetches instructions directly from flash through a cache. This is called XIP (Execute-In-Place). The cache is small (~32 KB), so cache misses on flash reads cost ~100s of nanoseconds — fine for most code, painful for tight ISRs. Performance-critical code is annotated `IRAM_ATTR` to force it into SRAM.
+The 520 KB of on-chip [[learning/notes/micro-context/sram|SRAM]] is too small to hold a real WiFi app. So the ESP32 uses external [[learning/notes/micro-context/spi|SPI]] flash mapped into the CPU's address space via the MMU — the CPU fetches instructions directly from flash through a cache. This is called XIP (Execute-In-Place). The cache is small (~32 KB), so cache misses on flash reads cost ~100s of nanoseconds — fine for most code, painful for tight ISRs. Performance-critical code is annotated `IRAM_ATTR` to force it into SRAM.
 
 ### Dual-Core Asymmetry
 
@@ -232,7 +232,7 @@ Almost every ESP32 dev board (the ones with a USB connector) has a two-transisto
 - **[[learning/notes/micro-context/microcontroller]]** — Where the ESP32 sits in the broader MCU family tree (vs STM32, AVR, PIC).
 - **[[learning/notes/micro-context/stm32-microcontroller]]** — The other MCU family used in Pupper. STM32 = hard real-time motor control; ESP32 = networking, audio, ML.
 - **[[learning/notes/quick-context/firmware]]** — The firmware concept; the ESP32's bootloader chain (ROM → 2nd-stage → app) is a worked example.
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — All the buses (SPI, I2C, I2S, CAN/TWAI, UART) the ESP32 exposes as peripherals.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — All the buses (SPI, [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/i2s|I2S]], CAN/TWAI, UART) the ESP32 exposes as peripherals.
 - **[[learning/notes/quick-context/raspberry-pi-5-components]]** — Higher up the stack: Pi runs Linux, ESP32 runs FreeRTOS. The ESP32 fills the gap between bare-metal MCUs and full Linux SBCs.
 - **[[learning/notes/quick-context/silicon-die]]** — The ESP32's WiFi radio, CPUs, and SRAM all share a single die — the cost magic comes from this integration.
 - **FreeRTOS** — The preemptive RTOS the ESP32 runs by default. Tasks, queues, semaphores. ESP-IDF wraps it; Arduino-ESP32 hides it.

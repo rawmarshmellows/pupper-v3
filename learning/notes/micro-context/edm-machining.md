@@ -3,6 +3,7 @@ term: EDM Machining
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/electrodes]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]]
 
 # EDM Machining (Electrical Discharge Machining)
 

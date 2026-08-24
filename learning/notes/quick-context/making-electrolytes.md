@@ -3,7 +3,7 @@ topic: How to Make an Electrolyte (Acid, Base, or Salt)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/voltage]]
 
 > **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
 
@@ -28,7 +28,7 @@ Here is a fact that surprises most people: **pure water is almost a perfect insu
 
 When you add an electrolyte to water, the compound **dissociates**—it splits apart into its constituent ions. This happens because water molecules are **polar**: the oxygen end carries a partial negative charge, and the hydrogen ends carry partial positive charges. When a salt crystal (like NaCl) contacts water, the water molecules surround the ions on the crystal's surface. The partially negative oxygens attract the positive sodium ions (Na+), while the partially positive hydrogens attract the negative chloride ions (Cl-). These attractions are strong enough to pull individual ions away from the crystal lattice, one by one, until the entire crystal dissolves.
 
-Once freed, the ions become **mobile charge carriers**. When you apply a voltage across two electrodes in the solution, the positive ions (cations) migrate toward the negative electrode (cathode), while the negative ions (anions) migrate toward the positive electrode (anode). This movement of charged particles IS the electric current through the liquid. The more ions you have dissolved, the more charge carriers are available, and the higher the solution's conductivity. This is why adding more electrolyte (up to the saturation limit) increases conductivity proportionally.
+Once freed, the ions become **mobile charge carriers**. When you apply a voltage across two electrodes in the solution, the positive ions (cations) migrate toward the negative electrode ([[learning/notes/micro-context/cathode|cathode]]), while the negative ions (anions) migrate toward the positive electrode ([[learning/notes/micro-context/anode|anode]]). This movement of charged particles IS the electric current through the liquid. The more ions you have dissolved, the more charge carriers are available, and the higher the solution's conductivity. This is why adding more electrolyte (up to the saturation limit) increases conductivity proportionally.
 
 ```
 HOW ELECTROLYTES ENABLE CONDUCTION

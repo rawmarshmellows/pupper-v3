@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
 # SPIneV1.elf
 
@@ -10,7 +11,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- At boot, U5's Cortex-M4 core begins executing SPIneV1 code from flash, initializing SPI (slave to U1) and four CAN bus interfaces.
+- At boot, U5's Cortex-M4 core begins executing SPIneV1 code from flash, initializing SPI (slave to U1) and four [[learning/notes/quick-context/can-bus|CAN bus]] interfaces.
 - U1 sends 12 joint angle targets over SPI at 1 kHz; SPIneV1 unpacks them into individual motor commands.
 - Each motor command is formatted as a CAN frame and dispatched to the correct bus (one bus per leg, 3 motors each).
 - The servo motors receive their CAN position commands and close their own internal PID loops to reach the target angles.

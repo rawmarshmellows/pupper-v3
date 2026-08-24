@@ -3,7 +3,7 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/microcontroller]]
 
 > **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
 
@@ -18,8 +18,8 @@ The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm
 | Term | Definition |
 |------|------------|
 | **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
-| **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
-| **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
+| **Surface mount (SMD/SMT)** | Package that sits flat on the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
+| **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. [[learning/notes/quick-context/bga-ball-grid-array|BGA]]: 0.4-1.27 mm. |
 | **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
 | **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
 
@@ -206,7 +206,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 
 - **[[quick-context/wire-bonding]]** — Inside most packages (DIP, QFP, QFN), the die is connected to the lead frame via wire bonds. BGA packages typically use [[quick-context/flip-chip|flip-chip]] bonding.
 
-- **[[quick-context/substrate-ic-packaging]]** — High-pin-count packages (BGA) use a multi-layer substrate between the die and the solder balls, acting as a miniature PCB inside the package.
+- **[[quick-context/substrate-ic-packaging]]** — High-pin-count packages (BGA) use a multi-layer [[learning/notes/quick-context/substrate-ic-packaging|substrate]] between the die and the solder balls, acting as a miniature PCB inside the package.
 
 - **[[quick-context/pupper-bom-control-board]]** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package choice affects assembly (the LGA-28 BNO086 can't be sourced through standard JLCPCB assembly).
 

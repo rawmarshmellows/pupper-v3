@@ -2,6 +2,7 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 # DuPont Jumper Wires
 
@@ -198,7 +199,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, [[learning/notes/micro-context/i2c|I2C]] failures, serial corruption. When debugging, suspect the physical layer first.
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
@@ -243,7 +244,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 **Q1:** What pitch dimension defines a DuPont connector, and why does that number matter?
 <details>
 <summary>Answer</summary>
-2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and PCB pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
+2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
 </details>
 
 **Q2:** Why are modern "DuPont" connectors less reliable than the original Berg Mini-PV design?

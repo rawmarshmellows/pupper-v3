@@ -3,7 +3,7 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/soldering]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -214,7 +214,7 @@ X-RAY VIEW: What Inspectors See
     Real X-ray machines detect these at 1000+ joints per second
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming solder balls are placed individually during assembly. They're not—the balls are permanently attached to the chip package during manufacturing (by the chip vendor), and they stay there during shipping and storage. When you buy a BGA chip, it comes with balls already in place. During PCB assembly, you just add solder paste to the board, place the component, and reflow. The existing balls melt and merge with the paste to form the final joint. The balls are pre-attached to the package, not to the board.
+**The one thing most outsiders get wrong about this is...** assuming solder balls are placed individually during assembly. They're not—the balls are permanently attached to the chip package during manufacturing (by the chip vendor), and they stay there during shipping and storage. When you buy a BGA chip, it comes with balls already in place. During [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] assembly, you just add solder paste to the board, place the component, and reflow. The existing balls melt and merge with the paste to form the final joint. The balls are pre-attached to the package, not to the board.
 
 </details>
 

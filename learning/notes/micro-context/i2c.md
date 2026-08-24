@@ -3,6 +3,7 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
 # I2C
 

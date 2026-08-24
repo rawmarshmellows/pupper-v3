@@ -3,7 +3,7 @@ topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
+> **Related:** [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]]
 
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 
@@ -13,7 +13,7 @@ created: 2026-01-17
 
 These five failure modes—deadlock, race conditions, cascade failures, unrecoverable states, and integration drift—are fundamentally **coordination failures in distributed real-time systems**. Unlike software distributed systems where you can retry, buffer, or eventually converge, a robot cell operates in physical space with millisecond timing constraints and thousand-pound machines that can't "roll back."
 
-The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get OEE (Overall Equipment Effectiveness) numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
+The problem these solutions address is making automation cells that actually produce parts reliably, not just cells that work during the demo. Without systematic approaches to these failures, you get [[learning/notes/quick-context/oee-overall-equipment-effectiveness|OEE]] (Overall Equipment Effectiveness) numbers in the 40-60% range—meaning your multi-million dollar cell sits idle or faulted more than it runs.
 
 The architectural patterns that solve these problems aren't new; they're borrowed from decades of real-time systems theory, distributed computing, and process control—but adapted for environments where "the network partition" might be a severed pneumatic line and "eventual consistency" means a crashed conveyor.
 
@@ -49,7 +49,7 @@ CASE RobotHandshake OF
 END_CASE
 ```
 
-The pattern: one side (typically the PLC) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
+The pattern: one side (typically the [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]]) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
 
 **Race Conditions: Two-phase handshake with explicit acknowledgment**
 

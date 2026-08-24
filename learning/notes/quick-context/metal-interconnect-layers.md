@@ -3,7 +3,7 @@ topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electromigration]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/bond-pad]]
 
 > **TL;DR:** Metal interconnect layers are stacked wiring levels built on top of transistors that route signals and power throughout a chip—they've become the limiting factor in chip performance as transistors shrink faster than wires can scale.
 
@@ -199,7 +199,7 @@ THE FUNDAMENTAL TRADEOFF
 | How many metal layers? | More layers = more routing flexibility but higher cost |
 | What metal to use? | Copper (fast) vs. newer materials like ruthenium/cobalt at tiny scales |
 | How tight a pitch? | Tighter = more density but manufacturing challenges |
-| Low-k dielectrics? | Lower capacitance (faster signals) but mechanically fragile |
+| Low-k dielectrics? | Lower [[learning/notes/quick-context/capacitance|capacitance]] (faster signals) but mechanically fragile |
 
 </details>
 
@@ -266,13 +266,13 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
 
 - **Photolithography** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.
 
 - **RC Delay** — Resistance (R) × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
 
-- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes voltage droop and chip failure.
+- **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes [[learning/notes/quick-context/voltage|voltage]] droop and chip failure.
 
 - **[[quick-context/electromigration|Electromigration]]** — The phenomenon where current flowing through thin wires physically moves metal atoms, eventually breaking the wire; this limits how much current each wire can safely carry and becomes more critical as wire cross-sections shrink.
 

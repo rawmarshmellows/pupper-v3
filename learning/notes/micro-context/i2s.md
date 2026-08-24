@@ -2,6 +2,7 @@
 term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]]
 
 # I2S (Inter-IC Sound)
 
