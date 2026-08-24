@@ -2,6 +2,7 @@
 term: Piezoelectric Effect
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]]
 
 # Piezoelectric Effect
 

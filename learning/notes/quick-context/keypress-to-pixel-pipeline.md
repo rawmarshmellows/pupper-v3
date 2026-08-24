@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/firmware]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 
@@ -215,7 +215,7 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 - **[[learning/notes/quick-context/data-bus-and-arbitration]]** — How bytes actually travel between CPU, memory, and peripherals on shared wires. *(sibling — may not exist yet)*
 - **[[learning/notes/quick-context/uart]]** — A bare serial transport; the simplest version of "carry the scancode over a wire" (rung 6).
 - **[[learning/notes/quick-context/usb-peripheral-hardware]]** — How a real PC keyboard's HID packets reach the host (rungs 5-6).
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses (UART/SPI/I2C/USB) that move bytes between chips.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses (UART/[[learning/notes/micro-context/spi|SPI]]/[[learning/notes/micro-context/i2c|I2C]]/USB) that move bytes between chips.
 - **[[learning/notes/quick-context/firmware]]** — The keyboard MCU's code (scan/debounce/encode) and the host's interrupt handler are both firmware.
 
 </details>

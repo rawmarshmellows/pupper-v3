@@ -2,6 +2,7 @@
 term: Capacitive Voltage Sensing
 created: 2026-06-08
 ---
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/capacitive-sensing-measurement]]
 
 # Capacitive Voltage Sensing
 

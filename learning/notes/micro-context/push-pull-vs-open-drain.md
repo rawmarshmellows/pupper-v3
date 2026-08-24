@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 
@@ -86,11 +87,11 @@ In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carr
 - **Push-pull OUT** (LMC7211-N): actively driven HIGH *and* LOW — clean levels, drives an LED or logic gate directly, but can't share a wire.
 - **Open-drain OUT** (its cousin the LMC7221): only pulls LOW, needs a pull-up to go HIGH — lets the pull-up set the HIGH level from a different rail (level-shifting) and lets many outputs share one line.
 
-The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$` (how hard OUT drives) both grade this exact pin.
+The spec rows `$V_{OH}$/$V_{OL}$`$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$`$I_{SC}$` (how hard OUT drives) both grade this exact pin.
 
 > **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** ([[learning/notes/quick-context/bjt|BJT]]) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 
 ## How It Works
 
