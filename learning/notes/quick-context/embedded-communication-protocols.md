@@ -306,7 +306,7 @@ CAN — Asynchronous*, differential, linear bus:
 ```
 
 **Strengths:** Differential = noise-immune, 40 m range, hardware arbitration (no collisions), 5-layer error detection, multi-master, 2 wires only.
-**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[micro-context/can-bus-termination|120$[[micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
+**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
 
 ### USB — The Host-Device Standard
 
@@ -561,7 +561,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 **Q1:** Why does the Pupper use I2C instead of SPI for the BNO086 IMU, even though SPI is ~32x faster?
 <details>
 <summary>Answer</summary>
-The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kbps has 50 kB/s of bandwidth, using ~1.2% capacity. The "slow" protocol is more than sufficient. Meanwhile, I2C saves pins (2 shared wires vs. 4 + CS), shares the bus with the [[learning/notes/micro-context/ads1110-battery-[[learning/notes/micro-context/adc-analog-to-digital-converter|adc]]|ADS1110]] ADC, and the board already has pull-up resistors. Speed only matters when data volume demands it.
+The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kbps has 50 kB/s of bandwidth, using ~1.2% capacity. The "slow" protocol is more than sufficient. Meanwhile, I2C saves pins (2 shared wires vs. 4 + CS), shares the bus with the [[learning/notes/micro-context/ads1110-battery-adc|ADS1110]] ADC, and the board already has pull-up resistors. Speed only matters when data volume demands it.
 </details>
 
 **Q2:** You need to read temperature from 50 sensors spread across a large building (cable runs up to 80 m). Which protocol and why?
