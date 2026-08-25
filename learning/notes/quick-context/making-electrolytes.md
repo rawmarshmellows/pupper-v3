@@ -3,15 +3,15 @@ topic: How to Make an Electrolyte (Acid, Base, or Salt)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
-> **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
+> **TL;DR:** Pure water is almost a perfect insulator - you must add an [[learning/notes/quick-context/electrolyte|electrolyte]] (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
 
 # How to Make an Electrolyte (Acid, Base, or Salt)
 
 ## The Core Problem: Pure Water Does Not Conduct Electricity
 
-Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply voltage, almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
+Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply [[learning/notes/quick-context/voltage|voltage]], almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
 
 ## 5 Essential Terms
 

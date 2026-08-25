@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/thermal-runaway]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]

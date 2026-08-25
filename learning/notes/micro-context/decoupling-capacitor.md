@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/inductor]]
+
 # Decoupling Capacitor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]

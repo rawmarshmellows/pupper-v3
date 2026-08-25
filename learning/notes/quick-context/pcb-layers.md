@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/schematic-reading]] | [[learning/notes/quick-context/grounding-and-return-paths]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -22,7 +22,7 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[learning/notes/micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
 | **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
@@ -240,7 +240,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 |--------|---------|------|----------|
 | **HASL** | Board dipped in molten solder, leveled with hot air | Low | General purpose, through-hole |
 | **Lead-free HASL** | Same, with lead-free solder | Low | RoHS-compliant general purpose |
-| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, BGA, flat pads |
+| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, [[learning/notes/quick-context/bga-ball-grid-array|BGA]], flat pads |
 | **OSP** | Thin organic coating on copper | Lowest | Short shelf life, reflow-only |
 
 ---
@@ -257,7 +257,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 *What it is:* Defines [[micro-context/paste-mask-and-solder-stencil|stencil]] openings for solder paste application during [[quick-context/soldering#reflow|reflow assembly]]. Paste openings are typically 5-20% smaller than the actual pad (depending on component pitch) to prevent excess solder bridging.
 
-*How it's used (NOT manufactured on the board):* The paste mask Gerber is sent to a stencil vendor who **laser-cuts** matching apertures in a thin stainless steel sheet (0.1-0.15 mm thick). During assembly, this stencil is aligned over the bare PCB and solder paste (a mixture of tiny solder balls suspended in flux) is squeegeed across the stencil surface. Paste fills the apertures but can't reach areas where the steel blocks it — so only the pads receive paste. The stencil is then lifted straight up off the board, and the paste stays behind on the pads due to adhesion (it's a thick, sticky consistency, like toothpaste). The result is precise rectangular deposits of solder paste sitting on each pad, with the height controlled by stencil thickness and the footprint controlled by aperture size. From here, a pick-and-place machine positions components onto the pasted pads (the paste is tacky enough to hold them), and then the whole board goes through a [[quick-context/soldering#reflow|reflow oven]] that melts the paste into permanent solder joints.
+*How it's used (NOT manufactured on the board):* The paste mask Gerber is sent to a stencil vendor who **laser-cuts** matching apertures in a thin stainless steel sheet (0.1-0.15 mm thick). During assembly, this stencil is aligned over the bare PCB and solder paste (a mixture of tiny solder balls suspended in flux) is squeegeed across the stencil surface. Paste fills the apertures but can't reach areas where the steel blocks it — so only the pads receive paste. The stencil is then lifted straight up off the board, and the paste stays behind on the pads due to adhesion (it's a thick, sticky consistency, like toothpaste). The result is precise rectangular deposits of solder paste sitting on each pad, with the height controlled by stencil thickness and the footprint controlled by aperture size. From here, a [[learning/notes/micro-context/pick-and-place-file|pick-and-place]] machine positions components onto the pasted pads (the paste is tacky enough to hold them), and then the whole board goes through a [[quick-context/soldering#reflow|reflow oven]] that melts the paste into permanent solder joints.
 
 ---
 
@@ -269,7 +269,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **12. Document Layer** — `Gerber_DocumentLayer.GDL`
 
-*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, impedance control requirements, and UL markings.
+*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, [[learning/notes/quick-context/impedance-and-reactance|impedance]] control requirements, and UL markings.
 
 </details>
 

@@ -5,13 +5,13 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/output-voltage-swing]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
-A battery monitor needs to answer a simple question: "Is the battery voltage above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
+A battery monitor needs to answer a simple question: "Is the battery [[learning/notes/quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
 
 ## 5 Essential Terms
 
@@ -20,7 +20,7 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 | **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **[[learning/notes/micro-context/push-pull-vs-open-drain|Open-drain]] / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
@@ -329,7 +329,7 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 | **Ultra-fast** (ADCMP601) | 3.5 ns | High-speed data, clock recovery |
 | **Fast** (LM393) | 300 ns | General purpose, motor control |
 | **With built-in hysteresis** (LM311) | 200 ns | Noisy environments, threshold detection |
-| **Schmitt trigger IC** (74HC14) | 15 ns | Digital signal cleaning, debouncing |
+| **[[learning/notes/micro-context/schmitt-trigger-hysteresis|Schmitt trigger]] IC** (74HC14) | 15 ns | Digital signal cleaning, debouncing |
 | **Window comparator** (LM339 pair) | 300 ns | "Is voltage between A and B?" |
 
 The other key tension is **dedicated comparator vs. op-amp used as a comparator**:
@@ -432,7 +432,7 @@ CURRENT CONSUMPTION:
     Total: ~23 μA — negligible for a battery that holds 2000+ mAh
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation capacitor that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
+**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation [[learning/notes/quick-context/capacitor|capacitor]] that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
 
 </details>
 
@@ -447,7 +447,7 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
-- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
+- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 

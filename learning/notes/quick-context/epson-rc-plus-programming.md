@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -35,7 +35,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)
    - `Move` - Linear interpolation (straight Cartesian path)
-   - `Jump` - Arc motion with automatic Z-retract for pick-and-place
+   - `Jump` - Arc motion with automatic Z-retract for [[learning/notes/micro-context/pick-and-place-file|pick-and-place]]
 
 3. **Tool Definition**: Set coordinate frame offsets from the robot flange to the actual gripper or tool tip, ensuring positions are accurate regardless of end-effector.
 
@@ -97,7 +97,7 @@ Fend
 
 The `Jump` command is doing the heavy lifting here—it automatically retracts in Z before moving in X/Y, then descends at the target, creating the "arch" motion that avoids dragging parts across surfaces. `P1`, `P2`, and `P0` are point numbers defined in the Point Editor, not coordinates hardcoded in the program. The `LimZ(50)` parameter overrides the default arch height to 50mm.
 
-**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a PLC with motion coprocessors than a Python interpreter.
+**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] with motion coprocessors than a Python interpreter.
 
 </details>
 

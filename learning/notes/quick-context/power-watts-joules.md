@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Where Does the Energy Go?
 
-A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
+A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and [[learning/notes/quick-context/voltage|voltage]] alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
 
 ## 5 Essential Terms
 
@@ -203,7 +203,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **3.75 hours.** Time = Energy / Power = 15 Wh / 4W = 3.75 hours. In practice it varies because power consumption fluctuates (screen brightness, radio activity, CPU load).
 </details>
 
-**Q4:** A PCB trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
+**Q4:** A [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
 <details>
 <summary>Answer</summary>
 **0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider (lower resistance) or use multiple layers.

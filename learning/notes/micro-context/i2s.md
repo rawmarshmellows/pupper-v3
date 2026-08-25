@@ -3,11 +3,13 @@ term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/can-bus-termination]]
+
 # I2S (Inter-IC Sound)
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]
 
-**Definition:** A 3-wire serial protocol designed specifically for streaming digital audio between ICs. Created by Philips in 1986, it carries stereo PCM audio using a bit clock (BCLK), a left/right channel select (LRCLK/WS), and a serial data line (SD). On the [[quick-context/pupper-bom-control-board|Pupper control board]], the main STM32 sends audio over I2S to the [[micro-context/i2s-audio-amplifier|MAX98357A amplifier]].
+**Definition:** A 3-wire serial protocol designed specifically for streaming digital audio between ICs. Created by Philips in 1986, it carries stereo PCM audio using a bit clock (BCLK), a left/right channel select (LRCLK/WS), and a serial data line (SD). On the [[quick-context/pupper-bom-control-board|Pupper control board]], the main [[learning/notes/micro-context/stm32-microcontroller|STM32]] sends audio over I2S to the [[micro-context/i2s-audio-amplifier|MAX98357A amplifier]].
 
 ## How It Works
 

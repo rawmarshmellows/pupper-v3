@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[learning/notes/quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -348,7 +348,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Equation arrangement doesn't imply causation.** You can equally write I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
 </details>
 
-**Q5:** A piezoelectric sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
+**Q5:** A [[learning/notes/micro-context/piezoelectric-effect|piezoelectric]] sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
 <details>
 <summary>Answer</summary>
 **They demonstrate that neither voltage nor current is always the root cause---other physical phenomena are.** A piezoelectric crystal converts mechanical stress into charge separation (and thus voltage). A thermocouple converts thermal energy into voltage via the Seebeck effect. In both cases, the "cause" is something entirely outside the V-I framework: force and heat respectively. This reinforces the field-centric view: various energy sources create electric fields through different mechanisms. Voltage and current are both *downstream consequences* of those fields. The real question is always "what creates the field?"---and the answer varies: chemistry (batteries), magnetism (generators), mechanical stress (piezo), heat (thermocouples), light (photovoltaics).

@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -62,16 +62,16 @@ The central tradeoff is **abstraction vs. control latency**.
 
 High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up the widget" but introduce planning latency and hide timing guarantees. Low-level APIs give you direct joint control at 1kHz+ but require you to handle everything—singularities, velocity limits, emergency stops.
 
-Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
+Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed [[learning/notes/micro-context/pick-and-place-file|pick-and-place]].
 
-The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
+The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the [[learning/notes/quick-context/impedance-and-reactance|impedance]] mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Here's what the same "pick and place" operation looks like at different abstraction levels:
+Here's what the same "[[learning/notes/micro-context/pick-and-place-file|pick and place]]" operation looks like at different abstraction levels:
 
 **Level 1: Vendor High-Level Script (KUKA KRL)**
 ```krl
@@ -139,7 +139,7 @@ void realtime_loop() {
 
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
-- **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
+- **[[quick-context/plc-vs-software-control]]** - The [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] side of the robot-to-cell coordination problem
 - **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
 
 </details>

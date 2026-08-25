@@ -49,7 +49,7 @@ CASE RobotHandshake OF
 END_CASE
 ```
 
-The pattern: one side (typically the PLC) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
+The pattern: one side (typically the [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]]) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
 
 **Race Conditions: Two-phase handshake with explicit acknowledgment**
 
@@ -157,7 +157,7 @@ The architectural patterns exist on a spectrum, and knowing where your applicati
 
 ## ROS2 Approaches to These Failure Modes
 
-ROS2 brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
+[[learning/notes/quick-context/ros2-architecture|ROS2]] brings software engineering patterns to robot cell integration, but as discussed in [[quick-context/plc-vs-software-control]], the key is knowing what ROS2 should own (planning, coordination, monitoring) versus what the PLC must own (real-time execution, safety). ROS2's DDS middleware and lifecycle architecture provide first-class solutions to these failure modes—but only for the non-safety-critical coordination layer.
 
 **Deadlock: DDS QoS Liveliness + Deadline Policies**
 

@@ -3,7 +3,7 @@ topic: Resistor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/capacitance]]
 
 > **TL;DR:** A resistor opposes the flow of [[quick-context/electric-current|electric current]], converting electrical energy into heat according to Ohm's law (V = IR)—it's the simplest and most ubiquitous electronic component, used to limit current, divide voltages, set bias points, and terminate signals in virtually every circuit ever built.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Controlling How Much Current Flows
 
-Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more voltage it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
+Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more [[learning/notes/quick-context/voltage|voltage]] it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
 
 ## 5 Essential Terms
 
@@ -167,7 +167,7 @@ Values like 4.7kΩ and 2.2kΩ come from the E12/E24 series—logarithmically spa
 
 ## Pull-Up Resistors: Making Digital Signals Reliable
 
-Every I2C bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
+Every [[learning/notes/micro-context/i2c|I2C]] bus, every button input, every [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
 
 ```
 THE PROBLEM: FLOATING INPUTS

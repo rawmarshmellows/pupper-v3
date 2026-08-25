@@ -3,9 +3,9 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
-> **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
+> **TL;DR:** A multimeter measures [[learning/notes/quick-context/voltage|voltage]], current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
 # Oscilloscope and Multimeter
 
@@ -122,8 +122,8 @@ WHEN TO USE WHICH
 | Bandwidth | Price Range | Good For |
 |-----------|-----------|----------|
 | 50 MHz | $300-500 | Arduino, slow digital, audio, power supplies |
-| 100 MHz | $400-800 | SPI, I2C, UART, most embedded work |
-| 200 MHz | $800-2000 | Faster SPI, CAN bus, switching supply debug |
+| 100 MHz | $400-800 | [[learning/notes/micro-context/spi|SPI]], [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/quick-context/uart|UART]], most embedded work |
+| 200 MHz | $800-2000 | Faster SPI, [[learning/notes/quick-context/can-bus|CAN bus]], switching supply debug |
 | 500 MHz | $2000-5000 | USB, Ethernet PHY, DDR memory |
 | 1+ GHz | $5000-50000 | PCIe, high-speed serial, RF |
 
@@ -178,7 +178,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 
 - **[[quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
 
-- **[[quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
+- **[[quick-context/impedance-and-reactance]]** — Oscilloscope probes have [[learning/notes/quick-context/capacitance|capacitance]] that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
 
 - **[[quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
 
@@ -192,7 +192,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q1:** You connect a multimeter set to "amps" in parallel across a component. What happens?
 <details>
 <summary>Answer</summary>
-**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
+**You create a near-[[learning/notes/micro-context/short-circuit|short circuit]] and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
 </details>
 
 **Q2:** A 50 MHz oscilloscope is displaying a 10 MHz square wave that looks like a sine wave. Why?
