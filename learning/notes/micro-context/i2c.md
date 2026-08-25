@@ -4,17 +4,19 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/can-bus-termination]]
+
 # I2C
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Inter-Integrated Circuit — a 2-wire serial protocol (SDA for data, SCL for clock) that lets a master chip talk to many peripheral chips on the same bus. Each device has a unique 7-bit address, so the master selects who to talk to. Runs at 100 kHz (standard) or 400 kHz (fast mode). Used in your Pupper for the [[quick-context/pupper-brain|BNO086 IMU and ADS1110 ADC]] communicating with the main STM32.
+**Definition:** Inter-Integrated Circuit — a 2-wire serial protocol (SDA for data, SCL for clock) that lets a master chip talk to many peripheral chips on the same bus. Each device has a unique 7-bit address, so the master selects who to talk to. Runs at 100 kHz (standard) or 400 kHz (fast mode). Used in your Pupper for the [[quick-context/pupper-brain|BNO086 IMU and ADS1110 ADC]] communicating with the main [[learning/notes/micro-context/stm32-microcontroller|STM32]].
 
 ## How It Works
 
 - The master sends a START condition (SDA goes low while SCL is high), then clocks out the 7-bit slave address plus a read/write bit.
 - The addressed slave acknowledges (pulls SDA low during the ACK clock pulse), and data bytes follow in the same clocked fashion.
-- Both SDA and SCL are open-drain lines — devices can only pull LOW, and external pull-up resistors hold the lines HIGH by default.
+- Both SDA and SCL are [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] lines — devices can only pull LOW, and external pull-up resistors hold the lines HIGH by default.
 - A STOP condition (SDA goes high while SCL is high) releases the bus for the next transaction.
 
 ```

@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab1-pid-control]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -15,7 +15,7 @@ Standard Linux is a time-sharing system optimized for throughput, not response t
 
 If you're interpolating trajectory waypoints at 1kHz and one cycle takes 15ms instead of 1ms, your robot arm doesn't smoothly trace an arc—it jerks, overshoots, or faults the drive. PREEMPT_RT patches the Linux kernel to make nearly all kernel code preemptible, meaning your real-time task can interrupt almost anything the kernel is doing.
 
-The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
+The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]]. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
 
 ## 5 Essential Terms
 

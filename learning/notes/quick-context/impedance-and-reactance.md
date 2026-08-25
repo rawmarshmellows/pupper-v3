@@ -3,7 +3,7 @@ topic: Impedance and Reactance
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/capacitance]]
 
 > **TL;DR:** Impedance extends the concept of [[quick-context/resistor|resistance]] to AC circuits—[[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] oppose current flow in a frequency-dependent way called reactance, and impedance (Z = R + jX) combines resistance and reactance into a single quantity that describes how any component behaves with AC signals.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Resistance Alone Can't Describe AC Behavior
 
-Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that voltage and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
+Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that [[learning/notes/quick-context/voltage|voltage]] and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
 
 ## 5 Essential Terms
 

@@ -789,7 +789,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 
-- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
+- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel [[learning/notes/quick-context/data-bus-and-arbitration|data bus]].
 
 - **Von Neumann Architecture** — The stored-program concept that made the transition from plugboards to software possible. Instructions and data share the same memory, enabling programs to be loaded and replaced without rewiring.
 

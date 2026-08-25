@@ -5,7 +5,7 @@ created: 2026-04-09
 
 # Switches to Registers — Storing Data with Real Hardware
 
-> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/how-source-code-is-stored]]
 
 > **TL;DR:** A physical switch provides a 1 or 0, a clock signal says "capture NOW," and a [[learning/notes/quick-context/d-flip-flop|D flip-flop]] stores the bit at the clock edge. Chain eight flip-flops into a register (a real chip: the 74HC574), connect eight switches and eight LEDs, and you've built the fundamental unit of all computing memory. Every register in every CPU, every byte in every [[learning/notes/micro-context/sram|SRAM]] cache, and every address in every RAM chip is just a scaled-up version of this exact circuit.
 
@@ -21,7 +21,7 @@ Combinational logic (AND, OR, NOT gates built from [[learning/notes/quick-contex
 | **Clock Signal** | A square wave that alternates between HIGH and LOW at a fixed rate. In this circuit, even a push button can serve as a manual clock — each press creates one rising edge that tells the flip-flop "capture now." See [[learning/notes/micro-context/clock-edges]]. |
 | **D Flip-Flop (DFF)** | A circuit that stores one bit. On the rising [[learning/notes/micro-context/clock-edges|clock edge]], it captures whatever value is on its D input and holds it at Q until the next clock edge. The 74HC74 chip contains two independent DFFs. See [[learning/notes/quick-context/d-flip-flop]]. |
 | **8-Bit Register** | Eight D flip-flops sharing a single clock line. On one clock edge, all eight capture their D inputs simultaneously — storing a full byte. The 74HC574 is a real chip that does exactly this. |
-| **Output Enable (OE)** | A control pin on the 74HC574 that connects or disconnects the outputs from the rest of the circuit (tri-state). When OE is LOW, outputs are active. When HIGH, they go high-impedance — as if the chip isn't there. This lets multiple registers share one data bus. |
+| **Output Enable (OE)** | A control pin on the 74HC574 that connects or disconnects the outputs from the rest of the circuit (tri-state). When OE is LOW, outputs are active. When HIGH, they go high-[[learning/notes/quick-context/impedance-and-reactance|impedance]] — as if the chip isn't there. This lets multiple registers share one [[learning/notes/quick-context/data-bus-and-arbitration|data bus]]. |
 
 <details>
 <summary><strong>How It Works</strong> — The bare minimal circuit</summary>
@@ -380,7 +380,7 @@ The D flip-flop is **edge-triggered** — it only samples its D input at the ris
 **Q2:** The 74HC574 has an Output Enable (OE) pin. What would happen if you connected OE to HIGH instead of GND?
 <details>
 <summary>Answer</summary>
-The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing voltage conflicts. See: 5 Essential Terms (Output Enable).
+The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing [[learning/notes/quick-context/voltage|voltage]] conflicts. See: 5 Essential Terms (Output Enable).
 </details>
 
 **Q3:** How is the 74HC574 register on your breadboard related to the register file inside an ARM CPU?

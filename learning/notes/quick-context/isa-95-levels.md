@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 

@@ -3,11 +3,13 @@ term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/output-voltage-swing]]
+
 # Power-Supply Rejection Ratio ($PSRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]
 
-**Definition:** A measure (in dB) of how well a comparator or op-amp ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
+**Definition:** A measure (in dB) of how well a [[learning/notes/quick-context/comparator|comparator]] or [[learning/notes/quick-context/op-amp|op-amp]] ignores wiggle, noise, or ripple on its power-supply rails, keeping the output from following the supply.
 
 ## How It Works
 

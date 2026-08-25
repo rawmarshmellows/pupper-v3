@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/wire-bonding]]
 
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
@@ -414,7 +414,7 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] in the electronics packaging hierarchy; essential for understanding why substrates exist.
 
 - **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 

@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/transistor-analog-to-digital]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -22,7 +22,7 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 |------|------------|
 | **Silicon** | The most common semiconductor material; a purified form of sand (silicon dioxide). Neither a good conductor nor a good insulator, which makes it controllable. |
 | **Doping** | Intentionally adding impurities to silicon to change its electrical properties. Adding phosphorus creates "n-type" silicon (extra electrons); adding boron creates "p-type" silicon (missing electrons, called "holes"). |
-| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
+| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying [[learning/notes/quick-context/voltage|voltage]] stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
 | **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
 | **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
@@ -483,7 +483,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to PCB; each level bridges a massive size gap.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]; each level bridges a massive size gap.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication (Photolithography)]]** - How transistors are actually manufactured. Patterns of light are projected onto silicon wafers coated with light-sensitive chemicals, building up layer by layer like printing but at nanometer scale.
 
@@ -522,7 +522,7 @@ The gate-oxide-semiconductor stack forms a parallel-plate capacitor: the metal g
 NAND gates are "functionally complete" - any Boolean logic function can be expressed using only NAND operations. By combining NAND gates in specific patterns, you can create NOT (one input to NAND), AND (NAND followed by NOT), OR (NOT both inputs, then NAND), and all other gates. From these, you can build memory, arithmetic units, and entire CPUs. This is why NAND is called the "universal gate." See: How It Works (NAND Gate diagram)
 </details>
 
-**Q4:** If making the oxide layer thinner increases capacitance and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
+**Q4:** If making the oxide layer thinner increases [[learning/notes/quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
 As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
@@ -531,7 +531,7 @@ As the oxide becomes extremely thin (approaching atomic scales), **quantum tunne
 **Q5:** A colleague claims that transistors work by "current flowing through the gate to control the channel." Explain why this is fundamentally wrong and what actually happens.
 <details>
 <summary>Answer</summary>
-This is a common misconception. The gate draws **almost no current** because it's insulated by the oxide layer—it's one plate of a capacitor, not part of a current path. What actually happens: (1) Voltage applied to the gate stores charge on the gate electrode, (2) This charge creates an electric field that passes through the oxide, (3) The field attracts or repels electrons in the semiconductor below, (4) This creates or destroys a conductive channel between source and drain. The switching mechanism is electrostatic (charge inducing charge via a field), not current flow. This is why MOSFETs are called "field-effect" transistors and why they're so power-efficient—the control signal uses almost no power. See: How It Works (Key Insight, Oxide Layer as Capacitor)
+This is a common misconception. The gate draws **almost no current** because it's insulated by the oxide layer—it's one plate of a capacitor, not part of a current path. What actually happens: (1) Voltage applied to the gate stores charge on the gate [[learning/notes/quick-context/electrodes|electrode]], (2) This charge creates an electric field that passes through the oxide, (3) The field attracts or repels electrons in the semiconductor below, (4) This creates or destroys a conductive channel between source and drain. The switching mechanism is electrostatic (charge inducing charge via a field), not current flow. This is why MOSFETs are called "field-effect" transistors and why they're so power-efficient—the control signal uses almost no power. See: How It Works (Key Insight, Oxide Layer as Capacitor)
 </details>
 
 </details>

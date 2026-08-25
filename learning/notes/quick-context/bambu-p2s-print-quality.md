@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -153,7 +153,7 @@ But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-
 
 ### 5. Why layer adhesion needs heat — polymer interdiffusion
 
-Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
+Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.

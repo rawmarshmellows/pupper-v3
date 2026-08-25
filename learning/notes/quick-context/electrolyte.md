@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/making-electrolytes]] | [[quick-context/electrodes]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Electrolytes are substances (acids, bases, or salts) that dissolve in water to release free ions, enabling the liquid to conduct electricity; pure water is essentially an insulator, but adding an electrolyte can increase conductivity by 500,000x.
 
@@ -54,14 +54,14 @@ Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS
 |------|------------|
 | **Ion** | An atom or molecule with net electric charge from gaining or losing electrons (Na⁺, Cl⁻, SO₄²⁻) |
 | **Dissociation** | The process where ionic compounds split into free ions when dissolved or melted |
-| **Conductivity** | A measure of how well a solution carries electric current, measured in siemens per centimeter (S/cm) |
+| **Conductivity** | A measure of how well a solution carries [[learning/notes/quick-context/electric-current|electric current]], measured in siemens per centimeter (S/cm) |
 | **Strong electrolyte** | Substances that fully dissociate into ions (NaCl, HCl, NaOH)—high conductivity |
 | **Weak electrolyte** | Substances that only partially dissociate (acetic acid, ammonia)—lower conductivity |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The mechanism of electrolytic conduction is fundamentally different from how metals conduct electricity. In a metal wire, electrons flow freely while atoms stay fixed in place. In an electrolyte solution, the opposite happens: electrons stay bound to atoms, but the entire ions physically migrate through the liquid. When you apply voltage across two electrodes immersed in an electrolyte, you create an electric field that pushes positive ions (cations) toward the negative electrode (cathode) and negative ions (anions) toward the positive electrode (anode). This mass migration of charged particles IS the current.
+The mechanism of electrolytic conduction is fundamentally different from how metals conduct electricity. In a metal wire, electrons flow freely while atoms stay fixed in place. In an electrolyte solution, the opposite happens: electrons stay bound to atoms, but the entire ions physically migrate through the liquid. When you apply [[learning/notes/quick-context/voltage|voltage]] across two electrodes immersed in an electrolyte, you create an electric field that pushes positive ions (cations) toward the negative electrode (cathode) and negative ions (anions) toward the positive electrode (anode). This mass migration of charged particles IS the current.
 
 The process begins with dissociation: when an ionic compound like NaCl dissolves in water, the polar water molecules surround and separate the Na⁺ and Cl⁻ ions that were locked together in the crystal lattice. Each ion becomes "solvated"—wrapped in a shell of water molecules with their opposite charges facing inward. These solvated ions are now free to move independently through the solution. The number of ions and how fast they can move determines the solution's conductivity. Temperature matters because warmer solutions have lower viscosity, allowing ions to migrate faster.
 

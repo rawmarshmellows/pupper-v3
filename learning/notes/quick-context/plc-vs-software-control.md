@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
@@ -88,7 +88,7 @@ IF trajectoryActive THEN
 END_IF;
 ```
 
-**Software Side (ROS2 Python) - Computing and sending trajectory:**
+**Software Side ([[learning/notes/quick-context/ros2-architecture|ROS2]] Python) - Computing and sending trajectory:**
 ```python
 # ROS2 node: compute trajectory, hand off to PLC for execution
 class TrajectoryPlanner(Node):
