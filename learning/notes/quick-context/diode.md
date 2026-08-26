@@ -12,11 +12,11 @@ updated: 2026-02-25
 
 ## Human notes
 
-The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
+The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the [[quick-context/inductor|inductor]] generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the [[micro-context/cathode|cathode]] (at the switch node) drops below the [[micro-context/anode|anode]] (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the [[micro-context/mosfet|MOSFET]] turns off.
 
 ## The Core Problem: Making Current Flow Only One Way
 
-Wall outlets provide AC power that alternates direction 50-60 times per second, but every electronic device needs DC (current flowing in one direction). The diode solves this: it conducts current in one direction and blocks it in the other. This simple behavior enables rectifiers that convert AC to DC, protection circuits that prevent reverse-polarity damage, and LEDs that convert current to light. Diodes are the simplest semiconductor device—just a single PN junction—making them the gateway to understanding how [[quick-context/transistor|transistors]] work (a transistor is essentially two PN junctions back-to-back).
+Wall outlets provide AC power that alternates direction 50-60 times per second, but every electronic device needs DC (current flowing in one direction). The diode solves this: it conducts current in one direction and blocks it in the other. This simple behavior enables rectifiers that convert AC to DC, protection circuits that prevent reverse-polarity damage, and LEDs that convert current to light. Diodes are the simplest semiconductor device—just a single PN junction—making them the gateway to understanding how [[quick-context/transistor|transistors]] work (a [[quick-context/transistor|transistor]] is essentially two PN junctions back-to-back).
 
 ## 5 Essential Terms
 
@@ -223,9 +223,9 @@ BRIDGE RECTIFIER CIRCUIT
 
 - **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on capacitance, load current, and frequency.
 
-- **[[quick-context/resistor]]** — LEDs always need a current-limiting resistor (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
+- **[[quick-context/resistor]]** — LEDs always need a current-limiting [[quick-context/resistor|resistor]] (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
 
-- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every buck converter needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
+- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every [[micro-context/buck-converter|buck converter]] needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
 
 </details>
 

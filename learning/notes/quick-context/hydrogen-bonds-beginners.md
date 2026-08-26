@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/3d-printing-filament-types]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -27,7 +27,7 @@ Imagine you have a bowl of spaghetti. The individual noodles are "polymer chains
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the covalent bonds holding atoms together within molecules, but strong enough to significantly affect how materials behave.
+Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together within molecules, but strong enough to significantly affect how materials behave.
 
 The key to understanding hydrogen bonds is recognizing the players: you need a "donor" (an H attached to O or N, making it slightly positive) and an "acceptor" (a lone O or N with negative charge that attracts the H). The hydrogen essentially acts as a bridge between two electronegative atoms. Water is the classic example: each water molecule can donate two hydrogen bonds (from its two H atoms) and accept two hydrogen bonds (at its oxygen), creating an extensive network that explains water's unusually high boiling point and surface tension.
 

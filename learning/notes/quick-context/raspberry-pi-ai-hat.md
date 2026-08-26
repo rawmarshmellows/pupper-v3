@@ -264,7 +264,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 | AI HAT+ 26T | Oct 2024 | Hailo-8 (soldered) | 26 | INT8 | None | ~$110 | High-perf vision |
 | AI HAT+ 2 | Apr 2026 | Hailo-10H (soldered) | 40 | INT4 | 8GB DDR | $180 | LLMs + vision |
 
-The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of soldering the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
+The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of [[quick-context/soldering|soldering]] the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
 
 ### Which One to Buy?
 
@@ -464,7 +464,7 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 - **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
 - **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
 - **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
-- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level
+- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the [[quick-context/transistor|transistor]] level
 - **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep topic in its own right
 - **ONNX (Open Neural Network Exchange)** — The intermediate model format used as input to Hailo's compiler
 

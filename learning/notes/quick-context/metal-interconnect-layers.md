@@ -19,7 +19,7 @@ Metal interconnect layers are the "parking garage" of wiring built on top of the
 | **Metal Layer (M1, M2... M10+)** | Horizontal wiring levels stacked above the transistors; M1 is closest to transistors, M10 is near the top |
 | **Pitch** | The spacing between adjacent wires; tighter pitch = more wires, but harder to manufacture |
 | **Dielectric** | The insulating material between wires that prevents short circuits (usually silicon dioxide or low-k materials) |
-| **Bond Pad** | Large metal squares at the top interconnect layer where the chip connects to the outside world |
+| **[[quick-context/bond-pad|Bond Pad]]** | Large metal squares at the top interconnect layer where the chip connects to the outside world |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -296,7 +296,7 @@ Bottom layers connect individual transistors and need high density (many wires i
 **Q3:** If you halve the width of a wire, what happens to its resistance, and why is this problematic for chip scaling?
 <details>
 <summary>Answer</summary>
-Halving wire width reduces cross-sectional area to 1/4, causing resistance to increase 4×. This means signals travel slower and more heat is generated. As chips shrink, interconnect resistance becomes the limiting factor rather than transistor speed—this is the "interconnect bottleneck." See: The Key Tension and What Outsiders Get Wrong
+Halving wire width reduces cross-sectional area to 1/4, causing resistance to increase 4×. This means signals travel slower and more heat is generated. As chips shrink, interconnect resistance becomes the limiting factor rather than [[quick-context/transistor|transistor]] speed—this is the "interconnect bottleneck." See: The Key Tension and What Outsiders Get Wrong
 </details>
 
 **Q4:** A chip designer claims: "We added more metal layers to our chip, so it will definitely be faster." What's potentially wrong with this claim?

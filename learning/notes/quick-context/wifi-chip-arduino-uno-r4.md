@@ -290,7 +290,7 @@ ESP32-S3 WiFi RADIO SUBSYSTEM (inside the chip):
                                             └─────────┘
 ```
 
-The antenna on the ESP32-S3-MINI-1 module is a printed copper trace on the module's [[quick-context/pcb-printed-circuit-board|PCB]] — not a separate component. It's shaped as a meandered inverted-F antenna (MIFA), tuned to resonate at 2.4 GHz. The entire radio — from digital baseband to RF power amplifier — is integrated on the same [[quick-context/silicon-die|silicon die]], which is why a complete WiFi solution costs under $3.
+The antenna on the [[quick-context/esp32|ESP32]]-S3-MINI-1 module is a printed copper trace on the module's [[quick-context/pcb-printed-circuit-board|PCB]] — not a separate component. It's shaped as a meandered inverted-F antenna (MIFA), tuned to resonate at 2.4 GHz. The entire radio — from digital baseband to RF power amplifier — is integrated on the same [[quick-context/silicon-die|silicon die]], which is why a complete WiFi solution costs under $3.
 
 ### Code Example: Connecting to WiFi on the Uno R4
 
@@ -332,7 +332,7 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 

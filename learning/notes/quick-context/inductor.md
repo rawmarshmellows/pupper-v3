@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[micro-context/buck-converter|buck converter]] uses a switch, [[quick-context/diode|diode]], inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a [[quick-context/resistor|resistor]] voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -655,7 +655,7 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
@@ -680,7 +680,7 @@ BUCK CONVERTER OPERATION
 **V = L × dI/dt. If dt approaches zero (instant cutoff), the voltage approaches infinity.** The inductor's magnetic field is collapsing and it will do whatever it takes to keep current flowing—even generating hundreds of volts across a small inductor. This is why flyback diodes are placed across inductive loads like motors and relays: they give the current a safe path to flow during turn-off.
 </details>
 
-**Q2:** An inductor and a capacitor are "duals." What does this mean practically?
+**Q2:** An inductor and a [[quick-context/capacitor|capacitor]] are "duals." What does this mean practically?
 <details>
 <summary>Answer</summary>
 **They have opposite behaviors in every way.** Capacitors block DC and pass AC; inductors pass DC and block AC. Capacitors oppose voltage changes; inductors oppose current changes. Their series/parallel formulas are swapped. Their time constant formulas are inverted (τ = RC vs τ = L/R). Together they create resonance at f = 1/(2π√LC).
@@ -701,7 +701,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>
