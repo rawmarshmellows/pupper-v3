@@ -360,11 +360,11 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The linking and flashing pipeline: how compiled code goes from an ELF file on your PC to bytes in an MCU's flash memory. Covers the software toolchain (linker, flash programmer) that drives the physical write process described here.
 
-- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
+- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 [[micro-context/mosfet|MOSFET]] + 1 [[quick-context/capacitor|capacitor]], and flash uses a modified MOSFET with a floating gate.
 
 - **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM capacitor or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
 
-- **[[learning/notes/quick-context/doped-silicon]]** — The [[learning/notes/micro-context/reverse-and-forward-bias|PN junctions]] that make charge storage possible. The DRAM access transistor and the flash floating-gate transistor both rely on doped regions to control current flow.
+- **[[learning/notes/quick-context/doped-silicon]]** — The [[learning/notes/micro-context/reverse-and-forward-bias|PN junctions]] that make charge storage possible. The DRAM access [[quick-context/transistor|transistor]] and the flash floating-gate transistor both rely on doped regions to control current flow.
 
 - **[[learning/notes/quick-context/silicon-die]]** — Where the memory cells physically live. Flash memory on an SSD die, SRAM in a CPU cache die, DRAM on a separate die — all manufactured via [[learning/notes/quick-context/semiconductor-fabrication|photolithography]].
 

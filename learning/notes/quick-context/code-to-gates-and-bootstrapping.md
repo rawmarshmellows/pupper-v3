@@ -468,7 +468,7 @@ POWER-ON SEQUENCE
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a [[quick-context/transistor|transistor]] works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
 

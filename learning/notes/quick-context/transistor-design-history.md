@@ -11,7 +11,7 @@ created: 2026-01-30
 
 ## The Core Problem: Keeping Moore's Law Alive
 
-Every few years, transistor designs hit fundamental physical limits. The planar MOSFET that powered computing from 1960-2011 couldn't scale below ~28nm without catastrophic leakage. FinFET saved another decade but struggles below 5nm. Each generation requires reinventing how the gate controls the channel—from sitting on top, to wrapping three sides, to surrounding all four sides. Without these architectural revolutions, Moore's Law would have died decades ago. Understanding this history reveals that "smaller transistors" isn't about shrinking the same thing—it's about fundamentally redesigning the switch itself.
+Every few years, [[quick-context/transistor|transistor]] designs hit fundamental physical limits. The planar [[micro-context/mosfet|MOSFET]] that powered computing from 1960-2011 couldn't scale below ~28nm without catastrophic leakage. FinFET saved another decade but struggles below 5nm. Each generation requires reinventing how the gate controls the channel—from sitting on top, to wrapping three sides, to surrounding all four sides. Without these architectural revolutions, Moore's Law would have died decades ago. Understanding this history reveals that "smaller transistors" isn't about shrinking the same thing—it's about fundamentally redesigning the switch itself.
 
 ## 5 Essential Terms
 

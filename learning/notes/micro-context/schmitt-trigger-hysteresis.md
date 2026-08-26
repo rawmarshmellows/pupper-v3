@@ -28,4 +28,4 @@ created: 2026-06-07
              hysteresis band
 ```
 
-**Key insight:** A single-threshold comparator *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.
+**Key insight:** A single-threshold [[quick-context/comparator|comparator]] *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.

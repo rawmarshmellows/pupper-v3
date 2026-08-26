@@ -20,7 +20,7 @@ A modern electronic system spans nine orders of magnitude (5 nm transistors to 5
 |------|------------|
 | **Passive component** | A part that cannot amplify or switch signals—it can only store or dissipate energy. Resistors, capacitors, and inductors are the three fundamental passives. |
 | **Active component** | A part that can amplify or switch—it adds energy from a power supply into a signal path. Transistors and diodes are the primary examples. |
-| **Discrete component** | A single part in its own package soldered to a PCB (a standalone resistor, a single transistor). Contrast with "integrated," where billions of components are fabricated together on one die. |
+| **Discrete component** | A single part in its own package soldered to a PCB (a standalone [[quick-context/resistor|resistor]], a single [[quick-context/transistor|transistor]]). Contrast with "integrated," where billions of components are fabricated together on one die. |
 | **Integrated circuit (IC)** | Billions of transistors (plus resistors, capacitors, and wiring) fabricated together on a single [[quick-context/silicon-die|silicon die]]—a complete functional block like a CPU, memory chip, or sensor. |
 | **Packaging hierarchy** | The chain of physical structures (die → substrate → package → PCB) that connects nanometer-scale transistors to the centimeter-scale world. See [[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]. |
 
@@ -89,16 +89,16 @@ ACTIVE COMPONENT FAMILY TREE
 
 | Part | Existing Quick-Context? | Key Concept |
 |------|------------------------|-------------|
-| **[[quick-context/transistor\|Transistor (MOSFET)]]** | Yes | Gate-controlled switch, MOS capacitor, NAND gates, CMOS |
+| **[[quick-context/transistor\|Transistor (MOSFET)]]** | Yes | Gate-controlled switch, MOS [[quick-context/capacitor|capacitor]], NAND gates, CMOS |
 | **[[quick-context/transistor-analog-to-digital\|Transistor: Analog → Digital]]** | Yes | Leakage, noise margins, regenerative logic, clocking |
-| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → BJT → planar MOSFET → FinFET → GAA |
+| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → BJT → planar [[micro-context/mosfet|MOSFET]] → FinFET → GAA |
 | **[[quick-context/diode\|Diode]]** | Yes | PN junction, forward/reverse bias, rectification, LEDs |
 | **[[quick-context/bjt\|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
 | **[[quick-context/bjt-specifications\|BJT Specifications]]** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
 | **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
 | **[[quick-context/comparator\|Comparator]]** | Yes | Op-amp's sibling optimized for binary output; bridges analog signals to digital logic |
-| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + tail current source; the universal input stage of op-amps, comparators, and ADCs |
-| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | Current mirror active load on a differential pair; converts μA current difference into full-rail voltage swing |
+| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + [[micro-context/tail-current|tail current]] source; the universal input stage of op-amps, comparators, and ADCs |
+| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | [[micro-context/current-mirror|Current mirror]] active load on a [[quick-context/differential-pair|differential pair]]; converts μA current difference into full-rail voltage swing |
 
 ## 3. Semiconductor Materials — What Parts Are Made Of
 
@@ -126,7 +126,7 @@ FROM SAND TO SWITCH
 | **[[quick-context/impedance-and-reactance\|Impedance and Reactance]]** | Yes | Z = R + jX (impedance = resistance + imaginary unit × reactance), capacitive/inductive reactance, phase angle |
 | **[[quick-context/frequency-and-filtering\|Frequency and Filtering]]** | Yes | Cutoff frequency, dB (decibels), low-pass/high-pass, filter order |
 | **[[quick-context/power-watts-joules\|Electrical Power]]** | Yes | P = VI (power = voltage × current), watts, joules, efficiency, thermal dissipation |
-| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | Maxwell's equations, magnetic fields, Faraday's law, EM waves |
+| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | [[quick-context/maxwell-equations|Maxwell's equations]], magnetic fields, Faraday's law, EM waves |
 | **[[quick-context/electric-magnetic-field-unification\|Field Unification]]** | Yes | How V, I, E, B connect—the conceptual map |
 | **[[quick-context/grounding-and-return-paths\|Grounding and Return Paths]]** | Yes | Return paths, ground planes, ground loops, star grounding |
 
@@ -227,7 +227,7 @@ All fundamental electronic parts now have quick-context files. Total: 34 electro
 
 ## Tracing a Signal Through Fundamental Parts
 
-Here's a simplified path from a sensor to a microcontroller, showing which parts you'd encounter and which quick-context files explain them:
+Here's a simplified path from a sensor to a [[micro-context/microcontroller|microcontroller]], showing which parts you'd encounter and which quick-context files explain them:
 
 ```
 SENSOR SIGNAL PATH
@@ -308,7 +308,7 @@ Every signal in every electronic device passes through some combination of these
 **Q1:** What are the three fundamental passive components, and what form of energy does each store or dissipate?
 <details>
 <summary>Answer</summary>
-**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **Inductor** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
+**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **[[quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
 </details>
 
 **Q2:** What is the difference between a passive and an active component?
@@ -323,7 +323,7 @@ A **passive component** can only store or dissipate energy—it cannot amplify a
 They store energy in dual forms: capacitors in electric fields (voltage-dependent), inductors in magnetic fields (current-dependent). A capacitor opposes voltage changes (I = C × dV/dt: current = capacitance × rate of voltage change)—DC has no voltage change, so no current passes. An inductor opposes current changes (V = L × dI/dt: voltage = inductance × rate of current change)—DC has no current change, so the inductor acts like a wire. At higher frequencies, voltage and current change faster, amplifying these opposing behaviors. This duality is why LC combinations create resonance and second-order filters.
 </details>
 
-**Q4:** In the packaging hierarchy, why are there multiple connection technologies (wire bonding vs. flip-chip) rather than just one?
+**Q4:** In the packaging hierarchy, why are there multiple connection technologies ([[quick-context/wire-bonding|wire bonding]] vs. flip-chip) rather than just one?
 <details>
 <summary>Answer</summary>
 They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-understood, but limited in density and adds inductance (wires are long). **Flip-chip** offers higher density and lower inductance (shorter connections), but requires more complex manufacturing and underfill to handle thermal stress. Cost-sensitive, low-pin-count chips use wire bonding; high-performance processors use flip-chip. See [[quick-context/wire-bonding]] and [[quick-context/flip-chip]].
@@ -332,7 +332,7 @@ They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-un
 **Q5:** If you had to explain to someone the purpose of the entire packaging hierarchy in one sentence, what would it be?
 <details>
 <summary>Answer</summary>
-The packaging hierarchy is a chain of progressively coarser "adapters" that bridge nine orders of magnitude in scale—from 5 nm transistors on a silicon die to 5 mm connectors on a PCB—so that nanometer-scale computation can connect to the human-scale world with reliable electrical and thermal paths. See [[quick-context/pcb-chip-transistor-hierarchy]].
+The packaging hierarchy is a chain of progressively coarser "adapters" that bridge nine orders of magnitude in scale—from 5 nm transistors on a [[quick-context/silicon-die|silicon die]] to 5 mm connectors on a PCB—so that nanometer-scale computation can connect to the human-scale world with reliable electrical and thermal paths. See [[quick-context/pcb-chip-transistor-hierarchy]].
 </details>
 
 </details>

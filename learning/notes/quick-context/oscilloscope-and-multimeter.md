@@ -192,7 +192,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q1:** You connect a multimeter set to "amps" in parallel across a component. What happens?
 <details>
 <summary>Answer</summary>
-**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
+**You create a near-[[micro-context/short-circuit|short circuit]] and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
 </details>
 
 **Q2:** A 50 MHz oscilloscope is displaying a 10 MHz square wave that looks like a sine wave. Why?

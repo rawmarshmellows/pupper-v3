@@ -213,7 +213,7 @@ I2C BUS PULL-UPS
 
 - **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and frequency response.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern transistor power delivery.
+- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern [[quick-context/transistor|transistor]] power delivery.
 
 - **[[quick-context/transistor]]** — Resistors set bias points for transistors, limit base/gate current, and form loads in amplifier circuits.
 

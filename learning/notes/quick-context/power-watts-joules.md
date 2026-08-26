@@ -172,11 +172,11 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 
-- **[[quick-context/resistor]]** — Every resistor in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
+- **[[quick-context/resistor]]** — Every [[quick-context/resistor|resistor]] in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
 
-- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
+- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The [[quick-context/inductor|inductor]] stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a [[quick-context/capacitor|capacitor]] is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 
@@ -194,7 +194,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q2:** A linear regulator converts 12V to 3.3V at 200 mA. How much power is wasted as heat?
 <details>
 <summary>Answer</summary>
-**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a buck converter (90%+ efficient) is preferred for large voltage drops.
+**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a [[micro-context/buck-converter|buck converter]] (90%+ efficient) is preferred for large voltage drops.
 </details>
 
 **Q3:** Your phone battery is 15 Wh. At 4W average power consumption, how long does it last?

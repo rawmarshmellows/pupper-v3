@@ -347,8 +347,8 @@ WHICH IS "TRUE"?
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
-| Capacitor charging | electric field building between plates |
-| Inductor charging | magnetic field building in coil |
+| [[quick-context/capacitor|Capacitor]] charging | electric field building between plates |
+| [[quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
 | Radio transmission | E and B waves propagating through space |
 | Lightning | Charges discharge, massive current, huge magnetic field |
@@ -495,15 +495,15 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[quick-context/electrolysis|electrolysis]] and circuits.
 
 - **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 
 - **[[quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
 
-- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The resistor shows what happens when current flows but the energy isn't stored—it's dissipated.
+- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The [[quick-context/resistor|resistor]] shows what happens when current flows but the energy isn't stored—it's dissipated.
 
 - **[[quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical cost).
 
@@ -511,7 +511,7 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
 
-- **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
+- **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "[[quick-context/electromagnetism|electromagnetism]]" is one word.
 
 - **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
