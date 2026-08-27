@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -351,7 +351,7 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners navigate is that van der Waals forces are **individually pathetically weak but collectively significant**. A single van der Waals interaction might be 100x weaker than a [[quick-context/hydrogen-bonds-beginners|hydrogen bond]]. But because *every* atom contributes, large molecules or surfaces can accumulate thousands of these tiny attractions. This is why geckos—with millions of tiny hair-like structures on their feet—can support their body weight on glass. The debate centers on: when do you need to account for these forces (drug design, nanotech, adhesives) vs. when can you safely ignore them (most everyday chemistry)? In computational chemistry, including van der Waals interactions accurately is expensive, so there's constant optimization between precision and computational cost.
+The central tradeoff practitioners navigate is that van der Waals forces are **individually pathetically weak but collectively significant**. A single van der Waals interaction might be 100x weaker than a [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bond]]. But because *every* atom contributes, large molecules or surfaces can accumulate thousands of these tiny attractions. This is why geckos—with millions of tiny hair-like structures on their feet—can support their body weight on glass. The debate centers on: when do you need to account for these forces (drug design, nanotech, adhesives) vs. when can you safely ignore them (most everyday chemistry)? In computational chemistry, including van der Waals interactions accurately is expensive, so there's constant optimization between precision and computational cost.
 
 </details>
 
@@ -384,17 +384,17 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-1. **[[quick-context/dipole-dipole-interactions]]** — Dipole-dipole interactions are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
+1. **[[learning/notes/quick-context/dipole-dipole-interactions]]** — [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-dipole interactions]] are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
 
-2. **[[quick-context/hydrogen-bonds-beginners]]** — Hydrogen bonds are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
+2. **[[learning/notes/quick-context/hydrogen-bonds-beginners]]** — Hydrogen bonds are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
 
-3. **[[quick-context/pi-pi-stacking-aromatic-interactions]]** — Pi-pi stacking in aromatic rings relies heavily on van der Waals forces between the electron clouds of flat ring structures, explaining why molecules like DNA bases stack so neatly.
+3. **[[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]]** — Pi-pi stacking in aromatic rings relies heavily on van der Waals forces between the electron clouds of flat ring structures, explaining why molecules like DNA bases stack so neatly.
 
-4. **[[quick-context/polymer-chemical-bonds]]** — In polymers, van der Waals forces between chains determine properties like flexibility and melting point—chains held only by van der Waals are easier to pull apart than those with stronger intermolecular bonds.
+4. **[[learning/notes/quick-context/polymer-chemical-bonds]]** — In polymers, van der Waals forces between chains determine properties like flexibility and melting point—chains held only by van der Waals are easier to pull apart than those with stronger intermolecular bonds.
 
-5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
+5. **[[learning/notes/quick-context/glass-transition-temperature]]** — The [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **[[learning/notes/quick-context/camera-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

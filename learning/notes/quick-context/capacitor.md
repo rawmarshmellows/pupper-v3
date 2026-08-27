@@ -5,20 +5,20 @@ created: 2026-01-30
 
 # Capacitor
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/capacitance]]
 
-> **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
+> **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling [[learning/notes/quick-context/transistor|transistor]] switching.
 
 ## The Core Problem
 
-Electronics need stable voltage to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
+Electronics need stable [[learning/notes/quick-context/voltage|voltage]] to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[learning/notes/quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[learning/notes/quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
-| **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
+| **[[learning/notes/quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **Dielectric** | The insulating material between the capacitor's plates that determines [[learning/notes/quick-context/capacitance|capacitance]] and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[learning/notes/quick-context/transistor|transistors]]). |
 | **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
 | **Decoupling/Bypass Capacitor** | A capacitor placed near an IC to provide instant current during switching and filter high-frequency noise from the power supply - the most common capacitor application in digital electronics. |
@@ -26,7 +26,7 @@ Electronics need stable voltage to operate correctly, but power supplies fluctua
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A capacitor consists of two conductive plates separated by an insulator (dielectric). When you apply voltage across the plates, electrons accumulate on one plate (making it negative) and are depleted from the other plate (making it positive). This charge separation creates an electric field stored in the dielectric. The field itself holds energy - no chemical reaction needed, unlike [[quick-context/galvanic-cells-batteries|batteries]].
+A capacitor consists of two conductive plates separated by an insulator (dielectric). When you apply voltage across the plates, electrons accumulate on one plate (making it negative) and are depleted from the other plate (making it positive). This charge separation creates an electric field stored in the dielectric. The field itself holds energy - no chemical reaction needed, unlike [[learning/notes/quick-context/galvanic-cells-batteries|batteries]].
 
 ```
 BASIC CAPACITOR STRUCTURE AND OPERATION
@@ -370,7 +370,7 @@ TYPICAL PCB POWER SUPPLY FILTERING:
 
 ## Decoupling Capacitors: Keeping CPUs from Crashing
 
-Every [[quick-context/pcb-printed-circuit-board|PCB]] with digital ICs is covered in small ceramic capacitors placed next to chip power pins. These "decoupling" or "bypass" capacitors are the unsung heroes preventing circuit chaos.
+Every [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] with digital ICs is covered in small ceramic capacitors placed next to chip power pins. These "decoupling" or "bypass" capacitors are the unsung heroes preventing circuit chaos.
 
 ```
 THE PROBLEM: SUDDEN CURRENT DEMANDS
@@ -488,27 +488,27 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** - The transistor's gate-oxide-semiconductor structure forms a MOS capacitor. Understanding capacitors is essential for understanding how transistors switch: applying gate voltage charges this capacitor, creating the electric field that forms the channel.
+- **[[learning/notes/quick-context/transistor]]** - The transistor's gate-oxide-semiconductor structure forms a MOS capacitor. Understanding capacitors is essential for understanding how transistors switch: applying gate voltage charges this capacitor, creating the electric field that forms the channel.
 
-- **[[quick-context/electric-current]]** - Current and capacitors are intimately related. Current equals the rate of charge flow: I = dQ/dt = C × dV/dt. A capacitor only "conducts" when voltage is changing.
+- **[[learning/notes/quick-context/electric-current]]** - Current and capacitors are intimately related. Current equals the rate of charge flow: I = dQ/dt = C × dV/dt. A capacitor only "conducts" when voltage is changing.
 
-- **[[quick-context/parallel-vs-series-voltage]]** - Explains why decoupling capacitors are critical for CPU power delivery and how they handle sudden current demands that would otherwise cause voltage drops.
+- **[[learning/notes/quick-context/parallel-vs-series-voltage]]** - Explains why decoupling capacitors are critical for CPU power delivery and how they handle sudden current demands that would otherwise cause voltage drops.
 
-- **[[quick-context/galvanic-cells-batteries]]** - Both store energy, but through fundamentally different mechanisms. Batteries: chemical energy, high density, slow. Capacitors: electric field energy, low density, instant response.
+- **[[learning/notes/quick-context/galvanic-cells-batteries]]** - Both store energy, but through fundamentally different mechanisms. Batteries: chemical energy, high density, slow. Capacitors: electric field energy, low density, instant response.
 
-- **[[quick-context/pcb-printed-circuit-board]]** - PCB design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** - PCB design heavily revolves around capacitor placement. Power planes act as distributed capacitance, and decoupling cap placement is critical for signal integrity.
 
-- **[[quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental noise floor: V_noise = sqrt(kT/C). This limits how small DRAM storage capacitors can be, because thermal noise would overwhelm the stored signal.
+- **[[learning/notes/quick-context/thermal-noise-electronics]]** - Capacitors have a fundamental noise floor: V_noise = sqrt(kT/C). This limits how small DRAM storage capacitors can be, because thermal noise would overwhelm the stored signal.
 
-- **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
+- **[[learning/notes/quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
+- **[[learning/notes/quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 
-- **[[small-context/permanent-magnet-creation]]** - Capacitor discharge circuits store energy at high voltage (E = ½CV²) then release it in milliseconds to create 15,000+ amp pulses for magnetizing iron. A practical example of how capacitors enable high-power applications from low-power sources.
+- **small-context/permanent-magnet-creation** - Capacitor discharge circuits store energy at high voltage (E = ½CV²) then release it in milliseconds to create 15,000+ amp pulses for magnetizing iron. A practical example of how capacitors enable high-power applications from low-power sources.
 
-- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC impedance techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
+- **[[learning/notes/quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC impedance techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
 
 </details>
 
@@ -542,7 +542,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 **Q5:** Why do DRAM chips need to be "refreshed" periodically, and how do capacitors relate to this requirement?
 <details>
 <summary>Answer</summary>
-**DRAM stores bits as charge on tiny capacitors (~20 fF), and that charge slowly leaks away.** Each memory cell is just a capacitor and a transistor. The capacitor holds charge (bit = 1) or doesn't (bit = 0). But capacitors aren't perfect insulators - small leakage currents drain the charge over milliseconds. Without periodic refresh (reading and rewriting each cell), the stored data would be lost. This is also why DRAM loses all data when power is removed. The [[quick-context/thermal-noise-electronics|thermal noise]] floor (V = sqrt(kT/C)) also limits how small these capacitors can be - shrink them too much and thermal noise overwhelms the signal. See: Peripheral Knowledge (thermal noise link).
+**DRAM stores bits as charge on tiny capacitors (~20 fF), and that charge slowly leaks away.** Each memory cell is just a capacitor and a transistor. The capacitor holds charge (bit = 1) or doesn't (bit = 0). But capacitors aren't perfect insulators - small leakage currents drain the charge over milliseconds. Without periodic refresh (reading and rewriting each cell), the stored data would be lost. This is also why DRAM loses all data when power is removed. The [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] floor (V = sqrt(kT/C)) also limits how small these capacitors can be - shrink them too much and thermal noise overwhelms the signal. See: Peripheral Knowledge (thermal noise link).
 </details>
 
 </details>

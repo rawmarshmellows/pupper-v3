@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/metal-interconnect-layers]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: Electrons Are Tiny But Relentless
 
-When [[quick-context/electric-current|current flows through a wire]], it's not just energy moving—it's billions of electrons physically colliding with metal atoms. Each collision transfers a tiny bit of momentum. At low current densities, this is negligible. But in modern chip [[quick-context/metal-interconnect-layers|interconnects]], current densities reach 10⁶ to 10⁷ A/cm²—a million times higher than household wiring. At these densities, the cumulative "electron wind" pushes metal atoms like sand grains in a river, slowly eroding wire from one end and depositing it downstream. Over months or years of operation, this creates **voids** (gaps where atoms left) and **hillocks** (bumps where atoms accumulated). Voids increase resistance until the wire fails open; hillocks can short-circuit to neighboring wires. Without designing around electromigration, chips would fail within days. It's the reason copper replaced aluminum in chips, why wire widths can't shrink indefinitely, and why every chip has strict current limits for each wire.
+When [[learning/notes/quick-context/electric-current|current flows through a wire]], it's not just energy moving—it's billions of electrons physically colliding with metal atoms. Each collision transfers a tiny bit of momentum. At low current densities, this is negligible. But in modern chip [[learning/notes/quick-context/metal-interconnect-layers|interconnects]], current densities reach 10⁶ to 10⁷ A/cm²—a million times higher than household wiring. At these densities, the cumulative "electron wind" pushes metal atoms like sand grains in a river, slowly eroding wire from one end and depositing it downstream. Over months or years of operation, this creates **voids** (gaps where atoms left) and **hillocks** (bumps where atoms accumulated). Voids increase resistance until the wire fails open; hillocks can short-circuit to neighboring wires. Without designing around electromigration, chips would fail within days. It's the reason copper replaced aluminum in chips, why wire widths can't shrink indefinitely, and why every chip has strict current limits for each wire.
 
 ## 5 Essential Terms
 
@@ -339,20 +339,20 @@ ENGINEERING SOLUTIONS:
    → Every 10°C reduction roughly doubles lifetime
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming electromigration is only about thermal damage—"the wire gets too hot and melts." Actually, electromigration can occur at room temperature if current density is high enough. The [[quick-context/thermal-noise-electronics|thermal effect]] is that higher temperature accelerates atomic diffusion, but the fundamental driver is **momentum transfer from electrons**, not heat. A chip running cool but with extreme current density will still fail from electromigration. This is why current limits exist even for chips with excellent cooling. The analogy of "sand in a river" is apt: the river doesn't need to be hot to erode the riverbank—it just needs to flow fast enough.
+**The one thing most outsiders get wrong about this is...** assuming electromigration is only about thermal damage—"the wire gets too hot and melts." Actually, electromigration can occur at room temperature if current density is high enough. The [[learning/notes/quick-context/thermal-noise-electronics|thermal effect]] is that higher temperature accelerates atomic diffusion, but the fundamental driver is **momentum transfer from electrons**, not heat. A chip running cool but with extreme current density will still fail from electromigration. This is why current limits exist even for chips with excellent cooling. The analogy of "sand in a river" is apt: the river doesn't need to be hot to erode the riverbank—it just needs to flow fast enough.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/metal-interconnect-layers|Metal Interconnect Layers]]** — The multi-layer copper wiring where electromigration occurs; understanding the hierarchy from thin M1 wires to thick power delivery layers explains why different layers have different current limits.
+- **[[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]]** — The multi-layer copper wiring where electromigration occurs; understanding the hierarchy from thin M1 wires to thick power delivery layers explains why different layers have different current limits.
 
-- **[[quick-context/electric-current|Electric Current]]** — Current density (A/cm²) is the critical parameter for electromigration; understanding current fundamentals clarifies why total current matters less than current per unit area.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** — Current density (A/cm²) is the critical parameter for electromigration; understanding current fundamentals clarifies why total current matters less than current per unit area.
 
-- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[learning/notes/quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating [[learning/notes/quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
@@ -387,7 +387,7 @@ From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while dou
 Temperature affects electromigration rate but doesn't eliminate it. The exponential temperature term in Black's law means lower temperature increases lifetime, but the J⁻² current density term still dominates. If current density is high enough, electromigration will still cause failure even at low temperatures—just more slowly. A wire at 40°C with 2× the safe current density will fail faster than a wire at 100°C at the safe current density. The fundamental driver is electron momentum transfer, not heat. See: "The one thing most outsiders get wrong..."
 </details>
 
-**Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
+**Q5:** How does the interconnect bottleneck described in [[learning/notes/quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
 The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.

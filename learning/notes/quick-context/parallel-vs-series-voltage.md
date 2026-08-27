@@ -3,22 +3,22 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/electric-current]]
 
-> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
+> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each [[learning/notes/quick-context/transistor|transistor]] sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not [[learning/notes/quick-context/voltage|voltage]].
 
 # Why Billions of Transistors Don't Need Billions of Volts
 
 ## The Core Problem: A Common Misconception About Electricity
 
-If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that voltage is a *difference in potential*, not a quantity that accumulates like water in a tank.
+If a chip has 50 billion [[learning/notes/quick-context/transistor|transistors]] and each needs ~0.65V to operate, shouldn't the chip need 0.65V × 50,000,000,000 = 32.5 billion volts? This intuition is completely wrong, but the error reveals a fundamental misunderstanding about how electricity works. The answer lies in the difference between **series** and **parallel** circuits—and understanding that voltage is a *difference in potential*, not a quantity that accumulates like water in a tank.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Voltage (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
-| **Series Circuit** | Components connected end-to-end, so [[quick-context/electric-current\|current]] flows through each one sequentially. Voltages ADD across series elements. |
+| **Series Circuit** | Components connected end-to-end, so [[learning/notes/quick-context/electric-current|current]] flows through each one sequentially. Voltages ADD across series elements. |
 | **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME voltage; currents add instead. |
 | **Power Rails (Vdd/GND)** | The two voltage levels that supply power to all transistors in a chip. Every transistor connects between these same two rails. |
 | **Current (Amperes)** | The flow rate of electric charge. In parallel circuits, each branch draws its own current, and these currents add up at the power supply. |
@@ -192,12 +192,12 @@ THE CURRENT DELIVERY PROBLEM
   ─────────────────────────────────────────────────────────────────────────────
 
   1. THICK POWER PLANES: Use wide, low-resistance copper layers in the
-     [[quick-context/pcb-printed-circuit-board|PCB]] and [[quick-context/substrate-ic-packaging|package substrate]]
+     [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] and [[learning/notes/quick-context/substrate-ic-packaging|package substrate]]
 
   2. MANY POWER PINS: Modern CPUs have hundreds of Vdd pins to distribute
      current, reducing resistance per path
 
-  3. [[quick-context/capacitor|DECOUPLING CAPACITORS]]: Store charge locally to handle sudden current
+  3. [[learning/notes/quick-context/capacitor|DECOUPLING CAPACITORS]]: Store charge locally to handle sudden current
      demands without voltage drops from power supply
 
   4. VOLTAGE REGULATORS ON PACKAGE: Place power conversion very close to
@@ -207,7 +207,7 @@ THE CURRENT DELIVERY PROBLEM
 | Challenge | Why It's Hard | Solution |
 |-----------|---------------|----------|
 | Resistance in power delivery | Even tiny resistance × huge current = significant voltage drop | Wide copper planes, many parallel paths |
-| Sudden current changes | Transistors switching creates current spikes | [[quick-context/capacitor|Decoupling capacitors]] everywhere |
+| Sudden current changes | Transistors switching creates current spikes | [[learning/notes/quick-context/capacitor|Decoupling capacitors]] everywhere |
 | Heat from I²R losses | 100A through any resistance generates serious heat | Low-resistance materials, spreading current across many pins |
 | Voltage tolerance | Transistors at 0.65V have very little margin for error | Precision voltage regulators, on-die monitoring |
 
@@ -258,7 +258,7 @@ Step 4: INTO THE CPU PACKAGE
   ~500 power/ground pins (of ~1,500 total pins)
   Each pin carries: 308A / 500 pins ≈ 0.6A per pin
 
-  CPU Package (bottom view showing [[quick-context/bga-ball-grid-array|BGA]] balls):
+  CPU Package (bottom view showing [[learning/notes/quick-context/bga-ball-grid-array|BGA]] balls):
 
   ┌─────────────────────────────────────────────────────────────────────────┐
   │ ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●         │
@@ -275,7 +275,7 @@ Step 4: INTO THE CPU PACKAGE
 
 Step 5: INTO THE SILICON DIE
 ─────────────────────────────────────────────────────────────────────────────────
-  Power distributed through [[quick-context/metal-interconnect-layers|metal interconnect]] grid
+  Power distributed through [[learning/notes/quick-context/metal-interconnect-layers|metal interconnect]] grid
 
   Cross-section of die:
 
@@ -307,7 +307,7 @@ THE MATH THAT MATTERS:
   Peak current (when many transistors switch simultaneously) can be 2-3× higher
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that because each transistor "needs" 0.65V, you must stack up voltage for every transistor. But voltage is a *potential difference*, not a consumable resource. Every transistor experiences the same 0.65V drop between Vdd and GND—they're all in parallel. What does get consumed (and must be supplied in ever-larger amounts) is [[quick-context/electric-current|current]]. A 50-billion-transistor chip draws hundreds of amps, not billions of volts. The engineering challenge isn't generating high voltage; it's delivering enormous current through extremely low-resistance paths while keeping the voltage stable across the entire die.
+**The one thing most outsiders get wrong about this is...** assuming that because each transistor "needs" 0.65V, you must stack up voltage for every transistor. But voltage is a *potential difference*, not a consumable resource. Every transistor experiences the same 0.65V drop between Vdd and GND—they're all in parallel. What does get consumed (and must be supplied in ever-larger amounts) is [[learning/notes/quick-context/electric-current|current]]. A 50-billion-transistor chip draws hundreds of amps, not billions of volts. The engineering challenge isn't generating high voltage; it's delivering enormous current through extremely low-resistance paths while keeping the voltage stable across the entire die.
 
 </details>
 
@@ -316,13 +316,13 @@ THE MATH THAT MATTERS:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — How individual transistors work. Each one switches between conducting and non-conducting based on gate voltage, drawing current when active.
+- **[[learning/notes/quick-context/transistor]]** — How individual transistors work. Each one switches between conducting and non-conducting based on gate voltage, drawing current when active.
 
-- **[[quick-context/electric-current]]** — Understanding current as charge flow. In parallel circuits, currents from each branch add at the power supply.
+- **[[learning/notes/quick-context/electric-current]]** — Understanding current as charge flow. In parallel circuits, currents from each branch add at the power supply.
 
-- **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
+- **[[learning/notes/quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 

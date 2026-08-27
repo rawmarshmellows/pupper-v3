@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -17,7 +17,7 @@ A circuit doesn't work. Is the power supply providing 3.3V? Is the clock signal 
 
 | Term | Definition |
 |------|------------|
-| **DMM (Digital Multimeter)** | Measures V, I, R, continuity, and sometimes capacitance/frequency. Displays a single number. Every electronics bench has one. |
+| **DMM (Digital Multimeter)** | Measures V, I, R, continuity, and sometimes [[learning/notes/quick-context/capacitance|capacitance]]/frequency. Displays a single number. Every electronics bench has one. |
 | **Oscilloscope** | Displays voltage vs. time on a screen. Shows signal shape, frequency, rise time, noise, glitches. Modern scopes are digital (DSO) with memory and measurement functions. |
 | **Probe** | The cable connecting the instrument to the circuit. Oscilloscope probes have a 10:1 divider (10× probe) that reduces loading on the circuit and extends voltage range. |
 | **Trigger** | The oscilloscope feature that stabilizes the display by starting each sweep at the same point on the waveform. Without triggering, signals appear to drift across the screen. |
@@ -122,8 +122,8 @@ WHEN TO USE WHICH
 | Bandwidth | Price Range | Good For |
 |-----------|-----------|----------|
 | 50 MHz | $300-500 | Arduino, slow digital, audio, power supplies |
-| 100 MHz | $400-800 | SPI, I2C, UART, most embedded work |
-| 200 MHz | $800-2000 | Faster SPI, CAN bus, switching supply debug |
+| 100 MHz | $400-800 | [[learning/notes/micro-context/spi|SPI]], I2C, [[learning/notes/quick-context/uart|UART]], most embedded work |
+| 200 MHz | $800-2000 | Faster SPI, [[learning/notes/quick-context/can-bus|CAN bus]], switching supply debug |
 | 500 MHz | $2000-5000 | USB, Ethernet PHY, DDR memory |
 | 1+ GHz | $5000-50000 | PCIe, high-speed serial, RF |
 
@@ -176,13 +176,13 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
+- **[[learning/notes/quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
 
-- **[[quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
+- **[[learning/notes/quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
 
-- **[[quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
+- **[[learning/notes/quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
 
-- **[[quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
+- **[[learning/notes/quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
 
 </details>
 

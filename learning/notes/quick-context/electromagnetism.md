@@ -5,13 +5,13 @@ created: 2026-02-09
 
 # Electromagnetism
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/frequency-and-filtering]]
 
 > **TL;DR:** Electromagnetism is the unified physics of electric and magnetic fields—moving charges create magnetic fields, changing magnetic fields create electric fields, and this interplay enables motors, generators, transformers, inductors, and all wireless communication. Maxwell unified these phenomena in 1865, revealing that light itself is an electromagnetic wave.
 
 ## The Core Problem: Two Forces That Are Really One
 
-Before the 1800s, electricity and magnetism seemed unrelated. Static electricity made sparks; magnets pointed north. But experiments revealed deep connections: [[quick-context/electric-current|current]] flowing through a wire deflects a compass needle (Oersted, 1820), and moving a magnet through a coil induces current (Faraday, 1831). Maxwell realized these weren't separate forces—they're two aspects of a single electromagnetic field. Any change in one creates the other. This unification explains why we can generate electricity by spinning magnets, why [[quick-context/inductor|inductors]] oppose current changes, why transformers transfer power between isolated coils, and why radio waves travel at the speed of light.
+Before the 1800s, electricity and magnetism seemed unrelated. Static electricity made sparks; magnets pointed north. But experiments revealed deep connections: [[learning/notes/quick-context/electric-current|current]] flowing through a wire deflects a compass needle (Oersted, 1820), and moving a magnet through a coil induces current (Faraday, 1831). Maxwell realized these weren't separate forces—they're two aspects of a single electromagnetic field. Any change in one creates the other. This unification explains why we can generate electricity by spinning magnets, why [[learning/notes/quick-context/inductor|inductors]] oppose current changes, why transformers transfer power between isolated coils, and why radio waves travel at the speed of light.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Before the 1800s, electricity and magnetism seemed unrelated. Static electricity
 |------|------------|
 | **Magnetic Field (B)** | A vector field created by moving charges (current) or changing electric fields. Measured in tesla (T). Earth's field: ~50 μT. Strong magnet: 1 T. MRI machine: 1.5-3 T. |
 | **Electric Field (E)** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
-| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
+| **[[learning/notes/micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic flux through a conductor induces [[learning/notes/quick-context/voltage|voltage]]: EMF = -N × dΦ/dt. The minus sign ([[learning/notes/quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[learning/notes/quick-context/electricity-generation|generators]] and [[learning/notes/quick-context/inductor|inductors]] work. |
 | **Lorentz Force** | The force on a moving charge in electromagnetic fields: F = q(E + v × B). Electric fields push charges; magnetic fields deflect moving charges perpendicular to their velocity. This is how motors and CRT screens work. |
 | **Electromagnetic Wave** | Self-propagating oscillations of electric and magnetic fields, traveling at the speed of light (c = 3×10⁸ m/s in vacuum). Radio, microwaves, infrared, visible light, UV, X-rays, and gamma rays are all electromagnetic waves at different frequencies. |
 
@@ -236,7 +236,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 | Power generation | Faraday's law (changing B → E) | Generator, alternator |
 | Electric motors | Lorentz force (I × B → F) | DC motor, AC motor |
 | Transformers | Faraday's law (mutual induction) | Power transformer |
-| [[quick-context/inductor|Inductors]] | Faraday's law (self-induction) | Chokes, filter coils |
+| [[learning/notes/quick-context/inductor|Inductors]] | Faraday's law ([[learning/notes/quick-context/self-induction|self-induction]]) | Chokes, filter coils |
 | Wireless communication | EM wave propagation | Antennas, radio |
 | Magnetic storage | Hysteresis in magnetic materials | Hard drives, tape |
 
@@ -341,29 +341,29 @@ GENERATOR OPERATION — Step by Step
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Current is moving charge, and moving charges create magnetic fields. Understanding current flow is prerequisite to understanding how electromagnets and inductors work.
+- **[[learning/notes/quick-context/electric-current]]** — Current is moving charge, and moving charges create magnetic fields. Understanding current flow is prerequisite to understanding how electromagnets and inductors work.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of why current through a coil creates a magnetic field and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — Detailed treatment of [[learning/notes/quick-context/coil-magnetic-field|why current through a coil creates a magnetic field]] and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
 
-- **[[quick-context/inductor]]** — An inductor stores energy in a magnetic field created by current through a coil. The inductor equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a voltage opposing the change.
+- **[[learning/notes/quick-context/inductor]]** — An inductor stores energy in a magnetic field created by current through a coil. The inductor equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a voltage opposing the change.
 
-- **[[quick-context/electricity-generation]]** — Electromagnetic induction is the dominant method for generating grid electricity. Generators, turbines, and the energy conversion chain all depend on Faraday's law.
+- **[[learning/notes/quick-context/electricity-generation]]** — Electromagnetic induction is the dominant method for generating grid electricity. Generators, turbines, and the energy conversion chain all depend on Faraday's law.
 
-- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields; inductors store energy in magnetic fields. They are electromagnetic duals: I = C×dV/dt vs. V = L×dI/dt.
+- **[[learning/notes/quick-context/capacitor]]** — Capacitors store energy in electric fields; inductors store energy in magnetic fields. They are electromagnetic duals: I = C×dV/dt vs. V = L×dI/dt.
 
-- **[[micro-context/electromagnetic-induction]]** — Glossary-style definition of electromagnetic induction with Faraday's law.
+- **[[learning/notes/micro-context/electromagnetic-induction]]** — Glossary-style definition of electromagnetic induction with Faraday's law.
 
-- **[[quick-context/lenzs-law]]** — Why the minus sign in Faraday's Law matters: the induced EMF opposes the change that caused it, enforcing conservation of energy.
+- **[[learning/notes/quick-context/lenzs-law]]** — Why the minus sign in Faraday's Law matters: the induced EMF opposes the change that caused it, enforcing conservation of energy.
 
-- **[[small-context/permanent-magnet-creation]]** — Small-context on how unpaired electrons and exchange interaction create permanent magnets, and how magnetizers (high-current coils) align magnetic domains.
+- **small-context/permanent-magnet-creation** — Small-context on how unpaired electrons and exchange interaction create permanent magnets, and how magnetizers (high-current coils) align magnetic domains.
 
-- **[[quick-context/maxwell-equations]]** — The complete mathematical formulation of electromagnetism in four equations. All electromagnetic phenomena—from static charges to light—emerge from these equations.
+- **[[learning/notes/quick-context/maxwell-equations]]** — The complete mathematical formulation of electromagnetism in four equations. All electromagnetic phenomena—from static charges to light—emerge from these equations.
 
 - **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different reference frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
 
-- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric tensor that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
+- **[[learning/notes/quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi signals are electromagnetic waves at 2.4 GHz. A WiFi chip modulates data onto these waves and radiates them via an antenna — a direct, everyday application of Maxwell's prediction that changing electric fields create self-propagating EM waves.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — WiFi signals are electromagnetic waves at 2.4 GHz. A WiFi chip modulates data onto these waves and radiates them via an antenna — a direct, everyday application of Maxwell's prediction that changing electric fields create self-propagating EM waves.
 
 </details>
 
@@ -376,7 +376,7 @@ GENERATOR OPERATION — Step by Step
 **Current creates a magnetic field that surrounds the wire.** According to Ampère's Law, any current (moving charges) creates a magnetic field that circles around the current. The compass needle (itself a small magnet) aligns with this field, deflecting from magnetic north. The right-hand rule predicts the direction: point thumb along current, fingers curl in the direction of the magnetic field.
 </details>
 
-**Q2:** Why does an [[quick-context/inductor|inductor]] oppose changes in current?
+**Q2:** Why does an [[learning/notes/quick-context/inductor|inductor]] oppose changes in current?
 <details>
 <summary>Answer</summary>
 **Faraday's Law and Lenz's Law.** When current through an inductor changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
