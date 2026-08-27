@@ -4,9 +4,12 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/capacitance]]
+
+
 # Decoupling Capacitor
 
-> **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
+> **See also:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/electric-current]]
 
 **Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.
 

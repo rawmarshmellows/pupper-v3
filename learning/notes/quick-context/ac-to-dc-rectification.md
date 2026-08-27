@@ -5,9 +5,9 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady [[learning/notes/quick-context/voltage|voltage]].
 
 ## The Core Problem
 
@@ -21,7 +21,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[learning/notes/quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -186,18 +186,18 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 
 ### Source Micro-Contexts (Glossary Stubs)
 
-- **[[micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
-- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
-- **[[micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
-- **[[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
+- **[[learning/notes/micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
+- **[[learning/notes/micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
+- **[[learning/notes/micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
+- **[[learning/notes/micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
 
 ### Related Quick-Contexts
 
-- **[[quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
-- **[[quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
-- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs electron flow.
-- **[[quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
-- **[[quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
+- **[[learning/notes/quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
+- **[[learning/notes/quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
+- **[[learning/notes/quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs electron flow.
+- **[[learning/notes/quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
+- **[[learning/notes/quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
 
 </details>
 

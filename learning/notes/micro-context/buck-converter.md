@@ -4,17 +4,20 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]]
+
+
 # Buck Converter
 
 ## Human notes
 
-Make the ASCII diagrams clearer, in particular on the relationship between [[quick-context/transistor|MOSFET]] and [[quick-context/diode|diode]] — what is connected to the source, drain, and gate?
+Make the ASCII diagrams clearer, in particular on the relationship between [[learning/notes/quick-context/transistor|MOSFET]] and [[learning/notes/quick-context/diode|diode]] — what is connected to the source, drain, and gate?
 
-**Why does the [[quick-context/capacitor|output capacitor]] still smooth everything to 5V?** The inductor current has a sawtooth ripple — it ramps up during Phase 1 (switch ON) and ramps down during Phase 2 (switch OFF). The output capacitor acts as a reservoir: when inductor current is above the load's demand, the excess charges the capacitor; when inductor current dips below demand, the capacitor discharges to make up the difference. Because $V = Q/C$ and the capacitor has significant capacitance, these tiny charge/discharge cycles produce only millivolts of ripple around the 5V average. The *average* voltage is set by the [[micro-context/pwm-pulse-width-modulation|duty cycle]] ($V_{OUT} = V_{IN} \times D$) — the capacitor doesn't *create* 5V, it just filters out the switching noise around that average.
+**Why does the [[learning/notes/quick-context/capacitor|output capacitor]] still smooth everything to 5V?** The [[learning/notes/quick-context/inductor|inductor]] current has a sawtooth ripple — it ramps up during Phase 1 (switch ON) and ramps down during Phase 2 (switch OFF). The output [[learning/notes/quick-context/capacitor|capacitor]] acts as a reservoir: when inductor current is above the load's demand, the excess charges the capacitor; when inductor current dips below demand, the capacitor discharges to make up the difference. Because $V = Q/C$ and the capacitor has significant [[learning/notes/quick-context/capacitance|capacitance]], these tiny charge/discharge cycles produce only millivolts of ripple around the 5V average. The *average* [[learning/notes/quick-context/voltage|voltage]] is set by the [[learning/notes/micro-context/pwm-pulse-width-modulation|duty cycle]] ($V_{OUT} = V_{IN} \times D$) — the capacitor doesn't *create* 5V, it just filters out the switching noise around that average.
 
-**Who controls the [[micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[micro-context/stm32-microcontroller|MCU]]. The IC connects to VIN for its own power and to drive the [[micro-context/mosfet|MOSFET]] gate (often the MOSFET is integrated *inside* the IC). A resistor divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
+**Who controls the [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[learning/notes/micro-context/stm32-microcontroller|MCU]]. The IC connects to VIN for its own power and to drive the [[learning/notes/micro-context/mosfet|MOSFET]] gate (often the [[learning/notes/micro-context/mosfet|MOSFET]] is integrated *inside* the IC). A [[learning/notes/quick-context/resistor|resistor]] divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/inductor]] | [[quick-context/capacitor]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/pwm-controller-circuit]]
+> **See also:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 
 **Definition:** A switching power supply that efficiently steps down voltage (e.g., 12V battery → 5V for logic). Unlike linear regulators that waste excess voltage as heat, buck converters use rapid switching (100kHz–2MHz) and an inductor to achieve 85–95% efficiency.
 
@@ -121,7 +124,7 @@ Make the ASCII diagrams clearer, in particular on the relationship between [[qui
   The inductor REFUSES to let current stop suddenly!
   Its collapsing magnetic field drives current through the diode.
 
-  In Phase 2: can you explain why current flows through the diode now? Here's what's happening: during Phase 1, the [[quick-context/inductor|inductor]] was storing energy in its magnetic field while current flowed through it. When the MOSFET switches OFF, the inductor's current can't stop instantly — that's [[quick-context/self-induction|self-induction]] (a consequence of [[quick-context/lenzs-law|Lenz's law]]). The inductor's collapsing magnetic field generates a voltage that *fights* the current decrease, pulling the switch node voltage *below* GND. Once the switch node drops ~0.7V below GND, the [[quick-context/diode|diode]] becomes forward-biased (its cathode is now more negative than its anode at GND), so current flows: GND → diode anode → diode cathode → switch node → inductor → load → back to GND. The diode provides the return path that the inductor *demands*.
+  In Phase 2: can you explain why current flows through the diode now? Here's what's happening: during Phase 1, the [[learning/notes/quick-context/inductor|inductor]] was storing energy in its magnetic field while current flowed through it. When the MOSFET switches OFF, the inductor's current can't stop instantly — that's [[learning/notes/quick-context/self-induction|self-induction]] (a consequence of [[learning/notes/quick-context/lenzs-law|Lenz's law]]). The inductor's collapsing magnetic field generates a voltage that *fights* the current decrease, pulling the switch node voltage *below* GND. Once the switch node drops ~0.7V below GND, the [[learning/notes/quick-context/diode|diode]] becomes forward-biased (its cathode is now more negative than its anode at GND), so current flows: GND → diode anode → diode cathode → switch node → inductor → load → back to GND. The diode provides the return path that the inductor *demands*.
 ```
 
 ---
@@ -233,4 +236,4 @@ $$V_{OUT} = V_{REF} \times \left(1 + \frac{R5}{R6}\right) = 0.8 \times \left(1 +
 
 E96 values (60.4k, 11.5k) land within ~0.1% of target — using E24 round numbers like 56k/10k would give 5.28V.
 
-**Where is "the PWM"?** It's inside U8. See [[quick-context/pwm-controller-circuit]] for the sawtooth-oscillator + error-amp + comparator chain that generates the gate signal. The STM32s (U1, U5) don't touch it — the buck regulates autonomously at ~500kHz.
+**Where is "the PWM"?** It's inside U8. See [[learning/notes/quick-context/pwm-controller-circuit]] for the sawtooth-oscillator + error-amp + [[learning/notes/quick-context/comparator|comparator]] chain that generates the gate signal. The STM32s (U1, U5) don't touch it — the buck regulates autonomously at ~500kHz.
