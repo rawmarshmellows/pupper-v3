@@ -2,10 +2,9 @@
 topic: "Singular Value Decomposition (SVD)"
 created: 2026-04-04
 ---
-
 # Singular Value Decomposition (SVD)
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/covariance-matrix|Covariance Matrix]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/similarity-transform]]
 
 > **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of linear algebra.
 
@@ -253,9 +252,9 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the absolute orientation problem
+- **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] of corresponding point sets
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a [[learning/notes/quick-context/similarity-transform|similarity transform]] (rotation + scale + translation)
+- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the [[learning/notes/quick-context/absolute-orientation|absolute orientation problem]]
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
 - **Principal Component Analysis (PCA)** -- PCA is SVD applied to the centered data matrix; the principal components are the right singular vectors, and the explained variance comes from the squared singular values
 - **Polar decomposition** -- Every matrix factors as $A = QS$ (orthogonal times symmetric positive semi-definite); SVD gives you this directly since $Q = UV^T$ and $S = V\Sigma V^T$
@@ -284,7 +283,7 @@ Eigendecomposition requires a square matrix (it solves $A\mathbf{v} = \lambda\ma
 **Q3:** In the Kabsch algorithm, you compute $R = VU^T$ from the SVD of the cross-covariance matrix $H$. Why do you multiply $V$ and $U^T$ rather than, say, $UV^T$ or some other combination?
 <details>
 <summary>Answer</summary>
-The SVD gives $H = U\Sigma V^T$. The matrix $H$ encodes the correlation between source and target coordinates. The optimal rotation must map the principal directions of the source (captured by $V$) to the principal directions of the target (captured by $U$). Since $VU^T = V(U^T)$ composes "rotate from standard axes to source directions" with "rotate from target directions to standard axes," the product $VU^T$ is the rotation from source to target. The alternative $UV^T$ would give the transpose (inverse) rotation. The $\Sigma$ is discarded because it only encodes stretching magnitudes, not direction. See: How It Works, SVD in the Helmert Transform context.
+The SVD gives $H = U\Sigma V^T$. The matrix $H$ encodes the correlation between source and target coordinates. The optimal rotation must map the principal directions of the source (captured by $V$) to the principal directions of the target (captured by $U$). Since $VU^T = V(U^T)$ composes "rotate from standard axes to source directions" with "rotate from target directions to standard axes," the product $VU^T$ is the rotation from source to target. The alternative $UV^T$ would give the transpose (inverse) rotation. The $\Sigma$ is discarded because it only encodes stretching magnitudes, not direction. See: How It Works, SVD in the [[learning/notes/quick-context/helmert-transform|Helmert Transform]] context.
 </details>
 
 **Q4:** You compute $R = VU^T$ and get $\det(R) = -1$. Someone suggests "just negate $R$." Why is this wrong, and what is the correct fix?
