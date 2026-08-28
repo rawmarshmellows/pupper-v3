@@ -2,6 +2,8 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/voltage]]
+
 
 # Short Circuit
 

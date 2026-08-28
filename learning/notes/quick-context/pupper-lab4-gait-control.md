@@ -2,10 +2,9 @@
 topic: Pupper Lab 4 — Gait Control (Trotting Quadruped)
 created: 2026-03-10
 ---
-
 # Pupper Lab 4 — Gait Control (Trotting Quadruped)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab5-neural-controller]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 
 > **TL;DR:** Lab 4 extends single-leg FK/IK from Labs 2-3 to all four legs simultaneously, coordinating them into a trotting gait where diagonal leg pairs (FR+BL, FL+BR) move in anti-phase. All target joint positions for one complete gait cycle are pre-cached via IK at startup to avoid real-time computational cost, then the 200 Hz control loop simply indexes into the cached trajectory with per-leg phase offsets.
 
@@ -266,7 +265,7 @@ FR JOINT ANGLES OVER ONE GAIT CYCLE
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 4 sits at the pivot point between single-leg control (Labs 1-3) and full-system intelligence (Labs 5-7). Everything after Lab 4 assumes a working trotting gait.
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware that runs this gait. The 200 Hz PD loop executes on the Pi's ROS2 stack, while the 1 kHz motor control loop runs on the STM32, meaning Lab 4's cached joint targets are downsampled and interpolated by the microcontroller firmware.
+- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware that runs this gait. The 200 Hz PD loop executes on the Pi's ROS2 stack, while the 1 kHz motor control loop runs on the STM32, meaning Lab 4's cached joint targets are downsampled and interpolated by the [[learning/notes/micro-context/microcontroller|microcontroller]] firmware.
 - **Other quadruped gaits** — Trotting is one of many: *walking* (3 feet always grounded, slowest but most stable), *pacing* (ipsilateral pairs, used by camels), *bounding* (front/back pairs, fast but unstable), *galloping* (asymmetric, fastest). Each has different duty factors and phase relationships.
 - **Static vs. dynamic stability** — A statically stable gait keeps the center of mass within the support polygon at all times (requires 3+ feet on the ground). Trotting is only *dynamically* stable — with just 2 feet down, the robot relies on momentum and fast gait cycling to avoid falling. This is why trot speed matters: too slow and the robot tips between steps.
 - **Zero Moment Point (ZMP)** — A formal stability criterion used in humanoid and quadruped robotics. The ZMP is the point on the ground where the net moment of inertial and gravitational forces is zero. If the ZMP stays within the support polygon, the robot won't tip. Lab 4's trot doesn't explicitly compute ZMP, but the diagonal pairing implicitly keeps it near the body center.

@@ -3,18 +3,20 @@ term: ADC (Analog-to-Digital Converter)
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
+
 
 # ADC (Analog-to-Digital Converter)
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** A circuit that converts continuous analog voltage into discrete digital numbers. The ADS1110 in your Pupper is a 16-bit ADC, meaning it divides its input range into 65,536 levels—if measuring 0–3.3V, each step is ~50 microvolts. Used for precise measurements like battery voltage, current sensing, or analog sensor readings.
+**Definition:** A circuit that converts continuous analog [[learning/notes/quick-context/voltage|voltage]] into discrete digital numbers. The ADS1110 in your Pupper is a 16-bit ADC, meaning it divides its input range into 65,536 levels—if measuring 0–3.3V, each step is ~50 microvolts. Used for precise measurements like battery voltage, current sensing, or analog sensor readings.
 
 ## How It Works
 
 - The ADC samples the analog input voltage at regular intervals determined by the sample rate.
 - Each sample is compared against an internal reference voltage and quantized to the nearest digital level (e.g., one of 65,536 levels for 16-bit).
-- The resulting binary number is stored in a register and made available to the MCU via a bus interface (I2C, SPI, or internal peripheral).
+- The resulting binary number is stored in a register and made available to the MCU via a bus interface ([[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], or internal peripheral).
 - Higher bit resolution means finer voltage steps, but noise floor and reference stability ultimately limit practical accuracy.
 
 ```
