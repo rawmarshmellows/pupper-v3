@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/high-gain-amplifier-stage]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 

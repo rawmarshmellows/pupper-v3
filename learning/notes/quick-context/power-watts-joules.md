@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/power-supply-rejection-ratio]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 

@@ -2,6 +2,7 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 
 # PLC (Programmable Logic Controller)
 

@@ -3,6 +3,7 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-mirror]]
 
 # Current and Electrons Per Second
 

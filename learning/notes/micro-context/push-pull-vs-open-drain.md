@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/micro-context/mosfet]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 

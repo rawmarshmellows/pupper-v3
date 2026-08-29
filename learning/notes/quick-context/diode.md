@@ -4,7 +4,7 @@ created: 2026-02-06
 updated: 2026-02-25
 ---
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, voltage protection, and light emission (LEDs).
 

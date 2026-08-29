@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/doped-silicon]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 

@@ -4,7 +4,7 @@ created: 2026-01-23
 ---
 
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/metal-interconnect-layers]]
 
 > **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
 

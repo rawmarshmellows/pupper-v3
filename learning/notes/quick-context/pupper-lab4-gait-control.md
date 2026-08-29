@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 4 — Gait Control (Trotting Quadruped)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab5-neural-controller]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** Lab 4 extends single-leg FK/IK from Labs 2-3 to all four legs simultaneously, coordinating them into a trotting gait where diagonal leg pairs (FR+BL, FL+BR) move in anti-phase. All target joint positions for one complete gait cycle are pre-cached via IK at startup to avoid real-time computational cost, then the 200 Hz control loop simply indexes into the cached trajectory with per-leg phase offsets.
 

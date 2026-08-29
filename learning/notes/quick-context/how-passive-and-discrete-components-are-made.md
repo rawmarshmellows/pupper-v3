@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete
 
-> **Related:** [[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index]]
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/metal-interconnect-layers]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
 
 > **TL;DR:** The same four everyday parts get manufactured two completely different ways. **On-chip (monolithic):** a resistor is a doped strip, a capacitor is two metal/silicon layers with a thin insulator between them, a diode is a PN junction, and a comparator is a whole integrated circuit of many transistors — all *patterned together* on one silicon wafer by the same [[learning/notes/quick-context/semiconductor-fabrication|photolithography process]] that makes transistors. **Discrete:** each is a tiny standalone object built by its own specialized process (screen-printed resistive paste, stacked ceramic layers, a single junction die) and then soldered onto a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]].
 

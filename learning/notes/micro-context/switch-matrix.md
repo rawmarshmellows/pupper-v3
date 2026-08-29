@@ -2,6 +2,7 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]]
 
 # Switch Matrix
 

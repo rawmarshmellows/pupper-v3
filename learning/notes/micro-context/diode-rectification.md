@@ -3,6 +3,7 @@ term: Diode Rectification (AC → DC)
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/diode]]
 
 # Diode Rectification (AC → DC)
 

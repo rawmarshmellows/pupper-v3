@@ -3,6 +3,7 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-mirror]]
 
 # Current Behavior with Inductors vs Capacitors
 

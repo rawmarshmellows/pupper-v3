@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the MCP6541 (LCSC C623499) Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]]
 >
 > **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 

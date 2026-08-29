@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]]
 
 # Homogeneous Transformation Matrix
 

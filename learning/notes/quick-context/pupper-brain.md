@@ -3,7 +3,7 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab1-pid-control]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 

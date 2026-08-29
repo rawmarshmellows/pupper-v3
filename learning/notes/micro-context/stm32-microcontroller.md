@@ -3,6 +3,7 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/raspberry-pi-5-components]]
 
 # STM32 Microcontroller
 

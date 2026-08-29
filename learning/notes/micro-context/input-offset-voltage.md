@@ -2,6 +2,7 @@
 term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/current-mirror]]
 
 # Input Offset Voltage ($V_{OS}$)
 

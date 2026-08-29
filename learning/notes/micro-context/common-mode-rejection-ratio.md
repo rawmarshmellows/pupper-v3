@@ -2,6 +2,7 @@
 term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/quick-context/differential-pair]]
 
 # Common-Mode Rejection Ratio ($CMRR$)
 

@@ -3,7 +3,7 @@ topic: How to Make an Electrolyte (Acid, Base, or Salt)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
 

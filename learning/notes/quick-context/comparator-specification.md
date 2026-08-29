@@ -5,7 +5,7 @@ created: 2026-06-06
 
 # Comparator Specifications (Reading the LMC7211-N Datasheet)
 
-> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/resistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/high-gain-amplifier-stage]]
 >
 > **Source datasheet:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) — the worked example throughout this note. Section numbers (§4.1–4.6, §5) reference this file.
 

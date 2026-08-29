@@ -6,7 +6,7 @@ updated: 2026-03-11
 
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[micro-context/homogeneous-transformation-matrix]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]]
 
 > **TL;DR:** Lab 3 flips the FK problem: given a desired foot position in 3D space, find the joint angles that reach it by minimizing a cost function via gradient descent, then drives a single leg through a triangle stepping trajectory using a dual-rate architecture (200 Hz PD tracking + 20 Hz IK solving).
 

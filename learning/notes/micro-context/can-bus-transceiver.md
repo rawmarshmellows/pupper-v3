@@ -3,6 +3,7 @@ term: CAN Bus Transceiver
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/can-bus-termination]]
 
 # CAN Bus Transceiver
 

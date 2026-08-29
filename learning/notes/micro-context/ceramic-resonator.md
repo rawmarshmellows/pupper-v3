@@ -3,6 +3,7 @@ term: Ceramic Resonator
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
 
 # Ceramic Resonator
 

@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # Firmware — Software That Lives on Hardware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/raspberry-pi-5-components]] | [[learning/notes/quick-context/raspberry-pi-ai-hat]]
 
 > **TL;DR:** Firmware is software permanently stored in a device's non-volatile memory (typically flash) that runs immediately at power-on without an operating system, bootloader chain, or filesystem. It's the code that makes hardware *be* what it is — the STM32s on the Pupper control board run firmware that turns raw silicon into a motor controller and sensor hub.
 
