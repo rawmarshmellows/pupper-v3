@@ -2,6 +2,7 @@
 term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/uart]]
 
 # I2S (Inter-IC Sound)
 

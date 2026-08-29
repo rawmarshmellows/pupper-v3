@@ -3,6 +3,7 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]]
 
 # 4-Wire Kelvin Measurement
 

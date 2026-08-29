@@ -2,6 +2,7 @@
 term: CAN Bus Termination
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/can-bus-transceiver]]
 
 # CAN Bus Termination
 

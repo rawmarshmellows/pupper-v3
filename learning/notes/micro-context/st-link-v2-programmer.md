@@ -3,6 +3,7 @@ term: ST-Link V2 Programmer
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/raspberry-pi-5-components]]
 
 # ST-Link V2 Programmer
 

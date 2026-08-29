@@ -2,6 +2,7 @@
 term: Current Mirror
 created: 2026-04-02
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/current-electrons-per-second]]
 
 # Current Mirror
 

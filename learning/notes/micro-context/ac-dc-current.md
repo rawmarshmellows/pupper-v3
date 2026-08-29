@@ -3,6 +3,7 @@ term: AC vs DC Current
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-mirror]]
 
 # AC vs DC Current
 

@@ -5,7 +5,7 @@ created: 2026-03-13
 
 # PREEMPT_RT + ROS2 as PLC Replacement
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]] | [[quick-context/sil-rated-safety-functions]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]]
 
 > **TL;DR:** A growing ecosystem of industrial hardware (Bosch ctrlX CORE, Phoenix Contact PLCnext, ADLINK ROScube, Beckhoff TwinCAT on Linux) now runs [[quick-context/preempt-rt|PREEMPT_RT]] Linux with ROS2 to handle motion control, EtherCAT fieldbus communication, and AI/perception on a single platform — replacing the traditional split between [[quick-context/plc-vs-software-control|PLCs and software]]. The remaining hard gap is [[quick-context/sil-rated-safety-functions|SIL-rated safety certification]]: no PREEMPT_RT + ROS2 stack has achieved SIL-2/SIL-3, so safety-critical functions still require dedicated safety PLCs.
 

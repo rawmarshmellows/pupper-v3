@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/raspberry-pi-5-components]] | [[learning/notes/quick-context/raspberry-pi-ai-hat]]
 
 # Microcontroller
 

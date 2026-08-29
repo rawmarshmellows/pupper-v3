@@ -3,7 +3,7 @@ topic: Galvanic Cells (Batteries)
 created: 2026-01-23
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
 

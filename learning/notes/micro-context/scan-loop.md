@@ -2,6 +2,7 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/raspberry-pi-5-components]]
 
 # Scan Loop
 
