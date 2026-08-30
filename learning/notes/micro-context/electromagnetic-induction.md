@@ -4,6 +4,8 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/self-induction]]
+
 # Electromagnetic Induction
 
 > **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]
@@ -15,7 +17,7 @@ updated: 2026-03-27
 - A changing magnetic flux through a conductor loop induces an EMF (voltage) proportional to the rate of change ($EMF = -N \times d\Phi/dt$).
 - In a generator, rotating a coil in a magnetic field continuously changes the flux, producing AC voltage.
 - In a transformer, AC current in one coil creates a changing magnetic field that induces voltage in a nearby second coil.
-- The negative sign (Lenz's law) means the induced current always opposes the change that caused it.
+- The negative sign ([[learning/notes/quick-context/lenzs-law|Lenz's law]]) means the induced current always opposes the change that caused it.
 
 ```
 FARADAY'S LAW
