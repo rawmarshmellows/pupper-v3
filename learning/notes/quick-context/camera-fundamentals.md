@@ -5,7 +5,7 @@ created: 2026-03-23
 
 # Camera Fundamentals — Sensors, Lenses, and Calibration
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/ros2-architecture]]
 
 > **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
@@ -539,7 +539,7 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout [[learning/notes/quick-context/transistor|transistors]], and ADCs all integrated on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 

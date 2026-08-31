@@ -6,6 +6,7 @@ updated: 2026-03-27
 
 # Homogeneous Transformation Matrix
 
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 **Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.
 
 ## How It Works

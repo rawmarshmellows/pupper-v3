@@ -5,6 +5,7 @@ created: 2026-06-07
 
 # Schmitt Trigger & Hysteresis
 
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 > **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
 
 **Definition:** A [[learning/notes/quick-context/comparator|comparator]]-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.

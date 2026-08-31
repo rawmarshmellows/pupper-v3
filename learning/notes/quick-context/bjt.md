@@ -3,7 +3,7 @@ topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/bjt-specifications|BJT Specifications]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/capacitance]]
 
 > **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Amplifying Signals With Current
 
-MOSFETs are voltage-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a microcontroller pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
+[[learning/notes/micro-context/mosfet|MOSFETs]] are voltage-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a [[learning/notes/micro-context/microcontroller|microcontroller]] pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
 
 ## 5 Essential Terms
 
@@ -233,7 +233,7 @@ MOTOR DRIVER CIRCUIT
 **Q4:** Why is a flyback diode necessary when switching an inductive load with a BJT?
 <details>
 <summary>Answer</summary>
-**Inductors generate voltage spikes when current is interrupted.** V = L × dI/dt. When the BJT turns off, the motor's inductance tries to maintain current flow by generating a large reverse voltage—potentially hundreds of volts. This exceeds the BJT's collector-emitter breakdown voltage and destroys it. The flyback diode provides a path for the inductive current to circulate safely as the magnetic field collapses.
+**[[learning/notes/quick-context/inductor|Inductors]] generate voltage spikes when current is interrupted.** V = L × dI/dt. When the BJT turns off, the motor's inductance tries to maintain current flow by generating a large reverse voltage—potentially hundreds of volts. This exceeds the BJT's collector-emitter breakdown voltage and destroys it. The flyback diode provides a path for the inductive current to circulate safely as the magnetic field collapses.
 </details>
 
 **Q5:** A digital circuit needs 50 million transistors. Why can't you build it with BJTs?

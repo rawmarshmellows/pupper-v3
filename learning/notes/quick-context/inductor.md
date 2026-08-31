@@ -3,7 +3,7 @@ topic: Inductor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
 
@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[learning/notes/micro-context/buck-converter|buck converter]] uses a switch, [[learning/notes/quick-context/diode|diode]], inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -655,7 +655,7 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[learning/notes/micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
@@ -701,7 +701,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[learning/notes/micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[learning/notes/quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

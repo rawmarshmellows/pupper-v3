@@ -5,7 +5,7 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/similarity-transform]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/ros2-architecture]]
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 

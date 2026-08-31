@@ -6,6 +6,7 @@ updated: 2026-03-27
 
 # Diode Rectification (AC → DC)
 
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 **Definition:** Using [[quick-context/diode|diodes]] as one-way valves to convert AC to DC. Since diodes only let current flow in one direction, they block or flip the negative portions of AC, producing output that's always positive.
 
 ## How It Works

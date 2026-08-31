@@ -5,13 +5,14 @@ created: 2026-06-07
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/op-amp]]
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
 **Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
 
-- The output stage is a [[micro-context/push-pull-vs-open-drain|push-pull]] pair of transistors (Q6) with nonzero on-resistance.
+- The output stage is a [[micro-context/push-pull-vs-open-drain|push-pull]] pair of [[learning/notes/quick-context/transistor|transistors]] (Q6) with nonzero on-resistance.
 - Under load, the load current times that on-resistance drops a few hundred millivolts, so the output can't quite reach the rail.
 - $V_{OH}$ is the highest the output reaches near $V^+$; $V_{OL}$ the lowest near ground — both quoted at a given load (e.g. 2.5 mA).
 - The harder you load it, the worse the swing — which is why these numbers are *always* specified at a load current.

@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/robotic-arm-api-levels]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -35,7 +35,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)
    - `Move` - Linear interpolation (straight Cartesian path)
-   - `Jump` - Arc motion with automatic Z-retract for pick-and-place
+   - `Jump` - Arc motion with automatic Z-retract for [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]]
 
 3. **Tool Definition**: Set coordinate frame offsets from the robot flange to the actual gripper or tool tip, ensuring positions are accurate regardless of end-effector.
 

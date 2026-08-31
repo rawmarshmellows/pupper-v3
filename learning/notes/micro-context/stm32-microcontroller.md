@@ -1,18 +1,19 @@
 ---
-term: STM32 Microcontroller
+term: STM32 [[learning/notes/micro-context/microcontroller|Microcontroller]]
 created: 2026-01-27
 updated: 2026-04-05
 ---
 
 # STM32 Microcontroller
 
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]]
 > **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
 
 **Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom PCB. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], USART, and USB.
 
 ## How It Works
 
-- The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in SRAM.
+- The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in [[learning/notes/micro-context/sram|SRAM]].
 - Built-in hardware peripherals (CAN, SPI, I2C, USART, ADC, PWM timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
 - Firmware runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
 

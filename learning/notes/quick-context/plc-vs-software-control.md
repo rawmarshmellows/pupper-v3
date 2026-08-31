@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/plc-vs-software]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 

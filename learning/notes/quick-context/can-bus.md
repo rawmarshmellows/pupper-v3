@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # CAN Bus (Controller Area Network)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/firmware]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/uart]]
 
 > **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire differential pair without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
 
@@ -19,7 +19,7 @@ A robot with 12 motors needs to send position commands and receive encoder feedb
 |------|------------|
 | **Frame** | A single CAN message: an 11-bit (or 29-bit extended) identifier for priority/addressing, 0-8 bytes of data, and a CRC for error detection — everything a node needs to communicate in one shot |
 | **Arbitration** | The process by which multiple nodes trying to transmit simultaneously resolve who wins — each node watches the bus while transmitting, and the message with the lowest ID (most 0-bits) wins without any data loss or collision |
-| **Differential pair (CANH/CANL)** | The two wires of the bus — a [[micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
+| **[[learning/notes/quick-context/differential-pair|Differential pair]] (CANH/CANL)** | The two wires of the bus — a [[micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
 | **Dominant / Recessive** | CAN's two logical states: dominant (logical 0) actively drives the bus to a differential voltage; recessive (logical 1) lets the bus float to no differential voltage — dominant always overwrites recessive, which is what makes arbitration work |
 | **[[micro-context/can-bus-termination|Termination]]** | The 120$\Omega$ [[quick-context/resistor|resistors]] at each end of the bus that match the wire's characteristic [[quick-context/impedance-and-reactance|impedance]] and absorb signals to prevent reflections |
 

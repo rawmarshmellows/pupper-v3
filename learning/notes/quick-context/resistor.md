@@ -3,7 +3,7 @@ topic: Resistor
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** A resistor opposes the flow of [[quick-context/electric-current|electric current]], converting electrical energy into heat according to Ohm's law (V = IR)—it's the simplest and most ubiquitous electronic component, used to limit current, divide voltages, set bias points, and terminate signals in virtually every circuit ever built.
 

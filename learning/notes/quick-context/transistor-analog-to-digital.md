@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/thermal-noise-electronics]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -286,7 +286,7 @@ The fundamental tradeoff in making analog transistors behave digitally:
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[learning/notes/micro-context/clock-speed|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 
@@ -423,7 +423,7 @@ NOISE AND VARIATION IN REAL CHIPS:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
+- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic [[learning/notes/micro-context/mosfet|MOSFET]] structure (gate, source, drain, channel) is prerequisite.
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
 

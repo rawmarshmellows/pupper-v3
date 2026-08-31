@@ -5,7 +5,7 @@ created: 2026-02-17
 
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+> **Related:** [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/voltage-current-causality]]
 
 > **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
 

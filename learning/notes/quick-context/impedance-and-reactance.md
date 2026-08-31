@@ -3,7 +3,7 @@ topic: Impedance and Reactance
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/capacitor]]
 
 > **TL;DR:** Impedance extends the concept of [[quick-context/resistor|resistance]] to AC circuits—[[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] oppose current flow in a frequency-dependent way called reactance, and impedance (Z = R + jX) combines resistance and reactance into a single quantity that describes how any component behaves with AC signals.
 
@@ -196,7 +196,7 @@ RC LOW-PASS FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Capacitive reactance (Xc = 1/2πfC) explains why decoupling capacitors work: they have very low impedance at high frequencies, shorting noise to ground while leaving DC unaffected. See also [[quick-context/capacitance]] for how parasitic capacitance affects impedance in PCB traces and IC packages.
+- **[[quick-context/capacitor]]** — Capacitive reactance (Xc = 1/2πfC) explains why [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitors]] work: they have very low impedance at high frequencies, shorting noise to ground while leaving DC unaffected. See also [[quick-context/capacitance]] for how parasitic capacitance affects impedance in PCB traces and IC packages.
 
 - **[[quick-context/inductor]]** — Inductive reactance (XL = 2πfL) explains why inductors are used in power supply filters: they have high impedance at switching frequencies, blocking ripple while passing DC.
 

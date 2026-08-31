@@ -5,13 +5,14 @@ created: 2026-06-07
 
 # Offset Voltage Drift ($TCV_{OS}$)
 
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]]
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[quick-context/differential-pair]]
 
-**Definition:** The rate at which a comparator's or op-amp's [[micro-context/input-offset-voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
+**Definition:** The rate at which a comparator's or [[learning/notes/quick-context/op-amp|op-amp]]'s [[micro-context/input-offset-voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
 
 ## How It Works
 
-- Offset comes from [[quick-context/differential-pair|differential-pair]] mismatch, and that mismatch isn't constant — it shifts as temperature changes the transistors' characteristics.
+- Offset comes from [[quick-context/differential-pair|differential-pair]] mismatch, and that mismatch isn't constant — it shifts as temperature changes the [[learning/notes/quick-context/transistor|transistors]]' characteristics.
 - Multiply drift by your temperature span to get the added offset error: e.g. 1 µV/°C over a 60°C swing adds 60 µV.
 - Drift can worsen at higher supply (LMC7211-N: 1.0 µV/°C at 5 V → 4.0 µV/°C at 15 V), so read the table for *your* rail.
 - Total worst-case offset $\approx$ room-temperature offset limit $+$ $TCV_{OS} \times \Delta T$.
