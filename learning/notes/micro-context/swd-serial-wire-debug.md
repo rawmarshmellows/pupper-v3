@@ -6,9 +6,10 @@ updated: 2026-03-27
 
 # SWD (Serial Wire Debug)
 
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/esp32]]
 > **See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]
 
-**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M microcontrollers. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.
+**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M [[learning/notes/micro-context/microcontroller|microcontrollers]]. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.
 
 ## How It Works
 
@@ -68,7 +69,7 @@ DAP = Debug Access Port = DP + AP together. Every Cortex-M has one.
 
 **Key terminology:**
 - **DP (Debug Port):** The SWD-facing side. Manages the wire protocol, handshake, and error detection. Every SWD transaction talks to the DP first.
-- **MEM-AP (Memory Access Port):** Bridges the DP to the chip's AHB/APB bus. This is what lets an external debugger read/write any memory address — flash, SRAM, peripheral registers — as if it were the CPU itself.
+- **MEM-AP (Memory Access Port):** Bridges the DP to the chip's AHB/APB bus. This is what lets an external debugger read/write any memory address — flash, [[learning/notes/micro-context/sram|SRAM]], peripheral registers — as if it were the CPU itself.
 - **DAP (Debug Access Port):** The DP + AP(s) together. The ARM spec name for the whole debug subsystem.
 
 ## The SWD Protocol: What Happens on the Wire
@@ -117,7 +118,7 @@ SWD gives the debugger the same bus access as the CPU. Here's what that enables:
 | Capability | How it works via SWD |
 |---|---|
 | **Flash programming** | Write to flash controller registers to unlock flash, erase sectors, then write 32-bit words. The debug probe's software (OpenOCD, STM32CubeProgrammer) automates this sequence. |
-| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) comparator registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
+| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) [[learning/notes/quick-context/comparator|comparator]] registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
 | **Software breakpoints** | Replace an instruction with `BKPT` (0xBExx). Unlimited count but only works in RAM, not flash (without erasing). |
 | **Single-stepping** | Set the STEP bit in the Debug Halting Control register (DHCSR). CPU executes one instruction then halts again. |
 | **Register inspection** | Read/write all CPU registers (R0-R15, PSR, etc.) through the DCRSR/DCRDR register pair while the CPU is halted. |

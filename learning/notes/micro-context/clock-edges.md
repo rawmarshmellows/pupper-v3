@@ -6,6 +6,7 @@ updated: 2026-03-27
 
 # Clock Edge
 
+> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/transistor-analog-to-digital]]
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
 **Definition:** The precise moment when a clock signal transitions between states—either rising (0→1) or falling (1→0). Digital circuits like [[quick-context/d-flip-flop|D flip-flops]] sample data only at clock edges, avoiding the "forbidden zone" where signals are mid-transition and invalid.
@@ -29,4 +30,4 @@ Clock:  ───┐   ┌───┐   ┌───┐   ┌───
      Ignore data between edges → may be invalid
 ```
 
-**Key insight:** Clock edges are why billions of imperfect analog transistors can coordinate as perfect digital switches—they all agree to only "look" at signals at the same precise moments, ignoring the messy analog transitions in between.
+**Key insight:** Clock edges are why billions of imperfect analog [[learning/notes/quick-context/transistor|transistors]] can coordinate as perfect digital switches—they all agree to only "look" at signals at the same precise moments, ignoring the messy analog transitions in between.

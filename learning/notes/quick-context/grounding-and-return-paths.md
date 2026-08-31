@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/comparator-specification]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -198,7 +198,7 @@ THE CLASSIC GROUND LOOP PROBLEM
 
 - **[[quick-context/pcb-printed-circuit-board]]** — PCB ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
 
-- **[[quick-context/capacitor]]** — Decoupling capacitors connect between power and ground, providing a local return path for high-frequency switching currents. They're part of the grounding strategy.
+- **[[quick-context/capacitor]]** — [[learning/notes/micro-context/decoupling-capacitor|Decoupling capacitors]] connect between power and ground, providing a local return path for high-frequency switching currents. They're part of the grounding strategy.
 
 - **[[quick-context/impedance-and-reactance]]** — At high frequencies, ground path impedance (not just resistance) matters. A 1cm wire has ~10 nH of inductance, which is 6Ω at 100 MHz—not negligible.
 

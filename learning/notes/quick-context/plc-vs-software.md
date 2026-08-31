@@ -3,7 +3,7 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/plc-vs-software-control]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -11,7 +11,7 @@ created: 2026-01-14
 
 ## The Core Problem: When Computers Crash, People Die
 
-A **Programmable Logic Controller (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
+A **[[learning/notes/micro-context/plc-programmable-logic-controller|Programmable Logic Controller]] (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
 
 Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The failure mode isn't "restart the app"—it's "call the coroner."
 

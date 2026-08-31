@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/tensile-strength-materials]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]]
 
 > **TL;DR:** Polymer behavior (melt temperature, flexibility, layer adhesion) is governed by intermolecular forces between chains - van der Waals (weak), dipole-dipole (moderate), and hydrogen bonds (strong). Understanding these forces explains why PLA melts at 180C but ABS needs 240C, and why TPU flexes while PLA snaps.
 

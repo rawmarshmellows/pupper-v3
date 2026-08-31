@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/capacitance]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **MOSFET** ([[learning/notes/micro-context/mosfet|Metal-Oxide-Semiconductor Field-Effect Transistor]]). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR

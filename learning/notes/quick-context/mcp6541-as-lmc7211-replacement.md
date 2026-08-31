@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the MCP6541 (LCSC C623499) Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 >
 > **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 
@@ -175,7 +175,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 
 - **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
+- **[[quick-context/comparator]]** — How a comparator works ([[learning/notes/quick-context/differential-pair|differential pair]], push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
 
 - **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
 

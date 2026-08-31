@@ -3,7 +3,7 @@ topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/plc-vs-software]]
 
 > **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
 

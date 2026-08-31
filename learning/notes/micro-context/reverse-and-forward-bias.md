@@ -6,6 +6,7 @@ updated: 2026-03-27
 
 # Reverse and Forward Bias
 
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/comparator-specification]]
 **Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works

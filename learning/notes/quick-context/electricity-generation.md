@@ -3,7 +3,7 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/electric-magnetic-field-unification]]
 
 > **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
 
@@ -21,7 +21,7 @@ There are fundamentally three ways to force electrons to move:
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
-Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
+Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]].
 
 ## 5 Essential Terms
 

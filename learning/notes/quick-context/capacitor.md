@@ -5,7 +5,7 @@ created: 2026-01-30
 
 # Capacitor
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
 
@@ -17,7 +17,7 @@ Electronics need stable voltage to operate correctly, but power supplies fluctua
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 [[learning/notes/micro-context/coulomb-history|coulomb]] of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
 | **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
 | **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
@@ -479,7 +479,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
     Gets worse when cold     │ Ceramic cap loses capacitance at low temp
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking capacitors are just "smoothing" or "filtering." In digital circuits, decoupling capacitors are **local energy storage** - they're tiny batteries that can discharge in nanoseconds. The CPU doesn't draw smooth, constant current; it draws violent spikes every time transistors switch. No power supply, no matter how good, can respond fast enough. The capacitors aren't filtering anything out - they're actively injecting current into the circuit to fill demand that the power supply can't meet in time. Without them, every fast digital circuit would fail.
+**The one thing most outsiders get wrong about this is...** thinking capacitors are just "smoothing" or "filtering." In digital circuits, [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitors]] are **local energy storage** - they're tiny batteries that can discharge in nanoseconds. The CPU doesn't draw smooth, constant current; it draws violent spikes every time transistors switch. No power supply, no matter how good, can respond fast enough. The capacitors aren't filtering anything out - they're actively injecting current into the circuit to fill demand that the power supply can't meet in time. Without them, every fast digital circuit would fail.
 
 </details>
 
@@ -536,7 +536,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 **Q4:** An engineer removes all the 0.1 uF ceramic capacitors near a CPU to "simplify the design." What will likely happen?
 <details>
 <summary>Answer</summary>
-**The system will crash, produce errors, or fail to boot.** Without decoupling capacitors, sudden current demands from switching transistors cause massive voltage drops due to power trace inductance (V = L × di/dt). The CPU sees voltage dipping below its minimum operating level, causing logic errors or complete failure. This is especially true at high clock speeds where current transients are faster and more severe. See: Concrete Example (The Problem: Sudden Current Demands).
+**The system will crash, produce errors, or fail to boot.** Without decoupling capacitors, sudden current demands from switching transistors cause massive voltage drops due to power trace inductance (V = L × di/dt). The CPU sees voltage dipping below its minimum operating level, causing logic errors or complete failure. This is especially true at high [[learning/notes/micro-context/clock-speed|clock speeds]] where current transients are faster and more severe. See: Concrete Example (The Problem: Sudden Current Demands).
 </details>
 
 **Q5:** Why do DRAM chips need to be "refreshed" periodically, and how do capacitors relate to this requirement?

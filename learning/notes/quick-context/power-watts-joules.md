@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 
@@ -113,7 +113,7 @@ THE THERMAL CONSTRAINT
 | Power Source | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[learning/notes/micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |
@@ -176,7 +176,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to [[learning/notes/quick-context/galvanic-cells-batteries|batteries]], but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/tensile-strength-materials]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 > **TL;DR:** Melt Index (MFI/MFR) measures how easily a polymer flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
 

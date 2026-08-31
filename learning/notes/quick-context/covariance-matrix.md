@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Covariance Matrix
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/similarity-transform]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 
 > **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal holds variances and its off-diagonals hold covariances. It's the fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis distance, and point cloud alignment.
 

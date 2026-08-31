@@ -3,7 +3,7 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
 
 > **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
 
@@ -20,7 +20,7 @@ The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm
 | **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
 | **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
 | **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
+| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. [[learning/notes/micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
 | **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
 
 <details>
@@ -218,7 +218,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q1:** Why would a commercial product use QFN instead of DIP for the same chip?
 <details>
 <summary>Answer</summary>
-**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
+**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost ([[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]] reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
 </details>
 
 **Q2:** How do you find pin 1 on an IC?

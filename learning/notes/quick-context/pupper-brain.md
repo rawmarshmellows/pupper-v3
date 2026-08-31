@@ -3,13 +3,13 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/can-bus]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
 ## The Core Problem
 
-A quadruped robot like Pupper needs to simultaneously know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized components—IMU, CAN transceivers, microcontrollers, power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure reliable operation.
+A quadruped robot like Pupper needs to simultaneously know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized components—IMU, CAN transceivers, [[learning/notes/micro-context/microcontroller|microcontrollers]], power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure reliable operation.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 | **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
 | **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
 | **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF [[learning/notes/quick-context/capacitor|capacitors]] sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -154,7 +154,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
-- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards
+- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from [[learning/notes/quick-context/transistor|transistors]] to boards
 - [[quick-context/electric-current]] — Fundamentals of current flow
 - **[[quick-context/pupper-bom-control-board]]** — Every part on this board explained: what it does, why that value, and how it connects to the system. The BOM companion to this architectural overview.
 - **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/inverse kinematics, gait generation, RL policies, LLM voice control, and vision tracking.

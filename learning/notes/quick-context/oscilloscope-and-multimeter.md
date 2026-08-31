@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -122,8 +122,8 @@ WHEN TO USE WHICH
 | Bandwidth | Price Range | Good For |
 |-----------|-----------|----------|
 | 50 MHz | $300-500 | Arduino, slow digital, audio, power supplies |
-| 100 MHz | $400-800 | SPI, I2C, UART, most embedded work |
-| 200 MHz | $800-2000 | Faster SPI, CAN bus, switching supply debug |
+| 100 MHz | $400-800 | SPI, I2C, [[learning/notes/quick-context/uart|UART]], most embedded work |
+| 200 MHz | $800-2000 | Faster SPI, [[learning/notes/quick-context/can-bus|CAN bus]], switching supply debug |
 | 500 MHz | $2000-5000 | USB, Ethernet PHY, DDR memory |
 | 1+ GHz | $5000-50000 | PCIe, high-speed serial, RF |
 
@@ -192,7 +192,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q1:** You connect a multimeter set to "amps" in parallel across a component. What happens?
 <details>
 <summary>Answer</summary>
-**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
+**You create a near-[[learning/notes/micro-context/short-circuit|short circuit]] and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
 </details>
 
 **Q2:** A 50 MHz oscilloscope is displaying a 10 MHz square wave that looks like a sine wave. Why?
