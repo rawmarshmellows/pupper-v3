@@ -6,17 +6,17 @@ updated: 2026-02-25
 
 > **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, voltage protection, and light emission (LEDs).
+> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, [[learning/notes/quick-context/voltage|voltage]] protection, and light emission (LEDs).
 
 # Diode
 
 ## Human notes
 
-The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
+The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the [[learning/notes/quick-context/inductor|inductor]] generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the [[learning/notes/micro-context/cathode|cathode]] (at the switch node) drops below the [[learning/notes/micro-context/anode|anode]] (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
 
 ## The Core Problem: Making Current Flow Only One Way
 
-Wall outlets provide AC power that alternates direction 50-60 times per second, but every electronic device needs DC (current flowing in one direction). The diode solves this: it conducts current in one direction and blocks it in the other. This simple behavior enables rectifiers that convert AC to DC, protection circuits that prevent reverse-polarity damage, and LEDs that convert current to light. Diodes are the simplest semiconductor device—just a single PN junction—making them the gateway to understanding how [[quick-context/transistor|transistors]] work (a transistor is essentially two PN junctions back-to-back).
+Wall outlets provide AC power that alternates direction 50-60 times per second, but every electronic device needs DC (current flowing in one direction). The diode solves this: it conducts current in one direction and blocks it in the other. This simple behavior enables rectifiers that convert AC to DC, protection circuits that prevent reverse-polarity damage, and LEDs that convert current to light. Diodes are the simplest semiconductor device—just a single PN junction—making them the gateway to understanding how [[quick-context/transistor|transistors]] work (a [[learning/notes/quick-context/transistor|transistor]] is essentially two PN junctions back-to-back).
 
 ## 5 Essential Terms
 
@@ -202,7 +202,7 @@ BRIDGE RECTIFIER CIRCUIT
     ────────────────────────────── ← nearly flat DC
        ~~~ (small ripple) ~~~
 
-    The capacitor fills in the valleys between the humps,
+    The [[learning/notes/quick-context/capacitor|capacitor]] fills in the valleys between the humps,
     providing near-constant DC voltage to the load.
 ```
 

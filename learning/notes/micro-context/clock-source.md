@@ -3,6 +3,8 @@ term: Clock Source
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/clock-sources-and-timing]]
+
 # Clock Source
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -29,4 +31,4 @@ CLOCK SOURCE → PLL → SYSTEM CLOCK
      Pupper uses this
 ```
 
-**Key insight:** The external ceramic resonator isn't the MCU's actual operating frequency — it's just a stable reference that the PLL multiplies up. The MCU couldn't run directly at 8 MHz fast enough for 1 kHz motor control; the PLL is what bridges the gap to 180 MHz.
+**Key insight:** The external [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]] isn't the MCU's actual operating frequency — it's just a stable reference that the PLL multiplies up. The MCU couldn't run directly at 8 MHz fast enough for 1 kHz motor control; the PLL is what bridges the gap to 180 MHz.

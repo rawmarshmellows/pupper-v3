@@ -18,7 +18,7 @@ created: 2026-04-05
 | **BCM2712 SoC** | Broadcom system-on-chip — quad-core ARM Cortex-A76 @ 2.4GHz, the main processor that runs Linux and applications |
 | **RP1** | Raspberry Pi's custom I/O controller chip — a "southbridge" that manages USB, Ethernet, GPIO, camera, and display interfaces so the SoC doesn't have to |
 | **LPDDR4X** | Low-Power Double Data Rate 4X RAM — the board's working memory (1/2/4/8GB variants, marked on the PCB silkscreen) |
-| **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via I2C, SPI, UART, and raw digital pins |
+| **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], UART, and raw digital pins |
 | **PCIe** | Peripheral Component Interconnect Express — a high-speed serial bus (1-lane Gen 2 on Pi 5) used to connect NVMe SSDs or other expansion cards |
 
 ## Every Component on the Board
@@ -53,7 +53,7 @@ Starting from the top-left and working around the board:
 | **RP1** | Dark chip with Raspberry Pi logo, center-right | Custom southbridge IC designed by Raspberry Pi. Manages: 2x USB 3.0, 2x USB 2.0, Gigabit Ethernet MAC, 2x MIPI camera/display transceivers, GPIO bank, SPI, I2C, UART. Connected to BCM2712 via a PCIe Gen 2 x4 link |
 | **LPDDR4X RAM** | Chip adjacent to BCM2712, with silkscreen markers "8G / 4G / 2G / 1G" | Working memory — the PCB has solder pads for different density packages; your variant has one populated (the markers indicate which is active) |
 | **WiFi/BT module** | Metal RF shield, top-right area | Dual-band 802.11ac Wi-Fi 5 and Bluetooth 5.0 / BLE — likely Infineon CYW43455 under the shield |
-| **PMIC** | Smaller IC near bottom-center area | Power Management IC — generates the multiple voltage rails (1.1V core, 1.8V I/O, 3.3V peripherals) from the 5V USB-C input |
+| **PMIC** | Smaller IC near bottom-center area | Power Management IC — generates the multiple [[learning/notes/quick-context/voltage|voltage]] rails (1.1V core, 1.8V I/O, 3.3V peripherals) from the 5V USB-C input |
 | **Ethernet PHY** | Small IC near the Ethernet jack (J14 area) | Physical layer transceiver for Gigabit Ethernet — converts digital signals to/from the cable |
 
 ```

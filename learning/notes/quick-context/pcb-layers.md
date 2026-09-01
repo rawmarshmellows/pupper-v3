@@ -22,7 +22,7 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[learning/notes/micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
 | **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
@@ -209,7 +209,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **5. Bottom Soldermask** — `Gerber_BottomSolderMaskLayer.GBS`
 
-*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole soldering and any bottom-side SMD components.
+*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole [[learning/notes/quick-context/soldering|soldering]] and any bottom-side SMD components.
 
 *How it's manufactured:* Applied simultaneously with the top soldermask — both sides are coated, exposed, and developed in the same process steps.
 
