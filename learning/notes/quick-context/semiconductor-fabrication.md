@@ -62,7 +62,7 @@ THE SIX TOOL CATEGORIES IN SEMICONDUCTOR FABRICATION
 
 ### The Manufacturing Cycle for ONE Layer
 
-Each layer of a chip—whether it's a transistor layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
+Each layer of a chip—whether it's a [[learning/notes/quick-context/transistor|transistor]] layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
 
 ```
 ONE LAYER MANUFACTURING CYCLE
@@ -544,7 +544,7 @@ Chip fabrication faces a fundamental tradeoff between throughput, resolution, an
 **Q5:** How does the fabrication process connect the raw material (silicon wafer) to the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]]? What would happen to the hierarchy if ion implantation suddenly became impossible?
 <details>
 <summary>Answer</summary>
-Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "silicon die" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
+Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "[[learning/notes/quick-context/silicon-die|silicon die]]" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
 </details>
 
 </details>
