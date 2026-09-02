@@ -3,15 +3,15 @@ topic: Galvanic Cells (Batteries)
 created: 2026-01-23
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
-> **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
+> **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to [[learning/notes/quick-context/power-watts-joules|power]] devices.
 
 ## The Core Problem
 
 Some chemical reactions *want* to happen—they're thermodynamically favorable, releasing energy as they proceed. A galvanic cell (battery) captures this released energy as electrical [[quick-context/electric-current|current]] instead of letting it dissipate as heat. Without batteries, we'd have no portable electronics, no electric vehicles, no grid-scale energy storage, and no way to store renewable energy for when the sun isn't shining. The core insight: **certain metals "want" to give up electrons more than others**. Zinc atoms readily shed electrons; copper atoms readily accept them. Put zinc and copper in contact through an ionic solution, and electrons will spontaneously flow from zinc to copper. A battery intercepts this electron flow, forcing it through an external circuit where it can do useful work (power a motor, light an LED, charge your phone) before completing its journey.
 
-This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while electrolysis converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—electrodes, electrolyte, electron flow—but energy flows in opposite directions.
+This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while [[learning/notes/quick-context/electrolysis|electrolysis]] converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—[[learning/notes/quick-context/electrodes|electrodes]], [[learning/notes/quick-context/electrolyte|electrolyte]], electron flow—but energy flows in opposite directions.
 
 ## 5 Essential Terms
 
@@ -26,9 +26,9 @@ This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysi
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A galvanic cell operates by physically separating a spontaneous chemical reaction into two half-reactions at different locations, then forcing electrons to travel through an external circuit to complete the reaction. At the anode, a reactive metal (like zinc) spontaneously oxidizes—its atoms give up electrons and dissolve into the electrolyte as ions. Those electrons can't travel through the electrolyte (which only conducts ions), so they must flow through a wire to reach the cathode. At the cathode, a less reactive material (like copper) accepts those electrons, reducing ions from solution into solid metal. The electrolyte provides a path for ions to migrate between the two compartments, maintaining electrical neutrality—without this ionic pathway, charge would build up and stop the reaction almost immediately.
+A galvanic cell operates by physically separating a spontaneous chemical reaction into two half-reactions at different locations, then forcing electrons to travel through an external circuit to complete the reaction. At the [[learning/notes/micro-context/anode|anode]], a reactive metal (like zinc) spontaneously oxidizes—its atoms give up electrons and dissolve into the electrolyte as ions. Those electrons can't travel through the electrolyte (which only conducts ions), so they must flow through a wire to reach the [[learning/notes/micro-context/cathode|cathode]]. At the cathode, a less reactive material (like copper) accepts those electrons, reducing ions from solution into solid metal. The electrolyte provides a path for ions to migrate between the two compartments, maintaining electrical neutrality—without this ionic pathway, charge would build up and stop the reaction almost immediately.
 
-The voltage a cell produces comes directly from the difference in "electron hunger" between the two electrode materials, quantified by their standard electrode potentials. Zinc has a strong tendency to release electrons (E° = -0.76V), while copper has a moderate tendency to accept them (E° = +0.34V). The cell voltage equals the difference: 0.34 - (-0.76) = 1.10V. Higher voltage differences mean more energy per electron transferred. During discharge, chemical bonds in the anode material are broken (zinc metal becomes zinc ions), and new bonds form at the cathode (copper ions become copper metal). The energy difference between bonds broken and bonds formed is what powers your device.
+The [[learning/notes/quick-context/voltage|voltage]] a cell produces comes directly from the difference in "electron hunger" between the two electrode materials, quantified by their standard electrode potentials. Zinc has a strong tendency to release electrons (E° = -0.76V), while copper has a moderate tendency to accept them (E° = +0.34V). The cell voltage equals the difference: 0.34 - (-0.76) = 1.10V. Higher voltage differences mean more energy per electron transferred. During discharge, chemical bonds in the anode material are broken (zinc metal becomes zinc ions), and new bonds form at the cathode (copper ions become copper metal). The energy difference between bonds broken and bonds formed is what powers your device.
 
 ```
 GALVANIC CELL OPERATION - Step by Step
@@ -242,7 +242,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 
 - **Solid-State Batteries** — The "next generation" technology replacing liquid electrolytes with solid conductors. Promises higher energy density and safety, but manufacturing challenges remain unsolved at scale.
 
-- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with electromagnetic induction and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
+- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
 
 </details>
 
@@ -255,7 +255,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Electrolytes conduct ions, not electrons.** The electrolyte is an ionic conductor—dissolved salts or acids that allow charged ions (like Zn²⁺, Cu²⁺, SO₄²⁻) to move through the solution. Free electrons cannot travel through ionic solutions; they must go through the metallic external circuit. This separation is what allows us to extract useful work—if electrons could shortcut through the electrolyte, the reaction would just produce heat instead of electrical current. See: The salt bridge explanation in Concrete Example
 </details>
 
-**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a microcontroller, how would you achieve this using Daniell cells?
+**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a [[learning/notes/micro-context/microcontroller|microcontroller]], how would you achieve this using Daniell cells?
 <details>
 <summary>Answer</summary>
 **Connect three Daniell cells in series.** When batteries are connected in series (positive terminal of one to negative terminal of the next), their voltages add: 1.10V + 1.10V + 1.10V = 3.30V. The capacity (Ah) stays the same as a single cell, but voltage stacks. This is how a 12V car battery works—six 2.1V lead-acid cells in series. See: Concrete Example (cell voltage calculation)
@@ -276,7 +276,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Q5:** A rechargeable battery can switch between "galvanic mode" (discharging) and "electrolytic mode" (charging). What physically reverses when you plug in the charger?
 <details>
 <summary>Answer</summary>
-**The direction of the electrode reactions and ion flow reverses.** During discharge (galvanic): the anode oxidizes spontaneously, releasing electrons that flow to the cathode where reduction occurs. During charging (electrolytic): an external power supply forces electrons in the opposite direction, causing the discharged cathode material to oxidize and the discharged anode material to reduce—reversing the chemistry. In lithium-ion specifically, lithium ions shuttle from cathode → anode during charging, and anode → cathode during discharging. The charger must supply voltage *higher* than the cell's equilibrium voltage to overcome the thermodynamic preference and force the reverse reaction. See: What Outsiders Get Wrong
+**The direction of the electrode reactions and ion flow reverses.** During discharge (galvanic): the anode oxidizes spontaneously, releasing electrons that flow to the cathode where [[learning/notes/quick-context/cations-and-reduction|reduction]] occurs. During charging (electrolytic): an external power supply forces electrons in the opposite direction, causing the discharged cathode material to oxidize and the discharged anode material to reduce—reversing the chemistry. In lithium-ion specifically, lithium ions shuttle from cathode → anode during charging, and anode → cathode during discharging. The charger must supply voltage *higher* than the cell's equilibrium voltage to overcome the thermodynamic preference and force the reverse reaction. See: What Outsiders Get Wrong
 </details>
 
 </details>

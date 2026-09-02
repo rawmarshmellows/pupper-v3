@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -28,7 +28,7 @@ When [[quick-context/electric-current|current flows through a wire]], it's not j
 
 ### The Physics: Momentum Transfer at the Atomic Level
 
-When electrons flow through a metal, they scatter off the lattice of metal atoms. Each scattering event transfers momentum from the electron to the atom. In equilibrium, these momentum transfers average out in all directions—no net force. But when there's a net electron flow (current), there's a net momentum transfer in the direction of electron flow. This is the "electron wind."
+When electrons flow through a metal, they scatter off the lattice of metal atoms. Each scattering event transfers momentum from the electron to the [[learning/notes/quick-context/atoms-molecules-polymers-basics|atom]]. In equilibrium, these momentum transfers average out in all directions—no net force. But when there's a net electron flow (current), there's a net momentum transfer in the direction of electron flow. This is the "electron wind."
 
 ```
 THE ELECTRON WIND MECHANISM
@@ -264,7 +264,7 @@ THE TRADEOFF MAP:
 
 ### Electromigration in a Power Distribution Network
 
-The power grid on a chip must deliver enormous total current to billions of transistors. This is where electromigration is most critical.
+The [[learning/notes/quick-context/power-watts-joules|power]] grid on a chip must deliver enormous total current to billions of transistors. This is where electromigration is most critical.
 
 ```
 CHIP POWER GRID: A CASE STUDY
@@ -352,9 +352,9 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] (random electron motion creating [[learning/notes/quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
-- **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
+- **Copper vs. Aluminum** — The [[learning/notes/quick-context/semiconductor-fabrication|semiconductor]] industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
 - **Backside Power Delivery** — An emerging solution where power wires are routed through the back of the chip, allowing much thicker/wider power lines without consuming routing resources on the front side.
 
@@ -378,7 +378,7 @@ Electron wind pushes atoms in the direction of electron flow (opposite to conven
 **Q3:** A chip designer wants to double the current through a wire. What are three ways they could maintain the same electromigration lifetime?
 <details>
 <summary>Answer</summary>
-From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while doubling current: (1) Double the wire cross-sectional area (2× width or 2× height)—this keeps current density constant. (2) Lower operating temperature—roughly 20°C reduction doubles lifetime. (3) Use a material with higher activation energy (e.g., switch from aluminum to copper). In practice, designers typically widen the wire since the other options have system-level constraints. See: The Key Tension and Black's Equation.
+From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while doubling current: (1) Double the wire cross-sectional area (2× width or 2× height)—this keeps current density constant. (2) Lower operating temperature—roughly 20°C [[learning/notes/quick-context/cations-and-reduction|reduction]] doubles lifetime. (3) Use a material with higher activation energy (e.g., switch from aluminum to copper). In practice, designers typically widen the wire since the other options have system-level constraints. See: The Key Tension and Black's Equation.
 </details>
 
 **Q4:** Someone claims: "Electromigration isn't a concern for my design because our chip runs very cool (40°C)." What's wrong with this reasoning?
@@ -390,7 +390,7 @@ Temperature affects electromigration rate but doesn't eliminate it. The exponent
 **Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
-The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
+The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but [[learning/notes/quick-context/transistor|transistor]] current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
 </details>
 
 </details>

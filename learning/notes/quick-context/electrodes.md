@@ -3,9 +3,9 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
-> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
+> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the [[learning/notes/micro-context/cathode|cathode]] (negative) is where [[learning/notes/quick-context/cations-and-reduction|reduction]] happens, the [[learning/notes/micro-context/anode|anode]] (positive) is where [[learning/notes/micro-context/oxidation|oxidation]] happens.
 
 # Electrodes (Cathode and Anode)
 
@@ -43,7 +43,7 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The electrode system operates through a coordinated dance between the external circuit (wires and power supply) and the internal circuit (ions moving through the liquid). The power supply acts like a pump, pushing electrons out one terminal and pulling them in the other. Electrons cannot travel through the liquid itself—liquids don't conduct electrons the way metals do. Instead, electrons enter the liquid phase by reacting with chemicals at one electrode (the cathode), and leave by taking electrons from chemicals at the other electrode (the anode). The circuit is completed inside the liquid by ions—charged atoms or molecules—that drift through the solution carrying charge between electrodes.
+The electrode system operates through a coordinated dance between the external circuit (wires and [[learning/notes/quick-context/power-watts-joules|power]] supply) and the internal circuit (ions moving through the liquid). The power supply acts like a pump, pushing electrons out one terminal and pulling them in the other. Electrons cannot travel through the liquid itself—liquids don't conduct electrons the way metals do. Instead, electrons enter the liquid phase by reacting with chemicals at one electrode (the cathode), and leave by taking electrons from chemicals at the other electrode (the anode). The circuit is completed inside the liquid by ions—charged atoms or molecules—that drift through the solution carrying charge between electrodes.
 
 At the cathode, electrons arriving from the power supply need somewhere to go. They transfer to nearby ions or molecules, causing **reduction** (electron gain). Positive ions like H+ or Cu2+ are attracted here, grab the electrons, and transform—hydrogen ions become hydrogen gas, copper ions become solid copper metal. Meanwhile, at the anode, the opposite occurs: chemicals give up electrons to the electrode surface, undergoing **oxidation** (electron loss). Negative ions like OH- or Cl- migrate here and surrender electrons, becoming oxygen gas, chlorine gas, or other products.
 
@@ -95,7 +95,7 @@ KEY INSIGHT: Electrons flow through the EXTERNAL circuit (metal wires).
 
 Material Choice vs. Cost vs. Reactivity
 
-The central tradeoff practitioners face: **Do you want electrodes that participate in the reaction or stay inert?** "Inert" electrodes (like [[quick-context/platinum-inertness|platinum]] or carbon) just act as electron highways—they don't react or dissolve. Perfect for studying reactions, but platinum costs ~$30,000/kg. "Active" electrodes participate in the chemistry: a copper anode dissolves into the solution, a zinc electrode gets consumed. This is useful (electroplating *requires* the anode to dissolve), but you need to replace them.
+The central tradeoff practitioners face: **Do you want electrodes that participate in the reaction or stay inert?** "Inert" electrodes (like [[quick-context/platinum-inertness|platinum]] or carbon) just act as electron highways—they don't react or dissolve. Perfect for studying reactions, but [[learning/notes/quick-context/platinum-inertness|platinum]] costs ~$30,000/kg. "Active" electrodes participate in the chemistry: a copper anode dissolves into the solution, a zinc electrode gets consumed. This is useful (electroplating *requires* the anode to dissolve), but you need to replace them.
 
 The other tension: **surface area vs. practicality**. More surface area = more reaction sites = faster chemistry. Industrial cells use mesh, foam, or textured electrodes, but these cost more and can trap gas bubbles. You're always balancing reaction speed, material cost, durability, and whether you want the electrode to stay pristine or sacrifice itself.
 
@@ -104,7 +104,7 @@ The other tension: **surface area vs. practicality**. More surface area = more r
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Water Electrolysis with Platinum Electrodes
+Water [[learning/notes/quick-context/electrolysis|Electrolysis]] with Platinum Electrodes
 
 Let's walk through exactly what happens when you split water into hydrogen and oxygen gases:
 
@@ -241,11 +241,11 @@ STEP 4: THE CIRCUIT COMPLETES
 
 - **Redox Reactions** — The broader category of chemistry involving electron transfer. Electrolysis is just one way to make redox reactions happen; electrodes are where you physically see oxidation and reduction occurring at separate locations.
 
-- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the electrolyte provides the mobile ions that complete the circuit internally.
+- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the [[learning/notes/quick-context/electrolyte|electrolyte]] provides the mobile ions that complete the circuit internally.
 
 - **Electroplating** — A practical application where the anode IS the metal you want to deposit (it dissolves) and the cathode IS the object you're coating (metal deposits onto it). Same electrode principles, different purpose.
 
-- **Batteries and Galvanic Cells** — The reverse situation: spontaneous chemical reactions that PRODUCE electricity. Same electrode concepts, but energy flows out instead of in. Confusingly, the naming conventions flip because current direction reverses.
+- **Batteries and [[learning/notes/quick-context/galvanic-cells-batteries|Galvanic Cells]]** — The reverse situation: spontaneous chemical reactions that PRODUCE electricity. Same electrode concepts, but energy flows out instead of in. Confusingly, the naming conventions flip because current direction reverses.
 
 </details>
 
@@ -267,9 +267,9 @@ STEP 4: THE CIRCUIT COMPLETES
 **Q3:** A student uses iron nails as electrodes for water electrolysis. After an hour, the anode nail looks rusty and pitted while the cathode nail looks unchanged. Explain why.
 <details>
 <summary>Answer</summary>
-**The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form rust). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from [[quick-context/rust|corrosion]]. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
+**The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form [[learning/notes/quick-context/rust|rust]]). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from [[quick-context/rust|corrosion]]. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
 
-**Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become [[quick-context/rust|hydrated]]—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-dipole attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface atom by atom, creating microscopic craters.
+**Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become [[quick-context/rust|hydrated]]—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-[[learning/notes/quick-context/dipole-dipole-interactions|dipole]] attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface [[learning/notes/quick-context/atoms-molecules-polymers-basics|atom]] by atom, creating microscopic craters.
 </details>
 
 **Q4:** Using the memory tricks in this document, if you know that Na⁺ (sodium ion) is a CATION (positively charged ion), which electrode will it travel toward during electrolysis?

@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/electrodes]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 > **TL;DR:** Electrolysis uses electricity to force non-spontaneous chemical reactions (like splitting water into hydrogen and oxygen), essentially running a battery in reverse by supplying energy to break stable bonds rather than harvesting energy from spontaneous reactions.
 
@@ -14,7 +14,7 @@ updated: 2026-01-22
 
 Many important chemical changes won't happen on their own because they require climbing to a higher energy state. Electrolysis uses electricity to push these non-spontaneous reactions forward, supplying energy directly to move electrons against their natural flow—pushing reactions "uphill" to make otherwise impossible chemistry occur.
 
-The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, electrolyte, electron flow), opposite energy direction.
+The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components ([[learning/notes/quick-context/electrodes|electrodes]], [[learning/notes/quick-context/electrolyte|electrolyte]], electron flow), opposite energy direction.
 
 This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chemical bond energies]]: breaking bonds costs energy, forming bonds releases it. Water's O-H bonds are stable (~460 kJ/mol each)—nature doesn't want to break them. Electrolysis supplies that bond-breaking energy electrically, storing it in the separated H₂ and O₂ gases. Recombining them (in a fuel cell or combustion) releases that stored energy.
 
@@ -31,9 +31,9 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Electrolysis operates through a coordinated dance of electrons and ions across two electrodes immersed in a conducting solution. When you connect a power supply, it acts as an "electron pump"—pulling electrons away from one electrode (the anode) and pushing them onto the other (the cathode). This creates an electrical imbalance that drives chemical change. At the cathode, the excess electrons need somewhere to go, so they transfer to positive ions (cations) in the solution, reducing them. At the anode, the electron deficiency pulls electrons away from negative ions (anions) or neutral molecules, oxidizing them. The solution itself doesn't conduct electrons—instead, ions physically migrate through the liquid to carry the current between electrodes, completing the circuit.
+Electrolysis operates through a coordinated dance of electrons and ions across two electrodes immersed in a conducting solution. When you connect a [[learning/notes/quick-context/power-watts-joules|power]] supply, it acts as an "electron pump"—pulling electrons away from one electrode (the [[learning/notes/micro-context/anode|anode]]) and pushing them onto the other (the [[learning/notes/micro-context/cathode|cathode]]). This creates an electrical imbalance that drives chemical change. At the cathode, the excess electrons need somewhere to go, so they transfer to positive ions (cations) in the solution, reducing them. At the anode, the electron deficiency pulls electrons away from negative ions (anions) or neutral molecules, oxidizing them. The solution itself doesn't conduct electrons—instead, ions physically migrate through the liquid to carry the current between electrodes, completing the circuit.
 
-The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where reduction needs to happen, and removing electrons where oxidation needs to happen. The minimum voltage required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
+The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where [[learning/notes/quick-context/cations-and-reduction|reduction]] needs to happen, and removing electrons where [[learning/notes/micro-context/oxidation|oxidation]] needs to happen. The minimum [[learning/notes/quick-context/voltage|voltage]] required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
 
 ```
 THE ELECTROLYSIS CIRCUIT: Electron and Ion Flow
@@ -92,7 +92,7 @@ Two separate questions govern every electrolysis process:
 
 **Thermodynamics asks: "Is it possible?"** — The minimum voltage (cell potential) tells you whether you've supplied enough energy to make the reaction energetically feasible. Water electrolysis needs at least 1.23V. Below this, *nothing happens*, no matter how long you wait.
 
-**Kinetics asks: "Is it fast enough?"** — Even above the minimum voltage, reactions might be painfully slow. Real systems need *overpotential*—extra voltage to overcome activation energy barriers, just like heating a reaction mixture speeds it up. This is where electrode materials matter enormously: platinum catalyzes hydrogen evolution with minimal overpotential; cheap steel needs much more.
+**Kinetics asks: "Is it fast enough?"** — Even above the minimum voltage, reactions might be painfully slow. Real systems need *overpotential*—extra voltage to overcome activation energy barriers, just like heating a reaction mixture speeds it up. This is where electrode materials matter enormously: [[learning/notes/quick-context/platinum-inertness|platinum]] catalyzes hydrogen evolution with minimal overpotential; cheap steel needs much more.
 
 This thermodynamic/kinetic split echoes throughout chemistry. A reaction can be thermodynamically favored but kinetically blocked (diamond → graphite is favorable but takes geological time), or thermodynamically unfavorable but kinetically fast if you supply the energy. Electrolysis operates in the second regime: thermodynamically unfavorable reactions made kinetically accessible through electrical driving force.
 
@@ -240,14 +240,14 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 
 **Relation to energy storage**: Electrolysis is half of the hydrogen energy cycle. Electricity → electrolysis → H₂ stored → fuel cell → electricity. Round-trip efficiency is ~40-50%, much worse than [[quick-context/galvanic-cells-batteries|batteries]] (~90%), but hydrogen stores energy for months without loss and can be transported. The physics of [[quick-context/chemical-bonds-spectrum|bond formation]] in the fuel cell (H₂ + O₂ → H₂O) releases exactly what electrolysis put in, minus losses.
 
-**The one thing most outsiders get wrong about this is...** thinking the energy gets "stored in the bonds" of hydrogen. This is backwards. **Breaking** bonds costs energy; **forming** bonds releases it. The O-H bonds in water are *strong*—that's why water is stable. Electrolysis puts energy *into* the system by breaking those bonds, creating separated H₂ and O₂ at higher chemical potential. When H₂ and O₂ recombine (combustion or fuel cell), *new* O-H bonds form, releasing that stored potential energy. The energy isn't in the H-H bond of hydrogen; it's in the *system's configuration*—separated fuel and oxidizer that "want" to combine. This misconception extends to nutrition ("breaking down food releases energy")—actually, it's the *formation* of CO₂ and H₂O bonds (plus ATP) during metabolism that releases energy, not the breaking of food molecule bonds.
+**The one thing most outsiders get wrong about this is...** thinking the energy gets "stored in the bonds" of hydrogen. This is backwards. **Breaking** bonds costs energy; **forming** bonds releases it. The O-H bonds in water are *strong*—that's why water is stable. Electrolysis puts energy *into* the system by breaking those bonds, creating separated H₂ and O₂ at higher chemical potential. When H₂ and O₂ recombine (combustion or fuel cell), *new* O-H bonds form, releasing that stored potential energy. The energy isn't in the H-H bond of hydrogen; it's in the *system's configuration*—separated fuel and oxidizer that "want" to combine. This misconception extends to nutrition ("breaking down food releases energy")—actually, it's the *formation* of CO₂ and H₂O bonds (plus ATP) during metabolism that releases energy, not the breaking of food [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]] bonds.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking covalent bonds in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
+- **[[quick-context/chemical-bonds-spectrum]]** — The energy hierarchy: breaking [[learning/notes/quick-context/covalent-bonds|covalent bonds]] in electrolysis costs 100-400+ kJ/mol, while intermolecular forces (what you overcome when melting/boiling) are 1-40 kJ/mol. Electrolysis operates at the high-energy end.
 
 - **[[quick-context/galvanic-cells-batteries|Galvanic/Voltaic Cells (Batteries)]]** — Spontaneous redox reactions producing electricity. Same components as electrolysis cells, opposite energy flow. Understanding one illuminates the other.
 
@@ -267,7 +267,7 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 **Q1:** A [[quick-context/galvanic-cells-batteries|battery]] and an electrolysis cell both have anodes, cathodes, and electrolytes. What's the fundamental difference between them?
 <details>
 <summary>Answer</summary>
-**Energy flow direction.** In a [[quick-context/galvanic-cells-batteries|battery]], spontaneous chemical reactions drive electrons through an external circuit—chemical energy converts to electrical energy. In electrolysis, external electrical energy forces a non-spontaneous reaction to occur—electrical energy converts to chemical energy. They're thermodynamic opposites: batteries release stored chemical potential; electrolysis creates it. The same cell can often work both ways (rechargeable batteries do exactly this—discharge = galvanic, charge = electrolytic). See: The Core Problem
+**Energy flow direction.** In a [[quick-context/galvanic-cells-batteries|battery]], spontaneous chemical reactions drive electrons through an external circuit—chemical energy converts to electrical energy. In electrolysis, external electrical energy forces a non-spontaneous reaction to occur—electrical energy converts to chemical energy. They're thermodynamic opposites: batteries release stored chemical potential; electrolysis creates it. The same cell can often work both ways (rechargeable batteries do exactly this—discharge = [[learning/notes/quick-context/galvanic-cells-batteries|galvanic]], charge = electrolytic). See: The Core Problem
 </details>
 
 **Q2:** Why can't you produce sodium metal by electrolyzing a sodium chloride solution (brine), but you *can* produce it from molten sodium chloride?

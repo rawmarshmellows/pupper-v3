@@ -4,9 +4,10 @@ created: 2026-02-10
 updated: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/mcdonald-kam-model]]
+
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 
@@ -394,7 +395,7 @@ ACCOUNT HEALTH: YELLOW (Winnable but requires active management)
 
 ---
 
-**The one thing most outsiders get wrong about this is...** they think the four buyer roles are job titles. They're not—they're *functions*. A single person can be both Economic and User Buyer in a small company. In large enterprises, you might have three User Buyers across different departments. The roles describe decision-making power, not org chart positions.
+**The one thing most outsiders get wrong about this is...** they think the four buyer roles are job titles. They're not—they're *functions*. A single person can be both Economic and User Buyer in a small company. In large enterprises, you might have three User Buyers across different departments. The roles describe decision-making [[learning/notes/quick-context/power-watts-joules|power]], not org chart positions.
 
 </details>
 

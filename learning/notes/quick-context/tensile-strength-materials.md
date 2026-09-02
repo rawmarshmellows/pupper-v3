@@ -4,9 +4,9 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
-> **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
+> **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than [[learning/notes/quick-context/3d-printing-filament-types|filament]] choice.
 
 # Tensile Strength: What 27.3 ± 0.8 MPa Actually Means
 
@@ -27,7 +27,7 @@ updated: 2026-01-21
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Tensile strength emerges from the atomic-level bonds holding a material together. When you pull on a material, you're trying to separate atoms from each other. At low forces, atoms stretch apart slightly but spring back—this is elastic deformation. As force increases, you reach the yield point where atoms permanently slip past each other (in metals) or polymer chains begin to disentangle and slide. Push further, and you reach ultimate tensile strength—the maximum stress before bonds start breaking catastrophically and a crack propagates through the material. The failure mode depends on material structure: brittle materials (glass, ceramics, PLA) crack suddenly once any bond breaks because the crack concentrates stress at its tip; ductile materials (steel, nylon, PETG) "neck" and stretch as bonds break gradually, redistributing stress.
+Tensile strength emerges from the atomic-level bonds holding a material together. When you pull on a material, you're trying to separate atoms from each other. At low forces, atoms stretch apart slightly but spring back—this is elastic deformation. As force increases, you reach the yield point where atoms permanently slip past each other (in metals) or [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains begin to disentangle and slide. Push further, and you reach ultimate tensile strength—the maximum stress before bonds start breaking catastrophically and a crack propagates through the material. The failure mode depends on material structure: brittle materials (glass, ceramics, PLA) crack suddenly once any bond breaks because the crack concentrates stress at its tip; ductile materials (steel, nylon, PETG) "neck" and stretch as bonds break gradually, redistributing stress.
 
 The measurement process itself reveals what the numbers mean. A standardized dog-bone specimen is gripped at both ends and pulled at constant rate while sensors record force and elongation. Stress (MPa) = Force / Cross-sectional Area. The stress-strain curve that results tells the full story: the slope is Young's modulus (stiffness), the bend is yield strength, the peak is ultimate tensile strength, and the endpoint is fracture. For 3D printed parts, this curve looks different than injection-molded samples because layer boundaries create weak points—the material between layers fails before the polymer chains themselves break.
 
@@ -145,7 +145,7 @@ Aluminum 6061     | 310           | 12%        | Reference: "real" material
 
 ## How Hotend Settings Affect Actual Tensile Strength
 
-The spec sheet says 27.3 MPa, but **your printed part won't achieve that** unless layers properly fuse together. Layer adhesion is controlled by your hotend—specifically temperature, flow rate, and print speed. Here's what happens when hotend settings are wrong:
+The spec sheet says 27.3 MPa, but **your printed part won't achieve that** unless layers properly fuse together. Layer adhesion is controlled by your [[learning/notes/quick-context/3d-printer-hotends|hotend]]—specifically temperature, flow rate, and print speed. Here's what happens when hotend settings are wrong:
 
 ```
 Scenario                        | Layer Adhesion | Actual Strength | Failure Mode
@@ -161,7 +161,7 @@ High-flow hotend + 0.8mm nozzle | 70-85%         | ~20-23 MPa      | Proper melt
 
 **The high-flow hotend question:** If you're printing fast with large nozzles (0.6mm+), a high-flow hotend (~30+ mm³/s) maintains proper melt rates, preserving layer adhesion. With a standard hotend at those speeds, you're trading tensile strength for print time—sometimes 30-40% weaker parts. For slow, detailed prints with 0.4mm nozzles, standard-flow hotends achieve full material fusion and the extra cost of high-flow is wasted.
 
-**Practical rule:** If your slicer warns about volumetric flow limits or you see rough/matte layer surfaces (sign of under-extrusion), your hotend can't keep up. Either slow down, raise temperature (within material limits), or upgrade to high-flow for strength-critical parts.
+**Practical rule:** If your [[learning/notes/quick-context/3d-printing-slicer-settings|slicer]] warns about volumetric flow limits or you see rough/matte layer surfaces (sign of under-extrusion), your hotend can't keep up. Either slow down, raise temperature (within material limits), or upgrade to high-flow for strength-critical parts.
 
 ---
 
@@ -176,7 +176,7 @@ High-flow hotend + 0.8mm nozzle | 70-85%         | ~20-23 MPa      | Proper melt
 - [[quick-context/covalent-bonds]] — The strong intramolecular [[quick-context/chemical-bonds-spectrum|bonds]] within polymer chains that give materials their baseline strength; breaking these is what "ultimate tensile strength" actually measures
 - [[quick-context/polymer-crystallinity-vs-amorphous|Crystallinity]] — Why semi-crystalline polymers (nylon, PETG) behave differently under stress than [[quick-context/polymer-crystallinity-vs-amorphous|amorphous]] ones (ABS)—crystalline regions add strength but reduce ductility
 - [[quick-context/breaking-elongation-rate]] — The "elongation at break" percentage that tells you whether a material fails gracefully (high %) or catastrophically (low %)
-- [[quick-context/glass-transition-temperature|Glass transition temperature]] — The temperature where amorphous polymers shift from rigid to rubbery—critical for understanding why heated parts lose tensile strength
+- [[quick-context/glass-transition-temperature|Glass transition temperature]] — The temperature where [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|amorphous]] polymers shift from rigid to rubbery—critical for understanding why heated parts lose tensile strength
 
 </details>
 
@@ -222,7 +222,7 @@ High-flow hotend + 0.8mm nozzle | 70-85%         | ~20-23 MPa      | Proper melt
 <details>
 <summary>Answer</summary>
 
-Tensile strength in polymers depends heavily on *intermolecular* forces (attractions *between* chains), not just intramolecular backbone bonds (*within* chains). When you pull a polymer apart, you're typically separating chains from each other—not breaking covalent bonds. A polymer with a strong C-C backbone but only weak [[quick-context/van-der-waals-forces|van der Waals forces]] between chains (like polyethylene) will have lower tensile strength than one with a moderate backbone but strong [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] between chains (like nylon). Adding hydrogen-bonding groups, [[quick-context/pi-pi-stacking-aromatic-interactions|aromatic rings for π-π stacking]], or increasing chain entanglement all strengthen the inter-chain "glue" without changing the backbone chemistry. This is why layer adhesion in 3D prints (an intermolecular phenomenon) determines real-world strength more than the material's rated tensile strength. See: [[quick-context/polymer-chemical-bonds]] and [[quick-context/chemical-bonds-spectrum]]
+Tensile strength in polymers depends heavily on *intermolecular* forces (attractions *between* chains), not just intramolecular backbone bonds (*within* chains). When you pull a polymer apart, you're typically separating chains from each other—not breaking [[learning/notes/quick-context/covalent-bonds|covalent bonds]]. A polymer with a strong C-C backbone but only weak [[quick-context/van-der-waals-forces|van der Waals forces]] between chains (like polyethylene) will have lower tensile strength than one with a moderate backbone but strong [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] between chains (like nylon). Adding hydrogen-bonding groups, [[quick-context/pi-pi-stacking-aromatic-interactions|aromatic rings for π-π stacking]], or increasing chain entanglement all strengthen the inter-chain "glue" without changing the backbone chemistry. This is why layer adhesion in 3D prints (an intermolecular phenomenon) determines real-world strength more than the material's rated tensile strength. See: [[quick-context/polymer-chemical-bonds]] and [[quick-context/chemical-bonds-spectrum]]
 </details>
 
 </details>

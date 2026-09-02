@@ -3,24 +3,26 @@ term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
 
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
+
 # PLC (Programmable Logic Controller)
 
 > **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]
 
-**Definition:** A PLC is a ruggedized industrial computer purpose-built to control factory machinery in real time. It contains a CPU, I/O modules for sensors and actuators, power conditioning, watchdog timers, and a scan-cycle engine that reads inputs, executes user logic (ladder logic or structured text), and writes outputs in a deterministic 1-50ms loop — all housed in an electrically isolated, vibration-tolerant enclosure with safety certification.
+**Definition:** A PLC is a ruggedized industrial computer purpose-built to control factory machinery in real time. It contains a CPU, I/O modules for sensors and actuators, [[learning/notes/quick-context/power-watts-joules|power]] conditioning, watchdog timers, and a scan-cycle engine that reads inputs, executes user logic (ladder logic or structured text), and writes outputs in a deterministic 1-50ms loop — all housed in an electrically isolated, vibration-tolerant enclosure with safety certification.
 
 ## How It Works
 
 - A **scan-cycle engine** reads all inputs, runs the user program, and updates all outputs in a fixed deterministic loop (1-50ms), with hardware watchdogs that force outputs to a safe state if anything stalls.
-- PLCs are assembled from PCBs, power supplies, I/O modules, and a ruggedized enclosure — the PCB inside carries the CPU, memory, and communication chips, just as in any electronic device.
+- PLCs are assembled from PCBs, power supplies, I/O modules, and a ruggedized enclosure — the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] inside carries the CPU, memory, and communication chips, just as in any electronic device.
 - PLCs add industrial hardening on top of a standard CPU: wide temperature range, vibration tolerance, electrical isolation, and fail-safe I/O.
 - Programming uses domain-specific languages (ladder logic, structured text, function block diagrams) rather than general-purpose code, making them accessible to electricians and process engineers.
 
 ## Common Confusions
 
 - **PLC vs CPU (device vs component):** A CPU is a general-purpose chip that executes instructions. A PLC is a complete industrial computer that *contains* a CPU plus I/O, power conditioning, and safety hardware. Comparing them is like comparing a car to its engine — one contains the other.
-- **PLC vs PCB (controller vs substrate):** A PCB is a fiberglass-and-copper substrate that physically connects components. A PLC *contains* PCBs as internal wiring. Comparing them is like comparing a car to metal — one is a material used to build the other.
-- **PLC vs Bare Metal / RTOS (industrial computer vs MCU approaches):** Bare metal runs code directly on a microcontroller with no OS (sub-microsecond response). An RTOS adds a priority-based scheduler (~10-100us overhead). A PLC is a different class of device entirely — a self-contained industrial computer with safety certification and fail-safe behavior. Pupper uses bare metal / RTOS on an STM32; factories use PLCs where failures can kill people.
+- **PLC vs PCB (controller vs [[learning/notes/quick-context/substrate-ic-packaging|substrate]]):** A PCB is a fiberglass-and-copper substrate that physically connects components. A PLC *contains* PCBs as internal wiring. Comparing them is like comparing a car to metal — one is a material used to build the other.
+- **PLC vs Bare Metal / RTOS (industrial computer vs MCU approaches):** Bare metal runs code directly on a [[learning/notes/micro-context/microcontroller|microcontroller]] with no OS (sub-microsecond response). An RTOS adds a priority-based scheduler (~10-100us overhead). A PLC is a different class of device entirely — a self-contained industrial computer with safety certification and fail-safe behavior. Pupper uses bare metal / RTOS on an [[learning/notes/micro-context/stm32-microcontroller|STM32]]; factories use PLCs where failures can kill people.
 
 ```
 THREE WAYS PEOPLE CONFUSE PLCs:

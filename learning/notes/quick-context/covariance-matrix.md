@@ -3,15 +3,16 @@ topic: Covariance Matrix
 created: 2026-04-04
 ---
 
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]]
+
 # Covariance Matrix
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
 
 > **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal holds variances and its off-diagonals hold covariances. It's the fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis distance, and point cloud alignment.
 
 ## The Core Problem
 
-A single variable has variance -- one number that describes how spread out it is. But when you have two or more variables, variance alone is blind to their *relationships*. Two sensors might drift together, three GPS coordinates might be correlated through satellite geometry, or twelve point-cloud dimensions might cluster along a hidden axis. The covariance matrix is the minimal structure that captures all pairwise linear relationships in multivariate data. Without it, you cannot perform principal component analysis, compute Mahalanobis distance, estimate Kalman filter uncertainty, or solve the [[quick-context/absolute-orientation|absolute orientation]] problem.
+A single variable has variance -- one number that describes how spread out it is. But when you have two or more variables, variance alone is blind to their *relationships*. Two sensors might drift together, three GPS coordinates might be correlated through satellite geometry, or twelve point-cloud dimensions might cluster along a hidden axis. The covariance matrix is the minimal structure that captures all pairwise linear relationships in multivariate data. Without it, you cannot perform principal component analysis, compute Mahalanobis distance, estimate Kalman [[learning/notes/quick-context/frequency-and-filtering|filter]] uncertainty, or solve the [[quick-context/absolute-orientation|absolute orientation]] problem.
 
 ## 5 Essential Terms
 
@@ -106,7 +107,7 @@ Covariance is based on squared deviations, making it highly sensitive to outlier
 
 ### Cross-covariance: no Bessel's correction needed?
 
-In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the SVD's $U$ or $V$ matrices.
+In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the [[learning/notes/quick-context/singular-value-decomposition|SVD]]'s $U$ or $V$ matrices.
 
 </details>
 
@@ -216,7 +217,7 @@ The cross-covariance matrix $H$ encodes all the rotational information. The [[qu
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses the cross-covariance matrix $H$ as the key input to SVD-based rotation estimation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of finding the best rigid-body transform between two point sets, solved through cross-covariance + SVD
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The decomposition $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the Helmert transform with scale; covariance is used in least-squares estimation of all parameters
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the [[learning/notes/quick-context/helmert-transform|Helmert transform]] with scale; covariance is used in least-squares estimation of all parameters
 - **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal components; the dominant eigenvectors capture the most variance
 - **Mahalanobis distance** -- Distance metric $d = \sqrt{(\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)}$ that accounts for covariance structure, used in outlier detection and Kalman filter gating
 - **Kalman filter** -- Propagates a state estimate and its covariance matrix through time; the covariance matrix tracks uncertainty at every step

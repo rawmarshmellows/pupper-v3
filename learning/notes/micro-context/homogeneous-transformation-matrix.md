@@ -4,6 +4,8 @@ created: 2026-03-11
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]
+
 # Homogeneous Transformation Matrix
 
 **Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.
@@ -13,7 +15,7 @@ updated: 2026-03-27
 - A 3×3 rotation matrix is embedded in the top-left, encoding the orientation change between coordinate frames.
 - A 3×1 translation vector occupies the right column, encoding the position offset.
 - The bottom row [0 0 0 1] preserves the matrix structure so that multiplying two 4×4 matrices correctly composes both rotation and translation in one step.
-- Chaining $T_{01} \cdot T_{12} \cdot T_{23}$ transforms a point from frame 3 all the way back to frame 0 — the basis of forward kinematics.
+- Chaining $T_{01} \cdot T_{12} \cdot T_{23}$ transforms a point from frame 3 all the way back to frame 0 — the basis of [[learning/notes/quick-context/pupper-lab2-forward-kinematics|forward kinematics]].
 
 ```
         ┌                        ┐

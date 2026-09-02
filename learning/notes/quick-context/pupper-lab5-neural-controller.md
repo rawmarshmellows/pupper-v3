@@ -4,9 +4,10 @@ created: 2026-03-10
 updated: 2026-03-12
 ---
 
+> **Related:** [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/quick-context/absolute-orientation]]
+
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -18,7 +19,7 @@ Expand on: what is the neural network actually trying to predict? What do the tu
 
 ## The Core Problem
 
-Labs 1-4 build a classical robotics stack: PD control drives individual joints (Lab 1), forward kinematics maps joint angles to foot positions (Lab 2), inverse kinematics solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
+Labs 1-4 build a classical robotics stack: PD control drives individual joints (Lab 1), [[learning/notes/quick-context/pupper-lab2-forward-kinematics|forward kinematics]] maps joint angles to foot positions (Lab 2), [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
 
 Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward function) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
 
@@ -58,7 +59,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How [[learning/notes/quick-context/ppo-proximal-policy-optimization|PPO]] uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)
@@ -275,7 +276,7 @@ The robot has been walking for about 1 second (after the 2.0s init + 2.0s fade-i
 
 ### Step 1: Sensor Read (tick 163 of the 520 Hz loop)
 
-The controller reads from the ROS2 hardware interface:
+The controller reads from the [[learning/notes/quick-context/ros2-architecture|ROS2]] hardware interface:
 
 ```
 IMU (BNO086 via I2C):
@@ -322,7 +323,7 @@ The $K_p = 7.5$ and $K_d = 0.25$ gains (from `init_kps` and `init_kds` in config
 
 ### Step 5: Motor Execution
 
-The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN bus (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
+The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ [[learning/notes/quick-context/can-bus|CAN bus]] (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
 
 ```
 ONE FULL INFERENCE CYCLE (out of ~52 per second)
@@ -352,7 +353,7 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
            ~19.2ms between NN inferences
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing jitter on the Raspberry Pi.
+**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing jitter on the [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]].
 
 </details>
 
@@ -362,7 +363,7 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
 - **[[quick-context/ppo-proximal-policy-optimization|PPO (Proximal Policy Optimization)]]** — The RL algorithm used to train the policy. PPO constrains each gradient update to stay close to the previous policy (via a clipped surrogate objective), preventing catastrophic policy collapse. It is the standard algorithm for continuous control tasks like locomotion because it balances training stability with simplicity.
 - **Domain Randomization** — During training, simulation parameters (friction $\mu \in [0.3, 1.5]$, link masses $\pm 20\%$, motor strength, observation delay) are randomized each episode. The policy cannot overfit to any single configuration, forcing it to learn robust strategies that transfer to the real robot's unknown true parameters.
 - **Reward Shaping** — The art of designing $r_t$ to elicit desired behavior. Naive rewards (e.g., just forward velocity) produce degenerate gaits — the robot may learn to fall forward. Careful penalty terms for energy, joint acceleration, body orientation, and foot contact patterns guide the optimizer toward natural locomotion.
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
+- **[[quick-context/pupper-brain]]** — The dual-[[learning/notes/micro-context/stm32-microcontroller|STM32]] + Raspberry Pi hardware architecture. The STM32 motor [[learning/notes/micro-context/microcontroller|MCU]] (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab CS123 curriculum. Lab 5 is the pivot point: Labs 1-4 build understanding of what the neural network replaces, Labs 6-7 build on top of the neural controller for voice control and vision tracking.
 - **Emergency Stop System** — The `estop_controller.cpp` node (C++) subscribes to `/joy` and monitors PS4 controller buttons. Pressing the right joystick (button 12) instantly deactivates all neural controllers and publishes to `/emergency_stop`. The start button (button 9) reactivates the last-used controller. Buttons X/O/Triangle/Square switch between the four controller modes (normal, three-legged, parkour, test).
 - **Weights & Biases (wandb)** — MLOps platform used for experiment tracking. Each training run logs reward curves, episode statistics, and policy checkpoints to the `pupperv3-mjx-rl` project. Students download specific runs by number: `python3 download_latest_policy.py --run_number 42`. The script auto-detects the logged-in user's wandb entity.
@@ -494,7 +495,7 @@ Lab 5 nails the architectural foundation (position targets, PD tracking, PPO, do
 <details>
 <summary>Answer</summary>
 
-They are **position targets** (joint angles in radians), added as offsets to the default standing pose. This matters for safety because the PD controller acts as a low-pass filter between the NN and the motors: even if the NN outputs a sudden, large position jump, the PD controller smoothly drives toward it at a rate limited by $K_p = 7.5$ and $K_d = 0.25$. If the NN output torques directly, a single bad inference could instantly command maximum current to a motor, potentially damaging hardware or injuring a nearby person. Position targets give the classical PD layer a chance to limit force.
+They are **position targets** (joint angles in radians), added as offsets to the default standing pose. This matters for safety because the PD controller acts as a low-pass [[learning/notes/quick-context/frequency-and-filtering|filter]] between the NN and the motors: even if the NN outputs a sudden, large position jump, the PD controller smoothly drives toward it at a rate limited by $K_p = 7.5$ and $K_d = 0.25$. If the NN output torques directly, a single bad inference could instantly command maximum current to a motor, potentially damaging hardware or injuring a nearby person. Position targets give the classical PD layer a chance to limit force.
 </details>
 
 **Q2:** Why does Lab 5 use uniform PD gains ($K_p = 7.5$, $K_d = 0.25$) across all 12 joints, even though hip abduction and knee flexion have very different mechanical loads?

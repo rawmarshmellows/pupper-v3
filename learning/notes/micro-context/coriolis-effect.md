@@ -3,6 +3,8 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]
+
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

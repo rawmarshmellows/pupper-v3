@@ -3,17 +3,18 @@ topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
 
+> **Related:** [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/quick-context/absolute-orientation]]
+
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]
 >
 > **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
 
-> **TL;DR:** Seven progressive labs that take you from controlling a single motor joint with PID to a fully autonomous voice-controlled quadruped that sees, tracks, and responds to spoken commands. Labs 1-4 build classical robotics foundations (PID, forward kinematics, inverse kinematics, gait control), Lab 5 replaces hand-tuned control with RL-trained neural policies, and Labs 6-7 add LLM voice control and computer vision for a complete autonomy stack.
+> **TL;DR:** Seven progressive labs that take you from controlling a single motor joint with [[learning/notes/quick-context/pupper-lab1-pid-control|PID]] to a fully autonomous voice-controlled quadruped that sees, tracks, and responds to spoken commands. Labs 1-4 build classical robotics foundations (PID, [[learning/notes/quick-context/pupper-lab2-forward-kinematics|forward kinematics]], [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]], [[learning/notes/quick-context/pupper-lab4-gait-control|gait control]]), Lab 5 replaces hand-tuned control with RL-trained neural policies, and Labs 6-7 add LLM voice control and computer vision for a complete autonomy stack.
 
 ## The Core Problem
 
-Building a walking, seeing, talking robot requires knowledge spanning control theory, kinematics, machine learning, and systems integration. No single course can teach all of this at once. These 7 labs scaffold the learning: each lab builds on the previous one's code and concepts, progressively unlocking new capabilities while reusing FK/IK/gait code from earlier labs. By Lab 7, every subsystem (motors, IMU, camera, microphone, speaker, neural network, LLM) runs simultaneously on the Pupper.
+Building a walking, seeing, talking robot requires knowledge spanning control theory, kinematics, machine learning, and systems integration. No single course can teach all of this at once. These 7 labs scaffold the learning: each lab builds on the previous one's code and concepts, progressively unlocking new capabilities while reusing FK/IK/gait code from earlier labs. By Lab 7, every subsystem (motors, IMU, [[learning/notes/quick-context/camera-fundamentals|camera]], microphone, speaker, neural network, LLM) runs simultaneously on the Pupper.
 
 ## 5 Essential Terms
 
@@ -61,7 +62,7 @@ Students tune $K_p$ and $K_d$ gains for one motor (`leg_front_l_1`). The control
 - Implement `calculate_torque()` using the PD formula
 - Tune gains to track a trajectory without oscillation
 
-The YAML config exposes effort, kp, and kd interfaces through ROS2's `forward_command_controller`.
+The YAML config exposes effort, kp, and kd interfaces through [[learning/notes/quick-context/ros2-architecture|ROS2]]'s `forward_command_controller`.
 
 ### Lab 2: Forward Kinematics (3-DOF Leg)
 
@@ -98,7 +99,7 @@ The gait uses 6 waypoints per leg (touchdown, 3 stance positions, liftoff, mid-s
 
 ### Lab 5: Neural Controller (Reinforcement Learning)
 
-Replaces the hand-tuned PD + FK/IK + gait pipeline with an RL-trained neural network policy. The neural controller runs at ~52 Hz (via `repeat_action: 10` at 520 Hz update rate) and directly outputs joint position targets. Key concepts:
+Replaces the hand-tuned PD + FK/IK + gait pipeline with an RL-trained neural network policy. The [[learning/notes/quick-context/pupper-lab5-neural-controller|neural controller]] runs at ~52 Hz (via `repeat_action: 10` at 520 Hz update rate) and directly outputs joint position targets. Key concepts:
 
 - Policies trained in simulation (MuJoCo), deployed to real robot (sim-to-real transfer)
 - Weights & Biases (wandb) for experiment tracking and policy download
@@ -234,11 +235,11 @@ The ROS2 topic graph for the full Lab 7 system:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + Raspberry Pi hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
+- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi]] hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
 - **[[quick-context/pupper-bom-control-board]]** — Every physical component on the board: the [[micro-context/can-bus-transceiver|CAN transceivers]] that carry joint commands, the [[small-context/imu-robot-balance-sensing|BNO086 IMU]] that Lab 5's neural policy reads for balance, and the [[micro-context/buck-converter|buck converter]] powering it all.
 - **[[quick-context/ros2-architecture|ROS2 (Robot Operating System 2)]]** — The middleware framework all labs use. Nodes communicate via topics (pub/sub), services, and actions. Key message types: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`. See the dedicated quick-context for the full node graph and topic map.
 - **MuJoCo** — Physics simulator used in Lab 5 for training RL policies before transferring to the real robot (sim-to-real).
-- **Hailo AI Accelerator** — Edge AI chip used in Lab 7 for running YOLOv5 object detection at low power on the robot.
+- **Hailo AI Accelerator** — Edge AI chip used in Lab 7 for running YOLOv5 object detection at low [[learning/notes/quick-context/power-watts-joules|power]] on the robot.
 - **OpenAI Realtime API** — WebSocket-based voice API used in Labs 6-7, replacing the traditional Whisper + GPT + TTS pipeline with a single low-latency connection.
 
 </details>
@@ -258,7 +259,7 @@ Numerical IK via gradient descent generalizes to any robot geometry without requ
 Diagonal pairing (trotting) keeps the robot statically stable — at any instant, two diagonally opposite feet are on the ground, forming a support line that passes under the center of mass. If same-side (ipsilateral) legs swung together (pacing), the robot would rock side to side. If both front legs and both hind legs swung together (bounding), the robot would pitch forward and backward. Trotting is the most stable two-phase gait for quadrupeds.
 </details>
 
-**Q3:** Lab 5's neural controller uses `repeat_action: 10` at a 520 Hz update rate. What effective control frequency does the neural network run at, and why not run it faster?
+**Q3:** Lab 5's neural controller uses `repeat_action: 10` at a 520 Hz update rate. What effective control [[learning/notes/quick-context/frequency-and-filtering|frequency]] does the neural network run at, and why not run it faster?
 <details>
 <summary>Answer</summary>
 $520 / 10 = 52$ Hz (the config intentionally runs slightly above 500 Hz to land at exactly ~50 Hz for the neural controller). The neural network doesn't run faster because: (1) RL policies are trained at a specific frequency in simulation — running at a different frequency changes the dynamics and the policy may fail, (2) neural network inference has non-trivial compute cost on the Pi, and (3) the policy outputs position targets that the lower-level PD controller tracks at full rate, so ~50 Hz is sufficient for locomotion commands.

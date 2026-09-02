@@ -4,7 +4,7 @@ created: 2026-02-14
 updated: 2026-04-07
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]]
 
 > **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
 
@@ -83,7 +83,7 @@ LAYER 1: TRANSISTORS                   NAND gate = 4 transistors (2 NMOS
           doped silicon)               on gate → conducts (ON) or blocks (OFF)
 ```
 
-The Fetch-Execute Cycle (Layer 3 in detail)
+The [[learning/notes/quick-context/cpu-fetch-execute-cycle|Fetch-Execute Cycle]] (Layer 3 in detail)
 
 This is the heartbeat of every computer. The CPU repeats this cycle billions of times per second:
 
@@ -216,7 +216,7 @@ The assembler is essentially a **lookup table + symbol resolver**:
 
 1. **Parse** the mnemonic: split `ADDS R1, R2, R3` into opcode (`ADDS`), destination (`R1`), operands (`R2`, `R3`)
 2. **Look up** the opcode in the ISA encoding table → get the bit pattern for the opcode field
-3. **Encode** register names as numbers: `R1`=001, `R2`=010, `R3`=011
+3. **Encode** [[learning/notes/quick-context/switches-to-registers-storing-data|register]] names as numbers: `R1`=001, `R2`=010, `R3`=011
 4. **Pack** the fields into a binary word according to the ISA format
 5. **Resolve labels**: if the instruction references a label like `loop:`, substitute the address where that label was defined
 
@@ -321,7 +321,7 @@ The compilation chain is a tower of abstractions, and the core tension is: **eac
 | Hand-coded binary (Layer 4) | Terrible — error-prone, unreadable | Identical to assembly (same output) | Total — but impractical |
 | Custom hardware / FPGA (Layer 2) | Lowest — design gates directly in HDL | Fastest — no instruction overhead | Absolute — but weeks of development |
 
-The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or Rust. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
+The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or [[learning/notes/quick-context/rust|Rust]]. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
 
 The other tension is **hardware vs. software implementation**. Any function can be implemented in either:
 - **Hardware** (dedicated circuit): faster but fixed, costs die area
@@ -468,9 +468,9 @@ POWER-ON SEQUENCE
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a [[learning/notes/quick-context/transistor|transistor]] works ([[learning/notes/quick-context/voltage|voltage]] on gate controls current flow) is the foundation for understanding how gates compute.
 
-- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
+- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and [[learning/notes/micro-context/mosfet|CMOS logic]]. Explains why the gate abstraction works at all.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — The physical packaging hierarchy from 5nm transistors to millimeter-scale connectors. Where the logic gates physically live on the die.
 
@@ -486,7 +486,7 @@ POWER-ON SEQUENCE
 
 - **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[learning/notes/micro-context/sram|SRAM]], DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 
@@ -503,10 +503,10 @@ POWER-ON SEQUENCE
 The assembler looks up the ISA encoding for `ADD` to get the opcode bit pattern, converts register names to their numeric encodings (`R1`=001, `R2`=010), and packs these fields into a fixed-width binary word according to the ISA's instruction format. The result is a sequence of bytes (e.g., 2 bytes for Thumb, 4 bytes for ARM) that gets written into the `.text` section of an object file. It's essentially a lookup table + field packer — no optimization, no interpretation, just 1-to-1 encoding. See: How It Works (How Machine Code Gets Written)
 </details>
 
-**Q2:** Where does machine code physically end up on a desktop vs. an embedded MCU?
+**Q2:** Where does machine code physically end up on a desktop vs. an embedded [[learning/notes/micro-context/microcontroller|MCU]]?
 <details>
 <summary>Answer</summary>
-On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug probe ([[micro-context/swd-serial-wire-debug|SWD]]/JTAG). The code persists without power and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
+On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug probe ([[micro-context/swd-serial-wire-debug|SWD]]/JTAG). The code persists without [[learning/notes/quick-context/power-watts-joules|power]] and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
 </details>
 
 **Q3:** If a CPU only understands binary, how can Python — an interpreted language — run on it?

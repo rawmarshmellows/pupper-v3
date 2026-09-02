@@ -4,11 +4,12 @@ created: 2026-02-21
 updated: 2026-02-21
 ---
 
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/bga-ball-grid-array]]
+
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
 
-> **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
+> **TL;DR:** A [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] is a sandwich of distinct functional layers — copper for carrying signals and [[learning/notes/quick-context/power-watts-joules|power]], soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
 > **Reference Board:** Pupper v3 Control Board Rev 3.5.2 (Gabrael & Nathan) — all examples in this document reference this 2-layer board.
 > ![Pupper PCB Gerber View](quick-context/Pupper%20PCB.png)
@@ -145,7 +146,7 @@ On the Pupper board: most IC footprints and the large ground copper pour are on 
 
 **3. Drill Files** — `.DRL` (Excellon format)
 
-*What they are:* CNC drill instructions specifying every hole's X/Y location, diameter, and plating type. Split into three files:
+*What they are:* [[learning/notes/quick-context/cnc-machining|CNC]] drill instructions specifying every hole's X/Y location, diameter, and plating type. Split into three files:
 - **PTH Through** (`Drill_PTH_Through.DRL`): Plated through-holes for component leads — copper-lined holes connecting top and bottom
 - **PTH Through Via** (`Drill_PTH_Through_Via.DRL`): Plated holes for vias (layer-to-layer connections, no component inserted)
 - **NPTH Through** (`Drill_NPTH_Through.DRL`): Non-plated holes for mounting screws or alignment pins — bare fiberglass, no copper
@@ -175,7 +176,7 @@ DRILL HOLE TYPES
 
 **4. Top Soldermask** — `Gerber_TopSolderMaskLayer.GTS`
 
-*What it is:* A polymer coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only [[micro-context/smd-pad|pads]] where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
+*What it is:* A [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] coating (typically green) applied over the top copper. **Negative layer**: the Gerber file defines where soldermask is REMOVED (pad openings), not where it's applied. Exposes only [[micro-context/smd-pad|pads]] where components will be soldered; everything else stays covered. Prevents solder bridges between close traces and protects copper from corrosion.
 
 *How it's manufactured:* Modern PCBs use **LPI (Liquid Photo-Imageable)** soldermask. The liquid polymer is applied to the entire board surface by curtain coating or screen printing. It's then "tack cured" (partially dried) so it can be handled. Next, the soldermask Gerber film is aligned over the board and UV light is shone through it — the UV **hardens** the mask everywhere EXCEPT where the film blocks light (over pads). The unhardened soldermask over pads is washed away in an alkaline developer bath, exposing the copper pads underneath. A final thermal cure (~150°C) fully hardens the remaining soldermask permanently.
 
@@ -269,7 +270,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **12. Document Layer** — `Gerber_DocumentLayer.GDL`
 
-*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, impedance control requirements, and UL markings.
+*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, [[learning/notes/quick-context/impedance-and-reactance|impedance]] control requirements, and UL markings.
 
 </details>
 
@@ -405,13 +406,13 @@ The Gerber file list maps directly to the layer stack:
 
 - **[[quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
 
-- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
+- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the [[learning/notes/quick-context/soldering|reflow soldering]] process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
 
-- **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial ground plane; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
+- **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial [[learning/notes/quick-context/grounding-and-return-paths|ground plane]]; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
 
-- **[[quick-context/common-ic-packages]]** — Package type (DIP, QFP, QFN, BGA) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
+- **[[quick-context/common-ic-packages]]** — Package type (DIP, QFP, [[learning/notes/quick-context/common-ic-packages|QFN]], [[learning/notes/quick-context/bga-ball-grid-array|BGA]]) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
 
-- **[[quick-context/schematic-reading]]** — The schematic defines WHAT is connected; the PCB layers define HOW and WHERE those connections are physically implemented as copper traces, pads, and vias.
+- **[[quick-context/schematic-reading]]** — The [[learning/notes/quick-context/schematic-reading|schematic]] defines WHAT is connected; the PCB layers define HOW and WHERE those connections are physically implemented as copper traces, pads, and vias.
 
 </details>
 

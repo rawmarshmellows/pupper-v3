@@ -3,11 +3,12 @@ topic: Self-Induction
 created: 2026-02-17
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
 
-> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
+> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic [[learning/notes/quick-context/soldering|flux]], which induces a [[learning/notes/quick-context/voltage|voltage]] (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an [[learning/notes/quick-context/inductor|inductor]], and why the [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] "pushes" current when you try to stop it.
 
 ## The Core Question
 
@@ -64,7 +65,7 @@ THE CAUSAL CHAIN
 
 ## Complete Circuit Analysis: Inductor + Load
 
-Let's trace through the COMPLETE cycle with actual voltages, including what happens when you disconnect the battery.
+Let's trace through the COMPLETE cycle with actual voltages, including what happens when you disconnect the [[learning/notes/quick-context/galvanic-cells-batteries|battery]].
 
 ```
 THE CIRCUIT
@@ -474,7 +475,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction only matters when current is *changing*.
 </details>
 
-**Q2:** At the instant you connect a battery to an inductor-resistor circuit, why does the load see 0V even though the battery is 10V?
+**Q2:** At the instant you connect a battery to an inductor-[[learning/notes/quick-context/resistor|resistor]] circuit, why does the load see 0V even though the battery is 10V?
 <details>
 <summary>Answer</summary>
 **The inductor absorbs all the voltage as back-EMF.** At t=0, current is zero but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire source voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.
@@ -483,7 +484,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **Q3:** When you disconnect the battery from an inductor carrying current, the inductor voltage reverses polarity. Why?
 <details>
 <summary>Answer</summary>
-**The inductor switches from absorbing energy to releasing it.** While charging, current was increasing, so the inductor opposed by creating voltage that fought the source (positive V_L, absorbing power). When disconnected, current tries to decrease, so the inductor opposes by creating voltage that *maintains* current flow (negative V_L relative to original, now delivering power). The inductor has become the source, pushing its stored energy through the load.
+**The inductor switches from absorbing energy to releasing it.** While charging, current was increasing, so the inductor opposed by creating voltage that fought the source (positive V_L, absorbing [[learning/notes/quick-context/power-watts-joules|power]]). When disconnected, current tries to decrease, so the inductor opposes by creating voltage that *maintains* current flow (negative V_L relative to original, now delivering power). The inductor has become the source, pushing its stored energy through the load.
 </details>
 
 **Q4:** An inductor stores 1 joule of energy in its magnetic field. You disconnect it from the source. Where does that 1 joule go?

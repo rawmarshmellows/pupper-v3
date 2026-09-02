@@ -3,9 +3,9 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/micro-context/ac-dc-current]]
 
-> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
+> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum [[learning/notes/quick-context/voltage|voltage]] needed for [[learning/notes/quick-context/electrolysis|electrolysis]], with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 
 # Voltage and Thermodynamic Relationship in Electrolysis
 
@@ -50,9 +50,9 @@ Water splitting has **ΔG = +237 kJ/mol**. The "+" sign is crucial—it means yo
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The voltage-thermodynamics relationship operates through a straightforward energy conversion: electrical work (voltage times charge) must equal or exceed the chemical energy requirement (Gibbs free energy). When you apply voltage to an electrolysis cell, you're providing electrical potential energy that gets converted into chemical potential energy stored in the products. The equation ΔG = -nFE bridges these two energy forms, where n electrons each carrying charge F (the Faraday constant) are pushed through potential E. For the reaction to proceed, the electrical energy supplied (nFE) must at least match what the chemistry demands (ΔG).
+The voltage-thermodynamics relationship operates through a straightforward energy conversion: electrical work (voltage times charge) must equal or exceed the chemical energy requirement (Gibbs free energy). When you apply voltage to an electrolysis cell, you're providing electrical potential energy that gets converted into chemical potential energy stored in the products. The equation ΔG = -nFE bridges these two energy forms, where n electrons each carrying charge F (the [[learning/notes/quick-context/faraday-tensor|Faraday]] constant) are pushed through potential E. For the reaction to proceed, the electrical energy supplied (nFE) must at least match what the chemistry demands (ΔG).
 
-The process unfolds at two electrodes immersed in an electrolyte. At the cathode (negative electrode), electrons arrive and force a reduction reaction—in water splitting, hydrogen ions grab electrons to become hydrogen gas. At the anode (positive electrode), electrons are pulled away, forcing oxidation—water molecules lose electrons to become oxygen gas. The electrolyte provides a path for ions to migrate between electrodes, completing the circuit internally while electrons flow through the external circuit. The minimum voltage (1.23V for water) represents the thermodynamic floor: the absolute minimum electrical "push" needed to make both electrode reactions energetically possible.
+The process unfolds at two [[learning/notes/quick-context/electrodes|electrodes]] immersed in an [[learning/notes/quick-context/electrolyte|electrolyte]]. At the [[learning/notes/micro-context/cathode|cathode]] (negative electrode), electrons arrive and force a [[learning/notes/quick-context/cations-and-reduction|reduction]] reaction—in water splitting, hydrogen ions grab electrons to become hydrogen gas. At the [[learning/notes/micro-context/anode|anode]] (positive electrode), electrons are pulled away, forcing [[learning/notes/micro-context/oxidation|oxidation]]—water molecules lose electrons to become oxygen gas. The electrolyte provides a path for ions to migrate between electrodes, completing the circuit internally while electrons flow through the external circuit. The minimum voltage (1.23V for water) represents the thermodynamic floor: the absolute minimum electrical "push" needed to make both electrode reactions energetically possible.
 
 ```
 ENERGY FLOW IN ELECTROLYSIS
@@ -156,7 +156,7 @@ Let's walk through the actual calculation for water electrolysis:
 
 **Given Information:**
 - ΔG = +237 kJ/mol (energy required per mole of H₂O split)
-- n = 2 (two electrons transferred per water molecule)
+- n = 2 (two electrons transferred per water [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]])
 - F = 96,485 C/mol (Faraday constant)
 
 **The Master Equation:**
@@ -244,7 +244,7 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
 
 - **Electrochemistry fundamentals** — The study of chemical reactions that produce or consume electricity; this relationship is one specific application of broader electrochemical principles like the Nernst equation.
 
-- **Catalysis** — The science of speeding up reactions without being consumed; platinum and iridium catalysts on electrodes are how engineers reduce activation overpotential.
+- **Catalysis** — The science of speeding up reactions without being consumed; [[learning/notes/quick-context/platinum-inertness|platinum]] and iridium catalysts on electrodes are how engineers reduce activation overpotential.
 
 - **Thermodynamics (entropy and enthalpy)** — Gibbs free energy combines enthalpy (heat content) and entropy (disorder); understanding these components explains *why* ΔG has the value it does.
 

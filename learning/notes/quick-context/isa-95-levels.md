@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 
@@ -15,7 +15,7 @@ ISA-95 exists to solve the communication chaos between the factory floor and bus
 
 The standard defines a five-level hierarchy: **Level 0** is the physical process itself—chemical reactions, material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your PLCs and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
 
-A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the PLC maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
+A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
 
 ## 5 Essential Terms
 
@@ -47,7 +47,7 @@ Data flows up (actual production results) and down (production orders), with ISA
 
 The central tension practitioners navigate is where to draw the Level 3/Level 4 boundary—and this is where religious wars happen. Purists want a clean separation: ERP should never talk directly to machines, everything flows through MES as an intermediary that handles the translation between "make 10,000 units" (business-speak) and "run recipe R-47 on Line 3 for 6 hours" (operations-speak).
 
-But MES systems are expensive, complex, and often overkill for simpler operations. So you see constant pressure to let ERP reach further down, or to let automation systems reach further up, collapsing the layers. The standard itself is intentionally vague about exactly what lives where because real plants vary wildly—a semiconductor fab and a craft brewery both "manufacture" but have radically different Level 3 needs.
+But MES systems are expensive, complex, and often overkill for simpler operations. So you see constant pressure to let ERP reach further down, or to let automation systems reach further up, collapsing the layers. The standard itself is intentionally vague about exactly what lives where because real plants vary wildly—a [[learning/notes/quick-context/semiconductor-fabrication|semiconductor]] fab and a craft brewery both "manufacture" but have radically different Level 3 needs.
 
 The other perpetual argument is about the data model: ISA-95 defines standard objects like "Material Lot" and "Equipment" with relationships between them, but mapping your actual plant's messy reality onto these pristine abstractions is where implementations die.
 

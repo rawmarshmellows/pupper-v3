@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/edm-machining]]
+
 # CNC Turning
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
@@ -14,7 +16,7 @@ updated: 2026-03-27
 
 - The workpiece is clamped in a rotating chuck that spins it at high speed (hundreds to thousands of RPM).
 - A stationary cutting tool is fed into the spinning workpiece, shaving off material in a continuous spiral.
-- The CNC controller moves the tool along and into the workpiece axis to produce the programmed cylindrical profile.
+- The [[learning/notes/quick-context/cnc-machining|CNC]] controller moves the tool along and into the workpiece axis to produce the programmed cylindrical profile.
 
 ```
 MILLING vs TURNING:

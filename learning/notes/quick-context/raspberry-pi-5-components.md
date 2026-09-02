@@ -3,7 +3,7 @@ topic: Raspberry Pi 5 — Board Components
 created: 2026-04-05
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-brain]] | [[micro-context/stm32-microcontroller]] | [[quick-context/common-ic-packages]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
 > **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[micro-context/stm32-microcontroller|STM32 microcontrollers]].
 
@@ -82,7 +82,7 @@ RASPBERRY PI 5 — COMPONENT MAP (top view, ports facing down):
 
 ## How It Fits in Pupper
 
-The Raspberry Pi 5 is the **high-level controller**: it runs Linux, ROS 2, computer vision (camera via CSI), and voice/LLM processing. It communicates with the [[quick-context/pupper-brain|Pupper control board]] (which holds the [[micro-context/stm32-microcontroller|STM32 MCUs]]) over a serial or CAN-to-USB bridge. The Pi handles *what* the robot should do; the STM32s handle *how* — executing the 1kHz motor control loops in hard real-time.
+The Raspberry Pi 5 is the **high-level controller**: it runs Linux, [[learning/notes/quick-context/ros2-architecture|ROS 2]], computer vision ([[learning/notes/quick-context/camera-fundamentals|camera]] via CSI), and voice/LLM processing. It communicates with the [[quick-context/pupper-brain|Pupper control board]] (which holds the [[micro-context/stm32-microcontroller|STM32 MCUs]]) over a serial or CAN-to-[[learning/notes/quick-context/usb-peripheral-hardware|USB]] bridge. The Pi handles *what* the robot should do; the STM32s handle *how* — executing the 1kHz motor control loops in hard real-time.
 
 | Layer | Hardware | Runs | Timing |
 |-------|----------|------|--------|

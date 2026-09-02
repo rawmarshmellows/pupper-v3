@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-3D printing [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
+[[learning/notes/quick-context/3d-printing-filament-types|3D printing]] [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
 
 ## 5 Essential Terms
 
@@ -27,9 +27,9 @@ updated: 2026-01-21
 <details>
 <summary><strong>How It Works</strong></summary>
 
-When manufacturers produce filament, the plastic is extruded as a continuous strand and wound onto something for storage and shipping. With traditional spooled filament, that "something" is a molded plastic reel that becomes part of the product you buy—and then discard. With refills, the filament is wound into a self-supporting coil (held together with cardboard inserts, zip ties, or shrink wrap) that you transfer onto your own reusable spool at home. The filament itself is identical; only the packaging differs.
+When manufacturers produce filament, the plastic is extruded as a continuous strand and wound onto something for storage and shipping. With traditional spooled filament, that "something" is a molded plastic reel that becomes part of the product you buy—and then discard. With refills, the filament is wound into a self-supporting [[learning/notes/quick-context/coil-magnetic-field|coil]] (held together with cardboard inserts, zip ties, or shrink wrap) that you transfer onto your own reusable spool at home. The filament itself is identical; only the packaging differs.
 
-The **master spool system** is the key innovation that makes refills practical. A master spool is a reusable reel—typically made of two halves that snap or screw together—designed to accept refill coils. You open the spool, place the refill coil inside, close it, and mount it on your printer exactly like a regular spool. Some refills come on lightweight cardboard cores that fit directly into certain printer systems without requiring a master spool at all. The workflow adds 30-60 seconds of handling time per roll in exchange for the cost savings and waste reduction.
+The **master spool system** is the key innovation that makes refills practical. A master spool is a reusable reel—typically made of two halves that snap or screw together—designed to accept refill coils. You open the spool, place the refill coil inside, close it, and mount it on your printer exactly like a regular spool. Some refills come on lightweight cardboard cores that fit directly into certain printer systems without requiring a master spool at all. The workflow adds 30-60 seconds of handling time per roll in exchange for the cost savings and waste [[learning/notes/quick-context/cations-and-reduction|reduction]].
 
 ```
 THE REFILL WORKFLOW: From Purchase to Print
@@ -179,7 +179,7 @@ Once mounted, it works exactly like a regular spool.
 
 - [[quick-context/3d-printing-filament-types]] — Different filament materials (PLA, PETG, ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
 - [[quick-context/melt-index]] — Understanding [[quick-context/melt-index|melt flow rate]] helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
-- [[quick-context/3d-printer-hotends]] — [[quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
+- [[quick-context/3d-printer-hotends]] — [[quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your [[learning/notes/quick-context/3d-printer-hotends|hotend]]'s capabilities helps when choosing refill options for specialty materials
 
 </details>
 

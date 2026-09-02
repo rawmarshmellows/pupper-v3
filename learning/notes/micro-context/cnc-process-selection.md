@@ -4,17 +4,19 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]]
+
 # CNC Process Selection
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
 
-**Definition:** A decision framework for when to use CNC machining over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
+**Definition:** A decision framework for when to use [[learning/notes/quick-context/cnc-machining|CNC machining]] over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
 
 ## How It Works
 
-- Evaluate part geometry: cylindrical parts favor turning, prismatic/complex shapes favor milling, hardened metals with sharp internal corners favor EDM.
+- Evaluate part geometry: cylindrical parts favor turning, prismatic/complex shapes favor milling, hardened metals with sharp internal corners favor [[learning/notes/micro-context/edm-machining|EDM]].
 - Consider volume: CNC is cost-effective for 1–1000 parts; injection molding or casting wins at 10,000+.
-- Check tolerance requirements: CNC achieves ±0.001" routinely, which 3D printing and casting generally cannot match.
+- Check tolerance requirements: CNC achieves ±0.001" routinely, which [[learning/notes/quick-context/3d-printing-filament-types|3D printing]] and casting generally cannot match.
 
 ```
 1. SHOULD YOU USE CNC AT ALL?

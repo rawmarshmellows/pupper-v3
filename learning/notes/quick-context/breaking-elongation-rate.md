@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
 > **TL;DR:** Breaking elongation rate measures how far a material can stretch before snapping (as a percentage of original length)—TPU with ">650%" can stretch to 7.5x its original length, making it ideal for impact-absorbing applications where flexibility matters more than rigidity.
 
@@ -40,9 +40,9 @@ Stretched before breaking:
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Elongation at break is fundamentally about polymer chain behavior under stress. When you pull on a material, you're forcing the tangled, coiled polymer chains to straighten out and slide past each other. In high-elongation materials like TPU, the chains are long, flexible, and loosely entangled—they can uncoil extensively before the bonds within the chains themselves start breaking. In low-elongation materials like PLA, the chains are either shorter, more rigidly structured, or locked together by crystalline regions that resist chain movement. When those chains can't slip past each other, the stress concentrates and bonds break—the material snaps.
+Elongation at break is fundamentally about [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chain behavior under stress. When you pull on a material, you're forcing the tangled, coiled polymer chains to straighten out and slide past each other. In high-elongation materials like TPU, the chains are long, flexible, and loosely entangled—they can uncoil extensively before the bonds within the chains themselves start breaking. In low-elongation materials like PLA, the chains are either shorter, more rigidly structured, or locked together by crystalline regions that resist chain movement. When those chains can't slip past each other, the stress concentrates and bonds break—the material snaps.
 
-The stretching process happens in stages. First, loosely organized (amorphous) regions allow chains to straighten with relatively little force. As stretching continues, chains begin sliding past each other, overcoming weak intermolecular attractions like van der Waals forces. In highly elastic materials, this sliding can continue for a long time because the chains are flexible and the intermolecular forces re-form as chains move, preventing catastrophic failure. Eventually, if you keep pulling, the chains either run out of slack, pull apart from each other completely, or the covalent bonds in the polymer backbone itself break—that's the breaking point.
+The stretching process happens in stages. First, loosely organized (amorphous) regions allow chains to straighten with relatively little force. As stretching continues, chains begin sliding past each other, overcoming weak intermolecular attractions like [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]]. In highly elastic materials, this sliding can continue for a long time because the chains are flexible and the intermolecular forces re-form as chains move, preventing catastrophic failure. Eventually, if you keep pulling, the chains either run out of slack, pull apart from each other completely, or the [[learning/notes/quick-context/covalent-bonds|covalent bonds]] in the polymer backbone itself break—that's the breaking point.
 
 ```
 WHAT HAPPENS WHEN YOU STRETCH A POLYMER
@@ -144,7 +144,7 @@ TPU (>650%)     ~700%         Stretches to 80cm before breaking!
 
 For a robot foot pad or bumper, you want the TPU behavior—it deforms massively to absorb impact energy instead of cracking.
 
-When you see a filament spec like:
+When you see a [[learning/notes/quick-context/3d-printing-filament-types|filament]] spec like:
 
 ```
 Material: TPU 95A
@@ -155,7 +155,7 @@ Print Temp: 220-240°C
 ```
 
 This tells you:
-- **45 MPa tensile strength**: Moderately strong (won't tear easily)
+- **45 MPa [[learning/notes/quick-context/tensile-strength-materials|tensile strength]]**: Moderately strong (won't tear easily)
 - **> 650% elongation**: Extremely stretchy/flexible
 - **Shore 95A**: Firm but flexible (like a car tire, not a gummy bear)
 
@@ -199,7 +199,7 @@ TPU. Despite lower tensile strength, the 650% elongation means the bumper absorb
 <details>
 <summary>Answer</summary>
 
-The freezer temperature may be below the polymer's glass transition temperature (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
+The freezer temperature may be below the polymer's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
 
 </details>
 
@@ -208,7 +208,7 @@ The freezer temperature may be below the polymer's glass transition temperature 
 <details>
 <summary>Answer</summary>
 
-Shore hardness measures resistance to indentation (surface deformation), while elongation measures how far chains can uncoil before breaking. Differences could come from: (1) molecular weight—longer chains can uncoil further, (2) crosslink density—more crosslinks limit chain movement, (3) crystallinity—more crystalline regions restrict elongation, or (4) additives/fillers that affect chain mobility differently than surface hardness.
+Shore hardness measures resistance to indentation (surface deformation), while elongation measures how far chains can uncoil before breaking. Differences could come from: (1) molecular weight—longer chains can uncoil further, (2) crosslink density—more crosslinks limit chain movement, (3) [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|crystallinity]]—more crystalline regions restrict elongation, or (4) additives/fillers that affect chain mobility differently than surface hardness.
 
 </details>
 

@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -196,9 +196,9 @@ THE CLASSIC GROUND LOOP PROBLEM
 
 - **[[quick-context/electric-current]]** — Current flows in loops. The return current through ground is equal in magnitude to the signal current. This is Kirchhoff's current law in action.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — PCB ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-impedance return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
+- **[[quick-context/pcb-printed-circuit-board]]** — [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] ground planes are the primary tool for good grounding. Continuous, unbroken copper pours provide low-[[learning/notes/quick-context/impedance-and-reactance|impedance]] return paths and electromagnetic shielding. See [[quick-context/pcb-layers]] for how ground planes are implemented on specific copper layers in the board stackup.
 
-- **[[quick-context/capacitor]]** — Decoupling capacitors connect between power and ground, providing a local return path for high-frequency switching currents. They're part of the grounding strategy.
+- **[[quick-context/capacitor]]** — Decoupling capacitors connect between [[learning/notes/quick-context/power-watts-joules|power]] and ground, providing a local return path for high-[[learning/notes/quick-context/frequency-and-filtering|frequency]] switching currents. They're part of the grounding strategy.
 
 - **[[quick-context/impedance-and-reactance]]** — At high frequencies, ground path impedance (not just resistance) matters. A 1cm wire has ~10 nH of inductance, which is 6Ω at 100 MHz—not negligible.
 
@@ -236,7 +236,7 @@ THE CLASSIC GROUND LOOP PROBLEM
 **Q5:** How does a ground loop cause audio hum, and why is the hum at 60 Hz?
 <details>
 <summary>Answer</summary>
-**The ground loop forms an antenna loop that intercepts the 60 Hz magnetic field from nearby AC power wiring.** By Faraday's law, a changing magnetic field through a loop induces a voltage (EMF) proportional to the rate of change and loop area. Since the power grid runs at 60 Hz (50 Hz in Europe), the induced noise is at 60 Hz and its harmonics (120 Hz, 180 Hz). The fix is to break the loop or minimize its area.
+**The ground loop forms an antenna loop that intercepts the 60 Hz [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] from nearby AC power wiring.** By [[learning/notes/quick-context/faraday-tensor|Faraday]]'s law, a changing magnetic field through a loop induces a [[learning/notes/quick-context/voltage|voltage]] (EMF) proportional to the rate of change and loop area. Since the power grid runs at 60 Hz (50 Hz in Europe), the induced noise is at 60 Hz and its harmonics (120 Hz, 180 Hz). The fix is to break the loop or minimize its area.
 </details>
 
 </details>

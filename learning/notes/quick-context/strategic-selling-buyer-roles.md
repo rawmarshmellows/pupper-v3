@@ -3,9 +3,10 @@ topic: Strategic Selling Buyer Roles
 created: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/mcdonald-kam-model]]
+
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
 
 > **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
@@ -216,7 +217,7 @@ PRIORITY ACTIONS:
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
 - **[[quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
-- **Org Chart Analysis** — The practical skill of mapping formal and informal power structures
+- **Org Chart Analysis** — The practical skill of mapping formal and informal [[learning/notes/quick-context/power-watts-joules|power]] structures
 - **Multi-threading** — Sales tactic of building relationships across multiple stakeholders to avoid single-point-of-failure
 
 </details>

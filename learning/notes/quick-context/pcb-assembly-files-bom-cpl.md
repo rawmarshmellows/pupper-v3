@@ -3,15 +3,16 @@ topic: PCB Assembly Files — BOM & CPL (Pick-and-Place)
 created: 2026-06-05
 ---
 
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/bga-ball-grid-array]]
+
 # PCB Assembly Files — BOM & CPL (Pick-and-Place)
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
 
-> **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
+> **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. [[learning/notes/micro-context/pick-and-place-file|pick-and-place file]]) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
 
 ## The Core Problem
 
-A bare PCB is just patterned copper — empty pads. A contract assembler (JLCPCB, PCBWay) needs two questions answered before a machine can populate it: **what** components to load, and **where/how** to drop each one. The BOM answers "what + how many + from which supplier"; the CPL answers "exact position + angle + top or bottom." Miss either file (or mismatch a designator between them) and the assembly stops. The `PDB_BOM.csv` and `PDB_CPL.csv` here are exactly this pair for the Pupper **Power Distribution Board (PDB)**.
+A bare [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] is just patterned copper — empty pads. A contract assembler (JLCPCB, PCBWay) needs two questions answered before a machine can populate it: **what** components to load, and **where/how** to drop each one. The BOM answers "what + how many + from which supplier"; the CPL answers "exact position + angle + top or bottom." Miss either file (or mismatch a designator between them) and the assembly stops. The `PDB_BOM.csv` and `PDB_CPL.csv` here are exactly this pair for the Pupper **[[learning/notes/quick-context/power-watts-joules|Power]] Distribution Board (PDB)**.
 
 ## 5 Essential Terms
 
@@ -76,7 +77,7 @@ ASSEMBLY HAND-OFF PACKAGE
 <details>
 <summary><strong>The Key Tension</strong> — Grouped vs. per-instance, and export gotchas</summary>
 
-**Why two files instead of one?** Because the two consumers want opposite shapes. The *purchasing* side wants parts grouped (you order "2 MOSFETs," not "a MOSFET at (21, 7.25)"). The *placement machine* wants them exploded (it places one part at a time and couldn't care less what it costs). Cramming both into one table would either repeat purchasing data 36 times or hide the positions.
+**Why two files instead of one?** Because the two consumers want opposite shapes. The *purchasing* side wants parts grouped (you order "2 MOSFETs," not "a [[learning/notes/micro-context/mosfet|MOSFET]] at (21, 7.25)"). The *placement machine* wants them exploded (it places one part at a time and couldn't care less what it costs). Cramming both into one table would either repeat purchasing data 36 times or hide the positions.
 
 | | BOM | CPL |
 |---|---|---|
@@ -129,7 +130,7 @@ Designator│ Device       │ Mid X │ Mid Y  │ Pad X  │ Pad Y │Pins│L
 - **Pad X / Pad Y** = location of pin-1 pad — lets you verify orientation independent of rotation.
 - **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **SMD = Yes**.
 
-Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a comparator (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
+Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a [[learning/notes/quick-context/comparator|comparator]] (U40), a small linear regulator (U42, a 78L12), and a dozen [[learning/notes/micro-context/jst-connector-families|JST]] connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for [[learning/notes/quick-context/galvanic-cells-batteries|battery]]/cell wiring.
 
 **The one thing most outsiders get wrong about this is...** thinking the two files are redundant, or that the BOM contains positions. They're complementary halves: the BOM has zero geometry, the CPL has zero purchasing info, and the **reference designator is the only thing connecting them**. Lose the join (rename `Q1`→`Q3` in one file but not the other) and the assembler places a part it can't identify, or orders a part it can't place.
 
@@ -141,7 +142,7 @@ Reading both together you know: *buy two Infineon FETs from LCSC C24199, place o
 - **[[learning/notes/quick-context/pupper-bom-control-board]]** — A full part-by-part teardown of the Pupper *Control Board* BOM. That note explains WHAT each part does; this note explains how to READ the BOM/CPL file pair itself.
 - **[[learning/notes/micro-context/pick-and-place-file]]** — The glossary-level definition of the CPL and the SMT machine workflow it drives.
 - **[[learning/notes/quick-context/pcb-layers]]** — The Gerber/paste-mask files that accompany the BOM + CPL in the assembly hand-off; the paste layer defines the solder stencil.
-- **[[learning/notes/quick-context/schematic-reading]]** — Reference designators are the bridge between the schematic, the BOM, the CPL, and the physical silkscreen.
+- **[[learning/notes/quick-context/schematic-reading]]** — Reference designators are the bridge between the [[learning/notes/quick-context/schematic-reading|schematic]], the BOM, the CPL, and the physical silkscreen.
 - **[[learning/notes/quick-context/common-ic-packages]]** — Decoding the `Footprint` field (SOT-23, SMA, TDSON) and why package choice gates hand vs. machine assembly.
 - **[[learning/notes/quick-context/soldering]]** — What happens after placement: solder paste + reflow permanently bond every part the CPL positioned.
 

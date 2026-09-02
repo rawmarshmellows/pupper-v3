@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 > **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
@@ -135,7 +135,7 @@ HOW SETTINGS INTERACT: The Flow Rate Equation
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tension in slicer settings is **speed vs. quality vs. strength**. Thicker layers print faster but show visible stepping. Higher infill increases strength but wastes material and time. Faster print speeds reduce quality and can exceed hotend flow capacity. Every setting is a tradeoff, and the "best" profile depends entirely on what you're making—a display piece needs thin layers and slow speeds, while a functional bracket prioritizes walls and can tolerate thick layers.
+The fundamental tension in slicer settings is **speed vs. quality vs. strength**. Thicker layers print faster but show visible stepping. Higher infill increases strength but wastes material and time. Faster print speeds reduce quality and can exceed [[learning/notes/quick-context/3d-printer-hotends|hotend]] flow capacity. Every setting is a tradeoff, and the "best" profile depends entirely on what you're making—a display piece needs thin layers and slow speeds, while a functional bracket prioritizes walls and can tolerate thick layers.
 
 </details>
 
@@ -155,9 +155,9 @@ Concepts that connect to slicer settings and deepen your understanding:
 
 - **[[quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. PLA prints cooler and faster; PETG needs higher temps and slower speeds; ABS requires enclosures. Your material choice drives half your slicer decisions.
 
-- **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
+- **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts [[learning/notes/quick-context/3d-printing-filament-types|filament]] before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
 
-- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High melt index plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
+- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High [[learning/notes/quick-context/melt-index|melt index]] plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
 
 - **[[quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines both print bed temperature (to help adhesion without warping) and the max operating temperature of your finished part.
 
@@ -175,7 +175,7 @@ The outer walls carry most of the structural load in real-world use because forc
 **Q2:** If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
 <details>
 <summary>Answer</summary>
-You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher glass transition temperature and different flow characteristics.
+You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] and different flow characteristics.
 </details>
 
 **Q3:** When would you choose a 0.2mm layer height over a 0.3mm setting?
@@ -193,7 +193,7 @@ Tree supports branch upward from the build plate to reach overhangs, touching th
 **Q5:** Two filaments have identical melting points (240C), but one is semi-crystalline and one is amorphous. Why might the same slicer profile produce good results with one but failures with the other?
 <details>
 <summary>Answer</summary>
-Melting point is just one property—crystallinity and glass transition temperature profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
+Melting point is just one property—[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|crystallinity]] and glass transition temperature profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
 </details>
 
 </details>

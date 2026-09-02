@@ -3,6 +3,8 @@ topic: Silymarin
 created: 2026-04-06
 ---
 
+> **Related:** [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/van-der-waals-forces]]
+
 # Silymarin
 
 > **TL;DR:** Silymarin is a mixture of flavonolignans extracted from milk thistle (*Silybum marianum*) seeds, best known for hepatoprotection — it scavenges free radicals, stabilizes liver cell membranes, and suppresses inflammatory pathways, making it one of the most-studied herbal compounds for liver disease.
@@ -112,7 +114,7 @@ The bioavailability problem drives most of the current research. Standard oral s
 
 **Amanita phalloides (death cap) poisoning:**
 
-This is silymarin's most dramatic clinical use. The Amanita toxin $\alpha$-amanitin enters hepatocytes via OATP1B3 transporters and inhibits RNA polymerase II, shutting down protein synthesis and killing liver cells. Intravenous silibinin (trade name Legalon SIL) is the standard antidote in Europe:
+This is silymarin's most dramatic clinical use. The Amanita toxin $\alpha$-amanitin enters hepatocytes via OATP1B3 transporters and inhibits RNA polymerase II, shutting down protein synthesis and killing liver cells. Intravenous silibinin (trade name Legalon [[learning/notes/quick-context/sil-rated-safety-functions|SIL]]) is the standard antidote in Europe:
 
 - Mechanism: silybin competitively blocks toxin uptake at the hepatocyte membrane transporter
 - Dose: 20-50 mg/kg/day IV, started within 48 hours of ingestion
@@ -128,7 +130,7 @@ The more common (and more debated) use case:
 - The mechanism is primarily via Nrf2 activation (reducing oxidative stress) and NF-$\kappa$B inhibition (reducing inflammation)
 - Inconsistent results across trials, likely due to variable bioavailability of different preparations
 
-**The one thing most outsiders get wrong about this is...** that silymarin is a single molecule. It's actually a complex mixture of at least seven flavonolignans with different potencies and pharmacokinetics. Clinical trials using different extract preparations with different ratios of these components are not directly comparable — this single fact explains much of the inconsistency in the literature.
+**The one thing most outsiders get wrong about this is...** that silymarin is a single [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]]. It's actually a complex mixture of at least seven flavonolignans with different potencies and pharmacokinetics. Clinical trials using different extract preparations with different ratios of these components are not directly comparable — this single fact explains much of the inconsistency in the literature.
 
 </details>
 

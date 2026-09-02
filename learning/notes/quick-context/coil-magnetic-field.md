@@ -3,11 +3,12 @@ topic: Why Current Through a Coil Creates a Magnetic Field
 created: 2026-02-14
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 # Why Current Through a Coil Creates a Magnetic Field
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
 
-> **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
+> **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 
 ## The Core Problem
 
@@ -633,16 +634,16 @@ FINAL DESIGN:
     └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed voltage supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
+**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed [[learning/notes/quick-context/voltage|voltage]] supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; electromagnetism covers the universal principles.
+- **[[quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; [[learning/notes/quick-context/electromagnetism|electromagnetism]] covers the universal principles.
 
-- **[[quick-context/inductor]]** — An inductor is a coil designed to store energy in its magnetic field. The inductor equation V = L×dI/dt comes directly from how changing current changes the magnetic flux through the coil (Faraday's Law).
+- **[[quick-context/inductor]]** — An [[learning/notes/quick-context/inductor|inductor]] is a coil designed to store energy in its magnetic field. The inductor equation V = L×dI/dt comes directly from how changing current changes the magnetic [[learning/notes/quick-context/soldering|flux]] through the coil (Faraday's Law).
 
 - **[[quick-context/electric-current]]** — Current is moving charge, and moving charge is what creates the magnetic field. Understanding current as "coulombs per second" connects to calculating the field strength.
 
@@ -656,7 +657,7 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the [[learning/notes/quick-context/tensor|tensor]] transforms correctly between frames.
 
 </details>
 
@@ -690,7 +691,7 @@ FINAL DESIGN:
 **Q5:** An electromagnet runs at 2A and gets warm. To get a stronger field, you double the current to 4A. How much more heat does it generate?
 <details>
 <summary>Answer</summary>
-**4× more heat (quadruple).** Power dissipation P = I²R. When you double I, P increases by 2² = 4. The field only doubles, but heat generation quadruples. This is the fundamental challenge of high-field electromagnets—you hit thermal limits before you hit magnetic limits. See: "The Heat Problem" in The Key Tension.
+**4× more heat (quadruple).** [[learning/notes/quick-context/power-watts-joules|Power]] dissipation P = I²R. When you double I, P increases by 2² = 4. The field only doubles, but heat generation quadruples. This is the fundamental challenge of high-field electromagnets—you hit thermal limits before you hit magnetic limits. See: "The Heat Problem" in The Key Tension.
 </details>
 
 </details>

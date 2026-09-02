@@ -3,11 +3,13 @@ term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
+
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
-**Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
+**Definition:** How close a [[learning/notes/quick-context/comparator|comparator]]'s or [[learning/notes/quick-context/op-amp|op-amp]]'s output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
 
@@ -30,4 +32,4 @@ created: 2026-06-07
    Bigger load current -> bigger gaps.
 ```
 
-**Key insight:** "Rail-to-rail output" never means *exactly* the rail under load — the output transistors' on-resistance always leaves a small gap, and that gap decides whether the next logic gate reads a clean HIGH/LOW.
+**Key insight:** "Rail-to-rail output" never means *exactly* the rail under load — the output transistors' on-resistance always leaves a small gap, and that gap decides whether the next [[learning/notes/quick-context/code-to-gates-and-bootstrapping|logic gate]] reads a clean HIGH/LOW.

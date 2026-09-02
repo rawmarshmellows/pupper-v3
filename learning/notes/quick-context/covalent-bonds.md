@@ -4,15 +4,15 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
-> **TL;DR:** Covalent bonds form when atoms share electrons to complete their outer shells, creating the strong intra-molecular connections that hold polymer chains together—these bonds never break during normal 3D printing.
+> **TL;DR:** Covalent bonds form when atoms share electrons to complete their outer shells, creating the strong intra-molecular connections that hold [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains together—these bonds never break during normal [[learning/notes/quick-context/3d-printing-filament-types|3D printing]].
 
 # Quick Context: Covalent Bonds
 
 ## The Core Problem: Why Atoms Need to Share
 
-Everything around you—your desk, your skin, your 3D printer filament—is made of atoms that need to stick together somehow. Covalent bonds solve the fundamental problem of **how atoms hold onto each other strongly enough to form stable molecules and materials**. Without covalent bonds, there would be no water, no plastics, no DNA, no you. Atoms have electrons orbiting them, and most atoms are "unhappy" (unstable) unless they have a specific number of electrons in their outer shell—typically 8, called the "octet rule." The problem: most atoms don't naturally have 8. The solution: **share electrons with a neighbor**. When two atoms share electrons, both get to "count" those shared electrons toward their octet, and the sharing creates an attractive force that locks them together. If covalent bonds didn't exist, matter would only exist as isolated atoms or the relatively weak arrangements formed by other bond types—no complex molecules, no polymers, no life.
+Everything around you—your desk, your skin, your [[learning/notes/quick-context/3d-printer-hotends|3D printer]] filament—is made of atoms that need to stick together somehow. Covalent bonds solve the fundamental problem of **how atoms hold onto each other strongly enough to form stable molecules and materials**. Without covalent bonds, there would be no water, no plastics, no DNA, no you. Atoms have electrons orbiting them, and most atoms are "unhappy" (unstable) unless they have a specific number of electrons in their outer shell—typically 8, called the "octet rule." The problem: most atoms don't naturally have 8. The solution: **share electrons with a neighbor**. When two atoms share electrons, both get to "count" those shared electrons toward their octet, and the sharing creates an attractive force that locks them together. If covalent bonds didn't exist, matter would only exist as isolated atoms or the relatively weak arrangements formed by other bond types—no complex molecules, no polymers, no life.
 
 ```
     LONELY ATOMS (UNSTABLE)              BONDED ATOMS (STABLE)
@@ -42,7 +42,7 @@ Everything around you—your desk, your skin, your 3D printer filament—is made
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Covalent bonding happens when two atoms get close enough that their outer electron clouds overlap. Instead of one atom stealing electrons from the other (that would be ionic bonding), they set up a "time-share" arrangement: the shared electrons spend time orbiting both nuclei simultaneously. This shared electron pair creates a region of negative charge between the two positively charged nuclei, and electrostatic attraction pulls the nuclei toward this shared region, holding the atoms together. The bond length (distance between nuclei) settles at the point where attraction and repulsion balance out.
+Covalent bonding happens when two atoms get close enough that their outer electron clouds overlap. Instead of one [[learning/notes/quick-context/atoms-molecules-polymers-basics|atom]] stealing electrons from the other (that would be ionic bonding), they set up a "time-share" arrangement: the shared electrons spend time orbiting both nuclei simultaneously. This shared electron pair creates a region of negative charge between the two positively charged nuclei, and electrostatic attraction pulls the nuclei toward this shared region, holding the atoms together. The bond length (distance between nuclei) settles at the point where attraction and repulsion balance out.
 
 The number of bonds an atom can form depends on how many electrons it needs to complete its outer shell. Hydrogen needs 1 electron, so it forms 1 bond. Oxygen needs 2, so it forms 2 bonds. Nitrogen needs 3, forming 3 bonds. Carbon needs 4 electrons and forms 4 bonds—this versatility is why carbon is the backbone of all organic chemistry and polymer science. Atoms can share more than one pair of electrons: a double bond shares 4 electrons (2 pairs), and a triple bond shares 6 electrons (3 pairs). More shared electrons means stronger, shorter, and more rigid bonds.
 
@@ -294,7 +294,7 @@ Related concepts that connect to covalent bonds:
 **Q1:** Why don't covalent bonds break when you melt PLA filament in a 3D printer?
 <details>
 <summary>Answer</summary>
-Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak intermolecular forces between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak van der Waals forces between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
+Covalent bonds are extremely strong (~350 kJ/mol) compared to the weak intermolecular forces between polymer chains (~5 kJ/mol). The heat from your printer (around 200C) provides enough energy to overcome the weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] between chains, allowing them to slide past each other, but nowhere near enough energy to break the covalent bonds within the chains themselves. This is why thermoplastics can be melted and re-solidified repeatedly without degrading—the polymer chains stay intact.
 </details>
 
 **Q2:** What is the "octet rule" and why does it drive covalent bond formation?

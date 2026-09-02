@@ -4,15 +4,15 @@ created: 2026-01-23
 ---
 
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/current-mirror]]
 
-> **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
+> **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, [[learning/notes/quick-context/substrate-ic-packaging|substrate]], package, [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]) handling different concerns like computation, signal redistribution, and [[learning/notes/quick-context/power-watts-joules|power]] delivery.
 
 # PCB, Chip, Transistor, and Substrate Packaging Hierarchy
 
 ## The Core Problem
 
-Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
+Transistors are ~5 nanometers; your [[learning/notes/quick-context/usb-peripheral-hardware|USB]] port is ~5 millimeters. That's a factor of 1,000,000x in scale that must be bridged with reliable electrical connections. The packaging hierarchy solves this by progressively "fanning out" connections through multiple levels (die, substrate, package, PCB), each managing different concerns like computation, signal redistribution, and power delivery.
 
 ## 5 Essential Terms
 
@@ -27,9 +27,9 @@ Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines can handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), metal interconnect layers within the die are branches gathering signals, [[quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
+The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines can handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), [[learning/notes/quick-context/metal-interconnect-layers|metal interconnect layers]] within the die are branches gathering signals, [[quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
 
-At the transistor level, signals exist as voltage changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's BGA balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
+At the [[learning/notes/quick-context/transistor|transistor]] level, signals exist as [[learning/notes/quick-context/voltage|voltage]] changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via [[learning/notes/quick-context/wire-bonding|wire bonding]] (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's [[learning/notes/quick-context/bga-ball-grid-array|BGA]] balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
 
 ```
 THE FAN-OUT PRINCIPLE: How Connections Scale Up
@@ -124,7 +124,7 @@ Total scale change: 5 nm → 2 mm = 400,000× magnification
 
 Performance vs. Cost vs. Manufacturability
 
-The closer you can place components, the faster signals travel and the less power you waste—but denser packaging costs exponentially more and is harder to manufacture and repair. **[[quick-context/wire-bonding|Wire bonding]]** (thin gold wires from die to substrate) is cheap but adds inductance and limits I/O count. **[[quick-context/flip-chip|Flip-chip]]** (solder bumps directly under the die) is faster and denser but requires more precise manufacturing. **Chiplets and 2.5D/3D packaging** (multiple dies on an interposer or stacked vertically) push performance further but multiply complexity and cost. [[quick-context/pcb-printed-circuit-board|PCB]] designers face similar tradeoffs: more layers mean better signal integrity and power delivery but higher cost. A smartphone might use 10+ layer HDI (High Density Interconnect) PCBs with blind/buried vias; a simple Arduino uses 2 layers. The industry constantly pushes these boundaries as Moore's Law slows and "More than Moore" packaging innovations (putting more function into the package rather than shrinking transistors) become critical.
+The closer you can place components, the faster signals travel and the less power you waste—but denser packaging costs exponentially more and is harder to manufacture and repair. **[[quick-context/wire-bonding|Wire bonding]]** (thin gold wires from die to substrate) is cheap but adds inductance and limits I/O count. **[[quick-context/flip-chip|Flip-chip]]** (solder bumps directly under the die) is faster and denser but requires more precise manufacturing. **Chiplets and 2.5D/3D packaging** (multiple dies on an interposer or stacked vertically) push performance further but multiply complexity and cost. [[quick-context/pcb-printed-circuit-board|PCB]] designers face similar tradeoffs: more layers mean better signal integrity and power delivery but higher cost. A smartphone might use 10+ layer HDI (High Density Interconnect) PCBs with blind/buried vias; a simple [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|Arduino]] uses 2 layers. The industry constantly pushes these boundaries as Moore's Law slows and "More than Moore" packaging innovations (putting more function into the package rather than shrinking transistors) become critical.
 
 </details>
 
@@ -207,7 +207,7 @@ TRACING A MEMORY READ: CPU → DRAM
    Note: DRAM latency dominates! Packaging/PCB is <5% of total.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking "the chip" is what you see and solder onto a board. What you see is the *package*—a protective housing with the actual silicon die hidden inside, often smaller than your pinky nail. A CPU package might be 45mm × 45mm, but the die inside could be 200mm² (~14mm × 14mm). The package exists because you can't directly handle or solder to a bare die—it's too fragile, its connections are too small, and it would be destroyed by moisture and mechanical stress. The die is the brain; the package is the skull.
+**The one thing most outsiders get wrong about this is...** thinking "the chip" is what you see and solder onto a board. What you see is the *package*—a protective housing with the actual [[learning/notes/quick-context/silicon-die|silicon die]] hidden inside, often smaller than your pinky nail. A CPU package might be 45mm × 45mm, but the die inside could be 200mm² (~14mm × 14mm). The package exists because you can't directly handle or solder to a bare die—it's too fragile, its connections are too small, and it would be destroyed by moisture and mechanical stress. The die is the brain; the package is the skull.
 
 </details>
 
@@ -218,13 +218,13 @@ TRACING A MEMORY READ: CPU → DRAM
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are actually built on silicon wafers using photolithography; explains why die size and yield matter for cost.
 
-- **Signal Integrity** — The study of how electrical signals degrade as they travel through packages and PCBs; why trace length, impedance matching, and layer stackup matter.
+- **Signal Integrity** — The study of how electrical signals degrade as they travel through packages and PCBs; why trace length, [[learning/notes/quick-context/impedance-and-reactance|impedance]] matching, and layer stackup matter.
 
 - **Power Delivery Network (PDN)** — How voltage is delivered from wall outlet → PCB → package → die; critical because modern chips draw 100+ amps at <1V.
 
 - **Thermal Management** — Heat generated in the die must escape through the package and into heatsinks; packaging choices directly affect thermal resistance.
 
-- **SMT (Surface Mount Technology)** — The automated process of placing and soldering packaged components onto PCBs; constrains what package types are practical.
+- **SMT (Surface Mount Technology)** — The automated process of placing and [[learning/notes/quick-context/soldering|soldering]] packaged components onto PCBs; constrains what package types are practical.
 
 </details>
 
@@ -234,7 +234,7 @@ TRACING A MEMORY READ: CPU → DRAM
 **Q1:** Why can't you solder wires directly to a silicon die's transistors?
 <details>
 <summary>Answer</summary>
-Transistors are ~5nm in size—far smaller than any wire or soldering tool. The die's bond pads (~50 μm) are the smallest practical connection point, and even those require specialized wire bonding or flip-chip processes, not conventional soldering. The packaging hierarchy exists specifically to bridge this scale gap. See: The Core Problem
+Transistors are ~5nm in size—far smaller than any wire or soldering tool. The die's bond pads (~50 μm) are the smallest practical connection point, and even those require specialized wire bonding or [[learning/notes/quick-context/flip-chip|flip-chip]] processes, not conventional soldering. The packaging hierarchy exists specifically to bridge this scale gap. See: The Core Problem
 </details>
 
 **Q2:** What's the key advantage of flip-chip packaging over wire bonding?

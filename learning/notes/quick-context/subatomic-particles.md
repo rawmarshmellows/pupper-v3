@@ -11,7 +11,7 @@ created: 2026-02-14
 
 ## The Core Problem
 
-Everything around you—your body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What holds an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear power.
+Everything around you—your body, your computer, the air you breathe—is made of atoms. But what makes a carbon [[learning/notes/quick-context/atoms-molecules-polymers-basics|atom]] different from an oxygen atom? What holds an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear [[learning/notes/quick-context/power-watts-joules|power]].
 
 ## 5 Essential Terms
 
@@ -191,7 +191,7 @@ INSIDE PROTONS AND NEUTRONS: QUARKS
 
 ## Why the Nucleus Doesn't Fly Apart
 
-Here's a puzzle: protons are all positively charged. Positive charges repel each other (electromagnetism). So why doesn't the nucleus explode?
+Here's a puzzle: protons are all positively charged. Positive charges repel each other ([[learning/notes/quick-context/electromagnetism|electromagnetism]]). So why doesn't the nucleus explode?
 
 ```
 THE NUCLEAR STABILITY PUZZLE
@@ -537,7 +537,7 @@ SODIUM IN WATER — A Subatomic Explanation
     The energy required to remove that electron matters enormously.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking electrons orbit the nucleus like planets orbit the sun. They don't. Electrons exist as probability clouds—the electron is statistically more likely to be found in certain regions, but it doesn't trace a definite path. This matters because it explains why atoms can bond (electron clouds overlap), why quantum tunneling works (electrons can "teleport" through barriers), and why semiconductor physics requires quantum mechanics. For basic chemistry, the planetary model is a useful lie. For understanding modern electronics at a fundamental level, you need the quantum picture.
+**The one thing most outsiders get wrong about this is...** thinking electrons orbit the nucleus like planets orbit the sun. They don't. Electrons exist as probability clouds—the electron is statistically more likely to be found in certain regions, but it doesn't trace a definite path. This matters because it explains why atoms can bond (electron clouds overlap), why quantum tunneling works (electrons can "teleport" through barriers), and why [[learning/notes/quick-context/semiconductor-fabrication|semiconductor]] physics requires quantum mechanics. For basic chemistry, the planetary model is a useful lie. For understanding modern electronics at a fundamental level, you need the quantum picture.
 
 </details>
 
@@ -552,9 +552,9 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[learning/notes/micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
+- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The [[learning/notes/quick-context/electrodes|electrode]] potential differences come from how strongly different atoms hold their electrons.
 
 - **Radioactivity and Nuclear Physics** — When the nucleus is unstable (too many or too few neutrons), it decays by emitting particles. Alpha decay, beta decay, and gamma radiation all involve subatomic particle transformations.
 
