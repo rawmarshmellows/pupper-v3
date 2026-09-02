@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Controlling How Much Current Flows
 
-Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more voltage it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
+Imagine connecting an LED directly to a 9V [[learning/notes/quick-context/galvanic-cells-batteries|battery]]. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more [[learning/notes/quick-context/voltage|voltage]] it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
 
 ## 5 Essential Terms
 
@@ -26,7 +26,7 @@ Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at
 <details>
 <summary><strong>How It Works</strong></summary>
 
-At the atomic level, resistance comes from electrons colliding with atoms as they flow through a material. Metals have lots of free electrons but the atoms still get in the way—each collision transfers energy from the electron to the atom, which vibrates more (heat). Longer, thinner wires have more resistance; shorter, thicker wires have less.
+At the atomic level, resistance comes from electrons colliding with atoms as they flow through a material. Metals have lots of free electrons but the atoms still get in the way—each collision transfers energy from the electron to the [[learning/notes/quick-context/atoms-molecules-polymers-basics|atom]], which vibrates more (heat). Longer, thinner wires have more resistance; shorter, thicker wires have less.
 
 ```
 OHM'S LAW: THE FOUNDATION
@@ -167,7 +167,7 @@ Values like 4.7kΩ and 2.2kΩ come from the E12/E24 series—logarithmically spa
 
 ## Pull-Up Resistors: Making Digital Signals Reliable
 
-Every I2C bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
+Every [[learning/notes/micro-context/i2c|I2C]] bus, every button input, every [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
 
 ```
 THE PROBLEM: FLOATING INPUTS
@@ -211,13 +211,13 @@ I2C BUS PULL-UPS
 
 - **[[quick-context/voltage-current-causality]]** — V = IR is a *constraint*, not a causal arrow. Whether voltage causes current or current causes voltage depends on what's driving the circuit (voltage source vs. current source).
 
-- **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and frequency response.
+- **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and [[learning/notes/quick-context/frequency-and-filtering|frequency]] response.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern transistor power delivery.
+- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern [[learning/notes/quick-context/transistor|transistor]] [[learning/notes/quick-context/power-watts-joules|power]] delivery.
 
 - **[[quick-context/transistor]]** — Resistors set bias points for transistors, limit base/gate current, and form loads in amplifier circuits.
 
-- **[[quick-context/thermal-noise-electronics]]** — Every resistor generates thermal noise: V_noise = sqrt(4kTRB). Higher resistance = more noise, setting fundamental limits on sensitive analog circuits.
+- **[[quick-context/thermal-noise-electronics]]** — Every resistor generates [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]]: V_noise = sqrt(4kTRB). Higher resistance = more noise, setting fundamental limits on sensitive analog circuits.
 
 - **[[learning/notes/small-context/pull-up-pull-down-resistors]]** — How a single resistor plus a button turns a floating GPIO into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
 
@@ -238,7 +238,7 @@ I2C BUS PULL-UPS
 **Series: 20kΩ. Parallel: 5kΩ.** Series adds directly. Parallel: (10k × 10k)/(10k + 10k) = 5kΩ. Parallel is always less than the smallest individual resistor.
 </details>
 
-**Q3:** What resistor values create a voltage divider that converts 12V to ~3.3V?
+**Q3:** What resistor values create a [[learning/notes/quick-context/parallel-vs-series-voltage|voltage divider]] that converts 12V to ~3.3V?
 <details>
 <summary>Answer</summary>
 **R1 = 27kΩ, R2 = 10kΩ → Vout = 3.24V.** Need R1/R2 = (12-3.3)/3.3 ≈ 2.64. With R2 = 10kΩ, R1 = 26.4kΩ. Nearest standard value is 27kΩ, giving 3.24V.
@@ -253,7 +253,7 @@ I2C BUS PULL-UPS
 **Q5:** Why can't you use a very high-value pull-up resistor (e.g., 10MΩ) on a digital input?
 <details>
 <summary>Answer</summary>
-**The RC time constant becomes too large.** Every wire has parasitic capacitance. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
+**The RC time constant becomes too large.** Every wire has parasitic [[learning/notes/quick-context/capacitance|capacitance]]. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
 </details>
 
 </details>

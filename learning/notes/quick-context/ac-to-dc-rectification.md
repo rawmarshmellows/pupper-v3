@@ -3,15 +3,16 @@ topic: AC-to-DC Rectification
 created: 2026-03-29
 ---
 
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/micro-context/ac-dc-current]]
+
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The [[learning/notes/quick-context/power-watts-joules|power]] grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady [[learning/notes/quick-context/voltage|voltage]].
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[learning/notes/quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
@@ -28,7 +29,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 
 ### Step 1: AC from the Grid
 
-AC is produced by rotating a coil in a magnetic field (generator), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
+AC is produced by rotating a coil in a [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] (generator), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
 
 ```
 AC from the wall (e.g. 120V, 60 Hz):
@@ -126,7 +127,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[learning/notes/quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):
@@ -152,7 +153,7 @@ The RC time constant (R_load x C) determines how much ripple remains. Bigger cap
 | **Full-bridge** | 4 | Uses both halves, less ripple, smaller cap | 1.4V total drop (2 diodes always in series), more components |
 | **Synchronous rectification** | 0 (MOSFETs) | Lowest loss (~50mV drop), highest efficiency | Complex gate drive, expensive, used in modern switch-mode supplies |
 
-The 1.4V drop matters most at low voltages. Rectifying 120V AC? The 1.4V is negligible (1.2%). Rectifying 5V AC for USB? That 1.4V is a 28% loss -- this is why modern USB chargers use switch-mode topologies with synchronous rectification instead of simple bridge rectifiers.
+The 1.4V drop matters most at low voltages. Rectifying 120V AC? The 1.4V is negligible (1.2%). Rectifying 5V AC for [[learning/notes/quick-context/usb-peripheral-hardware|USB]]? That 1.4V is a 28% loss -- this is why modern USB chargers use switch-mode topologies with synchronous rectification instead of simple bridge rectifiers.
 
 </details>
 
@@ -170,7 +171,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 ```
 
 1. **120V AC from the wall** -- alternating 60 times/second
-2. **Transformer steps down** to ~7V AC (modern chargers use high-frequency switching instead)
+2. **Transformer steps down** to ~7V AC (modern chargers use high-[[learning/notes/quick-context/frequency-and-filtering|frequency]] switching instead)
 3. **Bridge rectifier** flips both halves positive: ~7V pulsating DC, minus 1.4V diode drop = ~5.6V pulsating
 4. **Filter capacitor** smooths the pulses into ~5.6V with small ripple
 5. **Voltage regulator** (linear or switching) locks the output at exactly 5.0V
@@ -187,7 +188,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 ### Source Micro-Contexts (Glossary Stubs)
 
 - **[[micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
-- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
+- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, [[learning/notes/micro-context/reverse-and-forward-bias|forward bias]] (0.7V), reverse bias, breakdown voltage.
 - **[[micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
 - **[[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
 
@@ -222,7 +223,7 @@ Transformers only work with AC, and transformers allow stepping voltage up for e
 Half-wave throws away the entire negative half of AC, wasting 50% of the available power and producing large gaps the smoothing capacitor must fill. Full-bridge uses both halves, doubling the ripple frequency (easier to filter), requiring a smaller capacitor for the same ripple, and delivering more average power to the load.
 </details>
 
-**Q4:** A full-bridge rectifier outputs ~1.4V less than the AC peak. Where does this voltage go?
+**Q4:** A [[learning/notes/micro-context/full-bridge-rectifier|full-bridge rectifier]] outputs ~1.4V less than the AC peak. Where does this voltage go?
 <details>
 <summary>Answer</summary>
 Two diodes are always in the current path (one on each side of the bridge). Each silicon diode drops ~0.7V, so 2 x 0.7V = 1.4V is lost as heat in the diodes. This is why low-voltage supplies use Schottky diodes (~0.3V each, 0.6V total drop) or synchronous rectification with MOSFETs (~50mV drop).
@@ -231,7 +232,7 @@ Two diodes are always in the current path (one on each side of the bridge). Each
 **Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
 <details>
 <summary>Answer</summary>
-The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the capacitance. To reduce ripple under heavier load, you need a larger capacitor.
+The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the [[learning/notes/quick-context/capacitance|capacitance]]. To reduce ripple under heavier load, you need a larger capacitor.
 </details>
 
 </details>

@@ -3,13 +3,13 @@ topic: USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
-> **TL;DR:** When firmware writes a byte to a USB endpoint buffer, a dedicated hardware block inside the MCU — the **Serial Interface Engine (SIE)** — autonomously serializes it into a bitstream, encodes it using NRZI (where a "0" bit = voltage transition, "1" = no transition), inserts bit-stuffing to guarantee clock recovery, appends a CRC, and drives the D+/D- lines through push-pull [[learning/notes/micro-context/mosfet|MOSFET]] pairs that toggle between 3.3V and 0V at 12 MHz. The CPU's job ends at writing bytes to a buffer in SRAM; the SIE's transistor-level logic gates handle the rest in hardware, responding to host requests within ~500 ns — far too fast for firmware. The device can never transmit spontaneously; the host PC initiates every transaction.
+> **TL;DR:** When [[learning/notes/quick-context/firmware|firmware]] writes a byte to a USB endpoint buffer, a dedicated hardware block inside the [[learning/notes/micro-context/microcontroller|MCU]] — the **Serial Interface Engine (SIE)** — autonomously serializes it into a bitstream, encodes it using NRZI (where a "0" bit = [[learning/notes/quick-context/voltage|voltage]] transition, "1" = no transition), inserts bit-stuffing to guarantee clock recovery, appends a CRC, and drives the D+/D- lines through [[learning/notes/micro-context/push-pull-vs-open-drain|push-pull]] [[learning/notes/micro-context/mosfet|MOSFET]] pairs that toggle between 3.3V and 0V at 12 MHz. The CPU's job ends at writing bytes to a buffer in [[learning/notes/micro-context/sram|SRAM]]; the SIE's [[learning/notes/quick-context/transistor|transistor]]-level logic gates handle the rest in hardware, responding to host requests within ~500 ns — far too fast for firmware. The device can never transmit spontaneously; the host PC initiates every transaction.
 
 ## The Core Problem
 
-Your [[learning/notes/micro-context/stm32-microcontroller|MCU]] has a byte — a scan code, a sensor reading, a debug message — that needs to reach a PC over USB. The CPU can't bit-bang the USB data lines because full-speed USB requires toggling voltages at 12 MHz with sub-microsecond response times, plus simultaneously computing CRCs, inserting stuff bits, and encoding NRZI — all while running your main application. So MCUs contain a dedicated USB peripheral: a block of logic gates (built from [[learning/notes/quick-context/transistor|transistors]]) that handles the entire USB protocol in hardware. Firmware just writes bytes to a buffer and sets a flag; the hardware does the rest. Understanding how this peripheral works bridges the gap between "my code writes to a register" and "voltage transitions appear on a wire."
+Your [[learning/notes/micro-context/stm32-microcontroller|MCU]] has a byte — a scan code, a sensor reading, a debug message — that needs to reach a PC over USB. The CPU can't bit-bang the USB data lines because full-speed USB requires toggling voltages at 12 MHz with sub-microsecond response times, plus simultaneously computing CRCs, inserting stuff bits, and encoding NRZI — all while running your main application. So MCUs contain a dedicated USB peripheral: a block of logic gates (built from [[learning/notes/quick-context/transistor|transistors]]) that handles the entire USB protocol in hardware. Firmware just writes bytes to a buffer and sets a flag; the hardware does the rest. Understanding how this peripheral works bridges the gap between "my code writes to a [[learning/notes/quick-context/switches-to-registers-storing-data|register]]" and "voltage transitions appear on a wire."
 
 ## 5 Essential Terms
 
@@ -352,7 +352,7 @@ OUTPUT DRIVER — ONE PER DATA LINE (D+ and D-)
   same transistor physics as any digital circuit.
 ```
 
-The 22 $\Omega$ series resistor (external on some MCUs, integrated on others) plus the MOSFET's on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential impedance of the USB cable, minimizing signal reflections.
+The 22 $\Omega$ series [[learning/notes/quick-context/resistor|resistor]] (external on some MCUs, integrated on others) plus the [[learning/notes/micro-context/mosfet|MOSFET]]'s on-resistance ($R_{DS(on)}$) matches the 90 $\Omega$ differential [[learning/notes/quick-context/impedance-and-reactance|impedance]] of the USB cable, minimizing signal reflections.
 
 </details>
 
@@ -476,11 +476,11 @@ TRACING ONE BIT THROUGH THE HARDWARE PIPELINE
 
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — Where the bytes in the endpoint buffer physically live (SRAM = cross-coupled inverter pairs) and how the firmware itself exists as trapped electrons in the MCU's flash. The keyboard MCU section of that document is what spawned this one.
 
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], UART, and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/uart|UART]], and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
 
 - **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switches in the output drivers that physically create the voltage transitions on D+/D-. Same transistor physics as any digital output, just switching at 12 MHz.
 
-- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The SIE is built from the same logic gates (NAND, NOR, flip-flops) described in the compilation chain document. The CRC generator is a Linear Feedback Shift Register; the NRZI encoder is an XOR gate and a D flip-flop; the bit stuffer is a counter and a MUX.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The SIE is built from the same logic gates (NAND, NOR, flip-flops) described in the compilation chain document. The CRC generator is a Linear Feedback Shift Register; the NRZI encoder is an XOR gate and a [[learning/notes/quick-context/d-flip-flop|D flip-flop]]; the bit stuffer is a counter and a MUX.
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — How the keyboard MCU's firmware got into its flash in the first place. The factory programming process that writes the USB stack code to the chip.
 
@@ -516,13 +516,13 @@ The choice interacts with bit stuffing. The pathological case for clock recovery
 **Q4:** The CRC is computed by an LFSR (Linear Feedback Shift Register) that runs in parallel with the shift register. Why is it impractical to compute the CRC in firmware and pre-append it to the buffer?
 <details>
 <summary>Answer</summary>
-Two reasons. First, the CRC must be computed over the exact bitstream that goes on the wire, *including* the PID field that the SIE generates — firmware doesn't control PID selection (DATA0 vs DATA1 toggles automatically). Second, the CRC must be computed *after* bit stuffing decisions are made but *before* the stuff bits are inserted into the CRC calculation (stuff bits are not included in CRC). The SIE computes CRC inline as bits flow through the pipeline, feeding each data bit into the LFSR before the bit stuffer adds stuff bits. Firmware would need to replicate the SIE's internal state to get this right — and it would need to do it before the packet is even triggered, since there's no time during transmission. See: How It Works (Phase 4, step d)
+Two reasons. First, the CRC must be computed over the exact bitstream that goes on the wire, *including* the [[learning/notes/quick-context/pupper-lab1-pid-control|PID]] field that the SIE generates — firmware doesn't control PID selection (DATA0 vs DATA1 toggles automatically). Second, the CRC must be computed *after* bit stuffing decisions are made but *before* the stuff bits are inserted into the CRC calculation (stuff bits are not included in CRC). The SIE computes CRC inline as bits flow through the pipeline, feeding each data bit into the LFSR before the bit stuffer adds stuff bits. Firmware would need to replicate the SIE's internal state to get this right — and it would need to do it before the packet is even triggered, since there's no time during transmission. See: How It Works (Phase 4, step d)
 </details>
 
 **Q5:** A CH552 ($0.20, 8051 core at 24 MHz) and an STM32F4 ($3, Cortex-M4 at 168 MHz) both handle full-speed USB at the same 12 Mbit/s. Why doesn't the faster CPU give any USB speed advantage?
 <details>
 <summary>Answer</summary>
-Because the USB bit rate is determined by the SIE hardware and the USB specification, not the CPU. Both chips contain a SIE clocked at 48 MHz that handles NRZI, bit stuffing, CRC, and packet framing identically. The CPU only fills the endpoint buffer and sets a flag — a task that even the 8051 completes in microseconds, well before the host's next poll. The 12 Mbit/s line rate is a property of the USB full-speed physical layer specification, not the MCU's processing power. The faster CPU helps with *application* throughput (parsing data, running protocol stacks, handling multiple endpoints simultaneously), but the bottleneck is the bus, not the CPU. To get faster USB, you need high-speed USB (480 Mbit/s) — which requires a different PHY and a USB OTG peripheral, not a faster processor. See: The Key Tension
+Because the USB bit rate is determined by the SIE hardware and the USB specification, not the CPU. Both chips contain a SIE clocked at 48 MHz that handles NRZI, bit stuffing, CRC, and packet framing identically. The CPU only fills the endpoint buffer and sets a flag — a task that even the 8051 completes in microseconds, well before the host's next poll. The 12 Mbit/s line rate is a property of the USB full-speed physical layer specification, not the MCU's processing [[learning/notes/quick-context/power-watts-joules|power]]. The faster CPU helps with *application* throughput (parsing data, running protocol stacks, handling multiple endpoints simultaneously), but the bottleneck is the bus, not the CPU. To get faster USB, you need high-speed USB (480 Mbit/s) — which requires a different PHY and a USB OTG peripheral, not a faster processor. See: The Key Tension
 </details>
 
 </details>

@@ -531,15 +531,15 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[quick-context/pupper-lab7-vision-tracking]]** — Applies camera fundamentals directly: the Pupper's fisheye camera requires intrinsic calibration (K and distortion coefficients D) to undistort frames before running YOLOv5 object detection. The `cv2.fisheye.undistortImage()` call uses exactly the intrinsic parameters described here.
 
-- **[[quick-context/diode]]** — A photodiode is a specialized PN junction operated in reverse bias, where incident photons generate current proportional to light intensity. Every pixel on an image sensor is fundamentally a photodiode. The diode document's type table lists photodiodes as a key variant.
+- **[[quick-context/diode]]** — A photodiode is a specialized PN junction operated in reverse bias, where incident photons generate current proportional to light intensity. Every pixel on an image sensor is fundamentally a photodiode. The [[learning/notes/quick-context/diode|diode]] document's type table lists photodiodes as a key variant.
 
-- **[[micro-context/homogeneous-transformation-matrix]]** — The extrinsic matrix $[R|\mathbf{t}]$ is a homogeneous transformation — the same $4 \times 4$ matrix used in [[quick-context/pupper-lab2-forward-kinematics|robot kinematics]]. Camera pose estimation and robot forward kinematics use identical math.
+- **[[micro-context/homogeneous-transformation-matrix]]** — The extrinsic matrix $[R|\mathbf{t}]$ is a homogeneous transformation — the same $4 \times 4$ matrix used in [[quick-context/pupper-lab2-forward-kinematics|robot kinematics]]. Camera pose estimation and robot [[learning/notes/quick-context/pupper-lab2-forward-kinematics|forward kinematics]] use identical math.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip ADC. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
+- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]]. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
 
-- **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
+- **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[quick-context/silicon-die]]** — An image sensor IS a [[learning/notes/quick-context/silicon-die|silicon die]] — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 
@@ -550,7 +550,7 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** A photodiode in an image sensor is operated in reverse bias. Why reverse bias instead of forward bias, and how does incident light generate a signal?
+**Q1:** A photodiode in an image sensor is operated in reverse bias. Why reverse bias instead of [[learning/notes/micro-context/reverse-and-forward-bias|forward bias]], and how does incident light generate a signal?
 <details>
 <summary>Answer</summary>
 In reverse bias, the depletion zone is wide and the junction has a strong electric field but essentially no current. When a photon is absorbed in the silicon, it generates an electron-hole pair. The depletion zone's electric field sweeps this carrier across the junction, creating a photocurrent proportional to light intensity. Forward bias wouldn't work because the large forward current would swamp the tiny photocurrent — you need the "quiet" state of reverse bias so that the only current is from incident photons. See: How It Works, Stage 1 and [[micro-context/reverse-and-forward-bias]].

@@ -4,16 +4,18 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/bjt-specifications]]
+
 # Oxidation
 
 > **See also:** [[quick-context/anions-and-oxidation]]
 
-**Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
+**Definition:** The loss of electrons by an atom, ion, or [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]]—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
 
 ## How It Works
 
 - An atom or ion releases one or more electrons, increasing its oxidation state (becoming more positive).
-- The released electrons must be accepted by another species (the oxidizing agent), which undergoes reduction — the two half-reactions are always coupled.
+- The released electrons must be accepted by another species (the oxidizing agent), which undergoes [[learning/notes/quick-context/cations-and-reduction|reduction]] — the two half-reactions are always coupled.
 - The driving force is the difference in electron affinity: electrons flow from species that hold them weakly to species that attract them strongly.
 
 ```

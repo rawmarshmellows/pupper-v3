@@ -4,15 +4,17 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/buck-converter]]
+
 # Current Behavior with Inductors vs Capacitors
 
-**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
+**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, [[learning/notes/quick-context/voltage|voltage]] can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
 
 ## How It Works
 
-- An inductor stores energy in a magnetic field; increasing current builds the field gradually ($V = L \times dI/dt$), so current can't jump instantly.
-- A capacitor stores energy in an electric field; adding charge raises voltage gradually ($I = C \times dV/dt$), so voltage can't jump instantly.
-- Inductors pass DC freely (just a wire at steady state) but resist AC (high impedance at high frequency).
+- An [[learning/notes/quick-context/inductor|inductor]] stores energy in a [[learning/notes/quick-context/coil-magnetic-field|magnetic field]]; increasing current builds the field gradually ($V = L \times dI/dt$), so current can't jump instantly.
+- A [[learning/notes/quick-context/capacitor|capacitor]] stores energy in an electric field; adding charge raises voltage gradually ($I = C \times dV/dt$), so voltage can't jump instantly.
+- Inductors pass DC freely (just a wire at steady state) but resist AC (high [[learning/notes/quick-context/impedance-and-reactance|impedance]] at high [[learning/notes/quick-context/frequency-and-filtering|frequency]]).
 - Capacitors block DC (open circuit at steady state) but pass AC (low impedance at high frequency).
 
 ```

@@ -3,9 +3,10 @@ topic: Sandler KARE Account Segmentation
 created: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/mcdonald-kam-model]]
+
 # Sandler KARE Account Segmentation
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
 
 > **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), Recapture (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
 

@@ -4,9 +4,9 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
-> **TL;DR:** Glass transition temperature (Tg) is the temperature where polymer chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
+> **TL;DR:** Glass transition temperature (Tg) is the temperature where [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing [[learning/notes/quick-context/3d-printing-filament-types|3D printing]] materials that won't warp in hot environments like cars.
 
 # Glass Transition Temperature (Tg) - A Beginner's Guide
 
@@ -27,7 +27,7 @@ Plastics are made of **[[quick-context/atoms-molecules-polymers-basics|polymers]
 <details>
 <summary><strong>How It Works</strong></summary>
 
-At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **intermolecular forces**—weak attractions like van der Waals forces and hydrogen bonds between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
+At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **intermolecular forces**—weak attractions like [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] and hydrogen bonds between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
 
 This transition is not a sharp phase change like ice melting to water. Instead, it occurs over a temperature range (typically 10-30°C wide) where the material progressively softens. The Tg value reported is usually the midpoint of this transition. What matters practically is that mechanical properties change dramatically: the **modulus** (stiffness) can drop by a factor of 1000 between the glassy state and the rubbery state. Time also becomes a factor above Tg—even small loads will cause the material to slowly **creep** and permanently deform over hours or days as chains gradually slide past each other.
 
@@ -239,7 +239,7 @@ Related concepts that deepen your understanding of glass transition temperature:
 
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Understanding why amorphous polymers have a distinct Tg while semi-crystalline polymers have both Tg and a melting point (Tm).
 
-- **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high melt index means easier flow, which connects to how far above Tg you need to go for processing.
+- **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high [[learning/notes/quick-context/melt-index|melt index]] means easier flow, which connects to how far above Tg you need to go for processing.
 
 - **[[quick-context/3d-printing-filament-types]]** — Practical comparison of filament materials and their Tg values, helping you choose the right material for your application's thermal environment.
 
@@ -267,7 +267,7 @@ Above Tg, polymer chains gain mobility but don't instantly rearrange. The deform
 **Q3:** Nylon has a relatively low Tg (~50-70C) but is used in demanding automotive applications. How is this possible?
 <details>
 <summary>Answer</summary>
-Nylon is **semi-crystalline**, meaning it has both amorphous regions (which soften at Tg) and crystalline regions (which remain rigid until the melting point Tm, around 220C). The crystalline domains act as physical crosslinks that maintain structural integrity even when the amorphous regions soften. This is why semi-crystalline polymers can perform well above their Tg—their crystallinity provides heat resistance that purely amorphous materials lack.
+Nylon is **semi-crystalline**, meaning it has both amorphous regions (which soften at Tg) and crystalline regions (which remain rigid until the melting point Tm, around 220C). The crystalline domains act as physical crosslinks that maintain structural integrity even when the amorphous regions soften. This is why semi-crystalline polymers can perform well above their Tg—their [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|crystallinity]] provides heat resistance that purely amorphous materials lack.
 </details>
 
 **Q4:** You're designing a part that will see 90C operating temperature. You only have PLA filament. What post-processing technique might help, and what are its limitations?
@@ -279,7 +279,7 @@ Nylon is **semi-crystalline**, meaning it has both amorphous regions (which soft
 **Q5:** Why does polycarbonate (Tg ~147C) require higher printing temperatures and specialized equipment compared to PLA (Tg ~60C)?
 <details>
 <summary>Answer</summary>
-To extrude a polymer through a 3D printer nozzle, you must heat it well above its Tg to achieve sufficient chain mobility for flow. PLA flows nicely at 180-220C (about 120-160C above its Tg). Polycarbonate, with Tg at 147C, needs temperatures of 260-310C for proper flow. This demands an all-metal hotend (PTFE tubes degrade above ~250C), a heated bed at 100-120C to prevent warping, and often an enclosure to maintain ambient temperature. The same property that makes PC heat-resistant (high Tg from stiff molecular chains) makes it difficult to process.
+To extrude a polymer through a [[learning/notes/quick-context/3d-printer-hotends|3D printer]] nozzle, you must heat it well above its Tg to achieve sufficient chain mobility for flow. PLA flows nicely at 180-220C (about 120-160C above its Tg). Polycarbonate, with Tg at 147C, needs temperatures of 260-310C for proper flow. This demands an all-metal hotend (PTFE tubes degrade above ~250C), a heated bed at 100-120C to prevent warping, and often an enclosure to maintain ambient temperature. The same property that makes PC heat-resistant (high Tg from stiff molecular chains) makes it difficult to process.
 </details>
 
 </details>

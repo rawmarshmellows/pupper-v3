@@ -28,7 +28,7 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 
 Rusting is fundamentally an **electrochemical process**—it operates like a short-circuited [[quick-context/galvanic-cells-batteries|galvanic cell]] on the iron surface itself. Different regions of the same piece of metal act as anodes and cathodes, connected through the metal and through a thin film of water (the [[quick-context/electrolyte|electrolyte]]). At anodic sites, iron atoms lose electrons and dissolve into solution as Fe²⁺ ions. These electrons flow through the metal to cathodic sites, where they reduce dissolved oxygen. The separated half-reactions then recombine in solution: Fe²⁺ ions react with oxygen and water to form rust.
 
-The iron ions dissolve because water molecules **hydrate** them—the partially negative oxygen atoms of water surround the positive Fe²⁺ or Fe³⁺ ions, stabilizing them in solution through ion-dipole attraction. This hydration energy is what allows solid iron atoms to leave the metal surface and drift away as dissolved ions. Once dissolved, these ions migrate through the water film and eventually react with dissolved oxygen and hydroxide ions to precipitate as rust. The pitting and surface damage you see results from iron atoms literally leaving the solid metal, atom by atom.
+The iron ions dissolve because water molecules **hydrate** them—the partially negative oxygen atoms of water surround the positive Fe²⁺ or Fe³⁺ ions, stabilizing them in solution through ion-[[learning/notes/quick-context/dipole-dipole-interactions|dipole]] attraction. This hydration energy is what allows solid iron atoms to leave the metal surface and drift away as dissolved ions. Once dissolved, these ions migrate through the water film and eventually react with dissolved oxygen and hydroxide ions to precipitate as rust. The pitting and surface damage you see results from iron atoms literally leaving the solid metal, [[learning/notes/quick-context/atoms-molecules-polymers-basics|atom]] by atom.
 
 ```
 RUST FORMATION: The Electrochemical Corrosion Process
@@ -135,7 +135,7 @@ Protection vs. Cost vs. Practicality
 Corrosion engineers balance multiple competing strategies:
 
 - **Barrier methods** (paint, coatings, plating): Block oxygen and water from reaching the iron. Cheap but temporary—scratches expose fresh metal.
-- **Cathodic protection**: Attach a more reactive metal (zinc, magnesium) that corrodes preferentially, protecting the iron. This is "sacrificial anode" protection—the zinc is consumed instead of the iron.
+- **Cathodic protection**: Attach a more reactive metal (zinc, magnesium) that corrodes preferentially, protecting the iron. This is "sacrificial [[learning/notes/micro-context/anode|anode]]" protection—the zinc is consumed instead of the iron.
 - **Anodic protection**: For certain environments, maintain the metal at a potential where a stable passive oxide forms. Works for stainless steel but requires careful control.
 - **Alloying**: Add chromium, nickel, or other elements to create stainless steel with a self-healing oxide layer. Expensive but permanent.
 - **Environment control**: Remove oxygen, dehumidify, add corrosion inhibitors. Practical for enclosed systems (boilers, pipelines) but not outdoor structures.
@@ -236,18 +236,18 @@ CONTRAST: What happens with a scratched TIN-PLATED can
     while galvanized steel resists rust even when scratched.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an electrolyte. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while reduction (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
+**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an [[learning/notes/quick-context/electrolyte|electrolyte]]. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: [[learning/notes/micro-context/oxidation|oxidation]] (iron dissolving) happens at anodic spots while [[learning/notes/quick-context/cations-and-reduction|reduction]] (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in electrolysis (Q3) demonstrates how iron at an anode actively dissolves.
+- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-[[learning/notes/micro-context/cathode|cathode]] pairs on the iron surface. The iron nail in [[learning/notes/quick-context/electrolysis|electrolysis]] (Q3) demonstrates how iron at an anode actively dissolves.
 
 - **[[quick-context/anions-and-oxidation]]** — At anodic regions, iron loses electrons (oxidation: Fe → Fe²⁺ + 2e⁻). Understanding oxidation as electron loss clarifies why the iron dissolves rather than staying solid.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery voltage also predict which metal corrodes when two are in contact.
+- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted [[learning/notes/quick-context/galvanic-cells-batteries|galvanic cell]]. The standard [[learning/notes/quick-context/electrodes|electrode]] potentials that predict battery [[learning/notes/quick-context/voltage|voltage]] also predict which metal corrodes when two are in contact.
 
 - **[[quick-context/electrolyte]]** — Water (especially with dissolved salts) acts as the electrolyte enabling ion transport between anodic and cathodic regions. No water = no electrolyte = no rust.
 

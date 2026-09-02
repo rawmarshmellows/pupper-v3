@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/quick-context/absolute-orientation]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Bridging Human Intent to Motor Commands
 
-Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
+Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
 
 The abstraction layers exist because manufacturing needs both determinism (a welding robot must follow the exact same path every cycle) and flexibility (reprogramming for a new product shouldn't require a PhD in control theory). Without these layers, you'd either have unmaintainable low-level code or be locked into vendor-specific high-level tools with no escape hatch.
 
@@ -64,7 +64,7 @@ High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up 
 
 Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
 
-The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
+The rise of "real-time capable" middleware (EtherCAT, [[learning/notes/quick-context/ros2-architecture|ROS2]] with DDS) is an attempt to have both, but the [[learning/notes/quick-context/impedance-and-reactance|impedance]] mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
 
 </details>
 
@@ -139,7 +139,7 @@ void realtime_loop() {
 
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
-- **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
+- **[[quick-context/plc-vs-software-control]]** - The [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] side of the robot-to-cell coordination problem
 - **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
 
 </details>

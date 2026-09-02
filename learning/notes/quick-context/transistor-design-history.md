@@ -3,9 +3,9 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/current-mirror]]
 
-> **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
+> **TL;DR:** [[learning/notes/quick-context/transistor|Transistor]] design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar [[learning/notes/micro-context/mosfet|MOSFET]] (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
 # Transistor Design History
 
@@ -415,13 +415,13 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 
 - **[[quick-context/transistor|Transistor Fundamentals]]** — How MOSFETs actually work (gate, source, drain, channel). Essential prerequisite for understanding why architectural changes matter.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both BJT and MOSFET rely on carefully controlled doping.
+- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both [[learning/notes/micro-context/bjt-mosfet-igbt|BJT]] and MOSFET rely on carefully controlled doping.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different [[quick-context/semiconductor-fabrication|photolithography]] and etching processes.
 
 - **[[quick-context/transistor-analog-to-digital|Transistor Analog-to-Digital Behavior]]** — Why leakage current matters and how it drives architectural innovation. Covers the "short channel effects" that killed planar MOSFETs.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — How transistors fit into the larger packaging system. Transistor architecture affects power delivery and thermal management at every level.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — How transistors fit into the larger packaging system. Transistor architecture affects [[learning/notes/quick-context/power-watts-joules|power]] delivery and thermal management at every level.
 
 - **Moore's Law** — The economic driver behind transistor scaling. Gordon Moore (co-founder of Intel) observed transistor density doubling every ~2 years, creating the pressure that drives architectural innovation.
 
@@ -430,10 +430,10 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** What was the key advantage of BJT over point-contact transistors, and why did MOSFET eventually replace BJT for digital logic?
+**Q1:** What was the key advantage of BJT over point-contact transistors, and why did MOSFET eventually replace BJT for [[learning/notes/quick-context/code-to-gates-and-bootstrapping|digital logic]]?
 <details>
 <summary>Answer</summary>
-BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-semiconductor point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is voltage-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"
+BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-[[learning/notes/quick-context/semiconductor-fabrication|semiconductor]] point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is [[learning/notes/quick-context/voltage|voltage]]-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"
 </details>
 
 **Q2:** What fundamental limitation of planar MOSFETs made FinFET necessary?

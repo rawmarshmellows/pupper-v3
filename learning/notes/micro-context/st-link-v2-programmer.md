@@ -4,17 +4,19 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]]
+
 # ST-Link V2 Programmer
 
 > **See also:** [[micro-context/swd-serial-wire-debug|SWD]] | [[quick-context/firmware|Flashing Firmware]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/spinev1-elf|SPIneV1.elf]]
 
-**Definition:** A debug probe — a USB device that acts as a translator between your PC and an [[micro-context/stm32-microcontroller|STM32]] [[micro-context/microcontroller|microcontroller]]. It speaks USB on one side and the [[micro-context/swd-serial-wire-debug|SWD]] protocol (2 wires: SWDIO + SWCLK) on the other. Its primary role is [[quick-context/firmware|flashing firmware]] — getting compiled code like [[micro-context/spinev1-elf|SPIneV1.elf]] from your computer into the STM32's flash memory. It also enables live debugging via GDB: hardware breakpoints (Cortex-M4 has 6), single-stepping, and real-time register/memory inspection — all through the same 2-wire connection. The official ST-LINK/V2 (~$22-25) supports SWD + JTAG + SWO trace. Cheap $7-13 clones like the **HiLetgo ST-Link V2** (aluminum USB stick) use an STM32F103C8T6 internally and support SWD only. "Emulator" in clone listings is a translation artifact from Chinese 仿真器 (historically meant in-circuit emulator, now means any debug probe).
+**Definition:** A debug probe — a [[learning/notes/quick-context/usb-peripheral-hardware|USB]] device that acts as a translator between your PC and an [[micro-context/stm32-microcontroller|STM32]] [[micro-context/microcontroller|microcontroller]]. It speaks USB on one side and the [[micro-context/swd-serial-wire-debug|SWD]] protocol (2 wires: SWDIO + SWCLK) on the other. Its primary role is [[quick-context/firmware|flashing firmware]] — getting compiled code like [[micro-context/spinev1-elf|SPIneV1.elf]] from your computer into the [[learning/notes/micro-context/stm32-microcontroller|STM32]]'s flash memory. It also enables live debugging via GDB: hardware breakpoints (Cortex-M4 has 6), single-stepping, and real-time [[learning/notes/quick-context/switches-to-registers-storing-data|register]]/memory inspection — all through the same 2-wire connection. The official ST-LINK/V2 (~$22-25) supports SWD + JTAG + SWO trace. Cheap $7-13 clones like the **HiLetgo ST-Link V2** (aluminum USB stick) use an STM32F103C8T6 internally and support [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] only. "Emulator" in clone listings is a translation artifact from Chinese 仿真器 (historically meant in-circuit emulator, now means any debug probe).
 
 ## How It Works
 
 - Your PC runs OpenOCD (or similar), which sends flash/debug commands over USB bulk transfers to the ST-Link probe.
-- Inside the probe, an STM32F103 MCU translates USB commands into SWD signals by bit-banging its GPIO pins (toggling SWDIO and SWCLK in the correct protocol sequence).
-- The SWD signals reach the target STM32's Debug Port, which routes read/write requests to the chip's internal flash, SRAM, and peripheral registers.
+- Inside the probe, an STM32F103 [[learning/notes/micro-context/microcontroller|MCU]] translates USB commands into SWD signals by bit-banging its GPIO pins (toggling SWDIO and SWCLK in the correct protocol sequence).
+- The SWD signals reach the target STM32's Debug Port, which routes read/write requests to the chip's internal flash, [[learning/notes/micro-context/sram|SRAM]], and peripheral registers.
 - Responses travel back the same path: target → SWD → ST-Link GPIO → USB → OpenOCD → your screen.
 
 ```
@@ -43,7 +45,7 @@ updated: 2026-03-27
 
 ## What's Inside the ST-Link
 
-The ST-Link isn't magic — it's just another [[micro-context/microcontroller|microcontroller]] acting as a middleman. Crack open a clone and you'll find an **STM32F103C8T6** (a cheaper, smaller STM32) running proprietary firmware. That internal MCU does two jobs: speak USB to your PC and bit-bang the [[micro-context/swd-serial-wire-debug|SWD]] protocol out its GPIO pins to the target chip.
+The ST-Link isn't magic — it's just another [[micro-context/microcontroller|microcontroller]] acting as a middleman. Crack open a clone and you'll find an **STM32F103C8T6** (a cheaper, smaller STM32) running proprietary [[learning/notes/quick-context/firmware|firmware]]. That internal MCU does two jobs: speak USB to your PC and bit-bang the [[micro-context/swd-serial-wire-debug|SWD]] protocol out its GPIO pins to the target chip.
 
 ```
 INSIDE THE ST-LINK CLONE (HiLetgo):
@@ -100,7 +102,7 @@ WHAT BIT-BANGING LOOKS LIKE (simplified):
       set_gpio(SWCLK, LOW)
 ```
 
-The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per clock edge for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
+The firmware runs at 72MHz, which is fast enough to generate SWD clock signals at 1-4MHz (plenty of cycles per [[learning/notes/micro-context/clock-edges|clock edge]] for the bit-bang loop). The official ST-Link uses a similar approach but with more sophisticated firmware that also handles JTAG and SWO trace.
 
 **3. Wire layer — ST-Link to target**
 
@@ -126,4 +128,4 @@ COMPLETE ROUND-TRIP (e.g., "write 0xDEADBEEF to address 0x20000000"):
 
 The ST-Link's simplicity is the point — it's just a $1 MCU bit-banging GPIOs. That's why clones can cost $7-13 and still work. The intelligence lives in **OpenOCD on your PC** (which knows how to orchestrate flash erase/write sequences, manage breakpoints, etc.) and in the **target chip's CoreSight debug hardware** (which provides the memory-mapped access). The ST-Link in the middle is a relatively dumb USB-to-SWD bridge.
 
-**Key insight:** The ST-Link is the essential bridge for getting code onto the Pupper's brain — without it, there's no way to program the STM32. For hobbyist use, a $10 clone + OpenOCD provides the same flash/debug experience as official tools. ST's CubeIDE (1.9+) actively blocks clones via firmware checks, but open-source `stlink` utilities work fine. Clone pinouts vary between units — always verify with a multimeter.
+**Key insight:** The ST-Link is the essential bridge for getting code onto the Pupper's brain — without it, there's no way to program the STM32. For hobbyist use, a $10 clone + OpenOCD provides the same flash/debug experience as official tools. ST's CubeIDE (1.9+) actively blocks clones via firmware checks, but open-source `stlink` utilities work fine. Clone pinouts vary between units — always verify with a [[learning/notes/quick-context/oscilloscope-and-multimeter|multimeter]].

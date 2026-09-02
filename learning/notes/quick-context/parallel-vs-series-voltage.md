@@ -3,9 +3,9 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
-> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
+> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same [[learning/notes/quick-context/power-watts-joules|power]] supply rails (all connected in parallel to Vdd and GND), each [[learning/notes/quick-context/transistor|transistor]] sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not [[learning/notes/quick-context/voltage|voltage]].
 
 # Why Billions of Transistors Don't Need Billions of Volts
 
@@ -322,7 +322,7 @@ THE MATH THAT MATTERS:
 
 - **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] through package [[learning/notes/quick-context/substrate-ic-packaging|substrate]] to the die. Each level has dedicated power planes.
 
 - **Ohm's Law (V = IR)** — The fundamental relationship. At high currents, even tiny resistances cause significant voltage drops.
 
@@ -354,7 +354,7 @@ THE MATH THAT MATTERS:
 **Q4:** If transistors were connected in series instead of parallel (like batteries in a flashlight), what would happen?
 <details>
 <summary>Answer</summary>
-**You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
+**You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Digital logic]] requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
 </details>
 
 **Q5:** A power supply provides 12V at 15A to a voltage regulator, which outputs 0.6V to a CPU. Assuming 90% efficiency, how much current can the VRM deliver to the CPU?

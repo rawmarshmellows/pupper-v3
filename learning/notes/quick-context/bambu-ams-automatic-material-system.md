@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-The AMS (Automatic Material System) solves two problems that plague FDM 3D printing: **multi-color/multi-material printing** and **filament runout mid-print**. Without an AMS, printing in multiple colors requires either manual filament swaps (pause print → yank filament → load new color → resume → repeat dozens of times) or buying separate printers for each material. A 4-color print might need 50+ manual swaps over an 8-hour print—one missed swap ruins the entire job. The AMS automates this: it holds 4 spools, and the printer automatically retracts, cuts, and loads the next color as needed. Beyond multi-color, the AMS enables **automatic spool backup**—when one spool runs out mid-print, it seamlessly switches to the next spool of the same material without human intervention. This turns unattended overnight prints from risky gambles into reliable workflows. The system also provides humidity monitoring and RFID auto-detection for Bambu filaments, automatically applying optimal temperature and flow settings.
+The AMS (Automatic Material System) solves two problems that plague FDM [[learning/notes/quick-context/3d-printing-filament-types|3D printing]]: **multi-color/multi-material printing** and **filament runout mid-print**. Without an AMS, printing in multiple colors requires either manual filament swaps (pause print → yank filament → load new color → resume → repeat dozens of times) or buying separate printers for each material. A 4-color print might need 50+ manual swaps over an 8-hour print—one missed swap ruins the entire job. The AMS automates this: it holds 4 spools, and the printer automatically retracts, cuts, and loads the next color as needed. Beyond multi-color, the AMS enables **automatic spool backup**—when one spool runs out mid-print, it seamlessly switches to the next spool of the same material without human intervention. This turns unattended overnight prints from risky gambles into reliable workflows. The system also provides humidity monitoring and RFID auto-detection for Bambu filaments, automatically applying optimal temperature and flow settings.
 
 ## 5 Essential Terms
 
@@ -27,9 +27,9 @@ The AMS (Automatic Material System) solves two problems that plague FDM 3D print
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's firmware. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the hotend and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
+The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's [[learning/notes/quick-context/firmware|firmware]]. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the [[learning/notes/quick-context/3d-printer-hotends|hotend]] and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
 
-For loading, the AMS uses motorized rollers to feed the selected filament through its internal path, into the hub, and down the reverse-Bowden tube to the extruder. The extruder gears then grip the filament and push it through the hotend. Before printing resumes, the printer must **purge** the old color from the nozzle—this is done by extruding material into a waste tower or into the model's infill until only the new color emerges. RFID readers at each slot detect Bambu-branded spools and automatically configure temperature, flow rate, and material type; third-party filaments require manual profile selection in the slicer software.
+For loading, the AMS uses motorized rollers to feed the selected filament through its internal path, into the hub, and down the reverse-Bowden tube to the extruder. The extruder gears then grip the filament and push it through the hotend. Before printing resumes, the printer must **purge** the old color from the nozzle—this is done by extruding material into a waste tower or into the model's infill until only the new color emerges. RFID readers at each slot detect Bambu-branded spools and automatically configure temperature, flow rate, and material type; third-party filaments require manual profile selection in the [[learning/notes/quick-context/3d-printing-slicer-settings|slicer]] software.
 
 ```
 FILAMENT CHANGE SEQUENCE

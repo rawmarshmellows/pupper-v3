@@ -5,7 +5,7 @@ updated: 2026-01-21
 clarification: 2026-01-21
 ---
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -28,7 +28,7 @@ Imagine you're trying to understand why water boils at 100°C while methane (nat
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Dipole-dipole interactions arise from the unequal sharing of electrons within molecules. When two atoms in a bond have different electronegativities (different "greediness" for electrons), the more electronegative atom pulls the shared electrons closer to itself. This creates a permanent charge imbalance: one end of the molecule becomes slightly negative (electron-rich) and the other becomes slightly positive (electron-poor). These partial charges are written as delta-minus (d-) and delta-plus (d+). Once a molecule has this permanent dipole, it can interact with other polar molecules—the positive end of one molecule attracts the negative end of another, creating an organized arrangement that requires energy to disrupt.
+Dipole-dipole interactions arise from the unequal sharing of electrons within molecules. When two atoms in a bond have different electronegativities (different "greediness" for electrons), the more electronegative atom pulls the shared electrons closer to itself. This creates a permanent charge imbalance: one end of the [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]] becomes slightly negative (electron-rich) and the other becomes slightly positive (electron-poor). These partial charges are written as delta-minus (d-) and delta-plus (d+). Once a molecule has this permanent dipole, it can interact with other polar molecules—the positive end of one molecule attracts the negative end of another, creating an organized arrangement that requires energy to disrupt.
 
 The strength of a dipole-dipole interaction depends on three factors: (1) the magnitude of the partial charges (bigger electronegativity difference = stronger dipole), (2) the distance between molecules (closer = stronger, falls off with distance squared), and (3) the orientation of the molecules (aligned dipoles attract more strongly than randomly oriented ones). In a liquid, molecules are constantly tumbling and rotating, so the orientation factor averages out—but on average, molecules spend more time in attractive orientations because those are lower-energy configurations. This is why polar liquids like water have higher boiling points than nonpolar liquids of similar molecular weight.
 
@@ -271,7 +271,7 @@ POLAR (HCl) - molecules stick:     NONPOLAR (H2) - molecules slip past:
 - **[[quick-context/van-der-waals-forces]]** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
 - **[[quick-context/hydrogen-bonds-beginners]]** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
 - **[[quick-context/covalent-bonds]]** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
-- **[[quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
+- **[[quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] properties like flexibility, melting point, and solubility.
 
 </details>
 

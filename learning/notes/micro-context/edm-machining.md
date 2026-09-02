@@ -4,16 +4,18 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-turning]]
+
 # EDM Machining (Electrical Discharge Machining)
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/electrolysis]] | [[quick-context/electrodes]]
 
-**Definition:** A subtractive manufacturing process that removes metal by creating rapid electrical sparks between an electrode and the workpiece, vaporizing tiny amounts of material without mechanical contact. Ideal for cutting hard metals and complex shapes that conventional tools cannot machine.
+**Definition:** A subtractive manufacturing process that removes metal by creating rapid electrical sparks between an [[learning/notes/quick-context/electrodes|electrode]] and the workpiece, vaporizing tiny amounts of material without mechanical contact. Ideal for cutting hard metals and complex shapes that conventional tools cannot machine.
 
 ## How It Works
 
 - A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid.
-- High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+- High-[[learning/notes/quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 - The dielectric fluid flushes away debris and re-insulates the gap between discharges.
 - The electrode slowly advances as material is removed, reproducing its shape as a cavity in the workpiece.
 

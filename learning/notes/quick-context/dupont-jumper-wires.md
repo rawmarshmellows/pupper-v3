@@ -3,13 +3,15 @@ topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
 
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/bga-ball-grid-array]]
+
 # DuPont Jumper Wires
 
-> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
+> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and [[learning/notes/micro-context/microcontroller|microcontroller]] circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without soldering. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[learning/notes/quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
 
 ## 5 Essential Terms
 
@@ -109,9 +111,9 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 
 **The practitioner debate:** When should you graduate from DuPont wires to proper connectors?
 
-- **"Prototype only" camp:** DuPont wires should never leave the bench. Any project that moves past breadboard should use JST, Molex, or soldered connections.
+- **"Prototype only" camp:** DuPont wires should never leave the bench. Any project that moves past breadboard should use [[learning/notes/micro-context/jst-connector-families|JST]], Molex, or soldered connections.
 - **"Good enough" camp:** For low-current, low-vibration applications (desktop sensor stations, display projects), DuPont connections with hot glue strain relief work fine permanently.
-- **The middle ground:** Use DuPont for signal-level connections (<100mA) in static environments, but always use rated connectors for power delivery and anything that moves.
+- **The middle ground:** Use DuPont for signal-level connections (<100mA) in static environments, but always use rated connectors for [[learning/notes/quick-context/power-watts-joules|power]] delivery and anything that moves.
 
 ### Ratings: Datasheet vs Reality
 
@@ -126,7 +128,7 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- Wiring a servo to an Arduino</summary>
+<summary><strong>Concrete Example</strong> -- Wiring a servo to an [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|Arduino]]</summary>
 
 A typical robotics task: connecting an RC servo motor to an Arduino Uno.
 
@@ -198,11 +200,11 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, [[learning/notes/micro-context/i2c|I2C]] failures, serial corruption. When debugging, suspect the physical layer first.
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
-6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from oxidation, vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
+6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from [[learning/notes/micro-context/oxidation|oxidation]], vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
 
 7. **Mixing 2.54mm and 2.0mm pitch** -- Some boards (certain ESP modules, fine-pitch breakouts) use 2.0mm headers. Standard DuPont connectors won't seat properly.
 
@@ -217,7 +219,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 - **Wire gauge (AWG)** -- Understanding current capacity vs wire thickness; critical for knowing when DuPont jumpers are adequate
 - **Crimping** -- The mechanical process of attaching contacts to wire; the skill needed to make custom DuPont cables
 - **RC servo connectors** -- 3-pin DuPont-compatible connectors used throughout hobby robotics and RC models
-- **I2C / Qwiic / STEMMA QT** -- Modern standardized connector ecosystems (JST SH 4-pin) replacing ad-hoc DuPont wiring for sensor buses
+- **I2C / Qwiic / [[learning/notes/quick-context/qwiic-stemma-qt-i2c|STEMMA QT]]** -- Modern standardized connector ecosystems (JST SH 4-pin) replacing ad-hoc DuPont wiring for sensor buses
 
 </details>
 
@@ -243,7 +245,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 **Q1:** What pitch dimension defines a DuPont connector, and why does that number matter?
 <details>
 <summary>Answer</summary>
-2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and PCB pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
+2.54mm (0.1" / 100 mil). This matters because it matches the universal spacing of breadboard holes and [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] pin headers, making DuPont connectors compatible with virtually all hobbyist development boards. See: 5 Essential Terms.
 </details>
 
 **Q2:** Why are modern "DuPont" connectors less reliable than the original Berg Mini-PV design?
@@ -255,7 +257,7 @@ The original Mini-PV used a separate beryllium copper spring for consistent tens
 **Q3:** You're powering 4 hobby servos through DuPont jumper wires from an Arduino's 5V pin. Each servo draws 300mA under load. What will go wrong and how would you fix it?
 <details>
 <summary>Answer</summary>
-Two problems: (1) Total current is 1.2A through a single 26 AWG DuPont wire, exceeding the practical 1A limit -- the wire will heat up and voltage will drop noticeably (~0.4-0.6V including wire resistance and clone contact resistance at two junctions). (2) The Arduino's onboard 5V regulator can only supply ~500mA total. Fix: use a separate 5V power supply with appropriately rated wiring (XT30 or screw terminals for the main bus), and distribute power to servos through 22 AWG or thicker wire. See: The Key Tension, Concrete Example.
+Two problems: (1) Total current is 1.2A through a single 26 AWG DuPont wire, exceeding the practical 1A limit -- the wire will heat up and [[learning/notes/quick-context/voltage|voltage]] will drop noticeably (~0.4-0.6V including wire resistance and clone contact resistance at two junctions). (2) The Arduino's onboard 5V regulator can only supply ~500mA total. Fix: use a separate 5V power supply with appropriately rated wiring (XT30 or screw terminals for the main bus), and distribute power to servos through 22 AWG or thicker wire. See: The Key Tension, Concrete Example.
 </details>
 
 **Q4:** Someone claims "DuPont connectors are rated for 3A, so they're fine for powering my 12V LED strip." What's wrong with this reasoning?

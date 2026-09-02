@@ -3,11 +3,12 @@ topic: PWM Controller Circuit
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/short-circuit]]
+
 # PWM Controller Circuit
 
-> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
+> **TL;DR:** Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output [[learning/notes/quick-context/voltage|voltage]] to a reference, and a [[learning/notes/quick-context/comparator|comparator]] intersects the two signals to produce the [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
 ## The Core Problem
 
@@ -65,15 +66,15 @@ Without a feedback-controlled PWM, the output voltage of a [[micro-context/buck-
 
 The error amplifier has a fixed internal reference ($V_{REF}$, typically 0.8V). It regulates whatever appears at the FB pin to equal $V_{REF}$ — that's the only thing it knows how to do. But you want 5V or 3.3V out, not 0.8V.
 
-R1 and R2 solve this by forming a **voltage divider** that scales $V_{OUT}$ down to $V_{REF}$ level:
+R1 and R2 solve this by forming a **[[learning/notes/quick-context/parallel-vs-series-voltage|voltage divider]]** that scales $V_{OUT}$ down to $V_{REF}$ level:
 
 $$V_{FB} = V_{OUT} \times \frac{R_2}{R_1 + R_2} \quad \xrightarrow{\text{IC regulates } V_{FB} = V_{REF}} \quad V_{OUT} = V_{REF} \times \frac{R_1 + R_2}{R_2}$$
 
-**Without R1 and R2**, you'd connect $V_{OUT}$ directly to the FB pin, and the IC would regulate the output to 0.8V — too low for almost anything. The divider lets a single IC design with one fixed reference regulate to *any* output voltage just by choosing resistor values.
+**Without R1 and R2**, you'd connect $V_{OUT}$ directly to the FB pin, and the IC would regulate the output to 0.8V — too low for almost anything. The divider lets a single IC design with one fixed reference regulate to *any* output voltage just by choosing [[learning/notes/quick-context/resistor|resistor]] values.
 
-**Why two resistors, not one?** A single resistor wouldn't create a defined division ratio. You need two resistors to form a ratio that depends *only* on R1 and R2, not on the IC's internals. The FB pin has extremely high input impedance (megaohms), so it draws negligible current and doesn't disturb the divider — the voltage at FB is determined purely by the R1/R2 ratio and $V_{OUT}$.
+**Why two resistors, not one?** A single resistor wouldn't create a defined division ratio. You need two resistors to form a ratio that depends *only* on R1 and R2, not on the IC's internals. The FB pin has extremely high input [[learning/notes/quick-context/impedance-and-reactance|impedance]] (megaohms), so it draws negligible current and doesn't disturb the divider — the voltage at FB is determined purely by the R1/R2 ratio and $V_{OUT}$.
 
-**R1 and R2 are the converter's "programming interface."** Changing the output voltage means changing one resistor. The IC, MOSFET, inductor, and capacitor can all stay the same — only the feedback divider ratio determines $V_{OUT}$.
+**R1 and R2 are the converter's "programming interface."** Changing the output voltage means changing one resistor. The IC, [[learning/notes/micro-context/mosfet|MOSFET]], [[learning/notes/quick-context/inductor|inductor]], and [[learning/notes/quick-context/capacitor|capacitor]] can all stay the same — only the feedback divider ratio determines $V_{OUT}$.
 
 ### Step-by-Step: How One PWM Cycle Happens
 
@@ -83,7 +84,7 @@ $$V_{FB} = V_{OUT} \times \frac{R_2}{R_1 + R_2} \quad \xrightarrow{\text{IC regu
 
 **Step 3 — Comparator intersects ramp and error.** The comparator outputs HIGH when $V_{ERR} > V_{RAMP}$ and LOW when $V_{ERR} < V_{RAMP}$. Because the ramp is a linearly rising signal, a higher $V_{ERR}$ means the ramp takes longer to "catch up" — producing a wider pulse (longer ON time, higher [[micro-context/pwm-pulse-width-modulation|duty cycle]]).
 
-**Step 4 — Gate driver amplifies the pulse.** The comparator output is a weak logic signal. The gate driver (a push-pull buffer) amplifies it to charge/discharge the [[micro-context/mosfet|MOSFET]] gate capacitance fast enough for clean switching transitions (nanoseconds).
+**Step 4 — Gate driver amplifies the pulse.** The comparator output is a weak logic signal. The gate driver (a [[learning/notes/micro-context/push-pull-vs-open-drain|push-pull]] buffer) amplifies it to charge/discharge the [[micro-context/mosfet|MOSFET]] gate [[learning/notes/quick-context/capacitance|capacitance]] fast enough for clean switching transitions (nanoseconds).
 
 ### The Comparator Intersection — This IS How PWM Width Is Set
 
@@ -167,7 +168,7 @@ The central tradeoff in PWM controller design is **loop bandwidth vs. stability*
 
 This is tuned by the **compensation network** — a small R-C circuit on the error amplifier. It's the same stability problem as any negative feedback system (gain margin, phase margin). IC datasheets specify recommended compensation values for different inductor/capacitor combinations.
 
-**Another tension: switching frequency**
+**Another tension: switching [[learning/notes/quick-context/frequency-and-filtering|frequency]]**
 
 | Higher frequency (1–2MHz) | Lower frequency (100–300kHz) |
 |---|---|
@@ -216,7 +217,7 @@ Use nearest standard value: $R_1 = 52.3k\Omega$ (E96 series) or $51k\Omega$ (E24
 
 **Changing VOUT is just changing R1.** Want 3.3V instead? $R_1 = 10k \times (3.3/0.8 - 1) = 31.25k\Omega$. The IC doesn't know or care what the output voltage is — it just regulates the FB pin to equal $V_{REF}$.
 
-**The one thing most outsiders get wrong about this is...** thinking the [[micro-context/stm32-microcontroller|microcontroller]] or software generates the PWM for power conversion. In reality, the buck converter IC is a fully autonomous analog control system — it has its own oscillator, error amplifier, comparator, and gate driver on a single chip. The MCU doesn't even know the PWM exists. Software-generated PWM (from timer peripherals) is used for different things: [[micro-context/pwm-pulse-width-modulation|motor speed control]], LED dimming, and servo positioning — not power supply regulation, which requires the nanosecond-precision analog loop described here.
+**The one thing most outsiders get wrong about this is...** thinking the [[micro-context/stm32-microcontroller|microcontroller]] or software generates the PWM for [[learning/notes/quick-context/power-watts-joules|power]] conversion. In reality, the buck converter IC is a fully autonomous analog control system — it has its own oscillator, error amplifier, comparator, and gate driver on a single chip. The MCU doesn't even know the PWM exists. Software-generated PWM (from timer peripherals) is used for different things: [[micro-context/pwm-pulse-width-modulation|motor speed control]], LED dimming, and servo positioning — not power supply regulation, which requires the nanosecond-precision analog loop described here.
 
 ### Real Example on the Pupper v3 Control Board
 
@@ -242,9 +243,9 @@ See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for th
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[micro-context/buck-converter]]** — The power stage (MOSFET + diode + inductor + capacitor) that this controller drives
+- **[[micro-context/buck-converter]]** — The power stage (MOSFET + [[learning/notes/quick-context/diode|diode]] + inductor + capacitor) that this controller drives
 - **[[micro-context/pwm-pulse-width-modulation]]** — The PWM signal itself — what it is, duty cycle math, and applications beyond power conversion
-- **[[quick-context/op-amp]]** — The error amplifier IS an op-amp; understanding virtual short and negative feedback is key to understanding the control loop
+- **[[quick-context/op-amp]]** — The error amplifier IS an [[learning/notes/quick-context/op-amp|op-amp]]; understanding virtual short and negative feedback is key to understanding the control loop
 - **[[quick-context/frequency-and-filtering]]** — The output LC filter is a 2nd-order low-pass filter; the compensation network shapes the loop's frequency response
 - **[[quick-context/capacitor]]** — Output capacitor smoothing and the MOSFET gate capacitance that the driver must charge
 - **[[quick-context/inductor]]** — Energy storage element; its $V = L \times dI/dt$ relationship determines the current ramp rate
@@ -270,10 +271,10 @@ VOUT drops → V_FB drops below Vref → error amplifier output rises → compar
 Change R1 in the feedback divider (the resistor between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
 </details>
 
-**Q3:** Why can't you just use a microcontroller's PWM output to regulate a buck converter?
+**Q3:** Why can't you just use a [[learning/notes/micro-context/microcontroller|microcontroller]]'s PWM output to regulate a buck converter?
 <details>
 <summary>Answer</summary>
-A microcontroller's PWM timer typically runs at kHz rates with microsecond resolution, but a buck converter needs cycle-by-cycle correction at 500kHz+ with nanosecond switching transitions. Even though hardware interrupt latency is fast (~12 cycles, ~71ns on a 168MHz Cortex-M4), the total response time including ISR entry, ADC sampling, and computation pushes practical latency to ~1μs — comparable to an entire switching period. The analog comparator inside the IC responds in nanoseconds with no software overhead. Also, the gate driver needs to source/sink amps of current to charge the MOSFET gate capacitance — an MCU GPIO pin can't do that.
+A microcontroller's PWM timer typically runs at kHz rates with microsecond resolution, but a buck converter needs cycle-by-cycle correction at 500kHz+ with nanosecond switching transitions. Even though hardware interrupt latency is fast (~12 cycles, ~71ns on a 168MHz Cortex-M4), the total response time including ISR entry, [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] sampling, and computation pushes practical latency to ~1μs — comparable to an entire switching period. The analog comparator inside the IC responds in nanoseconds with no software overhead. Also, the gate driver needs to source/sink amps of current to charge the MOSFET gate capacitance — an MCU GPIO pin can't do that.
 </details>
 
 **Q4:** What goes wrong if the error amplifier's compensation network makes the loop respond too fast?

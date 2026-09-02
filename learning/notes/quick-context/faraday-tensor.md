@@ -3,11 +3,12 @@ topic: Faraday Tensor
 created: 2026-02-20
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 # Faraday Tensor
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
 
-> **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
+> **TL;DR:** The Faraday [[learning/notes/quick-context/tensor|tensor]] (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and [[learning/notes/quick-context/coil-magnetic-field|magnetic field]] **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 
 ## The Core Problem: E and B Transform Weirdly
 
@@ -83,7 +84,7 @@ THE FARADAY TENSOR — Structure and Components
 
 ## Why the Tensor Form Matters: Lorentz Transformations
 
-The power of the tensor formulation becomes clear when you change reference frames. Under a Lorentz transformation (boost), the Faraday tensor transforms according to standard tensor rules:
+The [[learning/notes/quick-context/power-watts-joules|power]] of the tensor formulation becomes clear when you change reference frames. Under a Lorentz transformation (boost), the Faraday tensor transforms according to standard tensor rules:
 
 ```
 HOW E AND B MIX UNDER BOOSTS
@@ -226,7 +227,7 @@ WHY THIS MATTERS:
 
 ## The Tensor Hides the Fields; the Fields Hide the Unity
 
-There's a pedagogical tension in how to teach electromagnetism:
+There's a pedagogical tension in how to teach [[learning/notes/quick-context/electromagnetism|electromagnetism]]:
 
 ```
 TWO WAYS TO UNDERSTAND ELECTROMAGNETISM
@@ -419,9 +420,9 @@ EXAMPLE: Current-Carrying Wire
 
 - **[[quick-context/coil-magnetic-field]]** — The relativistic explanation section discusses how magnetism is "relativistic electricity"—what the Faraday tensor makes mathematically precise.
 
-- **[[quick-context/voltage]]** — Voltage is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
+- **[[quick-context/voltage]]** — [[learning/notes/quick-context/voltage|Voltage]] is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
 
-- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of Maxwell's equations in tensor form.
+- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] in tensor form.
 
 - **Special Relativity** — The Lorentz transformations that mix E and B components come from special relativity. The Faraday tensor is defined to transform correctly under these transformations.
 

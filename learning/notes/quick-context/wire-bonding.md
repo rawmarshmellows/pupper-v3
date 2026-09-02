@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/flip-chip]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
@@ -11,7 +11,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Inside every computer chip is a tiny silicon die with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
+Inside every computer chip is a tiny [[learning/notes/quick-context/silicon-die|silicon die]] with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for [[learning/notes/quick-context/power-watts-joules|power]] and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
 
 ## 5 Essential Terms
 
@@ -30,9 +30,9 @@ Wire bonding is essentially robotic micro-sewing. A machine called a "wire bonde
 
 **Step 1: Ball Formation** — An electrical spark melts the tip of the gold or copper wire, forming a tiny ball (like a match head, but microscopic). Surface tension makes it perfectly round.
 
-**Step 2: Ball Bond** — The machine presses this ball onto the chip's bond pad while applying ultrasonic vibration. The vibration creates friction heat that welds the ball to the pad in milliseconds. This is the first attachment point.
+**Step 2: Ball Bond** — The machine presses this ball onto the chip's [[learning/notes/quick-context/bond-pad|bond pad]] while applying ultrasonic vibration. The vibration creates friction heat that welds the ball to the pad in milliseconds. This is the first attachment point.
 
-**Step 3: Looping** — The machine lifts up and arcs the wire over to the substrate's landing pad, creating a curved bridge. The loop shape is precisely controlled.
+**Step 3: Looping** — The machine lifts up and arcs the wire over to the [[learning/notes/quick-context/substrate-ic-packaging|substrate]]'s landing pad, creating a curved bridge. The loop shape is precisely controlled.
 
 **Step 4: Wedge Bond** — At the destination, the machine presses the wire flat against the substrate pad (no ball this time) and uses ultrasonic welding again. Then it breaks the wire and moves to the next connection.
 
@@ -219,7 +219,7 @@ WHY INDUCTANCE MATTERS (for complete beginners):
     At high speeds (>1 GHz): wire bonds become a bottleneck
 ```
 
-The industry uses wire bonding when **cost matters more than speed**—which is most chips! Only high-performance processors, graphics cards, and specialized high-frequency chips need the more expensive flip-chip technology.
+The industry uses wire bonding when **cost matters more than speed**—which is most chips! Only high-performance processors, graphics cards, and specialized high-[[learning/notes/quick-context/frequency-and-filtering|frequency]] chips need the more expensive [[learning/notes/quick-context/flip-chip|flip-chip]] technology.
 
 </details>
 

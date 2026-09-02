@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem (Zero Chemistry Background Required)
 
-Imagine you have a bowl of spaghetti. The individual noodles are "polymer chains" - long strings of atoms connected together. Now the question is: **what holds those noodles together as a clump?** If the noodles slide past each other easily, you get a flexible, bendy material (like TPU). If they're stuck together tightly, you get a stiff, rigid material (like PLA). The "stickiness" between chains comes from **hydrogen bonds** - a special kind of attraction that happens when a hydrogen atom on one chain gets close to an oxygen or nitrogen atom on a neighboring chain. Understanding this one concept explains why PLA is rigid and brittle while TPU is rubbery and flexible, even though both are made of similar-sized polymer chains.
+Imagine you have a bowl of spaghetti. The individual noodles are "[[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains" - long strings of atoms connected together. Now the question is: **what holds those noodles together as a clump?** If the noodles slide past each other easily, you get a flexible, bendy material (like TPU). If they're stuck together tightly, you get a stiff, rigid material (like PLA). The "stickiness" between chains comes from **hydrogen bonds** - a special kind of attraction that happens when a hydrogen atom on one chain gets close to an oxygen or nitrogen atom on a neighboring chain. Understanding this one concept explains why PLA is rigid and brittle while TPU is rubbery and flexible, even though both are made of similar-sized polymer chains.
 
 ## 5 Essential Terms
 
@@ -27,7 +27,7 @@ Imagine you have a bowl of spaghetti. The individual noodles are "polymer chains
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the covalent bonds holding atoms together within molecules, but strong enough to significantly affect how materials behave.
+Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]] gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the [[learning/notes/quick-context/covalent-bonds|covalent bonds]] holding atoms together within molecules, but strong enough to significantly affect how materials behave.
 
 The key to understanding hydrogen bonds is recognizing the players: you need a "donor" (an H attached to O or N, making it slightly positive) and an "acceptor" (a lone O or N with negative charge that attracts the H). The hydrogen essentially acts as a bridge between two electronegative atoms. Water is the classic example: each water molecule can donate two hydrogen bonds (from its two H atoms) and accept two hydrogen bonds (at its oxygen), creating an extensive network that explains water's unusually high boiling point and surface tension.
 
@@ -200,7 +200,7 @@ HYDROGEN BOND = Attraction between H and O (or H and N)
    This creates a weak but real connection between chains.
 ```
 
-**Key point:** Hydrogen bonds are NOT as strong as the bonds holding atoms together within a chain. They're more like velcro - easy to pull apart one at a time, but many of them together create significant holding power.
+**Key point:** Hydrogen bonds are NOT as strong as the bonds holding atoms together within a chain. They're more like velcro - easy to pull apart one at a time, but many of them together create significant holding [[learning/notes/quick-context/power-watts-joules|power]].
 
 ## H-O vs H-N Attractions (ASCII Diagrams)
 
@@ -423,7 +423,7 @@ TPU at 60C:
 
 - **[[quick-context/van-der-waals-forces]]**: Even weaker than hydrogen bonds, these universal attractions exist between all molecules and contribute to baseline chain cohesion in all polymers.
 
-- **[[quick-context/dipole-dipole-interactions]]**: Hydrogen bonds are actually a special, extra-strong type of dipole-dipole interaction - understanding the general case helps clarify why H-bonds are uniquely powerful.
+- **[[quick-context/dipole-dipole-interactions]]**: Hydrogen bonds are actually a special, extra-strong type of [[learning/notes/quick-context/dipole-dipole-interactions|dipole]]-dipole interaction - understanding the general case helps clarify why H-bonds are uniquely powerful.
 
 - **[[quick-context/covalent-bonds]]**: The strong bonds holding atoms together *within* polymer chains - hydrogen bonds connect chains *between* each other, but covalent bonds are what make the chains themselves.
 
@@ -431,7 +431,7 @@ TPU at 60C:
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
-- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
+- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-[[learning/notes/quick-context/substrate-ic-packaging|substrate]] recognition all depend on H-bonding.
 
 - **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 
@@ -455,7 +455,7 @@ TPU's hard segments actually have *stronger* hydrogen bonding than PLA. The N-H.
 **Q3:** Why is Shore 70A TPU harder to 3D print than Shore 95A TPU?
 <details>
 <summary>Answer</summary>
-Shore 70A has fewer hard segments (and thus fewer hydrogen bonds), meaning the chains slide past each other more easily. This causes the filament to compress and buckle in the extruder and Bowden tube rather than being pushed through smoothly. Shore 95A has more H-bonds holding chains together, making it stiffer and easier to push through the extrusion system. See: PRINTING IMPLICATION section under Shore Hardness
+Shore 70A has fewer hard segments (and thus fewer hydrogen bonds), meaning the chains slide past each other more easily. This causes the [[learning/notes/quick-context/3d-printing-filament-types|filament]] to compress and buckle in the extruder and Bowden tube rather than being pushed through smoothly. Shore 95A has more H-bonds holding chains together, making it stiffer and easier to push through the extrusion system. See: PRINTING IMPLICATION section under Shore Hardness
 </details>
 
 **Q4:** What are the three atoms you need to know to understand hydrogen bonding, and what charge does each carry?
@@ -467,7 +467,7 @@ Hydrogen (H) - slight positive charge, "sticks out" from chains. Oxygen (O) - sl
 **Q5:** Why doesn't TPU deform in a hot car (60C) while PLA does?
 <details>
 <summary>Answer</summary>
-PLA's glass transition temperature is around 55-60C, so at 60C its hydrogen bonds start breaking and chains can slide, causing deformation. TPU's soft segments are already above their Tg at room temperature (that's why they're flexible), but the hard segments that hold the shape together have a much higher Tg (100-150C). At 60C, the hard segment H-bonds remain intact, so TPU keeps its shape. See: WHY PLA DEFORMS IN A HOT CAR BUT TPU DOESN'T
+PLA's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] is around 55-60C, so at 60C its hydrogen bonds start breaking and chains can slide, causing deformation. TPU's soft segments are already above their Tg at room temperature (that's why they're flexible), but the hard segments that hold the shape together have a much higher Tg (100-150C). At 60C, the hard segment H-bonds remain intact, so TPU keeps its shape. See: WHY PLA DEFORMS IN A HOT CAR BUT TPU DOESN'T
 </details>
 
 </details>

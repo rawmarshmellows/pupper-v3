@@ -3,15 +3,16 @@ topic: Maxwell's Equations
 created: 2026-02-20
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] ([[learning/notes/quick-context/faraday-tensor|Faraday]], 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
@@ -494,7 +495,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
+- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two [[learning/notes/quick-context/tensor|tensor]] equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
 
 - **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
 
@@ -506,11 +507,11 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
 
-- **[[quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
+- **[[quick-context/voltage]]** — Electric field integrated along a path gives [[learning/notes/quick-context/voltage|voltage]]. Maxwell's equations govern the field; voltage is how we measure it in circuits.
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[learning/notes/quick-context/electromagnetism|electromagnetism]].
 
 </details>
 
@@ -520,13 +521,13 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q1:** Gauss's law for magnetism states ∇ · B = 0. What does this physically mean?
 <details>
 <summary>Answer</summary>
-**There are no magnetic monopoles.** Magnetic field lines always form closed loops—they never start or end at a point. Every N pole comes with an S pole. If you draw any closed surface, the same amount of B-field that enters must exit. This contrasts with electric fields, where ∇ · E = ρ/ε₀ means field lines can start on positive charges and end on negative charges.
+**There are no magnetic monopoles.** [[learning/notes/quick-context/coil-magnetic-field|Magnetic field]] lines always form closed loops—they never start or end at a point. Every N pole comes with an S pole. If you draw any closed surface, the same amount of B-field that enters must exit. This contrasts with electric fields, where ∇ · E = ρ/ε₀ means field lines can start on positive charges and end on negative charges.
 </details>
 
 **Q2:** Why did Maxwell add the displacement current term (ε₀ ∂E/∂t) to Ampère's law?
 <details>
 <summary>Answer</summary>
-**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a capacitor would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
+**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a [[learning/notes/quick-context/capacitor|capacitor]] would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
 </details>
 
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?

@@ -3,11 +3,12 @@ topic: From Code to Running Firmware — Linking, Flashing, and Booting on an MC
 created: 2026-03-26
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/st-link-v2-programmer]]
+
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
 
-> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
+> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the [[learning/notes/micro-context/microcontroller|MCU]]'s flash memory. On [[learning/notes/quick-context/power-watts-joules|power]]-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
 ## The Core Problem
 
@@ -173,7 +174,7 @@ When the [[micro-context/stm32-microcontroller|STM32]] powers on (or resets), th
 1. Loads the value at address `0x00000000` into the **Main Stack Pointer** (MSP)
 2. Loads the value at address `0x00000004` into the **Program Counter** (PC) — this is the `Reset_Handler` address
 
-On STM32, flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
+On [[learning/notes/micro-context/stm32-microcontroller|STM32]], flash at `0x08000000` is aliased to `0x00000000` by default, so the vector table at the start of flash is what the CPU sees.
 
 Then `Reset_Handler` (assembly code in `startup_stm32f446retx.s`) runs:
 
@@ -222,7 +223,7 @@ Steps 4-5 are why the linker script exports symbols like `_sdata`, `_edata`, `_s
 <details>
 <summary><strong>The Key Tension</strong> — Flash vs. RAM and the .data problem</summary>
 
-The fundamental tension in embedded firmware is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
+The fundamental tension in embedded [[learning/notes/quick-context/firmware|firmware]] is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
 
 A global variable like `int speed = 100;` needs to be `100` when your code first reads it. But RAM is empty after power-on. The only persistent storage is flash. So the initial value `100` must be stored in flash, then copied to RAM before `main()` runs. This is why:
 
@@ -245,7 +246,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
@@ -332,21 +333,21 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]] processes them. This document picks up where that one leaves off.
 
 - **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
-- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via SWD. Focuses on the debug probe side of the process.
+- **[[quick-context/firmware|flashing firmware]]** — The physical act of writing firmware to flash via [[learning/notes/micro-context/swd-serial-wire-debug|SWD]]. Focuses on the debug probe side of the process.
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[learning/notes/micro-context/sram|SRAM]], and peripherals.
 
-- **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
+- **[[quick-context/pupper-bom-control-board]]** — The hardware [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|BOM]] showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 
 - **Relocatable vs. Position-Independent Code** — Object files (`.o`) contain relocatable code with placeholder addresses. The linker resolves these. Position-independent code (PIC) can run at any address — useful for bootloaders but rarely needed on bare-metal MCUs with fixed memory maps.
 
-- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
+- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over [[learning/notes/quick-context/uart|UART]] or [[learning/notes/quick-context/usb-peripheral-hardware|USB]]), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
 
 - **[[quick-context/physics-of-writing-data-to-memory]]** — The physics beneath this pipeline: how the flash programmer's bytes actually become trapped electrons on floating gates inside the MCU's flash cells, and why flash has erase-before-write constraints and limited P/E cycles.
 

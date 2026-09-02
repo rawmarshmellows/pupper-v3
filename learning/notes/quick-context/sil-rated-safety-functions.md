@@ -3,7 +3,7 @@ topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]]
 
 > **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
 
@@ -90,7 +90,7 @@ The PFD calculation aggregates all failure rates and diagnostic coverages to pro
 
 The fundamental tradeoff is **safety assurance vs. development cost and flexibility**. Achieving SIL 2 or SIL 3 certification isn't about writing careful code—it's about proving, through rigorous process, that the entire lifecycle (requirements, design, implementation, testing, operation, modification) meets statistical reliability targets.
 
-This means: redundant hardware (dual-channel sensors, cross-monitoring CPUs), diagnostic coverage calculations for every failure mode, formal methods or extensive testing to demonstrate software correctness, third-party audits, and strict change control. A SIL 3 safety PLC costs 10x a standard PLC; the engineering process costs 5-20x normal development.
+This means: redundant hardware (dual-channel sensors, cross-monitoring CPUs), diagnostic coverage calculations for every failure mode, formal methods or extensive testing to demonstrate software correctness, third-party audits, and strict change control. A SIL 3 safety [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] costs 10x a standard PLC; the engineering process costs 5-20x normal development.
 
 Practitioners constantly argue about where to draw the safety boundary—what functions genuinely need SIL rating vs. what can be "standard" with operational controls? There's also tension between the functional safety world (IEC 61508 and sector standards like 62443 for cybersecurity, 61511 for process, 62061 for machinery) and the software world's move-fast culture. You cannot iterate your way to SIL 3; you must specify correctly upfront, because every change triggers revalidation.
 
@@ -183,8 +183,8 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
-- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
+- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why [[learning/notes/quick-context/ros2-architecture|ROS2]] cannot replace safety PLCs
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
 - **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 
 </details>

@@ -3,11 +3,12 @@ topic: The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/spinev1-elf]]
+
 # The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/index/how-a-computer-works-index]]
 
-> **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
+> **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and [[learning/notes/quick-context/switches-to-registers-storing-data|register]] load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
 
 ## The Core Problem
 
@@ -60,7 +61,7 @@ THE FETCH-EXECUTE CYCLE
 
 ### The Program Counter is just a register with feedback
 
-You already know a [[learning/notes/quick-context/switches-to-registers-storing-data|register]] captures a value at the clock edge. Take that register, wire its output through a `+1` incrementer, and feed the incremented value back into its own input. Now every clock tick it counts up by one. Bolt on two muxes so you can *override* the count with a jump address (or with zero on reset), and you have a full Program Counter:
+You already know a [[learning/notes/quick-context/switches-to-registers-storing-data|register]] captures a value at the [[learning/notes/micro-context/clock-edges|clock edge]]. Take that register, wire its output through a `+1` incrementer, and feed the incremented value back into its own input. Now every clock tick it counts up by one. Bolt on two muxes so you can *override* the count with a jump address (or with zero on reset), and you have a full Program Counter:
 
 ```
 PROGRAM COUNTER = REGISTER + INCREMENTER + FEEDBACK + MUXES
@@ -283,7 +284,7 @@ happen to play.
 
 - **[[learning/notes/quick-context/d-flip-flop]]** — The 1-bit memory cell underneath every register, the PC, and the instruction register. Edge-triggering is why the loop advances in clean discrete steps.
 
-- **[[learning/notes/quick-context/firmware]]** — What the program *is* on a real chip: instructions sitting in flash that the CPU fetch-executes straight from non-volatile memory at power-on.
+- **[[learning/notes/quick-context/firmware]]** — What the program *is* on a real chip: instructions sitting in flash that the CPU fetch-executes straight from non-volatile memory at [[learning/notes/quick-context/power-watts-joules|power]]-on.
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — How those instruction numbers get placed at real addresses (linker), written to the chip (flash), and reached (reset vector → first fetch). Picks up where this loop starts.
 

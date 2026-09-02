@@ -1,3 +1,5 @@
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -430,7 +432,7 @@ Review monthly for early warning signs:
 - [ ] Relationship regressed to single-threaded (Bow-Tie)
 
 ### Usage Risks
-- [ ] Login frequency declining
+- [ ] Login [[learning/notes/quick-context/frequency-and-filtering|frequency]] declining
 - [ ] Feature adoption stalled
 - [ ] Support ticket volume spiking
 - [ ] Key users not engaging
@@ -501,7 +503,7 @@ Use this for Strategic and Protect account quarterly reviews.
 
 ### Champion Development Checklist
 
-- [ ] Identify potential champion (power + will to advocate)
+- [ ] Identify potential champion ([[learning/notes/quick-context/power-watts-joules|power]] + will to advocate)
 - [ ] Understand their personal win from our success
 - [ ] Provide them with internal talking points
 - [ ] Give them early access to roadmap/features

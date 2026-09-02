@@ -59,7 +59,7 @@ CPython 3.6.)
 
 ### Bytecode targets a STACK machine
 
-Notice there are no register names. Every op either **pushes** a value onto a
+Notice there are no [[learning/notes/quick-context/switches-to-registers-storing-data|register]] names. Every op either **pushes** a value onto a
 shared stack or **pops** values off it. `BINARY_ADD` doesn't say "add R1 and R2";
 it says "pop the top two, add them, push the result." This is a **stack machine**,
 and it's why bytecode is so compact and portable — it assumes nothing about how
@@ -279,7 +279,7 @@ fetch-executing machine code.
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The compiled-AOT route in detail for embedded targets: how machine code is placed at real addresses by the linker, flashed to a chip, and reached at the reset vector. The mirror image of Python's runtime route.
 
-- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from power-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
+- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from [[learning/notes/quick-context/power-watts-joules|power]]-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
 
 - **AST (Abstract Syntax Tree)** — The tree the compiler builds between parsing your source and emitting bytecode. The `ast` module lets you inspect it; it's where structure (loops, expressions, scope) is captured before flattening to a stack-machine op list.
 
@@ -318,7 +318,7 @@ The **`python` interpreter's own machine code**. CPython's VM loop is a C progra
 No — CPython did **constant folding** at compile time. Because both operands are literal constants, the compiler computed `2 + 3 = 5` while compiling and baked the literal `5` into the bytecode, so the addition never runs at runtime. To see an actual `BINARY_ADD`/`BINARY_OP` you must use values the compiler can't know in advance, e.g. variables (`x = a + b`). See: Concrete Example (the surprise that CPython folds it).
 </details>
 
-**Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler (Rust) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?
+**Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler ([[learning/notes/quick-context/rust|Rust]]) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?
 <details>
 <summary>Answer</summary>
 They all **bottom out in machine-code instructions the CPU fetch-executes** — that's the fixed meeting point of the software and hardware towers. AOT compiles straight to machine code; the bytecode VM runs the interpreter's machine code; a JIT compiles hot paths to machine code at runtime; a transpiler just produces more source that still needs an engine (which itself ends in machine code). The repo proves the destination exists: `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/cpu.py` is a runnable CPU that fetch-executes machine code — the same target every route hands its output to. See: The Key Tension (four routes) and Concrete Example (Nand2Tetris mapping + cpu.py).

@@ -3,15 +3,16 @@ topic: Absolute Orientation
 created: 2026-04-04
 ---
 
+> **Related:** [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/quick-context/covariance-matrix]]
+
 # Absolute Orientation Problem
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
 
 > **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 
 ## The Core Problem
 
-Every measurement system lives in its own coordinate frame. A LIDAR scanner, a photogrammetric model, a robot arm, and a GPS receiver each produce points in different coordinate systems with different origins, orientations, and scales. Without a way to align these frames, you cannot combine data from multiple sensors, register a 3D model to the real world, or verify that a manufactured part matches its CAD design. Absolute orientation is the mathematical machinery that bridges isolated coordinate systems into a single coherent reference frame.
+Every measurement system lives in its own coordinate frame. A LIDAR scanner, a photogrammetric model, a robot arm, and a GPS receiver each produce points in different coordinate systems with different origins, orientations, and scales. Without a way to align these frames, you cannot combine data from multiple sensors, [[learning/notes/quick-context/switches-to-registers-storing-data|register]] a 3D model to the real world, or verify that a manufactured part matches its CAD design. Absolute orientation is the mathematical machinery that bridges isolated coordinate systems into a single coherent reference frame.
 
 ## 5 Essential Terms
 
@@ -60,7 +61,7 @@ $$H = \sum_{i=1}^{n} \mathbf{p}'_i \, \mathbf{q}'^T_i$$
 
 This $3 \times 3$ matrix encodes how the two point sets co-vary in each dimension pair.
 
-**Step 3 -- Compute the SVD**
+**Step 3 -- Compute the [[learning/notes/quick-context/singular-value-decomposition|SVD]]**
 
 $$H = U \Sigma V^T$$
 
@@ -272,8 +273,8 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter similarity transformation (3 rotation + 3 translation + 1 scale) that is the direct solution to the absolute orientation problem
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ between centered point sets is the key intermediate quantity in the SVD solution
-- **Relative orientation** -- Finding the transformation between two camera views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
+- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] $H$ between centered point sets is the key intermediate quantity in the SVD solution
+- **Relative orientation** -- Finding the transformation between two [[learning/notes/quick-context/camera-fundamentals|camera]] views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
 - **Iterative Closest Point (ICP)** -- Iterative algorithm that solves absolute orientation repeatedly to align point clouds when correspondences are unknown
 - **RANSAC** -- Robust estimation framework that wraps around absolute orientation solvers to handle outlier correspondences
 - **Procrustes analysis** -- The statistical name for the same problem; orthogonal Procrustes = rigid alignment, generalized Procrustes = aligning multiple shapes simultaneously
@@ -305,7 +306,7 @@ $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T
 **Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a [[learning/notes/quick-context/similarity-transform|similarity transform]] when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?

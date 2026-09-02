@@ -3,9 +3,9 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
-> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
+> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong [[learning/notes/quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that hold molecules together, down to weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
 # Chemical Bonds: The Full Spectrum
 
@@ -93,12 +93,12 @@ HOW TEMPERATURE OVERCOMES EACH LEVEL:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The most important distinction practitioners make is between **intramolecular forces** (bonds *within* a molecule—the covalent bonds holding atoms together) and **intermolecular forces** (attractions *between* molecules—everything else). This matters because:
+The most important distinction practitioners make is between **intramolecular forces** (bonds *within* a [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]]—the covalent bonds holding atoms together) and **intermolecular forces** (attractions *between* molecules—everything else). This matters because:
 
 - **Melting** = overcoming intermolecular forces (molecules separate but stay intact)
 - **Decomposition** = breaking intramolecular bonds (molecules destroyed)
 
-When you heat PLA in your 3D printer, you're overcoming the weak forces *between* polymer chains so they slide past each other. The strong covalent bonds *within* each chain never break—that's why you can melt and re-solidify thermoplastics repeatedly. Heat too much (>300°C) and you start breaking covalent bonds—now you're burning the plastic, not melting it. The spectrum debate centers on where to draw lines: Is a hydrogen bond "just" a strong dipole-dipole interaction, or is it fundamentally different? Are ionic bonds really "bonds" or just electrostatic attraction? Does π-π stacking belong with van der Waals or deserve its own category? These aren't just academic questions—they determine how you model materials and predict behavior.
+When you heat PLA in your [[learning/notes/quick-context/3d-printer-hotends|3D printer]], you're overcoming the weak forces *between* [[learning/notes/quick-context/polymer-chemical-bonds|polymer]] chains so they slide past each other. The strong covalent bonds *within* each chain never break—that's why you can melt and re-solidify thermoplastics repeatedly. Heat too much (>300°C) and you start breaking covalent bonds—now you're burning the plastic, not melting it. The spectrum debate centers on where to draw lines: Is a [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bond]] "just" a strong [[learning/notes/quick-context/dipole-dipole-interactions|dipole]]-dipole interaction, or is it fundamentally different? Are ionic bonds really "bonds" or just electrostatic attraction? Does π-π stacking belong with van der Waals or deserve its own category? These aren't just academic questions—they determine how you model materials and predict behavior.
 
 </details>
 
@@ -376,7 +376,7 @@ HCl is **polar covalent**—electrons are shared (covalent) but unequally (polar
 **Q4:** ABS requires 230-250°C to print, while PLA only needs 190-220°C. Both have covalent polymer backbones. What's different about their intermolecular forces?
 <details>
 <summary>Answer</summary>
-ABS contains styrene monomers with aromatic (benzene) rings that participate in **π-π stacking**—millions of weak interactions between stacked rings acting like molecular velcro. These require more thermal energy to disrupt. PLA has ester groups that form moderate hydrogen bonds but lacks aromatic rings. The stronger collective intermolecular forces in ABS (π-π stacking + dipole-dipole) require higher temperatures to overcome than PLA's (hydrogen bonds + van der Waals). See: Concrete Example - WHY THIS MATTERS FOR 3D PRINTING
+ABS contains styrene monomers with [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions|aromatic]] (benzene) rings that participate in **π-π stacking**—millions of weak interactions between stacked rings acting like molecular velcro. These require more thermal energy to disrupt. PLA has ester groups that form moderate hydrogen bonds but lacks aromatic rings. The stronger collective intermolecular forces in ABS (π-π stacking + dipole-dipole) require higher temperatures to overcome than PLA's (hydrogen bonds + van der Waals). See: Concrete Example - WHY THIS MATTERS FOR [[learning/notes/quick-context/3d-printing-filament-types|3D PRINTING]]
 </details>
 
 **Q5:** Someone says "hydrogen bonds are just a special type of van der Waals force." Is this correct? Why does the classification matter (or not)?
