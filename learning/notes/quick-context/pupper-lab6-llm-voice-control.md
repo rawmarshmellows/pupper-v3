@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 > **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
@@ -192,8 +192,8 @@ The Realtime API also returns an audio version of "Time to bust a move!" as `res
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 6 sits between the neural controller (Lab 5) and vision tracking (Lab 7), adding the voice-to-command layer.
-- **[[quick-context/pupper-brain]]** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
+- **[[learning/notes/quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 6 sits between the neural controller (Lab 5) and vision tracking (Lab 7), adding the voice-to-command layer.
+- **[[learning/notes/quick-context/pupper-brain]]** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
 - **WebSocket protocol** — Lab 6 uses a persistent WebSocket (`wss://`) rather than REST API calls. WebSockets provide full-duplex communication: audio streams up while responses stream down simultaneously, which is essential for real-time voice interaction. REST would require "record, send, wait, receive" — far too slow for conversational feel.
 - **PCM16 audio format** — Pulse-Code Modulation at 16-bit depth. Each sample is a signed 16-bit integer (-32768 to +32767) representing the instantaneous amplitude. At 24 kHz, this produces 48,000 bytes/second of raw audio. No compression (unlike MP3/Opus), which means low latency but high bandwidth.
 - **Echo cancellation** — In production voice systems, acoustic echo cancellation (AEC) algorithms subtract the known speaker output from the microphone input in real time. Lab 6 uses a simpler approach (mute during playback) because full AEC requires DSP expertise beyond the lab's scope. The tradeoff: the robot cannot hear new commands while it is speaking.

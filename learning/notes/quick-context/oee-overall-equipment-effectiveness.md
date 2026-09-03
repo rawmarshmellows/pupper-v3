@@ -3,7 +3,7 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/quick-context/teep]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 
@@ -96,8 +96,8 @@ Without OEE decomposition, management might have blamed "old equipment" and requ
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/teep]]** - Extends OEE to measure against all calendar time, revealing hidden capacity in unscheduled hours
-- **[[quick-context/isa-95-levels]]** - Level 3 MES systems are where OEE calculations typically live and get reported
+- **[[learning/notes/quick-context/teep]]** - Extends OEE to measure against all calendar time, revealing hidden capacity in unscheduled hours
+- **[[learning/notes/quick-context/isa-95-levels]]** - Level 3 MES systems are where OEE calculations typically live and get reported
 
 </details>
 

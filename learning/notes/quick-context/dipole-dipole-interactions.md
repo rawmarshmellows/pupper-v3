@@ -5,7 +5,7 @@ updated: 2026-01-21
 clarification: 2026-01-21
 ---
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -23,7 +23,7 @@ Imagine you're trying to understand why water boils at 100°C while methane (nat
 | **Electronegativity** | An atom's "greediness" for electrons—oxygen and nitrogen hog electrons; hydrogen and carbon share more fairly |
 | **Partial charge (δ+ / δ-)** | Not a full +1 or -1 charge, but a slight imbalance—written as delta-plus or delta-minus |
 | **Dipole** | A pair of equal and opposite partial charges separated by distance—the molecule has a "positive pole" and "negative pole" |
-| **Intermolecular force** | Any attraction *between* molecules (not the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule) |
+| **Intermolecular force** | Any attraction *between* molecules (not the [[learning/notes/quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule) |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -268,10 +268,10 @@ POLAR (HCl) - molecules stick:     NONPOLAR (H2) - molecules slip past:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/van-der-waals-forces]]** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
-- **[[quick-context/hydrogen-bonds-beginners]]** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
-- **[[quick-context/covalent-bonds]]** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
-- **[[quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
+- **[[learning/notes/quick-context/van-der-waals-forces]]** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
+- **[[learning/notes/quick-context/hydrogen-bonds-beginners]]** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
+- **[[learning/notes/quick-context/covalent-bonds]]** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
+- **[[learning/notes/quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
 
 </details>
 

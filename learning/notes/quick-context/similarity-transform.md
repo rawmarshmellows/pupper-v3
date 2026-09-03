@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # N-Dimensional Similarity Transform
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/epson-rc-plus-programming]]
 
 > **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most general transform that keeps "similar" figures similar, in any number of dimensions.
 
@@ -126,8 +126,8 @@ $$\sum_{i=1}^{m} \| \mathbf{q}_i - (sR\mathbf{p}_i + \mathbf{t}) \|^2$$
 Umeyama's algorithm (1991) solves this in closed form:
 
 1. **Center the points:** $\bar{\mathbf{p}} = \frac{1}{m}\sum \mathbf{p}_i$, $\bar{\mathbf{q}} = \frac{1}{m}\sum \mathbf{q}_i$
-2. **Compute the [[quick-context/covariance-matrix|cross-covariance matrix]]:** $H = \frac{1}{m}\sum (\mathbf{p}_i - \bar{\mathbf{p}})(\mathbf{q}_i - \bar{\mathbf{q}})^T$
-3. **[[quick-context/singular-value-decomposition|SVD]] of $H$:** $H = U \Sigma V^T$
+2. **Compute the [[learning/notes/quick-context/covariance-matrix|cross-covariance matrix]]:** $H = \frac{1}{m}\sum (\mathbf{p}_i - \bar{\mathbf{p}})(\mathbf{q}_i - \bar{\mathbf{q}})^T$
+3. **[[learning/notes/quick-context/singular-value-decomposition|SVD]] of $H$:** $H = U \Sigma V^T$
 4. **Correct for reflections:** $S = \text{diag}(1, 1, \ldots, \text{sign}(\det(UV^T)))$
 5. **Rotation:** $R = V S U^T$
 6. **Scale:** $s = \frac{\text{tr}(\Sigma S)}{\sigma_p^2}$, where $\sigma_p^2 = \frac{1}{m}\sum \|\mathbf{p}_i - \bar{\mathbf{p}}\|^2$
@@ -154,9 +154,9 @@ The fundamental tradeoff is **model simplicity vs modeling power**.
 
 **When similarity suffices:**
 - Aligning two views of the same rigid object measured at different scales (e.g., a laser scan vs a photogrammetric model)
-- Registering coordinate systems in geodesy (the [[quick-context/helmert-transform|Helmert transform]] is exactly this)
+- Registering coordinate systems in geodesy (the [[learning/notes/quick-context/helmert-transform|Helmert transform]] is exactly this)
 - Comparing biological shapes in morphometrics where growth is roughly isotropic
-- Any [[quick-context/absolute-orientation|absolute orientation]] problem where the objects are known to be geometrically similar
+- Any [[learning/notes/quick-context/absolute-orientation|absolute orientation]] problem where the objects are known to be geometrically similar
 
 **When you need affine (or beyond):**
 - Satellite imagery with different sensor geometries introducing directional scale differences
@@ -271,7 +271,7 @@ print(f"Translation: {t_est}  (true: {t_true})")
 
 ### Generalizing to 3D
 
-The same function works for 3D (or any dimension) -- just pass $(m \times 3)$ arrays. A 3D similarity has 7 DOF, so you need at least 3 non-collinear point correspondences. This is exactly the [[quick-context/absolute-orientation|absolute orientation]] problem: given matched 3D landmarks in two coordinate frames, recover the 7-parameter similarity relating them.
+The same function works for 3D (or any dimension) -- just pass $(m \times 3)$ arrays. A 3D similarity has 7 DOF, so you need at least 3 non-collinear point correspondences. This is exactly the [[learning/notes/quick-context/absolute-orientation|absolute orientation]] problem: given matched 3D landmarks in two coordinate frames, recover the 7-parameter similarity relating them.
 
 ```python
 # 3D example: 10 random points, scale=1.5, arbitrary rotation, shift
@@ -295,11 +295,11 @@ print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter 3D similarity transform used in geodesy to convert between coordinate datums (WGS 84, NAD 83, etc.)
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of recovering a similarity (or rigid) transform from matched 3D point pairs; Umeyama's method is a standard solution
-- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-covariance matrix to extract rotation
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between source and destination points encodes the rotation and scale information that SVD extracts
-- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves absolute orientation via a quaternion eigenproblem instead of SVD
+- **[[learning/notes/quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter 3D similarity transform used in geodesy to convert between coordinate datums (WGS 84, NAD 83, etc.)
+- **[[learning/notes/quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of recovering a similarity (or rigid) transform from matched 3D point pairs; Umeyama's method is a standard solution
+- **[[learning/notes/quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] to extract rotation
+- **[[learning/notes/quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between source and destination points encodes the rotation and scale information that SVD extracts
+- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves [[learning/notes/quick-context/absolute-orientation|absolute orientation]] via a quaternion eigenproblem instead of SVD
 - **Lie groups** -- The similarity group $\text{Sim}(n)$ is a Lie group; its Lie algebra $\mathfrak{sim}(n)$ parameterizes infinitesimal similarities, useful for optimization on the group manifold
 - **RANSAC** -- When point correspondences contain outliers, RANSAC wraps around Umeyama to robustly estimate the similarity transform from a minimal sample
 

@@ -5,19 +5,19 @@ created: 2026-05-28
 
 # ESP32
 
-> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 > **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
 ## The Core Problem
 
-Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
+Connecting an embedded device to WiFi used to mean pairing a [[learning/notes/micro-context/microcontroller|microcontroller]] with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **SoC (System-on-Chip)** | An entire computer — CPU, RAM, ROM, radio, peripherals — integrated on one [[learning/notes/quick-context/silicon-die\|silicon die]]. The ESP32 is an SoC because it's not just an MCU; it bundles a complete 2.4 GHz radio transceiver on the same chip. |
+| **SoC (System-on-Chip)** | An entire computer — CPU, RAM, ROM, radio, peripherals — integrated on one silicon die. The ESP32 is an SoC because it's not just an MCU; it bundles a complete 2.4 GHz radio transceiver on the same chip. |
 | **Espressif Systems** | Shanghai-based fabless semiconductor company that designs the ESP family. Launched the ESP8266 in 2014 (cheap WiFi MCU) and the ESP32 in 2016 (added dual-core, Bluetooth, more peripherals). |
 | **Xtensa LX6/LX7** | Tensilica's 32-bit configurable RISC CPU architecture used in the original ESP32 and S2/S3 variants. Newer ESP32-C/H/P variants use RISC-V cores instead — Espressif is migrating off proprietary Xtensa toward open RISC-V. |
 | **ESP-IDF** | Espressif IoT Development Framework — the official C/C++ SDK. FreeRTOS-based, gives you full hardware access. The alternative is Arduino-ESP32 (a wrapper layer over ESP-IDF that exposes the familiar `setup()`/`loop()` API). |

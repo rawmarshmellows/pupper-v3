@@ -3,10 +3,12 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
+
 
 # Reverse and Forward Bias
 
-**Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
+**Definition:** The two ways to apply [[learning/notes/quick-context/voltage|voltage]] across a [[learning/notes/quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[learning/notes/quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works
 
@@ -28,6 +30,6 @@ Forward bias:  current flows          Reverse bias:  current blocked
   → current flows (Vf ≈ 0.7V Si)       → no current (until breakdown)
 ```
 
-**Key insight:** The same PN junction does both jobs—forward bias is how diodes conduct, reverse bias is how they block, and every [[quick-context/transistor|transistor]] relies on biasing junctions in specific combinations to switch on and off.
+**Key insight:** The same PN junction does both jobs—forward bias is how diodes conduct, reverse bias is how they block, and every [[learning/notes/quick-context/transistor|transistor]] relies on biasing junctions in specific combinations to switch on and off.
 
-> **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **See also:** [[learning/notes/quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

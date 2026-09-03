@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Sandler KARE Account Segmentation
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/strategic-selling-buyer-roles]]
 
 > **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), Recapture (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
 
@@ -20,7 +20,7 @@ Every sales rep has finite hours. Treating all accounts equally means under-inve
 | **Keep** | Core accounts generating reliable revenue that must be protected from churn or competitive displacement |
 | **Attain** | Net-new logos and greenfield accounts that represent growth beyond the existing customer base |
 | **Recapture** | Former customers or lost opportunities that warrant re-engagement based on changed circumstances |
-| **Expand** | Existing customers with [[quick-context/whitespace-mapping|whitespace]]—additional products, users, departments, or use cases to sell into |
+| **Expand** | Existing customers with [[learning/notes/quick-context/whitespace-mapping|whitespace]]—additional products, users, departments, or use cases to sell into |
 | **Portfolio Velocity** | The concept that accounts should move between KARE categories over time as relationships evolve |
 
 <details>
@@ -172,12 +172,12 @@ Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the account planning framework for KEEP and EXPAND accounts
-- **[[quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; MEDDPICC qualifies specific opportunities within those accounts
-- **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model helps understand where KEEP vs. EXPAND accounts stand
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the account planning framework for KEEP and EXPAND accounts
+- **[[learning/notes/quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; MEDDPICC qualifies specific opportunities within those accounts
+- **[[learning/notes/quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model helps understand where KEEP vs. EXPAND accounts stand
 - **Territory Management** — The broader discipline of dividing accounts across reps; KARE informs territory strategy
 - **Net Revenue Retention (NRR)** — The SaaS metric that makes EXPAND strategy visible; companies with NRR >110% are essentially KARE-optimized
-- **[[quick-context/whitespace-mapping]]** — The visual tool for identifying exactly where EXPAND opportunities exist within accounts
+- **[[learning/notes/quick-context/whitespace-mapping]]** — The visual tool for identifying exactly where EXPAND opportunities exist within accounts
 
 </details>
 
@@ -202,7 +202,7 @@ RECAPTURE is opportunistic—it only works when circumstances have genuinely cha
 With only 5 customers, there's limited EXPAND and KEEP opportunity regardless of time investment. The standard allocation assumes a mature portfolio. This startup should heavily weight ATTAIN (70%+) while maintaining basic KEEP hygiene on the 5 existing accounts. KARE percentages are guidelines, not rules—they flex with portfolio composition.
 </details>
 
-**Q4:** How does KARE interact with [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]] account planning?
+**Q4:** How does KARE interact with [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|LAMP]] account planning?
 <details>
 <summary>Answer</summary>
 KARE operates at portfolio level (which accounts deserve focus), LAMP at individual account level (how to plan that account). Use KARE to identify your top 10-15 accounts, then apply full LAMP treatment to those. The other 70 accounts might get lightweight tracking rather than full Gold Sheets. KARE triages; LAMP plans.

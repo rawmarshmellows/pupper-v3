@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Whitespace Mapping
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+> **Related:** [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/sandler-kare-segmentation]]
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 
@@ -119,8 +119,8 @@ These are popular software tools that operationalize whitespace mapping:
    - Prioritize cells by potential × probability
 
 5. **Prioritize Whitespace:**
-   - Overlay with [[quick-context/sandler-kare-segmentation|KARE]] thinking
-   - Which cells align with [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]] account goals?
+   - Overlay with [[learning/notes/quick-context/sandler-kare-segmentation|KARE]] thinking
+   - Which cells align with [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|LAMP]] account goals?
    - Where do we have champions?
 
 </details>
@@ -247,11 +247,11 @@ Action: Wait for: Procore contract renewal, buyer turnover, or delivery failure
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/sandler-kare-segmentation]]** — KARE's EXPAND bucket identifies accounts with whitespace worth pursuing; the whitespace map shows *where* within those accounts
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the Gold Sheet's "Field of Play Opportunities" draws from whitespace
-- **[[quick-context/post-sale-account-engagement]]** — Post-sale expansion playbooks are triggered by whitespace analysis
-- **[[quick-context/mcdonald-kam-model]]** — Relationship maturity affects which whitespace cells are accessible; Cooperative+ accounts enable cross-BC selling
-- **[[quick-context/meddpicc-qualification-framework]]** — Each whitespace cell becoming Pipeline needs MEDDPICC qualification
+- **[[learning/notes/quick-context/sandler-kare-segmentation]]** — KARE's EXPAND bucket identifies accounts with whitespace worth pursuing; the whitespace map shows *where* within those accounts
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the Gold Sheet's "Field of Play Opportunities" draws from whitespace
+- **[[learning/notes/quick-context/post-sale-account-engagement]]** — Post-sale expansion playbooks are triggered by whitespace analysis
+- **[[learning/notes/quick-context/mcdonald-kam-model]]** — Relationship maturity affects which whitespace cells are accessible; Cooperative+ accounts enable cross-BC selling
+- **[[learning/notes/quick-context/meddpicc-qualification-framework]]** — Each whitespace cell becoming Pipeline needs MEDDPICC qualification
 - **Total Addressable Market (TAM)** — Whitespace map shows account-level TAM; sum across accounts = expansion TAM
 - **Land-and-Expand** — The go-to-market strategy that whitespace mapping operationalizes
 
@@ -284,7 +284,7 @@ Prioritize cells where the champion has influence. If they're in the Engineering
 No—keep it visible but coded red. Lost cells can become RECAPTURE opportunities when triggers occur: competitor contract renewal, delivery failure, buyer turnover, or your product evolving to address the gap. Removing lost cells hides account history and prevents systematic re-engagement when circumstances change.
 </details>
 
-**Q5:** How does [[quick-context/mcdonald-kam-model|relationship maturity]] affect whitespace strategy?
+**Q5:** How does [[learning/notes/quick-context/mcdonald-kam-model|relationship maturity]] affect whitespace strategy?
 <details>
 <summary>Answer</summary>
 Relationship maturity determines *which* whitespace is accessible. At Basic/Exploratory stages, you're often limited to single buying centers (bow-tie relationship). At Cooperative/Interdependent stages, multi-threading enables cross-BC expansion—your champions can introduce you to other divisions. Trying to pursue whitespace in buying centers you can't access wastes resources. Match whitespace prioritization to relationship reach.

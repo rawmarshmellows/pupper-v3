@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/integration-failure-modes-solutions]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 

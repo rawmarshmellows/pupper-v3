@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/melt-index]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that can arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
+Plastics aren't just "plastic" - they're long chains of molecules called [[learning/notes/quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that can arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
 
 Here's the critical insight: when plastic cools, crystalline regions **shrink more** than amorphous regions. If your print cools unevenly (which it always does - the bottom touches the cold bed while the top is still hot), different parts shrink by different amounts at different times. The result? Your print warps, delaminates, or pops off the bed entirely. Materials like PLA are mostly amorphous and print easily. Materials like Nylon or PEEK are semi-crystalline and will warp aggressively if you don't manage cooling carefully.
 
@@ -20,10 +20,10 @@ Here's the critical insight: when plastic cools, crystalline regions **shrink mo
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain molecule made of repeating units - like a pearl necklace where each pearl is a small molecule linked to its neighbors. |
+| **[[learning/notes/quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain molecule made of repeating units - like a pearl necklace where each pearl is a small molecule linked to its neighbors. |
 | **Crystalline** | Regions where polymer chains are packed in orderly, repeating patterns - denser, stronger, but shrinks significantly when cooling. |
 | **Amorphous** | Regions where polymer chains are randomly tangled with no pattern - less dense, more flexible, shrinks less when cooling. |
-| **[[quick-context/glass-transition-temperature|Glass Transition Temperature]] (Tg)** | The temperature where amorphous regions go from rigid to rubbery - below this, the plastic is stiff; above it, it's soft and pliable. |
+| **[[learning/notes/quick-context/glass-transition-temperature|Glass Transition Temperature]] (Tg)** | The temperature where amorphous regions go from rigid to rubbery - below this, the plastic is stiff; above it, it's soft and pliable. |
 | **Shrinkage** | The percentage a material contracts when cooling from melt to room temperature - the root cause of warping; crystalline materials shrink more than amorphous. |
 
 <details>
@@ -205,15 +205,15 @@ Draft shields               │ Block air currents, even cooling      │ ABS, N
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/glass-transition-temperature]]** — The temperature at which amorphous regions transition from rigid to rubbery. Understanding Tg is essential for knowing when crystallization can occur during cooling.
+- **[[learning/notes/quick-context/glass-transition-temperature]]** — The temperature at which amorphous regions transition from rigid to rubbery. Understanding Tg is essential for knowing when crystallization can occur during cooling.
 
-- **[[quick-context/polymer-chemical-bonds]]** — The types of bonds holding polymer chains together determine whether chains can pack into crystalline structures or remain tangled and amorphous.
+- **[[learning/notes/quick-context/polymer-chemical-bonds]]** — The types of bonds holding polymer chains together determine whether chains can pack into crystalline structures or remain tangled and amorphous.
 
-- **[[quick-context/tensile-strength-materials|Tensile strength]]** — Crystalline regions dramatically increase tensile strength by creating dense, ordered molecular packing that resists pulling forces.
+- **[[learning/notes/quick-context/tensile-strength-materials|Tensile strength]]** — Crystalline regions dramatically increase tensile strength by creating dense, ordered molecular packing that resists pulling forces.
 
-- **[[quick-context/melt-index]]** — A measure of how easily a polymer flows when melted. Semi-crystalline materials often behave differently during melting because crystalline regions must fully break down before flow begins.
+- **[[learning/notes/quick-context/melt-index]]** — A measure of how easily a polymer flows when melted. Semi-crystalline materials often behave differently during melting because crystalline regions must fully break down before flow begins.
 
-- **[[quick-context/bambu-p2s-print-quality]]** — Why semi-crystalline filaments (PA, PP, PE) need an enclosed chamber and minimal fan on the P2S, while amorphous PLA tolerates 100% cooling — crystallization kinetics drive cooling-strategy choices.
+- **[[learning/notes/quick-context/bambu-p2s-print-quality]]** — Why semi-crystalline filaments (PA, PP, PE) need an enclosed chamber and minimal fan on the P2S, while amorphous PLA tolerates 100% cooling — crystallization kinetics drive cooling-strategy choices.
 
 </details>
 

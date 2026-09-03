@@ -3,10 +3,12 @@ term: CNC Milling
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]]
+
 
 # CNC Milling
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
+> **See also:** [[learning/notes/quick-context/cnc-machining]] (full treatment) | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/tensile-strength-materials]]
 
 **Definition:** A subtractive manufacturing process where a computer-controlled rotating cutter removes material from a solid block (workpiece) to create precise parts. The opposite of 3D printing—you start with more material than you need and carve away the excess.
 
