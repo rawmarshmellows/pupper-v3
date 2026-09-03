@@ -3,15 +3,15 @@ topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bjt]]
 
-> **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
+> **TL;DR:** Platinum stays unreactive in [[learning/notes/quick-context/electrolysis|electrolysis]] because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 
 # Why Platinum is Chemically Inert
 
 ## The Core Problem
 
-In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the anode because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
+In [[learning/notes/quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the [[learning/notes/micro-context/anode|anode]] because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
 
 ## 5 Essential Terms
 
@@ -19,8 +19,8 @@ In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct el
 |------|------------|
 | **Inert** | Chemically unreactive; doesn't participate in reactions |
 | **Ionization energy** | Energy required to remove an electron from an atom |
-| **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
-| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
+| **Reduction potential (E°)** | [[learning/notes/quick-context/voltage|Voltage]] indicating how much a species "wants" electrons; positive = wants to stay as metal |
+| **[[learning/notes/micro-context/oxidation|Oxidation]]** | Losing electrons (what happens to reactive metals at anodes) |
 | **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 
 <details>
@@ -141,11 +141,11 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
-- **[[quick-context/electrolysis]]** - The broader process where platinum electrodes are commonly used
-- **[[quick-context/reduction-oxidation-reactions]]** - Redox chemistry that explains why some metals dissolve and others don't
-- **[[quick-context/noble-metals]]** - Other metals like gold and silver that share platinum's corrosion resistance
-- **[[quick-context/transition-metals-d-orbitals]]** - How d-orbital electron configurations influence metal reactivity
+- **[[learning/notes/quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
+- **[[learning/notes/quick-context/electrolysis]]** - The broader process where platinum electrodes are commonly used
+- **reduction oxidation reactions** - Redox chemistry that explains why some metals dissolve and others don't
+- **noble metals** - Other metals like gold and silver that share platinum's corrosion resistance
+- **transition metals d orbitals** - How d-orbital electron configurations influence metal reactivity
 
 </details>
 

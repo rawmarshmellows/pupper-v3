@@ -5,9 +5,9 @@ created: 2026-02-17
 
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/maxwell-equations]]
 
-> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
+> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a [[learning/notes/quick-context/voltage|voltage]] (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an [[learning/notes/quick-context/inductor|inductor]], and why the magnetic field "pushes" current when you try to stop it.
 
 ## The Core Question
 
@@ -449,19 +449,19 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/inductor]]** — Complete treatment of inductors: energy storage, RL time constants, why coils have more inductance than straight wires, and the physics of why current can't change instantly.
+- **[[learning/notes/quick-context/inductor]]** — Complete treatment of inductors: energy storage, RL time constants, why coils have more inductance than straight wires, and the physics of why current can't change instantly.
 
-- **[[quick-context/lenzs-law]]** — Why the induced EMF always opposes the change: energy conservation requires it. Includes detailed explanation of increasing vs. decreasing flux.
+- **[[learning/notes/quick-context/lenzs-law]]** — Why the induced EMF always opposes the change: energy conservation requires it. Includes detailed explanation of increasing vs. decreasing flux.
 
-- **[[quick-context/voltage]]** — The electric field perspective on voltage. The back-EMF in an inductor is a real voltage created by the changing magnetic flux.
+- **[[learning/notes/quick-context/voltage]]** — The electric field perspective on voltage. The back-EMF in an inductor is a real voltage created by the changing magnetic flux.
 
-- **[[quick-context/electromagnetism]]** — The unified picture: changing magnetic fields create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
+- **[[learning/notes/quick-context/electromagnetism]]** — The unified picture: changing magnetic fields create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
 
-- **[[quick-context/capacitor]]** — The dual of an inductor. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
+- **[[learning/notes/quick-context/capacitor]]** — The dual of an inductor. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the magnetic field that stores energy.
+- **[[learning/notes/quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the magnetic field that stores energy.
 
-- **[[micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the switch is on and releases it when the switch is off, enabling efficient DC-DC conversion.
+- **[[learning/notes/micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the switch is on and releases it when the switch is off, enabling efficient DC-DC conversion.
 
 </details>
 
@@ -474,7 +474,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction only matters when current is *changing*.
 </details>
 
-**Q2:** At the instant you connect a battery to an inductor-resistor circuit, why does the load see 0V even though the battery is 10V?
+**Q2:** At the instant you connect a battery to an inductor-[[learning/notes/quick-context/resistor|resistor]] circuit, why does the load see 0V even though the battery is 10V?
 <details>
 <summary>Answer</summary>
 **The inductor absorbs all the voltage as back-EMF.** At t=0, current is zero but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire source voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.
@@ -495,7 +495,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **Q5:** A coil has inductance L. You wind it with twice as many turns (2N instead of N), keeping everything else the same. How does the self-inductance change?
 <details>
 <summary>Answer</summary>
-**It quadruples (becomes 4L).** Inductance is proportional to N² because: (1) more turns create a stronger magnetic field for the same current, and (2) more turns link with that stronger field. Each turn both contributes to the field and links with flux from all other turns. So doubling turns gives 2× field strength AND 2× flux linkage = 4× total inductance. See [[quick-context/inductor]] for the full explanation of the N² effect.
+**It quadruples (becomes 4L).** Inductance is proportional to N² because: (1) more turns create a stronger magnetic field for the same current, and (2) more turns link with that stronger field. Each turn both contributes to the field and links with flux from all other turns. So doubling turns gives 2× field strength AND 2× flux linkage = 4× total inductance. See [[learning/notes/quick-context/inductor]] for the full explanation of the N² effect.
 </details>
 
 </details>

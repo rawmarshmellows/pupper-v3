@@ -3,10 +3,12 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
+
 
 # Homogeneous Transformation Matrix
 
-**Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.
+**Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[learning/notes/quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.
 
 ## How It Works
 

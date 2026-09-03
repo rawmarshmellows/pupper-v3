@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/robotic-arm-api-levels]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -104,10 +104,10 @@ The `Jump` command is doing the heavy lifting here—it automatically retracts i
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/robotic-arm-api-levels]]** - Understanding where EPSON RC+ fits in the hierarchy from low-level servo control to high-level task planning
-- **[[quick-context/robot-cell-integration-best-practices]]** - How to integrate EPSON robots with PLCs, vision systems, and other cell equipment
-- **[[quick-context/plc-vs-software-control]]** - When to use PLC logic vs. robot-native programming for cell coordination
-- **[[quick-context/sil-rated-safety-functions]]** - Safety considerations for industrial robot programming
+- **[[learning/notes/quick-context/robotic-arm-api-levels]]** - Understanding where EPSON RC+ fits in the hierarchy from low-level servo control to high-level task planning
+- **[[learning/notes/quick-context/robot-cell-integration-best-practices]]** - How to integrate EPSON robots with PLCs, vision systems, and other cell equipment
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - When to use PLC logic vs. robot-native programming for cell coordination
+- **[[learning/notes/quick-context/sil-rated-safety-functions]]** - Safety considerations for industrial robot programming
 
 </details>
 

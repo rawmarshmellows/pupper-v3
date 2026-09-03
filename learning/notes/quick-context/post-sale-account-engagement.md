@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Post-Sale Account Engagement
 
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
 
@@ -19,16 +19,16 @@ Most organizations treat post-sale like a handoff: sales closes, success onboard
 |------|------------|
 | **Account Segmentation** | Categorizing accounts by characteristics (revenue potential, strategic value, relationship maturity) to determine engagement intensity |
 | **Time-to-Value (TTV)** | How quickly a customer realizes the core benefit of your product; the primary goal of early engagement |
-| **Expansion Revenue** | Additional revenue from existing customers through upsells (higher tiers), cross-sells (new products), and seat expansion—identified via [[quick-context/whitespace-mapping|whitespace mapping]] |
+| **Expansion Revenue** | Additional revenue from existing customers through upsells (higher tiers), cross-sells (new products), and seat expansion—identified via [[learning/notes/quick-context/whitespace-mapping|whitespace mapping]] |
 | **Customer Health Score** | A composite metric combining usage, engagement, support patterns, and satisfaction signals to predict retention and growth |
-| **Relationship Maturity** | The depth of partnership, from transactional vendor-buyer to strategic business partner (see [[quick-context/mcdonald-kam-model|KAM Model]]) |
+| **Relationship Maturity** | The depth of partnership, from transactional vendor-buyer to strategic business partner (see [[learning/notes/quick-context/mcdonald-kam-model|KAM Model]]) |
 
 <details>
 <summary><strong>How It Works</strong> — The Account Engagement Model</summary>
 
 Effective post-sale engagement starts with segmentation, then applies appropriate playbooks.
 
-**Note:** This matrix determines *engagement intensity* for existing customers. It layers on top of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. KEEP accounts typically land in Protect/Maintain; EXPAND accounts in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
+**Note:** This matrix determines *engagement intensity* for existing customers. It layers on top of [[learning/notes/quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. KEEP accounts typically land in Protect/Maintain; EXPAND accounts in Strategic/Growth. See [[learning/notes/quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -488,12 +488,12 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/sales-methodology-layering]]** — How pre-sale methodology connects to post-sale engagement
-- **[[quick-context/mcdonald-kam-model]]** — Relationship maturity framework for deepening strategic partnerships
-- **[[quick-context/sandler-kare-segmentation]]** — KARE model that informs growth vs. protect designations
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Account planning for strategic accounts continues post-sale
+- **[[learning/notes/quick-context/sales-methodology-layering]]** — How pre-sale methodology connects to post-sale engagement
+- **[[learning/notes/quick-context/mcdonald-kam-model]]** — Relationship maturity framework for deepening strategic partnerships
+- **[[learning/notes/quick-context/sandler-kare-segmentation]]** — KARE model that informs growth vs. protect designations
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — Account planning for strategic accounts continues post-sale
 - **Customer Health Scoring** — Building the metrics that trigger engagement actions
-- **[[quick-context/whitespace-mapping]]** — The visual tool for identifying which products can be sold to which buying centers
+- **[[learning/notes/quick-context/whitespace-mapping]]** — The visual tool for identifying which products can be sold to which buying centers
 - **Expansion Playbooks** — Structured approaches to upsell and cross-sell within accounts
 - **Renewal Management** — The specialized discipline of protecting existing revenue
 - **Customer Marketing** — Advocacy, references, and community programs that complement CSM work

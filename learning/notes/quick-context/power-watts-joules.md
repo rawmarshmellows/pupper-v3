@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/schematic-reading]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Where Does the Energy Go?
 
-A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
+A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[learning/notes/quick-context/electric-current|Current]] and [[learning/notes/quick-context/voltage|voltage]] alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
 
 ## 5 Essential Terms
 
@@ -170,15 +170,15 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
+- **[[learning/notes/quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 
-- **[[quick-context/resistor]]** — Every resistor in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
+- **[[learning/notes/quick-context/resistor]]** — Every [[learning/notes/quick-context/resistor|resistor]] in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
 
-- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
+- **[[learning/notes/quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The [[learning/notes/quick-context/inductor|inductor]] stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[learning/notes/quick-context/capacitor]]** — Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
 
-- **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
+- **[[learning/notes/quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 
 </details>
 
@@ -194,7 +194,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q2:** A linear regulator converts 12V to 3.3V at 200 mA. How much power is wasted as heat?
 <details>
 <summary>Answer</summary>
-**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a buck converter (90%+ efficient) is preferred for large voltage drops.
+**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a [[learning/notes/micro-context/buck-converter|buck converter]] (90%+ efficient) is preferred for large voltage drops.
 </details>
 
 **Q3:** Your phone battery is 15 Wh. At 4W average power consumption, how long does it last?

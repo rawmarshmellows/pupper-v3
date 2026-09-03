@@ -2,6 +2,8 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
+
 
 # Short Circuit
 

@@ -3,17 +3,19 @@ term: CAN Bus Transceiver
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
+
 
 # CAN Bus Transceiver
 
-> **See also:** [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/embedded-communication-protocols]]
+> **See also:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
-**Definition:** A chip that converts the microcontroller's digital TX/RX signals into differential voltage signals for the CAN bus (and vice versa). CAN bus is a robust 2-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU only deals with data.
+**Definition:** A chip that converts the [[learning/notes/micro-context/microcontroller|microcontroller]]'s digital TX/RX signals into differential [[learning/notes/quick-context/voltage|voltage]] signals for the CAN bus (and vice versa). CAN bus is a robust 2-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU only deals with data.
 
 ## How It Works
 
 - The MCU's CAN peripheral generates a serial data stream (TX) using the CAN protocol's bit timing and arbitration rules.
-- The transceiver converts this single-ended TX signal into a differential pair (CANH and CANL) with opposite voltage swings.
+- The transceiver converts this single-ended TX signal into a [[learning/notes/quick-context/differential-pair|differential pair]] (CANH and CANL) with opposite voltage swings.
 - On receive, the transceiver subtracts CANL from CANH, canceling any common-mode noise picked up on the wire pair.
 - This differential signaling allows reliable multi-drop communication over long cables in electrically noisy environments.
 

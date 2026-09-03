@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -126,11 +126,11 @@ This pattern includes explicit timeout handling (2 seconds), retry logic (3 atte
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/epson-rc-plus-programming]]** - Example of robot-side programming that must integrate with PLC handshakes
-- **[[quick-context/robotic-arm-api-levels]]** - Understanding which API level handles integration vs. motion
-- **[[quick-context/plc-vs-software-control]]** - When to put coordination logic in PLC vs. robot vs. external software
-- **[[quick-context/integration-failure-modes-solutions]]** - Common integration failures and how to prevent them
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - Metrics for measuring how well integration is working in production
+- **[[learning/notes/quick-context/epson-rc-plus-programming]]** - Example of robot-side programming that must integrate with PLC handshakes
+- **[[learning/notes/quick-context/robotic-arm-api-levels]]** - Understanding which API level handles integration vs. motion
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - When to put coordination logic in PLC vs. robot vs. external software
+- **[[learning/notes/quick-context/integration-failure-modes-solutions]]** - Common integration failures and how to prevent them
+- **[[learning/notes/quick-context/oee-overall-equipment-effectiveness]]** - Metrics for measuring how well integration is working in production
 
 </details>
 
