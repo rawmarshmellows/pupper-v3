@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]]
 
 # Short Circuit
 
