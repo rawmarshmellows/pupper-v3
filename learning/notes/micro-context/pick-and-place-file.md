@@ -3,6 +3,7 @@ term: Pick and Place File
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/soldering]]
 
 # Pick and Place File
 
@@ -34,4 +35,4 @@ PICK AND PLACE WORKFLOW:
                                                               └───┘
 ```
 
-**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-soldering).
+**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-[[learning/notes/quick-context/soldering|soldering]]).

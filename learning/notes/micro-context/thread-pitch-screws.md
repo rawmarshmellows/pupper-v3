@@ -2,6 +2,7 @@
 term: Thread Pitch (Screws)
 created: 2026-05-04
 ---
+> **Related:** [[learning/notes/quick-context/pcb-layers]]
 
 # Thread Pitch (Screws)
 

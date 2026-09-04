@@ -3,7 +3,7 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/substrate-ic-packaging]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -116,7 +116,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
             ◠ ◠ ◠ ◠  ← balls melt              │   ╱      ╲
             │ │ │ │    and merge         150°C ┤  ╱        ╲
        ┌────┴─┴─┴─┴───┐                        │ ╱          ╲
-       │    PCB       │                   25°C ┼──────────────→
+       │    [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]]       │                   25°C ┼──────────────→
        └──────────────┘                        0  2  4  6  8 min
 
    • Paste and balls melt together           "Reflow" = controlled

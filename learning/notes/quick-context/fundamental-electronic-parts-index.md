@@ -4,7 +4,7 @@ created: 2026-02-06
 updated: 2026-02-07
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/transistor]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bjt]]
 
 > **TL;DR:** This is a navigational index of all fundamental electronic components—from passive parts (resistors, capacitors, inductors) through active devices (transistors, diodes) to the physical hierarchy that connects them (dies, substrates, packages, PCBs). Use it as a map to find existing quick-context files and spot gaps in coverage.
 
@@ -63,7 +63,7 @@ THE THREE FUNDAMENTAL PASSIVES
 
 | Part | Existing Quick-Context? | Key Concept |
 |------|------------------------|-------------|
-| **[[quick-context/capacitor\|Capacitor]]** | Yes | Q=CV (charge = capacitance × voltage), dielectrics, RC time constants, decoupling |
+| **[[quick-context/capacitor\|Capacitor]]** | Yes | Q=CV (charge = [[learning/notes/quick-context/capacitance\|capacitance]] × [[learning/notes/quick-context/voltage\|voltage]]), dielectrics, RC time constants, decoupling |
 | **[[quick-context/resistor\|Resistor]]** | Yes | Ohm's law (V=IR: voltage = current × resistance), power dissipation (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
 | **[[quick-context/inductor\|Inductor]]** | Yes | Magnetic energy storage (E=½LI²: energy = ½ × inductance × current²), opposes current changes, used in filters/power supplies |
 
@@ -91,14 +91,14 @@ ACTIVE COMPONENT FAMILY TREE
 |------|------------------------|-------------|
 | **[[quick-context/transistor\|Transistor (MOSFET)]]** | Yes | Gate-controlled switch, MOS capacitor, NAND gates, CMOS |
 | **[[quick-context/transistor-analog-to-digital\|Transistor: Analog → Digital]]** | Yes | Leakage, noise margins, regenerative logic, clocking |
-| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → BJT → planar MOSFET → FinFET → GAA |
+| **[[quick-context/transistor-design-history\|Transistor: Design History]]** | Yes | Point-contact → BJT → planar [[learning/notes/micro-context/mosfet\|MOSFET]] → FinFET → GAA |
 | **[[quick-context/diode\|Diode]]** | Yes | PN junction, forward/reverse bias, rectification, LEDs |
 | **[[quick-context/bjt\|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
 | **[[quick-context/bjt-specifications\|BJT Specifications]]** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
 | **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
 | **[[quick-context/comparator\|Comparator]]** | Yes | Op-amp's sibling optimized for binary output; bridges analog signals to digital logic |
-| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + tail current source; the universal input stage of op-amps, comparators, and ADCs |
-| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | Current mirror active load on a differential pair; converts μA current difference into full-rail voltage swing |
+| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + [[learning/notes/micro-context/tail-current\|tail current]] source; the universal input stage of op-amps, comparators, and ADCs |
+| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | [[learning/notes/micro-context/current-mirror\|Current mirror]] active load on a differential pair; converts μA current difference into full-rail voltage swing |
 
 ## 3. Semiconductor Materials — What Parts Are Made Of
 
@@ -126,7 +126,7 @@ FROM SAND TO SWITCH
 | **[[quick-context/impedance-and-reactance\|Impedance and Reactance]]** | Yes | Z = R + jX (impedance = resistance + imaginary unit × reactance), capacitive/inductive reactance, phase angle |
 | **[[quick-context/frequency-and-filtering\|Frequency and Filtering]]** | Yes | Cutoff frequency, dB (decibels), low-pass/high-pass, filter order |
 | **[[quick-context/power-watts-joules\|Electrical Power]]** | Yes | P = VI (power = voltage × current), watts, joules, efficiency, thermal dissipation |
-| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | Maxwell's equations, magnetic fields, Faraday's law, EM waves |
+| **[[quick-context/electromagnetism\|Electromagnetism]]** | Yes | [[learning/notes/quick-context/maxwell-equations\|Maxwell's equations]], magnetic fields, Faraday's law, EM waves |
 | **[[quick-context/electric-magnetic-field-unification\|Field Unification]]** | Yes | How V, I, E, B connect—the conceptual map |
 | **[[quick-context/grounding-and-return-paths\|Grounding and Return Paths]]** | Yes | Return paths, ground planes, ground loops, star grounding |
 
@@ -227,7 +227,7 @@ All fundamental electronic parts now have quick-context files. Total: 34 electro
 
 ## Tracing a Signal Through Fundamental Parts
 
-Here's a simplified path from a sensor to a microcontroller, showing which parts you'd encounter and which quick-context files explain them:
+Here's a simplified path from a sensor to a [[learning/notes/micro-context/microcontroller|microcontroller]], showing which parts you'd encounter and which quick-context files explain them:
 
 ```
 SENSOR SIGNAL PATH
