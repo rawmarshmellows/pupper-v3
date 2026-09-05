@@ -5,7 +5,7 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
+> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the [[learning/notes/micro-context/cathode|cathode]] (negative) is where reduction happens, the [[learning/notes/micro-context/anode|anode]] (positive) is where [[learning/notes/micro-context/oxidation|oxidation]] happens.
 
 # Electrodes (Cathode and Anode)
 
@@ -227,7 +227,7 @@ STEP 4: THE CIRCUIT COMPLETES
 | **Electron flow** | Electrons flow IN | Electrons flow OUT |
 | **Ions attracted** | Cations (+ions) | Anions (-ions) |
 | **Reaction type** | REDUCTION (gain e⁻) | OXIDATION (lose e⁻) |
-| **In water electrolysis** | H₂ gas forms | O₂ gas forms |
+| **In water [[learning/notes/quick-context/electrolysis|electrolysis]]** | H₂ gas forms | O₂ gas forms |
 | **Easy memory** | **C**athode → **C**ations | **A**node → **A**nions |
 
 **The one thing most outsiders get wrong about this is...** confusing which electrode is which based on the words "positive" and "negative." People assume "negative = bad place for reactions" or get confused because in *batteries* (which produce electricity), the labels flip—the terminal you call "negative" on a battery is actually operating as an anode internally! The foolproof way: **follow the electrons**. If electrons flow INTO an electrode from the external circuit, it's a cathode (reduction happens). If electrons flow OUT to the external circuit, it's an anode (oxidation happens). This is true regardless of what you call it or how confusing the situation seems.
@@ -241,7 +241,7 @@ STEP 4: THE CIRCUIT COMPLETES
 
 - **Redox Reactions** — The broader category of chemistry involving electron transfer. Electrolysis is just one way to make redox reactions happen; electrodes are where you physically see oxidation and reduction occurring at separate locations.
 
-- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the electrolyte provides the mobile ions that complete the circuit internally.
+- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the [[learning/notes/quick-context/electrolyte|electrolyte]] provides the mobile ions that complete the circuit internally.
 
 - **Electroplating** — A practical application where the anode IS the metal you want to deposit (it dissolves) and the cathode IS the object you're coating (metal deposits onto it). Same electrode principles, different purpose.
 

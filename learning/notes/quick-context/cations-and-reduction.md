@@ -5,7 +5,7 @@ created: 2026-01-22
 
 > **Related:** [[quick-context/electrolysis]]
 
-> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
+> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the [[learning/notes/micro-context/cathode|cathode]] during [[learning/notes/quick-context/electrolysis|electrolysis]] and is essential for metal extraction, electroplating, and hydrogen gas production.
 
 ## The Core Problem
 
@@ -237,11 +237,11 @@ PATTERN: The charge number tells you how many electrons are needed!
 
 - **[[quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and why they're attracted to the negative electrode.
 
-- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
+- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, [[learning/notes/micro-context/oxidation|oxidation]] is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
+- **Electrochemical Series (Reduction Potentials)** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
 
 - **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 

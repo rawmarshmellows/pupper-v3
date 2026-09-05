@@ -24,7 +24,7 @@ A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over i
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
 <details>
-<summary><strong>How It Works</strong> — From voltage on a wire to a byte in a register</summary>
+<summary><strong>How It Works</strong> — From [[learning/notes/quick-context/voltage|voltage]] on a wire to a byte in a register</summary>
 
 ### High-Level: Two Jobs
 
@@ -323,7 +323,7 @@ $$\text{USARTDIV} = \frac{f_{\text{APB}}}{16 \times \text{baud}} = \frac{72{,}00
 
 The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in BRR[3:0]. The actual baud rate is $72{,}000{,}000 / (16 \times 39.0625) = 115{,}200$ exactly.
 
-**The one thing most outsiders get wrong about this is...** thinking UART is a "protocol" like I2C or CAN. UART is really just the **hardware peripheral** — it handles framing (start/stop bits) and serial↔parallel conversion, but it defines no electrical standard (voltage levels, signaling, connectors). RS-232, RS-485, and 20mA current loop are all **physical layers** that carry UART frames. When someone says "UART" they usually mean TTL-level (0V/3.3V) point-to-point, but the same UART peripheral can drive any of these physical layers through an external transceiver chip.
+**The one thing most outsiders get wrong about this is...** thinking UART is a "protocol" like [[learning/notes/micro-context/i2c|I2C]] or CAN. UART is really just the **hardware peripheral** — it handles framing (start/stop bits) and serial↔parallel conversion, but it defines no electrical standard (voltage levels, signaling, connectors). RS-232, RS-485, and 20mA current loop are all **physical layers** that carry UART frames. When someone says "UART" they usually mean TTL-level (0V/3.3V) point-to-point, but the same UART peripheral can drive any of these physical layers through an external transceiver chip.
 
 </details>
 
@@ -332,7 +332,7 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
+- **[[quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, [[learning/notes/micro-context/spi|SPI]], CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The historical context: how UARTs enabled the transition from punch cards to interactive terminals in the 1960s. Covers the full teletype I/O loop: keyboard → current loop → UART → interrupt → OS buffer → echo.
 
@@ -376,7 +376,7 @@ About **±3-4%**. At 16× oversampling, the receiver samples at the center of ea
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[learning/notes/quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?

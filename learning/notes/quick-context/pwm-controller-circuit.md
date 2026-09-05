@@ -7,7 +7,7 @@ created: 2026-03-27
 
 > **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
+> **TL;DR:** Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output [[learning/notes/quick-context/voltage|voltage]] to a reference, and a [[learning/notes/quick-context/comparator|comparator]] intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
 ## The Core Problem
 
@@ -225,28 +225,28 @@ The TPS54561 at **U8** on the Pupper v3 control board is exactly this circuit in
 | Generic part above | Pupper board part |
 |---|---|
 | "Buck converter IC" (oscillator + error amp + comparator + gate driver) | **U8** — TPS54561DPRR (WSON-10) |
-| High-side MOSFET (Q1) | **integrated inside U8** |
+| High-side [[learning/notes/micro-context/mosfet|MOSFET]] (Q1) | **integrated inside U8** |
 | $V_{REF}$ | 0.8V internal bandgap |
 | R1 (top of feedback divider) | **R5** — 60.4kΩ (E96) |
 | R2 (bottom of feedback divider) | **R6** — 11.5kΩ (E96) |
-| External inductor | **L1** — 10µH |
-| Catch/freewheeling diode | **D1** — SS56 Schottky |
+| External [[learning/notes/quick-context/inductor|inductor]] | **L1** — 10µH |
+| Catch/freewheeling [[learning/notes/quick-context/diode|diode]] | **D1** — SS56 Schottky |
 | Output caps | **C18, C19** — 2× 47µF |
 
 $V_{OUT} = 0.8\text{V} \times (1 + 60.4\text{k}/11.5\text{k}) \approx 5.0\text{V}$. R5 and R6 aren't some separate "PWM-setting" resistors — they are literally the feedback divider that programs the setpoint of the analog loop inside U8. The PWM itself never leaves U8; the only externally visible power-loop signals are SW (switching node, at L1), FB (the divider midpoint), and VOUT.
 
-See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for the full Pupper buck topology.
+See buck-converter#real-example-pupper-v3-control-board for the full Pupper buck topology.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[micro-context/buck-converter]]** — The power stage (MOSFET + diode + inductor + capacitor) that this controller drives
+- **[[micro-context/buck-converter]]** — The power stage (MOSFET + diode + inductor + [[learning/notes/quick-context/capacitor|capacitor]]) that this controller drives
 - **[[micro-context/pwm-pulse-width-modulation]]** — The PWM signal itself — what it is, duty cycle math, and applications beyond power conversion
 - **[[quick-context/op-amp]]** — The error amplifier IS an op-amp; understanding virtual short and negative feedback is key to understanding the control loop
 - **[[quick-context/frequency-and-filtering]]** — The output LC filter is a 2nd-order low-pass filter; the compensation network shapes the loop's frequency response
-- **[[quick-context/capacitor]]** — Output capacitor smoothing and the MOSFET gate capacitance that the driver must charge
+- **[[quick-context/capacitor]]** — Output capacitor smoothing and the MOSFET gate [[learning/notes/quick-context/capacitance|capacitance]] that the driver must charge
 - **[[quick-context/inductor]]** — Energy storage element; its $V = L \times dI/dt$ relationship determines the current ramp rate
 - **[[quick-context/resistor]]** — Feedback divider resistors set the output voltage; compensation network uses R-C
 - **[[micro-context/mosfet]]** — The power switch being controlled; gate capacitance affects switching speed
@@ -267,10 +267,10 @@ VOUT drops → V_FB drops below Vref → error amplifier output rises → compar
 **Q2:** If you want to change a buck converter's output from 5V to 3.3V, what do you physically change on the board?
 <details>
 <summary>Answer</summary>
-Change R1 in the feedback divider (the resistor between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
+Change R1 in the feedback divider (the [[learning/notes/quick-context/resistor|resistor]] between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
 </details>
 
-**Q3:** Why can't you just use a microcontroller's PWM output to regulate a buck converter?
+**Q3:** Why can't you just use a [[learning/notes/micro-context/microcontroller|microcontroller]]'s PWM output to regulate a buck converter?
 <details>
 <summary>Answer</summary>
 A microcontroller's PWM timer typically runs at kHz rates with microsecond resolution, but a buck converter needs cycle-by-cycle correction at 500kHz+ with nanosecond switching transitions. Even though hardware interrupt latency is fast (~12 cycles, ~71ns on a 168MHz Cortex-M4), the total response time including ISR entry, ADC sampling, and computation pushes practical latency to ~1μs — comparable to an entire switching period. The analog comparator inside the IC responds in nanoseconds with no software overhead. Also, the gate driver needs to source/sink amps of current to charge the MOSFET gate capacitance — an MCU GPIO pin can't do that.

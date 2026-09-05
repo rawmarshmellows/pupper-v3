@@ -7,11 +7,11 @@ created: 2026-03-28
 
 > **Related:** [[micro-context/i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate soldering and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
+> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate [[learning/notes/quick-context/soldering|soldering]] and wiring errors for sensor hookup — just plug in a cable and start reading data over [[learning/notes/micro-context/i2c|I2C]]. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
 
 ## The Core Problem
 
-Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply voltage, typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
+Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply [[learning/notes/quick-context/voltage|voltage]], typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
 
 ## 5 Essential Terms
 
@@ -237,7 +237,7 @@ void loop() {
 
 - **[[micro-context/jst-connector-families]]** — JST SH (1.0mm) is the connector used by Qwiic/STEMMA QT. This micro-context covers the full range of JST families and common mix-ups (like "MX 1.25mm" being a misnomer).
 
-- **[[quick-context/embedded-communication-protocols]]** — Where I2C sits in the landscape of UART, SPI, CAN, and Ethernet. Explains why I2C is the right choice for short-range sensor communication.
+- **[[quick-context/embedded-communication-protocols]]** — Where I2C sits in the landscape of UART, [[learning/notes/micro-context/spi|SPI]], CAN, and Ethernet. Explains why I2C is the right choice for short-range sensor communication.
 
 - **[[small-context/imu-robot-balance-sensing]]** — The BNO086 IMU is one of the most popular Qwiic/STEMMA QT devices. The Pupper v3 uses this sensor for balance control.
 
@@ -261,7 +261,7 @@ No — SparkFun Qwiic boards are 3.3V only. The Arduino Uno's I2C lines run at 5
 **Q2:** You've daisy-chained 3 Qwiic sensors and the last one in the chain isn't responding. What's likely wrong?
 <details>
 <summary>Answer</summary>
-Most likely **bus capacitance**. Each breakout board adds ~10-30 pF of capacitance, plus each cable adds capacitance proportional to its length. Beyond ~400 pF total, I2C signal edges become too slow for the pull-up resistors to restore the bus voltage in time. Fixes: use shorter cables, reduce the number of boards, use stronger pull-ups (lower resistance, e.g., 4.7k$\Omega$ instead of 10k$\Omega$), or use an I2C bus extender chip.
+Most likely **bus [[learning/notes/quick-context/capacitance|capacitance]]**. Each breakout board adds ~10-30 pF of capacitance, plus each cable adds capacitance proportional to its length. Beyond ~400 pF total, I2C signal edges become too slow for the pull-up resistors to restore the bus voltage in time. Fixes: use shorter cables, reduce the number of boards, use stronger pull-ups (lower resistance, e.g., 4.7k$\Omega$ instead of 10k$\Omega$), or use an I2C bus extender chip.
 </details>
 
 **Q3:** You want to connect two identical BME280 temperature sensors to measure two different locations. Both have address 0x77. How do you solve this with Qwiic?

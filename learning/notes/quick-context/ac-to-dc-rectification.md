@@ -7,11 +7,11 @@ created: 2026-03-29
 
 > **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady [[learning/notes/quick-context/voltage|voltage]].
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[learning/notes/quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[learning/notes/quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -172,7 +172,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 1. **120V AC from the wall** -- alternating 60 times/second
 2. **Transformer steps down** to ~7V AC (modern chargers use high-frequency switching instead)
 3. **Bridge rectifier** flips both halves positive: ~7V pulsating DC, minus 1.4V diode drop = ~5.6V pulsating
-4. **Filter capacitor** smooths the pulses into ~5.6V with small ripple
+4. **Filter [[learning/notes/quick-context/capacitor|capacitor]]** smooths the pulses into ~5.6V with small ripple
 5. **Voltage regulator** (linear or switching) locks the output at exactly 5.0V
 
 **The one thing most outsiders get wrong about this is...** that a "DC adapter" does not just magically change AC to DC. There is real power lost in every stage -- especially the diode drops. Two silicon diodes always in the current path means 1.4V gone as heat before you even start regulating. This is why cheap chargers get warm and why the industry moved to switch-mode power supplies with synchronous rectification (MOSFETs replacing diodes) for better efficiency.
