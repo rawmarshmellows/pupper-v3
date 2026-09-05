@@ -7,7 +7,7 @@ created: 2026-06-07
 
 > **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
+> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a [[learning/notes/micro-context/short-circuit|short circuit]] and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
 ## The Core Problem
 
@@ -229,7 +229,7 @@ A SMALL 16-BIT MEMORY MAP (memory-mapped I/O)
 
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Origin of the Output Enable / tri-state mechanism. The 74HC574's OE pin is the exact primitive that lets registers share a data bus; this note picks up where that one leaves off.
 - **[[learning/notes/quick-context/keypress-to-pixel-pipeline]]** — The next rung up the spine. Once memory-mapped I/O exists, a keypress (read from the keyboard address) can drive a pixel (write to a screen address) — the bus is the highway it all travels on.
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The serial alternative to a parallel bus: UART, I2C, SPI, CAN, USB, and when each wins on speed/distance/wire-count.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The serial alternative to a parallel bus: UART, [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], CAN, USB, and when each wins on speed/distance/wire-count.
 - **[[learning/notes/quick-context/uart]]** — The simplest serial link (no shared-bus arbitration at all: just one TX → one RX), a clean contrast to a multi-drop bus.
 - **[[learning/notes/micro-context/i2c]]** — A 2-wire *shared* serial bus with 7-bit addressing and open-drain lines — serial-world chip-select; the closest serial cousin to address decoding.
 - **[[learning/notes/quick-context/can-bus]]** — The canonical example of true **multi-master arbitration**: bitwise dominant/recessive contention resolves who transmits with no central arbiter.
@@ -250,7 +250,7 @@ The **address bus** (which location — driven by the CPU), the **data bus** (th
 **Q2:** Why is it electrically dangerous for two chips to drive the same wire at the same time?
 <details>
 <summary>Answer</summary>
-Driving HIGH connects the wire to $V_{cc}$; driving LOW connects it to GND. If one chip drives HIGH while another drives LOW on the same wire, you've connected $V_{cc}$ straight to GND through two transistors — a near-short. Large current flows, the wire sits at an undefined middle voltage that's neither a valid 1 nor 0 (garbage data), and the output transistors can overheat or be damaged. This is **bus contention**. See: How It Works (Why two drivers on one wire is a disaster).
+Driving HIGH connects the wire to $V_{cc}$; driving LOW connects it to GND. If one chip drives HIGH while another drives LOW on the same wire, you've connected $V_{cc}$ straight to GND through two transistors — a near-short. Large current flows, the wire sits at an undefined middle [[learning/notes/quick-context/voltage|voltage]] that's neither a valid 1 nor 0 (garbage data), and the output transistors can overheat or be damaged. This is **bus contention**. See: How It Works (Why two drivers on one wire is a disaster).
 </details>
 
 **Q3:** How does the 74HC574's Output Enable pin make it safe to put several registers on one data bus?
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one [[learning/notes/quick-context/differential-pair|differential pair]] very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>

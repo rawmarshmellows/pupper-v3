@@ -7,7 +7,7 @@ created: 2026-04-01
 
 > **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** The triangle symbol on a schematic hides 5--20 [[quick-context/transistor|transistors]] wired in three stages: a [[quick-context/differential-pair|differential pair]] that senses the input difference, a [[quick-context/high-gain-amplifier-stage|current-mirror gain stage]] that amplifies it to a full-rail swing, and an output stage that drives the load. The same three stages appear in both [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---the only difference is whether a compensation capacitor is added between stages 2 and 3.
+> **TL;DR:** The triangle symbol on a schematic hides 5--20 [[quick-context/transistor|transistors]] wired in three stages: a [[quick-context/differential-pair|differential pair]] that senses the input difference, a [[quick-context/high-gain-amplifier-stage|current-mirror gain stage]] that amplifies it to a full-rail swing, and an output stage that drives the load. The same three stages appear in both [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---the only difference is whether a compensation [[learning/notes/quick-context/capacitor|capacitor]] is added between stages 2 and 3.
 
 ## The Core Problem: The Triangle Is a Black Box
 
@@ -326,14 +326,14 @@ WHAT HAPPENS WHEN YOU SWAP THEM
     → Doesn't work at all
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking op-amps and comparators are fundamentally different devices. They're not. They're the same three-stage circuit with one component changed. The triangle on the schematic hides 5--20 transistors that are almost identical in both cases. The entire behavioral difference---speed, output type, stability---comes from whether a ~20 pF capacitor is present at one internal node. That's it. Understanding the three stages and the role of that capacitor lets you predict the behavior of any op-amp or comparator from first principles.
+**The one thing most outsiders get wrong about this is...** thinking op-amps and comparators are fundamentally different devices. They're not. They're the same three-stage circuit with one component changed. The triangle on the schematic hides 5--20 transistors that are almost identical in both cases. The entire behavioral difference---speed, output type, stability---comes from whether a ~20 pF capacitor is present at one internal node. That's it. Understanding the three stages and the role of that capacitor lets you predict the behavior of any op-amp or [[learning/notes/quick-context/comparator|comparator]] from first principles.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **[[quick-context/differential-pair]]** --- Stage 1 in detail. How matched transistors steer current, why the tail current source is essential, and how common-mode rejection works.
+- **[[quick-context/differential-pair]]** --- Stage 1 in detail. How matched transistors steer current, why the [[learning/notes/micro-context/tail-current|tail current]] source is essential, and how common-mode rejection works.
 
 - **[[quick-context/high-gain-amplifier-stage]]** --- Stage 2 in detail. How current mirrors create high impedance, why $V = I \times R$ with a 2 M$\Omega$ impedance produces huge gain, and the gain-vs-headroom tradeoff with cascodes.
 
@@ -353,7 +353,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 **Q1:** What are the three stages inside an op-amp or comparator, and what does each convert?
 <details>
 <summary>Answer</summary>
-**Stage 1: Differential pair** — converts a voltage difference into a current difference (V → I). **Stage 2: High-gain amplifier** — converts the current difference into a large voltage swing (I → V). **Stage 3: Output buffer** — converts the high-impedance voltage into a low-impedance output that can drive loads (V → V, with impedance transformation). See: How It Works (Signal Path diagram).
+**Stage 1: [[learning/notes/quick-context/differential-pair|Differential pair]]** — converts a [[learning/notes/quick-context/voltage|voltage]] difference into a current difference (V → I). **Stage 2: High-gain amplifier** — converts the current difference into a large voltage swing (I → V). **Stage 3: Output buffer** — converts the high-impedance voltage into a low-impedance output that can drive loads (V → V, with impedance transformation). See: How It Works (Signal Path diagram).
 </details>
 
 **Q2:** What single component differentiates an op-amp from a comparator?
@@ -368,10 +368,10 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 **The gain is ~100,000×, and negative feedback forces equilibrium.** If V+ exceeds V- by even 0.01 mV, Stage 1 creates a current difference, Stage 2 amplifies it to a ~1V swing at node A, and Stage 3 drives Vout. With negative feedback, Vout connects back to V-, raising V- until V+ - V- ≈ Vout/100,000 ≈ 0. The inputs are driven to be equal *because* the gain is so enormous that any difference is immediately corrected. Without feedback (comparator), this equilibrium never forms, and Vout saturates at the rail. See: How It Works (Golden Rules Explained).
 </details>
 
-**Q4:** An engineer measures an LM358 op-amp's response time when used as a comparator and gets 10 $\mu$s. An LM393 comparator responds in ~1.3 $\mu$s. Both have similar transistor counts. Why the ~8× speed difference?
+**Q4:** An engineer measures an LM358 op-amp's response time when used as a comparator and gets 10 $\mu$s. An LM393 comparator responds in ~1.3 $\mu$s. Both have similar [[learning/notes/quick-context/transistor|transistor]] counts. Why the ~8× speed difference?
 <details>
 <summary>Answer</summary>
-**The LM358's internal 30 pF compensation capacitor limits its slew rate.** The cap must charge/discharge through the tail current: $SR = 100\ \mu A / 30\ pF = 3.3\ V/\mu s$. To swing 3.3V takes $\sim 1\ \mu s$, and overdrive recovery adds more delay, pushing total response to ~10 $\mu$s. The LM393 has no compensation cap, so node A charges only the parasitic capacitance, giving much faster slewing. Additionally, the LM393's output stage and input stage are designed for overdrive recovery, while the LM358's are not. See: Concrete Example (What Happens When You Swap Them).
+**The LM358's internal 30 pF compensation capacitor limits its slew rate.** The cap must charge/discharge through the tail current: $SR = 100\ \mu A / 30\ pF = 3.3\ V/\mu s$. To swing 3.3V takes $\sim 1\ \mu s$, and overdrive recovery adds more delay, pushing total response to ~10 $\mu$s. The LM393 has no compensation cap, so node A charges only the parasitic [[learning/notes/quick-context/capacitance|capacitance]], giving much faster slewing. Additionally, the LM393's output stage and input stage are designed for overdrive recovery, while the LM358's are not. See: Concrete Example (What Happens When You Swap Them).
 </details>
 
 **Q5:** Could you build a "universal" IC that works as both an op-amp and a comparator by adding a switch to connect/disconnect the compensation capacitor?

@@ -258,7 +258,7 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 
 - **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
 
-- **Soldering and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
+- **[[learning/notes/quick-context/soldering|Soldering]] and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
 
 - **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 
@@ -278,13 +278,13 @@ A **trace** is a copper pathway that runs along a single layer of the PCB, carry
 **Q2:** What does the soldermask (the green coating) actually do?
 <details>
 <summary>Answer</summary>
-The soldermask is a protective coating that covers most of the copper, leaving only the pads exposed. It prevents accidental short circuits (if a stray piece of metal touched two adjacent traces, it would connect them—the soldermask prevents this). It also protects the copper from oxidation and environmental damage. See: 5 Essential Terms.
+The soldermask is a protective coating that covers most of the copper, leaving only the pads exposed. It prevents accidental short circuits (if a stray piece of metal touched two adjacent traces, it would connect them—the soldermask prevents this). It also protects the copper from [[learning/notes/micro-context/oxidation|oxidation]] and environmental damage. See: 5 Essential Terms.
 </details>
 
 **Q3:** Why do PCB designers dedicate entire layers to power and ground "planes" instead of just routing power traces like signal traces?
 <details>
 <summary>Answer</summary>
-Solid copper planes provide three major benefits: (1) **Lower resistance**—a solid sheet has much less resistance than a thin trace, reducing voltage drop across the board. (2) **Lower inductance**—planes respond faster to sudden current demands from chips (important for high-speed digital circuits). (3) **Better shielding**—planes act as shields between signal layers, reducing electromagnetic interference and crosstalk. This is why even a 4-layer board typically dedicates 2 layers to power/ground planes. See: How It Works (the 4-layer stack-up diagram).
+Solid copper planes provide three major benefits: (1) **Lower resistance**—a solid sheet has much less resistance than a thin trace, reducing [[learning/notes/quick-context/voltage|voltage]] drop across the board. (2) **Lower inductance**—planes respond faster to sudden current demands from chips (important for high-speed digital circuits). (3) **Better shielding**—planes act as shields between signal layers, reducing electromagnetic interference and crosstalk. This is why even a 4-layer board typically dedicates 2 layers to power/ground planes. See: How It Works (the 4-layer stack-up diagram).
 </details>
 
 **Q4:** A designer needs to connect 500 signals between a processor and memory on a PCB. They could use a 2-layer board with very thin traces and tiny spacing, or a 6-layer board with normal trace sizes. What factors would push them toward the more expensive 6-layer option?

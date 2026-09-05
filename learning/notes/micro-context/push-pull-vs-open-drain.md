@@ -12,7 +12,7 @@ updated: 2026-06-07
 
 An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] does that, holding the line HIGH whenever everyone has released.
 
-- **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving transistor, so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
+- **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving [[learning/notes/quick-context/transistor|transistor]], so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
 - **"any device can pull LOW"** → One device turning on its NMOS drags the *whole* shared line LOW, regardless of what the others do. Low always wins.
 - **"wired-AND"** → Treat *released* = logic 1, *pulling LOW* = logic 0. The line reads HIGH **only if every device releases** (all 1s). If *any one* pulls LOW, the line is LOW. That is a logical AND of all the devices' states — computed by the wire itself, no gate needed. Hence "wired-AND."
 

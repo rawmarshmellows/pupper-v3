@@ -11,7 +11,7 @@ created: 2026-04-01
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
-A battery monitor needs to answer a simple question: "Is the battery voltage above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
+A battery monitor needs to answer a simple question: "Is the battery [[learning/notes/quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
 
 ## 5 Essential Terms
 
@@ -24,7 +24,7 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
-<summary><strong>How It Works</strong> --- From transistor pairs to digital output</summary>
+<summary><strong>How It Works</strong> --- From [[learning/notes/quick-context/transistor|transistor]] pairs to digital output</summary>
 
 ### The Functional View: What a Comparator Does
 
@@ -481,13 +481,13 @@ CURRENT CONSUMPTION:
 **Q3:** An engineer uses an op-amp (LM358, GBW = 1 MHz) as a comparator in a prototype and it works fine. When they deploy it in a factory with noisy power lines, it fails. Why?
 <details>
 <summary>Answer</summary>
-**Three problems compound in the noisy environment:** (1) The LM358's internal compensation capacitor limits its slew rate, so the output takes microseconds to transition---during which time noise can cause multiple crossings. (2) When the input difference is large, the op-amp's input stage saturates, and recovery from saturation takes additional microseconds (poor overdrive recovery). (3) The output may not reach clean logic levels (the LM358 can't swing to the positive rail with a resistive load), so the receiving logic sees ambiguous voltage levels. A dedicated comparator (e.g., LM393) has none of these problems: no compensation cap, designed for overdrive, and open-drain output that swings to clean GND. See: The Key Tension (Op-Amp as Comparator table).
+**Three problems compound in the noisy environment:** (1) The LM358's internal compensation [[learning/notes/quick-context/capacitor|capacitor]] limits its slew rate, so the output takes microseconds to transition---during which time noise can cause multiple crossings. (2) When the input difference is large, the op-amp's input stage saturates, and recovery from saturation takes additional microseconds (poor overdrive recovery). (3) The output may not reach clean logic levels (the LM358 can't swing to the positive rail with a resistive load), so the receiving logic sees ambiguous voltage levels. A dedicated comparator (e.g., LM393) has none of these problems: no compensation cap, designed for overdrive, and open-drain output that swings to clean GND. See: The Key Tension (Op-Amp as Comparator table).
 </details>
 
 **Q4:** In a flash ADC, why do you need $2^n - 1$ comparators for n bits of resolution?
 <details>
 <summary>Answer</summary>
-**Each comparator represents one possible threshold level.** An n-bit ADC must distinguish $2^n$ voltage levels. The boundaries between adjacent levels require $2^n - 1$ comparators, each with its reference voltage set to a different point on a resistor ladder. All comparators fire simultaneously---those whose reference is below the input output HIGH, those above output LOW. A priority encoder then converts this "thermometer code" (a string of 1s followed by 0s) into a binary number. For example, an 8-bit flash ADC needs 255 comparators. This is why flash ADCs are fast (one clock cycle) but expensive (exponential hardware). See: Peripheral Knowledge (ADC connection).
+**Each comparator represents one possible threshold level.** An n-bit ADC must distinguish $2^n$ voltage levels. The boundaries between adjacent levels require $2^n - 1$ comparators, each with its reference voltage set to a different point on a [[learning/notes/quick-context/resistor|resistor]] ladder. All comparators fire simultaneously---those whose reference is below the input output HIGH, those above output LOW. A priority encoder then converts this "thermometer code" (a string of 1s followed by 0s) into a binary number. For example, an 8-bit flash ADC needs 255 comparators. This is why flash ADCs are fast (one clock cycle) but expensive (exponential hardware). See: Peripheral Knowledge (ADC connection).
 </details>
 
 **Q5:** A window comparator uses two comparators to detect whether a voltage is between two limits (e.g., 2.5V < Vin < 3.5V). Draw the logic: how do you combine two comparator outputs to get a single "in range" signal?

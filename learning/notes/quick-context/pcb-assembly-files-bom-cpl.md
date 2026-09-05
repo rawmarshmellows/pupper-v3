@@ -5,7 +5,7 @@ created: 2026-06-05
 
 # PCB Assembly Files — BOM & CPL (Pick-and-Place)
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
+> **Related:** [[learning/notes/micro-context/pick-and-place-file]]
 
 > **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
 
@@ -19,7 +19,7 @@ A bare PCB is just patterned copper — empty pads. A contract assembler (JLCPCB
 |------|------------|
 | **BOM (Bill of Materials)** | The purchasing list — **one row per unique part type**, with quantity, the [[learning/notes/quick-context/resistor\|value]], [[learning/notes/quick-context/common-ic-packages\|footprint]], manufacturer part number (MPN), and supplier catalog number. It's the recipe for *buying*. |
 | **CPL / Pick-and-Place** | The placement list — **one row per physical component**, giving centroid XY, rotation, board side, and pin count. It's the instructions for *placing*. See [[learning/notes/micro-context/pick-and-place-file\|Pick and Place File]]. |
-| **Reference Designator** | The unique ID stamped on each part: `Q`=transistor, `C`=[[learning/notes/quick-context/capacitor\|cap]], `R`=[[learning/notes/quick-context/resistor\|resistor]], `D`=[[learning/notes/quick-context/diode\|diode]], `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
+| **Reference Designator** | The unique ID stamped on each part: `Q`=[[learning/notes/quick-context/transistor|transistor]], `C`=[[learning/notes/quick-context/capacitor\|cap]], `R`=[[learning/notes/quick-context/resistor\|resistor]], `D`=[[learning/notes/quick-context/diode\|diode]], `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
 | **Footprint** | The physical pad pattern / package the part solders to (`C0402`, `SOT-23-5`, `SMA`, `PG-TDSON-8`). Must match the real part exactly, or it won't fit. |
 | **Centroid + Rotation + Layer** | The four numbers the machine actually needs: **Mid X/Y** (part center), **Rotation** (degrees CCW), and **Layer** (`T` top / `B` bottom). `SMD = Yes/No` tells it surface-mount vs through-hole. |
 

@@ -17,7 +17,7 @@ Running AI models (object detection, pose estimation, image classification) on a
 
 | Term | Definition |
 |------|------------|
-| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
+| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, [[learning/notes/micro-context/i2c|I2C]] EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
 | **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively parallel datapaths that a general-purpose CPU cannot match |
 | **TOPS (Tera Operations Per Second)** | NPU throughput metric — how many trillion math operations per second the chip can perform. Caveat: TOPS depends on precision (INT4 vs INT8) and does not capture memory bandwidth or software efficiency |
 | **Hailo** | Israeli semiconductor company that manufactures the NPU chips used in all Pi AI HATs: Hailo-8L (13 TOPS), Hailo-8 (26 TOPS), and Hailo-10H (40 TOPS) |
@@ -464,7 +464,7 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 - **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
 - **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
 - **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
-- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level
+- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the [[learning/notes/quick-context/transistor|transistor]] level
 - **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep topic in its own right
 - **ONNX (Open Neural Network Exchange)** — The intermediate model format used as input to Hailo's compiler
 

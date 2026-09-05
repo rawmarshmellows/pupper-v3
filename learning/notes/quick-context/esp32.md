@@ -7,11 +7,11 @@ created: 2026-05-28
 
 > **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
+> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals ([[learning/notes/micro-context/spi|SPI]], [[learning/notes/micro-context/i2c|I2C]], I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
 ## The Core Problem
 
-Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
+Connecting an embedded device to WiFi used to mean pairing a [[learning/notes/micro-context/microcontroller|microcontroller]] with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
 
 ## 5 Essential Terms
 

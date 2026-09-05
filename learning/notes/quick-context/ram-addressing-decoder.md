@@ -11,7 +11,7 @@ created: 2026-06-07
 
 ## The Core Problem
 
-A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a short circuit, and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
+A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a [[learning/notes/micro-context/short-circuit|short circuit]], and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ A single register can hold one word, but a useful program needs thousands or mil
 |------|------------|
 | **Word** | The fixed-size chunk RAM stores and returns per address — one register's worth of bits. In the Nand-to-Tetris machine modeled here a word is 16 bits (`Bits16`); on a PC it is usually 8, 32, or 64. |
 | **Address** | A binary number that names one word in the array. With $n$ address bits there are $2^n$ distinct addresses, so an $n$-bit address selects one of $2^n$ words. |
-| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the clock edge. |
+| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the [[learning/notes/micro-context/clock-edges|clock edge]]. |
 | **MUX (multiplexer)** | A many-to-1 selector on the **read path**. Every register is always outputting its stored value; the MUX picks **exactly one** of those outputs to pass through, chosen by the address. |
 | **Load / clock-enable** | The gate that decides whether a register captures new data on the next [[learning/notes/micro-context/clock-edges|clock edge]]. If `load = 1` the register overwrites itself at the edge; if `load = 0` it holds. The DMUX sets exactly one register's `load` to 1. |
 
