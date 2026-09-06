@@ -3,16 +3,18 @@ term: Tail Current
 created: 2026-04-02
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage-current-causality|Voltage-Current Causality]] | [[learning/notes/micro-context/quiescent-supply-current|Quiescent Supply Current]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current]] | [[learning/notes/quick-context/electromigration|Electromigration]] | [[learning/notes/quick-context/electric-current|Electric Current]]
+
 # Tail Current
 
-**Definition:** A fixed-value current source connected to the shared source node of a differential pair. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
+**Definition:** A fixed-value current source connected to the shared source node of a [[learning/notes/quick-context/differential-pair|differential pair]]. It sets the total current budget that the two transistors must split between them, ensuring the pair operates as a current-steering switch rather than two independent amplifiers.
 
 ## How It Works
 
 - A current source (typically a [[micro-context/current-mirror|current mirror]]) forces a constant total current $I_{tail}$ through the shared source node — e.g., 100 $\mu$A.
-- The differential input voltage $V(+) - V(-)$ steers this fixed current left or right: if $V(+)$ is slightly higher, more current flows through the left transistor and less through the right.
+- The differential input [[learning/notes/quick-context/voltage|voltage]] $V(+) - V(-)$ steers this fixed current left or right: if $V(+)$ is slightly higher, more current flows through the left [[learning/notes/quick-context/transistor|transistor]] and less through the right.
 - Because $I_{tail}$ is constant, the two drain currents always sum to $I_{tail}$ — one side's gain is the other side's loss.
-- This constant-sum constraint is what converts a voltage difference into a differential current signal, which is the core function of the differential pair.
+- This constant-sum constraint is what converts a [[learning/notes/quick-context/voltage|voltage]] difference into a differential current signal, which is the core function of the [[learning/notes/quick-context/differential-pair|differential pair]].
 
 ```
                  Vdd
@@ -37,4 +39,4 @@ created: 2026-04-02
                  GND
 ```
 
-**Key insight:** The tail current source is what makes a differential pair reject common-mode signals — if both inputs rise together, neither transistor can draw more current because the total is clamped, so the output doesn't change.
+**Key insight:** The tail current source is what makes a differential pair reject common-mode signals — if both inputs rise together, neither [[learning/notes/quick-context/transistor|transistor]] can draw more current because the total is clamped, so the output doesn't change.

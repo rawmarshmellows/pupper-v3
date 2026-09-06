@@ -3,9 +3,10 @@ topic: Switches to Registers — Storing Data with Real Hardware
 created: 2026-04-09
 ---
 
+> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|WiFi Chip — How Radio Becomes Data]] | [[learning/notes/quick-context/usb-peripheral-hardware|USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire]] | [[learning/notes/quick-context/transistor-analog-to-digital|Transistors - From Imperfect Analog Devices to Digital Switches]] | [[learning/notes/quick-context/ram-addressing-decoder|RAM — Addressing an Array of Registers]] | [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]]
+
 # Switches to Registers — Storing Data with Real Hardware
 
-> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
 
 > **TL;DR:** A physical switch provides a 1 or 0, a clock signal says "capture NOW," and a [[learning/notes/quick-context/d-flip-flop|D flip-flop]] stores the bit at the clock edge. Chain eight flip-flops into a register (a real chip: the 74HC574), connect eight switches and eight LEDs, and you've built the fundamental unit of all computing memory. Every register in every CPU, every byte in every [[learning/notes/micro-context/sram|SRAM]] cache, and every address in every RAM chip is just a scaled-up version of this exact circuit.
 
@@ -19,7 +20,7 @@ Combinational logic (AND, OR, NOT gates built from [[learning/notes/quick-contex
 |------|------------|
 | **Physical Switch** | A mechanical device (toggle switch, DIP switch) that connects a wire to either Vcc (HIGH / 1) or GND (LOW / 0). This is the simplest way a human provides a binary input to a circuit. |
 | **Clock Signal** | A square wave that alternates between HIGH and LOW at a fixed rate. In this circuit, even a push button can serve as a manual clock — each press creates one rising edge that tells the flip-flop "capture now." See [[learning/notes/micro-context/clock-edges]]. |
-| **D Flip-Flop (DFF)** | A circuit that stores one bit. On the rising [[learning/notes/micro-context/clock-edges|clock edge]], it captures whatever value is on its D input and holds it at Q until the next clock edge. The 74HC74 chip contains two independent DFFs. See [[learning/notes/quick-context/d-flip-flop]]. |
+| **D Flip-Flop (DFF)** | A circuit that stores one bit. On the rising [[learning/notes/micro-context/clock-edges|clock edge]], it captures whatever value is on its D input and holds it at Q until the next [[learning/notes/micro-context/clock-edges|clock edge]]. The 74HC74 chip contains two independent DFFs. See [[learning/notes/quick-context/d-flip-flop]]. |
 | **8-Bit Register** | Eight D flip-flops sharing a single clock line. On one clock edge, all eight capture their D inputs simultaneously — storing a full byte. The 74HC574 is a real chip that does exactly this. |
 | **Output Enable (OE)** | A control pin on the 74HC574 that connects or disconnects the outputs from the rest of the circuit (tri-state). When OE is LOW, outputs are active. When HIGH, they go high-impedance — as if the chip isn't there. This lets multiple registers share one data bus. |
 
@@ -339,18 +340,18 @@ EVERY CPU INSTRUCTION FOLLOWS THIS PATTERN
 
 This is the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch-execute cycle]] at its most fundamental: read from registers, compute through logic, write to registers, repeat. The 74HC574 on your breadboard is the same functional unit as the register file inside an ARM Cortex-M4 — the [[learning/notes/micro-context/stm32-microcontroller|STM32]] just has more registers, a more complex ALU, and a [[learning/notes/micro-context/clock-source|180 MHz clock]] instead of a push button.
 
-**The one thing most outsiders get wrong about this is...** thinking that "memory" and "computation" are separate concepts. In reality, computation IS memory updating over time. An ALU without registers is just a fancy truth table — it can't count, can't loop, can't follow a program. The register is what turns static logic into dynamic computation. The moment you wire a register's output back through an adder to its own input, you've created a counter — and from counters and state machines, you can build anything. The [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics beneath it all]] is just cross-coupled transistors holding voltages stable — the same [[learning/notes/micro-context/sram|SRAM cell]] pattern, whether it's in a $2 breadboard chip or a billion-transistor CPU.
+**The one thing most outsiders get wrong about this is...** thinking that "memory" and "computation" are separate concepts. In reality, computation IS memory updating over time. An ALU without registers is just a fancy truth table — it can't count, can't loop, can't follow a program. The register is what turns static logic into dynamic computation. The moment you wire a register's output back through an adder to its own input, you've created a counter — and from counters and state machines, you can build anything. The [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics beneath it all]] is just cross-coupled transistors holding voltages stable — the same [[learning/notes/micro-context/sram|SRAM cell]] pattern, whether it's in a $2 breadboard chip or a billion-[[learning/notes/quick-context/transistor|transistor]] CPU.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[learning/notes/quick-context/d-flip-flop]]** — Deep dive into the D flip-flop itself: how it's built from NAND gates (SR latch → gated latch → master-slave edge-triggered), the Nand2Tetris Python implementation, and how flip-flops compose into registers, shift registers, and counters.
 
-- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — The physics beneath this circuit: how bits are physically stored as voltages in [[learning/notes/micro-context/sram|SRAM]] (cross-coupled transistors), charge on capacitors (DRAM), and trapped electrons on floating gates (flash). The 74HC574's internal flip-flops use the SRAM-like cross-coupled inverter pattern.
+- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — The physics beneath this circuit: how bits are physically stored as voltages in [[learning/notes/micro-context/sram|SRAM]] (cross-coupled transistors), charge on capacitors (DRAM), and trapped electrons on floating gates (flash). The 74HC574's internal flip-flops use the [[learning/notes/micro-context/sram|SRAM]]-like cross-coupled inverter pattern.
 
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles down through 7 layers of abstraction to the logic gates and registers described here. Layer 2 of that document shows "Registers = MUX + Data Flip-Flop" — exactly the 74HC574 pattern.
 
@@ -358,9 +359,9 @@ This is the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch
 
 - **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the imperfect analog behavior of real transistors is forced to behave as clean digital switches. The clock-and-register discipline is one of the key tricks: by only sampling at edges, the circuit ignores messy analog transitions.
 
-- **[[learning/notes/micro-context/clock-edges]]** — The precise definition of rising/falling clock edges and why edge-triggered sampling is the foundation of synchronous digital design.
+- **[[learning/notes/micro-context/clock-edges]]** — The precise definition of rising/falling [[learning/notes/micro-context/clock-edges|clock edges]] and why edge-triggered sampling is the foundation of synchronous digital design.
 
-- **[[learning/notes/micro-context/clock-source]]** — Where clock signals come from in real systems: crystal oscillators, ceramic resonators, RC oscillators. The push button in the breadboard circuit is the simplest possible "clock source."
+- **[[learning/notes/micro-context/clock-source]]** — Where clock signals come from in real systems: crystal oscillators, ceramic resonators, RC oscillators. The push button in the breadboard circuit is the simplest possible "[[learning/notes/micro-context/clock-source|clock source]]."
 
 - **[[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]** — Historical context: the earliest computers used vacuum tubes as switches and magnetic core memory (tiny ferrite rings) as registers. The 74HC574 on your breadboard does what a room-sized relay rack did in 1945.
 
@@ -380,7 +381,7 @@ The D flip-flop is **edge-triggered** — it only samples its D input at the ris
 **Q2:** The 74HC574 has an Output Enable (OE) pin. What would happen if you connected OE to HIGH instead of GND?
 <details>
 <summary>Answer</summary>
-The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing voltage conflicts. See: 5 Essential Terms (Output Enable).
+The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing [[learning/notes/quick-context/voltage|voltage]] conflicts. See: 5 Essential Terms (Output Enable).
 </details>
 
 **Q3:** How is the 74HC574 register on your breadboard related to the register file inside an ARM CPU?

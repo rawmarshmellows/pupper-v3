@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/usb-peripheral-hardware|USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire]] | [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] | [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
@@ -11,14 +11,14 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Inside every computer chip is a tiny silicon die with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
+Inside every computer chip is a tiny [[learning/notes/quick-context/silicon-die|silicon die]] with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
 
 ## 5 Essential Terms
 
 | Term | Plain English Definition |
 |------|--------------------------|
-| **Bond pad** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
-| **Substrate** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
+| **[[learning/notes/quick-context/bond-pad|Bond pad]]** | A tiny metal square on the chip surface where a wire can be attached—think of it as a microscopic "landing zone" for connections |
+| **[[learning/notes/quick-context/substrate-ic-packaging|Substrate]]** | The intermediate platform (like a small circuit board) that the chip sits on; wire bonds connect the chip to this platform |
 | **Ultrasonic welding** | Using high-frequency vibrations (like a tiny tuning fork) to melt/fuse the wire to the metal pad without traditional heat |
 | **Loop height** | How tall the wire arc is above the chip; taller loops are more forgiving but add electrical interference |
 | **Ball bond / Wedge bond** | The two ends of a wire bond—the "ball" is a melted sphere at the start, the "wedge" is a flat pressed connection at the end |
@@ -308,14 +308,14 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
                                             (huge by comparison!)
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming wire bonding is primitive or outdated technology. In reality, it's incredibly precise—modern wire bonders place thousands of wires per hour with micron-level accuracy, and the ultrasonic welding creates bonds stronger than the wire itself. Wire bonding handles the majority of chips manufactured today (billions annually) because it's the perfect balance of cost and reliability for most applications. The "better" alternatives like flip-chip are only necessary when you need extreme speed or density. A $5 microcontroller and a $500 CPU both need connections to the outside world—wire bonding makes the $5 chip economically possible.
+**The one thing most outsiders get wrong about this is...** assuming wire bonding is primitive or outdated technology. In reality, it's incredibly precise—modern wire bonders place thousands of wires per hour with micron-level accuracy, and the ultrasonic welding creates bonds stronger than the wire itself. Wire bonding handles the majority of chips manufactured today (billions annually) because it's the perfect balance of cost and reliability for most applications. The "better" alternatives like flip-chip are only necessary when you need extreme speed or density. A $5 [[learning/notes/micro-context/microcontroller|microcontroller]] and a $500 CPU both need connections to the outside world—wire bonding makes the $5 chip economically possible.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
 

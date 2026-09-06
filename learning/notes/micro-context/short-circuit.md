@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[learning/notes/quick-context/pwm-controller-circuit|PWM Controller Circuit]] | [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]

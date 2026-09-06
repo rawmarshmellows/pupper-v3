@@ -17,16 +17,16 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 
 | Term | Definition |
 |------|------------|
-| **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
-| **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
-| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
+| **Farad (F)** | The unit of capacitance. 1 farad = 1 [[learning/notes/micro-context/coulomb-history|coulomb]] stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, [[learning/notes/quick-context/transistor|transistor]] gates) through picofarads (pF, [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
+| **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
+| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] [[learning/notes/quick-context/substrate-ic-packaging|substrate]]): ~4.5. Silicon dioxide ([[learning/notes/quick-context/transistor|transistor]] gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
 | **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
 <details>
 <summary><strong>How It Works</strong> -- Capacitance as a geometric property</summary>
 
-Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a capacitor -- the physics doesn't care. The key equation is:
+Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a [[learning/notes/quick-context/capacitor|capacitor]] -- the physics doesn't care. The key equation is:
 
 $$C = \frac{\varepsilon_0 \cdot \varepsilon_r \cdot A}{d}$$
 
@@ -115,7 +115,7 @@ Now ask: what is **current**? Current is rate of charge flow:
 
 $$I = \frac{dQ}{dt}$$
 
-Differentiate $Q = C \cdot V$ with respect to time (C is constant for a fixed capacitor — geometry doesn't change):
+Differentiate $Q = C \cdot V$ with respect to time (C is constant for a fixed [[learning/notes/quick-context/capacitor|capacitor]] — geometry doesn't change):
 
 $$\frac{dQ}{dt} = C \cdot \frac{dV}{dt}$$
 
@@ -136,13 +136,13 @@ DERIVATION AT A GLANCE
     I = C·dV/dt
 ```
 
-**Physical intuition** — think of voltage as the *height* of charge piled on the plates:
+**Physical intuition** — think of [[learning/notes/quick-context/voltage|voltage]] as the *height* of charge piled on the plates:
 
 - $V$ rising = charge being *pumped onto* the plate. Pump rate = current.
 - $V$ falling = charge *draining off*. Drain rate = current (other direction).
 - $V$ constant = no charge moving = **zero current**, even if V is huge. A fully charged capacitor with steady V sees no current. This is why caps **block DC** but pass AC: DC has dV/dt = 0, AC has dV/dt ≠ 0.
 
-The C factor is the "exchange rate" between charge and voltage. Big C = lots of charge per volt = need lots of current to move V quickly. Small C = little charge per volt = small current changes V fast.
+The C factor is the "exchange rate" between charge and [[learning/notes/quick-context/voltage|voltage]]. Big C = lots of charge per volt = need lots of current to move V quickly. Small C = little charge per volt = small current changes V fast.
 
 ```
 WATER ANALOGY
@@ -307,7 +307,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
         C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
 ```
 
-The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+The ESD [[learning/notes/quick-context/diode|diode]] usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
 
 ### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
 
@@ -403,7 +403,7 @@ Same $I = C \cdot dV/dt$ as always — but *C* is now an *effective* C that depe
 
 Every device connected to a shared signal line adds its input capacitance in parallel. This is the direct consequence of the parallel rule above: $C_{\text{total}} = C_1 + C_2 + C_3 + \ldots$. Add enough devices and the total bus capacitance becomes so large that the signal can't transition fast enough to be read correctly.
 
-The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
+The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection [[learning/notes/quick-context/diode|diode]], and PCB pad). The [[learning/notes/micro-context/i2c|I2C]] spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
 
 ```
 WHY DAISY CHAINS HIT A WALL
@@ -485,7 +485,7 @@ WHY DAISY CHAINS HIT A WALL
     • Use bus expanders (I2C multiplexers like TCA9548A)
 ```
 
-The key insight: **the 400 pF I2C limit isn't arbitrary -- it's a direct consequence of $t_{\text{rise}} = RC$.** The pull-up resistor and total bus capacitance form an RC circuit. More devices = more C = slower rise time = eventually the signal can't keep up with the clock. This is parasitic capacitance in parallel, setting a hard ceiling on how many devices can share a wire.
+The key insight: **the 400 pF [[learning/notes/micro-context/i2c|I2C]] limit isn't arbitrary -- it's a direct consequence of $t_{\text{rise}} = RC$.** The pull-up [[learning/notes/quick-context/resistor|resistor]] and total bus capacitance form an RC circuit. More devices = more C = slower rise time = eventually the signal can't keep up with the clock. This is parasitic capacitance in parallel, setting a hard ceiling on how many devices can share a wire.
 
 </details>
 
@@ -534,7 +534,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[learning/notes/micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -647,13 +647,13 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).
 </details>
 
-**Q4:** A MOSFET has 2 pF of gate-drain capacitance ($C_{gd}$) and a voltage gain of 100. Why does the input see 200 pF, not 2 pF?
+**Q4:** A [[learning/notes/micro-context/mosfet|MOSFET]] has 2 pF of gate-drain capacitance ($C_{gd}$) and a voltage gain of 100. Why does the input see 200 pF, not 2 pF?
 <details>
 <summary>Answer</summary>
 **Miller effect.** When the gate voltage changes by $\Delta V$, the drain swings by $-100 \times \Delta V$ (inverted by the gain). The voltage across $C_{gd}$ changes by $(1 + 100) \times \Delta V = 101 \times \Delta V$. The current through $C_{gd}$ is therefore 101x what you'd expect from 2 pF alone, making it look like ~200 pF from the input's perspective. This is why high-gain amplifier stages are slower than their raw gate capacitance would suggest. See: 5 Essential Terms (Miller Capacitance).

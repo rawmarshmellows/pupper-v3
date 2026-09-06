@@ -4,14 +4,16 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current]]
+
 # Reverse and Forward Bias
 
-**Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
+**Definition:** The two ways to apply [[learning/notes/quick-context/voltage|voltage]] across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works
 
 - At equilibrium, a depletion zone forms at the PN junction where mobile carriers have diffused away, creating a built-in electric field (~0.7V for silicon).
-- Forward bias applies positive voltage to the P-side, opposing the built-in field and shrinking the depletion zone until carriers flood across — current flows.
+- Forward bias applies positive [[learning/notes/quick-context/voltage|voltage]] to the P-side, opposing the built-in field and shrinking the depletion zone until carriers flood across — current flows.
 - Reverse bias applies positive voltage to the N-side, reinforcing the built-in field and widening the depletion zone — current is blocked.
 - If reverse voltage exceeds the breakdown voltage, the field accelerates carriers enough to ionize atoms (avalanche), and current flows destructively.
 

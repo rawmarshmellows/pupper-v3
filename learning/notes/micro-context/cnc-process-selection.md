@@ -4,11 +4,13 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication - Manufacturing Process and Tools]] | [[learning/notes/micro-context/cnc-turning|CNC Turning]] | [[learning/notes/micro-context/cnc-milling|CNC Milling]] | [[learning/notes/quick-context/cnc-machining|CNC Machining]]
+
 # CNC Process Selection
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
 
-**Definition:** A decision framework for when to use CNC machining over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
+**Definition:** A decision framework for when to use [[learning/notes/quick-context/cnc-machining|CNC machining]] over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
 
 ## How It Works
 
