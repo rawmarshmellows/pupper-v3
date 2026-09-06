@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/electrodes|Electrodes]]
+
 # Cathode
 
 > **See also:** [[quick-context/electrodes]]
@@ -13,8 +15,8 @@ updated: 2026-03-27
 ## How It Works
 
 - Electrons arrive at the cathode from the external circuit and are consumed by reduction reactions (species gain electrons here).
-- In electrolysis, the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
-- In a diode, conventional current exits through the cathode (marked K or bar) — electron flow enters.
+- In [[learning/notes/quick-context/electrolysis|electrolysis]], the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
+- In a [[learning/notes/quick-context/diode|diode]], conventional current exits through the cathode (marked K or bar) — electron flow enters.
 
 ```
   CHEMISTRY (electrolysis):         ELECTRONICS (diode):
@@ -31,4 +33,4 @@ updated: 2026-03-27
   Common thread: electrons ARRIVE at the cathode
 ```
 
-**Key insight:** "Cathode" always means "where electrons enter and reduction occurs" — in electrolysis it's the negative electrode, but in a [[quick-context/galvanic-cells-batteries|battery]] it's the positive terminal. The polarity flips, but the electron-flow rule never does. Mnemonic: **C**athode attracts **C**ations.
+**Key insight:** "Cathode" always means "where electrons enter and reduction occurs" — in [[learning/notes/quick-context/electrolysis|electrolysis]] it's the negative electrode, but in a [[quick-context/galvanic-cells-batteries|battery]] it's the positive terminal. The polarity flips, but the electron-flow rule never does. Mnemonic: **C**athode attracts **C**ations.

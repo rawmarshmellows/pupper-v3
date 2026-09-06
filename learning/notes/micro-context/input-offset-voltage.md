@@ -3,16 +3,18 @@ term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis|Voltage and Thermodynamic Relationship in Electrolysis]] | [[learning/notes/quick-context/voltage-current-causality|Voltage-Current Causality]] | [[learning/notes/quick-context/usb-peripheral-hardware|USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire]]
+
 # Input Offset Voltage ($V_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
+**Definition:** A small built-in [[learning/notes/quick-context/voltage|voltage]] error between a [[learning/notes/quick-context/comparator|comparator]]'s (or [[learning/notes/quick-context/op-amp|op-amp]]'s) two inputs, caused by [[learning/notes/quick-context/transistor|transistor]] mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
 
 ## How It Works
 
-- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the tail current evenly at exactly $V(+) = V(-)$.
-- The few millivolts of input difference needed to re-balance them *is* the offset voltage.
+- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the [[learning/notes/micro-context/tail-current|tail current]] evenly at exactly $V(+) = V(-)$.
+- The few millivolts of input difference needed to re-balance them *is* the offset [[learning/notes/quick-context/voltage|voltage]].
 - It's a fixed DC error per part, not noise — so it stacks directly onto any reference-divider tolerance to set total threshold accuracy.
 - Datasheets list a *Typ* (statistical center at 25°C) and guaranteed *Limit* columns; the **boldface** limit holds over the full temperature range.
 

@@ -3,15 +3,16 @@ topic: PREEMPT_RT + ROS2 as PLC Replacement
 created: 2026-03-13
 ---
 
+> **Related:** [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] | [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|TLV7211 / TLV7211A as an LMC7211-N Replacement]] | [[learning/notes/quick-context/ros2-architecture|ROS2 Architecture — Robot Operating System 2 for Pupper v3]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]]
+
 # PREEMPT_RT + ROS2 as PLC Replacement
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]] | [[quick-context/sil-rated-safety-functions]] | [[quick-context/ros2-architecture]]
 
 > **TL;DR:** A growing ecosystem of industrial hardware (Bosch ctrlX CORE, Phoenix Contact PLCnext, ADLINK ROScube, Beckhoff TwinCAT on Linux) now runs [[quick-context/preempt-rt|PREEMPT_RT]] Linux with ROS2 to handle motion control, EtherCAT fieldbus communication, and AI/perception on a single platform — replacing the traditional split between [[quick-context/plc-vs-software-control|PLCs and software]]. The remaining hard gap is [[quick-context/sil-rated-safety-functions|SIL-rated safety certification]]: no PREEMPT_RT + ROS2 stack has achieved SIL-2/SIL-3, so safety-critical functions still require dedicated safety PLCs.
 
 ## The Core Problem
 
-Industrial automation has historically required two separate worlds: [[quick-context/plc-vs-software|PLCs]] for deterministic real-time control (motor loops, safety interlocks, fieldbus I/O) and general-purpose computers for intelligence (vision, path planning, AI). Integrating them means OPC-UA bridges, data format translations, and duplicate hardware — a tax on every project. The promise of PREEMPT_RT + ROS2 is collapsing these into one platform: a Linux system deterministic enough for 1 ms servo loops *and* capable enough for neural networks and SLAM. As of 2025-2026, this is no longer theoretical — production hardware exists and real factories are running it — but the safety certification gap means the PLC isn't dead yet.
+Industrial automation has historically required two separate worlds: [[quick-context/plc-vs-software|PLCs]] for deterministic real-time control (motor loops, safety interlocks, fieldbus I/O) and general-purpose computers for intelligence (vision, path planning, AI). Integrating them means OPC-UA bridges, data format translations, and duplicate hardware — a tax on every project. The promise of [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2 is collapsing these into one platform: a Linux system deterministic enough for 1 ms servo loops *and* capable enough for neural networks and SLAM. As of 2025-2026, this is no longer theoretical — production hardware exists and real factories are running it — but the safety certification gap means the [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] isn't dead yet.
 
 ## 5 Essential Terms
 
@@ -303,7 +304,7 @@ AFTER: Single ROScube controller
 - **[[quick-context/plc-vs-software]]** — Why PLCs exist in the first place: deterministic scan cycles, fail-safe behavior, ladder logic. Essential context for understanding what "replacing a PLC" actually means.
 - **[[quick-context/sil-rated-safety-functions]]** — The certification framework (IEC 61508, SIL 1-4) that remains the last hard barrier to full PLC replacement. Covers PFD calculations, dual-channel architectures, and why safety certification requires more than good code.
 - **[[quick-context/ros2-architecture]]** — The ROS2 middleware (nodes, topics, DDS) that provides the software framework. The `ros2_control` subsystem described here is the specific ROS2 component that enables real-time hardware interfacing.
-- **[[quick-context/isa-95-levels]]** — Where this fits in the automation hierarchy: PREEMPT_RT + ROS2 targets ISA-95 Levels 1-2 (sensing/control), while also reaching up to Level 3 (MES integration via ROS2's networking capabilities).
+- **[[quick-context/isa-95-levels]]** — Where this fits in the automation hierarchy: PREEMPT_RT + ROS2 targets [[learning/notes/quick-context/isa-95-levels|ISA-95 Levels]] 1-2 (sensing/control), while also reaching up to Level 3 (MES integration via ROS2's networking capabilities).
 - **[[quick-context/robotic-arm-api-levels]]** — The API stack from high-level planning to raw servo control. PREEMPT_RT + ROS2 platforms like ctrlX CORE span multiple levels of this stack on a single device.
 - **CODESYS Virtual Control SL** — IEC 61508 SIL-3 certified soft PLC on Linux (June 2024). Proves the soft PLC + Linux model can achieve safety certification, though it's a proprietary runtime, not ROS2.
 - **EtherCAT** — The dominant real-time industrial fieldbus. Direct ROS2 integration (via `ethercat_driver_ros2` or ADLINK's software-defined EtherCAT) is the key enabler that lets ROS2 talk to servo drives without a PLC intermediary.
@@ -327,7 +328,7 @@ No. Industrial robots typically require timing jitter under 200 us for a 1 ms co
 <details>
 <summary>Answer</summary>
 
-Containerization enables several things that traditional PLCs can't do: (1) multiple independent PLC instances on shared server infrastructure, reducing per-station hardware costs, (2) rapid deployment and rollback — a new PLC program is a container image push, not a firmware flash, (3) centralized management — IT teams manage PLC infrastructure with the same tools they use for other services, (4) resource isolation — one PLC instance crashing doesn't affect others. The real-time scheduling still happens at the kernel level (PREEMPT_RT), so containerization doesn't compromise timing. Audi's system is TUV-certified, validating that the container approach meets safety requirements.
+Containerization enables several things that traditional PLCs can't do: (1) multiple independent PLC instances on shared server infrastructure, reducing per-station hardware costs, (2) rapid deployment and rollback — a new PLC program is a container image push, not a [[learning/notes/quick-context/firmware|firmware]] flash, (3) centralized management — IT teams manage PLC infrastructure with the same tools they use for other services, (4) resource isolation — one PLC instance crashing doesn't affect others. The real-time scheduling still happens at the kernel level (PREEMPT_RT), so containerization doesn't compromise timing. Audi's system is TUV-certified, validating that the container approach meets safety requirements.
 </details>
 
 **Q3:** The Panasonic AMR replaced 3 separate controllers with 1 ROScube. What happens to the safety PLC functions (e-stop, bumper) in this architecture?
@@ -346,12 +347,12 @@ Safety I/O (e-stop buttons, safety bumpers) connects to safety-rated EtherCAT mo
 Pharmaceutical manufacturing is heavily regulated (FDA 21 CFR Part 11, EU GMP Annex 11). Filling lines handling sterile products require SIL-2 or SIL-3 rated safety functions for dose accuracy, contamination prevention, and operator protection. No PREEMPT_RT + ROS2 stack has SIL-2/SIL-3 certification as an integrated system. The Codethink CTRL OS baseline assessment (May 2025) is a pathfinder, not a product cert. CODESYS has SIL-3 on Linux, but that's a proprietary runtime, not ROS2. A safety auditor in pharma would reject the system for safety-critical functions. The startup would still need dedicated safety PLCs for interlocks and safety I/O, making the claim of "entirely" replacing PLCs misleading. See: "The Key Tension" section.
 </details>
 
-**Q5:** The Pupper v3 uses an STM32 microcontroller for 1 kHz motor control and a Raspberry Pi for ROS2. If PREEMPT_RT + ROS2 can run servo loops at 1 kHz on a single platform, why does the Pupper still use this dual-processor architecture?
+**Q5:** The Pupper v3 uses an [[learning/notes/micro-context/stm32-microcontroller|STM32 microcontroller]] for 1 kHz motor control and a Raspberry Pi for ROS2. If PREEMPT_RT + ROS2 can run servo loops at 1 kHz on a single platform, why does the Pupper still use this dual-processor architecture?
 
 <details>
 <summary>Answer</summary>
 
-Several reasons: (1) The Pupper is a teaching platform designed before PREEMPT_RT's mainline merge — the dual architecture is a pragmatic design choice, not a fundamental requirement. (2) The Raspberry Pi's ARM SoC doesn't have the same real-time guarantees as a purpose-built industrial controller (ROScube, ctrlX CORE); even with PREEMPT_RT, SD card I/O and GPU thermal throttling can cause latency spikes. (3) The STM32 provides bare-metal CAN bus communication with 12 servos — handling the electrical-level protocol is simpler and more reliable on a dedicated microcontroller than through Linux kernel drivers. (4) Cost: the dual STM32 + Pi architecture is cheaper for a student robot than an industrial PREEMPT_RT controller. However, if you were building a production Pupper, a single PREEMPT_RT platform with EtherCAT servos could absolutely collapse the architecture — exactly what PAL Robotics does with their production humanoids running ros2_control at 2000 Hz.
+Several reasons: (1) The Pupper is a teaching platform designed before PREEMPT_RT's mainline merge — the dual architecture is a pragmatic design choice, not a fundamental requirement. (2) The Raspberry Pi's ARM SoC doesn't have the same real-time guarantees as a purpose-built industrial controller (ROScube, ctrlX CORE); even with PREEMPT_RT, SD card I/O and GPU thermal throttling can cause latency spikes. (3) The STM32 provides bare-metal [[learning/notes/quick-context/can-bus|CAN bus]] communication with 12 servos — handling the electrical-level protocol is simpler and more reliable on a dedicated [[learning/notes/micro-context/microcontroller|microcontroller]] than through Linux kernel drivers. (4) Cost: the dual STM32 + Pi architecture is cheaper for a student robot than an industrial PREEMPT_RT controller. However, if you were building a production Pupper, a single PREEMPT_RT platform with EtherCAT servos could absolutely collapse the architecture — exactly what PAL Robotics does with their production humanoids running ros2_control at 2000 Hz.
 </details>
 
 </details>

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/hydrogen-bonds-beginners|Hydrogen Bonds for Beginners]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|3D Printing Filament - Refill vs Spool]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous]] | [[learning/notes/quick-context/polymer-chemical-bonds|Polymer Chemical Bonds in 3D Printing Filaments]] | [[learning/notes/quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]]
 
 > **TL;DR:** Different 3D printing filaments (PLA, PETG, ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
 
@@ -146,7 +146,7 @@ Related concepts that deepen understanding of filament types:
 **Q1:** You need to print a bracket that will be mounted inside a car dashboard in summer. Which filament should you use and why?
 <details>
 <summary>Answer</summary>
-ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's glass transition temperature (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **glass transition temperature** definition in "5 Essential Terms" and the temperature comparison in the settings table.
+ABS or PETG, but ABS is preferred. Car interiors can reach 60-80°C in summer sun, which exceeds PLA's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (~55°C) and approaches PETG's limit (~75°C). ABS with its ~100°C Tg is the safest choice. See the **[[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]]** definition in "5 Essential Terms" and the temperature comparison in the settings table.
 </details>
 
 **Q2:** Your PETG prints have thin wisps of plastic connecting different parts of the model. What's happening and how do you fix it?

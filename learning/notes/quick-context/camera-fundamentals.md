@@ -5,7 +5,7 @@ created: 2026-03-23
 
 # Camera Fundamentals — Sensors, Lenses, and Calibration
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | Why decibels
 
 > **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
@@ -17,10 +17,10 @@ Without understanding how cameras actually form images — the physics of sensor
 
 | Term | Definition |
 |------|------------|
-| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
+| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of photodiodes that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip ADCs |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
-| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
+| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of [[learning/notes/quick-context/voltage|voltage]] ratio) |
 | **Intrinsic Matrix (K)** | A $3 \times 3$ upper-triangular matrix encoding the camera's internal geometry — focal lengths $f_x, f_y$ in pixel units, principal point $(c_x, c_y)$, and optionally skew — used to project 3D camera-frame points onto the 2D image plane |
 
 <details>
@@ -531,15 +531,15 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[quick-context/pupper-lab7-vision-tracking]]** — Applies camera fundamentals directly: the Pupper's fisheye camera requires intrinsic calibration (K and distortion coefficients D) to undistort frames before running YOLOv5 object detection. The `cv2.fisheye.undistortImage()` call uses exactly the intrinsic parameters described here.
 
-- **[[quick-context/diode]]** — A photodiode is a specialized PN junction operated in reverse bias, where incident photons generate current proportional to light intensity. Every pixel on an image sensor is fundamentally a photodiode. The diode document's type table lists photodiodes as a key variant.
+- **[[quick-context/diode]]** — A photodiode is a specialized PN junction operated in reverse bias, where incident photons generate current proportional to light intensity. Every pixel on an image sensor is fundamentally a photodiode. The [[learning/notes/quick-context/diode|diode]] document's type table lists photodiodes as a key variant.
 
 - **[[micro-context/homogeneous-transformation-matrix]]** — The extrinsic matrix $[R|\mathbf{t}]$ is a homogeneous transformation — the same $4 \times 4$ matrix used in [[quick-context/pupper-lab2-forward-kinematics|robot kinematics]]. Camera pose estimation and robot forward kinematics use identical math.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip ADC. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
+- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]]. The [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
 
 - **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[quick-context/silicon-die]]** — An image sensor IS a [[learning/notes/quick-context/silicon-die|silicon die]] — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 
