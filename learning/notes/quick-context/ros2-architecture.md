@@ -2,7 +2,7 @@
 topic: ROS2 Architecture — Robot Operating System 2 for Pupper v3
 created: 2026-03-10
 ---
-
+> **Related:** [[quick-context/can-bus]]
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]

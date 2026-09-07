@@ -2,12 +2,12 @@
 topic: The Data Bus and Bus Arbitration — How Chips Share Wires
 created: 2026-06-07
 ---
-
+> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/differential-pair]] | [[micro-context/short-circuit]] | [[micro-context/clock-edges]] | [[quick-context/comparator]]
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[index/how-a-computer-works-index]] | [[quick-context/switches-to-registers-storing-data]] | [[quick-context/keypress-to-pixel-pipeline]] | [[quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
+> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a [[micro-context/short-circuit|short circuit]] and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
 ## The Core Problem
 
@@ -18,7 +18,7 @@ A computer is dozens of chips that all need to exchange bytes: the CPU reads an 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[quick-context/switches-to-registers-storing-data|Output Enable (OE)]] pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |
@@ -77,7 +77,7 @@ BUS CONTENTION = A SHORT CIRCUIT
               chips heat up, data is garbage
 ```
 
-The wire ends up at some undefined middle voltage that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
+The wire ends up at some undefined middle [[quick-context/voltage|voltage]] that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
 
 ### The fix: tri-state and Output Enable
 
@@ -92,7 +92,7 @@ NORMAL output: 2 states          TRI-STATE output: 3 states
 ```
 
 You already met this exact mechanism: the **74HC574** octal register from
-[[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers]] has an **Output Enable (OE)** pin. When OE is LOW, its eight Q outputs drive the bus; when OE is HIGH, all eight go Hi-Z and the chip "vanishes" from the bus while *still holding its stored byte inside*. Hang several 74HC574s on one 8-wire data bus, and the rule becomes simple and absolute:
+[[quick-context/switches-to-registers-storing-data|Switches to Registers]] has an **Output Enable (OE)** pin. When OE is LOW, its eight Q outputs drive the bus; when OE is HIGH, all eight go Hi-Z and the chip "vanishes" from the bus while *still holding its stored byte inside*. Hang several 74HC574s on one 8-wire data bus, and the rule becomes simple and absolute:
 
 > **At most one device may have OE active at any instant. Everyone else is Hi-Z.**
 
@@ -126,16 +126,16 @@ A SINGLE-MASTER BUS TRANSACTION (CPU reads one byte from RAM)
     RAM returns to Hi-Z. The bus is free for the next transaction.
 ```
 
-The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a comparator) that converts "an address appeared" into "this one chip's enable pin goes active."
+The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a [[quick-context/comparator|comparator]]) that converts "an address appeared" into "this one chip's enable pin goes active."
 
-**Multi-master arbitration (one paragraph).** Some buses have several would-be masters (e.g. a CPU and a DMA controller, or many nodes on [[learning/notes/quick-context/can-bus|CAN]] / [[learning/notes/micro-context/i2c|I2C]]). Then you need a tiebreak rule for simultaneous requests. Schemes include a dedicated **arbiter** that grants the bus to one requester at a time, daisy-chained **priority** lines, or — elegantly — **bitwise arbitration** as on CAN: every node transmits its message ID while listening; a dominant 0 overrides a recessive 1, so a node that sees a bit different from what it sent knows it lost and backs off, all with zero wasted time and no central referee.
+**Multi-master arbitration (one paragraph).** Some buses have several would-be masters (e.g. a CPU and a DMA controller, or many nodes on [[quick-context/can-bus|CAN]] / [[micro-context/i2c|I2C]]). Then you need a tiebreak rule for simultaneous requests. Schemes include a dedicated **arbiter** that grants the bus to one requester at a time, daisy-chained **priority** lines, or — elegantly — **bitwise arbitration** as on CAN: every node transmits its message ID while listening; a dominant 0 overrides a recessive 1, so a node that sees a bit different from what it sent knows it lost and backs off, all with zero wasted time and no central referee.
 
 </details>
 
 <details>
 <summary><strong>The Key Tension</strong> — Parallel bus vs. serial protocol</summary>
 
-The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], SPI, [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
+The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[quick-context/uart|UART]], [[micro-context/i2c|I2C]], SPI, [[quick-context/can-bus|CAN]], [[quick-context/usb-peripheral-hardware|USB]] — covered in [[quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
 
 | | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, UART, CAN, USB) |
 |---|---|---|
@@ -202,7 +202,7 @@ def __call__(self, ..., load, address0, address1, ..., address14):
     return result
 ```
 
-That is precisely **memory-mapped I/O** in embryo: the high address bit splits one address space into ranges, a DMUX routes a *write* to the correct range, a MUX selects the correct range's output on a *read*. The full Hack computer extends this so that some address ranges aren't RAM at all — they're the **screen** and **keyboard**. Writing to a screen address lights a pixel; reading the keyboard address returns the pressed key. The CPU uses one set of load/store instructions for everything, because to the CPU, RAM and peripherals are just different address ranges on the same bus. That handoff — write a byte to an address and a pixel changes — is exactly the next rung: [[learning/notes/quick-context/keypress-to-pixel-pipeline|keypress to pixel]].
+That is precisely **memory-mapped I/O** in embryo: the high address bit splits one address space into ranges, a DMUX routes a *write* to the correct range, a MUX selects the correct range's output on a *read*. The full Hack computer extends this so that some address ranges aren't RAM at all — they're the **screen** and **keyboard**. Writing to a screen address lights a pixel; reading the keyboard address returns the pressed key. The CPU uses one set of load/store instructions for everything, because to the CPU, RAM and peripherals are just different address ranges on the same bus. That handoff — write a byte to an address and a pixel changes — is exactly the next rung: [[quick-context/keypress-to-pixel-pipeline|keypress to pixel]].
 
 ### A concrete memory map
 
@@ -227,14 +227,14 @@ A SMALL 16-BIT MEMORY MAP (memory-mapped I/O)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Origin of the Output Enable / tri-state mechanism. The 74HC574's OE pin is the exact primitive that lets registers share a data bus; this note picks up where that one leaves off.
-- **[[learning/notes/quick-context/keypress-to-pixel-pipeline]]** — The next rung up the spine. Once memory-mapped I/O exists, a keypress (read from the keyboard address) can drive a pixel (write to a screen address) — the bus is the highway it all travels on.
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The serial alternative to a parallel bus: UART, I2C, SPI, CAN, USB, and when each wins on speed/distance/wire-count.
-- **[[learning/notes/quick-context/uart]]** — The simplest serial link (no shared-bus arbitration at all: just one TX → one RX), a clean contrast to a multi-drop bus.
-- **[[learning/notes/micro-context/i2c]]** — A 2-wire *shared* serial bus with 7-bit addressing and open-drain lines — serial-world chip-select; the closest serial cousin to address decoding.
-- **[[learning/notes/quick-context/can-bus]]** — The canonical example of true **multi-master arbitration**: bitwise dominant/recessive contention resolves who transmits with no central arbiter.
-- **[[learning/notes/quick-context/usb-peripheral-hardware]]** — A host-orchestrated serial bus where the host (a single master) polls devices, another point on the arbitration spectrum.
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: how we climb from electricity up to code executing. This note is rung L9.
+- **[[quick-context/switches-to-registers-storing-data]]** — Origin of the Output Enable / tri-state mechanism. The 74HC574's OE pin is the exact primitive that lets registers share a data bus; this note picks up where that one leaves off.
+- **[[quick-context/keypress-to-pixel-pipeline]]** — The next rung up the spine. Once memory-mapped I/O exists, a keypress (read from the keyboard address) can drive a pixel (write to a screen address) — the bus is the highway it all travels on.
+- **[[quick-context/embedded-communication-protocols]]** — The serial alternative to a parallel bus: UART, I2C, SPI, CAN, USB, and when each wins on speed/distance/wire-count.
+- **[[quick-context/uart]]** — The simplest serial link (no shared-bus arbitration at all: just one TX → one RX), a clean contrast to a multi-drop bus.
+- **[[micro-context/i2c]]** — A 2-wire *shared* serial bus with 7-bit addressing and open-drain lines — serial-world chip-select; the closest serial cousin to address decoding.
+- **[[quick-context/can-bus]]** — The canonical example of true **multi-master arbitration**: bitwise dominant/recessive contention resolves who transmits with no central arbiter.
+- **[[quick-context/usb-peripheral-hardware]]** — A host-orchestrated serial bus where the host (a single master) polls devices, another point on the arbitration spectrum.
+- **[[index/how-a-computer-works-index]]** — The hub: how we climb from electricity up to code executing. This note is rung L9.
 
 </details>
 
@@ -250,13 +250,13 @@ The **address bus** (which location — driven by the CPU), the **data bus** (th
 **Q2:** Why is it electrically dangerous for two chips to drive the same wire at the same time?
 <details>
 <summary>Answer</summary>
-Driving HIGH connects the wire to $V_{cc}$; driving LOW connects it to GND. If one chip drives HIGH while another drives LOW on the same wire, you've connected $V_{cc}$ straight to GND through two transistors — a near-short. Large current flows, the wire sits at an undefined middle voltage that's neither a valid 1 nor 0 (garbage data), and the output transistors can overheat or be damaged. This is **bus contention**. See: How It Works (Why two drivers on one wire is a disaster).
+Driving HIGH connects the wire to $V_{cc}$; driving LOW connects it to GND. If one chip drives HIGH while another drives LOW on the same wire, you've connected $V_{cc}$ straight to GND through two transistors — a near-short. Large current flows, the wire sits at an undefined middle [[quick-context/voltage|voltage]] that's neither a valid 1 nor 0 (garbage data), and the output transistors can overheat or be damaged. This is **bus contention**. See: How It Works (Why two drivers on one wire is a disaster).
 </details>
 
 **Q3:** How does the 74HC574's Output Enable pin make it safe to put several registers on one data bus?
 <details>
 <summary>Answer</summary>
-OE controls whether the register's outputs are *driving* the bus or in **high-impedance (Hi-Z)** — electrically disconnected. The bus rule is "at most one device's OE active at a time"; every other device sits Hi-Z, contributing nothing to the wire (it still holds its stored byte internally). With only one active driver there's no contention. This connects directly to the [[learning/notes/quick-context/switches-to-registers-storing-data|register note]], where the same OE pin first appeared. See: How It Works (The fix: tri-state and Output Enable).
+OE controls whether the register's outputs are *driving* the bus or in **high-impedance (Hi-Z)** — electrically disconnected. The bus rule is "at most one device's OE active at a time"; every other device sits Hi-Z, contributing nothing to the wire (it still holds its stored byte internally). With only one active driver there's no contention. This connects directly to the [[quick-context/switches-to-registers-storing-data|register note]], where the same OE pin first appeared. See: How It Works (The fix: tri-state and Output Enable).
 </details>
 
 **Q4:** A friend says "peripherals like the display and keyboard must need special I/O instructions, separate from regular memory reads and writes." Why is that wrong on a memory-mapped system?
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one [[quick-context/differential-pair|differential pair]] very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>

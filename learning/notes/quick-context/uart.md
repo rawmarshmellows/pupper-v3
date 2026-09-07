@@ -2,7 +2,7 @@
 topic: UART — Universal Asynchronous Receiver/Transmitter
 created: 2026-04-08
 ---
-
+> **Related:** [[quick-context/embedded-communication-protocols]] | [[micro-context/microcontroller]] | [[quick-context/capacitance]] | [[quick-context/voltage]]
 # UART — Universal Asynchronous Receiver/Transmitter
 
 > **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
@@ -24,7 +24,7 @@ A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over i
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
 <details>
-<summary><strong>How It Works</strong> — From voltage on a wire to a byte in a register</summary>
+<summary><strong>How It Works</strong> — From [[quick-context/voltage|voltage]] on a wire to a byte in a register</summary>
 
 ### High-Level: Two Jobs
 
@@ -330,7 +330,7 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **[[index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
 
@@ -376,7 +376,7 @@ About **±3-4%**. At 16× oversampling, the receiver samples at the center of ea
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?

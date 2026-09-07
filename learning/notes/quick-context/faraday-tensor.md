@@ -2,12 +2,12 @@
 topic: Faraday Tensor
 created: 2026-02-20
 ---
-
+> **Related:** [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/voltage]]
 # Faraday Tensor
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
 
-> **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
+> **TL;DR:** The Faraday [[quick-context/tensor|tensor]] (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 
 ## The Core Problem: E and B Transform Weirdly
 
@@ -20,8 +20,8 @@ When you learn [[quick-context/electromagnetism|electromagnetism]], electric and
 | **Faraday Tensor ($F^{\mu\nu}$)** | A rank-2 antisymmetric tensor encoding both **E** and **B** fields in a 4×4 matrix. The indices μ and ν run from 0 to 3 (time and three spatial dimensions). Antisymmetric means $F^{\mu\nu} = -F^{\nu\mu}$. |
 | **Four-Vector** | A quantity with four components (one time, three space) that transforms properly under Lorentz transformations. Examples: position $(ct, x, y, z)$, momentum $(E/c, p_x, p_y, p_z)$, current density $(c\rho, J_x, J_y, J_z)$. |
 | **Lorentz Transformation** | The rules for converting measurements between reference frames moving relative to each other at constant velocity. Length contracts, time dilates, and the Faraday tensor components mix together. |
-| **Dual Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to write the other half of Maxwell's equations. |
-| **Covariant** | A formulation that takes the same mathematical form in all inertial reference frames. The Faraday tensor makes electromagnetism manifestly covariant—you write the equations once, and they automatically work in any frame. |
+| **Dual Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to write the other half of [[quick-context/maxwell-equations|Maxwell's equations]]. |
+| **Covariant** | A formulation that takes the same mathematical form in all inertial reference frames. The Faraday tensor makes [[quick-context/electromagnetism|electromagnetism]] manifestly covariant—you write the equations once, and they automatically work in any frame. |
 
 <details>
 <summary><strong>How It Works</strong> — Packaging E and B into one object</summary>
@@ -283,7 +283,7 @@ APPROACH 2: UNIFIED FARADAY TENSOR (relativistic, elegant)
 | When to Use | E/B Separate | Faraday Tensor |
 |-------------|--------------|----------------|
 | Circuit design | Better | Overkill |
-| [[quick-context/inductor\|Inductor]]/[[quick-context/capacitor\|capacitor]] analysis | Better | Overkill |
+| [[quick-context/inductor|Inductor]]/[[quick-context/capacitor|capacitor]] analysis | Better | Overkill |
 | High-velocity particles | Works but messy | Natural |
 | Particle physics | Awkward | Required |
 | General relativity + EM | Impossible | Required |
@@ -419,7 +419,7 @@ EXAMPLE: Current-Carrying Wire
 
 - **[[quick-context/coil-magnetic-field]]** — The relativistic explanation section discusses how magnetism is "relativistic electricity"—what the Faraday tensor makes mathematically precise.
 
-- **[[quick-context/voltage]]** — Voltage is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
+- **[[quick-context/voltage]]** — [[quick-context/voltage|Voltage]] is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
 
 - **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of Maxwell's equations in tensor form.
 

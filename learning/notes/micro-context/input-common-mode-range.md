@@ -3,15 +3,17 @@ term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/differential-pair]] | [[quick-context/comparator]] | [[quick-context/voltage]] | [[quick-context/op-amp]]
+
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
+**Definition:** The range of input [[quick-context/voltage|voltage]] (common to both pins) over which a [[quick-context/comparator|comparator]] or [[quick-context/op-amp|op-amp]] still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 
 ## How It Works
 
-- The input [[quick-context/differential-pair|differential pair]] only senses correctly while its transistors stay in their active region, which requires the input voltage to sit inside a usable window.
+- The input [[quick-context/differential-pair|differential pair]] only senses correctly while its transistors stay in their active region, which requires the input [[quick-context/voltage|voltage]] to sit inside a usable window.
 - Outside that window the pair stops steering current properly and the output becomes invalid — regardless of how good the offset or gain is.
 - The LMC7211-N's −0.3 to 3.0 V range on a 0–2.7 V supply means inputs work slightly below ground and slightly above $V^+$.
 - That extra margin lets you sense a divider node sitting right at ground or right at the top rail without a dead zone.

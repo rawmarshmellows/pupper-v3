@@ -3,9 +3,9 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/dipole-dipole-interactions]] | [[quick-context/van-der-waals-forces]] | [[quick-context/covalent-bonds]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/electrolysis]]
 
-> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
+> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that hold molecules together, down to weak [[quick-context/van-der-waals-forces|van der Waals forces]] (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
 # Chemical Bonds: The Full Spectrum
 
@@ -18,7 +18,7 @@ Every material property you care about—melting point, strength, flexibility, w
 | Term | Definition |
 |------|------------|
 | **Intermolecular force** | Any attraction *between* molecules—van der Waals, dipole-dipole, hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
-| **Intramolecular bond** | The [[quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
+| **Intramolecular bond** | The [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
 | **Electronegativity** | An atom's "greed" for electrons—oxygen and fluorine are greedy (high EN), carbon and hydrogen share more equally—determines bond polarity. |
 | **Partial charge (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
 | **Non-covalent interaction** | Umbrella term for all intermolecular forces—emphasizes that these aren't "real" bonds in the electron-sharing sense, but still profoundly affect material behavior. |
@@ -26,9 +26,9 @@ Every material property you care about—melting point, strength, flexibility, w
 <details>
 <summary><strong>How It Works</strong></summary>
 
-All chemical bonds and intermolecular forces arise from the same fundamental phenomenon: the electromagnetic attraction between positive and negative charges. The difference lies in how electrons are distributed. In covalent bonds, two atoms share electrons so intimately that neither can claim full ownership—the shared electron cloud holds them together. In ionic bonds, one atom completely surrenders electrons to another, creating opposite charges that attract. In intermolecular forces, the electrons stay on their respective molecules but create local charge imbalances (partial charges) that attract neighboring molecules.
+All chemical bonds and intermolecular forces arise from the same fundamental phenomenon: the electromagnetic attraction between positive and negative charges. The difference lies in how electrons are distributed. In [[quick-context/covalent-bonds|covalent bonds]], two atoms share electrons so intimately that neither can claim full ownership—the shared electron cloud holds them together. In ionic bonds, one atom completely surrenders electrons to another, creating opposite charges that attract. In intermolecular forces, the electrons stay on their respective molecules but create local charge imbalances (partial charges) that attract neighboring molecules.
 
-The strength of any attraction depends on three factors: the magnitude of the charges involved, the distance between them, and how permanent versus temporary those charges are. Covalent bonds involve electrons sitting directly between nuclei—strong, permanent, and close. Ionic bonds involve full +/- charges but at slightly larger distances. Hydrogen bonds involve partial charges (delta+ and delta-) held in fixed orientations. Van der Waals forces involve fleeting, randomly appearing partial charges. The energy required to overcome each type scales accordingly: ~350 kJ/mol for covalent, ~20 kJ/mol for hydrogen bonds, ~2 kJ/mol for van der Waals.
+The strength of any attraction depends on three factors: the magnitude of the charges involved, the distance between them, and how permanent versus temporary those charges are. Covalent bonds involve electrons sitting directly between nuclei—strong, permanent, and close. Ionic bonds involve full +/- charges but at slightly larger distances. Hydrogen bonds involve partial charges (delta+ and delta-) held in fixed orientations. [[quick-context/van-der-waals-forces|Van der Waals forces]] involve fleeting, randomly appearing partial charges. The energy required to overcome each type scales accordingly: ~350 kJ/mol for covalent, ~20 kJ/mol for hydrogen bonds, ~2 kJ/mol for van der Waals.
 
 ```
 WHAT MAKES BONDS STRONGER OR WEAKER
@@ -348,7 +348,7 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
-- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+- **biology-fundamentals** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
 
 </details>
 
