@@ -2,7 +2,7 @@
 topic: Absolute Orientation
 created: 2026-04-04
 ---
-
+> **Related:** [[quick-context/singular-value-decomposition]] | [[quick-context/similarity-transform]] | [[quick-context/covariance-matrix]] | [[quick-context/helmert-transform]]
 # Absolute Orientation Problem
 
 > **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
@@ -272,7 +272,7 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter similarity transformation (3 rotation + 3 translation + 1 scale) that is the direct solution to the absolute orientation problem
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ between centered point sets is the key intermediate quantity in the SVD solution
+- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-[[quick-context/covariance-matrix|covariance matrix]] $H$ between centered point sets is the key intermediate quantity in the SVD solution
 - **Relative orientation** -- Finding the transformation between two camera views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
 - **Iterative Closest Point (ICP)** -- Iterative algorithm that solves absolute orientation repeatedly to align point clouds when correspondences are unknown
 - **RANSAC** -- Robust estimation framework that wraps around absolute orientation solvers to handle outlier correspondences
@@ -296,7 +296,7 @@ Centering the data decouples translation from rotation. Once you subtract centro
 Three point pairs minimum, and they must be non-collinear (not all on the same line). Three non-collinear points define a plane, providing 9 scalar equations (3 points x 3 coordinates) for the 7 unknowns (3 rotation + 3 translation + 1 scale). If the points are collinear, the rotation around the line is ambiguous. See: How It Works, Minimum Points Required table.
 </details>
 
-**Q3:** The SVD of the cross-covariance matrix produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
+**Q3:** The SVD of the cross-[[quick-context/covariance-matrix|covariance matrix]] produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
 <details>
 <summary>Answer</summary>
 $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The singular values in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
@@ -305,7 +305,7 @@ $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T
 **Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a [[quick-context/similarity-transform|similarity transform]] when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?

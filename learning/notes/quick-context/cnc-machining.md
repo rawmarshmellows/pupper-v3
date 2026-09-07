@@ -2,7 +2,7 @@
 topic: CNC Machining
 created: 2026-03-28
 ---
-
+> **Related:** [[quick-context/3d-printing-filament-types]] | [[micro-context/cnc-process-selection]] | [[micro-context/edm-machining]] | [[quick-context/electrolysis]] | [[micro-context/cnc-milling]]
 # CNC Machining
 
 > **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
@@ -17,8 +17,8 @@ You need a metal part with precise dimensions, smooth surfaces, and full materia
 
 | Term | Definition |
 |------|-----------|
-| **CNC Milling** | Rotating cutter removes material from a stationary workpiece. Tool spins at thousands of RPM; CNC moves it along X/Y/Z axes. Produces prismatic and complex 3D shapes. |
-| **CNC Turning** | Lathe spins the workpiece while a stationary tool removes material. Inverse of milling. Produces cylindrical/rotationally symmetric parts (shafts, bolts, bushings). |
+| **[[micro-context/cnc-milling|CNC Milling]]** | Rotating cutter removes material from a stationary workpiece. Tool spins at thousands of RPM; CNC moves it along X/Y/Z axes. Produces prismatic and complex 3D shapes. |
+| **[[micro-context/cnc-turning|CNC Turning]]** | Lathe spins the workpiece while a stationary tool removes material. Inverse of milling. Produces cylindrical/rotationally symmetric parts (shafts, bolts, bushings). |
 | **EDM** | Electrical Discharge Machining -- removes metal via rapid electrical sparks between an electrode and the workpiece, vaporizing material without mechanical contact. Cuts any conductive material regardless of hardness. |
 | **G-code** | The instruction language CNC machines read. CAD model is converted into a sequence of tool movement commands specifying coordinates, feed rates, and spindle speeds. |
 | **Tolerance** | The allowable deviation from a specified dimension. CNC routinely achieves $\pm 0.001"$ ($\pm 0.025\text{mm}$), far tighter than 3D printing or casting. |
@@ -77,7 +77,7 @@ MILLING vs TURNING:
 
 ### EDM: Sparks Instead of Cutting
 
-A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-[[quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 
 ```
 EDM SPARK EROSION:
@@ -164,10 +164,10 @@ The fundamental tradeoff: CNC gives you precision and strength but wastes materi
 
 Imagine you need to manufacture a custom motor shaft with a mounting bracket for a robotics project -- 50 units total.
 
-**Step 1: The shaft (CNC Turning)**
+**Step 1: The shaft ([[micro-context/cnc-turning|CNC Turning]])**
 The shaft is a cylindrical part with stepped diameters and a keyway. You start with a round bar of 4140 steel clamped in a lathe chuck. The CNC lathe spins it at 1,500 RPM while a carbide insert tool traverses along the axis, cutting each diameter step to $\pm 0.0005"$ concentricity. Turning is the obvious choice -- the part has rotational symmetry, and no other process matches turning's cylindrical surface finish.
 
-**Step 2: The mounting bracket (CNC Milling)**
+**Step 2: The mounting bracket ([[micro-context/cnc-milling|CNC Milling]])**
 The bracket is a rectangular aluminum plate with bolt holes and a central bore. A 3-axis CNC mill holds the aluminum block on a vise, and an end mill cuts the outer profile, drills the bolt holes, and bores the central pocket. Milling handles the prismatic geometry and multiple hole patterns easily.
 
 **Step 3: A hardened steel die insert (EDM)**

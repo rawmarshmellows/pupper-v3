@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/capacitor]] | [[quick-context/voltage]]
+
 # Decoupling Capacitor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
@@ -14,8 +16,8 @@ updated: 2026-03-27
 
 - When an IC switches states, it demands a sudden spike of current from the power rail.
 - The distant power supply can't respond instantly because PCB trace inductance limits current slew rate.
-- A small capacitor placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
-- The capacitor then slowly recharges from the power supply, ready for the next switching event.
+- A small [[quick-context/capacitor|capacitor]] placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
+- The [[quick-context/capacitor|capacitor]] then slowly recharges from the power supply, ready for the next switching event.
 
 ```
 WHY DECOUPLING IS NEEDED:

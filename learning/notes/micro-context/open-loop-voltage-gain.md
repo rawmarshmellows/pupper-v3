@@ -3,18 +3,20 @@ term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
 
+> **Related:** [[quick-context/differential-pair]] | [[quick-context/comparator]] | [[quick-context/voltage]] | [[quick-context/op-amp]]
+
 # Open-Loop Voltage Gain ($A_V$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
 
-**Definition:** The enormous gain a comparator or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
+**Definition:** The enormous gain a [[quick-context/comparator|comparator]] or [[quick-context/op-amp|op-amp]] applies to the tiny [[quick-context/voltage|voltage]] difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
 
 ## How It Works
 
 - The [[quick-context/differential-pair|differential pair]] turns an input difference into a small current imbalance.
-- That imbalance drives a very high-impedance [[quick-context/high-gain-amplifier-stage|gain node]] (the current-mirror load), so even microamps create a huge voltage swing.
+- That imbalance drives a very high-impedance [[quick-context/high-gain-amplifier-stage|gain node]] (the current-mirror load), so even microamps create a huge [[quick-context/voltage|voltage]] swing.
 - 100 dB = 100,000×, so a millivolt of input difference would demand a 100 V output — far past the rails — so the output simply pins to $V^+$ or $V^-$.
-- This rail-slamming saturation *is* the clean digital snap a comparator is built to produce.
+- This rail-slamming saturation *is* the clean digital snap a [[quick-context/comparator|comparator]] is built to produce.
 
 ```
    tiny dV in                        output pinned to rail
