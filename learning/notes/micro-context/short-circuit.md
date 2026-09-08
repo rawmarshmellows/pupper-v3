@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[quick-context/voltage]] | [[quick-context/bjt]] | [[quick-context/data-bus-and-arbitration]] | [[quick-context/impedance-and-reactance]] | [[quick-context/inductor]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]

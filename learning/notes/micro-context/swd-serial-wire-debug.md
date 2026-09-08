@@ -4,11 +4,13 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/microcontroller]] | [[quick-context/comparator]] | [[quick-context/firmware]]
+
 # SWD (Serial Wire Debug)
 
 > **See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]
 
-**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M microcontrollers. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.
+**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M [[micro-context/microcontroller|microcontrollers]]. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.
 
 ## How It Works
 
@@ -117,7 +119,7 @@ SWD gives the debugger the same bus access as the CPU. Here's what that enables:
 | Capability | How it works via SWD |
 |---|---|
 | **Flash programming** | Write to flash controller registers to unlock flash, erase sectors, then write 32-bit words. The debug probe's software (OpenOCD, STM32CubeProgrammer) automates this sequence. |
-| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) comparator registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
+| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) [[quick-context/comparator|comparator]] registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
 | **Software breakpoints** | Replace an instruction with `BKPT` (0xBExx). Unlimited count but only works in RAM, not flash (without erasing). |
 | **Single-stepping** | Set the STEP bit in the Debug Halting Control register (DHCSR). CPU executes one instruction then halts again. |
 | **Register inspection** | Read/write all CPU registers (R0-R15, PSR, etc.) through the DCRSR/DCRDR register pair while the CPU is halted. |

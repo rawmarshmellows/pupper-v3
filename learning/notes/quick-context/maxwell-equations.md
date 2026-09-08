@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[quick-context/electromagnetism]] | [[quick-context/capacitor]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/lenzs-law]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
@@ -494,11 +494,11 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
+- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two [[quick-context/tensor|tensor]] equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
 
-- **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
+- **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. [[quick-context/inductor|Inductors]] store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/capacitor]]** — Stores energy in electric fields. Displacement current flows "through" capacitors during charging, completing the circuit conceptually.
+- **[[quick-context/capacitor]]** — Stores energy in electric fields. Displacement current flows "through" [[quick-context/capacitor|capacitors]] during charging, completing the circuit conceptually.
 
 - **[[quick-context/lenzs-law]]** — The physics behind the minus sign in Faraday's law: induced effects always oppose the change that caused them, enforcing energy conservation.
 
@@ -506,11 +506,11 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
 
-- **[[quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
+- **[[quick-context/voltage]]** — Electric field integrated along a path gives [[quick-context/voltage|voltage]]. Maxwell's equations govern the field; voltage is how we measure it in circuits.
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[quick-context/electromagnetism|electromagnetism]].
 
 </details>
 

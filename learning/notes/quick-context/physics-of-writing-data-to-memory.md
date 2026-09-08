@@ -3,19 +3,19 @@ topic: Physics of Writing Data to Memory — How Bits Become Charges, Voltages, 
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[micro-context/microcontroller]] | [[micro-context/mosfet]] | [[micro-context/scan-loop]] | [[quick-context/capacitor]] | [[quick-context/firmware]]
 
 > **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
 ## The Core Problem
 
-The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes binary instructions, and the [[learning/notes/quick-context/from-code-to-running-firmware|firmware pipeline]] explains how those instructions reach the chip. But neither explains the *physics* of the final step: how a `1` or `0` actually gets written into a physical memory cell. What voltage is applied? What moves? What holds the bit in place? This matters because the three main memory technologies (SRAM, DRAM, flash) use fundamentally different physical mechanisms, and their tradeoffs — speed, density, volatility, endurance — all trace back to the physics of how they store charge.
+The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes binary instructions, and the [[learning/notes/quick-context/from-code-to-running-firmware|firmware pipeline]] explains how those instructions reach the chip. But neither explains the *physics* of the final step: how a `1` or `0` actually gets written into a physical memory cell. What [[quick-context/voltage|voltage]] is applied? What moves? What holds the bit in place? This matters because the three main memory technologies (SRAM, DRAM, flash) use fundamentally different physical mechanisms, and their tradeoffs — speed, density, volatility, endurance — all trace back to the physics of how they store charge.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Floating Gate** | An electrically isolated polysilicon layer inside a flash memory [[learning/notes/micro-context/mosfet|MOSFET]], surrounded by oxide insulation. Electrons trapped here shift the transistor's threshold voltage, encoding a bit that persists without power for 10+ years. |
+| **Floating Gate** | An electrically isolated polysilicon layer inside a flash memory [[learning/notes/micro-context/mosfet|MOSFET]], surrounded by oxide insulation. Electrons trapped here shift the [[quick-context/transistor|transistor]]'s threshold voltage, encoding a bit that persists without power for 10+ years. |
 | **Fowler-Nordheim Tunneling** | The quantum-mechanical process used to program/erase flash memory. A strong electric field (15-20V) gives electrons enough energy to tunnel through the ~7-10 nm oxide barrier onto or off of the floating gate. |
 | **Sense Amplifier** | A circuit that detects the tiny voltage difference on a bitline during a DRAM/flash read and amplifies it to a full logic level. In DRAM, the stored charge is so small (~10-30 fF) that reading it requires destroying and rewriting the cell. |
 | **Cross-Coupled Inverters** | The core of an SRAM cell — two CMOS inverters connected output-to-input in a loop. Each inverter reinforces the other's state, creating two stable voltage configurations (bit = 0 or 1) that persist as long as power is on. This is the same feedback principle that gives [[quick-context/d-flip-flop|D flip-flops]] their memory. |
@@ -184,7 +184,7 @@ No single memory technology is best at everything. The physics forces a three-wa
 | **Cost/bit** | $$$$ | $$ | $ |
 | **Power** | High (leakage in 6T) | Medium (refresh circuits) | Low (no power to retain) |
 
-**Why not just use the fastest?** SRAM needs 6 transistors per bit. A 16 GB SRAM module would need $16 \times 10^9 \times 8 \times 6 = 768 \times 10^9$ transistors just for storage — physically enormous and prohibitively expensive. DRAM gets the same capacity with $128 \times 10^9$ transistors + capacitors.
+**Why not just use the fastest?** SRAM needs 6 transistors per bit. A 16 GB SRAM module would need $16 \times 10^9 \times 8 \times 6 = 768 \times 10^9$ transistors just for storage — physically enormous and prohibitively expensive. DRAM gets the same capacity with $128 \times 10^9$ transistors + [[quick-context/capacitor|capacitors]].
 
 **Why not just use the densest?** Flash writes are 1000x slower than DRAM and degrade the oxide with every write. Running a program from flash (as MCUs do) is fine for reads, but you can't use flash as working memory — the write speed and endurance would be catastrophic.
 
@@ -345,7 +345,7 @@ When you [[learning/notes/quick-context/from-code-to-running-firmware|flash firm
 5. Fowler-Nordheim tunneling traps electrons on floating gates — same physics as an SSD, but the flash cells are NOR-type (individually addressable) rather than NAND-type (page-addressable)
 6. After programming, the controller reads back and verifies each word
 
-The entire process — erase block, program page, verify — takes ~100-500 ms for the full firmware image. After that, the machine code exists as trapped electrons on the [[learning/notes/quick-context/silicon-die|silicon die]], persisting without power until intentionally erased.
+The entire process — erase block, program page, verify — takes ~100-500 ms for the full [[quick-context/firmware|firmware]] image. After that, the machine code exists as trapped electrons on the [[learning/notes/quick-context/silicon-die|silicon die]], persisting without power until intentionally erased.
 
 **The one thing most outsiders get wrong about this is...** thinking that bits are somehow "magnetic" or "electrical" in a vague hand-wavy sense. They're not vague at all. A bit in DRAM is literally tens of thousands of electrons sitting on a capacitor plate. A bit in flash is literally electrons trapped behind an 8-nanometer oxide wall by quantum tunneling. A bit in SRAM is literally two transistor pairs holding each other's voltages stable. Every `0` and `1` in your computer is a concrete physical arrangement of electrons — and the differences between memory technologies come down to *how hard it is to put those electrons there* and *how hard it is for them to escape*.
 
@@ -360,7 +360,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The linking and flashing pipeline: how compiled code goes from an ELF file on your PC to bytes in an MCU's flash memory. Covers the software toolchain (linker, flash programmer) that drives the physical write process described here.
 
-- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
+- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 [[micro-context/mosfet|MOSFETs]] per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
 
 - **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM capacitor or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
 

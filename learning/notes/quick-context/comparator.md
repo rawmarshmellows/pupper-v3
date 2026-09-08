@@ -5,9 +5,9 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/buck-converter]] | [[quick-context/differential-pair]] | [[quick-context/transistor]] | [[micro-context/clock-edges]] | [[micro-context/current-mirror]]
 
-> **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
+> **TL;DR:** A comparator is a circuit that takes two analog [[quick-context/voltage|voltages]] as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] [[quick-context/differential-pair|differential pairs]] as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
@@ -24,7 +24,7 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
-<summary><strong>How It Works</strong> --- From transistor pairs to digital output</summary>
+<summary><strong>How It Works</strong> --- From [[quick-context/transistor|transistor]] pairs to digital output</summary>
 
 ### The Functional View: What a Comparator Does
 
@@ -432,7 +432,7 @@ CURRENT CONSUMPTION:
     Total: ~23 μA — negligible for a battery that holds 2000+ mAh
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation capacitor that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
+**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation [[quick-context/capacitor|capacitor]] that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
 
 </details>
 
@@ -445,7 +445,7 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
-- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
+- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, [[micro-context/current-mirror|current mirrors]] for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
 - **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
 
@@ -457,7 +457,7 @@ CURRENT CONSUMPTION:
 
 - **[[micro-context/adc-analog-to-digital-converter]]** --- ADCs are built from comparators. A successive-approximation ADC uses one comparator with a DAC; a flash ADC uses many comparators in parallel.
 
-- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down resistors define the "rest" voltage that comparator sees when nothing else is driving the pin.
+- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down [[quick-context/resistor|resistors]] define the "rest" voltage that comparator sees when nothing else is driving the pin.
 
 - **[[learning/notes/quick-context/bare-minimal-data-storage-circuit]]** --- Where the comparator earns its place as a 1-bit ADC inside a minimal data-storage circuit: it converts the analog input voltage into the clean `in_bit` signal that a [[learning/notes/quick-context/d-flip-flop|register]] can capture on each [[learning/notes/micro-context/clock-edges|clock edge]].
 

@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the TLV7211 / TLV7211A Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541 (C623499) as an LMC7211 replacement]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/comparator]] | [[quick-context/differential-pair]] | [[quick-context/voltage]]
 >
 > **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 
@@ -115,7 +115,7 @@ The interesting tension here isn't a performance trade — there is none — it'
 | Hidden detail | Why it bites | What to do |
 |---|---|---|
 | **Grade-suffix inversion** | "TLV7211" *looks* like the base/best part, but the unsuffixed name is the **15 mV** grade; the **A** is the 5 mV grade. | Map by *offset number*, not by which name looks "plain." 5 mV → TLV7211**A**. |
-| **Documented POR** | The TLV7211 explicitly holds OUT low for ~200 µs during supply ramp. In 99% of designs this is benign or helpful, but a circuit that sampled the output *during* power-up could see different behavior. | Confirm nothing reads the comparator output in the first ~200 µs after the rail crosses 1.7 V. |
+| **Documented POR** | The TLV7211 explicitly holds OUT low for ~200 µs during supply ramp. In 99% of designs this is benign or helpful, but a circuit that sampled the output *during* power-up could see different behavior. | Confirm nothing reads the [[quick-context/comparator|comparator]] output in the first ~200 µs after the rail crosses 1.7 V. |
 
 Contrast this with the **cross-vendor** case. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] also fits the SOT23-5 footprint, but it is a *different* design that trades the LMC7211's 15 V range and 450 ns speed for 10× lower current and built-in hysteresis — a swap that's valid only inside a narrow envelope. The TLV7211 has no such envelope: it *is* the LMC7211. This is the spectrum of "replacement":
 
@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 
@@ -197,7 +197,7 @@ Because the TLV7211 is **the same silicon re-named** (National → TI), its data
 **Q5:** Both the TLV7211 and the MCP6541 "fit the LMC7211-N's SOT23-5 footprint." Why is only one of them an *unconditional* replacement?
 <details>
 <summary>Answer</summary>
-**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-voltage, slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
+**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-[[quick-context/voltage|voltage]], slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
 </details>
 
 </details>

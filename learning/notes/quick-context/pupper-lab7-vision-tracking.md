@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/camera-fundamentals]] | [[quick-context/can-bus]] | [[quick-context/raspberry-pi-ai-hat]] | [[quick-context/ros2-architecture]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 
@@ -338,7 +338,7 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + [[quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 

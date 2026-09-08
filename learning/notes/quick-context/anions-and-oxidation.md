@@ -3,13 +3,13 @@ topic: Anions and Oxidation
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[micro-context/anode]] | [[micro-context/cathode]] | [[micro-context/oxidation]] | [[quick-context/electric-current]] | [[quick-context/electrodes]]
 
 > **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
-Everything in the universe is made of atoms, and atoms can gain or lose tiny particles called **electrons** (which carry negative charge). When atoms lose or gain electrons, they become **ions**—charged particles that can move through liquids and conduct electricity. **Anions** are atoms that have *gained* extra electrons, making them negatively charged (think: "**A**nion = **A**dded electrons = negative"). **Oxidation** is the process where something *loses* electrons.
+Everything in the universe is made of atoms, and atoms can gain or lose tiny particles called **electrons** (which carry negative charge). When atoms lose or gain electrons, they become **ions**—charged particles that can move through liquids and conduct electricity. **Anions** are atoms that have *gained* extra electrons, making them negatively charged (think: "**A**nion = **A**dded electrons = negative"). **[[micro-context/oxidation|Oxidation]]** is the process where something *loses* electrons.
 
 Why does this matter? Without understanding anions and oxidation, we couldn't explain how batteries work, how [[quick-context/rust|metals rust]], how we extract aluminum from ore, or how our bodies generate energy. In [[quick-context/electrolysis|electrolysis]] specifically—using electricity to drive chemical reactions—anions migrate toward the positive [[quick-context/electrodes|electrode]] and undergo oxidation, releasing [[quick-context/electric-current|electrons]] into the circuit. This is how we split water, purify metals, and manufacture chlorine gas. If oxidation didn't happen at the electrode, the electrical circuit would be incomplete and nothing would work.
 
@@ -19,9 +19,9 @@ Why does this matter? Without understanding anions and oxidation, we couldn't ex
 |------|------------|
 | **Electron** | A tiny negatively-charged particle that orbits atoms; the currency of chemistry |
 | **Ion** | An atom that has gained or lost electrons, giving it an electrical charge |
-| **Anion** | A negatively-charged ion (has extra electrons); moves toward positive electrodes |
+| **Anion** | A negatively-charged ion (has extra electrons); moves toward positive [[quick-context/electrodes|electrodes]] |
 | **Oxidation** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
-| **Anode** | The positive electrode where oxidation occurs; anions migrate here |
+| **[[micro-context/anode|Anode]]** | The positive electrode where oxidation occurs; anions migrate here |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -88,14 +88,14 @@ THIS IS OXIDATION: Loss of electrons, charge goes from negative to neutral
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and voltage applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
+The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and [[quick-context/voltage|voltage]] applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Here's what happens during electrolysis of brine (salt water), showing anions being oxidized at the anode:
+Here's what happens during [[quick-context/electrolysis|electrolysis]] of brine (salt water), showing anions being oxidized at the anode:
 
 ```
 THE SETUP: Electrolysis Cell
@@ -186,7 +186,7 @@ so they go to the Anode to lose electrons!
 
 2. **Electrochemical Series** — A ranking of how easily different species lose or gain electrons. This determines which anion gets oxidized when multiple are present (the selectivity problem mentioned above).
 
-3. **[[quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without electrolytes, anions couldn't exist in solution and electrolysis couldn't occur. See: [[quick-context/electrolysis]]
+3. **[[quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without [[quick-context/electrolyte|electrolytes]], anions couldn't exist in solution and electrolysis couldn't occur. See: [[quick-context/electrolysis]]
 
 4. **Electron Configuration** — Understanding *why* atoms gain or lose electrons requires knowing how electrons arrange themselves around atoms. Atoms "want" stable configurations, which drives ion formation.
 
@@ -218,7 +218,7 @@ Factors like concentration, electrode material, and applied voltage determine se
 **Q4:** After 4 OH⁻ ions are oxidized to form O₂ + 2H₂O, how many electrons have been released into the circuit?
 <details>
 <summary>Answer</summary>
-Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the electric current in the circuit. See: The Concrete Example, hydroxide oxidation section.
+Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the [[quick-context/electric-current|electric current]] in the circuit. See: The Concrete Example, hydroxide oxidation section.
 </details>
 
 **Q5:** What's the relationship between the terms "anode," "anion," and "oxidation"?

@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[micro-context/anode]] | [[quick-context/diode]] | [[quick-context/electrodes]] | [[quick-context/electrolysis]] | [[micro-context/buck-converter]]
+
 # Cathode
 
 > **See also:** [[quick-context/electrodes]]
@@ -13,8 +15,8 @@ updated: 2026-03-27
 ## How It Works
 
 - Electrons arrive at the cathode from the external circuit and are consumed by reduction reactions (species gain electrons here).
-- In electrolysis, the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
-- In a diode, conventional current exits through the cathode (marked K or bar) — electron flow enters.
+- In [[quick-context/electrolysis|electrolysis]], the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
+- In a [[quick-context/diode|diode]], conventional current exits through the cathode (marked K or bar) — electron flow enters.
 
 ```
   CHEMISTRY (electrolysis):         ELECTRONICS (diode):

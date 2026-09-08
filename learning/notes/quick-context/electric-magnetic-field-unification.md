@@ -5,9 +5,9 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/capacitor]] | [[quick-context/electrolysis]] | [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/maxwell-equations]]
 
-> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
+> **TL;DR:** Current, [[quick-context/voltage|voltage]], electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[quick-context/electromagnetism|electromagnetism]]."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
@@ -347,8 +347,8 @@ WHICH IS "TRUE"?
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
-| Capacitor charging | electric field building between plates |
-| Inductor charging | magnetic field building in coil |
+| [[quick-context/capacitor|Capacitor]] charging | electric field building between plates |
+| [[quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
 | Radio transmission | E and B waves propagating through space |
 | Lightning | Charges discharge, massive current, huge magnetic field |
@@ -495,15 +495,15 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[quick-context/electrolysis|electrolysis]] and circuits.
 
 - **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 
 - **[[quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
 
-- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The resistor shows what happens when current flows but the energy isn't stored—it's dissipated.
+- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The [[quick-context/resistor|resistor]] shows what happens when current flows but the energy isn't stored—it's dissipated.
 
 - **[[quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical cost).
 
@@ -513,7 +513,7 @@ SUMMARY: The Four Quantities in Action
 
 - **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
 - **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 

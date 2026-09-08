@@ -3,7 +3,7 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/inductor]] | [[micro-context/anode]] | [[micro-context/cathode]] | [[micro-context/electromagnetic-induction]] | [[micro-context/oxidation]]
 
 > **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
 
@@ -21,13 +21,13 @@ There are fundamentally three ways to force electrons to move:
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
-Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
+Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always [[micro-context/electromagnetic-induction|electromagnetic induction]].
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
@@ -148,7 +148,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 </details>
 
 <details>
-<summary><strong>Generators and Inductors: The Same Physics</strong></summary>
+<summary><strong>Generators and [[quick-context/inductor|Inductors]]: The Same Physics</strong></summary>
 
 ## Faraday's Law Unifies Everything
 
@@ -481,7 +481,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 
 - **[[quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
 
-- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
+- **[[quick-context/capacitor]]** — [[quick-context/capacitor|Capacitors]] store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
 
 - **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
 

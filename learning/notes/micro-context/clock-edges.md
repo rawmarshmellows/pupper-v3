@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/clock-sources-and-timing]] | [[micro-context/clock-source]] | [[micro-context/clock-speed]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/d-flip-flop]]
+
 # Clock Edge
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -12,7 +14,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A clock oscillator generates a continuous square wave alternating between high and low voltage levels.
+- A clock oscillator generates a continuous square wave alternating between high and low [[quick-context/voltage|voltage]] levels.
 - On each transition (rising or falling edge), flip-flops and registers capture ("latch") their input signals.
 - Between edges, combinational logic computes new values that propagate and settle before the next edge arrives.
 - This edge-triggered discipline ensures all components read consistent, stable data simultaneously.
@@ -29,4 +31,4 @@ Clock:  ───┐   ┌───┐   ┌───┐   ┌───
      Ignore data between edges → may be invalid
 ```
 
-**Key insight:** Clock edges are why billions of imperfect analog transistors can coordinate as perfect digital switches—they all agree to only "look" at signals at the same precise moments, ignoring the messy analog transitions in between.
+**Key insight:** Clock edges are why billions of imperfect analog [[quick-context/transistor|transistors]] can coordinate as perfect digital switches—they all agree to only "look" at signals at the same precise moments, ignoring the messy analog transitions in between.

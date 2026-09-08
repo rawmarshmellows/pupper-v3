@@ -5,7 +5,7 @@ created: 2026-02-13
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/resistor]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -193,7 +193,7 @@ A subtle but important distinction: voltage tells you the *total* potential diff
 This is why:
 - **Spark plugs** work: modest voltage (20-40kV) across tiny gap = extreme field = ionizes air
 - **Power transmission** uses high voltage: same power with less current (P = IV), reducing I²R losses
-- **Capacitors** can fail: thin dielectric + high voltage = field exceeds breakdown strength
+- **[[quick-context/capacitor|Capacitors]]** can fail: thin dielectric + high voltage = field exceeds breakdown strength
 
 The practitioner tension: high voltage is efficient for power transmission but dangerous for safety. Field strength (V/m) determines breakdown and safety, while voltage (V) determines energy delivery.
 
@@ -301,7 +301,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an [[quick-context/inductor|inductor]] creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 
@@ -318,7 +318,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 **12 V/m** (assuming uniform field and ignoring resistance variations). E = V/d = 12V / 1m. In reality, most of the field would concentrate in any resistive components, with very little in the low-resistance wire itself.
 </details>
 
-**Q2:** If you double the voltage across a resistor, what happens to the electric field inside it?
+**Q2:** If you double the voltage across a [[quick-context/resistor|resistor]], what happens to the electric field inside it?
 <details>
 <summary>Answer</summary>
 **The field doubles.** Voltage is the integral of the field over distance. If distance stays the same and voltage doubles, field must double. This doubled field exerts twice the force on electrons, which (in an ohmic material) doubles the current—consistent with I = V/R.

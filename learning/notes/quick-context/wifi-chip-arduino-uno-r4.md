@@ -5,9 +5,9 @@ created: 2026-03-28
 
 # WiFi Chip — How Radio Becomes Data
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/frequency-and-filtering]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/firmware]]
+> **Related:** [[micro-context/microcontroller]] | [[quick-context/can-bus]] | [[quick-context/electromagnetism]] | [[quick-context/esp32]] | [[quick-context/firmware]]
 
-> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an ESP32-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
+> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an [[quick-context/esp32|ESP32]]-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
 
 ## The Core Problem
 
@@ -246,7 +246,7 @@ ARDUINO UNO R4 WIFI — DUAL-CHIP ARCHITECTURE
 
 ### Why Two Chips Instead of One?
 
-The RA4M1 is the "Arduino-compatible" chip — it runs at 5V (matching classic Arduino shields), has a CAN bus peripheral, a real 12-bit DAC, and an on-chip op-amp. But it has no radio.
+The RA4M1 is the "Arduino-compatible" chip — it runs at 5V (matching classic Arduino shields), has a [[quick-context/can-bus|CAN bus]] peripheral, a real 12-bit DAC, and an on-chip op-amp. But it has no radio.
 
 The [[quick-context/esp32|ESP32-S3]] IS a capable [[micro-context/microcontroller|microcontroller]] in its own right (dual-core at 240 MHz!), but it runs at 3.3V and wouldn't be backward-compatible with the 5V Arduino ecosystem. So Arduino uses it as a coprocessor: it runs pre-installed [[quick-context/firmware|firmware]] that handles WiFi, Bluetooth, and also acts as the USB-to-serial bridge for programming the RA4M1.
 
@@ -325,14 +325,14 @@ void setup() {
 }
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking WiFi is simple because `WiFi.begin()` is one line of code. Behind that single function call, the chip performs channel scanning across up to 14 frequencies (11 in the US, 13 in Europe), OFDM modulation/demodulation, a 4-way cryptographic handshake (WPA2), DHCP negotiation, ARP resolution, and rate adaptation — all managed by dedicated hardware (MAC + PHY + RF) and a real-time firmware stack running on the ESP32-S3's dual 240 MHz cores. The "simplicity" is an abstraction hiding one of the most complex pieces of silicon on the board.
+**The one thing most outsiders get wrong about this is...** thinking WiFi is simple because `WiFi.begin()` is one line of code. Behind that single function call, the chip performs channel scanning across up to 14 frequencies (11 in the US, 13 in Europe), OFDM modulation/demodulation, a 4-way cryptographic handshake (WPA2), DHCP negotiation, ARP resolution, and rate adaptation — all managed by dedicated hardware (MAC + PHY + RF) and a real-time [[quick-context/firmware|firmware]] stack running on the ESP32-S3's dual 240 MHz cores. The "simplicity" is an abstraction hiding one of the most complex pieces of silicon on the board.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 
@@ -346,7 +346,7 @@ void setup() {
 
 - **[[quick-context/esp32]]** — Full quick-context on the broader ESP32 family: variants (S2/S3/C3/C6/H2/P4), Xtensa vs RISC-V transition, boot sequence, dual-core asymmetry, and when to pick which chip.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The ESP32-S3's radio, CPU, and memory are all on one [[quick-context/silicon-die|silicon die]], packaged in a module with a PCB antenna. The packaging hierarchy applies here: transistors → die → module → Arduino board.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The ESP32-S3's radio, CPU, and memory are all on one [[quick-context/silicon-die|silicon die]], packaged in a module with a PCB antenna. The packaging hierarchy applies here: [[quick-context/transistor|transistors]] → die → module → Arduino board.
 
 - **802.11ax (WiFi 6) / 802.11be (WiFi 7)** — Newer WiFi standards add OFDMA (dividing subcarriers between users), MU-MIMO (multiple simultaneous streams), and wider channels (160+ MHz). The ESP32-S3 supports 802.11 b/g/n (WiFi 4) — sufficient for IoT but not high-bandwidth streaming.
 
@@ -366,7 +366,7 @@ OFDM splits the 20 MHz WiFi channel into 48+ narrow subcarriers (each 312.5 kHz 
 **Q2:** Why does the Arduino Uno R4 WiFi use two separate chips instead of just the ESP32-S3?
 <details>
 <summary>Answer</summary>
-Backward compatibility and voltage levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
+Backward compatibility and [[quick-context/voltage|voltage]] levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
 </details>
 
 **Q3:** Your WiFi connection drops when you microwave popcorn. Why?
@@ -384,7 +384,7 @@ Three critical reasons: (1) **Latency** — WiFi has 1-50+ ms variable latency d
 **Q5:** The ESP32-S3 has a "PCB trace antenna." How can a flat copper line on a circuit board receive radio waves?
 <details>
 <summary>Answer</summary>
-An antenna works by having a conductor whose length is a resonant fraction of the signal's wavelength. At 2.4 GHz, λ = 12.5 cm, so a quarter-wave antenna is ~3.1 cm. The PCB trace is a meandered (zigzagged) conductor that fits this electrical length into a small area. When a 2.4 GHz electromagnetic wave passes over the trace, it induces an oscillating current (by Faraday's law — the same principle behind generators and inductors). The RF front-end amplifies this tiny current and feeds it to the demodulator. The antenna must be impedance-matched to 50Ω to maximize power transfer — this is why the trace geometry is carefully calculated, not arbitrary. It works the same in reverse for transmission: the power amplifier drives current through the trace, which radiates electromagnetic waves. See: [[quick-context/electromagnetism]] and [[quick-context/impedance-and-reactance]].
+An antenna works by having a conductor whose length is a resonant fraction of the signal's wavelength. At 2.4 GHz, λ = 12.5 cm, so a quarter-wave antenna is ~3.1 cm. The PCB trace is a meandered (zigzagged) conductor that fits this electrical length into a small area. When a 2.4 GHz electromagnetic wave passes over the trace, it induces an oscillating current (by Faraday's law — the same principle behind generators and [[quick-context/inductor|inductors]]). The RF front-end amplifies this tiny current and feeds it to the demodulator. The antenna must be impedance-matched to 50Ω to maximize power transfer — this is why the trace geometry is carefully calculated, not arbitrary. It works the same in reverse for transmission: the power amplifier drives current through the trace, which radiates electromagnetic waves. See: [[quick-context/electromagnetism]] and [[quick-context/impedance-and-reactance]].
 </details>
 
 </details>
