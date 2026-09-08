@@ -5,9 +5,9 @@ created: 2026-03-28
 
 # Capacitance
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+> **Related:** [[quick-context/capacitor]] | [[quick-context/differential-pair]] | [[quick-context/diode]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inductor]]
 
-> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
+> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, [[quick-context/transistor|transistor]] gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
 ## The Core Problem
 
@@ -26,7 +26,7 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 <details>
 <summary><strong>How It Works</strong> -- Capacitance as a geometric property</summary>
 
-Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a capacitor -- the physics doesn't care. The key equation is:
+Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a [[quick-context/capacitor|capacitor]] -- the physics doesn't care. The key equation is:
 
 $$C = \frac{\varepsilon_0 \cdot \varepsilon_r \cdot A}{d}$$
 
@@ -136,7 +136,7 @@ DERIVATION AT A GLANCE
     I = C·dV/dt
 ```
 
-**Physical intuition** — think of voltage as the *height* of charge piled on the plates:
+**Physical intuition** — think of [[quick-context/voltage|voltage]] as the *height* of charge piled on the plates:
 
 - $V$ rising = charge being *pumped onto* the plate. Pump rate = current.
 - $V$ falling = charge *draining off*. Drain rate = current (other direction).
@@ -307,7 +307,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
         C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
 ```
 
-The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+The ESD [[quick-context/diode|diode]] usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
 
 ### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
 
@@ -392,7 +392,7 @@ Charge on a capacitor only moves when the voltage *across* it changes. C_AB sits
 
 **Why this matters in real design:**
 
-- **Differential pairs** (USB, Ethernet, HDMI, LVDS) deliberately use opposite switching. Drivers are sized for the 2·C_AB hit. In exchange: common-mode noise on both wires cancels at the receiver.
+- **[[quick-context/differential-pair|Differential pairs]]** (USB, Ethernet, HDMI, LVDS) deliberately use opposite switching. Drivers are sized for the 2·C_AB hit. In exchange: common-mode noise on both wires cancels at the receiver.
 - **Parallel buses** (DDR, parallel flash): a switching "aggressor" line slows down *and* injects a glitch into a quiet "victim" line. Routing rules space high-speed lines apart to shrink C_AB.
 - **Data Bus Inversion (DBI):** DDR4+ optionally flips a whole byte if it would cause too many adjacent lines to switch opposite. Forces more same-direction switching → smaller effective C → faster, lower power.
 - **Miller effect in amplifiers:** same physics. Capacitance between input and output of an inverting stage looks bigger by gain factor (1 + A_v) because the output swings opposite to the input.
@@ -485,7 +485,7 @@ WHY DAISY CHAINS HIT A WALL
     • Use bus expanders (I2C multiplexers like TCA9548A)
 ```
 
-The key insight: **the 400 pF I2C limit isn't arbitrary -- it's a direct consequence of $t_{\text{rise}} = RC$.** The pull-up resistor and total bus capacitance form an RC circuit. More devices = more C = slower rise time = eventually the signal can't keep up with the clock. This is parasitic capacitance in parallel, setting a hard ceiling on how many devices can share a wire.
+The key insight: **the 400 pF I2C limit isn't arbitrary -- it's a direct consequence of $t_{\text{rise}} = RC$.** The pull-up [[quick-context/resistor|resistor]] and total bus capacitance form an RC circuit. More devices = more C = slower rise time = eventually the signal can't keep up with the clock. This is parasitic capacitance in parallel, setting a hard ceiling on how many devices can share a wire.
 
 </details>
 
@@ -534,7 +534,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -647,7 +647,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).
@@ -656,7 +656,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Q4:** A MOSFET has 2 pF of gate-drain capacitance ($C_{gd}$) and a voltage gain of 100. Why does the input see 200 pF, not 2 pF?
 <details>
 <summary>Answer</summary>
-**Miller effect.** When the gate voltage changes by $\Delta V$, the drain swings by $-100 \times \Delta V$ (inverted by the gain). The voltage across $C_{gd}$ changes by $(1 + 100) \times \Delta V = 101 \times \Delta V$. The current through $C_{gd}$ is therefore 101x what you'd expect from 2 pF alone, making it look like ~200 pF from the input's perspective. This is why high-gain amplifier stages are slower than their raw gate capacitance would suggest. See: 5 Essential Terms (Miller Capacitance).
+**Miller effect.** When the gate voltage changes by $\Delta V$, the drain swings by $-100 \times \Delta V$ (inverted by the gain). The voltage across $C_{gd}$ changes by $(1 + 100) \times \Delta V = 101 \times \Delta V$. The current through $C_{gd}$ is therefore 101x what you'd expect from 2 pF alone, making it look like ~200 pF from the input's perspective. This is why [[quick-context/high-gain-amplifier-stage|high-gain amplifier stages]] are slower than their raw gate capacitance would suggest. See: 5 Essential Terms (Miller Capacitance).
 </details>
 
 **Q5:** As transistors shrink to 3 nm and below, wire (interconnect) capacitance increasingly dominates over gate capacitance. Why doesn't shrinking the transistor also shrink the wire capacitance proportionally?

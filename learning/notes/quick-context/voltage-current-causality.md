@@ -5,9 +5,9 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[micro-context/electromagnetic-induction]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/self-induction]]
 
-> **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
+> **TL;DR:** Neither [[quick-context/voltage|voltage]] "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
 ## The Core Problem
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving [[quick-context/resistor|resistors]], LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, [[quick-context/inductor|inductor]] back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -311,7 +311,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 
 - **[[quick-context/resistor]]** --- The simplest V-I relationship (V = IR). In a resistor, V and I are proportional and in phase---no time delay, no stored energy, so the "cause" question is purely about what's driving the circuit.
 
-- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, capacitors and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
+- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, [[quick-context/capacitor|capacitors]] and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
 
 - **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an inductor creates back-EMF. The current change comes first; the voltage is the response.
 

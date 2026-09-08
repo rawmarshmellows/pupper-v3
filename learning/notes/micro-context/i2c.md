@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/capacitance]] | [[quick-context/resistor]]
+
 # I2C
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
@@ -14,7 +16,7 @@ updated: 2026-03-27
 
 - The master sends a START condition (SDA goes low while SCL is high), then clocks out the 7-bit slave address plus a read/write bit.
 - The addressed slave acknowledges (pulls SDA low during the ACK clock pulse), and data bytes follow in the same clocked fashion.
-- Both SDA and SCL are open-drain lines — devices can only pull LOW, and external pull-up resistors hold the lines HIGH by default.
+- Both SDA and SCL are open-drain lines — devices can only pull LOW, and external pull-up [[quick-context/resistor|resistors]] hold the lines HIGH by default.
 - A STOP condition (SDA goes high while SCL is high) releases the bus for the next transaction.
 
 ```

@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/electric-current]] | [[quick-context/metal-interconnect-layers]] | [[quick-context/capacitor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -264,7 +264,7 @@ THE TRADEOFF MAP:
 
 ### Electromigration in a Power Distribution Network
 
-The power grid on a chip must deliver enormous total current to billions of transistors. This is where electromigration is most critical.
+The power grid on a chip must deliver enormous total current to billions of [[quick-context/transistor|transistors]]. This is where electromigration is most critical.
 
 ```
 CHIP POWER GRID: A CASE STUDY
@@ -352,7 +352,7 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating [[quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 

@@ -5,7 +5,7 @@ created: 2026-04-08
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
-> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
+> **Related:** [[micro-context/clock-edges]] | [[micro-context/crystal-oscillator]] | [[micro-context/microcontroller]] | [[quick-context/capacitance]] | [[quick-context/embedded-communication-protocols]]
 
 > **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
 
@@ -24,7 +24,7 @@ A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over i
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
 <details>
-<summary><strong>How It Works</strong> — From voltage on a wire to a byte in a register</summary>
+<summary><strong>How It Works</strong> — From [[quick-context/voltage|voltage]] on a wire to a byte in a register</summary>
 
 ### High-Level: Two Jobs
 
@@ -272,7 +272,7 @@ UART sits at the "dead simple" end of the [[quick-context/embedded-communication
 
 **UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
 
-The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
+The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from [[micro-context/crystal-oscillator|crystal oscillators]]. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
 
 </details>
 
@@ -338,13 +338,13 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 
 - **[[quick-context/usb-peripheral-hardware]]** — How USB works at the hardware level inside an MCU. USB's Serial Interface Engine (SIE) is conceptually similar to a UART — it has shift registers for serial↔parallel conversion — but adds NRZI encoding, bit stuffing, CRC, and packet framing.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32 family of microcontrollers that include UART peripherals. The Pupper v3 uses UART for debug console output.
+- **[[micro-context/stm32-microcontroller]]** — The STM32 family of [[micro-context/microcontroller|microcontrollers]] that include UART peripherals. The Pupper v3 uses UART for debug console output.
 
 - **[[quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to edge-triggered master-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
 
-- **[[micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
+- **[[micro-context/clock-edges]]** — How flip-flops sample data on [[micro-context/clock-edges|clock edges]]. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these gate-level primitives.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from [[quick-context/transistor|transistors]]. The UART's shift register and data register are ultimately chains of these gate-level primitives.
 
 - **RS-232** — The electrical standard that defines bipolar voltage levels (±3-15V) for UART signals. Requires a level-shifting IC like the MAX232. See [[quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
 
@@ -370,13 +370,13 @@ The **two-stage design**: shift register + data register. Once 8 bits are receiv
 **Q3:** At 115200 baud, how much clock mismatch between sender and receiver can the UART tolerate before bits get misread?
 <details>
 <summary>Answer</summary>
-About **±3-4%**. At 16× oversampling, the receiver samples at the center of each bit (ticks 8-10 out of 16). Over a 10-bit frame, a 3% clock error accumulates to ~0.3 bits of drift by the last bit — still within the ±0.5 bit tolerance window. Beyond ~4-5%, the sampling point drifts past the bit boundary and you get framing errors. This is why both sides typically use crystal oscillators (~50 ppm accuracy = 0.005%) rather than internal RC oscillators (~1-5% accuracy). See: Oversampling in How It Works.
+About **±3-4%**. At 16× oversampling, the receiver samples at the center of each bit (ticks 8-10 out of 16). Over a 10-bit frame, a 3% clock error accumulates to ~0.3 bits of drift by the last bit — still within the ±0.5 bit tolerance window. Beyond ~4-5%, the sampling point drifts past the bit boundary and you get framing errors. This is why both sides typically use crystal oscillators (~50 ppm accuracy = 0.005%) rather than internal [[quick-context/rc-oscillator|RC oscillators]] (~1-5% accuracy). See: Oversampling in How It Works.
 </details>
 
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?
