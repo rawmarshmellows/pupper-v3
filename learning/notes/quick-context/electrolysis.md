@@ -236,7 +236,7 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 
 **Relation to oxidation states**: Track where electrons go by watching oxidation numbers change. In water (H₂O), hydrogen is +1 and oxygen is -2. After electrolysis, hydrogen in H₂ is 0 (reduced: gained electrons), oxygen in O₂ is 0 (oxidized: lost electrons). The total electron bookkeeping must balance.
 
-**Relation to electrochemical series**: Metals and ions have different "eagerness" to accept electrons ([[quick-context/reduction-potential|reduction potential]]). Copper (E° = +0.34V) reduces more easily than zinc (E° = -0.76V), which reduces more easily than sodium (E° = -2.71V). This explains why electrolyzing a copper/zinc mixture plates copper first, and why sodium can only be extracted from molten salt, not solution (water reduces first).
+**Relation to electrochemical series**: Metals and ions have different "eagerness" to accept electrons (reduction potential). Copper (E° = +0.34V) reduces more easily than zinc (E° = -0.76V), which reduces more easily than sodium (E° = -2.71V). This explains why electrolyzing a copper/zinc mixture plates copper first, and why sodium can only be extracted from molten salt, not solution (water reduces first).
 
 **Relation to energy storage**: Electrolysis is half of the hydrogen energy cycle. Electricity → electrolysis → H₂ stored → fuel cell → electricity. Round-trip efficiency is ~40-50%, much worse than [[quick-context/galvanic-cells-batteries|batteries]] (~90%), but hydrogen stores energy for months without loss and can be transported. The physics of [[quick-context/chemical-bonds-spectrum|bond formation]] in the fuel cell (H₂ + O₂ → H₂O) releases exactly what electrolysis put in, minus losses.
 
@@ -253,11 +253,8 @@ THREE MAIN ELECTROLYZER TECHNOLOGIES:
 
 - **Redox Chemistry** — The broader framework: any reaction where electrons transfer between species. Electrolysis forces non-spontaneous redox; batteries harvest spontaneous redox; corrosion is uncontrolled redox; metabolism is biological redox.
 
-- **[[quick-context/reduction-potential|Electrode Potentials (E° values)]]** — The "voltage table" predicting which species reduce/oxidize preferentially. Higher E° = more easily reduced. The difference between two half-reactions gives the cell voltage.
-
 - **Industrial Applications** — Hall-Héroult process (aluminum from Al₂O₃), chlor-alkali process (Cl₂, NaOH, H₂ from brine), electroplating, electrorefining of metals—all electrolysis at scale.
 
-- **[[quick-context/biology-fundamentals]]** — Cellular respiration is the chemical inverse of electrolysis at the bond level: respiration releases energy when forming bonds (CO₂ + H₂O), while electrolysis inputs energy to break them.
 
 </details>
 

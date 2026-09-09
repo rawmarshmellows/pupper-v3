@@ -241,8 +241,6 @@ PATTERN: The charge number tells you how many electrons are needed!
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
-
 - **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 
 </details>

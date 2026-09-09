@@ -13,7 +13,7 @@ created: 2026-01-14
 
 ISA-95 exists to solve the communication chaos between the factory floor and business systems. Before this standard, every integration between an ERP system (think SAP tracking inventory and orders) and the actual machines making products was a custom, brittle nightmare.
 
-The standard defines a five-level hierarchy: **Level 0** is the physical process itself—chemical reactions, material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your PLCs and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
+The standard defines a five-level hierarchy: **Level 0** is the physical process itself—chemical reactions, material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your [[micro-context/plc-programmable-logic-controller|PLCs]] and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
 
 A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the PLC maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
 
@@ -23,7 +23,7 @@ A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the tem
 |------|------------|
 | **MES** | Manufacturing Execution System—the Level 3 software that orchestrates production and captures what actually happened |
 | **B2MML** | Business to Manufacturing Markup Language—the XML schema that implements ISA-95's data models for actual system integration |
-| **OEE** | Overall Equipment Effectiveness—the holy trinity metric of availability x performance x quality that Level 3 systems exist to calculate |
+| **OEE** | [[quick-context/oee-overall-equipment-effectiveness|Overall Equipment Effectiveness]]—the holy trinity metric of availability x performance x quality that Level 3 systems exist to calculate |
 | **Work Order** | The instruction from Level 4 to Level 3 saying "make this thing" |
 | **Genealogy** | The ability to trace every input lot, process parameter, and operator that touched a finished product—critical for recalls and regulated industries |
 
