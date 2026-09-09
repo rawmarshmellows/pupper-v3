@@ -13,7 +13,7 @@ created: 2026-01-25
 
 Imagine you have a tiny piece of silicon smaller than your fingernail, containing billions of transistors (microscopic on/off switches). This silicon "die" is the actual brain of your computer, phone, or any electronic device. The problem? Those transistors are so small (about 5 nanometers—a human hair is 80,000 nanometers wide) that you can't just stick a wire onto them. You need to connect this microscopic world to the human-scale world of circuit boards, cables, and power supplies.
 
-The traditional solution was **wire bonding**: attach the chip right-side up and use incredibly thin wires (thinner than a human hair) to connect the edges of the chip to the larger circuit. But this approach has serious limitations. You can only attach wires around the *edges* of the chip, limiting how many connections you can make. Those thin wires also act like tiny antennas, picking up interference and slowing down signals. As chips got more powerful and needed more connections (modern CPUs need thousands), wire bonding became a bottleneck.
+The traditional solution was **[[quick-context/wire-bonding|wire bonding]]**: attach the chip right-side up and use incredibly thin wires (thinner than a human hair) to connect the edges of the chip to the larger circuit. But this approach has serious limitations. You can only attach wires around the *edges* of the chip, limiting how many connections you can make. Those thin wires also act like tiny antennas, picking up interference and slowing down signals. As chips got more powerful and needed more connections (modern CPUs need thousands), wire bonding became a bottleneck.
 
 **Flip-chip** solves this by literally flipping the chip upside-down and using an array of tiny solder bumps across the *entire bottom surface* of the chip to connect directly to the underlying substrate. Instead of wires looping through the air, you get direct, short connections. This enables more connections (I/O density), faster signal speeds, and better heat dissipation. Without flip-chip technology, modern high-performance processors simply couldn't exist—they'd be too slow and couldn't have enough connections to move data in and out fast enough.
 
@@ -22,7 +22,7 @@ The traditional solution was **wire bonding**: attach the chip right-side up and
 | Term | Definition |
 |------|------------|
 | **Die** | The tiny square of silicon that IS the actual chip—containing all the transistors; typically 10-20mm on a side |
-| **Substrate** | The intermediate "translation layer" between the die and the circuit board; it fans out the chip's microscopic connections to larger, solderable pads |
+| **[[quick-context/substrate-ic-packaging|Substrate]]** | The intermediate "translation layer" between the die and the circuit board; it fans out the chip's microscopic connections to larger, solderable pads |
 | **Solder bump** | A tiny ball of metal alloy (originally lead-tin, now lead-free) that creates both the electrical and mechanical connection between die and substrate |
 | **Underfill** | Epoxy material injected between the flipped die and substrate after connection; it mechanically reinforces the solder bumps and protects against cracking |
 | **C4 (Controlled Collapse Chip Connection)** | IBM's original name for flip-chip technology; the "controlled collapse" refers to how solder bumps melt and flatten during connection |

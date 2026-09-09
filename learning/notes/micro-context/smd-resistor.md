@@ -38,4 +38,4 @@ SMD RESISTOR SIZES (to scale):
   └────────────┴─────────┴─────────────────────────┘
 ```
 
-**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the buck converter—they set the exact output voltage through a voltage divider ratio.
+**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the [[micro-context/buck-converter|buck converter]]—they set the exact output voltage through a voltage divider ratio.

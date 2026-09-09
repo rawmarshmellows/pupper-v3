@@ -5,6 +5,8 @@ created: 2026-04-06
 
 # Silymarin
 
+> **Related:** [[quick-context/butyric-acid]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]]
+
 > **TL;DR:** Silymarin is a mixture of flavonolignans extracted from milk thistle (*Silybum marianum*) seeds, best known for hepatoprotection — it scavenges free radicals, stabilizes liver cell membranes, and suppresses inflammatory pathways, making it one of the most-studied herbal compounds for liver disease.
 
 ## The Core Problem

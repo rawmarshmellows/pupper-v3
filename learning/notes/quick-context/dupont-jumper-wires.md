@@ -5,6 +5,8 @@ created: 2026-04-03
 
 # DuPont Jumper Wires
 
+> **Related:** [[quick-context/qwiic-stemma-qt-i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/schematic-reading]] | [[quick-context/soldering]]
+
 > **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem

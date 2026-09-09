@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # PWM (Pulse Width Modulation)
 
+> **See also:** [[micro-context/buck-converter]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/inductor]] | [[quick-context/capacitor]] | [[micro-context/microcontroller]]
+
 **Definition:** A technique for controlling average power by rapidly switching a signal fully ON and fully OFF, varying the fraction of time spent ON (the duty cycle, $D = t_{on} / T$). The load sees the time-averaged voltage: $V_{avg} = V_{IN} \times D$. Used in [[micro-context/buck-converter|buck converters]] (the PWM signal drives the MOSFET gate), motor speed control, LED dimming, and [[micro-context/i2s-audio-amplifier|Class-D audio amplifiers]]. https://www.youtube.com/watch?v=nXFoVSN3u-E
 
 ## How It Works

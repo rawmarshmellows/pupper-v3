@@ -5,6 +5,8 @@ created: 2026-04-02
 
 # Current Mirror
 
+> **See also:** [[micro-context/tail-current]] | [[quick-context/differential-pair]] | [[micro-context/mosfet]] | [[quick-context/op-amp]] | [[quick-context/high-gain-amplifier-stage]]
+
 **Definition:** A circuit that copies a reference current from one transistor to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in differential pairs.
 
 ## How It Works
