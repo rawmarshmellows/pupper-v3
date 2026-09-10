@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # CAN Bus (Controller Area Network)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/firmware]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
 > **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire differential pair without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
 
@@ -19,9 +19,9 @@ A robot with 12 motors needs to send position commands and receive encoder feedb
 |------|------------|
 | **Frame** | A single CAN message: an 11-bit (or 29-bit extended) identifier for priority/addressing, 0-8 bytes of data, and a CRC for error detection — everything a node needs to communicate in one shot |
 | **Arbitration** | The process by which multiple nodes trying to transmit simultaneously resolve who wins — each node watches the bus while transmitting, and the message with the lowest ID (most 0-bits) wins without any data loss or collision |
-| **Differential pair (CANH/CANL)** | The two wires of the bus — a [[micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
+| **Differential pair (CANH/CANL)** | The two wires of the bus — a [[learning/notes/micro-context/can-bus-transceiver|transceiver]] drives them in opposite directions so that noise affecting both wires equally cancels out when the receiver subtracts CANL from CANH |
 | **Dominant / Recessive** | CAN's two logical states: dominant (logical 0) actively drives the bus to a differential voltage; recessive (logical 1) lets the bus float to no differential voltage — dominant always overwrites recessive, which is what makes arbitration work |
-| **[[micro-context/can-bus-termination|Termination]]** | The 120$\Omega$ [[quick-context/resistor|resistors]] at each end of the bus that match the wire's characteristic [[quick-context/impedance-and-reactance|impedance]] and absorb signals to prevent reflections |
+| **[[learning/notes/micro-context/can-bus-termination|Termination]]** | The 120$\Omega$ [[learning/notes/quick-context/resistor|resistors]] at each end of the bus that match the wire's characteristic [[learning/notes/quick-context/impedance-and-reactance|impedance]] and absorb signals to prevent reflections |
 
 ## How CAN Fits in the Protocol Landscape
 
@@ -38,14 +38,14 @@ CAN FD        2    8 Mbps      40 m       Bus (linear)     Next-gen automotive
 Ethernet      2-4  100 Mbps+   100 m      Star/switched    Cameras, high-bandwidth
 ```
 
-CAN occupies the sweet spot between [[micro-context/i2c|I2C]] (short-range sensor bus) and Ethernet (high-speed network): it's fast enough for real-time motor control, robust enough for long noisy cables, and simple enough that a $0.50 [[micro-context/stm32-microcontroller|microcontroller]] peripheral handles the entire protocol in hardware.
+CAN occupies the sweet spot between [[learning/notes/micro-context/i2c|I2C]] (short-range sensor bus) and Ethernet (high-speed network): it's fast enough for real-time motor control, robust enough for long noisy cables, and simple enough that a $0.50 [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] peripheral handles the entire protocol in hardware.
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 ### The Bus: One Shared Wire Pair
 
-CAN uses a linear bus topology — a single twisted pair (CANH and CANL) with all nodes tapped in parallel. Each node connects through a [[micro-context/can-bus-transceiver|CAN transceiver]] that converts the [[micro-context/microcontroller|MCU's]] digital TX/RX to differential voltages:
+CAN uses a linear bus topology — a single twisted pair (CANH and CANL) with all nodes tapped in parallel. Each node connects through a [[learning/notes/micro-context/can-bus-transceiver|CAN transceiver]] that converts the [[learning/notes/micro-context/microcontroller|MCU's]] digital TX/RX to differential voltages:
 
 ```
 CAN BUS TOPOLOGY:
@@ -193,7 +193,7 @@ SPEED vs. DISTANCE TRADEOFF:
 
 **CAN 2.0 vs. CAN FD:** Classic CAN (2.0) maxes out at 1 Mbps with 8-byte payloads. CAN FD (Flexible Data-rate) keeps the same arbitration phase at the original speed but accelerates the data phase up to 8 Mbps and expands payloads to 64 bytes. This works because arbitration only needs slow, bus-wide consistency, while the data phase is point-to-point verified by CRC.
 
-**Bus utilization:** With 12 servos each sending/receiving at 1 kHz, a single 1 Mbps CAN bus would need ~24,000 frames/sec. Each 8-byte frame takes ~130 μs, so 24,000 frames need ~3.1 seconds of bus time per second — impossible on a single bus. This is exactly why the Pupper splits into 4 buses with 3 servos each (~25% utilization per bus), leaving headroom for retransmissions. See [[quick-context/pupper-bom-control-board]].
+**Bus utilization:** With 12 servos each sending/receiving at 1 kHz, a single 1 Mbps CAN bus would need ~24,000 frames/sec. Each 8-byte frame takes ~130 μs, so 24,000 frames need ~3.1 seconds of bus time per second — impossible on a single bus. This is exactly why the Pupper splits into 4 buses with 3 servos each (~25% utilization per bus), leaving headroom for retransmissions. See [[learning/notes/quick-context/pupper-bom-control-board]].
 
 </details>
 
@@ -295,21 +295,21 @@ CANH and CANL on a scope during one frame:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts the MCU's single-ended digital TX/RX into differential CANH/CANL signals. This micro-context covers the physical layer interface that CAN depends on.
+- **[[learning/notes/micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts the MCU's single-ended digital TX/RX into differential CANH/CANL signals. This micro-context covers the physical layer interface that CAN depends on.
 
-- **[[micro-context/can-bus-termination]]** — The 120$\Omega$ resistors at each bus endpoint. Explains why unterminated buses fail at high speeds and how the Pupper's R1-R4 terminate its 4 CAN buses.
+- **[[learning/notes/micro-context/can-bus-termination]]** — The 120$\Omega$ resistors at each bus endpoint. Explains why unterminated buses fail at high speeds and how the Pupper's R1-R4 terminate its 4 CAN buses.
 
-- **[[micro-context/spi]]** — The protocol U1 uses to send joint targets to U5 on the Pupper. SPI is faster but point-to-point; CAN is slower but multi-drop and noise-immune — they complement each other.
+- **[[learning/notes/micro-context/spi]]** — The protocol U1 uses to send joint targets to U5 on the Pupper. SPI is faster but point-to-point; CAN is slower but multi-drop and noise-immune — they complement each other.
 
-- **[[micro-context/i2c]]** — Another 2-wire multi-device bus, but designed for short-range, low-speed sensor communication. Comparing I2C and CAN highlights why different communication needs call for different protocols.
+- **[[learning/notes/micro-context/i2c]]** — Another 2-wire multi-device bus, but designed for short-range, low-speed sensor communication. Comparing I2C and CAN highlights why different communication needs call for different protocols.
 
-- **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing how CAN fits into the Pupper's control loop: Pi → U1 → SPI → U5 → CAN → 12 servos.
+- **[[learning/notes/quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing how CAN fits into the Pupper's control loop: Pi → U1 → SPI → U5 → CAN → 12 servos.
 
-- **[[quick-context/pupper-bom-control-board]]** — Every physical component in the CAN subsystem: the 4 MAX3051 transceivers (U3, U4, U6, U7), the 120$\Omega$ termination resistors (R1-R4), and the JST connectors (CN1, CN2) carrying CAN signals to the servo cables.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — Every physical component in the CAN subsystem: the 4 MAX3051 transceivers (U3, U4, U6, U7), the 120$\Omega$ termination resistors (R1-R4), and the JST connectors (CN1, CN2) carrying CAN signals to the servo cables.
 
-- **[[quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
+- **[[learning/notes/quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
 
-- **[[quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
+- **[[learning/notes/quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
 
 - **OBD-II (On-Board Diagnostics)** — The standardized CAN-based diagnostic port in every car since 2008. Protocols like OBD-II, J1939 (heavy trucks), and CANopen (industrial) are application layers built on top of the CAN physical and data-link layers.
 
@@ -327,7 +327,7 @@ The dominant/recessive encoding enables non-destructive arbitration. When two no
 **Q2:** A CAN bus has 5 nodes on a 10-meter cable. Where do you place termination resistors?
 <details>
 <summary>Answer</summary>
-Only at the two physical endpoints of the bus — the first and last node on the cable. The 3 middle nodes must NOT have termination. Placing a termination resistor at a middle node would create a parallel resistance that lowers the bus impedance below 120$\Omega$, distorting signal levels and causing reflections from the impedance mismatch. See: [[micro-context/can-bus-termination]] and the bus topology diagram.
+Only at the two physical endpoints of the bus — the first and last node on the cable. The 3 middle nodes must NOT have termination. Placing a termination resistor at a middle node would create a parallel resistance that lowers the bus impedance below 120$\Omega$, distorting signal levels and causing reflections from the impedance mismatch. See: [[learning/notes/micro-context/can-bus-termination]] and the bus topology diagram.
 </details>
 
 **Q3:** Two CAN messages are transmitted at the same time — ID 0x300 and ID 0x100. Which one wins, and why?
@@ -345,7 +345,7 @@ Arbitration requires every node to see the current bus state within one bit time
 **Q5:** The Pupper uses 4 separate CAN buses instead of one bus with all 12 servos. Beyond bandwidth, what other engineering benefits does this provide?
 <details>
 <summary>Answer</summary>
-Three key benefits beyond bandwidth: (1) **Fault isolation** — a wiring fault or short in one leg's cable only affects 3 servos, not all 12. The other 3 legs continue operating. (2) **Reduced latency** — with 3 nodes per bus instead of 12, there's less contention and shorter worst-case arbitration times, improving the 1 kHz loop's timing determinism. (3) **Simpler wiring** — each bus runs to one leg, so cables follow the robot's physical topology rather than daisy-chaining through all 4 legs. The tradeoff is 4 transceivers + 4 termination resistors + 4 CAN peripheral channels, but on the STM32F446 these are available in hardware. See: [[quick-context/pupper-bom-control-board]] Category 2 and The Key Tension.
+Three key benefits beyond bandwidth: (1) **Fault isolation** — a wiring fault or short in one leg's cable only affects 3 servos, not all 12. The other 3 legs continue operating. (2) **Reduced latency** — with 3 nodes per bus instead of 12, there's less contention and shorter worst-case arbitration times, improving the 1 kHz loop's timing determinism. (3) **Simpler wiring** — each bus runs to one leg, so cables follow the robot's physical topology rather than daisy-chaining through all 4 legs. The tradeoff is 4 transceivers + 4 termination resistors + 4 CAN peripheral channels, but on the STM32F446 these are available in hardware. See: [[learning/notes/quick-context/pupper-bom-control-board]] Category 2 and The Key Tension.
 </details>
 
 </details>

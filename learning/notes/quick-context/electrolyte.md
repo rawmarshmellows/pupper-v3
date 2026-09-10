@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/making-electrolytes]] | [[quick-context/electrodes]]
+> **Related:** [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/making-electrolytes]] | [[learning/notes/quick-context/electrodes]]
 
 > **TL;DR:** Electrolytes are substances (acids, bases, or salts) that dissolve in water to release free ions, enabling the liquid to conduct electricity; pure water is essentially an insulator, but adding an electrolyte can increase conductivity by 500,000x.
 
@@ -40,13 +40,13 @@ updated: 2026-01-22
 | **Dissolve a salt** | NaCl in water | NaCl → Na⁺ + Cl⁻ |
 | **Melt an ionic compound** | Molten NaCl (no water) | NaCl(l) → Na⁺ + Cl⁻ |
 
-See [[quick-context/making-electrolytes]] for detailed preparation methods.
+See [[learning/notes/quick-context/making-electrolytes]] for detailed preparation methods.
 
 ---
 
 ## The Core Problem: Making Liquids Conduct Electricity
 
-Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS/cm because water molecules barely split into ions (only 10⁻⁷ M H⁺ and OH⁻ from autoionization). Without an electrolyte, you cannot run [[quick-context/electrolysis|electrolysis]], batteries cannot function, and electrochemical processes halt completely. The ions physically move through the liquid—[[quick-context/cations-and-reduction|cations]] toward the [[quick-context/electrodes|cathode]], [[quick-context/anions-and-oxidation|anions]] toward the [[quick-context/electrodes|anode]]—carrying charge and enabling the electrode reactions. No electrolyte means no current flow through the liquid, which means no chemistry happens at the electrodes.
+Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS/cm because water molecules barely split into ions (only 10⁻⁷ M H⁺ and OH⁻ from autoionization). Without an electrolyte, you cannot run [[learning/notes/quick-context/electrolysis|electrolysis]], batteries cannot function, and electrochemical processes halt completely. The ions physically move through the liquid—[[learning/notes/quick-context/cations-and-reduction|cations]] toward the [[learning/notes/quick-context/electrodes|cathode]], [[learning/notes/quick-context/anions-and-oxidation|anions]] toward the [[learning/notes/quick-context/electrodes|anode]]—carrying charge and enabling the electrode reactions. No electrolyte means no current flow through the liquid, which means no chemistry happens at the electrodes.
 
 ## 5 Essential Terms
 
@@ -213,17 +213,17 @@ Comparison of Common Electrolytes:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — Electrolytes are essential for electrolysis; they provide the ion pathway that makes electrode reactions possible.
+- **[[learning/notes/quick-context/electrolysis]]** — Electrolytes are essential for electrolysis; they provide the ion pathway that makes electrode reactions possible.
 
-- **[[quick-context/making-electrolytes]]** — Detailed guide on how acids, bases, and salts create electrolytes through dissociation.
+- **[[learning/notes/quick-context/making-electrolytes]]** — Detailed guide on how acids, bases, and salts create electrolytes through dissociation.
 
-- **[[quick-context/electrodes]]** — The cathode and anode where ions exchange electrons; electrolytes deliver ions to these surfaces.
+- **[[learning/notes/quick-context/electrodes]]** — The cathode and anode where ions exchange electrons; electrolytes deliver ions to these surfaces.
 
-- **[[quick-context/cations-and-reduction]]** — Positive ions (cations) in the electrolyte migrate to the cathode and gain electrons.
+- **[[learning/notes/quick-context/cations-and-reduction]]** — Positive ions (cations) in the electrolyte migrate to the cathode and gain electrons.
 
-- **[[quick-context/anions-and-oxidation]]** — Negative ions (anions) in the electrolyte migrate to the anode and lose electrons.
+- **[[learning/notes/quick-context/anions-and-oxidation]]** — Negative ions (anions) in the electrolyte migrate to the anode and lose electrons.
 
-- **[[quick-context/voltage-thermodynamics-electrolysis]]** — The minimum voltage needed relates to which ions in the electrolyte will react first.
+- **[[learning/notes/quick-context/voltage-thermodynamics-electrolysis]]** — The minimum voltage needed relates to which ions in the electrolyte will react first.
 
 </details>
 

@@ -3,9 +3,9 @@ topic: Raspberry Pi 5 — Board Components
 created: 2026-04-05
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-brain]] | [[micro-context/stm32-microcontroller]] | [[quick-context/common-ic-packages]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[micro-context/stm32-microcontroller|STM32 microcontrollers]].
+> **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[learning/notes/micro-context/stm32-microcontroller|STM32 microcontrollers]].
 
 > **Photo reference:** [[micro-context/raspberry-pi-5.png]]
 
@@ -41,7 +41,7 @@ Starting from the top-left and working around the board:
 | **Ethernet (J14 area)** | Gigabit Ethernet jack | Trxcom magjack with integrated magnetics — 1 Gbps networking |
 | **USB 3.0** | 2x USB 3.0 Type-A | SuperSpeed 5 Gbps ports (the blue-tabbed pair) — via RP1 |
 | **USB 2.0** | 2x USB 2.0 Type-A | 480 Mbps ports (the white-tabbed pair) — via RP1 |
-| **PCIe (J20)** | PCIe FPC connector | 16-pin FPC for a PCIe x1 Gen 2 (5 GT/s) link — used with an NVMe HAT or [[quick-context/raspberry-pi-ai-hat|AI HAT+]] for neural network acceleration |
+| **PCIe (J20)** | PCIe FPC connector | 16-pin FPC for a PCIe x1 Gen 2 (5 GT/s) link — used with an NVMe HAT or [[learning/notes/quick-context/raspberry-pi-ai-hat|AI HAT+]] for neural network acceleration |
 | **HAT+ GPIO** | 40-pin header | Standard Raspberry Pi GPIO header with I2C, SPI, UART, PWM, and 26 general-purpose pins |
 | **FAN** | 4-pin fan connector | JST connector for the official active cooler — PWM speed control and tach feedback |
 
@@ -82,7 +82,7 @@ RASPBERRY PI 5 — COMPONENT MAP (top view, ports facing down):
 
 ## How It Fits in Pupper
 
-The Raspberry Pi 5 is the **high-level controller**: it runs Linux, ROS 2, computer vision (camera via CSI), and voice/LLM processing. It communicates with the [[quick-context/pupper-brain|Pupper control board]] (which holds the [[micro-context/stm32-microcontroller|STM32 MCUs]]) over a serial or CAN-to-USB bridge. The Pi handles *what* the robot should do; the STM32s handle *how* — executing the 1kHz motor control loops in hard real-time.
+The Raspberry Pi 5 is the **high-level controller**: it runs Linux, ROS 2, computer vision (camera via CSI), and voice/LLM processing. It communicates with the [[learning/notes/quick-context/pupper-brain|Pupper control board]] (which holds the [[learning/notes/micro-context/stm32-microcontroller|STM32 MCUs]]) over a serial or CAN-to-USB bridge. The Pi handles *what* the robot should do; the STM32s handle *how* — executing the 1kHz motor control loops in hard real-time.
 
 | Layer | Hardware | Runs | Timing |
 |-------|----------|------|--------|

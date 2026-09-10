@@ -4,7 +4,7 @@ created: 2026-01-23
 ---
 
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
 
@@ -18,18 +18,18 @@ Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor 
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/silicon-die|Die]]** | The actual silicon chip cut from a wafer; contains all transistors and [[quick-context/metal-interconnect-layers|metal interconnect layers]] |
-| **[[quick-context/substrate-ic-packaging|Substrate]]** | The intermediate layer (often organic or ceramic) that redistributes the die's fine-pitch connections to the package's coarser pins/balls |
-| **[[quick-context/wire-bonding|Wire bond]]** | Thin gold or copper wire (~25 μm) ultrasonically welded from die bond pad to substrate; cheap but limits density and adds inductance |
-| **[[quick-context/flip-chip|Flip-chip (C4)]]** | Die mounted face-down with solder bumps directly connecting to substrate; higher performance and I/O density than wire bonding |
-| **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | Package type where solder balls on the bottom connect to PCB; enables high pin counts in small area |
+| **[[learning/notes/quick-context/silicon-die|Die]]** | The actual silicon chip cut from a wafer; contains all transistors and [[learning/notes/quick-context/metal-interconnect-layers|metal interconnect layers]] |
+| **[[learning/notes/quick-context/substrate-ic-packaging|Substrate]]** | The intermediate layer (often organic or ceramic) that redistributes the die's fine-pitch connections to the package's coarser pins/balls |
+| **[[learning/notes/quick-context/wire-bonding|Wire bond]]** | Thin gold or copper wire (~25 μm) ultrasonically welded from die bond pad to substrate; cheap but limits density and adds inductance |
+| **[[learning/notes/quick-context/flip-chip|Flip-chip (C4)]]** | Die mounted face-down with solder bumps directly connecting to substrate; higher performance and I/O density than wire bonding |
+| **[[learning/notes/quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | Package type where solder balls on the bottom connect to PCB; enables high pin counts in small area |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines can handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), metal interconnect layers within the die are branches gathering signals, [[quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
+The hierarchy functions as a series of "scale adapters," each level translating fine-pitch connections into progressively coarser ones that humans and machines can handle. Think of it like a tree: the transistors are leaves (billions of them, too small to see), metal interconnect layers within the die are branches gathering signals, [[learning/notes/quick-context/bond-pad|bond pads]] are where branches meet the trunk, the package substrate is the trunk translating down to roots, and the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] is the ground where everything connects to the outside world. Each level has different materials, manufacturing processes, and design rules optimized for its scale.
 
-At the transistor level, signals exist as voltage changes on [[quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's BGA balls (~800 um pitch). Finally, the BGA balls solder to the [[quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
+At the transistor level, signals exist as voltage changes on [[learning/notes/quick-context/metal-interconnect-layers|metal lines]] just nanometers wide, stacked in 10+ layers above the silicon. These converge to [[learning/notes/quick-context/bond-pad|bond pads]] at the die edge or underside. The die-to-substrate connection happens via wire bonding (thin wires looped from die to substrate) or [[learning/notes/quick-context/flip-chip|flip-chip]] (tiny solder bumps covering the die bottom). The substrate then redistributes these connections through its internal routing layers, fanning out from the die's fine pitch (~100 um) to the package's BGA balls (~800 um pitch). Finally, the BGA balls solder to the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]], where traces route between multiple chips, connectors supply power and data, and decoupling capacitors stabilize voltages.
 
 ```
 THE FAN-OUT PRINCIPLE: How Connections Scale Up
@@ -41,7 +41,7 @@ THE FAN-OUT PRINCIPLE: How Connections Scale Up
 
     ┌──────────────────────────────────────────────┐
     │  ┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬┴┬   │  ← transistors
-    │  M1 ═══════════════════════════════════════  │  ← [[quick-context/metal-interconnect-layers|metal layers]]
+    │  M1 ═══════════════════════════════════════  │  ← [[learning/notes/quick-context/metal-interconnect-layers|metal layers]]
     │  M2 ═══════════════════════════════════════  │    bundle signals
     │  ...                                         │
     │  M10 ══════╦══════╦══════╦══════╦══════╦═══  │
@@ -124,7 +124,7 @@ Total scale change: 5 nm → 2 mm = 400,000× magnification
 
 Performance vs. Cost vs. Manufacturability
 
-The closer you can place components, the faster signals travel and the less power you waste—but denser packaging costs exponentially more and is harder to manufacture and repair. **[[quick-context/wire-bonding|Wire bonding]]** (thin gold wires from die to substrate) is cheap but adds inductance and limits I/O count. **[[quick-context/flip-chip|Flip-chip]]** (solder bumps directly under the die) is faster and denser but requires more precise manufacturing. **Chiplets and 2.5D/3D packaging** (multiple dies on an interposer or stacked vertically) push performance further but multiply complexity and cost. [[quick-context/pcb-printed-circuit-board|PCB]] designers face similar tradeoffs: more layers mean better signal integrity and power delivery but higher cost. A smartphone might use 10+ layer HDI (High Density Interconnect) PCBs with blind/buried vias; a simple Arduino uses 2 layers. The industry constantly pushes these boundaries as Moore's Law slows and "More than Moore" packaging innovations (putting more function into the package rather than shrinking transistors) become critical.
+The closer you can place components, the faster signals travel and the less power you waste—but denser packaging costs exponentially more and is harder to manufacture and repair. **[[learning/notes/quick-context/wire-bonding|Wire bonding]]** (thin gold wires from die to substrate) is cheap but adds inductance and limits I/O count. **[[learning/notes/quick-context/flip-chip|Flip-chip]]** (solder bumps directly under the die) is faster and denser but requires more precise manufacturing. **Chiplets and 2.5D/3D packaging** (multiple dies on an interposer or stacked vertically) push performance further but multiply complexity and cost. [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] designers face similar tradeoffs: more layers mean better signal integrity and power delivery but higher cost. A smartphone might use 10+ layer HDI (High Density Interconnect) PCBs with blind/buried vias; a simple Arduino uses 2 layers. The industry constantly pushes these boundaries as Moore's Law slows and "More than Moore" packaging innovations (putting more function into the package rather than shrinking transistors) become critical.
 
 </details>
 
@@ -216,7 +216,7 @@ TRACING A MEMORY READ: CPU → DRAM
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are actually built on silicon wafers using photolithography; explains why die size and yield matter for cost.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are actually built on silicon wafers using photolithography; explains why die size and yield matter for cost.
 
 - **Signal Integrity** — The study of how electrical signals degrade as they travel through packages and PCBs; why trace length, impedance matching, and layer stackup matter.
 

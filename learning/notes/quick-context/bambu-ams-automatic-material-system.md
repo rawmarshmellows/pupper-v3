@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]], [[learning/notes/quick-context/3d-printing-filament-types]], [[learning/notes/quick-context/bambu-p2s-print-quality]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -76,7 +76,7 @@ FILAMENT CHANGE SEQUENCE
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[quick-context/3d-printer-hotends|hotend]] before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these materials.
+The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[learning/notes/quick-context/3d-printer-hotends|hotend]] before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these materials.
 
 </details>
 
@@ -163,9 +163,9 @@ Slots 5-6 are configured as backups for slots 1-2. When slot 1's white runs out 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Understanding material properties (PLA, PETG, TPU, etc.) is essential since AMS compatibility varies by filament type; soft and abrasive materials often require manual loading
-- [[quick-context/3d-printer-hotends]] — The hotend determines purge efficiency and material compatibility; all-metal hotends handle higher temps but may require different purge volumes
-- [[quick-context/3d-printing-slicer-settings]] — Slicer configuration (flush volumes, tower placement, color sequencing) directly controls AMS waste and print time overhead
+- [[learning/notes/quick-context/3d-printing-filament-types]] — Understanding material properties (PLA, PETG, TPU, etc.) is essential since AMS compatibility varies by filament type; soft and abrasive materials often require manual loading
+- [[learning/notes/quick-context/3d-printer-hotends]] — The hotend determines purge efficiency and material compatibility; all-metal hotends handle higher temps but may require different purge volumes
+- [[learning/notes/quick-context/3d-printing-slicer-settings]] — Slicer configuration (flush volumes, tower placement, color sequencing) directly controls AMS waste and print time overhead
 
 </details>
 
@@ -193,13 +193,13 @@ A **prime tower** is a separate sacrificial structure printed alongside your mod
 **Q4:** Why might you choose to manually load TPU filament even if you have an AMS?
 <details>
 <summary>Answer</summary>
-[[quick-context/3d-printing-filament-types|TPU]] (flexible filament) is soft and elastic, which causes feeding problems in the AMS's Bowden tube system. The filament can compress, stretch, or buckle instead of pushing smoothly through the tube, leading to jams or inconsistent feeding. The AMS was designed primarily for rigid filaments like [[quick-context/3d-printing-filament-types|PLA]] and PETG. For TPU and other flexible materials, direct manual loading into the printer's extruder (bypassing the AMS entirely) provides reliable feeding. Similar issues occur with very abrasive filaments (carbon fiber, glow-in-the-dark) that can wear AMS components.
+[[learning/notes/quick-context/3d-printing-filament-types|TPU]] (flexible filament) is soft and elastic, which causes feeding problems in the AMS's Bowden tube system. The filament can compress, stretch, or buckle instead of pushing smoothly through the tube, leading to jams or inconsistent feeding. The AMS was designed primarily for rigid filaments like [[learning/notes/quick-context/3d-printing-filament-types|PLA]] and PETG. For TPU and other flexible materials, direct manual loading into the printer's extruder (bypassing the AMS entirely) provides reliable feeding. Similar issues occur with very abrasive filaments (carbon fiber, glow-in-the-dark) that can wear AMS components.
 </details>
 
 **Q5:** The AMS enables multi-material prints. How do differences in Tg, thermal expansion, and inter-material adhesion create challenges that single-material printing doesn't face?
 <details>
 <summary>Answer</summary>
-Multi-material printing introduces compatibility physics: (1) **Thermal mismatch**—materials with different Tg values cool at different rates, causing warping or delamination at interfaces (PLA shrinks more than PETG as it cools past its Tg); (2) **Adhesion problems**—some materials chemically bond (PLA/PLA) while others don't (PLA won't stick to TPU), requiring careful interface design or soluble interface materials; (3) **Temperature compromises**—the hotend must purge and switch between materials at potentially different optimal temps, risking under-extrusion or degradation; (4) **Expansion differences**—materials with different thermal expansion coefficients create internal stresses that cause cracking during cooling. The AMS mechanically enables swaps, but multi-material physics remains the user's challenge. See: [[quick-context/glass-transition-temperature]] and [[quick-context/3d-printing-filament-types]] for material property details.
+Multi-material printing introduces compatibility physics: (1) **Thermal mismatch**—materials with different Tg values cool at different rates, causing warping or delamination at interfaces (PLA shrinks more than PETG as it cools past its Tg); (2) **Adhesion problems**—some materials chemically bond (PLA/PLA) while others don't (PLA won't stick to TPU), requiring careful interface design or soluble interface materials; (3) **Temperature compromises**—the hotend must purge and switch between materials at potentially different optimal temps, risking under-extrusion or degradation; (4) **Expansion differences**—materials with different thermal expansion coefficients create internal stresses that cause cracking during cooling. The AMS mechanically enables swaps, but multi-material physics remains the user's challenge. See: [[learning/notes/quick-context/glass-transition-temperature]] and [[learning/notes/quick-context/3d-printing-filament-types]] for material property details.
 </details>
 
 </details>

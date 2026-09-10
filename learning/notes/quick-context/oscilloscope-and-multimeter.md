@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -176,13 +176,13 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
+- **[[learning/notes/quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
 
-- **[[quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
+- **[[learning/notes/quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
 
-- **[[quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
+- **[[learning/notes/quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
 
-- **[[quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
+- **[[learning/notes/quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
 
 </details>
 

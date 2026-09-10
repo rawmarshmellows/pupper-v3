@@ -5,21 +5,21 @@ created: 2026-04-04
 
 # Helmert Transform
 
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/similarity-transform|Similarity Transform]] | [[learning/notes/quick-context/absolute-orientation|Absolute Orientation]] | [[learning/notes/quick-context/singular-value-decomposition|SVD]] | [[learning/notes/quick-context/covariance-matrix|Covariance Matrix]]
 
-> **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
+> **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[learning/notes/quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 
 ## The Core Problem
 
-You have two sets of corresponding 3D points -- one in a local survey frame, one in a global frame like WGS84 -- and you need to find the transformation that aligns them. Simply translating won't work because the coordinate systems may be rotated and scaled differently. The Helmert Transform finds the optimal scale, rotation, and translation in closed form using [[quick-context/singular-value-decomposition|SVD]], giving you a rigid-plus-scale mapping with no shear or distortion.
+You have two sets of corresponding 3D points -- one in a local survey frame, one in a global frame like WGS84 -- and you need to find the transformation that aligns them. Simply translating won't work because the coordinate systems may be rotated and scaled differently. The Helmert Transform finds the optimal scale, rotation, and translation in closed form using [[learning/notes/quick-context/singular-value-decomposition|SVD]], giving you a rigid-plus-scale mapping with no shear or distortion.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[quick-context/similarity-transform|similarity transform]] in 3D |
+| **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[learning/notes/quick-context/similarity-transform|similarity transform]] in 3D |
 | **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
-| **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
+| **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[learning/notes/quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
 | **Scale factor** | The scalar $s$ that accounts for uniform size differences between coordinate frames -- computed from the ratio of output to input point spread |
 | **Procrustes analysis** | The statistical shape analysis framework that generalizes the Helmert Transform -- "Procrustes" finds optimal alignment by minimizing squared distances, and Helmert is its geodetic instantiation |
 
@@ -85,13 +85,13 @@ $$\mathbf{x'_{in,i}} = \mathbf{x_{in,i}} - \bar{\mathbf{x}}_{in}, \quad \mathbf{
   Clouds at different positions      Both clouds centered at origin
 ```
 
-**Step 2: Build the [[quick-context/covariance-matrix|cross-covariance matrix]]**
+**Step 2: Build the [[learning/notes/quick-context/covariance-matrix|cross-covariance matrix]]**
 
 $$H = \sum_{i=1}^{n} \mathbf{x'_{in,i}} \, \mathbf{x'_{out,i}}^T$$
 
 This $3 \times 3$ matrix encodes how the input and output coordinates co-vary -- it captures the rotational relationship between the two point sets.
 
-**Step 3: [[quick-context/singular-value-decomposition|SVD]] to extract rotation**
+**Step 3: [[learning/notes/quick-context/singular-value-decomposition|SVD]] to extract rotation**
 
 $$H = U\Sigma V^T$$
 
@@ -142,7 +142,7 @@ The **time-dependent Helmert model** (EPSG method 1053) adds a rate of change fo
 
 ### Similarity vs Affine: The Shear Question
 
-The Helmert Transform is a [[quick-context/similarity-transform|similarity transform]] -- it preserves angles and shape. No shearing is allowed. This is its strength (fewer parameters, closed-form solution, physically meaningful) and its limitation.
+The Helmert Transform is a [[learning/notes/quick-context/similarity-transform|similarity transform]] -- it preserves angles and shape. No shearing is allowed. This is its strength (fewer parameters, closed-form solution, physically meaningful) and its limitation.
 
 | Transform Type | Parameters (3D) | Preserves | Allows |
 |---------------|-----------------|-----------|--------|
@@ -285,10 +285,10 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem that Helmert solves: given corresponding 3D points in two frames, find the transform between them (Horn 1987 gave a closed-form quaternion solution; Arun et al. 1987 gave the SVD-based solution)
-- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine that extracts the rotation matrix from the cross-covariance matrix
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ is the critical intermediate representation; its SVD reveals the rotation
+- **[[learning/notes/quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
+- **[[learning/notes/quick-context/absolute-orientation|Absolute Orientation]]** -- The problem that Helmert solves: given corresponding 3D points in two frames, find the transform between them (Horn 1987 gave a closed-form quaternion solution; Arun et al. 1987 gave the SVD-based solution)
+- **[[learning/notes/quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine that extracts the rotation matrix from the cross-covariance matrix
+- **[[learning/notes/quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ is the critical intermediate representation; its SVD reveals the rotation
 - **Procrustes Analysis** -- The statistical shape analysis generalization: ordinary Procrustes = rigid alignment, generalized Procrustes = align multiple shapes simultaneously
 - **Iterative Closest Point (ICP)** -- When correspondences are unknown, ICP alternates between finding nearest-neighbor correspondences and solving Helmert; each inner step is an SVD-based Helmert
 - **Geodetic Datums (WGS84, NAD83, OSGB36)** -- The primary consumers of published Helmert parameters; national survey agencies distribute 7-parameter or time-dependent (15-parameter) sets

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/3d-printing-filament-types]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -403,7 +403,7 @@ PLA at 60C (hot car):
 
 
 TPU at 25C:
-  Soft segments already flexible (above their [[quick-context/glass-transition-temperature|Tg]])
+  Soft segments already flexible (above their [[learning/notes/quick-context/glass-transition-temperature|Tg]])
   Hard segments locked by H-bonds = holds shape
 
 TPU at 60C:
@@ -421,19 +421,19 @@ TPU at 60C:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/van-der-waals-forces]]**: Even weaker than hydrogen bonds, these universal attractions exist between all molecules and contribute to baseline chain cohesion in all polymers.
+- **[[learning/notes/quick-context/van-der-waals-forces]]**: Even weaker than hydrogen bonds, these universal attractions exist between all molecules and contribute to baseline chain cohesion in all polymers.
 
-- **[[quick-context/dipole-dipole-interactions]]**: Hydrogen bonds are actually a special, extra-strong type of dipole-dipole interaction - understanding the general case helps clarify why H-bonds are uniquely powerful.
+- **[[learning/notes/quick-context/dipole-dipole-interactions]]**: Hydrogen bonds are actually a special, extra-strong type of dipole-dipole interaction - understanding the general case helps clarify why H-bonds are uniquely powerful.
 
-- **[[quick-context/covalent-bonds]]**: The strong bonds holding atoms together *within* polymer chains - hydrogen bonds connect chains *between* each other, but covalent bonds are what make the chains themselves.
+- **[[learning/notes/quick-context/covalent-bonds]]**: The strong bonds holding atoms together *within* polymer chains - hydrogen bonds connect chains *between* each other, but covalent bonds are what make the chains themselves.
 
-- **[[quick-context/glass-transition-temperature]]**: The temperature where polymer chains gain enough energy to overcome intermolecular forces (including H-bonds) and begin moving freely - directly explains why PLA softens in a hot car.
+- **[[learning/notes/quick-context/glass-transition-temperature]]**: The temperature where polymer chains gain enough energy to overcome intermolecular forces (including H-bonds) and begin moving freely - directly explains why PLA softens in a hot car.
 
-- **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
+- **[[learning/notes/quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
 - **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
 
-- **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
+- **[[learning/notes/quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 
 </details>
 

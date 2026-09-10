@@ -4,11 +4,13 @@ created: 2026-02-25
 updated: 2026-06-08
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/input-bias-current]]
+
 # MOSFET
 
-> **See also:** [[quick-context/transistor]]
+> **See also:** [[learning/notes/quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[learning/notes/quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[learning/notes/quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 
@@ -51,7 +53,7 @@ The gate plate, the thin oxide, and the silicon channel form a **parallel-plate 
 - **Only leakage crosses the oxide.** A real gate passes a tiny DC leakage — quantum tunneling through ultra-thin oxide, reverse-biased junction / ESD-diode leakage at the pin, and PCB surface leakage — totaling picoamps (and roughly doubling every ~10 °C).
 - **Switching still costs charge.** "No current" is a *DC* statement: every on→off→on cycle re-charges $C_{gate}$, which is the source of CMOS dynamic power $P = C V^2 f$.
 
-This near-zero **DC** gate current is the root cause of a MOSFET-input part's picoamp [[micro-context/input-bias-current|input bias current]] — e.g. the LMC7211-N's ~0.04 pA.
+This near-zero **DC** gate current is the root cause of a MOSFET-input part's picoamp [[learning/notes/micro-context/input-bias-current|input bias current]] — e.g. the LMC7211-N's ~0.04 pA.
 
 ## What Holds the Charge in Place
 
@@ -88,4 +90,4 @@ You don't need an ever-*larger* voltage to switch off — you bring the gate *do
 
 Knob analogy: gate charge = how far you turn the knob; channel = the valve it opens. *Holding* the knob costs ~nothing; only *moving* it costs a blip.
 
-**Key insight:** The gate is one plate of a capacitor—it switches by electric field, not current flow—which is why MOSFETs are far more power-efficient than [[quick-context/bjt|BJTs]] and dominate digital circuits with billions per chip.
+**Key insight:** The gate is one plate of a capacitor—it switches by electric field, not current flow—which is why MOSFETs are far more power-efficient than [[learning/notes/quick-context/bjt|BJTs]] and dominate digital circuits with billions per chip.

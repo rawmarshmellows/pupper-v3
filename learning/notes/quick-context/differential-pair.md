@@ -5,9 +5,9 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/inside-the-triangle|All Stages Together]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[learning/notes/quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[learning/notes/quick-context/op-amp|op-amps]], [[learning/notes/quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
@@ -112,7 +112,7 @@ CURRENT STEERING
 
 A negative gate voltage does NOT reverse current flow. It turns the transistor OFF---no current in either direction.
 
-The channel region between source and drain is **p-type silicon**. The gate sits above, separated by the oxide insulator. The gate-oxide-channel forms a [[quick-context/capacitor|capacitor]], and opposite charges attract across the oxide:
+The channel region between source and drain is **p-type silicon**. The gate sits above, separated by the oxide insulator. The gate-oxide-channel forms a [[learning/notes/quick-context/capacitor|capacitor]], and opposite charges attract across the oxide:
 
 ```
 GATE VOLTAGE vs CHANNEL STATE (NMOS)
@@ -257,17 +257,17 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **[[quick-context/transistor]]** --- The differential pair is built from two [[quick-context/transistor|MOSFETs]] (or BJTs). Understanding how gate voltage controls drain current ($V_{gs}$ → $I_d$) is prerequisite to understanding why the pair steers current.
+- **[[learning/notes/quick-context/transistor]]** --- The differential pair is built from two [[learning/notes/quick-context/transistor|MOSFETs]] (or BJTs). Understanding how gate voltage controls drain current ($V_{gs}$ → $I_d$) is prerequisite to understanding why the pair steers current.
 
-- **[[quick-context/op-amp]]** --- An [[quick-context/op-amp|op-amp]] is a differential pair followed by gain stages and an output buffer, wrapped in negative feedback. The differential pair IS the op-amp's input.
+- **[[learning/notes/quick-context/op-amp]]** --- An [[learning/notes/quick-context/op-amp|op-amp]] is a differential pair followed by gain stages and an output buffer, wrapped in negative feedback. The differential pair IS the op-amp's input.
 
-- **[[quick-context/comparator]]** --- A [[quick-context/comparator|comparator]] is a differential pair followed by gain stages and a digital output stage, with no compensation capacitor. Same input, different optimization.
+- **[[learning/notes/quick-context/comparator]]** --- A [[learning/notes/quick-context/comparator|comparator]] is a differential pair followed by gain stages and a digital output stage, with no compensation capacitor. Same input, different optimization.
 
-- **[[quick-context/bjt]]** --- [[quick-context/bjt|BJT]] differential pairs were the original (1960s). They have higher $g_m$ per unit current and lower offset than MOSFETs, which is why precision analog ICs still use BJT input stages.
+- **[[learning/notes/quick-context/bjt]]** --- [[learning/notes/quick-context/bjt|BJT]] differential pairs were the original (1960s). They have higher $g_m$ per unit current and lower offset than MOSFETs, which is why precision analog ICs still use BJT input stages.
 
-- **[[quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
+- **[[learning/notes/quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
 
-- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
+- **[[learning/notes/quick-context/resistor]]** --- [[learning/notes/quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
 
 </details>
 

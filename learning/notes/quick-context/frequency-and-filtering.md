@@ -3,9 +3,9 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/small-context/decibels-across-domains|Why decibels]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
+> **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[learning/notes/quick-context/capacitor|capacitors]] and [[learning/notes/quick-context/inductor|inductors]] (described by [[learning/notes/quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 
 # Frequency and Filtering
 
@@ -130,7 +130,7 @@ FILTER ORDER AND ROLLOFF
 
 A 1st-order filter is simple (one R + one C) but its -20 dB/decade slope means unwanted signals only 10× above the cutoff are only attenuated 10×. For many applications, that's not enough.
 
-Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[quick-context/op-amp|op-amps]]) can achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
+Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[learning/notes/quick-context/op-amp|op-amps]]) can achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
 
 ```
 FILTER TOPOLOGY TRADEOFFS
@@ -185,17 +185,17 @@ EMI FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
+- **[[learning/notes/quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
 
-- **[[quick-context/capacitor]]** — The primary component in most filters. Its reactance (Xc = 1/2πfC) decreasing with frequency is what makes low-pass filters work.
+- **[[learning/notes/quick-context/capacitor]]** — The primary component in most filters. Its reactance (Xc = 1/2πfC) decreasing with frequency is what makes low-pass filters work.
 
-- **[[quick-context/inductor]]** — Inductors combined with capacitors form second-order filters with -40 dB/decade rolloff and LC resonant circuits at f = 1/(2π√LC).
+- **[[learning/notes/quick-context/inductor]]** — Inductors combined with capacitors form second-order filters with -40 dB/decade rolloff and LC resonant circuits at f = 1/(2π√LC).
 
-- **[[quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
+- **[[learning/notes/quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
 
-- **[[quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
+- **[[learning/notes/quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi chips use bandpass filters extensively in their RF front-end to select the 2.4 GHz band and reject out-of-band interference. The frequency table above lists WiFi at 2.4 GHz / 12.5 cm wavelength.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — WiFi chips use bandpass filters extensively in their RF front-end to select the 2.4 GHz band and reject out-of-band interference. The frequency table above lists WiFi at 2.4 GHz / 12.5 cm wavelength.
 
 </details>
 
