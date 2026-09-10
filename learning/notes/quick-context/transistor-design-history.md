@@ -3,7 +3,7 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
@@ -87,14 +87,14 @@ ERA 3: PLANAR MOSFET (1960-2011)
 ────────────────────────────────────────────────────────────────────────────────
 Invented: Kahng & Atalla at Bell Labs (1960)
 
-    The [[quick-context/transistor|MOSFET]] revolutionized electronics because it's
+    The [[learning/notes/quick-context/transistor|MOSFET]] revolutionized electronics because it's
     VOLTAGE-controlled (gate draws almost no current) and easy to manufacture.
 
                     GATE (metal)
                          │
                     ┌────┴────┐
                     │  OXIDE  │  ← Gate oxide (SiO₂) ~1-5nm
-                    └────┬────┘    (this is the [[quick-context/transistor|MOS capacitor]])
+                    └────┬────┘    (this is the [[learning/notes/quick-context/transistor|MOS capacitor]])
     ┌────────────────────┴────────────────────┐
     │                                         │
     │ SOURCE          CHANNEL           DRAIN │
@@ -118,7 +118,7 @@ Invented: Kahng & Atalla at Bell Labs (1960)
 
     THE WALL (2000s): Below ~28nm, the channel became so short that
     the gate couldn't control it—electrons would leak from source to
-    drain even when "off" ([[quick-context/transistor-analog-to-digital|short-channel effects]]).
+    drain even when "off" ([[learning/notes/quick-context/transistor-analog-to-digital|short-channel effects]]).
 
 
 ERA 4: FinFET / Tri-Gate (2011-2024)
@@ -255,7 +255,7 @@ WHY MORE GATE COVERAGE MATTERS:
 
    ┌─────────────────────────────────────────────────────────────────────────┐
    │ • Gate electric field reaches MORE of the channel                       │
-   │ • Better suppression of [[quick-context/transistor-analog-to-digital|leakage current]] when OFF               │
+   │ • Better suppression of [[learning/notes/quick-context/transistor-analog-to-digital|leakage current]] when OFF               │
    │ • More uniform current flow when ON                                     │
    │ • Can make channel SHORTER without losing control                       │
    │ • = Smaller transistors possible!                                       │
@@ -413,15 +413,15 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor|Transistor Fundamentals]]** — How MOSFETs actually work (gate, source, drain, channel). Essential prerequisite for understanding why architectural changes matter.
+- **[[learning/notes/quick-context/transistor|Transistor Fundamentals]]** — How MOSFETs actually work (gate, source, drain, channel). Essential prerequisite for understanding why architectural changes matter.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both BJT and MOSFET rely on carefully controlled doping.
+- **[[learning/notes/quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both BJT and MOSFET rely on carefully controlled doping.
 
-- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different [[quick-context/semiconductor-fabrication|photolithography]] and etching processes.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different [[learning/notes/quick-context/semiconductor-fabrication|photolithography]] and etching processes.
 
-- **[[quick-context/transistor-analog-to-digital|Transistor Analog-to-Digital Behavior]]** — Why leakage current matters and how it drives architectural innovation. Covers the "short channel effects" that killed planar MOSFETs.
+- **[[learning/notes/quick-context/transistor-analog-to-digital|Transistor Analog-to-Digital Behavior]]** — Why leakage current matters and how it drives architectural innovation. Covers the "short channel effects" that killed planar MOSFETs.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — How transistors fit into the larger packaging system. Transistor architecture affects power delivery and thermal management at every level.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — How transistors fit into the larger packaging system. Transistor architecture affects power delivery and thermal management at every level.
 
 - **Moore's Law** — The economic driver behind transistor scaling. Gordon Moore (co-founder of Intel) observed transistor density doubling every ~2 years, creating the pressure that drives architectural innovation.
 
@@ -454,7 +454,7 @@ Architectural transitions cost billions in R&D and require completely new manufa
 "3nm" is a marketing node name, not a physical measurement. At 3nm, you're likely looking at either late-generation FinFET (TSMC N3, Apple M3) or early GAA (Samsung 3nm). The actual transistor gate length is probably 12-15nm. The number tells you the approximate generation and transistor density, but says nothing definitive about whether it's FinFET or GAA. You'd need to check the specific manufacturer and process to know the architecture. See: Era 4 and Era 5 timelines, and The Key Tension showing overlap between architectures
 </details>
 
-**Q5:** CFET stacks NMOS and PMOS vertically. Considering what you know about transistor evolution and [[quick-context/semiconductor-fabrication|fabrication complexity]], what do you predict will be the main challenges preventing CFET adoption before 2030?
+**Q5:** CFET stacks NMOS and PMOS vertically. Considering what you know about transistor evolution and [[learning/notes/quick-context/semiconductor-fabrication|fabrication complexity]], what do you predict will be the main challenges preventing CFET adoption before 2030?
 <details>
 <summary>Answer</summary>
 CFET requires building two complete transistors (NMOS and PMOS) on top of each other with aligned channels and separate gate control. The fabrication challenges include: (1) thermal budget—building the upper transistor without damaging the lower one; (2) achieving perfect vertical alignment between stacked devices; (3) making independent contacts to each transistor layer; (4) managing heat dissipation when transistors are vertically stacked. Each challenge requires new process steps beyond current GAA manufacturing. Given that GAA already costs $20B+ per fab and requires years of yield improvement, CFET will need even longer development. IMEC's ~2031 timeline reflects these immense manufacturing hurdles. See: Future section in Concrete Example, and compare complexity progression in The Key Tension

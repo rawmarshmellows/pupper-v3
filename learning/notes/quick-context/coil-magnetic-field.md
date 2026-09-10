@@ -5,13 +5,13 @@ created: 2026-02-14
 
 # Why Current Through a Coil Creates a Magnetic Field
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electric-magnetic-field-unification|Field Unification]]
 
 > **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 
 ## The Core Problem
 
-You've wrapped wire into a coil and run [[quick-context/electric-current|current]] through it. Suddenly it acts like a magnet—attracting iron, deflecting compasses, storing energy. But *why* does moving charge create magnetism at all? And once you accept that it does, how do you calculate the resulting field strength? These questions sit at the heart of [[quick-context/electromagnetism|electromagnetism]]: understanding them unlocks motors, generators, [[quick-context/inductor|inductors]], transformers, MRI machines, and the physics of how all wireless communication works.
+You've wrapped wire into a coil and run [[learning/notes/quick-context/electric-current|current]] through it. Suddenly it acts like a magnet—attracting iron, deflecting compasses, storing energy. But *why* does moving charge create magnetism at all? And once you accept that it does, how do you calculate the resulting field strength? These questions sit at the heart of [[learning/notes/quick-context/electromagnetism|electromagnetism]]: understanding them unlocks motors, generators, [[learning/notes/quick-context/inductor|inductors]], transformers, MRI machines, and the physics of how all wireless communication works.
 
 ## 5 Essential Terms
 
@@ -92,7 +92,7 @@ THE PRACTICAL ANSWER (What to remember):
 
 ## Single Wire: The Starting Point
 
-When [[quick-context/electric-current|current]] flows through a straight wire, the magnetic field forms concentric circles around the wire:
+When [[learning/notes/quick-context/electric-current|current]] flows through a straight wire, the magnetic field forms concentric circles around the wire:
 
 ```
 MAGNETIC FIELD AROUND A STRAIGHT WIRE — Biot-Savart Law
@@ -339,7 +339,7 @@ PRACTICAL CALCULATIONS:
     so no heating occurs.
 
 
-    EXAMPLE 3: Magnetizer (from [[small-context/permanent-magnet-creation]])
+    EXAMPLE 3: Magnetizer (from [[learning/notes/small-context/permanent-magnet-creation]])
     ─────────────────────────────────────────────────────────────────────────
 
     Industrial magnetizers need B > 1 T for a few milliseconds.
@@ -387,7 +387,7 @@ EFFECT OF MAGNETIC CORE MATERIAL
     WHY IRON WORKS — Domain Alignment:
     ─────────────────────────────────────────────────────────────────────────
 
-    Iron has magnetic domains (see [[small-context/permanent-magnet-creation]]).
+    Iron has magnetic domains (see [[learning/notes/small-context/permanent-magnet-creation]]).
     The external field from your coil aligns these domains.
     The aligned domains produce their OWN field that adds to the coil's field.
 
@@ -434,7 +434,7 @@ EFFECT OF MAGNETIC CORE MATERIAL
     For ferrite: saturation ≈ 0.4 T
 
     This is why inductors have "saturation current" ratings.
-    (See [[quick-context/inductor]])
+    (See [[learning/notes/quick-context/inductor]])
 ```
 
 </details>
@@ -495,7 +495,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
 | Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
+| [[learning/notes/quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
@@ -640,23 +640,23 @@ FINAL DESIGN:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; electromagnetism covers the universal principles.
+- **[[learning/notes/quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; electromagnetism covers the universal principles.
 
-- **[[quick-context/inductor]]** — An inductor is a coil designed to store energy in its magnetic field. The inductor equation V = L×dI/dt comes directly from how changing current changes the magnetic flux through the coil (Faraday's Law).
+- **[[learning/notes/quick-context/inductor]]** — An inductor is a coil designed to store energy in its magnetic field. The inductor equation V = L×dI/dt comes directly from how changing current changes the magnetic flux through the coil (Faraday's Law).
 
-- **[[quick-context/electric-current]]** — Current is moving charge, and moving charge is what creates the magnetic field. Understanding current as "coulombs per second" connects to calculating the field strength.
+- **[[learning/notes/quick-context/electric-current]]** — Current is moving charge, and moving charge is what creates the magnetic field. Understanding current as "coulombs per second" connects to calculating the field strength.
 
-- **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Explains why moving charges create magnetic fields from first principles: electric and magnetic fields are two aspects of one electromagnetic field, transformed by relative motion.
+- **[[learning/notes/quick-context/electric-magnetic-field-unification|Field Unification]]** — Explains why moving charges create magnetic fields from first principles: electric and magnetic fields are two aspects of one electromagnetic field, transformed by relative motion.
 
-- **[[quick-context/electricity-generation]]** — Generators use the reverse principle: moving a coil through a magnetic field induces current. Same physics, different application.
+- **[[learning/notes/quick-context/electricity-generation]]** — Generators use the reverse principle: moving a coil through a magnetic field induces current. Same physics, different application.
 
-- **[[small-context/permanent-magnet-creation]]** — Shows a practical application: using a high-current coil to magnetize iron. The magnetizer is just a solenoid optimized for maximum field strength during a brief pulse.
+- **[[learning/notes/small-context/permanent-magnet-creation]]** — Shows a practical application: using a high-current coil to magnetize iron. The magnetizer is just a solenoid optimized for maximum field strength during a brief pulse.
 
 - **Helmholtz Coils** — Two identical coils separated by their radius create a very uniform field in the region between them. Used for calibration and research.
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[learning/notes/quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 

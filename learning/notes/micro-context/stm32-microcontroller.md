@@ -4,11 +4,13 @@ created: 2026-01-27
 updated: 2026-04-05
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]]
+
 # STM32 Microcontroller
 
-> **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
+> **See also:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/raspberry-pi-5-components]] | [[learning/notes/quick-context/esp32]]
 
-**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom PCB. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], USART, and USB.
+**Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom PCB. They run at up to 180MHz with hardware support for [[learning/notes/quick-context/can-bus|CAN bus]], [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], USART, and USB.
 
 ## How It Works
 
@@ -76,4 +78,4 @@ To flash firmware, only **4 wires** are needed from the 7-pin cable to the ST-Li
 
 The remaining pins (NRST, USART TX, USART RX) are not required for basic SWD programming but are useful for resetting the chip and serial debugging.
 
-**Key insight:** Unlike a Raspberry Pi (which runs Linux), microcontrollers run [[micro-context/plc-programmable-logic-controller|"bare metal" or RTOS]] code with microsecond-level timing precision—essential for real-time motor control in robots.
+**Key insight:** Unlike a Raspberry Pi (which runs Linux), microcontrollers run [[learning/notes/micro-context/plc-programmable-logic-controller|"bare metal" or RTOS]] code with microsecond-level timing precision—essential for real-time motor control in robots.

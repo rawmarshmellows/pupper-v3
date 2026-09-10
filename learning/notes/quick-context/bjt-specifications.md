@@ -5,11 +5,11 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/power-watts-joules]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/power-watts-joules]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 >
-> **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
+> **Companion note:** [[learning/notes/quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
-> **TL;DR:** Before you pick a [[quick-context/bjt|BJT]], five datasheet specs decide whether it survives your circuit: **type** (NPN vs PNP — polarity, not "less voltage"), **$V_{CEO}$** (the off-state voltage it can hold before it breaks down), **$I_C$** (the most current it can carry), **$P_C$** (the most heat it can dissipate, $P = V_{CE}\cdot I_C$), and **$\beta$ / $h_{FE}$** (the current gain, which tells you the *minimum* base current you must supply). The first three are "do-not-cross" limits; the last is what you design *around*.
+> **TL;DR:** Before you pick a [[learning/notes/quick-context/bjt|BJT]], five datasheet specs decide whether it survives your circuit: **type** (NPN vs PNP — polarity, not "less voltage"), **$V_{CEO}$** (the off-state voltage it can hold before it breaks down), **$I_C$** (the most current it can carry), **$P_C$** (the most heat it can dissipate, $P = V_{CE}\cdot I_C$), and **$\beta$ / $h_{FE}$** (the current gain, which tells you the *minimum* base current you must supply). The first three are "do-not-cross" limits; the last is what you design *around*.
 
 ## The Core Problem: A Transistor That Works on the Bench Can Still Burn Up
 
@@ -95,7 +95,7 @@ When a switch transistor is *off*, it is blocking the supply: almost the entire 
 
 $$V_{CEO} > V_{CC} \quad(\text{always — with margin, ideally } V_{CEO} \ge 2\times V_{CC})$$
 
-The margin matters because inductive loads (motors, relays, solenoids) generate spikes *far* above $V_{CC}$ when switched off ($V = L \,di/dt$). A 12 V motor can fling a 60 V+ spike at a transistor rated $V_{CEO} = 40$ V and kill it — which is exactly why the [[quick-context/bjt|BJT motor-driver]] needs a flyback diode.
+The margin matters because inductive loads (motors, relays, solenoids) generate spikes *far* above $V_{CC}$ when switched off ($V = L \,di/dt$). A 12 V motor can fling a 60 V+ spike at a transistor rated $V_{CEO} = 40$ V and kill it — which is exactly why the [[learning/notes/quick-context/bjt|BJT motor-driver]] needs a flyback diode.
 
 > There are three breakdown specs and they are not interchangeable: **$V_{CEO}$** (collector–emitter, base open — the one quoted for switching), **$V_{CBO}$** (collector–base, emitter open — usually the highest), and **$V_{EBO}$** (emitter–base, base–emitter reverse breakdown — usually only ~5–7 V, easy to exceed by accident).
 
@@ -137,7 +137,7 @@ SAFE OPERATING AREA (log-log, conceptual)
    LEFT of V_CEO, and BELOW I_C-max — simultaneously.
 ```
 
-**Thermal derating:** $P_C$ is quoted at a reference case/ambient temperature (e.g. 25 °C). Above that, the rating falls off linearly to zero at the max junction temperature. A "625 mW" small-signal part in free air at 25 °C might only safely handle ~300 mW once the board warms up. The governing relation is $P_{max} = (T_{j,max} - T_{ambient}) / R_{\theta JA}$, where $R_{\theta JA}$ (junction-to-ambient thermal resistance, °C/W) is the part's "thermal Ohm's law" — see [[quick-context/power-watts-joules|electrical power & heat]].
+**Thermal derating:** $P_C$ is quoted at a reference case/ambient temperature (e.g. 25 °C). Above that, the rating falls off linearly to zero at the max junction temperature. A "625 mW" small-signal part in free air at 25 °C might only safely handle ~300 mW once the board warms up. The governing relation is $P_{max} = (T_{j,max} - T_{ambient}) / R_{\theta JA}$, where $R_{\theta JA}$ (junction-to-ambient thermal resistance, °C/W) is the part's "thermal Ohm's law" — see [[learning/notes/quick-context/power-watts-joules|electrical power & heat]].
 
 **5. $\beta$ / $h_{FE}$ — the gain that sets your base current.**
 Gain is the ratio of collector current to base current:
@@ -164,7 +164,7 @@ The five specs pull against each other; choosing a BJT is balancing them.
 | **$P_C$** | Bigger package or a heatsink — board area, cost | Heat capacity vs. size/cost |
 | **$\beta$** | High-$\beta$ parts trade off voltage and ruggedness | Easy drive vs. robustness |
 
-**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a MOSFET gate is a [[quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
+**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[learning/notes/quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a MOSFET gate is a [[learning/notes/quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
 
 ```
 PICKING THE PART — the decision order
@@ -210,7 +210,7 @@ That's well under the 625 mW rating (even derated to ~300 mW in a warm enclosure
 
 $$I_{B,min} = \frac{I_C}{\beta_{min}} = \frac{300\,\text{mA}}{100} = 3\,\text{mA}$$
 
-Overdrive 3× for crisp saturation → design for $I_B = 9$ mA. Size the [[quick-context/resistor|base resistor]]:
+Overdrive 3× for crisp saturation → design for $I_B = 9$ mA. Size the [[learning/notes/quick-context/resistor|base resistor]]:
 
 $$R_B = \frac{V_{pin} - V_{BE}}{I_B} = \frac{3.3\,\text{V} - 0.7\,\text{V}}{9\,\text{mA}} = 289\,\Omega \rightarrow \text{use } 270\,\Omega$$
 
@@ -223,12 +223,12 @@ Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/bjt]]** — The companion note: the physics (NPN/PNP structure, the three operating regions, why the base is thin). Read it to understand *why* these specs exist; read this note to *use* them.
-- **[[quick-context/power-watts-joules]]** — $P_C$ is just $P = V \cdot I$ applied to the transistor, plus thermal resistance ($R_{\theta JA}$) deciding how fast that heat escapes. The heat ceiling is really a thermal problem.
-- **[[quick-context/resistor]]** — The base resistor sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
-- **[[quick-context/transistor]]** — The MOSFET sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
-- **[[quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
-- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
+- **[[learning/notes/quick-context/bjt]]** — The companion note: the physics (NPN/PNP structure, the three operating regions, why the base is thin). Read it to understand *why* these specs exist; read this note to *use* them.
+- **[[learning/notes/quick-context/power-watts-joules]]** — $P_C$ is just $P = V \cdot I$ applied to the transistor, plus thermal resistance ($R_{\theta JA}$) deciding how fast that heat escapes. The heat ceiling is really a thermal problem.
+- **[[learning/notes/quick-context/resistor]]** — The base resistor sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
+- **[[learning/notes/quick-context/transistor]]** — The MOSFET sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
+- **[[learning/notes/quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
+- **[[learning/notes/quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
 
 </details>
 
@@ -262,7 +262,7 @@ The premise is false. **Both** NPN and PNP need roughly the same ~0.6–0.7 V ac
 **Q5:** A part's $P_C$ is "625 mW." You calculate your transistor dissipates 400 mW and conclude it's safe. Under what realistic condition is that conclusion wrong?
 <details>
 <summary>Answer</summary>
-When the part runs **hot**. The 625 mW is quoted at a reference temperature (typically 25 °C). $P_C$ **derates linearly** as ambient/case temperature rises: $P_{max} = (T_{j,max}-T_{amb})/R_{\theta JA}$. Inside a warm enclosure at, say, 60 °C, that small TO-92 might only safely dissipate ~350–400 mW — so your 400 mW is now *at or over* the real limit. Always check the derating curve, not just the headline number. (See: *How It Works → $P_C$ → Thermal derating*.) This is the same "typical ≠ guaranteed across temperature" trap as in [[quick-context/comparator-specification|comparator specs]].
+When the part runs **hot**. The 625 mW is quoted at a reference temperature (typically 25 °C). $P_C$ **derates linearly** as ambient/case temperature rises: $P_{max} = (T_{j,max}-T_{amb})/R_{\theta JA}$. Inside a warm enclosure at, say, 60 °C, that small TO-92 might only safely dissipate ~350–400 mW — so your 400 mW is now *at or over* the real limit. Always check the derating curve, not just the headline number. (See: *How It Works → $P_C$ → Thermal derating*.) This is the same "typical ≠ guaranteed across temperature" trap as in [[learning/notes/quick-context/comparator-specification|comparator specs]].
 </details>
 
 </details>

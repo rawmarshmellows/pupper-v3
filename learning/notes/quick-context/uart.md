@@ -5,9 +5,9 @@ created: 2026-04-08
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
-> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
 
-> **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
+> **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
 
 ## The Core Problem
 
@@ -19,7 +19,7 @@ A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over i
 |------|------------|
 | **Baud Rate** | The number of signal transitions per second. Both sides must agree on this before communication. Common rates: 9600, 115200. At 115200 baud, each bit lasts ~8.68 $\mu$s. |
 | **Frame** | The packaging around each byte: 1 start bit + 8 data bits + (optional parity) + 1-2 stop bits. The most common format is **8N1** (8 data, no parity, 1 stop = 10 bits per byte). |
-| **Shift Register** | A chain of [[micro-context/clock-edges|edge-triggered]] flip-flops that captures one bit per clock tick, shifting all previous bits over. After 8 ticks, it holds a complete byte. This is the core hardware that converts serial ↔ parallel. |
+| **Shift Register** | A chain of [[learning/notes/micro-context/clock-edges|edge-triggered]] flip-flops that captures one bit per clock tick, shifting all previous bits over. After 8 ticks, it holds a complete byte. This is the core hardware that converts serial ↔ parallel. |
 | **Data Register** | A parallel latch that holds the completed byte for the CPU to read (receive) or accepts a byte from the CPU to transmit. Decoupled from the shift register so the CPU and the serial line can work at different speeds. |
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
@@ -248,16 +248,16 @@ TRANSMIT PATH
 
 ### Historical Context: The Teletype Connection
 
-The UART was invented specifically to interface teletypes with computers. In the 1960s, a teletype's keyboard mechanically encoded characters as 7-bit ASCII and transmitted them as [[quick-context/from-vacuum-tubes-to-coding-on-screens|20mA current loop]] serial signals at 110 baud. On the computer side, a UART captured these bits and presented them as parallel bytes. The ASR-33 teletype's frame format — 1 start bit, 7 data bits, 2 stop bits, at 110 baud — was the original UART standard.
+The UART was invented specifically to interface teletypes with computers. In the 1960s, a teletype's keyboard mechanically encoded characters as 7-bit ASCII and transmitted them as [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|20mA current loop]] serial signals at 110 baud. On the computer side, a UART captured these bits and presented them as parallel bytes. The ASR-33 teletype's frame format — 1 start bit, 7 data bits, 2 stop bits, at 110 baud — was the original UART standard.
 
-For the full teletype-to-computer I/O path (keyboard encoding → current loop → UART → interrupt → OS buffer → echo back → print mechanism), see [[quick-context/from-vacuum-tubes-to-coding-on-screens|From Vacuum Tubes to Coding on Screens, Era 3]].
+For the full teletype-to-computer I/O path (keyboard encoding → current loop → UART → interrupt → OS buffer → echo back → print mechanism), see [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|From Vacuum Tubes to Coding on Screens, Era 3]].
 
 </details>
 
 <details>
 <summary><strong>The Key Tension</strong> — Simplicity vs. robustness</summary>
 
-UART sits at the "dead simple" end of the [[quick-context/embedded-communication-protocols|protocol spectrum]]:
+UART sits at the "dead simple" end of the [[learning/notes/quick-context/embedded-communication-protocols|protocol spectrum]]:
 
 | | UART | SPI | I2C | CAN |
 |---|---|---|---|---|
@@ -279,7 +279,7 @@ The deeper tension is **asynchronous vs. synchronous**: UART requires both sides
 <details>
 <summary><strong>Concrete Example</strong> — Configuring UART on an STM32 for debug output</summary>
 
-On the Pupper v3's [[micro-context/stm32-microcontroller|STM32]], UART is used as the debug console. Here's what the configuration looks like:
+On the Pupper v3's [[learning/notes/micro-context/stm32-microcontroller|STM32]], UART is used as the debug console. Here's what the configuration looks like:
 
 ```c
 // STM32 HAL — Configure UART2 for 115200 baud debug output
@@ -332,23 +332,23 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
 
-- **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The historical context: how UARTs enabled the transition from punch cards to interactive terminals in the 1960s. Covers the full teletype I/O loop: keyboard → current loop → UART → interrupt → OS buffer → echo.
+- **[[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The historical context: how UARTs enabled the transition from punch cards to interactive terminals in the 1960s. Covers the full teletype I/O loop: keyboard → current loop → UART → interrupt → OS buffer → echo.
 
-- **[[quick-context/usb-peripheral-hardware]]** — How USB works at the hardware level inside an MCU. USB's Serial Interface Engine (SIE) is conceptually similar to a UART — it has shift registers for serial↔parallel conversion — but adds NRZI encoding, bit stuffing, CRC, and packet framing.
+- **[[learning/notes/quick-context/usb-peripheral-hardware]]** — How USB works at the hardware level inside an MCU. USB's Serial Interface Engine (SIE) is conceptually similar to a UART — it has shift registers for serial↔parallel conversion — but adds NRZI encoding, bit stuffing, CRC, and packet framing.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32 family of microcontrollers that include UART peripherals. The Pupper v3 uses UART for debug console output.
+- **[[learning/notes/micro-context/stm32-microcontroller]]** — The STM32 family of microcontrollers that include UART peripherals. The Pupper v3 uses UART for debug console output.
 
-- **[[quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to edge-triggered master-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
+- **[[learning/notes/quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to edge-triggered master-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
 
-- **[[micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
+- **[[learning/notes/micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these gate-level primitives.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these gate-level primitives.
 
-- **RS-232** — The electrical standard that defines bipolar voltage levels (±3-15V) for UART signals. Requires a level-shifting IC like the MAX232. See [[quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
+- **RS-232** — The electrical standard that defines bipolar voltage levels (±3-15V) for UART signals. Requires a level-shifting IC like the MAX232. See [[learning/notes/quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
 
-- **RS-485** — Differential signaling physical layer for UART frames. Enables multi-drop buses over 1200 m. See [[quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
+- **RS-485** — Differential signaling physical layer for UART frames. Enables multi-drop buses over 1200 m. See [[learning/notes/quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
 
 </details>
 
@@ -376,7 +376,7 @@ About **±3-4%**. At 16× oversampling, the receiver samples at the center of ea
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[learning/notes/quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?

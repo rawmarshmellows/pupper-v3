@@ -3,7 +3,7 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/power-watts-joules]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
 
@@ -15,9 +15,9 @@ Electricity doesn't exist freely in nature in a useful form. Lightning is too br
 
 There are fundamentally three ways to force electrons to move:
 
-1. **Chemical reactions** — Batteries exploit spontaneous redox reactions where certain atoms "want" to give up electrons while others "want" to accept them. See [[quick-context/galvanic-cells-batteries]].
+1. **Chemical reactions** — Batteries exploit spontaneous redox reactions where certain atoms "want" to give up electrons while others "want" to accept them. See [[learning/notes/quick-context/galvanic-cells-batteries]].
 
-2. **[[quick-context/electromagnetism|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
+2. **[[learning/notes/quick-context/electromagnetism|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
@@ -82,7 +82,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
 2. CHEMICAL (Batteries/Galvanic Cells)
 ──────────────────────────────────────
-   See [[quick-context/galvanic-cells-batteries]] for full details.
+   See [[learning/notes/quick-context/galvanic-cells-batteries]] for full details.
 
          ANODE (-)              CATHODE (+)
             │                       │
@@ -152,7 +152,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
 ## Faraday's Law Unifies Everything
 
-Generators and [[quick-context/inductor|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
+Generators and [[learning/notes/quick-context/inductor|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
 
 ```
 FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
@@ -165,7 +165,7 @@ FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
     Φ   = magnetic flux through the coil (webers)
     dΦ/dt = rate of change of flux
 
-    The minus sign ([[quick-context/lenzs-law|Lenz's Law]]): induced voltage OPPOSES the change
+    The minus sign ([[learning/notes/quick-context/lenzs-law|Lenz's Law]]): induced voltage OPPOSES the change
     that created it. This is why inductors resist current changes
     and why generators require mechanical force to turn.
 
@@ -471,23 +471,23 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Electricity generation creates current: the directed flow of electrons. Understanding current (I = Q/t) is essential for understanding what generators, batteries, and solar cells actually produce.
+- **[[learning/notes/quick-context/electric-current]]** — Electricity generation creates current: the directed flow of electrons. Understanding current (I = Q/t) is essential for understanding what generators, batteries, and solar cells actually produce.
 
-- **[[quick-context/galvanic-cells-batteries]]** — The chemistry of how batteries convert chemical potential energy to electrical energy. Batteries are the portable alternative to grid generation.
+- **[[learning/notes/quick-context/galvanic-cells-batteries]]** — The chemistry of how batteries convert chemical potential energy to electrical energy. Batteries are the portable alternative to grid generation.
 
-- **[[quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
+- **[[learning/notes/quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
 
-- **[[quick-context/power-watts-joules]]** — Power (watts) is the rate of energy transfer. A 1 GW power plant generates 1 billion joules per second. Understanding power helps connect generation capacity to energy consumption.
+- **[[learning/notes/quick-context/power-watts-joules]]** — Power (watts) is the rate of energy transfer. A 1 GW power plant generates 1 billion joules per second. Understanding power helps connect generation capacity to energy consumption.
 
-- **[[quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
+- **[[learning/notes/quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
 
-- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
+- **[[learning/notes/quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
 
-- **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
+- **[[learning/notes/quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
 
-- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
+- **[[learning/notes/quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
 
-- **[[quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
 
 </details>
 

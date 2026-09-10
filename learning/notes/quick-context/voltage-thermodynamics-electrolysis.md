@@ -3,7 +3,7 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electrolysis]]
 
 > **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 
@@ -11,7 +11,7 @@ created: 2026-01-22
 
 ## The Core Problem
 
-[[quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
+[[learning/notes/quick-context/electrolysis|Electrolysis]] forces chemical reactions that wouldn't happen on their own, but how much electricity do you actually need? The equation **ΔG = -nFE** connects the energy requirement of a reaction (Gibbs free energy) to the minimum voltage you must apply. For water splitting, this translates to a theoretical minimum of **1.23 volts**—without this relationship, we'd have no rational way to design electrochemical systems, batteries, fuel cells, or industrial hydrogen production.
 
 ## 5 Essential Terms
 
@@ -240,7 +240,7 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — The broader process that this voltage relationship enables; understanding the full electrolysis cell setup ([[quick-context/electrodes|anode]], [[quick-context/electrodes|cathode]], [[quick-context/making-electrolytes|electrolyte]]) provides essential context for where these voltages are applied.
+- **[[learning/notes/quick-context/electrolysis]]** — The broader process that this voltage relationship enables; understanding the full electrolysis cell setup ([[learning/notes/quick-context/electrodes|anode]], [[learning/notes/quick-context/electrodes|cathode]], [[learning/notes/quick-context/making-electrolytes|electrolyte]]) provides essential context for where these voltages are applied.
 
 - **Electrochemistry fundamentals** — The study of chemical reactions that produce or consume electricity; this relationship is one specific application of broader electrochemical principles like the Nernst equation.
 

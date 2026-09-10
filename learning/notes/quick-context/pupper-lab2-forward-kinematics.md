@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab3-inverse-kinematics]]
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
 
 > **TL;DR:** Forward kinematics computes where the foot ends up in 3D space given three joint angles, by chaining 4x4 homogeneous transformation matrices along the leg's kinematic chain. This is the mathematical foundation reused in every subsequent Pupper lab.
 
@@ -130,7 +130,7 @@ The tradeoff is computational cost: matrix multiplication requires more operatio
 
 ### The Deeper Insight
 
-Matrix chaining is really about **composing coordinate frame transformations**. Each matrix $T_{i \to i+1}$ says: "here is how to convert a point expressed in frame $i+1$'s coordinates into frame $i$'s coordinates." The full product $T_{0 \to ee}$ converts the foot's position (which is trivially $\mathbf{0}$ in its own frame) into the body's coordinate frame. This frame-thinking generalizes to any spatial relationship in robotics — not just serial chains but also [[quick-context/camera-fundamentals|camera-to-world transforms]] (where the extrinsic matrix is exactly a homogeneous transform), sensor fusion, and multi-robot coordination.
+Matrix chaining is really about **composing coordinate frame transformations**. Each matrix $T_{i \to i+1}$ says: "here is how to convert a point expressed in frame $i+1$'s coordinates into frame $i$'s coordinates." The full product $T_{0 \to ee}$ converts the foot's position (which is trivially $\mathbf{0}$ in its own frame) into the body's coordinate frame. This frame-thinking generalizes to any spatial relationship in robotics — not just serial chains but also [[learning/notes/quick-context/camera-fundamentals|camera-to-world transforms]] (where the extrinsic matrix is exactly a homogeneous transform), sensor fusion, and multi-robot coordination.
 
 </details>
 
@@ -184,8 +184,8 @@ This means: nearly directly below the hip (x close to 0), offset laterally by th
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 2 FK is reused directly in Lab 3 (IK via gradient descent on FK), Lab 4 (FK for all 4 legs), and conceptually underpins Lab 5's neural controller.
-- **[[quick-context/pupper-brain]]** — The hardware that executes FK computations at 200 Hz. Joint angles come from motor encoders via CAN bus; computed foot positions can be published as ROS2 topics.
+- **[[learning/notes/quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 2 FK is reused directly in Lab 3 (IK via gradient descent on FK), Lab 4 (FK for all 4 legs), and conceptually underpins Lab 5's neural controller.
+- **[[learning/notes/quick-context/pupper-brain]]** — The hardware that executes FK computations at 200 Hz. Joint angles come from motor encoders via CAN bus; computed foot positions can be published as ROS2 topics.
 - **Denavit-Hartenberg (DH) Parameters** — A standardized convention for assigning coordinate frames to each joint, reducing any serial chain to a table of 4 parameters per joint ($\theta$, $d$, $a$, $\alpha$). Lab 2 uses a slightly simplified approach, but DH is the industry standard for complex manipulators.
 - **RViz Visualization** — ROS2's 3D visualization tool. Lab 2 publishes a `visualization_msgs/Marker` (green sphere, type `SPHERE`) at the computed foot position so students can visually debug their FK against the URDF model.
 - **Rotation Conventions** — Lab 2 uses intrinsic rotations (each rotation is about the *current* frame's axis, not the fixed world axis). The distinction between intrinsic and extrinsic rotations matters when chaining: intrinsic rotations multiply right-to-left if you think in fixed-frame terms, but left-to-right if you think in body-frame terms (which is what the matrix chain does).

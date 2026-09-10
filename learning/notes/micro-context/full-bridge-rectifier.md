@@ -4,11 +4,13 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/voltage]]
+
 # Full-Wave Bridge Rectifier
 
-> **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]
+> **See also:** [[learning/notes/quick-context/diode]] | [[learning/notes/micro-context/diode-rectification]]
 
-**Definition:** A circuit of four [[quick-context/diode|diodes]] arranged in a diamond that converts AC to pulsating DC by steering [[quick-context/electric-current|current]] through the load in the same direction during both halves of the AC cycle.
+**Definition:** A circuit of four [[learning/notes/quick-context/diode|diodes]] arranged in a diamond that converts AC to pulsating DC by steering [[learning/notes/quick-context/electric-current|current]] through the load in the same direction during both halves of the AC cycle.
 
 ## How It Works
 
@@ -54,7 +56,7 @@ WHEN AC SWINGS + ON LEFT:        WHEN AC SWINGS − ON LEFT:
 **Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-voltage supplies.
 
 ---
-> **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **See also:** [[learning/notes/quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
 
 > **Human notes:**
 > - ElectroBOOM explains it well: https://www.youtube.com/watch?v=Fwj_d3uO5g8

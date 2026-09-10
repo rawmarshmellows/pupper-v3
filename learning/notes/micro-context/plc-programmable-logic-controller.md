@@ -3,9 +3,11 @@ term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]]
+
 # PLC (Programmable Logic Controller)
 
-> **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]
+> **See also:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
 **Definition:** A PLC is a ruggedized industrial computer purpose-built to control factory machinery in real time. It contains a CPU, I/O modules for sensors and actuators, power conditioning, watchdog timers, and a scan-cycle engine that reads inputs, executes user logic (ladder logic or structured text), and writes outputs in a deterministic 1-50ms loop — all housed in an electrically isolated, vibration-tolerant enclosure with safety certification.
 

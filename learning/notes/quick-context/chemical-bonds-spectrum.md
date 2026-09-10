@@ -3,7 +3,7 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]] | [[learning/notes/quick-context/polymer-chemical-bonds]]
 
 > **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
@@ -11,14 +11,14 @@ created: 2026-01-21
 
 ## The Core Problem: Why Do Things Stick Together?
 
-Every material property you care about—melting point, strength, flexibility, whether your 3D print survives in a hot car—comes down to one question: **how strongly are the atoms and molecules holding onto each other?** The answer isn't binary ("bonded" or "not bonded") but a *spectrum* of interaction strengths spanning three orders of magnitude. At one end: [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that share electrons and literally hold atoms together into molecules—break these and you've destroyed the material. At the other end: [[quick-context/van-der-waals-forces|van der Waals forces]] (~0.5-5 kJ/mol) so weak they exist between *everything*, even noble gases that refuse to bond chemically. In between: ionic bonds, [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]], [[quick-context/dipole-dipole-interactions|dipole-dipole interactions]], and [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]—each with distinct strengths and behaviors. Understanding this spectrum explains why water is liquid at room temperature (hydrogen bonds), why geckos climb walls (accumulated van der Waals), why PLA melts at 180°C but ABS needs 240°C (different intermolecular force profiles), and why diamonds are forever (covalent network).
+Every material property you care about—melting point, strength, flexibility, whether your 3D print survives in a hot car—comes down to one question: **how strongly are the atoms and molecules holding onto each other?** The answer isn't binary ("bonded" or "not bonded") but a *spectrum* of interaction strengths spanning three orders of magnitude. At one end: [[learning/notes/quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that share electrons and literally hold atoms together into molecules—break these and you've destroyed the material. At the other end: [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] (~0.5-5 kJ/mol) so weak they exist between *everything*, even noble gases that refuse to bond chemically. In between: ionic bonds, [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]], [[learning/notes/quick-context/dipole-dipole-interactions|dipole-dipole interactions]], and [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]—each with distinct strengths and behaviors. Understanding this spectrum explains why water is liquid at room temperature (hydrogen bonds), why geckos climb walls (accumulated van der Waals), why PLA melts at 180°C but ABS needs 240°C (different intermolecular force profiles), and why diamonds are forever (covalent network).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Intermolecular force** | Any attraction *between* molecules—van der Waals, dipole-dipole, hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
-| **Intramolecular bond** | The [[quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
+| **Intramolecular bond** | The [[learning/notes/quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
 | **Electronegativity** | An atom's "greed" for electrons—oxygen and fluorine are greedy (high EN), carbon and hydrogen share more equally—determines bond polarity. |
 | **Partial charge (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
 | **Non-covalent interaction** | Umbrella term for all intermolecular forces—emphasizes that these aren't "real" bonds in the electron-sharing sense, but still profoundly affect material behavior. |
@@ -195,7 +195,7 @@ WITHIN ONE WATER MOLECULE (Intramolecular):
 
      Bond energy: ~460 kJ/mol per O-H bond
      These NEVER break during normal heating
-     Break these → you've split water into H and O ([[quick-context/electrolysis|electrolysis]])
+     Break these → you've split water into H and O ([[learning/notes/quick-context/electrolysis|electrolysis]])
 
 
 BETWEEN WATER MOLECULES (Intermolecular):
@@ -336,17 +336,17 @@ EXAMPLE 3: Where does π-π stacking fit?
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/glass-transition-temperature]]** — The temperature where polymers transition from glassy to rubbery, directly determined by the strength of intermolecular forces holding chains in place.
+- **[[learning/notes/quick-context/glass-transition-temperature]]** — The temperature where polymers transition from glassy to rubbery, directly determined by the strength of intermolecular forces holding chains in place.
 
-- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — How the balance of intermolecular forces determines whether polymer chains pack into ordered crystals or stay disordered.
+- **[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]** — How the balance of intermolecular forces determines whether polymer chains pack into ordered crystals or stay disordered.
 
-- **[[quick-context/atoms-molecules-polymers-basics]]** — Foundation concepts for understanding what atoms and molecules are before diving into how they interact.
+- **[[learning/notes/quick-context/atoms-molecules-polymers-basics]]** — Foundation concepts for understanding what atoms and molecules are before diving into how they interact.
 
-- **[[quick-context/melt-index]]** — Practical measure of polymer flow that reflects intermolecular force strength—easier flow = weaker intermolecular forces.
+- **[[learning/notes/quick-context/melt-index]]** — Practical measure of polymer flow that reflects intermolecular force strength—easier flow = weaker intermolecular forces.
 
-- **[[quick-context/3d-printing-filament-types]]** — How different bond profiles in PLA, ABS, PETG, TPU translate to different printing requirements.
+- **[[learning/notes/quick-context/3d-printing-filament-types]]** — How different bond profiles in PLA, ABS, PETG, TPU translate to different printing requirements.
 
-- **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
+- **[[learning/notes/small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
 - **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
 

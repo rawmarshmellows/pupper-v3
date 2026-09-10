@@ -6,13 +6,13 @@ updated: 2026-04-06
 
 # Embedded Communication Protocols
 
-> **Related:** [[quick-context/can-bus]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Embedded systems choose between a family of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], RS-232, RS-485, 1-Wire, USB, I3C, and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, noise immunity, and complexity. The Pupper v3 uses four simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
+> **TL;DR:** Embedded systems choose between a family of serial protocols — UART, [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], [[learning/notes/quick-context/can-bus|CAN]], RS-232, RS-485, 1-Wire, USB, I3C, and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, noise immunity, and complexity. The Pupper v3 uses four simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
 
 ## The Core Problem
 
-A microcontroller needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do). And sometimes you need to talk to a PC (USB), reach industrial equipment 1200 m away (RS-485), or wire dozens of sensors on a single wire through a building (1-Wire).
+A microcontroller needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[learning/notes/micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do). And sometimes you need to talk to a PC (USB), reach industrial equipment 1200 m away (RS-485), or wire dozens of sensors on a single wire through a building (1-Wire).
 
 ## 5 Essential Terms
 
@@ -56,7 +56,7 @@ Ethernet      2-4  100 Mbps+   100 m      Star/switched    Cameras, high-bandwid
 
 ### UART — The Simplest Protocol
 
-[[quick-context/uart|UART]] (Universal Asynchronous Receiver-Transmitter) is the oldest and simplest serial protocol. No clock wire — both sides agree on a baud rate beforehand (typically 115200 baud). Two wires: TX (transmit) and RX (receive), crossed between devices. For the full internal mechanics (shift registers, oversampling, baud rate generation), see the [[quick-context/uart|dedicated UART article]].
+[[learning/notes/quick-context/uart|UART]] (Universal Asynchronous Receiver-Transmitter) is the oldest and simplest serial protocol. No clock wire — both sides agree on a baud rate beforehand (typically 115200 baud). Two wires: TX (transmit) and RX (receive), crossed between devices. For the full internal mechanics (shift registers, oversampling, baud rate generation), see the [[learning/notes/quick-context/uart|dedicated UART article]].
 
 ```
 UART — Asynchronous, point-to-point:
@@ -188,7 +188,7 @@ The master discovers devices using the **ROM search algorithm** — a binary tre
 
 ### I2C — The Sensor Bus
 
-[[micro-context/i2c|I2C]] (Inter-Integrated Circuit) uses 2 wires — SDA (data) and SCL (clock) — with open-drain drivers and pull-up [[quick-context/resistor|resistors]]. A master generates the clock and addresses devices by their 7-bit address (up to 128 devices on one bus, though typically 10-20).
+[[learning/notes/micro-context/i2c|I2C]] (Inter-Integrated Circuit) uses 2 wires — SDA (data) and SCL (clock) — with open-drain drivers and pull-up [[learning/notes/quick-context/resistor|resistors]]. A master generates the clock and addresses devices by their 7-bit address (up to 128 devices on one bus, though typically 10-20).
 
 ```
 I2C — Synchronous, multi-drop, half-duplex:
@@ -255,7 +255,7 @@ I3C's **in-band interrupts (IBI)** let a sensor signal the controller on the sam
 
 ### SPI — The Fast On-Board Bus
 
-[[micro-context/spi|SPI]] (Serial Peripheral Interface) uses 4 wires: SCLK (clock), MOSI (master-out-slave-in), MISO (master-in-slave-out), and CS (chip select — one per slave). Full-duplex at speeds from 1 to 50+ MHz.
+[[learning/notes/micro-context/spi|SPI]] (Serial Peripheral Interface) uses 4 wires: SCLK (clock), MOSI (master-out-slave-in), MISO (master-in-slave-out), and CS (chip select — one per slave). Full-duplex at speeds from 1 to 50+ MHz.
 
 ```
 SPI — Synchronous, star topology, full-duplex:
@@ -285,7 +285,7 @@ SPI — Synchronous, star topology, full-duplex:
 
 ### CAN — The Noise-Immune Motor Bus
 
-[[quick-context/can-bus|CAN]] (Controller Area Network) uses 2-wire differential signaling (CANH/CANL) with hardware arbitration, CRC error detection, and automatic retransmission. See the dedicated [[quick-context/can-bus|CAN bus article]] for the deep dive.
+[[learning/notes/quick-context/can-bus|CAN]] (Controller Area Network) uses 2-wire differential signaling (CANH/CANL) with hardware arbitration, CRC error detection, and automatic retransmission. See the dedicated [[learning/notes/quick-context/can-bus|CAN bus article]] for the deep dive.
 
 ```
 CAN — Asynchronous*, differential, linear bus:
@@ -306,7 +306,7 @@ CAN — Asynchronous*, differential, linear bus:
 ```
 
 **Strengths:** Differential = noise-immune, 40 m range, hardware arbitration (no collisions), 5-layer error detection, multi-master, 2 wires only.
-**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
+**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[learning/notes/micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[learning/notes/micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
 
 ### USB — The Host-Device Standard
 
@@ -529,29 +529,29 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/uart]]** — Deep dive into UART internals: the receive shift register (chain of D flip-flops), 16× oversampling, parallel latch to data register, baud rate generation. The simplest protocol in the comparison, with its own article covering the hardware mechanics.
+- **[[learning/notes/quick-context/uart]]** — Deep dive into UART internals: the receive shift register (chain of D flip-flops), 16× oversampling, parallel latch to data register, baud rate generation. The simplest protocol in the comparison, with its own article covering the hardware mechanics.
 
-- **[[quick-context/can-bus]]** — Deep dive into CAN: arbitration, frame format, differential signaling, error detection, and the Pupper's 4-bus motor architecture. This is the most complex protocol in the comparison and gets its own article.
+- **[[learning/notes/quick-context/can-bus]]** — Deep dive into CAN: arbitration, frame format, differential signaling, error detection, and the Pupper's 4-bus motor architecture. This is the most complex protocol in the comparison and gets its own article.
 
-- **[[micro-context/i2c]]** — I2C protocol details: addressing, open-drain signaling, pull-up resistors, clock stretching. The standard sensor bus on embedded boards.
+- **[[learning/notes/micro-context/i2c]]** — I2C protocol details: addressing, open-drain signaling, pull-up resistors, clock stretching. The standard sensor bus on embedded boards.
 
-- **[[micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
+- **[[learning/notes/micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
 
-- **[[micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
+- **[[learning/notes/micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
 
-- **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential CAN bus voltages. Every CAN node needs one.
+- **[[learning/notes/micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential CAN bus voltages. Every CAN node needs one.
 
-- **[[micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a CAN bus to prevent signal reflections.
+- **[[learning/notes/micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a CAN bus to prevent signal reflections.
 
-- **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing all four protocols in action: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
+- **[[learning/notes/quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing all four protocols in action: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical components implementing these protocols: STM32s with hardware CAN/SPI/I2C peripherals, MAX3051 transceivers, pull-up resistors, connectors.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — The physical components implementing these protocols: STM32s with hardware CAN/SPI/I2C peripherals, MAX3051 transceivers, pull-up resistors, connectors.
 
-- **[[quick-context/oscilloscope-and-multimeter]]** — How to debug protocol issues: oscilloscope shows signal integrity (rise times, reflections, noise), logic analyzer decodes the actual data frames.
+- **[[learning/notes/quick-context/oscilloscope-and-multimeter]]** — How to debug protocol issues: oscilloscope shows signal integrity (rise times, reflections, noise), logic analyzer decodes the actual data frames.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: radio transceiver, OFDM modulation, MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: radio transceiver, OFDM modulation, MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
 
-- **[[quick-context/usb-peripheral-hardware]]** — Deep dive into how the USB peripheral inside an MCU works at the hardware level: the Serial Interface Engine (SIE), NRZI encoding, bit stuffing, CRC generation, and the MOSFET output drivers that create voltage transitions on D+/D- at 12 MHz. Covers the bridge between "firmware writes to a buffer" and "voltage appears on the wire."
+- **[[learning/notes/quick-context/usb-peripheral-hardware]]** — Deep dive into how the USB peripheral inside an MCU works at the hardware level: the Serial Interface Engine (SIE), NRZI encoding, bit stuffing, CRC generation, and the MOSFET output drivers that create voltage transitions on D+/D- at 12 MHz. Covers the bridge between "firmware writes to a buffer" and "voltage appears on the wire."
 
 </details>
 

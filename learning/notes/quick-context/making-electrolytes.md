@@ -3,7 +3,7 @@ topic: How to Make an Electrolyte (Acid, Base, or Salt)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electrolysis]]
 
 > **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
 
@@ -11,7 +11,7 @@ created: 2026-01-22
 
 ## The Core Problem: Pure Water Does Not Conduct Electricity
 
-Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply voltage, almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
+Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply voltage, almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[learning/notes/quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
 
 ## 5 Essential Terms
 
@@ -173,7 +173,7 @@ There are three categories of electrolytes that create ions when dissolved in wa
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-When you add salt to water, something remarkable happens at the molecular level (related to [[quick-context/chemical-bonds-spectrum|chemical bonds]]):
+When you add salt to water, something remarkable happens at the molecular level (related to [[learning/notes/quick-context/chemical-bonds-spectrum|chemical bonds]]):
 
 ```
 DISSOLVING TABLE SALT (NaCl) IN WATER
@@ -216,7 +216,7 @@ RESULT: Free-floating Na⁺ and Cl⁻ ions can now carry electrical current
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-When choosing an electrolyte, practitioners face a fundamental tradeoff. You want **high conductivity** (lots of ions = [[quick-context/electric-current|electricity flows easily]]), but you also want the electrolyte to **not interfere** with the reaction you are trying to achieve. The ions must carry [[quick-context/electric-current|current]] without themselves being the substances that react at the [[quick-context/electrodes|electrodes]].
+When choosing an electrolyte, practitioners face a fundamental tradeoff. You want **high conductivity** (lots of ions = [[learning/notes/quick-context/electric-current|electricity flows easily]]), but you also want the electrolyte to **not interfere** with the reaction you are trying to achieve. The ions must carry [[learning/notes/quick-context/electric-current|current]] without themselves being the substances that react at the [[learning/notes/quick-context/electrodes|electrodes]].
 
 ```
 THE ELECTROLYTE SELECTION TRADEOFF
@@ -332,12 +332,12 @@ Step 4: Ready for electrolysis!
 
 WHAT IS HAPPENING:
 ──────────────────
-• Na⁺ ions migrate toward the negative [[quick-context/electrodes|cathode]] (but don't react)
-• SO₄²⁻ ions migrate toward the positive [[quick-context/electrodes|anode]] (but don't react)
+• Na⁺ ions migrate toward the negative [[learning/notes/quick-context/electrodes|cathode]] (but don't react)
+• SO₄²⁻ ions migrate toward the positive [[learning/notes/quick-context/electrodes|anode]] (but don't react)
 • This ion movement completes the electrical circuit
 • At the electrodes, WATER molecules are what actually react:
-  - Cathode: 2H₂O + 2e⁻ → H₂ + 2OH⁻ ([[quick-context/cations-and-reduction|reduction]])
-  - Anode: 2H₂O → O₂ + 4H⁺ + 4e⁻ ([[quick-context/anions-and-oxidation|oxidation]])
+  - Cathode: 2H₂O + 2e⁻ → H₂ + 2OH⁻ ([[learning/notes/quick-context/cations-and-reduction|reduction]])
+  - Anode: 2H₂O → O₂ + 4H⁺ + 4e⁻ ([[learning/notes/quick-context/anions-and-oxidation|oxidation]])
 ```
 
 **Alternative Electrolytes Compared:**
@@ -395,9 +395,9 @@ SOLUTION: Remove the water entirely
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding electrolysis explains WHY you need electrolytes and what happens at the electrodes once current flows.
+- **[[learning/notes/quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding electrolysis explains WHY you need electrolytes and what happens at the electrodes once current flows.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. covalent bonds helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
+- **[[learning/notes/quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. covalent bonds helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
 
 - **pH and Acid-Base Chemistry** — Acids and bases are defined by whether they release H⁺ or OH⁻ ions. The pH scale measures this ion concentration, which directly affects conductivity.
 

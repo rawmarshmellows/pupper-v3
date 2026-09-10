@@ -476,7 +476,7 @@ TRACING ONE BIT THROUGH THE HARDWARE PIPELINE
 
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — Where the bytes in the endpoint buffer physically live (SRAM = cross-coupled inverter pairs) and how the firmware itself exists as trapped electrons in the MCU's flash. The keyboard MCU section of that document is what spawned this one.
 
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[micro-context/spi|SPI]], [[micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], UART, and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — USB in context: how it compares to [[learning/notes/micro-context/spi|SPI]], [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/quick-context/can-bus|CAN]], UART, and RS-485 in the tradeoff space of speed, wire count, distance, and complexity.
 
 - **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switches in the output drivers that physically create the voltage transitions on D+/D-. Same transistor physics as any digital output, just switching at 12 MHz.
 
