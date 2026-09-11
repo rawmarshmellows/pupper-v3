@@ -8,13 +8,13 @@ updated: 2026-06-08
 
 > **See also:** [[quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a [[quick-context/capacitor|capacitor]]—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 
 - Applying voltage to the gate creates an electric field through the oxide insulator, attracting charge carriers into the channel region.
 - Above the threshold voltage ($V_{th}$), enough carriers accumulate to form a conductive channel between source and drain.
-- Removing the gate voltage collapses the channel, turning the transistor off — no gate current flows because the oxide is an insulator.
+- Removing the gate voltage collapses the channel, turning the [[quick-context/transistor|transistor]] off — no gate current flows because the oxide is an insulator.
 - In CMOS logic, NMOS and PMOS transistors are paired so that one is always off, minimizing static power consumption.
 
 ```
@@ -62,7 +62,7 @@ Once charged, the gate charge stays put for **two reasons working together**:
 
 The tiny pA leakage is exactly the small failure of "no road out": a few electrons *tunnel* through the wall (worse the thinner the oxide), plus a trickle sneaks around it via reverse-biased junctions and PCB surface paths.
 
-> **Tie-in — flash / EEPROM:** a *floating* gate (no wire at all) holds its charge for years on this same principle. It uses a **thicker** oxide so even tunneling is negligible → the stored bit survives a decade. A logic MOSFET uses a thin oxide for speed, so it leaks a little more.
+> **Tie-in — flash / [[micro-context/eeprom|EEPROM]]:** a *floating* gate (no wire at all) holds its charge for years on this same principle. It uses a **thicker** oxide so even tunneling is negligible → the stored bit survives a decade. A logic MOSFET uses a thin oxide for speed, so it leaks a little more.
 
 ## Turning It On and Off — the Gate Driver
 
