@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the MCP6541 (LCSC C623499) Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/tlv7211-as-lmc7211-replacement]] | [[quick-context/preempt-rt-ros2-plc-replacement]]
 >
 > **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 
@@ -112,7 +112,7 @@ SUPPLY-RANGE OVERLAP   (●━━● operating range;  ┄╳ absolute-max limit
 
 #### The behavior change: built-in hysteresis
 
-The LMC7211-N has **zero** internal hysteresis — its threshold is a single point, and you add hysteresis with an external feedback resistor if you want clean switching on slow/noisy signals. The MCP6541 has **~3.3 mV of hysteresis baked in** (1.5–6.5 mV range). For most threshold-detect circuits this is a *bonus* (cleaner edges, no external resistors). But it is **not removable** — if the original design depended on a hysteresis-free linear crossing (e.g. using the comparator as a precise 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]] or zero-crossing reference), the swap changes the answer.
+The LMC7211-N has **zero** internal hysteresis — its threshold is a single point, and you add hysteresis with an external feedback [[quick-context/resistor|resistor]] if you want clean switching on slow/noisy signals. The MCP6541 has **~3.3 mV of hysteresis baked in** (1.5–6.5 mV range). For most threshold-detect circuits this is a *bonus* (cleaner edges, no external resistors). But it is **not removable** — if the original design depended on a hysteresis-free linear crossing (e.g. using the [[quick-context/comparator|comparator]] as a precise 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]] or zero-crossing reference), the swap changes the answer.
 
 </details>
 
@@ -175,9 +175,9 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 
 - **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
 
-- **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
+- **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an [[quick-context/op-amp|op-amp]] first.
 
 - **[[micro-context/adc-analog-to-digital-converter]]** — A comparator is a 1-bit ADC; this is the one use where the MCP6541's *built-in hysteresis* is a liability rather than a feature.
 

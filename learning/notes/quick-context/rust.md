@@ -17,9 +17,9 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 
 | Term | Definition |
 |------|------------|
-| **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
+| **Corrosion** | The electrochemical degradation of metals through [[micro-context/oxidation|oxidation]] reactions with their environment—rust is specifically iron corrosion |
 | **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the [[micro-context/cathode|cathode]] (electron receiver) instead of the [[micro-context/anode|anode]], often via sacrificial metals |
 | **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
 | **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
@@ -236,14 +236,14 @@ CONTRAST: What happens with a scratched TIN-PLATED can
     while galvanized steel resists rust even when scratched.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an electrolyte. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while reduction (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
+**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an [[quick-context/electrolyte|electrolyte]]. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while reduction (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in electrolysis (Q3) demonstrates how iron at an anode actively dissolves.
+- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in [[quick-context/electrolysis|electrolysis]] (Q3) demonstrates how iron at an anode actively dissolves.
 
 - **[[quick-context/anions-and-oxidation]]** — At anodic regions, iron loses electrons (oxidation: Fe → Fe²⁺ + 2e⁻). Understanding oxidation as electron loss clarifies why the iron dissolves rather than staying solid.
 

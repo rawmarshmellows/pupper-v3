@@ -3,9 +3,9 @@ topic: Anions and Oxidation
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[micro-context/oxidation]]
 
-> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
+> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and [[micro-context/oxidation|oxidation]] is the process of losing electrons—in [[quick-context/electrolysis|electrolysis]], anions migrate to the positive [[micro-context/anode|anode]] where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
@@ -19,7 +19,7 @@ Why does this matter? Without understanding anions and oxidation, we couldn't ex
 |------|------------|
 | **Electron** | A tiny negatively-charged particle that orbits atoms; the currency of chemistry |
 | **Ion** | An atom that has gained or lost electrons, giving it an electrical charge |
-| **Anion** | A negatively-charged ion (has extra electrons); moves toward positive electrodes |
+| **Anion** | A negatively-charged ion (has extra electrons); moves toward positive [[quick-context/electrodes|electrodes]] |
 | **Oxidation** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
 | **Anode** | The positive electrode where oxidation occurs; anions migrate here |
 
@@ -218,7 +218,7 @@ Factors like concentration, electrode material, and applied voltage determine se
 **Q4:** After 4 OH⁻ ions are oxidized to form O₂ + 2H₂O, how many electrons have been released into the circuit?
 <details>
 <summary>Answer</summary>
-Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the electric current in the circuit. See: The Concrete Example, hydroxide oxidation section.
+Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the [[quick-context/electric-current|electric current]] in the circuit. See: The Concrete Example, hydroxide oxidation section.
 </details>
 
 **Q5:** What's the relationship between the terms "anode," "anion," and "oxidation"?

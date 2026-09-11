@@ -5,9 +5,9 @@ created: 2026-02-17
 
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+> **Related:** [[micro-context/electromagnetic-induction]]
 
-> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
+> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an [[quick-context/inductor|inductor]], and why the magnetic field "pushes" current when you try to stop it.
 
 ## The Core Question
 
@@ -489,7 +489,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **Q4:** An inductor stores 1 joule of energy in its magnetic field. You disconnect it from the source. Where does that 1 joule go?
 <details>
 <summary>Answer</summary>
-**It's converted to heat in whatever the current flows through.** The magnetic field collapses, inducing voltage that drives current through any available path. If a resistor is connected, the current flows through it, dissipating energy as heat (P = I²R). If NO path exists, the inductor generates enough voltage to arc through air or destroy components — the energy still dissipates, just destructively. Energy is always conserved; it transforms from magnetic field energy to thermal energy.
+**It's converted to heat in whatever the current flows through.** The magnetic field collapses, inducing voltage that drives current through any available path. If a [[quick-context/resistor|resistor]] is connected, the current flows through it, dissipating energy as heat (P = I²R). If NO path exists, the inductor generates enough voltage to arc through air or destroy components — the energy still dissipates, just destructively. Energy is always conserved; it transforms from magnetic field energy to thermal energy.
 </details>
 
 **Q5:** A coil has inductance L. You wind it with twice as many turns (2N instead of N), keeping everything else the same. How does the self-inductance change?
