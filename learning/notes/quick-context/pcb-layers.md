@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -22,7 +22,7 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[learning/notes/micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
 | **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
@@ -320,7 +320,7 @@ THE THREE-LAYER ALIGNMENT AT EVERY PAD
     Soldermask opening: 0.40 × 1.30 mm  (0.05mm clearance all around)
 ```
 
-For fine-pitch components (0.4-0.5mm pitch [[quick-context/common-ic-packages|QFP or QFN]]), getting paste volume wrong by even 10% causes bridging (too much) or open joints (too little). This is why paste mask design is a separate engineering discipline — and why the paste mask is a distinct Gerber file, not just a copy of the copper layer.
+For fine-pitch components (0.4-0.5mm pitch [[learning/notes/quick-context/common-ic-packages|QFP or QFN]]), getting paste volume wrong by even 10% causes bridging (too much) or open joints (too little). This is why paste mask design is a separate engineering discipline — and why the paste mask is a distinct Gerber file, not just a copy of the copper layer.
 
 </details>
 
@@ -403,15 +403,15 @@ The Gerber file list maps directly to the layer stack:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
 
-- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
+- **[[learning/notes/quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
 
-- **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial ground plane; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
+- **[[learning/notes/quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial ground plane; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
 
-- **[[quick-context/common-ic-packages]]** — Package type (DIP, QFP, QFN, BGA) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
+- **[[learning/notes/quick-context/common-ic-packages]]** — Package type (DIP, QFP, QFN, BGA) determines pad geometry on the copper layer, paste mask openings, and whether the board needs thermal vias under exposed pads.
 
-- **[[quick-context/schematic-reading]]** — The schematic defines WHAT is connected; the PCB layers define HOW and WHERE those connections are physically implemented as copper traces, pads, and vias.
+- **[[learning/notes/quick-context/schematic-reading]]** — The schematic defines WHAT is connected; the PCB layers define HOW and WHERE those connections are physically implemented as copper traces, pads, and vias.
 
 </details>
 
@@ -439,7 +439,7 @@ The Gerber file list maps directly to the layer stack:
 **Q4:** On the Pupper board, top copper is red and bottom copper is blue. If a trace needs to cross another trace on the same layer, how does it get from red to blue and back?
 <details>
 <summary>Answer</summary>
-**Through vias.** The trace on the top copper (red) reaches a via — a small plated hole that connects to the bottom copper (blue). The trace continues on the bottom layer, passing under the obstruction, then hits another via to return to the top layer. Each via appears in the drill file (PTH-Via) and has a pad on both copper layers. On the Pupper board, the small teal dots scattered across the board are these vias. See [[quick-context/pcb-printed-circuit-board]] for the detailed via cross-section.
+**Through vias.** The trace on the top copper (red) reaches a via — a small plated hole that connects to the bottom copper (blue). The trace continues on the bottom layer, passing under the obstruction, then hits another via to return to the top layer. Each via appears in the drill file (PTH-Via) and has a pad on both copper layers. On the Pupper board, the small teal dots scattered across the board are these vias. See [[learning/notes/quick-context/pcb-printed-circuit-board]] for the detailed via cross-section.
 </details>
 
 **Q5:** A manufacturer receives Gerber files for a board but the paste mask file is missing. Can they still manufacture and assemble the board?

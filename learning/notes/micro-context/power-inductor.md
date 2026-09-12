@@ -3,17 +3,18 @@ term: Power Inductor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/inductor]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/push-pull-vs-open-drain]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/existing-account-management-playbook]]
 
 # Power Inductor
 
-> **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]
+> **See also:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/buck-converter]]
 
-**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your buck converter, the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
+**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your [[learning/notes/micro-context/buck-converter|buck converter]], the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
 
 ## How It Works
 
 - When current flows through the coil, it generates a magnetic field that stores energy ($E = \frac{1}{2}LI^2$).
-- If current tries to change suddenly, the collapsing or growing magnetic field induces a voltage that opposes the change ($V = L \times dI/dt$).
+- If current tries to change suddenly, the collapsing or growing magnetic field induces a [[learning/notes/quick-context/voltage|voltage]] that opposes the change ($V = L \times dI/dt$).
 - In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling diode.
 
 ```

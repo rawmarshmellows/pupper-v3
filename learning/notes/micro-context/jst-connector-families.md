@@ -3,10 +3,11 @@ term: JST Connector Families
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/micro-context/push-pull-vs-open-drain]] | [[learning/notes/micro-context/thread-pitch-screws]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bjt-specifications]]
 
 # JST Connector Families
 
-> **See also:** [[quick-context/pupper-bom-control-board]]
+> **See also:** [[learning/notes/quick-context/pupper-bom-control-board]]
 
 **Definition:** JST (Japan Solderless Terminal) makes dozens of wire-to-board connector series, each identified by a 2-3 letter code. The series determines pitch, current rating, locking, and mounting style. "MX 1.25mm" is **not** an official JST series -- it's a misnomer for generic 1.25mm connectors (likely Molex PicoBlade clones). The real JST 1.25mm connector is the **GH** series. **SH** (1.0mm) is official and genuine.
 
@@ -42,4 +43,4 @@ Must press tab to disconnect. Without it, friction alone holds the plug.
        ▼ snaps over ridge
 ```
 
-**Key insight:** "JST" is a manufacturer, not a connector type -- saying "JST connector" without the series code is like saying "I need a Molex." The [[quick-context/pupper-bom-control-board|Pupper control board]] uses JST SH (BM07B-SRSS) and PH series connectors.
+**Key insight:** "JST" is a manufacturer, not a connector type -- saying "JST connector" without the series code is like saying "I need a Molex." The [[learning/notes/quick-context/pupper-bom-control-board|Pupper control board]] uses JST SH (BM07B-SRSS) and PH series connectors.

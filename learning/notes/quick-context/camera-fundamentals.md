@@ -5,22 +5,22 @@ created: 2026-03-23
 
 # Camera Fundamentals — Sensors, Lenses, and Calibration
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+> **Related:** [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
-> **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
+> **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[learning/notes/quick-context/diode|photodiodes]] on a [[learning/notes/quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
 ## The Core Problem
 
-Without understanding how cameras actually form images — the physics of sensors and lenses, and the math of projection — you cannot calibrate a vision system, correct for distortion, fuse camera data with other sensors, or reason about why an image looks the way it does. Every computer vision pipeline (from [[quick-context/pupper-lab7-vision-tracking|Pupper's object tracking]] to autonomous vehicles) depends on knowing the camera's intrinsic parameters (focal length, sensor size, distortion) and extrinsic parameters (where the camera is and which way it points). Get these wrong and your 3D reconstructions, distance estimates, and bounding box geometries will all be incorrect.
+Without understanding how cameras actually form images — the physics of sensors and lenses, and the math of projection — you cannot calibrate a vision system, correct for distortion, fuse camera data with other sensors, or reason about why an image looks the way it does. Every computer vision pipeline (from [[learning/notes/quick-context/pupper-lab7-vision-tracking|Pupper's object tracking]] to autonomous vehicles) depends on knowing the camera's intrinsic parameters (focal length, sensor size, distortion) and extrinsic parameters (where the camera is and which way it points). Get these wrong and your 3D reconstructions, distance estimates, and bounding box geometries will all be incorrect.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
+| **Image Sensor** | A [[learning/notes/quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
-| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
+| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of [[learning/notes/quick-context/voltage|voltage]] ratio) |
 | **Intrinsic Matrix (K)** | A $3 \times 3$ upper-triangular matrix encoding the camera's internal geometry — focal lengths $f_x, f_y$ in pixel units, principal point $(c_x, c_y)$, and optionally skew — used to project 3D camera-frame points onto the 2D image plane |
 
 <details>
@@ -28,7 +28,7 @@ Without understanding how cameras actually form images — the physics of sensor
 
 ### Stage 1: Photon Capture (The Sensor)
 
-An image sensor is a grid of tiny [[quick-context/diode|photodiodes]] — PN junctions operated in [[micro-context/reverse-and-forward-bias|reverse bias]]. When a photon strikes the [[quick-context/doped-silicon|silicon]], it knocks an electron free (photoelectric effect). The reverse-biased junction sweeps this electron into a charge well. More photons = more accumulated charge = brighter pixel.
+An image sensor is a grid of tiny [[learning/notes/quick-context/diode|photodiodes]] — PN junctions operated in [[learning/notes/micro-context/reverse-and-forward-bias|reverse bias]]. When a photon strikes the [[learning/notes/quick-context/doped-silicon|silicon]], it knocks an electron free (photoelectric effect). The reverse-biased junction sweeps this electron into a charge well. More photons = more accumulated charge = brighter pixel.
 
 ```
 FROM PHOTON TO PIXEL VALUE
@@ -123,7 +123,7 @@ SENSOR SIZE COMPARISON (to scale relative to full frame)
 | **1-inch** | 13.2 x 8.8 mm | 2.7x | Premium compacts, drones (DJI) |
 | **1/2.3-inch** | 6.2 x 4.6 mm | 5.6x | Smartphones, action cameras |
 
-**Why size matters:** A larger sensor has larger pixels (or more of them). Larger pixels capture more photons before saturating, giving better signal-to-noise ratio — directly improving dynamic range and low-light performance. The [[quick-context/thermal-noise-electronics|thermal noise floor]] is roughly constant regardless of pixel size, so bigger pixels mean a better signal-to-noise ratio.
+**Why size matters:** A larger sensor has larger pixels (or more of them). Larger pixels capture more photons before saturating, giving better signal-to-noise ratio — directly improving dynamic range and low-light performance. The [[learning/notes/quick-context/thermal-noise-electronics|thermal noise floor]] is roughly constant regardless of pixel size, so bigger pixels mean a better signal-to-noise ratio.
 
 **Crop factor** describes how a smaller sensor "crops" the image compared to full frame. A 50 mm lens on a 2x crop sensor gives the same field of view as a 100 mm lens on full frame.
 
@@ -255,7 +255,7 @@ Because stops are base-2 logarithms, $n$ stops = $2^n$ linear ratio:
 
 #### Dynamic range
 
-Dynamic range is the ratio between the maximum signal a pixel can hold (full well capacity) and the minimum detectable signal (noise floor, dominated by [[quick-context/thermal-noise-electronics|thermal noise]] and read noise):
+Dynamic range is the ratio between the maximum signal a pixel can hold (full well capacity) and the minimum detectable signal (noise floor, dominated by [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] and read noise):
 
 $$\text{DR (stops)} = \log_2\!\left(\frac{\text{full well capacity}}{\text{noise floor (electrons)}}\right)$$
 
@@ -314,11 +314,11 @@ $$K = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix}$
 
 where $f_x, f_y$ are focal lengths in pixel units ($f_x = f_{\text{mm}} \times \text{pixels\_per\_mm}$) and $(c_x, c_y)$ is the principal point (ideally image center).
 
-**Extrinsic parameters** describe the camera's pose in the world — a rotation $R$ and translation $\mathbf{t}$ that form a [[micro-context/homogeneous-transformation-matrix|homogeneous transformation matrix]] converting world-frame coordinates to camera-frame coordinates:
+**Extrinsic parameters** describe the camera's pose in the world — a rotation $R$ and translation $\mathbf{t}$ that form a [[learning/notes/micro-context/homogeneous-transformation-matrix|homogeneous transformation matrix]] converting world-frame coordinates to camera-frame coordinates:
 
 $$\begin{bmatrix} R & \mathbf{t} \\ \mathbf{0} & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4}$$
 
-This is the same transformation matrix framework used in [[quick-context/pupper-lab2-forward-kinematics|robot forward kinematics]] — the math of chaining coordinate frames is identical.
+This is the same transformation matrix framework used in [[learning/notes/quick-context/pupper-lab2-forward-kinematics|robot forward kinematics]] — the math of chaining coordinate frames is identical.
 
 ```
 THE FULL PROJECTION PIPELINE
@@ -529,17 +529,17 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/pupper-lab7-vision-tracking]]** — Applies camera fundamentals directly: the Pupper's fisheye camera requires intrinsic calibration (K and distortion coefficients D) to undistort frames before running YOLOv5 object detection. The `cv2.fisheye.undistortImage()` call uses exactly the intrinsic parameters described here.
+- **[[learning/notes/quick-context/pupper-lab7-vision-tracking]]** — Applies camera fundamentals directly: the Pupper's fisheye camera requires intrinsic calibration (K and distortion coefficients D) to undistort frames before running YOLOv5 object detection. The `cv2.fisheye.undistortImage()` call uses exactly the intrinsic parameters described here.
 
-- **[[quick-context/diode]]** — A photodiode is a specialized PN junction operated in reverse bias, where incident photons generate current proportional to light intensity. Every pixel on an image sensor is fundamentally a photodiode. The diode document's type table lists photodiodes as a key variant.
+- **[[learning/notes/quick-context/diode]]** — A photodiode is a specialized PN junction operated in reverse bias, where incident photons generate current proportional to light intensity. Every pixel on an image sensor is fundamentally a photodiode. The diode document's type table lists photodiodes as a key variant.
 
-- **[[micro-context/homogeneous-transformation-matrix]]** — The extrinsic matrix $[R|\mathbf{t}]$ is a homogeneous transformation — the same $4 \times 4$ matrix used in [[quick-context/pupper-lab2-forward-kinematics|robot kinematics]]. Camera pose estimation and robot forward kinematics use identical math.
+- **[[learning/notes/micro-context/homogeneous-transformation-matrix]]** — The extrinsic matrix $[R|\mathbf{t}]$ is a homogeneous transformation — the same $4 \times 4$ matrix used in [[learning/notes/quick-context/pupper-lab2-forward-kinematics|robot kinematics]]. Camera pose estimation and robot forward kinematics use identical math.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip ADC. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
+- **[[learning/notes/micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip ADC. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
 
-- **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
+- **[[learning/notes/quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[learning/notes/quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 
@@ -553,7 +553,7 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 **Q1:** A photodiode in an image sensor is operated in reverse bias. Why reverse bias instead of forward bias, and how does incident light generate a signal?
 <details>
 <summary>Answer</summary>
-In reverse bias, the depletion zone is wide and the junction has a strong electric field but essentially no current. When a photon is absorbed in the silicon, it generates an electron-hole pair. The depletion zone's electric field sweeps this carrier across the junction, creating a photocurrent proportional to light intensity. Forward bias wouldn't work because the large forward current would swamp the tiny photocurrent — you need the "quiet" state of reverse bias so that the only current is from incident photons. See: How It Works, Stage 1 and [[micro-context/reverse-and-forward-bias]].
+In reverse bias, the depletion zone is wide and the junction has a strong electric field but essentially no current. When a photon is absorbed in the silicon, it generates an electron-hole pair. The depletion zone's electric field sweeps this carrier across the junction, creating a photocurrent proportional to light intensity. Forward bias wouldn't work because the large forward current would swamp the tiny photocurrent — you need the "quiet" state of reverse bias so that the only current is from incident photons. See: How It Works, Stage 1 and [[learning/notes/micro-context/reverse-and-forward-bias]].
 </details>
 
 **Q2:** A 50 mm lens gives a 40 degree horizontal FOV on full frame. What FOV does the same lens give on a Micro Four Thirds sensor, and why?
@@ -574,7 +574,7 @@ $\text{DR (stops)} = \log_2(30000/5) = \log_2(6000) \approx 12.6 \text{ stops}$.
 The printed focal length is the physical focal length in mm, but the intrinsic matrix $K$ needs focal length in **pixel units** ($f_x = f_{\text{mm}} \times \text{pixels/mm}$), which depends on pixel pitch — a quantity not printed on the lens. Worse, the printed focal length is nominal and may not be exact, the principal point is rarely exactly at image center, and — most critically — the intrinsic model must also include **distortion coefficients** (radial and tangential) that are unique to each individual lens specimen. Calibration using a known pattern (checkerboard) estimates all of these simultaneously from observed data. See: Concrete Example.
 </details>
 
-**Q5:** The extrinsic matrix converts world-frame points to camera-frame points, and the intrinsic matrix projects camera-frame points to pixels. This is the same [[micro-context/homogeneous-transformation-matrix|homogeneous transformation]] framework used in [[quick-context/pupper-lab2-forward-kinematics|Pupper's forward kinematics]]. If you mounted a camera on the Pupper's body at a known position and orientation, how would you combine the robot's FK chain with the camera calibration to project a 3D point in the foot's coordinate frame onto the camera's pixel coordinates?
+**Q5:** The extrinsic matrix converts world-frame points to camera-frame points, and the intrinsic matrix projects camera-frame points to pixels. This is the same [[learning/notes/micro-context/homogeneous-transformation-matrix|homogeneous transformation]] framework used in [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper's forward kinematics]]. If you mounted a camera on the Pupper's body at a known position and orientation, how would you combine the robot's FK chain with the camera calibration to project a 3D point in the foot's coordinate frame onto the camera's pixel coordinates?
 <details>
 <summary>Answer</summary>
 You would chain transformations: (1) Use FK to compute $T_{\text{body} \leftarrow \text{foot}}$ — the 4x4 transform from foot frame to body frame (this is exactly what Lab 2 computes). (2) Use the known camera mount to get $T_{\text{cam} \leftarrow \text{body}}$ — the 4x4 transform from body frame to camera frame (from the camera's extrinsic calibration relative to the body). (3) Chain them: $P_{\text{cam}} = T_{\text{cam} \leftarrow \text{body}} \cdot T_{\text{body} \leftarrow \text{foot}} \cdot P_{\text{foot}}$. (4) Project to pixels: $p = K \cdot [I | \mathbf{0}] \cdot P_{\text{cam}}$ (intrinsic projection). The key insight is that both the FK chain and the camera extrinsic are homogeneous transforms — they compose by matrix multiplication. This is exactly how visual servoing works: you close the loop between robot kinematics and camera projection to align the robot with visual targets.

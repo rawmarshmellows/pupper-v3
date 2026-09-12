@@ -2,6 +2,7 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/diode]]
 
 # Switch Matrix
 

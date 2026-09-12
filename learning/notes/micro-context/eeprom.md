@@ -2,6 +2,7 @@
 term: EEPROM (Electrically Erasable Programmable Read-Only Memory)
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
 # EEPROM (Electrically Erasable Programmable Read-Only Memory)
 
@@ -40,5 +41,5 @@ EEPROM CELL (floating-gate MOSFET)
 ## Common Uses
 
 - **Raspberry Pi HAT EEPROM:** Stores a device tree overlay telling the Pi what the board is and how to configure itself at boot (read via [[learning/notes/micro-context/i2c|I2C]] on GPIO 0 & 1)
-- **Microcontroller calibration:** Factory-programmed temperature sensor offsets, oscillator trim values
+- **[[learning/notes/micro-context/microcontroller|Microcontroller]] calibration:** Factory-programmed temperature sensor offsets, oscillator trim values
 - **Serial number / MAC address storage** on network devices

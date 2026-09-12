@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/resistor]]
 
 # Short Circuit
 

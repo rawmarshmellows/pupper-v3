@@ -3,10 +3,11 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/can-bus]]
 
 # Homogeneous Transformation Matrix
 
-**Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.
+**Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[learning/notes/quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.
 
 ## How It Works
 
