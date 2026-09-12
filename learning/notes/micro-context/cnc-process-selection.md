@@ -3,12 +3,13 @@ term: CNC Process Selection
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/resistor]]
 
 # CNC Process Selection
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
+> **See also:** [[learning/notes/quick-context/cnc-machining]] (full treatment) | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]]
 
-**Definition:** A decision framework for when to use CNC machining over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
+**Definition:** A decision framework for when to use [[learning/notes/quick-context/cnc-machining|CNC machining]] over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
 
 ## How It Works
 

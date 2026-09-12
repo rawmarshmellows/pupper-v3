@@ -2,6 +2,7 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/epson-rc-plus-programming]]
 
 # Schmitt Trigger & Hysteresis
 

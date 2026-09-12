@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Singular Value Decomposition (SVD)
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/covariance-matrix|Covariance Matrix]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/epson-rc-plus-programming]]
 
 > **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of linear algebra.
 
@@ -118,7 +118,7 @@ where $r = \text{rank}(A)$ and $k < r$.
 
 ### SVD in the Helmert Transform Context
 
-In the [[quick-context/helmert-transform|Helmert Transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, you compute the [[quick-context/covariance-matrix|cross-covariance matrix]] $H$ between two centered point sets, then decompose it:
+In the [[learning/notes/quick-context/helmert-transform|Helmert Transform]] and [[learning/notes/quick-context/absolute-orientation|absolute orientation]] problem, you compute the [[learning/notes/quick-context/covariance-matrix|cross-covariance matrix]] $H$ between two centered point sets, then decompose it:
 
 $$H = U \Sigma V^T$$
 
@@ -246,17 +246,17 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 
 **Note:** `np.linalg.svd` returns $V^T$ (not $V$), so the rotation formula becomes `Vt.T @ D @ U.T` rather than `V @ D @ U.T`. This is the most common source of bugs.
 
-**The one thing most outsiders get wrong about this is...** that SVD finds the rotation by "decomposing" the rotation matrix. It doesn't. The [[quick-context/covariance-matrix|cross-covariance matrix]] $H$ is not a rotation matrix -- it encodes how the source and target coordinates co-vary. SVD decomposes *that* matrix into its rotation and stretching components, and by discarding the stretching ($\Sigma$) and recombining the two rotations ($VU^T$), you recover the rotation that best aligns the two point sets in the least-squares sense. The stretching you throw away represents the noise and scale mismatch in the data.
+**The one thing most outsiders get wrong about this is...** that SVD finds the rotation by "decomposing" the rotation matrix. It doesn't. The [[learning/notes/quick-context/covariance-matrix|cross-covariance matrix]] $H$ is not a rotation matrix -- it encodes how the source and target coordinates co-vary. SVD decomposes *that* matrix into its rotation and stretching components, and by discarding the stretching ($\Sigma$) and recombining the two rotations ($VU^T$), you recover the rotation that best aligns the two point sets in the least-squares sense. The stretching you throw away represents the noise and scale mismatch in the data.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the absolute orientation problem
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
+- **[[learning/notes/quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
+- **[[learning/notes/quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
+- **[[learning/notes/quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the [[learning/notes/quick-context/absolute-orientation|absolute orientation problem]]
+- **[[learning/notes/quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
 - **Principal Component Analysis (PCA)** -- PCA is SVD applied to the centered data matrix; the principal components are the right singular vectors, and the explained variance comes from the squared singular values
 - **Polar decomposition** -- Every matrix factors as $A = QS$ (orthogonal times symmetric positive semi-definite); SVD gives you this directly since $Q = UV^T$ and $S = V\Sigma V^T$
 - **Condition number** -- $\kappa(A) = \sigma_1 / \sigma_r$, the ratio of largest to smallest singular value; measures how sensitive $Ax = b$ is to perturbations

@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/comparator]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 
@@ -67,7 +68,7 @@ Examples:
 - **"All ready" barrier** — each board holds the line LOW while busy, releases when done. The line goes HIGH only when *every* board is done (`done_A AND done_B AND …`), so the CPU learns the whole system is ready from one pin.
 - **I2C clock stretching** — SCL is wired-AND: the master pulses the clock, but any slow slave can *hold SCL LOW* to say "wait." SCL rises only when master **and** all slaves release — the slowest device gates the clock.
 
-**Polarity footnote (why you'll also hear "wired-OR"):** same circuit, flipped labels. If the *signal* is active-LOW (LOW = "asserted"), then "any device pulls LOW" reads as "any device asserts" = **OR**. Voltage view → wired-AND (HIGH needs all releasing); active-low signal view → wired-OR (asserted if *any* device asserts). The FAULT bus above is exactly this: HIGH only while every comparator releases (wired-AND on voltage), but read as "fault if *any* comparator trips" (wired-OR on the active-low meaning). A shared `/INT` interrupt line works the same way.
+**Polarity footnote (why you'll also hear "wired-OR"):** same circuit, flipped labels. If the *signal* is active-LOW (LOW = "asserted"), then "any device pulls LOW" reads as "any device asserts" = **OR**. [[learning/notes/quick-context/voltage|Voltage]] view → wired-AND (HIGH needs all releasing); active-low signal view → wired-OR (asserted if *any* device asserts). The FAULT bus above is exactly this: HIGH only while every comparator releases (wired-AND on voltage), but read as "fault if *any* comparator trips" (wired-OR on the active-low meaning). A shared `/INT` interrupt line works the same way.
 
 This is exactly why [[learning/notes/micro-context/i2c|I2C]] and shared interrupt lines use open-drain: any chip can assert the line, and no combination of drivers can ever short the bus.
 

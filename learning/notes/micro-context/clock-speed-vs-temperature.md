@@ -3,12 +3,13 @@ term: Clock Speed vs Temperature
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-speed]]
 
 # Clock Speed vs Temperature
 
-> **See also:** [[micro-context/clock-speed]] | [[micro-context/thermal-runaway]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** Every clock edge causes transistors to switch, and switching dissipates energy as heat. Power scales with frequency (P ∝ f) and voltage squared (P ∝ V²), so higher clock speeds generate more heat—which is why CPUs need cooling and why "turbo boost" is temporary.
+**Definition:** Every [[learning/notes/micro-context/clock-edges|clock edge]] causes transistors to switch, and switching dissipates energy as heat. Power scales with frequency (P ∝ f) and [[learning/notes/quick-context/voltage|voltage]] squared (P ∝ V²), so higher clock speeds generate more heat—which is why CPUs need cooling and why "turbo boost" is temporary.
 
 ## How It Works
 
@@ -37,4 +38,4 @@ THE HEAT-SPEED RELATIONSHIP
   └─────────────────────────────────────────────────────────┘
 ```
 
-**Key insight:** Clock speed and temperature are locked in a feedback loop—faster clocks make more heat, but heat increases [[quick-context/transistor-analog-to-digital|leakage current]] and [[quick-context/thermal-noise-electronics|thermal noise]], degrading performance until the chip must slow down or risk errors.
+**Key insight:** Clock speed and temperature are locked in a feedback loop—faster clocks make more heat, but heat increases [[learning/notes/quick-context/transistor-analog-to-digital|leakage current]] and [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]], degrading performance until the chip must slow down or risk errors.

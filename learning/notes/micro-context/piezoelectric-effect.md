@@ -2,6 +2,7 @@
 term: Piezoelectric Effect
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/ceramic-resonator]]
 
 # Piezoelectric Effect
 
@@ -12,7 +13,7 @@ created: 2026-03-27
 - Certain crystal lattices lack a center of symmetry, so mechanical stress shifts positive and negative charge centers apart, creating a net polarization and measurable voltage across the material.
 - Applying an external electric field reverses the process — it displaces ions in the lattice, causing the material to physically expand or contract.
 - The relationship is linear for small deformations: $D = dT + \varepsilon E$ (electric displacement = piezoelectric coefficient $\times$ stress + permittivity $\times$ field).
-- This bidirectionality enables sustained oscillation in a [[micro-context/ceramic-resonator|ceramic resonator]]: an AC voltage deforms the crystal (converse effect), but the crystal's elastic lattice overshoots past equilibrium like a spring, and that overshoot generates a voltage (direct effect) that feeds back into the amplifier circuit — sustaining vibration at the crystal's mechanical resonant frequency, which is set by its physical dimensions, not the circuit.
+- This bidirectionality enables sustained oscillation in a [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]]: an AC voltage deforms the crystal (converse effect), but the crystal's elastic lattice overshoots past equilibrium like a spring, and that overshoot generates a voltage (direct effect) that feeds back into the amplifier circuit — sustaining vibration at the crystal's mechanical resonant frequency, which is set by its physical dimensions, not the circuit.
 
 ```
   Direct effect              Converse effect
@@ -34,7 +35,7 @@ created: 2026-03-27
 
 ## Why This Creates Sustained Oscillation
 
-Both effects working together is what makes a [[micro-context/ceramic-resonator|ceramic resonator]] vibrate at a precise frequency:
+Both effects working together is what makes a [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]] vibrate at a precise frequency:
 
 1. **Voltage applied** → converse effect → crystal physically deforms (expands or contracts depending on field direction)
 2. **Voltage removed/reversed** → the crystal's lattice has elastic restoring force (like a spring), so it doesn't just return to rest — it **overshoots** past its equilibrium position

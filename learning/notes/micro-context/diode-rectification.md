@@ -3,10 +3,11 @@ term: Diode Rectification (AC → DC)
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/diode]]
 
 # Diode Rectification (AC → DC)
 
-**Definition:** Using [[quick-context/diode|diodes]] as one-way valves to convert AC to DC. Since diodes only let current flow in one direction, they block or flip the negative portions of AC, producing output that's always positive.
+**Definition:** Using [[learning/notes/quick-context/diode|diodes]] as one-way valves to convert AC to DC. Since diodes only let current flow in one direction, they block or flip the negative portions of AC, producing output that's always positive.
 
 ## How It Works
 
@@ -27,6 +28,6 @@ AC input               After diodes            + Capacitor
  and negative         (still bumpy)          into steady DC
 ```
 
-**Key insight:** Every phone charger and power supply does this—diodes make the current all-positive, then a [[quick-context/capacitor|capacitor]] smooths out the bumps into steady DC.
+**Key insight:** Every phone charger and power supply does this—diodes make the current all-positive, then a [[learning/notes/quick-context/capacitor|capacitor]] smooths out the bumps into steady DC.
 
-> **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **See also:** [[learning/notes/quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

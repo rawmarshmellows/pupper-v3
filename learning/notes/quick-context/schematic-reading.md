@@ -3,9 +3,9 @@ topic: Schematic Reading
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/crystal-oscillator]]
 
-> **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like voltage dividers, decoupling networks, and pull-ups.
+> **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like [[learning/notes/quick-context/voltage|voltage]] dividers, decoupling networks, and pull-ups.
 
 # Schematic Reading
 
@@ -17,7 +17,7 @@ You download a datasheet or open-source hardware project and need to understand 
 
 | Term | Definition |
 |------|------------|
-| **Schematic Symbol** | A standardized graphical representation of a component. Each part type has a unique symbol (zigzag for [[quick-context/resistor|resistor]], two parallel lines for [[quick-context/capacitor|capacitor]], triangle for [[quick-context/diode|diode]], etc.). |
+| **Schematic Symbol** | A standardized graphical representation of a component. Each part type has a unique symbol (zigzag for [[learning/notes/quick-context/resistor|resistor]], two parallel lines for [[learning/notes/quick-context/capacitor|capacitor]], triangle for [[learning/notes/quick-context/diode|diode]], etc.). |
 | **Reference Designator** | A unique label identifying each component: R1, R2 (resistors), C1, C2 (capacitors), U1 (ICs), Q1 (transistors), D1 (diodes), L1 (inductors), J1 (connectors). |
 | **Net** | An electrical connection between two or more pins. All points on the same net are electrically connected, even if no line is drawn between them (connected by net labels). |
 | **Value Annotation** | The component value written next to the symbol: "10kΩ", "100nF", "3.3V". Tells you what specific part to use. |
@@ -182,17 +182,17 @@ SIMPLE LED BLINK CIRCUIT
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/resistor]]** — Represented by a zigzag (US) or rectangle (EU) symbol. Most common component on any schematic. Reference designator: R.
+- **[[learning/notes/quick-context/resistor]]** — Represented by a zigzag (US) or rectangle (EU) symbol. Most common component on any schematic. Reference designator: R.
 
-- **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
+- **[[learning/notes/quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[learning/notes/quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
-- **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
+- **[[learning/notes/quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process. See [[quick-context/pcb-layers]] for the individual Gerber files that translate a layout into manufacturing instructions.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — A schematic describes WHAT is connected; a PCB layout describes WHERE components are placed and HOW traces are routed physically. The schematic comes first in the design process. See [[learning/notes/quick-context/pcb-layers]] for the individual Gerber files that translate a layout into manufacturing instructions.
 
-- **[[quick-context/pupper-bom-control-board]]** — A real-world BOM walkthrough showing how reference designators (R5, U8, C18) connect the schematic to the physical parts list. Demonstrates reading BOM lines and tracing designators back to circuit function.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — A real-world BOM walkthrough showing how reference designators (R5, U8, C18) connect the schematic to the physical parts list. Demonstrates reading BOM lines and tracing designators back to circuit function.
 
 </details>
 
@@ -214,7 +214,7 @@ SIMPLE LED BLINK CIRCUIT
 **Q3:** Why is there always a small capacitor (100nF) next to every IC's power pins on a schematic?
 <details>
 <summary>Answer</summary>
-**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The decoupling capacitor, placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
+**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]], placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[learning/notes/quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
 </details>
 
 **Q4:** What's the difference between a junction dot (●) and a crossing without a dot?

@@ -2,6 +2,7 @@
 term: Thread Pitch (Screws)
 created: 2026-05-04
 ---
+> **Related:** [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/bambu-p2s-print-quality]]
 
 # Thread Pitch (Screws)
 

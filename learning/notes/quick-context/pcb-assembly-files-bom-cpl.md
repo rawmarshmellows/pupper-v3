@@ -5,7 +5,7 @@ created: 2026-06-05
 
 # PCB Assembly Files — BOM & CPL (Pick-and-Place)
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
+> **Related:** [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/transistor]]
 
 > **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
 
@@ -129,7 +129,7 @@ Designator│ Device       │ Mid X │ Mid Y  │ Pad X  │ Pad Y │Pins│L
 - **Pad X / Pad Y** = location of pin-1 pad — lets you verify orientation independent of rotation.
 - **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **SMD = Yes**.
 
-Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a comparator (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
+Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a [[learning/notes/quick-context/comparator|comparator]] (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
 
 **The one thing most outsiders get wrong about this is...** thinking the two files are redundant, or that the BOM contains positions. They're complementary halves: the BOM has zero geometry, the CPL has zero purchasing info, and the **reference designator is the only thing connecting them**. Lose the join (rename `Q1`→`Q3` in one file but not the other) and the assembler places a part it can't identify, or orders a part it can't place.
 

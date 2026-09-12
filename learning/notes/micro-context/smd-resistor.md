@@ -3,12 +3,13 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 # SMD Resistor
 
-> **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Surface-mount resistors are tiny rectangular components that limit current flow. The "0402" size (1.0mm × 0.5mm) used in your Pupper BOM is about the size of a grain of sand. Values like "10kΩ" set voltage dividers, pull-ups, current limits, and feedback networks throughout the circuit.
+**Definition:** Surface-mount resistors are tiny rectangular components that limit current flow. The "0402" size (1.0mm × 0.5mm) used in your Pupper BOM is about the size of a grain of sand. Values like "10kΩ" set [[learning/notes/quick-context/voltage|voltage]] dividers, pull-ups, current limits, and feedback networks throughout the circuit.
 
 ## How It Works
 
@@ -38,4 +39,4 @@ SMD RESISTOR SIZES (to scale):
   └────────────┴─────────┴─────────────────────────┘
 ```
 
-**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the buck converter—they set the exact output voltage through a voltage divider ratio.
+**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the [[learning/notes/micro-context/buck-converter|buck converter]]—they set the exact output voltage through a voltage divider ratio.

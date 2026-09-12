@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -22,10 +22,10 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 |------|------------|
 | **Silicon** | The most common semiconductor material; a purified form of sand (silicon dioxide). Neither a good conductor nor a good insulator, which makes it controllable. |
 | **Doping** | Intentionally adding impurities to silicon to change its electrical properties. Adding phosphorus creates "n-type" silicon (extra electrons); adding boron creates "p-type" silicon (missing electrons, called "holes"). |
-| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
-| **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
+| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[learning/notes/quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
+| **Source/Drain** | The two terminals between which [[learning/notes/quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
-| **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
+| **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[learning/notes/quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -34,7 +34,7 @@ A transistor is fundamentally a **voltage-controlled switch**. Apply a small vol
 
 The magic happens through semiconductor physics. Pure silicon is a poor conductor. But by adding tiny amounts of impurities (doping), we create two types of silicon: n-type (with extra free electrons that can carry current) and p-type (with "holes" where electrons are missing, which also carry current by moving in the opposite direction). A transistor arranges these differently-doped regions so that the gate can create or destroy a conductive path.
 
-**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate capacitor. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
+**The secret weapon: The oxide layer is a [[learning/notes/quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate capacitor. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
 
 ```
 THE TRANSISTOR: A Voltage-Controlled Switch
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[learning/notes/micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -325,7 +325,7 @@ Actual transistor dimensions are larger than the node name suggests.
 
 As transistors shrink, several problems emerge:
 
-1. **[[quick-context/transistor-analog-to-digital|Leakage Current]]**: When transistors are "off," some current still leaks through. At nanometer scales, this leakage becomes significant, wasting power and generating heat even when idle.
+1. **[[learning/notes/quick-context/transistor-analog-to-digital|Leakage Current]]**: When transistors are "off," some current still leaks through. At nanometer scales, this leakage becomes significant, wasting power and generating heat even when idle.
 
 2. **Heat Density**: More transistors in the same area = more heat to dissipate. A modern CPU generates more heat per square centimeter than a stovetop.
 
@@ -333,7 +333,7 @@ As transistors shrink, several problems emerge:
 
 4. **Quantum Effects**: At atomic scales, electrons can "tunnel" through barriers that should block them, causing unpredictable behavior.
 
-This is why "Moore's Law" (transistor count doubling every ~2 years) is slowing down. The industry responds with innovations like 3D transistor structures (FinFET, Gate-All-Around), new materials (high-k dielectrics), and [[quick-context/pcb-chip-transistor-hierarchy|advanced packaging]] (putting multiple chips in one package instead of shrinking further).
+This is why "Moore's Law" (transistor count doubling every ~2 years) is slowing down. The industry responds with innovations like 3D transistor structures (FinFET, Gate-All-Around), new materials (high-k dielectrics), and [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|advanced packaging]] (putting multiple chips in one package instead of shrinking further).
 
 </details>
 
@@ -363,7 +363,7 @@ FROM TAP TO TRANSISTOR: What Actually Happens
               │
               ▼ Signal: "touched at coordinates (x, y)"
 
-2. SIGNAL TRAVELS TO CPU (through the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]])
+2. SIGNAL TRAVELS TO CPU (through the [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]])
    ─────────────────────────────────────────────────────────────────────────
    Touch controller → PCB trace → CPU package → CPU die
 
@@ -474,7 +474,7 @@ A transistor is:
 You could fit 50 BILLION transistors in a space the size of your fingernail.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking transistors are simple on/off switches like a light switch. In reality, a transistor is an exquisitely engineered quantum device that exploits the weird boundary between conductors and insulators. The "on" state is not 100% on, and the "off" state is not 100% off. Modern transistors operate with gate voltages under 1 volt, switching in picoseconds, while managing quantum effects like electron tunneling. The entire digital revolution rests on the ability to make these [[quick-context/transistor-analog-to-digital|imperfect analog devices behave as if they were perfect digital switches]], billions of them working in concert, every single one fabricated with atomic precision.
+**The one thing most outsiders get wrong about this is...** thinking transistors are simple on/off switches like a light switch. In reality, a transistor is an exquisitely engineered quantum device that exploits the weird boundary between conductors and insulators. The "on" state is not 100% on, and the "off" state is not 100% off. Modern transistors operate with gate voltages under 1 volt, switching in picoseconds, while managing quantum effects like electron tunneling. The entire digital revolution rests on the ability to make these [[learning/notes/quick-context/transistor-analog-to-digital|imperfect analog devices behave as if they were perfect digital switches]], billions of them working in concert, every single one fabricated with atomic precision.
 
 </details>
 
@@ -483,21 +483,21 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to PCB; each level bridges a massive size gap.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to PCB; each level bridges a massive size gap.
 
-- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication (Photolithography)]]** - How transistors are actually manufactured. Patterns of light are projected onto silicon wafers coated with light-sensitive chemicals, building up layer by layer like printing but at nanometer scale.
+- **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication (Photolithography)]]** - How transistors are actually manufactured. Patterns of light are projected onto silicon wafers coated with light-sensitive chemicals, building up layer by layer like printing but at nanometer scale.
 
-- **[[quick-context/code-to-gates-and-bootstrapping|Code to Gates and Bootstrapping]]** - The full compilation chain from high-level code through compilers, assemblers, and machine code down to logic gates built from transistors. Also covers how the first programs were bootstrapped from punch cards.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates and Bootstrapping]]** - The full compilation chain from high-level code through compilers, assemblers, and machine code down to logic gates built from transistors. Also covers how the first programs were bootstrapped from punch cards.
 
 - **Boolean Logic and Digital Circuits** - How transistor switches combine to perform computation. AND, OR, NOT gates built from transistors form the basis of all digital processing.
 
-- **[[quick-context/electric-current|Electric Current]]** - The flow of electrons that transistors control. Understanding current and voltage is essential for grasping what a transistor actually switches.
+- **[[learning/notes/quick-context/electric-current|Electric Current]]** - The flow of electrons that transistors control. Understanding current and voltage is essential for grasping what a transistor actually switches.
 
-- **[[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]** — Explains why a chip with 50 billion transistors at 0.65V doesn't need 32.5 billion volts. All transistors are in parallel, sharing the same voltage while currents add up.
+- **[[learning/notes/quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]** — Explains why a chip with 50 billion transistors at 0.65V doesn't need 32.5 billion volts. All transistors are in parallel, sharing the same voltage while currents add up.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+- **[[learning/notes/quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
 
 </details>
 

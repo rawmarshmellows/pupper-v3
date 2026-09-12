@@ -3,9 +3,9 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/wire-bonding]]
 
-> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
+> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic [[learning/notes/quick-context/silicon-die|silicon die]] to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional [[learning/notes/quick-context/wire-bonding|wire bonding]].
 
 # Flip-Chip (C4) Packaging
 
@@ -236,7 +236,7 @@ Here's what each layer does:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The full packaging stack from transistors to system board; flip-chip is one option at the die-to-substrate interface level.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The full packaging stack from transistors to system board; flip-chip is one option at the die-to-substrate interface level.
 
 - **Solder Reflow** — The heating process that melts solder to form connections; understanding reflow profiles is essential for flip-chip assembly quality.
 

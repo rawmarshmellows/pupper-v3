@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the MCP6541 (LCSC C623499) Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 >
 > **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 
@@ -63,7 +63,7 @@ Dimensions match too: LMC7211-N SOT23-5 is **1.43 mm** tall; the MCP6541 SOT23 (
 
 ### FUNCTION — it works, inside an envelope
 
-Walking the same spec rows the [[quick-context/comparator-specification|datasheet-reading note]] teaches:
+Walking the same spec rows the [[learning/notes/quick-context/comparator-specification|datasheet-reading note]] teaches:
 
 ```
 SPEC-BY-SPEC CROSS-REFERENCE  (C623499 replacing LMC7211-N)
@@ -112,7 +112,7 @@ SUPPLY-RANGE OVERLAP   (●━━● operating range;  ┄╳ absolute-max limit
 
 #### The behavior change: built-in hysteresis
 
-The LMC7211-N has **zero** internal hysteresis — its threshold is a single point, and you add hysteresis with an external feedback resistor if you want clean switching on slow/noisy signals. The MCP6541 has **~3.3 mV of hysteresis baked in** (1.5–6.5 mV range). For most threshold-detect circuits this is a *bonus* (cleaner edges, no external resistors). But it is **not removable** — if the original design depended on a hysteresis-free linear crossing (e.g. using the comparator as a precise 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]] or zero-crossing reference), the swap changes the answer.
+The LMC7211-N has **zero** internal hysteresis — its threshold is a single point, and you add hysteresis with an external feedback [[learning/notes/quick-context/resistor|resistor]] if you want clean switching on slow/noisy signals. The MCP6541 has **~3.3 mV of hysteresis baked in** (1.5–6.5 mV range). For most threshold-detect circuits this is a *bonus* (cleaner edges, no external resistors). But it is **not removable** — if the original design depended on a hysteresis-free linear crossing (e.g. using the comparator as a precise 1-bit [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] or zero-crossing reference), the swap changes the answer.
 
 </details>
 
@@ -137,7 +137,7 @@ The professional read: **a replacement is rarely "the same part."** It's a part 
 <details>
 <summary><strong>Concrete Example</strong> — Two verdicts from the same checklist</summary>
 
-Run the [[quick-context/comparator-specification|spec checklist]] against two different LMC7211-N circuits and you get opposite answers — which is the whole point of checking *function*, not just *footprint*.
+Run the [[learning/notes/quick-context/comparator-specification|spec checklist]] against two different LMC7211-N circuits and you get opposite answers — which is the whole point of checking *function*, not just *footprint*.
 
 **Case A — 3.0 V Li-ion undervoltage monitor (the worked circuit in [[quick-context/comparator-specification#concrete-example|the spec note]]):**
 
@@ -171,15 +171,15 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/comparator-specification]]** — The datasheet-reading note this cross-reference is built on; its *Choosing a Replacement* section is the exact checklist applied here. Read it for what each spec row (§4.1–4.6) means.
+- **[[learning/notes/quick-context/comparator-specification]]** — The datasheet-reading note this cross-reference is built on; its *Choosing a Replacement* section is the exact checklist applied here. Read it for what each spec row (§4.1–4.6) means.
 
-- **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
+- **[[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
+- **[[learning/notes/quick-context/comparator]]** — How a comparator works ([[learning/notes/quick-context/differential-pair|differential pair]], push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
 
-- **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
+- **[[learning/notes/quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
 
-- **[[micro-context/adc-analog-to-digital-converter]]** — A comparator is a 1-bit ADC; this is the one use where the MCP6541's *built-in hysteresis* is a liability rather than a feature.
+- **[[learning/notes/micro-context/adc-analog-to-digital-converter]]** — A comparator is a 1-bit ADC; this is the one use where the MCP6541's *built-in hysteresis* is a liability rather than a feature.
 
 - **Cross-referencing / second-sourcing** — A reusable skill: never shop by name or price; match every guaranteed spec, in *your* conditions, plus form (package + pinout + dimensions).
 
@@ -209,7 +209,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 **Q4:** A teammate says "the MCP6541 has hysteresis built in, so it's strictly better." When is that *wrong*?
 <details>
 <summary>Answer</summary>
-**When the original design needed *no* hysteresis.** The 3.3 mV internal hysteresis is **not removable**. If the LMC7211-N was used as a precise 1-bit ADC or a zero-crossing reference where the threshold must be a single unbiased point, baking in 3.3 mV of hysteresis changes the result. Built-in hysteresis is a *behavior change*, a bonus for threshold-detect but a liability for precise linear crossing. See: How It Works (built-in hysteresis) and the [[micro-context/adc-analog-to-digital-converter|ADC]] link.
+**When the original design needed *no* hysteresis.** The 3.3 mV internal hysteresis is **not removable**. If the LMC7211-N was used as a precise 1-bit ADC or a zero-crossing reference where the threshold must be a single unbiased point, baking in 3.3 mV of hysteresis changes the result. Built-in hysteresis is a *behavior change*, a bonus for threshold-detect but a liability for precise linear crossing. See: How It Works (built-in hysteresis) and the [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] link.
 </details>
 
 **Q5:** The LMC7211-N's propagation delay is ~450 ns; the MCP6541's is ~4 µs. For which kind of signal does this 9× gap *not* matter, and why?

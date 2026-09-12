@@ -3,12 +3,13 @@ term: Oxidation
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/electrodes]] | [[learning/notes/quick-context/electrolysis]]
 
 # Oxidation
 
-> **See also:** [[quick-context/anions-and-oxidation]]
+> **See also:** [[learning/notes/quick-context/anions-and-oxidation]]
 
-**Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
+**Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[learning/notes/quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
 
 ## How It Works
 
@@ -33,4 +34,4 @@ Oxidation = losing electrons
    2Cl⁻  → Cl₂  + 2e⁻   (electrolysis)
 ```
 
-**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[quick-context/rust|Rusting iron]], a [[quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[quick-context/electrolysis|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.
+**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[learning/notes/quick-context/rust|Rusting iron]], a [[learning/notes/quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[learning/notes/quick-context/electrolysis|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.
