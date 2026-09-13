@@ -4,9 +4,11 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitance|Capacitance]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110]]
+
 # I2C
 
-> **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | Pull Up Pull Down Resistors
 
 **Definition:** Inter-Integrated Circuit — a 2-wire serial protocol (SDA for data, SCL for clock) that lets a master chip talk to many peripheral chips on the same bus. Each device has a unique 7-bit address, so the master selects who to talk to. Runs at 100 kHz (standard) or 400 kHz (fast mode). Used in your Pupper for the [[quick-context/pupper-brain|BNO086 IMU and ADS1110 ADC]] communicating with the main STM32.
 
