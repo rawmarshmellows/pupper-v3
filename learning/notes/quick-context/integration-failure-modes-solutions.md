@@ -3,7 +3,8 @@ topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
+
+> **Related:** [[quick-context/robot-cell-integration-best-practices|Robot Cell Integration Best Practices, Tools, and VLM Applications]] | [[quick-context/sil-rated-safety-functions|SIL-Rated Safety Functions]] | [[quick-context/plc-vs-software-control|PLC vs Software Control in Robotic Arm Systems]] | [[quick-context/preempt-rt|PREEMPT_RT: Real-Time Linux for Industrial Control]] | [[quick-context/oee-overall-equipment-effectiveness|OEE]]
 
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 
@@ -49,7 +50,7 @@ CASE RobotHandshake OF
 END_CASE
 ```
 
-The pattern: one side (typically the PLC) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
+The pattern: one side (typically the [[micro-context/plc-programmable-logic-controller|PLC]]) owns all timeouts and breaks symmetry. The robot is never allowed to wait indefinitely for PLC signals—if the PLC doesn't command within X seconds, the robot faults itself rather than hanging.
 
 **Race Conditions: Two-phase handshake with explicit acknowledgment**
 

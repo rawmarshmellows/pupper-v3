@@ -3,7 +3,8 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/soldering]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/substrate-ic-packaging|Substrate]] | [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]]
 
 > **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
 
@@ -20,7 +21,7 @@ The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm
 | **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
 | **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
 | **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
+| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. [[micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
 | **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
 
 <details>
@@ -41,7 +42,6 @@ PACKAGE FAMILY TREE
     │
     └── SIP (Single In-line Package)
         • 1 row of pins (less common)
-
 
     SURFACE MOUNT (sits on PCB surface)
     ─────────────────────────────────────────
@@ -72,7 +72,6 @@ PACKAGE FAMILY TREE
         • Reflow only, X-ray inspection required
         • Best for high pin count (processors, FPGAs)
 
-
 SIZE COMPARISON (approximate scale)
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -86,7 +85,6 @@ SIZE COMPARISON (approximate scale)
     └────────────────────┘   └──────────┘
     ~9.5 × 6.4 mm            ~5 × 4 mm         ~2.9 × 1.3 mm
 
-
     QFP-48 (0.5mm pitch)    QFN-32 (0.5mm pitch)    BGA-256
     ┌──┬┬┬┬┬┬┬┬┬┬──┐       ┌──────────┐            ┌─────────┐
     ├─            ─┤       │ ○○○○○○○○ │            │●●●●●●●●●│
@@ -96,7 +94,6 @@ SIZE COMPARISON (approximate scale)
     ├─            ─┤       │ ○○○○○○○○ │            │●●●●●●●●●│
     └──┴┴┴┴┴┴┴┴┴┴──┘       └──────────┘            └─────────┘
     ~7 × 7 mm               ~5 × 5 mm              ~15 × 15 mm
-
 
 PIN NUMBERING
 ══════════════════════════════════════════════════════════════════════════════
@@ -170,7 +167,6 @@ CHOOSING A PACKAGE FOR THE ATmega328P
     └────────────────────┘      0.8mm pitch             5 × 5 mm
     ~35 × 7.6 mm                                        0.5mm pitch
     2.54mm pitch
-
 
     Use Case Comparison:
     ────────────────────────────────────────────────────────────────────────

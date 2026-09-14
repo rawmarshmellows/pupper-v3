@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+
+> **Related:** [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/melt-index|Melt Index: Quick Context]] | [[quick-context/glass-transition-temperature|Glass Transition Temperature - A Beginner's Guide]] | [[quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]] | [[quick-context/tensile-strength-materials|Tensile Strength: What 27.3 ± 0.8 MPa Actually Means]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 
@@ -101,7 +102,6 @@ CRYSTALLINE REGION (ordered chains)
   Like uncooked spaghetti in a box.
   DENSE → STRONG → SHRINKS A LOT WHEN COOLING
 
-
 AMORPHOUS REGION (tangled chains)
 ====================================
 
@@ -131,7 +131,6 @@ Hot nozzle (200-300°C) deposits molten plastic onto cold bed (60°C).
   ░░░░░░░░░░░░░░░░░░  ← First layer (cooling fast!)
   ══════════════════  ← Cold print bed (60°C)
 
-
 STAGE 2: First layer cools and crystallizes
 ============================================
 Bottom of first layer touches cold bed → cools fast → crystallizes → SHRINKS
@@ -143,7 +142,6 @@ Bottom of first layer touches cold bed → cools fast → crystallizes → SHRIN
   The bottom wants to be SMALLER but the bed won't let it.
   This creates internal STRESS.
 
-
 STAGE 3: More layers added
 ===========================
 Each new layer is hot. Old layers are cold. Shrinkage mismatch builds up.
@@ -154,7 +152,6 @@ Each new layer is hot. Old layers are cold. Shrinkage mismatch builds up.
   ══════════════════  ← Bed (holding everything down)
 
   Stress keeps building...
-
 
 STAGE 4: THE WARP
 ==================

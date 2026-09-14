@@ -4,9 +4,11 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/inductor]] | [[quick-context/capacitor]] | [[quick-context/voltage-current-causality|Voltage-Current Causality]] | [[micro-context/ac-dc-current|AC vs DC Current]] | [[micro-context/current-electrons-per-second|Current and Electrons Per Second]]
+
 # Current Behavior with Inductors vs Capacitors
 
-**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
+**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, [[quick-context/voltage|voltage]] can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
 
 ## How It Works
 

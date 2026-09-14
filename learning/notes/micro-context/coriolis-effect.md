@@ -3,6 +3,8 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[micro-context/piezoelectric-effect]]
+
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

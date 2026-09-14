@@ -3,9 +3,9 @@ topic: Whitespace Mapping
 created: 2026-02-10
 ---
 
-# Whitespace Mapping
+> **Related:** [[quick-context/mcdonald-kam-model|Malcolm McDonald KAM Model]] | [[quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman Strategic Selling / LAMP]] | [[quick-context/post-sale-account-engagement|Post-Sale Account Engagement]] | [[quick-context/sandler-kare-segmentation|Sandler KARE Account Segmentation]] | [[quick-context/sales-methodology-layering]]
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+# Whitespace Mapping
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 

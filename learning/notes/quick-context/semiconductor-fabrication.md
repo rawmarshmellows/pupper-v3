@@ -4,7 +4,8 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[quick-context/transistor-design-history]] | [[quick-context/doped-silicon]] | [[quick-context/transistor]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -258,7 +259,6 @@ MAJOR FABRICATION EQUIPMENT
    │  All in vacuum (EUV absorbed by air!)                              │
    └─────────────────────────────────────────────────────────────────────┘
 
-
 2. DEPOSITION TOOLS
    ─────────────────────────────────────────────────────────────────────────
 
@@ -288,7 +288,6 @@ MAJOR FABRICATION EQUIPMENT
    • Extremely precise thickness control
    • Used for: gate oxides (just a few atoms thick!)
 
-
 3. PLASMA ETCHER
    ─────────────────────────────────────────────────────────────────────────
    • Creates reactive plasma that chemically attacks exposed material
@@ -308,7 +307,6 @@ MAJOR FABRICATION EQUIPMENT
         │ ░░░░░░░░░░░░░░░░░░ │     resist was removed
         └─────────────────────┘
 
-
 4. ION IMPLANTER
    ─────────────────────────────────────────────────────────────────────────
    • Accelerates dopant ions (B⁺, P⁺, As⁺) to high velocity
@@ -325,7 +323,6 @@ MAJOR FABRICATION EQUIPMENT
         │░░░░░░░░░░░░░░░░░░░░░░░│  masked by photoresist
         └───────────────────────┘
 
-
 5. CMP (Chemical Mechanical Planarization)
    ─────────────────────────────────────────────────────────────────────────
    • Polishes wafer surface perfectly flat
@@ -338,7 +335,6 @@ MAJOR FABRICATION EQUIPMENT
         │ ░░░░░░░░░░░░░░░░░░░ │   →    │░░░░░░░░░░░░░░░░░░░░│
         └─────────────────────┘        └─────────────────────┘
          Uneven surface                 Perfectly flat!
-
 
 6. INSPECTION SYSTEMS
    ─────────────────────────────────────────────────────────────────────────
@@ -381,7 +377,6 @@ THE TRADEOFF TRIANGLE
                 COST                 THROUGHPUT
            (cheaper fabs)         (more wafers/hour)
 
-
 REAL NUMBERS:
 ─────────────────────────────────────────────────────────────────────────────
 • Leading-edge fab (TSMC 3nm):      $20+ billion to build
@@ -418,7 +413,6 @@ STEP 1: Create silicon fins
         └─────────────────────┘         └─────────────────────┘
          Bulk silicon                    Fins etched out
 
-
 STEP 2: Deposit gate oxide (ALD)
 ─────────────────────────────────────────────────────────────────────────────
 • Atomic Layer Deposition: ~1nm thick high-k oxide
@@ -432,7 +426,6 @@ STEP 2: Deposit gate oxide (ALD)
         │  └─┘   └─┘   └─┘   └─┘   └─┘                      │
         │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│
         └─────────────────────────────────────────────────────┘
-
 
 STEP 3: Deposit gate metal (PVD)
 ─────────────────────────────────────────────────────────────────────────────
@@ -448,7 +441,6 @@ STEP 3: Deposit gate metal (PVD)
         └─────────────────────────────────────────────────────┘
          Metal covers everything
 
-
 STEP 4: CMP to planarize
 ─────────────────────────────────────────────────────────────────────────────
 • Polish down to fin tops
@@ -459,7 +451,6 @@ STEP 4: CMP to planarize
         │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│
         └─────────────────────────────────────────────────────┘
          Flat surface, gate metal between fins
-
 
 STEP 5: Photolithography + etch to define gate shape
 ─────────────────────────────────────────────────────────────────────────────
@@ -510,7 +501,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar [[micro-context/mosfet|MOSFET]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 

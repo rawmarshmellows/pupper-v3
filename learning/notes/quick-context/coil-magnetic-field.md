@@ -3,9 +3,9 @@ topic: Why Current Through a Coil Creates a Magnetic Field
 created: 2026-02-14
 ---
 
-# Why Current Through a Coil Creates a Magnetic Field
+> **Related:** [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/maxwell-equations|Maxwell's Equations]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]]
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
+# Why Current Through a Coil Creates a Magnetic Field
 
 > **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 
@@ -49,10 +49,8 @@ THE EXPERIMENTAL FACT (Oersted, 1820):
            to Earth's                         Compass deflected
            magnetic north                     by wire's field
 
-
     This was the first evidence that electricity and magnetism are related.
     It led directly to Maxwell's equations and our modern understanding.
-
 
 THE RELATIVISTIC EXPLANATION (Einstein, 1905):
 ──────────────────────────────────────────────────────────────────────────────
@@ -76,7 +74,6 @@ THE RELATIVISTIC EXPLANATION (Einstein, 1905):
     field." They're the same phenomenon viewed from different velocities.
 
     This is why we say "electromagnetism"—they're fundamentally ONE thing.
-
 
 THE PRACTICAL ANSWER (What to remember):
 ──────────────────────────────────────────────────────────────────────────────
@@ -114,7 +111,6 @@ MAGNETIC FIELD AROUND A STRAIGHT WIRE — Biot-Savart Law
          │                                    (when current goes INTO page)
          ▼
 
-
     FORMULA FOR FIELD STRENGTH:
     ──────────────────────────────────────────────────────────────────────────
 
@@ -132,7 +128,6 @@ MAGNETIC FIELD AROUND A STRAIGHT WIRE — Biot-Savart Law
         B = 2 × 10⁻⁴ T = 200 μT
 
         That's about 4× Earth's magnetic field—enough to deflect a compass!
-
 
 THE RIGHT-HAND RULE:
 ──────────────────────────────────────────────────────────────────────────────
@@ -178,7 +173,6 @@ SINGLE LOOP:
     Inside the loop, all these fields ADD UP (same direction).
     Outside the loop, they partially CANCEL.
 
-
 MULTIPLE LOOPS (SOLENOID):
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -197,7 +191,6 @@ MULTIPLE LOOPS (SOLENOID):
           S                                    N
         South pole                         North pole
 
-
     WHY THIS WORKS:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -212,7 +205,6 @@ MULTIPLE LOOPS (SOLENOID):
        (One side has current going left, other side has current going right)
 
     5. Result: Strong, uniform field INSIDE. Nearly zero field OUTSIDE.
-
 
                     Outside: B ≈ 0                Outside: B ≈ 0
                          │                              │
@@ -254,7 +246,6 @@ SOLENOID FIELD FORMULA
 
     I  = current through the wire (amperes)
 
-
     ALTERNATIVE FORM:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -263,7 +254,6 @@ SOLENOID FIELD FORMULA
     WHERE:
         N = total number of turns
         L = length of solenoid (meters)
-
 
 WHY THIS FORMULA WORKS (Ampère's Law derivation):
 ══════════════════════════════════════════════════════════════════════════════
@@ -282,7 +272,6 @@ WHY THIS FORMULA WORKS (Ampère's Law derivation):
                  │                             │
                  a ─────────────────────────── d
 
-
     Path a→b: Outside solenoid, B ≈ 0, contributes ~0
     Path b→c: Inside solenoid, B parallel to path, contributes B × L
     Path c→d: Outside solenoid, B ≈ 0, contributes ~0
@@ -298,7 +287,6 @@ WHY THIS FORMULA WORKS (Ampère's Law derivation):
 
     Solving for B:
     B = μ₀ × n × I  ✓
-
 
 PRACTICAL CALCULATIONS:
 ══════════════════════════════════════════════════════════════════════════════
@@ -321,7 +309,6 @@ PRACTICAL CALCULATIONS:
 
     That's about 250× Earth's field! Strong enough to attract iron.
 
-
     EXAMPLE 2: MRI machine
     ─────────────────────────────────────────────────────────────────────────
 
@@ -337,7 +324,6 @@ PRACTICAL CALCULATIONS:
     This is why MRI machines use superconducting coils—regular copper
     would melt at these currents. Superconductors have zero resistance,
     so no heating occurs.
-
 
     EXAMPLE 3: Magnetizer (from [[small-context/permanent-magnet-creation]])
     ─────────────────────────────────────────────────────────────────────────
@@ -371,7 +357,6 @@ EFFECT OF MAGNETIC CORE MATERIAL
                                 • Permalloy: 100,000
                                 • Supermalloy: 800,000
 
-
     AMPLIFICATION FACTOR:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -382,7 +367,6 @@ EFFECT OF MAGNETIC CORE MATERIAL
 
     Your 12.6 mT air-core electromagnet becomes 63 T with iron!
     (In reality, iron saturates around 2 T, limiting this)
-
 
     WHY IRON WORKS — Domain Alignment:
     ─────────────────────────────────────────────────────────────────────────
@@ -395,7 +379,6 @@ EFFECT OF MAGNETIC CORE MATERIAL
     • Air core: just you pushing
     • Iron core: you + 5000 helpers all pushing together
 
-
     CORE MATERIALS COMPARISON:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -407,7 +390,6 @@ EFFECT OF MAGNETIC CORE MATERIAL
     Silicon steel     │ 5000-7000   │ Transformers, motors
     Pure iron         │ 4000-5000   │ DC electromagnets
     Mumetal           │ 80,000-100,000 │ Magnetic shielding
-
 
     SATURATION — The Limit:
     ─────────────────────────────────────────────────────────────────────────
@@ -469,7 +451,6 @@ Go superconducting     →    Requires cryogenic cooling (-269°C)
                              Expensive infrastructure
                              Limited to specialized applications
 
-
 THE HEAT PROBLEM IN DETAIL:
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -495,11 +476,11 @@ THE HEAT PROBLEM IN DETAIL:
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
 | Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
+| Inductor in power supply | Specified inductance, not field | Ferrite or powdered iron core |
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 
@@ -521,13 +502,11 @@ CONSTRAINTS:
 • Maximum continuous current: 2A (24W power budget)
 • Wire: 22 AWG copper (0.644 mm diameter, 52.9 mΩ/m)
 
-
 STEP 1: Choose a Core
 ──────────────────────────────────────────────────────────────────────────────
 
     Using a soft iron bolt, 8mm diameter, 50mm long
     Relative permeability: μᵣ ≈ 4000 (typical soft iron)
-
 
 STEP 2: Determine Wire Length from Resistance Constraint
 ──────────────────────────────────────────────────────────────────────────────
@@ -539,7 +518,6 @@ STEP 2: Determine Wire Length from Resistance Constraint
     Maximum wire length: L_wire = 6 / 0.0529 = 113 meters
 
     (We'll use ~100m to leave some margin)
-
 
 STEP 3: Calculate Number of Turns
 ──────────────────────────────────────────────────────────────────────────────
@@ -558,7 +536,6 @@ STEP 3: Calculate Number of Turns
 
     This is getting bulky. Let's use 500 turns as a practical compromise.
 
-
 STEP 4: Recalculate with 500 Turns
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -570,7 +547,6 @@ STEP 4: Recalculate with 500 Turns
     We need to add resistance. Use 6Ω total (includes coil):
     I = 12/6 = 2A (within budget)
     External resistor needed: 6 - 0.66 = 5.34Ω (use 5Ω + wire resistance)
-
 
 STEP 5: Calculate Magnetic Field
 ──────────────────────────────────────────────────────────────────────────────
@@ -585,7 +561,6 @@ STEP 5: Calculate Magnetic Field
     B = 100.5 T  (theoretical!)
 
     BUT iron saturates at ~2T, so actual field ≈ 1.5-2 T
-
 
 STEP 6: Estimate Lifting Force
 ──────────────────────────────────────────────────────────────────────────────
@@ -602,7 +577,6 @@ STEP 6: Estimate Lifting Force
     F = 44.8 N ≈ 45 N
 
     That's enough to lift 4.5 kg! Our 1 kg target is easily met.
-
 
 FINAL DESIGN:
 ──────────────────────────────────────────────────────────────────────────────
@@ -633,7 +607,7 @@ FINAL DESIGN:
     └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed voltage supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
+**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed [[quick-context/voltage|voltage]] supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
 
 </details>
 
@@ -656,7 +630,7 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday [[quick-context/tensor|tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 

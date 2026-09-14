@@ -3,24 +3,24 @@ topic: Comparator
 created: 2026-04-01
 ---
 
-# Comparator
+> **Related:** [[quick-context/comparator-specification|Comparator Specifications]] | [[quick-context/inside-the-triangle]] | [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[quick-context/op-amp|Op-Amp]]
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+# Comparator
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
-A battery monitor needs to answer a simple question: "Is the battery voltage above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
+A battery monitor needs to answer a simple question: "Is the battery [[quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an op-amp, but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A pull-up resistor provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
@@ -48,7 +48,6 @@ COMPARATOR FUNCTION
     • No feedback resistor (operates open-loop)
     • Output is digital (slams to rail), not analog
     • Optimized for speed, not gain precision
-
 
 TRANSFER CHARACTERISTIC (Comparator vs Op-Amp)
 ==============================================================================
@@ -138,7 +137,6 @@ INTERNAL BLOCK DIAGRAM
                  difference            difference to         clean digital
                  between inputs        full swing            output levels
 
-
 TRANSISTOR-LEVEL SCHEMATIC (all stages in one view)
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -182,7 +180,6 @@ TRANSISTOR-LEVEL SCHEMATIC (all stages in one view)
     │  • Output is digital (open-drain Q6), not linear push-pull   │
     └──────────────────────────────────────────────────────────────┘
 
-
 WHAT EACH PART DOES
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -205,7 +202,6 @@ WHAT EACH PART DOES
                      open-drain)          Q6 OFF → pull-up sets HIGH level.
                                           Can also be push-pull (add PMOS
                                           above Q6) for faster transitions.
-
 
 SIGNAL FLOW
 ══════════════════════════════════════════════════════════════════════════════
@@ -280,7 +276,6 @@ WITHOUT HYSTERESIS (bare comparator):
     Problem: Every time noise causes the input to cross the threshold,
     the output toggles. A slowly-changing signal + noise = rapid oscillation.
 
-
 WITH HYSTERESIS (Schmitt trigger comparator):
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -301,7 +296,6 @@ WITH HYSTERESIS (Schmitt trigger comparator):
     The noise wiggles never cross BOTH thresholds, so the output
     doesn't chatter. The price: you lose precision about exactly
     where the transition happens (it's somewhere in the hysteresis band).
-
 
 HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 ──────────────────────────────────────────────────────────────────────────────
@@ -380,7 +374,6 @@ CIRCUIT:
     At VBAT = 4.2V:  V(+) = 2.10V
     At VBAT = 3.5V:  V(+) = 1.75V
 
-
                                                  Vdd (3.3V)
     VBAT                                          │
       │                                     ┌─────┴─────┐
@@ -395,7 +388,6 @@ CIRCUIT:
       │                     (open-drain)          │
      GND
 
-
 DESIGN:
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -407,7 +399,6 @@ DESIGN:
 
     When VBAT < 3.0V: V(+) < Vref → output LOW (open-drain ON)
                        VBAT_OK pulled to GND → MCU sees LOW → warning!
-
 
 ADDING HYSTERESIS (prevent chatter at 3.0V boundary):
 ──────────────────────────────────────────────────────────────────────────────
@@ -423,7 +414,6 @@ ADDING HYSTERESIS (prevent chatter at 3.0V boundary):
     Hysteresis band: ~60mV → battery must recover to 3.03V before
     the warning clears. Prevents chattering when battery sits at 3.0V.
 
-
 CURRENT CONSUMPTION:
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -432,7 +422,7 @@ CURRENT CONSUMPTION:
     Total: ~23 μA — negligible for a battery that holds 2000+ mAh
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation capacitor that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
+**The one thing most outsiders get wrong about this is...** thinking a comparator is just a "degraded op-amp" that happens to be used without feedback. In reality, a comparator is a deliberately different design. The internal compensation [[quick-context/capacitor|capacitor]] that makes op-amps stable in feedback loops is exactly what makes them terrible comparators---it slows down the output transition, causes the output to ring or latch up when overdriven, and the output stage may not reach logic-compatible voltage levels. Comparator ICs are designed from the ground up for fast overdrive recovery, clean rail-to-rail digital output, and operation without negative feedback.
 
 </details>
 

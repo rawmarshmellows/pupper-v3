@@ -3,9 +3,9 @@ topic: Camera Fundamentals — Sensors, Lenses, and Calibration
 created: 2026-03-23
 ---
 
-# Camera Fundamentals — Sensors, Lenses, and Calibration
+> **Related:** [[quick-context/diode]] | [[quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics]] | [[quick-context/pupper-lab7-vision-tracking|Pupper Lab 7 — Vision + Tracking]] | [[quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[micro-context/reverse-and-forward-bias]]
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+# Camera Fundamentals — Sensors, Lenses, and Calibration
 
 > **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
@@ -17,10 +17,10 @@ Without understanding how cameras actually form images — the physics of sensor
 
 | Term | Definition |
 |------|------------|
-| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
+| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of photodiodes that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip ADCs |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
-| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
+| **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of [[quick-context/voltage|voltage]] ratio) |
 | **Intrinsic Matrix (K)** | A $3 \times 3$ upper-triangular matrix encoding the camera's internal geometry — focal lengths $f_x, f_y$ in pixel units, principal point $(c_x, c_y)$, and optionally skew — used to project 3D camera-frame points onto the 2D image plane |
 
 <details>
@@ -58,7 +58,6 @@ FROM PHOTON TO PIXEL VALUE
                              │
                              ▼
                      PIXEL VALUE (e.g., 2847)
-
 
   SENSOR GRID (e.g., 4000 x 3000 = 12 megapixels)
   ┌───┬───┬───┬───┬───┬───┬───┐
@@ -147,7 +146,6 @@ FOCAL LENGTH, SENSOR SIZE, AND FIELD OF VIEW
 
   Smaller sensor → narrower FOV → equivalent to "zooming in"
 
-
   LENS FOCAL LENGTH EFFECT (on full frame):
 
   Wide (16mm)        Normal (50mm)       Telephoto (200mm)
@@ -162,7 +160,6 @@ FOCAL LENGTH, SENSOR SIZE, AND FIELD OF VIEW
   └──────────────┘   └──────────────┘   └──────────────┘
   Lots of scene       Natural view       Tight crop on
   visible                                distant detail
-
 
   THE THIN LENS MODEL:
   ================================================================
@@ -227,7 +224,6 @@ WHAT "ONE STOP" MEANS ACROSS CAMERA CONTROLS
   Doubling ISO doubles the signal, but also amplifies noise.
   This is why high-ISO images look grainy.
 
-
   THE EXPOSURE TRIANGLE:
   ─────────────────────────────────────────────────────────
 
@@ -286,7 +282,6 @@ DYNAMIC RANGE — WHY IT MATTERS
   Full frame:    ~13-15 stops (Sony A7 series)
   Smartphone:    ~10-11 stops (compensated with HDR stacking)
   Webcam:        ~8-9 stops
-
 
   CONVERSION BETWEEN UNITS:
   ┌───────────┬───────────┬──────────────┐
@@ -347,7 +342,6 @@ THE FULL PROJECTION PIPELINE
    - Visual SLAM (camera motion → 3D map)
    - AR overlays (place virtual objects in real scenes)
    - Fisheye undistortion (Pupper Lab 7 uses this)
-
 
   DISTORTION (added to intrinsic model):
   ================================================================

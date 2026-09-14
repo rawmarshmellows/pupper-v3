@@ -3,7 +3,8 @@ topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
+
+> **Related:** [[quick-context/integration-failure-modes-solutions|Solving Robot Cell Integration Failure Modes]] | [[quick-context/plc-vs-software-control|PLC vs Software Control in Robotic Arm Systems]] | [[quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[quick-context/preempt-rt|PREEMPT_RT: Real-Time Linux for Industrial Control]] | [[quick-context/plc-vs-software|PLC: Why It's Different From Software]]
 
 > **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
 
@@ -27,7 +28,7 @@ Without this framework, there's no way to systematically design, verify, and cer
 | **Safe Failure Fraction (SFF)** | The proportion of failures that leave the system in a safe state (e.g., valve fails closed)—higher SFF allows higher SIL with less redundancy. |
 | **Dual-Channel Architecture (1oo2)** | Two independent systems that must both agree to allow operation; either can independently trigger shutdown—the standard pattern for SIL 2/3. |
 | **Diagnostic Coverage (DC)** | The percentage of dangerous failures detectable by automatic diagnostics—higher DC reduces the "undetected dangerous failure" rate that drives PFD. |
-| **Safety PLC** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
+| **Safety [[micro-context/plc-programmable-logic-controller|PLC]]** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
 
 <details>
 <summary><strong>How It Works</strong></summary>

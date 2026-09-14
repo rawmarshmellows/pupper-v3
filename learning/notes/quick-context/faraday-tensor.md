@@ -3,9 +3,9 @@ topic: Faraday Tensor
 created: 2026-02-20
 ---
 
-# Faraday Tensor
+> **Related:** [[quick-context/tensor]] | [[quick-context/maxwell-equations|Maxwell's Equations]] | [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]]
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
+# Faraday Tensor
 
 > **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 
@@ -56,7 +56,6 @@ THE FARADAY TENSOR — Structure and Components
     • First row/column: Electric field components E_x, E_y, E_z
     • 3×3 spatial block: Magnetic field components (as antisymmetric matrix)
 
-
     THE SIGN CONVENTION:
     ────────────────────────────────────────────────────────────────────────────
 
@@ -64,7 +63,6 @@ THE FARADAY TENSOR — Structure and Components
     F^ij = ε_ijk B_k  (space-space components = magnetic field)
 
     Where ε_ijk is the Levi-Civita symbol (±1 for cyclic/anticyclic, 0 otherwise)
-
 
     WHY ANTISYMMETRIC?
     ────────────────────────────────────────────────────────────────────────────
@@ -103,7 +101,6 @@ TRANSFORMATION RULES (to first order in v/c for intuition):
 
     Where γ = 1/√(1 - v²/c²) ≈ 1 for slow speeds
 
-
 THE KEY INSIGHT:
 ────────────────────────────────────────────────────────────────────────────
 
@@ -114,7 +111,6 @@ THE KEY INSIGHT:
 
     What you call "electric" and what you call "magnetic" depends on
     your velocity.
-
 
 EXAMPLE: A Moving Charge Near a Wire
 ────────────────────────────────────────────────────────────────────────────
@@ -131,7 +127,6 @@ EXAMPLE: A Moving Charge Near a Wire
     • Stationary test charge feels NO force (B only affects moving charges)
     • E = 0, B ≠ 0
 
-
     In the electron's rest frame (moving right with electrons):
 
          Wire: - - - - - - - - -  ← electrons now stationary
@@ -145,7 +140,6 @@ EXAMPLE: A Moving Charge Near a Wire
     • Wire now creates an electric field E pointing toward wire
     • Test charge feels force toward wire (attraction to + charge)
     • E ≠ 0, B = different
-
 
     SAME PHYSICS, DIFFERENT DESCRIPTION:
     ────────────────────────────────────────────────────────────────────────────
@@ -173,7 +167,6 @@ CLASSICAL FORM (in 3D vectors):
     3. ∇ × E = -∂B/∂t              (Faraday's law)
     4. ∇ × B = μ₀J + μ₀ε₀ ∂E/∂t   (Ampère-Maxwell law)
 
-
 TENSOR FORM (in 4D spacetime):
 ────────────────────────────────────────────────────────────────────────────
 
@@ -181,9 +174,7 @@ TENSOR FORM (in 4D spacetime):
 
     ∂_μ F̃^μν = 0                  ← Contains equations 2 and 3
 
-
     That's it. Two equations capture all of electromagnetism.
-
 
 WHAT THE TENSOR EQUATIONS MEAN:
 ────────────────────────────────────────────────────────────────────────────
@@ -196,7 +187,6 @@ WHAT THE TENSOR EQUATIONS MEAN:
     • ν = 0 component: gives Gauss's law (charges are sources of E)
     • ν = 1,2,3 components: give Ampère-Maxwell law (currents create B)
 
-
     ∂_μ F̃^μν = 0  (using the dual tensor)
     ──────────────
 
@@ -204,7 +194,6 @@ WHAT THE TENSOR EQUATIONS MEAN:
     • The dual tensor swaps E ↔ B (with sign changes)
     • ν = 0: ∇ · B = 0 (no magnetic charges)
     • ν = 1,2,3: ∇ × E = -∂B/∂t (changing B creates E)
-
 
 WHY THIS MATTERS:
 ────────────────────────────────────────────────────────────────────────────
@@ -256,7 +245,6 @@ APPROACH 1: SEPARATE E AND B (classical, intuitive)
     Pros: Intuitive, practical for engineering, matches lab experience
     Cons: Hides the relativistic unity, makes transformations complex
 
-
 APPROACH 2: UNIFIED FARADAY TENSOR (relativistic, elegant)
 ────────────────────────────────────────────────────────────────────────────
 
@@ -283,7 +271,7 @@ APPROACH 2: UNIFIED FARADAY TENSOR (relativistic, elegant)
 | When to Use | E/B Separate | Faraday Tensor |
 |-------------|--------------|----------------|
 | Circuit design | Better | Overkill |
-| [[quick-context/inductor\|Inductor]]/[[quick-context/capacitor\|capacitor]] analysis | Better | Overkill |
+| Inductor/capacitor analysis | Better | Overkill |
 | High-velocity particles | Works but messy | Natural |
 | Particle physics | Awkward | Required |
 | General relativity + EM | Impossible | Required |
@@ -322,7 +310,6 @@ FIRST INVARIANT:  B² - E²/c²  =  (1/2) F_μν F^μν
                         E and B always perpendicular and equal magnitude
                         This is the case for electromagnetic waves!
 
-
 SECOND INVARIANT:  E · B  =  (1/4) F_μν F̃^μν
 ────────────────────────────────────────────────────────────────────────────
 
@@ -334,7 +321,6 @@ SECOND INVARIANT:  E · B  =  (1/4) F_μν F̃^μν
     If E · B = 0:  Fields are perpendicular
                    A frame exists where one field vanishes
                    (which one depends on the first invariant)
-
 
 EXAMPLE: Electromagnetic Wave
 ────────────────────────────────────────────────────────────────────────────
@@ -364,7 +350,6 @@ EXAMPLE: Electromagnetic Wave
     where it looks like a static E or static B field. The invariants
     forbid it!
 
-
 EXAMPLE: Point Charge at Rest
 ────────────────────────────────────────────────────────────────────────────
 
@@ -377,7 +362,6 @@ EXAMPLE: Point Charge at Rest
         B² - E²/c² = -E²/c² < 0  (electric-dominated)
         E · B = 0
 
-
     In frame moving past the charge at velocity v:
         E' ≠ 0 (compressed in direction of motion)
         B' ≠ 0 (now there's a magnetic field!)
@@ -386,7 +370,6 @@ EXAMPLE: Point Charge at Rest
         E' · B' = 0              (same as before!)
 
     The field "looks different" but the invariants are preserved.
-
 
 EXAMPLE: Current-Carrying Wire
 ────────────────────────────────────────────────────────────────────────────

@@ -3,7 +3,8 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/lenzs-law|Lenz's Law]] | [[quick-context/maxwell-equations|Maxwell's Equations]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]]
 
 > **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
 
@@ -27,7 +28,7 @@ Every power plant, battery, and solar panel is fundamentally an energy converter
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
@@ -79,7 +80,6 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
    │ Geothermal         │ Earth's heat → Steam turbine    │
    └────────────────────┴─────────────────────────────────┘
 
-
 2. CHEMICAL (Batteries/Galvanic Cells)
 ──────────────────────────────────────
    See [[quick-context/galvanic-cells-batteries]] for full details.
@@ -106,7 +106,6 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
    Battery voltage = E°cathode - E°anode
    (Determined by electrode materials)
-
 
 3. PHOTOVOLTAIC (Solar Cells)
 ─────────────────────────────
@@ -169,7 +168,6 @@ FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
     that created it. This is why inductors resist current changes
     and why generators require mechanical force to turn.
 
-
 TWO APPLICATIONS OF THE SAME LAW:
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -203,7 +201,6 @@ TWO APPLICATIONS OF THE SAME LAW:
     • Generator: mechanical motion → dΦ/dt → EMF → current out
     • Inductor: current change → dΦ/dt → back-EMF → opposes the change
 
-
 THE DEEP CONNECTION:
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -229,7 +226,6 @@ THE DEEP CONNECTION:
     │                                                (stores energy)         │
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
-
 
 WHY THIS MATTERS FOR POWER SYSTEMS:
 ══════════════════════════════════════════════════════════════════════════════
@@ -263,7 +259,6 @@ WHY THIS MATTERS FOR POWER SYSTEMS:
        • Current through coil in magnetic field → force
        • Force causes rotation (opposite of generator)
        • Same components, energy flows opposite direction
-
 
 THE LENZ'S LAW INSIGHT:
 ══════════════════════════════════════════════════════════════════════════════
@@ -368,7 +363,6 @@ COAL POWER PLANT → YOUR LIGHT BULB
 
    1 kg of coal ≈ 24 MJ of chemical energy
 
-
 2. THERMAL ENERGY (Boiler)
 ──────────────────────────
    ┌─────────────────────────────────┐
@@ -386,7 +380,6 @@ COAL POWER PLANT → YOUR LIGHT BULB
    └─────────────────────────────────┘
 
    η ≈ 90% (most heat transferred to steam)
-
 
 3. MECHANICAL ENERGY (Turbine)
 ──────────────────────────────
@@ -407,7 +400,6 @@ COAL POWER PLANT → YOUR LIGHT BULB
    └─────────────────────────────────────┘
 
    η ≈ 45% (Carnot limit for these temps)
-
 
 4. ELECTRICAL ENERGY (Generator)
 ────────────────────────────────
@@ -431,7 +423,6 @@ COAL POWER PLANT → YOUR LIGHT BULB
 
    η ≈ 98% (generators are very efficient)
 
-
 5. TRANSMISSION
 ───────────────
    Step up → 345 kV (reduce I²R losses)
@@ -439,7 +430,6 @@ COAL POWER PLANT → YOUR LIGHT BULB
    Step down → 120V at your outlet
 
    η ≈ 93% (7% lost in transmission)
-
 
 OVERALL EFFICIENCY:
 ───────────────────

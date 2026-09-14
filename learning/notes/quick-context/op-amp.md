@@ -3,7 +3,8 @@ topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/inside-the-triangle|Inside the Triangle]] | [[micro-context/tail-current|Tail Current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/inside-the-triangle]] | [[quick-context/comparator]] | [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[quick-context/pwm-controller-circuit]]
 
 > **TL;DR:** An op-amp is a high-gain differential amplifier IC that, with [[quick-context/resistor|resistor]] feedback networks, becomes a precision building block for amplification, filtering, and signal conditioning—it's the universal analog component, as fundamental to analog circuits as the [[quick-context/transistor|transistor]] is to digital ones.
 
@@ -11,7 +12,7 @@ created: 2026-02-06
 
 ## The Core Problem: Precise Analog Signal Processing
 
-A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. You need to amplify the signal exactly 330×, without adding noise or distortion, regardless of what's connected to the output. Doing this with discrete [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] requires careful design and the gain drifts with temperature. An op-amp solves this: it has enormous internal gain (100,000× or more), and by wrapping it in a negative feedback loop with resistors, the gain becomes determined entirely by the resistor ratio—which is stable, predictable, and easy to calculate. Op-amps make analog design almost as straightforward as digital. https://www.youtube.com/watch?v=_ZuJgt4NfFI
+A sensor outputs 10 mV when it detects something. Your [[micro-context/adc-analog-to-digital-converter|ADC]] needs 0-3.3V input. You need to amplify the signal exactly 330×, without adding noise or distortion, regardless of what's connected to the output. Doing this with discrete [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] requires careful design and the gain drifts with temperature. An op-amp solves this: it has enormous internal gain (100,000× or more), and by wrapping it in a negative feedback loop with resistors, the gain becomes determined entirely by the resistor ratio—which is stable, predictable, and easy to calculate. Op-amps make analog design almost as straightforward as digital. https://www.youtube.com/watch?v=_ZuJgt4NfFI
 
 ## 5 Essential Terms
 
@@ -20,7 +21,7 @@ A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. Y
 | **Inverting (-) / Non-inverting (+) inputs** | The two inputs. The op-amp amplifies the difference between them: Vout = A × (V+ - V-), where A is the open-loop gain (~100,000). |
 | **Open-loop gain (A)** | The raw gain without feedback. Enormous (10⁵) but useless alone—too high, too variable, too sensitive. Feedback tames it into precise, controlled gain. |
 | **Negative feedback** | Connecting the output back to the inverting input through a resistor network. This is what makes op-amp circuits predictable. It trades excess gain for stability and precision. |
-| **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the voltage difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
+| **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the [[quick-context/voltage|voltage]] difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
 | **Rail-to-rail** | An op-amp whose output can swing to within millivolts of its supply voltages. Standard op-amps can only reach within ~1-2V of the rails, wasting headroom. |
 
 <details>
@@ -48,7 +49,6 @@ OP-AMP SYMBOL AND PINS
     • (-) = inverting input
     • Two supply pins (often omitted from schematics)
 
-
 THE TWO GOLDEN RULES (with negative feedback)
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -60,7 +60,6 @@ THE TWO GOLDEN RULES (with negative feedback)
 
     These two rules let you analyze ANY op-amp circuit with just
     Ohm's law and Kirchhoff's current law. No calculus needed.
-
 
 INVERTING AMPLIFIER
 ══════════════════════════════════════════════════════════════════════════════
@@ -86,7 +85,6 @@ INVERTING AMPLIFIER
     Example: Rf = 100kΩ, Rin = 10kΩ → Gain = -10
              Vin = 0.3V → Vout = -3.0V
 
-
 NON-INVERTING AMPLIFIER
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -107,7 +105,6 @@ NON-INVERTING AMPLIFIER
 
     Example: Rf = 9kΩ, Rg = 1kΩ → Gain = 10
              Vin = 0.3V → Vout = 3.0V
-
 
 VOLTAGE FOLLOWER (BUFFER)
 ══════════════════════════════════════════════════════════════════════════════
@@ -206,7 +203,6 @@ ADDITION — Summing Amplifier
     Example: V1 = 1V, V2 = 2V, V3 = 0.5V, all R = 10kΩ
              Vout = −(1 + 2 + 0.5) = −3.5V
 
-
 SUBTRACTION — Difference Amplifier
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -236,7 +232,6 @@ SUBTRACTION — Difference Amplifier
              Vout = (47/10) × (2.3 − 2.0) = 4.7 × 0.3 = 1.41V
 
     Real-world use: reading differential sensor signals, bridge circuits
-
 
 MULTIPLICATION — Scaling Amplifier (multiply by constant k)
 ══════════════════════════════════════════════════════════════════════════════
@@ -279,7 +274,6 @@ MULTIPLICATION — Scaling Amplifier (multiply by constant k)
     requires a dedicated analog multiplier IC (e.g., AD633) which
     uses a Gilbert cell internally.
 
-
 DIVISION — Scaling Amplifier (divide by constant k)
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -306,7 +300,6 @@ DIVISION — Scaling Amplifier (divide by constant k)
 
     Note: true division of two variable signals (V1 / V2)
     can be done by placing a multiplier IC in the feedback loop.
-
 
 DIFFERENTIATION — Differentiator
 ══════════════════════════════════════════════════════════════════════════════
@@ -344,7 +337,6 @@ DIFFERENTIATION — Differentiator
     (derivative of noise = large). Real differentiators add a
     small resistor in series with C to limit high-freq gain.
 
-
 INTEGRATION — Integrator
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -380,7 +372,6 @@ INTEGRATION — Integrator
     ⚠ Practical issue: any tiny DC offset on Vin accumulates
     forever, saturating the output. Real integrators add a
     large resistor in parallel with Cf to bleed off DC drift.
-
 
 SUMMARY — Op-Amp as Analog Computer
 ══════════════════════════════════════════════════════════════════════════════
@@ -430,7 +421,6 @@ FUNCTIONAL BLOCK DIAGRAM
                     │
              Rbias ╱╱╱╱ ─── sets all currents in the chip
 
-
 TRANSISTOR-LEVEL SCHEMATIC (simplified)
 ═══════════════════════════════════════════════════════════════════════════
 
@@ -457,7 +447,6 @@ V(+)►│ Q1  │   │           │ Q2  │◄── V(-)  │ Q6  │       
                 └──┬──┘                          │               │
                    │                             │               │
   V- ──────────────┴─────────────────────────────┴───────────────┘
-
 
 WHAT EACH STAGE DOES
 ═══════════════════════════════════════════════════════════════════════════
@@ -491,7 +480,6 @@ WHAT EACH STAGE DOES
   ───────────────────────────────────────────────────────────────────────
   Total open-loop gain ≈ 100 × 1000 = 100,000  (that's your A ≈ 10⁵)
 
-
 SIGNAL FLOW THROUGH THE TRANSISTORS
 ═══════════════════════════════════════════════════════════════════════════
 
@@ -508,7 +496,6 @@ SIGNAL FLOW THROUGH THE TRANSISTORS
      Q7 (NPN) pushes current to the load, Q8 (PNP) pulls it away
      → low output impedance, can drive real loads
 
-
 PARTS LIST (simplified 741-style op-amp)
 ═══════════════════════════════════════════════════════════════════════════
 
@@ -523,7 +510,7 @@ PARTS LIST (simplified 741-style op-amp)
      (Real 741 has ~20 transistors for protection & better biasing)
 ```
 
-The key insight: the triangle symbol on schematics hides a **feedback amplifier built from the same [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] you already know**. The differential pair subtracts, the current mirror maximizes gain, and the compensation [[quick-context/capacitor|capacitor]] ensures stability. Everything else is bias circuitry and output buffering.
+The key insight: the triangle symbol on schematics hides a **feedback amplifier built from the same [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] you already know**. The differential pair subtracts, the [[micro-context/current-mirror|current mirror]] maximizes gain, and the compensation [[quick-context/capacitor|capacitor]] ensures stability. Everything else is bias circuitry and output buffering.
 
 </details>
 
@@ -545,7 +532,7 @@ Rail-to-rail output             Often 1-2V from rails
 
 | Op-Amp | GBW (MHz) | Input Type | Cost | Best For |
 |--------|----------|------------|------|----------|
-| **LM741** | 1 | BJT | $0.30 | Learning, non-critical |
+| **LM741** | 1 | [[quick-context/bjt|BJT]] | $0.30 | Learning, non-critical |
 | **LM358** | 1 | BJT | $0.20 | Single-supply, cheap |
 | **TL072** | 3 | JFET | $0.50 | Audio, low noise |
 | **MCP6002** | 1 | CMOS | $0.40 | Low power, rail-to-rail |
@@ -601,7 +588,7 @@ SIGNAL CONDITIONING CHAIN
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/differential-pair]]** — The [[quick-context/differential-pair|differential pair]] is the op-amp's input stage. Two matched transistors sharing a tail current source convert V(+) - V(-) into a current difference. Understanding the pair explains the golden rules.
+- **[[quick-context/differential-pair]]** — The [[quick-context/differential-pair|differential pair]] is the op-amp's input stage. Two matched transistors sharing a [[micro-context/tail-current|tail current]] source convert V(+) - V(-) into a current difference. Understanding the pair explains the golden rules.
 
 - **[[quick-context/high-gain-amplifier-stage]]** — The [[quick-context/high-gain-amplifier-stage|high-gain amplifier stage]] (current mirror active load) is what gives the op-amp its enormous open-loop gain. The compensation capacitor at this stage's output node is what makes op-amps stable in feedback—and what makes them slow as comparators.
 
@@ -613,7 +600,7 @@ SIGNAL CONDITIONING CHAIN
 
 - **[[quick-context/electric-current]]** — The golden rule "no current into the inputs" means all current through the input resistor must flow through the feedback resistor—this is how you derive gain formulas using Kirchhoff's current law.
 
-- **[[quick-context/pwm-controller-circuit]]** — Inside every buck converter IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
+- **[[quick-context/pwm-controller-circuit]]** — Inside every [[micro-context/buck-converter|buck converter]] IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
 
 - **[[quick-context/comparator]]** — A comparator shares the same differential-pair input stage as an op-amp but is optimized for speed and digital output. Removing the op-amp's negative feedback and compensation capacitor gives you a comparator—intentionally.
 

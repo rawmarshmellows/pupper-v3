@@ -3,13 +3,14 @@ topic: Physics of Writing Data to Memory — How Bits Become Charges, Voltages, 
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
+
+> **Related:** [[quick-context/d-flip-flop|D Flip-Flop — The Atom of Digital Memory]] | [[quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]] | [[quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]]
 
 > **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
 ## The Core Problem
 
-The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes binary instructions, and the [[learning/notes/quick-context/from-code-to-running-firmware|firmware pipeline]] explains how those instructions reach the chip. But neither explains the *physics* of the final step: how a `1` or `0` actually gets written into a physical memory cell. What voltage is applied? What moves? What holds the bit in place? This matters because the three main memory technologies (SRAM, DRAM, flash) use fundamentally different physical mechanisms, and their tradeoffs — speed, density, volatility, endurance — all trace back to the physics of how they store charge.
+The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes binary instructions, and the [[learning/notes/quick-context/from-code-to-running-firmware|firmware pipeline]] explains how those instructions reach the chip. But neither explains the *physics* of the final step: how a `1` or `0` actually gets written into a physical memory cell. What [[quick-context/voltage|voltage]] is applied? What moves? What holds the bit in place? This matters because the three main memory technologies (SRAM, DRAM, flash) use fundamentally different physical mechanisms, and their tradeoffs — speed, density, volatility, endurance — all trace back to the physics of how they store charge.
 
 ## 5 Essential Terms
 
@@ -18,7 +19,7 @@ The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation c
 | **Floating Gate** | An electrically isolated polysilicon layer inside a flash memory [[learning/notes/micro-context/mosfet|MOSFET]], surrounded by oxide insulation. Electrons trapped here shift the transistor's threshold voltage, encoding a bit that persists without power for 10+ years. |
 | **Fowler-Nordheim Tunneling** | The quantum-mechanical process used to program/erase flash memory. A strong electric field (15-20V) gives electrons enough energy to tunnel through the ~7-10 nm oxide barrier onto or off of the floating gate. |
 | **Sense Amplifier** | A circuit that detects the tiny voltage difference on a bitline during a DRAM/flash read and amplifies it to a full logic level. In DRAM, the stored charge is so small (~10-30 fF) that reading it requires destroying and rewriting the cell. |
-| **Cross-Coupled Inverters** | The core of an SRAM cell — two CMOS inverters connected output-to-input in a loop. Each inverter reinforces the other's state, creating two stable voltage configurations (bit = 0 or 1) that persist as long as power is on. This is the same feedback principle that gives [[quick-context/d-flip-flop|D flip-flops]] their memory. |
+| **Cross-Coupled Inverters** | The core of an [[micro-context/sram|SRAM]] cell — two CMOS inverters connected output-to-input in a loop. Each inverter reinforces the other's state, creating two stable voltage configurations (bit = 0 or 1) that persist as long as power is on. This is the same feedback principle that gives [[quick-context/d-flip-flop|D flip-flops]] their memory. |
 | **Wordline / Bitline** | The row and column wires in a memory array. The **wordline** activates a row of cells (turns on access transistors), and the **bitline** carries the data in or out. Writing = drive the bitline to the desired voltage, then pulse the wordline to connect the cell. |
 
 <details>
@@ -61,7 +62,6 @@ SRAM (Static RAM) — Stable voltage on cross-coupled transistors
   Volatile: loses state when power is removed.
   Density: poor (6 transistors per bit).
 
-
 DRAM (Dynamic RAM) — Charge on a tiny capacitor
 ─────────────────────────────────────────────────────────────────
   Used in: main system memory (DDR4, DDR5, LPDDR)
@@ -101,7 +101,6 @@ DRAM (Dynamic RAM) — Charge on a tiny capacitor
            data disappears in milliseconds.
   Density: excellent (1T + 1C per bit).
   Volatile: loses data when power is removed OR refresh stops.
-
 
 FLASH MEMORY — Electrons trapped on a floating gate
 ─────────────────────────────────────────────────────────────────
@@ -188,7 +187,7 @@ No single memory technology is best at everything. The physics forces a three-wa
 
 **Why not just use the densest?** Flash writes are 1000x slower than DRAM and degrade the oxide with every write. Running a program from flash (as MCUs do) is fine for reads, but you can't use flash as working memory — the write speed and endurance would be catastrophic.
 
-**The physical root cause:** Storing a bit more *permanently* requires moving charge through a stronger barrier, which takes more energy and time. SRAM holds bits as voltages on transistor gates (fast to change, gone without power). DRAM holds charge on a capacitor (slightly harder to change, leaks away). Flash traps electrons behind an oxide wall (hard to change, stays for years). The tradeoff is inescapable because it's rooted in the physics of charge storage.
+**The physical root cause:** Storing a bit more *permanently* requires moving charge through a stronger barrier, which takes more energy and time. SRAM holds bits as voltages on transistor gates (fast to change, gone without power). DRAM holds charge on a [[quick-context/capacitor|capacitor]] (slightly harder to change, leaks away). Flash traps electrons behind an oxide wall (hard to change, stays for years). The tradeoff is inescapable because it's rooted in the physics of charge storage.
 
 This is why computers use a **memory hierarchy**: SRAM for registers/cache (tiny, fast), DRAM for main memory (big, fast enough), flash/SSD for storage (massive, persistent). Each level exploits a different point on the speed-density-persistence curve.
 
@@ -212,12 +211,10 @@ STEP 1: KEYBOARD → SCAN CODE → USB → PC (mechanical → electrical)
 
   Inside the keyboard is a small MCU (often a CH552 or 8051)
   whose firmware exists as trapped electrons on floating gates
-  in flash — [[learning/notes/quick-context/from-code-to-running-
-  firmware|programmed at the factory]] via the same Fowler-
+  in flash — programmed at the factory via the same Fowler-
   Nordheim tunneling physics described in STEP 5 below.
 
-  The MCU's [[learning/notes/quick-context/code-to-gates-and-
-  bootstrapping|fetch-execute cycle]] runs a scan loop:
+  The MCU's fetch-execute cycle runs a scan loop:
   drive each matrix row LOW, read columns. Row 2, Col 1 reads
   LOW → "x" detected → firmware looks up the USB HID scan
   code (0x1B) from a table in flash → packages an 8-byte HID
@@ -235,7 +232,6 @@ STEP 1: KEYBOARD → SCAN CODE → USB → PC (mechanical → electrical)
   USB Peripheral Hardware]] for the full Phase 0→5 breakdown
   of how the SIE turns buffer bytes into voltage on the wire.)
 
-
 STEP 2: PC USB CONTROLLER → CPU INTERRUPT (serial → parallel)
 ─────────────────────────────────────────────────────────────────
 
@@ -248,7 +244,6 @@ STEP 2: PC USB CONTROLLER → CPU INTERRUPT (serial → parallel)
   change on a dedicated CPU pin. The CPU's interrupt controller
   notices and redirects the Program Counter to the interrupt
   handler address from the vector table.
-
 
 STEP 3: CPU PROCESSES SCAN CODE → ASCII (registers = SRAM)
 ─────────────────────────────────────────────────────────────────
@@ -271,7 +266,6 @@ STEP 3: CPU PROCESSES SCAN CODE → ASCII (registers = SRAM)
     Bit 2: 0 → Q = LOW,  Q̄ = HIGH
     Bit 1: 0 → Q = LOW,  Q̄ = HIGH
     Bit 0: 0 → Q = LOW,  Q̄ = HIGH
-
 
 STEP 4: CPU → DRAM (register → main memory)
 ─────────────────────────────────────────────────────────────────
@@ -300,7 +294,6 @@ STEP 4: CPU → DRAM (register → main memory)
   every row to replace charge that leaked away. If your
   computer loses power right now, the capacitors discharge
   in milliseconds and the "x" is gone.
-
 
 STEP 5: DRAM → SSD FLASH (when you hit Ctrl+S)
 ─────────────────────────────────────────────────────────────────

@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+
+> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]] | [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/melt-index|Melt Index: Quick Context]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
@@ -52,7 +53,6 @@ STEP 1: What You Receive
    150-200g of spool             Just filament
    becomes waste
 
-
 STEP 2: Loading a Refill onto Master Spool
 ──────────────────────────────────────────
 
@@ -67,7 +67,6 @@ STEP 2: Loading a Refill onto Master Spool
     └─────────┘                                       └─────────┘
      Half A + Half B         Filament coil         Ready to print!
      (reusable forever)      (consumable)
-
 
 STEP 3: Mount and Print
 ───────────────────────
@@ -90,7 +89,6 @@ STEP 3: Mount and Print
   │   Works exactly like regular spool   │
   │   from this point forward            │
   └──────────────────────────────────────┘
-
 
 LIFECYCLE COMPARISON
 ────────────────────

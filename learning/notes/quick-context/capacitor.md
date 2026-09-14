@@ -3,21 +3,21 @@ topic: Capacitor
 created: 2026-01-30
 ---
 
-# Capacitor
+> **Related:** [[quick-context/capacitance]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]] | [[quick-context/transistor]] | [[quick-context/pcb-printed-circuit-board|PCB]]
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+# Capacitor
 
 > **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
 
 ## The Core Problem
 
-Electronics need stable voltage to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
+Electronics need stable [[quick-context/voltage|voltage]] to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
+| **[[quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit voltage, measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 [[micro-context/coulomb-history|coulomb]] of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
 | **Dielectric** | The insulating material between the capacitor's plates that determines capacitance and voltage rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[quick-context/transistor|transistors]]). |
 | **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More capacitance or higher voltage means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and capacitance that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
@@ -45,7 +45,6 @@ BASIC CAPACITOR STRUCTURE AND OPERATION
                     │    PLATE B (conductor)      │  No charge buildup
                     └─────────────────────────────┘
 
-
                          VOLTAGE APPLIED (+V on A, 0V on B)
                     ──────────────────────────────────────────
 
@@ -65,10 +64,8 @@ BASIC CAPACITOR STRUCTURE AND OPERATION
                                                    │
                         (-) Terminal connected ────┘
 
-
 KEY INSIGHT: The dielectric BLOCKS electron flow between plates, but the
 electric field passes through it. Charge can't cross - it just accumulates.
-
 
 ENERGY STORAGE COMPARISON:
 ══════════════════════════════════════════════════════════════════════════════
@@ -113,7 +110,6 @@ BASIC FORM:     Q = C × V        (Charge = Capacitance × Voltage)
 REARRANGED:     C = Q/V          (Capacitance = Charge per Volt)
                 V = Q/C          (Voltage = Charge divided by Capacitance)
 
-
 WHAT DETERMINES CAPACITANCE:
 ────────────────────────────────────────────────────────────────────────────
 
@@ -143,7 +139,6 @@ WHAT DETERMINES CAPACITANCE:
     │   C = small                   C = large                               │
     │                                                                       │
     └───────────────────────────────────────────────────────────────────────┘
-
 
 ENERGY STORED IN A CAPACITOR:
 ────────────────────────────────────────────────────────────────────────────
@@ -178,7 +173,6 @@ CHARGING AND DISCHARGING THROUGH A RESISTOR
 
     Time constant: τ = R × C
 
-
 CHARGING (switch to Vs):
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -204,7 +198,6 @@ CHARGING (switch to Vs):
     At t = 3τ: V = 95% of Vs              At t = 3τ: I = 5% of I₀
     At t = 5τ: V = 99.3% of Vs            At t = 5τ: I = 0.7% of I₀
 
-
 DISCHARGING (switch to GND):
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -225,7 +218,6 @@ DISCHARGING (switch to GND):
        1τ 2τ 3τ 4τ 5τ                       1τ 2τ 3τ 4τ 5τ
 
     V(t) = Vs × e^(-t/RC)                I(t) = -(Vs/R) × e^(-t/RC)
-
 
 PRACTICAL EXAMPLE:
 ─────────────────────────────────────────────────────────────────────────────
@@ -280,20 +272,17 @@ THE THREE-WAY TRADEOFF
                          VOLTAGE
                          RATING
 
-
 WANT MORE CAPACITANCE?
 ──────────────────────────────────────────────────────────────────────────────
 • Increase plate area → Larger physical size, higher cost
 • Decrease plate separation → Lower voltage rating (dielectric breakdown)
 • Use higher-ε dielectric → Often worse temperature stability, more leakage
 
-
 WANT FASTER RESPONSE (lower ESR/ESL)?
 ──────────────────────────────────────────────────────────────────────────────
 • Use ceramic instead of electrolytic → Smaller capacitance per volume
 • Shorter internal connections → More expensive construction
 • Multiple small caps in parallel → Takes more PCB space
-
 
 WANT HIGHER VOLTAGE RATING?
 ──────────────────────────────────────────────────────────────────────────────
@@ -337,7 +326,6 @@ WHY YOU CAN'T HAVE IT ALL: The Electrolytic vs. Ceramic Example
     ✗ Polarity sensitive                ✗ Limited capacitance (<100μF)
     ✗ Large size                        ✗ Capacitance varies with voltage!
     ✗ Liquid dries out over time        ✗ Can crack from thermal stress
-
 
 TYPICAL PCB POWER SUPPLY FILTERING:
 ══════════════════════════════════════════════════════════════════════════════
@@ -396,7 +384,6 @@ When MILLIONS switch simultaneously, the demand is enormous.
 
     That's insane! CPU would see 0V or negative voltage → CRASH
 
-
 THE SOLUTION: LOCAL CHARGE RESERVOIR
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -414,7 +401,6 @@ THE SOLUTION: LOCAL CHARGE RESERVOIR
     (refills from         (provide INSTANT current)
      power supply)
 
-
     How it works:
 
     1. CPU transistors switch → demand sudden current
@@ -429,7 +415,6 @@ THE SOLUTION: LOCAL CHARGE RESERVOIR
     4. Power supply refills bulk cap over next few microseconds
 
     Each stage handles a different timescale!
-
 
 REAL CPU POWER DELIVERY:
 ══════════════════════════════════════════════════════════════════════════════
@@ -464,7 +449,6 @@ REAL CPU POWER DELIVERY:
     PCB under CPU     │ Ceramic   │ 100 nF-10μF│ 50-100   │ Fast transients
     Near VRM          │ Ceramic   │ 1-22 μF     │ 10-20    │ Medium transients
     VRM input         │ Electro.  │ 100-1000 μF │ 5-10     │ Bulk storage
-
 
 DECOUPLING FAILURE - WHAT GOES WRONG:
 ══════════════════════════════════════════════════════════════════════════════
@@ -502,7 +486,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- [[quick-context/resistor|Resistor]]-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 

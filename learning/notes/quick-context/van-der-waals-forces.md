@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+
+> **Related:** [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds: Why PLA Snaps and TPU Bounces]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/dipole-dipole-interactions|Dipole-Dipole Interactions: A Beginner's Guide]] | [[quick-context/pi-pi-stacking-aromatic-interactions|Pi-Pi Stacking: Why Your 3D Prints Need Heat]] | [[quick-context/glass-transition-temperature|Glass Transition Temperature - A Beginner's Guide]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -93,7 +94,6 @@ Atom A's temporary negative side *repels* electrons in nearby Atom B, pushing th
     (-)       (+)                       (+)       (-)
     side      side                      side      side
 
-
     Now opposite charges are FACING each other!
 
               (+) ............ (-)
@@ -116,7 +116,6 @@ Atom A's temporary negative side *repels* electrons in nearby Atom B, pushing th
                         ATTRACTION
 
     (-)       (+)  <~~~PULL~~~>  (+)       (-)
-
 
     Timeline of what just happened:
 
@@ -159,7 +158,6 @@ A natural question: if electrons randomly fluctuate, won't there be times when e
 
     But that's NOT what happens...
 
-
     SCENARIO 2: What actually happens (CORRECT - correlated)
     ════════════════════════════════════════════════════════
 
@@ -183,7 +181,6 @@ A natural question: if electrons randomly fluctuate, won't there be times when e
     The electrons in B CAN'T be on the near side because
     A's electrons are actively repelling them away!
 
-
     TIMELINE OF CORRELATED FLUCTUATIONS:
     ════════════════════════════════════
 
@@ -201,7 +198,6 @@ A natural question: if electrons randomly fluctuate, won't there be times when e
 
     EVERY configuration leads to attraction because
     B's dipole is always a RESPONSE to A's dipole!
-
 
     THE MATH (simplified):
     ══════════════════════
@@ -283,7 +279,6 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
     |                                                                |
     |================================================================|
 
-
     WHY SO WEAK?
 
     1. TEMPORARY - The dipoles last femtoseconds (0.000000000000001 sec)
@@ -292,13 +287,11 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
 
        Van der Waals:  (+)...(-)...(+)...(-)  FLICKERING ON/OFF
 
-
     2. PARTIAL CHARGES - Not full +1 or -1, just tiny imbalances
 
        Ionic:     Na(+1)     Cl(-1)      Full electron transferred
 
        vdW:       (+0.001)   (-0.001)    Just electrons shifted slightly
-
 
     3. DISTANCE DEPENDENT - Falls off VERY fast with distance
 
@@ -321,7 +314,6 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
 
     That's ~500 MILLION contact points per foot!
 
-
            GLASS WALL                    GECKO SPATULA
 
            ___________                   ___________
@@ -332,7 +324,6 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
           |  o  o  o  |             /    o  o  o
           |___________|            /_______________
 
-
     Single spatula force:    ~0.00001 N  (basically nothing)
 
     500 million spatulae:    ~0.00001 N × 500,000,000
@@ -341,7 +332,6 @@ So to answer directly: **Yes, electron-electron repulsion exists, but it only wi
                              = Can support ~2 kg
 
     Gecko weighs ~0.05 kg... they could hold 40x their weight!
-
 
     KEY INSIGHT: Weakness × Huge Numbers = Strong Effect
 ```
@@ -394,7 +384,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **biology fundamentals** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

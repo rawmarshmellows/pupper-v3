@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+
+> **Related:** [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/chemical-bonds-spectrum|Chemical Bonds: The Full Spectrum]] | [[quick-context/atoms-molecules-polymers-basics|Atoms, Molecules, and Polymers Basics]] | [[quick-context/glass-transition-temperature|Glass Transition Temperature - A Beginner's Guide]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -51,7 +52,6 @@ Step 1: UNEQUAL SHARING creates partial charges
          │       │
       (δ-)    (δ+)
 
-
 Step 2: OPPOSITE CHARGES ATTRACT across molecules
 ──────────────────────────────────────────────────
 
@@ -69,7 +69,6 @@ Step 2: OPPOSITE CHARGES ATTRACT across molecules
                          ▼
                  HYDROGEN BOND forms!
                  (WEAK, ~20 kJ/mol)
-
 
 Step 3: THE HYDROGEN BOND - A bridge between molecules
 ───────────────────────────────────────────────────────
@@ -90,7 +89,6 @@ Step 3: THE HYDROGEN BOND - A bridge between molecules
     Key: ─── = covalent bond (strong, permanent)
          ┄┄┄ = hydrogen bond (weak, breaks/reforms constantly)
 
-
 DONORS AND ACCEPTORS: The Two Players
 ══════════════════════════════════════════════════════════════════════════
 
@@ -105,7 +103,6 @@ DONORS AND ACCEPTORS: The Two Players
       (pulls e-)  (δ+)       H-bond            (δ-)(has lone pairs)
                │      ←─────────────────→           │
             DONOR                              ACCEPTOR
-
 
     WATER: The Perfect H-Bond Molecule
     ───────────────────────────────────
@@ -126,7 +123,6 @@ DONORS AND ACCEPTORS: The Two Players
     Result: Water forms a 3D NETWORK of H-bonds
             (This is why water has high boiling point!)
 
-
 IN POLYMERS: H-Bonds Hold Chains Together
 ══════════════════════════════════════════════════════════════════════════
 
@@ -142,7 +138,6 @@ IN POLYMERS: H-Bonds Hold Chains Together
                        │
     Chain B: ───────────────────────────────────
 
-
     MANY H-BONDS: Strong (like a strip of velcro)
     ──────────────────────────────────────────────
 
@@ -153,7 +148,6 @@ IN POLYMERS: H-Bonds Hold Chains Together
                H     H     H     H     H       = strong connection
                │     │     │     │     │
     Chain B: ──O─────O─────O─────O─────O──────
-
 
     WHY THIS MATTERS FOR MATERIALS:
 
@@ -220,7 +214,6 @@ Chain A:   --CH--C==O
                   |   pull)
                   v
 Chain B:       H-O--         <-- This H reaches toward Chain A's O
-
 
 ZOOMED IN VIEW:
 
@@ -290,7 +283,6 @@ PLA STRUCTURE (Uniform, modest H-bonding everywhere)
   - Result: UNIFORMLY STIFF
   - When bent too far: chains separate suddenly = SNAP/CRACK
 
-
 TPU STRUCTURE (Alternating hard and soft segments)
 ==================================================
 
@@ -326,7 +318,6 @@ PLA:
 
     Why: All H-bonds break at once when stress exceeds threshold.
          No recovery mechanism. Once broken, stays broken.
-
 
 TPU:
     Before:   |==||~~||==|        During bending:   |==||~~~~~~||==|
@@ -367,14 +358,12 @@ Shore 95A (Stiff TPU - easier to print):
   More hard segments = More H-bonds = Stiffer material
   Feels like: firm rubber, like a car tire
 
-
 Shore 70A (Soft TPU - harder to print):
 [HARD]    [SOFT]    [HARD]    [SOFT]    [HARD]
  ||||  ~~~~~~~~~~   ||||  ~~~~~~~~~~   ||||
 
   Fewer hard segments = Fewer H-bonds = Softer material
   Feels like: soft rubber, like a rubber band
-
 
 PRINTING IMPLICATION:
 
@@ -400,7 +389,6 @@ PLA at 25C (room temp):
 PLA at 60C (hot car):
   H-bonds start breaking = chains can slide = DEFORMATION
   (Glass transition ~55-60C)
-
 
 TPU at 25C:
   Soft segments already flexible (above their [[quick-context/glass-transition-temperature|Tg]])
@@ -431,7 +419,7 @@ TPU at 60C:
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
-- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
+- **biology fundamentals**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-[[quick-context/substrate-ic-packaging|substrate]] recognition all depend on H-bonding.
 
 - **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 

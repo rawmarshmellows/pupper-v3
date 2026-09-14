@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
+
+> **Related:** [[quick-context/chemical-bonds-spectrum|Chemical Bonds: The Full Spectrum]] | [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds: Why PLA Snaps and TPU Bounces]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous: A Beginner's Guide to 3D Printing Warping]] | [[quick-context/glass-transition-temperature|Glass Transition Temperature - A Beginner's Guide]]
 
 > **TL;DR:** Polymer behavior (melt temperature, flexibility, layer adhesion) is governed by intermolecular forces between chains - van der Waals (weak), dipole-dipole (moderate), and hydrogen bonds (strong). Understanding these forces explains why PLA melts at 180C but ABS needs 240C, and why TPU flexes while PLA snaps.
 
@@ -45,7 +46,6 @@ LEVEL 1: WITHIN CHAINS (Covalent Bonds)
 
     ───●───●───●───●───●───●───●───●───●───●───●───●───●───  Chain 2
 
-
 LEVEL 2: BETWEEN CHAINS (Intermolecular Forces)
 ─────────────────────────────────────────────────────────────────────────────────
     Weaker attractions between neighboring chains determine material behavior.
@@ -57,7 +57,6 @@ LEVEL 2: BETWEEN CHAINS (Intermolecular Forces)
            :     :     :     :     :     :     :   forces (weaker)
            :     :     :     :     :     :     :
     ───●───●───●───●───●───●───●───●───●───●───●───●───●───  Chain 2
-
 
 WHAT HAPPENS DURING PRINTING:
 ─────────────────────────────────────────────────────────────────────────────────

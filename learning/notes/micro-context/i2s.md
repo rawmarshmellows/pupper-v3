@@ -3,6 +3,8 @@ term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
 
+> **Related:** [[micro-context/i2s-audio-amplifier]] | [[quick-context/embedded-communication-protocols]] | [[micro-context/spi]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]]
+
 # I2S (Inter-IC Sound)
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]

@@ -4,7 +4,8 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[quick-context/common-ic-packages]] | [[quick-context/flip-chip|Flip-Chip Packaging]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]
 
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
@@ -46,7 +47,6 @@ THE SUBSTRATE'S JOB: Scale Translation
       └───────────────────────────────┘
                Die: ~10mm × 10mm
 
-
       WHAT THE SUBSTRATE DOES (cross-section view)
       ─────────────────────────────────────────────
 
@@ -67,7 +67,6 @@ THE SUBSTRATE'S JOB: Scale Translation
               (about 8× wider spacing)
 
               These balls solder to the circuit board
-
 
       THE SIZE DIFFERENCE VISUALIZED
       ────────────────────────────────
@@ -149,7 +148,6 @@ DIE BUMPS (top view):               BGA BALLS (top view):
                                     │   ●     ●     ●     ●     ●        │
                                     └─────────────────────────────────────┘
 
-
 HOW FAN-OUT ROUTING WORKS (cross-section + top view combined):
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -177,7 +175,6 @@ HOW FAN-OUT ROUTING WORKS (cross-section + top view combined):
         │    to BGA  via  to BGA  via  to BGA  via      │    layer
         └─────────────────────────────────────────────────┘
 
-
     LAYER 3: Second fan-out - middle bumps escape
 
         ┌─────────────────────────────────────────────────┐
@@ -189,7 +186,6 @@ HOW FAN-OUT ROUTING WORKS (cross-section + top view combined):
         │                ↓   ↓        ↓   ↓              │  ← Center bumps
         │              to BGA via   to BGA via           │    drop again
         └─────────────────────────────────────────────────┘
-
 
     LAYER 4 (bottom): Final routing + BGA pads
 
@@ -205,7 +201,6 @@ HOW FAN-OUT ROUTING WORKS (cross-section + top view combined):
         │                                                 │
         └─────────────────────────────────────────────────┘
             BGA balls at 800μm pitch - ready for PCB
-
 
 THE "ONION" PATTERN (top view of a single layer):
 ─────────────────────────────────────────────────────────────────────────────
@@ -231,7 +226,6 @@ Like peeling an onion, bumps escape ring by ring from outside to inside:
 
         Each ring needs its own routing channel to escape without
         crossing other signals. More rings = more layers needed!
-
 
 WHY THIS LIMITS DESIGN:
 ─────────────────────────────────────────────────────────────────────────────
@@ -300,7 +294,6 @@ THE SUBSTRATE DESIGNER'S TRILEMMA
          (cheaper materials,              (handles heat cycles,
           fewer layers)                    moisture, vibration)
 
-
 WHAT PRACTITIONERS ARGUE ABOUT:
 ───────────────────────────────
 
@@ -345,7 +338,6 @@ ANATOMY OF A MOBILE PROCESSOR PACKAGE
         │  └─────────────────────────────────────┘    │
         └─────────────────────────────────────────────┘
 
-
         BOTTOM VIEW (solder ball side)
         ─────────────────────────────
 
@@ -359,7 +351,6 @@ ANATOMY OF A MOBILE PROCESSOR PACKAGE
         │ ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● │
         │ ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● │
         └─────────────────────────────────────────────┘
-
 
         CROSS-SECTION (what's actually inside)
         ──────────────────────────────────────
@@ -389,7 +380,6 @@ ANATOMY OF A MOBILE PROCESSOR PACKAGE
           Solder balls (0.5mm pitch, 0.3mm diameter)
           These melt and attach to phone's main board
 
-
 TYPICAL SPECIFICATIONS:
 ─────────────────────────────────────────────────────────────
 
@@ -405,7 +395,7 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 

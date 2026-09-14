@@ -3,9 +3,9 @@ topic: From Code to Running Firmware — Linking, Flashing, and Booting on an MC
 created: 2026-03-26
 ---
 
-# From Code to Running Firmware
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]] | [[quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens|From Human Calculators to Coding on Screens]] | [[micro-context/st-link-v2-programmer|ST-Link V2 Programmer]] | [[micro-context/spinev1-elf|SPIneV1.elf]]
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
+# From Code to Running Firmware
 
 > **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
@@ -340,7 +340,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[micro-context/sram|SRAM]], and peripherals.
 
 - **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 

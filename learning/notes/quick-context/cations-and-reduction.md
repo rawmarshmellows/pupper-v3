@@ -3,7 +3,8 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+
+> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/making-electrolytes|How to Make an Electrolyte]] | [[quick-context/electrolysis]] | [[quick-context/electrolyte]]
 
 > **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
 
@@ -63,7 +64,6 @@ STAGE 1: ELECTRON SUPPLY               STAGE 2: CATION ATTRACTION
                                            Cu²⁺ ─┘
                                            (in solution)
 
-
 STAGE 3: ELECTRON TRANSFER             STAGE 4: NEUTRAL ATOM DEPOSITS
 ──────────────────────────             ────────────────────────────────
 
@@ -78,7 +78,6 @@ STAGE 3: ELECTRON TRANSFER             STAGE 4: NEUTRAL ATOM DEPOSITS
         │                                  solid copper coating
         ▼
         Cu⁰   Now neutral!
-
 
 THE MATH: Charge Determines Electrons Needed
 ────────────────────────────────────────────
@@ -95,7 +94,6 @@ THE MATH: Charge Determines Electrons Needed
          ↑       ↑
          │       └── +2 plus -2 = 0 (neutral)
          └────────── Ion needs 2 electrons to cancel +2 charge
-
 
 VISUALIZING MULTIPLE CATIONS:
 ─────────────────────────────
@@ -115,7 +113,7 @@ VISUALIZING MULTIPLE CATIONS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force (voltage) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
+The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force ([[quick-context/voltage|voltage]]) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
 
 </details>
 
@@ -148,7 +146,6 @@ SETUP: An electrolysis cell with a power supply connected to two electrodes
               │       CATHODE       │
               │                     │
               └─────────────────────┘
-
 
 ZOOMING IN: What happens at the cathode surface
 
@@ -183,7 +180,6 @@ ZOOMING IN: What happens at the cathode surface
   │                                                                    │
   └────────────────────────────────────────────────────────────────────┘
 
-
 ANOTHER EXAMPLE: Hydrogen gas production
 
   In acidic water, hydrogen exists as H⁺ cations.
@@ -211,7 +207,6 @@ ANOTHER EXAMPLE: Hydrogen gas production
          H₂    H₂              ← 2 hydrogen gas molecules (H-H bonds)
           ↑    ↑
        (bubbles rise)
-
 
 COMPARISON TABLE: Before and After Reduction
 ─────────────────────────────────────────────────────────────────────────────
@@ -241,7 +236,7 @@ PATTERN: The charge number tells you how many electrons are needed!
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
+- **Electrochemical Series (Reduction Potentials)** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
 
 - **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 

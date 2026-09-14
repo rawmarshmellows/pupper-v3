@@ -3,9 +3,9 @@ topic: ROS2 Architecture — Robot Operating System 2 for Pupper v3
 created: 2026-03-10
 ---
 
-# ROS2 Architecture — Robot Operating System 2 for Pupper v3
+> **Related:** [[quick-context/pupper-brain|Pupper Control Board Rev 3.5 - The Robot's Brain]] | [[quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum]] | [[quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics]]
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+# ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 
@@ -231,7 +231,7 @@ CONTROL FREQUENCY TIERS
   "never miss a deadline"          "usually meets deadlines"
 ```
 
-The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
+The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over [[micro-context/spi|SPI]] at a fixed rate.
 
 This split explains a recurring pattern in the labs: **you never write code that directly talks to motors**. Your ROS2 nodes publish joint targets or velocity commands, and the ros2_control + STM32 stack translates those into actual motor current at rates your ROS2 node could never sustain reliably.
 
@@ -270,7 +270,6 @@ VELOCITY COMMAND → MOTOR TORQUE (Full Message Trace)
       z: 0.0    # no turning
   Rate: 20 Hz
 
-
   STEP 2: NEURAL CONTROLLER — Policy network inference
   ─────────────────────────────────────────────────────
 
@@ -299,7 +298,6 @@ VELOCITY COMMAND → MOTOR TORQUE (Full Message Trace)
           -0.1,  0.4, -0.8]   # back-right
   Rate: ~50 Hz (520 Hz / repeat_action=10)
 
-
   STEP 3: FORWARD COMMAND CONTROLLER — ros2_control bridge
   ─────────────────────────────────────────────────────────
 
@@ -316,7 +314,6 @@ VELOCITY COMMAND → MOTOR TORQUE (Full Message Trace)
 
   Writes to: ros2_control hardware interface
   Rate: 200 Hz
-
 
   STEP 4: HARDWARE INTERFACE → STM32 → CAN → MOTORS
   ──────────────────────────────────────────────────

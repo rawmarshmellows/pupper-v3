@@ -3,7 +3,8 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+
+> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels|ISA-95 Levels]] | [[quick-context/integration-failure-modes-solutions|Solving Robot Cell Integration Failure Modes]] | [[quick-context/robot-cell-integration-best-practices|Robot Cell Integration Best Practices, Tools, and VLM Applications]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 

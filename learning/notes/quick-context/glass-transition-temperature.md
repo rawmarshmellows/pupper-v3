@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
+
+> **Related:** [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds: Why PLA Snaps and TPU Bounces]] | [[quick-context/melt-index|Melt Index: Quick Context]] | [[quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous: A Beginner's Guide to 3D Printing Warping]] | [[quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]]
 
 > **TL;DR:** Glass transition temperature (Tg) is the temperature where polymer chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
 
@@ -47,7 +48,6 @@ Polymer chains:                         Polymer chains:
 • Intermolecular bonds intact           • Bonds constantly breaking/reforming
 • No rotation around backbone           • Free rotation around backbone
 • Rigid, brittle behavior               • Soft, flexible behavior
-
 
 ENERGY DIAGRAM: The Transition
 ──────────────────────────────

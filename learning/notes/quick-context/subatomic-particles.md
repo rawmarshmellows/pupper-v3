@@ -3,9 +3,9 @@ topic: Subatomic Particles - Quarks, Protons, Neutrons, Electrons
 created: 2026-02-14
 ---
 
-# Subatomic Particles
+> **Related:** [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[quick-context/atoms-molecules-polymers-basics|Atoms, Molecules, and Polymers Basics]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/electrolysis]]
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+# Subatomic Particles
 
 > **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
@@ -21,7 +21,7 @@ Everything around you—your body, your computer, the air you breathe—is made 
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
 | **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[quick-context/electromagnetism|electromagnetism]] but only works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -63,7 +63,6 @@ THE ATOM: A MATTER OF SCALE
 
     The electron cloud is NOT a fixed orbit—electrons exist as probability
     distributions (quantum mechanics). But for chemistry, the "shell" model works.
-
 
 THE THREE PARTICLES COMPARED:
 ================================================================================
@@ -108,7 +107,6 @@ PROTON COUNT DEFINES THE ELEMENT
     Add or remove a neutron → Same element, different ISOTOPE
     Add or remove an electron → Same element, different ION
 
-
 NEUTRONS CREATE ISOTOPES (same element, different mass):
 ================================================================================
 
@@ -120,7 +118,6 @@ NEUTRONS CREATE ISOTOPES (same element, different mass):
 
     Both are carbon. Both have 6 protons. Both have same chemistry.
     But C-14 is unstable—it decays over time (used for carbon dating).
-
 
 ELECTRONS CREATE IONS (same element, different charge):
 ================================================================================
@@ -148,7 +145,6 @@ INSIDE PROTONS AND NEUTRONS: QUARKS
     • UP QUARK (u):   charge = +2/3
     • DOWN QUARK (d): charge = -1/3
 
-
     PROTON = 2 up + 1 down
     ═════════════════════════════════════════════════════
 
@@ -161,7 +157,6 @@ INSIDE PROTONS AND NEUTRONS: QUARKS
              │                       │     = +1 ✓
              └───────────────────────┘
 
-
     NEUTRON = 1 up + 2 down
     ═════════════════════════════════════════════════════
 
@@ -173,7 +168,6 @@ INSIDE PROTONS AND NEUTRONS: QUARKS
              │       +2/3            │     = 0 ✓
              │                       │
              └───────────────────────┘
-
 
     WHY CAN'T WE SEE INDIVIDUAL QUARKS?
     ═════════════════════════════════════════════════════════════════════════
@@ -206,7 +200,6 @@ THE NUCLEAR STABILITY PUZZLE
     Protons repel each other. This force is significant and has
     infinite range (weakening as 1/r²).
 
-
     STRONG FORCE (attraction):
     ─────────────────────────────────────────────────────────────────────────
 
@@ -217,7 +210,6 @@ THE NUCLEAR STABILITY PUZZLE
     It's ~100× stronger than electromagnetism, BUT:
     • Only works at very short range (~10⁻¹⁵ m)
     • Beyond this distance, it drops to essentially zero
-
 
     HOW NEUTRONS HELP:
     ═════════════════════════════════════════════════════════════════════════
@@ -265,7 +257,6 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
     This is [[quick-context/covalent-bonds|covalent bonding]]—the basis of
     molecules, polymers, and all of organic chemistry.
 
-
     ELECTRICAL CONDUCTION:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -282,7 +273,6 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
     │   Free electrons flow when voltage applied                      │
     └─────────────────────────────────────────────────────────────────┘
 
-
     SEMICONDUCTORS ([[quick-context/doped-silicon|doped silicon]]):
     ─────────────────────────────────────────────────────────────────────────
 
@@ -293,7 +283,6 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
 
     The junction between N and P creates a one-way valve for current—
     the basis of diodes and transistors.
-
 
     ELECTROLYSIS AND BATTERIES:
     ─────────────────────────────────────────────────────────────────────────
@@ -349,7 +338,6 @@ THE TWO MODELS OF ATOMIC STRUCTURE
     • Electrons as point particles         • Electron is "everywhere"
     • Details of orbital shapes            • Wave-particle duality
 
-
     FOR MOST PRACTICAL PURPOSES (chemistry, electronics):
     ═════════════════════════════════════════════════════════════════════════
 
@@ -366,7 +354,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding semiconductors | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 
@@ -402,7 +390,6 @@ HYDROGEN (H) — The Simplest Atom
     This is the most abundant element in the universe.
     Most of the Sun is hydrogen.
 
-
 HELIUM (He) — First Noble Gas
 ════════════════════════════════════════════════════════════════════════════════
 
@@ -416,7 +403,6 @@ HELIUM (He) — First Noble Gas
               Full shell = STABLE = won't bond with anything
 
     This is why helium is used in balloons—it's completely inert.
-
 
 CARBON (C) — The Element of Life
 ════════════════════════════════════════════════════════════════════════════════
@@ -441,7 +427,6 @@ CARBON (C) — The Element of Life
     • Complex molecules (DNA, proteins)
     • All organic chemistry
 
-
 SILICON (Si) — The Element of Electronics
 ════════════════════════════════════════════════════════════════════════════════
 
@@ -461,7 +446,6 @@ SILICON (Si) — The Element of Electronics
     • Conductivity controllable by [[quick-context/doped-silicon|doping]]
 
     This is why silicon is the basis of all computer chips.
-
 
 COPPER (Cu) — The Conductor
 ════════════════════════════════════════════════════════════════════════════════
@@ -498,13 +482,11 @@ SODIUM IN WATER — A Subatomic Explanation
     Sodium "wants" to lose that outer electron to have a full outer shell.
     It takes very little energy to remove it.
 
-
     WATER (H₂O)
     ─────────────────────────────────────────────────────────────────────────
 
     The O-H bonds are polar: oxygen pulls electrons toward itself.
     Water molecules can accept electrons.
-
 
     THE REACTION:
     ─────────────────────────────────────────────────────────────────────────
@@ -524,7 +506,6 @@ SODIUM IN WATER — A Subatomic Explanation
 
     All because sodium has ONE loosely-held electron that
     desperately wants to escape.
-
 
     CONTRAST WITH COPPER:
     ─────────────────────────────────────────────────────────────────────────
@@ -552,7 +533,7 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
 - **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
 

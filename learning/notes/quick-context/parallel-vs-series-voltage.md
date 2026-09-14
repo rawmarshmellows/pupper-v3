@@ -3,7 +3,8 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/transistor]] | [[quick-context/capacitor]] | [[quick-context/electric-current]] | [[quick-context/voltage]] | [[quick-context/resistor]]
 
 > **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
 
@@ -18,7 +19,7 @@ If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs
 | Term | Definition |
 |------|------------|
 | **Voltage (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
-| **Series Circuit** | Components connected end-to-end, so [[quick-context/electric-current\|current]] flows through each one sequentially. Voltages ADD across series elements. |
+| **Series Circuit** | Components connected end-to-end, so current flows through each one sequentially. Voltages ADD across series elements. |
 | **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME voltage; currents add instead. |
 | **Power Rails (Vdd/GND)** | The two voltage levels that supply power to all transistors in a chip. Every transistor connects between these same two rails. |
 | **Current (Amperes)** | The flow rate of electric charge. In parallel circuits, each branch draws its own current, and these currents add up at the power supply. |
@@ -44,7 +45,6 @@ THE WRONG MENTAL MODEL (Series):
   Total voltage = 0.65V × 50,000,000,000 = 32.5 BILLION VOLTS
 
   This is NOT how chips work!
-
 
 THE CORRECT MODEL (Parallel):
 ════════════════════════════════════════════════════════════════════════════════
@@ -89,7 +89,6 @@ WATERFALL ANALOGY
   Total height drop = 10m + 10m + 10m = 30m
   Heights ADD because water falls through each level
 
-
   PARALLEL: Multiple waterfalls side-by-side from same cliff
   ─────────────────────────────────────────────────────────────────────────────
 
@@ -102,7 +101,6 @@ WATERFALL ANALOGY
   Total height drop = still just 10m!
   Each waterfall has the SAME 10m drop (same potential difference)
   Having more waterfalls doesn't make the cliff taller
-
 
 ELECTRICITY WORKS THE SAME WAY:
 ════════════════════════════════════════════════════════════════════════════════
@@ -136,14 +134,12 @@ CURRENT ADDITION IN PARALLEL
                 ▼ TOTAL CURRENT (all combined)
             GND (0V) ═══════════════════════════════════════════════
 
-
   IF each of 50 billion transistors draws 10 microamps on average:
 
   Total current = 10µA × 50,000,000,000 = 500,000 Amps!
 
   (In reality, not all transistors are active at once, so actual
    chip currents are typically 50-200 Amps for high-performance CPUs)
-
 
 POWER CALCULATION:
 ════════════════════════════════════════════════════════════════════════════════
@@ -289,7 +285,6 @@ Step 5: INTO THE SILICON DIE
 
   ALL transistors see the same 0.65V between Vdd and GND planes
   No matter how many there are—1 billion or 50 billion—voltage stays 0.65V
-
 
 THE MATH THAT MATTERS:
 ════════════════════════════════════════════════════════════════════════════════

@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-p2s-print-quality]]
+
+> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]] | [[quick-context/3d-printer-hotends]] | [[quick-context/3d-printing-filament-refill-vs-spool|Refill vs Spool: 3D Printing Filament Packaging]] | [[quick-context/bambu-ams-automatic-material-system|Bambu AMS: Quick Context]] | [[quick-context/melt-index|Melt Index: Quick Context]]
 
 > **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
@@ -112,7 +113,6 @@ STAGE 4: G-code Output (machine instructions)
 
   Each line = one command to the printer
   A typical print = 100,000+ G-code lines
-
 
 HOW SETTINGS INTERACT: The Flow Rate Equation
 ═════════════════════════════════════════════

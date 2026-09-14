@@ -3,7 +3,8 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital|Transistors: Imperfect Analog Devices Masquerading as Digital Switches]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication|Semiconductor Fabrication: Manufacturing Process and Tools]] | [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
 
 > **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
@@ -18,8 +19,8 @@ Every few years, transistor designs hit fundamental physical limits. The planar 
 | Term | Definition |
 |------|------------|
 | **Point-contact transistor** | The first transistor (1947): two metal points touching a germanium crystal; unreliable but proved amplification was possible without vacuum tubes |
-| **Bipolar Junction Transistor (BJT)** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
-| **Planar MOSFET** | Voltage-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
+| **Bipolar Junction Transistor ([[quick-context/bjt|BJT]])** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
+| **Planar MOSFET** | [[quick-context/voltage|Voltage]]-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
 | **FinFET** | 3D transistor (2011+) where the channel is a vertical "fin" with the gate wrapped around three sides; dramatically reduced leakage at 22nm and below |
 | **Gate-All-Around (GAA/GAAFET)** | Latest architecture (2022+) using stacked horizontal nanosheets with the gate surrounding the channel on all four sides; enables 3nm and beyond |
 
@@ -53,7 +54,6 @@ December 23, 1947 - Bell Labs (Bardeen, Brattain, Shockley)
     Significance: Proved solid-state amplification was possible.
     Nobel Prize 1956 for Bardeen, Brattain, Shockley.
 
-
 ERA 2: BIPOLAR JUNCTION TRANSISTOR (BJT) (1948-1970s dominant)
 ────────────────────────────────────────────────────────────────────────────────
 Shockley's junction transistor (1948), first made by Teal & Sparks (1950)
@@ -81,7 +81,6 @@ Shockley's junction transistor (1948), first made by Teal & Sparks (1950)
     • Doesn't scale as well for integration
 
     Still used today: RF amplifiers, high-power applications, analog circuits
-
 
 ERA 3: PLANAR MOSFET (1960-2011)
 ────────────────────────────────────────────────────────────────────────────────
@@ -119,7 +118,6 @@ Invented: Kahng & Atalla at Bell Labs (1960)
     THE WALL (2000s): Below ~28nm, the channel became so short that
     the gate couldn't control it—electrons would leak from source to
     drain even when "off" ([[quick-context/transistor-analog-to-digital|short-channel effects]]).
-
 
 ERA 4: FinFET / Tri-Gate (2011-2024)
 ────────────────────────────────────────────────────────────────────────────────
@@ -169,7 +167,6 @@ Intel commercialized at 22nm (2011), TSMC/Samsung at 16nm (2014)
     │ 2020     │ 5nm        │ Apple M1, AMD Zen 4         │
     │ 2022     │ 3nm        │ Apple M3 (TSMC FinFET)      │
     └──────────┴────────────┴─────────────────────────────┘
-
 
 ERA 5: GATE-ALL-AROUND (GAA) / NANOSHEET (2022-present)
 ────────────────────────────────────────────────────────────────────────────────
@@ -246,7 +243,6 @@ PLANAR (1960):       FinFET (2011):       GAA (2022):
    ~1 side              ~3 sides              ~4 sides
    Poor control        Good control         Best control
    High leakage        Low leakage          Lowest leakage
-
 
 WHY MORE GATE COVERAGE MATTERS:
 ────────────────────────────────────────────────────────────────────────────────
@@ -348,7 +344,6 @@ Transistors: 1.4 billion
     │ • Leakage: ~20% of power            • Leakage: ~10% of power            │
     └─────────────────────────────────────────────────────────────────────────┘
 
-
 2023: Apple M3 (Late FinFET era)
 ─────────────────────────────────────────────────────────────────────────────
 Architecture: TSMC N3 FinFET (3nm marketing name)
@@ -367,7 +362,6 @@ Transistors: 25 billion
     │ • This is what 11 years of FinFET scaling achieved                      │
     └─────────────────────────────────────────────────────────────────────────┘
 
-
 2025: First GAA Products (TSMC N2, Intel 20A)
 ─────────────────────────────────────────────────────────────────────────────
 Architecture: Gate-All-Around nanosheets
@@ -385,7 +379,6 @@ Transistors: 50+ billion expected
     │ • ~25-30% power at same speed                                           │
     │ • Critical for AI accelerators needing maximum compute density          │
     └─────────────────────────────────────────────────────────────────────────┘
-
 
 FUTURE: CFET (2030+)
 ─────────────────────────────────────────────────────────────────────────────

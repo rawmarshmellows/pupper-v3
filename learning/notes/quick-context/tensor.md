@@ -3,9 +3,9 @@ topic: Tensor
 created: 2026-03-04
 ---
 
-# Tensor
+> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations|Maxwell's Equations]] | [[quick-context/tensile-strength-materials|Tensile Strength: What 27.3 ± 0.8 MPa Actually Means]] | [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[quick-context/electromagnetism]]
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+# Tensor
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
@@ -42,7 +42,6 @@ RANK 0: SCALAR — A single number
     No direction. Same value in every coordinate system.
     Components: 1 (just the number itself)
 
-
 RANK 1: VECTOR — A magnitude and direction
 ────────────────────────────────────────────────────────────────────────────
 
@@ -64,7 +63,6 @@ RANK 1: VECTOR — A magnitude and direction
 
     v = (3, 4) in xy     v = (5, 0) in x'y'
     Same vector, different components.
-
 
 RANK 2: MATRIX-LIKE — Maps vectors to vectors
 ────────────────────────────────────────────────────────────────────────────
@@ -93,7 +91,6 @@ RANK 2: MATRIX-LIKE — Maps vectors to vectors
     │   Off-diagonal: shear stresses (sliding forces)             │
     │                                                             │
     └─────────────────────────────────────────────────────────────┘
-
 
 HIGHER RANKS: More indices, more directions
 ────────────────────────────────────────────────────────────────────────────
@@ -127,7 +124,6 @@ VECTOR TRANSFORMATION (rank 1):
 
     Each new component is a linear combination of old components.
 
-
 RANK-2 TENSOR TRANSFORMATION:
 ────────────────────────────────────────────────────────────────────────────
 
@@ -136,7 +132,6 @@ RANK-2 TENSOR TRANSFORMATION:
     Two rotation matrices—one for each index.
     This ensures the tensor represents the same physical quantity
     in any coordinate system.
-
 
 THE FARADAY TENSOR EXAMPLE:
 ────────────────────────────────────────────────────────────────────────────
@@ -152,7 +147,6 @@ THE FARADAY TENSOR EXAMPLE:
     the transformation law mixes time-space components (E) with
     space-space components (B). The tensor itself doesn't change;
     your decomposition into E and B does.
-
 
 WHAT FAILS THE TEST:
 ────────────────────────────────────────────────────────────────────────────
@@ -189,7 +183,6 @@ APPROACH 1: COMPONENT-BASED (traditional physics/engineering)
     Pros: Concrete, calculable, matches how you do computations
     Cons: Can feel like bookkeeping; easy to lose physical meaning
           in a sea of indices
-
 
 APPROACH 2: GEOMETRIC/ABSTRACT (modern math, general relativity)
 ────────────────────────────────────────────────────────────────────────────
@@ -247,7 +240,6 @@ SIMPLE TENSION (pulling a rod):
     This is the "tensile strength" number on a spec sheet—
     the σ_xx component when pulling along one axis.
 
-
 SHEAR STRESS (twisting or sliding):
 ────────────────────────────────────────────────────────────────────────────
 
@@ -267,7 +259,6 @@ SHEAR STRESS (twisting or sliding):
     σ =  │ τ   0   0    │     Off-diagonal = shear
          │ 0   0   0    │     Symmetric: σ_xy = σ_yx
          └              ┘
-
 
 COMBINED LOADING (real-world):
 ────────────────────────────────────────────────────────────────────────────
