@@ -3,9 +3,9 @@ topic: Self-Induction
 created: 2026-02-17
 ---
 
-# Self-Induction
+> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law|Lenz's Law]] | [[micro-context/buck-converter]] | [[quick-context/voltage]] | [[quick-context/diode]]
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+# Self-Induction
 
 > **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
 
@@ -50,7 +50,6 @@ THE CAUSAL CHAIN
                                         ▼
                               Change in Current (dI/dt)
 
-
     ┌────────────────────────────────────────────────────────────────────────┐
     │                                                                        │
     │   The flux doesn't "block" current like a wall.                       │
@@ -88,7 +87,6 @@ THE CIRCUIT
 
     Assume: L = 1H, R = 10Ω, so final current = Vs/R = 1A
 
-
 ══════════════════════════════════════════════════════════════════════════════
 PHASE 1: THE INSTANT YOU CONNECT THE BATTERY (t = 0)
 ══════════════════════════════════════════════════════════════════════════════
@@ -121,7 +119,6 @@ PHASE 1: THE INSTANT YOU CONNECT THE BATTERY (t = 0)
 
     But current IS starting to flow — at 10 amps per second initially.
 
-
 ══════════════════════════════════════════════════════════════════════════════
 PHASE 2: CURRENT BUILDING UP (t = 0.1 seconds, as example)
 ══════════════════════════════════════════════════════════════════════════════
@@ -152,7 +149,6 @@ PHASE 2: CURRENT BUILDING UP (t = 0.1 seconds, as example)
     Slower change → less dI/dt → less back-EMF.
 
     Energy is flowing into the magnetic field (E = ½LI² = 0.2J so far)
-
 
 ══════════════════════════════════════════════════════════════════════════════
 PHASE 3: STEADY STATE (t → ∞, practically after ~5τ = 0.5s)
@@ -185,7 +181,6 @@ PHASE 3: STEADY STATE (t → ∞, practically after ~5τ = 0.5s)
     no induced EMF. The inductor acts like a plain wire with 0V across it.
 
     The magnetic field is "full" — holding 0.5 joules of energy.
-
 
 ══════════════════════════════════════════════════════════════════════════════
 PHASE 4: BATTERY DISCONNECTED (t = 0⁺ after disconnect)
@@ -231,7 +226,6 @@ PHASE 4: BATTERY DISCONNECTED (t = 0⁺ after disconnect)
     The inductor has REVERSED its voltage polarity!
     Now it's acting like a SOURCE, pushing current through the load.
 
-
 ══════════════════════════════════════════════════════════════════════════════
 PHASE 5: FIELD COLLAPSING (t > 0 after disconnect)
 ══════════════════════════════════════════════════════════════════════════════
@@ -262,7 +256,6 @@ PHASE 5: FIELD COLLAPSING (t > 0 after disconnect)
 
     This gives exponential decay: I(t) = I₀ × e^(-t/τ)
 
-
     As time passes (field collapsing):
     ─────────────────────────────────────────────────────────────────────────
 
@@ -279,7 +272,6 @@ PHASE 5: FIELD COLLAPSING (t > 0 after disconnect)
     • Load voltage: V_R ≈ 0V
     • Inductor voltage: V_L ≈ 0V
     • Energy remaining: ≈ 0J (all dissipated as heat in load)
-
 
     WHERE DID THE ENERGY GO?
     ─────────────────────────────────────────────────────────────────────────
@@ -329,7 +321,6 @@ VOLTAGE ACROSS INDUCTOR AND LOAD THROUGH ALL PHASES
                V_R decreases as current decays
                Both approach 0 as field fully collapses
 
-
 ┌────────────────────────────────────────────────────────────────────────────┐
 │                                                                            │
 │  DURING CHARGING:                                                          │
@@ -376,7 +367,6 @@ PROBLEM: You can't switch inductive loads easily
     The faster you try to stop the current, the bigger the spike.
     V = L × dI/dt → if dt → 0, then V → ∞
 
-
 SOLUTION: The same physics enables useful applications
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -421,7 +411,6 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
          • Current builds up to ~4A over several milliseconds
          • Magnetic field stores energy: E = ½LI² = ½ × 0.005 × 16 = 0.04J
          • This energy will become the spark
-
 
     SPARK PHASE (points open):
     ─────────────────────────────────────────────────────────────────────────
@@ -474,7 +463,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction only matters when current is *changing*.
 </details>
 
-**Q2:** At the instant you connect a battery to an inductor-resistor circuit, why does the load see 0V even though the battery is 10V?
+**Q2:** At the instant you connect a battery to an inductor-[[quick-context/resistor|resistor]] circuit, why does the load see 0V even though the battery is 10V?
 <details>
 <summary>Answer</summary>
 **The inductor absorbs all the voltage as back-EMF.** At t=0, current is zero but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire source voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.

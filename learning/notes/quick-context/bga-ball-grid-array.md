@@ -3,7 +3,8 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[quick-context/common-ic-packages]] | [[quick-context/substrate-ic-packaging|Substrate]] | [[quick-context/soldering]] | [[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -104,7 +105,6 @@ STEP 1: Apply Solder Paste           STEP 2: Place Component
     └─────────┘                          └─────────────┘
        PCB                                    PCB
 
-
 STEP 3: Reflow Oven                  STEP 4: Finished Joint
 ───────────────────                  ─────────────────────
 
@@ -172,7 +172,6 @@ Ball Diameter: ~0.6 mm
     ○ = no ball (thermal void or unused pin)
 
     Ball naming: Position A1, B5, Z26, etc. (like Excel cells)
-
 
 BALL FUNCTION MAP (typical allocation):
 ────────────────────────────────────────

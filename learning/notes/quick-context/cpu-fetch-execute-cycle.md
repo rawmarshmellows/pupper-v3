@@ -3,9 +3,9 @@ topic: The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 created: 2026-06-07
 ---
 
-# The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
+> **Related:** [[quick-context/python-to-machine-code-pipeline|Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath]] | [[quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]] | [[quick-context/keypress-to-pixel-pipeline|Keypress to Pixel — The Full Path from a Key to a Letter on Screen]] | [[quick-context/physics-of-writing-data-to-memory|Physics of Writing Data to Memory — How Bits Become Charges, Voltages, and Trapped Electrons]] | [[quick-context/ram-addressing-decoder|RAM — Addressing an Array of Registers]]
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+# The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 
 > **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
 

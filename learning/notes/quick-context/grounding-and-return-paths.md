@@ -3,7 +3,8 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/pcb-layers]] | [[quick-context/capacitor]] | [[quick-context/pcb-printed-circuit-board|PCB]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/impedance-and-reactance]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -17,7 +18,7 @@ Many beginners think of ground as a place where current "goes to die"—electron
 
 | Term | Definition |
 |------|------------|
-| **Ground (GND)** | The common reference voltage (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
+| **Ground (GND)** | The common reference [[quick-context/voltage|voltage]] (0V) in a circuit. Not earth, not a drain—it's the return path for current. Every signal is measured relative to ground. |
 | **Return Path** | The route current takes back to the source. At DC and low frequencies, current follows the path of least resistance. At high frequencies, it follows the path of least inductance (which is directly under the signal trace). |
 | **Ground Plane** | A solid copper layer on a [[quick-context/pcb-printed-circuit-board|PCB]] dedicated to ground. Provides a low-impedance return path, reduces noise, and acts as an electromagnetic shield. |
 | **Ground Loop** | When two points that should be at the same potential are connected by multiple paths, creating a loop that acts as an antenna. Picks up magnetic interference and creates noise currents. |
@@ -39,10 +40,8 @@ CURRENT FLOWS IN LOOPS
                                   Current returns to source
                                   through the ground path
 
-
     The ground wire carries EXACTLY as much current as the
     signal wire. It's not optional or negligible—it IS the circuit.
-
 
 RETURN PATH AT HIGH FREQUENCIES
 ══════════════════════════════════════════════════════════════════════════════
@@ -72,7 +71,6 @@ RETURN PATH AT HIGH FREQUENCIES
                   ← current forced to go around   slot → bigger loop
                      the slot, creating noise      → more inductance
                                                    → more EMI
-
 
 GROUND PLANES ON PCBs
 ══════════════════════════════════════════════════════════════════════════════
@@ -113,7 +111,6 @@ SINGLE-POINT (STAR) GROUND
     All ground wires meet at ONE point → no shared return paths
     → no noise coupling between sections
 
-
 MULTI-POINT GROUND (GROUND PLANE)
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -123,7 +120,6 @@ MULTI-POINT GROUND (GROUND PLANE)
     Frequencies: > 1 MHz
     Why: at high frequencies, long ground wires have too much inductance;
          a ground plane provides the lowest-impedance path everywhere
-
 
 MIXED-SIGNAL: THE HARD PROBLEM
 ══════════════════════════════════════════════════════════════════════════════

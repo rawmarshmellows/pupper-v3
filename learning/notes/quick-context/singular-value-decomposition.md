@@ -3,9 +3,9 @@ topic: "Singular Value Decomposition (SVD)"
 created: 2026-04-04
 ---
 
-# Singular Value Decomposition (SVD)
+> **Related:** [[quick-context/absolute-orientation|Absolute Orientation Problem]] | [[quick-context/covariance-matrix]] | [[quick-context/helmert-transform]] | [[quick-context/similarity-transform|N-Dimensional Similarity Transform]]
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/covariance-matrix|Covariance Matrix]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/similarity-transform|Similarity Transform]]
+# Singular Value Decomposition (SVD)
 
 > **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of linear algebra.
 
@@ -50,7 +50,6 @@ The key insight is that *every* linear transformation -- no matter how complicat
        |/                                         |/
   ─────+──────── x                           ─────+──────── x
        |    v1 ──>                                |    u1 ──>
-
 
   Step 1: V^T          Step 2: Sigma          Step 3: U
   (rotate to align     (stretch along         (rotate from

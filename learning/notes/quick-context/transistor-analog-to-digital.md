@@ -3,7 +3,8 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-design-history]] | [[micro-context/adc-analog-to-digital-converter|ADC]] | [[quick-context/doped-silicon]] | [[quick-context/thermal-noise-electronics|Thermal Noise: Why Heat Makes Electrons Misbehave]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -11,7 +12,7 @@ created: 2026-01-25
 
 ## The Core Problem: Reality Is Messy, But Computers Need Perfection
 
-Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs voltage levels.
+Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs [[quick-context/voltage|voltage]] levels.
 
 If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" transistor might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
 
@@ -104,7 +105,6 @@ WHY "OFF" TRANSISTORS STILL CONDUCT
    //   where q is the elementary charge (in coulombs), so Vg/(kT/q) is dimensionless
    // - At room temperature, kT/q ≈ 26 millivolts (mV), so e^(Vg/kT) grows extremely rapidly as Vg increases
 
-
 2. GATE LEAKAGE (through the oxide)
    ─────────────────────────────────────────────────────────────────────────────
    The gate oxide is only ~1-2nm thick. Electrons quantum-tunnel through.
@@ -120,7 +120,6 @@ WHY "OFF" TRANSISTORS STILL CONDUCT
         ▼
    Channel below
 
-
 3. JUNCTION LEAKAGE (through the body)
    ─────────────────────────────────────────────────────────────────────────────
    The PN junctions between source/drain and substrate have reverse-bias current
@@ -131,7 +130,6 @@ WHY "OFF" TRANSISTORS STILL CONDUCT
          P-type body
                │
      Reverse-biased junctions leak some current
-
 
 LEAKAGE ADDS UP:
 ═══════════════════════════════════════════════════════════════════════════════
@@ -176,7 +174,6 @@ Define clear "zones" where voltages are interpreted as 0 or 1:
     NOISE MARGIN = gap between thresholds and valid regions
     Larger margins = more tolerance for noise, leakage, variation
 
-
 STRATEGY 2: REGENERATIVE LOGIC (Signal Restoration)
 ════════════════════════════════════════════════════════════════════════════════
 
@@ -202,7 +199,6 @@ Each logic gate doesn't just compute—it RESTORES the signal:
     • Output is actively pulled to Vdd (through PMOS) or GND (through NMOS)
     • Never floating, always driven to a clean rail
     • Each gate "refreshes" the signal, preventing noise accumulation
-
 
 STRATEGY 3: COMPLEMENTARY MOS (CMOS) DESIGN
 ════════════════════════════════════════════════════════════════════════════════
@@ -245,7 +241,6 @@ Use BOTH types of transistors so one is always strongly ON:
                  through a strongly-ON transistor. This is what makes
                  CMOS outputs "regenerative."
 
-
 STRATEGY 4: TIMING AND CLOCKING
 ════════════════════════════════════════════════════════════════════════════════
 
@@ -286,7 +281,7 @@ The fundamental tradeoff in making analog transistors behave digitally:
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[micro-context/clock-speed|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 
@@ -342,7 +337,6 @@ WHAT DIGITAL MODELS ASSUME:
 
     Instant transitions, perfect values, no noise. Simple!
 
-
 WHAT ACTUALLY HAPPENS (Analog Reality):
 ─────────────────────────────────────────────────────────────────────────────────
 
@@ -364,7 +358,6 @@ WHAT ACTUALLY HAPPENS (Analog Reality):
             INPUT      After      After      After
             0.95V      Gate 1     Gate 2     Gate 3
                        0.08V      0.92V      0.05V
-
 
 ZOOMING IN ON ONE TRANSITION:
 ─────────────────────────────────────────────────────────────────────────────────
@@ -396,7 +389,6 @@ ZOOMING IN ON ONE TRANSITION:
     During this time, output is "invalid"—could be read as 0 or 1
     This is why we use clock edges: sample AFTER signals settle
 
-
 NOISE AND VARIATION IN REAL CHIPS:
 ─────────────────────────────────────────────────────────────────────────────────
 
@@ -423,7 +415,7 @@ NOISE AND VARIATION IN REAL CHIPS:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
+- **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic [[micro-context/mosfet|MOSFET]] structure (gate, source, drain, channel) is prerequisite.
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — Why transistors have the transfer characteristics they do. The PN junctions and carrier physics explain subthreshold conduction and leakage.
 

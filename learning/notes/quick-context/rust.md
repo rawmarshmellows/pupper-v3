@@ -3,7 +3,8 @@ topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
+
+> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[micro-context/oxidation]] | [[quick-context/electrolyte]] | [[quick-context/galvanic-cells-batteries|Galvanic Cells]]
 
 > **TL;DR:** Rust is an electrochemical process where iron spontaneously oxidizes back to its ore state (Fe₂O₃) when exposed to oxygen and water, costing over $2.5 trillion annually in infrastructure damage.
 
@@ -19,7 +20,7 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 |------|------------|
 | **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
 | **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the [[micro-context/cathode|cathode]] (electron receiver) instead of the anode, often via sacrificial metals |
 | **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
 | **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
@@ -50,7 +51,6 @@ THE SETUP - A Wet Iron Surface Acts Like a Battery
                     ←───── e⁻ flow through metal ─────
     ═══════════════════════════════════════════════════════════════════
 
-
 STEP 1: OXIDATION AT ANODIC SITES (Iron Dissolves)
 ──────────────────────────────────────────────────
      IRON SURFACE
@@ -64,7 +64,6 @@ STEP 1: OXIDATION AT ANODIC SITES (Iron Dissolves)
     pit   │◄────────│  Iron atoms LEAVE the metal  │
     forms │         │  Surface becomes pitted      │
           │         └──────────────────────────────┘
-
 
 STEP 2: WHY IRON IONS DISSOLVE (Hydration)
 ──────────────────────────────────────────
@@ -83,7 +82,6 @@ STEP 2: WHY IRON IONS DISSOLVE (Hydration)
         │  in solution and let it drift away from the surface     │
         └─────────────────────────────────────────────────────────┘
 
-
 STEP 3: REDUCTION AT CATHODIC SITES (Oxygen Consumed)
 ─────────────────────────────────────────────────────
                     WATER FILM
@@ -98,7 +96,6 @@ STEP 3: REDUCTION AT CATHODIC SITES (Oxygen Consumed)
                       │
                 electrons consumed here
 
-
 STEP 4: RUST PRECIPITATION (Products Combine)
 ────────────────────────────────────────────
 In solution, the products from both regions meet:
@@ -112,7 +109,6 @@ In solution, the products from both regions meet:
                     dehydration over time
                          ↓
                     Fe₂O₃·nH₂O       (RUST - red-brown)
-
 
 OVERALL REACTION:
 ═══════════════════════════════════════════════════════════════════
@@ -135,7 +131,7 @@ Protection vs. Cost vs. Practicality
 Corrosion engineers balance multiple competing strategies:
 
 - **Barrier methods** (paint, coatings, plating): Block oxygen and water from reaching the iron. Cheap but temporary—scratches expose fresh metal.
-- **Cathodic protection**: Attach a more reactive metal (zinc, magnesium) that corrodes preferentially, protecting the iron. This is "sacrificial anode" protection—the zinc is consumed instead of the iron.
+- **Cathodic protection**: Attach a more reactive metal (zinc, magnesium) that corrodes preferentially, protecting the iron. This is "sacrificial [[micro-context/anode|anode]]" protection—the zinc is consumed instead of the iron.
 - **Anodic protection**: For certain environments, maintain the metal at a potential where a stable passive oxide forms. Works for stainless steel but requires careful control.
 - **Alloying**: Add chromium, nickel, or other elements to create stainless steel with a self-healing oxide layer. Expensive but permanent.
 - **Environment control**: Remove oxygen, dehumidify, add corrosion inhibitors. Practical for enclosed systems (boilers, pipelines) but not outdoor structures.
@@ -167,7 +163,6 @@ SCENARIO: A galvanized (zinc-coated) nail gets scratched, exposing bare steel
         Fully protected                  Scratch exposes iron...
         (zinc barrier)                   but still protected! Why?
 
-
 THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
 ─────────────────────────────────────────────
 
@@ -182,14 +177,12 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
               ═══════════════█═══════════════
                         exposed Fe
 
-
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)
 
     Zinc is MORE willing to give up electrons than iron!
-
 
 WHAT HAPPENS:
 ─────────────
@@ -207,7 +200,6 @@ WHAT HAPPENS:
     • Zinc corrodes, iron doesn't      • Oxygen reduced: O₂ + 2H₂O + 4e⁻ → 4OH⁻
     • Zinc is "sacrificed"             • Iron is PROTECTED (reduction, not oxidation)
 
-
 THE RESULT:
 ───────────
     ┌──────────────────────────────────────────────────────────────┐
@@ -221,7 +213,6 @@ THE RESULT:
     │                                                              │
     │  Eventually the zinc gets consumed → then iron rusts         │
     └──────────────────────────────────────────────────────────────┘
-
 
 CONTRAST: What happens with a scratched TIN-PLATED can
 ──────────────────────────────────────────────────────
@@ -243,11 +234,11 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in electrolysis (Q3) demonstrates how iron at an anode actively dissolves.
+- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in [[quick-context/electrolysis|electrolysis]] (Q3) demonstrates how iron at an anode actively dissolves.
 
 - **[[quick-context/anions-and-oxidation]]** — At anodic regions, iron loses electrons (oxidation: Fe → Fe²⁺ + 2e⁻). Understanding oxidation as electron loss clarifies why the iron dissolves rather than staying solid.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery voltage also predict which metal corrodes when two are in contact.
+- **[[quick-context/galvanic-cells-batteries]]** — Corrosion is an unwanted galvanic cell. The standard electrode potentials that predict battery [[quick-context/voltage|voltage]] also predict which metal corrodes when two are in contact.
 
 - **[[quick-context/electrolyte]]** — Water (especially with dissolved salts) acts as the electrolyte enabling ion transport between anodic and cathodic regions. No water = no electrolyte = no rust.
 

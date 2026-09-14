@@ -4,9 +4,9 @@ created: 2026-02-10
 updated: 2026-02-10
 ---
 
-# Miller Heiman Strategic Selling / LAMP
+> **Related:** [[quick-context/strategic-selling-buyer-roles]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model|Malcolm McDonald KAM Model]] | [[quick-context/sandler-kare-segmentation|Sandler KARE Account Segmentation]] | [[quick-context/whitespace-mapping]]
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
+# Miller Heiman Strategic Selling / LAMP
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 

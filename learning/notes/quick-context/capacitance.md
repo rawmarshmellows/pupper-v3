@@ -3,9 +3,9 @@ topic: Capacitance
 created: 2026-03-28
 ---
 
-# Capacitance
+> **Related:** [[quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[quick-context/impedance-and-reactance]] | [[quick-context/inductor]]
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+# Capacitance
 
 > **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
@@ -17,9 +17,9 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 
 | Term | Definition |
 |------|------------|
-| **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
+| **Farad (F)** | The unit of capacitance. 1 farad = 1 [[micro-context/coulomb-history|coulomb]] stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
-| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
+| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] [[quick-context/substrate-ic-packaging|substrate]]): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
 | **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
@@ -50,7 +50,6 @@ INTENTIONAL (discrete capacitors):
     │ Metal plate      │
     └──────────────────┘
 
-
 PARASITIC (unintended, unavoidable):
 
     1. TWO PCB TRACES RUNNING PARALLEL
@@ -63,7 +62,6 @@ PARASITIC (unintended, unavoidable):
          Longer traces, closer spacing, higher-ε substrate
          → more coupling capacitance → more crosstalk
 
-
     2. PCB TRACE OVER GROUND PLANE
     ─────────────────────────────────────────────────────────
 
@@ -74,7 +72,6 @@ PARASITIC (unintended, unavoidable):
          This capacitance is actually useful:
          it sets the trace's characteristic impedance
          (Z₀ depends on L and C per unit length)
-
 
     3. TRANSISTOR GATE (the critical one)
     ─────────────────────────────────────────────────────────
@@ -90,7 +87,6 @@ PARASITIC (unintended, unavoidable):
 
          Switching speed ∝ 1/C_gate
          Power consumption ∝ C_gate × V² × f
-
 
     4. IC PIN AND PACKAGE
     ─────────────────────────────────────────────────────────
@@ -205,7 +201,6 @@ WHY CAPACITANCE = SPEED LIMIT
 
     Double the parasitic C → double the switching time (or double the current)
 
-
     THIS IS WHY TRANSISTOR SHRINKING MATTERS:
     ──────────────────────────────────────────────────────────────────────────
 
@@ -241,7 +236,6 @@ COMBINING CAPACITANCES
         C_total = C1 + C2    (capacitances ADD)
 
         Every extra trace, pin, or pad on a node adds to its total C.
-
 
     SERIES (less common, used in capacitor dividers):
 
@@ -286,7 +280,6 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
                                                        Gate C ~1-3pF
                                                        (transistor input)
 
-
     Sources, in series along the path from PCB to silicon:
 
       • PCB pad + trace stub  : copper-over-ground-plane parallel plate
@@ -307,7 +300,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
         C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
 ```
 
-The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+The ESD [[quick-context/diode|diode]] usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
 
 ### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
 
@@ -343,7 +336,6 @@ e.g. both go HIGH → LOW together
     → C_AB invisible to drivers
     → C_eff,A = C_self,A only         ◄── FASTEST discharge
 
-
 SCENARIO 2: ONE TRACE SWITCHES, NEIGHBOR HELD STILL
 ──────────────────────────────────────────────────────────────────────────
 e.g. A goes HIGH → LOW, B stays at LOW (quiet)
@@ -357,7 +349,6 @@ e.g. A goes HIGH → LOW, B stays at LOW (quiet)
 
     Side effect: charge flowing through C_AB injects current into B
     → quiet trace B sees a GLITCH (crosstalk).
-
 
 SCENARIO 3: TRACES SWITCH OPPOSITE DIRECTIONS
 ──────────────────────────────────────────────────────────────────────────
@@ -429,7 +420,6 @@ WHY DAISY CHAINS HIT A WALL
     With 30 devices: C_total ≈ 30 × 10 pF + 50 pF (traces) = 350 pF  ✓ OK
     With 40 devices: C_total ≈ 40 × 10 pF + 50 pF (traces) = 450 pF  ✗ Over spec!
 
-
     THE PHYSICS: Why more capacitance kills the signal
     ──────────────────────────────────────────────────────────────────────────
 
@@ -462,7 +452,6 @@ WHY DAISY CHAINS HIT A WALL
     At 400 kHz (fast mode I2C), the clock period is 2500 ns.
     If rise time eats >1000 ns of that, the receiver can't reliably
     distinguish HIGH from LOW → communication errors.
-
 
     THE GENERAL PATTERN (applies to any shared bus):
     ──────────────────────────────────────────────────────────────────────────
@@ -534,7 +523,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -555,7 +544,6 @@ DYNAMIC POWER IN A CMOS INVERTER
          └──┬──┘    GND
             │
     GND ────┴────────────────────
-
 
     Every time "In" transitions:
 
@@ -586,7 +574,6 @@ DYNAMIC POWER IN A CMOS INVERTER
     P ≈ 6.4 W  (just for gate switching -- real CPUs have wire C too)
 
     Total with wire parasitics, leakage, etc.: 50-150W typical
-
 
     WHY VOLTAGE REDUCTION MATTERS SO MUCH:
     ─────────────────────────────────────────────────────────────────────

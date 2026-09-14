@@ -3,7 +3,8 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/electric-current]] | [[quick-context/metal-interconnect-layers]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/semiconductor-fabrication|Semiconductor Fabrication: Manufacturing Process and Tools]] | [[quick-context/thermal-noise-electronics|Thermal Noise: Why Heat Makes Electrons Misbehave]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -60,7 +61,6 @@ ELECTRONS FLOWING THROUGH A METAL LATTICE:
                       Net momentum transferred to atoms
                       in direction of electron flow
 
-
 WHAT HAPPENS AT A GRAIN BOUNDARY:
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -84,7 +84,6 @@ boundaries (like water flowing through cracks).
     │   from upstream grains → downstream grains                             │
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
-
 
 VOID AND HILLOCK FORMATION:
 ─────────────────────────────────────────────────────────────────────────────
@@ -138,7 +137,6 @@ BLACK'S EQUATION
     k    = Boltzmann constant (8.617×10⁻⁵ eV/K)
     T    = Absolute temperature (Kelvin)
 
-
 KEY INSIGHT: J⁻ⁿ WITH n≈2
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -149,7 +147,6 @@ KEY INSIGHT: J⁻ⁿ WITH n≈2
     MTTF → MTTF × 4  (4× longer life!)
 
     This is why chip designers obsess over current limits for every wire.
-
 
 TEMPERATURE DEPENDENCE: exp(Ea/kT)
 ─────────────────────────────────────────────────────────────────────────────
@@ -166,7 +163,6 @@ TEMPERATURE DEPENDENCE: exp(Ea/kT)
 
     A 20°C temperature increase can cut wire lifetime by 3×!
     This is why cooling matters—not just for speed, but for reliability.
-
 
 WORKED EXAMPLE:
 ─────────────────────────────────────────────────────────────────────────────
@@ -215,7 +211,6 @@ AS TRANSISTORS SHRINK, WIRES MUST SHRINK TOO:
 
     Wire area dropped ~300×, but transistor switching current only dropped ~10×.
     Wires are becoming the bottleneck!
-
 
 THE TRADEOFF MAP:
 ─────────────────────────────────────────────────────────────────────────────
@@ -318,7 +313,6 @@ At hot spot conditions (100°C, 5× current):
 
 That's only 67 days before failure at the hot spot!
 
-
 ENGINEERING SOLUTIONS:
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -352,7 +346,7 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating [[quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
@@ -390,7 +384,7 @@ Temperature affects electromigration rate but doesn't eliminate it. The exponent
 **Q5:** How does the interconnect bottleneck described in [[quick-context/metal-interconnect-layers|metal interconnect layers]] relate to electromigration? Why does the problem get worse as process nodes shrink?
 <details>
 <summary>Answer</summary>
-The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but transistor current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
+The interconnect bottleneck is that wires don't scale as well as transistors. When wire width shrinks from 220nm to 12nm (~20× reduction), cross-sectional area drops ~400×, but [[quick-context/transistor|transistor]] current only drops ~10×. This means current density increases ~40× per generation. Since MTTF ∝ J⁻², lifetime would drop ~1600× if nothing changed. The problem compounds: thinner wires have more grain boundaries per volume (worse diffusion paths), higher resistance (more heating), and less margin before voids cause failure. This is why each new process node requires new materials, barrier layers, and more conservative current limits. The interconnect bottleneck isn't just about signal speed—it's fundamentally about reliable current delivery. See: The Scaling Dilemma table.
 </details>
 
 </details>

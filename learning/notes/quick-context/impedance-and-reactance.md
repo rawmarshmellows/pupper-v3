@@ -3,7 +3,8 @@ topic: Impedance and Reactance
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/capacitance]] | [[quick-context/inductor]] | [[quick-context/frequency-and-filtering]] | [[quick-context/capacitor]] | [[quick-context/grounding-and-return-paths]]
 
 > **TL;DR:** Impedance extends the concept of [[quick-context/resistor|resistance]] to AC circuits—[[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] oppose current flow in a frequency-dependent way called reactance, and impedance (Z = R + jX) combines resistance and reactance into a single quantity that describes how any component behaves with AC signals.
 
@@ -11,7 +12,7 @@ created: 2026-02-06
 
 ## The Core Problem: Resistance Alone Can't Describe AC Behavior
 
-Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that voltage and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
+Ohm's law (V = IR) works perfectly for resistors with DC. But connect a [[quick-context/capacitor|capacitor]] to an AC signal and something strange happens: it passes high-frequency signals easily but blocks low-frequency signals. An [[quick-context/inductor|inductor]] does the opposite. Neither behaves like a simple resistance—their opposition to current depends on frequency. Impedance is the generalized version of resistance that accounts for this frequency dependence and the fact that [[quick-context/voltage|voltage]] and current can be out of phase. Without impedance, you can't design filters, understand signal integrity, or debug transmission line problems.
 
 ## 5 Essential Terms
 
@@ -38,7 +39,6 @@ WHY VOLTAGE AND CURRENT GET OUT OF PHASE
            ╲  ╱    ╲  ╱            P = V × I (always positive = heat)
     I ──────╲╱──────╲╱──
 
-
     CAPACITOR: Current LEADS voltage by 90° (remember: ICE)
     ────────────────────────────────────────────────────────
 
@@ -53,7 +53,6 @@ WHY VOLTAGE AND CURRENT GET OUT OF PHASE
 
     When voltage is changing fastest (zero crossing) → max current
     When voltage is at its peak (not changing) → zero current
-
 
     INDUCTOR: Voltage LEADS current by 90° (remember: ELI)
     ────────────────────────────────────────────────────────
@@ -71,7 +70,6 @@ WHY VOLTAGE AND CURRENT GET OUT OF PHASE
     E leads I in L (inductor)
     I leads E in C (capacitor)
 
-
 IMPEDANCE AS A COMPLEX NUMBER
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -85,7 +83,6 @@ IMPEDANCE AS A COMPLEX NUMBER
 
     For a series R-L circuit:
     Z = R + jωL
-
 
 FREQUENCY DEPENDENCE: THE KEY INSIGHT
 ══════════════════════════════════════════════════════════════════════════════
@@ -235,7 +232,7 @@ RC LOW-PASS FILTER
 **At high frequencies, PCB traces act as transmission lines.** If the trace impedance doesn't match the driver and receiver impedance, signals reflect back and forth, causing ringing, overshoot, and data errors. A 1 GHz signal has wavelengths comparable to PCB trace lengths (~15 cm), so wave effects dominate. Matching impedances (typically 50Ω single-ended or 100Ω differential) eliminates reflections.
 </details>
 
-**Q5:** A decoupling capacitor has 1.6Ω of reactance at 1 MHz. Is it doing its job?
+**Q5:** A [[micro-context/decoupling-capacitor|decoupling capacitor]] has 1.6Ω of reactance at 1 MHz. Is it doing its job?
 <details>
 <summary>Answer</summary>
 **Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the capacitor provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.

@@ -3,9 +3,9 @@ topic: Inside the Triangle — Complete Op-Amp / Comparator Signal Path
 created: 2026-04-01
 ---
 
-# Inside the Triangle
+> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp|Op-Amp]] | [[quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[quick-context/differential-pair]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]]
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+# Inside the Triangle
 
 > **TL;DR:** The triangle symbol on a schematic hides 5--20 [[quick-context/transistor|transistors]] wired in three stages: a [[quick-context/differential-pair|differential pair]] that senses the input difference, a [[quick-context/high-gain-amplifier-stage|current-mirror gain stage]] that amplifies it to a full-rail swing, and an output stage that drives the load. The same three stages appear in both [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---the only difference is whether a compensation capacitor is added between stages 2 and 3.
 
@@ -22,16 +22,16 @@ You see this symbol everywhere in schematics:
        │  ╱
 ```
 
-Datasheets tell you the gain is 100,000x, input impedance is infinite, and output impedance is zero. But what's actually *inside*? How does a voltage difference of 1 mV become a 3.3V output swing? Why do [[quick-context/op-amp|op-amps]] need negative feedback to be stable but [[quick-context/comparator|comparators]] don't? The answers come from understanding the three-stage signal path that every op-amp and comparator shares.
+Datasheets tell you the gain is 100,000x, input impedance is infinite, and output impedance is zero. But what's actually *inside*? How does a [[quick-context/voltage|voltage]] difference of 1 mV become a 3.3V output swing? Why do [[quick-context/op-amp|op-amps]] need negative feedback to be stable but [[quick-context/comparator|comparators]] don't? The answers come from understanding the three-stage signal path that every op-amp and comparator shares.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + tail current source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
-| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | Current mirror active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
+| **Stage 1: Differential pair** | Two matched transistors + [[micro-context/tail-current|tail current]] source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
+| **Stage 2: High-gain amplifier** | [[micro-context/current-mirror|Current mirror]] active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
 | **Stage 3: Output buffer** | Drives the external load. Push-pull (op-amp) or open-drain/open-collector (comparator). Provides low output impedance so the signal doesn't droop under load. |
-| **Compensation capacitor ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a comparator.** |
+| **Compensation [[quick-context/capacitor|capacitor]] ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a comparator.** |
 | **Bias network** | Current mirrors and voltage references that set the DC operating point for every transistor. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |
 
 <details>
@@ -93,7 +93,6 @@ V(+)►gate      gate◄V(-)          │      gate◄── node A
                             (not shown: sets   │
                              Q5, Q6, Q7 bias)  │
 
-
     SIGNAL PATH:
     ═══════════════════════════════════════════════════════════
 
@@ -127,7 +126,6 @@ Output: 2 μA current difference between left and right branches
     What changed:  voltage difference → current difference
     Gain so far:   none yet (just transduction, not amplification)
 
-
 STAGE 2: Current Mirror Gain Stage (Q3, Q4 on top of Q1, Q2)
 ──────────────────────────────────────────────────────────────────────────────
 Input:  Left branch = 51 μA (through Q1 and Q3)
@@ -141,7 +139,6 @@ Output: Node A swings to near Vdd (3.1V)
 
     What changed:  2 μA current mismatch → ~3V voltage swing
     Gain so far:   1 mV input → 3.1V at node A = ~3,100× (70 dB)
-
 
 STAGE 3: Output Buffer (Q6, Q7)
 ──────────────────────────────────────────────────────────────────────────────
@@ -163,7 +160,6 @@ Output: Vout = 0V (LOW) for op-amp; Vout = GND for comparator
 
     What changed:  high-impedance node voltage → low-impedance output
     Total gain:    1 mV → 0V output (saturated)
-
 
 THE ONE DIFFERENCE: Compensation Capacitor
 ──────────────────────────────────────────────────────────────────────────────
@@ -208,7 +204,6 @@ RULE 1: "No current flows into the inputs"
     (BJT-input op-amps DO draw a tiny base current — nanoamps
      to microamps — which is why the datasheet lists "input bias
      current." MOSFET-input op-amps have picoamp input current.)
-
 
 RULE 2: "V+ = V-" (with negative feedback)
 ──────────────────────────────────────────────────────────────────────────────
@@ -302,7 +297,6 @@ LM358 (OP-AMP) vs LM393 (COMPARATOR)
     Can drive logic?   │ Poorly              │ Yes (designed for it)
     Input offset       │ 2 mV (trimmed)      │ 5 mV (less critical)
 
-
 WHAT HAPPENS WHEN YOU SWAP THEM
 ==============================================================================
 
@@ -371,13 +365,13 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 **Q4:** An engineer measures an LM358 op-amp's response time when used as a comparator and gets 10 $\mu$s. An LM393 comparator responds in ~1.3 $\mu$s. Both have similar transistor counts. Why the ~8× speed difference?
 <details>
 <summary>Answer</summary>
-**The LM358's internal 30 pF compensation capacitor limits its slew rate.** The cap must charge/discharge through the tail current: $SR = 100\ \mu A / 30\ pF = 3.3\ V/\mu s$. To swing 3.3V takes $\sim 1\ \mu s$, and overdrive recovery adds more delay, pushing total response to ~10 $\mu$s. The LM393 has no compensation cap, so node A charges only the parasitic capacitance, giving much faster slewing. Additionally, the LM393's output stage and input stage are designed for overdrive recovery, while the LM358's are not. See: Concrete Example (What Happens When You Swap Them).
+**The LM358's internal 30 pF compensation capacitor limits its slew rate.** The cap must charge/discharge through the tail current: $SR = 100\ \mu A / 30\ pF = 3.3\ V/\mu s$. To swing 3.3V takes $\sim 1\ \mu s$, and overdrive recovery adds more delay, pushing total response to ~10 $\mu$s. The LM393 has no compensation cap, so node A charges only the parasitic [[quick-context/capacitance|capacitance]], giving much faster slewing. Additionally, the LM393's output stage and input stage are designed for overdrive recovery, while the LM358's are not. See: Concrete Example (What Happens When You Swap Them).
 </details>
 
 **Q5:** Could you build a "universal" IC that works as both an op-amp and a comparator by adding a switch to connect/disconnect the compensation capacitor?
 <details>
 <summary>Answer</summary>
-**In theory yes, but it would be a poor version of both.** The compensation cap is only one of several design differences. Op-amps also have: (1) trimmed input offset voltage (important for precision, less critical for comparators), (2) output stages optimized for linear operation over the full swing range, (3) bias currents optimized for low noise rather than speed. Comparators have: (1) output stages optimized for clean logic levels and fast transitions, (2) input stages designed for large overdrive without saturation, (3) internal clamping to prevent latch-up under overdrive. A switchable cap would give you the speed difference but not the output or overdrive optimizations. In practice, both parts cost $0.20, so using the right one for the job is cheaper than building a compromise.
+**In theory yes, but it would be a poor version of both.** The compensation cap is only one of several design differences. Op-amps also have: (1) trimmed [[micro-context/input-offset-voltage|input offset voltage]] (important for precision, less critical for comparators), (2) output stages optimized for linear operation over the full swing range, (3) bias currents optimized for low noise rather than speed. Comparators have: (1) output stages optimized for clean logic levels and fast transitions, (2) input stages designed for large overdrive without saturation, (3) internal clamping to prevent latch-up under overdrive. A switchable cap would give you the speed difference but not the output or overdrive optimizations. In practice, both parts cost $0.20, so using the right one for the job is cheaper than building a compromise.
 </details>
 
 </details>

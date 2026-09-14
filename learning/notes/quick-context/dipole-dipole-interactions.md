@@ -5,7 +5,8 @@ updated: 2026-01-21
 clarification: 2026-01-21
 ---
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+
+> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds: Why PLA Snaps and TPU Bounces]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/chemical-bonds-spectrum|Chemical Bonds: The Full Spectrum]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -50,7 +51,6 @@ hydrogen (electronegativity 2.1):
      low      high                      "positive    "negative
      density  density                      pole"        pole"
 
-
 STEP 2: Dipoles align to minimize energy
 ========================================
 
@@ -65,7 +65,6 @@ charges near each other:
         (high energy,                   ATTRACTION!
          may repel)                   (low energy,
                                        stable)
-
 
 STEP 3: Network formation in bulk liquid
 ========================================
@@ -88,7 +87,6 @@ Many molecules form an organized network of attractions:
     Breaking free requires enough thermal energy to overcome
     ALL these attractions simultaneously.
 
-
 STRENGTH FACTORS:
 
     Factor              Effect                    Example
@@ -102,7 +100,6 @@ STRENGTH FACTORS:
 
     Orientation         Aligned = attractive      d+...d- ATTRACTS
                         Misaligned = repulsive    d+...d+ REPELS
-
 
 COMPARISON: POLAR vs NONPOLAR LIQUIDS
 
@@ -177,7 +174,6 @@ Water molecule structure:
           /   \
        δ+H     Hδ+
 
-
 How water molecules ACTUALLY attract (δ+ attracts δ-, NOT δ+ to δ+):
 
 ⚠️  IMPORTANT: Like charges REPEL. δ+ repels δ+, δ- repels δ-.
@@ -186,7 +182,6 @@ How water molecules ACTUALLY attract (δ+ attracts δ-, NOT δ+ to δ+):
 WRONG (what you might mistakenly think):
 
        δ+H ←✗ repels ✗→ Hδ+         ← WRONG! Same charges repel!
-
 
 CORRECT orientation (opposite charges attract):
 
@@ -204,7 +199,6 @@ CORRECT orientation (opposite charges attract):
                                / \                |
                             δ+H   Hδ+ ------------┘
 
-
 Side view showing the actual attractions:
 
     Molecule A              Molecule B
@@ -220,7 +214,6 @@ Side view showing the actual attractions:
 
     The δ- oxygen of molecule A attracts the δ+ hydrogen of molecule B.
     NOT hydrogen-to-hydrogen (that would be repulsion).
-
 
 Network view - each oxygen can attract MULTIPLE hydrogens from neighbors:
 

@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+
+> **Related:** [[quick-context/atoms-molecules-polymers-basics|Atoms, Molecules, and Polymers Basics]] | [[quick-context/breaking-elongation-rate|Breaking Elongation Rate: What "> 650%" Means]] | [[quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous: A Beginner's Guide to 3D Printing Warping]] | [[quick-context/tensor]] | [[quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]]
 
 > **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
 
@@ -50,7 +51,6 @@ AT THE ATOMIC LEVEL: What happens when you pull
  Bonds at rest        Bonds stretched      Bonds at limit       Bonds broken!
  (equilibrium)        (elastic region)     (yield/plastic)      (fracture)
 
-
 THE STRESS-STRAIN CURVE: Reading the story
 ──────────────────────────────────────────
 
@@ -74,7 +74,6 @@ THE STRESS-STRAIN CURVE: Reading the story
     └────────────────────────────────────────────→ Strain (%)
                    ↑                     ↑
                Springs back         Permanent deformation
-
 
 3D PRINTING REALITY: Layer adhesion is the weak link
 ────────────────────────────────────────────────────

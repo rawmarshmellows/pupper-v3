@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]]
+
+> **Related:** [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/tensile-strength-materials|Tensile Strength: What 27.3 ± 0.8 MPa Actually Means]] | [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds: Why PLA Snaps and TPU Bounces]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous: A Beginner's Guide to 3D Printing Warping]]
 
 > **TL;DR:** Matter builds up in layers (atoms -> molecules -> monomers -> polymers), and 3D printing works by heating thermoplastics enough to let polymer chains slide past each other without breaking them, then cooling to re-lock chains in new positions.
 
@@ -16,11 +17,11 @@ Everything physical you touch—including the plastic [[quick-context/3d-printin
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/subatomic-particles\|Atom]]** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of [[quick-context/subatomic-particles\|protons, neutrons, and electrons]]. |
+| **Atom** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of protons, neutrons, and electrons. |
 | **Molecule** | Two or more atoms bonded together; water (H₂O) is a molecule of 2 hydrogen atoms + 1 oxygen atom. |
 | **Monomer** | A small molecule that can bond repeatedly to form long chains; the "building block" unit. |
 | **Polymer** | A long chain made of many monomers bonded together; plastics are polymers. |
-| **Thermoplastic** | A polymer that softens when heated (above its [[quick-context/glass-transition-temperature\|glass transition temperature]]) and hardens when cooled, repeatedly—this is what makes [[quick-context/3d-printing-filament-types\|3D printing]] possible. |
+| **Thermoplastic** | A polymer that softens when heated (above its glass transition temperature) and hardens when cooled, repeatedly—this is what makes 3D printing possible. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -60,7 +61,6 @@ THE HIERARCHY OF MATTER → POLYMERS
     PLASTIC        ∿∿∿∿∿∿∿∿∿∿∿∿∿                entanglement, and
     mm-cm scale    (tangled spaghetti)          additives determine
                                                  final material behavior
-
 
 HOW 3D PRINTING EXPLOITS THIS HIERARCHY:
 ══════════════════════════════════════════════════════════════════════════════
@@ -116,7 +116,6 @@ LEVEL 1: ATOMS (the smallest pieces)
   These are individual atoms - the LEGO bricks of matter.
   Carbon has 6 protons, Oxygen has 8, Hydrogen has 1.
 
-
 LEVEL 2: MOLECULES (atoms bonded together)
 ==========================================
 
@@ -129,7 +128,6 @@ LEVEL 2: MOLECULES (atoms bonded together)
        H
 
   Atoms share electrons to form bonds (the lines).
-
 
 LEVEL 3: MONOMERS (special molecules that can link up)
 ======================================================
@@ -147,7 +145,6 @@ LEVEL 3: MONOMERS (special molecules that can link up)
   Key insight: Monomers have "reactive sites" that
   let them grab onto other monomers.
 
-
 LEVEL 4: POLYMER CHAINS (many monomers linked together)
 =======================================================
 
@@ -159,7 +156,6 @@ LEVEL 4: POLYMER CHAINS (many monomers linked together)
 
   Where each [M] is one lactic acid monomer.
 
-
   Zoomed out view of polymer chains in solid plastic:
 
      ~~~~~/\~~~~\/~~~~~~/\/\~~~~
@@ -169,7 +165,6 @@ LEVEL 4: POLYMER CHAINS (many monomers linked together)
 
   Chains tangle together like cooked spaghetti.
   This tangling = mechanical strength!
-
 
 THE 3D PRINTING PROCESS (what heat does):
 =========================================
@@ -225,7 +220,7 @@ Brittle when cold.            Branched, tangled chains.
 - [[quick-context/polymer-chemical-bonds|Chemical bonds]] — Deeper dive into the specific bond types that form polymer backbones and crosslinks; essential for understanding thermosets vs. thermoplastics.
 - [[quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] — Weak attractions between chains that affect melting point and layer adhesion; explains why nylon absorbs moisture and prints differently when wet.
 - [[quick-context/van-der-waals-forces|Van der Waals forces]] — The weakest intermolecular forces, but they add up across long polymer chains; crucial for understanding why longer chains = stronger parts.
-- [[quick-context/biology-fundamentals]] — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
+- biology fundamentals — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
 - [[quick-context/subatomic-particles]] — The fundamental building blocks (protons, neutrons, electrons, quarks) that make up atoms; explains why different elements have different numbers of bonds and chemical behaviors.
 
 </details>

@@ -4,6 +4,8 @@ created: 2026-02-07
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/diode]] | [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]] | [[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]] | [[quick-context/capacitor]]
+
 # Diode Rectification (AC → DC)
 
 **Definition:** Using [[quick-context/diode|diodes]] as one-way valves to convert AC to DC. Since diodes only let current flow in one direction, they block or flip the negative portions of AC, producing output that's always positive.

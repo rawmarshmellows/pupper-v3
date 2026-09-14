@@ -3,9 +3,9 @@ topic: Helmert Transform
 created: 2026-04-04
 ---
 
-# Helmert Transform
+> **Related:** [[quick-context/similarity-transform|N-Dimensional Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation Problem]] | [[quick-context/singular-value-decomposition]] | [[quick-context/covariance-matrix]]
 
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+# Helmert Transform
 
 > **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 
@@ -216,11 +216,9 @@ def helmert_transform(points_in, points_out):
     
     return s, R, t
 
-
 def apply_helmert(points, s, R, t):
     """Apply T(x) = s * R @ x + t to each point."""
     return (s * (R @ points.T)).T + t
-
 
 # --- Demo: align a local survey to GPS coordinates ---
 
@@ -257,7 +255,7 @@ print(f"Translation: true={t_true}  estimated={np.round(t_est, 4)}")
 print(f"Rotation matches: {np.allclose(R_true, R_est, atol=0.01)}")
 
 # Apply to a new point
-new_local = np.array([[0.5, 0.5, 0.5]])
+new_local = np.array(0.5, 0.5, 0.5)
 transformed = apply_helmert(new_local, s_est, R_est, t_est)
 print(f"New point transformed: {np.round(transformed, 4)}")
 ```

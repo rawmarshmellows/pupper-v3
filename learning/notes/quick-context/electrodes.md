@@ -3,7 +3,8 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+
+> **Related:** [[quick-context/anions-and-oxidation]] | [[quick-context/cations-and-reduction]] | [[quick-context/galvanic-cells-batteries|Galvanic Cells]] | [[quick-context/electric-current]] | [[quick-context/making-electrolytes|How to Make an Electrolyte]]
 
 > **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
 
@@ -20,8 +21,8 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 | Term | Definition |
 |------|------------|
 | **Electrode** | Any conductive solid surface where electrons enter or leave a liquid/solution to make chemistry happen—the "meeting point" of electricity and chemistry |
-| **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
-| **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
+| **[[micro-context/cathode|Cathode]]** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
+| **[[micro-context/anode|Anode]]** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
 | **Reduction** | A chemical reaction where something GAINS electrons. Happens at the cathode. (Think: the charge is "reduced"—becomes less positive or more negative) |
 | **Oxidation** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
 
@@ -155,7 +156,6 @@ STEP 1: ELECTRON FLOW
    [CATHODE]                               [ANODE]
    (receives electrons)                (electrons leave)
 
-
 STEP 2: AT THE CATHODE (Negative electrode)
 ═══════════════════════════════════════════════════════════════
 
@@ -174,7 +174,6 @@ STEP 2: AT THE CATHODE (Negative electrode)
          bubbles
          form!
 
-
 STEP 3: AT THE ANODE (Positive electrode)
 ═══════════════════════════════════════════════════════════════
 
@@ -187,7 +186,6 @@ STEP 3: AT THE ANODE (Positive electrode)
           │ ↗          └── Electrons LEAVE = OXIDATION
        e⁻ e⁻
                  O₂ gas bubbles form!
-
 
 STEP 4: THE CIRCUIT COMPLETES
 ═══════════════════════════════════════════════════════════════

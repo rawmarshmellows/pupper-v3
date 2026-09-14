@@ -3,7 +3,8 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+
+> **Related:** [[quick-context/plc-vs-software-control|PLC vs Software Control in Robotic Arm Systems]] | [[quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[quick-context/preempt-rt|PREEMPT_RT: Real-Time Linux for Industrial Control]] | [[micro-context/plc-programmable-logic-controller|PLC]] | [[quick-context/sil-rated-safety-functions|SIL-Rated Safety Functions]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 

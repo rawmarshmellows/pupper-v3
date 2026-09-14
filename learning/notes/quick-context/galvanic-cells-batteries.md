@@ -3,7 +3,8 @@ topic: Galvanic Cells (Batteries)
 created: 2026-01-23
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **Related:** [[quick-context/electrodes]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation|How Electricity is Created]] | [[quick-context/electrolysis]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]]
 
 > **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
 
@@ -17,16 +18,16 @@ This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysi
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/reduction-potential\|Electrode potential (E°)]]** | A measure of how strongly a material wants to gain or lose electrons, measured in volts relative to a standard hydrogen electrode. Zinc (E° = -0.76V) readily gives up electrons; copper (E° = +0.34V) readily accepts them. The *difference* between two electrodes determines cell voltage. |
-| **Anode/Cathode** | In a galvanic cell, the **anode** is where [[quick-context/anions-and-oxidation\|oxidation]] occurs (electrons leave, metal dissolves)—it's the *negative* terminal. The **cathode** is where [[quick-context/cations-and-reduction\|reduction]] occurs (electrons arrive, ions deposit)—it's the *positive* terminal. **Warning**: This is reversed from electrolysis, where cathode is negative. The definitions follow electron flow direction, which reverses when you flip from spontaneous to forced reactions. |
-| **[[quick-context/making-electrolytes\|Electrolyte]]** | The ionic medium (liquid, gel, or solid) that allows ions to move between [[quick-context/electrodes\|electrodes]], completing the internal circuit. Electrons flow through the external wire; ions flow through the electrolyte. Without both paths, no current flows. |
+| **Electrode potential (E°)** | A measure of how strongly a material wants to gain or lose electrons, measured in volts relative to a standard hydrogen electrode. Zinc (E° = -0.76V) readily gives up electrons; copper (E° = +0.34V) readily accepts them. The *difference* between two electrodes determines cell [[quick-context/voltage|voltage]]. |
+| **Anode/[[micro-context/cathode|Cathode]]** | In a galvanic cell, the **anode** is where oxidation occurs (electrons leave, metal dissolves)—it's the *negative* terminal. The **cathode** is where reduction occurs (electrons arrive, ions deposit)—it's the *positive* terminal. **Warning**: This is reversed from electrolysis, where cathode is negative. The definitions follow electron flow direction, which reverses when you flip from spontaneous to forced reactions. |
+| **Electrolyte** | The ionic medium (liquid, gel, or solid) that allows ions to move between electrodes, completing the internal circuit. Electrons flow through the external wire; ions flow through the electrolyte. Without both paths, no current flows. |
 | **State of Charge (SoC)** | The percentage of remaining capacity in a battery (100% = full, 0% = empty). As the battery discharges, reactants are consumed and SoC drops. Most batteries shouldn't be fully discharged—lithium-ion degrades rapidly below ~20% SoC. |
 | **Internal resistance** | The opposition to current flow within the battery itself. Higher internal resistance means more energy lost as heat, lower efficiency, and reduced power output. Internal resistance increases as batteries age and as temperature drops (why your phone dies faster in cold weather). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A galvanic cell operates by physically separating a spontaneous chemical reaction into two half-reactions at different locations, then forcing electrons to travel through an external circuit to complete the reaction. At the anode, a reactive metal (like zinc) spontaneously oxidizes—its atoms give up electrons and dissolve into the electrolyte as ions. Those electrons can't travel through the electrolyte (which only conducts ions), so they must flow through a wire to reach the cathode. At the cathode, a less reactive material (like copper) accepts those electrons, reducing ions from solution into solid metal. The electrolyte provides a path for ions to migrate between the two compartments, maintaining electrical neutrality—without this ionic pathway, charge would build up and stop the reaction almost immediately.
+A galvanic cell operates by physically separating a spontaneous chemical reaction into two half-reactions at different locations, then forcing electrons to travel through an external circuit to complete the reaction. At the [[micro-context/anode|anode]], a reactive metal (like zinc) spontaneously oxidizes—its atoms give up electrons and dissolve into the electrolyte as ions. Those electrons can't travel through the electrolyte (which only conducts ions), so they must flow through a wire to reach the cathode. At the cathode, a less reactive material (like copper) accepts those electrons, reducing ions from solution into solid metal. The electrolyte provides a path for ions to migrate between the two compartments, maintaining electrical neutrality—without this ionic pathway, charge would build up and stop the reaction almost immediately.
 
 The voltage a cell produces comes directly from the difference in "electron hunger" between the two electrode materials, quantified by their standard electrode potentials. Zinc has a strong tendency to release electrons (E° = -0.76V), while copper has a moderate tendency to accept them (E° = +0.34V). The cell voltage equals the difference: 0.34 - (-0.76) = 1.10V. Higher voltage differences mean more energy per electron transferred. During discharge, chemical bonds in the anode material are broken (zinc metal becomes zinc ions), and new bonds form at the cathode (copper ions become copper metal). The energy difference between bonds broken and bonds formed is what powers your device.
 
@@ -48,7 +49,6 @@ STEP 1: OXIDATION AT ANODE
    Zinc WANTS to lose electrons.
    Electrons accumulate in the electrode.
 
-
 STEP 2: ELECTRON FLOW THROUGH EXTERNAL CIRCUIT
 ──────────────────────────────────────────────
 
@@ -66,7 +66,6 @@ STEP 2: ELECTRON FLOW THROUGH EXTERNAL CIRCUIT
    wanted (cathode). Put a device in
    this path = POWER!
 
-
 STEP 3: REDUCTION AT CATHODE
 ────────────────────────────
                            COPPER ELECTRODE
@@ -80,7 +79,6 @@ STEP 3: REDUCTION AT CATHODE
 
    Copper ions WANT those electrons.
    They plate out as solid copper metal.
-
 
 STEP 4: ION MIGRATION COMPLETES THE CIRCUIT
 ───────────────────────────────────────────
@@ -97,7 +95,6 @@ STEP 4: ION MIGRATION COMPLETES THE CIRCUIT
    Cations move toward cathode (replaces Cu²⁺)
    Without ion flow → charge builds up →
    reaction STOPS!
-
 
 THE COMPLETE ENERGY FLOW:
 ═════════════════════════════════════════════════════════════════════
@@ -162,7 +159,6 @@ THE DANIELL CELL - A Classic Galvanic Battery
               │         │            │ (blue)  │
               └─────────┘            └─────────┘
 
-
 WHAT'S HAPPENING:
 
 AT THE ZINC ANODE (oxidation):
@@ -175,7 +171,6 @@ Zn(s) → Zn²⁺(aq) + 2e⁻
 • The zinc electrode slowly shrinks over time
 • E° = -0.76V (zinc "wants" to give up electrons)
 
-
 AT THE COPPER CATHODE (reduction):
 ──────────────────────────────────
 Cu²⁺(aq) + 2e⁻ → Cu(s)
@@ -186,7 +181,6 @@ Cu²⁺(aq) + 2e⁻ → Cu(s)
 • The copper electrode slowly grows
 • E° = +0.34V (copper "wants" to accept electrons)
 
-
 CELL VOLTAGE CALCULATION:
 ─────────────────────────
 E°cell = E°cathode - E°anode
@@ -195,7 +189,6 @@ E°cell = +1.10V
 
 The positive value confirms this reaction is SPONTANEOUS—
 electrons will flow without external power.
-
 
 THE SALT BRIDGE - Why It's Essential:
 ─────────────────────────────────────
@@ -236,13 +229,13 @@ This also explains why batteries degrade: you're physically moving atoms around 
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Battery reactions involve breaking and forming bonds. The energy released comes from forming more stable bonds in the products than existed in the reactants.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Standard Reduction Potentials)]]** — The ranked list of E° values that predicts which metals will oxidize/reduce relative to others. Metals with more negative E° make better anodes; more positive E° make better cathodes.
+- **Electrochemical Series (Standard Reduction Potentials)** — The ranked list of E° values that predicts which metals will oxidize/reduce relative to others. Metals with more negative E° make better anodes; more positive E° make better cathodes.
 
 - **Battery Management Systems (BMS)** — The electronics that monitor and protect battery packs: cell balancing, overcharge/overdischarge protection, temperature monitoring. Critical for lithium-ion safety.
 
 - **Solid-State Batteries** — The "next generation" technology replacing liquid electrolytes with solid conductors. Promises higher energy density and safety, but manufacturing challenges remain unsolved at scale.
 
-- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with electromagnetic induction and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
+- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with [[micro-context/electromagnetic-induction|electromagnetic induction]] and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
 
 </details>
 
@@ -255,7 +248,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Electrolytes conduct ions, not electrons.** The electrolyte is an ionic conductor—dissolved salts or acids that allow charged ions (like Zn²⁺, Cu²⁺, SO₄²⁻) to move through the solution. Free electrons cannot travel through ionic solutions; they must go through the metallic external circuit. This separation is what allows us to extract useful work—if electrons could shortcut through the electrolyte, the reaction would just produce heat instead of electrical current. See: The salt bridge explanation in Concrete Example
 </details>
 
-**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a microcontroller, how would you achieve this using Daniell cells?
+**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a [[micro-context/microcontroller|microcontroller]], how would you achieve this using Daniell cells?
 <details>
 <summary>Answer</summary>
 **Connect three Daniell cells in series.** When batteries are connected in series (positive terminal of one to negative terminal of the next), their voltages add: 1.10V + 1.10V + 1.10V = 3.30V. The capacity (Ah) stays the same as a single cell, but voltage stacks. This is how a 12V car battery works—six 2.1V lead-acid cells in series. See: Concrete Example (cell voltage calculation)

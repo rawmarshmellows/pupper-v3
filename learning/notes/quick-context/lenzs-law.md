@@ -3,15 +3,15 @@ topic: Lenz's Law
 created: 2026-02-17
 ---
 
-# Lenz's Law
+> **Related:** [[quick-context/inductor]] | [[quick-context/maxwell-equations|Maxwell's Equations]] | [[quick-context/electricity-generation|How Electricity is Created]] | [[quick-context/electromagnetism]] | [[quick-context/self-induction|Self-Induction]]
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
+# Lenz's Law
 
 > **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from nothing.
 
 ## The Core Problem: Why the Minus Sign?
 
-Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
+Faraday discovered that changing magnetic flux through a coil induces [[quick-context/voltage|voltage]]. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
 
 ## 5 Essential Terms
 
@@ -57,7 +57,6 @@ HYPOTHESIS A: Induced current REINFORCES the field (wrong!)
 
     ✗ VIOLATES CONSERVATION OF ENERGY
 
-
 HYPOTHESIS B: Induced current OPPOSES the field (Lenz's Law — correct!)
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -69,7 +68,6 @@ HYPOTHESIS B: Induced current OPPOSES the field (Lenz's Law — correct!)
     6. That work is converted to electrical energy in the coil
 
     ✓ ENERGY IS CONSERVED: Mechanical work in → Electrical energy out
-
 
               YOU                MAGNETIC
               DO                 BRAKING          ELECTRICAL
@@ -117,7 +115,6 @@ MAGNETIC FLUX: How Much Field Passes Through a Surface
         Many field lines              Fewer field               No field lines
         pass through                  lines through             pass through
 
-
 WHAT DOES "FLUX CHANGING" MEAN?
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -138,7 +135,6 @@ WHAT DOES "FLUX CHANGING" MEAN?
         • A magnet approaches the coil
         • Current in a nearby coil increases
         • In an inductor: current is increasing (field building up)
-
 
     DECREASING FLUX: Fewer field lines passing through the loop over time
 
@@ -202,7 +198,6 @@ CASE 1: FLUX IS INCREASING
     More flux → more induced current → even more flux → runaway!
     This would violate energy conservation (free energy from nothing).
 
-
 CASE 2: FLUX IS DECREASING
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -237,7 +232,6 @@ CASE 2: FLUX IS DECREASING
     The coil is trying to MAINTAIN the flux it had.
     It can't stop the decrease, but it fights against it.
 
-
 THE PATTERN: ALWAYS OPPOSE THE CHANGE
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -257,7 +251,6 @@ THE PATTERN: ALWAYS OPPOSE THE CHANGE
     │   Not the field itself—the CHANGE in the field.                       │
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
-
 
 WHY MUST IT OPPOSE? (Energy Conservation)
 ──────────────────────────────────────────────────────────────────────────────
@@ -317,7 +310,6 @@ SCENARIO 1: FLUX INCREASING (magnet approaching)
 
     Result: Coil pushes back against magnet. You must do work to approach.
 
-
 SCENARIO 2: FLUX DECREASING (magnet withdrawing)
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -338,7 +330,6 @@ SCENARIO 2: FLUX DECREASING (magnet withdrawing)
     Creates field that tries to MAINTAIN the flux
 
     Result: Coil pulls magnet back. You must do work to withdraw.
-
 
 THE UNIVERSAL PATTERN:
 ══════════════════════════════════════════════════════════════════════════════
@@ -370,7 +361,6 @@ SELF-INDUCTION: Lenz's Law in Inductors
 
     The minus sign IS Lenz's Law!
 
-
 CURRENT INCREASING (dI/dt > 0):
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -386,7 +376,6 @@ CURRENT INCREASING (dI/dt > 0):
     • V_L = -L × dI/dt is NEGATIVE (opposes positive dI/dt)
     • The inductor "pushes back" against the current rise
     • Energy is stored in the magnetic field: E = ½LI²
-
 
 CURRENT DECREASING (dI/dt < 0):
 ──────────────────────────────────────────────────────────────────────────────
@@ -404,7 +393,6 @@ CURRENT DECREASING (dI/dt < 0):
     • The inductor tries to MAINTAIN the current
     • Stored energy releases back into the circuit
 
-
 SUDDEN DISCONNECT: Lenz's Law Creates Voltage Spikes
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -421,7 +409,6 @@ SUDDEN DISCONNECT: Lenz's Law Creates Voltage Spikes
 
     Solution: Flyback diode provides a safe path for the current.
 
-
 WHY VOLTAGE "SHIFTS" FROM INDUCTOR TO LOAD OVER TIME
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -437,7 +424,6 @@ explains exactly why this happens.
          └─────────────────────────────────────┘
 
     Kirchhoff's Law always applies: Vs = V_L + V_R
-
 
 THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
 ──────────────────────────────────────────────────────────────────────────────
@@ -457,7 +443,6 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
          │         Vs                 0        │
          └─────────────────────────────────────┘
 
-
     AS TIME PASSES:
     ─────────────────────────────
     • Current builds up (Lenz's Law loses the battle gradually)
@@ -472,7 +457,6 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
          │         ½Vs               ½Vs       │
          └─────────────────────────────────────┘
 
-
     AT t=∞ (steady state):
     ─────────────────────────────
     • Current has reached its limit: I = Vs/R
@@ -486,7 +470,6 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
          │          0                 Vs       │
          └─────────────────────────────────────┘
 
-
     ┌────────────────────────────────────────────────────────────────────────┐
     │                                                                        │
     │  Lenz's Law opposes CHANGE, not steady state.                         │
@@ -499,7 +482,7 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
 
-    See [[quick-context/inductor#rl-time-constant|RL Time Constant]] for the
+    See RL Time Constant for the
     mathematics: the time constant τ = L/R determines how fast this happens.
 ```
 
@@ -529,7 +512,6 @@ THE APPARENT LIMITATION:
     • Transformers: The secondary current creates fields that oppose
       the primary's field changes, loading the primary circuit.
 
-
 THE HIDDEN ENABLER:
 ────────────────────────────────────────────────────────────────────────────
 
@@ -545,7 +527,6 @@ THE HIDDEN ENABLER:
     • That work = electrical energy delivered to circuit
     • Energy is conserved: mechanical in → electrical out
 
-
     INDUCTOR without opposition:
     • Apply voltage → current jumps instantly to any value
     • No energy stored in magnetic field
@@ -555,7 +536,6 @@ THE HIDDEN ENABLER:
     • Back-EMF limits dI/dt
     • Energy gradually stored in field: E = ½LI²
     • Power = V × I is finite and manageable
-
 
 THE DEEP INSIGHT:
 ────────────────────────────────────────────────────────────────────────────
@@ -581,7 +561,7 @@ THE DEEP INSIGHT:
 |--------|------------------------|-------------------|
 | Generator | Rotation of coil | Mechanical → electrical conversion |
 | Motor | Current flow | Electrical → mechanical conversion |
-| [[quick-context/inductor\|Inductor]] | Current changes | Energy storage in magnetic field |
+| Inductor | Current changes | Energy storage in magnetic field |
 | Transformer | Flux changes in primary | Power transfer to secondary |
 | Eddy current brake | Motion of conductor | Magnetic braking (no friction wear) |
 
@@ -619,7 +599,6 @@ SETUP:
 
     Note: Copper is NOT magnetic! It doesn't attract magnets.
     But something dramatic happens when the magnet falls through...
-
 
 WHAT HAPPENS (Lenz's Law):
 ────────────────────────────────────────────────────────────────────────────
@@ -670,7 +649,6 @@ WHAT HAPPENS (Lenz's Law):
            │  facing down → attracts departing    │
            │  magnet, slowing it                  │
            └──────────────────────────────────────┘
-
 
 COMBINED EFFECT:
 ────────────────────────────────────────────────────────────────────────────

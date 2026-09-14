@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
+
+> **Related:** [[quick-context/chemical-bonds-spectrum|Chemical Bonds: The Full Spectrum]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]] | [[quick-context/van-der-waals-forces]] | [[quick-context/tensile-strength-materials|Tensile Strength: What 27.3 ± 0.8 MPa Actually Means]]
 
 > **TL;DR:** Pi-pi stacking is a molecular "velcro" effect where flat aromatic rings (like benzene in ABS plastic) attract each other through their electron clouds, requiring higher print temperatures to overcome and causing warping when these attractions re-form during cooling.
 
@@ -26,7 +27,6 @@ Imagine you have flat hexagonal rings made of carbon atoms—these are called **
     H—C   C—H                               ══════════  ← ring 4
         \
          H                                 (stacked like pancakes!)
-
 
     SIMPLIFIED STACK VIEW:
 
@@ -84,7 +84,6 @@ STEP 1: Understand the aromatic ring's charge distribution
     - Electron-rich faces (top and bottom)
     - Electron-poor edges (where H atoms attach)
 
-
 STEP 2: Two stacking geometries emerge from charge complementarity
 ==================================================================
 
@@ -106,7 +105,6 @@ STEP 2: Two stacking geometries emerge from charge complementarity
 
     This is the most common arrangement in crystals and polymers.
 
-
     EDGE-TO-FACE ("T-shaped"):
 
          Ring A (edge):    H
@@ -119,7 +117,6 @@ STEP 2: Two stacking geometries emerge from charge complementarity
 
     The d+ hydrogen points directly at the d- pi cloud.
     Common in protein structures and small molecule crystals.
-
 
 STEP 3: Stacking propagates through polymer chains
 ==================================================
@@ -141,7 +138,6 @@ STEP 3: Stacking propagates through polymer chains
 
     Result: Chains are "zipped" together by thousands of stacking interactions.
 
-
 ENERGY LANDSCAPE:
 
     Single pi-pi interaction:     ~2-10 kJ/mol
@@ -152,7 +148,6 @@ ENERGY LANDSCAPE:
     BUT: In 1 mm^3 of ABS, there are ~10^15 stacking interactions!
 
     Total stacking energy: ENORMOUS (holds the material together)
-
 
 GEOMETRY MATTERS:
 

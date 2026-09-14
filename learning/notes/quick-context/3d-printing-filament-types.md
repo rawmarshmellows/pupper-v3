@@ -4,7 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
+
+> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printing-filament-refill-vs-spool|Refill vs Spool: 3D Printing Filament Packaging]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/melt-index|Melt Index: Quick Context]] | [[quick-context/3d-printer-hotends]]
 
 > **TL;DR:** Different 3D printing filaments (PLA, PETG, ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
 
@@ -46,7 +47,6 @@ FILAMENT PRINTING PROCESS:
    (chains locked)       ║  NOZZLE           ║           to previous layer
                          ╚═══════════════════╝
 
-
 MOLECULAR VIEW OF EACH FILAMENT TYPE:
 
 PLA (simple chains, weak forces):
@@ -70,7 +70,6 @@ TPU (alternating hard/soft segments):
   ═══~~~═══~~~     ═══~~~═══~~~     ═══ = hard segment (rigid)
   ═══~~~═══~~~     ═══~~~═══~~~     ~~~ = soft segment (flexible)
   ═══~~~═══~~~     ═══~~~═══~~~     Elastic recovery on cooling
-
 
 WHY TEMPERATURE MATTERS:
 

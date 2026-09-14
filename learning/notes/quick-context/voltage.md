@@ -3,9 +3,9 @@ topic: Voltage
 created: 2026-02-13
 ---
 
-# Voltage
+> **Related:** [[quick-context/voltage-current-causality|Voltage-Current Causality]] | [[quick-context/voltage-thermodynamics-electrolysis|Voltage and Thermodynamic Relationship in Electrolysis]] | [[quick-context/capacitance]] | [[quick-context/self-induction|Self-Induction]] | [[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+# Voltage
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -17,7 +17,7 @@ You have a battery, and you want current to flow through a wire to do useful wor
 
 | Term | Definition |
 |------|------------|
-| **Volt (V)** | The unit of voltage. 1 volt = 1 joule of energy per coulomb of charge. A AA battery: 1.5V. USB: 5V. Wall outlet (US): 120V. Car battery: 12V. |
+| **Volt (V)** | The unit of voltage. 1 volt = 1 joule of energy per [[micro-context/coulomb-history|coulomb]] of charge. A AA battery: 1.5V. USB: 5V. Wall outlet (US): 120V. Car battery: 12V. |
 | **Electric Field (E)** | A vector field that exerts force on electric charges. Measured in volts per meter (V/m). The field is what actually pushes electrons. |
 | **Potential Difference** | Another name for voltage—the difference in electric potential energy per unit charge between two points. |
 | **Ground/Reference** | Voltage is always relative. "Ground" is the arbitrary 0V reference point. A "9V" battery means 9V *higher than* the negative terminal. |
@@ -49,7 +49,6 @@ Chemical reactions do work to separate charges:
 
     This charge separation creates an ELECTRIC FIELD between terminals.
 
-
 THE FIELD IN THE WIRE:
 ───────────────────────────────────────────────────────────────────────
 
@@ -71,7 +70,6 @@ THE FIELD IN THE WIRE:
     │                                                               │
     │  This drift IS the current.                                  │
     └──────────────────────────────────────────────────────────────┘
-
 
 VOLTAGE AS THE INTEGRAL OF THE FIELD:
 ───────────────────────────────────────────────────────────────────────
@@ -221,7 +219,6 @@ EXAMPLE: 9V BATTERY, 100Ω RESISTOR, 10CM WIRE
                          │ Resistor  │
                          └───────────┘
 
-
 WHERE DOES THE FIELD EXIST?
 ───────────────────────────────────────────────────────────────────────
 
@@ -244,7 +241,6 @@ In resistor: HIGH field (resistor limits current)
     │  Field concentrates where resistance is highest.             │
     └──────────────────────────────────────────────────────────────┘
 
-
 CURRENT CALCULATION:
 ───────────────────────────────────────────────────────────────────────
 
@@ -255,7 +251,6 @@ CURRENT CALCULATION:
 
     This 90mA flows through EVERY part of the circuit
     (current is conserved—same electrons, same flow rate everywhere)
-
 
 THE FIELD-CURRENT RELATIONSHIP:
 ───────────────────────────────────────────────────────────────────────
@@ -301,7 +296,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an [[quick-context/inductor|inductor]] creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 

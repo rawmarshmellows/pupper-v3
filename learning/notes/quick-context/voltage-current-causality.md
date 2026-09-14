@@ -3,9 +3,9 @@ topic: Voltage-Current Causality (Which Causes Which?)
 created: 2026-03-27
 ---
 
-# Voltage-Current Causality
+> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/inductor]] | [[quick-context/electricity-generation|How Electricity is Created]]
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+# Voltage-Current Causality
 
 > **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
@@ -58,7 +58,6 @@ SCENARIO 1: BATTERY + RESISTOR ("Voltage causes current")
     Current adjusts based on resistance.
     It LOOKS like V causes I.
 
-
 SCENARIO 2: INDUCTOR ("Current causes voltage")
 --------------------------------------------------------------------------
 
@@ -78,7 +77,6 @@ SCENARIO 2: INDUCTOR ("Current causes voltage")
 
     Here the changing current creates the voltage.
     It LOOKS like I causes V.
-
 
 SCENARIO 3: CURRENT SOURCE + RESISTOR ("Current causes voltage")
 --------------------------------------------------------------------------
@@ -104,7 +102,6 @@ SCENARIO 3: CURRENT SOURCE + RESISTOR ("Current causes voltage")
     The source fixes the current.
     Voltage adjusts based on resistance.
     Now V = IR reads as "I causes V."
-
 
 SCENARIO 4: GENERATOR ("Mechanical motion causes both")
 --------------------------------------------------------------------------
@@ -161,7 +158,6 @@ THE FIELD-CENTRIC VIEW (the right mental model)
     Neither one "causes" the other.
     They are two measurements of the same underlying phenomenon.
 
-
 WHY Ohm's Law ISN'T a causal statement:
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -188,8 +184,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | Inductors (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, capacitors (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -239,7 +235,6 @@ THREE STORIES ABOUT THE SAME CIRCUIT
 
     Time constant: τ = L/R = 10 mH / 1 kΩ = 10 μs
 
-
 STORY 1: "Voltage drives current" (voltage-source perspective)
 ──────────────────────────────────────────────────────────────────────────
     t = 0: Source applies 5V step
@@ -257,7 +252,6 @@ STORY 1: "Voltage drives current" (voltage-source perspective)
 
     Narrative: "The voltage source drove current through the RL circuit."
 
-
 STORY 2: "Current creates voltage" (inductor perspective)
 ──────────────────────────────────────────────────────────────────────────
     t = 0: Current tries to change from 0
@@ -271,7 +265,6 @@ STORY 2: "Current creates voltage" (inductor perspective)
     • Current steady → zero inductor voltage
 
     Narrative: "The changing current created voltage across the inductor."
-
 
 STORY 3: "Constraints determine everything" (the real answer)
 ──────────────────────────────────────────────────────────────────────────

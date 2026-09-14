@@ -3,9 +3,9 @@ topic: Maxwell's Equations
 created: 2026-02-20
 ---
 
-# Maxwell's Equations
+> **Related:** [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/faraday-tensor]] | [[quick-context/lenzs-law|Lenz's Law]]
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+# Maxwell's Equations
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
@@ -18,7 +18,7 @@ Before Maxwell, electricity and magnetism seemed like separate phenomena with un
 | Term | Definition |
 |------|------------|
 | **Electric Field (E)** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
-| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
+| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by currents (moving charges) and by changing electric fields. Measured in tesla (T). |
 | **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates total flux to enclosed charge. |
 | **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[quick-context/lenzs-law|Faraday's law]]). |
 | **Displacement Current** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
@@ -52,7 +52,6 @@ MAXWELL'S EQUATIONS — Differential Form (Vacuum)
    • This is why [[quick-context/capacitor|capacitors]] work: charges on plates create
      field between them
 
-
 2. GAUSS'S LAW FOR MAGNETISM
    ─────────────────────────────────────────────────────────────────────────
    ∇ · B = 0
@@ -73,7 +72,6 @@ MAXWELL'S EQUATIONS — Differential Form (Vacuum)
             └────────────────────┘
 
    Field lines loop from N to S outside, S to N inside.
-
 
 3. FARADAY'S LAW OF INDUCTION
    ─────────────────────────────────────────────────────────────────────────
@@ -98,7 +96,6 @@ MAXWELL'S EQUATIONS — Differential Form (Vacuum)
             │        │ ← induced E circulates around the changing B
             │  coil  │
             └────────┘
-
 
 4. AMPÈRE-MAXWELL LAW
    ─────────────────────────────────────────────────────────────────────────
@@ -128,7 +125,6 @@ MAXWELL'S EQUATIONS — Differential Form (Vacuum)
    • Maxwell's addition: changing E-field ALSO creates B-field
    • This completes the symmetry: changing B creates E, changing E creates B
    • This symmetry enables electromagnetic waves!
-
 
 THE KEY INSIGHT: MAXWELL'S DISPLACEMENT CURRENT
 ══════════════════════════════════════════════════════════════════════════════
@@ -224,7 +220,6 @@ MAXWELL'S CONCLUSION (1865):
     infrared, ultraviolet, X-rays, and gamma rays—all the same physics
     at different frequencies.
 
-
 THE SELF-SUSTAINING WAVE
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -287,7 +282,6 @@ EQUATION 1: GAUSS'S LAW (ELECTRIC)
     Best for: General analysis, deriving
     wave equations
 
-
 EQUATION 2: GAUSS'S LAW (MAGNETIC)
 ───────────────────────────────────────────────────────────────────────────
 
@@ -300,7 +294,6 @@ EQUATION 2: GAUSS'S LAW (MAGNETIC)
 
     "B-field has no divergence anywhere
      (no magnetic monopoles)"
-
 
 EQUATION 3: FARADAY'S LAW
 ───────────────────────────────────────────────────────────────────────────
@@ -320,7 +313,6 @@ EQUATION 3: FARADAY'S LAW
      derivative of B"
 
     Best for: Wave propagation analysis
-
 
 EQUATION 4: AMPÈRE-MAXWELL LAW
 ───────────────────────────────────────────────────────────────────────────
@@ -387,7 +379,6 @@ EQUATION 1: GAUSS'S LAW → CAPACITORS AND SHIELDING
 
     This is how we derive the [[quick-context/capacitor|capacitor]] formula C = ε₀A/d
 
-
 EQUATION 2: GAUSS'S LAW (MAGNETIC) → NO MAGNETIC MONOPOLES
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -413,7 +404,6 @@ EQUATION 2: GAUSS'S LAW (MAGNETIC) → NO MAGNETIC MONOPOLES
 
     If you cut the magnet, you get two smaller magnets, not N and S separately!
 
-
 EQUATION 3: FARADAY'S LAW → [[quick-context/electricity-generation|GENERATORS]] AND [[quick-context/inductor|INDUCTORS]]
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -438,7 +428,6 @@ EQUATION 3: FARADAY'S LAW → [[quick-context/electricity-generation|GENERATORS]
 
     One rotation = one complete AC cycle
 
-
     APPLICATION: [[quick-context/inductor|Inductor]] back-EMF
 
     Current through coil creates flux: Φ = L × I
@@ -447,7 +436,6 @@ EQUATION 3: FARADAY'S LAW → [[quick-context/electricity-generation|GENERATORS]
 
     This is [[quick-context/lenzs-law|Lenz's Law]] in action—the minus sign means
     the induced EMF opposes the change that caused it.
-
 
 EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 ══════════════════════════════════════════════════════════════════════════════
@@ -474,7 +462,6 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
                B = μ₀nI
 
     This is the [[quick-context/coil-magnetic-field|solenoid field formula]].
-
 
     APPLICATION: Electromagnetic waves (displacement current)
 

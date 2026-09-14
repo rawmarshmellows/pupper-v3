@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[quick-context/electrodes]] | [[quick-context/electrolysis]] | [[quick-context/galvanic-cells-batteries|Galvanic Cells]] | [[quick-context/diode]]
+
 # Cathode
 
 > **See also:** [[quick-context/electrodes]]
