@@ -5,9 +5,9 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/micro-context/tail-current|Tail Current]] | [[learning/notes/quick-context/op-amp|Op-Amp]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage]] | [[learning/notes/micro-context/mosfet|MOSFET]]
 
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single [[learning/notes/micro-context/tail-current|tail current]] source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
@@ -267,7 +267,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 
 - **[[quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
 
-- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
+- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a [[learning/notes/micro-context/current-mirror|current mirror]] at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
 
 </details>
 

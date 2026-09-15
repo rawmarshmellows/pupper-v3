@@ -3,6 +3,7 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-mirror|Current Mirror]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current]] | [[learning/notes/quick-context/electric-current|Electric Current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]]
 
 # Current and Electrons Per Second
 

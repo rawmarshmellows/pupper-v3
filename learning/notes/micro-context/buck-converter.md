@@ -3,6 +3,7 @@ term: Buck Converter
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] | [[learning/notes/quick-context/inductor|Inductor]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/micro-context/anode|Anode]] | [[learning/notes/micro-context/cathode|Cathode]]
 
 # Buck Converter
 
@@ -187,7 +188,7 @@ Example: 12V input, want 5V output → $D = 5/12 = 0.417$ (41.7% duty cycle). At
 
 ---
 
-**Key insight:** The MOSFET's drain connects to VIN and its source connects to the "switch node," where it meets the diode's cathode and the inductor input. This three-way junction is the heart of the converter — it swings between VIN (switch on) and below GND (switch off, diode conducts). The inductor stores energy magnetically when the switch is ON and releases it when OFF, achieving 85–95% efficiency.
+**Key insight:** The MOSFET's drain connects to VIN and its source connects to the "switch node," where it meets the diode's [[learning/notes/micro-context/cathode|cathode]] and the inductor input. This three-way junction is the heart of the converter — it swings between VIN (switch on) and below GND (switch off, diode conducts). The inductor stores energy magnetically when the switch is ON and releases it when OFF, achieving 85–95% efficiency.
 
 ---
 

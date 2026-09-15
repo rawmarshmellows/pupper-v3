@@ -3,7 +3,7 @@ topic: Electric Current
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/micro-context/current-mirror|Current Mirror]]
 
 > **TL;DR:** Electric current is the flow of electric charge (electrons moving through a conductor) that carries energy from source to destination, and in electrochemistry, current directly determines reaction rate through Faraday's law (Q = I x t)—double the current means double the product.
 
@@ -346,9 +346,9 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
-- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
+- **[[quick-context/coil-magnetic-field]]** — [[learning/notes/quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]]. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
 
 - **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged subatomic particles that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
 
@@ -362,7 +362,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q1:** You're running electrolysis at 5 amperes and producing hydrogen gas. If you increase to 15 amperes (keeping everything else the same), how does your hydrogen production rate change?
 <details>
 <summary>Answer</summary>
-**Production rate triples.** From Q = I x t, if you triple the current while keeping time constant, you triple the charge passed, which triples the moles of electrons delivered to the cathode, which triples the hydrogen produced. This linear relationship between current and production rate is the practical power of Faraday's laws. See: Concrete Example (the "What if we double the current?" section)
+**Production rate triples.** From Q = I x t, if you triple the current while keeping time constant, you triple the charge passed, which triples the moles of electrons delivered to the [[learning/notes/micro-context/cathode|cathode]], which triples the hydrogen produced. This linear relationship between current and production rate is the practical power of Faraday's laws. See: Concrete Example (the "What if we double the current?" section)
 </details>
 
 **Q2:** A battery is rated at 12 volts. Does this tell you how much current it can supply?
@@ -374,7 +374,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q3:** Why does electrolysis specifically require DC (direct current) rather than AC (alternating current)?
 <details>
 <summary>Answer</summary>
-**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the anode, negative ions must continuously lose electrons (oxidation). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
+**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the [[learning/notes/micro-context/anode|anode]], negative ions must continuously lose electrons ([[learning/notes/micro-context/oxidation|oxidation]]). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
 </details>
 
 **Q4:** Two electrolysis cells are connected in series (current passes through both). Cell A has electrode area of 10 cm², Cell B has electrode area of 100 cm². Which cell produces more product?

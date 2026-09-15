@@ -3,6 +3,7 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete Fabrication]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/power-watts-joules|Electrical Power]] | [[learning/notes/micro-context/buck-converter|Buck Converter]]
 
 # SMD Resistor
 
@@ -38,4 +39,4 @@ SMD RESISTOR SIZES (to scale):
   └────────────┴─────────┴─────────────────────────┘
 ```
 
-**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the buck converter—they set the exact output voltage through a voltage divider ratio.
+**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the [[learning/notes/micro-context/buck-converter|buck converter]]—they set the exact output voltage through a voltage divider ratio.

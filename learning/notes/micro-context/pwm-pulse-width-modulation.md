@@ -3,6 +3,7 @@ term: PWM (Pulse Width Modulation)
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/inductor|Inductor]] | [[learning/notes/micro-context/buck-converter|Buck Converter]] | [[learning/notes/micro-context/mosfet|MOSFET]]
 
 # PWM (Pulse Width Modulation)
 
@@ -33,4 +34,4 @@ updated: 2026-03-27
    D = 75%:  ███░  →  9V from 12V
 ```
 
-**Key insight:** PWM is a digital signal doing an analog job — by switching fast enough (kHz to MHz), the load's inertia (thermal, mechanical, or an [[quick-context/inductor|inductor]]/[[quick-context/capacitor|capacitor]] filter) smooths the pulses into a steady average, achieving precise analog control with minimal power loss — the switch is either fully ON (low resistance) or fully OFF (no current), unlike a linear regulator stuck in the lossy middle. For how the PWM signal is actually generated inside a buck converter IC (sawtooth oscillator + error amplifier + comparator feedback loop), see [[quick-context/pwm-controller-circuit]].
+**Key insight:** PWM is a digital signal doing an analog job — by switching fast enough (kHz to MHz), the load's inertia (thermal, mechanical, or an [[quick-context/inductor|inductor]]/[[quick-context/capacitor|capacitor]] filter) smooths the pulses into a steady average, achieving precise analog control with minimal power loss — the switch is either fully ON (low resistance) or fully OFF (no current), unlike a linear regulator stuck in the lossy middle. For how the PWM signal is actually generated inside a [[learning/notes/micro-context/buck-converter|buck converter]] IC (sawtooth oscillator + error amplifier + comparator feedback loop), see [[quick-context/pwm-controller-circuit]].

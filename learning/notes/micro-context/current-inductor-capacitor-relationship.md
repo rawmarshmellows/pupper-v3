@@ -3,6 +3,7 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/inductor|Inductor]] | [[learning/notes/micro-context/decoupling-capacitor|Decoupling Capacitor]] | [[learning/notes/micro-context/power-inductor|Power Inductor]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]]
 
 # Current Behavior with Inductors vs Capacitors
 

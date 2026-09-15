@@ -3,6 +3,7 @@ term: SWD (Serial Wire Debug)
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]] | [[learning/notes/quick-context/wire-bonding|Wire Bonding]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/micro-context/sram|SRAM]] | [[learning/notes/quick-context/comparator|Comparator]]
 
 # SWD (Serial Wire Debug)
 
@@ -152,7 +153,7 @@ Use JTAG when: Multiple devices on one debug chain, need boundary
                scan for board-level testing, or targeting Cortex-A/R
 ```
 
-**Why SWD won for Cortex-M:** ARM designed SWD specifically for the microcontroller market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
+**Why SWD won for Cortex-M:** ARM designed SWD specifically for the [[learning/notes/micro-context/microcontroller|microcontroller]] market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
 
 ## SWD in the Pupper
 

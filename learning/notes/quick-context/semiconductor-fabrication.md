@@ -4,7 +4,7 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/quick-context/silicon-die|Silicon Die]] | [[learning/notes/micro-context/mosfet|MOSFET]] | [[learning/notes/quick-context/doped-silicon|Doped Silicon]] | [[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 

@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/sil-rated-safety-functions|SIL-Rated Safety Functions]] | [[learning/notes/quick-context/plc-vs-software|PLC and why it's different to software and how it's implemented]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 

@@ -3,6 +3,7 @@ term: MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor)
 created: 2026-02-25
 updated: 2026-06-08
 ---
+> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current]] | [[learning/notes/micro-context/buck-converter|Buck Converter]]
 
 # MOSFET
 

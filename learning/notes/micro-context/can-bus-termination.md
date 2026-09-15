@@ -2,6 +2,7 @@
 term: CAN Bus Termination
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/can-bus|CAN Bus]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/micro-context/smd-resistor|SMD Resistor]] | [[learning/notes/quick-context/differential-pair|Differential Pair]]
 
 # CAN Bus Termination
 

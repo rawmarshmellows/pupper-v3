@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature|Clock Speed vs Temperature]] | [[learning/notes/quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[learning/notes/quick-context/breaking-elongation-rate|Breaking Elongation Rate]] | [[learning/notes/quick-context/3d-printer-hotends|3D Printer Hotends]] | [[learning/notes/quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]]
 
 > **TL;DR:** Glass transition temperature (Tg) is the temperature where polymer chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
 

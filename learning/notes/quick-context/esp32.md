@@ -5,7 +5,7 @@ created: 2026-05-28
 
 # ESP32
 
-> **Related:** [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/micro-context/sram|SRAM]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|WiFi Chip — How Radio Becomes Data]] | [[learning/notes/micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates - The Full Compilation Chain and Bootstrapping]]
 
 > **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 

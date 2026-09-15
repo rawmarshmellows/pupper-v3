@@ -3,6 +3,7 @@ term: Anode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electrolysis|Electrolysis]] | [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/electrodes|Electrodes]] | [[learning/notes/micro-context/buck-converter|Buck Converter]] | [[learning/notes/quick-context/anions-and-oxidation|Anions and Oxidation]]
 
 # Anode
 
@@ -12,7 +13,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- At the anode, chemical species lose electrons (oxidation) — these electrons flow out through the external circuit to do useful work.
+- At the anode, chemical species lose electrons ([[learning/notes/micro-context/oxidation|oxidation]]) — these electrons flow out through the external circuit to do useful work.
 - In electrolysis, the external power supply pulls electrons away from the anode, making it positive (+).
 - In a battery, the anode material spontaneously oxidizes, pushing electrons out — making it the negative (−) terminal from the external circuit's perspective.
 

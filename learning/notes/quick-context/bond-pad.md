@@ -3,7 +3,7 @@ topic: Bond Pad
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/wire-bonding|Wire Bonding]] | [[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/silicon-die|Silicon Die]] | [[learning/notes/quick-context/substrate-ic-packaging|Substrate]]
 
 > **TL;DR:** Bond pads are the tiny metal squares (~50 micrometers) on a chip's surface that serve as the "doorways" where all internal wiring converges, enabling billions of transistors to connect with the outside world for power and data.
 
@@ -327,7 +327,7 @@ TYPICAL BOND PAD DIMENSIONS:
                       │                │ prevent edge damage
 ```
 
-**Example: A Simple Microcontroller vs. A Modern CPU**
+**Example: A Simple [[learning/notes/micro-context/microcontroller|Microcontroller]] vs. A Modern CPU**
 
 ```
 COMPARISON: Bond Pad Requirements

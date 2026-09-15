@@ -5,13 +5,13 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system|Bambu AMS]] | [[learning/notes/quick-context/melt-index|Melt Index]] | [[learning/notes/quick-context/covalent-bonds|Covalent Bonds]] | [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-Dipole Interactions]] | [[learning/notes/quick-context/glass-transition-temperature|Glass Transition Temperature]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
 ## The Core Problem
 
-The P2S ships with strong defaults but every spool of filament has slightly different melt behavior, moisture content, and friction. Without calibration, you fight ghosting, bulging corners, stringing, and weak layer adhesion no matter how good the printer is. The fix is mostly software (calibrate per filament, slow the visible surface, aggressive cooling) plus moisture control.
+The P2S ships with strong defaults but every spool of filament has slightly different melt behavior, moisture content, and friction. Without calibration, you fight [[learning/notes/micro-context/switch-matrix|ghosting]], bulging corners, stringing, and weak layer adhesion no matter how good the printer is. The fix is mostly software (calibrate per filament, slow the visible surface, aggressive cooling) plus moisture control.
 
 ## 5 Essential Terms
 

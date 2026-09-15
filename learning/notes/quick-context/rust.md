@@ -3,7 +3,7 @@ topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/electrodes|Electrodes]] | [[learning/notes/micro-context/anode|Anode]] | [[learning/notes/micro-context/cathode|Cathode]] | [[learning/notes/quick-context/absolute-orientation|Absolute Orientation]]
 
 > **TL;DR:** Rust is an electrochemical process where iron spontaneously oxidizes back to its ore state (Fe₂O₃) when exposed to oxygen and water, costing over $2.5 trillion annually in infrastructure damage.
 
@@ -17,9 +17,9 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 
 | Term | Definition |
 |------|------------|
-| **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
+| **Corrosion** | The electrochemical degradation of metals through [[learning/notes/micro-context/oxidation|oxidation]] reactions with their environment—rust is specifically iron corrosion |
 | **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the [[learning/notes/micro-context/cathode|cathode]] (electron receiver) instead of the [[learning/notes/micro-context/anode|anode]], often via sacrificial metals |
 | **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
 | **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 

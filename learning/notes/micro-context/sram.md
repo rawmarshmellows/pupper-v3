@@ -2,6 +2,7 @@
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/quick-context/esp32|ESP32]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|Physics of Writing Data to Memory — How Bits Become Charges, Voltages, and Trapped Electrons]] | [[learning/notes/quick-context/ram-addressing-decoder|RAM — Addressing an Array of Registers]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]]
 
 # SRAM (Static Random-Access Memory)
 

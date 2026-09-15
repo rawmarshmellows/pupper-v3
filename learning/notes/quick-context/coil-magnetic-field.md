@@ -5,7 +5,7 @@ created: 2026-02-14
 
 # Why Current Through a Coil Creates a Magnetic Field
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
+> **Related:** [[learning/notes/quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[learning/notes/quick-context/electromagnetism|Electromagnetism]] | [[learning/notes/quick-context/inductor|Inductor]] | [[learning/notes/quick-context/maxwell-equations|Maxwell's Equations]] | [[learning/notes/quick-context/tensor|Tensor]]
 
 > **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 
@@ -690,7 +690,7 @@ FINAL DESIGN:
 **Q5:** An electromagnet runs at 2A and gets warm. To get a stronger field, you double the current to 4A. How much more heat does it generate?
 <details>
 <summary>Answer</summary>
-**4× more heat (quadruple).** Power dissipation P = I²R. When you double I, P increases by 2² = 4. The field only doubles, but heat generation quadruples. This is the fundamental challenge of high-field electromagnets—you hit thermal limits before you hit magnetic limits. See: "The Heat Problem" in The Key Tension.
+**4× more heat (quadruple).** [[learning/notes/quick-context/resistor|Power dissipation]] P = I²R. When you double I, P increases by 2² = 4. The field only doubles, but heat generation quadruples. This is the fundamental challenge of high-field electromagnets—you hit thermal limits before you hit magnetic limits. See: "The Heat Problem" in The Key Tension.
 </details>
 
 </details>

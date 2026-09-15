@@ -3,6 +3,7 @@ term: ADS1110 (Battery Voltage ADC)
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] | [[learning/notes/micro-context/i2c|I2C]]
 
 # ADS1110 (Battery Voltage ADC)
 

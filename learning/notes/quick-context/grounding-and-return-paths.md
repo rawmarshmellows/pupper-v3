@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/decoupling-capacitor|Decoupling Capacitor]] | [[learning/notes/quick-context/differential-pair|Differential Pair]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 

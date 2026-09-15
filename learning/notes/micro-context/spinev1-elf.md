@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[learning/notes/quick-context/from-code-to-running-firmware|From Code to Running Firmware — Linking, Flashing, and Booting on an MCU]] | [[learning/notes/micro-context/st-link-v2-programmer|ST-Link V2 Programmer]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/quick-context/can-bus|CAN Bus]]
 
 # SPIneV1.elf
 
