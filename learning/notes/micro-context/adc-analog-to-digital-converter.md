@@ -3,6 +3,7 @@ term: ADC (Analog-to-Digital Converter)
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter|Buck Converter]] | [[learning/notes/quick-context/transistor-analog-to-digital|Transistors - From Imperfect Analog Devices to Digital Switches]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110]] | [[learning/notes/quick-context/resistor|Resistor]]
 
 # ADC (Analog-to-Digital Converter)
 

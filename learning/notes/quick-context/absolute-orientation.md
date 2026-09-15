@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Absolute Orientation Problem
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/quick-context/covariance-matrix|Covariance Matrix]] | [[learning/notes/quick-context/similarity-transform|Similarity Transform]] | [[learning/notes/quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[learning/notes/quick-context/helmert-transform|Helmert Transform]] | [[learning/notes/quick-context/rust|Rust]]
 
 > **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 

@@ -2,6 +2,7 @@
 term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio|Power-Supply Rejection Ratio]] | [[learning/notes/micro-context/input-common-mode-range|Input Common-Mode Range]] | [[learning/notes/quick-context/common-ic-packages|Common IC Packages]] | [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/micro-context/tail-current|Tail Current]]
 
 # Common-Mode Rejection Ratio ($CMRR$)
 

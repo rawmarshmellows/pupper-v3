@@ -3,6 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/electric-current|Electric Current]] | [[learning/notes/quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/quick-context/capacitor|Capacitor]]
 
 # Coulomb (Unit History)
 

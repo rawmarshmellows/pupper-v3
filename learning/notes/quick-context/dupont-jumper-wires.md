@@ -2,10 +2,11 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/quick-context/soldering|Soldering]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/rust|Rust]]
 
 # DuPont Jumper Wires
 
-> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
+> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and [[learning/notes/micro-context/microcontroller|microcontroller]] circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
 
@@ -202,7 +203,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
-6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from oxidation, vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
+6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from [[learning/notes/micro-context/oxidation|oxidation]], vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
 
 7. **Mixing 2.54mm and 2.0mm pitch** -- Some boards (certain ESP modules, fine-pitch breakouts) use 2.0mm headers. Standard DuPont connectors won't seat properly.
 

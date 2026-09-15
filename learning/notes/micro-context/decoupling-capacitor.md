@@ -3,6 +3,7 @@ term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
 
 # Decoupling Capacitor
 

@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[learning/notes/quick-context/esp32|ESP32]] | [[learning/notes/micro-context/st-link-v2-programmer|ST-Link V2 Programmer]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]]
 
 # Microcontroller
 

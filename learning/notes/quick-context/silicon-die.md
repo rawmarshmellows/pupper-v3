@@ -3,7 +3,7 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/doped-silicon|Doped Silicon]] | [[learning/notes/quick-context/bond-pad|Bond Pad]] | [[learning/notes/quick-context/flip-chip|Flip-Chip Packaging]] | [[learning/notes/quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete Fabrication]]
 
 > **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 

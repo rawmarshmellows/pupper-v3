@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/electrodes]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis|Voltage and Thermodynamic Relationship in Electrolysis]] | [[learning/notes/micro-context/anode|Anode]] | [[learning/notes/micro-context/cathode|Cathode]] | [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/electrodes|Electrodes]]
 
 > **TL;DR:** Electrolysis uses electricity to force non-spontaneous chemical reactions (like splitting water into hydrogen and oxygen), essentially running a battery in reverse by supplying energy to break stable bonds rather than harvesting energy from spontaneous reactions.
 
@@ -23,7 +23,7 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 | Term | Definition |
 |------|------------|
 | **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
-| **Cathode/Anode** | Cathode = reduction (electrons flow in, cations migrate here); Anode = oxidation (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
+| **[[learning/notes/micro-context/cathode|Cathode]]/[[learning/notes/micro-context/anode|Anode]]** | Cathode = reduction (electrons flow in, cations migrate here); Anode = [[learning/notes/micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
 | **Overpotential** | Extra voltage beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
 | **Current Efficiency** | Fraction of electrons doing useful chemistry vs. side reactions; industrial processes obsess over this since small losses mean millions in wasted electricity |

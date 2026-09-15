@@ -3,7 +3,7 @@ topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-layers|PCB Layers]] | [[learning/notes/quick-context/bond-pad|Bond Pad]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/quick-context/electromigration|Electromigration]] | [[learning/notes/quick-context/capacitance|Capacitance]]
 
 > **TL;DR:** Metal interconnect layers are stacked wiring levels built on top of transistors that route signals and power throughout a chip—they've become the limiting factor in chip performance as transistors shrink faster than wires can scale.
 

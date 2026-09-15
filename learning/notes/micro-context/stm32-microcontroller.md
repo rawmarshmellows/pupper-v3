@@ -3,6 +3,7 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/sram|SRAM]] | [[learning/notes/quick-context/pupper-brain|Pupper Control Board Rev 3.5 - The Robot's Brain]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
 # STM32 Microcontroller
 

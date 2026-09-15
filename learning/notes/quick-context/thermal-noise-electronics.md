@@ -3,7 +3,7 @@ topic: Thermal Noise in Electronics
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/thermal-runaway|Thermal Runaway]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/quick-context/voltage|Voltage]]
 
 > **TL;DR:** Thermal noise is the unavoidable random voltage fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
 

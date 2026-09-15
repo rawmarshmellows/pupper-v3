@@ -3,6 +3,7 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/capacitance|Capacitance]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110]]
 
 # I2C
 

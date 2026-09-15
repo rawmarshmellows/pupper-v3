@@ -2,6 +2,7 @@
 term: Current Mirror
 created: 2026-04-02
 ---
+> **Related:** [[learning/notes/micro-context/tail-current|Tail Current]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]]
 
 # Current Mirror
 

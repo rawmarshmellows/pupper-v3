@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/covalent-bonds|Covalent Bonds]] | [[learning/notes/quick-context/chemical-bonds-spectrum|Chemical Bonds - The Full Spectrum]] | [[learning/notes/quick-context/polymer-chemical-bonds|Polymer Chemical Bonds in 3D Printing Filaments]] | [[learning/notes/quick-context/glass-transition-temperature|Glass Transition Temperature]] | [[learning/notes/quick-context/substrate-ic-packaging|Substrate]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 

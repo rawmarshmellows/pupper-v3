@@ -3,7 +3,7 @@ topic: Impedance and Reactance
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/inductor|Inductor]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/capacitance|Capacitance]]
 
 > **TL;DR:** Impedance extends the concept of [[quick-context/resistor|resistance]] to AC circuits—[[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] oppose current flow in a frequency-dependent way called reactance, and impedance (Z = R + jX) combines resistance and reactance into a single quantity that describes how any component behaves with AC signals.
 
@@ -235,7 +235,7 @@ RC LOW-PASS FILTER
 **At high frequencies, PCB traces act as transmission lines.** If the trace impedance doesn't match the driver and receiver impedance, signals reflect back and forth, causing ringing, overshoot, and data errors. A 1 GHz signal has wavelengths comparable to PCB trace lengths (~15 cm), so wave effects dominate. Matching impedances (typically 50Ω single-ended or 100Ω differential) eliminates reflections.
 </details>
 
-**Q5:** A decoupling capacitor has 1.6Ω of reactance at 1 MHz. Is it doing its job?
+**Q5:** A [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] has 1.6Ω of reactance at 1 MHz. Is it doing its job?
 <details>
 <summary>Answer</summary>
 **Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the capacitor provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.

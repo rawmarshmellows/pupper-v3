@@ -2,6 +2,7 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix|Homogeneous Transformation Matrix]] | [[learning/notes/quick-context/covariance-matrix|Covariance Matrix]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/micro-context/scan-loop|Scan Loop]] | [[learning/notes/micro-context/sram|SRAM]]
 
 # Switch Matrix
 

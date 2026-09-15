@@ -5,7 +5,7 @@ created: 2026-06-05
 
 # PCB Assembly Files — BOM & CPL (Pick-and-Place)
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
+> **Related:** [[learning/notes/micro-context/mosfet|MOSFET]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/micro-context/pick-and-place-file|Pick and Place File]] | [[learning/notes/quick-context/capacitor|Capacitor]]
 
 > **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
 

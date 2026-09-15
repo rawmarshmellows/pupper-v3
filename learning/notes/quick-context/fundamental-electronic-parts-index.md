@@ -4,7 +4,7 @@ created: 2026-02-06
 updated: 2026-02-07
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/transistor]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/melt-index|Melt Index]] | [[learning/notes/micro-context/mosfet|MOSFET]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/inductor|Inductor]]
 
 > **TL;DR:** This is a navigational index of all fundamental electronic components—from passive parts (resistors, capacitors, inductors) through active devices (transistors, diodes) to the physical hierarchy that connects them (dies, substrates, packages, PCBs). Use it as a map to find existing quick-context files and spot gaps in coverage.
 
@@ -64,7 +64,7 @@ THE THREE FUNDAMENTAL PASSIVES
 | Part | Existing Quick-Context? | Key Concept |
 |------|------------------------|-------------|
 | **[[quick-context/capacitor\|Capacitor]]** | Yes | Q=CV (charge = capacitance × voltage), dielectrics, RC time constants, decoupling |
-| **[[quick-context/resistor\|Resistor]]** | Yes | Ohm's law (V=IR: voltage = current × resistance), power dissipation (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
+| **[[quick-context/resistor\|Resistor]]** | Yes | Ohm's law (V=IR: voltage = current × resistance), [[learning/notes/quick-context/resistor|power dissipation]] (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
 | **[[quick-context/inductor\|Inductor]]** | Yes | Magnetic energy storage (E=½LI²: energy = ½ × inductance × current²), opposes current changes, used in filters/power supplies |
 
 ## 2. Active Components — Amplify and Switch
@@ -97,8 +97,8 @@ ACTIVE COMPONENT FAMILY TREE
 | **[[quick-context/bjt-specifications\|BJT Specifications]]** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
 | **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
 | **[[quick-context/comparator\|Comparator]]** | Yes | Op-amp's sibling optimized for binary output; bridges analog signals to digital logic |
-| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + tail current source; the universal input stage of op-amps, comparators, and ADCs |
-| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | Current mirror active load on a differential pair; converts μA current difference into full-rail voltage swing |
+| **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + [[learning/notes/micro-context/tail-current|tail current]] source; the universal input stage of op-amps, comparators, and ADCs |
+| **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | [[learning/notes/micro-context/current-mirror|Current mirror]] active load on a differential pair; converts μA current difference into full-rail voltage swing |
 
 ## 3. Semiconductor Materials — What Parts Are Made Of
 
@@ -227,7 +227,7 @@ All fundamental electronic parts now have quick-context files. Total: 34 electro
 
 ## Tracing a Signal Through Fundamental Parts
 
-Here's a simplified path from a sensor to a microcontroller, showing which parts you'd encounter and which quick-context files explain them:
+Here's a simplified path from a sensor to a [[learning/notes/micro-context/microcontroller|microcontroller]], showing which parts you'd encounter and which quick-context files explain them:
 
 ```
 SENSOR SIGNAL PATH

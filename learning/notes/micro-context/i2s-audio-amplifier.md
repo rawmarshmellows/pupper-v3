@@ -3,6 +3,7 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]]
 
 # I2S Audio Amplifier
 

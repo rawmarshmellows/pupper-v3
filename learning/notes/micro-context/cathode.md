@@ -3,6 +3,7 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electrolysis|Electrolysis]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/electrodes|Electrodes]] | [[learning/notes/micro-context/buck-converter|Buck Converter]] | [[learning/notes/quick-context/cations-and-reduction|Cations and Reduction]]
 
 # Cathode
 

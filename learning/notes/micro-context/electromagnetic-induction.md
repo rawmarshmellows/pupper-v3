@@ -3,6 +3,7 @@ term: Electromagnetic Induction
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/self-induction|Self-Induction]] | [[learning/notes/quick-context/electromagnetism|Electromagnetism]] | [[learning/notes/quick-context/electricity-generation|Electricity Generation]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/electric-current|Electric Current]]
 
 # Electromagnetic Induction
 

@@ -3,6 +3,7 @@ term: Pick and Place File
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/soldering|Soldering]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL]]
 
 # Pick and Place File
 

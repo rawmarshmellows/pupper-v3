@@ -2,6 +2,7 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/micro-context/switch-matrix|Switch Matrix]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/voltage|Voltage]]
 
 # Scan Loop
 
