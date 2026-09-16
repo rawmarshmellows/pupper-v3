@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -209,7 +209,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **5. Bottom Soldermask** — `Gerber_BottomSolderMaskLayer.GBS`
 
-*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole soldering and any bottom-side SMD components.
+*What it is:* Same function as top soldermask, but for the bottom side. Opens up pads for through-hole [[learning/notes/quick-context/soldering|soldering]] and any bottom-side SMD components.
 
 *How it's manufactured:* Applied simultaneously with the top soldermask — both sides are coated, exposed, and developed in the same process steps.
 

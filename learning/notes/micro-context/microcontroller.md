@@ -4,6 +4,9 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/uart]]
+
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]

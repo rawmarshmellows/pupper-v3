@@ -4,6 +4,9 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/clock-edges]]
+
 # ST-Link V2 Programmer
 
 > **See also:** [[micro-context/swd-serial-wire-debug|SWD]] | [[quick-context/firmware|Flashing Firmware]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/spinev1-elf|SPIneV1.elf]]
