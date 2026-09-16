@@ -3,9 +3,9 @@ topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/electrodes]]
 
-> **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
+> **TL;DR:** Platinum stays unreactive in [[learning/notes/quick-context/electrolysis|electrolysis]] because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 
 # Why Platinum is Chemically Inert
 
@@ -20,7 +20,7 @@ In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct el
 | **Inert** | Chemically unreactive; doesn't participate in reactions |
 | **Ionization energy** | Energy required to remove an electron from an atom |
 | **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
-| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
+| **[[learning/notes/micro-context/oxidation|Oxidation]]** | Losing electrons (what happens to reactive metals at anodes) |
 | **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 
 <details>

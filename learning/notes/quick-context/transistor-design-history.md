@@ -3,15 +3,15 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/mosfet]]
 
-> **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
+> **TL;DR:** [[learning/notes/quick-context/transistor|Transistor]] design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
 # Transistor Design History
 
 ## The Core Problem: Keeping Moore's Law Alive
 
-Every few years, transistor designs hit fundamental physical limits. The planar MOSFET that powered computing from 1960-2011 couldn't scale below ~28nm without catastrophic leakage. FinFET saved another decade but struggles below 5nm. Each generation requires reinventing how the gate controls the channel—from sitting on top, to wrapping three sides, to surrounding all four sides. Without these architectural revolutions, Moore's Law would have died decades ago. Understanding this history reveals that "smaller transistors" isn't about shrinking the same thing—it's about fundamentally redesigning the switch itself.
+Every few years, transistor designs hit fundamental physical limits. The planar [[learning/notes/micro-context/mosfet|MOSFET]] that powered computing from 1960-2011 couldn't scale below ~28nm without catastrophic leakage. FinFET saved another decade but struggles below 5nm. Each generation requires reinventing how the gate controls the channel—from sitting on top, to wrapping three sides, to surrounding all four sides. Without these architectural revolutions, Moore's Law would have died decades ago. Understanding this history reveals that "smaller transistors" isn't about shrinking the same thing—it's about fundamentally redesigning the switch itself.
 
 ## 5 Essential Terms
 

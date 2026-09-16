@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the TLV7211 / TLV7211A Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541 (C623499) as an LMC7211 replacement]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/comparator]]
 >
 > **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 
@@ -115,7 +115,7 @@ The interesting tension here isn't a performance trade — there is none — it'
 | Hidden detail | Why it bites | What to do |
 |---|---|---|
 | **Grade-suffix inversion** | "TLV7211" *looks* like the base/best part, but the unsuffixed name is the **15 mV** grade; the **A** is the 5 mV grade. | Map by *offset number*, not by which name looks "plain." 5 mV → TLV7211**A**. |
-| **Documented POR** | The TLV7211 explicitly holds OUT low for ~200 µs during supply ramp. In 99% of designs this is benign or helpful, but a circuit that sampled the output *during* power-up could see different behavior. | Confirm nothing reads the comparator output in the first ~200 µs after the rail crosses 1.7 V. |
+| **Documented POR** | The TLV7211 explicitly holds OUT low for ~200 µs during supply ramp. In 99% of designs this is benign or helpful, but a circuit that sampled the output *during* power-up could see different behavior. | Confirm nothing reads the [[learning/notes/quick-context/comparator|comparator]] output in the first ~200 µs after the rail crosses 1.7 V. |
 
 Contrast this with the **cross-vendor** case. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] also fits the SOT23-5 footprint, but it is a *different* design that trades the LMC7211's 15 V range and 450 ns speed for 10× lower current and built-in hysteresis — a swap that's valid only inside a narrow envelope. The TLV7211 has no such envelope: it *is* the LMC7211. This is the spectrum of "replacement":
 

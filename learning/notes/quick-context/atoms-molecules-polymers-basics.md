@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/van-der-waals-forces]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** Matter builds up in layers (atoms -> molecules -> monomers -> polymers), and 3D printing works by heating thermoplastics enough to let polymer chains slide past each other without breaking them, then cooling to re-lock chains in new positions.
 
@@ -221,7 +221,7 @@ Brittle when cold.            Branched, tangled chains.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/covalent-bonds]] — The primary bond type holding atoms together within molecules and polymer chains; understanding covalent bonds explains why polymer chains are strong but the material can still melt.
+- [[quick-context/covalent-bonds]] — The primary bond type holding atoms together within molecules and polymer chains; understanding [[learning/notes/quick-context/covalent-bonds|covalent bonds]] explains why polymer chains are strong but the material can still melt.
 - [[quick-context/polymer-chemical-bonds|Chemical bonds]] — Deeper dive into the specific bond types that form polymer backbones and crosslinks; essential for understanding thermosets vs. thermoplastics.
 - [[quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] — Weak attractions between chains that affect melting point and layer adhesion; explains why nylon absorbs moisture and prints differently when wet.
 - [[quick-context/van-der-waals-forces|Van der Waals forces]] — The weakest intermolecular forces, but they add up across long polymer chains; crucial for understanding why longer chains = stronger parts.

@@ -3,7 +3,7 @@ topic: Galvanic Cells (Batteries)
 created: 2026-01-23
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/microcontroller]]
 
 > **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
 
@@ -11,7 +11,7 @@ created: 2026-01-23
 
 Some chemical reactions *want* to happen—they're thermodynamically favorable, releasing energy as they proceed. A galvanic cell (battery) captures this released energy as electrical [[quick-context/electric-current|current]] instead of letting it dissipate as heat. Without batteries, we'd have no portable electronics, no electric vehicles, no grid-scale energy storage, and no way to store renewable energy for when the sun isn't shining. The core insight: **certain metals "want" to give up electrons more than others**. Zinc atoms readily shed electrons; copper atoms readily accept them. Put zinc and copper in contact through an ionic solution, and electrons will spontaneously flow from zinc to copper. A battery intercepts this electron flow, forcing it through an external circuit where it can do useful work (power a motor, light an LED, charge your phone) before completing its journey.
 
-This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while electrolysis converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—electrodes, electrolyte, electron flow—but energy flows in opposite directions.
+This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while [[learning/notes/quick-context/electrolysis|electrolysis]] converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—electrodes, [[learning/notes/quick-context/electrolyte|electrolyte]], electron flow—but energy flows in opposite directions.
 
 ## 5 Essential Terms
 
@@ -255,7 +255,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Electrolytes conduct ions, not electrons.** The electrolyte is an ionic conductor—dissolved salts or acids that allow charged ions (like Zn²⁺, Cu²⁺, SO₄²⁻) to move through the solution. Free electrons cannot travel through ionic solutions; they must go through the metallic external circuit. This separation is what allows us to extract useful work—if electrons could shortcut through the electrolyte, the reaction would just produce heat instead of electrical current. See: The salt bridge explanation in Concrete Example
 </details>
 
-**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a microcontroller, how would you achieve this using Daniell cells?
+**Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a [[learning/notes/micro-context/microcontroller|microcontroller]], how would you achieve this using Daniell cells?
 <details>
 <summary>Answer</summary>
 **Connect three Daniell cells in series.** When batteries are connected in series (positive terminal of one to negative terminal of the next), their voltages add: 1.10V + 1.10V + 1.10V = 3.30V. The capacity (Ah) stays the same as a single cell, but voltage stacks. This is how a 12V car battery works—six 2.1V lead-acid cells in series. See: Concrete Example (cell voltage calculation)

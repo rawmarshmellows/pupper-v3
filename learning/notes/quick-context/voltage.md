@@ -5,7 +5,7 @@ created: 2026-02-13
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/capacitor]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -318,7 +318,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 **12 V/m** (assuming uniform field and ignoring resistance variations). E = V/d = 12V / 1m. In reality, most of the field would concentrate in any resistive components, with very little in the low-resistance wire itself.
 </details>
 
-**Q2:** If you double the voltage across a resistor, what happens to the electric field inside it?
+**Q2:** If you double the voltage across a [[learning/notes/quick-context/resistor|resistor]], what happens to the electric field inside it?
 <details>
 <summary>Answer</summary>
 **The field doubles.** Voltage is the integral of the field over distance. If distance stays the same and voltage doubles, field must double. This doubled field exerts twice the force on electrons, which (in an ohmic material) doubles the current—consistent with I = V/R.
