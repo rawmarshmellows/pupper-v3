@@ -242,7 +242,7 @@ Here's what each layer does:
 
 - **Thermal Management** — Flip-chip enables better heat extraction because the die backside can directly contact cooling solutions; critical for high-power processors.
 
-- **Ball Grid Array (BGA)** — The package-to-PCB connection method that flip-chip packages typically use; BGA balls are much larger than flip-chip bumps.
+- **[[quick-context/bga-ball-grid-array|Ball Grid Array]] (BGA)** — The package-to-PCB connection method that flip-chip packages typically use; BGA balls are much larger than flip-chip bumps.
 
 - **Coefficient of Thermal Expansion (CTE)** — Why different materials expand at different rates when heated; the root cause of why underfill is necessary in flip-chip.
 

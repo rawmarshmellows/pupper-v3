@@ -2,6 +2,7 @@
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
+> **Related:** [[micro-context/eeprom]] | [[micro-context/mosfet]] | [[quick-context/physics-of-writing-data-to-memory]] | [[quick-context/switches-to-registers-storing-data]] | [[micro-context/microcontroller]]
 
 # SRAM (Static Random-Access Memory)
 

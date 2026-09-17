@@ -2,6 +2,7 @@
 term: Current Mirror
 created: 2026-04-02
 ---
+> **Related:** [[micro-context/tail-current]] | [[quick-context/differential-pair]] | [[quick-context/bjt]] | [[micro-context/mosfet]] | [[quick-context/high-gain-amplifier-stage]]
 
 # Current Mirror
 

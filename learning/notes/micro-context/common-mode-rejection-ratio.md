@@ -14,7 +14,7 @@ created: 2026-06-07
 - An ideal [[quick-context/differential-pair|differential pair]] responds only to $V(+) - V(-)$ and is blind to a common voltage that moves both inputs together.
 - A real [[micro-context/tail-current|tail current source]] (Q5) isn't perfect, so moving both inputs together leaks a little change into the output — CMRR quantifies how little.
 - Higher dB = better rejection: 75 dB attenuates a common-mode swing by about 5600× at the output.
-- CMRR usually improves with more supply headroom (LMC7211-N: 75 dB at 5 V → 82 dB at 15 V).
+- CMRR usually improves with more supply headroom ([[quick-context/mcp6541-as-lmc7211-replacement|LMC7211]]-N: 75 dB at 5 V → 82 dB at 15 V).
 
 ```
   Both inputs move TOGETHER (common-mode):

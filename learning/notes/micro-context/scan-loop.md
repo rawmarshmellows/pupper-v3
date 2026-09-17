@@ -2,6 +2,7 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[micro-context/switch-matrix]] | [[micro-context/stm32-microcontroller]] | [[quick-context/firmware]] | [[micro-context/microcontroller]] | [[quick-context/keypress-to-pixel-pipeline]]
 
 # Scan Loop
 

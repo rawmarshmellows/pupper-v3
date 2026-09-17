@@ -13,7 +13,7 @@ updated: 2026-03-27
 ## How It Works
 
 - The MCU's CAN peripheral generates a serial data stream (TX) using the CAN protocol's bit timing and arbitration rules.
-- The transceiver converts this single-ended TX signal into a differential pair (CANH and CANL) with opposite voltage swings.
+- The transceiver converts this single-ended TX signal into a [[quick-context/differential-pair|differential pair]] (CANH and CANL) with opposite voltage swings.
 - On receive, the transceiver subtracts CANL from CANH, canceling any common-mode noise picked up on the wire pair.
 - This differential signaling allows reliable multi-drop communication over long cables in electrically noisy environments.
 

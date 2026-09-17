@@ -28,9 +28,9 @@ Datasheets tell you the gain is 100,000x, input impedance is infinite, and outpu
 
 | Term | Definition |
 |------|------------|
-| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + tail current source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
-| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | Current mirror active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
-| **Stage 3: Output buffer** | Drives the external load. Push-pull (op-amp) or open-drain/open-collector (comparator). Provides low output impedance so the signal doesn't droop under load. |
+| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + [[micro-context/tail-current|tail current]] source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
+| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | [[micro-context/current-mirror|Current mirror]] active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
+| **Stage 3: Output buffer** | Drives the external load. [[micro-context/push-pull-vs-open-drain|Push-pull]] (op-amp) or open-drain/open-collector (comparator). Provides low output impedance so the signal doesn't droop under load. |
 | **Compensation capacitor ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a comparator.** |
 | **Bias network** | Current mirrors and voltage references that set the DC operating point for every transistor. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |
 
@@ -377,7 +377,7 @@ WHAT HAPPENS WHEN YOU SWAP THEM
 **Q5:** Could you build a "universal" IC that works as both an op-amp and a comparator by adding a switch to connect/disconnect the compensation capacitor?
 <details>
 <summary>Answer</summary>
-**In theory yes, but it would be a poor version of both.** The compensation cap is only one of several design differences. Op-amps also have: (1) trimmed input offset voltage (important for precision, less critical for comparators), (2) output stages optimized for linear operation over the full swing range, (3) bias currents optimized for low noise rather than speed. Comparators have: (1) output stages optimized for clean logic levels and fast transitions, (2) input stages designed for large overdrive without saturation, (3) internal clamping to prevent latch-up under overdrive. A switchable cap would give you the speed difference but not the output or overdrive optimizations. In practice, both parts cost $0.20, so using the right one for the job is cheaper than building a compromise.
+**In theory yes, but it would be a poor version of both.** The compensation cap is only one of several design differences. Op-amps also have: (1) trimmed [[micro-context/input-offset-voltage|input offset voltage]] (important for precision, less critical for comparators), (2) output stages optimized for linear operation over the full swing range, (3) bias currents optimized for low noise rather than speed. Comparators have: (1) output stages optimized for clean logic levels and fast transitions, (2) input stages designed for large overdrive without saturation, (3) internal clamping to prevent latch-up under overdrive. A switchable cap would give you the speed difference but not the output or overdrive optimizations. In practice, both parts cost $0.20, so using the right one for the job is cheaper than building a compromise.
 </details>
 
 </details>

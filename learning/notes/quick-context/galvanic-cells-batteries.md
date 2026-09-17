@@ -242,7 +242,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 
 - **Solid-State Batteries** — The "next generation" technology replacing liquid electrolytes with solid conductors. Promises higher energy density and safety, but manufacturing challenges remain unsolved at scale.
 
-- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with electromagnetic induction and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
+- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with [[micro-context/electromagnetic-induction|electromagnetic induction]] and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
 
 </details>
 
