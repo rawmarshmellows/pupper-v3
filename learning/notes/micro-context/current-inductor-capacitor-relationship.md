@@ -3,6 +3,7 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/inductor]] | [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/frequency-and-filtering]] | [[quick-context/electric-current]]
 
 # Current Behavior with Inductors vs Capacitors
 

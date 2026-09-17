@@ -51,7 +51,7 @@ The gate plate, the thin oxide, and the silicon channel form a **parallel-plate 
 - **Only leakage crosses the oxide.** A real gate passes a tiny DC leakage — quantum tunneling through ultra-thin oxide, reverse-biased junction / ESD-diode leakage at the pin, and PCB surface leakage — totaling picoamps (and roughly doubling every ~10 °C).
 - **Switching still costs charge.** "No current" is a *DC* statement: every on→off→on cycle re-charges $C_{gate}$, which is the source of CMOS dynamic power $P = C V^2 f$.
 
-This near-zero **DC** gate current is the root cause of a MOSFET-input part's picoamp [[micro-context/input-bias-current|input bias current]] — e.g. the LMC7211-N's ~0.04 pA.
+This near-zero **DC** gate current is the root cause of a MOSFET-input part's picoamp [[micro-context/input-bias-current|input bias current]] — e.g. the [[quick-context/mcp6541-as-lmc7211-replacement|LMC7211]]-N's ~0.04 pA.
 
 ## What Holds the Charge in Place
 

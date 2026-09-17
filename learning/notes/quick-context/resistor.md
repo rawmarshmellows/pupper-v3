@@ -167,7 +167,7 @@ Values like 4.7kΩ and 2.2kΩ come from the E12/E24 series—logarithmically spa
 
 ## Pull-Up Resistors: Making Digital Signals Reliable
 
-Every I2C bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
+Every [[micro-context/i2c|I2C]] bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
 
 ```
 THE PROBLEM: FLOATING INPUTS

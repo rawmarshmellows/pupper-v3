@@ -42,7 +42,7 @@ The pull-up is *weak* (e.g. 4.7 kΩ); an NMOS turned on is a *strong* path to GN
                    pulls LOW
 ```
 
-Read one column top-to-bottom: the shared FAULT line → that comparator's **OUT** pin → its internal **NMOS (Q6)** → GND. CMP A's Q6 is ON (solid path to GND), so it pulls FAULT LOW; CMP B and C are released (Q6 off, OUT open) and just float with whatever the line does. Even if all three tripped, they'd be parallel paths to GND — still LOW, no short. **No number of released devices beats one that's pulling.** Only an *open-drain* comparator (LMC7221) can sit here — a push-pull part (LMC7211-N) has a high-side transistor too and would fight (contention). The leftmost `●` is just where the single pull-up taps the line, not a device.
+Read one column top-to-bottom: the shared FAULT line → that comparator's **OUT** pin → its internal **NMOS (Q6)** → GND. CMP A's Q6 is ON (solid path to GND), so it pulls FAULT LOW; CMP B and C are released (Q6 off, OUT open) and just float with whatever the line does. Even if all three tripped, they'd be parallel paths to GND — still LOW, no short. **No number of released devices beats one that's pulling.** Only an *open-drain* comparator (LMC7221) can sit here — a push-pull part ([[quick-context/mcp6541-as-lmc7211-replacement|LMC7211]]-N) has a high-side transistor too and would fight (contention). The leftmost `●` is just where the single pull-up taps the line, not a device.
 
 Examples:
 - **Fault/alarm bus** (the diagram above) — several open-drain comparators, each watching a different rail; any one tripping pulls FAULT LOW, so the MCU watches a single pin for "something's wrong."
@@ -90,7 +90,7 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
 
 > **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** ([[quick-context/bjt|BJT]]) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 
 ## How It Works
 

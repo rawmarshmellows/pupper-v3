@@ -12,8 +12,8 @@ updated: 2026-04-05
 
 ## How It Works
 
-- The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in SRAM.
-- Built-in hardware peripherals (CAN, SPI, I2C, USART, ADC, PWM timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
+- The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in [[micro-context/sram|SRAM]].
+- Built-in hardware peripherals (CAN, SPI, I2C, USART, [[micro-context/adc-analog-to-digital-converter|ADC]], [[micro-context/pwm-pulse-width-modulation|PWM]] timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
 - Firmware runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
 
 ```
@@ -37,7 +37,7 @@ STM32 MICROCONTROLLER BLOCK DIAGRAM:
 
 ## Programming & Debug Interface
 
-The Pupper PCB has two STM32 MCUs, each with a 7-pin JST SH connector (CN1) exposing the SWD debug/programming interface plus serial. You flash firmware using an **ST-Link V2** programmer.
+The Pupper PCB has two STM32 MCUs, each with a 7-pin [[micro-context/jst-connector-families|JST]] SH connector (CN1) exposing the [[micro-context/swd-serial-wire-debug|SWD]] debug/programming interface plus serial. You flash firmware using an **ST-Link V2** programmer.
 
 ### 7-Pin Connector Pinout
 

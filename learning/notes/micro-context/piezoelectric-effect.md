@@ -2,6 +2,7 @@
 term: Piezoelectric Effect
 created: 2026-03-27
 ---
+> **Related:** [[micro-context/crystal-oscillator]] | [[micro-context/ceramic-resonator]] | [[quick-context/clock-sources-and-timing]] | [[quick-context/self-induction]] | [[micro-context/electromagnetic-induction]]
 
 # Piezoelectric Effect
 

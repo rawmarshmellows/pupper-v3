@@ -2,6 +2,7 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[micro-context/scan-loop]] | [[micro-context/stm32-microcontroller]] | [[micro-context/microcontroller]] | [[quick-context/keypress-to-pixel-pipeline]] | [[quick-context/embedded-communication-protocols]]
 
 # Switch Matrix
 

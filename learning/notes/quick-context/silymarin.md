@@ -2,6 +2,7 @@
 topic: Silymarin
 created: 2026-04-06
 ---
+> **Related:** [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/covalent-bonds]] | [[quick-context/chemical-bonds-spectrum]]
 
 # Silymarin
 

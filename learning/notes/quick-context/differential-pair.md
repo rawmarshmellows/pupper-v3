@@ -21,7 +21,7 @@ A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and
 | **Tail current source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
 | **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the tail current can't increase, so nothing changes at the output. |
 | **Differential signal** | The difference between the two inputs: $V_{DIFF} = V_+ - V_-$. This is what the pair amplifies. A 1 mV differential signal on top of a 1.5V common-mode voltage produces the same output as a 1 mV signal on top of 0V. |
-| **Common-Mode Rejection Ratio (CMRR)** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
+| **Common-Mode Rejection Ratio ([[micro-context/common-mode-rejection-ratio|CMRR]])** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
 
 <details>
 <summary><strong>How It Works</strong> --- Two transistors, one current budget</summary>
@@ -176,8 +176,8 @@ COMMON-MODE REJECTION
 ```
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
-- **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **BJT pairs:** higher transconductance ($g_m$), faster, lower [[micro-context/input-offset-voltage|input offset voltage]]
+- **[[micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 

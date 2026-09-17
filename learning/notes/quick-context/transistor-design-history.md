@@ -18,7 +18,7 @@ Every few years, transistor designs hit fundamental physical limits. The planar 
 | Term | Definition |
 |------|------------|
 | **Point-contact transistor** | The first transistor (1947): two metal points touching a germanium crystal; unreliable but proved amplification was possible without vacuum tubes |
-| **Bipolar Junction Transistor (BJT)** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
+| **Bipolar Junction Transistor ([[quick-context/bjt|BJT]])** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
 | **Planar MOSFET** | Voltage-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
 | **FinFET** | 3D transistor (2011+) where the channel is a vertical "fin" with the gate wrapped around three sides; dramatically reduced leakage at 22nm and below |
 | **Gate-All-Around (GAA/GAAFET)** | Latest architecture (2022+) using stacked horizontal nanosheets with the gate surrounding the channel on all four sides; enables 3nm and beyond |

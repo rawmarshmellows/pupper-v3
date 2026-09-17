@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/similarity-transform]] | [[quick-context/tensor]] | [[quick-context/covariance-matrix]]
 
 # Homogeneous Transformation Matrix
 

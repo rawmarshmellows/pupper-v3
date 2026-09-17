@@ -100,7 +100,7 @@ THE TWO INPUTS AND HOW THEY STEER THE OUTPUT
 
 Which pin gets the **signal** and which gets the **reference** is a free design choice---and swapping them flips the output logic. Put the reference on the inverting input and the comparator answers "is the signal *above* the reference?" (output HIGH = yes). Put the reference on the non-inverting input instead and you get the inverted question: "is the signal *below* the reference?"
 
-**Real pinout --- TI LMC7211-N** (a tiny CMOS rail-to-rail comparator). The two inputs carry exactly these names on the physical package:
+**Real pinout --- TI [[quick-context/mcp6541-as-lmc7211-replacement|LMC7211]]-N** (a tiny CMOS rail-to-rail comparator). The two inputs carry exactly these names on the physical package:
 
 ```
 LMC7211-N PIN ASSIGNMENTS (same die, two packages)

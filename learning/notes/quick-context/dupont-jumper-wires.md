@@ -2,6 +2,7 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[quick-context/qwiic-stemma-qt-i2c]] | [[micro-context/jst-connector-families]] | [[micro-context/i2c]] | [[micro-context/spi]] | [[quick-context/soldering]]
 
 # DuPont Jumper Wires
 
@@ -15,7 +16,7 @@ Electronics prototyping requires connecting dozens of components -- sensors, mic
 
 | Term | Definition |
 |------|------------|
-| **2.54mm pitch** | The 0.1" (100 mil) spacing between adjacent pins -- the universal standard for breadboards, Arduino headers, and Raspberry Pi GPIO |
+| **2.54mm pitch** | The 0.1" (100 mil) spacing between adjacent pins -- the universal standard for breadboards, Arduino headers, and [[quick-context/raspberry-pi-5-components|Raspberry Pi]] GPIO |
 | **Crimp contact** | The stamped metal pin or socket inside the plastic housing, mechanically squeezed onto the wire rather than soldered |
 | **Housing** | The small rectangular plastic shell (nylon 66) that holds crimp contacts; comes in 1P through 20P sizes for single or multi-pin groupings |
 | **Gender** | Male (pin) vs female (socket); jumper wires come in M-M, M-F, and F-F combinations depending on what endpoints you're connecting |

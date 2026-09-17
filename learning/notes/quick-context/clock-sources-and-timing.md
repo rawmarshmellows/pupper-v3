@@ -235,7 +235,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 - **[[micro-context/ceramic-resonator|Ceramic Resonator]]** -- Piezoelectric ceramic resonance, ±0.5% accuracy, the muRata part on the Pupper v3 BOM.
 - **[[micro-context/clock-speed|Clock Speed]]** -- Frequency as edges per second, signal settling time constraints, why clock speed has a ceiling.
 - **[[micro-context/clock-speed-vs-temperature|Clock Speed vs Temperature]]** -- $P = CV^2f$, thermal throttling, the heat-speed feedback loop.
-- **[[micro-context/clock-edges|Clock Edges]]** -- Rising/falling edges as the atomic unit of digital computation, edge-triggered flip-flop discipline.
+- **[[micro-context/clock-edges|Clock Edges]]** -- Rising/falling edges as the atomic unit of digital computation, edge-triggered [[quick-context/d-flip-flop|flip-flop]] discipline.
 
 **Related quick-context files:**
 
