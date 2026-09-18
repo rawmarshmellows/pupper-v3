@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[quick-context/bjt]] | [[quick-context/data-bus-and-arbitration]] | [[quick-context/impedance-and-reactance]] | [[quick-context/inductor]] | [[quick-context/oscilloscope-and-multimeter]]
 
 # Short Circuit
 
