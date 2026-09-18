@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/camera-fundamentals]] | [[quick-context/ros2-architecture]] | [[quick-context/can-bus]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-v3-labs]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 
@@ -333,12 +333,12 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **COCO Dataset** — "Common Objects in Context," the 80-class benchmark dataset YOLOv5 is trained on. Includes everyday objects (person, car, dog, bottle, chair) but notably lacks many useful categories (keys, phone, specific breeds). This limits what Lab 7 can track out of the box. See: [cocodataset.org](https://cocodataset.org)
-- **[[quick-context/raspberry-pi-ai-hat|Raspberry Pi AI HAT+]]** — The full product family of Hailo-based NPU boards for edge AI inference, including the 13T, 26T, and AI HAT+ 2 (with on-board RAM for LLMs). Covers TOPS benchmarks, data flow architecture, and the software stack that Lab 7's Hailo detection node runs on.
+- **[[quick-context/raspberry-pi-ai-hat|Raspberry Pi AI HAT+]]** — The full product family of Hailo-based NPU boards for edge AI inference, including the 13T, 26T, and AI HAT+ 2 (with on-board [[quick-context/ram-addressing-decoder|RAM]] for LLMs). Covers TOPS benchmarks, data flow architecture, and the software stack that Lab 7's Hailo detection node runs on.
 - **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The intrinsic matrix $K$ and distortion coefficients used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, focal length/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + [[quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 

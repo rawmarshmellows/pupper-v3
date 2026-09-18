@@ -3,6 +3,7 @@ term: Clock Speed
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/clock-sources-and-timing]] | [[micro-context/clock-speed-vs-temperature]] | [[micro-context/thermal-runaway]] | [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]]
 
 # Clock Speed
 

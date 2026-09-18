@@ -3,6 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[micro-context/current-electrons-per-second]] | [[quick-context/electric-current]] | [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/electric-magnetic-field-unification]]
 
 # Coulomb (Unit History)
 
