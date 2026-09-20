@@ -3,6 +3,8 @@ term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/power-watts-joules]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/quick-context/comparator-specification]]
+
 # Power-Supply Rejection Ratio ($PSRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[micro-context/decoupling-capacitor]] | [[small-context/decibels-across-domains]]

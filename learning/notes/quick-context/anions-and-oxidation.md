@@ -88,7 +88,7 @@ THIS IS OXIDATION: Loss of electrons, charge goes from negative to neutral
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and voltage applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
+The central tradeoff practitioners navigate is **selectivity vs. energy efficiency**. When multiple anions are present in a solution (like OH⁻ and Cl⁻ together), which one gets oxidized first? The answer depends on factors like concentration, electrode material, and [[learning/notes/quick-context/voltage|voltage]] applied. Sometimes you *want* a specific reaction (like producing chlorine gas), but the thermodynamically "easier" reaction (oxidizing water) keeps happening instead. Industrial chemists spend enormous effort designing conditions where the *desired* anion oxidizes preferentially, often sacrificing energy efficiency or requiring expensive electrode materials to achieve selectivity.
 
 </details>
 

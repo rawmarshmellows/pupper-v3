@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/offset-voltage-drift]]
+
 # ADS1110 (Battery Voltage ADC)
 
 > **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]

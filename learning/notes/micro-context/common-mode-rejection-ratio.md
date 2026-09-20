@@ -3,6 +3,8 @@ term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/micro-context/ads1110-battery-adc]]
+
 # Common-Mode Rejection Ratio ($CMRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/differential-pair]] | [[small-context/decibels-across-domains]]

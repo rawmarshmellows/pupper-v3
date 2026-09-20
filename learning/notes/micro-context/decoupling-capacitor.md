@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/frequency-and-filtering]]
+
 # Decoupling Capacitor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
