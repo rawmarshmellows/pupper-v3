@@ -3,6 +3,8 @@ topic: Silymarin
 created: 2026-04-06
 ---
 
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/quick-context/robotic-arm-api-levels]]
+
 # Silymarin
 
 > **TL;DR:** Silymarin is a mixture of flavonolignans extracted from milk thistle (*Silybum marianum*) seeds, best known for hepatoprotection — it scavenges free radicals, stabilizes liver cell membranes, and suppresses inflammatory pathways, making it one of the most-studied herbal compounds for liver disease.

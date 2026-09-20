@@ -20,7 +20,7 @@ A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. Y
 | **Inverting (-) / Non-inverting (+) inputs** | The two inputs. The op-amp amplifies the difference between them: Vout = A × (V+ - V-), where A is the open-loop gain (~100,000). |
 | **Open-loop gain (A)** | The raw gain without feedback. Enormous (10⁵) but useless alone—too high, too variable, too sensitive. Feedback tames it into precise, controlled gain. |
 | **Negative feedback** | Connecting the output back to the inverting input through a resistor network. This is what makes op-amp circuits predictable. It trades excess gain for stability and precision. |
-| **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the voltage difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
+| **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the [[learning/notes/quick-context/voltage|voltage]] difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
 | **Rail-to-rail** | An op-amp whose output can swing to within millivolts of its supply voltages. Standard op-amps can only reach within ~1-2V of the rails, wasting headroom. |
 
 <details>
@@ -613,7 +613,7 @@ SIGNAL CONDITIONING CHAIN
 
 - **[[quick-context/electric-current]]** — The golden rule "no current into the inputs" means all current through the input resistor must flow through the feedback resistor—this is how you derive gain formulas using Kirchhoff's current law.
 
-- **[[quick-context/pwm-controller-circuit]]** — Inside every buck converter IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
+- **[[quick-context/pwm-controller-circuit]]** — Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
 
 - **[[quick-context/comparator]]** — A comparator shares the same differential-pair input stage as an op-amp but is optimized for speed and digital output. Removing the op-amp's negative feedback and compensation capacitor gives you a comparator—intentionally.
 

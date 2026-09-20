@@ -3,6 +3,8 @@ term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
 ---
 
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
+
 # BJT vs MOSFET vs IGBT
 
 > **See also:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/transistor]]

@@ -3,6 +3,8 @@ term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
+
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]

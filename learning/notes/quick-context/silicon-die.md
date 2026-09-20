@@ -229,7 +229,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, [[learning/notes/quick-context/voltage|voltage]], and resistance explains why dies consume power and generate heat.
 
 </details>
 

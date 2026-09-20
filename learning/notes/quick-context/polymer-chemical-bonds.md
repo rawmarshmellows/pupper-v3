@@ -194,7 +194,7 @@ Concepts that deepen understanding of polymer chemical bonds:
 **Q1:** Why does PLA deform in a hot car (~60°C) while ABS parts survive?
 <details>
 <summary>Answer</summary>
-PLA has a glass transition temperature (Tg) of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
+PLA has a [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature (Tg)]] of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
 </details>
 
 **Q2:** TPU is flexible and elastic, yet it has strong hydrogen bonds. How is this possible?

@@ -4,6 +4,8 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/comparator]]
+
 # Push-Pull vs Open-Collector / Open-Drain
 
 ## Human notes

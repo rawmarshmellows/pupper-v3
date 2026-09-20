@@ -3,6 +3,8 @@ term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/inside-the-triangle]]
+
 # Input Common-Mode Range ($CMVR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
