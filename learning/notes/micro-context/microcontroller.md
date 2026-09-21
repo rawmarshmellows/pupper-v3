@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Microcontroller
 
+> **Related:** [[micro-context/adc-analog-to-digital-converter|ADC]] | [[micro-context/i2c|I2C]] | [[micro-context/plc-programmable-logic-controller|PLC]] | [[micro-context/pwm-pulse-width-modulation|PWM]] | [[micro-context/spi|SPI]]
+
 > **See also:** [[quick-context/embedded-communication-protocols]]
 
 **Definition:** A complete computer on a single chip — CPU, memory (RAM + flash), and I/O peripherals all integrated into one package. Unlike a general-purpose CPU that needs external RAM, storage, and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[micro-context/stm32-microcontroller|STM32]] (ARM), [[quick-context/esp32|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.

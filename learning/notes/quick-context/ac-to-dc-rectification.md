@@ -21,7 +21,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>

@@ -5,6 +5,8 @@ created: 2026-06-07
 
 # Input Bias Current ($I_B$)
 
+> **Related:** [[micro-context/mosfet|MOSFET]] | [[quick-context/bjt|BJT]] | [[quick-context/capacitor|Capacitor]] | [[quick-context/comparator|Comparator]] | [[quick-context/differential-pair|Differential Pair]]
+
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/mosfet]] | [[quick-context/resistor]]
 
 **Definition:** The tiny current that flows into (or out of) a comparator's or op-amp's input pin to bias its input transistors. For CMOS-input parts it is essentially zero — picoamps.
@@ -13,9 +15,9 @@ created: 2026-06-07
 
 ## How It Works
 
-- Each input pin connects to a transistor gate (CMOS) or base (bipolar) that must be held at its DC operating point to stay in the active region.
+- Each input pin connects to a [[quick-context/transistor|transistor]] gate (CMOS) or base (bipolar) that must be held at its DC operating point to stay in the active region.
 - Bipolar (BJT) inputs need a **continuous base current** to stay forward-active, so the part keeps drawing it from your source — real $I_B$ (nanoamps to microamps).
-- CMOS ([[micro-context/mosfet|MOSFET]]-gate) inputs sit behind a thin oxide insulator that makes the gate **one plate of a capacitor**. Charging it to the bias voltage takes only a brief transient; at steady DC a capacitor passes no current, so holding the input transistor on costs ~zero. Only tiny leakage — oxide tunneling, ESD-diode and PCB surface leakage — crosses, giving the LMC7211-N its ~0.04 pA (leakage roughly doubles every ~10 °C). *Mechanism: [[micro-context/mosfet#The Gate as a Capacitor (No DC Gate Current)|MOSFET → the gate as a capacitor]].*
+- CMOS ([[micro-context/mosfet|MOSFET]]-gate) inputs sit behind a thin oxide insulator that makes the gate **one plate of a capacitor**. Charging it to the bias [[quick-context/voltage|voltage]] takes only a brief transient; at steady DC a capacitor passes no current, so holding the input transistor on costs ~zero. Only tiny leakage — oxide tunneling, ESD-[[quick-context/diode|diode]] and [[quick-context/pcb-printed-circuit-board|PCB]] surface leakage — crosses, giving the LMC7211-N its ~0.04 pA (leakage roughly doubles every ~10 °C). *Mechanism: [[micro-context/ac-dc-current|MOSFET → the gate as a capacitor]].*
 - Bias current flowing through your source or [[quick-context/resistor|resistor]] divider creates an error voltage $I_B \times R$; near-zero $I_B$ means a high-impedance divider isn't loaded down.
 
 ```

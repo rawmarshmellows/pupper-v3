@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # Full-Wave Bridge Rectifier
 
+> **Related:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]] | [[quick-context/diode|Diode]] | [[quick-context/voltage|Voltage]]
+
 > **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]
 
 **Definition:** A circuit of four [[quick-context/diode|diodes]] arranged in a diamond that converts AC to pulsating DC by steering [[quick-context/electric-current|current]] through the load in the same direction during both halves of the AC cycle.

@@ -11,7 +11,7 @@ created: 2026-06-07
 
 ## The Core Problem
 
-A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a short circuit, and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
+A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a [[micro-context/short-circuit|short circuit]], and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
 
 ## 5 Essential Terms
 
@@ -100,7 +100,7 @@ address = 5 (binary 101)        load = 1
 
 The central design tension in real RAM is **speed vs. density vs. cost**, and it shows up as the SRAM-vs-DRAM split.
 
-The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a capacitor — one transistor plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
+The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a [[quick-context/capacitor|capacitor]] — one [[quick-context/transistor|transistor]] plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
 
 | | SRAM (register-like) | DRAM (capacitor) |
 |---|---|---|
