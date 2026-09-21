@@ -5,7 +5,9 @@ created: 2026-06-08
 
 # Capacitive Voltage Sensing
 
-> **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | [[micro-context/capacitive-sensing-measurement]]
+> **Related:** [[micro-context/adc-analog-to-digital-converter|ADC]] | [[quick-context/capacitance|Capacitance]] | [[quick-context/capacitor|Capacitor]] | [[quick-context/differential-pair|Differential Pair]] | [[quick-context/voltage|Voltage]]
+
+> **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | [[quick-context/capacitive-sensing-measurement]]
 
 **Definition:** Detecting a voltage *without touching* the conductor — a sense plate placed near a live conductor couples to it through the electric field, and the charge induced on the plate ($Q = CV$) reveals the source voltage. Used in non-contact voltage testers and high-voltage capacitive dividers.
 

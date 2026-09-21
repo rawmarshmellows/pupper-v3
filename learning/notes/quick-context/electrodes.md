@@ -20,8 +20,8 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 | Term | Definition |
 |------|------------|
 | **Electrode** | Any conductive solid surface where electrons enter or leave a liquid/solution to make chemistry happen—the "meeting point" of electricity and chemistry |
-| **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
-| **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
+| **[[micro-context/cathode|Cathode]]** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
+| **[[micro-context/anode|Anode]]** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
 | **Reduction** | A chemical reaction where something GAINS electrons. Happens at the cathode. (Think: the charge is "reduced"—becomes less positive or more negative) |
 | **Oxidation** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
 

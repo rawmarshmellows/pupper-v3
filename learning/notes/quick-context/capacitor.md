@@ -11,7 +11,7 @@ created: 2026-01-30
 
 ## The Core Problem
 
-Electronics need stable voltage to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
+Electronics need stable [[quick-context/voltage|voltage]] to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
 
 ## 5 Essential Terms
 
@@ -502,7 +502,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[quick-context/capacitance]]** — Capacitance as a fundamental property of geometry and materials, including parasitic capacitance in PCB traces, transistor gates, and IC packages — the unintended capacitance that limits speed and determines power consumption.
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- Resistor-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- [[quick-context/resistor|Resistor]]-capacitor timing circuits generate repeating waveforms (sawtooth, square) by charging C through R to a threshold, then resetting. The same RC time constant that governs filters also sets oscillation frequency.
 
 - **RC Circuits and Filters** - Resistor-capacitor combinations form the basis of analog signal processing: low-pass filters, high-pass filters, integrators, and differentiators.
 

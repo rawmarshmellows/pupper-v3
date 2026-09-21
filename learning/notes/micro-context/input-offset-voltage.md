@@ -5,9 +5,11 @@ created: 2026-06-07
 
 # Input Offset Voltage ($V_{OS}$)
 
+> **Related:** [[micro-context/tail-current|Tail Current]] | [[quick-context/comparator|Comparator]] | [[quick-context/differential-pair|Differential Pair]] | [[quick-context/op-amp|Op-Amp]] | [[quick-context/transistor|Transistor]]
+
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
+**Definition:** A small built-in [[quick-context/voltage|voltage]] error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
 
 ## How It Works
 

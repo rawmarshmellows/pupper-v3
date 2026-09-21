@@ -5,6 +5,8 @@ created: 2026-03-27
 
 # Clock Source
 
+> **Related:** [[micro-context/ceramic-resonator|Ceramic Resonator]] | [[micro-context/microcontroller|Microcontroller]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]] | [[quick-context/rc-oscillator|RC Oscillator]]
+
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
 **Definition:** The component or circuit that generates the base frequency reference for a [[micro-context/stm32-microcontroller|microcontroller's]] clock system. On the Pupper v3 board, each STM32's clock source is an external 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (HSE), which the on-chip PLL multiplies to the 180 MHz operating frequency.

@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
@@ -384,7 +384,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/subatomic-particles]]** — The fundamental particles (protons, neutrons, electrons) that make up atoms. Silicon has 14 protons and 4 outer electrons; doping changes the electron count at specific locations to create controllable charge carriers.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from BJT (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architectures evolved from [[quick-context/bjt|BJT]] (which uses doped NPN/PNP junctions) to modern MOSFETs, FinFETs, and GAA. All rely on precisely doped regions created by ion implantation.
 
 </details>
 
@@ -406,7 +406,7 @@ In pure silicon, every electron is "locked" in covalent bonds with neighboring a
 **Q3:** Why do different regions of a transistor require different doping concentrations?
 <details>
 <summary>Answer</summary>
-The source/drain regions need heavy doping for low resistance (so current flows easily). The channel region needs light doping so it can be easily controlled by the gate voltage (turned on/off cleanly). The well regions need medium doping to isolate components from each other. It's a tradeoff between conductivity and controllability. See: "The Key Tension" section
+The source/drain regions need heavy doping for low resistance (so current flows easily). The channel region needs light doping so it can be easily controlled by the gate [[quick-context/voltage|voltage]] (turned on/off cleanly). The well regions need medium doping to isolate components from each other. It's a tradeoff between conductivity and controllability. See: "The Key Tension" section
 </details>
 
 **Q4:** Someone claims: "To make silicon conduct better, you should add as much dopant as possible." What's wrong with this reasoning?
@@ -415,7 +415,7 @@ The source/drain regions need heavy doping for low resistance (so current flows 
 While more doping does increase conductivity, it also makes the silicon harder to control as a switch—it becomes "[[quick-context/transistor-analog-to-digital|leaky]]" and won't turn fully off. Transistors need to switch between ON and OFF states cleanly. Over-doped silicon conducts too well and can't be controlled by small voltage changes at the gate. The goal isn't maximum conductivity; it's controllable conductivity. See: "The Key Tension" section
 </details>
 
-**Q5:** How does the concept of doped silicon connect to the PCB-Chip-Transistor hierarchy, and what would happen to modern electronics if we could only use pure silicon?
+**Q5:** How does the concept of doped silicon connect to the [[quick-context/pcb-printed-circuit-board|PCB]]-Chip-Transistor hierarchy, and what would happen to modern electronics if we could only use pure silicon?
 <details>
 <summary>Answer</summary>
 Doped silicon is the foundation of the entire hierarchy described in [[quick-context/pcb-chip-transistor-hierarchy]]. Transistors—the fundamental building blocks at the bottom of the hierarchy—are made by creating PN junctions in doped silicon. Without doping, we couldn't make transistors because pure silicon can't function as a controllable switch. Without transistors, we couldn't build the chips that go into packages that mount on PCBs. The entire modern electronics industry would collapse back to vacuum tubes or mechanical relays—no smartphones, no computers, no internet. The "tiny on/off switch made of doped silicon" mentioned in the hierarchy document is only possible because doping creates the controllable electrical properties that pure silicon lacks.

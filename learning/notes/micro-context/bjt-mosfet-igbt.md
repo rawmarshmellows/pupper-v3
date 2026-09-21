@@ -5,6 +5,8 @@ created: 2026-06-02
 
 # BJT vs MOSFET vs IGBT
 
+> **Related:** [[micro-context/mosfet|MOSFET]] | [[quick-context/bjt|BJT]] | [[quick-context/transistor|Transistor]] | [[quick-context/voltage|Voltage]]
+
 > **See also:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/transistor]]
 
 **Definition:** The three main power-transistor families used as electronic switches and amplifiers. A [[learning/notes/quick-context/bjt|BJT]] is current-controlled, a [[learning/notes/micro-context/mosfet|MOSFET]] is voltage-controlled and fast, and an IGBT is a hybrid—a MOSFET-style insulated gate driving a BJT-style high-power output.

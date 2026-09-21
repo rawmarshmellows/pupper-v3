@@ -6,6 +6,8 @@ updated: 2026-03-27
 
 # SPI
 
+> **Related:** [[micro-context/clock-edges|Clock Edge]] | [[micro-context/i2c|I2C]]
+
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
 
 **Definition:** Serial Peripheral Interface — a 4-wire full-duplex serial protocol where a master clocks data in and out of peripherals simultaneously. Unlike [[micro-context/i2c|I2C]] which uses addresses on a shared bus, SPI selects each device with a dedicated chip-select (CS) line. Runs at 1-50+ MHz — much faster than I2C, but costs an extra pin per device. In your [[quick-context/pupper-brain|Pupper]], U1 sends joint targets to U5 over SPI.
