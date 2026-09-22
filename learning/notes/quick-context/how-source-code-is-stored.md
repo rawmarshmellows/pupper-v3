@@ -2,7 +2,7 @@
 topic: How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 created: 2026-06-07
 ---
-
+> **Related:** [[learning/notes/quick-context/voltage]]
 # How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 
 > **Related:** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/index/how-a-computer-works-index]]

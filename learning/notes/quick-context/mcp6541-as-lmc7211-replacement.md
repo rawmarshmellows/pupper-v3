@@ -2,7 +2,7 @@
 topic: MCP6541 (C623499) as an LMC7211-N Replacement
 created: 2026-06-07
 ---
-
+> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/voltage]]
 # Can the MCP6541 (LCSC C623499) Replace the LMC7211-N?
 
 > **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
@@ -13,7 +13,7 @@ created: 2026-06-07
 
 ## The Core Problem: A Datasheet Swap Is Two Questions, Not One
 
-A "replacement" must pass two independent tests: **will it fit?** (form — package, pinout, dimensions) and **will it work?** (function — every electrical spec the original met). A part can ace one and fail the other. The MCP6541 is the textbook case: a *perfect* mechanical fit that is electrically right for *low-voltage, slow* designs and electrically *wrong* for the high-voltage, faster designs the LMC7211-N was often chosen for. Confusing "same footprint" with "same part" is how a board re-spin passes assembly and dies at power-up.
+A "replacement" must pass two independent tests: **will it fit?** (form — package, pinout, dimensions) and **will it work?** (function — every electrical spec the original met). A part can ace one and fail the other. The MCP6541 is the textbook case: a *perfect* mechanical fit that is electrically right for *low-[[learning/notes/quick-context/voltage|voltage]], slow* designs and electrically *wrong* for the high-voltage, faster designs the LMC7211-N was often chosen for. Confusing "same footprint" with "same part" is how a board re-spin passes assembly and dies at power-up.
 
 ## 5 Essential Terms
 
@@ -162,7 +162,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
   12 V rail                    ABS MAX is 7 V → DESTROYED   ✗ STOP
 ```
 
-**Verdict: not a replacement — full stop.** The 12 V rail exceeds the MCP6541's 7 V absolute maximum; the part is damaged on power-up before speed or anything else even matters. Here you need another *15 V-rated* push-pull comparator, or the LMC7211-N itself.
+**Verdict: not a replacement — full stop.** The 12 V rail exceeds the MCP6541's 7 V absolute maximum; the part is damaged on power-up before speed or anything else even matters. Here you need another *15 V-rated* push-pull [[learning/notes/quick-context/comparator|comparator]], or the LMC7211-N itself.
 
 **The one thing most outsiders get wrong about this is...** assuming that "identical pinout, same package, cheaper" means "drop-in replacement." Form-compatibility is necessary but **not sufficient** — the MCP6541 fits the LMC7211-N footprint flawlessly and is still a *wrong* part for any design above 5.5 V or needing sub-microsecond response. Always run the *function* half of the checklist against **your** operating conditions, not the datasheet's headline.
 
@@ -175,7 +175,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 
 - **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
+- **[[quick-context/comparator]]** — How a comparator works ([[learning/notes/quick-context/differential-pair|differential pair]], push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
 
 - **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
 
@@ -203,7 +203,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 **Q3:** Within a 3.3 V battery design, name two ways the MCP6541 is actually *better* than the LMC7211-N it replaces.
 <details>
 <summary>Answer</summary>
-**(1) ~10× lower quiescent current** — 0.6 µA typ vs 7 µA typ, directly extending battery life. **(2) Built-in ~3.3 mV hysteresis** — clean switching on slow/noisy signals with no external feedback resistor (the LMC7211-N needs one). It also runs down to 1.6 V and has a tighter worst-case offset (±7 mV vs the LMC7211-N's 18 mV NBI grade). See: The Key Tension and Concrete Example, Case A.
+**(1) ~10× lower quiescent current** — 0.6 µA typ vs 7 µA typ, directly extending battery life. **(2) Built-in ~3.3 mV hysteresis** — clean switching on slow/noisy signals with no external feedback [[learning/notes/quick-context/resistor|resistor]] (the LMC7211-N needs one). It also runs down to 1.6 V and has a tighter worst-case offset (±7 mV vs the LMC7211-N's 18 mV NBI grade). See: The Key Tension and Concrete Example, Case A.
 </details>
 
 **Q4:** A teammate says "the MCP6541 has hysteresis built in, so it's strictly better." When is that *wrong*?

@@ -2,7 +2,7 @@
 topic: Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 created: 2026-03-10
 ---
-
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix]]
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab3-inverse-kinematics]]
@@ -32,7 +32,7 @@ Each transformation matrix encodes two things simultaneously: a rotation (what d
 
 ### The 4x4 Homogeneous Transform
 
-A homogeneous transformation matrix packs a 3x3 rotation and a 3x1 translation into one 4x4 matrix:
+A [[learning/notes/micro-context/homogeneous-transformation-matrix|homogeneous transformation matrix]] packs a 3x3 rotation and a 3x1 translation into one 4x4 matrix:
 
 $$T = \begin{bmatrix} R_{3 \times 3} & \mathbf{d}_{3 \times 1} \\ \mathbf{0}_{1 \times 3} & 1 \end{bmatrix} = \begin{bmatrix} r_{11} & r_{12} & r_{13} & d_x \\ r_{21} & r_{22} & r_{23} & d_y \\ r_{31} & r_{32} & r_{33} & d_z \\ 0 & 0 & 0 & 1 \end{bmatrix}$$
 

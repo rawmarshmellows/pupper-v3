@@ -3,7 +3,7 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
-
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/voltage]]
 # Current and Electrons Per Second
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
@@ -12,7 +12,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- An electric field (from a voltage source) pushes free electrons through the conductor in a coordinated drift.
+- An electric field (from a [[learning/notes/quick-context/voltage|voltage]] source) pushes free electrons through the conductor in a coordinated drift.
 - At any cross-section of the wire, the number of electrons passing per second determines the current in amperes.
 - One ampere equals one coulomb (6.24 × 10¹⁸ electrons) flowing past that point every second.
 

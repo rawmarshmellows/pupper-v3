@@ -3,7 +3,7 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/transistor]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -254,7 +254,7 @@ Pitch is the distance from the center of one solder ball to the center of the ad
 Modern chips consume enormous amounts of current (sometimes 100+ amps) at very low voltages. A single ball can only carry limited current and has some resistance/inductance. Multiple parallel power and ground balls provide lower resistance paths, better current distribution, and cleaner power delivery with less electrical noise. See: Concrete Example (Ball Function Map)
 </details>
 
-**Q4:** Someone claims: "If one BGA solder joint fails, you can just touch it up with a regular soldering iron." What's wrong with this?
+**Q4:** Someone claims: "If one BGA solder joint fails, you can just touch it up with a regular [[learning/notes/quick-context/soldering|soldering]] iron." What's wrong with this?
 <details>
 <summary>Answer</summary>
 This is incorrect for two reasons: (1) You can't see the joints underneath to identify which one failed—you'd need X-ray inspection first. (2) You can't physically access the joints with a soldering iron tip because they're hidden under the package. BGA rework requires specialized equipment that heats the entire package evenly from above to remove it, then reattach with fresh solder balls. See: The Key Tension
