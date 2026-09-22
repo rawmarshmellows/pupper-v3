@@ -2,7 +2,7 @@
 topic: Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 created: 2026-06-07
 ---
-
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spi]]
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
 > **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]

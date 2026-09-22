@@ -2,7 +2,7 @@
 topic: Bambu P2S Print Quality
 created: 2026-04-29
 ---
-
+> **Related:** [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/dipole-dipole-interactions]]
 # Bambu P2S Print Quality
 
 > **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]

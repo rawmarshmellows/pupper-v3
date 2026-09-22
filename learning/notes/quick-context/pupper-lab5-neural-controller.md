@@ -3,7 +3,7 @@ topic: Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 created: 2026-03-10
 updated: 2026-03-12
 ---
-
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/tensor]]
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]

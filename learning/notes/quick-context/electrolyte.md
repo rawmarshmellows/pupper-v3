@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/making-electrolytes]] | [[quick-context/electrodes]]
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/electrolysis]]
 
 > **TL;DR:** Electrolytes are substances (acids, bases, or salts) that dissolve in water to release free ions, enabling the liquid to conduct electricity; pure water is essentially an insulator, but adding an electrolyte can increase conductivity by 500,000x.
 
@@ -213,17 +213,17 @@ Comparison of Common Electrolytes:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — Electrolytes are essential for electrolysis; they provide the ion pathway that makes electrode reactions possible.
+- **[[quick-context/electrolysis]]** — Electrolytes are essential for [[learning/notes/quick-context/electrolysis|electrolysis]]; they provide the ion pathway that makes electrode reactions possible.
 
 - **[[quick-context/making-electrolytes]]** — Detailed guide on how acids, bases, and salts create electrolytes through dissociation.
 
-- **[[quick-context/electrodes]]** — The cathode and anode where ions exchange electrons; electrolytes deliver ions to these surfaces.
+- **[[quick-context/electrodes]]** — The [[learning/notes/micro-context/cathode|cathode]] and anode where ions exchange electrons; electrolytes deliver ions to these surfaces.
 
 - **[[quick-context/cations-and-reduction]]** — Positive ions (cations) in the electrolyte migrate to the cathode and gain electrons.
 
-- **[[quick-context/anions-and-oxidation]]** — Negative ions (anions) in the electrolyte migrate to the anode and lose electrons.
+- **[[quick-context/anions-and-oxidation]]** — Negative ions (anions) in the electrolyte migrate to the [[learning/notes/micro-context/anode|anode]] and lose electrons.
 
-- **[[quick-context/voltage-thermodynamics-electrolysis]]** — The minimum voltage needed relates to which ions in the electrolyte will react first.
+- **[[quick-context/voltage-thermodynamics-electrolysis]]** — The minimum [[learning/notes/quick-context/voltage|voltage]] needed relates to which ions in the electrolyte will react first.
 
 </details>
 
@@ -239,13 +239,13 @@ Chloride ions (Cl⁻) are easier to oxidize than water at the anode, so chlorine
 **Q2:** Pure distilled water has a conductivity of ~0.05 μS/cm, while seawater has ~50,000 μS/cm. What accounts for this million-fold difference?
 <details>
 <summary>Answer</summary>
-Seawater contains ~3.5% dissolved salts (primarily NaCl, plus MgCl₂, MgSO₄, etc.) that dissociate into free ions. These ions carry electric current through the solution. Distilled water has essentially no dissolved ions—only the tiny amount from water's autoionization (10⁻⁷ M). See: The Core Problem
+Seawater contains ~3.5% dissolved salts (primarily NaCl, plus MgCl₂, MgSO₄, etc.) that dissociate into free ions. These ions carry [[learning/notes/quick-context/electric-current|electric current]] through the solution. Distilled water has essentially no dissolved ions—only the tiny amount from water's autoionization (10⁻⁷ M). See: The Core Problem
 </details>
 
 **Q3:** Why is sodium sulfate considered a "better" electrolyte than sodium chloride for water electrolysis, even though both fully dissociate and provide similar conductivity?
 <details>
 <summary>Answer</summary>
-Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a higher oxidation potential than water and remain inert at the anode. Chloride ions (Cl⁻) oxidize more easily than water, producing chlorine gas instead of oxygen. The electrolyte must conduct current without chemically participating in the electrode reactions. See: The Key Tension
+Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a higher [[learning/notes/micro-context/oxidation|oxidation]] potential than water and remain inert at the anode. Chloride ions (Cl⁻) oxidize more easily than water, producing chlorine gas instead of oxygen. The electrolyte must conduct current without chemically participating in the electrode reactions. See: The Key Tension
 </details>
 
 **Q4:** Acetic acid (vinegar) is a weak electrolyte while hydrochloric acid is a strong electrolyte. If you made two solutions with equal molar concentrations, which would have higher conductivity and why?

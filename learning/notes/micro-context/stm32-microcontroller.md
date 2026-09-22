@@ -3,7 +3,7 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
-
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/transistor]]
 # STM32 Microcontroller
 
 > **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
@@ -13,7 +13,7 @@ updated: 2026-04-05
 ## How It Works
 
 - The ARM Cortex-M4 core fetches instructions from on-chip flash, executes them in a pipelined architecture at up to 180MHz, and stores working data in SRAM.
-- Built-in hardware peripherals (CAN, SPI, I2C, USART, ADC, PWM timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
+- Built-in hardware peripherals (CAN, [[learning/notes/micro-context/spi|SPI]], [[learning/notes/micro-context/i2c|I2C]], USART, ADC, PWM timers) offload communication and I/O tasks so the CPU can focus on control algorithms.
 - Firmware runs bare-metal or under an RTOS, with microsecond-level interrupt response times essential for real-time motor control.
 
 ```

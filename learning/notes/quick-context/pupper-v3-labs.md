@@ -2,7 +2,7 @@
 topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
-
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/microcontroller]]
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
 > **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]

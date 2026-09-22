@@ -2,7 +2,7 @@
 topic: From Human Calculators to Coding on Screens — How Programming Interfaces Evolved
 created: 2026-03-26
 ---
-
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
 # From Human Calculators to Coding on Screens
 
 > **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/transistor]] | [[quick-context/transistor-design-history]]

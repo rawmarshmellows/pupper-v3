@@ -2,7 +2,7 @@
 topic: D Flip-Flop — The Atom of Digital Memory
 created: 2026-04-08
 ---
-
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/crystal-oscillator]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/comparator]]
 # D Flip-Flop — The Atom of Digital Memory
 
 > **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/uart]] | [[quick-context/physics-of-writing-data-to-memory]] | [[micro-context/clock-edges]]
@@ -11,7 +11,7 @@ created: 2026-04-08
 
 ## The Core Problem
 
-Combinational logic (AND, OR, NOT gates) can compute any function, but it has no memory — the output changes the instant the inputs change. To build anything useful (a counter, a register, a CPU), you need circuits that can **remember** a value and only update it at controlled moments. The D flip-flop solves this: it samples its input once per clock edge and holds the result stable, giving the rest of the circuit a reliable, unchanging value to work with until the next tick.
+Combinational logic (AND, OR, NOT gates) can compute any function, but it has no memory — the output changes the instant the inputs change. To build anything useful (a counter, a register, a CPU), you need circuits that can **remember** a value and only update it at controlled moments. The D flip-flop solves this: it samples its input once per [[learning/notes/micro-context/clock-edges|clock edge]] and holds the result stable, giving the rest of the circuit a reliable, unchanging value to work with until the next tick.
 
 ## 5 Essential Terms
 

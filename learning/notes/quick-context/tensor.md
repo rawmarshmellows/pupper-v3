@@ -2,7 +2,7 @@
 topic: Tensor
 created: 2026-03-04
 ---
-
+> **Related:** [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/electromagnetism]]
 # Tensor
 
 > **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
