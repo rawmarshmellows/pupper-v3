@@ -3,11 +3,12 @@ topic: D Flip-Flop — The Atom of Digital Memory
 created: 2026-04-08
 ---
 
-# D Flip-Flop — The Atom of Digital Memory
-
 > **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/uart]] | [[quick-context/physics-of-writing-data-to-memory]] | [[micro-context/clock-edges]]
 
-> **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, SRAM — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
+# D Flip-Flop — The Atom of Digital Memory
+
+
+> **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, [[learning/notes/micro-context/sram|SRAM]] — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
 
 ## The Core Problem
 

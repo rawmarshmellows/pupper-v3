@@ -4,9 +4,10 @@ created: 2026-03-10
 updated: 2026-03-12
 ---
 
+> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -32,7 +33,7 @@ The sim-to-real gap is the central challenge. A policy that works perfectly in M
 | **Sim-to-Real Transfer** | Deploying a policy trained entirely in simulation to a physical robot. Bridged by domain randomization (varying sim physics) and careful config matching (`config.yaml` gains, timing). |
 | **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides fast, differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
 | **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from BNO086 IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
-| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the STM32 tracks these targets at the full 520 Hz update rate. |
+| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the [[learning/notes/micro-context/stm32-microcontroller|STM32]] tracks these targets at the full 520 Hz update rate. |
 
 <details>
 <summary><strong>How It Works</strong> — RL policy deployment pipeline</summary>
@@ -322,7 +323,7 @@ The $K_p = 7.5$ and $K_d = 0.25$ gains (from `init_kps` and `init_kds` in config
 
 ### Step 5: Motor Execution
 
-The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN bus (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
+The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ [[learning/notes/quick-context/can-bus|CAN bus]] (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
 
 ```
 ONE FULL INFERENCE CYCLE (out of ~52 per second)

@@ -3,9 +3,10 @@ topic: Voltage
 created: 2026-02-13
 ---
 
+> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 

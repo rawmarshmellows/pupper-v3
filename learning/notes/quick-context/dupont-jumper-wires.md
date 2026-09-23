@@ -198,7 +198,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, [[learning/notes/micro-context/i2c|I2C]] failures, serial corruption. When debugging, suspect the physical layer first.
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 

@@ -3,9 +3,10 @@ topic: Subatomic Particles - Quarks, Protons, Neutrons, Electrons
 created: 2026-02-14
 ---
 
+> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+
 # Subatomic Particles
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
 
 > **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
@@ -366,7 +367,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding [[quick-context/doped-silicon|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 

@@ -3,9 +3,10 @@ topic: Electromagnetism
 created: 2026-02-09
 ---
 
+> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
 # Electromagnetism
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Electromagnetism is the unified physics of electric and magnetic fields—moving charges create magnetic fields, changing magnetic fields create electric fields, and this interplay enables motors, generators, transformers, inductors, and all wireless communication. Maxwell unified these phenomena in 1865, revealing that light itself is an electromagnetic wave.
 

@@ -3,9 +3,10 @@ topic: Capacitive Sensing and Measurement
 created: 2026-03-28
 ---
 
+> **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[micro-context/adc-analog-to-digital-converter]]
+
 # Capacitive Sensing and Measurement
 
-> **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[micro-context/adc-analog-to-digital-converter]]
 
 > **TL;DR:** Capacitance can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
 

@@ -3,9 +3,10 @@ topic: Lenz's Law
 created: 2026-02-17
 ---
 
+> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
+
 # Lenz's Law
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
 
 > **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from nothing.
 
@@ -581,7 +582,7 @@ THE DEEP INSIGHT:
 |--------|------------------------|-------------------|
 | Generator | Rotation of coil | Mechanical → electrical conversion |
 | Motor | Current flow | Electrical → mechanical conversion |
-| [[quick-context/inductor\|Inductor]] | Current changes | Energy storage in magnetic field |
+| [[quick-context/inductor|Inductor]] | Current changes | Energy storage in magnetic field |
 | Transformer | Flux changes in primary | Power transfer to secondary |
 | Eddy current brake | Motion of conductor | Magnetic braking (no friction wear) |
 

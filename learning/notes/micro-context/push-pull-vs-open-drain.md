@@ -4,6 +4,8 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+
 # Push-Pull vs Open-Collector / Open-Drain
 
 ## Human notes
@@ -90,7 +92,7 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
 
 > **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** ([[learning/notes/quick-context/bjt|BJT]]) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 
 ## How It Works
 
