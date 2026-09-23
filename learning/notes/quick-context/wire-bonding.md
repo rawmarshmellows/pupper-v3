@@ -219,7 +219,7 @@ WHY INDUCTANCE MATTERS (for complete beginners):
     At high speeds (>1 GHz): wire bonds become a bottleneck
 ```
 
-The industry uses wire bonding when **cost matters more than speed**—which is most chips! Only high-performance processors, graphics cards, and specialized high-frequency chips need the more expensive flip-chip technology.
+The industry uses wire bonding when **cost matters more than speed**—which is most chips! Only high-performance processors, graphics cards, and specialized high-frequency chips need the more expensive [[learning/notes/quick-context/flip-chip|flip-chip]] technology.
 
 </details>
 

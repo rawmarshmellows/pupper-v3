@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
+
 # Decoupling Capacitor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]

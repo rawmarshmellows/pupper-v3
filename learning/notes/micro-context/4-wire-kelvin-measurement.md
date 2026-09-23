@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/oscilloscope-and-multimeter]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]]
+
 # 4-Wire Kelvin Measurement
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]

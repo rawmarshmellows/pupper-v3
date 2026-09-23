@@ -5,7 +5,7 @@ created: 2026-04-07
 
 > **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
 
-> **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
+> **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] ([[learning/notes/micro-context/sram|SRAM]]), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
 ## The Core Problem
 
@@ -212,27 +212,23 @@ STEP 1: KEYBOARD → SCAN CODE → USB → PC (mechanical → electrical)
 
   Inside the keyboard is a small MCU (often a CH552 or 8051)
   whose firmware exists as trapped electrons on floating gates
-  in flash — [[learning/notes/quick-context/from-code-to-running-
-  firmware|programmed at the factory]] via the same Fowler-
+  in flash — [[learning/notes/quick-context/from-code-to-running-firmware|programmed at the factory]] via the same Fowler-
   Nordheim tunneling physics described in STEP 5 below.
 
-  The MCU's [[learning/notes/quick-context/code-to-gates-and-
-  bootstrapping|fetch-execute cycle]] runs a scan loop:
+  The MCU's [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch-execute cycle]] runs a scan loop:
   drive each matrix row LOW, read columns. Row 2, Col 1 reads
   LOW → "x" detected → firmware looks up the USB HID scan
   code (0x1B) from a table in flash → packages an 8-byte HID
   report → writes it to the USB endpoint buffer (SRAM inside
   the USB peripheral).
 
-  The [[learning/notes/quick-context/usb-peripheral-hardware|
-  USB peripheral's Serial Interface Engine (SIE)]] takes over:
+  The [[learning/notes/quick-context/usb-peripheral-hardware|USB peripheral's Serial Interface Engine (SIE)]] takes over:
   it serializes the bytes, NRZI-encodes them, appends CRC,
   and drives push-pull MOSFET pairs to toggle D+/D- between
   3.3V and 0V at 12 MHz. The scan code travels to the PC as
   voltage transitions on the USB cable.
 
-  (See [[learning/notes/quick-context/usb-peripheral-hardware|
-  USB Peripheral Hardware]] for the full Phase 0→5 breakdown
+  (See [[learning/notes/quick-context/usb-peripheral-hardware|USB Peripheral Hardware]] for the full Phase 0→5 breakdown
   of how the SIE turns buffer bytes into voltage on the wire.)
 
 

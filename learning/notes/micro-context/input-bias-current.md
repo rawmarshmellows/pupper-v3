@@ -3,6 +3,8 @@ term: Input Bias Current (I_B)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/differential-pair]]
+
 # Input Bias Current ($I_B$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/mosfet]] | [[quick-context/resistor]]
@@ -14,7 +16,7 @@ created: 2026-06-07
 ## How It Works
 
 - Each input pin connects to a transistor gate (CMOS) or base (bipolar) that must be held at its DC operating point to stay in the active region.
-- Bipolar (BJT) inputs need a **continuous base current** to stay forward-active, so the part keeps drawing it from your source — real $I_B$ (nanoamps to microamps).
+- Bipolar ([[learning/notes/quick-context/bjt|BJT]]) inputs need a **continuous base current** to stay forward-active, so the part keeps drawing it from your source — real $I_B$ (nanoamps to microamps).
 - CMOS ([[micro-context/mosfet|MOSFET]]-gate) inputs sit behind a thin oxide insulator that makes the gate **one plate of a capacitor**. Charging it to the bias voltage takes only a brief transient; at steady DC a capacitor passes no current, so holding the input transistor on costs ~zero. Only tiny leakage — oxide tunneling, ESD-diode and PCB surface leakage — crosses, giving the LMC7211-N its ~0.04 pA (leakage roughly doubles every ~10 °C). *Mechanism: [[micro-context/mosfet#The Gate as a Capacitor (No DC Gate Current)|MOSFET → the gate as a capacitor]].*
 - Bias current flowing through your source or [[quick-context/resistor|resistor]] divider creates an error voltage $I_B \times R$; near-zero $I_B$ means a high-impedance divider isn't loaded down.
 

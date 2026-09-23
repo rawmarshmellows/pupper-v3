@@ -3,9 +3,10 @@ topic: PWM Controller Circuit
 created: 2026-03-27
 ---
 
+> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
+
 # PWM Controller Circuit
 
-> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
@@ -18,10 +19,10 @@ Without a feedback-controlled PWM, the output voltage of a [[micro-context/buck-
 | Term | Definition |
 |------|------------|
 | **Sawtooth oscillator** | Internal [[quick-context/rc-oscillator|RC oscillator]] clock that generates a repeating ramp waveform (0V → peak → reset), setting the switching frequency (e.g., 500kHz) |
-| **Error amplifier** | An [[quick-context/op-amp\|op-amp]] inside the IC that outputs a voltage proportional to how far $V_{OUT}$ is from the target — the "error signal" |
-| **[[quick-context/comparator\|Comparator]]** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
+| **Error amplifier** | An [[quick-context/op-amp|op-amp]] inside the IC that outputs a voltage proportional to how far $V_{OUT}$ is from the target — the "error signal" |
+| **[[quick-context/comparator|Comparator]]** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
 | **Voltage reference ($V_{REF}$)** | A precision internal voltage (typically 0.6–0.8V) that the error amplifier uses as its target — the "setpoint" |
-| **Feedback divider** | Two [[quick-context/resistor\|resistors]] from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
+| **Feedback divider** | Two [[quick-context/resistor|resistors]] from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
 
 <details>
 <summary><strong>How It Works</strong> — The complete PWM generation circuit</summary>
@@ -171,7 +172,7 @@ This is tuned by the **compensation network** — a small R-C circuit on the err
 
 | Higher frequency (1–2MHz) | Lower frequency (100–300kHz) |
 |---|---|
-| Smaller [[quick-context/inductor\|inductor]] and [[quick-context/capacitor\|capacitor]] needed (smaller board area) | Larger L and C needed (bigger board) |
+| Smaller [[quick-context/inductor|inductor]] and [[quick-context/capacitor|capacitor]] needed (smaller board area) | Larger L and C needed (bigger board) |
 | More switching losses ($P_{sw} \propto f$) — MOSFET turns on/off more often | Less switching loss |
 | Gate driver must charge MOSFET capacitance faster | Easier gate driving |
 

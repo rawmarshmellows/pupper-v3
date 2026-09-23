@@ -24,7 +24,7 @@ A modern computer chip contains **billions of transistors**, each one smaller th
 | **Bond Pad** | A small metal square (~50 μm) on a chip's surface that serves as a connection point for wires or solder bumps to enter/exit the die |
 | **Die** | The actual silicon chip itself—a thin square of patterned silicon containing all transistors, typically ~10mm across (see [[quick-context/pcb-chip-transistor-hierarchy]]) |
 | **Wire Bond** | A thin metal wire (~25 μm diameter) ultrasonically welded from a bond pad to the package substrate—the older, cheaper connection method |
-| **Flip-chip Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the substrate—newer, denser |
+| **[[learning/notes/quick-context/flip-chip|Flip-chip]] Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the substrate—newer, denser |
 | **Passivation** | A protective insulating layer (like glass) covering the entire chip surface except for the bond pads, which must remain exposed for connection |
 
 <details>
@@ -228,7 +228,7 @@ THE BOND PAD TRILEMMA
 
 **What practitioners argue about:**
 
-| Trade-off | Wire Bonding Camp | Flip-Chip Camp |
+| Trade-off | [[learning/notes/quick-context/wire-bonding|Wire Bonding]] Camp | Flip-Chip Camp |
 |-----------|-------------------|----------------|
 | **Cost** | "Wire bonding is 5-10x cheaper per connection" | "But flip-chip needs fewer packages for high I/O" |
 | **Density** | "Edge pads limit us to ~1000 connections" | "Area array gives us 3000+ connections" |
@@ -366,7 +366,7 @@ COMPARISON: Bond Pad Requirements
 
 - **[[quick-context/electrodes|Electrodes]] and Metallurgy** — Bond pads are made of specific metals (aluminum, copper, gold) chosen for their electrical conductivity and ability to form reliable bonds; understanding why matters for reliability.
 
-- **Electromigration** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
+- **[[learning/notes/quick-context/electromigration|Electromigration]]** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
 
 - **ESD (Electrostatic Discharge) Protection** — Bond pads are the entry points for static electricity that can destroy a chip; every pad needs protection circuits that can shunt thousands of volts safely.
 

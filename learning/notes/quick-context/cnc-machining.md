@@ -3,9 +3,10 @@ topic: CNC Machining
 created: 2026-03-28
 ---
 
+> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
+
 # CNC Machining
 
-> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
 
 > **TL;DR:** CNC machining is subtractive manufacturing -- a computer-controlled cutting tool removes material from a solid block to create precision parts. It is the default choice for metal parts at low volumes ($1$--$1{,}000$ units) where tight tolerances ($\pm 0.001"$) and full material strength are required.
 
