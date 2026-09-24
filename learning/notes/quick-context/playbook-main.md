@@ -12,6 +12,8 @@ This playbook is designed to be followed sequentially for each account, then mai
 
 ---
 
+> **Related:** [[quick-context/existing-account-management-playbook]]
+
 ## Step 1: Segment the Account (KARE)
 
 **Goal:** Classify the account into Keep, Attain, Recapture, or Expand to determine time and resource allocation.
@@ -101,7 +103,7 @@ VALUE           │    MAINTAIN     │    GROWTH       │
 
 - **KEEP accounts** land in Protect (high value, defend) or Maintain (low value, efficient)
 - **EXPAND accounts** land in Strategic (high value + potential) or Growth (low value but high potential)
-- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification (MEDDPICC) instead
+- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification ([[quick-context/meddpicc-qualification-framework|MEDDPICC]]) instead
 
 **Decision flow:**
 1. **First:** Assign KARE category (portfolio motion)
@@ -232,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 

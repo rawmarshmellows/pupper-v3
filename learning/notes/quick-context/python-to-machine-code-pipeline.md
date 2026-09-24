@@ -318,7 +318,7 @@ The **`python` interpreter's own machine code**. CPython's VM loop is a C progra
 No — CPython did **constant folding** at compile time. Because both operands are literal constants, the compiler computed `2 + 3 = 5` while compiling and baked the literal `5` into the bytecode, so the addition never runs at runtime. To see an actual `BINARY_ADD`/`BINARY_OP` you must use values the compiler can't know in advance, e.g. variables (`x = a + b`). See: Concrete Example (the surprise that CPython folds it).
 </details>
 
-**Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler (Rust) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?
+**Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler ([[quick-context/rust|Rust]]) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?
 <details>
 <summary>Answer</summary>
 They all **bottom out in machine-code instructions the CPU fetch-executes** — that's the fixed meeting point of the software and hardware towers. AOT compiles straight to machine code; the bytecode VM runs the interpreter's machine code; a JIT compiles hot paths to machine code at runtime; a transpiler just produces more source that still needs an engine (which itself ends in machine code). The repo proves the destination exists: `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/cpu.py` is a runnable CPU that fetch-executes machine code — the same target every route hands its output to. See: The Key Tension (four routes) and Concrete Example (Nand2Tetris mapping + cpu.py).

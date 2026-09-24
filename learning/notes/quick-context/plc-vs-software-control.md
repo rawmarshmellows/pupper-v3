@@ -28,7 +28,7 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a ROS2-based vision/planning system:
+Here's how a real system divides responsibility between a Siemens S7-1500 PLC and a [[quick-context/ros2-architecture|ROS2]]-based vision/planning system:
 
 **Architecture:**
 ```

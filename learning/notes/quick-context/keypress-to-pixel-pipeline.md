@@ -110,7 +110,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 4. **Encode to a scancode.** The keyboard chip converts "row 3, column 5 just went down" into a **scancode** — a number that names the key. Crucially it is *not* the letter: the key labeled "A" sends the same scancode whether or not Shift is held. Meaning is added much later.
 
-5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or microcontroller, the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
+5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or [[micro-context/microcontroller|microcontroller]], the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
 
 6. **Transport.** The packet rides a [[learning/notes/quick-context/embedded-communication-protocols|serial protocol]] — [[learning/notes/quick-context/usb-peripheral-hardware|USB]] or [[learning/notes/quick-context/uart|UART]] — across a wire to the host's controller, which handles framing, addressing, and error checks.
 

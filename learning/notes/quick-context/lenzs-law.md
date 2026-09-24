@@ -581,7 +581,7 @@ THE DEEP INSIGHT:
 |--------|------------------------|-------------------|
 | Generator | Rotation of coil | Mechanical → electrical conversion |
 | Motor | Current flow | Electrical → mechanical conversion |
-| [[quick-context/inductor\|Inductor]] | Current changes | Energy storage in magnetic field |
+| [[quick-context/inductor|Inductor]] | Current changes | Energy storage in magnetic field |
 | Transformer | Flux changes in primary | Power transfer to secondary |
 | Eddy current brake | Motion of conductor | Magnetic braking (no friction wear) |
 

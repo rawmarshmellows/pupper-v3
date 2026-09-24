@@ -7,7 +7,7 @@ created: 2026-06-07
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
+**Definition:** The range of input voltage (common to both pins) over which a comparator or [[quick-context/op-amp|op-amp]] still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 
 ## How It Works
 

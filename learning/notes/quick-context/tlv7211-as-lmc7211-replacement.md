@@ -161,7 +161,7 @@ So a 3.0 V battery monitor built on the 5 mV LMC7211-N (the spec note's worked c
 
 - **[[quick-context/mcp6541-as-lmc7211-replacement]]** — The *cross-vendor* counterpart: a Microchip part that shares the LMC7211 footprint but is only a *conditional* swap. Read both together to see the full "drop-in → functional-equivalent" spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull output, hysteresis). Explains *why* identical 4.x specs mean identical silicon behavior.
 
 - **Part renaming after acquisitions** — A reusable lesson: when a vendor buys a line (TI ← National, here), the safest second-source is usually the acquirer's own re-released equivalent. Always map *grades by number*, since suffix conventions change.
 
