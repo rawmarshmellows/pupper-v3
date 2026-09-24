@@ -113,7 +113,7 @@ THE THERMAL CONSTRAINT
 | Power Source | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |

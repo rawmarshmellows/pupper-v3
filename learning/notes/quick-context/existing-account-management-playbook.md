@@ -10,6 +10,8 @@ This playbook is designed to be followed sequentially for each account, then mai
 
 ---
 
+> **Related:** [[quick-context/playbook-main]] | [[quick-context/post-sale-account-engagement]] | [[quick-context/sandler-kare-segmentation]]
+
 ## Step 1: Segment the Account
 
 **Goal:** Determine how much time and resources this account deserves.
@@ -532,7 +534,7 @@ When you're stuck, remember which framework to consult:
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | [[quick-context/meddpicc-qualification-framework|MEDDPICC]] | (separate qualification framework) |
 
 ---
 

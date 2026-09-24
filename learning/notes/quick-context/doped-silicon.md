@@ -194,7 +194,7 @@ THIS CREATES A ONE-WAY VALVE:
 
 ### Step 5: From Junction to Transistor
 
-A transistor is simply TWO junctions back-to-back, creating a switch we can control:
+A [[quick-context/transistor|transistor]] is simply TWO junctions back-to-back, creating a switch we can control:
 
 ```
 TRANSISTOR: Two Junctions = Controllable Switch
