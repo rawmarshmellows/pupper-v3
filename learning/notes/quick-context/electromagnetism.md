@@ -5,7 +5,7 @@ created: 2026-02-09
 
 # Electromagnetism
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Electromagnetism is the unified physics of electric and magnetic fields—moving charges create magnetic fields, changing magnetic fields create electric fields, and this interplay enables motors, generators, transformers, inductors, and all wireless communication. Maxwell unified these phenomena in 1865, revealing that light itself is an electromagnetic wave.
 
@@ -15,11 +15,11 @@ Before the 1800s, electricity and magnetism seemed unrelated. Static electricity
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Magnetic Field (B)** | A vector field created by moving charges (current) or changing electric fields. Measured in tesla (T). Earth's field: ~50 μT. Strong magnet: 1 T. MRI machine: 1.5-3 T. |
-| **Electric Field (E)** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
-| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
+| **[[quick-context/electric-magnetic-field-unification|Electric Field (E)]]** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
+| **[[micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
 | **Lorentz Force** | The force on a moving charge in electromagnetic fields: F = q(E + v × B). Electric fields push charges; magnetic fields deflect moving charges perpendicular to their velocity. This is how motors and CRT screens work. |
 | **Electromagnetic Wave** | Self-propagating oscillations of electric and magnetic fields, traveling at the speed of light (c = 3×10⁸ m/s in vacuum). Radio, microwaves, infrared, visible light, UV, X-rays, and gamma rays are all electromagnetic waves at different frequencies. |
 
@@ -193,7 +193,7 @@ RIGHT-HAND RULES — Predicting Magnetic Field Direction
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Fields vs. Forces: The Two Ways to Think About Electromagnetism
 
@@ -233,12 +233,12 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 
 | Application | Primary Principle | Key Device |
 |-------------|------------------|------------|
-| Power generation | Faraday's law (changing B → E) | Generator, alternator |
+| Power generation | Faraday's law (changing B → E) | [[quick-context/electricity-generation|Generator]], alternator |
 | Electric motors | Lorentz force (I × B → F) | DC motor, AC motor |
-| Transformers | Faraday's law (mutual induction) | Power transformer |
+| Transformers | Faraday's law ([[quick-context/self-induction|mutual induction]]) | Power transformer |
 | [[quick-context/inductor|Inductors]] | Faraday's law (self-induction) | Chokes, filter coils |
 | Wireless communication | EM wave propagation | Antennas, radio |
-| Magnetic storage | Hysteresis in magnetic materials | Hard drives, tape |
+| Magnetic storage | [[micro-context/schmitt-trigger-hysteresis|Hysteresis]] in magnetic [[quick-context/cnc-machining|materials]] | Hard drives, tape |
 
 </details>
 
@@ -343,7 +343,7 @@ GENERATOR OPERATION — Step by Step
 
 - **[[quick-context/electric-current]]** — Current is moving charge, and moving charges create magnetic fields. Understanding current flow is prerequisite to understanding how electromagnets and inductors work.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of why current through a coil creates a magnetic field and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
+- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of [[quick-context/coil-magnetic-field|why current through a coil creates a magnetic field]] and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
 
 - **[[quick-context/inductor]]** — An inductor stores energy in a magnetic field created by current through a coil. The inductor equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a voltage opposing the change.
 
@@ -355,11 +355,11 @@ GENERATOR OPERATION — Step by Step
 
 - **[[quick-context/lenzs-law]]** — Why the minus sign in Faraday's Law matters: the induced EMF opposes the change that caused it, enforcing conservation of energy.
 
-- **[[small-context/permanent-magnet-creation]]** — Small-context on how unpaired electrons and exchange interaction create permanent magnets, and how magnetizers (high-current coils) align magnetic domains.
+- **permanent-magnet-creation** — Small-context on how unpaired [[quick-context/anions-and-oxidation|electrons]] and exchange interaction create permanent magnets, and how magnetizers (high-current coils) align magnetic domains.
 
 - **[[quick-context/maxwell-equations]]** — The complete mathematical formulation of electromagnetism in four equations. All electromagnetic phenomena—from static charges to light—emerge from these equations.
 
-- **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different reference frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
+- **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different [[quick-context/comparator|reference]] frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
 
 - **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric tensor that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
 

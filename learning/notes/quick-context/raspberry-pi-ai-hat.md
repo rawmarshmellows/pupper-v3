@@ -15,7 +15,7 @@ Running AI models (object detection, pose estimation, image classification) on a
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
 | **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively parallel datapaths that a general-purpose CPU cannot match |
@@ -128,7 +128,7 @@ The official AI HAT+ mounts on top of the Pi 5 via the 40-pin GPIO stacking head
 | HAT ID EEPROM (auto-detect at boot) | GPIO 0 & 1 (I2C0) | No (manual config.txt works) |
 | PCIe data transfer | None — uses FPC cable | N/A |
 
-**Bottom line:** Zero GPIO pins carry inference data. The FPC connector (J20) on the Pi 5 provides PCIe (1 lane, Gen 2/3), 5V power (1A / 5W max), and control signals — everything needed to run a Hailo module.
+**[[quick-context/comparator-specification|Bottom line:]]** Zero GPIO pins carry inference data. The FPC connector (J20) on the Pi 5 provides PCIe (1 lane, Gen 2/3), 5V power (1A / 5W max), and control signals — everything needed to run a Hailo module.
 
 ### The Pi 5 PCIe FPC Connector (J20) — What It Carries
 
@@ -169,14 +169,14 @@ These boards connect ONLY via the FPC ribbon cable — zero GPIO contact, all 40
 - Power: 5W from FPC only — fine for Hailo-8L (~1.5W typ, ~4W peak), tight for Hailo-8 (~8.25W peak)
 
 **Pineboards HatDrive! Bottom**
-- Mounts underneath the Pi 5 board
-- 40mm FPC cable, integrated 3A voltage regulator
+- Mounts [[quick-context/bga-ball-grid-array|underneath]] the Pi 5 board
+- 40mm FPC cable, integrated 3A [[quick-context/ac-to-dc-rectification|voltage regulator]]
 - M.2 M-Key, supports 2230/2242/2280
 - GPIO completely unobstructed on top
 
 **Seeed Studio PCIe 3.0 Dual M.2 HAT (back-mounted)**
 - ~$45, mounts on the back of the Pi
-- Two M.2 slots — run NVMe storage + Hailo simultaneously (solves the PCIe exclusivity problem)
+- Two M.2 slots — run NVMe storage + Hailo [[quick-context/bare-minimal-data-storage-circuit|simultaneously]] (solves the PCIe exclusivity problem)
 - PCIe Gen 3 with ASM2806 switch
 - GPIO free on top
 
@@ -302,7 +302,7 @@ Compare to an NVIDIA Jetson Orin Nano Super ($249 board alone, no camera, no sto
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — TOPS don't tell the whole story</summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong> — TOPS don't tell the whole story</summary>
 
 ### TOPS vs. Real-World Performance
 
@@ -330,7 +330,7 @@ Paradoxically, the Pi 5's CPU can sometimes match or beat the Hailo-10H in raw L
 | Pi 5 CPU (llama.cpp) | ~10W | ~8-10 |
 | AI HAT+ 2 (Hailo Ollama) | ~3W | ~6-8 |
 
-The NPU is power-limited (3W thermal budget) while the CPU can burst up to 10W. The NPU's real advantage is **concurrency** — it runs inference without consuming any CPU cycles, so the Pi can simultaneously handle other tasks (camera capture, ROS 2 nodes, network I/O).
+The NPU is power-limited (3W thermal budget) while the CPU can burst up to 10W. The NPU's real advantage is **[[quick-context/firmware|concurrency]]** — it runs inference without consuming any CPU cycles, so the Pi can simultaneously handle other tasks (camera capture, ROS 2 nodes, network I/O).
 
 ### The PCIe Exclusivity Problem
 
@@ -411,7 +411,7 @@ while True:
 
 ### In Pupper's Vision Stack
 
-[[quick-context/pupper-lab7-vision-tracking|Lab 7]] uses the Hailo accelerator (26 TOPS variant) to run YOLOv5 at ~5 FPS on the robot. The detection results feed into a ROS 2 node that publishes `Detection2DArray` messages, which drive the IDLE → SEARCH → TRACK state machine for autonomous object following. The NPU handles inference while the Pi simultaneously runs ROS 2, the LLM voice interface from Lab 6, and the neural locomotion controller from Lab 5.
+[[quick-context/pupper-lab7-vision-tracking|Lab 7]] uses the Hailo accelerator (26 TOPS variant) to run YOLOv5 at ~5 FPS on the robot. The detection results feed into a ROS 2 node that publishes `[[quick-context/pupper-lab7-vision-tracking|Detection2DArray]]` messages, which drive the IDLE → SEARCH → TRACK [[quick-context/integration-failure-modes-solutions|state machine]] for autonomous object following. The NPU handles inference while the Pi simultaneously runs ROS 2, the LLM voice interface from Lab 6, and the neural locomotion controller from Lab 5.
 
 ### Custom Model Pipeline
 
@@ -458,13 +458,13 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/raspberry-pi-5-components]]** — The host board: PCIe connector, GPIO header, BCM2712 SoC, LPDDR4X RAM — everything the AI HAT connects to
+- **[[quick-context/raspberry-pi-5-components]]** — The host board: PCIe connector, GPIO header, [[quick-context/raspberry-pi-5-components|BCM2712 SoC]], LPDDR4X RAM — everything the AI HAT connects to
 - **[[quick-context/pupper-lab7-vision-tracking]]** — Real-world use: Hailo 26T running YOLOv5 for autonomous object tracking on the Pupper robot
 - **[[quick-context/camera-fundamentals]]** — How cameras capture the frames that the AI HAT processes — sensors, lenses, intrinsics
-- **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
+- **[[quick-context/pupper-lab5-neural-controller]]** — [[quick-context/pupper-lab5-neural-controller|Neural network inference]] for locomotion — a different kind of on-device AI (policy networks vs. vision models)
 - **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
 - **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
-- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level
+- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the [[quick-context/transistor|transistor]] level
 - **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep topic in its own right
 - **ONNX (Open Neural Network Exchange)** — The intermediate model format used as input to Hailo's compiler
 

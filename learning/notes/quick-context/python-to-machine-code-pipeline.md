@@ -5,19 +5,19 @@ created: 2026-06-07
 
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
-> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/keypress-to-pixel-pipeline]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/how-source-code-is-stored]]
 
 > **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
 
 ## The Core Problem
 
-A CPU understands exactly one thing: binary machine-code instructions for *its* instruction set, fetched from memory one at a time. It has never heard of `def`, `+`, or `x = 2 + 3`. So if a CPU only eats machine code, how does a language like Python — which is never compiled to machine code — run at all? The answer is a tower of translation, and the whole point of this note is to make the tower concrete and show **where every language, no matter how it's processed, finally hands real machine code to the CPU.**
+A CPU understands [[quick-context/ram-addressing-decoder|exactly one]] thing: binary machine-code instructions for *its* [[quick-context/cpu-fetch-execute-cycle|instruction]] set, fetched from memory one at a time. It has never heard of `def`, `+`, or `x = 2 + 3`. So if a CPU only eats machine code, how does a language like Python — which is never compiled to machine code — run at all? The answer is a tower of translation, and the whole point of this note is to make the tower concrete and show **where every language, no matter how it's processed, finally hands real machine code to the CPU.**
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Compile** | Translate source into a *lower* form ahead of running it. CPython compiles `.py` source into **bytecode** before execution (not into CPU machine code). A C compiler instead compiles all the way down to CPU machine code. |
+| **Compile** | Translate source into a *lower* form ahead of running it. CPython compiles `.py` source into **bytecode** before execution (not into CPU machine code). A C [[quick-context/code-to-gates-and-bootstrapping|compiler]] instead compiles all the way down to CPU machine code. |
 | **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip can run it directly. |
 | **Virtual Machine (VM)** | A program that pretends to be a CPU. CPython's VM is an **evaluation loop** (conceptually `ceval`) that reads one bytecode op and updates a **value stack**. "Interpreting bytecode" = this loop running. |
 | **Interpreter** | The whole `python` program: it compiles your source to bytecode, then its VM loop executes that bytecode. Crucially, the interpreter itself is **machine code** (a C program compiled ahead of time). |
@@ -62,7 +62,7 @@ CPython 3.6.)
 Notice there are no register names. Every op either **pushes** a value onto a
 shared stack or **pops** values off it. `BINARY_ADD` doesn't say "add R1 and R2";
 it says "pop the top two, add them, push the result." This is a **stack machine**,
-and it's why bytecode is so compact and portable — it assumes nothing about how
+and it's why bytecode is so compact and portable — it assumes [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] about how
 many registers a real CPU has.
 
 ```
@@ -81,7 +81,7 @@ THE VALUE STACK while running  x = a + b   (a=2, b=3)
 
 Bytecode is data, not anything a CPU can run. So *something* has to walk the
 list and actually do each op. That something is CPython's **evaluation loop**,
-conceptually a giant function called `ceval` ("C eval"). In spirit it is just:
+conceptually a giant [[quick-context/mcp6541-as-lmc7211-replacement|function]] called `ceval` ("C eval"). In spirit it is just:
 
 ```c
 /* conceptual sketch of CPython's bytecode interpreter loop */
@@ -255,7 +255,7 @@ No `if opcode == "ADD"` anywhere — the bits *are* the control wires (see
 [[learning/notes/quick-context/cpu-fetch-execute-cycle|the fetch-execute note]] for the full trace of how
 `D=D+A` becomes mux/ALU selects). Whether the machine code came from Jack via the
 full Part-2 chain, from C via gcc, or is the compiled `python` interpreter
-itself, **this `cpu.py`-style fetch-execute is the bottom of the tower.**
+itself, **this `cpu.py`-style fetch-execute is the [[quick-context/keypress-to-pixel-pipeline|bottom]] of the tower.**
 
 **The one thing most outsiders get wrong about this is...** thinking "Python is
 interpreted" means there is no compilation. There absolutely is — CPython
@@ -275,11 +275,11 @@ fetch-executing machine code.
 
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The fuller picture: the complete 7-layer chain from a high-level statement all the way down to NAND gates and transistors, plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
 
-- **[[learning/notes/quick-context/how-source-code-is-stored]]** — The up-link: how the `.py` text (and the `.pyc` bytecode cache) physically exist as bytes on disk before any of this translation begins. *(sibling note — may not exist yet.)*
+- **[[learning/notes/quick-context/how-source-code-is-stored]]** — The up-link: how the `.py` text (and the `.pyc` bytecode cache) physically exist as [[quick-context/how-source-code-is-stored|bytes]] on disk before any of this translation begins. *(sibling note — may not exist yet.)*
 
-- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The compiled-AOT route in detail for embedded targets: how machine code is placed at real addresses by the linker, flashed to a chip, and reached at the reset vector. The mirror image of Python's runtime route.
+- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The compiled-AOT route in detail for embedded targets: how machine code is placed at real addresses by the linker, flashed to a chip, and reached at the [[quick-context/firmware|reset vector]]. The mirror image of Python's runtime route.
 
-- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from power-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
+- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from [[quick-context/d-flip-flop|power]]-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
 
 - **AST (Abstract Syntax Tree)** — The tree the compiler builds between parsing your source and emitting bytecode. The `ast` module lets you inspect it; it's where structure (loops, expressions, scope) is captured before flattening to a stack-machine op list.
 

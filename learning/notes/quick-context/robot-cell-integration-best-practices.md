@@ -3,9 +3,9 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/bjt-specifications]] | [[quick-context/bond-pad]]
 
-> **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
+> **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and [[quick-context/integration-failure-modes-solutions|unrecoverable states]] that halt production.
 
 # Robot Cell Integration Best Practices, Tools, and VLM Applications
 
@@ -13,9 +13,9 @@ created: 2026-01-16
 
 Robot cell integration best practices exist to solve the coordination problem: making sure a robot, PLC, vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
 
-Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
+Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-[[quick-context/camera-fundamentals|stop]], nobody knows what's gripped or where parts are), and debugging sessions that [[quick-context/bond-pad|cost]] $10K/hour in lost production.
 
-The core methods are: **structured handshakes** (explicit signal exchanges where both parties acknowledge state transitions), **state machines** (PackML-style models where the cell is always in a defined state with defined transitions), **simulation-first development** (virtual commissioning in tools like RoboDK, Visual Components, or vendor simulators before touching hardware), and **standardized I/O mapping** (documents that become the single source of truth for every signal between devices).
+The core methods are: **structured handshakes** (explicit signal exchanges where [[quick-context/bjt-specifications|both]] parties acknowledge state transitions), **state machines** (PackML-style models where the cell is always in a defined state with defined transitions), **simulation-first development** (virtual commissioning in tools like RoboDK, Visual Components, or vendor simulators before touching hardware), and **standardized I/O mapping** (documents that become the single source of truth for every signal between devices).
 
 ## 5 Essential Terms
 
@@ -25,7 +25,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 | **PackML** | The ISA-TR88 standard state model (Execute, Stopped, Held, Aborted, etc.) that gives every cell a common vocabulary for operating modes. |
 | **Virtual Commissioning** | Debugging integration logic in simulation before hardware arrives, catching handshake errors and collision paths early. |
 | **I/O Mapping** | The document listing every signal, its source, destination, and meaning; without this, integration debugging is archaeology. |
-| **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just discrete signals. |
+| **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just [[quick-context/how-passive-and-discrete-components-are-made|discrete]] signals. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -42,7 +42,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 1. **I/O Mapping Document**: Create the single source of truth for every signal between devices before writing any code
 2. **State Machine Design**: Define cell states (Idle, Running, Held, Faulted) and valid transitions using PackML as a template
 3. **Handshake Definition**: Specify the signal exchange protocol for each device interaction
-4. **Virtual Commissioning**: Build and debug in simulation—test handshake timing, collision paths, and edge cases
+4. **Virtual Commissioning**: Build and debug in simulation—test handshake [[quick-context/comparator-specification|timing]], collision paths, and edge cases
 5. **Physical Commissioning**: Deploy to hardware with confidence, knowing the logic is already debugged
 6. **Ongoing Monitoring**: Track handshake timing, near-misses, and state transitions in production
 
@@ -64,7 +64,7 @@ A secondary tension is **vendor lock-in vs. interoperability**—using one vendo
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Here's a concrete example of a well-structured handshake with timeout handling—the kind of defensive pattern that separates robust cells from brittle ones:
+Here's a concrete example of a well-structured handshake with timeout handling—the kind of defensive pattern that separates robust cells from [[quick-context/breaking-elongation-rate|brittle]] ones:
 
 ```pascal
 // PLC Structured Text: Robot handshake with timeout and retry
@@ -130,12 +130,12 @@ This pattern includes explicit timeout handling (2 seconds), retry logic (3 atte
 - **[[quick-context/robotic-arm-api-levels]]** - Understanding which API level handles integration vs. motion
 - **[[quick-context/plc-vs-software-control]]** - When to put coordination logic in PLC vs. robot vs. external software
 - **[[quick-context/integration-failure-modes-solutions]]** - Common integration failures and how to prevent them
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - Metrics for measuring how well integration is working in production
+- **[[quick-context/oee-overall-equipment-effectiveness]]** - [[quick-context/meddpicc-qualification-framework|Metrics]] for measuring how well integration is working in production
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** What is a handshake in the context of robot cell integration?
 <details>
@@ -143,7 +143,7 @@ This pattern includes explicit timeout handling (2 seconds), retry logic (3 atte
 A handshake is a structured signal exchange where device A asserts a signal (e.g., "ready"), device B acknowledges it, and only then does A proceed. This explicit confirmation prevents race conditions where devices assume state that hasn't actually been reached.
 </details>
 
-**Q2:** Why is I/O mapping documentation critical for integration debugging?
+**Q2:** [[quick-context/atoms-molecules-polymers-basics|Why]] is I/O mapping documentation critical for integration debugging?
 <details>
 <summary>Answer</summary>
 Without an I/O mapping document, debugging becomes archaeology—tracing wires, reverse-engineering signal meanings, and guessing at intended behavior. The I/O map serves as the single source of truth for every signal, its source, destination, and meaning.
@@ -158,7 +158,7 @@ Virtual commissioning catches logic errors early and reduces on-site debugging t
 **Q4:** Why can't VLMs replace traditional deterministic control systems for real-time operations?
 <details>
 <summary>Answer</summary>
-VLM inference latency is too slow for real-time control loops that require millisecond or sub-millisecond response times. VLMs work as supervisors providing high-level guidance, anomaly detection, or analysis, while traditional deterministic systems handle the actual real-time control.
+VLM inference [[quick-context/embedded-communication-protocols|latency]] is too slow for real-time control loops that require millisecond or sub-millisecond response times. VLMs work as supervisors providing high-level guidance, anomaly detection, or analysis, while traditional deterministic systems handle the actual real-time control.
 </details>
 
 **Q5:** What does the example handshake code do that naive integration (`WAIT Robot_Ready`) does not?

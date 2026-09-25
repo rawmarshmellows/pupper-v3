@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/epson-rc-plus-programming]] | [[quick-context/firmware]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/isa-95-levels]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -15,7 +15,7 @@ Standard Linux is a time-sharing system optimized for throughput, not response t
 
 If you're interpolating trajectory waypoints at 1kHz and one cycle takes 15ms instead of 1ms, your robot arm doesn't smoothly trace an arc—it jerks, overshoots, or faults the drive. PREEMPT_RT patches the Linux kernel to make nearly all kernel code preemptible, meaning your real-time task can interrupt almost anything the kernel is doing.
 
-The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
+The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for [[quick-context/sil-rated-safety-functions|SIL-rated safety functions]].
 
 ## 5 Essential Terms
 
@@ -23,7 +23,7 @@ The result is bounded worst-case latency (typically under 100us on good hardware
 |------|------------|
 | **Jitter** | The variation in cycle timing—if your loop runs at 1ms +/- 5us, jitter is 5us; if it's 1ms +/- 2ms, you have a problem that PREEMPT_RT exists to solve. |
 | **Latency** | The time from when an event occurs (e.g., encoder pulse) to when your code responds—PREEMPT_RT bounds this; stock Linux does not. |
-| **SCHED_FIFO** | The Linux scheduler policy for real-time tasks—first-in-first-out at a given priority, with no time-slicing; your RT thread runs until it blocks or yields. |
+| **SCHED_FIFO** | The Linux scheduler [[quick-context/pupper-lab5-neural-controller|policy]] for real-time tasks—first-in-first-out at a given priority, with no time-slicing; your RT thread runs until it blocks or yields. |
 | **Cyclictest** | The standard tool for measuring real-time latency in Linux—it spawns a thread, sleeps for a fixed interval, measures how late it wakes up, and reports statistics. |
 | **IRQ Threading** | PREEMPT_RT's technique of running interrupt handlers as kernel threads instead of in "hard IRQ" context, making them preemptible by higher-priority tasks. |
 
@@ -130,7 +130,7 @@ Practitioners argue about where the acceptable latency boundary lies:
 - Some say PREEMPT_RT's ~50-100us worst-case is fine for 1ms control loops
 - Others insist you need a dual-kernel architecture (Xenomai, RTLinux) that runs your real-time code in a separate domain where Linux can't interfere at all
 
-The 2024 mainlining of PREEMPT_RT into the official kernel (after 20 years as an out-of-tree patch) settled the "will this exist long-term?" question, but the "is soft real-time good enough for my application?" debate remains application-specific. If you need sub-10us jitter or safety certification, PREEMPT_RT is a starting point, not a destination.
+The 2024 mainlining of PREEMPT_RT into the official kernel (after 20 years as an out-of-tree patch) settled the "will this exist long-term?" question, but the "is soft real-time good enough for my application?" debate remains application-specific. If you need sub-10us jitter or safety certification, PREEMPT_RT is a starting [[quick-context/epson-rc-plus-programming|point]], not a destination.
 
 </details>
 
@@ -165,7 +165,7 @@ This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's a
 - **[[quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
 - **[[quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
 - **[[quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, [[quick-context/preempt-rt-ros2-plc-replacement|Beckhoff TwinCAT on Linux]]) and the remaining safety certification gap
 - **Xenomai** - A dual-kernel alternative providing harder real-time guarantees than PREEMPT_RT
 - **LinuxCNC** - The canonical example of PREEMPT_RT enabling industrial control in userspace
 
@@ -177,7 +177,7 @@ This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's a
 **Q1:** Why does PREEMPT_RT convert spinlocks to mutexes, and what's the tradeoff?
 <details>
 <summary>Answer</summary>
-Spinlocks disable preemption while held—if a low-priority task holds a spinlock, a high-priority RT task can't preempt it, causing unbounded latency. Converting to mutexes (with priority inheritance) lets the RT task preempt and, if needed, boost the lock holder's priority to release it faster. The tradeoff is overhead: mutex operations are slower than spinlocks, reducing overall throughput for non-RT workloads.
+Spinlocks disable preemption while held—if a low-priority task [[quick-context/pupper-lab7-vision-tracking|holds]] a spinlock, a high-priority RT task can't preempt it, causing unbounded latency. Converting to mutexes (with priority inheritance) lets the RT task preempt and, if needed, boost the lock holder's priority to release it faster. The tradeoff is overhead: mutex operations are slower than spinlocks, reducing overall throughput for non-RT workloads.
 </details>
 
 **Q2:** Your cyclictest shows 47us max latency. Is this system suitable for a 100us control loop?
@@ -198,7 +198,7 @@ SIL (Safety Integrity Level) certification requires formal proof of bounded beha
 Latency is the time from when an event occurs (e.g., a timer expiring or sensor signal arriving) to when your code responds. Jitter is the variation in that timing—if your loop runs at 1ms +/- 5us, jitter is 5us. Both matter: high latency means slow response, and high jitter means unpredictable timing that can cause motion irregularities or control instability.
 </details>
 
-**Q5:** What does cyclictest measure, and why is it not sufficient to validate a real-time control system?
+**Q5:** What does cyclictest measure, and why is it [[quick-context/mcp6541-as-lmc7211-replacement|not sufficient]] to validate a real-time control system?
 <details>
 <summary>Answer</summary>
 Cyclictest measures scheduling latency—how late a thread wakes up compared to when it asked to wake. This is useful for characterizing kernel behavior, but it doesn't account for your actual control code execution time, I/O latency, or application-specific timing requirements. A system passing cyclictest can still fail in production if the control loop itself is too slow or if hardware introduces additional delays.

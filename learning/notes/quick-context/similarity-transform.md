@@ -5,9 +5,9 @@ created: 2026-04-04
 
 # N-Dimensional Similarity Transform
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[quick-context/helmert-transform]] | [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]]
 
-> **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most general transform that keeps "similar" figures similar, in any number of dimensions.
+> **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most [[quick-context/singular-value-decomposition|general]] transform that keeps "similar" figures similar, in any number of dimensions.
 
 ## The Core Problem
 
@@ -34,7 +34,7 @@ $$T(\mathbf{x}) = sR\mathbf{x} + \mathbf{t}$$
 
 where:
 - $s > 0$ is a uniform scale factor (one scalar, same in every direction)
-- $R \in SO(n)$ is a proper rotation matrix ($R^TR = I$, $\det(R) = +1$)
+- $R \in SO(n)$ is a proper [[quick-context/helmert-transform|rotation matrix]] ($R^TR = I$, $\det(R) = +1$)
 - $\mathbf{t} \in \mathbb{R}^n$ is a translation vector
 
 If you also allow reflections ($\det(R) = \pm 1$, i.e., $R \in O(n)$), you get an *improper* similarity, sometimes called an opposite similarity.
@@ -271,7 +271,7 @@ print(f"Translation: {t_est}  (true: {t_true})")
 
 ### Generalizing to 3D
 
-The same function works for 3D (or any dimension) -- just pass $(m \times 3)$ arrays. A 3D similarity has 7 DOF, so you need at least 3 non-collinear point correspondences. This is exactly the [[quick-context/absolute-orientation|absolute orientation]] problem: given matched 3D landmarks in two coordinate frames, recover the 7-parameter similarity relating them.
+The same [[quick-context/mcp6541-as-lmc7211-replacement|function]] works for 3D (or any dimension) -- just pass $(m \times 3)$ arrays. A 3D similarity has 7 DOF, so you need at least 3 non-collinear point correspondences. This is exactly the [[quick-context/absolute-orientation|absolute orientation]] problem: given matched 3D landmarks in two coordinate frames, recover the 7-parameter similarity relating them.
 
 ```python
 # 3D example: 10 random points, scale=1.5, arbitrary rotation, shift
@@ -288,7 +288,7 @@ print(f"Rotation error (Frobenius): {np.linalg.norm(R_hat - R_3d):.2e}")
 print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing a *geometric* similarity transform with a *matrix* similarity transform ($A' = P^{-1}AP$). They share the name but are completely different operations. The geometric version maps points in Euclidean space preserving shape. The matrix version is a change of basis that preserves eigenvalues. When someone says "similarity transform" in a linear algebra textbook, they almost always mean the matrix kind; in computer vision, geodesy, or shape analysis, they almost always mean the geometric kind.
+**The one thing most outsiders get wrong about this is...** confusing a *geometric* similarity transform with a *matrix* similarity transform ($A' = P^{-1}AP$). They share the name but are completely different operations. The geometric version maps points in Euclidean space preserving shape. The matrix version is a change of basis that preserves eigenvalues. When someone says "similarity transform" in a [[quick-context/tensor|linear algebra]] textbook, they almost always mean the matrix kind; in computer vision, geodesy, or shape analysis, they almost always mean the geometric kind.
 
 </details>
 
@@ -299,7 +299,7 @@ print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of recovering a similarity (or rigid) transform from matched 3D point pairs; Umeyama's method is a standard solution
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-covariance matrix to extract rotation
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between source and destination points encodes the rotation and scale information that SVD extracts
-- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves absolute orientation via a quaternion eigenproblem instead of SVD
+- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves [[quick-context/absolute-orientation|absolute orientation]] via a quaternion eigenproblem instead of SVD
 - **Lie groups** -- The similarity group $\text{Sim}(n)$ is a Lie group; its Lie algebra $\mathfrak{sim}(n)$ parameterizes infinitesimal similarities, useful for optimization on the group manifold
 - **RANSAC** -- When point correspondences contain outliers, RANSAC wraps around Umeyama to robustly estimate the similarity transform from a minimal sample
 

@@ -3,15 +3,15 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]] | [[quick-context/faraday-tensor]]
 
-> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
+> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
 # How Electricity is Created
 
 ## The Core Problem: Energy Conversion
 
-Electricity doesn't exist freely in nature in a useful form. Lightning is too brief and uncontrollable. Static electricity dissipates instantly. To power civilization, we must *continuously convert* other energy forms into the sustained, controllable flow of electrons through circuits.
+Electricity doesn't exist freely in nature in a useful [[quick-context/mcp6541-as-lmc7211-replacement|form]]. Lightning is too brief and uncontrollable. Static electricity dissipates instantly. To power civilization, we must *continuously convert* other energy forms into the sustained, controllable flow of electrons through circuits.
 
 There are fundamentally three ways to force electrons to move:
 
@@ -291,7 +291,7 @@ THE LENZ'S LAW INSIGHT:
     • Energy is stored in the magnetic field, not created or destroyed
 ```
 
-**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a passive component. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An inductor creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
+**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a [[quick-context/fundamental-electronic-parts-index|passive component]]. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An inductor creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
 
 </details>
 
@@ -485,7 +485,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 
 - **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
 
-- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
+- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and [[quick-context/coil-magnetic-field|Ampère's law]] (which explains electromagnets).
 
 - **[[quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
 
@@ -521,7 +521,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q5:** Hydroelectric dams achieve 85-90% efficiency while coal plants achieve only 33-37%. What's the fundamental reason for this difference?
 <details>
 <summary>Answer</summary>
-**Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-scale generation technology.
+**Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-[[quick-context/absolute-orientation|scale]] generation technology.
 </details>
 
 **Q6:** A generator and an inductor both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
@@ -533,7 +533,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q7:** Transformers only work with AC, not DC. Using Faraday's Law, explain why.
 <details>
 <summary>Answer</summary>
-**DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces voltage in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at steady state, dI/dt = 0, so V = L × dI/dt = 0.
+**DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces voltage in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at [[quick-context/self-induction|steady state]], dI/dt = 0, so V = L × dI/dt = 0.
 </details>
 
 </details>

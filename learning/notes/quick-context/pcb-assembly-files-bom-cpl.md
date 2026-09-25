@@ -5,9 +5,9 @@ created: 2026-06-05
 
 # PCB Assembly Files — BOM & CPL (Pick-and-Place)
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pcb-layers]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-layers]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/3d-printer-hotends]]
 
-> **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of Materials) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
+> **TL;DR:** When you send a board out for assembly, two spreadsheets travel with the bare-board files: the **BOM** (Bill of [[quick-context/cnc-machining|Materials]]) lists *what parts to buy* — grouped one row per unique part — and the **CPL** (Component Placement List, a.k.a. pick-and-place file) lists *where each part goes* — one row per physical component, with XY coordinates, rotation, and which side of the board. They are joined by the **reference designator** (Q1, C50, R15…), and you need both.
 
 ## The Core Problem
 
@@ -15,13 +15,13 @@ A bare PCB is just patterned copper — empty pads. A contract assembler (JLCPCB
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
-| **BOM (Bill of Materials)** | The purchasing list — **one row per unique part type**, with quantity, the [[learning/notes/quick-context/resistor\|value]], [[learning/notes/quick-context/common-ic-packages\|footprint]], manufacturer part number (MPN), and supplier catalog number. It's the recipe for *buying*. |
-| **CPL / Pick-and-Place** | The placement list — **one row per physical component**, giving centroid XY, rotation, board side, and pin count. It's the instructions for *placing*. See [[learning/notes/micro-context/pick-and-place-file\|Pick and Place File]]. |
-| **Reference Designator** | The unique ID stamped on each part: `Q`=transistor, `C`=[[learning/notes/quick-context/capacitor\|cap]], `R`=[[learning/notes/quick-context/resistor\|resistor]], `D`=[[learning/notes/quick-context/diode\|diode]], `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
-| **Footprint** | The physical pad pattern / package the part solders to (`C0402`, `SOT-23-5`, `SMA`, `PG-TDSON-8`). Must match the real part exactly, or it won't fit. |
-| **Centroid + Rotation + Layer** | The four numbers the machine actually needs: **Mid X/Y** (part center), **Rotation** (degrees CCW), and **Layer** (`T` top / `B` bottom). `SMD = Yes/No` tells it surface-mount vs through-hole. |
+| **BOM (Bill of Materials)** | The purchasing list — **one row per unique part type**, with quantity, the [[quick-context/resistor|value]], [[quick-context/common-ic-packages|footprint]], manufacturer part number (MPN), and supplier catalog number. It's the recipe for *buying*. |
+| **CPL / Pick-and-Place** | The placement list — **one row per physical component**, giving centroid XY, rotation, board side, and pin count. It's the instructions for *placing*. See [[micro-context/pick-and-place-file|Pick and Place File]]. |
+| **Reference Designator** | The unique ID stamped on each part: `Q`=transistor, `C`=[[quick-context/capacitor|cap]], `R`=[[quick-context/resistor|resistor]], `D`=[[quick-context/diode|diode]], `U`=IC, `CN`/`J`=[[quick-context/qwiic-stemma-qt-i2c|connector]], `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
+| **Footprint** | The physical pad pattern / [[quick-context/silicon-die|package]] the part solders to (`C0402`, `SOT-23-5`, `SMA`, `PG-TDSON-8`). Must match the real part exactly, or it won't fit. |
+| **Centroid + Rotation + Layer** | The four numbers the machine actually needs: **Mid X/Y** (part center), **Rotation** (degrees CCW), and **Layer** (`T` top / `B` bottom). `SMD = Yes/No` tells it surface-mount vs [[quick-context/common-ic-packages|through-hole]]. |
 
 <details>
 <summary><strong>How It Works</strong> — Two files, one join key</summary>
@@ -74,7 +74,7 @@ ASSEMBLY HAND-OFF PACKAGE
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Grouped vs. per-instance, and export gotchas</summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Grouped vs. per-instance, and export gotchas</summary>
 
 **Why two files instead of one?** Because the two consumers want opposite shapes. The *purchasing* side wants parts grouped (you order "2 MOSFETs," not "a MOSFET at (21, 7.25)"). The *placement machine* wants them exploded (it places one part at a time and couldn't care less what it costs). Cramming both into one table would either repeat purchasing data 36 times or hide the positions.
 
@@ -98,7 +98,7 @@ ASSEMBLY HAND-OFF PACKAGE
 <details>
 <summary><strong>Concrete Example</strong> — Decoding one real BOM line and its CPL rows</summary>
 
-Take the power [[learning/notes/micro-context/mosfet|MOSFET]] on this board, `BSC067N06LS3G` (an Infineon 60 V N-channel power FET — the `06` ≈ 60 V class).
+Take the power [[learning/notes/micro-context/mosfet|MOSFET]] on this board, `BSC067N06LS3G` (an Infineon 60 V N-[[micro-context/mosfet|channel]] power FET — the `06` ≈ 60 V class).
 
 **Its BOM line (grouped):**
 
@@ -129,7 +129,7 @@ Designator│ Device       │ Mid X │ Mid Y  │ Pad X  │ Pad Y │Pins│L
 - **Pad X / Pad Y** = location of pin-1 pad — lets you verify orientation independent of rotation.
 - **Pins = 9** (8 leads + the exposed thermal pad), **Layer = T**, **Rotation = 90°**, **SMD = Yes**.
 
-Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a comparator (U40), a small linear regulator (U42, a 78L12), and a dozen JST connectors ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
+Reading both together you know: *buy two Infineon FETs from LCSC C24199, place one mid-board and one 5.5 mm above it, both top side, rotated 90°.* The rest of this PDB reads the same way — power MOSFETs (Q1, Q2), protection diodes (D2–D4 — SMAJ12A TVS plus a Zener), a [[quick-context/comparator|comparator]] (U40), a small [[quick-context/power-watts-joules|linear regulator]] (U42, a 78L12), and a dozen [[quick-context/dupont-jumper-wires|JST connectors]] ([[learning/notes/micro-context/jst-connector-families|JST ZR family]]) for battery/cell wiring.
 
 **The one thing most outsiders get wrong about this is...** thinking the two files are redundant, or that the BOM contains positions. They're complementary halves: the BOM has zero geometry, the CPL has zero purchasing info, and the **reference designator is the only thing connecting them**. Lose the join (rename `Q1`→`Q3` in one file but not the other) and the assembler places a part it can't identify, or orders a part it can't place.
 
@@ -177,7 +177,7 @@ Reading both together you know: *buy two Infineon FETs from LCSC C24199, place o
 **Q5:** Why isn't the BOM+CPL pair enough on its own to manufacture an assembled board — what third thing is required, and why?
 <details>
 <summary>Answer</summary>
-**You also need the [[learning/notes/quick-context/pcb-layers|Gerber]] files.** BOM + CPL describe the *components and their placement*, but assume a finished bare board already exists. The Gerbers define the copper, drill holes, solder mask, silkscreen, and — critically for SMT — the **paste mask** that becomes the stencil for depositing solder paste. Without paste, placed parts have nothing to bond to during reflow. Gerbers = the board, BOM = the parts, CPL = the placement; all three are the assembly hand-off. See *How It Works → assembly hand-off*.
+**You also need the [[learning/notes/quick-context/pcb-layers|Gerber]] files.** BOM + CPL describe the *components and their placement*, but assume a finished bare board already exists. The Gerbers define the copper, drill holes, solder mask, silkscreen, and — critically for SMT — the **paste mask** that becomes the stencil for depositing solder paste. Without paste, placed parts have [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] to bond to during reflow. Gerbers = the board, BOM = the parts, CPL = the placement; all three are the assembly hand-off. See *How It Works → assembly hand-off*.
 </details>
 
 </details>

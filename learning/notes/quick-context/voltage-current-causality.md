@@ -5,9 +5,9 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/voltage]] | [[quick-context/voltage-thermodynamics-electrolysis]] | [[micro-context/ac-dc-current]]
 
-> **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
+> **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it [[quick-context/bjt-specifications|both]] defines [[quick-context/voltage|voltage]] (as the integral of the field over [[quick-context/embedded-communication-protocols|distance]]) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
 ## The Core Problem
 
@@ -15,18 +15,18 @@ You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like vo
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Electric Field** | The actual force-carrying entity. It pushes charges (creating current) and its integral over distance defines voltage. The field is always the mediator between V and I. |
-| **Voltage Source** | A device (battery, power supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
+| **Voltage [[quick-context/differential-pair|Source]]** | A device (battery, power supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
 | **Current Source** | A device that maintains a fixed current; voltage adjusts to whatever is needed. Here, current is the *constraint* and voltage is the *response*---so it looks like "I causes V." |
-| **Constitutive Relation** | The equation relating V and I for a specific component: $V = IR$ for [[quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[quick-context/capacitor|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
-| **Kirchhoff's Laws** | The circuit constraints: voltages around a loop sum to zero (KVL), currents into a node sum to zero (KCL). These enforce consistency but don't say which quantity "caused" the other. |
+| **Constitutive Relation** | The equation relating V and I for a specific [[quick-context/pcb-assembly-files-bom-cpl|component]]: $V = IR$ for [[quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[quick-context/capacitor|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
+| **Kirchhoff's Laws** | The circuit constraints: voltages around a loop sum to [[quick-context/mcp6541-as-lmc7211-replacement|zero]] (KVL), currents into a node sum to zero (KCL). These enforce consistency but don't say which quantity "caused" the other. |
 
 <details>
 <summary><strong>How It Works</strong> --- Why the causality question is a trap</summary>
 
-The confusion comes from treating $V = IR$ as a causal statement ("voltage causes current") rather than what it really is: a **constraint** that voltage and current must satisfy simultaneously.
+The confusion comes from treating $V = IR$ as a causal statement ("voltage causes current") rather than what it really is: a **constraint** that voltage and current must satisfy [[quick-context/bare-minimal-data-storage-circuit|simultaneously]].
 
 ```
 THE CAUSAL CHAIN DEPENDS ON WHAT'S DRIVING THE CIRCUIT
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor|Inductors]] (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, inductor [[quick-context/inductor|back-EMF]] | Voltage sources, [[quick-context/capacitor|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -220,7 +220,7 @@ The expert mental model: think of circuits as **systems of simultaneous constrai
 <details>
 <summary><strong>Concrete Example</strong> --- Same circuit, three causal stories</summary>
 
-Consider a simple series circuit: a source driving a [[quick-context/resistor|resistor]] (1 k$\Omega$) and an [[quick-context/inductor|inductor]] (10 mH) in series.
+Consider a simple [[quick-context/parallel-vs-series-voltage|series circuit]]: a source driving a [[quick-context/resistor|resistor]] (1 k$\Omega$) and an [[quick-context/inductor|inductor]] (10 mH) in series.
 
 ```
 THREE STORIES ABOUT THE SAME CIRCUIT
@@ -311,7 +311,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 
 - **[[quick-context/resistor]]** --- The simplest V-I relationship (V = IR). In a resistor, V and I are proportional and in phase---no time delay, no stored energy, so the "cause" question is purely about what's driving the circuit.
 
-- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, capacitors and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
+- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, [[quick-context/voltage|capacitors]] and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
 
 - **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an inductor creates back-EMF. The current change comes first; the voltage is the response.
 

@@ -3,9 +3,9 @@ topic: Why Billions of Transistors Don't Need Billions of Volts
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/voltage]] | [[quick-context/voltage-current-causality]] | [[quick-context/voltage-thermodynamics-electrolysis]] | [[micro-context/capacitive-voltage-sensing]]
 
-> **TL;DR:** Voltages don't add up across parallel components—only across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd and GND), each transistor sees the same ~0.65V, not 0.65V × 50 billion. It's the current that adds up, not voltage.
+> **TL;DR:** Voltages don't add up across parallel components—[[quick-context/comparator-specification|only]] across series components. Since transistors in a chip share the same power supply rails (all connected in parallel to Vdd [[micro-context/push-pull-vs-open-drain|and]] GND), each [[quick-context/transistor|transistor]] sees the same ~0.65V, [[micro-context/can-bus-termination|not]] 0.65V × 50 billion. It's the current that adds up, not voltage.
 
 # Why Billions of Transistors Don't Need Billions of Volts
 
@@ -15,11 +15,11 @@ If a chip has 50 billion [[quick-context/transistor|transistors]] and each needs
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
-| **Voltage (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
-| **Series Circuit** | Components connected end-to-end, so [[quick-context/electric-current\|current]] flows through each one sequentially. Voltages ADD across series elements. |
-| **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME voltage; currents add instead. |
+| **Voltage ([[quick-context/voltage|Potential Difference]])** | The "pressure" or energy difference between [[micro-context/schmitt-trigger-hysteresis|two]] points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
+| **Series Circuit** | Components connected end-to-end, so [[quick-context/electric-current|current]] flows through each one sequentially. Voltages ADD across series elements. |
+| **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each [[quick-context/pcb-assembly-files-bom-cpl|component]] sees the SAME voltage; currents add instead. |
 | **Power Rails (Vdd/GND)** | The two voltage levels that supply power to all transistors in a chip. Every transistor connects between these same two rails. |
 | **Current (Amperes)** | The flow rate of electric charge. In parallel circuits, each branch draws its own current, and these currents add up at the power supply. |
 
@@ -320,7 +320,7 @@ THE MATH THAT MATTERS:
 
 - **[[quick-context/electric-current]]** — Understanding current as charge flow. In parallel circuits, currents from each branch add at the power supply.
 
-- **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows smaller transistors, but makes power delivery harder.
+- **[[quick-context/transistor-analog-to-digital]]** — Why modern chips use such low voltages (~0.65V). Lower voltage reduces power consumption and allows [[quick-context/transistor-analog-to-digital|smaller transistors]], but makes power delivery harder.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — How power is delivered from PCB through package substrate to the die. Each level has dedicated power planes.
 
@@ -331,12 +331,12 @@ THE MATH THAT MATTERS:
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** If all transistors in a chip are connected in parallel to the same power rails, what happens to the total voltage requirement as you add more transistors?
 <details>
 <summary>Answer</summary>
-**Nothing—voltage stays the same.** In a parallel circuit, all components share the same voltage. Adding more transistors doesn't increase the voltage requirement at all. Each transistor still sees 0.65V between Vdd and GND. What increases is the total current drawn from the power supply. See: How It Works (The Correct Model).
+**[[quick-context/tlv7211-as-lmc7211-replacement|Nothing]]—voltage stays the same.** In a parallel circuit, all components share the same voltage. Adding more transistors doesn't increase the voltage requirement at all. Each transistor still sees 0.65V between Vdd and GND. What increases is the total current drawn from the power supply. See: How It Works (The Correct Model).
 </details>
 
 **Q2:** A chip redesign doubles the transistor count from 25 billion to 50 billion. If voltage stays at 0.65V, what approximately happens to (a) total current draw and (b) power consumption?
@@ -354,7 +354,7 @@ THE MATH THAT MATTERS:
 **Q4:** If transistors were connected in series instead of parallel (like batteries in a flashlight), what would happen?
 <details>
 <summary>Answer</summary>
-**You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "off" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
+**You'd need billions of volts, and the chip wouldn't work.** In series, voltage drops ADD, so 50 billion transistors at 0.65V each would require 32.5 billion volts. More practically, the same current would have to flow through every transistor, so if any one transistor tried to be "[[quick-context/bjt-specifications|off]]" (high resistance), it would block current to all the others. Digital logic requires independent transistor switching, which only works in parallel. See: How It Works (The Wrong Mental Model).
 </details>
 
 **Q5:** A power supply provides 12V at 15A to a voltage regulator, which outputs 0.6V to a CPU. Assuming 90% efficiency, how much current can the VRM deliver to the CPU?

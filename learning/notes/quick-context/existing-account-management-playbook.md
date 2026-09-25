@@ -1,3 +1,7 @@
+
+
+> **Related:** [[quick-context/playbook-main]] | [[quick-context/post-sale-account-engagement]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -36,7 +40,7 @@ Based on your primary motion with this account:
 | Classification | Definition | Your Account? |
 |---|---|---|
 | **KEEP** | Stable revenue, no major expansion path. Focus: protect from churn | [ ] |
-| **EXPAND** | Existing customer with whitespace. Focus: grow revenue | [ ] |
+| **EXPAND** | Existing customer with [[quick-context/whitespace-mapping|whitespace]]. Focus: grow revenue | [ ] |
 | **ATTAIN** | (Not applicable - this is for new logos) | - |
 | **RECAPTURE** | (Not applicable - this is for lost customers) | - |
 
@@ -47,7 +51,7 @@ Based on your primary motion with this account:
 | STRATEGIC | Dedicated | Weekly | Quarterly | 10-20 |
 | GROWTH | Shared | Bi-weekly | Semi-annual | 30-50 |
 | PROTECT | Dedicated (retention focus) | Monthly | Quarterly (value-focused) | 20-30 |
-| MAINTAIN | Pooled/Tech-touch | Triggered only | None (automated) | 100+ |
+| MAINTAIN | Pooled/Tech-touch | Triggered only | [[quick-context/mcp6541-as-lmc7211-replacement|None]] (automated) | 100+ |
 
 **My account is:** _____________ **Engagement level:** _____________
 
@@ -76,10 +80,10 @@ Rate each indicator (0 = Not true, 1 = Somewhat true, 2 = Very true):
 - [ ] We have multiple contacts beyond procurement ___
 - [ ] Some trust established - they give us benefit of doubt ___
 
-**INTERDEPENDENT (Joint planning)**
+**[[quick-context/playbook-main|INTERDEPENDENT]] (Joint planning)**
 - [ ] We do joint planning and problem-solving ___
 - [ ] Switching costs are high - processes intertwined ___
-- [ ] We share metrics and goals ___
+- [ ] We share [[quick-context/meddpicc-qualification-framework|metrics]] and goals ___
 
 **INTEGRATED (One team)**
 - [ ] Effectively operating as one organization ___
@@ -240,7 +244,7 @@ Where can we expand within this account?
 | Competitor | Their Position | Our Angle |
 |---|---|---|
 | | | |
-| Status Quo (doing nothing) | | |
+| Status Quo (doing [[quick-context/tlv7211-as-lmc7211-replacement|nothing]]) | | |
 
 ---
 
@@ -283,7 +287,7 @@ Where can we expand within this account?
 | Touchpoint | Frequency | Owner | Purpose |
 |---|---|---|---|
 | Automated onboarding | Day 1-30 | System | Self-service setup |
-| Health score monitoring | Continuous | System | Trigger interventions |
+| Health score monitoring | Continuous | System | [[quick-context/oscilloscope-and-multimeter|Trigger]] interventions |
 | Intervention outreach | When triggered | Pooled CSM | Address usage drops |
 | Renewal sequence | -60 days | System | Automated renewal |
 
@@ -357,7 +361,7 @@ Anticipate where you'll need to push back:
 
 - [ ] Review health score / usage dashboard for this account
 - [ ] Check for triggered alerts (usage drop, support patterns)
-- [ ] Update CRM with any new intel
+- [ ] [[quick-context/ppo-proximal-policy-optimization|Update]] CRM with any new intel
 - [ ] Confirm upcoming touchpoints scheduled
 
 ### Monthly (30 min)
@@ -532,7 +536,7 @@ When you're stuck, remember which framework to consult:
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | MEDDPICC | (separate [[quick-context/sales-methodology-layering|qualification framework]]) |
 
 ---
 
@@ -549,7 +553,7 @@ Rate 1-5 for each dimension quarterly:
 | **Relationship Health** | | |
 | Champion strength | | |
 | Executive access | | |
-| Multi-threading | | |
+| [[quick-context/strategic-selling-buyer-roles|Multi-threading]] | | |
 | **Business Health** | | |
 | Renewal likelihood | | |
 | Expansion potential | | |

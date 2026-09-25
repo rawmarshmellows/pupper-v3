@@ -5,16 +5,16 @@ created: 2026-06-07
 
 # Open-Loop Voltage Gain ($A_V$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
+> **Related:** [[micro-context/capacitive-voltage-sensing]] | [[micro-context/input-offset-voltage]] | [[micro-context/offset-voltage-drift]] | [[micro-context/output-voltage-swing]] | [[micro-context/push-pull-vs-open-drain]]
 
-**Definition:** The enormous gain a comparator or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
+**[[quick-context/capacitance|Definition]]:** The enormous gain a [[quick-context/comparator|comparator]] or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is [[quick-context/bare-minimal-data-storage-circuit|what]] slams the output hard against a supply rail.
 
 ## How It Works
 
 - The [[quick-context/differential-pair|differential pair]] turns an input difference into a small current imbalance.
 - That imbalance drives a very high-impedance [[quick-context/high-gain-amplifier-stage|gain node]] (the current-mirror load), so even microamps create a huge voltage swing.
 - 100 dB = 100,000×, so a millivolt of input difference would demand a 100 V output — far past the rails — so the output simply pins to $V^+$ or $V^-$.
-- This rail-slamming saturation *is* the clean digital snap a comparator is built to produce.
+- This rail-slamming [[quick-context/bjt|saturation]] *is* the clean digital snap a comparator is built to produce.
 
 ```
    tiny dV in                        output pinned to rail
@@ -30,4 +30,4 @@ created: 2026-06-07
    fully to a rail -> the digital decision.
 ```
 
-**Key insight:** It's the "gain" you never use *as* gain — it's so large the output can't stay linear, which is exactly the point: a comparator wants to saturate to a rail, not amplify proportionally.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** It's the "gain" you never use *as* gain — it's so large the output can't stay linear, which is exactly the point: a comparator wants to saturate to a rail, [[micro-context/can-bus-termination|not]] amplify proportionally.

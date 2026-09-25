@@ -6,25 +6,25 @@ updated: 2026-03-11
 
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[micro-context/homogeneous-transformation-matrix]]
+> **Related:** [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab4-gait-control]]
 
-> **TL;DR:** Lab 3 flips the FK problem: given a desired foot position in 3D space, find the joint angles that reach it by minimizing a cost function via gradient descent, then drives a single leg through a triangle stepping trajectory using a dual-rate architecture (200 Hz PD tracking + 20 Hz IK solving).
+> **TL;DR:** Lab 3 flips the FK problem: given a desired foot position in 3D space, find the joint angles that reach it by minimizing a cost [[quick-context/mcp6541-as-lmc7211-replacement|function]] via gradient descent, then drives a single leg through a triangle stepping trajectory using a dual-rate architecture (200 Hz PD tracking + 20 Hz IK solving).
 
 ## The Core Problem
 
 In Lab 2 you solved forward kinematics: plug in joint angles $\theta_1, \theta_2, \theta_3$, get foot position $p \in \mathbb{R}^3$. That's a clean, closed-form mapping. But a walking robot doesn't think in joint angles — it thinks in foot positions. You want to say "put the foot here" and have the robot figure out which angles achieve that. This is the **inverse kinematics** problem, and for most robots it's far harder than FK because the mapping from Cartesian space back to joint space can be nonlinear, non-unique, or even nonexistent (if the target is out of reach).
 
-Pupper's 3-DOF leg actually does have a closed-form analytical IK solution — you could derive it with trigonometry. But Lab 3 deliberately uses **numerical gradient descent** instead, for two reasons. First, the gradient descent approach generalizes: it works for any robot geometry (6-DOF arms, redundant manipulators, humanoid legs) without rederiving equations. Second, it teaches the optimization-based thinking that underlies modern robotics — trajectory optimization, model-predictive control, and even neural network training all share the same gradient-based core.
+Pupper's 3-DOF leg actually does have a closed-form analytical IK solution — you could derive it with trigonometry. But Lab 3 deliberately uses **numerical gradient descent** instead, for two [[quick-context/pupper-lab7-vision-tracking|reasons]]. First, the gradient descent approach generalizes: it works for any robot geometry (6-DOF arms, redundant manipulators, humanoid legs) without rederiving equations. Second, it teaches the optimization-based thinking that underlies modern robotics — trajectory optimization, model-predictive control, and even neural network training all share the same gradient-based core.
 
-The lab also introduces a critical systems concept: **dual-rate control**. The IK solver runs at 20 Hz because each solve requires multiple FK evaluations (one per joint per gradient step), making it computationally expensive. But the motors need smooth, high-frequency commands to avoid jerky motion. So a separate PD control loop runs at 200 Hz, tracking whatever joint targets the IK solver most recently produced. This separation of planning rate from execution rate is standard in real robot architectures — Lab 5's neural controller uses the same pattern at 50 Hz policy / 500 Hz PD.
+The lab also introduces a critical systems concept: **dual-rate control**. The IK solver runs at 20 Hz because each solve requires multiple FK evaluations (one per joint per gradient step), making it computationally expensive. But the motors need smooth, high-frequency commands to avoid jerky motion. So a separate [[quick-context/pupper-v3-labs|PD control]] loop runs at 200 Hz, tracking whatever joint targets the IK solver most recently produced. This separation of planning rate from execution rate is standard in real robot architectures — Lab 5's neural controller uses the same pattern at 50 Hz policy / 500 Hz PD.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Inverse Kinematics (IK)** | Finding joint angles $\theta$ such that $FK(\theta) = p_{target}$ — the reverse of forward kinematics. In general, solutions may be non-unique (multiple configurations reach the same point) or nonexistent (target out of workspace). |
+| **Inverse Kinematics (IK)** | Finding joint angles $\theta$ such that $FK(\theta) = p_{target}$ — the reverse of forward kinematics. In general, solutions may be non-unique (multiple configurations reach the same [[quick-context/epson-rc-plus-programming|point]]) or nonexistent (target out of workspace). |
 | **Cost Function** | $C(\theta) = \|FK(\theta) - p_{target}\|^2$ — the squared Euclidean distance between where the foot actually is and where you want it. IK becomes an optimization problem: minimize $C$ to zero. |
-| **Gradient Descent** | Iterative update rule $\theta \leftarrow \theta - \alpha \nabla C(\theta)$ that walks downhill on the cost surface. The learning rate $\alpha$ controls step size: too large overshoots, too small converges slowly. |
+| **Gradient Descent** | Iterative [[quick-context/ppo-proximal-policy-optimization|update]] rule $\theta \leftarrow \theta - \alpha \nabla C(\theta)$ that walks downhill on the cost surface. The learning rate $\alpha$ controls step size: too large overshoots, too small converges slowly. |
 | **Finite Differences** | Numerical gradient approximation: $\frac{\partial C}{\partial \theta_i} \approx \frac{C(\theta + \epsilon e_i) - C(\theta)}{\epsilon}$, where $e_i$ is the $i$-th unit vector and $\epsilon$ is a small perturbation (typically $10^{-6}$). Requires one extra FK evaluation per joint. |
 | **Triangle Trajectory** | Three waypoints defining a stepping motion — touchdown, liftoff, and mid-swing (apex) — linearly interpolated to create a closed loop. The foot traces a triangle in the sagittal plane: flat along the ground during stance, lifted arc during swing. |
 
@@ -101,7 +101,7 @@ DUAL-RATE CONTROL ARCHITECTURE
   PD fires every 5ms (200 Hz), tracks current θ_target
 ```
 
-The PD loop holds the last θ_target from IK and smoothly drives the motors toward it. When IK produces a new target (every 50ms), the PD loop seamlessly transitions to tracking the updated target. This decoupling means the IK solver can take variable time without causing motor jitter.
+The PD loop holds the last θ_target from IK and smoothly drives the motors toward it. When IK produces a new target (every 50ms), the PD loop seamlessly transitions to tracking the updated target. This decoupling means the IK solver can take variable time without causing motor [[quick-context/preempt-rt|jitter]].
 
 ### Triangle Trajectory
 
@@ -145,7 +145,7 @@ Pupper's 3-DOF leg is simple enough that you could derive a closed-form IK solut
 
 **Convergence guarantees.** Gradient descent on $C(\theta) = \|FK(\theta) - p_{target}\|^2$ is minimizing a non-convex function. The cost landscape has local minima — configurations where the gradient is zero but the foot isn't at the target (e.g., the elbow is bent the wrong way). Analytical solutions enumerate all valid configurations directly, avoiding this trap. In practice, initializing gradient descent from the current joint angles (which are close to the solution for smooth trajectories) prevents local minima issues for Pupper's simple leg.
 
-**Extensibility.** The cost function formulation lets you add constraints trivially: joint limits become penalty terms $C_{limits}(\theta) = \sum \max(0, \theta_i - \theta_{max})^2$, obstacle avoidance becomes a distance penalty, and you can even add secondary objectives (e.g., minimize joint velocities) as weighted cost terms. Analytical solutions can't absorb these extras without complete re-derivation.
+**Extensibility.** The cost function formulation lets you add constraints trivially: joint limits become penalty terms $C_{limits}(\theta) = \sum \max(0, \theta_i - \theta_{max})^2$, obstacle avoidance becomes a distance penalty, and you can even add secondary objectives (e.g., minimize [[quick-context/pupper-lab5-neural-controller|joint velocities]]) as weighted cost terms. Analytical solutions can't absorb these extras without complete re-derivation.
 
 | Aspect | Numerical (Gradient Descent) | Analytical (Closed-Form) |
 |--------|------------------------------|--------------------------|
@@ -160,7 +160,7 @@ Pupper's 3-DOF leg is simple enough that you could derive a closed-form IK solut
 
 In practice, production robots often use analytical IK for speed and then layer on numerical optimization for constraint satisfaction — you get the best of both worlds. This is worth understanding in detail because it's how real systems actually work:
 
-**The problem with pure analytical IK:** IKFast (used in MoveIt) can auto-generate C++ analytical solvers that find solutions in microseconds. But these solutions only satisfy the kinematic constraint $FK(\theta) = p_{target}$ — they say nothing about joint limits, self-collisions, obstacle avoidance, or secondary objectives like "keep the elbow away from the table." An analytical solver might return 8 valid configurations for a 6-DOF arm, and all 8 might collide with the environment.
+**The problem with pure analytical IK:** IKFast (used in MoveIt) can auto-generate C++ analytical solvers that find solutions in microseconds. But these solutions only satisfy the kinematic constraint $FK(\theta) = p_{target}$ — they say [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] about joint limits, self-collisions, obstacle avoidance, or secondary objectives like "keep the elbow away from the table." An analytical solver might return 8 valid configurations for a 6-DOF arm, and all 8 might collide with the environment.
 
 **The problem with pure numerical IK:** Gradient descent (Lab 3's approach) or more advanced optimizers can encode any constraint as a cost term. But numerical solvers need a good starting point — they're slow to converge from far away and can get trapped in local minima that don't satisfy the kinematic constraint at all.
 
@@ -305,7 +305,7 @@ Non-convex means the cost landscape has multiple local minima — there are join
 <details>
 <summary>Answer</summary>
 
-**Slow IK (5 Hz), fast PD (200 Hz):** The PD loop still smoothly tracks joint targets, so motor commands remain smooth. But the trajectory updates only every 200ms, making the foot path coarser — it "staircases" between waypoints. The robot still functions because the PD loop interpolates between stale targets. Motion quality degrades but doesn't break.
+**Slow IK (5 Hz), fast PD (200 Hz):** The PD loop still smoothly tracks joint targets, so motor commands remain smooth. But the trajectory [[quick-context/firmware|updates]] only every 200ms, making the foot path coarser — it "staircases" between waypoints. The robot still functions because the PD loop interpolates between stale targets. Motion quality degrades but doesn't break.
 
 **Fast IK (200 Hz), slow PD (20 Hz):** This is much worse. The IK solver produces beautiful joint targets at 200 Hz, but the PD loop only commands the motors every 50ms. Between PD ticks, the motors hold their last torque command with no feedback correction. External disturbances go uncorrected for 50ms, causing oscillation and potential instability. The lesson: **high-frequency tracking (PD) matters more than high-frequency planning (IK)**. The fast inner loop is what keeps the hardware stable; the slower outer loop just sets goals.
 </details>
@@ -315,7 +315,7 @@ Non-convex means the cost landscape has multiple local minima — there are join
 <details>
 <summary>Answer</summary>
 
-The FK constraint ($FK(\theta) = p_{target}$) is highly nonlinear — the mapping from joint angles to Cartesian position involves nested trigonometric functions. When you add collision avoidance (another nonconvex constraint), the optimizer must simultaneously satisfy two hard nonlinear constraints. Starting from a random or distant seed, the optimizer often can't find the narrow feasible region where both constraints are satisfied, and either: (1) converges to a local minimum where the foot doesn't reach the target, (2) reaches the target but in a colliding configuration, or (3) fails to converge entirely. The analytical seed eliminates one constraint entirely — every seed already exactly satisfies $FK(\theta) = p_{target}$ — so the optimizer only needs to handle collision avoidance, a much easier problem. This is the general principle: decompose hard problems by solving the analytically tractable part exactly, then optimize over the remainder.
+The FK constraint ($FK(\theta) = p_{target}$) is highly nonlinear — the mapping from joint angles to Cartesian position involves nested trigonometric functions. When you add collision avoidance (another nonconvex constraint), the optimizer [[quick-context/ros2-architecture|must]] simultaneously satisfy two hard nonlinear constraints. Starting from a random or distant seed, the optimizer often can't find the narrow feasible region where both constraints are satisfied, and either: (1) converges to a local minimum where the foot doesn't reach the target, (2) reaches the target but in a colliding configuration, or (3) fails to converge entirely. The analytical seed eliminates one constraint entirely — every seed already exactly satisfies $FK(\theta) = p_{target}$ — so the optimizer only needs to handle collision avoidance, a much easier problem. This is the general principle: decompose hard problems by solving the analytically tractable part exactly, then optimize over the remainder.
 </details>
 
 </details>

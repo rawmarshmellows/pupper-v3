@@ -3,9 +3,9 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[quick-context/anions-and-oxidation]] | [[quick-context/how-passive-and-discrete-components-are-made]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/bjt-specifications]]
 
-> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
+> **TL;DR:** Cations are positively charged ions that have lost [[quick-context/anions-and-oxidation|electrons]]; reduction is the process of giving them electrons back, which happens at the [[micro-context/cathode|cathode]] during [[quick-context/electrolysis|electrolysis]] and is essential for metal extraction, [[quick-context/electrodes|electroplating]], and hydrogen gas production.
 
 ## The Core Problem
 
@@ -30,9 +30,9 @@ BUILDING BLOCKS - What you need to know before understanding reduction:
 |------|------------|
 | **Cation** | A positively charged ion—an atom that has *lost* one or more electrons. Examples: H^+ (hydrogen lost 1 electron), Cu^(2+) (copper lost 2 electrons), Na^+ (sodium lost 1 electron). The "+" indicates positive charge. Memory trick: "Cation" has a "t" that looks like a "+" sign. |
 | **Electron** | A subatomic particle with negative charge (written as e^- or just e). Electrons are what flow through wires as electricity. Gaining electrons makes something more negative; losing them makes it more positive. |
-| **Reduction** | The process of *gaining* electrons. When a cation is "reduced," it receives electrons and becomes less positive (or neutral). Remember "OILRIG": **R**eduction **I**s **G**ain of electrons. |
+| **Reduction** | The process of *gaining* electrons. When a cation is "reduced," it receives electrons and becomes less positive (or neutral). [[quick-context/d-flip-flop|Remember]] "OILRIG": **R**eduction **I**s **G**ain of electrons. |
 | **Cathode** | The negative electrode in an electrolysis setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
-| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the anode is the positive one. |
+| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the [[micro-context/anode|anode]] is the positive one. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -115,7 +115,7 @@ VISUALIZING MULTIPLE CATIONS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force (voltage) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and nothing happens; too much and you waste energy or produce unwanted byproducts.
+The central challenge is a tug-of-war between **electrical attraction** and **chemical stability**. Cations are desperately "wanting" electrons because opposite charges attract—the positive cation is pulled toward any source of electrons. But not all cations accept electrons equally easily. Some cations (like Cu^(2+), copper ions) readily grab electrons and become solid metal; others (like Na^+, sodium ions) resist reduction so strongly that you need extreme conditions (molten salts, not water solutions) to force them to accept electrons. Practitioners must balance: how much electrical force (voltage) to apply, which electrode materials to use, and what liquid environment provides the right conditions. Too little voltage and [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] happens; too much and you waste energy or produce unwanted byproducts.
 
 </details>
 
@@ -235,13 +235,13 @@ PATTERN: The charge number tells you how many electrons are needed!
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and why they're attracted to the negative electrode.
+- **[[quick-context/electrolysis]]** — The broader process where reduction occurs at the cathode. Understanding the full electrolysis setup shows how cations migrate through solution and [[quick-context/atoms-molecules-polymers-basics|why]] they're attracted to the negative electrode.
 
-- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, oxidation is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures both: Oxidation Is Loss, Reduction Is Gain.
+- **[[quick-context/anions-and-oxidation|Oxidation]] (the opposite of reduction)** — While reduction is gaining electrons, [[micro-context/oxidation|oxidation]] is *losing* electrons. These always occur together—if one species gains electrons, another must lose them. The mnemonic "OILRIG" captures [[quick-context/bjt-specifications|both]]: Oxidation Is Loss, Reduction Is Gain.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms form ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
+- **[[quick-context/chemical-bonds-spectrum]]** — Understanding why ions exist in the first place. Atoms [[quick-context/mcp6541-as-lmc7211-replacement|form]] ions when they transfer electrons to achieve stable electron configurations, creating ionic bonds.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Reduction Potentials)]]** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
+- **Electrochemical Series (Reduction Potentials)** — A ranked list of how easily different cations accept electrons, measured in volts (E°). Cations with more positive E° (like Cu²⁺ at +0.34V) are reduced more easily than those with more negative E° (like Na⁺ at -2.71V). This determines which cation "wins" if multiple are present.
 
 - **[[quick-context/anions-and-oxidation|Anions and Oxidation]]** — The counterpart to cations at the other electrode. While cations (positive) go to the cathode for reduction, anions (negative) go to the [[quick-context/electrodes|anode]] and undergo oxidation (lose electrons).
 
@@ -262,7 +262,7 @@ Copper is undergoing **reduction**—it is gaining electrons from the cathode. S
 Each H^+ ion has a +1 charge, meaning each needs exactly 1 electron to become neutral. Since we have 4 H^+ ions, we need 4 electrons total. Those 4 neutral hydrogen atoms then pair up to form 2 H_2 molecules (each H_2 contains 2 hydrogen atoms bonded together). The pattern: the charge number tells you how many electrons are needed per ion. See: Concrete Example (Comparison Table showing charge = electrons needed)
 </details>
 
-**Q3:** A student says "cations go to the cathode because they're both 'cat' words." Is there a better explanation for why cations are attracted to the cathode?
+**Q3:** A student says "cations go to the cathode because they're both 'cat' words." Is there a [[quick-context/comparator-specification|better]] explanation for why cations are attracted to the cathode?
 <details>
 <summary>Answer</summary>
 Yes! The real reason is **opposite charges attract**. Cations are positively charged (+), and the cathode is the negative electrode (-). Positive charges are naturally pulled toward negative charges—this is basic electrostatics. The "cat" mnemonic is just a memory trick, not the actual reason. The cathode's negative charge provides the electrons that cations need to become neutral. See: The Core Problem (cations travel toward negative electrode) and Concrete Example (visual showing attraction)

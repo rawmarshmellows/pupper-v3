@@ -3,7 +3,7 @@ topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/bjt-specifications|BJT Specifications]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/bjt-specifications]] | [[micro-context/bjt-mosfet-igbt]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/bga-ball-grid-array]]
 
 > **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Amplifying Signals With Current
 
-MOSFETs are voltage-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a microcontroller pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
+MOSFETs are [[quick-context/voltage|voltage]]-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. [[quick-context/bare-minimal-data-storage-circuit|When]] you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a [[micro-context/microcontroller|microcontroller]] pin, or build a precise current [[quick-context/comparator|reference]], BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and [[quick-context/how-passive-and-discrete-components-are-made|discrete]] power circuits.
 
 ## 5 Essential Terms
 
@@ -19,14 +19,14 @@ MOSFETs are voltage-controlled switches that dominate digital electronics (billi
 |------|------------|
 | **NPN / PNP** | The two BJT types. NPN: current flows collector→emitter when base current flows in. PNP: current flows emitter→collector when base current flows out. NPN is more common. |
 | **Base (B)** | The control terminal. A small current into the base (for NPN) turns the transistor on. Unlike a MOSFET gate, the base draws continuous current. |
-| **Collector (C) / Emitter (E)** | The high-current terminals. Current flows from collector to emitter (NPN) when the transistor is on. The emitter has the arrow in the schematic symbol. |
+| **Collector (C) / Emitter (E)** | The high-current terminals. Current flows from collector to emitter (NPN) when the transistor is on. The emitter has the arrow in the [[quick-context/schematic-reading|schematic symbol]]. |
 | **Current Gain (β / hFE)** | Ic = β × Ib. Typical β = 50-300. A BJT with β=100 and Ib=100μA passes Ic=10mA. β varies with temperature and current—not a precision parameter, so designs use the *minimum* guaranteed value (see [[quick-context/bjt-specifications|BJT specifications]]). |
 | **Saturation** | When the BJT is fully "on" (both junctions forward biased). Vce drops to ~0.1-0.3V. Used for switching. Contrast with the "active" region used for linear amplification. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-An NPN BJT is a sandwich: N-type collector, thin P-type base, N-type emitter. It contains two PN junctions (like two [[quick-context/diode|diodes]] back-to-back), but the key is that the base layer is extremely thin—electrons injected from the emitter mostly shoot through the base into the collector instead of exiting through the base terminal.
+An NPN BJT is a sandwich: N-type collector, thin P-type base, N-type emitter. It contains two PN junctions (like two [[quick-context/diode|diodes]] back-to-back), but the key is that the base [[quick-context/pcb-assembly-files-bom-cpl|layer]] is extremely thin—electrons injected from the emitter mostly shoot through the base into the collector instead of exiting through the base terminal.
 
 ```
 NPN BJT STRUCTURE
@@ -199,7 +199,7 @@ MOTOR DRIVER CIRCUIT
 
 - **[[quick-context/transistor]]** — The MOSFET is the BJT's sibling. Understanding one helps understand the other. MOSFETs are voltage-controlled; BJTs are current-controlled. Same purpose (switching/amplification), different physics.
 
-- **[[quick-context/doped-silicon]]** — BJTs are built from three alternating layers of N-type and P-type silicon. The thin base region is what makes amplification possible.
+- **[[quick-context/doped-silicon]]** — BJTs are built from three alternating layers of N-type and [[quick-context/differential-pair|P-type silicon]]. The thin base region is what makes amplification possible.
 
 - **[[quick-context/transistor-design-history]]** — BJTs were the dominant transistor from the 1950s through 1980s. The shift to CMOS (MOSFET-based) digital logic happened because MOSFETs don't draw static current and scale better.
 
@@ -221,7 +221,7 @@ MOTOR DRIVER CIRCUIT
 **Q2:** Why does a BJT base always draw current, but a MOSFET gate doesn't?
 <details>
 <summary>Answer</summary>
-**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate capacitance, but no DC current flows through it.
+**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the [[micro-context/mosfet|channel]] by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate [[quick-context/capacitance|capacitance]], but no DC current flows through it.
 </details>
 
 **Q3:** What does "saturation" mean for a BJT, and how is it different from MOSFET saturation?
@@ -233,13 +233,13 @@ MOTOR DRIVER CIRCUIT
 **Q4:** Why is a flyback diode necessary when switching an inductive load with a BJT?
 <details>
 <summary>Answer</summary>
-**Inductors generate voltage spikes when current is interrupted.** V = L × dI/dt. When the BJT turns off, the motor's inductance tries to maintain current flow by generating a large reverse voltage—potentially hundreds of volts. This exceeds the BJT's collector-emitter breakdown voltage and destroys it. The flyback diode provides a path for the inductive current to circulate safely as the magnetic field collapses.
+**Inductors generate voltage spikes when current is interrupted.** V = L × dI/dt. When the BJT turns off, the motor's inductance tries to maintain current flow by generating a large reverse voltage—potentially hundreds of volts. This exceeds the BJT's collector-emitter [[quick-context/diode|breakdown voltage]] and destroys it. The flyback diode provides a path for the inductive current to circulate safely as the magnetic field collapses.
 </details>
 
 **Q5:** A digital circuit needs 50 million transistors. Why can't you build it with BJTs?
 <details>
 <summary>Answer</summary>
-**Power consumption.** Each BJT gate draws continuous base current, even when idle. With 50 million gates, the total idle power would be enormous—and the heat would be unmanageable. CMOS (complementary MOSFETs) draws essentially zero static power because MOSFET gates don't need DC current. CMOS only draws current during switching transitions, making billion-transistor chips thermally feasible.
+**Power consumption.** Each BJT gate draws [[micro-context/input-bias-current|continuous base current]], even when idle. With 50 million gates, the total idle power would be enormous—and the heat would be unmanageable. CMOS (complementary MOSFETs) draws essentially zero static power because MOSFET gates don't need DC current. CMOS only draws current during switching transitions, making billion-transistor chips thermally feasible.
 </details>
 
 </details>

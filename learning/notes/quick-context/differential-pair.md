@@ -5,9 +5,9 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bjt]] | [[quick-context/bjt-specifications]]
 
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail [[quick-context/voltage-current-causality|current source]], forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
@@ -18,10 +18,10 @@ A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode voltage, and
 | Term | Definition |
 |------|------------|
 | **Matched transistors (Q1, Q2)** | Two transistors fabricated identically (same geometry, same process, physically adjacent on the die) so they have the same threshold voltage, transconductance, and temperature behavior. Matching is what makes the circuit reject common-mode signals. |
-| **Tail current source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
+| **[[micro-context/tail-current|Tail current]] source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
 | **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the tail current can't increase, so nothing changes at the output. |
 | **Differential signal** | The difference between the two inputs: $V_{DIFF} = V_+ - V_-$. This is what the pair amplifies. A 1 mV differential signal on top of a 1.5V common-mode voltage produces the same output as a 1 mV signal on top of 0V. |
-| **Common-Mode Rejection Ratio (CMRR)** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
+| **[[micro-context/common-mode-rejection-ratio|Common-Mode Rejection Ratio (CMRR)]]** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
 
 <details>
 <summary><strong>How It Works</strong> --- Two transistors, one current budget</summary>
@@ -190,7 +190,7 @@ The differential pair's performance depends on three competing goals:
 |------|---------|
 | **Better matching** (lower offset) | Requires larger transistors → slower, more capacitance |
 | **Higher gain** ($g_m$) | Requires more tail current → more power, more heat |
-| **Faster response** | Requires smaller transistors → worse matching, more offset |
+| **[[quick-context/comparator|Faster response]]** | Requires [[quick-context/transistor-analog-to-digital|smaller transistors]] → worse matching, more offset |
 | **Higher CMRR** | Requires a perfect tail current source (infinite output impedance), which doesn't exist |
 
 ```
@@ -219,7 +219,7 @@ MATCHING AND OFFSET
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> --- Where differential pairs appear</summary>
+<summary><strong>Concrete Example</strong> --- Where [[quick-context/capacitance|differential pairs]] appear</summary>
 
 The differential pair is the most reused analog circuit block in electronics. Every one of these starts with a differential pair at the input:
 
@@ -259,15 +259,15 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 
 - **[[quick-context/transistor]]** --- The differential pair is built from two [[quick-context/transistor|MOSFETs]] (or BJTs). Understanding how gate voltage controls drain current ($V_{gs}$ → $I_d$) is prerequisite to understanding why the pair steers current.
 
-- **[[quick-context/op-amp]]** --- An [[quick-context/op-amp|op-amp]] is a differential pair followed by gain stages and an output buffer, wrapped in negative feedback. The differential pair IS the op-amp's input.
+- **[[quick-context/op-amp]]** --- An [[quick-context/op-amp|op-amp]] is a differential pair followed by gain stages and an output buffer, wrapped in [[quick-context/op-amp|negative feedback]]. The differential pair IS the op-amp's input.
 
-- **[[quick-context/comparator]]** --- A [[quick-context/comparator|comparator]] is a differential pair followed by gain stages and a digital output stage, with no compensation capacitor. Same input, different optimization.
+- **[[quick-context/comparator]]** --- A [[quick-context/comparator|comparator]] is a differential pair followed by gain stages and a digital output stage, with [[quick-context/comparator-specification|no compensation capacitor]]. Same input, different optimization.
 
 - **[[quick-context/bjt]]** --- [[quick-context/bjt|BJT]] differential pairs were the original (1960s). They have higher $g_m$ per unit current and lower offset than MOSFETs, which is why precision analog ICs still use BJT input stages.
 
-- **[[quick-context/doped-silicon]]** --- The p-type channel, n-type source/drain, and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
+- **[[quick-context/doped-silicon]]** --- The p-type channel, n-type [[quick-context/transistor|source/drain]], and oxide insulator that make MOSFET switching possible. Explains why negative gate voltage repels electrons and prevents channel formation.
 
-- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for simplicity. The tail current source is often implemented with a resistor + voltage reference in simple designs.
+- **[[quick-context/resistor]]** --- [[quick-context/resistor|Resistor]] loads can be used instead of a current mirror at the drain, trading gain for [[quick-context/embedded-communication-protocols|simplicity]]. The tail current source is often implemented with a resistor + voltage reference in simple designs.
 
 </details>
 
@@ -280,7 +280,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 **Both carry exactly 50 $\mu$A.** With identical gate voltages and matched transistors, both have the same $V_{gs}$, so they conduct equally. The tail current splits 50/50. This is the balanced condition. See: How It Works (Current Steering).
 </details>
 
-**Q2:** Both inputs rise from 1.0V to 1.5V simultaneously (common-mode step). What happens to the output?
+**Q2:** Both inputs rise from 1.0V to 1.5V [[quick-context/bare-minimal-data-storage-circuit|simultaneously]] (common-mode step). What happens to the output?
 <details>
 <summary>Answer</summary>
 **Nothing.** Both transistors try to conduct more, but the tail current source can't supply more than 100 $\mu$A. Instead, the shared source node voltage rises by ~0.5V, keeping $V_{gs1}$ and $V_{gs2}$ the same as before. The current split doesn't change, so the output doesn't change. This is common-mode rejection. See: How It Works (Common-Mode Rejection).
@@ -301,7 +301,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 **Q5:** An engineer replaces the tail current source with a simple resistor to GND. The circuit "works" on the bench but has poor CMRR. Why?
 <details>
 <summary>Answer</summary>
-**A resistor doesn't have infinite output impedance.** When both inputs rise (common-mode), both transistors try to draw more current. A perfect current source holds the total at exactly 100 $\mu$A regardless. But a resistor allows more current when the voltage across it increases ($I = V/R$). So the total current changes with common-mode input, meaning the current split *does* change slightly, and the common-mode signal leaks into the output. A current source (implemented with a transistor in saturation, e.g., a cascode mirror) has much higher output impedance, rejecting common-mode signals far better.
+**A resistor doesn't have infinite output impedance.** When both inputs rise (common-mode), both transistors try to draw more current. A perfect current source holds the total at exactly 100 $\mu$A regardless. But a resistor allows more current when the voltage across it increases ($I = V/R$). So the total current changes with common-mode input, meaning the current split *does* change slightly, and the common-mode signal leaks into the output. A current source (implemented with a [[quick-context/high-gain-amplifier-stage|transistor in saturation]], e.g., a cascode mirror) has much higher output impedance, rejecting common-mode signals far better.
 </details>
 
 </details>

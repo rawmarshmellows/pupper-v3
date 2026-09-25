@@ -4,30 +4,30 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/bjt-specifications]] | [[quick-context/bond-pad]] | [[quick-context/breaking-elongation-rate]]
 
 > **TL;DR:** Matter builds up in layers (atoms -> molecules -> monomers -> polymers), and 3D printing works by heating thermoplastics enough to let polymer chains slide past each other without breaking them, then cooling to re-lock chains in new positions.
 
 ## The Core Problem
 
-Everything physical you touch—including the plastic [[quick-context/3d-printing-filament-types|filament]] feeding into a 3D printer—is made of atoms bonded into increasingly complex structures. Understanding this hierarchy (atoms → molecules → monomers → polymers) explains **why** different filaments behave differently: why PLA melts at 180°C but ABS needs 240°C, why some prints are brittle and others flexible, why layer adhesion fails or succeeds. Without this foundation, you're just memorizing temperature settings without understanding the "why." If polymers didn't exist, we'd have no plastics, no rubber, no nylon—essentially no modern manufacturing. The entire 3D printing industry depends on our ability to melt polymer chains, extrude them through a nozzle, and have them re-solidify into a solid object.
+Everything physical you touch—including the plastic [[quick-context/3d-printing-filament-types|filament]] feeding into a 3D printer—is made of atoms bonded into increasingly complex structures. Understanding this hierarchy (atoms → molecules → monomers → polymers) explains **why** different filaments behave differently: why PLA melts at 180°C but ABS needs 240°C, why some prints are [[quick-context/breaking-elongation-rate|brittle]] and others flexible, why layer adhesion [[quick-context/mcp6541-as-lmc7211-replacement|fails]] or succeeds. Without this foundation, you're just memorizing temperature settings without understanding the "why." If polymers didn't exist, we'd have no plastics, no rubber, no nylon—essentially no modern manufacturing. The entire 3D printing industry depends on our ability to melt polymer chains, extrude them through a nozzle, and have them re-solidify into a solid object.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/subatomic-particles\|Atom]]** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of [[quick-context/subatomic-particles\|protons, neutrons, and electrons]]. |
+| **[[quick-context/subatomic-particles|Atom]]** | The smallest unit of an element (like carbon or hydrogen) that retains that element's chemical properties; made of [[quick-context/subatomic-particles|protons, neutrons, and electrons]]. |
 | **Molecule** | Two or more atoms bonded together; water (H₂O) is a molecule of 2 hydrogen atoms + 1 oxygen atom. |
 | **Monomer** | A small molecule that can bond repeatedly to form long chains; the "building block" unit. |
 | **Polymer** | A long chain made of many monomers bonded together; plastics are polymers. |
-| **Thermoplastic** | A polymer that softens when heated (above its [[quick-context/glass-transition-temperature\|glass transition temperature]]) and hardens when cooled, repeatedly—this is what makes [[quick-context/3d-printing-filament-types\|3D printing]] possible. |
+| **Thermoplastic** | A polymer that softens when heated (above its [[quick-context/glass-transition-temperature|glass transition temperature]]) and hardens when cooled, repeatedly—this is what makes [[quick-context/3d-printing-filament-types|3D printing]] possible. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Matter builds up in layers of increasing complexity, and each layer determines different properties. At the base, atoms are the fundamental units—protons and neutrons in a nucleus, surrounded by electrons. Atoms bond together by sharing or transferring electrons, forming molecules. When a molecule has reactive "ends" that can link to other identical molecules, we call it a monomer—the building block for polymers. Through polymerization reactions, hundreds to thousands of monomers link end-to-end into long chains called polymers. The properties of the final plastic (strength, flexibility, melting point) emerge from three factors: (1) what the monomer is (determines backbone chemistry), (2) how long the chains are (determines entanglement and strength), and (3) how the chains pack together (crystalline regions are rigid; amorphous regions are flexible).
+Matter builds up in layers of increasing complexity, and each layer determines different properties. At the base, atoms are the fundamental units—protons and neutrons in a nucleus, surrounded by [[quick-context/anions-and-oxidation|electrons]]. Atoms bond together by sharing or transferring electrons, [[quick-context/electrolysis|forming]] molecules. When a molecule has reactive "ends" that can link to other identical molecules, we call it a monomer—the building block for polymers. Through polymerization reactions, hundreds to thousands of monomers link end-to-end into long chains called polymers. The properties of the final plastic (strength, flexibility, melting point) emerge from three factors: (1) what the monomer is (determines backbone chemistry), (2) how long the chains are (determines entanglement and strength), and (3) how the chains pack together ([[quick-context/polymer-crystallinity-vs-amorphous|crystalline]] regions are rigid; amorphous regions are flexible).
 
-In 3D printing, you exploit the thermoplastic property: heating gives polymer chains enough energy to overcome the weak intermolecular forces (van der Waals, hydrogen bonds) that hold them in place. The chains don't break—they just gain mobility to slide past each other, allowing the material to flow through the nozzle. Upon cooling, chains lose energy, intermolecular forces reassert themselves, and chains lock into new positions. The extruded material solidifies. Crucially, if chains from the new layer can interpenetrate with chains from the previous layer before cooling, you get strong layer adhesion—the layers literally tangle together at the molecular level. If the previous layer is too cold, chains can't intermix, and you get weak layer bonds.
+In 3D printing, you exploit the thermoplastic property: heating gives polymer chains enough energy to overcome the weak [[quick-context/chemical-bonds-spectrum|intermolecular forces]] (van der Waals, [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]]) that hold them in place. The chains don't break—they just gain mobility to slide past each other, allowing the material to flow through the nozzle. Upon cooling, chains lose energy, intermolecular forces reassert themselves, and chains lock into new positions. The extruded material solidifies. Crucially, if chains from the new layer can interpenetrate with chains from the previous layer before cooling, you get strong layer adhesion—the layers literally tangle together at the molecular level. If the previous layer is too cold, chains can't intermix, and you get weak layer bonds.
 
 ```
 THE HIERARCHY OF MATTER → POLYMERS
@@ -96,7 +96,7 @@ SOLID FILAMENT                MELTED IN NOZZLE              SOLIDIFIED LAYER
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff in polymer science is **molecular weight** (chain length) vs. **ease of processing**. Longer polymer chains = stronger final parts with better mechanical properties, but also = higher melting temperatures and more viscous (thick) melts that are harder to extrude. Practitioners constantly balance: do you want a filament that prints easily at low temps but produces weaker parts, or one that's difficult to print but yields industrial-strength results? This is why "printing temperature" isn't just a number—it's a negotiation between your printer's capabilities and the polymer's chain characteristics. Additives, blends, and co-polymers exist largely to cheat this tradeoff.
+The central tradeoff in polymer science is **molecular weight** (chain length) vs. **ease of processing**. Longer polymer chains = stronger final parts with [[quick-context/comparator-specification|better]] mechanical properties, but also = higher melting temperatures and more viscous (thick) melts that are harder to extrude. Practitioners constantly balance: do you want a filament that prints easily at low temps but produces weaker parts, or one that's difficult to print but yields industrial-strength results? This is why "printing temperature" isn't just a number—it's a negotiation between your printer's capabilities and the polymer's chain characteristics. Additives, blends, and co-polymers exist largely to cheat this tradeoff.
 
 </details>
 
@@ -225,8 +225,8 @@ Brittle when cold.            Branched, tangled chains.
 - [[quick-context/polymer-chemical-bonds|Chemical bonds]] — Deeper dive into the specific bond types that form polymer backbones and crosslinks; essential for understanding thermosets vs. thermoplastics.
 - [[quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] — Weak attractions between chains that affect melting point and layer adhesion; explains why nylon absorbs moisture and prints differently when wet.
 - [[quick-context/van-der-waals-forces|Van der Waals forces]] — The weakest intermolecular forces, but they add up across long polymer chains; crucial for understanding why longer chains = stronger parts.
-- [[quick-context/biology-fundamentals]] — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
-- [[quick-context/subatomic-particles]] — The fundamental building blocks (protons, neutrons, electrons, quarks) that make up atoms; explains why different elements have different numbers of bonds and chemical behaviors.
+- biology-fundamentals — Biological macromolecules (proteins, DNA, carbohydrates) are polymers following the same chemical principles as synthetic polymers, but organized for self-replication and metabolism.
+- [[quick-context/subatomic-particles]] — The fundamental building blocks (protons, neutrons, electrons, [[quick-context/subatomic-particles|quarks]]) that make up atoms; explains why different elements have different numbers of bonds and chemical behaviors.
 
 </details>
 
@@ -248,19 +248,19 @@ When you heat a thermoplastic, you're not breaking the [[quick-context/covalent-
 **Q3:** Why do longer polymer chains generally produce stronger parts but require higher printing temperatures?
 <details>
 <summary>Answer</summary>
-Longer chains have more contact points with neighboring chains, creating more intermolecular attractions (van der Waals forces) that hold the solid together—hence parts with greater [[quick-context/tensile-strength-materials|tensile strength]]. However, those same additional attractions mean you need more thermal energy to free the chains from each other, resulting in higher melting/processing temperatures and more viscous melts that are harder to extrude.
+Longer chains have more contact points with neighboring chains, creating more intermolecular attractions ([[quick-context/van-der-waals-forces|van der Waals forces]]) that hold the solid together—hence parts with greater [[quick-context/tensile-strength-materials|tensile strength]]. However, those same additional attractions mean you need more thermal energy to free the chains from each other, resulting in higher melting/processing temperatures and more viscous melts that are harder to extrude.
 </details>
 
 **Q4:** A print has poor layer adhesion. Using what you know about polymer chains, what might be happening at the molecular level?
 <details>
 <summary>Answer</summary>
-Poor layer adhesion suggests that polymer chains from the new layer are not sufficiently interpenetrating (tangling with) chains from the previous layer. This could happen if: (1) the previous layer cooled too much before the new layer was deposited, so chains couldn't intermingle; (2) the extrusion temperature is too low, so chains lack mobility; or (3) the polymer type has weak intermolecular forces between chains. At the molecular level, strong layer bonds require chains from both layers to physically interweave across the interface.
+Poor layer adhesion suggests that polymer chains from the new layer are not sufficiently interpenetrating (tangling with) chains from the previous layer. This could happen if: (1) the previous layer cooled too much before the new layer was deposited, so chains couldn't intermingle; (2) the extrusion temperature is too low, so chains lack mobility; or (3) the polymer type has weak intermolecular forces between chains. At the molecular level, strong layer bonds require chains from [[quick-context/bjt-specifications|both]] layers to physically interweave across the interface.
 </details>
 
 **Q5:** PLA and ABS are both thermoplastics, yet ABS requires higher printing temperatures. Based on chain structure, why might this be?
 <details>
 <summary>Answer</summary>
-ABS has branched, more tangled chain structures compared to PLA's relatively straight chains. Branched chains create more inter-chain entanglements and contact points, requiring more thermal energy to free them and allow flow. Additionally, ABS is a copolymer (acrylonitrile, butadiene, styrene) with different monomer types contributing different intermolecular interactions, while PLA is made from a single monomer type (lactic acid) with more uniform, and apparently weaker, intermolecular forces.
+ABS has branched, more tangled chain structures compared to PLA's relatively straight chains. Branched chains create more inter-chain entanglements and contact points, requiring more thermal energy to free them and allow flow. Additionally, ABS is a copolymer (acrylonitrile, butadiene, [[quick-context/pi-pi-stacking-aromatic-interactions|styrene]]) with different monomer types contributing different intermolecular interactions, while PLA is made from a single monomer type (lactic acid) with more uniform, and apparently weaker, intermolecular forces.
 </details>
 
 </details>

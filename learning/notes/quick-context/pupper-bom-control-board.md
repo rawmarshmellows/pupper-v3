@@ -5,13 +5,13 @@ created: 2026-02-25
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/plc-vs-software-control]]
 
-> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
+> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 IMU for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
-A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
+A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are decoupling caps keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
 BOM: learning/notes/quick-context/BOM_Control Board Rev 3.5_PCB1_3_2025-02-20.xlsx
 Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
@@ -20,11 +20,11 @@ Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
 
 | Term | Definition |
 |------|------------|
-| **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
-| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
+| **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
+| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading|schematic]] and PCB: R = [[quick-context/resistor|resistor]], C = [[quick-context/capacitor|capacitor]], U = IC, L = [[quick-context/inductor|inductor]], D = [[quick-context/diode|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages|IC Packages]]. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
-| **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
+| **Decoupling Network** | The system of [[quick-context/capacitor|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
 
 <details>
 <summary><strong>How It Works</strong> — The BOM organized by function</summary>
@@ -208,7 +208,7 @@ The 40-pin header (U2) is the physical interface to the Raspberry Pi — it carr
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Assembly complexity vs. component availability</summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Assembly complexity vs. component [[quick-context/3d-printing-filament-refill-vs-spool|availability]]</summary>
 
 The BOM reveals two major design tradeoffs:
 
@@ -332,11 +332,11 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum that runs on this hardware. Labs 1-4 directly control the motors via CAN bus and read the IMU; Lab 5 deploys RL policies through the neural controller; Labs 6-7 add voice and vision on the Raspberry Pi side.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — How all these components physically connect — traces carry signals between ICs, vias connect layers, and the copper pour provides the [[quick-context/grounding-and-return-paths|ground plane]] return path for every signal.
+- **[[quick-context/pcb-printed-circuit-board]]** — How all these components physically connect — traces carry signals between ICs, vias connect layers, and the copper pour provides the [[quick-context/grounding-and-return-paths|ground plane]] [[quick-context/grounding-and-return-paths|return path]] for every signal.
 
 - **[[quick-context/pcb-assembly-files-bom-cpl]]** — How to *read* the BOM and CPL (pick-and-place) file pair itself, column by column. This note explains what each part on the board is; that one explains the file formats the assembler consumes.
 
-- **[[quick-context/pcb-layers]]** — The Gerber files that define where each component lands on the board. The paste mask layer determines which pads get solder paste during assembly — critical for the 0402-size passives on this board.
+- **[[quick-context/pcb-layers]]** — The Gerber files that define where each component lands on the board. The [[quick-context/pcb-assembly-files-bom-cpl|paste mask]] layer determines which pads get solder paste during assembly — critical for the 0402-size passives on this board.
 
 - **[[quick-context/schematic-reading]]** — How to trace the connections between BOM parts on the circuit diagram. Reference designators (R5, U8, C18) are the link between BOM, schematic, and physical board.
 
@@ -344,7 +344,7 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current [[quick-context/ros2-architecture|must]] exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 
@@ -352,14 +352,14 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow soldering. The paste mask layer defines the stencil apertures for solder paste deposition.
 
-- **[[quick-context/frequency-and-filtering]]** — The ferrite beads (L2, L3) and multi-value capacitor network form a distributed filter that suppresses switching noise across a wide bandwidth.
+- **[[quick-context/frequency-and-filtering]]** — The ferrite beads (L2, L3) and multi-value capacitor network form a distributed filter that suppresses switching noise across a wide [[quick-context/oscilloscope-and-multimeter|bandwidth]].
 
 - **[[quick-context/power-watts-joules]]** — The buck converter's 85-95% efficiency means 0.25-0.75W of waste heat at full load. The exposed thermal pad on U8's WSON package conducts this heat into the PCB ground plane.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** The BOM lists 12× 100nF capacitors and 4× 1μF capacitors. Why both values instead of just using 1μF for everything?
 <details>
@@ -370,19 +370,19 @@ NOW TRACE IT ON THE BOARD:
 **Q2:** Why are R5 and R6 such specific values (60.4kΩ and 11.5kΩ) instead of round numbers?
 <details>
 <summary>Answer</summary>
-**They're calculated from the TPS54561 datasheet's feedback formula to set exactly 5.0V output.** The formula is: $V_{OUT} = V_{REF} \times (1 + R5/R6) = 0.8V \times (1 + 60.4k/11.5k) = 0.8V \times 6.252 = 5.0V$. These values come from the E96 resistor series (1% tolerance), which provides enough precision to hit the target voltage. Using E12 values (10% tolerance, round numbers like 56kΩ and 10kΩ) would give 5.28V — unacceptably far from 5.0V. See [[quick-context/resistor]] for the E-series explanation.
+**They're calculated from the TPS54561 datasheet's feedback formula to set exactly 5.0V output.** The formula is: $V_{OUT} = V_{REF} \times (1 + R5/R6) = 0.8V \times (1 + 60.4k/11.5k) = 0.8V \times 6.252 = 5.0V$. These values come from the E96 resistor series (1% [[quick-context/cnc-machining|tolerance]]), which provides enough precision to hit the target voltage. Using E12 values (10% tolerance, round numbers like 56kΩ and 10kΩ) would give 5.28V — unacceptably far from 5.0V. See [[quick-context/resistor]] for the E-series explanation.
 </details>
 
 **Q3:** The board has 4 CAN transceivers but only 2 MCUs. Why not use just 2 transceivers (one per MCU)?
 <details>
 <summary>Answer</summary>
-**Bandwidth and fault isolation.** With 12 servos sending position feedback at 1 kHz, a single CAN bus at 1 Mbps approaches saturation. Splitting into 4 buses (3 servos each) keeps utilization around 25%, leaving headroom for retransmissions. Additionally, a wiring fault on one leg only takes down 3 servos instead of all 12. U5 (Motor MCU) has 2 CAN peripherals, and each bus pair likely handles front/rear or left/right legs. See [[quick-context/pupper-brain]] for the architecture.
+**Bandwidth and fault [[quick-context/pupper-brain|isolation]].** With 12 servos sending position feedback at 1 kHz, a single CAN bus at 1 Mbps approaches saturation. Splitting into 4 buses (3 servos each) keeps [[quick-context/teep|utilization]] around 25%, leaving headroom for retransmissions. Additionally, a wiring fault on one leg only takes down 3 servos instead of all 12. U5 (Motor MCU) has 2 CAN peripherals, and each bus pair likely handles front/rear or left/right legs. See [[quick-context/pupper-brain]] for the architecture.
 </details>
 
 **Q4:** The BNO086 has no LCSC supplier part number. What are your options for building this board?
 <details>
 <summary>Answer</summary>
-**Three options:** (1) Use JLCPCB's consignment service — order the BNO086 from Mouser/Digi-Key and ship it to JLCPCB, who will place it during assembly. (2) Have JLCPCB assemble everything except the BNO086, then solder it yourself with a hot-air station (the LGA-28 package has pads only on the bottom — impossible with a soldering iron). (3) Find an alternative assembly house that stocks Bosch sensors. Option 1 is most common. This sourcing gap is typical for specialized sensors not in mainstream Chinese distributor catalogs.
+**Three options:** [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] Use JLCPCB's consignment service — order the BNO086 from Mouser/Digi-Key and ship it to JLCPCB, who will place it during assembly. (2) Have JLCPCB assemble everything except the BNO086, then solder it yourself with a hot-air station (the LGA-28 package has pads only on the bottom — impossible with a soldering iron). (3) Find an alternative assembly house that stocks Bosch sensors. Option 1 is most common. This sourcing gap is typical for specialized sensors not in mainstream Chinese distributor catalogs.
 </details>
 
 **Q5:** If you removed the 10μH inductor (L1) from the buck converter circuit, what would happen?

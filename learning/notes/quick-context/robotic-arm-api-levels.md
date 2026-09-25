@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[quick-context/isa-95-levels]] | [[quick-context/epson-rc-plus-programming]] | [[quick-context/firmware]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/plc-vs-software]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Bridging Human Intent to Motor Commands
 
-Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
+Robotic arms are fundamentally dumb servo motors arranged in a [[quick-context/pupper-lab2-forward-kinematics|kinematic chain]]. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
 
 The abstraction layers exist because manufacturing needs both determinism (a welding robot must follow the exact same path every cycle) and flexibility (reprogramming for a new product shouldn't require a PhD in control theory). Without these layers, you'd either have unmaintainable low-level code or be locked into vendor-specific high-level tools with no escape hatch.
 
@@ -19,10 +19,10 @@ The abstraction layers exist because manufacturing needs both determinism (a wel
 
 | Term | Definition |
 |------|------------|
-| **Inverse Kinematics (IK)** | Math that converts a desired end-effector pose (position + orientation) into the joint angles needed to achieve it—the fundamental translation between "where" and "how." |
+| **[[quick-context/pupper-lab3-inverse-kinematics|Inverse Kinematics (IK)]]** | Math that converts a desired end-effector pose (position + orientation) into the joint angles needed to achieve it—the fundamental translation between "where" and "how." |
 | **Teach Pendant** | The handheld device operators use to manually jog the robot and record waypoints; the "no-code" interface to industrial arms. |
 | **Motion Primitive** | A reusable building block (linear move, circular arc, spline) that the motion planner stitches together into complete trajectories. |
-| **Real-Time Bus** | The deterministic communication layer (EtherCAT, PROFINET IRT, Sercos) that guarantees joint commands arrive within microseconds—lose this timing and the arm stutters or faults. |
+| **Real-Time Bus** | The deterministic communication layer ([[quick-context/preempt-rt-ros2-plc-replacement|EtherCAT]], PROFINET IRT, Sercos) that guarantees joint commands arrive within microseconds—lose this timing and the arm stutters or faults. |
 | **MoveGroup** | In ROS/MoveIt, the logical grouping of joints that move together (e.g., "arm" vs. "gripper"), the unit of motion planning. |
 
 <details>
@@ -30,10 +30,10 @@ The abstraction layers exist because manufacturing needs both determinism (a wel
 
 The API stack for robotic arms typically has three main levels:
 
-**Level 1: Vendor High-Level Scripts**
-- Languages like KUKA KRL, Fanuc TP, ABB RAPID
+**[[quick-context/isa-95-levels|Level 1]]: Vendor High-Level Scripts**
+- [[quick-context/firmware|Languages]] like KUKA KRL, Fanuc TP, ABB RAPID
 - Teach pendant programmable
-- Motion primitives like PTP (point-to-point), LIN (linear), CIRC (circular)
+- Motion primitives like PTP ([[quick-context/epson-rc-plus-programming|point]]-to-point), LIN (linear), CIRC (circular)
 - Vendor handles IK, trajectory generation, and safety
 - Limited customization but fast deployment
 
@@ -140,7 +140,7 @@ void realtime_loop() {
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
 - **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
-- **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
+- **[[quick-context/preempt-rt]]** - Linux real-time [[quick-context/ros2-architecture|extensions]] for running Level 3 control on commodity hardware
 
 </details>
 

@@ -6,13 +6,13 @@ updated: 2026-03-27
 
 # Current and Electrons Per Second
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[micro-context/ac-dc-current]] | [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/current-mirror]] | [[micro-context/input-bias-current]] | [[micro-context/quiescent-supply-current]]
 
-**Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
+**[[quick-context/capacitance|Definition]]:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
 
 ## How It Works
 
-- An electric field (from a voltage source) pushes free electrons through the conductor in a coordinated drift.
+- An [[quick-context/voltage-current-causality|electric field]] (from a voltage [[quick-context/differential-pair|source]]) pushes free electrons through the conductor in a coordinated drift.
 - At any cross-section of the wire, the number of electrons passing per second determines the current in amperes.
 - One ampere equals one coulomb (6.24 × 10¹⁸ electrons) flowing past that point every second.
 
@@ -31,4 +31,4 @@ updated: 2026-03-27
               └───────────────┘
 ```
 
-**Key insight:** The conversion factor (6.24 × 10¹⁸) is simply 1 divided by the electron's charge (1.6 × 10⁻¹⁹ coulombs)—current in amps times this number gives electrons per second.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** The conversion factor (6.24 × 10¹⁸) is simply 1 divided by the electron's charge (1.6 × 10⁻¹⁹ coulombs)—current in amps times this number gives electrons per second.

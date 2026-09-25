@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Absolute Orientation Problem
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]] | [[quick-context/electricity-generation]] | [[quick-context/faraday-tensor]]
 
 > **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 
@@ -39,10 +39,10 @@ The key insight (shared by all closed-form methods) is that translation decouple
 | Method | Year | Rotation Representation | Handles Scale? | Key Matrix |
 |--------|------|------------------------|----------------|------------|
 | **Horn** | 1987 | Unit quaternion | Yes | $4 \times 4$ symmetric $N$ |
-| **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
+| **Arun et al.** | 1987 | SVD of [[quick-context/covariance-matrix|cross-covariance]] | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
 | **Umeyama** | 1991 | SVD with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
 
-Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
+Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always [[quick-context/silicon-die|yield]] the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
 
 ### Step-by-Step: SVD Solution (Arun/Umeyama)
 
@@ -118,7 +118,7 @@ $$\mathbf{t} = \bar{\mathbf{q}} - s R \, \bar{\mathbf{p}}$$
 
 | Scenario | Minimum Points | Why |
 |----------|---------------|-----|
-| Rigid (6 DOF: 3 rotation + 3 translation) | 3 non-collinear | 3 points define a plane, giving 9 equations for 6 unknowns |
+| Rigid (6 DOF: 3 rotation + 3 translation) | [[quick-context/helmert-transform|3 non-collinear]] | 3 points define a plane, giving 9 equations for 6 unknowns |
 | [[quick-context/similarity-transform|Similarity]] (7 DOF: + scale) | 3 non-collinear | Scale adds 1 DOF but 3 points still provide enough constraints |
 | Robust estimation | 5+ recommended | Redundancy allows outlier detection and error estimation |
 
@@ -141,7 +141,7 @@ In practice, correspondences are often unknown. The **Iterative Closest Point (I
 | Correspondences | Required as input | Discovered iteratively |
 | Solution | Global optimum (given correct pairs) | Local optimum (sensitive to initialization) |
 | Speed | Single pass, $O(n)$ | Many iterations, $O(n \log n)$ per iteration (kd-tree) |
-| Outlier handling | None built-in | Variants exist (trimmed ICP, robust kernels) |
+| Outlier handling | [[quick-context/mcp6541-as-lmc7211-replacement|None]] built-in | Variants exist (trimmed ICP, robust kernels) |
 | Typical use | Survey control points, fiducial markers | Raw scan-to-scan alignment, SLAM |
 
 ### The Outlier Problem
@@ -167,7 +167,7 @@ In statistics, the same problem is called **orthogonal Procrustes analysis** (na
 
 ### Scenario
 
-You have reconstructed a 3D model from drone photographs using Structure-from-Motion (SfM). The model exists in an arbitrary coordinate system. You also have 5 ground control points (GCPs) measured with a total station in a real-world coordinate system (e.g., UTM). You need to register the model to the real world.
+You have reconstructed a 3D model from drone photographs using Structure-from-Motion (SfM). The model exists in an arbitrary coordinate system. You also have 5 ground control points (GCPs) measured with a [[quick-context/similarity-transform|total]] station in a real-world coordinate system (e.g., UTM). You need to register the model to the real world.
 
 ### Python Implementation
 
@@ -262,7 +262,7 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 - **Residuals** should be small if the SfM model is accurate; large residuals on specific points suggest either a bad GCP measurement or a model distortion
 - **3 points** give zero residual (exact fit); 5+ points give residual information that reveals data quality
 
-**The one thing most outsiders get wrong about this is...** assuming you need special software to do it. The core algorithm is 10 lines of linear algebra. The hard part is never the math -- it is getting reliable correspondences. In photogrammetry, that means carefully surveying GCPs with sub-centimeter accuracy and correctly identifying them in the imagery. In robotics, it means precise calibration targets. The algorithm itself is a solved problem from 1987; the engineering challenge is in the data.
+**The one thing most outsiders get wrong about this is...** assuming you need special software to do it. The core algorithm is 10 lines of [[quick-context/tensor|linear algebra]]. The hard part is never the math -- it is getting reliable correspondences. In photogrammetry, that means carefully surveying GCPs with sub-centimeter accuracy and correctly identifying them in the imagery. In robotics, it means precise calibration targets. The algorithm itself is a solved problem from 1987; the engineering challenge is in the data.
 
 </details>
 
@@ -299,13 +299,13 @@ Three point pairs minimum, and they must be non-collinear (not all on the same l
 **Q3:** The SVD of the cross-covariance matrix produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
 <details>
 <summary>Answer</summary>
-$R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The singular values in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
+$R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The [[quick-context/singular-value-decomposition|singular values]] in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
 </details>
 
 **Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?

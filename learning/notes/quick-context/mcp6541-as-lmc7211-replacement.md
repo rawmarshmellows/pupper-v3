@@ -7,9 +7,9 @@ created: 2026-06-07
 
 > **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 >
-> **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
+> **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind [[quick-context/pupper-bom-control-board|LCSC part number]] **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from comparator-specification → Choosing a Replacement.
 
-> **TL;DR:** **Yes — but conditionally.** The MCP6541RT-I/OT (C623499) is a *mechanical drop-in* for the LMC7211-N in SOT23-5: same package, **identical pinout**. Electrically it is a valid swap **only if your supply is ≤ 5.5 V and your signal is slow** (≥ a few µs is fine). Inside that envelope it's actually an **upgrade** — ~10× lower quiescent current (0.6 µA vs 7 µA), works down to 1.6 V, and adds **built-in hysteresis**. Outside it, it **fails**: the MCP6541 dies above 7 V and the LMC7211-N's signature 15 V operation has no equivalent, and the MCP6541 is ~9× slower (4 µs vs 450 ns).
+> **TL;DR:** **Yes — but conditionally.** The MCP6541RT-I/OT (C623499) is a *mechanical drop-in* for the LMC7211-N in SOT23-5: same package, **identical pinout**. Electrically it is a valid swap **only if your supply is ≤ 5.5 V and your signal is slow** (≥ a few µs is fine). Inside that envelope it's actually an **upgrade** — ~10× lower quiescent current (0.6 µA vs 7 µA), works down to 1.6 V, and adds **built-in [[micro-context/schmitt-trigger-hysteresis|hysteresis]]**. Outside it, it **fails**: the MCP6541 dies above 7 V and the LMC7211-N's signature 15 V operation has no equivalent, and the MCP6541 is ~9× slower (4 µs vs 450 ns).
 
 ## The Core Problem: A Datasheet Swap Is Two Questions, Not One
 
@@ -17,12 +17,12 @@ A "replacement" must pass two independent tests: **will it fit?** (form — pack
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Drop-in (pin-compatible)** | Same package *and* identical pin map, so it solders onto the existing footprint with zero layout change. |
 | **Functional equivalent** | Does the electrical job but differs mechanically (package/pinout) — needs a footprint redraw. |
-| **Operating supply range** | The $V_{CC}$ window where specs are guaranteed. The MCP6541's ceiling (5.5 V) is the decisive constraint vs the LMC7211-N's 15 V. |
-| **Internal hysteresis** | A built-in offset between rising and falling thresholds (MCP6541: ~3.3 mV). The LMC7211-N has **none** — it needs external positive feedback. This is a *behavior change*, not just a number. |
+| **Operating supply range** | The $V_{CC}$ window where specs are guaranteed. The MCP6541's ceiling (5.5 V) is the decisive [[quick-context/voltage-current-causality|constraint]] vs the LMC7211-N's 15 V. |
+| **Internal hysteresis** | A built-in offset between rising and falling thresholds (MCP6541: ~3.3 mV). The LMC7211-N has **none** — it needs external [[quick-context/pupper-lab7-vision-tracking|positive feedback]]. This is a *behavior change*, not just a number. |
 | **Propagation delay ($t_{PD}$)** | Input-cross-to-output-switch time. MCP6541 ≈ 4 µs; LMC7211-N ≈ 450 ns — a ~9× speed gap that rules out fast applications. |
 
 <details>
@@ -112,14 +112,14 @@ SUPPLY-RANGE OVERLAP   (●━━● operating range;  ┄╳ absolute-max limit
 
 #### The behavior change: built-in hysteresis
 
-The LMC7211-N has **zero** internal hysteresis — its threshold is a single point, and you add hysteresis with an external feedback resistor if you want clean switching on slow/noisy signals. The MCP6541 has **~3.3 mV of hysteresis baked in** (1.5–6.5 mV range). For most threshold-detect circuits this is a *bonus* (cleaner edges, no external resistors). But it is **not removable** — if the original design depended on a hysteresis-free linear crossing (e.g. using the comparator as a precise 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]] or zero-crossing reference), the swap changes the answer.
+The LMC7211-N has **zero** internal hysteresis — its [[micro-context/capacitive-voltage-sensing|threshold]] is a single point, and you add hysteresis with an external feedback resistor if you want clean switching on slow/noisy signals. The MCP6541 has **~3.3 mV of hysteresis baked in** (1.5–6.5 mV range). For most threshold-detect circuits this is a *bonus* (cleaner edges, no external resistors). But it is **not removable** — if the original design depended on a hysteresis-free linear crossing (e.g. using the comparator as a precise 1-bit [[micro-context/adc-analog-to-digital-converter|ADC]] or zero-crossing reference), the swap changes the answer.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Range and speed vs current and integration</summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Range and speed vs current and integration</summary>
 
-These two parts sit on opposite sides of a classic comparator trade. The LMC7211-N buys **voltage range and speed** with a higher standing current and no built-in hysteresis. The MCP6541 buys **ultra-low current and integrated hysteresis** by giving up high-voltage operation and speed.
+These two parts sit on opposite sides of a classic comparator trade. The LMC7211-N buys **voltage range and speed** with a higher standing current and no built-in hysteresis. The MCP6541 buys **ultra-low current and [[quick-context/playbook-main|integrated]] hysteresis** by giving up high-voltage operation and speed.
 
 | Axis | LMC7211-N | MCP6541 (C623499) | Who wins |
 |---|---|---|---|
@@ -139,7 +139,7 @@ The professional read: **a replacement is rarely "the same part."** It's a part 
 
 Run the [[quick-context/comparator-specification|spec checklist]] against two different LMC7211-N circuits and you get opposite answers — which is the whole point of checking *function*, not just *footprint*.
 
-**Case A — 3.0 V Li-ion undervoltage monitor (the worked circuit in [[quick-context/comparator-specification#concrete-example|the spec note]]):**
+**Case A — 3.0 V Li-ion undervoltage monitor (the worked circuit in the spec note):**
 
 ```
   Requirement                  MCP6541 (C623499)            Verdict
@@ -173,15 +173,15 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
 
 - **[[quick-context/comparator-specification]]** — The datasheet-reading note this cross-reference is built on; its *Choosing a Replacement* section is the exact checklist applied here. Read it for what each spec row (§4.1–4.6) means.
 
-- **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional cross-vendor swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
+- **[[quick-context/tlv7211-as-lmc7211-replacement]]** — The *unconditional* counterpart: TI's TLV7211 is the renamed, spec-identical LMC7211-N. Where the MCP6541 is a conditional [[quick-context/tlv7211-as-lmc7211-replacement|cross-vendor]] swap, the TLV7211 is a guaranteed drop-in — the two notes bracket the full replacement spectrum.
 
-- **[[quick-context/comparator]]** — How a comparator works (differential pair, push-pull vs open-drain output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
+- **[[quick-context/comparator]]** — How a comparator works ([[quick-context/differential-pair|differential pair]], push-pull vs [[micro-context/push-pull-vs-open-drain|open-drain]] output, hysteresis). Explains *why* the built-in-hysteresis difference and the output-type match matter.
 
 - **[[quick-context/op-amp]]** — Shares the spec vocabulary ($V_{OS}$, CMRR, PSRR, CMVR); the MCP6541's "Precise Comparator" app note even gains up the signal with an op-amp first.
 
 - **[[micro-context/adc-analog-to-digital-converter]]** — A comparator is a 1-bit ADC; this is the one use where the MCP6541's *built-in hysteresis* is a liability rather than a feature.
 
-- **Cross-referencing / second-sourcing** — A reusable skill: never shop by name or price; match every guaranteed spec, in *your* conditions, plus form (package + pinout + dimensions).
+- **Cross-referencing / second-sourcing** — A reusable skill: never shop by name or price; match every guaranteed spec, in *your* conditions, plus form ([[quick-context/comparator-specification|package + pinout + dimensions]]).
 
 </details>
 

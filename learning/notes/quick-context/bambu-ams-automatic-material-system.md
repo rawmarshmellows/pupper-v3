@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/bambu-p2s-print-quality]] | [[quick-context/3d-printer-hotends]] | [[quick-context/3d-printing-filament-refill-vs-spool]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printing-slicer-settings]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -18,7 +18,7 @@ The AMS (Automatic Material System) solves two problems that plague FDM 3D print
 
 | Term | Definition |
 |------|------------|
-| **Purge/waste tower** | Sacrificial block printed alongside your model to flush old color from the nozzle before printing new color—the main source of multi-color filament waste. |
+| **Purge/[[quick-context/3d-printing-filament-refill-vs-spool|waste]] tower** | Sacrificial block printed alongside your model to flush old color from the nozzle before printing new color—the main source of multi-color filament waste. |
 | **RFID tag** | Embedded chip in Bambu spools that the AMS reads to auto-detect material type, color, and remaining length—third-party filaments require manual profile configuration. |
 | **Filament buffer/hub** | The junction box between AMS and printer that manages filament paths and provides slack for the reverse-Bowden tube—each AMS connects through this. |
 | **Spool backup** | AMS feature that automatically switches to another slot when current spool runs out—requires pre-mapping which slots contain the same material. |
@@ -29,7 +29,7 @@ The AMS (Automatic Material System) solves two problems that plague FDM 3D print
 
 The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's firmware. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the hotend and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
 
-For loading, the AMS uses motorized rollers to feed the selected filament through its internal path, into the hub, and down the reverse-Bowden tube to the extruder. The extruder gears then grip the filament and push it through the hotend. Before printing resumes, the printer must **purge** the old color from the nozzle—this is done by extruding material into a waste tower or into the model's infill until only the new color emerges. RFID readers at each slot detect Bambu-branded spools and automatically configure temperature, flow rate, and material type; third-party filaments require manual profile selection in the slicer software.
+For [[quick-context/teep|loading]], the AMS uses motorized rollers to feed the selected filament through its internal path, into the hub, and down the reverse-Bowden tube to the extruder. The extruder gears then grip the filament and push it through the hotend. Before printing resumes, the printer must **purge** the old color from the nozzle—this is done by extruding material into a waste tower or into the model's [[quick-context/3d-printing-slicer-settings|infill]] until only the new color emerges. RFID readers at each slot detect Bambu-branded spools and automatically configure temperature, flow rate, and material type; third-party filaments require manual profile selection in the slicer software.
 
 ```
 FILAMENT CHANGE SEQUENCE
@@ -74,9 +74,9 @@ FILAMENT CHANGE SEQUENCE
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[quick-context/3d-printer-hotends|hotend]] before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these materials.
+The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[quick-context/3d-printer-hotends|hotend]] before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per [[quick-context/pcb-assembly-files-bom-cpl|layer]]. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these [[quick-context/cnc-machining|materials]].
 
 </details>
 
@@ -154,7 +154,7 @@ AMS Unit 0 (slots 1-4)          AMS Unit 1 (slots 5-8)
 Slots 5-6 are configured as backups for slots 1-2. When slot 1's white runs out at 3am, the printer automatically:
 1. Retracts remaining filament from slot 1
 2. Loads white from slot 5
-3. Continues printing with zero intervention
+3. Continues printing with [[quick-context/mcp6541-as-lmc7211-replacement|zero]] intervention
 
 **The one thing most outsiders get wrong about this is...** assuming the AMS is just for multi-color artistic prints they don't care about. The killer feature for functional printing is **spool backup for unattended prints**. A 40-hour engineering prototype that runs out of filament at hour 35 is a complete failure—the AMS lets you load two 1kg spools of the same material and walk away for the weekend. Multi-color is the flashy feature; reliability is the practical one.
 
@@ -163,7 +163,7 @@ Slots 5-6 are configured as backups for slots 1-2. When slot 1's white runs out 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Understanding material properties (PLA, PETG, TPU, etc.) is essential since AMS compatibility varies by filament type; soft and abrasive materials often require manual loading
+- [[quick-context/3d-printing-filament-types]] — Understanding material properties (PLA, [[quick-context/bambu-p2s-print-quality|PETG]], TPU, etc.) is essential since AMS compatibility varies by filament type; soft and abrasive materials often require manual loading
 - [[quick-context/3d-printer-hotends]] — The hotend determines purge efficiency and material compatibility; all-metal hotends handle higher temps but may require different purge volumes
 - [[quick-context/3d-printing-slicer-settings]] — Slicer configuration (flush volumes, tower placement, color sequencing) directly controls AMS waste and print time overhead
 

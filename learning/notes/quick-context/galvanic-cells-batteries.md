@@ -3,23 +3,23 @@ topic: Galvanic Cells (Batteries)
 created: 2026-01-23
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/bjt-specifications]] | [[quick-context/bond-pad]]
 
-> **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
+> **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing [[quick-context/anions-and-oxidation|electrons]] to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
 
 ## The Core Problem
 
-Some chemical reactions *want* to happen—they're thermodynamically favorable, releasing energy as they proceed. A galvanic cell (battery) captures this released energy as electrical [[quick-context/electric-current|current]] instead of letting it dissipate as heat. Without batteries, we'd have no portable electronics, no electric vehicles, no grid-scale energy storage, and no way to store renewable energy for when the sun isn't shining. The core insight: **certain metals "want" to give up electrons more than others**. Zinc atoms readily shed electrons; copper atoms readily accept them. Put zinc and copper in contact through an ionic solution, and electrons will spontaneously flow from zinc to copper. A battery intercepts this electron flow, forcing it through an external circuit where it can do useful work (power a motor, light an LED, charge your phone) before completing its journey.
+Some chemical reactions *want* to happen—they're thermodynamically favorable, releasing energy as they proceed. A galvanic cell (battery) captures this released energy as electrical [[quick-context/electric-current|current]] instead of letting it dissipate as heat. Without batteries, we'd have no portable electronics, no electric vehicles, no grid-scale energy storage, and no way to store renewable energy for when the sun isn't shining. The core insight: **certain metals "want" to give up electrons more than others**. Zinc atoms readily shed electrons; copper atoms readily accept them. Put zinc and copper in contact through an ionic solution, and electrons will spontaneously flow from zinc to copper. A battery intercepts this [[quick-context/electrodes|electron flow]], forcing it through an external circuit where it can do useful work (power a motor, light an LED, charge your phone) before completing its journey.
 
-This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while electrolysis converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—electrodes, electrolyte, electron flow—but energy flows in opposite directions.
+This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while [[quick-context/electrolysis|electrolysis]] converts electrical energy into chemical potential energy ([[quick-context/voltage-thermodynamics-electrolysis|non-spontaneous]], requires energy input). Same components—electrodes, [[quick-context/electrolyte|electrolyte]], electron flow—but energy flows in opposite directions.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/reduction-potential\|Electrode potential (E°)]]** | A measure of how strongly a material wants to gain or lose electrons, measured in volts relative to a standard hydrogen electrode. Zinc (E° = -0.76V) readily gives up electrons; copper (E° = +0.34V) readily accepts them. The *difference* between two electrodes determines cell voltage. |
-| **Anode/Cathode** | In a galvanic cell, the **anode** is where [[quick-context/anions-and-oxidation\|oxidation]] occurs (electrons leave, metal dissolves)—it's the *negative* terminal. The **cathode** is where [[quick-context/cations-and-reduction\|reduction]] occurs (electrons arrive, ions deposit)—it's the *positive* terminal. **Warning**: This is reversed from electrolysis, where cathode is negative. The definitions follow electron flow direction, which reverses when you flip from spontaneous to forced reactions. |
-| **[[quick-context/making-electrolytes\|Electrolyte]]** | The ionic medium (liquid, gel, or solid) that allows ions to move between [[quick-context/electrodes\|electrodes]], completing the internal circuit. Electrons flow through the external wire; ions flow through the electrolyte. Without both paths, no current flows. |
+| **Electrode potential (E°)** | A measure of how strongly a material wants to gain or lose electrons, measured in volts relative to a standard hydrogen [[quick-context/cations-and-reduction|electrode]]. Zinc (E° = -0.76V) readily gives up electrons; copper (E° = +0.34V) readily accepts them. The *difference* between two electrodes determines cell voltage. |
+| **[[micro-context/anode|Anode]]/[[micro-context/cathode|Cathode]]** | In a galvanic cell, the **anode** is where [[quick-context/anions-and-oxidation|oxidation]] occurs (electrons leave, metal dissolves)—it's the *negative* terminal. The **cathode** is where [[quick-context/cations-and-reduction|reduction]] occurs (electrons arrive, ions deposit)—it's the *positive* terminal. **Warning**: This is reversed from electrolysis, where cathode is negative. The definitions follow electron flow direction, which reverses when you flip from spontaneous to forced reactions. |
+| **[[quick-context/making-electrolytes|Electrolyte]]** | The ionic medium (liquid, gel, or solid) that allows ions to move between [[quick-context/electrodes|electrodes]], completing the internal circuit. Electrons flow through the external wire; ions flow through the electrolyte. Without both paths, no current flows. |
 | **State of Charge (SoC)** | The percentage of remaining capacity in a battery (100% = full, 0% = empty). As the battery discharges, reactants are consumed and SoC drops. Most batteries shouldn't be fully discharged—lithium-ion degrades rapidly below ~20% SoC. |
 | **Internal resistance** | The opposition to current flow within the battery itself. Higher internal resistance means more energy lost as heat, lower efficiency, and reduced power output. Internal resistance increases as batteries age and as temperature drops (why your phone dies faster in cold weather). |
 
@@ -123,12 +123,12 @@ THE COMPLETE ENERGY FLOW:
 
 Battery engineering is a four-way optimization problem with no perfect solution:
 
-- **Energy density** (Wh/kg): How much total energy can be stored per unit mass? Critical for EVs and phones where weight matters.
+- **Energy [[quick-context/bond-pad|density]]** (Wh/kg): How much total energy can be stored per unit mass? Critical for EVs and phones where weight matters.
 - **Power density** (W/kg): How fast can that energy be delivered? Critical for power tools and vehicle acceleration.
 - **Cycle life**: How many charge/discharge cycles before significant degradation? Critical for grid storage and EVs.
 - **Cost** ($/kWh): Can you afford to build it at scale?
 
-Lithium-ion dominates because it balances these reasonably well, but it's not best at any single metric. Lead-acid batteries have terrible energy density but excellent power density and low cost (car starters). Sodium-sulfur batteries have great energy density but require 300°C operating temperatures. Solid-state batteries promise better safety and density but aren't manufacturable at scale yet. Every battery chemistry is a compromise—practitioners argue endlessly about which tradeoffs matter for specific applications.
+Lithium-ion dominates because it balances these reasonably well, but it's not best at any single metric. Lead-acid batteries have terrible energy density but excellent power density and low cost (car starters). Sodium-sulfur batteries have great energy density but require 300°C operating temperatures. Solid-state batteries promise [[quick-context/comparator-specification|better]] safety and density but aren't manufacturable at scale yet. Every battery chemistry is a compromise—practitioners argue endlessly about which tradeoffs matter for specific applications.
 
 </details>
 
@@ -212,7 +212,7 @@ The salt bridge allows ions to migrate:
   • Electrical neutrality maintained, current keeps flowing
 ```
 
-**Practical battery comparison:**
+**Practical battery [[quick-context/teep|comparison:]]**
 
 | Chemistry | Voltage | Energy Density | Cycle Life | Use Case |
 |-----------|---------|----------------|------------|----------|
@@ -236,7 +236,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 
 - **[[quick-context/chemical-bonds-spectrum]]** — Battery reactions involve breaking and forming bonds. The energy released comes from forming more stable bonds in the products than existed in the reactants.
 
-- **[[quick-context/reduction-potential|Electrochemical Series (Standard Reduction Potentials)]]** — The ranked list of E° values that predicts which metals will oxidize/reduce relative to others. Metals with more negative E° make better anodes; more positive E° make better cathodes.
+- **Electrochemical Series (Standard Reduction Potentials)** — The ranked list of E° values that predicts which metals will oxidize/reduce relative to others. Metals with more negative E° make better anodes; more positive E° make better cathodes.
 
 - **Battery Management Systems (BMS)** — The electronics that monitor and protect battery packs: cell balancing, overcharge/overdischarge protection, temperature monitoring. Critical for lithium-ion safety.
 
@@ -270,7 +270,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Q4:** Your phone battery lasts much shorter in winter. Based on what you've learned, what's happening electrochemically?
 <details>
 <summary>Answer</summary>
-**Cold increases internal resistance and slows ion mobility.** At low temperatures: (1) the electrolyte becomes more viscous, slowing lithium ion diffusion between electrodes; (2) charge transfer kinetics at electrode surfaces slow down (higher activation energy barrier); (3) internal resistance increases, meaning more energy is lost as heat inside the battery rather than delivered to your phone. The battery still has the same stored energy, but it can't deliver it as efficiently or quickly. This is why EVs have reduced range in cold weather. See: 5 Essential Terms (internal resistance)
+**Cold increases internal resistance and slows ion mobility.** At low temperatures: (1) the electrolyte becomes more viscous, slowing lithium ion diffusion between electrodes; (2) [[quick-context/capacitive-sensing-measurement|charge transfer]] kinetics at electrode surfaces slow down (higher activation energy barrier); (3) internal resistance increases, meaning more energy is lost as heat inside the battery rather than delivered to your phone. The battery still has the same stored energy, but it can't deliver it as efficiently or quickly. This is why EVs have reduced range in cold weather. See: 5 Essential Terms (internal resistance)
 </details>
 
 **Q5:** A rechargeable battery can switch between "galvanic mode" (discharging) and "electrolytic mode" (charging). What physically reverses when you plug in the charger?

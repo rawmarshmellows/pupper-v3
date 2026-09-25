@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bjt]] | [[quick-context/bjt-specifications]]
 
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
@@ -14,12 +14,12 @@ The substrate is the "translator" that takes a chip's tiny, densely-packed conne
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Die** | The actual silicon chip—a tiny square (often ~10mm) containing billions of transistors; this is what people usually mean by "the chip" |
-| **Pitch** | The distance between the centers of adjacent connections; smaller pitch = more connections in the same space |
+| **Pitch** | The [[quick-context/embedded-communication-protocols|distance]] between the centers of adjacent connections; smaller pitch = more connections in the same space |
 | **Redistribution Layer (RDL)** | Metal routing layers inside the substrate that reroute signals from one location/pitch to another |
-| **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of solder balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
+| **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | A grid of [[quick-context/soldering|solder]] balls on the bottom of a package that connects to the circuit board; the "output" of the substrate |
 | **[[quick-context/flip-chip|Flip-chip]]** | A mounting method where the die faces downward with solder bumps connecting directly to the substrate (as opposed to [[quick-context/wire-bonding|wire bonding]] from the die edges) |
 
 <details>
@@ -114,7 +114,7 @@ SUBSTRATE MATERIALS COMPARISON
       • 95% of the market                 • Automotive (harsh env.)
 ```
 
-**Step-by-step signal path through a substrate:**
+**Step-by-step [[quick-context/comparator|signal]] path through a substrate:**
 
 1. **Signal leaves the die** through a microscopic solder bump (or wire bond)
 2. **Bump connects to a landing pad** on the top surface of the substrate
@@ -319,7 +319,7 @@ WHAT PRACTITIONERS ARGUE ABOUT:
     Wire bond: Cheaper, simpler substrate, but limited I/O count.
 ```
 
-As chips get more complex (modern CPUs have 2000+ connections), substrates must support finer pitches. But every step toward finer pitch dramatically increases manufacturing difficulty. A substrate with 15μm traces might cost $2; the same substrate with 5μm traces might cost $15—and half of them might fail quality testing.
+As chips get more complex (modern CPUs have 2000+ connections), substrates must support finer pitches. But every step toward finer pitch dramatically increases [[quick-context/transistor|manufacturing difficulty]]. A substrate with 15μm traces might cost $2; the same substrate with 5μm traces might cost $15—and half of them might fail quality testing.
 
 </details>
 
@@ -405,7 +405,7 @@ BGA ball pitch          │ 0.5mm (500 μm)       │ 5× coarser than die bumps
 Package height          │ ~1.0mm               │ Slim for smartphones
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the silicon die. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
+**The one thing most outsiders get wrong about this is...** thinking the substrate is just "packaging" or "plastic around the chip." The substrate is actually a sophisticated multi-layer circuit board in miniature, with its own complex wiring that costs nearly as much to design as the chip itself. For advanced chips, the substrate can cost more than the [[quick-context/silicon-die|silicon die]]. Companies spend years and billions of dollars developing substrate technology, and substrate manufacturing capacity is often the bottleneck limiting how many high-end chips can be produced. When there were GPU shortages in 2021-2022, substrate supply was one of the major limiting factors—not just chip fabrication.
 
 </details>
 
@@ -414,15 +414,15 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics [[quick-context/fundamental-electronic-parts-index|packaging hierarchy]]; essential for understanding why substrates exist.
 
-- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; wire bonding is older and cheaper, flip-chip enables higher density and is used in most modern processors.
+- **[[quick-context/wire-bonding|Wire Bonding]] vs. [[quick-context/flip-chip|Flip-Chip]]** — The two main methods for connecting a die to a substrate; [[quick-context/wire-bonding|wire bonding]] is older and cheaper, flip-chip enables higher density and is used in most modern processors.
 
 - **Underfill** — An epoxy material injected between the die and substrate after flip-chip attachment; distributes mechanical stress and prevents solder bump cracking during thermal cycling.
 
-- **Interposer (2.5D Packaging)** — A silicon or glass layer placed between multiple chiplets and the substrate; enables even finer-pitch connections for high-bandwidth chip-to-chip communication.
+- **Interposer (2.5D Packaging)** — A silicon or glass layer placed between multiple chiplets and the substrate; enables even finer-pitch connections for high-[[quick-context/oscilloscope-and-multimeter|bandwidth]] chip-to-chip communication.
 
-- **Coefficient of Thermal Expansion (CTE)** — How much materials expand when heated; a critical concern because silicon, organic substrates, and solder all expand at different rates, causing stress.
+- **[[quick-context/flip-chip|Coefficient of Thermal Expansion (CTE)]]** — How much materials expand when heated; a critical concern because silicon, organic substrates, and solder all expand at different rates, causing stress.
 
 </details>
 
@@ -450,13 +450,13 @@ There's a fundamental tension between density, cost, and reliability. Finer trac
 **Q4:** Someone claims "the substrate is just the plastic case around a chip—it doesn't really matter for performance." What's wrong with this?
 <details>
 <summary>Answer</summary>
-The substrate is not just packaging—it's a sophisticated multi-layer circuit with its own complex signal routing. It directly affects electrical performance (signal integrity, power delivery), thermal performance (heat path from die), and mechanical reliability. For advanced chips, substrate design and manufacturing can cost more than the silicon die itself, and substrate availability has been a major production bottleneck. See: The one thing most outsiders get wrong...
+The substrate is not just packaging—it's a sophisticated multi-layer circuit with its own complex signal routing. It directly affects electrical performance ([[quick-context/bga-ball-grid-array|signal integrity]], power delivery), thermal performance (heat path from die), and mechanical reliability. For advanced chips, substrate design and manufacturing can cost more than the silicon die itself, and substrate availability has been a major production bottleneck. See: The one thing most outsiders get wrong...
 </details>
 
 **Q5:** Why does the "onion" fan-out pattern mean that center die bumps are the hardest to route, and what does this imply for substrate layer count as die bump density increases?
 <details>
 <summary>Answer</summary>
-In the onion pattern, outer bumps escape first on the early routing layers, occupying the available routing channels. Each inner ring must wait for outer rings to clear before it has a path outward. Center bumps are surrounded by all other rings and can only escape after every outer ring has routed away—they need the deepest layers. As die bump density increases (more rings), you need proportionally more substrate layers to provide escape paths for all the inner rings. This is why substrate complexity grows faster than die complexity: doubling the die's I/O count might require more than doubling the substrate layers. See: The Fan-Out Mechanism - The "Onion" Pattern
+In the onion pattern, outer bumps escape first on the early routing layers, occupying the available routing channels. Each inner ring must wait for outer rings to clear before it has a path outward. Center bumps are surrounded by all other rings and can only escape after every outer ring has routed away—they need the deepest layers. As die bump density increases (more rings), you need proportionally more substrate layers to provide escape paths for all the inner rings. This is why substrate complexity grows faster than die complexity: [[quick-context/camera-fundamentals|doubling]] the die's I/O count might require more than doubling the substrate layers. See: The Fan-Out Mechanism - The "Onion" Pattern
 </details>
 
 **Q6:** A team is choosing between traditional substrate packaging and Fan-Out Wafer-Level Packaging (FOWLP) for a new chip. What factors would push them toward each option?

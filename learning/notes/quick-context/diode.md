@@ -4,7 +4,7 @@ created: 2026-02-06
 updated: 2026-02-25
 ---
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/diode-rectification]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bjt]]
 
 > **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, voltage protection, and light emission (LEDs).
 
@@ -12,18 +12,18 @@ updated: 2026-02-25
 
 ## Human notes
 
-The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the return path for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
+The collapsing [[quick-context/inductor|inductor]] field pulls the switch node below GND — the inductor generates a voltage fighting the current decrease ([[quick-context/self-induction|self-induction]]). This is what forward-biases the freewheeling [[quick-context/diode|diode]] in a [[micro-context/buck-converter|buck converter]]: the cathode (at the switch node) drops below the anode (at GND), so the diode conducts and provides the [[quick-context/grounding-and-return-paths|return path]] for the inductor current. This "freewheeling" use case is one of the most important diode applications in switching power supplies — the diode exists specifically to give the inductor somewhere to push current when the MOSFET turns off.
 
 ## The Core Problem: Making Current Flow Only One Way
 
-Wall outlets provide AC power that alternates direction 50-60 times per second, but every electronic device needs DC (current flowing in one direction). The diode solves this: it conducts current in one direction and blocks it in the other. This simple behavior enables rectifiers that convert AC to DC, protection circuits that prevent reverse-polarity damage, and LEDs that convert current to light. Diodes are the simplest semiconductor device—just a single PN junction—making them the gateway to understanding how [[quick-context/transistor|transistors]] work (a transistor is essentially two PN junctions back-to-back).
+Wall outlets provide AC power that alternates direction 50-60 times per second, but every electronic device needs DC (current flowing in one direction). The diode solves this: it conducts current in one direction and blocks it in the other. This simple behavior enables rectifiers that convert AC to DC, protection circuits that prevent reverse-polarity damage, and LEDs that convert current to light. Diodes are the simplest semiconductor device—just a single PN junction—making them the gateway to understanding how [[quick-context/transistor|transistors]] work (a [[quick-context/transistor|transistor]] is essentially two PN junctions back-to-back).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **PN Junction** | The boundary where P-type silicon (holes) meets N-type silicon (electrons). A depletion zone forms at the boundary, creating a natural barrier to current flow. |
-| **Forward Bias** | Applying voltage in the "easy" direction (positive to P-side, negative to N-side). Overcomes the depletion zone; current flows. Requires ~0.7V for silicon, ~0.3V for Schottky, ~2V for LEDs. |
+| **PN Junction** | The boundary where [[quick-context/differential-pair|P-type silicon]] (holes) meets [[quick-context/doped-silicon|N-type silicon]] (electrons). A depletion zone forms at the boundary, creating a natural barrier to current flow. |
+| **[[micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying voltage in the "easy" direction (positive to P-side, negative to N-side). Overcomes the depletion zone; current flows. Requires ~0.7V for silicon, ~0.3V for Schottky, ~2V for LEDs. |
 | **Reverse Bias** | Applying voltage in the "blocking" direction. Widens the depletion zone; essentially no current flows (only tiny leakage). |
 | **Forward Voltage Drop (Vf)** | The voltage "consumed" by the diode when conducting. Always present—a silicon diode always drops ~0.7V regardless of current (within limits). |
 | **Breakdown Voltage** | The reverse voltage at which the diode can no longer block current and conducts in reverse. Destructive for normal diodes; intentionally exploited in Zener diodes for voltage regulation. |
@@ -219,13 +219,13 @@ BRIDGE RECTIFIER CIRCUIT
 
 - **[[quick-context/electric-current]]** — Diodes control current direction. The forward voltage drop means diodes always consume some power (P = Vf × I).
 
-- **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/reverse bias, half-wave vs full-bridge rectification, smoothing capacitors, and the complete conversion chain inside every power supply.
+- **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/reverse bias, half-wave vs full-bridge rectification, smoothing [[quick-context/voltage|capacitors]], and the complete conversion chain inside every power supply.
 
-- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on capacitance, load current, and frequency.
+- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on [[quick-context/capacitance|capacitance]], load current, and frequency.
 
 - **[[quick-context/resistor]]** — LEDs always need a current-limiting resistor (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
 
-- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every buck converter needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
+- **[[quick-context/inductor]] / [[micro-context/buck-converter|Buck Converter]]** — Freewheeling (flyback) diodes provide a current path for inductors when a switch opens. The inductor's [[quick-context/self-induction|self-induction]] pulls the switch node below GND, forward-biasing the diode. This is why every [[micro-context/buck-converter|buck converter]] needs a diode (or synchronous MOSFET) — without it, the inductor's voltage spike destroys the switch.
 
 </details>
 
@@ -235,19 +235,19 @@ BRIDGE RECTIFIER CIRCUIT
 **Q1:** Why does a silicon diode always drop ~0.7V when conducting, regardless of the current?
 <details>
 <summary>Answer</summary>
-**The 0.7V is the built-in potential of the PN junction.** It's the voltage needed to overcome the depletion zone's electric field and push carriers across the junction. The I-V curve is exponential (Shockley equation), so voltage changes very slowly with current—from ~0.6V at low current to ~0.8V at high current. It's approximately constant, not exactly.
+**The 0.7V is the built-in potential of the PN junction.** It's the voltage needed to overcome the depletion zone's [[quick-context/voltage-current-causality|electric field]] and push carriers across the junction. The I-V curve is exponential (Shockley equation), so voltage changes very slowly with current—from ~0.6V at low current to ~0.8V at high current. It's approximately constant, not exactly.
 </details>
 
 **Q2:** What's the advantage of a Schottky diode over a standard silicon diode?
 <details>
 <summary>Answer</summary>
-**Lower forward voltage (~0.3V vs ~0.7V) and faster switching.** Schottky diodes use a metal-semiconductor junction instead of a PN junction, so there's no minority carrier storage and no reverse recovery time. This makes them ideal for switching power supplies where efficiency and speed matter. The tradeoff: higher reverse leakage current and lower breakdown voltage.
+**Lower forward voltage (~0.3V vs ~0.7V) and [[quick-context/transistor-analog-to-digital|faster switching]].** Schottky diodes use a metal-semiconductor junction instead of a PN junction, so there's no minority carrier storage and no reverse recovery time. This makes them ideal for switching power supplies where efficiency and speed matter. The tradeoff: higher reverse leakage current and lower breakdown voltage.
 </details>
 
 **Q3:** A Zener diode is rated at 5.1V. How is it used differently from a normal diode?
 <details>
 <summary>Answer</summary>
-**It's operated in reverse bias, intentionally at its breakdown voltage.** Normal diodes are destroyed by reverse breakdown. Zener diodes are designed to break down at a precise, repeatable voltage. Connected in reverse with a series resistor from a higher voltage, the Zener clamps the output to its rated voltage (5.1V), acting as a simple voltage regulator or reference.
+**It's operated in reverse bias, intentionally at its breakdown voltage.** Normal diodes are destroyed by reverse breakdown. Zener diodes are designed to break down at a precise, repeatable voltage. Connected in reverse with a series resistor from a higher voltage, the Zener clamps the output to its rated voltage (5.1V), acting as a simple [[quick-context/ac-to-dc-rectification|voltage regulator]] or [[quick-context/comparator|reference]].
 </details>
 
 **Q4:** Why does an LED need a current-limiting resistor but a regular diode in a rectifier doesn't?

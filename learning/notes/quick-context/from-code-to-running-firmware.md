@@ -5,22 +5,22 @@ created: 2026-03-26
 
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
+> **Related:** [[quick-context/firmware]] | [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/python-to-machine-code-pipeline]] | [[quick-context/how-source-code-is-stored]]
 
-> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
+> **TL;DR:** After the [[quick-context/code-to-gates-and-bootstrapping|compiler]] produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing [[quick-context/python-to-machine-code-pipeline|machine code]], initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On [[quick-context/d-flip-flop|power]]-up, the CPU loads the stack pointer from [[quick-context/how-source-code-is-stored|address]] 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
 ## The Core Problem
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
+The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` [[quick-context/mcp6541-as-lmc7211-replacement|function]]. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Linker** | The tool (e.g., `arm-none-eabi-ld`) that combines compiled object files (`.o`) into a single executable, resolving symbol references (e.g., connecting a `call motor_update` to the actual function address) and placing everything at the correct memory addresses. |
+| **Linker** | The tool (e.g., `arm-none-eabi-ld`) that combines compiled object files (`.o`) into a single executable, resolving symbol references (e.g., connecting a `call motor_[[quick-context/ppo-proximal-policy-optimization|update]]` to the actual function address) and placing everything at the correct memory addresses. |
 | **Linker Script** (`.ld`) | A configuration file that tells the linker where physical memory lives — flash origin, RAM origin, their sizes — and which code/data sections go where. It's the bridge between the software world (sections) and the hardware world (memory addresses). |
 | **ELF** (Executable and Linkable Format) | The output file format containing machine code (`.text`), initialized data (`.data`), the vector table (`.isr_vector`), debug symbols (DWARF), and a header describing where each section belongs in memory. The flash tool reads the ELF to know what bytes go where. |
-| **Vector Table** | An array of 32-bit addresses at the very start of flash. Entry 0 is the initial stack pointer, entry 1 is the `Reset_Handler` address, and entries 2+ are exception/interrupt handler addresses. The CPU reads entries 0 and 1 from hardware on every reset — no software involved. |
+| **Vector Table** | An array of 32-bit addresses at the very start of flash. Entry 0 is the initial stack pointer, entry 1 is the `Reset_Handler` address, and entries 2+ are exception/[[quick-context/keypress-to-pixel-pipeline|interrupt]] handler addresses. The CPU reads entries 0 and 1 from hardware on every reset — no software involved. |
 | **Startup Code** (`startup_*.s`) | Assembly code that runs before `main()`. It defines the vector table, copies initialized globals from flash to RAM (`.data`), zeros uninitialized globals (`.bss`), calls `SystemInit()` to configure clocks, then calls `main()`. |
 
 <details>
@@ -238,9 +238,9 @@ A global variable like `int speed = 100;` needs to be `100` when your code first
 | `.bss` | Nowhere (just zeroed) | RAM | No initial value to store — just zero it |
 | Stack | — | RAM (top-down) | Grows downward from `_estack` |
 
-The `.bss` optimization is elegant: since all uninitialized globals start at zero, there's no point storing thousands of zero bytes in flash. The linker just records the start and end addresses, and the startup code zeroes that range in RAM. This can save significant flash space — a `uint8_t buffer[4096];` takes 0 bytes in flash but 4096 in RAM.
+The `.bss` optimization is elegant: since all uninitialized globals start at zero, there's no [[quick-context/epson-rc-plus-programming|point]] storing thousands of zero bytes in flash. The linker just records the start and end addresses, and the startup code zeroes that range in RAM. This can save significant flash space — a `uint8_t buffer[4096];` takes 0 bytes in flash but 4096 in RAM.
 
-**The tradeoff:** More `.data` = slower boot (more bytes to copy). More `.bss` = negligible boot cost (just zeroing). This is why embedded developers prefer uninitialized globals or explicit initialization in `main()` over initialized globals when boot time matters.
+**The [[quick-context/pupper-lab6-llm-voice-control|tradeoff:]]** More `.data` = slower boot (more bytes to copy). More `.bss` = negligible boot cost (just zeroing). This is why embedded developers prefer uninitialized globals or explicit initialization in `main()` over initialized globals when boot time matters.
 
 </details>
 
@@ -346,7 +346,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **Relocatable vs. Position-Independent Code** — Object files (`.o`) contain relocatable code with placeholder addresses. The linker resolves these. Position-independent code (PIC) can run at any address — useful for bootloaders but rarely needed on bare-metal MCUs with fixed memory maps.
 
-- **Bootloaders** — A bootloader is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
+- **Bootloaders** — A [[quick-context/firmware|bootloader]] is a small program that lives at the start of flash and can reprogram the rest of flash (e.g., over UART or USB), without needing an external debug probe. The STM32 has a factory-programmed bootloader in system memory that can be activated by setting the BOOT0 pin high.
 
 - **[[quick-context/physics-of-writing-data-to-memory]]** — The physics beneath this pipeline: how the flash programmer's bytes actually become trapped electrons on floating gates inside the MCU's flash cells, and why flash has erase-before-write constraints and limited P/E cycles.
 
@@ -360,7 +360,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 **Q1:** Why does the linker script need to know the physical addresses of flash and RAM?
 <details>
 <summary>Answer</summary>
-Because the CPU accesses memory by absolute address. When your code does `can_error_count++`, the machine instruction contains the literal RAM address (e.g., `0x20000004`) where that variable lives. The linker must assign these addresses at link time so every instruction points to the correct physical location. Unlike a desktop OS (which has virtual memory and address space randomization), a bare-metal MCU has no memory management unit to remap addresses — what the linker assigns is what the hardware sees. See: How It Works (The Linker Script)
+Because the CPU accesses memory by absolute address. When your code does `can_error_count++`, the machine [[quick-context/cpu-fetch-execute-cycle|instruction]] contains the literal RAM address (e.g., `0x20000004`) where that variable lives. The linker must assign these addresses at link time so every instruction points to the correct physical location. Unlike a desktop OS (which has virtual memory and address space randomization), a bare-metal MCU has no memory management unit to remap addresses — what the linker assigns is what the hardware sees. See: How It Works (The Linker Script)
 </details>
 
 **Q2:** What would happen if you skipped the `.data` copy in the startup code?
@@ -372,7 +372,7 @@ All initialized global variables would have garbage values instead of their inte
 **Q3:** The `.bss` section takes 0 bytes in flash but can use kilobytes of RAM. Why is this an important optimization?
 <details>
 <summary>Answer</summary>
-Flash space is limited (512KB on the STM32F446) and shared between code, constants, and `.data` initial values. A large uninitialized buffer like `uint8_t dma_buffer[4096]` would waste 4KB of flash storing nothing but zeros if `.bss` weren't handled separately. By only recording the start and end addresses, the linker keeps flash usage proportional to *meaningful* data. The startup code then zeros the region in RAM with a fast loop — much more efficient than storing and copying thousands of zero bytes. This is why embedded developers prefer `static uint8_t buf[1024];` (goes in `.bss`, 0 flash bytes) over `static uint8_t buf[1024] = {0};` (compilers may place this in `.data`, costing 1024 flash bytes, though most modern compilers are smart enough to put it in `.bss` anyway). See: The Key Tension
+Flash space is limited (512KB on the STM32F446) and shared between code, constants, and `.data` initial values. A large uninitialized buffer like `uint8_t dma_buffer[4096]` would waste 4KB of flash storing [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] but zeros if `.bss` weren't handled separately. By only recording the start and end addresses, the linker keeps flash usage proportional to *meaningful* data. The startup code then zeros the region in RAM with a fast loop — much more efficient than storing and copying thousands of zero bytes. This is why embedded developers prefer `static uint8_t buf[1024];` (goes in `.bss`, 0 flash bytes) over `static uint8_t buf[1024] = {0};` (compilers may place this in `.data`, costing 1024 flash bytes, though most modern compilers are smart enough to put it in `.bss` anyway). See: The Key Tension
 </details>
 
 **Q4:** If the vector table must be at address `0x00000000` but STM32 flash starts at `0x08000000`, how does the CPU find it?

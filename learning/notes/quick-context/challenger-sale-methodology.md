@@ -5,9 +5,9 @@ created: 2026-02-10
 
 # Challenger Sale Methodology
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[quick-context/post-sale-account-engagement]] | [[quick-context/sales-methodology-layering]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]]
 
-> **TL;DR:** The Challenger Sale is a selling methodology where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
+> **TL;DR:** The Challenger Sale is a [[quick-context/sales-methodology-layering|selling methodology]] where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
 
 ## The Core Problem
 
@@ -123,7 +123,7 @@ Challenger's emphasis on "constructive tension" creates a fine line:
 
 **The practitioner debate:** Critics argue Challenger gives permission for aggressive, off-putting sales behavior. Advocates counter that "taking control" means guiding the process (e.g., setting next steps, pushing back on scope creep), not bulldozing customers. The difference is preparation and empathy—true Challengers do the homework to earn the right to reframe.
 
-**When Challenger fails:**
+**When Challenger [[quick-context/mcp6541-as-lmc7211-replacement|fails]]:**
 - Transactional, commodity sales (no insight advantage)
 - When you don't actually have unique insight
 - Early-stage startups with no data to back claims
@@ -145,7 +145,7 @@ Challenger's emphasis on "constructive tension" creates a fine line:
 >
 > **REFRAME:** "Most retailers focus on preventing breaches. But our data shows the biggest financial hit isn't the breach itself—it's the 8-12 weeks of customer trust recovery. Brands that recover customer confidence in 3 weeks see 40% less revenue impact than those who take 12."
 >
-> **RATIONAL DROWNING:** "For a retailer your size, that delta is roughly $2M in the year following a breach."
+> **[[quick-context/existing-account-management-playbook|RATIONAL DROWNING]]:** "For a retailer your size, that delta is roughly $2M in the year following a breach."
 >
 > **EMOTIONAL IMPACT:** "And the CISO who's in seat during a slow recovery? Our research shows 60% are gone within 18 months."
 >

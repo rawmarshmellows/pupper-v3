@@ -4,9 +4,9 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/3d-printing-filament-refill-vs-spool]] | [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-ams-automatic-material-system]] | [[quick-context/bambu-p2s-print-quality]]
 
-> **TL;DR:** Different 3D printing filaments (PLA, PETG, ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
+> **TL;DR:** Different 3D printing filaments (PLA, [[quick-context/bambu-p2s-print-quality|PETG]], ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
 
 # 3D Printing Filament Types: PLA, PETG, ABS, and TPU
 
@@ -22,7 +22,7 @@ updated: 2026-01-21
 | **Warping** | Corners lifting off the bed due to uneven cooling/shrinkage—ABS is notorious, PLA is forgiving |
 | **Stringing** | Thin wisps of plastic between travel moves—PETG's nemesis, requires retraction tuning |
 | **Hygroscopic** | Absorbs moisture from air, degrading print quality—PETG, Nylon, and TPU are worst offenders |
-| **Layer adhesion** | How well layers bond together—affects part strength; ABS and PETG excel, PLA is adequate |
+| **[[quick-context/pcb-assembly-files-bom-cpl|Layer]] adhesion** | How well layers bond together—affects part strength; ABS and PETG excel, PLA is adequate |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -90,14 +90,14 @@ WHY TEMPERATURE MATTERS:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-**The key tension** is the printability-vs-performance tradeoff. PLA prints beautifully but performs poorly under stress or heat. ABS performs well but fights you the entire print. PETG is the compromise that's "good enough" at both but excels at neither. TPU opens up an entirely different axis—flexibility—but at the cost of print speed and extruder requirements. Within PLA variants: Basic is cheap and functional; Matte hides layer lines but may be slightly weaker; Silk+ has a shiny metallic finish but is more brittle and harder to tune; Translucent enables light-diffusing applications but shows every internal flaw. PETG HF (High Flow) prints faster with larger nozzles but sacrifices fine detail. TPU comes in different Shore hardnesses (95A is common, lower = softer)—softer is more flexible but exponentially harder to print. Practitioners argue endlessly about whether PETG has truly replaced ABS for functional parts, and whether TPU is "worth the hassle" vs. just buying rubber parts.
+**The key tension** is the printability-vs-performance tradeoff. PLA prints beautifully but performs poorly under stress or heat. ABS performs well but fights you the entire print. PETG is the compromise that's "good enough" at both but excels at neither. TPU opens up an entirely different axis—flexibility—but at the cost of print speed and extruder requirements. Within PLA variants: Basic is cheap and functional; Matte hides layer lines but may be slightly weaker; Silk+ has a shiny metallic finish but is more brittle and harder to tune; Translucent enables light-diffusing applications but shows every internal flaw. PETG HF (High Flow) prints faster with larger nozzles but sacrifices [[micro-context/thread-pitch-screws|fine]] detail. TPU comes in different Shore hardnesses (95A is common, lower = softer)—softer is more flexible but exponentially harder to print. Practitioners argue endlessly about whether PETG has truly replaced ABS for functional parts, and whether TPU is "worth the hassle" vs. just buying rubber parts.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-**Concrete example—typical slicer settings comparison:**
+**Concrete example—typical slicer settings [[quick-context/teep|comparison:]]**
 
 ```
 Material        | Nozzle Temp | Bed Temp | Enclosure | Part Cooling | Print Speed
@@ -118,7 +118,7 @@ TPU 95A         | 220-250°C   | 40-60°C  | Optional  | 50-100%      | 15-30mm/
 **When to use what:**
 - **PLA Basic**: Prototypes, decorative items, anything that stays indoors at room temp
 - **PLA Matte**: Visible parts where you want to hide layer lines without post-processing
-- **PLA Silk+**: Vases, display pieces, anything where aesthetics trump function
+- **PLA Silk+**: Vases, display pieces, anything where aesthetics trump [[quick-context/mcp6541-as-lmc7211-replacement|function]]
 - **PETG (any)**: Functional parts with moderate heat/stress—phone cases, brackets, outdoor items
 - **ABS**: Automotive parts, enclosures near heat sources, anything needing acetone smoothing
 - **TPU**: Phone cases, drone bumpers, gaskets, vibration dampeners, watch bands, anything that needs to flex or absorb impact
@@ -133,7 +133,7 @@ The one thing most outsiders get wrong about this is **assuming "stronger" or "m
 Related concepts that deepen understanding of filament types:
 
 - [[quick-context/glass-transition-temperature]] — Why PLA fails in hot cars and ABS survives; the critical temperature threshold for each material
-- [[quick-context/polymer-crystallinity-vs-amorphous]] — Explains warping behavior differences between materials and why some filaments shrink more than others
+- [[quick-context/polymer-crystallinity-vs-amorphous]] — Explains warping behavior differences between [[quick-context/cnc-machining|materials]] and why some filaments shrink more than others
 - [[quick-context/melt-index]] — How filament flow characteristics affect printability and why PETG HF exists
 - [[quick-context/3d-printer-hotends]] — Hardware requirements for different filaments; why all-metal hotends matter for PETG/ABS temps
 - [[quick-context/3d-printing-slicer-settings]] — Translating filament properties into actual print profiles

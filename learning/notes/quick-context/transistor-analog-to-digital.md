@@ -3,27 +3,27 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/physics-of-writing-data-to-memory]] | [[quick-context/transistor]]
 
-> **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
+> **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and [[quick-context/bare-minimal-data-storage-circuit|clock]] [[quick-context/comparator-specification|timing]] force them to behave like perfect binary switches.
 
 # Transistors: Imperfect Analog Devices Masquerading as Digital Switches
 
 ## The Core Problem: Reality Is Messy, But Computers Need Perfection
 
-Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not zero picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs voltage levels.
+Digital logic assumes transistors are perfect binary switches: fully ON (1) or fully OFF (0), with instant transitions between states. Reality is different. A [[quick-context/transistor|transistor]] is an **analog device**—it doesn't snap between states but smoothly transitions through a continuum of intermediate values. The "off" state still leaks current. The "on" state has finite resistance. Switching takes time, not [[quick-context/mcp6541-as-lmc7211-replacement|zero]] picoseconds. Quantum effects cause electrons to tunnel through barriers that should block them. [[quick-context/thermal-noise-electronics|Thermal noise]] randomly perturbs [[quick-context/voltage|voltage]] levels.
 
 If we actually treated transistors as the messy analog devices they are, digital computing would be impossible. A "1" corrupted by 5% noise might be misread as "0". A leaky "off" transistor might look like it's partially on. Errors would cascade through billions of gates, producing garbage. **The entire digital revolution depends on engineering tricks that force imperfect analog physics to behave like perfect digital logic.**
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
-| **Threshold Voltage (Vth)** | The gate voltage at which a transistor begins to conduct; below this, it should be "off"—but leakage still occurs |
-| **Leakage Current** | Current that flows through a transistor even when it's supposed to be off; worsens at smaller process nodes due to quantum tunneling |
+| **[[micro-context/capacitive-voltage-sensing|Threshold]] Voltage (Vth)** | The gate voltage at which a transistor begins to conduct; below this, it should be "off"—but leakage still occurs |
+| **Leakage Current** | Current that flows through a transistor even when it's supposed to be off; worsens at smaller process nodes due to [[quick-context/transistor|quantum tunneling]] |
 | **Noise Margin** | The voltage buffer between a valid logic level and the point where it might be misinterpreted; larger margins = more robust digital operation |
-| **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't turn off instantly—conductivity drops exponentially but never hits zero |
-| **Regenerative Logic** | Circuit technique where each logic gate "refreshes" a degraded signal back to a clean 0 or 1, preventing error accumulation |
+| **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't [[micro-context/mosfet|turn off]] instantly—conductivity drops exponentially but never hits zero |
+| **Regenerative Logic** | Circuit technique where each logic gate "refreshes" a degraded [[quick-context/comparator|signal]] back to a clean 0 or 1, preventing error accumulation |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -279,14 +279,14 @@ Give signals time to settle before reading them:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Speed vs. Power vs. Reliability
+[[quick-context/embedded-communication-protocols|Speed]] vs. Power vs. Reliability
 
 The fundamental tradeoff in making analog transistors behave digitally:
 
 | Push For | Consequence |
 |----------|-------------|
 | **Lower voltage** (saves power, less heat) | Smaller noise margins, more susceptible to errors |
-| **Faster switching** (higher clock speed) | Less time to settle, more timing errors |
+| **Faster switching** (higher [[micro-context/clock-speed|clock speed]]) | Less time to settle, more timing errors |
 | **Smaller transistors** (more per chip) | More leakage, more quantum effects, more variation |
 | **Wider noise margins** (more reliable) | Must use higher voltages, more power, slower |
 
@@ -326,7 +326,7 @@ So at each new process node, we **reduce Vdd** to avoid damage, lower power, and
 
 What Happens When a "1" Propagates
 
-Let's trace a signal through three inverter gates, showing how the analog reality is hidden:
+Let's [[quick-context/pcb-printed-circuit-board|trace]] a signal through three inverter gates, showing how the analog reality is hidden:
 
 ```
 SIGNAL PROPAGATION: Analog Reality vs. Digital Abstraction

@@ -3,15 +3,17 @@ term: Current Mirror
 created: 2026-04-02
 ---
 
+> **Related:** [[micro-context/ac-dc-current]] | [[micro-context/current-electrons-per-second]] | [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/input-bias-current]] | [[micro-context/quiescent-supply-current]]
+
 # Current Mirror
 
-**Definition:** A circuit that copies a reference current from one transistor to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in differential pairs.
+**Definition:** A circuit that copies a [[quick-context/comparator|reference]] current from one [[quick-context/transistor|transistor]] to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in [[quick-context/capacitance|differential pairs]].
 
 ## How It Works
 
-- A reference current $I_{ref}$ (set by a resistor or upstream source) flows through a diode-connected [[micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
-- A second matched transistor shares the same $V_{gs}$ (gates tied together), so it develops the same channel conditions and conducts the same current: $I_{out} \approx I_{ref}$.
-- Because the output transistor operates in saturation, its drain current is nearly independent of drain voltage — giving high output impedance, which is what makes it a good current source.
+- A reference current $I_{ref}$ (set by a [[quick-context/resistor|resistor]] or upstream [[quick-context/differential-pair|source]]) flows through a [[quick-context/diode|diode]]-connected [[micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
+- A second matched transistor shares the same $V_{gs}$ (gates tied together), so it develops the same [[micro-context/mosfet|channel]] conditions and conducts the same current: $I_{out} \approx I_{ref}$.
+- Because the output transistor operates in [[quick-context/bjt|saturation]], its drain current is nearly independent of drain [[quick-context/voltage|voltage]] — giving high output impedance, which is [[quick-context/bare-minimal-data-storage-circuit|what]] makes it a good [[quick-context/voltage-current-causality|current source]].
 - Scaling the output transistor's $W/L$ ratio relative to the reference transistor scales the copied current proportionally: $I_{out} = I_{ref} \times (W/L)_{out} / (W/L)_{ref}$.
 
 ```
@@ -29,4 +31,4 @@ created: 2026-04-02
         GND               GND
 ```
 
-**Key insight:** The "mirror" isn't magic — it works because matched transistors with identical $V_{gs}$ carry identical currents, so fixing one transistor's current automatically fixes the other's.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** The "mirror" isn't magic — it works because matched transistors with identical $V_{gs}$ carry identical currents, so fixing one transistor's current automatically fixes the other's.

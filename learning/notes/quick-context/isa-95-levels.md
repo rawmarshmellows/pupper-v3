@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/epson-rc-plus-programming]] | [[quick-context/firmware]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/plc-vs-software]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 
@@ -15,7 +15,7 @@ ISA-95 exists to solve the communication chaos between the factory floor and bus
 
 The standard defines a five-level hierarchy: **Level 0** is the physical process itself—chemical reactions, material flow, the actual physics. **Level 1** is sensing and manipulating that process: temperature sensors, motor drives, valves opening and closing. **Level 2** is control and monitoring—your PLCs and DCS systems running logic like "if tank level exceeds 80%, close inlet valve." **Level 3** is Manufacturing Operations Management (MOM/MES)—scheduling which batch runs when, tracking work orders, managing recipes, capturing quality data. **Level 4** is business planning and logistics—your ERP deciding you need to make 10,000 widgets this month based on demand forecasts and available inventory.
 
-A real example: in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature probe and cooling jacket, Level 2 is the PLC maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
+A real [[quick-context/teep|example:]] in a brewery, Level 0 is the wort fermenting, Level 1 is the temperature [[quick-context/oscilloscope-and-multimeter|probe]] and cooling jacket, Level 2 is the PLC maintaining fermentation at 18C, Level 3 is the MES system scheduling this batch as "IPA Batch 2847" and recording its actual fermentation curve, Level 4 is SAP knowing this batch will fulfill a customer order shipping next Tuesday.
 
 ## 5 Essential Terms
 
@@ -45,7 +45,7 @@ Data flows up (actual production results) and down (production orders), with ISA
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tension practitioners navigate is where to draw the Level 3/Level 4 boundary—and this is where religious wars happen. Purists want a clean separation: ERP should never talk directly to machines, everything flows through MES as an intermediary that handles the translation between "make 10,000 units" (business-speak) and "run recipe R-47 on Line 3 for 6 hours" (operations-speak).
+The central tension practitioners navigate is where to draw the Level 3/Level 4 boundary—and this is where religious wars happen. Purists want a clean separation: ERP should never talk directly to machines, everything flows through MES as an intermediary that handles the [[quick-context/pupper-lab2-forward-kinematics|translation]] between "make 10,000 units" (business-speak) and "run recipe R-47 on Line 3 for 6 hours" (operations-speak).
 
 But MES systems are expensive, complex, and often overkill for simpler operations. So you see constant pressure to let ERP reach further down, or to let automation systems reach further up, collapsing the layers. The standard itself is intentionally vague about exactly what lives where because real plants vary wildly—a semiconductor fab and a craft brewery both "manufacture" but have radically different Level 3 needs.
 
@@ -64,7 +64,7 @@ The other perpetual argument is about the data model: ISA-95 defines standard ob
 - **Level 1 (Sensors/Actuators):** Temperature probe reads 18.2C, cooling valve position at 35%, pressure transducer reads 12 PSI
 - **Level 0 (Process):** Yeast converting sugars to alcohol, CO2 off-gassing, flavor compounds developing
 
-When the batch completes, data flows back up: actual temperatures, durations, and quality results recorded in MES, production confirmation sent to SAP to update inventory and mark the order ready for fulfillment.
+When the batch completes, data flows back up: actual temperatures, durations, and quality results recorded in MES, production confirmation sent to SAP to [[quick-context/ppo-proximal-policy-optimization|update]] inventory and mark the order ready for fulfillment.
 
 **The one thing most outsiders get wrong about this is...** thinking ISA-95 prescribes specific software products or architectures. It doesn't—it's a vocabulary and conceptual framework. The levels aren't about which vendor's system you buy; they're about creating a shared language so automation engineers, IT architects, and business analysts can actually communicate about integration boundaries without talking past each other.
 
@@ -105,7 +105,7 @@ A Work Order is the instruction from Level 4 to Level 3 saying "make this thing"
 B2MML (Business to Manufacturing Markup Language) is the XML schema that implements ISA-95's abstract data models for actual system integration. While ISA-95 defines concepts like "Material Lot" and "Equipment" and their relationships, B2MML provides the concrete XML structures that ERP and MES systems use to exchange this data. Without B2MML, every integration would require custom data mapping.
 </details>
 
-**Q5:** Why is genealogy tracking a critical function of Level 3 systems in regulated industries?
+**Q5:** Why is genealogy tracking a critical [[quick-context/mcp6541-as-lmc7211-replacement|function]] of Level 3 systems in regulated industries?
 <details>
 <summary>Answer</summary>
 Genealogy tracks every input lot, process parameter, operator, and equipment that touched a finished product. In regulated industries (pharma, food, medical devices), this enables targeted recalls—if a contaminated ingredient lot is discovered, you can trace forward to find exactly which finished products were affected. Without genealogy, you'd have to recall everything produced during a broad time window, costing far more and eroding customer trust.

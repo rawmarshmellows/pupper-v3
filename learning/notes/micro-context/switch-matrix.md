@@ -3,9 +3,11 @@ term: Switch Matrix
 created: 2026-04-07
 ---
 
+> **Related:** [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/coriolis-effect]] | [[micro-context/electromagnetic-induction]] | [[quick-context/covariance-matrix]] | [[quick-context/absolute-orientation]]
+
 # Switch Matrix
 
-**Definition:** A grid of electrical switches wired at the intersections of row and column lines, allowing a [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] to monitor $N \times M$ switches using only $N + M$ GPIO pins instead of one pin per switch.
+**Definition:** A grid of electrical switches wired at the intersections of row and column lines, allowing a [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] to monitor $N \times M$ switches using only $N + M$ [[quick-context/raspberry-pi-5-components|GPIO]] pins instead of one pin per switch.
 
 ## How It Works
 

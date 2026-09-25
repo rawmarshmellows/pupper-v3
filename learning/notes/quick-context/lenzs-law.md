@@ -5,13 +5,13 @@ created: 2026-02-17
 
 # Lenz's Law
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]] | [[quick-context/electricity-generation]]
 
-> **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from nothing.
+> **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from [[quick-context/tlv7211-as-lmc7211-replacement|nothing]].
 
 ## The Core Problem: Why the Minus Sign?
 
-Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
+Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to [[quick-context/camera-fundamentals|stop]] current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
 
 ## 5 Essential Terms
 
@@ -499,7 +499,7 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
 
-    See [[quick-context/inductor#rl-time-constant|RL Time Constant]] for the
+    See RL Time Constant for the
     mathematics: the time constant τ = L/R determines how fast this happens.
 ```
 
@@ -581,7 +581,7 @@ THE DEEP INSIGHT:
 |--------|------------------------|-------------------|
 | Generator | Rotation of coil | Mechanical → electrical conversion |
 | Motor | Current flow | Electrical → mechanical conversion |
-| [[quick-context/inductor\|Inductor]] | Current changes | Energy storage in magnetic field |
+| [[quick-context/inductor|Inductor]] | Current changes | Energy storage in magnetic field |
 | Transformer | Flux changes in primary | Power transfer to secondary |
 | Eddy current brake | Motion of conductor | Magnetic braking (no friction wear) |
 
@@ -728,16 +728,16 @@ COMBINED EFFECT:
 
 - **[[quick-context/power-watts-joules]]** — The energy perspective on Lenz's Law: the work done against magnetic opposition equals the electrical energy generated. Power = work/time connects mechanical and electrical domains.
 
-- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and electromagnetic induction, of which Lenz's Law specifies the direction.
+- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and [[micro-context/electromagnetic-induction|electromagnetic induction]], of which Lenz's Law specifies the direction.
 
-- **[[small-context/inductor-current-magnetic-field-emf]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
+- **inductor-current-magnetic-field-emf** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
 
 - **Eddy Currents** — Induced currents in bulk conductors (not wires). Used in induction heating, magnetic braking, and metal detectors. Lenz's Law determines their direction and explains why they oppose motion.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** A magnet approaches a coil. Does the coil attract or repel the magnet? Why?
 <details>

@@ -6,16 +6,16 @@ updated: 2026-03-27
 
 # CAN Bus Transceiver
 
-> **See also:** [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[micro-context/can-bus-termination]] | [[quick-context/can-bus]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]] | [[micro-context/adc-analog-to-digital-converter]]
 
-**Definition:** A chip that converts the microcontroller's digital TX/RX signals into differential voltage signals for the CAN bus (and vice versa). CAN bus is a robust 2-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU only deals with data.
+**[[quick-context/capacitance|Definition]]:** A chip that converts the [[micro-context/microcontroller|microcontroller]]'s digital TX/RX signals into differential [[quick-context/voltage|voltage]] signals for the CAN bus ([[micro-context/push-pull-vs-open-drain|and]] vice versa). CAN bus is a robust 2-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU only deals with data.
 
 ## How It Works
 
-- The MCU's CAN peripheral generates a serial data stream (TX) using the CAN protocol's bit timing and arbitration rules.
-- The transceiver converts this single-ended TX signal into a differential pair (CANH and CANL) with opposite voltage swings.
+- The MCU's CAN peripheral generates a serial data stream (TX) using the CAN protocol's bit [[quick-context/comparator-specification|timing]] and [[quick-context/can-bus|arbitration]] rules.
+- The transceiver converts this single-ended TX [[quick-context/comparator|signal]] into a [[quick-context/differential-pair|differential pair]] (CANH and CANL) with opposite voltage swings.
 - On receive, the transceiver subtracts CANL from CANH, canceling any common-mode noise picked up on the wire pair.
-- This differential signaling allows reliable multi-drop communication over long cables in electrically noisy environments.
+- This [[quick-context/embedded-communication-protocols|differential signaling]] allows reliable multi-drop communication over long cables in electrically noisy environments.
 
 ```
 MCU to CAN BUS signal conversion:
@@ -39,4 +39,4 @@ MCU to CAN BUS signal conversion:
           (inverted)
 ```
 
-**Key insight:** CAN transceivers are why robots can communicate reliably over long cables in electrically noisy environments—the differential signaling rejects interference that would corrupt single-wire connections.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** CAN transceivers are why robots can communicate reliably over long cables in electrically noisy environments—the differential signaling rejects interference that would corrupt single-wire connections.

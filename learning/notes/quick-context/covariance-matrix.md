@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Covariance Matrix
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/switch-matrix]] | [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/electric-magnetic-field-unification]]
 
 > **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal holds variances and its off-diagonals hold covariances. It's the fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis distance, and point cloud alignment.
 
@@ -36,7 +36,7 @@ This produces a $p \times p$ symmetric matrix. The $(j,k)$ entry is the covarian
 
 ### Cross-covariance: two datasets, correspondence structure
 
-Given $n$ paired observations of vectors $\mathbf{x}$ (input) and $\mathbf{y}$ (output), the cross-covariance matrix is:
+Given $n$ paired observations of vectors $\mathbf{x}$ (input) and $\mathbf{y}$ (output), the [[quick-context/helmert-transform|cross-covariance matrix]] is:
 
 $$H = \sum_{i=1}^{n} (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$$
 
@@ -102,7 +102,7 @@ Covariance is based on squared deviations, making it highly sensitive to outlier
 
 - **Minimum covariance determinant (MCD)** -- finds the subset of points with smallest determinant covariance
 - **Ledoit-Wolf shrinkage** -- shrinks the sample covariance toward a structured target (e.g., diagonal matrix)
-- **Median absolute deviation (MAD)** -- replaces variance with a robust scale estimator
+- **Median absolute deviation (MAD)** -- replaces variance with a robust [[quick-context/absolute-orientation|scale]] estimator
 
 ### Cross-covariance: no Bessel's correction needed?
 
@@ -143,7 +143,7 @@ $$\sigma_{xx} = \frac{(-3)^2 + (-1)^2 + 1^2 + 3^2}{3} = \frac{20}{3} \approx 6.6
 
 $$\sigma_{yy} = \frac{(-2.5)^2 + (-0.5)^2 + 0.5^2 + 2.5^2}{3} = \frac{13}{3} \approx 4.33$$
 
-$$\sigma_{xy} = \frac{(-3)(-2.5) + (-1)(-0.5) + (1)(0.5) + (3)(2.5)}{3} = \frac{16}{3} \approx 5.33$$
+$$\sigma_{xy} = \frac{(-3)(-2.5) + (-1)(-0.5) + [[quick-context/tlv7211-as-lmc7211-replacement|(1)]](0.5) + (3)(2.5)}{3} = \frac{16}{3} \approx 5.33$$
 
 $$\Sigma = \begin{bmatrix} 6.67 & 5.33 \\ 5.33 & 4.33 \end{bmatrix}$$
 
@@ -217,10 +217,10 @@ The cross-covariance matrix $H$ encodes all the rotational information. The [[qu
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of finding the best rigid-body transform between two point sets, solved through cross-covariance + SVD
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The decomposition $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the Helmert transform with scale; covariance is used in least-squares estimation of all parameters
-- **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal components; the dominant eigenvectors capture the most variance
+- **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal [[quick-context/tensor|components]]; the dominant eigenvectors capture the most variance
 - **Mahalanobis distance** -- Distance metric $d = \sqrt{(\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)}$ that accounts for covariance structure, used in outlier detection and Kalman filter gating
 - **Kalman filter** -- Propagates a state estimate and its covariance matrix through time; the covariance matrix tracks uncertainty at every step
-- **Correlation matrix** -- The standardized form of the covariance matrix where all diagonal entries equal 1; obtained by dividing each entry by the product of the marginal standard deviations
+- **Correlation matrix** -- The standardized [[quick-context/mcp6541-as-lmc7211-replacement|form]] of the covariance matrix where all diagonal entries equal 1; obtained by dividing each entry by the product of the marginal standard deviations
 
 </details>
 
@@ -242,7 +242,7 @@ The quantity $\mathbf{v}^T \Sigma \mathbf{v}$ equals the variance of the linear 
 **Q3:** In the Helmert transform, why can we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
 <details>
 <summary>Answer</summary>
-The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the singular values $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.
+The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the [[quick-context/singular-value-decomposition|singular values]] $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.
 </details>
 
 **Q4:** Someone claims "the cross-covariance matrix is always symmetric." What's wrong with this statement, and when *is* a covariance matrix guaranteed to be symmetric?

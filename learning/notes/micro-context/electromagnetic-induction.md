@@ -6,16 +6,16 @@ updated: 2026-03-27
 
 # Electromagnetic Induction
 
-> **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]
+> **Related:** [[quick-context/coil-magnetic-field]] | [[quick-context/frequency-and-filtering]] | [[quick-context/impedance-and-reactance]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]]
 
-**Definition:** The phenomenon where a changing magnetic field through a conductor induces a voltage (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
+**[[quick-context/capacitance|Definition]]:** The phenomenon where a changing magnetic field through a conductor induces a [[quick-context/voltage|voltage]] (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
 
 ## How It Works
 
-- A changing magnetic flux through a conductor loop induces an EMF (voltage) proportional to the rate of change ($EMF = -N \times d\Phi/dt$).
-- In a generator, rotating a coil in a magnetic field continuously changes the flux, producing AC voltage.
+- A changing magnetic [[quick-context/soldering|flux]] through a conductor loop induces an EMF (voltage) proportional to the rate of change ($EMF = -N \times d\Phi/dt$).
+- In a [[quick-context/electricity-generation|generator]], rotating a coil in a magnetic field continuously changes the flux, producing AC voltage.
 - In a transformer, AC current in one coil creates a changing magnetic field that induces voltage in a nearby second coil.
-- The negative sign (Lenz's law) means the induced current always opposes the change that caused it.
+- The negative sign ([[quick-context/lenzs-law|Lenz's law]]) means the induced current always opposes the change that caused it.
 
 ```
 FARADAY'S LAW
@@ -34,4 +34,4 @@ FARADAY'S LAW
     Changing flux → induced voltage → current
 ```
 
-**Key insight:** Motion creates electricity, and electricity creates motion—generators and motors are the same device run in opposite directions.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** Motion creates electricity, and electricity creates motion—generators and motors are the same device run in opposite directions.

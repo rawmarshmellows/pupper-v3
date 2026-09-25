@@ -3,7 +3,7 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[micro-context/plc-programmable-logic-controller]] | [[quick-context/epson-rc-plus-programming]] | [[quick-context/firmware]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -13,7 +13,7 @@ created: 2026-01-14
 
 A **Programmable Logic Controller (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
 
-Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The failure mode isn't "restart the app"—it's "call the coroner."
+Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The [[quick-context/pupper-lab5-neural-controller|failure mode]] isn't "restart the app"—it's "call the coroner."
 
 ## 5 Essential Terms
 
@@ -23,7 +23,7 @@ Before PLCs, factories used massive relay panels with hundreds of physical switc
 | **Ladder Logic** | Visual programming language resembling electrical relay diagrams, designed for electricians who understood relays, not programmers. |
 | **I/O Modules** | Hardware cards that connect PLCs to real-world sensors and actuators—the physical interface to the plant. |
 | **HMI** | Human-Machine Interface—the touchscreen operators use to monitor and control the process. |
-| **Fail-safe** | The designed behavior when something goes wrong, always defaulting to the safest state (usually: stop everything). |
+| **Fail-safe** | The designed behavior when something goes wrong, always defaulting to the safest state (usually: [[quick-context/camera-fundamentals|stop]] everything). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -44,10 +44,10 @@ The PLC executes in a **scan cycle**: read all inputs, execute all logic top-to-
 └─────────────────────────────────────────┘
 ```
 
-Modern PLCs support IEC 61131-3 languages:
+Modern PLCs support IEC 61131-3 [[quick-context/firmware|languages]]:
 - **Ladder Logic** - Visual, looks like relay circuits
-- **Structured Text (ST)** - Looks like Pascal, closest to "real programming"
-- **Function Block Diagram (FBD)** - Visual dataflow
+- **[[quick-context/plc-vs-software-control|Structured Text (ST)]]** - Looks like Pascal, closest to "real programming"
+- **[[quick-context/mcp6541-as-lmc7211-replacement|Function]] Block Diagram (FBD)** - Visual dataflow
 
 The key difference from software: a PLC doesn't "crash" in the traditional sense. If the program has a bug, the scan cycle still runs. If hardware fails, the system goes to a defined fail-safe state. There's no blue screen, no segfault, no "application not responding."
 
@@ -105,9 +105,9 @@ The Python version:
 
 - **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
 - **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
-- **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
-- **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with [[quick-context/preempt-rt|PREEMPT_RT]] + ROS2, including production hardware and real factory deployments
+- **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for [[quick-context/preempt-rt-ros2-plc-replacement|safety-critical functions]]
+- **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy ([[quick-context/isa-95-levels|Level 1]]-2)
 
 </details>
 
@@ -123,19 +123,19 @@ Ladder logic was designed for electricians who understood relay circuits, not pr
 **Q2:** What happens if a PLC program has an infinite loop?
 <details>
 <summary>Answer</summary>
-The PLC's watchdog timer detects that the scan cycle exceeded its maximum allowed time and forces the system into a fail-safe state (usually stopping all outputs). Unlike a computer that would freeze, the PLC has hardware-level protection against runaway code. This is why scan cycle time is monitored and bounded.
+The PLC's [[quick-context/integration-failure-modes-solutions|watchdog timer]] detects that the scan cycle exceeded its maximum allowed time and forces the system into a fail-safe state (usually stopping all outputs). Unlike a computer that would freeze, the PLC has hardware-level protection against runaway code. This is why scan cycle time is monitored and bounded.
 </details>
 
 **Q3:** Why can't you just run PLC logic on a Raspberry Pi with careful programming?
 <details>
 <summary>Answer</summary>
-Three reasons: (1) Linux on a Pi has non-deterministic timing—garbage collection, kernel interrupts, or SD card writes can cause multi-millisecond delays. (2) A Pi lacks the electrical hardening (noise immunity, wide temperature range, vibration resistance) for industrial environments. (3) No safety certification—regulators won't accept it for safety-critical functions regardless of how well it works in testing.
+Three [[quick-context/pupper-lab7-vision-tracking|reasons]]: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] Linux on a Pi has non-deterministic timing—garbage collection, kernel interrupts, or SD card writes can cause multi-millisecond delays. (2) A Pi lacks the electrical hardening (noise immunity, wide temperature range, vibration resistance) for industrial environments. (3) No safety certification—regulators won't accept it for safety-critical functions regardless of how well it works in testing.
 </details>
 
 **Q4:** What is the scan cycle, and why is its predictability important?
 <details>
 <summary>Answer</summary>
-The scan cycle is the fixed-interval loop where a PLC reads all inputs, executes all logic top-to-bottom, and writes all outputs—typically every 10-50ms. Its predictability is critical because industrial processes depend on knowing exactly when actions will occur. If timing varies unpredictably, a conveyor might start before a part is in position, or a safety interlock might not trigger in time.
+The scan cycle is the fixed-interval loop where a PLC reads all inputs, executes all logic top-to-bottom, and writes all outputs—typically every 10-50ms. Its predictability is critical because industrial processes depend on knowing exactly when actions will occur. If timing varies unpredictably, a conveyor might start before a part is in position, or a safety interlock might not [[quick-context/oscilloscope-and-multimeter|trigger]] in time.
 </details>
 
 **Q5:** Why do PLCs default to a "fail-safe" state rather than trying to recover automatically?

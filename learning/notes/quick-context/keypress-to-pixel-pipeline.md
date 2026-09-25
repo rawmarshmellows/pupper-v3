@@ -5,20 +5,20 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** [[quick-context/python-to-machine-code-pipeline]] | [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/physics-of-writing-data-to-memory]]
 
-> **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
+> **TL;DR:** Pressing a key closes a tiny mechanical [[quick-context/switches-to-registers-storing-data|switch]] (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, [[quick-context/how-source-code-is-stored|character]] code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 
 ## The Core Problem
 
-A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, firmware — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
+A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the [[quick-context/cpu-fetch-execute-cycle|fetch]]-execute cycle, interrupts, protocols, [[quick-context/firmware|firmware]] — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Scancode** | The raw number the keyboard sends identifying *which physical key* changed — not which letter. Key "A" sends the same scancode whether or not Shift is held; meaning is added later. |
-| **Interrupt** | A hardware signal that yanks the CPU away from whatever it was doing to handle an urgent event ("a key arrived"). The alternative — constantly asking "any key yet?" — would waste the entire CPU. See [[learning/notes/quick-context/firmware|firmware]]. |
+| **Interrupt** | A [[quick-context/code-to-gates-and-bootstrapping|hardware]] signal that yanks the CPU away from whatever it was doing to handle an urgent event ("a key arrived"). The alternative — constantly asking "any key yet?" — would waste the entire CPU. See [[learning/notes/quick-context/firmware|firmware]]. |
 | **Keymap** | A lookup table (held in the OS) that translates a scancode + modifier state (Shift, layout) into a **character code** like ASCII/Unicode. This is where "physical key" becomes "letter." |
 | **Framebuffer** | A region of RAM (an array of memory cells = scaled-up [[learning/notes/quick-context/switches-to-registers-storing-data|registers]]) holding one value per pixel. Writing here is how software "draws"; the display controller reads here to emit light. |
 | **Glyph** | The picture of a character, stored in a font. Rendering means looking up the glyph for a character code and copying its pixel pattern into the framebuffer. |
@@ -110,7 +110,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 4. **Encode to a scancode.** The keyboard chip converts "row 3, column 5 just went down" into a **scancode** — a number that names the key. Crucially it is *not* the letter: the key labeled "A" sends the same scancode whether or not Shift is held. Meaning is added much later.
 
-5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or microcontroller, the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
+5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or [[micro-context/microcontroller|microcontroller]], the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
 
 6. **Transport.** The packet rides a [[learning/notes/quick-context/embedded-communication-protocols|serial protocol]] — [[learning/notes/quick-context/usb-peripheral-hardware|USB]] or [[learning/notes/quick-context/uart|UART]] — across a wire to the host's controller, which handles framing, addressing, and error checks.
 
@@ -181,7 +181,7 @@ HACK MEMORY MAP (the kernel of the whole pipeline)
                                               ASCII code, collapsing 4 & 9)
 ```
 
-In this repo's implementation, `Memory.__call__` is built from **two stacked 16K RAM chips** selected by the top address bit (`address0`). That top-bit split *is* the address decoder — the exact mechanism the full Hack machine uses to route an address to RAM vs. Screen vs. Keyboard:
+In this repo's implementation, `Memory.__call__` is built from **two stacked 16K RAM chips** selected by the top address bit (`address0`). That top-bit split *is* the [[quick-context/ram-addressing-decoder|address decoder]] — the exact mechanism the full Hack machine uses to route an address to RAM vs. Screen vs. Keyboard:
 
 ```python
 # learning/references/courses/python-nand-to-tetris-part-1/
@@ -199,7 +199,7 @@ def __call__(self, a0, ..., a15, load, address0, ..., address14):
 
 Note an honest caveat about this *specific* implementation: its accompanying test (`tests/src/hardware/computer/test_memory.py`) states it **deliberately implements only the RAM portion**, not the Screen/Mouse devices ("it is modified as the test script takes into account tests on mouse and screen which we are not implementing"). So what you see here is the bare address-decode skeleton; the full Hack architecture extends this *same* `Memory` unit by making the high block respond as Screen and one address respond as Keyboard. The mechanism — *a single address bit dmux/mux routing reads and writes to different physical things* — is identical, and it is exactly how a real machine maps a peripheral into memory.
 
-**How a Hack program would run our whole pipeline:** poll the keyboard address; when it is non-zero a key is down (rungs [1]-[7] collapsed into one register read); use it as a character; write the matching glyph's bits into the SCREEN region (rungs [12]-[13]); the simulated display scans those bits out (rungs [14]-[15]). Twelve real-world rungs become "read one address, write some others" — which is precisely why this toy is the right Rosetta stone for the whole climb. (One simplification to keep honest: the Hack keyboard register already holds an **ASCII code**, e.g. 65 for `A`, and 0 when no key is down — so the toy quietly fuses the scancode step [4] and the keymap step [9] into one. A real keyboard sends a raw scancode and the OS does the keymap lookup separately.)
+**How a Hack program would run our whole pipeline:** poll the keyboard address; when it is non-[[quick-context/mcp6541-as-lmc7211-replacement|zero]] a key is down (rungs [1]-[7] collapsed into one register read); use it as a character; write the matching glyph's bits into the SCREEN region (rungs [12]-[13]); the simulated display scans those bits out (rungs [14]-[15]). Twelve real-world rungs become "read one address, write some others" — which is precisely why this toy is the right Rosetta stone for the whole climb. (One simplification to keep honest: the Hack keyboard register already holds an **ASCII code**, e.g. 65 for `A`, and 0 when no key is down — so the toy quietly fuses the scancode step [4] and the keymap step [9] into one. A real keyboard sends a raw scancode and the OS does the keymap lookup separately.)
 
 **The one thing most outsiders get wrong about this is...** thinking the keyboard "sends the letter A." It does not. It sends a meaningless **scancode** naming a *key*; the letter is manufactured later by the host's keymap from scancode + Shift + layout. Equally, people imagine the screen has letters in it — it does not. The screen is a dumb grid of dots; the framebuffer is just numbers in RAM, and "drawing" is just writing those numbers. There is no `A` anywhere — only a switch's bit at the bottom and code choosing a pixel pattern at the top.
 
@@ -250,7 +250,7 @@ There are no "letters" in the framebuffer — it stores **pixel values**, one pe
 **Q5:** In the Nand-to-Tetris Hack machine, the keyboard and screen are just memory addresses, yet a real PC has USB controllers, interrupts, and a GPU. What is the single shared mechanism that makes both work, and why is the toy a faithful kernel of the real thing?
 <details>
 <summary>Answer</summary>
-The shared mechanism is **memory-mapped I/O via address decoding**: a peripheral is reachable by reading/writing a fixed address, and a decoder routes that address to the right physical thing. In the repo's `Memory`, the top address bit (`address0`) dmux/mux-routes reads and writes between two RAM blocks — the same decode the full Hack machine uses to pick RAM vs. Screen vs. Keyboard. A real PC adds protocol transport (USB), interrupts (instead of polling), and a GPU for fast scan-out, but the *core idea* — "a device is an address; talking to it is reading/writing memory" — is identical. The toy strips away the transport and leaves the kernel. See: Concrete Example; and [[learning/notes/quick-context/ram-addressing-decoder]].
+The shared mechanism is **[[quick-context/data-bus-and-arbitration|memory-mapped I/O]] via address decoding**: a peripheral is reachable by reading/writing a fixed address, and a decoder routes that address to the right physical thing. In the repo's `Memory`, the top address bit (`address0`) dmux/mux-routes reads and writes between two RAM blocks — the same decode the full Hack machine uses to pick RAM vs. Screen vs. Keyboard. A real PC adds protocol transport (USB), interrupts (instead of polling), and a GPU for fast scan-out, but the *core idea* — "a device is an address; talking to it is reading/writing memory" — is identical. The toy strips away the transport and leaves the kernel. See: Concrete Example; and [[learning/notes/quick-context/ram-addressing-decoder]].
 </details>
 
 </details>

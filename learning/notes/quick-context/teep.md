@@ -3,7 +3,7 @@ topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
 
 > **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
 
@@ -11,15 +11,15 @@ created: 2026-01-14
 
 ## The Core Problem: OEE Hides Unused Capacity
 
-TEEP exists because OEE lies to you by omission. OEE measures how well you use equipment *during scheduled production time*, but says nothing about the other 8,760 hours in a year. A line running one shift with 85% OEE looks great on paper, but you're only using 28% of your theoretical capacity.
+TEEP exists because OEE lies to you by omission. OEE measures how well you use equipment *during scheduled production time*, but says [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] about the other 8,760 hours in a year. A line running one shift with 85% OEE looks great on paper, but you're [[quick-context/comparator-specification|only]] using 28% of your theoretical capacity.
 
 TEEP exposes this by measuring against *all calendar time*—24 hours a day, 365 days a year. The formula is simple: TEEP = OEE x Utilization, where Utilization is scheduled time divided by total calendar time.
 
-If this metric doesn't exist, you get capital planning disasters: companies buy new equipment when they could run a second shift, or they benchmark facilities without accounting for different scheduling practices. A plant running two shifts at 70% OEE might actually be outperforming one running a single shift at 90% OEE, and without TEEP you'd never see it.
+If this metric doesn't exist, you get capital planning disasters: companies buy new equipment [[quick-context/bare-minimal-data-storage-circuit|when]] they could run a second shift, or they benchmark facilities without accounting for different scheduling practices. A plant running two shifts at 70% OEE might actually be outperforming one running a single shift at 90% OEE, and without TEEP you'd never see it.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Utilization** | The percentage of calendar time that's actually scheduled for production—the multiplier that distinguishes TEEP from OEE |
 | **Loading** | What the industry calls scheduled production time as a fraction of available time, sometimes used interchangeably with utilization |
@@ -62,13 +62,13 @@ Plant B produces 2.3x more despite "worse" OEE.
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 The central tension is **demonstrated capacity vs. theoretical capacity** and what counts as "avoidable" downtime. Purists argue TEEP should be the primary metric because it reveals all hidden capacity—every holiday, every weekend, every maintenance window is time you *chose* not to produce.
 
 Pragmatists counter that not all calendar time is actually available: you can't run during legally mandated shutdowns, market demand might not justify additional shifts, and some processes require cooldown periods. The debate gets contentious around planned downtime: if you schedule a maintenance day, does that represent lost capacity (TEEP says yes) or responsible asset management (operations says yes)?
 
-Organizations fight about whether TEEP is a strategic planning tool showing where to invest, or a stick that makes every site look bad regardless of business context.
+Organizations fight about [[quick-context/differential-pair|whether]] TEEP is a strategic planning [[quick-context/epson-rc-plus-programming|tool]] showing where to invest, or a stick that makes every site look bad regardless of business context.
 
 </details>
 
@@ -81,7 +81,7 @@ A medical device manufacturer needs 30% more capacity. Two options:
 1. Buy a new $2M production line
 2. Add shifts to existing equipment
 
-**Current State Analysis:**
+**Current State [[quick-context/whitespace-mapping|Analysis:]]**
 - Two production lines, each running single shift (40 hrs/week)
 - Line 1 OEE: 82%, Line 2 OEE: 78%
 - Average OEE: 80%
@@ -89,14 +89,14 @@ A medical device manufacturer needs 30% more capacity. Two options:
 - TEEP: 80% x 23.8% = 19%
 
 **TEEP reveals the answer:**
-At 19% TEEP, the plant uses less than one-fifth of its theoretical capacity. Adding a second shift on both lines would:
+At 19% TEEP, the plant uses less than one-fifth of its theoretical capacity. Adding a second shift on [[quick-context/bjt-specifications|both]] lines would:
 - Double scheduled time: Utilization becomes 47.6%
 - Even with slightly lower second-shift OEE (75%), TEEP = 75% x 47.6% = 35.7%
 - Nearly doubles capacity with minimal capital investment
 
 The new line isn't needed—the hidden capacity was always there. Without TEEP, leadership would have spent $2M solving a problem that required only hiring and training.
 
-**The one thing most outsiders get wrong about this is...** thinking low TEEP is always bad. A single-shift operation with 20% TEEP has 80% of its capacity available for growth without capital investment—that's a strategic reserve, not a failure. TEEP becomes a problem only when you're buying new equipment while existing assets sit idle, or when you're benchmarking plants without accounting for scheduling differences.
+**The one thing most outsiders get wrong about this is...** thinking low TEEP is always bad. A single-shift operation with 20% TEEP has 80% of its capacity available for [[quick-context/existing-account-management-playbook|growth]] without capital investment—that's a strategic reserve, not a failure. TEEP becomes a problem only when you're buying new equipment while existing assets sit idle, or when you're benchmarking plants without accounting for scheduling differences.
 
 </details>
 
@@ -104,7 +104,7 @@ The new line isn't needed—the hidden capacity was always there. Without TEEP, 
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/oee-overall-equipment-effectiveness]]** - The foundation metric that TEEP extends; must understand OEE's three factors before TEEP makes sense
-- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions (Level 4) meet production execution (Level 3)
+- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions (Level 4) meet production execution ([[quick-context/isa-95-levels|Level 3]])
 
 </details>
 

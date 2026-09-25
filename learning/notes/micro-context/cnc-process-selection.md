@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # CNC Process Selection
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]] | [[micro-context/pick-and-place-file]] | [[micro-context/thread-pitch-screws]]
 
 **Definition:** A decision framework for when to use CNC machining over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
 
@@ -33,4 +33,4 @@ updated: 2026-03-27
    TURNING              MILLING                      EDM
 ```
 
-**Key insight:** CNC is the default for precision metal parts in low volumes—only consider alternatives when you need internal cavities (3D print), high volumes (molding), or can sacrifice precision (casting).
+**Key insight:** CNC is the default for precision metal parts in low volumes—only consider alternatives when you need [[quick-context/cnc-machining|internal cavities]] (3D print), high volumes (molding), or can sacrifice precision (casting).

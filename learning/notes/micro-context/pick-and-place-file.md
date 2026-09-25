@@ -6,13 +6,13 @@ updated: 2026-03-27
 
 # Pick and Place File
 
-> **See also:** [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[micro-context/cnc-milling]] | [[micro-context/cnc-process-selection]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]] | [[micro-context/thread-pitch-screws]]
 
-**Definition:** A spreadsheet (CSV/Excel) exported from PCB design software that tells automated assembly machines exactly where to place each component on a [[quick-context/pcb-printed-circuit-board|PCB]]—including XY coordinates, rotation angle, and which side of the board. Used by contract manufacturers (JLCPCB, PCBWay) to populate your bare PCB with components.
+**Definition:** A spreadsheet (CSV/Excel) exported from PCB design software that tells automated assembly machines exactly where to place each component on a [[quick-context/pcb-printed-circuit-board|PCB]]—including XY coordinates, rotation angle, and which side of the board. Used by contract manufacturers (JLCPCB, PCBWay) to populate [[quick-context/mcp6541-as-lmc7211-replacement|your]] bare PCB with components.
 
 ## How It Works
 
-- PCB design software exports a spreadsheet listing every component's reference designator, XY position, rotation, and board side.
+- PCB design software exports a spreadsheet listing every component's [[quick-context/pcb-assembly-files-bom-cpl|reference designator]], XY position, rotation, and board side.
 - The assembly house loads this file into the pick-and-place machine's software alongside the component reels.
 - The machine's vacuum nozzle picks each component from its feeder, rotates it to the correct angle, and places it on the solder-pasted PCB pad.
 - After all components are placed, the board passes through a reflow oven to permanently solder them.

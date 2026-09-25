@@ -5,7 +5,7 @@ created: 2026-01-17
 
 > **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
 
-> **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
+> **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified [[quick-context/tensor|components]], and rigorous process—not just careful code.
 
 # SIL-Rated Safety Functions
 
@@ -15,16 +15,16 @@ Industrial machinery can maim and kill. A robotic arm moving at speed has the ki
 
 **Safety Integrity Level (SIL)** is a quantified measure of how reliably a safety function will work when demanded—not "will this code crash?" but "what's the probability this emergency stop fails to stop the machine before the operator dies?"
 
-The IEC 61508 standard defines four levels (SIL 1-4), each representing an order of magnitude improvement in reliability. SIL 1 requires a probability of failure on demand (PFD) of 10^-1 to 10^-2, meaning the safety function can fail once in 10-100 demands. SIL 3 requires 10^-3 to 10^-4—fail once in 1,000-10,000 demands.
+The IEC 61508 standard defines four levels (SIL 1-4), each representing an order of magnitude improvement in [[quick-context/bond-pad|reliability]]. SIL 1 requires a probability of failure on demand (PFD) of 10^-1 to 10^-2, meaning the safety function can fail once in 10-100 demands. SIL 3 requires 10^-3 to 10^-4—fail once in 1,000-10,000 demands.
 
 Without this framework, there's no way to systematically design, verify, and certify that a safety system is actually safe. Engineers would just write code and hope; regulators would have no basis to approve equipment; and when failures occurred, there'd be no way to determine if the design was negligent or merely unlucky.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **PFD (Probability of Failure on Demand)** | The likelihood the safety function fails to act when triggered—SIL levels are defined by PFD ranges (SIL 3 = 10^-4 to 10^-3). |
-| **Safe Failure Fraction (SFF)** | The proportion of failures that leave the system in a safe state (e.g., valve fails closed)—higher SFF allows higher SIL with less redundancy. |
+| **Safe Failure Fraction (SFF)** | The proportion of failures that leave the system in a safe state (e.g., valve fails closed)—higher SFF allows higher SIL with less [[quick-context/pupper-brain|redundancy]]. |
 | **Dual-Channel Architecture (1oo2)** | Two independent systems that must both agree to allow operation; either can independently trigger shutdown—the standard pattern for SIL 2/3. |
 | **Diagnostic Coverage (DC)** | The percentage of dangerous failures detectable by automatic diagnostics—higher DC reduces the "undetected dangerous failure" rate that drives PFD. |
 | **Safety PLC** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
@@ -78,17 +78,17 @@ SIL certification requires proving statistical reliability of the entire hardwar
 
 1. **Hardware Architecture**: Redundancy patterns (1oo1, 1oo2, 2oo3) determine base failure rates
 2. **Diagnostic Coverage**: Self-testing detects failures before they're demanded
-3. **Safe Failure Fraction**: Failures should fail-safe, not fail-dangerous
+3. **Safe Failure Fraction**: Failures should [[quick-context/plc-vs-software|fail-safe]], not fail-dangerous
 4. **Process Rigor**: Formal requirements, design reviews, testing, and change control throughout lifecycle
 
-The PFD calculation aggregates all failure rates and diagnostic coverages to prove the system achieves the target SIL level. This data comes from component manufacturers' "safety manuals" with certified MTTF (mean time to failure) values.
+The PFD calculation aggregates all failure rates and diagnostic coverages to prove the system achieves the target SIL level. This data comes from [[quick-context/pcb-assembly-files-bom-cpl|component]] manufacturers' "safety manuals" with certified [[quick-context/electromigration|MTTF (mean time to failure)]] values.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The fundamental tradeoff is **safety assurance vs. development cost and flexibility**. Achieving SIL 2 or SIL 3 certification isn't about writing careful code—it's about proving, through rigorous process, that the entire lifecycle (requirements, design, implementation, testing, operation, modification) meets statistical reliability targets.
+The fundamental tradeoff is **safety assurance vs. [[quick-context/pupper-lab5-neural-controller|development cost]] and flexibility**. Achieving SIL 2 or SIL 3 certification isn't about writing careful code—it's about proving, through rigorous process, that the entire lifecycle (requirements, design, implementation, testing, operation, modification) meets statistical reliability targets.
 
 This means: redundant hardware (dual-channel sensors, cross-monitoring CPUs), diagnostic coverage calculations for every failure mode, formal methods or extensive testing to demonstrate software correctness, third-party audits, and strict change control. A SIL 3 safety PLC costs 10x a standard PLC; the engineering process costs 5-20x normal development.
 
@@ -109,7 +109,7 @@ Light Curtain -> Single Input -> Standard PLC -> Robot Stop Command
 ```
 Problem: Single-point failures everywhere. PLC input fails shorted? Robot doesn't stop. Output relay welds closed? Robot doesn't stop. No certification, no reliability data.
 
-**SIL 2 Architecture:**
+**SIL 2 [[quick-context/plc-vs-software-control|Architecture:]]**
 ```
 +------------------------------------------------------------------+
 |   Light Curtain (Type 4, SIL 2 rated, e.g., SICK deTec4)         |
@@ -184,7 +184,7 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
 - **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with [[quick-context/preempt-rt|PREEMPT_RT]] + ROS2, and why SIL certification remains the last hard barrier ([[quick-context/preempt-rt-ros2-plc-replacement|Codethink CTRL OS]] achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
 - **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 
 </details>

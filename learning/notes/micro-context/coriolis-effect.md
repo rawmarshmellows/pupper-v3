@@ -5,9 +5,9 @@ created: 2026-03-28
 
 # Coriolis Effect
 
-> **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[micro-context/electromagnetic-induction]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/switch-matrix]] | [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]]
 
-**Definition:** A pseudo-force that acts on objects moving within a rotating reference frame, deflecting them perpendicular to their velocity. The force is $F_{\text{Coriolis}} = -2m(\vec{\omega} \times \vec{v})$ — proportional to both the rotation rate $\omega$ and the object's velocity $v$, and always at right angles to the motion. It's called a "pseudo-force" because it vanishes in a non-rotating frame — nothing is actually pushing the object; it just *appears* to curve because the frame itself is rotating underneath it.
+**Definition:** A pseudo-force that acts on objects moving within a rotating reference frame, deflecting them perpendicular to their velocity. The force is $F_{\text{Coriolis}} = -2m(\vec{\omega} \times \vec{v})$ — proportional to both the rotation rate $\omega$ and the object's velocity $v$, and always at right angles to the motion. It's called a "pseudo-force" because it vanishes in a non-rotating frame — [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] is actually pushing the object; it just *appears* to curve because the frame itself is rotating underneath it.
 
 ## How It Works
 
@@ -46,7 +46,7 @@ CORIOLIS EFFECT — ROTATING FRAME vs INERTIAL FRAME
 
 ### Real-World Examples
 
-| Scale | Example | Mechanism |
+| [[quick-context/absolute-orientation|Scale]] | Example | Mechanism |
 |-------|---------|-----------|
 | Planetary | Weather cyclones | Air moving toward low-pressure deflects right (N. hemisphere) / left (S. hemisphere) |
 | Laboratory | Foucault pendulum | Pendulum's swing plane rotates as Earth turns beneath it: $T = T_{\text{Earth}} / \sin(\text{latitude})$ |

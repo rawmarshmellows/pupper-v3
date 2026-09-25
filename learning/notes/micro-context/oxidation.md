@@ -6,15 +6,15 @@ updated: 2026-03-27
 
 # Oxidation
 
-> **See also:** [[quick-context/anions-and-oxidation]]
+> **Related:** [[micro-context/crystal-oscillator]] | [[micro-context/diode-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/atoms-molecules-polymers-basics]]
 
-**Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
+**Definition:** The loss of [[quick-context/anions-and-oxidation|electrons]] by an atom, ion, or [[quick-context/atoms-molecules-polymers-basics|molecule]]—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, [[quick-context/electrolysis|forming]] a redox reaction. Despite the name, oxygen need not be involved.
 
 ## How It Works
 
 - An atom or ion releases one or more electrons, increasing its oxidation state (becoming more positive).
-- The released electrons must be accepted by another species (the oxidizing agent), which undergoes reduction — the two half-reactions are always coupled.
-- The driving force is the difference in electron affinity: electrons flow from species that hold them weakly to species that attract them strongly.
+- The released electrons must be accepted by another species (the oxidizing agent), which undergoes [[quick-context/cations-and-reduction|reduction]] — the two half-reactions are always coupled.
+- The driving force is the difference in electron affinity: electrons flow from species that [[quick-context/d-flip-flop|hold]] them weakly to species that attract them strongly.
 
 ```
 Oxidation = losing electrons

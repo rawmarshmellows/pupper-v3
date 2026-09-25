@@ -5,23 +5,23 @@ created: 2026-03-28
 
 # RC Oscillator
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/frequency-and-filtering]] | [[quick-context/pwm-controller-circuit]]
+> **Related:** [[micro-context/crystal-oscillator]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bjt]]
 
-> **TL;DR:** An RC oscillator generates a repeating waveform (sawtooth, square, or triangle) using only [[quick-context/resistor|resistors]] and [[quick-context/capacitor|capacitors]] -- no quartz crystal or resonator needed. It's the cheap, "good enough" clock source inside PWM controller ICs, 555 timers, and microcontroller internal oscillators (like the STM32's HSI), where ±1-5% frequency accuracy is acceptable because a feedback loop or protocol tolerance compensates for drift.
+> **TL;DR:** An RC oscillator generates a repeating waveform (sawtooth, square, or triangle) using only [[quick-context/resistor|resistors]] and [[quick-context/capacitor|capacitors]] -- no quartz crystal or resonator needed. It's the cheap, "good enough" [[micro-context/clock-source|clock source]] inside PWM controller ICs, 555 timers, and [[micro-context/microcontroller|microcontroller]] internal oscillators (like the STM32's HSI), where ±1-5% frequency accuracy is acceptable because a feedback loop or protocol tolerance compensates for drift.
 
 ## The Core Problem
 
-Many circuits need a periodic signal -- a clock, a ramp, a trigger -- but don't need the ±0.002% precision of a [[micro-context/crystal-oscillator|crystal oscillator]]. Crystals are external components that cost board space, money, and design complexity. An RC oscillator can be built entirely on-chip from standard transistors, resistors, and capacitors already available in the IC fabrication process. This makes it the default choice whenever "roughly the right frequency" is good enough: [[quick-context/pwm-controller-circuit|PWM controllers]] switching at ~500 kHz, [[micro-context/clock-source|microcontroller fallback clocks]], and timing circuits where a feedback loop corrects for frequency error.
+Many circuits need a periodic signal -- a clock, a ramp, a trigger -- but don't need the ±0.002% precision of a [[micro-context/crystal-oscillator|crystal oscillator]]. Crystals are external components that cost [[quick-context/how-passive-and-discrete-components-are-made|board space]], money, and design complexity. An RC oscillator can be built entirely on-chip from standard transistors, resistors, and capacitors already available in the IC fabrication process. This makes it the default choice whenever "roughly the right frequency" is good enough: [[quick-context/pwm-controller-circuit|PWM controllers]] switching at ~500 kHz, [[micro-context/clock-source|microcontroller fallback clocks]], and timing circuits where a feedback loop corrects for frequency error.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **RC Time Constant ($\tau = RC$)** | The time it takes a [[quick-context/capacitor\|capacitor]] charging through a [[quick-context/resistor\|resistor]] to reach ~63% of its final voltage. This is the fundamental timing element -- $R$ and $C$ values set the oscillation frequency. |
-| **Threshold / Trip Point** | A voltage level (set by a [[quick-context/comparator\|comparator]] or [[quick-context/transistor\|transistor]] switch) at which the circuit changes state -- triggering a reset, discharge, or direction change in the waveform. |
-| **Sawtooth Wave** | A waveform that ramps linearly from low to high, then snaps back to zero. Produced when a constant current charges a capacitor, then a switch discharges it instantly. This is the waveform inside [[quick-context/pwm-controller-circuit\|PWM controller ICs]]. |
-| **Relaxation Oscillator** | The general class of oscillator that works by charging a capacitor to a threshold, then rapidly discharging it and repeating. The 555 timer and the sawtooth generator inside buck converter ICs are both relaxation oscillators. |
-| **Frequency Accuracy** | How close the actual output frequency is to the target. RC oscillators are typically ±1-5% due to component tolerances and temperature drift, vs. ±0.002% for [[micro-context/crystal-oscillator\|crystals]] and ±0.5% for [[micro-context/ceramic-resonator\|ceramic resonators]]. |
+| **RC Time Constant ($\tau = RC$)** | The time it takes a [[quick-context/capacitor|capacitor]] charging through a [[quick-context/resistor|resistor]] to reach ~63% of its final voltage. This is the fundamental timing element -- $R$ and $C$ values set the oscillation frequency. |
+| **Threshold / Trip Point** | A voltage level (set by a [[quick-context/comparator|comparator]] or [[quick-context/transistor|transistor]] switch) at which the circuit changes state -- triggering a reset, discharge, or direction change in the waveform. |
+| **Sawtooth Wave** | A waveform that ramps linearly from low to high, then snaps back to zero. Produced when a constant current charges a capacitor, then a switch discharges it instantly. This is the waveform inside [[quick-context/pwm-controller-circuit|PWM controller ICs]]. |
+| **Relaxation Oscillator** | The general class of oscillator that works by charging a capacitor to a threshold, then rapidly discharging it and repeating. The 555 timer and the sawtooth generator inside [[micro-context/buck-converter|buck converter]] ICs are both relaxation oscillators. |
+| **Frequency Accuracy** | How close the actual output frequency is to the target. RC oscillators are typically ±1-5% due to component tolerances and temperature drift, vs. ±0.002% for [[micro-context/crystal-oscillator|crystals]] and ±0.5% for [[micro-context/ceramic-resonator|ceramic resonators]]. |
 
 <details>
 <summary><strong>How It Works</strong> -- Charge, compare, reset, repeat</summary>
@@ -69,7 +69,7 @@ RC RELAXATION OSCILLATOR (simplified)
 
 ### Sawtooth Waveform Generation (What's Inside a PWM IC)
 
-The [[quick-context/pwm-controller-circuit|sawtooth oscillator inside a buck converter IC]] uses a constant current source instead of a resistor, which produces a perfectly linear ramp rather than an exponential curve. This matters because a linear ramp gives a linear relationship between the error voltage and the [[micro-context/pwm-pulse-width-modulation|duty cycle]].
+The [[quick-context/pwm-controller-circuit|sawtooth oscillator inside a buck converter IC]] uses a constant [[quick-context/voltage-current-causality|current source]] instead of a resistor, which produces a perfectly linear ramp rather than an exponential curve. This matters because a linear ramp gives a linear relationship between the error voltage and the [[micro-context/pwm-pulse-width-modulation|duty cycle]].
 
 ```
 SAWTOOTH GENERATOR (constant-current variant used in PWM ICs)
@@ -179,7 +179,7 @@ FREQUENCY DRIFT SOURCES
 
 The core tradeoff is between frequency precision and the ability to integrate everything on-chip:
 
-| | RC Oscillator | [[micro-context/ceramic-resonator\|Ceramic Resonator]] | [[micro-context/crystal-oscillator\|Crystal Oscillator]] |
+| | RC Oscillator | [[micro-context/ceramic-resonator|Ceramic Resonator]] | [[micro-context/crystal-oscillator|Crystal Oscillator]] |
 |---|---|---|---|
 | **Accuracy** | ±1-5% | ±0.5% | ±0.002% (20 ppm) |
 | **External parts** | None (on-chip) | 1 component (3-pin) | 1 crystal + 2 caps |
@@ -263,23 +263,23 @@ The 555 timer is the most famous RC oscillator IC ever made (over a billion sold
 
 - **[[quick-context/capacitor]]** -- The C in RC. Capacitor type matters enormously: ceramic caps have voltage-dependent capacitance that shifts frequency under load; film caps are more stable but larger.
 
-- **[[quick-context/capacitance]]** -- Capacitance as a geometric property. Parasitic capacitance on PCB traces or IC pins adds to the timing capacitor, shifting frequency from the calculated value.
+- **[[quick-context/capacitance]]** -- Capacitance as a geometric property. [[quick-context/capacitance|Parasitic capacitance]] on PCB traces or IC pins adds to the timing capacitor, shifting frequency from the calculated value.
 
 - **[[quick-context/frequency-and-filtering]]** -- RC circuits are the foundation of passive filters. The same $f_c = 1/(2\pi RC)$ equation that sets a filter's cutoff frequency also governs the oscillator's timing.
 
-- **[[quick-context/pwm-controller-circuit]]** -- The sawtooth oscillator inside a buck converter IC is an RC relaxation oscillator (constant-current variant). It sets the switching frequency that the error amplifier and comparator modulate into PWM.
+- **[[quick-context/pwm-controller-circuit]]** -- The [[quick-context/pwm-controller-circuit|sawtooth oscillator]] inside a buck converter IC is an RC relaxation oscillator (constant-current variant). It sets the switching frequency that the error amplifier and comparator modulate into PWM.
 
-- **[[micro-context/crystal-oscillator]]** -- The high-precision alternative. Uses mechanical resonance of quartz instead of RC charging, achieving 100-1000x better frequency accuracy.
+- **[[micro-context/crystal-oscillator]]** -- The high-precision alternative. Uses [[micro-context/piezoelectric-effect|mechanical resonance]] of quartz instead of RC charging, achieving 100-1000x better frequency accuracy.
 
 - **[[micro-context/ceramic-resonator]]** -- A middle ground between RC and crystal: piezoelectric resonance gives ±0.5% accuracy, cheaper and simpler than a crystal but still an external component.
 
 - **[[micro-context/clock-source]]** -- How the STM32 selects between its internal RC oscillator (HSI) and external resonator (HSE), and how the PLL multiplies either to operating frequency.
 
-- **[[quick-context/clock-sources-and-timing|Clock Sources and Timing]]** -- The companion quick-context covering the OTHER clock source types (crystal, ceramic resonator) and the full chain from source to PLL to system clock to edge-triggered computation to thermal limits.
+- **[[quick-context/clock-sources-and-timing|Clock Sources and Timing]]** -- The companion quick-context covering the OTHER clock source types (crystal, [[micro-context/ceramic-resonator|ceramic resonator]]) and the full chain from source to PLL to system clock to edge-triggered computation to thermal limits.
 
 - **[[quick-context/comparator]]** -- The [[quick-context/comparator|comparator]] that detects the threshold crossing is the key active element in every relaxation oscillator. It's what converts the capacitor's smooth charging curve into a sharp trigger event.
 
-- **[[quick-context/op-amp]]** -- Comparators (which trigger the oscillator's reset) are essentially op-amps without feedback, driven into saturation to produce digital-like HIGH/LOW outputs.
+- **[[quick-context/op-amp]]** -- Comparators (which trigger the oscillator's reset) are essentially op-amps without feedback, driven into [[quick-context/bjt|saturation]] to produce digital-like HIGH/LOW outputs.
 
 - **[[quick-context/impedance-and-reactance]]** -- The capacitor's [[quick-context/impedance-and-reactance|reactance]] ($X_C = 1/(2\pi fC)$) is what makes RC timing frequency-dependent: at the oscillation frequency, the capacitor's impedance interacts with the resistor to set the charge/discharge rate.
 
@@ -290,10 +290,10 @@ The 555 timer is the most famous RC oscillator IC ever made (over a billion sold
 <details>
 <summary><strong>Test Your Understanding</strong> -- 5 progressive questions</summary>
 
-**Q1:** Why is an RC oscillator less accurate than a crystal oscillator?
+**Q1:** Why is an RC oscillator less accurate than a [[micro-context/crystal-oscillator|crystal oscillator]]?
 <details>
 <summary>Answer</summary>
-An RC oscillator's frequency depends on resistor and capacitor values, which drift ±1-5% with temperature, manufacturing tolerance, and aging. A crystal oscillator's frequency is set by the mechanical dimensions of a quartz crystal, which is inherently stable (±20 ppm). The crystal vibrates at a precise resonant frequency determined by physics; the RC circuit charges at a rate determined by component values that change with conditions. See: How It Works (Frequency Drift Sources).
+An RC oscillator's frequency depends on resistor and capacitor values, which drift ±1-5% with temperature, [[quick-context/pcb-printed-circuit-board|manufacturing tolerance]], and aging. A crystal oscillator's frequency is set by the mechanical dimensions of a quartz crystal, which is inherently stable (±20 ppm). The crystal vibrates at a precise resonant frequency determined by physics; the RC circuit charges at a rate determined by component values that change with conditions. See: How It Works (Frequency Drift Sources).
 </details>
 
 **Q2:** A buck converter IC has an internal oscillator running at 500 kHz ±5%. Does this 5% frequency error affect the output voltage?

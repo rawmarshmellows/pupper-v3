@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[quick-context/bjt]] | [[quick-context/transistor]] | [[quick-context/power-watts-joules]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/comparator-specification]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/how-passive-and-discrete-components-are-made]] | [[quick-context/polymer-crystallinity-vs-amorphous]]
 >
 > **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
@@ -17,12 +17,12 @@ A BJT that switches your LED perfectly at 5 V can be destroyed instantly by a 30
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
-| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less voltage." NPN is simply preferred because electrons move ~2–3× faster than holes, giving it more gain and speed for the same size. |
+| **Type (NPN / PNP)** | The polarity of the part. NPN turns on with the base *above* the emitter and is wired emitter-to-ground; PNP turns on with the base *below* the emitter and is wired emitter-to-supply. Both need ~0.7 V across the base–emitter junction to conduct — NPN does **not** need "less voltage." NPN is simply preferred because [[quick-context/anions-and-oxidation|electrons]] move ~2–3× faster than holes, giving it more gain and speed for the same size. |
 | **$V_{CEO}$ (Collector–Emitter Breakdown, base Open)** | The maximum voltage the transistor can hold across collector→emitter while **off** before it avalanche-breaks-down. When the BJT is off, nearly the full supply $V_{CC}$ appears across it, so you need $V_{CEO} > V_{CC}$ (with margin). |
 | **$I_C$ (Max Collector Current)** | The largest continuous current the collector can carry without the bond wires or silicon failing. Your load current must stay below this. |
-| **$P_C$ / $P_D$ (Power Dissipation)** | The most heat the package can shed before the junction overheats. The heat made *inside* the BJT is $P = V_{CE}\cdot I_C$. This rating shrinks as the part gets hotter (thermal derating). |
+| **$P_C$ / $P_D$ ([[quick-context/resistor|Power Dissipation]])** | The most heat the package can shed before the junction overheats. The heat made *inside* the BJT is $P = V_{CE}\cdot I_C$. This rating shrinks as the part gets hotter (thermal derating). |
 | **$\beta$ / $h_{FE}$ (DC Current Gain)** | The amplification factor: $I_C = \beta \cdot I_B$. Typically 50–300. It tells you the **minimum base current** you must inject to support a given collector current: $I_B \ge I_C / \beta_{min}$. It drifts with current and temperature — never a precision number. |
 
 <details>
@@ -52,8 +52,8 @@ THE BJT SPEC CHECKLIST
 The single most common beginner myth is "NPN needs less voltage to turn on." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
 
 - **Direction of control.** NPN turns on when the base is pulled *more positive* than the emitter; PNP turns on when the base is pulled *more negative* than the emitter.
-- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a microcontroller pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
-- **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives higher gain, faster switching, and a lower saturation voltage. That physics — not voltage — is why NPN is the default.
+- **How it's wired.** NPN sits with its emitter at ground and switches a load on the high side toward the supply — the natural fit for a [[micro-context/microcontroller|microcontroller]] pin that idles low and drives high. PNP sits with its emitter at the supply (high-side switch).
+- **Why NPN is preferred.** In NPN the charge carriers are electrons; in PNP they are holes. Electrons drift roughly **2–3× faster** than holes (higher mobility), so for the same chip area an NPN gives [[quick-context/differential-pair|higher gain]], [[quick-context/transistor-analog-to-digital|faster switching]], and a lower [[quick-context/bjt|saturation]] voltage. That physics — not voltage — is why NPN is the default.
 
 ```
 NPN — LOW-SIDE SWITCH   (emitter at GND;   drive base HIGH to turn ON)
@@ -100,7 +100,7 @@ The margin matters because inductive loads (motors, relays, solenoids) generate 
 > There are three breakdown specs and they are not interchangeable: **$V_{CEO}$** (collector–emitter, base open — the one quoted for switching), **$V_{CBO}$** (collector–base, emitter open — usually the highest), and **$V_{EBO}$** (emitter–base, base–emitter reverse breakdown — usually only ~5–7 V, easy to exceed by accident).
 
 **3. $I_C$ — the on-state current ceiling.**
-The maximum continuous current the collector terminal can carry. Above it the bond wires overheat and the silicon degrades. Your worst-case load current must stay comfortably under it (derate to ~50–70% for reliability). Datasheets also list a higher *peak/pulsed* $I_{CM}$ for brief surges — don't confuse the two.
+The maximum continuous current the collector terminal can carry. Above it the bond wires overheat and the silicon degrades. Your worst-case load current must stay comfortably under it (derate to ~50–70% for [[quick-context/bond-pad|reliability]]). Datasheets also list a higher *peak/pulsed* $I_{CM}$ for brief surges — don't confuse the two.
 
 **4. $P_C$ — the heat ceiling.**
 This is the one beginners forget, and it's the one that quietly cooks parts. The transistor itself dissipates power equal to the voltage across it times the current through it:
@@ -137,7 +137,7 @@ SAFE OPERATING AREA (log-log, conceptual)
    LEFT of V_CEO, and BELOW I_C-max — simultaneously.
 ```
 
-**Thermal derating:** $P_C$ is quoted at a reference case/ambient temperature (e.g. 25 °C). Above that, the rating falls off linearly to zero at the max junction temperature. A "625 mW" small-signal part in free air at 25 °C might only safely handle ~300 mW once the board warms up. The governing relation is $P_{max} = (T_{j,max} - T_{ambient}) / R_{\theta JA}$, where $R_{\theta JA}$ (junction-to-ambient thermal resistance, °C/W) is the part's "thermal Ohm's law" — see [[quick-context/power-watts-joules|electrical power & heat]].
+**Thermal derating:** $P_C$ is quoted at a [[quick-context/comparator|reference]] case/ambient temperature (e.g. 25 °C). Above that, the rating falls off linearly to zero at the max junction temperature. A "625 mW" small-signal part in free air at 25 °C might only safely handle ~300 mW once the board warms up. The governing relation is $P_{max} = (T_{j,max} - T_{ambient}) / R_{\theta JA}$, where $R_{\theta JA}$ (junction-to-ambient thermal resistance, °C/W) is the part's "thermal Ohm's law" — see [[quick-context/power-watts-joules|electrical power & heat]].
 
 **5. $\beta$ / $h_{FE}$ — the gain that sets your base current.**
 Gain is the ratio of collector current to base current:
@@ -194,7 +194,7 @@ PN2222A / TO-92 plastic  (ON Semi limits)  YOUR CIRCUIT NEEDS
   h_FE     : 100 (min @ I_C=150mA) ... 300 use 100 (min) for the switch
 ```
 
-> **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're soldering. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
+> **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're [[quick-context/soldering|soldering]]. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
 
 **Step 1 — Voltage fence.** Off-state, the relay coil pulls the collector to ~12 V, so $V_{CE}\approx 12$ V $< 40$ V $V_{CEO}$. Plus margin for the coil's inductive turn-off spike → add a flyback diode and you're safe. PASS.
 
@@ -216,7 +216,7 @@ $$R_B = \frac{V_{pin} - V_{BE}}{I_B} = \frac{3.3\,\text{V} - 0.7\,\text{V}}{9\,\
 
 Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs verified, part is safe.
 
-**The one thing most outsiders get wrong about this is** assuming the $h_{FE}$ printed on the datasheet (or measured by a cheap component tester) is *the* gain. It isn't — it's one point on a curve that slides with current and temperature, and the *typical* value is meaningless for a switch. Always design switches around the **minimum guaranteed** $h_{FE}$ and then overdrive the base. The runner-up mistake is forgetting that $P_C$ is a *temperature-derated* number, not a fixed one — "625 mW" is a 25 °C lab value, not what you get inside a hot enclosure.
+**The one thing most outsiders get wrong about this is** assuming the $h_{FE}$ printed on the datasheet (or measured by a cheap [[quick-context/pcb-assembly-files-bom-cpl|component]] tester) is *the* gain. It isn't — it's one point on a curve that slides with current and temperature, and the *typical* value is meaningless for a switch. Always design switches around the **minimum guaranteed** $h_{FE}$ and then overdrive the base. The runner-up mistake is forgetting that $P_C$ is a *temperature-derated* number, not a fixed one — "625 mW" is a 25 °C lab value, not what you get inside a hot enclosure.
 
 </details>
 
@@ -228,7 +228,7 @@ Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs
 - **[[quick-context/resistor]]** — The base resistor sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
 - **[[quick-context/transistor]]** — The MOSFET sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
 - **[[quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
-- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. boldface).
+- **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a comparator IC (absolute-max vs. guaranteed limits, typical vs. [[micro-context/input-offset-voltage|boldface]]).
 
 </details>
 

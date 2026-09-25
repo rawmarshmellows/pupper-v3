@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # CNC Turning
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[micro-context/cnc-milling]] | [[micro-context/cnc-process-selection]] | [[micro-context/edm-machining]] | [[micro-context/pick-and-place-file]] | [[micro-context/thread-pitch-screws]]
 
 **Definition:** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting tool removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally symmetric parts like shafts, bolts, and bushings.
 
