@@ -5,7 +5,7 @@ created: 2026-03-23
 
 # Camera Fundamentals — Sensors, Lenses, and Calibration
 
-> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | [[small-context/decibels-across-domains|Why decibels]]
+> **Related:** [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/diode]] | [[micro-context/homogeneous-transformation-matrix]] | [[micro-context/adc-analog-to-digital-converter]] | Why decibels
 
 > **TL;DR:** A camera converts photons into a 2D pixel array by focusing light through a lens onto a grid of [[quick-context/diode|photodiodes]] on a [[quick-context/silicon-die|silicon die]], where sensor size controls image quality tradeoffs, focal length determines field of view, dynamic range measures the brightest-to-darkest scene the sensor can capture, and the intrinsic/extrinsic calibration matrices describe how 3D world points map to 2D pixel coordinates.
 
@@ -15,9 +15,9 @@ Without understanding how cameras actually form images — the physics of sensor
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
-| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode\|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into pixel values by on-chip [[micro-context/adc-analog-to-digital-converter\|ADCs]] |
+| **Image Sensor** | A [[quick-context/silicon-die|silicon die]] containing a 2D grid of millions of [[quick-context/diode|photodiodes]] that convert incoming photons into electrical charge, which is then digitized into [[quick-context/keypress-to-pixel-pipeline|pixel values]] by on-chip [[micro-context/adc-analog-to-digital-converter|ADCs]] |
 | **Focal Length** | The distance (in mm) from the lens's optical center to the sensor when focused at infinity; determines magnification and, combined with sensor size, the field of view |
 | **Sensor Format** | The physical dimensions of the image sensor (e.g., full frame = 36 x 24 mm, Micro Four Thirds = 17.3 x 13 mm); larger sensors collect more light per pixel and produce shallower depth of field |
 | **Dynamic Range** | The ratio between the brightest and darkest light levels a sensor can capture in a single exposure, measured in stops (each stop = $2\times$ light) or decibels ($20 \log_{10}$ of voltage ratio) |
@@ -123,7 +123,7 @@ SENSOR SIZE COMPARISON (to scale relative to full frame)
 | **1-inch** | 13.2 x 8.8 mm | 2.7x | Premium compacts, drones (DJI) |
 | **1/2.3-inch** | 6.2 x 4.6 mm | 5.6x | Smartphones, action cameras |
 
-**Why size matters:** A larger sensor has larger pixels (or more of them). Larger pixels capture more photons before saturating, giving better signal-to-noise ratio — directly improving dynamic range and low-light performance. The [[quick-context/thermal-noise-electronics|thermal noise floor]] is roughly constant regardless of pixel size, so bigger pixels mean a better signal-to-noise ratio.
+**Why size matters:** A larger sensor has larger pixels (or more of them). Larger pixels capture more photons before saturating, giving better signal-to-noise ratio — directly improving dynamic range and low-light [[quick-context/bond-pad|performance]]. The [[quick-context/thermal-noise-electronics|thermal noise floor]] is roughly constant regardless of pixel size, so bigger pixels mean a better signal-to-noise ratio.
 
 **Crop factor** describes how a smaller sensor "crops" the image compared to full frame. A 50 mm lens on a 2x crop sensor gives the same field of view as a 100 mm lens on full frame.
 
@@ -191,7 +191,7 @@ FOCAL LENGTH, SENSOR SIZE, AND FIELD OF VIEW
 
 #### What is a "stop"?
 
-A **stop** is photography's universal unit for measuring light ratios. One stop equals exactly one **doubling** (or halving) of light. The term comes from the physical click-stops on a lens aperture ring — each click doubles or halves the light reaching the sensor. But stops apply far beyond aperture: they describe any factor-of-two change in exposure, whether from shutter speed, ISO, ND filters, or scene brightness.
+A **stop** is photography's universal unit for measuring light ratios. One stop equals [[quick-context/ram-addressing-decoder|exactly one]] **doubling** (or halving) of light. The term comes from the physical click-stops on a lens aperture ring — each click doubles or halves the light reaching the sensor. But stops apply far beyond aperture: they describe any factor-of-two change in exposure, whether from shutter speed, ISO, ND filters, or scene brightness.
 
 The key insight is that stops are **logarithmic** — they compress huge brightness ratios into small, human-friendly numbers. The sun is roughly $2^{20}$ (about a million) times brighter than a dimly lit room, but in stops that's just "20 stops apart." Our eyes perceive brightness logarithmically too, which is why stops feel like even steps even though each one doubles the actual photon count.
 
@@ -314,7 +314,7 @@ $$K = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix}$
 
 where $f_x, f_y$ are focal lengths in pixel units ($f_x = f_{\text{mm}} \times \text{pixels\_per\_mm}$) and $(c_x, c_y)$ is the principal point (ideally image center).
 
-**Extrinsic parameters** describe the camera's pose in the world — a rotation $R$ and translation $\mathbf{t}$ that form a [[micro-context/homogeneous-transformation-matrix|homogeneous transformation matrix]] converting world-frame coordinates to camera-frame coordinates:
+**Extrinsic parameters** describe the camera's pose in the world — a rotation $R$ and [[quick-context/pupper-lab2-forward-kinematics|translation]] $\mathbf{t}$ that form a [[micro-context/homogeneous-transformation-matrix|homogeneous transformation matrix]] converting world-frame coordinates to camera-frame coordinates:
 
 $$\begin{bmatrix} R & \mathbf{t} \\ \mathbf{0} & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4}$$
 
@@ -376,7 +376,7 @@ THE FULL PROJECTION PIPELINE
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Sensor size vs. everything else</summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Sensor size vs. everything else</summary>
 
 The central tradeoff in camera design is the **iron triangle of sensor size, resolution, and pixel size**. You can only pick two:
 
@@ -537,9 +537,9 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 
 - **[[micro-context/adc-analog-to-digital-converter]]** — Each pixel's accumulated charge is converted to a digital number by an on-chip ADC. The ADC bit depth (10, 12, 14-bit) directly determines the quantization of dynamic range. A 14-bit ADC provides 16,384 levels, enabling ~14 stops of dynamic range if the noise floor is low enough.
 
-- **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by thermal noise (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
+- **[[quick-context/thermal-noise-electronics]]** — The noise floor that limits dynamic range is dominated by [[quick-context/thermal-noise-electronics|thermal noise]] (Johnson-Nyquist noise in the readout circuit) and shot noise (statistical variation in photon arrival). The Nyquist formula $V_n = \sqrt{4kTR\Delta f}$ directly predicts the minimum detectable signal in the sensor's readout amplifier.
 
-- **[[quick-context/silicon-die]]** — An image sensor IS a silicon die — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all integrated on a single die.
+- **[[quick-context/silicon-die]]** — An image sensor IS a [[quick-context/silicon-die|silicon die]] — a CMOS sensor is fabricated using the same [[quick-context/semiconductor-fabrication|semiconductor fabrication]] process as CPUs, with photodiodes, readout transistors, and ADCs all [[quick-context/playbook-main|integrated]] on a single die.
 
 - **Stereo Vision** — Two calibrated cameras with known extrinsic relationship can triangulate 3D depth. Requires accurate intrinsic calibration of both cameras and precise measurement of the baseline (distance between them).
 
@@ -550,10 +550,10 @@ v = p_homogeneous[1] / p_homogeneous[2]  # pixel y
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** A photodiode in an image sensor is operated in reverse bias. Why reverse bias instead of forward bias, and how does incident light generate a signal?
+**Q1:** A photodiode in an image sensor is operated in reverse bias. Why reverse bias instead of [[micro-context/reverse-and-forward-bias|forward bias]], and how does incident light generate a signal?
 <details>
 <summary>Answer</summary>
-In reverse bias, the depletion zone is wide and the junction has a strong electric field but essentially no current. When a photon is absorbed in the silicon, it generates an electron-hole pair. The depletion zone's electric field sweeps this carrier across the junction, creating a photocurrent proportional to light intensity. Forward bias wouldn't work because the large forward current would swamp the tiny photocurrent — you need the "quiet" state of reverse bias so that the only current is from incident photons. See: How It Works, Stage 1 and [[micro-context/reverse-and-forward-bias]].
+In reverse bias, the depletion zone is wide and the junction has a strong [[quick-context/voltage-current-causality|electric field]] but essentially no current. When a photon is absorbed in the silicon, it generates an electron-hole pair. The depletion zone's electric field sweeps this carrier across the junction, creating a photocurrent proportional to light intensity. Forward bias wouldn't work because the large forward current would swamp the tiny photocurrent — you need the "quiet" state of reverse bias so that the only current is from incident photons. See: How It Works, Stage 1 and [[micro-context/reverse-and-forward-bias]].
 </details>
 
 **Q2:** A 50 mm lens gives a 40 degree horizontal FOV on full frame. What FOV does the same lens give on a Micro Four Thirds sensor, and why?
@@ -571,7 +571,7 @@ $\text{DR (stops)} = \log_2(30000/5) = \log_2(6000) \approx 12.6 \text{ stops}$.
 **Q4:** Someone claims: "You don't need to calibrate the camera — just use the focal length printed on the lens." What's wrong with this?
 <details>
 <summary>Answer</summary>
-The printed focal length is the physical focal length in mm, but the intrinsic matrix $K$ needs focal length in **pixel units** ($f_x = f_{\text{mm}} \times \text{pixels/mm}$), which depends on pixel pitch — a quantity not printed on the lens. Worse, the printed focal length is nominal and may not be exact, the principal point is rarely exactly at image center, and — most critically — the intrinsic model must also include **distortion coefficients** (radial and tangential) that are unique to each individual lens specimen. Calibration using a known pattern (checkerboard) estimates all of these simultaneously from observed data. See: Concrete Example.
+The printed focal length is the physical focal length in mm, but the intrinsic matrix $K$ needs focal length in **pixel units** ($f_x = f_{\text{mm}} \times \text{pixels/mm}$), which depends on pixel pitch — a quantity not printed on the lens. Worse, the printed focal length is nominal and may not be exact, the principal point is rarely exactly at image center, and — most critically — the intrinsic model must also include **distortion coefficients** (radial and tangential) that are unique to each individual lens specimen. Calibration using a known pattern (checkerboard) estimates all of these [[quick-context/bare-minimal-data-storage-circuit|simultaneously]] from observed data. See: Concrete Example.
 </details>
 
 **Q5:** The extrinsic matrix converts world-frame points to camera-frame points, and the intrinsic matrix projects camera-frame points to pixels. This is the same [[micro-context/homogeneous-transformation-matrix|homogeneous transformation]] framework used in [[quick-context/pupper-lab2-forward-kinematics|Pupper's forward kinematics]]. If you mounted a camera on the Pupper's body at a known position and orientation, how would you combine the robot's FK chain with the camera calibration to project a 3D point in the foot's coordinate frame onto the camera's pixel coordinates?

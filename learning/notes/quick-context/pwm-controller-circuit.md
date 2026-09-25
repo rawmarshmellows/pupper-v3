@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # PWM Controller Circuit
 
-> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/pcb-printed-circuit-board]] | [[micro-context/pwm-pulse-width-modulation]] | [[micro-context/short-circuit]] | [[quick-context/ac-to-dc-rectification]]
 
 > **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
@@ -18,10 +18,10 @@ Without a feedback-controlled PWM, the output voltage of a [[micro-context/buck-
 | Term | Definition |
 |------|------------|
 | **Sawtooth oscillator** | Internal [[quick-context/rc-oscillator|RC oscillator]] clock that generates a repeating ramp waveform (0V → peak → reset), setting the switching frequency (e.g., 500kHz) |
-| **Error amplifier** | An [[quick-context/op-amp\|op-amp]] inside the IC that outputs a voltage proportional to how far $V_{OUT}$ is from the target — the "error signal" |
-| **[[quick-context/comparator\|Comparator]]** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
+| **Error amplifier** | An [[quick-context/op-amp|op-amp]] inside the IC that outputs a voltage proportional to how far $V_{OUT}$ is from the target — the "error signal" |
+| **[[quick-context/comparator|Comparator]]** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
 | **Voltage reference ($V_{REF}$)** | A precision internal voltage (typically 0.6–0.8V) that the error amplifier uses as its target — the "setpoint" |
-| **Feedback divider** | Two [[quick-context/resistor\|resistors]] from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
+| **Feedback divider** | Two [[quick-context/resistor|resistors]] from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
 
 <details>
 <summary><strong>How It Works</strong> — The complete PWM generation circuit</summary>
@@ -171,7 +171,7 @@ This is tuned by the **compensation network** — a small R-C circuit on the err
 
 | Higher frequency (1–2MHz) | Lower frequency (100–300kHz) |
 |---|---|
-| Smaller [[quick-context/inductor\|inductor]] and [[quick-context/capacitor\|capacitor]] needed (smaller board area) | Larger L and C needed (bigger board) |
+| Smaller [[quick-context/inductor|inductor]] and [[quick-context/capacitor|capacitor]] needed (smaller board area) | Larger L and C needed (bigger board) |
 | More switching losses ($P_{sw} \propto f$) — MOSFET turns on/off more often | Less switching loss |
 | Gate driver must charge MOSFET capacitance faster | Easier gate driving |
 
@@ -230,12 +230,12 @@ The TPS54561 at **U8** on the Pupper v3 control board is exactly this circuit in
 | R1 (top of feedback divider) | **R5** — 60.4kΩ (E96) |
 | R2 (bottom of feedback divider) | **R6** — 11.5kΩ (E96) |
 | External inductor | **L1** — 10µH |
-| Catch/freewheeling diode | **D1** — SS56 Schottky |
-| Output caps | **C18, C19** — 2× 47µF |
+| Catch/freewheeling diode | **D1** — SS56 [[quick-context/diode|Schottky]] |
+| Output caps | **[[micro-context/buck-converter|C18, C19]]** — 2× 47µF |
 
 $V_{OUT} = 0.8\text{V} \times (1 + 60.4\text{k}/11.5\text{k}) \approx 5.0\text{V}$. R5 and R6 aren't some separate "PWM-setting" resistors — they are literally the feedback divider that programs the setpoint of the analog loop inside U8. The PWM itself never leaves U8; the only externally visible power-loop signals are SW (switching node, at L1), FB (the divider midpoint), and VOUT.
 
-See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for the full Pupper buck topology.
+See buck-converter#real-example-pupper-v3-control-board for the full Pupper buck topology.
 
 </details>
 
@@ -244,8 +244,8 @@ See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for th
 
 - **[[micro-context/buck-converter]]** — The power stage (MOSFET + diode + inductor + capacitor) that this controller drives
 - **[[micro-context/pwm-pulse-width-modulation]]** — The PWM signal itself — what it is, duty cycle math, and applications beyond power conversion
-- **[[quick-context/op-amp]]** — The error amplifier IS an op-amp; understanding virtual short and negative feedback is key to understanding the control loop
-- **[[quick-context/frequency-and-filtering]]** — The output LC filter is a 2nd-order low-pass filter; the compensation network shapes the loop's frequency response
+- **[[quick-context/op-amp]]** — The error amplifier IS an op-amp; understanding [[quick-context/op-amp|virtual short]] and negative feedback is key to understanding the control loop
+- **[[quick-context/frequency-and-filtering]]** — The output LC filter is a 2nd-[[quick-context/frequency-and-filtering|order]] low-pass filter; the compensation network shapes the loop's frequency response
 - **[[quick-context/capacitor]]** — Output capacitor smoothing and the MOSFET gate capacitance that the driver must charge
 - **[[quick-context/inductor]]** — Energy storage element; its $V = L \times dI/dt$ relationship determines the current ramp rate
 - **[[quick-context/resistor]]** — Feedback divider resistors set the output voltage; compensation network uses R-C
@@ -256,7 +256,7 @@ See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for th
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
+<summary><strong>Test [[quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong> — 5 progressive questions</summary>
 
 **Q1:** What happens to the PWM duty cycle if the load suddenly draws more current?
 <details>
@@ -267,13 +267,13 @@ VOUT drops → V_FB drops below Vref → error amplifier output rises → compar
 **Q2:** If you want to change a buck converter's output from 5V to 3.3V, what do you physically change on the board?
 <details>
 <summary>Answer</summary>
-Change R1 in the feedback divider (the resistor between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
+Change R1 in the feedback divider (the resistor between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a [[quick-context/transistor-analog-to-digital|lower voltage]]. See: Concrete Example.
 </details>
 
-**Q3:** Why can't you just use a microcontroller's PWM output to regulate a buck converter?
+**Q3:** Why can't you just use a [[micro-context/microcontroller|microcontroller]]'s PWM output to regulate a buck converter?
 <details>
 <summary>Answer</summary>
-A microcontroller's PWM timer typically runs at kHz rates with microsecond resolution, but a buck converter needs cycle-by-cycle correction at 500kHz+ with nanosecond switching transitions. Even though hardware interrupt latency is fast (~12 cycles, ~71ns on a 168MHz Cortex-M4), the total response time including ISR entry, ADC sampling, and computation pushes practical latency to ~1μs — comparable to an entire switching period. The analog comparator inside the IC responds in nanoseconds with no software overhead. Also, the gate driver needs to source/sink amps of current to charge the MOSFET gate capacitance — an MCU GPIO pin can't do that.
+A microcontroller's PWM timer typically runs at kHz rates with microsecond [[quick-context/semiconductor-fabrication|resolution]], but a buck converter needs cycle-by-cycle correction at 500kHz+ with nanosecond switching transitions. Even though hardware interrupt [[quick-context/embedded-communication-protocols|latency]] is fast (~12 cycles, ~71ns on a 168MHz Cortex-M4), the total response time including ISR entry, ADC sampling, and computation pushes practical latency to ~1μs — comparable to an entire switching period. The analog comparator inside the IC responds in nanoseconds with no software overhead. Also, the gate driver needs to [[quick-context/differential-pair|source]]/sink amps of current to charge the MOSFET gate capacitance — an MCU GPIO pin can't do that.
 </details>
 
 **Q4:** What goes wrong if the error amplifier's compensation network makes the loop respond too fast?
@@ -285,7 +285,7 @@ The loop oscillates. A too-fast error amplifier overreacts to every small pertur
 **Q5:** In the comparator waveform diagram, the sawtooth ramp resets instantly to 0V. What would happen if the ramp were a triangle wave (ramp up then ramp down) instead of a sawtooth?
 <details>
 <summary>Answer</summary>
-With a triangle wave, you'd get two intersection points per cycle — one on the rising edge and one on the falling edge — producing a pulse centered in the middle of the period rather than aligned to the start. This is actually used in some controllers (called "naturally sampled PWM") and produces lower harmonic distortion. Sawtooth (leading-edge or trailing-edge modulation) is simpler to implement and more common in power converters because it gives a single, unambiguous intersection point per cycle.
+With a triangle wave, you'd get two intersection points per cycle — one on the [[quick-context/bare-minimal-data-storage-circuit|rising edge]] and one on the falling edge — producing a pulse centered in the middle of the period rather than aligned to the start. This is actually used in some controllers (called "naturally sampled PWM") and produces lower harmonic distortion. Sawtooth (leading-edge or trailing-edge [[quick-context/wifi-chip-arduino-uno-r4|modulation]]) is simpler to implement and more common in power converters because it gives a single, unambiguous intersection point per cycle.
 </details>
 
 </details>

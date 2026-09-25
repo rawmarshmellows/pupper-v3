@@ -5,21 +5,21 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]] | [[quick-context/electricity-generation]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an [[quick-context/electromagnetism|electromagnetic wave]]. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electric Field (E)** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
-| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
-| **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates total flux to enclosed charge. |
+| **[[quick-context/electric-magnetic-field-unification|Electric Field (E)]]** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
+| **[[quick-context/coil-magnetic-field|Magnetic Field (B)]]** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
+| **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates [[quick-context/similarity-transform|total]] flux to enclosed charge. |
 | **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[quick-context/lenzs-law|Faraday's law]]). |
 | **Displacement Current** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
 
@@ -28,7 +28,7 @@ Before Maxwell, electricity and magnetism seemed like separate phenomena with un
 
 ## The Four Equations: What Each Says
 
-Maxwell's equations can be written in multiple forms (integral, differential, with or without materials). Here's the differential form in vacuum, with physical meaning:
+Maxwell's equations can be written in multiple forms (integral, differential, with or without materials). Here's the differential [[quick-context/mcp6541-as-lmc7211-replacement|form]] in vacuum, with physical meaning:
 
 ```
 MAXWELL'S EQUATIONS — Differential Form (Vacuum)
@@ -261,7 +261,7 @@ THE SELF-SUSTAINING WAVE
 
 ## Two Ways to Write the Same Physics
 
-Maxwell's equations can be expressed in integral form (useful for calculations with symmetry) or differential form (useful for general analysis and deriving waves). They're mathematically equivalent via Stokes' and Gauss's theorems.
+Maxwell's equations can be expressed in integral form (useful for calculations with symmetry) or differential form (useful for [[quick-context/singular-value-decomposition|general]] analysis and deriving waves). They're mathematically equivalent via Stokes' and Gauss's theorems.
 
 ```
 INTEGRAL vs. DIFFERENTIAL FORMS
@@ -494,7 +494,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
+- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two [[quick-context/tensor|tensor]] equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
 
 - **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
 
@@ -532,7 +532,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?
 <details>
 <summary>Answer</summary>
-**It matched the known speed of light exactly.** μ₀ and ε₀ were measured independently through electric and magnetic experiments—nothing to do with light. Yet when combined, they gave 3×10⁸ m/s, the speed of light. This couldn't be coincidence. Maxwell concluded that light IS an electromagnetic wave. This unified optics with electromagnetism and predicted the entire electromagnetic spectrum (radio, infrared, UV, X-rays) before most were discovered.
+**It matched the known speed of light exactly.** μ₀ and ε₀ were measured independently through electric and magnetic experiments—[[quick-context/tlv7211-as-lmc7211-replacement|nothing]] to do with light. Yet when combined, they gave 3×10⁸ m/s, the speed of light. This couldn't be coincidence. Maxwell concluded that light IS an electromagnetic wave. This unified optics with electromagnetism and predicted the entire electromagnetic spectrum (radio, infrared, UV, X-rays) before most were discovered.
 </details>
 
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?

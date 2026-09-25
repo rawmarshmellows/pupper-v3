@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
+> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]]
 
-> **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
+> **TL;DR:** [[quick-context/miller-heiman-strategic-selling-lamp|The four buyer roles]]—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
 ## The Core Problem
 
-Sales reps often sell to whoever will take a meeting, then discover they've been talking to someone without authority to buy. Complex deals involve multiple stakeholders with different priorities—the person who uses your product daily cares about different things than the person writing the check. Without mapping these roles, reps misjudge deal health, miss key influencers, and get blindsided by objections from stakeholders they never engaged.
+Sales reps often sell to whoever will take a meeting, then discover they've been talking to someone without authority to buy. Complex deals involve multiple stakeholders with different priorities—the person who uses [[quick-context/mcp6541-as-lmc7211-replacement|your]] product daily cares about different things than the person writing the check. Without mapping these roles, reps misjudge deal health, miss key influencers, and get blindsided by objections from stakeholders they never engaged.
 
 ## 5 Essential Terms
 
@@ -20,8 +20,8 @@ Sales reps often sell to whoever will take a meeting, then discover they've been
 | **Economic Buyer** | The single person with discretionary authority to approve the purchase—can say "yes" when everyone else says "no," and controls the budget |
 | **User Buyer** | The person(s) who will work with your solution day-to-day and judges success based on job impact and personal convenience |
 | **Technical Buyer** | The gatekeeper who screens against specifications, compliance, or technical requirements—can veto but cannot approve alone |
-| **Coach** | An internal advocate who provides intelligence about the organization's decision process, politics, and how to navigate to the Economic Buyer |
-| **Buyer Mode** | The psychological stance of each buyer: Growth (seeking improvement), Trouble (reacting to pain), Even Keel (status quo), or Overconfident (dismissive) |
+| **Coach** | An internal advocate who provides intelligence about the organization's [[quick-context/meddpicc-qualification-framework|decision process]], politics, and how to navigate to the Economic Buyer |
+| **Buyer Mode** | The psychological stance of each buyer: Growth (seeking improvement), Trouble (reacting to pain), Even Keel (status quo), or [[quick-context/existing-account-management-playbook|Overconfident]] (dismissive) |
 
 <details>
 <summary><strong>How It Works</strong> — Identifying and engaging each role</summary>
@@ -135,12 +135,12 @@ The framework creates pressure to engage all buyers, but time is limited:
 | Lower risk of surprise objections | Faster deal velocity |
 | Longer sales cycles | Risk of late-stage blockers |
 
-**The practitioner debate:**
+**[[quick-context/challenger-sale-methodology|The practitioner debate:]]**
 
 - **"Always map all buyers"**: Any unmapped buyer can kill the deal. A veto from a Technical Buyer you never met is worse than a longer cycle.
 - **"Focus on the money"**: Economic Buyer is the only one who can say yes. Get to them fast, let them manage their organization.
 
-**The pragmatic answer:** Scale coverage to deal size. $10K deal? Meet Economic Buyer and one User Buyer. $100K+ deal? Full stakeholder map and engagement plan for all four roles.
+**[[quick-context/post-sale-account-engagement|The pragmatic answer:]]** Scale coverage to deal size. $10K deal? Meet Economic Buyer and one User Buyer. $100K+ deal? Full stakeholder map and engagement plan for all four roles.
 
 </details>
 
@@ -213,7 +213,7 @@ PRIORITY ACTIONS:
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
+- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader [[quick-context/sales-methodology-layering|account planning framework]] where these buyer roles originate
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
 - **[[quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
 - **Org Chart Analysis** — The practical skill of mapping formal and informal power structures
@@ -251,7 +251,7 @@ A User Buyer in TROUBLE mode is receptive—lead with quick pain relief. A User 
 **Q5:** Your Technical Buyer (VP Security) is in OVERCONFIDENT mode about their current solution. How do you proceed?
 <details>
 <summary>Answer</summary>
-OVERCONFIDENT is the hardest mode—they don't see the problem. Options: (1) Go around them to Economic Buyer with business case (risky—they may feel bypassed), (2) Wait for a crisis that shakes their confidence, (3) Use industry data/peer examples to create doubt, (4) Find a different sponsor who can influence them. Sometimes the right answer is disqualify—a blocker in OVERCONFIDENT mode can kill deals regardless of other support.
+OVERCONFIDENT is the hardest mode—they don't see the problem. Options: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] Go around them to Economic Buyer with business case (risky—they may feel bypassed), (2) Wait for a crisis that shakes their confidence, (3) Use industry data/peer examples to create doubt, (4) Find a different sponsor who can influence them. Sometimes the right answer is disqualify—a blocker in OVERCONFIDENT mode can kill deals regardless of other support.
 </details>
 
 </details>

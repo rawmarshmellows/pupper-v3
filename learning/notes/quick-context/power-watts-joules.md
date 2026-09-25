@@ -3,19 +3,19 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
+> **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central [[quick-context/voltage-current-causality|constraint]] of modern electronics.
 
 # Electrical Power
 
 ## The Core Problem: Where Does the Energy Go?
 
-A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
+A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a [[quick-context/bga-ball-grid-array|thermal management]] problem.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Power (P)** | Rate of energy transfer, measured in watts (W). P = V × I = I²R = V²/R. One watt = one joule per second. |
 | **Energy (E)** | Total work done, measured in joules (J). E = P × t. Your electricity bill is in kilowatt-hours (1 kWh = 3,600,000 J). |
@@ -85,7 +85,7 @@ POWER RATINGS: WHY THEY MATTER
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Power vs. Efficiency vs. Size (The Thermal Wall)
 
@@ -113,7 +113,7 @@ THE THERMAL CONSTRAINT
 | Power Source | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |
@@ -174,9 +174,9 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[quick-context/resistor]]** — Every resistor in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
 
-- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
+- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The [[quick-context/inductor|inductor]] stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a [[quick-context/capacitor|capacitor]] is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because [[quick-context/voltage|capacitors]] charge/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 
@@ -185,7 +185,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A USB device draws 500 mA at 5V. How much power does it consume?
+**Q1:** A [[quick-context/embedded-communication-protocols|USB device]] draws 500 mA at 5V. How much power does it consume?
 <details>
 <summary>Answer</summary>
 **2.5W.** P = V × I = 5V × 0.5A = 2.5W. This is the standard USB 2.0 power budget per port.
@@ -206,13 +206,13 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q4:** A PCB trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
 <details>
 <summary>Answer</summary>
-**0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider (lower resistance) or use multiple layers.
+**0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider ([[quick-context/pcb-printed-circuit-board|lower resistance]]) or use multiple layers.
 </details>
 
 **Q5:** Why did fast charging standards move to higher voltages (9V, 12V, 20V) instead of higher current?
 <details>
 <summary>Answer</summary>
-**To reduce I²R losses in the cable.** For the same power, doubling voltage halves current, which reduces cable heating by 4× (since P_loss = I²R). Delivering 60W at 5V requires 12A (massive cable losses), but 60W at 20V requires only 3A (manageable losses with standard cables). The phone internally converts the high voltage down to battery voltage using an efficient buck converter.
+**To reduce I²R losses in the cable.** For the same power, [[quick-context/camera-fundamentals|doubling]] voltage halves current, which reduces cable heating by 4× (since P_loss = I²R). Delivering 60W at 5V requires 12A (massive cable losses), but 60W at 20V requires only 3A (manageable losses with standard cables). The phone internally converts the high voltage down to battery voltage using an efficient buck converter.
 </details>
 
 </details>

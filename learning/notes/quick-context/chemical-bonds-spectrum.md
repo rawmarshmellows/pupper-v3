@@ -3,24 +3,24 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]]
 
-> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
+> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that hold molecules together, down to weak [[quick-context/van-der-waals-forces|van der Waals forces]] (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without [[quick-context/electrolysis|breaking]] intramolecular bonds (decomposition).
 
 # Chemical Bonds: The Full Spectrum
 
 ## The Core Problem: Why Do Things Stick Together?
 
-Every material property you care about—melting point, strength, flexibility, whether your 3D print survives in a hot car—comes down to one question: **how strongly are the atoms and molecules holding onto each other?** The answer isn't binary ("bonded" or "not bonded") but a *spectrum* of interaction strengths spanning three orders of magnitude. At one end: [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that share electrons and literally hold atoms together into molecules—break these and you've destroyed the material. At the other end: [[quick-context/van-der-waals-forces|van der Waals forces]] (~0.5-5 kJ/mol) so weak they exist between *everything*, even noble gases that refuse to bond chemically. In between: ionic bonds, [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]], [[quick-context/dipole-dipole-interactions|dipole-dipole interactions]], and [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]—each with distinct strengths and behaviors. Understanding this spectrum explains why water is liquid at room temperature (hydrogen bonds), why geckos climb walls (accumulated van der Waals), why PLA melts at 180°C but ABS needs 240°C (different intermolecular force profiles), and why diamonds are forever (covalent network).
+Every material property you care about—melting point, strength, flexibility, whether your 3D print survives in a hot car—comes down to one question: **how strongly are the atoms and molecules holding onto each other?** The answer isn't binary ("bonded" or "not bonded") but a *spectrum* of interaction strengths spanning three orders of magnitude. At one end: [[quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that share [[quick-context/anions-and-oxidation|electrons]] and literally hold atoms together into molecules—break these and you've destroyed the material. At the other end: [[quick-context/van-der-waals-forces|van der Waals forces]] (~0.5-5 kJ/mol) so weak they exist between *everything*, even noble gases that refuse to bond chemically. In between: ionic bonds, [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]], [[quick-context/dipole-dipole-interactions|dipole-dipole interactions]], and [[quick-context/pi-pi-stacking-aromatic-interactions|π-π stacking]]—each with distinct strengths and behaviors. Understanding this spectrum explains why water is liquid at room temperature ([[quick-context/hydrogen-bonds-beginners|hydrogen bonds]]), why geckos climb walls (accumulated van der Waals), why PLA melts at 180°C but ABS needs 240°C (different intermolecular force profiles), and why diamonds are forever (covalent network).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Intermolecular force** | Any attraction *between* molecules—van der Waals, dipole-dipole, hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
-| **Intramolecular bond** | The [[quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
+| **Intramolecular bond** | The [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a [[quick-context/atoms-molecules-polymers-basics|molecule]]—breaking these means chemical decomposition, not melting. |
 | **Electronegativity** | An atom's "greed" for electrons—oxygen and fluorine are greedy (high EN), carbon and hydrogen share more equally—determines bond polarity. |
-| **Partial charge (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
+| **Partial [[quick-context/cations-and-reduction|charge]] (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
 | **Non-covalent interaction** | Umbrella term for all intermolecular forces—emphasizes that these aren't "real" bonds in the electron-sharing sense, but still profoundly affect material behavior. |
 
 <details>
@@ -28,7 +28,7 @@ Every material property you care about—melting point, strength, flexibility, w
 
 All chemical bonds and intermolecular forces arise from the same fundamental phenomenon: the electromagnetic attraction between positive and negative charges. The difference lies in how electrons are distributed. In covalent bonds, two atoms share electrons so intimately that neither can claim full ownership—the shared electron cloud holds them together. In ionic bonds, one atom completely surrenders electrons to another, creating opposite charges that attract. In intermolecular forces, the electrons stay on their respective molecules but create local charge imbalances (partial charges) that attract neighboring molecules.
 
-The strength of any attraction depends on three factors: the magnitude of the charges involved, the distance between them, and how permanent versus temporary those charges are. Covalent bonds involve electrons sitting directly between nuclei—strong, permanent, and close. Ionic bonds involve full +/- charges but at slightly larger distances. Hydrogen bonds involve partial charges (delta+ and delta-) held in fixed orientations. Van der Waals forces involve fleeting, randomly appearing partial charges. The energy required to overcome each type scales accordingly: ~350 kJ/mol for covalent, ~20 kJ/mol for hydrogen bonds, ~2 kJ/mol for van der Waals.
+The strength of any attraction depends on three factors: the magnitude of the charges involved, the [[quick-context/embedded-communication-protocols|distance]] between them, and how permanent versus temporary those charges are. Covalent bonds involve electrons sitting directly between nuclei—strong, permanent, and close. Ionic bonds involve full +/- charges but at slightly larger distances. Hydrogen bonds involve partial charges (delta+ and delta-) held in fixed orientations. Van der Waals forces involve fleeting, randomly appearing partial charges. The energy required to overcome each [[quick-context/bjt-specifications|type]] scales accordingly: ~350 kJ/mol for covalent, ~20 kJ/mol for hydrogen bonds, ~2 kJ/mol for van der Waals.
 
 ```
 WHAT MAKES BONDS STRONGER OR WEAKER
@@ -346,9 +346,9 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[quick-context/3d-printing-filament-types]]** — How different bond profiles in PLA, ABS, PETG, TPU translate to different printing requirements.
 
-- **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
+- **glass-vs-plastic-uv-degradation** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
-- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+- **biology-fundamentals** — The full bond spectrum operates in biology: covalent bonds [[quick-context/mcp6541-as-lmc7211-replacement|form]] molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces [[quick-context/d-flip-flop|enable]] molecular recognition.
 
 </details>
 
@@ -376,7 +376,7 @@ HCl is **polar covalent**—electrons are shared (covalent) but unequally (polar
 **Q4:** ABS requires 230-250°C to print, while PLA only needs 190-220°C. Both have covalent polymer backbones. What's different about their intermolecular forces?
 <details>
 <summary>Answer</summary>
-ABS contains styrene monomers with aromatic (benzene) rings that participate in **π-π stacking**—millions of weak interactions between stacked rings acting like molecular velcro. These require more thermal energy to disrupt. PLA has ester groups that form moderate hydrogen bonds but lacks aromatic rings. The stronger collective intermolecular forces in ABS (π-π stacking + dipole-dipole) require higher temperatures to overcome than PLA's (hydrogen bonds + van der Waals). See: Concrete Example - WHY THIS MATTERS FOR 3D PRINTING
+ABS contains [[quick-context/pi-pi-stacking-aromatic-interactions|styrene]] monomers with aromatic (benzene) rings that participate in **π-π stacking**—millions of weak interactions between stacked rings acting like molecular velcro. These require more thermal energy to disrupt. PLA has ester groups that form moderate hydrogen bonds but lacks aromatic rings. The stronger collective intermolecular forces in ABS (π-π stacking + dipole-dipole) require higher temperatures to overcome than PLA's (hydrogen bonds + van der Waals). See: Concrete Example - WHY THIS MATTERS FOR 3D PRINTING
 </details>
 
 **Q5:** Someone says "hydrogen bonds are just a special type of van der Waals force." Is this correct? Why does the classification matter (or not)?

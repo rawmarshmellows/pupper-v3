@@ -3,9 +3,9 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
+> **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal [[quick-context/bond-pad|performance]], and ease of assembly.
 
 # Common IC Packages
 
@@ -15,13 +15,13 @@ The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
-| **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
-| **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
-| **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
+| **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top [[quick-context/pcb-layers|copper layer]] only. Smaller, cheaper, machine-friendly. |
+| **Pitch** | The [[quick-context/embedded-communication-protocols|distance]] between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
+| **Pin count** | Total number of electrical connections. A simple [[quick-context/ac-to-dc-rectification|voltage regulator]]: 3-5 pins. [[micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
+| **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power [[quick-context/tensor|components]]. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -119,7 +119,7 @@ PIN NUMBERING
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Hand-Solderable vs. Machine-Only vs. Thermal Performance
 
@@ -200,9 +200,9 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
 
-- **[[quick-context/soldering]]** — Package type dictates soldering method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
+- **[[quick-context/soldering]]** — Package type dictates [[quick-context/soldering|soldering]] method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Package footprint (land pattern) must match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
+- **[[quick-context/pcb-printed-circuit-board]]** — Package [[quick-context/pcb-assembly-files-bom-cpl|footprint]] (land pattern) must match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
 
 - **[[quick-context/wire-bonding]]** — Inside most packages (DIP, QFP, QFN), the die is connected to the lead frame via wire bonds. BGA packages typically use [[quick-context/flip-chip|flip-chip]] bonding.
 
@@ -242,7 +242,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q5:** What is the thermal pad (exposed pad) on the bottom of a QFN, and why does it matter?
 <details>
 <summary>Answer</summary>
-**It's a large metal pad connected to the die attach paddle inside the package, providing a direct thermal path from the chip to the PCB.** Heat from the die conducts through the paddle to this exposed pad, then through solder into the PCB copper (especially if thermal vias connect to internal ground planes). Without soldering the exposed pad, the IC can overheat even at moderate power levels. It often also serves as the ground connection.
+**It's a large metal pad connected to the [[quick-context/wire-bonding|die attach]] paddle inside the package, providing a direct thermal path from the chip to the PCB.** Heat from the die conducts through the paddle to this exposed pad, then through solder into the PCB copper (especially if thermal vias connect to internal ground planes). Without soldering the exposed pad, the IC can overheat even at moderate power levels. It often also serves as the ground connection.
 </details>
 
 </details>

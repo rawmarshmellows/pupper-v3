@@ -6,9 +6,9 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-bom-control-board]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]]
 
-> **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
+> **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo [[quick-context/epson-rc-plus-programming|simulation]], then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
 ## Human notes
 
@@ -18,9 +18,9 @@ Expand on: what is the neural network actually trying to predict? What do the tu
 
 ## The Core Problem
 
-Labs 1-4 build a classical robotics stack: PD control drives individual joints (Lab 1), forward kinematics maps joint angles to foot positions (Lab 2), inverse kinematics solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
+Labs 1-4 build a classical robotics stack: [[quick-context/pupper-v3-labs|PD control]] drives individual joints (Lab 1), forward kinematics maps joint angles to foot positions (Lab 2), [[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
 
-Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward function) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
+Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward [[quick-context/mcp6541-as-lmc7211-replacement|function]]) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
 
 The sim-to-real gap is the central challenge. A policy that works perfectly in MuJoCo can fail on the real Pupper because simulation never perfectly captures motor dynamics, sensor noise, communication delays, or floor surfaces. Lab 5's approach mitigates this through domain randomization during training — deliberately varying simulation parameters so the policy learns to be robust rather than optimal for any single configuration. The `config.yaml` on the real robot then provides the bridge: PD gains ($K_p = 7.5$, $K_d = 0.25$ for all joints), default joint poses, and timing parameters that match the assumptions baked into the trained policy.
 
@@ -58,7 +58,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The [[quick-context/ppo-proximal-policy-optimization|clipped surrogate objective]] prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)
@@ -169,7 +169,7 @@ ACTION VECTOR BREAKDOWN (12 dimensions)
    - Energy penalty: $r_{energy} = -\sum_i |\tau_i \cdot \dot{q}_i|$
    - Smoothness: $r_{smooth} = -\|a_t - a_{t-1}\|^2$
    - Orientation: $r_{orient} = -\|\text{projected gravity} - [0, 0, -1]\|^2$
-4. **Policy update**: PPO uses the collected tuples to estimate which actions were better than average (positive advantage) and updates the network weights $\theta$ to make good actions more likely. The clipped surrogate objective prevents the policy from changing too drastically in any single update.
+4. **Policy update**: PPO uses the collected tuples to estimate which actions were better than average (positive advantage) and [[quick-context/firmware|updates]] the network weights $\theta$ to make good actions more likely. The clipped surrogate objective prevents the policy from changing too drastically in any single update.
 5. **Logging**: Weights & Biases (wandb) tracks reward curves, episode lengths, and periodically saves policy checkpoints as `.json` files (project: `pupperv3-mjx-rl`).
 
 ### Deployment Phase (Real Robot, Raspberry Pi)
@@ -244,7 +244,7 @@ Lab 5 sits at the inflection point of the CS123 curriculum: everything before it
 
 ### The Classical Stack (Labs 1-4)
 
-Every equation is visible. You can prove that the FK chain $T_{0 \to ee} = T_{0 \to 1} \cdot T_{1 \to 2} \cdot T_{2 \to 3} \cdot T_{3 \to ee}$ correctly maps joint angles to foot positions. You can verify the IK gradient $\nabla_\theta C = \nabla_\theta \|FK(\theta) - p_{target}\|^2$ converges. You can trace exactly why the robot stumbles — a gain too high, a phase offset wrong, a step height insufficient. But you pay for this transparency with rigidity: the gait works on flat carpet and fails on gravel, works with four legs and breaks with three.
+Every equation is visible. You can prove that the FK chain $T_{0 \to ee} = T_{0 \to 1} \cdot T_{1 \to 2} \cdot T_{2 \to 3} \cdot T_{3 \to ee}$ correctly maps joint angles to foot positions. You can verify the IK gradient $\nabla_\theta C = \nabla_\theta \|FK(\theta) - p_{target}\|^2$ converges. You can trace exactly why the robot stumbles — a gain too high, a [[quick-context/pupper-lab4-gait-control|phase offset]] wrong, a step height insufficient. But you pay for this transparency with rigidity: the gait works on flat carpet and fails on gravel, works with four legs and breaks with three.
 
 ### The Learned Stack (Lab 5)
 
@@ -352,7 +352,7 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
            ~19.2ms between NN inferences
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing jitter on the Raspberry Pi.
+**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, [[quick-context/pupper-lab7-vision-tracking|reactive]] torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing [[quick-context/preempt-rt|jitter]] on the Raspberry Pi.
 
 </details>
 
@@ -362,7 +362,7 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
 - **[[quick-context/ppo-proximal-policy-optimization|PPO (Proximal Policy Optimization)]]** — The RL algorithm used to train the policy. PPO constrains each gradient update to stay close to the previous policy (via a clipped surrogate objective), preventing catastrophic policy collapse. It is the standard algorithm for continuous control tasks like locomotion because it balances training stability with simplicity.
 - **Domain Randomization** — During training, simulation parameters (friction $\mu \in [0.3, 1.5]$, link masses $\pm 20\%$, motor strength, observation delay) are randomized each episode. The policy cannot overfit to any single configuration, forcing it to learn robust strategies that transfer to the real robot's unknown true parameters.
 - **Reward Shaping** — The art of designing $r_t$ to elicit desired behavior. Naive rewards (e.g., just forward velocity) produce degenerate gaits — the robot may learn to fall forward. Careful penalty terms for energy, joint acceleration, body orientation, and foot contact patterns guide the optimizer toward natural locomotion.
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
+- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi [[quick-context/sil-rated-safety-functions|hardware architecture]]. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab CS123 curriculum. Lab 5 is the pivot point: Labs 1-4 build understanding of what the neural network replaces, Labs 6-7 build on top of the neural controller for voice control and vision tracking.
 - **Emergency Stop System** — The `estop_controller.cpp` node (C++) subscribes to `/joy` and monitors PS4 controller buttons. Pressing the right joystick (button 12) instantly deactivates all neural controllers and publishes to `/emergency_stop`. The start button (button 9) reactivates the last-used controller. Buttons X/O/Triangle/Square switch between the four controller modes (normal, three-legged, parkour, test).
 - **Weights & Biases (wandb)** — MLOps platform used for experiment tracking. Each training run logs reward curves, episode statistics, and policy checkpoints to the `pupperv3-mjx-rl` project. Students download specific runs by number: `python3 download_latest_policy.py --run_number 42`. The script auto-detects the logged-in user's wandb entity.
@@ -526,7 +526,7 @@ The core problem is that without privileged information, the RL optimization mus
 <details>
 <summary>Answer</summary>
 
-They layer **on top** of it, not replace it. VLA models operate at the semantic level ("pick up the cup on the table") and output high-level commands (velocity targets, waypoints, or task-space goals). These get translated into joint-level actions by a low-level locomotion policy — exactly Lab 5's neural controller. The Pupper labs already demonstrate this architecture: Lab 6-7's LLM outputs text commands → Karel translates to Twist messages → Lab 5's neural controller converts to joint positions → PD tracks at full rate. VLA models are a more capable version of the LLM layer, and diffusion policies are an alternative policy *representation* (replacing Lab 5's MLP) but still output position targets tracked by PD control. The architectural principle is **separation of timescales**: slow deliberation (LLM/VLA at ~1 Hz) → fast reactive locomotion (NN at ~50 Hz) → fastest motor tracking (PD at ~500 Hz). Each layer only talks to its neighbors, not to hardware directly.
+They layer **on top** of it, not replace it. VLA models operate at the semantic level ("pick up the cup on the table") and output high-level commands (velocity targets, waypoints, or task-space goals). These get translated into joint-level actions by a low-level locomotion policy — exactly Lab 5's neural controller. The Pupper labs already demonstrate this [[quick-context/plc-vs-software-control|architecture:]] Lab 6-7's LLM outputs text commands → Karel translates to Twist [[quick-context/ros2-architecture|messages]] → Lab 5's neural controller converts to joint positions → PD tracks at full rate. VLA models are a more capable version of the LLM layer, and diffusion policies are an alternative policy *representation* (replacing Lab 5's MLP) but still output position targets tracked by PD control. The architectural principle is **separation of timescales**: slow deliberation (LLM/VLA at ~1 Hz) → fast reactive locomotion (NN at ~50 Hz) → fastest motor tracking (PD at ~500 Hz). Each layer only talks to its neighbors, not to hardware directly.
 </details>
 
 </details>

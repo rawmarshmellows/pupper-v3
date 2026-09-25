@@ -6,15 +6,15 @@ updated: 2026-03-27
 
 # Clock Speed
 
-> **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **Related:** [[micro-context/clock-speed-vs-temperature]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]]
 
-**Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
+**[[quick-context/capacitance|Definition]]:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
 
 ## How It Works
 
 - An oscillator circuit generates a continuous square wave at the rated frequency (e.g., 3 GHz = 3 billion toggles/sec).
-- Each rising edge triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
-- Faster clocks mean less time between edges, so signals must propagate and settle through all logic gates within a shrinking window.
+- Each [[quick-context/bare-minimal-data-storage-circuit|rising edge]] triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
+- Faster clocks mean less time between edges, so signals must propagate [[micro-context/push-pull-vs-open-drain|and]] settle through all logic gates within a shrinking window.
 
 ```
 CLOCK SPEED = How many edges per second
@@ -33,4 +33,4 @@ CLOCK SPEED = How many edges per second
   Light travels just 6 cm in that time.
 ```
 
-**Key insight:** Clock speed is limited by how fast transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** Clock speed is limited by [[quick-context/electric-current|how fast]] transistors [[quick-context/embedded-communication-protocols|can]] switch AND how [[quick-context/comparator|fast]] signals can propagate—you can't clock faster than [[quick-context/mcp6541-as-lmc7211-replacement|your]] slowest circuit path can settle between edges.

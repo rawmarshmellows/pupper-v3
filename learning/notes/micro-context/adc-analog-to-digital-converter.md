@@ -6,16 +6,16 @@ updated: 2026-03-27
 
 # ADC (Analog-to-Digital Converter)
 
-> **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **Related:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/ads1110-battery-adc]] | [[micro-context/buck-converter]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]]
 
-**Definition:** A circuit that converts continuous analog voltage into discrete digital numbers. The ADS1110 in your Pupper is a 16-bit ADC, meaning it divides its input range into 65,536 levels—if measuring 0–3.3V, each step is ~50 microvolts. Used for precise measurements like battery voltage, current sensing, or analog sensor readings.
+**[[quick-context/capacitance|Definition]]:** A circuit that converts continuous analog [[quick-context/voltage|voltage]] into [[quick-context/how-passive-and-discrete-components-are-made|discrete]] digital numbers. The ADS1110 in [[quick-context/mcp6541-as-lmc7211-replacement|your]] Pupper is a 16-bit ADC, meaning it divides its input range into 65,536 levels—if measuring 0–3.3V, each step is ~50 microvolts. Used for precise measurements like battery voltage, current sensing, or analog sensor readings.
 
 ## How It Works
 
 - The ADC samples the analog input voltage at regular intervals determined by the sample rate.
-- Each sample is compared against an internal reference voltage and quantized to the nearest digital level (e.g., one of 65,536 levels for 16-bit).
-- The resulting binary number is stored in a register and made available to the MCU via a bus interface (I2C, SPI, or internal peripheral).
-- Higher bit resolution means finer voltage steps, but noise floor and reference stability ultimately limit practical accuracy.
+- Each sample is compared against an internal [[quick-context/comparator|reference]] voltage and quantized to the nearest digital level (e.g., one of 65,536 levels for 16-bit).
+- The resulting binary number is stored in a register and made available to the MCU [[quick-context/metal-interconnect-layers|via]] a bus interface ([[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], or internal peripheral).
+- Higher bit [[quick-context/semiconductor-fabrication|resolution]] means finer voltage steps, but [[quick-context/thermal-noise-electronics|noise floor]] and reference stability ultimately limit practical [[quick-context/rc-oscillator|accuracy]].
 
 ```
 ANALOG TO DIGITAL CONVERSION:
@@ -41,4 +41,4 @@ ANALOG TO DIGITAL CONVERSION:
   └──────────┴─────────┴──────────────────┘
 ```
 
-**Key insight:** More bits doesn't always mean more accuracy—noise floor, reference voltage stability, and sampling rate often matter more than raw resolution for real-world measurements.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** More bits doesn't always mean more accuracy—noise floor, reference voltage stability, and sampling rate often matter more than raw resolution for real-world measurements.

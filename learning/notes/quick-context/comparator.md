@@ -5,9 +5,9 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/comparator-specification]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/bjt]]
 
-> **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
+> **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] [[quick-context/capacitance|differential pairs]] as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
@@ -17,14 +17,14 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
-| **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp|op-amp]], but no feedback loop. |
+| **[[quick-context/comparator-specification|Propagation delay ($t_{pd}$)]]** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
-| **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
+| **Open-drain / [[micro-context/push-pull-vs-open-drain|open-collector]] output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Reference voltage ($V_{REF}$)** | The fixed [[micro-context/piezoelectric-effect|voltage applied]] to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision [[quick-context/voltage-current-causality|voltage source]]. |
 
 <details>
-<summary><strong>How It Works</strong> --- From transistor pairs to digital output</summary>
+<summary><strong>How It Works</strong> --- From [[quick-context/transistor|transistor]] pairs to digital output</summary>
 
 ### The Functional View: What a Comparator Does
 
@@ -328,7 +328,7 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 |----------------|-------------------|----------|
 | **Ultra-fast** (ADCMP601) | 3.5 ns | High-speed data, clock recovery |
 | **Fast** (LM393) | 300 ns | General purpose, motor control |
-| **With built-in hysteresis** (LM311) | 200 ns | Noisy environments, threshold detection |
+| **With [[quick-context/mcp6541-as-lmc7211-replacement|built-in hysteresis]]** (LM311) | 200 ns | Noisy environments, threshold detection |
 | **Schmitt trigger IC** (74HC14) | 15 ns | Digital signal cleaning, debouncing |
 | **Window comparator** (LM339 pair) | 300 ns | "Is voltage between A and B?" |
 
@@ -441,13 +441,13 @@ CURRENT CONSUMPTION:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/comparator-specification]]** --- How to read a real comparator datasheet (the TI LMC7211-N): what each spec section (Absolute Maximum Ratings, Operating Ratings, DC/AC Electrical Characteristics, Typical Characteristics) actually means, and which numbers are guaranteed versus typical.
+- **[[quick-context/comparator-specification]]** --- How to read a real comparator datasheet (the TI LMC7211-N): what each spec section (Absolute Maximum Ratings, Operating Ratings, DC/AC [[quick-context/embedded-communication-protocols|Electrical Characteristics]], Typical Characteristics) actually means, and which numbers are guaranteed versus typical.
 
-- **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
+- **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules ([[quick-context/op-amp|virtual short]], no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
 - **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
-- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
+- **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the [[quick-context/pwm-controller-circuit|error amplifier]]'s output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
 
 - **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
@@ -487,7 +487,7 @@ CURRENT CONSUMPTION:
 **Q4:** In a flash ADC, why do you need $2^n - 1$ comparators for n bits of resolution?
 <details>
 <summary>Answer</summary>
-**Each comparator represents one possible threshold level.** An n-bit ADC must distinguish $2^n$ voltage levels. The boundaries between adjacent levels require $2^n - 1$ comparators, each with its reference voltage set to a different point on a resistor ladder. All comparators fire simultaneously---those whose reference is below the input output HIGH, those above output LOW. A priority encoder then converts this "thermometer code" (a string of 1s followed by 0s) into a binary number. For example, an 8-bit flash ADC needs 255 comparators. This is why flash ADCs are fast (one clock cycle) but expensive (exponential hardware). See: Peripheral Knowledge (ADC connection).
+**Each comparator represents one possible threshold level.** An n-bit ADC must distinguish $2^n$ voltage levels. The boundaries between adjacent levels require $2^n - 1$ comparators, each with its reference voltage set to a different point on a resistor ladder. All comparators fire [[quick-context/bare-minimal-data-storage-circuit|simultaneously]]---those whose reference is below the input output HIGH, those above output LOW. A priority encoder then converts this "thermometer code" (a string of 1s followed by 0s) into a binary number. For example, an 8-bit flash ADC needs 255 comparators. This is why flash ADCs are fast (one clock cycle) but expensive (exponential hardware). See: Peripheral Knowledge (ADC connection).
 </details>
 
 **Q5:** A window comparator uses two comparators to detect whether a voltage is between two limits (e.g., 2.5V < Vin < 3.5V). Draw the logic: how do you combine two comparator outputs to get a single "in range" signal?
@@ -498,7 +498,7 @@ CURRENT CONSUMPTION:
 Comparator A: V(+) = Vin, V(-) = 2.5V (lower limit). Output HIGH when Vin > 2.5V.
 Comparator B: V(+) = 3.5V (upper limit), V(-) = Vin. Output HIGH when Vin < 3.5V.
 
-Both outputs are open-drain, tied together with a single pull-up resistor. The combined output is HIGH only when BOTH comparators output HIGH (neither pulls LOW)---meaning Vin is above 2.5V AND below 3.5V. If Vin goes outside either limit, the corresponding comparator pulls the line LOW.
+Both outputs are open-drain, tied together with a single [[quick-context/how-passive-and-discrete-components-are-made|pull-up resistor]]. The combined output is HIGH only when BOTH comparators output HIGH (neither pulls LOW)---meaning Vin is above 2.5V AND below 3.5V. If Vin goes outside either limit, the corresponding comparator pulls the line LOW.
 
 This is why open-drain outputs exist on comparators: wire-AND logic with no additional gate needed. See: 5 Essential Terms (Open-drain output).
 </details>

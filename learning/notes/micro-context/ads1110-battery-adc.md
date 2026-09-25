@@ -6,15 +6,15 @@ updated: 2026-03-27
 
 # ADS1110 (Battery Voltage ADC)
 
-> **See also:** [[micro-context/adc-analog-to-digital-converter|ADC fundamentals]]
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]] | [[micro-context/bjt-mosfet-igbt]] | [[micro-context/buck-converter]]
 
-**Definition:** The ADS1110A0IDBVR (U16) is a delta-sigma [[micro-context/adc-analog-to-digital-converter|ADC]] from Texas Instruments in a SOT-23-6 package with an [[micro-context/i2c|I2C]] interface, internal 2.048V reference, and programmable resolution: 16-bit at 15 SPS, down to 12-bit at 240 SPS. On the [[quick-context/pupper-bom-control-board|Pupper control board]], it reads battery voltage through a [[quick-context/resistor|voltage divider]] (scaling ~7-24V down to the ADC's input range) so the STM32 can warn of low battery.
+**[[quick-context/capacitance|Definition]]:** The ADS1110A0IDBVR (U16) is a delta-sigma [[micro-context/adc-analog-to-digital-converter|ADC]] from Texas Instruments in a [[quick-context/common-ic-packages|SOT-23]]-6 [[quick-context/silicon-die|package]] with an [[micro-context/i2c|I2C]] interface, internal 2.048V [[quick-context/comparator|reference]], [[micro-context/push-pull-vs-open-drain|and]] programmable [[quick-context/semiconductor-fabrication|resolution]]: 16-bit at 15 SPS, down to 12-bit at 240 SPS. On the [[quick-context/pupper-bom-control-board|Pupper control board]], it reads battery voltage through a [[quick-context/resistor|voltage divider]] (scaling ~7-24V down to the ADC's input range) so the STM32 can warn of low battery.
 
 ## How It Works
 
-- A resistor voltage divider scales the battery voltage (7–24V) down to the ADC's 0–2.048V input range.
-- The ADS1110's delta-sigma converter oversamples the input and digitally filters it, trading speed for high resolution (16-bit at 15 SPS).
-- The STM32 reads the digital result over I2C (address 0x48) and multiplies by the divider ratio to recover the true battery voltage.
+- A [[quick-context/resistor|resistor]] [[quick-context/pwm-controller-circuit|voltage divider]] scales the battery voltage (7–24V) down to the ADC's 0–2.048V input range.
+- The ADS1110's delta-sigma converter oversamples the input and digitally filters it, trading [[quick-context/embedded-communication-protocols|speed]] for high resolution (16-bit at 15 SPS).
+- The STM32 reads the digital result over [[micro-context/i2c|I2C]] (address 0x48) and multiplies by the divider ratio to recover the true battery voltage.
 
 ```
  VBAT (7-24V)
@@ -34,4 +34,4 @@ updated: 2026-03-27
  15 SPS (16-bit) is plenty fast for battery monitoring.
 ```
 
-**Key insight:** Delta-sigma ADCs trade speed for resolution — the ADS1110 gives 16-bit at 15 SPS or 12-bit at 240 SPS. Battery voltage changes over seconds, so even 15 SPS is overkill, making this the ideal architecture: full 16-bit precision in a 6-pin package with no external reference needed.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** Delta-sigma ADCs trade speed for resolution — the ADS1110 gives 16-bit at 15 SPS or 12-bit at 240 SPS. Battery voltage changes over seconds, so even 15 SPS is overkill, making this the ideal architecture: full 16-bit precision in a 6-pin package with no external reference needed.

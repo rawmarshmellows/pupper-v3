@@ -5,15 +5,15 @@ created: 2026-06-07
 
 # Input Common-Mode Range ($CMVR$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
+> **Related:** [[micro-context/common-mode-rejection-ratio]] | [[micro-context/input-bias-current]] | [[micro-context/input-offset-voltage]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]]
 
-**Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
+**[[quick-context/capacitance|Definition]]:** The range of input [[quick-context/voltage|voltage]] (common to [[quick-context/bjt-specifications|both]] pins) over which a [[quick-context/comparator|comparator]] or op-amp still works correctly. "[[quick-context/op-amp|Rail-to-rail]]-[[micro-context/push-pull-vs-open-drain|and]]-beyond" parts accept inputs slightly *past* both supply rails.
 
 ## How It Works
 
 - The input [[quick-context/differential-pair|differential pair]] only senses correctly while its transistors stay in their active region, which requires the input voltage to sit inside a usable window.
 - Outside that window the pair stops steering current properly and the output becomes invalid — regardless of how good the offset or gain is.
-- The LMC7211-N's −0.3 to 3.0 V range on a 0–2.7 V supply means inputs work slightly below ground and slightly above $V^+$.
+- The [[quick-context/comparator-specification|LMC7211-N]]'s −0.3 to 3.0 V range on a 0–2.7 V supply means inputs work slightly below ground and slightly above $V^+$.
 - That extra margin lets you sense a divider node sitting right at ground or right at the top rail without a dead zone.
 
 ```
@@ -28,4 +28,4 @@ created: 2026-06-07
    Inputs sitting OUTSIDE this window -> invalid output.
 ```
 
-**Key insight:** CMVR is about *where the inputs are allowed to sit*, not the difference between them — a part can have great offset and gain yet output garbage if your signal sits outside its common-mode window.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** CMVR is about *where the inputs are allowed to sit*, [[micro-context/can-bus-termination|not]] the difference between them — a part can have great offset and gain yet output garbage if [[quick-context/mcp6541-as-lmc7211-replacement|your]] signal sits outside its common-mode window.

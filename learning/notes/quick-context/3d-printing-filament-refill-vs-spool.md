@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **[[quick-context/3d-printer-hotends|Related:]]** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-ams-automatic-material-system]] | [[quick-context/bambu-p2s-print-quality]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
@@ -109,7 +109,7 @@ LIFECYCLE COMPARISON
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 **Convenience vs. sustainability/cost.**
 
@@ -118,7 +118,7 @@ LIFECYCLE COMPARISON
 | **Price** | Higher (~$25-30/kg) | Lower (~$18-22/kg) |
 | **Convenience** | Plug and play | Need to wind onto spool |
 | **Storage** | Easy, self-contained | Floppy coil, can tangle |
-| **Waste** | One spool per roll | Zero (if reusing spool) |
+| **Waste** | One spool per roll | [[quick-context/mcp6541-as-lmc7211-replacement|Zero]] (if reusing spool) |
 | **Availability** | Almost all filaments | Limited selection |
 
 **The catch with refills:**
@@ -177,7 +177,7 @@ Once mounted, it works exactly like a regular spool.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Different filament materials (PLA, PETG, ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
+- [[quick-context/3d-printing-filament-types]] — Different filament [[quick-context/cnc-machining|materials]] (PLA, [[quick-context/bambu-p2s-print-quality|PETG]], ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
 - [[quick-context/melt-index]] — Understanding [[quick-context/melt-index|melt flow rate]] helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
 - [[quick-context/3d-printer-hotends]] — [[quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
 
@@ -195,7 +195,7 @@ Refills eliminate the cost of manufacturing the plastic spool (which weighs 150-
 **Q2:** What is the main risk when using refill filament, and how can you mitigate it?
 <details>
 <summary>Answer</summary>
-The main risk is tangling—when filament loops cross over each other, which can jam your printer or cause filament to snap mid-print. Mitigate this by: (1) carefully handling the coil when loading onto a master spool, (2) storing refills properly in a dry box, and (3) never letting the filament end slip under other loops.
+The main risk is tangling—when filament loops cross over each other, which can jam your printer or cause filament to snap mid-print. Mitigate this by: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] carefully handling the coil when loading onto a master spool, (2) storing refills properly in a dry box, and (3) never letting the filament end slip under other loops.
 </details>
 
 **Q3:** What is a "master spool" and why is it useful?
@@ -213,7 +213,7 @@ Recommend spooled filament when: (1) the person is new to 3D printing and should
 **Q5:** Why does moisture sensitivity matter more for refill filament than spooled filament?
 <details>
 <summary>Answer</summary>
-Refill coils lack the protective plastic spool enclosure that helps seal out humidity. Since many filaments (especially nylon, PETG, and PLA) absorb moisture from the air—leading to print defects like stringing, bubbling, and weak layer adhesion—refills require more careful storage in dry boxes with desiccant.
+Refill coils lack the protective plastic spool enclosure that helps seal out humidity. Since many filaments (especially nylon, PETG, and PLA) absorb moisture from the air—leading to print defects like stringing, bubbling, and weak [[quick-context/pcb-assembly-files-bom-cpl|layer]] adhesion—refills require more careful storage in dry boxes with desiccant.
 </details>
 
 </details>

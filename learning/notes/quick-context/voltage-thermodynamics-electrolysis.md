@@ -3,9 +3,9 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/bjt-specifications]] | [[quick-context/comparator-specification]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/how-passive-and-discrete-components-are-made]]
 
-> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
+> **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to [[quick-context/electrolysis|overpotential]] losses.
 
 # Voltage and Thermodynamic Relationship in Electrolysis
 
@@ -15,11 +15,11 @@ created: 2026-01-22
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Gibbs Free Energy (ΔG)** | The total energy a reaction needs (positive) or releases (negative)—think of it as the "energy price tag" of a chemical change |
-| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish electrodes and resistance |
-| **Faraday Constant (F)** | A conversion factor (96,485 C/mol) that translates between "chemistry units" (moles of electrons) and "electricity units" (coulombs) |
+| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish [[quick-context/electrodes|electrodes]] and resistance |
+| **Faraday Constant (F)** | A conversion factor (96,485 C/mol) that translates between "chemistry units" (moles of [[quick-context/anions-and-oxidation|electrons]]) and "electricity units" (coulombs) |
 | **Cell Potential (E)** | The voltage that corresponds to a reaction's energy requirement—directly calculated from Gibbs free energy |
 | **Non-spontaneous** | A reaction that won't happen unless you force it with external energy (like pushing a ball uphill) |
 
@@ -52,7 +52,7 @@ Water splitting has **ΔG = +237 kJ/mol**. The "+" sign is crucial—it means yo
 
 The voltage-thermodynamics relationship operates through a straightforward energy conversion: electrical work (voltage times charge) must equal or exceed the chemical energy requirement (Gibbs free energy). When you apply voltage to an electrolysis cell, you're providing electrical potential energy that gets converted into chemical potential energy stored in the products. The equation ΔG = -nFE bridges these two energy forms, where n electrons each carrying charge F (the Faraday constant) are pushed through potential E. For the reaction to proceed, the electrical energy supplied (nFE) must at least match what the chemistry demands (ΔG).
 
-The process unfolds at two electrodes immersed in an electrolyte. At the cathode (negative electrode), electrons arrive and force a reduction reaction—in water splitting, hydrogen ions grab electrons to become hydrogen gas. At the anode (positive electrode), electrons are pulled away, forcing oxidation—water molecules lose electrons to become oxygen gas. The electrolyte provides a path for ions to migrate between electrodes, completing the circuit internally while electrons flow through the external circuit. The minimum voltage (1.23V for water) represents the thermodynamic floor: the absolute minimum electrical "push" needed to make both electrode reactions energetically possible.
+The process unfolds at two electrodes immersed in an [[quick-context/electrolyte|electrolyte]]. At the cathode (negative electrode), electrons arrive and force a [[quick-context/cations-and-reduction|reduction]] reaction—in water splitting, hydrogen ions grab electrons to become hydrogen gas. At the anode (positive electrode), electrons are pulled away, forcing [[micro-context/oxidation|oxidation]]—water molecules lose electrons to become oxygen gas. The electrolyte provides a path for ions to migrate between electrodes, completing the circuit internally while electrons flow through the external circuit. The minimum voltage (1.23V for water) represents the thermodynamic floor: the absolute minimum electrical "push" needed to make both electrode reactions energetically possible.
 
 ```
 ENERGY FLOW IN ELECTROLYSIS
@@ -156,7 +156,7 @@ Let's walk through the actual calculation for water electrolysis:
 
 **Given Information:**
 - ΔG = +237 kJ/mol (energy required per mole of H₂O split)
-- n = 2 (two electrons transferred per water molecule)
+- n = 2 (two electrons transferred per water [[quick-context/atoms-molecules-polymers-basics|molecule]])
 - F = 96,485 C/mol (Faraday constant)
 
 **The Master Equation:**
@@ -233,7 +233,7 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
         49%              51%           (worst case)
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that "theoretical minimum voltage" means you can actually run an electrolyzer at that voltage. You can't. The 1.23V is a thermodynamic floor—the absolute minimum energy the chemistry demands. But chemistry also has *kinetics* (how fast things happen), and coaxing electrons through real materials with real surfaces at practical speeds always costs extra. It's like knowing a trip is 100 miles—that's the minimum distance—but traffic, hills, and detours mean you'll actually drive 130-150 miles. Engineers spend careers shaving fractions of a volt off that overpotential because in industrial hydrogen production, those fractions translate to millions of dollars in electricity costs.
+**The one thing most outsiders get wrong about this is...** assuming that "theoretical minimum voltage" means you can actually run an electrolyzer at that voltage. You can't. The 1.23V is a thermodynamic floor—the absolute minimum energy the chemistry demands. But chemistry also has *kinetics* ([[quick-context/electric-current|how fast]] things happen), and coaxing electrons through real materials with real surfaces at practical speeds always costs extra. It's like knowing a trip is 100 miles—that's the minimum [[quick-context/embedded-communication-protocols|distance]]—but traffic, hills, and detours mean you'll actually drive 130-150 miles. Engineers spend careers shaving fractions of a volt off that overpotential because in industrial hydrogen production, those fractions translate to millions of dollars in electricity costs.
 
 </details>
 
@@ -270,7 +270,7 @@ They reduced the overpotential by 0.3V. The theoretical minimum (1.23V) is fixed
 **Q3:** In the equation ΔG = -nFE, what does "n" represent and why does it matter for calculating voltage?
 <details>
 <summary>Answer</summary>
-"n" represents the number of electrons transferred per molecule in the reaction. It matters because voltage is energy *per electron*—more electrons means the same total energy (ΔG) is spread across more charge carriers, resulting in a lower voltage requirement per electron. For water, n=2 because each water molecule requires 2 electrons to split. See: A Concrete Example
+"n" represents the number of electrons transferred per molecule in the reaction. It matters because voltage is energy *per electron*—more electrons means the same total energy (ΔG) is spread across more charge carriers, resulting in a [[quick-context/transistor-analog-to-digital|lower voltage]] requirement per electron. For water, n=2 because each water molecule requires 2 electrons to split. See: A Concrete Example
 </details>
 
 **Q4:** Why can't you run a commercial water electrolyzer at exactly 1.23 volts, even with perfect equipment?
@@ -282,7 +282,7 @@ Because 1.23V is only the thermodynamic minimum—the energy the chemistry funda
 **Q5:** If overpotential is "wasted" energy, where does that energy actually go?
 <details>
 <summary>Answer</summary>
-It becomes heat. The extra voltage beyond 1.23V drives current through resistive materials and overcomes kinetic barriers, both of which convert electrical energy to thermal energy. This is why electrolyzers need cooling systems and why reducing overpotential improves both efficiency and thermal management. See: The Key Tension (Voltage Breakdown diagram)
+It becomes heat. The extra voltage beyond 1.23V drives current through resistive materials and overcomes kinetic barriers, both of which convert electrical energy to thermal energy. This is why electrolyzers need cooling systems and why reducing overpotential improves both efficiency and [[quick-context/bga-ball-grid-array|thermal management]]. See: The Key Tension (Voltage Breakdown diagram)
 </details>
 
 </details>

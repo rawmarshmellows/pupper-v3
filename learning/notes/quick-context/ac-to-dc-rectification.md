@@ -5,23 +5,23 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[micro-context/diode-rectification]] | [[quick-context/bjt-specifications]] | [[quick-context/comparator-specification]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/how-passive-and-discrete-components-are-made]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing [[quick-context/voltage|capacitors]] to flatten the ripple into steady voltage.
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a [[quick-context/pcb-assembly-files-bom-cpl|component]] that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
+| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-[[quick-context/embedded-communication-protocols|distance]] transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
-| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **[[micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
+| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until [[quick-context/diode|breakdown voltage]] is reached. |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -43,7 +43,7 @@ AC from the wall (e.g. 120V, 60 Hz):
 
 ### Step 2: The PN Junction -- Forward and Reverse Bias
 
-A diode is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
+A diode is a PN junction: [[quick-context/differential-pair|P-type silicon]] (excess holes) meets N-type (excess [[quick-context/anions-and-oxidation|electrons]]). A depletion zone forms at the boundary with a built-in field of ~0.7V.
 
 ```
 Forward bias: current flows           Reverse bias: current blocked
@@ -148,7 +148,7 @@ The RC time constant (R_load x C) determines how much ripple remains. Bigger cap
 
 | Approach | Diodes | Pros | Cons |
 |----------|--------|------|------|
-| **Half-wave** | 1 | Simplest, cheapest | Wastes 50% of AC, more ripple, larger cap needed |
+| **Half-wave** | 1 | Simplest, [[quick-context/wire-bonding|cheapest]] | Wastes 50% of AC, more ripple, larger cap needed |
 | **Full-bridge** | 4 | Uses both halves, less ripple, smaller cap | 1.4V total drop (2 diodes always in series), more components |
 | **Synchronous rectification** | 0 (MOSFETs) | Lowest loss (~50mV drop), highest efficiency | Complex gate drive, expensive, used in modern switch-mode supplies |
 
@@ -195,7 +195,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 
 - **[[quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
 - **[[quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
-- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs electron flow.
+- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs [[quick-context/electrodes|electron flow]].
 - **[[quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
 - **[[quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
 
@@ -219,7 +219,7 @@ Transformers only work with AC, and transformers allow stepping voltage up for e
 **Q3:** Half-wave rectification uses one diode. Why is full-bridge (four diodes) worth the extra complexity?
 <details>
 <summary>Answer</summary>
-Half-wave throws away the entire negative half of AC, wasting 50% of the available power and producing large gaps the smoothing capacitor must fill. Full-bridge uses both halves, doubling the ripple frequency (easier to filter), requiring a smaller capacitor for the same ripple, and delivering more average power to the load.
+Half-wave throws away the entire negative half of AC, wasting 50% of the available power and producing large gaps the smoothing capacitor must fill. Full-bridge uses both halves, [[quick-context/camera-fundamentals|doubling]] the ripple frequency (easier to filter), requiring a smaller capacitor for the same ripple, and delivering more average power to the load.
 </details>
 
 **Q4:** A full-bridge rectifier outputs ~1.4V less than the AC peak. Where does this voltage go?
@@ -237,5 +237,5 @@ The ripple voltage increases. Higher load current discharges the capacitor faste
 </details>
 
 ---
-> **Human notes:**
+> **[[micro-context/full-bridge-rectifier|Human notes:]]**
 > - ElectroBOOM explains the full-bridge rectifier really well: https://www.youtube.com/watch?v=Fwj_d3uO5g8

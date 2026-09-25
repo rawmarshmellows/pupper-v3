@@ -3,7 +3,7 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[quick-context/challenger-sale-methodology]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 
@@ -23,7 +23,7 @@ The brilliance is the decomposition: when OEE drops, you immediately know which 
 |------|------------|
 | **Six Big Losses** | The canonical taxonomy: breakdowns, setup/changeover, minor stops, slow cycles, startup rejects, and production rejects—OEE exists to quantify these |
 | **Ideal Cycle Time** | The theoretical minimum time to produce one unit, against which actual cycle times are compared for Performance calculation |
-| **Planned Production Time** | The scheduled hours minus planned downtime like meals or maintenance windows—your denominator for Availability |
+| **Planned Production Time** | The scheduled hours minus planned downtime like meals or maintenance windows—[[quick-context/mcp6541-as-lmc7211-replacement|your]] denominator for Availability |
 | **TEEP** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
 | **Pareto of Losses** | The analysis technique of ranking losses by impact to focus improvement efforts—"we're losing 12% to changeovers and 3% to breakdowns, so attack changeovers first" |
 
@@ -74,7 +74,7 @@ World-class OEE is often cited as 85%, but this is nearly meaningless across ind
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-**Bottling Line Analysis:**
+**Bottling Line [[quick-context/whitespace-mapping|Analysis:]]**
 
 A beverage company's bottling line shows 68% OEE. Breaking it down:
 - Availability: 85% (15% lost to changeovers between SKUs and two breakdown events)
@@ -96,7 +96,7 @@ Without OEE decomposition, management might have blamed "old equipment" and requ
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/teep]]** - Extends OEE to measure against all calendar time, revealing hidden capacity in unscheduled hours
+- **[[quick-context/teep]]** - Extends OEE to measure against all calendar time, revealing [[quick-context/teep|hidden capacity]] in unscheduled hours
 - **[[quick-context/isa-95-levels]]** - Level 3 MES systems are where OEE calculations typically live and get reported
 
 </details>
@@ -125,7 +125,7 @@ People optimize the metric, not the underlying performance. Examples: operators 
 **Q4:** What are the "Six Big Losses" and how do they map to OEE's three factors?
 <details>
 <summary>Answer</summary>
-The Six Big Losses are: (1) Breakdowns and (2) Setup/Changeover, which reduce Availability; (3) Minor Stops and (4) Slow Cycles, which reduce Performance; (5) Startup Rejects and (6) Production Rejects, which reduce Quality. This taxonomy helps teams categorize losses and assign ownership—maintenance owns breakdowns, process engineering owns slow cycles, quality owns defects.
+The Six Big Losses are: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] Breakdowns and (2) Setup/Changeover, which reduce Availability; (3) Minor Stops and (4) Slow Cycles, which reduce Performance; (5) Startup Rejects and (6) Production Rejects, which reduce Quality. This taxonomy helps teams categorize losses and assign ownership—maintenance owns breakdowns, process engineering owns slow cycles, quality owns defects.
 </details>
 
 **Q5:** Why is "Ideal Cycle Time" such a contentious parameter in OEE calculations?

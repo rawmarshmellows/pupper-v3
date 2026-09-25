@@ -11,17 +11,17 @@ created: 2026-03-13
 
 ## The Core Problem
 
-Policy gradient methods learn by trial and error: try actions, measure how good they were, and adjust the policy to do more of what worked. The problem is sensitivity to step size. Take too large a gradient step and the policy changes drastically — it starts selecting completely different actions, the new experience no longer matches the assumptions of the update, and performance collapses catastrophically (this happened routinely with vanilla policy gradients). TRPO solved this with a hard KL-divergence constraint, but its implementation required conjugate gradient optimization and line searches — complex and computationally expensive. Take too small a step and training takes forever. PPO solves this with a deceptively simple idea: clip the objective function so that the policy can't change more than a small amount ($\epsilon$, typically 0.2) in any single update. This eliminates the most common failure mode — catastrophic policy collapse — while keeping the algorithm simple enough to implement in ~100 lines of code, which is why PPO has been the default RL algorithm for continuous control since its publication by OpenAI in 2017.
+Policy gradient methods learn by trial and error: try actions, measure how good they were, and adjust the policy to do more of what worked. The problem is sensitivity to step size. Take too large a gradient step and the policy changes drastically — it starts selecting completely different actions, the new experience no longer matches the assumptions of the update, and [[quick-context/bond-pad|performance]] collapses catastrophically (this happened routinely with vanilla policy gradients). TRPO solved this with a hard KL-divergence [[quick-context/voltage-current-causality|constraint]], but its implementation required conjugate gradient optimization and line searches — complex and computationally expensive. Take too small a step and training takes forever. PPO solves this with a deceptively simple idea: clip the objective function so that the policy can't change more than a small amount ($\epsilon$, typically 0.2) in any single update. This eliminates the most common failure mode — catastrophic policy collapse — while keeping the algorithm simple enough to implement in ~100 lines of code, which is why PPO has been the default RL algorithm for continuous control since its publication by OpenAI in 2017.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
-| **Policy $\pi_\theta(a \mid s)$** | The neural network being trained — maps an observation (state) $s$ to a probability distribution over actions $a$. In [[quick-context/pupper-lab5-neural-controller\|Pupper Lab 5]], this is a small MLP that outputs 12 joint position targets. |
+| **Policy $\pi_\theta(a \mid s)$** | The neural network being trained — maps an observation (state) $s$ to a probability distribution over actions $a$. In [[quick-context/pupper-lab5-neural-controller|Pupper Lab 5]], this is a small MLP that outputs 12 joint position targets. |
 | **Advantage $\hat{A}_t$** | A scalar estimate of "how much better was the action I took compared to what I usually do in this state?" Positive advantage means the action was above average; negative means below. |
 | **Clipped Surrogate Objective** | PPO's core innovation: the loss function that limits how much $\pi_\theta$ can change per update by clipping the probability ratio $r_t(\theta)$ to $[1 - \epsilon, 1 + \epsilon]$. |
 | **Probability Ratio $r_t(\theta)$** | $\frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{old}}(a_t \mid s_t)}$ — how much more or less likely the new policy is to take the same action as the old policy. A ratio of 1.0 means no change; 1.3 means 30% more likely. |
-| **Value Function $V_\phi(s)$** | A second neural network (the "critic") that estimates the expected cumulative reward from state $s$. Used to compute the advantage: $\hat{A}_t \approx r_t + \gamma V(s_{t+1}) - V(s_t)$. |
+| **Value Function $V_\phi(s)$** | A second neural network (the "critic") that estimates the expected cumulative reward from state $s$. Used to compute the [[quick-context/pupper-lab6-llm-voice-control|advantage:]] $\hat{A}_t \approx r_t + \gamma V(s_{t+1}) - V(s_t)$. |
 
 <details>
 <summary><strong>How It Works</strong> — The PPO training loop</summary>
@@ -170,17 +170,17 @@ The value function is trained alongside the policy by minimizing the squared err
 
 ### On-Policy: Why You Throw Away Data
 
-PPO is **on-policy**: after each update, the rollout data is discarded and fresh data is collected with the updated policy. This seems wasteful — off-policy algorithms like SAC reuse old data from a replay buffer. The tradeoff:
+PPO is **on-policy**: after each update, the rollout data is discarded and fresh data is collected with the updated policy. This seems wasteful — off-policy algorithms like SAC reuse old data from a replay buffer. [[quick-context/from-code-to-running-firmware|The tradeoff:]]
 
 - **On-policy (PPO):** Data is always generated by the current policy, so advantage estimates are accurate. But you need lots of environment interactions. GPU-parallel simulators (Isaac Lab running 4096+ envs) make this cheap.
 - **Off-policy (SAC, TD3):** Reuses old data, so it's more sample-efficient. But old data was generated by a different policy, requiring importance sampling corrections that can be unstable with large policy changes.
 
-For robotics simulation where environments are cheap to run in parallel, PPO's simplicity and stability outweigh its sample inefficiency. This is why [[quick-context/pupper-lab5-neural-controller|Lab 5]] and virtually all production locomotion pipelines use PPO.
+For robotics [[quick-context/epson-rc-plus-programming|simulation]] where environments are cheap to run in parallel, PPO's [[quick-context/embedded-communication-protocols|simplicity]] and stability outweigh its sample inefficiency. This is why [[quick-context/pupper-lab5-neural-controller|Lab 5]] and virtually all production locomotion [[quick-context/d-flip-flop|pipelines]] use PPO.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Stability vs. sample efficiency</summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Stability vs. sample efficiency</summary>
 
 PPO occupies a specific point in the RL algorithm design space, trading sample efficiency for training stability. Understanding this tradeoff explains why PPO dominates some domains and not others.
 
@@ -196,7 +196,7 @@ PPO occupies a specific point in the RL algorithm design space, trading sample e
 
 ### Why PPO Wins for Robot Locomotion
 
-1. **Parallel simulation is cheap.** GPU-based simulators (Isaac Lab, MJX) run thousands of environments simultaneously. When you can collect 100K transitions per second, sample efficiency barely matters — training takes minutes either way.
+1. **Parallel simulation is cheap.** GPU-based simulators (Isaac Lab, MJX) run thousands of environments [[quick-context/bare-minimal-data-storage-circuit|simultaneously]]. When you can collect 100K transitions per second, sample efficiency barely matters — training takes minutes either way.
 
 2. **Stability matters more than speed.** A locomotion training run that diverges at hour 6 wastes more time than a stable run that takes 8 hours. PPO's clipping makes divergence rare.
 
@@ -363,7 +363,7 @@ TRAINING PROGRESS (typical Pupper locomotion run)
 - **TRPO (Trust Region Policy Optimization)** — PPO's predecessor by Schulman et al. (2015). TRPO enforces a hard KL-divergence constraint between old and new policies using conjugate gradient optimization — theoretically principled but complex to implement. PPO achieves similar stability with a simple clip, making it the practical successor.
 - **GAE (Generalized Advantage Estimation)** — The advantage estimator used by PPO. Introduced by Schulman et al. (2016), GAE interpolates between 1-step TD estimates (high bias, low variance) and full Monte Carlo returns (low bias, high variance) via the $\lambda$ parameter. Almost always used with $\lambda = 0.95$, $\gamma = 0.99$.
 - **SAC (Soft Actor-Critic)** — The main alternative to PPO for continuous control. SAC is off-policy (uses a replay buffer), maximizes entropy alongside reward, and is more sample-efficient. Preferred when environment interactions are expensive (real robots), but less stable and harder to tune than PPO.
-- **Domain Randomization** — During training, simulation parameters (friction, mass, motor delay) are randomized each episode to prevent overfitting to a single simulator configuration. Combined with PPO, this is the standard recipe for sim-to-real transfer in locomotion.
+- **Domain Randomization** — During training, simulation parameters (friction, mass, motor delay) are randomized each episode to prevent overfitting to a single simulator configuration. Combined with PPO, this is the standard recipe for [[quick-context/pupper-lab5-neural-controller|sim-to-real transfer]] in locomotion.
 - **Isaac Lab / Isaac Gym** — NVIDIA's GPU-parallel simulation framework. Runs 4096+ environments simultaneously on a single GPU, making PPO's sample inefficiency irrelevant. The industry standard for training locomotion policies at scale.
 - **RLHF (Reinforcement Learning from Human Feedback)** — PPO's other major application domain. Used to fine-tune language models (GPT, Claude) based on human preference rankings. The same clipped objective prevents the language model from degenerating during reward-guided fine-tuning.
 
@@ -409,7 +409,7 @@ With $\epsilon = 0.4$, each update can change action probabilities by up to 40% 
 <details>
 <summary>Answer</summary>
 
-Both are sequential decision problems where a policy (robot controller or language model) produces actions (joint targets or tokens) and receives delayed reward (locomotion quality or human preference score). Both face the same core challenge: updating the policy to improve reward without changing it so drastically that behavior degenerates. For robots, "degeneration" means the policy forgets how to walk and falls over. For language models, it means the model produces incoherent or reward-hacked text that scores high on the reward model but is nonsensical. PPO's clipping prevents both failure modes by bounding the per-update policy change. In both domains, there's also a KL-style regularization toward a "reference" behavior (domain randomization teaches robustness in robotics; a KL penalty toward the base model preserves language coherence in RLHF).
+Both are sequential decision problems where a policy (robot controller or language model) produces actions (joint targets or tokens) and receives delayed reward (locomotion quality or human preference score). Both face the same core challenge: updating the policy to improve reward without changing it so drastically that behavior degenerates. For robots, "degeneration" means the policy forgets how to walk and falls over. For language models, it means the model produces incoherent or reward-hacked text that scores high on the reward model but is nonsensical. PPO's clipping prevents both failure modes by bounding the per-update policy change. In both domains, there's also a KL-style regularization toward a "[[quick-context/comparator|reference]]" behavior (domain randomization teaches robustness in robotics; a KL penalty toward the base model preserves language coherence in RLHF).
 </details>
 
 </details>

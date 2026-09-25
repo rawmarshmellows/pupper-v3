@@ -5,20 +5,20 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/physics-of-writing-data-to-memory]] | [[quick-context/switches-to-registers-storing-data]] | [[quick-context/cpu-fetch-execute-cycle]] | [[quick-context/d-flip-flop]]
 
-> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
+> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output [[quick-context/d-flip-flop|Enable]] pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees [[quick-context/ram-addressing-decoder|exactly one]] chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
 ## The Core Problem
 
-A computer is dozens of chips that all need to exchange bytes: the CPU reads an instruction from RAM, writes a pixel to the display controller, polls a keyboard. Wiring a dedicated set of data lines from every chip to every other chip would need an explosion of traces — for $N$ chips each needing to talk to all others, point-to-point links grow roughly as $N^2$. A shared **bus** collapses that to one set of wires everyone taps into, so wiring grows like $N$. But sharing wires creates a new danger: two chips driving the same wire at once is an electrical short. The whole art of the bus is letting many chips share wires *without ever driving them at the same time.*
+A computer is dozens of chips that all need to exchange bytes: the CPU reads an [[quick-context/cpu-fetch-execute-cycle|instruction]] from RAM, writes a pixel to the display controller, polls a keyboard. Wiring a dedicated set of data lines from every chip to every other chip would need an explosion of traces — for $N$ chips each needing to talk to all others, point-to-point links grow roughly as $N^2$. A shared **bus** collapses that to one set of wires everyone taps into, so wiring grows like $N$. But sharing wires creates a new danger: two chips driving the same wire at once is an electrical short. The whole art of the bus is letting many chips share wires *without ever driving them at the same time.*
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **[[quick-context/how-source-code-is-stored|address]] bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[quick-context/switches-to-registers-storing-data|Output Enable (OE)]] pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |
@@ -140,13 +140,13 @@ The parallel system bus described above (8/16/32/64 data wires switching togethe
 | | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, UART, CAN, USB) |
 |---|---|---|
 | Data per clock | A whole word at once (8/16/32/64 bits) | 1 bit at a time |
-| Wire count | Many (1 per data bit + address + control) | Few (1–4) |
+| Wire [[quick-context/switches-to-registers-storing-data|count]] | Many (1 per data bit + address + control) | Few (1–4) |
 | Speed *per pin* | Lower clock, but wide | Higher clock, but narrow |
 | Distance | Short — on-board, between dies | Short to very long (CAN ~40 m, RS-485 ~1200 m) |
-| Skew problem | Severe — all bits must arrive aligned; long fast parallel buses suffer **skew** (bits drifting out of step) | None — one wire, no inter-wire skew |
+| Skew problem | Severe — all bits must arrive aligned; long fast parallel buses suffer **skew** (bits drifting out of step) | [[quick-context/mcp6541-as-lmc7211-replacement|None]] — one wire, no inter-wire skew |
 | Where you see it | Inside a chip / CPU↔cache↔RAM | Chip-to-chip, board-to-board, device-to-host |
 
-The historical arc is *parallel → serial*: old PCs had parallel printer ports, PATA disk ribbons, and a parallel PCI bus. Those were replaced by USB, SATA, and PCIe — all **serial**. Why? At high speed, keeping dozens of parallel wires perfectly aligned (no skew) gets harder than just clocking one or two wires very fast. So modern "buses" between boxes are serial, while **parallel buses survive where distance is tiny and width is free** — inside a CPU, and on the short CPU-to-RAM path.
+The historical arc is *parallel → serial*: old PCs had parallel printer ports, PATA disk ribbons, and a parallel PCI bus. Those were replaced by USB, SATA, and [[quick-context/raspberry-pi-5-components|PCIe]] — all **serial**. Why? At high speed, keeping dozens of parallel wires perfectly aligned (no skew) gets harder than just clocking one or two wires very fast. So modern "buses" between boxes are serial, while **parallel buses survive where distance is tiny and width is free** — inside a CPU, and on the short CPU-to-RAM path.
 
 The deep idea, though, is shared by *both* worlds: a shared medium plus a rule for who-talks-when. I2C's open-drain SDA line with 7-bit addressing is conceptually the same as a parallel data bus with chip-select — it's just one wire and an addressing scheme instead of many wires and a decoder.
 
@@ -160,7 +160,7 @@ The whole "one driver onto a shared wire" idea reduces to two primitive operatio
 ### Anchor 1 — Selecting one source onto a shared line: the MUX
 
 A bus *read* is "pick one of several drivers' values and put it on the shared wire." That is exactly a **multiplexer (MUX)**. From
-`learning/references/courses/python-nand-to-tetris-part-1/src/hardware/elementary_logic_gates/mux_gate.py`:
+`learning/references/courses/python-nand-to-tetris-part-1/src/[[quick-context/code-to-gates-and-bootstrapping|hardware]]/elementary_logic_gates/mux_gate.py`:
 
 ```python
 def mux_gate(a: int, b: int, sel: int) -> int:
@@ -170,7 +170,7 @@ def mux_gate(a: int, b: int, sel: int) -> int:
     return (a & not_sel) | (b & sel)
 ```
 
-Read `sel` as the chip-select. Only the *selected* source reaches the output; the unselected one is masked to 0 and contributes nothing — the software echo of "the unselected chip is Hi-Z and contributes nothing to the wire." A real bus with $k$ devices uses a wider MUX (a `mux16` selects a 16-bit word), but it is the same gate scaled up.
+Read `sel` as the chip-select. Only the *selected* source reaches the output; the unselected one is masked to 0 and contributes [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] — the software echo of "the unselected chip is Hi-Z and contributes nothing to the wire." A real bus with $k$ devices uses a wider MUX (a `mux16` selects a 16-bit word), but it is the same gate scaled up.
 
 ### Anchor 2 — Routing one signal to one destination: the DMUX
 
@@ -202,7 +202,7 @@ def __call__(self, ..., load, address0, address1, ..., address14):
     return result
 ```
 
-That is precisely **memory-mapped I/O** in embryo: the high address bit splits one address space into ranges, a DMUX routes a *write* to the correct range, a MUX selects the correct range's output on a *read*. The full Hack computer extends this so that some address ranges aren't RAM at all — they're the **screen** and **keyboard**. Writing to a screen address lights a pixel; reading the keyboard address returns the pressed key. The CPU uses one set of load/store instructions for everything, because to the CPU, RAM and peripherals are just different address ranges on the same bus. That handoff — write a byte to an address and a pixel changes — is exactly the next rung: [[learning/notes/quick-context/keypress-to-pixel-pipeline|keypress to pixel]].
+That is precisely **memory-mapped I/O** in embryo: the high address bit splits one address space into ranges, a DMUX routes a *write* to the correct range, a MUX selects the correct range's output on a *read*. The full [[quick-context/keypress-to-pixel-pipeline|Hack computer]] extends this so that some address ranges aren't RAM at all — they're the **screen** and **keyboard**. Writing to a screen address lights a pixel; reading the keyboard address returns the pressed key. The CPU uses one set of load/store instructions for everything, because to the CPU, RAM and peripherals are just different address ranges on the same bus. That handoff — write a byte to an address and a pixel changes — is exactly the next rung: [[learning/notes/quick-context/keypress-to-pixel-pipeline|keypress to pixel]].
 
 ### A concrete memory map
 
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-[[quick-context/silicon-die|package]], so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>

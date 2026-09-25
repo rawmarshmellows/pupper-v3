@@ -5,13 +5,13 @@ created: 2026-03-10
 
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab3-inverse-kinematics]]
+> **Related:** [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab4-gait-control]]
 
 > **TL;DR:** Forward kinematics computes where the foot ends up in 3D space given three joint angles, by chaining 4x4 homogeneous transformation matrices along the leg's kinematic chain. This is the mathematical foundation reused in every subsequent Pupper lab.
 
 ## The Core Problem
 
-A quadruped robot leg has three revolute joints — hip abduction (swing out/in), hip flexion (forward/backward), and knee flexion. When these joints rotate by angles $\theta_1, \theta_2, \theta_3$, the foot moves to some position $(x, y, z)$ in 3D space. Forward kinematics (FK) answers the question: *given the joint angles, where is the foot?* This is the foundational "forward" direction of the kinematics problem; Lab 3 tackles the harder "inverse" direction (given a foot position, what joint angles produce it).
+A quadruped robot leg has three revolute joints — hip abduction (swing out/in), hip flexion (forward/backward), and knee flexion. When these joints rotate by angles $\theta_1, \theta_2, \theta_3$, the foot moves to some position $(x, y, z)$ in 3D space. [[quick-context/pupper-v3-labs|Forward kinematics (FK)]] answers the question: *given the joint angles, where is the foot?* This is the foundational "forward" direction of the kinematics problem; Lab 3 tackles the harder "inverse" direction (given a foot position, what joint angles produce it).
 
 The naive approach would be to derive trigonometric formulas by hand — for a 3-DOF leg you could write out $x = L_1 \cos\theta_1 + L_2 \cos(\theta_1 + \theta_2) + \ldots$ — but this gets unwieldy fast and is error-prone when axes are not all parallel. Instead, Lab 2 uses **4x4 homogeneous transformation matrices**, a systematic framework where each joint-link pair is encoded as a single matrix, and the full chain is computed by multiplying them together. The approach scales cleanly: whether you have 3 joints or 30, the procedure is the same.
 
@@ -25,7 +25,7 @@ Each transformation matrix encodes two things simultaneously: a rotation (what d
 | **Rotation Matrix** | A 3x3 orthonormal matrix (embedded in the upper-left of the 4x4) that rotates vectors about an axis — Lab 2 implements `rotation_y()` and `rotation_z()` plus a rotation about x for hip abduction |
 | **Translation** | A displacement vector $(d_x, d_y, d_z)$ placed in the rightmost column of the 4x4 matrix — represents the offset along a link from one joint to the next |
 | **Kinematic Chain** | The sequence of joints and rigid links from the robot's body frame to the end-effector; for Pupper's front-left leg: body $\to$ hip $\to$ upper leg $\to$ lower leg $\to$ foot |
-| **End-Effector** | The "tool" at the end of the chain — in this case the foot contact point, whose 3D position is the output of the FK computation |
+| **End-Effector** | The "tool" at the end of the chain — in this case the foot contact [[quick-context/epson-rc-plus-programming|point]], whose 3D position is the output of the FK computation |
 
 <details>
 <summary><strong>How It Works</strong> — Chaining transformation matrices</summary>
@@ -185,7 +185,7 @@ This means: nearly directly below the hip (x close to 0), offset laterally by th
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 2 FK is reused directly in Lab 3 (IK via gradient descent on FK), Lab 4 (FK for all 4 legs), and conceptually underpins Lab 5's neural controller.
-- **[[quick-context/pupper-brain]]** — The hardware that executes FK computations at 200 Hz. Joint angles come from motor encoders via CAN bus; computed foot positions can be published as ROS2 topics.
+- **[[quick-context/pupper-brain]]** — The hardware that executes FK computations at 200 Hz. Joint angles come from motor encoders via CAN bus; computed foot positions can be published as [[quick-context/pupper-lab1-pid-control|ROS2]] [[quick-context/ros2-architecture|topics]].
 - **Denavit-Hartenberg (DH) Parameters** — A standardized convention for assigning coordinate frames to each joint, reducing any serial chain to a table of 4 parameters per joint ($\theta$, $d$, $a$, $\alpha$). Lab 2 uses a slightly simplified approach, but DH is the industry standard for complex manipulators.
 - **RViz Visualization** — ROS2's 3D visualization tool. Lab 2 publishes a `visualization_msgs/Marker` (green sphere, type `SPHERE`) at the computed foot position so students can visually debug their FK against the URDF model.
 - **Rotation Conventions** — Lab 2 uses intrinsic rotations (each rotation is about the *current* frame's axis, not the fixed world axis). The distinction between intrinsic and extrinsic rotations matters when chaining: intrinsic rotations multiply right-to-left if you think in fixed-frame terms, but left-to-right if you think in body-frame terms (which is what the matrix chain does).
@@ -217,7 +217,7 @@ The hip abduction joint swings the leg laterally (in/out from the body). It must
 <details>
 <summary>Answer</summary>
 
-The upper-left 3x3 block is the cumulative rotation matrix $R_{0 \to ee}$, representing the orientation of the end-effector frame relative to the body frame. For Pupper's foot, orientation is less critical (the foot is roughly a point contact), but it becomes essential for tasks like: (1) computing the Jacobian for inverse kinematics, where you need to know how the end-effector frame is oriented to map joint velocities to Cartesian velocities; (2) ground contact normal estimation, determining the angle at which the foot contacts the terrain; (3) manipulators with grippers, where the tool orientation (not just position) must be controlled. In Lab 3, the cost function only uses position, but a full 6-DOF IK formulation would also penalize orientation error using this rotation block.
+The upper-left 3x3 block is the cumulative rotation matrix $R_{0 \to ee}$, representing the orientation of the end-effector frame relative to the body frame. For Pupper's foot, orientation is less critical (the foot is roughly a point contact), but it becomes essential for tasks like: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] computing the Jacobian for [[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]], where you need to know how the end-effector frame is oriented to map [[quick-context/pupper-lab5-neural-controller|joint velocities]] to Cartesian velocities; (2) ground contact normal estimation, determining the angle at which the foot contacts the terrain; (3) manipulators with grippers, where the tool orientation (not just position) must be controlled. In Lab 3, the cost [[quick-context/mcp6541-as-lmc7211-replacement|function]] only uses position, but a full 6-DOF IK formulation would also penalize orientation error using this rotation block.
 </details>
 
 </details>

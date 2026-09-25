@@ -4,9 +4,9 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[quick-context/3d-printing-filament-refill-vs-spool]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-ams-automatic-material-system]] | [[quick-context/bambu-p2s-print-quality]]
 
-> **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
+> **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively ([[quick-context/pcb-assembly-files-bom-cpl|layer]] height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
 ## The Core Problem
 
@@ -19,13 +19,13 @@ A slicer converts 3D models into printer instructions by cutting models into lay
 | **Layer height** | Thickness of each horizontal layer (thinner = smoother but slower) |
 | **Infill** | Percentage of interior that's solid plastic vs air (15% = mostly hollow) |
 | **Walls/perimeters** | Number of solid outlines on the exterior shell |
-| **Volumetric flow rate** | How much plastic (mm³/s) must melt and extrude—limited by hotend capacity |
+| **[[quick-context/3d-printer-hotends|Volumetric flow rate]]** | How much plastic (mm³/s) must melt and extrude—limited by hotend capacity |
 | **G-code** | The text file of line-by-line commands that tell the printer exactly what to do |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The slicer performs three essential transformations on your 3D model. First, **slicing**: it cuts your model into horizontal layers (like slicing a loaf of bread), with each slice becoming one pass of the print head. Second, **pathing**: for each layer, it plans the exact route the nozzle will travel—where to start, which direction to move, when to extrude plastic, when to retract. Third, **parameter application**: it applies your settings (temperature, speed, infill pattern, etc.) to generate the final machine instructions. The output is G-code, a text file of line-by-line commands that tell motors exactly where to move and heaters exactly what temperature to maintain.
+The slicer performs three essential transformations on [[quick-context/mcp6541-as-lmc7211-replacement|your]] 3D model. First, **slicing**: it cuts your model into horizontal layers (like slicing a loaf of bread), with each slice becoming one pass of the print head. Second, **pathing**: for each layer, it plans the exact route the nozzle will travel—where to start, which direction to move, when to extrude plastic, when to retract. Third, **parameter application**: it applies your settings (temperature, speed, infill pattern, etc.) to generate the final machine instructions. The output is G-code, a text file of line-by-line commands that tell motors exactly where to move and heaters exactly what temperature to maintain.
 
 The relationship between settings is multiplicative, not independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[quick-context/3d-printer-hotends|hotend's]] melting capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the hardware can't fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
 
@@ -153,7 +153,7 @@ People think "more infill = stronger part." Not really. A part with **3 walls an
 
 Concepts that connect to slicer settings and deepen your understanding:
 
-- **[[quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. PLA prints cooler and faster; PETG needs higher temps and slower speeds; ABS requires enclosures. Your material choice drives half your slicer decisions.
+- **[[quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. PLA prints cooler and faster; [[quick-context/bambu-p2s-print-quality|PETG]] needs higher temps and slower speeds; ABS requires enclosures. Your material choice drives half your slicer decisions.
 
 - **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
 
@@ -175,19 +175,19 @@ The outer walls carry most of the structural load in real-world use because forc
 **Q2:** If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
 <details>
 <summary>Answer</summary>
-You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher glass transition temperature and different flow characteristics.
+You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher [[quick-context/3d-printing-filament-types|glass transition temperature]] and different flow characteristics.
 </details>
 
 **Q3:** When would you choose a 0.2mm layer height over a 0.3mm setting?
 <details>
 <summary>Answer</summary>
-Choose thinner layers (0.2mm) when printing parts with curved or angled surfaces where stair-stepping would be visible, creating display pieces or gifts where surface finish matters, printing parts with fine details or small text, or making parts that need precise tolerances. The trade-off is print time—0.2mm layers take roughly 50% longer than 0.3mm layers for the same part.
+Choose thinner layers (0.2mm) when printing parts with curved or angled surfaces where stair-stepping would be visible, creating display pieces or gifts where [[quick-context/cnc-machining|surface finish]] matters, printing parts with [[micro-context/thread-pitch-screws|fine]] details or small text, or making parts that need precise tolerances. The trade-off is print time—0.2mm layers take roughly 50% longer than 0.3mm layers for the same part.
 </details>
 
 **Q4:** What problem does tree support solve that regular block supports don't?
 <details>
 <summary>Answer</summary>
-Tree supports branch upward from the build plate to reach overhangs, touching the model only where absolutely necessary. They provide easier removal (branch tips snap off cleanly), better surface finish (minimal contact points mean fewer support scars), less material waste (branches use far less filament), and sometimes better access to interior overhangs. The trade-off is slightly longer slicing time and occasionally less stability for very heavy overhangs.
+Tree supports branch upward from the build plate to reach overhangs, touching the model only where absolutely necessary. They provide easier removal (branch tips snap off cleanly), better surface finish (minimal contact points mean fewer support scars), less material [[quick-context/3d-printing-filament-refill-vs-spool|waste]] (branches use far less filament), and sometimes better access to interior overhangs. The trade-off is slightly longer slicing time and occasionally less stability for very heavy overhangs.
 </details>
 
 **Q5:** Two filaments have identical melting points (240C), but one is semi-crystalline and one is amorphous. Why might the same slicer profile produce good results with one but failures with the other?

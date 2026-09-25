@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-bom-control-board]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]]
 >
 > **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
 
@@ -20,10 +20,10 @@ Building a walking, seeing, talking robot requires knowledge spanning control th
 | Term | Definition |
 |------|------------|
 | **PD Control** | Proportional-Derivative controller that computes torque as $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — the foundation of Labs 1, 3, and 4 |
-| **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 homogeneous transformation matrices — Lab 2's core concept, reused in every subsequent lab |
-| **Inverse Kinematics (IK)** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via gradient descent on the FK cost function |
+| **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained [[quick-context/pupper-lab2-forward-kinematics|4x4 homogeneous transformation matrices]] — Lab 2's core concept, reused in every subsequent lab |
+| **[[quick-context/pupper-lab3-inverse-kinematics|Inverse Kinematics (IK)]]** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via gradient descent on the FK cost [[quick-context/mcp6541-as-lmc7211-replacement|function]] |
 | **Karel** | The `KarelPupper` class (Labs 6-7) that wraps ROS2 Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
-| **State Machine** | Lab 7's IDLE/SEARCH/TRACK controller that transitions between rotating to find a target, and using proportional control to follow it based on camera detections |
+| **[[quick-context/integration-failure-modes-solutions|State Machine]]** | Lab 7's IDLE/SEARCH/TRACK controller that transitions between rotating to find a target, and using proportional control to follow it based on camera detections |
 
 <details>
 <summary><strong>How It Works</strong> — The 7-lab progression</summary>
@@ -83,14 +83,14 @@ Students solve the inverse problem: given a desired foot position, find joint an
 - Gradient descent update: $\theta \leftarrow \theta - \alpha \nabla C(\theta)$
 - Interpolate between 3 triangle waypoints (touchdown, liftoff, mid-swing) for a stepping motion
 
-Runs a 200 Hz PD loop for joint tracking and a 20 Hz IK loop for trajectory updates.
+Runs a 200 Hz PD loop for joint tracking and a 20 Hz IK loop for trajectory [[quick-context/firmware|updates]].
 
 ### Lab 4: Gait Control (Trotting)
 
 Extends Labs 2-3 to all 4 legs for coordinated walking. Key tasks:
 
 - Implement FK for all 4 legs (front-right, front-left, back-right, back-left) with correct hip offsets
-- Define trotting gait: diagonal leg pairs move in sync (FR+BL swing while FL+BR stance)
+- Define [[quick-context/pupper-lab4-gait-control|trotting gait]]: diagonal leg pairs move in sync (FR+BL swing while FL+BR stance)
 - Pre-cache all target joint positions for one gait cycle to avoid real-time IK cost
 - Interpolate triangle trajectories per leg with phase offsets
 
@@ -100,7 +100,7 @@ The gait uses 6 waypoints per leg (touchdown, 3 stance positions, liftoff, mid-s
 
 Replaces the hand-tuned PD + FK/IK + gait pipeline with an RL-trained neural network policy. The neural controller runs at ~52 Hz (via `repeat_action: 10` at 520 Hz update rate) and directly outputs joint position targets. Key concepts:
 
-- Policies trained in simulation (MuJoCo), deployed to real robot (sim-to-real transfer)
+- Policies trained in [[quick-context/epson-rc-plus-programming|simulation]] (MuJoCo), deployed to real robot (sim-to-real transfer)
 - Weights & Biases (wandb) for experiment tracking and policy download
 - Multiple modes: normal walk, three-legged, parkour, test
 - Emergency stop controller (C++ node) for safety
@@ -117,7 +117,7 @@ Students program the robot to respond to voice commands through an LLM. Two comp
 
 **Realtime Voice** (`realtime_voice.py`): OpenAI WebSocket API for ultra-low-latency voice:
 - Write a system prompt that instructs the LLM to output structured commands matching Karel's action functions
-- Audio streaming at 24 kHz PCM16 with server-side VAD (voice activity detection)
+- Audio streaming at 24 kHz PCM16 with server-side [[quick-context/pupper-lab6-llm-voice-control|VAD (voice activity detection)]]
 - Auto-muting during playback to prevent echo loops
 
 ### Lab 7: Vision + Tracking (Full System)
@@ -127,7 +127,7 @@ Adds computer vision for autonomous object tracking, combining everything from p
 **Hailo Detection** (`hailo_detection.py`): YOLOv5 inference on a Hailo AI accelerator:
 - Fisheye camera undistortion to equirectangular projection
 - COCO 80-class object detection at 5 FPS
-- Publishes `Detection2DArray` messages
+- Publishes `[[quick-context/pupper-lab7-vision-tracking|Detection2DArray]]` [[quick-context/ros2-architecture|messages]]
 
 **State Machine** (`lab_7.py`): Students implement:
 - Detection callback: find most central detection, normalize position to [-0.5, 0.5]
@@ -234,8 +234,8 @@ The ROS2 topic graph for the full Lab 7 system:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + Raspberry Pi hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
-- **[[quick-context/pupper-bom-control-board]]** — Every physical component on the board: the [[micro-context/can-bus-transceiver|CAN transceivers]] that carry joint commands, the [[small-context/imu-robot-balance-sensing|BNO086 IMU]] that Lab 5's neural policy reads for balance, and the [[micro-context/buck-converter|buck converter]] powering it all.
+- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + Raspberry Pi [[quick-context/sil-rated-safety-functions|hardware architecture]] that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
+- **[[quick-context/pupper-bom-control-board]]** — Every physical component on the board: the [[micro-context/can-bus-transceiver|CAN transceivers]] that carry joint commands, the BNO086 IMU that Lab 5's neural policy reads for balance, and the [[micro-context/buck-converter|buck converter]] powering it all.
 - **[[quick-context/ros2-architecture|ROS2 (Robot Operating System 2)]]** — The middleware framework all labs use. Nodes communicate via topics (pub/sub), services, and actions. Key message types: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`. See the dedicated quick-context for the full node graph and topic map.
 - **MuJoCo** — Physics simulator used in Lab 5 for training RL policies before transferring to the real robot (sim-to-real).
 - **Hailo AI Accelerator** — Edge AI chip used in Lab 7 for running YOLOv5 object detection at low power on the robot.
@@ -261,7 +261,7 @@ Diagonal pairing (trotting) keeps the robot statically stable — at any instant
 **Q3:** Lab 5's neural controller uses `repeat_action: 10` at a 520 Hz update rate. What effective control frequency does the neural network run at, and why not run it faster?
 <details>
 <summary>Answer</summary>
-$520 / 10 = 52$ Hz (the config intentionally runs slightly above 500 Hz to land at exactly ~50 Hz for the neural controller). The neural network doesn't run faster because: (1) RL policies are trained at a specific frequency in simulation — running at a different frequency changes the dynamics and the policy may fail, (2) neural network inference has non-trivial compute cost on the Pi, and (3) the policy outputs position targets that the lower-level PD controller tracks at full rate, so ~50 Hz is sufficient for locomotion commands.
+$520 / 10 = 52$ Hz (the config intentionally runs slightly above 500 Hz to land at exactly ~50 Hz for the neural controller). The neural network doesn't run faster because: (1) RL policies are trained at a specific frequency in simulation — running at a different frequency changes the dynamics and the policy may fail, (2) [[quick-context/pupper-lab5-neural-controller|neural network inference]] has non-trivial compute cost on the Pi, and (3) the policy outputs position targets that the lower-level PD controller tracks at full rate, so ~50 Hz is sufficient for locomotion commands.
 </details>
 
 **Q4:** In Lab 7's state machine, why use a timeout-based transition to SEARCH instead of immediately switching when no detection is found in a single frame?

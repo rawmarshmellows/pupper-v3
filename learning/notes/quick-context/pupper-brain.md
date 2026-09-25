@@ -3,7 +3,7 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-bom-control-board]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
@@ -15,11 +15,11 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
-| **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
-| **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
-| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[micro-context/stm32-microcontroller|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[quick-context/can-bus|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
+| **BNO086 IMU** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
+| **[[micro-context/buck-converter|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
+| **[[micro-context/decoupling-capacitor|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -32,7 +32,7 @@ When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
 3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
+4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN [[quick-context/ros2-architecture|messages]]. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
 
 5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
@@ -124,7 +124,7 @@ See: [[micro-context/can-bus-transceiver]]
 
 9-axis IMU with sensor fusion. Note: no supplier part number!
 May need to source separately from Bosch/Mouser.
-See: [[small-context/imu-robot-balance-sensing]]
+See: imu-robot-balance-sensing
 
 
 "21 | 1 | 60.4kΩ | R5 | R0402"
@@ -150,14 +150,14 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/stm32-microcontroller]] — The dual ARM Cortex-M4 MCUs running the show
 - [[micro-context/can-bus-transceiver]] — How differential signaling enables reliable motor communication
 - [[micro-context/buck-converter]] — Switching power supply converting battery to 5V
-- [[small-context/imu-robot-balance-sensing]] — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
+- imu-robot-balance-sensing — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
 - [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards
 - [[quick-context/electric-current]] — Fundamentals of current flow
 - **[[quick-context/pupper-bom-control-board]]** — Every part on this board explained: what it does, why that value, and how it connects to the system. The BOM companion to this architectural overview.
-- **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/inverse kinematics, gait generation, RL policies, LLM voice control, and vision tracking.
+- **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/[[quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]], gait generation, RL policies, LLM voice control, and vision tracking.
 
 </details>
 
@@ -169,7 +169,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 <details>
 <summary>Answer</summary>
 
-Separation of concerns for real-time reliability. The motor control MCU (U5) must maintain a strict 1000Hz control loop—any delay causes jerky motion or falls. By dedicating U5 solely to CAN communication and motor control, it's protected from IMU processing, audio output, or Pi communication stealing CPU cycles. U1 handles everything else without risking motor timing. See: The Key Tension section.
+[[quick-context/pupper-lab7-vision-tracking|Separation of concerns]] for real-time reliability. The motor control MCU (U5) must maintain a strict 1000Hz control loop—any delay causes jerky motion or falls. By dedicating U5 solely to CAN communication and motor control, it's protected from IMU processing, audio output, or Pi communication stealing CPU cycles. U1 handles everything else without risking motor timing. See: The Key Tension section.
 </details>
 
 **Q2:** The BOM shows 12× 100nF capacitors (C0402 size) scattered across designators C2, C5, C6, etc. What are these for and why so many?
@@ -193,7 +193,7 @@ They form a voltage divider in the feedback network that sets the output voltage
 <details>
 <summary>Answer</summary>
 
-Multiple reasons: (1) **Bandwidth**—with 12 servos sending position feedback at 1kHz, one bus approaches saturation; splitting into 2-4 buses reduces congestion. (2) **Redundancy**—if one bus fails, only some legs are affected. (3) **Topology**—front legs might be physically far from rear legs; separate buses simplify wiring. (4) **Isolation**—a short or fault on one bus doesn't take down the whole robot. See: [[micro-context/can-bus-transceiver]].
+Multiple reasons: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] **[[quick-context/oscilloscope-and-multimeter|Bandwidth]]**—with 12 servos sending position feedback at 1kHz, one bus approaches saturation; splitting into 2-4 buses reduces congestion. (2) **Redundancy**—if one bus [[quick-context/mcp6541-as-lmc7211-replacement|fails]], only some legs are affected. (3) **Topology**—front legs might be physically far from rear legs; separate buses simplify wiring. (4) **Isolation**—a short or fault on one bus doesn't take down the whole robot. See: [[micro-context/can-bus-transceiver]].
 </details>
 
 **Q5:** The BNO086 IMU entry shows no LCSC supplier part number. What does this mean for building the board?

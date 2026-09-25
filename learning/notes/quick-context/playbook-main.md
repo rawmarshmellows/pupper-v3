@@ -1,3 +1,7 @@
+
+
+> **Related:** [[quick-context/existing-account-management-playbook]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/meddpicc-qualification-framework]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -8,7 +12,7 @@
 
 This playbook is designed to be followed sequentially for each account, then maintained through regular rituals. Work through Steps 1-6 when onboarding a new account or taking over an existing one, then use the Ongoing Rituals section to maintain momentum.
 
-**Linked Databases:** This playbook works with several database templates (imported separately as CSVs). Link them to your account pages for full functionality.
+**Linked Databases:** This playbook works with several database templates (imported separately as CSVs). Link them to [[quick-context/mcp6541-as-lmc7211-replacement|your]] account pages for full functionality.
 
 ---
 
@@ -52,7 +56,7 @@ This playbook is designed to be followed sequentially for each account, then mai
 - Is this an existing customer or a new/lost prospect?
 - If existing: Is there whitespace to expand, or are we at full usage?
 - If lost/former: Have circumstances changed (new buyer, competitor failed)?
-- If new: Does it fit ICP? Is there an identified pain or trigger?
+- If new: Does it fit ICP? Is there an identified pain or [[quick-context/oscilloscope-and-multimeter|trigger]]?
 
 ### 1.2 KARE Classification
 
@@ -116,7 +120,7 @@ Track these metrics to measure account management effectiveness:
 |---|---|---|
 | **Gross Revenue Retention (GRR)** | Revenue retained excluding expansion (churned $/starting $) | >90% |
 | **Net Revenue Retention (NRR)** | Revenue retained including expansion and contraction | >110% |
-| **Expansion Revenue %** | New revenue from existing customers / total new revenue | >30% |
+| **[[quick-context/post-sale-account-engagement|Expansion Revenue]] %** | New revenue from existing customers / total new revenue | >30% |
 | **Logo Retention** | Customers retained / customers at start of period | >85% |
 | **Time to First Expansion** | Days from initial close to first expansion deal | <365 days |
 
@@ -152,7 +156,7 @@ Track these metrics to measure account management effectiveness:
 - If that person leaves, relationship breaks
 - Information bottleneck
 
-**Diamond (Resilient):**
+**[[quick-context/existing-account-management-playbook|Diamond (Resilient):]]**
 - Multiple connections at multiple levels
 - Relationship survives personnel changes
 - Rich information flow
@@ -167,9 +171,9 @@ Track these metrics to measure account management effectiveness:
 
 | Role | Definition | Key Question |
 |---|---|---|
-| **Economic Buyer** | Final authority to approve spending. Can say yes when everyone says no. | "Who controls the budget?" |
+| **[[quick-context/meddpicc-qualification-framework|Economic Buyer]]** | Final authority to approve spending. Can say yes when everyone says no. | "Who controls the budget?" |
 | **User Buyer** | Day-to-day users who judge success by job impact | "Whose life improves?" |
-| **Technical Buyer** | Screens against specs/compliance. Can veto but not approve. | "Who can block us?" |
+| **[[quick-context/miller-heiman-strategic-selling-lamp|Technical Buyer]]** | Screens against specs/compliance. Can veto but not approve. | "Who can block us?" |
 | **Coach** | Internal advocate who provides intel and guides strategy | "Who's helping us win?" |
 
 ### Stakeholder Stance Definitions
@@ -210,7 +214,7 @@ Write a customer-centric statement of what you're trying to achieve FOR them:
 
 ### 4.3 Competitive Landscape
 
-Always include "Status Quo" (doing nothing) as a competitor. Often the real competition is inaction, not another vendor.
+Always include "Status Quo" (doing [[quick-context/tlv7211-as-lmc7211-replacement|nothing]]) as a competitor. Often the real competition is inaction, not another vendor.
 
 **Use the Expansion Opportunities database to track whitespace.**
 
@@ -232,7 +236,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
@@ -288,7 +292,7 @@ Anticipate pushback scenarios:
 ### Weekly (15 min)
 - Review health score / usage dashboard
 - Check for triggered alerts
-- Update CRM with new intel
+- [[quick-context/ppo-proximal-policy-optimization|Update]] CRM with new intel
 - Confirm upcoming touchpoints
 
 ### Monthly (30 min)

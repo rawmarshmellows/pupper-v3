@@ -6,14 +6,14 @@ updated: 2026-03-27
 
 # Decoupling Capacitor
 
-> **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
+> **Related:** [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]] | [[micro-context/adc-analog-to-digital-converter]] | [[micro-context/ads1110-battery-adc]]
 
-**Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.
+**[[quick-context/capacitance|Definition]]:** Small [[quick-context/voltage|capacitors]] (typically 100nF ceramic) placed near IC power pins to provide instant local charge [[quick-context/bare-minimal-data-storage-circuit|when]] the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise [[micro-context/push-pull-vs-open-drain|and]] supplying transient current faster than the distant power [[quick-context/differential-pair|source]] [[quick-context/embedded-communication-protocols|can]] respond.
 
 ## How It Works
 
-- When an IC switches states, it demands a sudden spike of current from the power rail.
-- The distant power supply can't respond instantly because PCB trace inductance limits current slew rate.
+- When an IC switches states, it demands a sudden spike of current from the [[quick-context/schematic-reading|power rail]].
+- The distant power supply can't respond instantly because PCB [[quick-context/pcb-printed-circuit-board|trace]] inductance limits current slew rate.
 - A small capacitor placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
 - The capacitor then slowly recharges from the power supply, ready for the next switching event.
 
@@ -38,4 +38,4 @@ WHY DECOUPLING IS NEEDED:
        then refills slowly from PSU
 ```
 
-**Key insight:** Every IC needs decoupling capacitors placed as close as possible to its power pins—the PCB trace inductance between capacitor and chip determines how well high-frequency noise is filtered.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** Every IC needs decoupling capacitors placed as close as possible to its power pins—the PCB trace inductance between capacitor and chip determines how well high-frequency noise is filtered.

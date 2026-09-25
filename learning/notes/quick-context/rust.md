@@ -3,7 +3,7 @@ topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/cpu-fetch-execute-cycle]] | [[quick-context/d-flip-flop]] | [[quick-context/data-bus-and-arbitration]] | [[quick-context/firmware]]
 
 > **TL;DR:** Rust is an electrochemical process where iron spontaneously oxidizes back to its ore state (Fe₂O₃) when exposed to oxygen and water, costing over $2.5 trillion annually in infrastructure damage.
 
@@ -19,8 +19,8 @@ Iron and steel are the backbone of modern civilization, but iron has a fundament
 |------|------------|
 | **Corrosion** | The electrochemical degradation of metals through oxidation reactions with their environment—rust is specifically iron corrosion |
 | **Hydration** | The process where water molecules surround and stabilize ions in solution through ion-dipole attraction, enabling metal dissolution |
-| **Cathodic protection** | Preventing corrosion by making the protected metal the cathode (electron receiver) instead of the anode, often via sacrificial metals |
-| **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, fails for iron) |
+| **Cathodic protection** | Preventing corrosion by making the protected metal the [[micro-context/cathode|cathode]] (electron receiver) instead of the [[micro-context/anode|anode]], often via sacrificial metals |
+| **Passivation** | Formation of a protective oxide layer that shields the underlying metal from further attack (works for aluminum, [[quick-context/mcp6541-as-lmc7211-replacement|fails]] for iron) |
 | **Galvanizing** | Coating iron/steel with zinc; the zinc corrodes preferentially (sacrificial protection) AND forms a barrier coating |
 
 <details>
@@ -138,7 +138,7 @@ Corrosion engineers balance multiple competing strategies:
 - **Cathodic protection**: Attach a more reactive metal (zinc, magnesium) that corrodes preferentially, protecting the iron. This is "sacrificial anode" protection—the zinc is consumed instead of the iron.
 - **Anodic protection**: For certain environments, maintain the metal at a potential where a stable passive oxide forms. Works for stainless steel but requires careful control.
 - **Alloying**: Add chromium, nickel, or other elements to create stainless steel with a self-healing oxide layer. Expensive but permanent.
-- **Environment control**: Remove oxygen, dehumidify, add corrosion inhibitors. Practical for enclosed systems (boilers, pipelines) but not outdoor structures.
+- **Environment control**: Remove oxygen, dehumidify, add corrosion inhibitors. Practical for enclosed systems (boilers, [[quick-context/d-flip-flop|pipelines]]) but not outdoor structures.
 
 The core debate: **Is it cheaper to prevent corrosion or plan for replacement?** Bridges get repainted every 10-15 years because that's cheaper than using stainless steel. Ships use sacrificial anodes because replacing zinc blocks is cheaper than replacing hulls. Cars use galvanized steel (zinc-coated) because the zinc sacrifices itself over the vehicle's lifetime. Every application demands a different cost-benefit calculation.
 
@@ -183,7 +183,7 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
                         exposed Fe
 
 
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)
@@ -236,7 +236,7 @@ CONTRAST: What happens with a scratched TIN-PLATED can
     while galvanized steel resists rust even when scratched.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an electrolyte. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while reduction (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
+**The [[quick-context/ram-addressing-decoder|one]] thing most outsiders get wrong about this is...** thinking rust is just iron "combining with oxygen" like a simple chemical reaction. It's not—rust formation is an *electrochemical* process requiring water to act as an electrolyte. Perfectly dry iron doesn't rust, even in pure oxygen. And the rusting happens at spatially separated locations on the metal surface: oxidation (iron dissolving) happens at anodic spots while reduction (oxygen consumption) happens at cathodic spots, with electrons flowing through the metal and ions flowing through the water film. This is why salt water accelerates rusting—it's a better electrolyte. Understanding rust as electrochemistry (not just chemistry) explains why cathodic protection works, why coatings help, and why the presence of dissimilar metals or stressed regions creates "hot spots" for corrosion.
 
 </details>
 

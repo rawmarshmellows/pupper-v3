@@ -5,13 +5,13 @@ created: 2026-04-04
 
 # Singular Value Decomposition (SVD)
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/covariance-matrix|Covariance Matrix]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]] | [[quick-context/electricity-generation]]
 
-> **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of linear algebra.
+> **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of [[quick-context/tensor|linear algebra]].
 
 ## The Core Problem
 
-Every matrix encodes a linear transformation, but looking at the raw numbers tells you almost nothing about *what that transformation does geometrically*. Is it stretching space? Rotating it? Collapsing dimensions? SVD answers all of these by decomposing any matrix -- any shape, any rank -- into its anatomical parts: the directions it acts on, how much it stretches along each, and where those stretched directions end up. Without SVD, problems like finding optimal rotations between point clouds, computing stable pseudoinverses, or compressing data by discarding negligible dimensions would require ad-hoc solutions instead of one universal tool.
+Every matrix encodes a linear transformation, but looking at the raw numbers tells you almost [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] about *what that transformation does geometrically*. Is it stretching space? Rotating it? Collapsing dimensions? SVD answers all of these by decomposing any matrix -- any shape, any rank -- into its anatomical parts: the directions it acts on, how much it stretches along each, and where those stretched directions end up. Without SVD, problems like finding optimal rotations between point clouds, computing stable pseudoinverses, or compressing data by discarding negligible dimensions would require ad-hoc solutions instead of one universal tool.
 
 ## 5 Essential Terms
 
@@ -108,7 +108,7 @@ The relationship: $A^T A = V \Sigma^T \Sigma V^T$ is the eigendecomposition of $
 
 ### Compact vs Full SVD
 
-| Form | $U$ size | $\Sigma$ size | $V$ size | When to use |
+| [[quick-context/mcp6541-as-lmc7211-replacement|Form]] | $U$ size | $\Sigma$ size | $V$ size | When to use |
 |------|----------|---------------|----------|-------------|
 | **Full** | $m \times m$ | $m \times n$ | $n \times n$ | Theoretical derivations, null space computation |
 | **Compact (thin)** | $m \times r$ | $r \times r$ | $n \times r$ | Practical computation -- discards zero singular values |
@@ -157,13 +157,13 @@ For an $m \times n$ matrix, the full SVD costs roughly $O(mn^2)$ when $m \geq n$
 
 $$A_k = U_k \Sigma_k V_k^T = \sum_{i=1}^{k} \sigma_i \mathbf{u}_i \mathbf{v}_i^T$$
 
-This is the theoretical foundation behind Principal Component Analysis (PCA), latent semantic analysis, and image compression. You keep only the $k$ largest singular values and discard the rest, optimally compressing the matrix.
+This is the theoretical foundation behind [[quick-context/covariance-matrix|Principal Component Analysis (PCA)]], latent semantic analysis, and image compression. You keep only the $k$ largest singular values and discard the rest, optimally compressing the matrix.
 
 **Randomized SVD:** For very large matrices where even $O(mn^2)$ is too slow, randomized algorithms (Halko, Martinsson, Tropp 2011) compute an approximate truncated SVD in $O(mnk)$ time, where $k \ll \min(m,n)$.
 
 **Numerical algorithm:** The standard method is the Golub-Kahan bidiagonalization followed by an iterative phase:
 1. Reduce $A$ to upper bidiagonal form $B$ using Householder reflections: $U_1^T A V_1 = B$
-2. Compute SVD of $B$ -- LAPACK offers two approaches: QR iteration (`dgesvd`, the Golub-Reinsch algorithm) or divide-and-conquer (`dgesdd`, the Gu-Eisenstat algorithm, which can be an order of magnitude faster for large matrices)
+2. Compute SVD of $B$ -- LAPACK offers two approaches: QR iteration (`dgesvd`, the Golub-Reinsch algorithm) or divide-and-conquer (`dgesdd`, the Gu-Eisenstat algorithm, which can be an [[quick-context/frequency-and-filtering|order]] of magnitude faster for large matrices)
 3. Accumulate the transformations: $U = U_1 U_B$, $V = V_1 V_B$
 
 </details>
@@ -246,7 +246,7 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 
 **Note:** `np.linalg.svd` returns $V^T$ (not $V$), so the rotation formula becomes `Vt.T @ D @ U.T` rather than `V @ D @ U.T`. This is the most common source of bugs.
 
-**The one thing most outsiders get wrong about this is...** that SVD finds the rotation by "decomposing" the rotation matrix. It doesn't. The [[quick-context/covariance-matrix|cross-covariance matrix]] $H$ is not a rotation matrix -- it encodes how the source and target coordinates co-vary. SVD decomposes *that* matrix into its rotation and stretching components, and by discarding the stretching ($\Sigma$) and recombining the two rotations ($VU^T$), you recover the rotation that best aligns the two point sets in the least-squares sense. The stretching you throw away represents the noise and scale mismatch in the data.
+**The one thing most outsiders get wrong about this is...** that SVD finds the rotation by "decomposing" the [[quick-context/helmert-transform|rotation matrix]]. It doesn't. The [[quick-context/covariance-matrix|cross-covariance matrix]] $H$ is not a rotation matrix -- it encodes how the source and target coordinates co-vary. SVD decomposes *that* matrix into its rotation and stretching components, and by discarding the stretching ($\Sigma$) and recombining the two rotations ($VU^T$), you recover the rotation that best aligns the two point sets in the least-squares sense. The stretching you throw away represents the noise and scale mismatch in the data.
 
 </details>
 
@@ -254,8 +254,8 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the absolute orientation problem
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a [[quick-context/similarity-transform|similarity transform]] (rotation + scale + translation)
+- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the [[quick-context/absolute-orientation|absolute orientation problem]]
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
 - **Principal Component Analysis (PCA)** -- PCA is SVD applied to the centered data matrix; the principal components are the right singular vectors, and the explained variance comes from the squared singular values
 - **Polar decomposition** -- Every matrix factors as $A = QS$ (orthogonal times symmetric positive semi-definite); SVD gives you this directly since $Q = UV^T$ and $S = V\Sigma V^T$

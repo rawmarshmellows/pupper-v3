@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]]
 
 > **TL;DR:** Hydrogen bonds are weak attractions between H atoms and O/N atoms on neighboring chains—TPU is flexible because it concentrates these bonds in "hard segments" while leaving "soft segments" free to stretch, whereas PLA's uniform bonding makes it rigid and brittle.
 
@@ -18,18 +18,18 @@ Imagine you have a bowl of spaghetti. The individual noodles are "polymer chains
 
 | Term | Definition |
 |------|------------|
-| **Hydrogen bond** | A weak attraction between a hydrogen atom (slight +) and an oxygen or nitrogen atom (slight -) on a neighboring molecule—it's the "velcro" holding polymer chains together |
+| **Hydrogen bond** | A weak attraction between a hydrogen atom (slight +) and an oxygen or nitrogen atom (slight -) on a neighboring [[quick-context/atoms-molecules-polymers-basics|molecule]]—it's the "velcro" holding polymer chains together |
 | **Hard segment** | In TPU, the urethane-rich portion with dense H-bonding that forms rigid anchor points—these are the "knots" that give TPU its strength |
 | **Soft segment** | In TPU, the flexible chain sections with minimal H-bonding—these "springs" allow stretching and provide elasticity |
-| **Crystalline domain** | A region where polymer chains pack together in an ordered, repeating pattern due to strong intermolecular attractions—hard segments form these |
+| **[[quick-context/polymer-crystallinity-vs-amorphous|Crystalline]] domain** | A region where polymer chains pack together in an ordered, repeating pattern due to strong intermolecular attractions—hard segments form these |
 | **Phase separation** | The phenomenon where hard and soft segments naturally segregate into distinct regions rather than mixing—this is WHY TPU works as an elastomer |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong covalent bond), the oxygen or nitrogen hogs the shared electrons, leaving hydrogen with a slight positive charge and the O or N with a slight negative charge. This creates a "polar" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the covalent bonds holding atoms together within molecules, but strong enough to significantly affect how materials behave.
+Hydrogen bonds form because of unequal electron sharing within molecules. When hydrogen bonds to oxygen or nitrogen (via a strong [[quick-context/polymer-chemical-bonds|covalent bond]]), the oxygen or nitrogen hogs the shared [[quick-context/anions-and-oxidation|electrons]], leaving hydrogen with a slight positive [[quick-context/cations-and-reduction|charge]] and the O or N with a slight negative charge. This creates a "[[quick-context/making-electrolytes|polar]]" bond with a positive end and a negative end. When a positively-charged hydrogen on one molecule gets close to a negatively-charged oxygen or nitrogen on a different molecule, they attract each other electrostatically. This attraction is the hydrogen bond—it is much weaker than the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together within molecules, but strong enough to significantly affect how materials behave.
 
-The key to understanding hydrogen bonds is recognizing the players: you need a "donor" (an H attached to O or N, making it slightly positive) and an "acceptor" (a lone O or N with negative charge that attracts the H). The hydrogen essentially acts as a bridge between two electronegative atoms. Water is the classic example: each water molecule can donate two hydrogen bonds (from its two H atoms) and accept two hydrogen bonds (at its oxygen), creating an extensive network that explains water's unusually high boiling point and surface tension.
+The key to understanding hydrogen bonds is recognizing the players: you need a "donor" (an H attached to O or N, making it slightly positive) and an "acceptor" (a lone O or N with negative charge that attracts the H). The hydrogen essentially acts as a bridge between two electronegative atoms. Water is the classic [[quick-context/teep|example:]] each water molecule can donate two hydrogen bonds (from its two H atoms) and accept two hydrogen bonds (at its oxygen), creating an extensive network that explains water's unusually high boiling point and surface tension.
 
 ```
 HOW HYDROGEN BONDS FORM: Step by Step
@@ -200,7 +200,7 @@ HYDROGEN BOND = Attraction between H and O (or H and N)
    This creates a weak but real connection between chains.
 ```
 
-**Key point:** Hydrogen bonds are NOT as strong as the bonds holding atoms together within a chain. They're more like velcro - easy to pull apart one at a time, but many of them together create significant holding power.
+**Key point:** Hydrogen bonds are NOT as strong as the bonds holding atoms together within a chain. They're more like velcro - easy to pull apart one at a time, but many of them together create significant holding [[quick-context/d-flip-flop|power]].
 
 ## H-O vs H-N Attractions (ASCII Diagrams)
 
@@ -345,7 +345,7 @@ TPU:
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff is **bond strength vs. flexibility**. More hydrogen bonds between polymer chains create a stiffer, stronger material—but one that's also more brittle and prone to sudden fracture. Fewer hydrogen bonds allow chains to slide freely, enabling flexibility and stretch—but at the cost of structural rigidity and load-bearing capacity. PLA exemplifies the "too uniform" failure mode: its evenly distributed H-bonds make it stiff everywhere, so when stress concentrates, chains separate catastrophically. TPU resolves this by *segregating* the bonds—dense H-bond networks in hard segments provide anchor points and strength, while bond-free soft segments provide stretch and energy absorption. The engineering challenge is that you can't easily tune this ratio after synthesis; you're choosing from pre-designed polymer architectures. Practitioners argue about whether to modify the hard/soft segment ratio (changes Shore hardness), add plasticizers (weakens H-bonds), or use blends of different polymers to achieve target properties.
+The fundamental tradeoff is **bond strength vs. flexibility**. More hydrogen bonds between polymer chains create a stiffer, stronger material—but one that's also more brittle and prone to sudden fracture. Fewer hydrogen bonds allow chains to slide freely, enabling flexibility and stretch—but at the cost of structural rigidity and load-bearing capacity. PLA exemplifies the "too uniform" failure mode: its evenly distributed H-bonds make it stiff everywhere, so when stress concentrates, chains separate catastrophically. TPU resolves this by *segregating* the bonds—dense H-bond networks in hard segments provide anchor points and strength, while bond-free soft segments provide stretch and energy absorption. The engineering challenge is that you can't easily tune this ratio after synthesis; you're choosing from pre-designed polymer architectures. Practitioners argue about whether to modify the hard/soft segment ratio (changes [[quick-context/breaking-elongation-rate|Shore hardness]]), add plasticizers (weakens H-bonds), or use blends of different polymers to achieve target properties.
 
 </details>
 
@@ -414,7 +414,7 @@ TPU at 60C:
 
 ---
 
-**The one thing most outsiders get wrong about this is...** thinking that flexibility means "weaker bonds." TPU's hard segments actually have *stronger* hydrogen bonding than PLA - the N-H...O=C bonds in urethane groups are more directional and form more organized networks than PLA's ester-based H-bonds. The flexibility comes not from weak bonds, but from clever *architecture*: putting strong bonds only where you want rigidity (hard segments) and leaving other regions (soft segments) free to stretch. TPU is essentially "rigid anchors connected by rubber bands" at the molecular level. PLA fails because it's uniformly semi-rigid everywhere - no give means sudden fracture when stress concentrates.
+**The one thing most outsiders get wrong about this is...** thinking that flexibility means "weaker bonds." TPU's hard segments actually have *stronger* hydrogen bonding than PLA - the N-H...O=C bonds in urethane groups are more directional and form more organized networks than PLA's ester-based H-bonds. The flexibility comes not from weak bonds, but from clever *architecture*: putting strong bonds only where you want rigidity (hard segments) and leaving other regions (soft segments) free to stretch. TPU is essentially "rigid anchors connected by rubber bands" at the molecular level. PLA [[quick-context/mcp6541-as-lmc7211-replacement|fails]] because it's uniformly semi-rigid everywhere - no give means sudden fracture when stress concentrates.
 
 </details>
 
@@ -427,11 +427,11 @@ TPU at 60C:
 
 - **[[quick-context/covalent-bonds]]**: The strong bonds holding atoms together *within* polymer chains - hydrogen bonds connect chains *between* each other, but covalent bonds are what make the chains themselves.
 
-- **[[quick-context/glass-transition-temperature]]**: The temperature where polymer chains gain enough energy to overcome intermolecular forces (including H-bonds) and begin moving freely - directly explains why PLA softens in a hot car.
+- **[[quick-context/glass-transition-temperature]]**: The temperature where polymer chains gain enough energy to overcome [[quick-context/chemical-bonds-spectrum|intermolecular forces]] (including H-bonds) and begin moving freely - directly explains why PLA softens in a hot car.
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
-- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
+- **biology-fundamentals**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
 
 - **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 

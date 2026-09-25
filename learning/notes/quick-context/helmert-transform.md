@@ -5,20 +5,20 @@ created: 2026-04-04
 
 # Helmert Transform
 
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[quick-context/similarity-transform]] | [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]]
 
 > **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 
 ## The Core Problem
 
-You have two sets of corresponding 3D points -- one in a local survey frame, one in a global frame like WGS84 -- and you need to find the transformation that aligns them. Simply translating won't work because the coordinate systems may be rotated and scaled differently. The Helmert Transform finds the optimal scale, rotation, and translation in closed form using [[quick-context/singular-value-decomposition|SVD]], giving you a rigid-plus-scale mapping with no shear or distortion.
+You have two sets of corresponding 3D points -- one in a local survey frame, one in a global frame like WGS84 -- and you need to find the transformation that aligns them. Simply translating won't work because the coordinate systems may be rotated and scaled differently. The Helmert Transform finds the optimal scale, rotation, and translation in closed [[quick-context/mcp6541-as-lmc7211-replacement|form]] using [[quick-context/singular-value-decomposition|SVD]], giving you a rigid-plus-scale mapping with no shear or distortion.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[quick-context/similarity-transform|similarity transform]] in 3D |
-| **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
+| **Cross-[[quick-context/covariance-matrix|covariance matrix]]** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
 | **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
 | **Scale factor** | The scalar $s$ that accounts for uniform size differences between coordinate frames -- computed from the ratio of output to input point spread |
 | **Procrustes analysis** | The statistical shape analysis framework that generalizes the Helmert Transform -- "Procrustes" finds optimal alignment by minimizing squared distances, and Helmert is its geodetic instantiation |
@@ -97,7 +97,7 @@ $$H = U\Sigma V^T$$
 
 $$R = V U^T$$
 
-The SVD decomposes $H$ into rotation-like components. The product $VU^T$ gives the optimal rotation matrix that minimizes the sum of squared residuals (the orthogonal Procrustes solution). A sign correction ensures $\det(R) = +1$ (proper rotation, not reflection):
+The SVD decomposes $H$ into rotation-like [[quick-context/tensor|components]]. The product $VU^T$ gives the optimal rotation matrix that minimizes the sum of squared residuals (the orthogonal Procrustes solution). A sign correction ensures $\det(R) = +1$ (proper rotation, not reflection):
 
 $$\text{If } \det(VU^T) < 0, \text{ negate the column of } V \text{ corresponding to the smallest singular value}$$
 
@@ -151,7 +151,7 @@ The Helmert Transform is a [[quick-context/similarity-transform|similarity trans
 | Affine | 12 | Parallelism | + Shear, non-uniform scale |
 | Projective | 15 | Straight lines | + Perspective distortion |
 
-**The practitioner debate:** When aligning point clouds from a LiDAR scanner, should you use Helmert (7 params) or a full affine (12 params)?
+**The practitioner debate:** When aligning point clouds from a LiDAR scanner, should you use Helmert (7 params) or a [[quick-context/singular-value-decomposition|full]] affine (12 params)?
 
 - **Helmert camp:** The physical world doesn't shear. If your registration needs shear, something is wrong with your data (miscalibrated sensor, bad correspondences). Using more parameters just fits the noise.
 - **Affine camp:** Real sensors have anisotropic errors -- slightly different scale factors along different axes. An affine transform captures these systematic biases that Helmert can't model.
@@ -257,7 +257,7 @@ print(f"Translation: true={t_true}  estimated={np.round(t_est, 4)}")
 print(f"Rotation matches: {np.allclose(R_true, R_est, atol=0.01)}")
 
 # Apply to a new point
-new_local = np.array([[0.5, 0.5, 0.5]])
+new_local = np.array(0.5, 0.5, 0.5)
 transformed = apply_helmert(new_local, s_est, R_est, t_est)
 print(f"New point transformed: {np.round(transformed, 4)}")
 ```
@@ -285,12 +285,12 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a [[quick-context/similarity-transform|similarity transform]]; "Helmert" is the geodetic name for the same mathematical operation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem that Helmert solves: given corresponding 3D points in two frames, find the transform between them (Horn 1987 gave a closed-form quaternion solution; Arun et al. 1987 gave the SVD-based solution)
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine that extracts the rotation matrix from the cross-covariance matrix
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ is the critical intermediate representation; its SVD reveals the rotation
 - **Procrustes Analysis** -- The statistical shape analysis generalization: ordinary Procrustes = rigid alignment, generalized Procrustes = align multiple shapes simultaneously
-- **Iterative Closest Point (ICP)** -- When correspondences are unknown, ICP alternates between finding nearest-neighbor correspondences and solving Helmert; each inner step is an SVD-based Helmert
+- **[[quick-context/absolute-orientation|Iterative Closest Point (ICP)]]** -- When correspondences are unknown, ICP alternates between finding nearest-neighbor correspondences and solving Helmert; each inner step is an SVD-based Helmert
 - **Geodetic Datums (WGS84, NAD83, OSGB36)** -- The primary consumers of published Helmert parameters; national survey agencies distribute 7-parameter or time-dependent (15-parameter) sets
 - **Quaternion-based methods** -- Horn's original 1987 solution used unit quaternions instead of SVD to represent rotations; mathematically equivalent but avoids the reflection check
 
@@ -326,7 +326,7 @@ More parameters is not inherently better -- it depends on the problem. The 15-pa
 **Q5:** You're registering two LiDAR scans of the same building. You compute the Helmert Transform and get $s = 1.15$. Your colleague computes an affine transform and gets anisotropic scales of $s_x = 1.14$, $s_y = 1.16$, $s_z = 1.01$. Which result should you trust, and what does the discrepancy in $s_z$ suggest about the data?
 <details>
 <summary>Answer</summary>
-Neither result should be trusted at face value -- a 15% scale difference between two scans of the same object suggests a calibration error, not a genuine geometric relationship. However, the affine result is more diagnostic: the near-equal $s_x$ and $s_y$ with a very different $s_z$ suggests the two scans have consistent horizontal calibration but different vertical calibration (a common issue with terrestrial LiDAR due to rangefinder vs angle encoder errors). The Helmert result averages this into a single misleading scale factor. The correct approach: (1) investigate the vertical calibration discrepancy, (2) fix the systematic error at the source, (3) then re-run a Helmert Transform, which should yield $s \approx 1.0$. This illustrates why Helmert's shape-preserving constraint is a feature -- when $s$ deviates significantly from 1.0, it signals a problem. See: The Key Tension (Similarity vs Affine).
+Neither result should be trusted at face value -- a 15% scale difference between two scans of the same object suggests a calibration error, not a genuine geometric relationship. However, the affine result is more diagnostic: the near-equal $s_x$ and $s_y$ with a very different $s_z$ suggests the two scans have consistent horizontal calibration but different vertical calibration (a common issue with terrestrial LiDAR due to rangefinder vs angle encoder errors). The Helmert result averages this into a single misleading scale factor. The correct approach: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] investigate the vertical calibration discrepancy, (2) fix the systematic error at the source, (3) then re-run a Helmert Transform, which should [[quick-context/silicon-die|yield]] $s \approx 1.0$. This illustrates why Helmert's shape-preserving constraint is a feature -- when $s$ deviates significantly from 1.0, it signals a problem. See: The Key Tension (Similarity vs Affine).
 </details>
 
 </details>

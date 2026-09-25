@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Whitespace Mapping
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+> **Related:** [[quick-context/challenger-sale-methodology]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/meddpicc-qualification-framework]]
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 
 ## The Core Problem
 
-Account teams often know they should "expand" but lack a systematic way to see where opportunities exist. Without a structured view, expansion becomes opportunistic (waiting for inbound requests) rather than strategic (proactively targeting high-potential gaps). The whitespace map makes invisible revenue visible by showing exactly which products could be sold to which buying centers within an account.
+Account teams often know they should "[[quick-context/existing-account-management-playbook|expand]]" but lack a systematic way to see where opportunities exist. Without a structured view, expansion becomes opportunistic (waiting for inbound requests) rather than strategic (proactively targeting high-potential gaps). The whitespace map makes invisible revenue visible by showing exactly which products could be sold to which buying centers within an account.
 
 ## 5 Essential Terms
 
@@ -136,11 +136,11 @@ Whitespace mapping creates a choice: go wide (many buying centers, few products 
 | Diversified risk (losing one BC doesn't kill account) | Higher product lock-in per BC |
 | Harder to service many small deployments | Easier to deliver excellence in fewer places |
 | Lower switching costs per cell | Higher switching costs (full suite) |
-| May trigger enterprise agreement conversation | May miss cross-department synergies |
+| May [[quick-context/oscilloscope-and-multimeter|trigger]] enterprise agreement conversation | May miss cross-department synergies |
 
-**The practitioner debate:**
+**[[quick-context/challenger-sale-methodology|The practitioner debate:]]**
 
-- **"Land wide, then deepen"**: Get a footprint in multiple buying centers first. Each one is a beachhead for expansion. Diversification protects against reorgs and champion departures.
+- **"Land wide, then deepen"**: Get a footprint in multiple buying centers first. Each one is a beachhead for expansion. Diversification protects against reorgs and [[quick-context/meddpicc-qualification-framework|champion]] departures.
 - **"Land deep, then expand"**: Become indispensable to one buying center first. Reference success drives internal expansion. Shallow deployments get ripped out.
 
 **Prioritization Factors:**
@@ -240,7 +240,7 @@ Status: Mark as RECAPTURE trigger monitoring
 Action: Wait for: Procore contract renewal, buyer turnover, or delivery failure
 ```
 
-**The one thing most outsiders get wrong about this is...** they treat whitespace mapping as a one-time exercise. It's not—the map changes constantly. Buying centers reorganize, new ones form (Australia expansion), products evolve, competitors win or lose cells. Quarterly map refreshes are as important as the initial build.
+**The one thing most outsiders get wrong about this is...** they treat whitespace mapping as a one-time exercise. It's not—the map changes constantly. Buying centers reorganize, new ones [[quick-context/mcp6541-as-lmc7211-replacement|form]] (Australia expansion), products evolve, competitors win or lose cells. Quarterly map refreshes are as important as the initial build.
 
 </details>
 
@@ -248,9 +248,9 @@ Action: Wait for: Procore contract renewal, buyer turnover, or delivery failure
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[quick-context/sandler-kare-segmentation]]** — KARE's EXPAND bucket identifies accounts with whitespace worth pursuing; the whitespace map shows *where* within those accounts
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the Gold Sheet's "Field of Play Opportunities" draws from whitespace
-- **[[quick-context/post-sale-account-engagement]]** — Post-sale expansion playbooks are triggered by whitespace analysis
-- **[[quick-context/mcdonald-kam-model]]** — Relationship maturity affects which whitespace cells are accessible; Cooperative+ accounts enable cross-BC selling
+- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the [[quick-context/miller-heiman-strategic-selling-lamp|Gold Sheet]]'s "Field of Play Opportunities" draws from whitespace
+- **[[quick-context/post-sale-account-engagement]]** — Post-sale [[quick-context/post-sale-account-engagement|expansion playbooks]] are triggered by whitespace analysis
+- **[[quick-context/mcdonald-kam-model]]** — [[quick-context/mcdonald-kam-model|Relationship maturity]] affects which whitespace cells are accessible; Cooperative+ accounts enable cross-BC selling
 - **[[quick-context/meddpicc-qualification-framework]]** — Each whitespace cell becoming Pipeline needs MEDDPICC qualification
 - **Total Addressable Market (TAM)** — Whitespace map shows account-level TAM; sum across accounts = expansion TAM
 - **Land-and-Expand** — The go-to-market strategy that whitespace mapping operationalizes
@@ -269,7 +269,7 @@ Pipeline means there's an active deal in motion—you've initiated a sales proce
 **Q2:** Why would a cell be marked "N/A" instead of "Whitespace"?
 <details>
 <summary>Answer</summary>
-N/A means the product doesn't fit that buying center—there's no opportunity there. Example: an "Equipment Tracking" module for a buying center that doesn't use heavy equipment. Marking it N/A removes it from TAM calculations and prevents wasted effort. Not every product fits every buying center.
+N/A means the product doesn't fit that buying center—there's no opportunity there. [[quick-context/teep|Example:]] an "Equipment Tracking" module for a buying center that doesn't use heavy equipment. Marking it N/A removes it from TAM calculations and prevents wasted effort. Not every product fits every buying center.
 </details>
 
 **Q3:** An account has 20 whitespace cells but only 1 champion. How should you prioritize?
@@ -287,7 +287,7 @@ No—keep it visible but coded red. Lost cells can become RECAPTURE opportunitie
 **Q5:** How does [[quick-context/mcdonald-kam-model|relationship maturity]] affect whitespace strategy?
 <details>
 <summary>Answer</summary>
-Relationship maturity determines *which* whitespace is accessible. At Basic/Exploratory stages, you're often limited to single buying centers (bow-tie relationship). At Cooperative/Interdependent stages, multi-threading enables cross-BC expansion—your champions can introduce you to other divisions. Trying to pursue whitespace in buying centers you can't access wastes resources. Match whitespace prioritization to relationship reach.
+Relationship maturity determines *which* whitespace is accessible. At Basic/Exploratory stages, you're often limited to single buying centers (bow-tie relationship). At Cooperative/[[quick-context/playbook-main|Interdependent]] stages, [[quick-context/strategic-selling-buyer-roles|multi-threading]] enables cross-BC expansion—your champions can introduce you to other divisions. Trying to pursue whitespace in buying centers you can't access wastes resources. Match whitespace prioritization to relationship reach.
 </details>
 
 </details>

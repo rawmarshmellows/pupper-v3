@@ -5,21 +5,21 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/bjt-specifications]] | [[quick-context/bond-pad]]
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 
 ## The Core Problem
 
-Sales teams waste enormous effort on deals that were never going to close. Reps spend months nurturing opportunities only to discover at the 11th hour that there's no budget, the wrong stakeholder was engaged, or a competitor had an insurmountable advantage. Without a systematic qualification framework, pipeline becomes fiction—inflated with "opportunities" that have no realistic path to revenue.
+Sales teams waste enormous effort on deals that were never going to close. Reps spend months nurturing opportunities [[quick-context/comparator-specification|only]] to discover at the 11th hour that there's no budget, the wrong stakeholder was engaged, or a competitor had an insurmountable advantage. Without a systematic qualification framework, pipeline becomes fiction—inflated with "opportunities" that have no realistic path to revenue.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Metrics** | The quantifiable business outcomes the customer expects; "success" defined in numbers they'll measure you against |
-| **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who can say "yes" alone |
-| **Champion** | An internal advocate with power and influence who actively sells on your behalf when you're not in the room |
+| **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who [[quick-context/embedded-communication-protocols|can]] say "yes" alone |
+| **Champion** | An internal advocate with [[quick-context/d-flip-flop|power]] and influence who actively sells on [[quick-context/mcp6541-as-lmc7211-replacement|your]] behalf when you're not in the room |
 | **Paper Process** | The legal, procurement, security, and administrative steps between verbal agreement and signed contract |
 | **Decision Process** | The sequence of events, approvals, and stakeholders between "interested" and "decision made" |
 
@@ -77,7 +77,7 @@ MEDDPICC creates a checklist that forces reps to validate—not assume—each el
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Scoring Example:**
+**Scoring [[quick-context/teep|Example:]]**
 
 Most teams score each element 0-3:
 - **0** = Unknown/not validated
@@ -87,7 +87,7 @@ Most teams score each element 0-3:
 
 A deal with total score <12 out of 24 should not be in commit forecast.
 
-**The Critical Distinction: Champion vs. Coach**
+**The Critical Distinction: Champion vs. [[quick-context/miller-heiman-strategic-selling-lamp|Coach]]**
 
 ```
 COACH (from Miller Heiman)          CHAMPION (MEDDPICC)
@@ -116,7 +116,7 @@ MEDDPICC creates friction by design—it slows down unqualified deals. The tensi
 | Longer average cycle | Some winners slip through |
 | Works for $100K+ ACV | Works for high-volume SMB |
 
-**The practitioner debate:** Enterprise sales leaders argue unvalidated pipeline is worse than useless—it creates false forecasts and misallocated resources. Velocity-focused leaders counter that over-qualification kills momentum and some deals are won through hustle, not process.
+**[[quick-context/challenger-sale-methodology|The practitioner debate:]]** Enterprise sales leaders argue unvalidated pipeline is worse than useless—it creates false forecasts and misallocated resources. Velocity-focused leaders counter that over-qualification kills momentum and some deals are won through hustle, not process.
 
 **The research:** Studies show 41% higher win rates and 26% shorter cycles for consistent MEDDPICC users. The rigor pays off for deals above ~$25K ACV where the cost of losing a qualified deal exceeds the cost of qualification time.
 
@@ -171,7 +171,7 @@ NEXT ACTIONS:
 3. Directly ask: "Who else are you evaluating?" (fix Competition)
 ```
 
-**The one thing most outsiders get wrong about this is...** they treat MEDDPICC as a data collection exercise rather than a deal strategy tool. Knowing the Decision Process isn't enough—you need to ask "given this process, what's our plan to navigate it?" Each element should trigger strategy, not just documentation.
+**The one thing most outsiders get wrong about this is...** they treat MEDDPICC as a data collection exercise rather than a deal strategy tool. Knowing the Decision Process isn't enough—you need to ask "given this process, what's our plan to navigate it?" Each element should [[quick-context/oscilloscope-and-multimeter|trigger]] strategy, not just documentation.
 
 </details>
 
@@ -216,7 +216,7 @@ MEDDPICC qualifies deals but doesn't teach you how to sell. You might have perfe
 **Q5:** A startup founder says "MEDDPICC is overhead we can't afford at our stage." When would you agree vs. disagree?
 <details>
 <summary>Answer</summary>
-Agree if: ACV <$10K, sales cycle <30 days, high volume. The qualification overhead exceeds the cost of losing some deals. Disagree if: ACV >$25K, complex multi-stakeholder sales, limited sales capacity. Here, wasting months on unwinnable deals is more expensive than qualification time. The framework can be simplified (MEDDIC without both Ps) but the mental model of systematic qualification should always apply.
+Agree if: ACV <$10K, sales cycle <30 days, high volume. The qualification overhead exceeds the cost of losing some deals. Disagree if: ACV >$25K, complex multi-stakeholder sales, limited sales capacity. Here, wasting months on unwinnable deals is more expensive than qualification time. The framework can be simplified (MEDDIC without [[quick-context/bjt-specifications|both]] Ps) but the mental model of systematic qualification should always apply.
 </details>
 
 </details>

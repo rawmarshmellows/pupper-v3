@@ -5,23 +5,23 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/absolute-orientation]] | [[quick-context/coil-magnetic-field]] | [[quick-context/covariance-matrix]] | [[quick-context/electric-magnetic-field-unification]]
 
-> **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
+> **TL;DR:** A tensor is a mathematical object that generalizes scalars ([[quick-context/singular-value-decomposition|rank]] 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
 ## The Core Problem
 
-Physics and engineering need quantities that exist independently of how you choose to measure them. A force doesn't change just because you rotate your ruler. Stress inside a material doesn't depend on which direction you call "x." But the *numbers* you use to describe these quantities do change with your coordinate choice. Tensors solve this: they package multi-directional information with built-in transformation rules, so the underlying reality is preserved even as the description changes.
+Physics and engineering need quantities that exist independently of how you choose to measure them. A force doesn't change just because you rotate your ruler. Stress inside a material doesn't depend on which direction you call "x." But the *numbers* you use to describe these quantities do change with your coordinate choice. Tensors solve this: they [[quick-context/silicon-die|package]] multi-directional information with built-in transformation rules, so the underlying reality is preserved even as the description changes.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Rank (Order)** | The number of indices needed to specify a component. A scalar is rank 0 (no index), a vector is rank 1 (one index: $v_i$), a matrix-like tensor is rank 2 (two indices: $T_{ij}$), and so on. |
+| **Rank ([[quick-context/frequency-and-filtering|Order]])** | The number of indices needed to specify a component. A scalar is rank 0 (no index), a vector is rank 1 (one index: $v_i$), a matrix-like tensor is rank 2 (two indices: $T_{ij}$), and so on. |
 | **Components** | The individual numbers that make up a tensor in a particular coordinate system. A rank-2 tensor in 3D has $3^2 = 9$ components; in 4D spacetime, $4^2 = 16$. |
 | **Transformation Law** | The rule specifying how tensor components change when you switch coordinate systems. This is *the* defining property: if it transforms like a tensor, it is a tensor. |
-| **Contraction** | Summing over a repeated upper and lower index (Einstein summation), which reduces the rank by 2. Example: contracting a rank-2 tensor $T^i{}_i$ gives a scalar (rank 0)—the trace. |
-| **Metric Tensor ($g_{ij}$)** | A rank-2 tensor that defines distances and angles in a space. In flat 3D space it's just the identity matrix; in curved spacetime (general relativity) it encodes gravity. |
+| **Contraction** | Summing over a repeated upper and lower index (Einstein summation), which reduces the rank by 2. [[quick-context/teep|Example:]] contracting a rank-2 tensor $T^i{}_i$ gives a scalar (rank 0)—the trace. |
+| **Metric Tensor ($g_{ij}$)** | A rank-2 tensor that defines distances and angles in a space. In flat 3D space it's just the identity matrix; in curved spacetime ([[quick-context/faraday-tensor|general relativity]]) it encodes gravity. |
 
 <details>
 <summary><strong>How It Works</strong> — The hierarchy from scalars to tensors</summary>
@@ -291,14 +291,14 @@ COMBINED LOADING (real-world):
     tensors are designed to handle.
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
+**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A [[quick-context/helmert-transform|rotation matrix]] R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The most important tensor in [[quick-context/electromagnetism|electromagnetism]]: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
 - **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 
@@ -328,13 +328,13 @@ COMBINED LOADING (real-world):
 **Q2:** A rank-2 tensor in 3D has 9 components. The stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). How many independent components does it have?
 <details>
 <summary>Answer</summary>
-**6.** The 3 diagonal components ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) are independent, and of the 6 off-diagonal components, symmetry pairs them: $\sigma_{xy} = \sigma_{yx}$, $\sigma_{xz} = \sigma_{zx}$, $\sigma_{yz} = \sigma_{zy}$. So 3 diagonal + 3 independent off-diagonal = 6 total. Compare to the [[quick-context/faraday-tensor|Faraday tensor]], which is *anti*symmetric ($F^{\mu\nu} = -F^{\nu\mu}$) in 4D, also giving 6 independent components.
+**6.** The 3 diagonal components ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) are independent, and of the 6 off-diagonal components, symmetry pairs them: $\sigma_{xy} = \sigma_{yx}$, $\sigma_{xz} = \sigma_{zx}$, $\sigma_{yz} = \sigma_{zy}$. So 3 diagonal + 3 independent off-diagonal = 6 [[quick-context/similarity-transform|total]]. Compare to the [[quick-context/faraday-tensor|Faraday tensor]], which is *anti*symmetric ($F^{\mu\nu} = -F^{\nu\mu}$) in 4D, also giving 6 independent components.
 </details>
 
 **Q3:** The [[quick-context/faraday-tensor|Faraday tensor]] is antisymmetric ($F^{\mu\nu} = -F^{\nu\mu}$) and the stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). What does this difference mean physically?
 <details>
 <summary>Answer</summary>
-**Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
+**Antisymmetry means the "diagonal" (same-index) components are [[quick-context/mcp6541-as-lmc7211-replacement|zero]], and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
 </details>
 
 **Q4:** In PyTorch, you create a "tensor" with `torch.tensor([1, 2, 3])`. Is this a tensor in the physics/math sense? Why or why not?

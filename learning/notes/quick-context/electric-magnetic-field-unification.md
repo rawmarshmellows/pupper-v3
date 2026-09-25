@@ -5,9 +5,9 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/coil-magnetic-field]] | [[quick-context/absolute-orientation]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/atoms-molecules-polymers-basics]]
 
-> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
+> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[quick-context/electromagnetism|electromagnetism]]."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
@@ -17,11 +17,11 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
+| **[[quick-context/electric-current|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of [[quick-context/cations-and-reduction|charge]]—the thing actually doing work in circuits. |
 | **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
-| **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
-| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
+| **[[quick-context/coil-magnetic-field|Magnetic Field (B)]]** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
+| **[[quick-context/electromagnetism|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -343,7 +343,7 @@ WHICH IS "TRUE"?
     real things—they carry energy even where there are no charges.
 ```
 
-| Situation | Better Mental Model |
+| Situation | [[quick-context/comparator-specification|Better]] Mental Model |
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
@@ -497,9 +497,9 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[quick-context/electrolysis|electrolysis]] and circuits.
 
-- **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
+- **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical [[quick-context/silicon-die|package]].
 
 - **[[quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
 
@@ -513,7 +513,7 @@ SUMMARY: The Four Quantities in Action
 
 - **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
 - **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 
@@ -525,7 +525,7 @@ SUMMARY: The Four Quantities in Action
 **Q1:** A wire carries steady DC current. Is there an electric field in the wire? A magnetic field? Both?
 <details>
 <summary>Answer</summary>
-**Both.** There must be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). Ohm's law in microscopic form is J = σE (current density = conductivity × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
+**Both.** There must be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). Ohm's law in microscopic [[quick-context/mcp6541-as-lmc7211-replacement|form]] is J = σE (current [[quick-context/bond-pad|density]] = [[quick-context/electrolyte|conductivity]] × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
 </details>
 
 **Q2:** Why can a magnetic field deflect an electron but can't change its speed?
@@ -543,13 +543,13 @@ SUMMARY: The Four Quantities in Action
 **Q4:** In a transformer, no current flows between primary and secondary coils (they're electrically isolated). How does energy transfer between them?
 <details>
 <summary>Answer</summary>
-**Through the magnetic field.** Current in the primary creates a magnetic field in the core. When that current changes (AC), the magnetic field changes. By Faraday's law, changing B creates E. That induced electric field exists in the secondary coil and pushes electrons, creating current. Energy flows: electrical (primary) → magnetic (core) → electrical (secondary). The magnetic field is the intermediary that carries energy across the galvanic isolation.
+**Through the magnetic field.** Current in the primary creates a magnetic field in the core. When that current changes (AC), the magnetic field changes. By [[quick-context/lenzs-law|Faraday's law]], changing B creates E. That induced electric field exists in the secondary coil and pushes electrons, creating current. Energy flows: electrical (primary) → magnetic (core) → electrical (secondary). The magnetic field is the intermediary that carries energy across the galvanic isolation.
 </details>
 
 **Q5:** If electric and magnetic fields are "really the same thing" (as relativity says), why do circuits have separate capacitors (electric field storage) and inductors (magnetic field storage)?
 <details>
 <summary>Answer</summary>
-**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
+**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field [[quick-context/galvanic-cells-batteries|energy density]] ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
 </details>
 
 </details>

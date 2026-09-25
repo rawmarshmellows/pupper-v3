@@ -5,13 +5,13 @@ created: 2026-03-29
 
 # Clock Sources and Timing
 
-> **Related:** [[quick-context/rc-oscillator|RC Oscillator]] | [[micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]
+> **Related:** [[quick-context/frequency-and-filtering]] | [[quick-context/how-passive-and-discrete-components-are-made]] | [[quick-context/impedance-and-reactance]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]]
 
-> **TL;DR:** A microcontroller's clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
+> **TL;DR:** A [[micro-context/microcontroller|microcontroller]]'s clock chain starts with a frequency source (RC oscillator, [[micro-context/ceramic-resonator|ceramic resonator]], or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising [[micro-context/clock-edges|clock edge]] triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
 
 ## The Core Problem
 
-Every digital circuit needs a heartbeat -- a precise, repeating signal that tells billions of transistors exactly when to "look" at their inputs. The clock source determines how accurate that heartbeat is, the PLL multiplies it to operating speed, and the clock edges are the atomic units of computation. But faster clocks generate more heat, and heat degrades performance, so the entire clock chain is a negotiation between speed, accuracy, power, and thermal limits.
+Every digital circuit needs a heartbeat -- a precise, repeating signal that tells billions of transistors exactly when to "look" at their inputs. The [[micro-context/clock-source|clock source]] determines how accurate that heartbeat is, the PLL multiplies it to operating speed, and the clock edges are the atomic units of computation. But faster clocks generate more heat, and heat degrades performance, so the entire clock chain is a negotiation between speed, accuracy, power, and thermal limits.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Every digital circuit needs a heartbeat -- a precise, repeating signal that tell
 | **PLL (Phase-Locked Loop)** | An on-chip circuit that multiplies the low base frequency up to operating speed. The Pupper's STM32F446 multiplies 8 MHz $\times$ 22.5 = 180 MHz. The PLL's job is speed; the source's job is stability. |
 | **Clock Edge** | The precise moment when the clock signal transitions between states -- rising (0->1) or falling (1->0). [[micro-context/clock-edges|Flip-flops and registers]] capture data only at edges, ignoring the messy analog transitions in between. |
 | **SYSCLK / Bus Dividers** | The PLL output (SYSCLK) is too fast for some peripherals, so it's divided down: APB1 at $\div 4$ (45 MHz max), APB2 at $\div 2$ (90 MHz max) on the STM32F446. |
-| **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges transistor gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with voltage -- the fundamental reason CPUs throttle when hot. |
+| **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges [[quick-context/transistor|transistor]] gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with voltage -- the fundamental reason CPUs throttle when hot. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -134,7 +134,7 @@ WHY CLOCK SPEED HAS A CEILING
 $$P_{dynamic} = C \times V^2 \times f$$
 
 Where:
-- $C$ = total switched capacitance (fixed by chip design)
+- $C$ = total switched [[quick-context/capacitance|capacitance]] (fixed by chip design)
 - $V$ = supply voltage (dominates because it's squared)
 - $f$ = clock frequency (linear relationship)
 
@@ -166,9 +166,9 @@ THE HEAT-SPEED FEEDBACK LOOP
 
 The clock source selection is a four-way tradeoff between accuracy, cost, power, and temperature stability:
 
-**Accuracy vs. Cost:** A quartz crystal gives ±0.002% accuracy but needs two external load capacitors (board space + cost). A ceramic resonator gives ±0.5% with built-in caps (3-pin, no external parts). An RC oscillator is free but drifts ±1-5%, especially over temperature.
+**Accuracy vs. Cost:** A quartz crystal gives ±0.002% accuracy but needs two external load [[quick-context/voltage|capacitors]] ([[quick-context/how-passive-and-discrete-components-are-made|board space]] + cost). A ceramic resonator gives ±0.5% with built-in caps (3-pin, no [[quick-context/rc-oscillator|external parts]]). An RC oscillator is free but drifts ±1-5%, especially over temperature.
 
-**Speed vs. Thermal Budget:** $P = CV^2f$ means every MHz of clock speed costs power and generates heat. The STM32F446 at 180 MHz consumes ~100 mA; at 90 MHz it would consume roughly half that. The Pupper runs at full 180 MHz because motor control at 1 kHz loop rate demands the throughput, but this means the thermal design must handle the heat.
+**Speed vs. Thermal Budget:** $P = CV^2f$ means every MHz of clock speed costs power and generates heat. The STM32F446 at 180 MHz consumes ~100 mA; at 90 MHz it would consume roughly half that. The Pupper runs at full 180 MHz because motor control at 1 kHz loop rate demands the [[quick-context/semiconductor-fabrication|throughput]], but this means the thermal design must handle the heat.
 
 **Startup Speed vs. Accuracy:** The internal RC oscillator (HSI) is ready in microseconds; an external resonator takes ~0.1-0.5 ms; a crystal takes ~1-10 ms. The STM32 boots on HSI immediately, then switches to the external source once the PLL locks. If the external source fails, the MCU can fall back to HSI.
 
@@ -293,14 +293,14 @@ About 3x more power -- nearly triple. The frequency doubling contributes 2x, and
 **Reliability:** If the external resonator fails (bad solder joint, cracked component, PCB damage), the MCU can detect this and fall back to the HSI clock. It runs at reduced accuracy (±1% instead of ±0.5%) and lower speed (no PLL multiplication), but it still runs -- enough to blink an error LED or send a diagnostic message. If the MCU *required* the external source to start, a resonator failure would brick the board entirely. See: The Key Tension (startup speed).
 </details>
 
-**Q5:** A colleague suggests replacing the Pupper's two ceramic resonators with a single quartz crystal oscillator module shared between both STM32s. What are the tradeoffs?
+**Q5:** A colleague suggests replacing the Pupper's two ceramic resonators with a single quartz [[micro-context/crystal-oscillator|crystal oscillator]] module shared between both STM32s. What are the tradeoffs?
 
 <details>
 <summary>Answer</summary>
 
 **Advantages:** A single crystal oscillator module would give both MCUs phase-coherent clocks from one source, potentially simplifying CAN bus timing between the two MCUs. Crystal accuracy (±0.002%) would provide a 250x margin over CAN's ±1.58% requirement. One oscillator module replaces two resonators.
 
-**Disadvantages:** (1) A crystal oscillator module is more expensive than two $0.15 ceramic resonators and requires its own power supply. (2) It creates a single point of failure -- if it dies, both MCUs lose their clock, whereas independent resonators provide fault isolation. (3) Running a high-frequency clock trace between two MCUs on a PCB creates EMI and requires careful impedance-matched routing. (4) The STM32's HSE input expects a resonator or crystal on its OSC_IN/OSC_OUT pins, not a buffered clock output -- you'd need to use a different input mode (HSE bypass). (5) The existing ±0.5% accuracy is already 3x better than CAN requires, so the improved accuracy provides zero practical benefit. The engineering maxim applies: don't add complexity to solve a problem you don't have. See: Concrete Example (why ceramic over crystal).
+**Disadvantages:** (1) A crystal oscillator module is more expensive than two $0.15 ceramic resonators and requires its own power supply. (2) It creates a single point of failure -- if it dies, both MCUs lose their clock, whereas independent resonators provide [[quick-context/can-bus|fault isolation]]. (3) Running a high-frequency clock trace between two MCUs on a PCB creates EMI and requires careful impedance-matched routing. (4) The STM32's HSE input expects a resonator or crystal on its OSC_IN/OSC_OUT pins, not a buffered clock output -- you'd need to use a different input mode (HSE bypass). (5) The existing ±0.5% accuracy is already 3x better than CAN requires, so the improved accuracy provides zero practical benefit. The engineering maxim applies: don't add complexity to solve a problem you don't have. See: Concrete Example (why ceramic over crystal).
 </details>
 
 </details>

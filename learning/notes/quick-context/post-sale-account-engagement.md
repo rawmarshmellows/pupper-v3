@@ -5,9 +5,9 @@ created: 2026-02-10
 
 # Post-Sale Account Engagement
 
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[quick-context/challenger-sale-methodology]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/meddpicc-qualification-framework]]
 
-> **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
+> **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and [[quick-context/mcdonald-kam-model|relationship maturity]], then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for [[quick-context/existing-account-management-playbook|growth]] accounts, and efficient automation for transactional accounts.
 
 ## The Core Problem
 
@@ -28,7 +28,7 @@ Most organizations treat post-sale like a handoff: sales closes, success onboard
 
 Effective post-sale engagement starts with segmentation, then applies appropriate playbooks.
 
-**Note:** This matrix determines *engagement intensity* for existing customers. It layers on top of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. KEEP accounts typically land in Protect/Maintain; EXPAND accounts in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
+**Note:** This matrix determines *engagement intensity* for existing customers. It layers on top of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. KEEP accounts typically land in Protect/Maintain; [[quick-context/playbook-main|EXPAND accounts]] in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -250,7 +250,7 @@ Beyond the 2x2 matrix, account characteristics influence engagement tactics:
 | Origin | Engagement Implication |
 |--------|------------------------|
 | **Champion-led sale** | Protect the champion; they're your internal advocate; their success = your retention |
-| **Executive mandate** | Find operational champions fast; exec sponsorship is necessary but not sufficient for adoption |
+| **Executive mandate** | Find operational champions fast; exec sponsorship is necessary but [[quick-context/mcp6541-as-lmc7211-replacement|not sufficient]] for adoption |
 | **Bottom-up adoption** | Expand footprint before formalizing; usage is your leverage; beware of shadow IT concerns |
 | **RFP/Procurement-led** | Often transactional mindset; work to establish relationships beyond purchasing; value realization messaging critical |
 
@@ -277,7 +277,7 @@ The fundamental tension in post-sale engagement:
 | Heroic effort, inconsistent results | Low NPS, high churn |
 | Can't scale the team | Competitors outmaneuver with relationships |
 
-**The practitioner debate:**
+**[[quick-context/challenger-sale-methodology|The practitioner debate:]]**
 
 - **"Relationships drive retention"**: Every customer wants to feel important. A CSM who knows their business prevents churn and drives expansion. You can't automate trust.
 - **"Data drives retention"**: Usage patterns predict churn better than gut feel. Scale with automation, intervene surgically. Relationships are nice but not necessary.
@@ -518,7 +518,7 @@ Growth, not Maintain. Current ACV is low, but growth trajectory signals high pot
 **Q3:** Your strategic account's champion just left for another company. What should you do?
 <details>
 <summary>Answer</summary>
-Three parallel tracks: (1) Develop new champion internally—identify who has influence and interest, invest in their success; (2) Protect the relationship with remaining stakeholders—don't let the account become single-threaded again; (3) Follow the champion—their new company is now a warm lead. Champion departure is a churn risk indicator; fast action prevents regression from Strategic to Protect.
+Three parallel tracks: [[quick-context/tlv7211-as-lmc7211-replacement|(1)]] Develop new champion internally—identify who has influence and interest, invest in their success; (2) Protect the relationship with remaining stakeholders—don't let the account become single-threaded again; (3) Follow the champion—their new company is now a warm lead. Champion departure is a churn risk indicator; fast action prevents regression from Strategic to Protect.
 </details>
 
 **Q4:** A Growth account has declined three expansion proposals over 18 months. Usage is stable but not increasing. What should you do?

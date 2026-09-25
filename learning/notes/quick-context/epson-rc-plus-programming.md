@@ -3,7 +3,7 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[quick-context/firmware]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/isa-95-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/plc-vs-software-control]]
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -22,7 +22,7 @@ The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+
 | **SPEL+** | Epson's BASIC-like robot programming language; not intuitive if you're expecting Python, but straightforward once you accept the syntax. |
 | **Point** | A stored position (X, Y, Z, U, V, W or joint angles) that the robot moves to; points live in a point file, not inline in code. |
 | **Go/Move/Jump** | The three motion commands: `Go` for joint interpolation (fastest, but unpredictable path), `Move` for linear interpolation (straight line in Cartesian space), `Jump` for pick-place arcs with Z-axis retract. |
-| **Tool** | A coordinate frame offset from the robot's flange to the actual end-effector tip; get this wrong and your positions are all shifted. |
+| **Tool** | A coordinate frame offset from the robot's flange to the actual [[quick-context/pupper-lab2-forward-kinematics|end-effector]] tip; get this wrong and your positions are all shifted. |
 | **CP (Continuous Path)** | A mode where the robot blends through waypoints without stopping, trading positional accuracy for speed. |
 
 <details>
@@ -30,7 +30,7 @@ The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+
 
 EPSON RC+ provides a complete workflow for robot programming:
 
-1. **Point Teaching**: Define positions using the teach pendant or 3D simulation, storing them as point numbers (P1, P2, etc.) in a point file separate from code.
+1. **Point Teaching**: Define positions using the [[quick-context/robotic-arm-api-levels|teach pendant]] or 3D simulation, storing them as point numbers (P1, P2, etc.) in a point file separate from code.
 
 2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)
@@ -52,7 +52,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 
 The core tension in EPSON robot programming is **cycle time vs. motion smoothness vs. positional accuracy**.
 
-You can move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `Fine` motion termination, but the robot decelerates to zero velocity at every point, killing throughput.
+You can move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `Fine` motion termination, but the robot decelerates to [[quick-context/mcp6541-as-lmc7211-replacement|zero]] velocity at every point, killing throughput.
 
 Practitioners spend real effort tuning `CP` (Continuous Path) motion, `Arch` parameters for pick-and-place Z-clearances, and acceleration curves to thread this needle.
 

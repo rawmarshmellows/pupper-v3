@@ -4,15 +4,15 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/bjt-specifications]] | [[quick-context/bond-pad]]
 
-> **TL;DR:** Glass transition temperature (Tg) is the temperature where polymer chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
+> **TL;DR:** Glass transition temperature (Tg) is the temperature where [[quick-context/atoms-molecules-polymers-basics|polymer]] chains gain enough thermal energy to wiggle and slide past each other, transforming the plastic from rigid/glassy to soft/rubbery—critical for choosing 3D printing materials that won't warp in hot environments like cars.
 
 # Glass Transition Temperature (Tg) - A Beginner's Guide
 
 ## The Core Problem
 
-Plastics are made of **[[quick-context/atoms-molecules-polymers-basics|polymers]]**—long, spaghetti-like chains of molecules tangled together. At low temperatures, these chains are frozen in place, locked together by weak attractions. The plastic feels hard and rigid. But here's the critical insight: **there's a specific temperature where those chains suddenly gain enough energy to wiggle and slide past each other**. This is the **glass transition temperature (Tg)**. Below Tg, your plastic is glassy and stiff. Above Tg, it becomes rubbery, soft, and deformable—even though it hasn't technically "melted" yet. This matters enormously because if you use a plastic above its Tg, it will sag, warp, and lose its shape under any load. Your carefully 3D-printed part becomes a droopy mess. Your phone case warps. Your tool handle bends. Understanding Tg is the difference between picking a material that survives real-world conditions and watching your project fail on a hot summer day.
+Plastics are made of **[[quick-context/atoms-molecules-polymers-basics|polymers]]**—long, spaghetti-like chains of molecules tangled together. At low temperatures, these chains are frozen in place, locked together by weak attractions. The plastic feels hard and rigid. But here's the critical insight: **there's a specific temperature where those chains suddenly gain enough energy to wiggle and slide past each other**. This is the **glass transition temperature (Tg)**. Below Tg, [[quick-context/mcp6541-as-lmc7211-replacement|your]] plastic is glassy and stiff. Above Tg, it becomes rubbery, soft, and deformable—even though it hasn't technically "melted" yet. This matters enormously because if you use a plastic above its Tg, it will sag, warp, and lose its shape under any load. Your carefully 3D-printed part becomes a droopy mess. Your phone case warps. Your tool handle bends. Understanding Tg is the difference between picking a material that survives real-world conditions and watching your project fail on a hot summer day.
 
 ## 5 Essential Terms
 
@@ -21,13 +21,13 @@ Plastics are made of **[[quick-context/atoms-molecules-polymers-basics|polymers]
 | **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | Long chain-like molecules made of repeating units; all plastics are polymers (think: molecular spaghetti strands). |
 | **Tg (Glass Transition Temperature)** | The specific temperature where a polymer shifts from rigid/glassy to soft/rubbery; the "danger zone" threshold for your material. |
 | **[[quick-context/polymer-crystallinity-vs-amorphous|Amorphous]]** | Polymer chains arranged randomly (like tangled headphones); these have a distinct Tg and gradually soften. |
-| **[[quick-context/polymer-crystallinity-vs-amorphous|Crystalline/Semi-crystalline]]** | Polymer chains partially organized into ordered regions; these have both Tg and a sharper melting point (Tm). |
+| **[[quick-context/polymer-crystallinity-vs-amorphous|Crystalline/Semi-crystalline]]** | Polymer chains partially organized into ordered regions; these have [[quick-context/bjt-specifications|both]] Tg and a sharper melting point (Tm). |
 | **Annealing** | Heat-treating a printed part below its melting point to increase crystallinity and improve heat resistance; a post-processing trick for PLA. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **intermolecular forces**—weak attractions like van der Waals forces and hydrogen bonds between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
+At the molecular level, Tg represents an energy threshold (related to the same [[quick-context/thermal-noise-electronics|kT thermal energy]] scale that drives noise in electronics). Polymer chains are held in place by **[[quick-context/chemical-bonds-spectrum|intermolecular forces]]**—weak attractions like [[quick-context/van-der-waals-forces|van der Waals forces]] and [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]] between neighboring chain segments. At low temperatures, the thermal energy (random molecular vibration) is not enough to overcome these attractions, so the chains are essentially frozen in place. As you heat the material, you add thermal energy. At Tg, the chains finally have enough energy to overcome the intermolecular attractions and begin rotating around their backbone bonds, sliding past neighboring chains, and rearranging their positions.
 
 This transition is not a sharp phase change like ice melting to water. Instead, it occurs over a temperature range (typically 10-30°C wide) where the material progressively softens. The Tg value reported is usually the midpoint of this transition. What matters practically is that mechanical properties change dramatically: the **modulus** (stiffness) can drop by a factor of 1000 between the glassy state and the rubbery state. Time also becomes a factor above Tg—even small loads will cause the material to slowly **creep** and permanently deform over hours or days as chains gradually slide past each other.
 
@@ -237,7 +237,7 @@ Here's what engineers constantly wrestle with: **plastics that are easy to work 
 
 Related concepts that deepen your understanding of glass transition temperature:
 
-- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Understanding why amorphous polymers have a distinct Tg while semi-crystalline polymers have both Tg and a melting point (Tm).
+- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Understanding why [[quick-context/polymer-crystallinity-vs-amorphous|amorphous]] polymers have a distinct Tg while semi-crystalline polymers have both Tg and a melting point (Tm).
 
 - **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high melt index means easier flow, which connects to how far above Tg you need to go for processing.
 
@@ -245,7 +245,7 @@ Related concepts that deepen your understanding of glass transition temperature:
 
 - **[[quick-context/polymer-chemical-bonds|Chemical bonds]]** — The molecular-level interactions ([[quick-context/van-der-waals-forces|van der Waals forces]], [[quick-context/hydrogen-bonds-beginners|hydrogen bonds]]) that must be overcome at Tg, explaining why different polymers have different transition temperatures.
 
-- **[[quick-context/bambu-p2s-print-quality]]** — Layer adhesion in 3D printing depends on polymer chain interdiffusion above Tg; cooling settings, chamber temperature, and overhang fan speed are all really about controlling time spent above Tg.
+- **[[quick-context/bambu-p2s-print-quality]]** — Layer adhesion in 3D printing depends on polymer chain interdiffusion above Tg; cooling settings, chamber temperature, and overhang [[quick-context/raspberry-pi-5-components|fan]] [[quick-context/embedded-communication-protocols|speed]] are all really about controlling time spent above Tg.
 
 </details>
 
@@ -273,7 +273,7 @@ Nylon is **semi-crystalline**, meaning it has both amorphous regions (which soft
 **Q4:** You're designing a part that will see 90C operating temperature. You only have PLA filament. What post-processing technique might help, and what are its limitations?
 <details>
 <summary>Answer</summary>
-**Annealing** can help. By heating a PLA print to 80-100C (below its melting point but above Tg), you encourage the polymer chains to reorganize into more crystalline structures. This can raise the effective heat deflection temperature to 80-90C or slightly higher. **Limitations:** Parts may warp or shrink during annealing (especially thin features), dimensional accuracy suffers, and even annealed PLA won't reliably survive sustained 90C—you're pushing it to its absolute limit. For 90C applications, switching to ABS or PETG is the better solution.
+**Annealing** can help. By heating a PLA print to 80-100C (below its melting point but above Tg), you encourage the polymer chains to reorganize into more crystalline structures. This can raise the effective heat deflection temperature to 80-90C or slightly higher. **Limitations:** Parts may warp or shrink during annealing (especially thin features), dimensional accuracy suffers, and even annealed PLA won't reliably survive sustained 90C—you're pushing it to its absolute limit. For 90C applications, switching to ABS or PETG is the [[quick-context/comparator-specification|better]] solution.
 </details>
 
 **Q5:** Why does polycarbonate (Tg ~147C) require higher printing temperatures and specialized equipment compared to PLA (Tg ~60C)?

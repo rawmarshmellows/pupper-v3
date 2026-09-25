@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Sandler KARE Account Segmentation
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/challenger-sale-methodology]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/meddpicc-qualification-framework]]
 
-> **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), Recapture (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
+> **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), [[quick-context/existing-account-management-playbook|Recapture]] (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
 
 ## The Core Problem
 
-Every sales rep has finite hours. Treating all accounts equally means under-investing in high-potential opportunities and over-investing in low-yield accounts. Without portfolio-level thinking, reps default to working whatever feels urgent—usually squeaky-wheel accounts or comfortable relationships—while strategic opportunities languish.
+Every sales rep has finite hours. Treating all accounts equally means under-investing in high-potential opportunities and over-investing in low-[[quick-context/silicon-die|yield]] accounts. Without portfolio-level thinking, reps default to working whatever feels urgent—usually squeaky-wheel accounts or comfortable relationships—while strategic opportunities languish.
 
 ## 5 Essential Terms
 
@@ -24,7 +24,7 @@ Every sales rep has finite hours. Treating all accounts equally means under-inve
 | **Portfolio Velocity** | The concept that accounts should move between KARE categories over time as relationships evolve |
 
 <details>
-<summary><strong>How It Works</strong> — Categorizing and actioning your account base</summary>
+<summary><strong>How It Works</strong> — Categorizing and actioning [[quick-context/mcp6541-as-lmc7211-replacement|your]] account base</summary>
 
 KARE creates a simple 2x2-ish framework for portfolio decisions:
 
@@ -115,10 +115,10 @@ KARE forces explicit tradeoffs that companies often avoid:
 | Higher churn risk if KEEP neglected | May miss market expansion windows |
 | Startup/land-grab mentality | Mature SaaS/net revenue retention focus |
 
-**The practitioner debate:**
+**[[quick-context/challenger-sale-methodology|The practitioner debate:]]**
 
 - **"Attain is everything"**: New logos prove product-market fit, expand TAM, and generate case studies. Existing customers renew by default.
-- **"Expand is everything"**: Net Revenue Retention (NRR) >100% creates compounding growth. Existing customers are 5-7x cheaper to sell to. Reference customers come from depth, not breadth.
+- **"Expand is everything"**: [[quick-context/playbook-main|Net Revenue Retention (NRR)]] >100% creates compounding growth. Existing customers are 5-7x cheaper to sell to. Reference customers come from depth, not breadth.
 
 The right balance depends on market maturity, competition, and company stage. KARE makes the tradeoff explicit rather than accidental.
 
@@ -172,9 +172,9 @@ Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the account planning framework for KEEP and EXPAND accounts
+- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the [[quick-context/sales-methodology-layering|account planning framework]] for KEEP and EXPAND accounts
 - **[[quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; MEDDPICC qualifies specific opportunities within those accounts
-- **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model helps understand where KEEP vs. EXPAND accounts stand
+- **[[quick-context/mcdonald-kam-model]]** — McDonald's [[quick-context/mcdonald-kam-model|relationship maturity]] model helps understand where KEEP vs. EXPAND accounts stand
 - **Territory Management** — The broader discipline of dividing accounts across reps; KARE informs territory strategy
 - **Net Revenue Retention (NRR)** — The SaaS metric that makes EXPAND strategy visible; companies with NRR >110% are essentially KARE-optimized
 - **[[quick-context/whitespace-mapping]]** — The visual tool for identifying exactly where EXPAND opportunities exist within accounts

@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Malcolm McDonald KAM Model (Cranfield)
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/challenger-sale-methodology]] | [[quick-context/existing-account-management-playbook]] | [[quick-context/inside-the-triangle]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
 
 > **TL;DR:** Malcolm McDonald's Key Account Management (KAM) model from Cranfield University provides a five-stage relationship maturity framework—Exploratory → Basic → Cooperative → Interdependent → Integrated—helping teams diagnose where each account relationship stands and what's needed to deepen it.
 
@@ -134,7 +134,7 @@ Not every account should progress to Integrated—the tension is deciding where 
 | Defensible competitive moat | Resources better spent on new logos |
 | Customer wants partnership | Customer wants arm's-length vendor |
 
-**The practitioner debate:**
+**[[quick-context/challenger-sale-methodology|The practitioner debate:]]**
 
 - **"Go deep everywhere"**: Every Cooperative relationship is an Integrated partnership waiting to happen. Invest in all customers.
 - **"Be selective"**: Integration requires mutual investment. Force it on Basic accounts and you waste resources; neglect it for strategic accounts and competitors steal them. Tier your approach.
@@ -252,7 +252,7 @@ Next Stage Action: Prevent further regression
 • Identify new internal champion
 ```
 
-**The one thing most outsiders get wrong about this is...** they think relationship progression is linear and permanent. It's not—relationships regress when neglected, especially after personnel changes. The model is a diagnostic, not a ladder. A "Strategic Account" label means nothing if the actual relationship has regressed to Basic.
+**The one thing most outsiders get wrong about this is...** they think relationship progression is linear and permanent. It's not—relationships regress when neglected, especially after personnel changes. The model is a diagnostic, not a ladder. A "Strategic Account" label means [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] if the actual relationship has regressed to Basic.
 
 </details>
 
@@ -260,9 +260,9 @@ Next Stage Action: Prevent further regression
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides the account planning mechanics; McDonald's KAM model diagnoses relationship maturity to inform that planning
-- **[[quick-context/sandler-kare-segmentation]]** — KARE segments the portfolio; McDonald's model goes deeper on relationship quality within each segment
+- **[[quick-context/sandler-kare-segmentation]]** — KARE segments the portfolio; McDonald's model goes deeper on relationship [[quick-context/oee-overall-equipment-effectiveness|quality]] within each segment
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC qualifies deals; McDonald's model qualifies the *relationship* context in which deals occur
-- **Customer Success** — The function most responsible for relationship progression post-sale; KAM model helps CS prioritize accounts
+- **Customer Success** — The [[quick-context/mcp6541-as-lmc7211-replacement|function]] most responsible for relationship progression post-sale; KAM model helps CS prioritize accounts
 - **Net Promoter Score (NPS)** — A quantitative signal that sometimes correlates with relationship maturity, though imperfect
 - **[[quick-context/whitespace-mapping]]** — Tool for identifying expansion opportunities; relationship maturity affects which whitespace cells are accessible
 
@@ -292,7 +292,7 @@ Basic—regardless of contact count. Contact volume doesn't indicate relationshi
 **Q4:** How would you use McDonald's KAM model together with [[quick-context/sandler-kare-segmentation|KARE]]?
 <details>
 <summary>Answer</summary>
-KARE segments your portfolio into Keep/Attain/Recapture/Expand buckets. McDonald's model then diagnoses relationship depth within those buckets. Example: a "Keep" account at Basic stage needs different protection tactics than a "Keep" at Interdependent stage. An "Expand" account at Cooperative stage is ready for upsell conversations; an "Expand" at Basic stage needs relationship development first before pitching expansion.
+KARE segments your portfolio into Keep/[[quick-context/playbook-main|Attain/Recapture]]/[[quick-context/existing-account-management-playbook|Expand]] buckets. McDonald's model then diagnoses relationship depth within those buckets. [[quick-context/teep|Example:]] a "Keep" account at Basic stage needs different protection tactics than a "Keep" at Interdependent stage. An "Expand" account at Cooperative stage is ready for upsell conversations; an "Expand" at Basic stage needs relationship development first before pitching expansion.
 </details>
 
 **Q5:** A customer executive says "You're our strategic partner" but procurement still runs aggressive RFPs. What's the real relationship stage and what do you do?

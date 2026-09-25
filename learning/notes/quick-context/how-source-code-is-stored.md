@@ -5,13 +5,13 @@ created: 2026-06-07
 
 # How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 
-> **Related:** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/python-to-machine-code-pipeline]] | [[quick-context/cpu-fetch-execute-cycle]] | [[quick-context/d-flip-flop]]
 
-> **TL;DR:** A source file like `hello.py` is not magic — it is plain **text**, a sequence of characters. Each character is turned into one or more **bytes** by an **encoding** (ASCII for the basics, UTF-8 in practice), and those bytes are stored exactly like any other data: as numbers in addressable memory (a file on disk/flash, copied into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] when you open it). The big idea is **code is data** — the same bytes-in-memory mechanism holds your text, the compiled artifact, and the final machine code. Nothing about the bytes themselves makes them "code"; that depends only on how they are later interpreted or executed.
+> **TL;DR:** A source file like `hello.py` is not magic — it is plain **text**, a sequence of characters. Each character is turned into one or more **bytes** by an **encoding** (ASCII for the basics, UTF-8 in practice), and those bytes are stored exactly like any other data: as numbers in addressable memory (a file on disk/flash, copied into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] when you open it). The big idea is **code is data** — the same bytes-in-memory mechanism holds [[quick-context/mcp6541-as-lmc7211-replacement|your]] text, the compiled artifact, and the final [[quick-context/python-to-machine-code-pipeline|machine code]]. [[quick-context/tlv7211-as-lmc7211-replacement|Nothing]] about the bytes themselves makes them "code"; that depends only on how they are later interpreted or executed.
 
 ## The Core Problem
 
-Before a single thing gets *compiled* or *run*, your program has to *exist somewhere* as a concrete object you can save, copy, and reopen. If a "program" were some special intangible substance, there would be no way to email it, store it on a disk, or load it into memory. The resolution is almost anticlimactic: a program-on-disk is just **text encoded as bytes**, and bytes are just numbers living in the same addressable memory cells that hold everything else. This is rung **B1** — the bottom of the SOFTWARE tower — and it answers "what *is* a program before any of the clever transformation happens?" Later rungs ([[learning/notes/quick-context/python-to-machine-code-pipeline|the pipeline]], [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation to gates]]) take these bytes and transform them; B1 is about the raw starting material and where it sits.
+Before a single thing gets *compiled* or *run*, your program has to *exist somewhere* as a concrete object you can save, copy, and reopen. If a "program" were some special intangible substance, there would be no way to email it, store it on a disk, or load it into memory. The resolution is almost anticlimactic: a program-on-disk is just **text encoded as bytes**, and bytes are just numbers living in the same addressable memory cells that hold everything else. This is rung **B1** — the [[quick-context/keypress-to-pixel-pipeline|bottom]] of the SOFTWARE tower — and it answers "what *is* a program before any of the clever transformation happens?" Later rungs ([[learning/notes/quick-context/python-to-machine-code-pipeline|the pipeline]], [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation to gates]]) take these bytes and transform them; B1 is about the raw starting material and where it sits.
 
 ## 5 Essential Terms
 
@@ -37,7 +37,7 @@ position:    0    1    2    3    4    5    6    7    8    9
                      (' ' = a space character)
 ```
 
-The editor's whole job is to *render* each character as a shape on screen. But the file is the *characters*, not the shapes.
+The editor's whole job is to *render* each character as a shape on [[quick-context/data-bus-and-arbitration|screen]]. But the file is the *characters*, not the shapes.
 
 ### Step 2 — An encoding turns each character into byte values
 
@@ -70,7 +70,7 @@ Left column: where in the file each chunk starts (the *offset*, like an address)
 
 ### Step 4 — Those bytes live in addressable memory
 
-When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
+When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the [[quick-context/from-vacuum-tubes-to-coding-on-screens|operating system]] copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
 
 ```
 RAM as a numbered array of byte-cells (the file loaded at address 1000)
@@ -107,7 +107,7 @@ ASCII is dead simple: 128 characters, one byte each, no ambiguity. But it only c
 | Self-synchronizing / ASCII-compatible | n/a | Yes (a superset of ASCII) |
 | Today's default for source files | legacy | Yes |
 
-The tradeoff: fixed-width (ASCII, or fixed multi-byte like UTF-32) makes "jump to the Nth character" trivial but wastes space; variable-width (UTF-8) is compact and universal but you can't assume "byte N = character N." For source code — overwhelmingly ASCII characters — UTF-8 gives you the best of both: ASCII-cheap for the common case, universal when you need it.
+[[quick-context/from-code-to-running-firmware|The tradeoff:]] fixed-width (ASCII, or fixed multi-byte like UTF-32) makes "jump to the Nth character" trivial but wastes space; variable-width (UTF-8) is compact and universal but you can't assume "byte N = character N." For source code — overwhelmingly ASCII characters — UTF-8 gives you the best of both: ASCII-cheap for the common case, universal when you need it.
 
 ### Tension 2 — "Code is data" cuts both ways
 
@@ -120,7 +120,7 @@ Treating code as ordinary bytes is what makes compilers, interpreters, editors, 
 
 ### Looking at the actual bytes
 
-You can prove all of this at a terminal. Write the one-line file and dump its bytes:
+You can prove all of this at a terminal. [[quick-context/d-flip-flop|Write]] the one-line file and dump its bytes:
 
 ```bash
 $ printf 'x = 2 + 3\n' > hello.py     # write the 10 characters to disk
@@ -132,7 +132,7 @@ $ xxd hello.py                         # hexdump: bytes (hex) | decoded chars
           └──────── the 10 bytes ────────┘      └ decoded ┘
 ```
 
-The `.` at the end of the decoded column is the newline (`0a`), which `xxd` can't draw as a glyph. Notice `wc -c` reports **10 bytes** — character count equals byte count *only because every character here is plain ASCII*. Add one accented letter and the byte count would exceed the character count, because UTF-8 spends extra bytes on it:
+The `.` at the end of the decoded column is the newline (`0a`), which `xxd` can't draw as a glyph. Notice `wc -c` reports **10 bytes** — character [[quick-context/switches-to-registers-storing-data|count]] equals byte count *only because every character here is plain ASCII*. Add one accented letter and the byte count would exceed the character count, because UTF-8 spends extra bytes on it:
 
 ```bash
 $ printf 'café\n' > x.txt
@@ -164,7 +164,7 @@ B1 is only about artifact (a). It is easy to conflate these three, but they are 
 ```
 
 - **(a) Source text** — what you edit. Plain text, this note's whole subject. Lives as a file; loaded into RAM as bytes when opened.
-- **(b) Compiled artifact** — the bytecode or machine code produced *from* (a) by a compiler/assembler. *Different bytes* than the source, but still just bytes in a file (see [[learning/notes/quick-context/code-to-gates-and-bootstrapping|code to gates]]).
+- **(b) Compiled artifact** — the bytecode or machine code produced *from* (a) by a compiler/[[quick-context/code-to-gates-and-bootstrapping|assembler]]. *Different bytes* than the source, but still just bytes in a file (see [[learning/notes/quick-context/code-to-gates-and-bootstrapping|code to gates]]).
 - **(c) Running process** — artifact (b) loaded into RAM and actually executed by the CPU, with its live data and stack alongside. This is where "code" finally *does* something.
 
 The transformation (a) → (b) → (c) is the SOFTWARE tower above B1; the [[learning/notes/quick-context/python-to-machine-code-pipeline|Python-to-machine-code pipeline]] walks it.
@@ -197,7 +197,7 @@ A sequence of **bytes** stored as a file on disk/flash. Those bytes are the **ch
 **Q2:** The line `x = 2 + 3` (with no newline) has 9 characters. In ASCII, how many bytes is that, and why?
 <details>
 <summary>Answer</summary>
-9 bytes — one byte per character, because ASCII encodes each of its 128 characters in exactly one byte (and `x`, space, `=`, `2`, `+`, `3` are all ASCII). Add a trailing newline `\n` and it becomes 10 bytes. See the hexdump in "How It Works," step 3.
+9 bytes — one byte per character, because ASCII encodes each of its 128 characters in [[quick-context/ram-addressing-decoder|exactly one]] byte (and `x`, space, `=`, `2`, `+`, `3` are all ASCII). Add a trailing newline `\n` and it becomes 10 bytes. See the hexdump in "How It Works," step 3.
 </details>
 
 **Q3:** Why do `wc -m` (characters) and `wc -c` (bytes) report the *same* number for `hello.py` but *different* numbers for a file containing `café`?
@@ -215,7 +215,7 @@ There is no special "program substance." Source text, compiled artifacts, and ru
 **Q5:** If the bytes of source code, compiled bytecode, and running machine code are all "just bytes in addressable memory," what actually distinguishes the three artifacts — and why does that distinction matter for security?
 <details>
 <summary>Answer</summary>
-The distinction is **not in the bytes** but in **who reads them and how**: (a) source is read by a compiler/interpreter *as text to translate*; (b) the compiled artifact is read by the runtime/CPU *as instructions to consume*; (c) a running process is those instruction-bytes *actively executed* by the CPU, alongside its live data. Since nothing intrinsic separates "data" from "executable code," an attacker who can get their *data* executed *as code* (injection, buffer overflow) gets the machine to run it. That is exactly why CPUs/OSes add an explicit "this region is executable / not" marker (NX / W^X) — to impose a distinction the bytes don't carry on their own. See "Concrete Example" (three artifacts) and "The Key Tension," Tension 2.
+The distinction is **not in the bytes** but in **who reads them and how**: (a) source is read by a compiler/interpreter *as text to translate*; (b) the compiled artifact is read by the runtime/CPU *as instructions to consume*; (c) a running process is those [[quick-context/cpu-fetch-execute-cycle|instruction]]-bytes *actively executed* by the CPU, alongside its live data. Since nothing intrinsic separates "data" from "executable code," an attacker who can get their *data* executed *as code* (injection, buffer overflow) gets the machine to run it. That is exactly why CPUs/OSes add an explicit "this region is executable / not" marker (NX / W^X) — to impose a distinction the bytes don't carry on their own. See "Concrete Example" (three artifacts) and "The Key Tension," Tension 2.
 </details>
 
 </details>

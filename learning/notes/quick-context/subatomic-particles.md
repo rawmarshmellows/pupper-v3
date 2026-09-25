@@ -5,13 +5,13 @@ created: 2026-02-14
 
 # Subatomic Particles
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+> **Related:** [[quick-context/ac-to-dc-rectification]] | [[quick-context/anions-and-oxidation]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/bjt-specifications]] | [[quick-context/bond-pad]]
 
-> **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
+> **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and [[quick-context/anions-and-oxidation|electrons]] (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
 ## The Core Problem
 
-Everything around you—your body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What holds an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear power.
+Everything around you—[[quick-context/mcp6541-as-lmc7211-replacement|your]] body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What holds an atom together? [[quick-context/atoms-molecules-polymers-basics|Why]] do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear [[quick-context/d-flip-flop|power]].
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Everything around you—your body, your computer, the air you breathe—is made 
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
 | **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[quick-context/electromagnetism|electromagnetism]] but [[quick-context/comparator-specification|only]] works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -137,7 +137,7 @@ ELECTRONS CREATE IONS (same element, different charge):
 
 ## Quarks: Going Deeper
 
-Protons and neutrons aren't fundamental—they're made of smaller particles called **quarks**, held together by the **strong force** (mediated by particles called gluons). This is the realm of particle physics.
+Protons and neutrons aren't fundamental—they're made of smaller particles called **quarks**, held together by the **strong force** (mediated by particles called gluons)[[quick-context/glass-transition-temperature|. This is the]] realm of particle physics.
 
 ```
 INSIDE PROTONS AND NEUTRONS: QUARKS
@@ -366,7 +366,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding [[quick-context/doped-silicon|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 
@@ -552,9 +552,9 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
+- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest [[quick-context/electrodes|electron flow]] from spontaneous chemical reactions. The [[quick-context/cations-and-reduction|electrode]] potential differences come from how strongly different atoms hold their electrons.
 
 - **Radioactivity and Nuclear Physics** — When the nucleus is unstable (too many or too few neutrons), it decays by emitting particles. Alpha decay, beta decay, and gamma radiation all involve subatomic particle transformations.
 
@@ -586,7 +586,7 @@ SODIUM IN WATER — A Subatomic Explanation
 **Q4:** Copper and sodium both have 1 electron in their outer shell. Why does sodium explode in water while copper is safe for water pipes?
 <details>
 <summary>Answer</summary>
-**Sodium's outer electron is much easier to remove.** While both have 1 outer electron, sodium's electron is in the 3rd shell far from a nucleus with only +11 charge. Copper's electron is effectively in a higher shell but with +29 nuclear charge (and d-orbital effects make it even harder to remove). The ionization energy (energy to remove that electron) is much lower for sodium, making it violently reactive. See: "Why Sodium Explodes in Water" example.
+**Sodium's outer electron is much easier to remove.** While both have 1 outer electron, sodium's electron is in the 3rd shell far from a nucleus with only +11 charge. Copper's electron is effectively in a higher shell but with +29 nuclear charge (and d-orbital effects make it even harder to remove). The [[quick-context/platinum-inertness|ionization energy]] (energy to remove that electron) is much lower for sodium, making it violently reactive. See: "Why Sodium Explodes in Water" example.
 </details>
 
 **Q5:** How does understanding subatomic particles help explain why [[quick-context/doped-silicon|doping silicon]] creates n-type and p-type semiconductors?

@@ -5,7 +5,7 @@ created: 2026-01-25
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
+> **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing [[quick-context/bond-pad|billions of transistors]] and [[quick-context/metal-interconnect-layers|metal interconnect layers]], manufactured [[quick-context/bare-minimal-data-storage-circuit|simultaneously]] on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
 # Silicon Die
 
@@ -15,7 +15,7 @@ A silicon die solves the fundamental problem of cramming billions of microscopic
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[quick-context/capacitance|Definition]] |
 |------|------------|
 | **Die** (or "chip") | The actual piece of silicon containing all the transistors; typically 5-400 mm² in area, cut from a larger wafer |
 | **Wafer** | A thin, circular disc of ultra-pure silicon (usually 300mm diameter) on which hundreds of identical dies are manufactured simultaneously |
@@ -30,7 +30,7 @@ From Sand to Thinking Stone
 
 A silicon die is manufactured through a process that's essentially "printing" circuits onto ultra-pure silicon. Here's the journey:
 
-**Step 1: Start with sand.** Silicon (Si) is extracted from quartz sand and purified to 99.9999999% purity—one of the purest materials humans manufacture. This is melted and grown into a single crystal ingot.
+**Step 1: Start with sand.** [[quick-context/doped-silicon|Silicon (Si)]] is extracted from quartz sand and purified to 99.9999999% purity—one of the purest [[quick-context/cnc-machining|materials]] humans manufacture. This is melted and grown into a single crystal ingot.
 
 **Step 2: Slice into wafers.** The crystal ingot is sliced into thin discs called wafers (about 0.75mm thick, 300mm diameter). Each wafer will become hundreds of dies.
 
@@ -108,7 +108,7 @@ CROSS-SECTION OF A SILICON DIE (not to scale)
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 The semiconductor industry constantly battles a fundamental tradeoff:
 
@@ -202,7 +202,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
     Bond pads around the edge connect to the package
 ```
 
-**Size comparison:**
+**Size [[quick-context/teep|comparison:]]**
 
 | Object | Size |
 |--------|------|
@@ -212,7 +212,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 | Human hair width | 75,000 nm |
 | Transistors that could fit across a hair | ~15,000 |
 
-**The one thing most outsiders get wrong about this is...** thinking the die is what you see when you look at a "chip" on a circuit board. What you actually see is the **package**—a protective housing that could be 10× larger than the die inside. The actual silicon die is hidden underneath a metal lid (for cooling) or encased in plastic. The package exists because the die itself is impossibly fragile—it would crack if you breathed on it wrong, corrode from moisture in the air, and has connection points too small to solder by any normal means. The die is the brain; the package is the skull.
+**The one thing most outsiders get wrong about this is...** thinking the die is what you see when you look at a "chip" on a circuit board. What you actually see is the **package**—a protective housing that could be 10× larger than the die inside. The actual silicon die is hidden [[quick-context/bga-ball-grid-array|underneath]] a metal lid (for cooling) or encased in plastic. The package exists because the die itself is impossibly fragile—it would crack if you breathed on it wrong, corrode from moisture in the air, and has connection points too small to solder by any normal means. The die is the brain; the package is the skull.
 
 </details>
 
@@ -221,7 +221,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
+- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a [[quick-context/fundamental-electronic-parts-index|packaging hierarchy]] that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
 
 - **[[quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
 
@@ -229,7 +229,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **[[quick-context/electric-current|Electric Current]]** — Dies only work when [[quick-context/anions-and-oxidation|electrons]] flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
 
 </details>
 
@@ -263,7 +263,7 @@ They didn't receive a "chip" in the sense of the silicon die—they received a *
 **Q5:** Given that transistors are at the *top* surface of the silicon (not distributed throughout), and that heat must escape through the package, what design challenge does this create for high-performance dies, and how might it relate to why modern chips have features like "efficiency cores"?
 <details>
 <summary>Answer</summary>
-Since billions of transistors concentrate their heat generation at the top surface of a thin layer, and that heat must conduct through the silicon bulk and then through the package to a heatsink, there's a severe thermal bottleneck. High-performance cores running at maximum speed generate intense, localized heat that can't dissipate fast enough, leading to thermal throttling. "Efficiency cores" help by providing lower-power alternatives for light workloads, allowing the chip to avoid constantly running power-hungry cores. This is part of why simply "making bigger dies" doesn't scale—you can't cool them effectively. See: Cross-section diagram (transistors at top), The Key Tension (harder to cool larger dies), and the Apple M2 example (performance vs. efficiency cores).
+Since billions of transistors concentrate their [[quick-context/electric-current|heat generation]] at the top surface of a thin layer, and that heat must conduct through the silicon bulk and then through the package to a heatsink, there's a severe thermal bottleneck. High-performance cores running at maximum speed generate intense, localized heat that can't dissipate fast enough, leading to thermal throttling. "Efficiency cores" help by providing lower-power alternatives for light workloads, allowing the chip to avoid constantly running power-hungry cores. This is part of why simply "making bigger dies" doesn't scale—you can't cool them effectively. See: Cross-section diagram (transistors at top), The Key Tension (harder to cool larger dies), and the Apple M2 example (performance vs. efficiency cores).
 </details>
 
 </details>

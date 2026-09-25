@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-bom-control-board]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 
@@ -334,11 +334,11 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 
 - **COCO Dataset** — "Common Objects in Context," the 80-class benchmark dataset YOLOv5 is trained on. Includes everyday objects (person, car, dog, bottle, chair) but notably lacks many useful categories (keys, phone, specific breeds). This limits what Lab 7 can track out of the box. See: [cocodataset.org](https://cocodataset.org)
 - **[[quick-context/raspberry-pi-ai-hat|Raspberry Pi AI HAT+]]** — The full product family of Hailo-based NPU boards for edge AI inference, including the 13T, 26T, and AI HAT+ 2 (with on-board RAM for LLMs). Covers TOPS benchmarks, data flow architecture, and the software stack that Lab 7's Hailo detection node runs on.
-- **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The intrinsic matrix $K$ and distortion coefficients used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, focal length/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
+- **[[quick-context/camera-fundamentals|Camera Fundamentals]]** — The intrinsic matrix $K$ and distortion coefficients used in `cv2.fisheye.undistortImage()` are explained in detail here, along with sensor physics, [[quick-context/camera-fundamentals|focal length]]/FOV relationships, and the extrinsic transformation that locates the camera in the robot's frame.
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
-- **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
+- **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a [[quick-context/mcp6541-as-lmc7211-replacement|form]] of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The [[quick-context/sil-rated-safety-functions|hardware architecture]] (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 
@@ -358,7 +358,7 @@ The negative sign creates **negative feedback** — the controller acts to reduc
 <details>
 <summary>Answer</summary>
 
-The mismatch is acceptable because the state machine **holds** its last Twist command between detection updates. The locomotion controller receives a steady `/cmd_vel` stream and smoothly executes the velocity — it does not need a new detection every cycle. At 5 FPS, the tracking loop updates yaw correction every 200 ms, which is fast enough to follow walking-speed targets. At 0.5 FPS (2 seconds between updates), two problems emerge: (1) the robot drives in a straight line for 2 seconds between corrections, causing it to overshoot and oscillate, and (2) the detection timeout (typically 1-2 seconds) would fire between nearly every valid frame, causing constant TRACK-to-SEARCH transitions. The 5 FPS rate is a sweet spot between inference cost and control responsiveness.
+The mismatch is acceptable because the state machine **holds** its last Twist command between detection [[quick-context/firmware|updates]]. The locomotion controller receives a steady `/cmd_vel` stream and smoothly executes the velocity — it does not need a new detection every cycle. At 5 FPS, the tracking loop updates yaw correction every 200 ms, which is fast enough to follow walking-speed targets. At 0.5 FPS (2 seconds between updates), two problems emerge: (1) the robot drives in a straight line for 2 seconds between corrections, causing it to overshoot and oscillate, and (2) the detection timeout (typically 1-2 seconds) would fire between nearly every valid frame, causing constant TRACK-to-SEARCH transitions. The 5 FPS rate is a sweet spot between inference cost and control responsiveness.
 </details>
 
 **Q3:** The state machine uses timeout-based hysteresis for the TRACK $\to$ SEARCH transition instead of switching immediately on a missed detection. Suppose the timeout is set to 1.5 seconds and the detector runs at 5 FPS. How many consecutive missed frames does this tolerate, and why is this preferable to a frame-count threshold (e.g., "switch after 3 missed frames")?
@@ -366,7 +366,7 @@ The mismatch is acceptable because the state machine **holds** its last Twist co
 <details>
 <summary>Answer</summary>
 
-At 5 FPS, each frame arrives every 200 ms. A 1.5-second timeout tolerates $1.5 / 0.2 = 7.5$, so approximately **7 consecutive missed frames** before transitioning to SEARCH. A time-based threshold is preferable to a frame-count threshold because the detection frame rate is not guaranteed to be constant — Hailo inference time varies with scene complexity, and frames can be dropped due to USB bandwidth or CPU load. If the detector temporarily slows to 2 FPS, a "3 missed frames" threshold would wait 1.5 seconds, but if it speeds up to 10 FPS, the same threshold would only wait 0.3 seconds — causing premature SEARCH transitions during brief occlusions. A time-based timeout provides consistent behavior regardless of frame rate variation. This is a general principle: time-based thresholds are more robust than count-based thresholds when the event rate is variable.
+At 5 FPS, each frame arrives every 200 ms. A 1.5-second timeout tolerates $1.5 / 0.2 = 7.5$, so approximately **7 consecutive missed frames** before transitioning to SEARCH. A time-based threshold is preferable to a frame-count threshold because the detection frame rate is not guaranteed to be constant — Hailo inference time varies with scene complexity, and frames can be dropped due to USB [[quick-context/oscilloscope-and-multimeter|bandwidth]] or CPU load. If the detector temporarily slows to 2 FPS, a "3 missed frames" threshold would wait 1.5 seconds, but if it speeds up to 10 FPS, the same threshold would only wait 0.3 seconds — causing premature SEARCH transitions during brief occlusions. A time-based timeout provides consistent behavior regardless of frame rate variation. This is a general principle: time-based thresholds are more robust than count-based thresholds when the event rate is variable.
 </details>
 
 </details>

@@ -6,15 +6,15 @@ updated: 2026-03-27
 
 # Power Inductor
 
-> **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]
+> **Related:** [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/power-supply-rejection-ratio]] | [[micro-context/4-wire-kelvin-measurement]] | [[micro-context/ac-dc-current]] | [[micro-context/adc-analog-to-digital-converter]]
 
-**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your buck converter, the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
+**[[quick-context/capacitance|Definition]]:** A coil that stores energy in a magnetic field [[micro-context/push-pull-vs-open-drain|and]] resists changes in current. In switching power supplies like [[quick-context/mcp6541-as-lmc7211-replacement|your]] [[micro-context/buck-converter|buck converter]], the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-[[quick-context/bjt-specifications|off]] phase.
 
 ## How It Works
 
-- When current flows through the coil, it generates a magnetic field that stores energy ($E = \frac{1}{2}LI^2$).
-- If current tries to change suddenly, the collapsing or growing magnetic field induces a voltage that opposes the change ($V = L \times dI/dt$).
-- In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling diode.
+- [[quick-context/bare-minimal-data-storage-circuit|When]] current flows through the coil, it generates a magnetic field that stores energy ($E = \frac{1}{2}LI^2$).
+- If current tries to change suddenly, the collapsing or growing magnetic field induces a [[quick-context/voltage|voltage]] that opposes the change ($V = L \times dI/dt$).
+- In a buck converter's ON phase, the inductor stores energy from the input; in the OFF phase, it releases that energy to keep current flowing to the load through the freewheeling [[quick-context/diode|diode]].
 
 ```
 INDUCTOR IN BUCK CONVERTER:
@@ -41,4 +41,4 @@ INDUCTOR IN BUCK CONVERTER:
   Smaller L = more ripple, faster response
 ```
 
-**Key insight:** The inductor value (10µH) is chosen to balance ripple current against transient response—too large and the converter can't respond to load changes, too small and output voltage becomes noisy.
+**[[micro-context/4-wire-kelvin-measurement|Key insight:]]** The inductor value (10µH) is chosen to balance ripple current against transient response—too large and the converter [[quick-context/embedded-communication-protocols|can]]'t respond to load changes, too small and output voltage becomes noisy.

@@ -5,9 +5,9 @@ created: 2026-06-07
 
 # The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/d-flip-flop]] | [[quick-context/data-bus-and-arbitration]] | [[quick-context/firmware]] | [[quick-context/from-code-to-running-firmware]]
 
-> **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
+> **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as [[quick-context/switches-to-registers-storing-data|switch]] settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is [[quick-context/tlv7211-as-lmc7211-replacement|nothing]] more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
 
 ## The Core Problem
 
@@ -17,7 +17,7 @@ You've built [[learning/notes/quick-context/switches-to-registers-storing-data|r
 
 | Term | Definition |
 |------|------------|
-| **Program Counter (PC)** | A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] that holds the memory address of the next instruction. It's just a register wired to a `+1` incrementer with feedback — each clock tick it advances by one (or loads a jump target). |
+| **[[quick-context/from-code-to-running-firmware|Program Counter]] (PC)** | A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] that holds the memory [[quick-context/how-source-code-is-stored|address]] of the next instruction. It's just a register wired to a `+1` incrementer with feedback — each clock tick it advances by one (or loads a jump target). |
 | **Instruction** | A single number (16 bits on the Hack CPU, 32 on ARM) stored in memory. Its individual bit-fields *are* control signals — they directly drive mux selects, ALU operation bits, and register load-enables. An instruction is a list of switch settings. |
 | **Fetch** | Use the PC as an address to read RAM, pulling the instruction number into the CPU so its bits are available as control wires. |
 | **Decode** | There is no separate "decoder brain" — decode is just *wiring*. The instruction's bits are fed straight to the control inputs of the muxes, ALU, and registers. Routing, not interpreting. |
@@ -174,7 +174,7 @@ literal — but a real CPU that did *only* that, one instruction fully finished
 before starting the next, would waste most of its silicon idling. So designers
 break the loop into overlapping stages (pipelining), guess which way branches go
 (speculation), and cache memory locally — all to keep more of the machine busy.
-None of this changes the *meaning* of the loop; it only changes how many copies
+[[quick-context/mcp6541-as-lmc7211-replacement|None]] of this changes the *meaning* of the loop; it only changes how many copies
 of each stage run at once. The mental model "code is a list of switch settings
 executed in order" stays exactly correct.
 
@@ -275,7 +275,7 @@ happen to play.
 
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Where the PC, instruction register, and data registers come from: 8 D flip-flops capturing at a clock edge. The fetch-execute loop is just "register → logic → register" running forever; this note builds that on a breadboard.
 
-- **[[learning/notes/quick-context/ram-addressing-decoder]]** — How "PC points to an address in RAM" physically works: an address decoder (DMUX in, MUX out) selecting one cell among thousands. Fetch is one read from this structure. *(sibling note — may not exist yet.)*
+- **[[learning/notes/quick-context/ram-addressing-decoder]]** — How "PC points to an address in RAM" physically works: an [[quick-context/ram-addressing-decoder|address decoder]] (DMUX in, MUX out) selecting one cell among thousands. Fetch is one read from this structure. *(sibling note — may not exist yet.)*
 
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream chain: how source code becomes the exact 16-bit numbers traced above, including the Hack C-instruction bit-field layout and how the ALU is built from NAND gates.
 
@@ -285,9 +285,9 @@ happen to play.
 
 - **[[learning/notes/quick-context/firmware]]** — What the program *is* on a real chip: instructions sitting in flash that the CPU fetch-executes straight from non-volatile memory at power-on.
 
-- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — How those instruction numbers get placed at real addresses (linker), written to the chip (flash), and reached (reset vector → first fetch). Picks up where this loop starts.
+- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — How those instruction numbers get placed at real addresses (linker), written to the chip (flash), and reached ([[quick-context/firmware|reset vector]] → first fetch). Picks up where this loop starts.
 
-- **Von Neumann architecture** — Why instructions and data share one memory (so the PC's "address" and an operand's "address" index the same RAM), and what the alternative (Harvard, separate instruction/data memory) buys you.
+- **[[quick-context/code-to-gates-and-bootstrapping|Von Neumann architecture]]** — Why instructions and data share one memory (so the PC's "address" and an operand's "address" index the same RAM), and what the alternative (Harvard, separate instruction/data memory) buys you.
 
 - **Pipelining / caches / microcode** — The same loop, scaled: overlapping stages, fast local copies of memory, and a tiny program inside the decoder. More machinery, identical meaning.
 
@@ -322,7 +322,7 @@ Because "meaning" lives in how the *other* instructions route the register, not 
 It smuggles in a thinking agent. Nothing "reads" or "figures out" anything. The instruction's bits are physically wired to the ALU's control inputs; in the Hack ALU, bit `f` *is* the select line of the output mux that chooses between the AND result and the ADD result. When `f` is 1, the adder's output is passed — not because anything decided to add, but because that's where the wire goes. Decode is routing, not interpreting. See: How It Works (the `sel=` excerpt from alu_chip.py) and Concrete Example (player-piano misconception).
 </details>
 
-**Q5:** If the entire model is "fetch one number, route its bits, advance," how does a modern multi-GHz CPU with pipelines and caches still fit it — and what would break if you took the loop too literally?
+**Q5:** If the entire model is "fetch one number, route its bits, advance," how does a modern multi-GHz CPU with [[quick-context/d-flip-flop|pipelines]] and caches still fit it — and what would break if you took the loop too literally?
 <details>
 <summary>Answer</summary>
 A modern CPU runs the *same* loop but overlaps it: while one instruction executes, the next is being fetched and another decoded (pipelining), with caches keeping hot memory close and microcode cracking complex instructions into simpler internal steps. The meaning is unchanged — it's still "a list of numbers whose bits steer the datapath, in program order." Taking the loop too literally — fully finishing each instruction before starting the next — is correct but wasteful: most of the chip would idle every cycle, which is exactly why the overlapping tricks exist. The abstraction "code = ordered switch settings" never breaks; only the number of stages running at once changes. See: The Key Tension (transparency vs. throughput) and Peripheral Knowledge (Pipelining/caches/microcode).
