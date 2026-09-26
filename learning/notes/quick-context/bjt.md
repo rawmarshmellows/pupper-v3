@@ -3,15 +3,15 @@ topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/bjt-specifications|BJT Specifications]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/transistor]]
 
-> **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
+> **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and [[learning/notes/micro-context/current-mirror|current mirror]]s despite MOSFETs dominating digital electronics.
 
 # BJT (Bipolar Junction Transistor)
 
 ## The Core Problem: Amplifying Signals With Current
 
-MOSFETs are voltage-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a microcontroller pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
+MOSFETs are [[learning/notes/quick-context/voltage|voltage]]-controlled switches that dominate digital electronics (billions per chip). But BJTs—current-controlled amplifiers—still matter. When you need to amplify a weak analog signal (microphone, sensor), drive a relay or motor from a [[learning/notes/micro-context/microcontroller|microcontroller]] pin, or build a precise current reference, BJTs are often simpler and cheaper. A tiny current into the base (microamps) controls a much larger current through the collector (milliamps)—that's amplification. The [[quick-context/transistor-design-history|history of transistors]] started with BJTs in the 1950s, and while MOSFETs took over for digital, BJTs remain essential in analog and discrete power circuits.
 
 ## 5 Essential Terms
 
@@ -221,7 +221,7 @@ MOTOR DRIVER CIRCUIT
 **Q2:** Why does a BJT base always draw current, but a MOSFET gate doesn't?
 <details>
 <summary>Answer</summary>
-**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate capacitance, but no DC current flows through it.
+**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate [[learning/notes/quick-context/capacitance|capacitance]], but no DC current flows through it.
 </details>
 
 **Q3:** What does "saturation" mean for a BJT, and how is it different from MOSFET saturation?

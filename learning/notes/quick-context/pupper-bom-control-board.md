@@ -5,7 +5,7 @@ created: 2026-02-25
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
+> **Related:** [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
 
 > **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
@@ -344,7 +344,7 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH [[learning/notes/micro-context/power-inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 

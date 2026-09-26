@@ -4,7 +4,7 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/robotic-arm-api-levels]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -498,7 +498,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 
@@ -510,7 +510,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar [[learning/notes/micro-context/mosfet|MOSFET]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 

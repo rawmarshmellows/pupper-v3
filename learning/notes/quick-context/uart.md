@@ -24,7 +24,7 @@ A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over i
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
 <details>
-<summary><strong>How It Works</strong> — From voltage on a wire to a byte in a register</summary>
+<summary><strong>How It Works</strong> — From [[learning/notes/quick-context/voltage|voltage]] on a wire to a byte in a register</summary>
 
 ### High-Level: Two Jobs
 
@@ -86,7 +86,7 @@ UART FRAME FORMAT (8N1) — Sending ASCII "A" (0x41 = 01000001)
 
 ### How the Receive Shift Register Actually Works
 
-This is the heart of the UART. The shift register is a chain of 8 D flip-flops connected in series — the output of each flip-flop feeds the input of the next. On every baud clock tick, each flip-flop captures its neighbor's value, and the first flip-flop captures whatever voltage is on the RX pin. Bits "shift" through the chain like items on a conveyor belt.
+This is the heart of the UART. The shift register is a chain of 8 [[learning/notes/quick-context/d-flip-flop|D flip-flop]]s connected in series — the output of each flip-flop feeds the input of the next. On every baud clock tick, each flip-flop captures its neighbor's value, and the first flip-flop captures whatever voltage is on the RX pin. Bits "shift" through the chain like items on a conveyor belt.
 
 ```
 RECEIVE SHIFT REGISTER — 8 D FLIP-FLOPS IN A CHAIN
@@ -272,7 +272,7 @@ UART sits at the "dead simple" end of the [[quick-context/embedded-communication
 
 **UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
 
-The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
+The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from [[learning/notes/micro-context/crystal-oscillator|crystal oscillator]]s. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
 
 </details>
 
@@ -330,7 +330,7 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/embedded-communication-protocols]]** — The full comparison of UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, and I3C. Covers when to choose each protocol and the tradeoffs between them. UART is the simplest entry in this comparison.
 
@@ -342,7 +342,7 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 
 - **[[quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to edge-triggered master-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
 
-- **[[micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
+- **[[micro-context/clock-edges]]** — How flip-flops sample data on [[learning/notes/micro-context/clock-edges|clock edge]]s. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these gate-level primitives.
 
@@ -370,13 +370,13 @@ The **two-stage design**: shift register + data register. Once 8 bits are receiv
 **Q3:** At 115200 baud, how much clock mismatch between sender and receiver can the UART tolerate before bits get misread?
 <details>
 <summary>Answer</summary>
-About **±3-4%**. At 16× oversampling, the receiver samples at the center of each bit (ticks 8-10 out of 16). Over a 10-bit frame, a 3% clock error accumulates to ~0.3 bits of drift by the last bit — still within the ±0.5 bit tolerance window. Beyond ~4-5%, the sampling point drifts past the bit boundary and you get framing errors. This is why both sides typically use crystal oscillators (~50 ppm accuracy = 0.005%) rather than internal RC oscillators (~1-5% accuracy). See: Oversampling in How It Works.
+About **±3-4%**. At 16× oversampling, the receiver samples at the center of each bit (ticks 8-10 out of 16). Over a 10-bit frame, a 3% clock error accumulates to ~0.3 bits of drift by the last bit — still within the ±0.5 bit tolerance window. Beyond ~4-5%, the sampling point drifts past the bit boundary and you get framing errors. This is why both sides typically use crystal oscillators (~50 ppm accuracy = 0.005%) rather than internal [[learning/notes/quick-context/rc-oscillator|RC oscillator]]s (~1-5% accuracy). See: Oversampling in How It Works.
 </details>
 
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[learning/notes/quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
 **Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?

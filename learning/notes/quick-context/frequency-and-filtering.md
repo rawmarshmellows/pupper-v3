@@ -18,7 +18,7 @@ A microphone picks up a voice (300 Hz - 3 kHz) plus a 60 Hz hum from nearby powe
 | Term | Definition |
 |------|------------|
 | **Frequency (f)** | How many times a signal repeats per second, measured in hertz (Hz). Period T = 1/f. Human hearing: 20 Hz - 20 kHz. WiFi: 2.4 GHz. |
-| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% voltage, 50% power). Defines the boundary between "pass" and "stop." |
+| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% [[learning/notes/quick-context/voltage|voltage]], 50% power). Defines the boundary between "pass" and "stop." |
 | **Decibel (dB)** | A logarithmic ratio: dB = 20 × log₁₀(Vout/Vin). -3 dB = half power. -20 dB = 1/10 voltage. -40 dB = 1/100 voltage. |
 | **Low-pass / High-pass** | Low-pass: passes below fc, blocks above. High-pass: passes above fc, blocks below. Band-pass: passes a range. Band-stop/notch: blocks a range. |
 | **Order** | How many reactive elements (C or L) in the filter. Higher order = sharper cutoff slope. 1st order = -20 dB/decade. 2nd order = -40 dB/decade. |
@@ -195,7 +195,7 @@ EMI FILTER
 
 - **[[quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi chips use bandpass filters extensively in their RF front-end to select the 2.4 GHz band and reject out-of-band interference. The frequency table above lists WiFi at 2.4 GHz / 12.5 cm wavelength.
+- **[[quick-context/wifi-chip-arduino-uno-r4]]** — [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|WiFi chip]]s use bandpass filters extensively in their RF front-end to select the 2.4 GHz band and reject out-of-band interference. The frequency table above lists WiFi at 2.4 GHz / 12.5 cm wavelength.
 
 </details>
 

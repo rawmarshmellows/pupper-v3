@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # Firmware — Software That Lives on Hardware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
 
 > **TL;DR:** Firmware is software permanently stored in a device's non-volatile memory (typically flash) that runs immediately at power-on without an operating system, bootloader chain, or filesystem. It's the code that makes hardware *be* what it is — the STM32s on the Pupper control board run firmware that turns raw silicon into a motor controller and sensor hub.
 
@@ -21,7 +21,7 @@ Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 micr
 | **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a microcontroller's flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
 | **ELF file (.elf)** | Executable and Linkable Format — the compiler's output containing machine code, memory layout, and debug symbols; the flash tool extracts the code sections and writes them to the chip |
 | **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
-| **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/UART before jumping to the application code; some STM32 projects skip this and flash the application directly |
+| **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/[[learning/notes/quick-context/uart|UART]] before jumping to the application code; some STM32 projects skip this and flash the application directly |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -189,7 +189,7 @@ The fundamental tension is **control vs. convenience**. Firmware gives you direc
 | **Storage** | 512 KB flash, no filesystem | 32 GB+ SD card, ext4 |
 | **Debugging** | SWD + GDB (hardware breakpoints) | SSH, printf, strace |
 | **Updates** | Requires flash tool + physical access | `apt update && apt upgrade` |
-| **Languages** | C, C++, Rust (no runtime) | Python, C++, anything |
+| **Languages** | C, C++, [[learning/notes/quick-context/rust|Rust]] (no runtime) | Python, C++, anything |
 | **Libraries** | Vendor HAL, hand-rolled drivers | pip, apt, npm |
 | **Crash recovery** | Watchdog timer resets chip | systemd restarts process |
 | **Concurrency** | Interrupts, DMA, maybe RTOS tasks | Threads, processes, async |
@@ -277,7 +277,7 @@ FILE FORMAT COMPARISON:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from source code to logic gates. Firmware lives at layers 4-5 of this chain: compiled to machine code, running directly on the CPU's fetch-execute cycle. The bootstrapping section explains the Reset Vector — the exact mechanism firmware uses to begin executing at power-on.
 
@@ -313,7 +313,7 @@ The ELF file contains not just machine code but also metadata telling the flash 
 **Q3:** The Pupper has two STM32 MCUs (U1 and U5). Do they run the same firmware?
 <details>
 <summary>Answer</summary>
-No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery voltage, communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
+No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery [[learning/notes/quick-context/voltage|voltage]], communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 [[learning/notes/quick-context/can-bus|CAN bus]]es. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
 </details>
 
 **Q4:** If firmware runs from flash memory, why does the STM32 also need SRAM?
