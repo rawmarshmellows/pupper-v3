@@ -5,7 +5,7 @@ created: 2026-04-08
 
 # D Flip-Flop — The Atom of Digital Memory
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/uart]] | [[quick-context/physics-of-writing-data-to-memory]] | [[micro-context/clock-edges]]
+> **Related:** [[learning/notes/quick-context/transistor-analog-to-digital]]
 
 > **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, SRAM — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
 
@@ -369,7 +369,7 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from code to logic gates. Layer 2 shows how registers are built from "MUX + Data Flip-Flop" — the exact pattern in the Nand2Tetris BitRegisterChip.
 
@@ -381,13 +381,13 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 
 - **[[micro-context/clock-edges]]** — The precise definition of rising and falling clock edges, and why edge-triggered sampling is the foundation of synchronous digital design.
 
-- **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, ceramic resonators, internal RC oscillators. The clock tree routes this signal to every flip-flop in the system.
+- **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]]s, internal [[learning/notes/quick-context/rc-oscillator|RC oscillator]]s. The clock tree routes this signal to every flip-flop in the system.
 
 - **[[micro-context/crystal-oscillator]]** — The physical component that generates the precise square wave driving all flip-flops. Crystal accuracy (~50 ppm) matters for UART baud rate generation.
 
 - **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit showing how a physical switch, clock button, and D flip-flop chip (74HC74/74HC574) store data — and how this minimal setup scales to build every register, RAM, and CPU.
 
-- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], comparator, and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
+- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], [[learning/notes/quick-context/comparator|comparator]], and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
 
 </details>
 
