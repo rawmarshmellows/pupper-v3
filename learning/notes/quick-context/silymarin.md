@@ -2,6 +2,7 @@
 topic: Silymarin
 created: 2026-04-06
 ---
+> **Related:** [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/oxidation]]
 
 # Silymarin
 
