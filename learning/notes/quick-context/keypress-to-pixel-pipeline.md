@@ -5,13 +5,13 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/micro-context/full-bridge-rectifier]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 
 ## The Core Problem
 
-A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, firmware — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
+A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, [[learning/notes/quick-context/firmware|firmware]] — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
 
 ## 5 Essential Terms
 
@@ -110,7 +110,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 4. **Encode to a scancode.** The keyboard chip converts "row 3, column 5 just went down" into a **scancode** — a number that names the key. Crucially it is *not* the letter: the key labeled "A" sends the same scancode whether or not Shift is held. Meaning is added much later.
 
-5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or microcontroller, the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
+5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or [[learning/notes/micro-context/microcontroller|microcontroller]], the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
 
 6. **Transport.** The packet rides a [[learning/notes/quick-context/embedded-communication-protocols|serial protocol]] — [[learning/notes/quick-context/usb-peripheral-hardware|USB]] or [[learning/notes/quick-context/uart|UART]] — across a wire to the host's controller, which handles framing, addressing, and error checks.
 
@@ -146,7 +146,7 @@ The central design tension of this whole pipeline is **how late to add meaning**
 | Approach | Where meaning is added | Pro | Con |
 |----------|------------------------|-----|-----|
 | **Dumb keyboard + keymap (standard)** | Host OS | One keyboard fits all layouts/apps; remappable in software | More layers, more latency |
-| **Smart keyboard sends letters** | Keyboard firmware | Fewer host layers | Locked to one layout; cannot remap; per-app behavior impossible |
+| **Smart keyboard sends letters** | Keyboard [[learning/notes/quick-context/firmware|firmware]] | Fewer host layers | Locked to one layout; cannot remap; per-app behavior impossible |
 
 **Interrupts vs. polling.** Once the bit reaches the host it must reach the CPU. Two ways:
 
@@ -209,14 +209,14 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 <summary><strong>Peripheral Knowledge</strong> — The rungs this capstone ties together</summary>
 
 - **[[learning/notes/index/how-a-computer-works-index]]** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
-- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — The bottom anchor: a switch makes a bit, flip-flops store it, registers/RAM are scaled-up versions — i.e. both the key switch (rung 1) and the framebuffer (rung 13).
-- **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The engine that runs the interrupt handler, the keymap lookup, and the application's drawing code (rungs 8-11). *(sibling — may not exist yet)*
-- **[[learning/notes/quick-context/ram-addressing-decoder]]** — How an address selects one cell; the top-bit dmux/mux in the anchor is exactly this, and it is what makes a memory-mapped keyboard/screen possible. *(sibling — may not exist yet)*
-- **[[learning/notes/quick-context/data-bus-and-arbitration]]** — How bytes actually travel between CPU, memory, and peripherals on shared wires. *(sibling — may not exist yet)*
-- **[[learning/notes/quick-context/uart]]** — A bare serial transport; the simplest version of "carry the scancode over a wire" (rung 6).
-- **[[learning/notes/quick-context/usb-peripheral-hardware]]** — How a real PC keyboard's HID packets reach the host (rungs 5-6).
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses (UART/SPI/I2C/USB) that move bytes between chips.
-- **[[learning/notes/quick-context/firmware]]** — The keyboard MCU's code (scan/debounce/encode) and the host's interrupt handler are both firmware.
+- **[[learning/notes/quick-context/switches-to-registers-storing-data|switches-to-registers-storing-data]]** — The bottom anchor: a switch makes a bit, flip-flops store it, registers/RAM are scaled-up versions — i.e. both the key switch (rung 1) and the framebuffer (rung 13).
+- **[[learning/notes/quick-context/cpu-fetch-execute-cycle|cpu-fetch-execute-cycle]]** — The engine that runs the interrupt handler, the keymap lookup, and the application's drawing code (rungs 8-11). *(sibling — may not exist yet)*
+- **[[learning/notes/quick-context/ram-addressing-decoder|ram-addressing-decoder]]** — How an address selects one cell; the top-bit dmux/mux in the anchor is exactly this, and it is what makes a memory-mapped keyboard/screen possible. *(sibling — may not exist yet)*
+- **[[learning/notes/quick-context/data-bus-and-arbitration|data-bus-and-arbitration]]** — How bytes actually travel between CPU, memory, and peripherals on shared wires. *(sibling — may not exist yet)*
+- **[[learning/notes/quick-context/uart|uart]]** — A bare serial transport; the simplest version of "carry the scancode over a wire" (rung 6).
+- **[[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]]** — How a real PC keyboard's HID packets reach the host (rungs 5-6).
+- **[[learning/notes/quick-context/embedded-communication-protocols|embedded-communication-protocols]]** — The general menu of buses ([[learning/notes/quick-context/uart|UART]]/[[learning/notes/micro-context/spi|SPI]]/[[learning/notes/micro-context/i2c|I2C]]/USB) that move bytes between chips.
+- **[[learning/notes/quick-context/firmware|firmware]]** — The keyboard MCU's code (scan/debounce/encode) and the host's interrupt handler are both firmware.
 
 </details>
 
@@ -250,7 +250,7 @@ There are no "letters" in the framebuffer — it stores **pixel values**, one pe
 **Q5:** In the Nand-to-Tetris Hack machine, the keyboard and screen are just memory addresses, yet a real PC has USB controllers, interrupts, and a GPU. What is the single shared mechanism that makes both work, and why is the toy a faithful kernel of the real thing?
 <details>
 <summary>Answer</summary>
-The shared mechanism is **memory-mapped I/O via address decoding**: a peripheral is reachable by reading/writing a fixed address, and a decoder routes that address to the right physical thing. In the repo's `Memory`, the top address bit (`address0`) dmux/mux-routes reads and writes between two RAM blocks — the same decode the full Hack machine uses to pick RAM vs. Screen vs. Keyboard. A real PC adds protocol transport (USB), interrupts (instead of polling), and a GPU for fast scan-out, but the *core idea* — "a device is an address; talking to it is reading/writing memory" — is identical. The toy strips away the transport and leaves the kernel. See: Concrete Example; and [[learning/notes/quick-context/ram-addressing-decoder]].
+The shared mechanism is **memory-mapped I/O via address decoding**: a peripheral is reachable by reading/writing a fixed address, and a decoder routes that address to the right physical thing. In the repo's `Memory`, the top address bit (`address0`) dmux/mux-routes reads and writes between two RAM blocks — the same decode the full Hack machine uses to pick RAM vs. Screen vs. Keyboard. A real PC adds protocol transport (USB), interrupts (instead of polling), and a GPU for fast scan-out, but the *core idea* — "a device is an address; talking to it is reading/writing memory" — is identical. The toy strips away the transport and leaves the kernel. See: Concrete Example; and [[learning/notes/quick-context/ram-addressing-decoder|ram-addressing-decoder]].
 </details>
 
 </details>

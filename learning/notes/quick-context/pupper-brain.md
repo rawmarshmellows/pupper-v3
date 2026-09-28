@@ -3,9 +3,9 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]
 
-> **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
+> **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, [[learning/notes/quick-context/can-bus|CAN bus]] communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
 ## The Core Problem
 
@@ -26,17 +26,17 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
+1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over [[learning/notes/micro-context/i2c|I2C]] directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
 
-2. **State estimation**: The Pi combines IMU data with motor feedback (received over SPI) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
+2. **State estimation**: The Pi combines IMU data with motor feedback (received over [[learning/notes/micro-context/spi|SPI]]) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
 
 3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
+4. **Command transmission**: The Pi sends joint targets to the MCU over [[learning/notes/micro-context/spi|SPI]] (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
 
-5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
+5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential [[learning/notes/quick-context/can-bus|CAN bus]] signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
-6. **Audio feedback**: If enabled, U1 sends audio samples over I2S to the MAX98357A amplifier for sound output (beeps, status indicators).
+6. **Audio feedback**: If enabled, U1 sends audio samples over [[learning/notes/micro-context/i2s|I2S]] to the MAX98357A amplifier for sound output (beeps, status indicators).
 
 ```
 1ms CONTROL LOOP TIMING:
@@ -177,15 +177,15 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 <details>
 <summary>Answer</summary>
 
-These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
+These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing [[learning/notes/quick-context/voltage|voltage]] dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
-**Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
+**Q3:** The [[learning/notes/micro-context/buck-converter|buck converter]] uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
 
 <details>
 <summary>Answer</summary>
 
-They form a voltage divider in the feedback network that sets the output voltage. The TPS54561 regulates to keep its feedback pin at 0.8V (internal reference). With R5 and R6 dividing the output: VOUT = 0.8V × (1 + 60.4k/11.5k) = 0.8V × 6.25 ≈ 5.0V. The odd precision values (not round numbers like 60kΩ) achieve the exact 5.0V target. See: [[micro-context/buck-converter]], [[micro-context/smd-resistor]].
+They form a [[learning/notes/quick-context/voltage|voltage]] divider in the feedback network that sets the output voltage. The TPS54561 regulates to keep its feedback pin at 0.8V (internal reference). With R5 and R6 dividing the output: VOUT = 0.8V × (1 + 60.4k/11.5k) = 0.8V × 6.25 ≈ 5.0V. The odd precision values (not round numbers like 60kΩ) achieve the exact 5.0V target. See: [[micro-context/buck-converter]], [[micro-context/smd-resistor]].
 </details>
 
 **Q4:** Why does the board use 4 CAN transceivers (MAX3051) when CAN is designed to have many devices on one bus?

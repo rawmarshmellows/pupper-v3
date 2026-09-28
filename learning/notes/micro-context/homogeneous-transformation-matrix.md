@@ -3,6 +3,8 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/covariance-matrix]]
+
 
 # Homogeneous Transformation Matrix
 
