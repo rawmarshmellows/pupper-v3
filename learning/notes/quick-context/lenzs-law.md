@@ -11,7 +11,7 @@ created: 2026-02-17
 
 ## The Core Problem: Why the Minus Sign?
 
-Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
+Faraday discovered that changing magnetic flux through a coil induces [[learning/notes/quick-context/voltage|voltage]]. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Faraday discovered that changing magnetic flux through a coil induces voltage. B
 |------|------------|
 | **Lenz's Law** | The direction of induced EMF opposes the change in magnetic flux that produced it. Named after Heinrich Lenz (1834). The minus sign in EMF = -N × dΦ/dt. |
 | **Magnetic Flux (Φ)** | The "amount" of magnetic field passing through a surface: Φ = B × A × cos(θ). Measured in webers (Wb). Changes in flux induce EMF. |
-| **Faraday's Law** | EMF = -N × dΦ/dt. The magnitude of induced voltage equals the rate of flux change times the number of turns. Lenz's Law determines the sign. |
+| **Faraday's Law** | EMF = -N × dΦ/dt. The magnitude of induced [[learning/notes/quick-context/voltage|voltage]] equals the rate of flux change times the number of turns. Lenz's Law determines the sign. |
 | **Back-EMF** | The voltage an [[quick-context/inductor|inductor]] generates to oppose current changes. When you try to increase current, back-EMF pushes against you. When current decreases, back-EMF tries to maintain it. |
 | **Magnetic Braking** | The slowing force on conductors moving through magnetic fields. Induced currents create opposing magnetic fields that resist motion. Used in roller coasters, trains, and gym equipment. |
 
@@ -718,9 +718,9 @@ COMBINED EFFECT:
 
 - **[[quick-context/electromagnetism]]** — Lenz's Law is part of Faraday's Law (the minus sign), which is one of [[quick-context/maxwell-equations|Maxwell's four equations]]. Understanding the full electromagnetic framework shows how electric and magnetic fields create each other.
 
-- **[[quick-context/inductor]]** — Inductors are the primary application of Lenz's Law in circuits. The back-EMF that opposes current changes (V = -L × dI/dt) is a direct consequence of Lenz's Law applied to self-induction.
+- **[[quick-context/inductor]]** — Inductors are the primary application of Lenz's Law in circuits. The back-EMF that opposes current changes (V = -L × dI/dt) is a direct consequence of Lenz's Law applied to [[learning/notes/quick-context/self-induction|self-induction]].
 
-- **[[quick-context/self-induction]]** — Complete walkthrough of the self-induction cycle: current creates flux, changing flux creates back-EMF, and what happens during charging, steady state, and field collapse. Includes voltages across both inductor and load at each phase.
+- **[[quick-context/self-induction]]** — Complete walkthrough of the [[learning/notes/quick-context/self-induction|self-induction]] cycle: current creates flux, changing flux creates back-EMF, and what happens during charging, steady state, and field collapse. Includes voltages across both [[learning/notes/quick-context/inductor|inductor]] and load at each phase.
 
 - **[[quick-context/electricity-generation]]** — Generators convert mechanical energy to electrical energy through Lenz's Law: the induced current creates magnetic braking that requires work to overcome, and that work becomes electrical energy.
 
@@ -728,7 +728,7 @@ COMBINED EFFECT:
 
 - **[[quick-context/power-watts-joules]]** — The energy perspective on Lenz's Law: the work done against magnetic opposition equals the electrical energy generated. Power = work/time connects mechanical and electrical domains.
 
-- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and electromagnetic induction, of which Lenz's Law specifies the direction.
+- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]], of which Lenz's Law specifies the direction.
 
 - **[[small-context/inductor-current-magnetic-field-emf]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
 
@@ -751,7 +751,7 @@ COMBINED EFFECT:
 **The generator would spin freely and produce no useful energy.** Without opposition, there would be no magnetic braking. The coil would spin with no resistance, but also no energy transfer. Current might flow, but it wouldn't come from your mechanical work — it would be "free energy" from nothing, violating conservation of energy. Lenz's Law ensures that the mechanical work you do against magnetic braking equals the electrical energy produced. See: Why Opposition is Inevitable.
 </details>
 
-**Q3:** An inductor carries steady DC current. Is Lenz's Law active?
+**Q3:** An [[learning/notes/quick-context/inductor|inductor]] carries steady DC current. Is Lenz's Law active?
 <details>
 <summary>Answer</summary>
 **No, Lenz's Law requires change.** With steady DC, dI/dt = 0, so there's no changing flux, so no induced EMF. The inductor acts like a simple wire (just its DC resistance). Lenz's Law only activates when current changes — during turn-on, turn-off, or AC operation. At steady state, all the "opposition" has already happened, and the inductor is doing nothing but maintaining its magnetic field.

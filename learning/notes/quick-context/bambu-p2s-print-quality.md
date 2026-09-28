@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -131,7 +131,7 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[learning/notes/quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower [[learning/notes/quick-context/melt-index|melt index]] → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 
@@ -254,16 +254,16 @@ Bambu Studio → your project → Process → Quality:
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[learning/notes/quick-context/3d-printing-slicer-settings]]** — Layer height × nozzle width × speed = volumetric flow rate. Calibrating K and flow ratio on the P2S is meaningless if your slicer settings demand more flow than the [[learning/notes/quick-context/3d-printer-hotends|hotend]] can melt.
-- **[[learning/notes/quick-context/3d-printer-hotends]]** — P2S hardened-steel hotend handles fiber-reinforced filaments and reaches 300°C. Max volumetric throughput is the hard ceiling that no amount of K-value tuning can exceed.
-- **[[learning/notes/quick-context/3d-printing-filament-types]]** — Each material (PLA / PETG / ABS / PA-CF) has a different optimal K-value, flow ratio, dry temp, and cooling target. Calibration is *per material*, not just per printer.
-- **[[learning/notes/quick-context/bambu-ams-automatic-material-system]]** — P2S ships with AMS 2 Pro, which actively vents to dry filament 30% faster than sealed heating. Dry filament is precondition #1 for quality.
-- **[[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]** — Refill spools sometimes have different flow behavior than full spools (slightly different supplier batches). Re-run flow calibration when switching.
-- **[[learning/notes/quick-context/glass-transition-temperature]]** — Tg is the threshold above which polymer chains can interdiffuse between layers. Cooling, chamber temp, and overhang fan speed are all really about controlling time above Tg.
-- **[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]** — Why PLA (amorphous) tolerates aggressive cooling but PA / PP (semi-crystalline) warp and delaminate without an enclosed, slow-cooling environment.
-- **[[learning/notes/quick-context/melt-index]]** — Polymer flow rate at melt — directly drives optimal K-value and flow ratio. High-MFI batches need different settings than low-MFI batches of the "same" filament.
-- **[[learning/notes/quick-context/hydrogen-bonds-beginners]]** — Why nylon is the worst hygroscopic offender: amide groups donate *and* accept hydrogen bonds with water, locking H₂O between chains.
-- **[[learning/notes/quick-context/polymer-chemical-bonds]]** — Intermolecular forces (van der Waals / dipole / H-bond) explain layer adhesion strength and why different filaments melt at different temperatures.
+- **[[learning/notes/quick-context/3d-printing-slicer-settings|3d-printing-slicer-settings]]** — Layer height × nozzle width × speed = volumetric flow rate. Calibrating K and flow ratio on the P2S is meaningless if your slicer settings demand more flow than the [[learning/notes/quick-context/3d-printer-hotends|hotend]] can melt.
+- **[[learning/notes/quick-context/3d-printer-hotends|3d-printer-hotends]]** — P2S hardened-steel hotend handles fiber-reinforced filaments and reaches 300°C. Max volumetric throughput is the hard ceiling that no amount of K-value tuning can exceed.
+- **[[learning/notes/quick-context/3d-printing-filament-types|3d-printing-filament-types]]** — Each material (PLA / PETG / ABS / PA-CF) has a different optimal K-value, flow ratio, dry temp, and cooling target. Calibration is *per material*, not just per printer.
+- **[[learning/notes/quick-context/bambu-ams-automatic-material-system|bambu-ams-automatic-material-system]]** — P2S ships with AMS 2 Pro, which actively vents to dry filament 30% faster than sealed heating. Dry filament is precondition #1 for quality.
+- **[[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|3d-printing-filament-refill-vs-spool]]** — Refill spools sometimes have different flow behavior than full spools (slightly different supplier batches). Re-run flow calibration when switching.
+- **[[learning/notes/quick-context/glass-transition-temperature|glass-transition-temperature]]** — Tg is the threshold above which polymer chains can interdiffuse between layers. Cooling, chamber temp, and overhang fan speed are all really about controlling time above Tg.
+- **[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|polymer-crystallinity-vs-amorphous]]** — Why PLA (amorphous) tolerates aggressive cooling but PA / PP (semi-crystalline) warp and delaminate without an enclosed, slow-cooling environment.
+- **[[learning/notes/quick-context/melt-index|melt-index]]** — Polymer flow rate at melt — directly drives optimal K-value and flow ratio. High-MFI batches need different settings than low-MFI batches of the "same" filament.
+- **[[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen-bonds-beginners]]** — Why nylon is the worst hygroscopic offender: amide groups donate *and* accept hydrogen bonds with water, locking H₂O between chains.
+- **[[learning/notes/quick-context/polymer-chemical-bonds|polymer-chemical-bonds]]** — Intermolecular forces (van der Waals / dipole / H-bond) explain layer adhesion strength and why different filaments melt at different temperatures.
 - **Input Shaping / Vibration Compensation** — P2S runs this at startup; re-run after belt tension changes or if ringing reappears.
 
 </details>

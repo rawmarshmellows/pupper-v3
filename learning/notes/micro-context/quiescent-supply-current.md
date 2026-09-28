@@ -2,12 +2,14 @@
 term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/input-bias-current]]
+
 
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]
 
-**Definition:** The standing current a comparator or op-amp draws from its supply just to stay biased and ready, even when its output isn't switching. For micropower parts it is microamps.
+**Definition:** The standing current a [[learning/notes/quick-context/comparator|comparator]] or op-amp draws from its supply just to stay biased and ready, even when its output isn't switching. For micropower parts it is microamps.
 
 ## How It Works
 
@@ -29,4 +31,4 @@ created: 2026-06-07
    7 uA -> years off a single coin cell.
 ```
 
-**Key insight:** Quiescent current is the price of always-on readiness — it's why a micropower comparator can watch a battery for years off the same cell it monitors, while a fast comparator might drain that cell in days.
+**Key insight:** Quiescent current is the price of always-on readiness — it's why a micropower [[learning/notes/quick-context/comparator|comparator]] can watch a battery for years off the same cell it monitors, while a fast comparator might drain that cell in days.
