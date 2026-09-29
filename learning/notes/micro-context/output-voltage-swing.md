@@ -1,7 +1,8 @@
 ---
-term: Output Voltage Swing (V_OH / V_OL)
+term: Output [[learning/notes/quick-context/voltage|Voltage]] Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]]
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 

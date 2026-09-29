@@ -2,12 +2,11 @@
 topic: Differential Pair
 created: 2026-04-01
 ---
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/thread-pitch-screws]]
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
-
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single [[learning/notes/micro-context/tail-current|tail current]] source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
@@ -177,7 +176,7 @@ COMMON-MODE REJECTION
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
 - **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **[[learning/notes/micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 
@@ -188,7 +187,7 @@ The differential pair's performance depends on three competing goals:
 
 | Want | Problem |
 |------|---------|
-| **Better matching** (lower offset) | Requires larger transistors → slower, more capacitance |
+| **Better matching** (lower offset) | Requires larger transistors → slower, more [[learning/notes/quick-context/capacitance|capacitance]] |
 | **Higher gain** ($g_m$) | Requires more tail current → more power, more heat |
 | **Faster response** | Requires smaller transistors → worse matching, more offset |
 | **Higher CMRR** | Requires a perfect tail current source (infinite output impedance), which doesn't exist |

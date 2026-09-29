@@ -2,10 +2,9 @@
 topic: Helmert Transform
 created: 2026-04-04
 ---
+> **Related:** [[learning/notes/quick-context/similarity-transform]] | [[learning/notes/micro-context/thread-pitch-screws]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]]
 
 # Helmert Transform
-
-> **Related:** [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
 
 > **TL;DR:** The Helmert Transform maps one set of coordinates to another using scale, rotation, and translation -- the minimal transformation that preserves shape while allowing size and position to change. It is the standard method for solving the [[quick-context/absolute-orientation|absolute orientation]] problem in geodesy, photogrammetry, and point cloud registration.
 
@@ -18,7 +17,7 @@ You have two sets of corresponding 3D points -- one in a local survey frame, one
 | Term | Definition |
 |------|------------|
 | **7-parameter transform** | The classic Helmert: 3 translations + 3 rotations + 1 scale factor -- the minimum parameters to define a [[quick-context/similarity-transform|similarity transform]] in 3D |
-| **Cross-covariance matrix** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
+| **Cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]]** | The matrix $H = \sum (\mathbf{x_{in}} - \bar{\mathbf{x}}_{in})(\mathbf{x_{out}} - \bar{\mathbf{x}}_{out})^T$ that encodes the correlation between centered input and output point sets -- the key intermediate that SVD decomposes to extract the rotation |
 | **Rotation matrix** | The orthogonal matrix $R$ (with $\det(R) = 1$) extracted via $R = VU^T$ from the [[quick-context/singular-value-decomposition|SVD]] of $H$ -- it captures the pure rotational component of the alignment |
 | **Scale factor** | The scalar $s$ that accounts for uniform size differences between coordinate frames -- computed from the ratio of output to input point spread |
 | **Procrustes analysis** | The statistical shape analysis framework that generalizes the Helmert Transform -- "Procrustes" finds optimal alignment by minimizing squared distances, and Helmert is its geodetic instantiation |
@@ -257,7 +256,7 @@ print(f"Translation: true={t_true}  estimated={np.round(t_est, 4)}")
 print(f"Rotation matches: {np.allclose(R_true, R_est, atol=0.01)}")
 
 # Apply to a new point
-new_local = np.array([[0.5, 0.5, 0.5]])
+new_local = np.array(0.5, 0.5, 0.5)
 transformed = apply_helmert(new_local, s_est, R_est, t_est)
 print(f"New point transformed: {np.round(transformed, 4)}")
 ```

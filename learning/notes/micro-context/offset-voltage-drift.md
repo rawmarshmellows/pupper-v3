@@ -1,7 +1,8 @@
 ---
-term: Offset Voltage Drift (TCV_OS)
+term: Offset [[learning/notes/quick-context/voltage|Voltage]] Drift (TCV_OS)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/output-voltage-swing]]
 
 # Offset Voltage Drift ($TCV_{OS}$)
 

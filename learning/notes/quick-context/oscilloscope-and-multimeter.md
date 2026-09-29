@@ -2,8 +2,7 @@
 topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
-
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/thread-pitch-screws]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -17,7 +16,7 @@ A circuit doesn't work. Is the power supply providing 3.3V? Is the clock signal 
 
 | Term | Definition |
 |------|------------|
-| **DMM (Digital Multimeter)** | Measures V, I, R, continuity, and sometimes capacitance/frequency. Displays a single number. Every electronics bench has one. |
+| **DMM (Digital Multimeter)** | Measures V, I, R, continuity, and sometimes [[learning/notes/quick-context/capacitance|capacitance]]/frequency. Displays a single number. Every electronics bench has one. |
 | **Oscilloscope** | Displays voltage vs. time on a screen. Shows signal shape, frequency, rise time, noise, glitches. Modern scopes are digital (DSO) with memory and measurement functions. |
 | **Probe** | The cable connecting the instrument to the circuit. Oscilloscope probes have a 10:1 divider (10× probe) that reduces loading on the circuit and extends voltage range. |
 | **Trigger** | The oscilloscope feature that stabilizes the display by starting each sweep at the same point on the waveform. Without triggering, signals appear to drift across the screen. |

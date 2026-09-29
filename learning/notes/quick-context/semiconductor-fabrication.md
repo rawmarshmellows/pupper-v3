@@ -3,8 +3,7 @@ topic: Semiconductor Fabrication - Manufacturing Process and Tools
 created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
-
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/robotic-arm-api-levels]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -498,7 +497,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 

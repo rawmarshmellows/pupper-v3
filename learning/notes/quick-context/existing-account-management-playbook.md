@@ -1,3 +1,5 @@
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/thread-pitch-screws]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.

@@ -2,10 +2,9 @@
 topic: Post-Sale Account Engagement
 created: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/playbook-main]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
 # Post-Sale Account Engagement
-
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
 
 > **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
 
