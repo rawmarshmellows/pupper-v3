@@ -2,10 +2,9 @@
 topic: "Singular Value Decomposition (SVD)"
 created: 2026-04-04
 ---
+> **Related:** [[learning/notes/micro-context/thread-pitch-screws]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 # Singular Value Decomposition (SVD)
-
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/covariance-matrix|Covariance Matrix]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/similarity-transform|Similarity Transform]]
 
 > **TL;DR:** SVD factorizes any $m \times n$ matrix into $U\Sigma V^T$ -- three matrices revealing the geometry of the linear map as a rotation, a scaling along orthogonal axes, and another rotation. It's the Swiss Army knife of linear algebra.
 
@@ -255,7 +254,7 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the absolute orientation problem
+- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the [[learning/notes/quick-context/absolute-orientation|absolute orientation problem]]
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
 - **Principal Component Analysis (PCA)** -- PCA is SVD applied to the centered data matrix; the principal components are the right singular vectors, and the explained variance comes from the squared singular values
 - **Polar decomposition** -- Every matrix factors as $A = QS$ (orthogonal times symmetric positive semi-definite); SVD gives you this directly since $Q = UV^T$ and $S = V\Sigma V^T$

@@ -2,10 +2,9 @@
 topic: Schematic Reading
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/crystal-oscillator]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
-
-> **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like voltage dividers, decoupling networks, and pull-ups.
+> **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like [[learning/notes/quick-context/voltage|voltage]] dividers, decoupling networks, and pull-ups.
 
 # Schematic Reading
 
@@ -214,7 +213,7 @@ SIMPLE LED BLINK CIRCUIT
 **Q3:** Why is there always a small capacitor (100nF) next to every IC's power pins on a schematic?
 <details>
 <summary>Answer</summary>
-**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The decoupling capacitor, placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
+**Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]], placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.
 </details>
 
 **Q4:** What's the difference between a junction dot (●) and a crossing without a dot?

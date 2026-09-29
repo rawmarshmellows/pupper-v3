@@ -2,10 +2,9 @@
 topic: Comparator
 created: 2026-04-01
 ---
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/current-mirror]]
 
 # Comparator
-
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
@@ -17,10 +16,10 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an op-amp, but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A pull-up resistor provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
@@ -439,7 +438,7 @@ CURRENT CONSUMPTION:
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/comparator-specification]]** --- How to read a real comparator datasheet (the TI LMC7211-N): what each spec section (Absolute Maximum Ratings, Operating Ratings, DC/AC Electrical Characteristics, Typical Characteristics) actually means, and which numbers are guaranteed versus typical.
 
@@ -457,7 +456,7 @@ CURRENT CONSUMPTION:
 
 - **[[micro-context/adc-analog-to-digital-converter]]** --- ADCs are built from comparators. A successive-approximation ADC uses one comparator with a DAC; a flash ADC uses many comparators in parallel.
 
-- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down resistors define the "rest" voltage that comparator sees when nothing else is driving the pin.
+- **pull-up-pull-down-resistors** --- Every MCU GPIO input is a comparator (typically a Schmitt trigger) deciding HIGH vs LOW. Pull-up/pull-down resistors define the "rest" voltage that comparator sees when nothing else is driving the pin.
 
 - **[[learning/notes/quick-context/bare-minimal-data-storage-circuit]]** --- Where the comparator earns its place as a 1-bit ADC inside a minimal data-storage circuit: it converts the analog input voltage into the clean `in_bit` signal that a [[learning/notes/quick-context/d-flip-flop|register]] can capture on each [[learning/notes/micro-context/clock-edges|clock edge]].
 

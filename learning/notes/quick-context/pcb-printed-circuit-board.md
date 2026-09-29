@@ -2,8 +2,7 @@
 topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
-
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/short-circuit]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/raspberry-pi-5-components]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]]
 
 > **TL;DR:** PCBs replace the nightmare of hand-soldered wire connections with thin copper pathways printed onto a rigid fiberglass board, providing the physical foundation for reliable, manufacturable, and repairable electronics in every smartphone, computer, and electronic device.
 
@@ -73,7 +72,7 @@ ANATOMY OF A PCB (Side View Cross-Section)
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A PCB is essentially a **sandwich of insulating fiberglass with patterned copper layers**. The copper starts as a solid sheet bonded to the fiberglass. Manufacturers use a process similar to photography: they coat the copper with light-sensitive material, shine UV light through a mask of the desired pattern, then chemically dissolve the unwanted copper—leaving only the traces, pads, and planes you designed. This is called "etching." For multi-layer boards, these copper-fiberglass sheets are stacked and laminated together with heat and pressure, then drilled to create vias (the connections between layers). Finally, everything gets coated with soldermask except the pads, and the exposed pads get a thin coating of solder or gold to prevent oxidation and improve solderability.
+A PCB is essentially a **sandwich of insulating fiberglass with patterned copper layers**. The copper starts as a solid sheet bonded to the fiberglass. Manufacturers use a process similar to photography: they coat the copper with light-sensitive material, shine UV light through a mask of the desired pattern, then chemically dissolve the unwanted copper—leaving only the traces, pads, and planes you designed. This is called "etching." For multi-layer boards, these copper-fiberglass sheets are stacked and laminated together with heat and pressure, then drilled to create vias (the connections between layers). Finally, everything gets coated with soldermask except the pads, and the exposed pads get a thin coating of solder or gold to prevent [[learning/notes/micro-context/oxidation|oxidation]] and improve solderability.
 
 The magic of PCBs is that each copper layer can have its own independent pattern. Typically, you dedicate certain layers entirely to power and ground (called "planes")—these act as reservoirs of electricity that components can tap into anywhere they need. Signal traces run on other layers, weaving around each other. When a trace needs to cross another trace, it simply drops down to a different layer via a via, crosses underneath, and pops back up. This is how thousands of connections can coexist without touching each other.
 
@@ -250,7 +249,7 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|The Packaging Hierarchy]]** — PCBs are one level in the hierarchy from transistors to complete systems. Understanding how chips, substrates, and PCBs connect gives context for why PCBs exist at the 100-400mm scale.
 

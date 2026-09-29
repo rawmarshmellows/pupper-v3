@@ -3,8 +3,7 @@ topic: Polymer Chemical Bonds in 3D Printing Filaments
 created: 2026-01-20
 updated: 2026-01-21
 ---
-
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/melt-index]]
 
 > **TL;DR:** Polymer behavior (melt temperature, flexibility, layer adhesion) is governed by intermolecular forces between chains - van der Waals (weak), dipole-dipole (moderate), and hydrogen bonds (strong). Understanding these forces explains why PLA melts at 180C but ABS needs 240C, and why TPU flexes while PLA snaps.
 
@@ -183,7 +182,7 @@ Concepts that deepen understanding of polymer chemical bonds:
 - **[[quick-context/van-der-waals-forces]]** — The weak universal forces that dominate in non-polar polymers like PE/PP; understanding these explains why polyethylene is so slippery and low-melting.
 - **[[quick-context/pi-pi-stacking-aromatic-interactions]]** — The aromatic ring interactions that give ABS and PETG their elevated Tg and heat resistance.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — How chain packing affects shrinkage, transparency, and thermal behavior; explains why PETG's glycol modification matters.
-- **[[small-context/glass-vs-plastic-uv-degradation]]** — What happens when UV breaks the same C–C backbone bonds that hold polymer chains together: free-radical chain reaction with O₂ causes yellowing, embrittlement, and fragmentation.
+- **glass-vs-plastic-uv-degradation** — What happens when UV breaks the same C–C backbone bonds that hold polymer chains together: free-radical chain reaction with O₂ causes yellowing, embrittlement, and fragmentation.
 - **[[quick-context/bambu-p2s-print-quality]]** — Layer adhesion in 3D printing is exactly chain interdiffusion across layer boundaries via these same intermolecular forces; viscoelastic melt behavior driven by chain entanglement is why pressure advance (K-value) calibration is needed per filament.
 
 </details>

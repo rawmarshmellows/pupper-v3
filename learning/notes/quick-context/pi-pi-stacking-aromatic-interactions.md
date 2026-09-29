@@ -3,8 +3,7 @@ topic: Pi-Pi Stacking (Aromatic Ring Interactions)
 created: 2026-01-20
 updated: 2026-01-21
 ---
-
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]]
 
 > **TL;DR:** Pi-pi stacking is a molecular "velcro" effect where flat aromatic rings (like benzene in ABS plastic) attract each other through their electron clouds, requiring higher print temperatures to overcome and causing warping when these attractions re-form during cooling.
 
@@ -254,7 +253,7 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 ## Peripheral Knowledge
 
 - **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of van der Waals interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
-- **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: covalent bonds along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
+- **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: [[learning/notes/quick-context/covalent-bonds|covalent bonds]] along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
 - **[[quick-context/covalent-bonds]]** — The "real" bonds that hold atoms together within molecules; pi-pi stacking is fundamentally different—it's an attraction *between* molecules, not within them.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
 
