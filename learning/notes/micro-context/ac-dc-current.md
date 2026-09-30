@@ -4,6 +4,9 @@ created: 2026-02-07
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/power-watts-joules]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/coulomb-history]]
+
+
 # AC vs DC Current
 
 **Definition:** DC (direct current) flows in one direction constantly—[[quick-context/galvanic-cells-batteries|batteries]] produce DC. AC (alternating current) reverses direction periodically, typically 50-60 times per second—wall outlets provide AC. Most electronics need DC internally but the grid uses AC because it's easily transformed to different voltages.

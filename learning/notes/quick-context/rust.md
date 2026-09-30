@@ -3,7 +3,7 @@ topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]]
 
 > **TL;DR:** Rust is an electrochemical process where iron spontaneously oxidizes back to its ore state (Fe₂O₃) when exposed to oxygen and water, costing over $2.5 trillion annually in infrastructure damage.
 
@@ -243,7 +243,7 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in electrolysis (Q3) demonstrates how iron at an anode actively dissolves.
+- **[[quick-context/electrodes]]** — Rust formation creates microscopic anode-cathode pairs on the iron surface. The iron nail in [[learning/notes/quick-context/electrolysis|electrolysis]] (Q3) demonstrates how iron at an anode actively dissolves.
 
 - **[[quick-context/anions-and-oxidation]]** — At anodic regions, iron loses electrons (oxidation: Fe → Fe²⁺ + 2e⁻). Understanding oxidation as electron loss clarifies why the iron dissolves rather than staying solid.
 

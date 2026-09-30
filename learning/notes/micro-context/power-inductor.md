@@ -4,11 +4,14 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/full-bridge-rectifier]]
+
+
 # Power Inductor
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]
 
-**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your buck converter, the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
+**Definition:** A coil that stores energy in a magnetic field and resists changes in current. In switching power supplies like your [[learning/notes/micro-context/buck-converter|buck converter]], the 10µH inductor smooths the chopped switching waveform into steady DC current. It acts as a "flywheel" that keeps current flowing during the switch-off phase.
 
 ## How It Works
 

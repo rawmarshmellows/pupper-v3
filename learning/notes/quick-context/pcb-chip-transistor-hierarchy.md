@@ -4,7 +4,7 @@ created: 2026-01-23
 ---
 
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/doped-silicon]]
 
 > **TL;DR:** The packaging hierarchy bridges nine orders of magnitude (from 5nm transistors to millimeter-scale connectors) through progressive "fan-out" of connections, with each level (die, substrate, package, PCB) handling different concerns like computation, signal redistribution, and power delivery.
 
@@ -20,8 +20,8 @@ Transistors are ~5 nanometers; your USB port is ~5 millimeters. That's a factor 
 |------|------------|
 | **[[quick-context/silicon-die|Die]]** | The actual silicon chip cut from a wafer; contains all transistors and [[quick-context/metal-interconnect-layers|metal interconnect layers]] |
 | **[[quick-context/substrate-ic-packaging|Substrate]]** | The intermediate layer (often organic or ceramic) that redistributes the die's fine-pitch connections to the package's coarser pins/balls |
-| **[[quick-context/wire-bonding|Wire bond]]** | Thin gold or copper wire (~25 μm) ultrasonically welded from die bond pad to substrate; cheap but limits density and adds inductance |
-| **[[quick-context/flip-chip|Flip-chip (C4)]]** | Die mounted face-down with solder bumps directly connecting to substrate; higher performance and I/O density than wire bonding |
+| **[[quick-context/wire-bonding|Wire bond]]** | Thin gold or copper wire (~25 μm) ultrasonically welded from die [[learning/notes/quick-context/bond-pad|bond pad]] to substrate; cheap but limits density and adds inductance |
+| **[[quick-context/flip-chip|Flip-chip (C4)]]** | Die mounted face-down with solder bumps directly connecting to substrate; higher performance and I/O density than [[learning/notes/quick-context/wire-bonding|wire bonding]] |
 | **[[quick-context/bga-ball-grid-array|BGA (Ball Grid Array)]]** | Package type where solder balls on the bottom connect to PCB; enables high pin counts in small area |
 
 <details>
@@ -207,7 +207,7 @@ TRACING A MEMORY READ: CPU → DRAM
    Note: DRAM latency dominates! Packaging/PCB is <5% of total.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking "the chip" is what you see and solder onto a board. What you see is the *package*—a protective housing with the actual silicon die hidden inside, often smaller than your pinky nail. A CPU package might be 45mm × 45mm, but the die inside could be 200mm² (~14mm × 14mm). The package exists because you can't directly handle or solder to a bare die—it's too fragile, its connections are too small, and it would be destroyed by moisture and mechanical stress. The die is the brain; the package is the skull.
+**The one thing most outsiders get wrong about this is...** thinking "the chip" is what you see and solder onto a board. What you see is the *package*—a protective housing with the actual [[learning/notes/quick-context/silicon-die|silicon die]] hidden inside, often smaller than your pinky nail. A CPU package might be 45mm × 45mm, but the die inside could be 200mm² (~14mm × 14mm). The package exists because you can't directly handle or solder to a bare die—it's too fragile, its connections are too small, and it would be destroyed by moisture and mechanical stress. The die is the brain; the package is the skull.
 
 </details>
 
@@ -224,7 +224,7 @@ TRACING A MEMORY READ: CPU → DRAM
 
 - **Thermal Management** — Heat generated in the die must escape through the package and into heatsinks; packaging choices directly affect thermal resistance.
 
-- **SMT (Surface Mount Technology)** — The automated process of placing and soldering packaged components onto PCBs; constrains what package types are practical.
+- **SMT (Surface Mount Technology)** — The automated process of placing and [[learning/notes/quick-context/soldering|soldering]] packaged components onto PCBs; constrains what package types are practical.
 
 </details>
 

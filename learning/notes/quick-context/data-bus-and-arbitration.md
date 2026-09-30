@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/i2s]]
 
 > **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
@@ -135,7 +135,7 @@ The **master** (here, the CPU) always owns the address and control buses. The **
 <details>
 <summary><strong>The Key Tension</strong> — Parallel bus vs. serial protocol</summary>
 
-The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], SPI, [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
+The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
 
 | | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, UART, CAN, USB) |
 |---|---|---|
@@ -148,7 +148,7 @@ The parallel system bus described above (8/16/32/64 data wires switching togethe
 
 The historical arc is *parallel → serial*: old PCs had parallel printer ports, PATA disk ribbons, and a parallel PCI bus. Those were replaced by USB, SATA, and PCIe — all **serial**. Why? At high speed, keeping dozens of parallel wires perfectly aligned (no skew) gets harder than just clocking one or two wires very fast. So modern "buses" between boxes are serial, while **parallel buses survive where distance is tiny and width is free** — inside a CPU, and on the short CPU-to-RAM path.
 
-The deep idea, though, is shared by *both* worlds: a shared medium plus a rule for who-talks-when. I2C's open-drain SDA line with 7-bit addressing is conceptually the same as a parallel data bus with chip-select — it's just one wire and an addressing scheme instead of many wires and a decoder.
+The deep idea, though, is shared by *both* worlds: a shared medium plus a rule for who-talks-when. I2C's [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] SDA line with 7-bit addressing is conceptually the same as a parallel data bus with chip-select — it's just one wire and an addressing scheme instead of many wires and a decoder.
 
 </details>
 
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one [[learning/notes/quick-context/differential-pair|differential pair]] very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>

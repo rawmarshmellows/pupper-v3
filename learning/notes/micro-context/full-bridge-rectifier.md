@@ -4,6 +4,9 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/power-inductor]]
+
+
 # Full-Wave Bridge Rectifier
 
 > **See also:** [[quick-context/diode]] | [[micro-context/diode-rectification]]

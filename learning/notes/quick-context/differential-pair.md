@@ -5,9 +5,9 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/micro-context/bjt-mosfet-igbt]]
 
-> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
+> **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single [[learning/notes/micro-context/tail-current|tail current]] source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 
 ## The Core Problem: Sensing a Tiny Voltage Difference in a Noisy World
 
@@ -176,8 +176,8 @@ COMMON-MODE REJECTION
 ```
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
-- **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **[[learning/notes/quick-context/bjt|BJT]] pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
+- **[[learning/notes/micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 

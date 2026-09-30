@@ -3,6 +3,9 @@ term: Current Mirror
 created: 2026-04-02
 ---
 
+> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/bjt-specifications]]
+
+
 # Current Mirror
 
 **Definition:** A circuit that copies a reference current from one transistor to another, producing a constant output current regardless of load conditions. It is the standard way to build on-chip current sources, including the [[micro-context/tail-current|tail current]] in differential pairs.

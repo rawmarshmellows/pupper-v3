@@ -5,9 +5,9 @@ created: 2026-02-25
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
+> **Related:** [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]] | [[learning/notes/quick-context/pupper-lab4-gait-control]]
 
-> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
+> **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual [[learning/notes/micro-context/stm32-microcontroller|STM32]] microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
@@ -92,7 +92,7 @@ Two are used with distinct roles:
 Each MCU requires:
 - One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its clock source
 - Multiple decoupling capacitors on its power pins (100nF + 1μF + 4.7μF)
-- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as CAN bus termination
+- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as [[learning/notes/quick-context/can-bus|CAN bus]] termination
 
 ### Category 2: Communication — CAN Transceivers (U3, U4, U6, U7)
 
