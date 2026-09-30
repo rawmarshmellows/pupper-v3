@@ -3,13 +3,13 @@ topic: Electric Current
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** Electric current is the flow of electric charge (electrons moving through a conductor) that carries energy from source to destination, and in electrochemistry, current directly determines reaction rate through Faraday's law (Q = I x t)—double the current means double the product.
 
 ## The Core Problem
 
-Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no electrolysis, no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
+Imagine you have energy in one place (a battery, a power plant) and you need to do work somewhere else (power a motor, split water molecules, light a bulb). Electric current is the **flow of electric charge**—specifically, electrons moving through a conductor—that carries energy from source to destination. Without current, there's no way to transmit electrical energy. No current means: no lights, no motors, no [[learning/notes/quick-context/electrolysis|electrolysis]], no electronics. In [[quick-context/electrolysis|electrolysis]], current is especially critical because it determines **how fast** chemical reactions happen at the [[quick-context/electrodes|electrodes]]. The equation Q = I x t (charge = current x time) from Faraday's laws means that doubling your current doubles your reaction rate—you produce twice as much hydrogen, aluminum, or chlorine in the same time. Current is the "speed dial" for electrochemistry.
 
 ## 5 Essential Terms
 

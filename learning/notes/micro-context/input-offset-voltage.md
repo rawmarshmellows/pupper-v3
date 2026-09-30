@@ -3,6 +3,9 @@ term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]]
+
+
 # Input Offset Voltage ($V_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
@@ -11,7 +14,7 @@ created: 2026-06-07
 
 ## How It Works
 
-- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the tail current evenly at exactly $V(+) = V(-)$.
+- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the [[learning/notes/micro-context/tail-current|tail current]] evenly at exactly $V(+) = V(-)$.
 - The few millivolts of input difference needed to re-balance them *is* the offset voltage.
 - It's a fixed DC error per part, not noise — so it stacks directly onto any reference-divider tolerance to set total threshold accuracy.
 - Datasheets list a *Typ* (statistical center at 25°C) and guaranteed *Limit* columns; the **boldface** limit holds over the full temperature range.

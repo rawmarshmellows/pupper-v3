@@ -3,7 +3,7 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
 
@@ -104,7 +104,7 @@ The other tension: **surface area vs. practicality**. More surface area = more r
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Water Electrolysis with Platinum Electrodes
+Water [[learning/notes/quick-context/electrolysis|Electrolysis]] with Platinum Electrodes
 
 Let's walk through exactly what happens when you split water into hydrogen and oxygen gases:
 

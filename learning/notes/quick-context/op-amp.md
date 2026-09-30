@@ -3,7 +3,7 @@ topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/inside-the-triangle|Inside the Triangle]] | [[micro-context/tail-current|Tail Current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/micro-context/bjt-mosfet-igbt]]
 
 > **TL;DR:** An op-amp is a high-gain differential amplifier IC that, with [[quick-context/resistor|resistor]] feedback networks, becomes a precision building block for amplification, filtering, and signal conditioning—it's the universal analog component, as fundamental to analog circuits as the [[quick-context/transistor|transistor]] is to digital ones.
 
@@ -545,7 +545,7 @@ Rail-to-rail output             Often 1-2V from rails
 
 | Op-Amp | GBW (MHz) | Input Type | Cost | Best For |
 |--------|----------|------------|------|----------|
-| **LM741** | 1 | BJT | $0.30 | Learning, non-critical |
+| **LM741** | 1 | [[learning/notes/quick-context/bjt|BJT]] | $0.30 | Learning, non-critical |
 | **LM358** | 1 | BJT | $0.20 | Single-supply, cheap |
 | **TL072** | 3 | JFET | $0.50 | Audio, low noise |
 | **MCP6002** | 1 | CMOS | $0.40 | Low power, rail-to-rail |
@@ -613,7 +613,7 @@ SIGNAL CONDITIONING CHAIN
 
 - **[[quick-context/electric-current]]** — The golden rule "no current into the inputs" means all current through the input resistor must flow through the feedback resistor—this is how you derive gain formulas using Kirchhoff's current law.
 
-- **[[quick-context/pwm-controller-circuit]]** — Inside every buck converter IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
+- **[[quick-context/pwm-controller-circuit]]** — Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
 
 - **[[quick-context/comparator]]** — A comparator shares the same differential-pair input stage as an op-amp but is optimized for speed and digital output. Removing the op-amp's negative feedback and compensation capacitor gives you a comparator—intentionally.
 

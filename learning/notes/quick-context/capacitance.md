@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # Capacitance
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/capacitor]]
 
 > **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
@@ -403,7 +403,7 @@ Same $I = C \cdot dV/dt$ as always — but *C* is now an *effective* C that depe
 
 Every device connected to a shared signal line adds its input capacitance in parallel. This is the direct consequence of the parallel rule above: $C_{\text{total}} = C_1 + C_2 + C_3 + \ldots$. Add enough devices and the total bus capacitance becomes so large that the signal can't transition fast enough to be read correctly.
 
-The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
+The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
 
 ```
 WHY DAISY CHAINS HIT A WALL
@@ -647,7 +647,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).

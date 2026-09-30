@@ -5,7 +5,7 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/similarity-transform]]
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
@@ -298,7 +298,7 @@ COMBINED LOADING (real-world):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The most important tensor in [[learning/notes/quick-context/electromagnetism|electromagnetism]]: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
 - **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 

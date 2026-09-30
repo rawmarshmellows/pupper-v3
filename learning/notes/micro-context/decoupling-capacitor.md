@@ -4,6 +4,9 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/capacitor]]
+
+
 # Decoupling Capacitor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]

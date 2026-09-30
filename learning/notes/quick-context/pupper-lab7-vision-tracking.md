@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 
@@ -24,7 +24,7 @@ Crucially, Lab 7 does not replace the LLM from Lab 6 — it augments it. The LLM
 | **State Machine** | A controller with discrete modes (IDLE, SEARCH, TRACK) and well-defined transitions between them — the decision-making core of Lab 7's tracking behavior |
 | **YOLO (You Only Look Once)** | A single-shot object detection architecture that predicts bounding boxes and class labels in one forward pass; Lab 7 uses YOLOv5 trained on the 80-class COCO dataset |
 | **[[quick-context/raspberry-pi-ai-hat|Hailo Accelerator]]** | An edge AI inference chip (~26 TOPS) mounted on the Pupper via the [[quick-context/raspberry-pi-ai-hat|AI HAT+]] that runs the YOLOv5 network at low power, enabling on-robot detection without cloud connectivity |
-| **Detection2DArray** | A ROS2 message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
+| **Detection2DArray** | A [[learning/notes/quick-context/ros2-architecture|ROS2]] message type from `vision_msgs` containing a list of 2D bounding boxes, each with a class ID and confidence score — the output of the Hailo detection node |
 | **Proportional Tracking Controller** | A P-controller that converts the horizontal pixel offset of a detected object into a yaw rate command: $\omega = -K_p \cdot x_{\text{normalized}}$, steering the robot to center the target in frame |
 
 <details>

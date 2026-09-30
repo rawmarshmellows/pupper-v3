@@ -5,7 +5,7 @@ created: 2026-06-06
 
 # Comparator Specifications (Reading the LMC7211-N Datasheet)
 
-> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/resistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/micro-context/bjt-mosfet-igbt]]
 >
 > **Source datasheet:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) — the worked example throughout this note. Section numbers (§4.1–4.6, §5) reference this file.
 
@@ -75,11 +75,11 @@ SPEC  →  WHICH STAGE OF THE COMPARATOR IT GRADES
 | Spec | Grades which stage (see [[quick-context/comparator]]) |
 |---|---|
 | $V_{OS}$, $TCV_{OS}$ | The [[quick-context/differential-pair|differential pair]] (Q1/Q2) --- offset *is* its built-in mismatch |
-| $I_B$ | The MOSFET input gates --- insulated, so ~zero current flows in |
-| $CMRR$ | The tail current source (Q5) --- how well it holds total current fixed and ignores common-mode |
+| $I_B$ | The [[learning/notes/micro-context/mosfet|MOSFET]] input gates --- insulated, so ~zero current flows in |
+| $CMRR$ | The [[learning/notes/micro-context/tail-current|tail current]] source (Q5) --- how well it holds total current fixed and ignores common-mode |
 | $A_V$ | The [[quick-context/high-gain-amplifier-stage|high-gain node]] + mirror load --- the gain that slams the output to a rail |
 | $CMVR$ | The input pair's usable voltage window (the rail-to-rail-and-beyond design) |
-| $V_{OH}$, $V_{OL}$, $I_{SC}$ | The output stage (Q6 push-pull) --- how hard and how close to the rails it drives |
+| $V_{OH}$, $V_{OL}$, $I_{SC}$ | The output stage (Q6 [[learning/notes/micro-context/push-pull-vs-open-drain|push-pull]]) --- how hard and how close to the rails it drives |
 | $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no compensation capacitor** --- the structural reason a comparator is fast |
 | $I_S$ | The standing bias current (tail + mirror) the chip burns just to stay alive |
 
@@ -96,7 +96,7 @@ These are **stress limits, not operating specs**. Exceed any one of them---even 
 | Current at Power Supply pin | **40 mA** | Hard ceiling on what the supply pin can pass. |
 | ESD Tolerance (HBM) | **2 kV** | Survives a 2 kV human-body-model static zap (1.5 kΩ + 100 pF). |
 | Storage Temperature | **−65 to +150°C** | Survival range with no power applied. |
-| Junction Temperature | **150°C** | The silicon die itself must never get this hot. |
+| Junction Temperature | **150°C** | The [[learning/notes/quick-context/silicon-die|silicon die]] itself must never get this hot. |
 
 **Key idea:** a part is *not* designed to *operate* at these numbers---they only bound what won't break it. Notice the supply absolute max (16 V) sits just above the operating max (15 V): a deliberate 1 V margin.
 

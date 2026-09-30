@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -153,7 +153,7 @@ Consider a CNC machine controller running on Linux:
 - Timer callback runs within 50us of schedule
 - Tool path remains smooth, part comes out correctly
 
-This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like ROS2's real-time capabilities and CODESYS-on-Linux depend on it.
+This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like [[learning/notes/quick-context/ros2-architecture|ROS2]]'s real-time capabilities and CODESYS-on-Linux depend on it.
 
 **The one thing most outsiders get wrong about this is...** assuming PREEMPT_RT turns Linux into a PLC. It doesn't. It gives you *bounded* latency, not *zero* latency—and those bounds (50-100us typical, potentially worse with bad drivers or hardware) aren't certified or guaranteed. A SIL-rated safety function still needs a proper safety PLC. What PREEMPT_RT actually enables is running the "soft" parts of automation—trajectory interpolation, sensor fusion, high-level coordination—in userspace Linux at 1kHz without random multi-millisecond stalls.
 

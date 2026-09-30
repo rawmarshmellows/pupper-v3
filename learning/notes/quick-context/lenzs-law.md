@@ -5,7 +5,7 @@ created: 2026-02-17
 
 # Lenz's Law
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/micro-context/piezoelectric-effect]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/electricity-generation]]
 
 > **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from nothing.
 
@@ -728,7 +728,7 @@ COMBINED EFFECT:
 
 - **[[quick-context/power-watts-joules]]** — The energy perspective on Lenz's Law: the work done against magnetic opposition equals the electrical energy generated. Power = work/time connects mechanical and electrical domains.
 
-- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and electromagnetic induction, of which Lenz's Law specifies the direction.
+- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]], of which Lenz's Law specifies the direction.
 
 - **[[small-context/inductor-current-magnetic-field-emf]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
 

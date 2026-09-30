@@ -4,6 +4,9 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/i2s]]
+
+
 # Push-Pull vs Open-Collector / Open-Drain
 
 ## Human notes
@@ -46,7 +49,7 @@ Read one column top-to-bottom: the shared FAULT line → that comparator's **OUT
 
 Examples:
 - **Fault/alarm bus** (the diagram above) — several open-drain comparators, each watching a different rail; any one tripping pulls FAULT LOW, so the MCU watches a single pin for "something's wrong."
-- **I2C ACK bit** — the sender releases [[learning/notes/micro-context/i2c|SDA]]; the receiver yanks it LOW for one clock = "got your byte." One device, one pull, whole line LOW.
+- **[[learning/notes/micro-context/i2c|I2C]] ACK bit** — the sender releases [[learning/notes/micro-context/i2c|SDA]]; the receiver yanks it LOW for one clock = "got your byte." One device, one pull, whole line LOW.
 - **Buttons on a pulled-up pin** — wire several buttons-to-GND on one line; pressing *any* one makes the line LOW, so the MCU reads "a button is down" on a single pin.
 
 ### "Wired-AND" — the logic that fact implements
@@ -90,7 +93,7 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
 
 > **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** ([[learning/notes/quick-context/bjt|BJT]]) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 
 ## How It Works
 

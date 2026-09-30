@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/electrodes]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Electrolysis uses electricity to force non-spontaneous chemical reactions (like splitting water into hydrogen and oxygen), essentially running a battery in reverse by supplying energy to break stable bonds rather than harvesting energy from spontaneous reactions.
 
@@ -14,7 +14,7 @@ updated: 2026-01-22
 
 Many important chemical changes won't happen on their own because they require climbing to a higher energy state. Electrolysis uses electricity to push these non-spontaneous reactions forward, supplying energy directly to move electrons against their natural flow—pushing reactions "uphill" to make otherwise impossible chemistry occur.
 
-The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, electrolyte, electron flow), opposite energy direction.
+The fundamental insight: **electrolysis is the reverse of a [[quick-context/galvanic-cells-batteries|battery]]**. In a [[quick-context/galvanic-cells-batteries|galvanic cell]], spontaneous chemical reactions push electrons through a circuit, generating electricity. In electrolysis, you push electricity through chemicals to force non-spontaneous reactions. Same components (electrodes, [[learning/notes/quick-context/electrolyte|electrolyte]], electron flow), opposite energy direction.
 
 This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chemical bond energies]]: breaking bonds costs energy, forming bonds releases it. Water's O-H bonds are stable (~460 kJ/mol each)—nature doesn't want to break them. Electrolysis supplies that bond-breaking energy electrically, storing it in the separated H₂ and O₂ gases. Recombining them (in a fuel cell or combustion) releases that stored energy.
 

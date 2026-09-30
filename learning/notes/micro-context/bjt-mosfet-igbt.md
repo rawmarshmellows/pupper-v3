@@ -3,6 +3,9 @@ term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
 ---
 
+> **Related:** [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/bjt-specifications]]
+
+
 # BJT vs MOSFET vs IGBT
 
 > **See also:** [[learning/notes/quick-context/bjt]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/transistor]]

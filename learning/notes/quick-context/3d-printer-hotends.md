@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/melt-index]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/bambu-p2s-print-quality]]
 
 > **TL;DR:** The hotend is the precision melting chamber that transforms solid filament into molten plastic. Its volumetric flow rate (mm3/s) determines maximum print speed - high-flow hotends melt plastic 2x faster, enabling faster prints with larger nozzles.
 

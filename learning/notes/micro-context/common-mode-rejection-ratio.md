@@ -3,6 +3,9 @@ term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]]
+
+
 # Common-Mode Rejection Ratio ($CMRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/differential-pair]] | [[small-context/decibels-across-domains]]

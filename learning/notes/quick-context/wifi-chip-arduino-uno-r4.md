@@ -5,9 +5,9 @@ created: 2026-03-28
 
 # WiFi Chip — How Radio Becomes Data
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/frequency-and-filtering]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/firmware]]
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/esp32]]
 
-> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an ESP32-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
+> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an [[learning/notes/quick-context/esp32|ESP32]]-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
 
 ## The Core Problem
 
@@ -200,7 +200,7 @@ RATE ADAPTATION IN ACTION:
 
 ### WiFi vs. Wired for Embedded Systems
 
-For the [[quick-context/pupper-brain|Pupper robot]], WiFi is used on the Raspberry Pi for high-level tasks (SSH, ROS2 networking, web interfaces) — not for real-time motor control. Why? WiFi has variable latency (1-50+ ms), packet loss, and no deterministic timing. The 1 kHz motor control loop uses [[micro-context/spi|SPI]] and [[quick-context/can-bus|CAN]] — wired protocols with microsecond latency and zero packet loss. WiFi is for convenience; wired protocols are for control.
+For the [[quick-context/pupper-brain|Pupper robot]], WiFi is used on the Raspberry Pi for high-level tasks (SSH, [[learning/notes/quick-context/ros2-architecture|ROS2]] networking, web interfaces) — not for real-time motor control. Why? WiFi has variable latency (1-50+ ms), packet loss, and no deterministic timing. The 1 kHz motor control loop uses [[micro-context/spi|SPI]] and [[quick-context/can-bus|CAN]] — wired protocols with microsecond latency and zero packet loss. WiFi is for convenience; wired protocols are for control.
 
 </details>
 
@@ -332,7 +332,7 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 
@@ -378,7 +378,7 @@ Microwave ovens operate at 2.45 GHz — right in the middle of the 2.4 GHz WiFi 
 **Q4:** WiFi can reach 54 Mbps (802.11g) while I2C maxes out at 400 kbps. Why don't embedded systems use WiFi for everything?
 <details>
 <summary>Answer</summary>
-Three critical reasons: (1) **Latency** — WiFi has 1-50+ ms variable latency due to CSMA/CA contention, packet buffering, and retransmissions; I2C/SPI complete in microseconds, deterministically. (2) **Power** — a WiFi radio draws 100-300 mA while transmitting; an I2C transaction on an STM32 uses <1 mA. (3) **Reliability** — WiFi packets can be lost to interference, requiring retransmission; wired protocols on a PCB have essentially zero packet loss. For the Pupper's 1 kHz motor control loop, a 50 ms WiFi hiccup means 50 missed motor commands — the robot falls. See: The Key Tension — WiFi vs Wired.
+Three critical reasons: (1) **Latency** — WiFi has 1-50+ ms variable latency due to CSMA/CA contention, packet buffering, and retransmissions; I2C/SPI complete in microseconds, deterministically. (2) **Power** — a WiFi radio draws 100-300 mA while transmitting; an I2C transaction on an [[learning/notes/micro-context/stm32-microcontroller|STM32]] uses <1 mA. (3) **Reliability** — WiFi packets can be lost to interference, requiring retransmission; wired protocols on a PCB have essentially zero packet loss. For the Pupper's 1 kHz motor control loop, a 50 ms WiFi hiccup means 50 missed motor commands — the robot falls. See: The Key Tension — WiFi vs Wired.
 </details>
 
 **Q5:** The ESP32-S3 has a "PCB trace antenna." How can a flat copper line on a circuit board receive radio waves?

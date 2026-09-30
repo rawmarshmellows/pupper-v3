@@ -3,7 +3,7 @@ topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/bjt-specifications|BJT Specifications]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/tail-current]]
 
 > **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
 
@@ -18,7 +18,7 @@ MOSFETs are voltage-controlled switches that dominate digital electronics (billi
 | Term | Definition |
 |------|------------|
 | **NPN / PNP** | The two BJT types. NPN: current flows collector→emitter when base current flows in. PNP: current flows emitter→collector when base current flows out. NPN is more common. |
-| **Base (B)** | The control terminal. A small current into the base (for NPN) turns the transistor on. Unlike a MOSFET gate, the base draws continuous current. |
+| **Base (B)** | The control terminal. A small current into the base (for NPN) turns the transistor on. Unlike a [[learning/notes/micro-context/mosfet|MOSFET]] gate, the base draws continuous current. |
 | **Collector (C) / Emitter (E)** | The high-current terminals. Current flows from collector to emitter (NPN) when the transistor is on. The emitter has the arrow in the schematic symbol. |
 | **Current Gain (β / hFE)** | Ic = β × Ib. Typical β = 50-300. A BJT with β=100 and Ib=100μA passes Ic=10mA. β varies with temperature and current—not a precision parameter, so designs use the *minimum* guaranteed value (see [[quick-context/bjt-specifications|BJT specifications]]). |
 | **Saturation** | When the BJT is fully "on" (both junctions forward biased). Vce drops to ~0.1-0.3V. Used for switching. Contrast with the "active" region used for linear amplification. |

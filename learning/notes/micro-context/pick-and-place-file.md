@@ -4,6 +4,9 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/oscilloscope-and-multimeter]]
+
+
 # Pick and Place File
 
 > **See also:** [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
@@ -34,4 +37,4 @@ PICK AND PLACE WORKFLOW:
                                                               └───┘
 ```
 
-**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-soldering).
+**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-[[learning/notes/quick-context/soldering|soldering]]).

@@ -3,7 +3,7 @@ topic: Galvanic Cells (Batteries)
 created: 2026-01-23
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/electrodes]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **TL;DR:** Galvanic cells (batteries) harvest electricity from spontaneous chemical reactions by forcing electrons to flow through an external circuit; certain metals naturally want to give up electrons while others want to accept them, and batteries exploit this difference to power devices.
 
@@ -11,7 +11,7 @@ created: 2026-01-23
 
 Some chemical reactions *want* to happen—they're thermodynamically favorable, releasing energy as they proceed. A galvanic cell (battery) captures this released energy as electrical [[quick-context/electric-current|current]] instead of letting it dissipate as heat. Without batteries, we'd have no portable electronics, no electric vehicles, no grid-scale energy storage, and no way to store renewable energy for when the sun isn't shining. The core insight: **certain metals "want" to give up electrons more than others**. Zinc atoms readily shed electrons; copper atoms readily accept them. Put zinc and copper in contact through an ionic solution, and electrons will spontaneously flow from zinc to copper. A battery intercepts this electron flow, forcing it through an external circuit where it can do useful work (power a motor, light an LED, charge your phone) before completing its journey.
 
-This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while electrolysis converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—electrodes, electrolyte, electron flow—but energy flows in opposite directions.
+This is the **thermodynamic opposite of [[quick-context/electrolysis|electrolysis]]**: batteries convert chemical potential energy into electrical energy (spontaneous, releases energy), while electrolysis converts electrical energy into chemical potential energy (non-spontaneous, requires energy input). Same components—electrodes, [[learning/notes/quick-context/electrolyte|electrolyte]], electron flow—but energy flows in opposite directions.
 
 ## 5 Essential Terms
 
@@ -242,7 +242,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 
 - **Solid-State Batteries** — The "next generation" technology replacing liquid electrolytes with solid conductors. Promises higher energy density and safety, but manufacturing challenges remain unsolved at scale.
 
-- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with electromagnetic induction and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
+- **[[quick-context/electricity-generation]]** — Batteries are one of three main ways to create electricity (along with [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] and photovoltaics). This document explains how batteries compare to generators and solar cells for different applications.
 
 </details>
 

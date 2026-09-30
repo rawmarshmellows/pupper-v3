@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/grounding-and-return-paths]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -240,7 +240,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 |--------|---------|------|----------|
 | **HASL** | Board dipped in molten solder, leveled with hot air | Low | General purpose, through-hole |
 | **Lead-free HASL** | Same, with lead-free solder | Low | RoHS-compliant general purpose |
-| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, BGA, flat pads |
+| **ENIG** | Electroless nickel (3-6 μm) + immersion gold (0.05-0.1 μm) | Medium | Fine-pitch, [[learning/notes/quick-context/bga-ball-grid-array|BGA]], flat pads |
 | **OSP** | Thin organic coating on copper | Lowest | Short shelf life, reflow-only |
 
 ---

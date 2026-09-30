@@ -4,6 +4,9 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/bjt-specifications]]
+
+
 # Reverse and Forward Bias
 
 **Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.

@@ -3,13 +3,16 @@ topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
 
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/st-link-v2-programmer]]
+
+
 # DuPont Jumper Wires
 
 > **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without soldering. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[learning/notes/quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
 
 ## 5 Essential Terms
 
@@ -198,7 +201,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, [[learning/notes/micro-context/i2c|I2C]] failures, serial corruption. When debugging, suspect the physical layer first.
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
