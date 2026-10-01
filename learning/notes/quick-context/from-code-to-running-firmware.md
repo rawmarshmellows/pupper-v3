@@ -3,6 +3,7 @@ topic: From Code to Running Firmware — Linking, Flashing, and Booting on an MC
 created: 2026-03-26
 ---
 
+> **Related:** [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
 # From Code to Running Firmware
 
 > **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
@@ -11,7 +12,7 @@ created: 2026-03-26
 
 ## The Core Problem
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
+The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/[[learning/notes/micro-context/microcontroller|microcontroller]]|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
 
 ## 5 Essential Terms
 
@@ -245,7 +246,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
+<summary><strong>Concrete Example</strong> — Tracing [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] from source to boot</summary>
 
 Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
 
@@ -330,7 +331,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
 

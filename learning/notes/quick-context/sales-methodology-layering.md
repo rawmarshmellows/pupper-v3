@@ -3,6 +3,7 @@ topic: Sales Methodology Layering
 created: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]]
 # Sales Methodology Layering
 
 > **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]

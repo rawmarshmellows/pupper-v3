@@ -3,9 +3,9 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/capacitor]]
 
-> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
+> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
 # How Electricity is Created
 
@@ -17,7 +17,7 @@ There are fundamentally three ways to force electrons to move:
 
 1. **Chemical reactions** — Batteries exploit spontaneous redox reactions where certain atoms "want" to give up electrons while others "want" to accept them. See [[quick-context/galvanic-cells-batteries]].
 
-2. **[[quick-context/electromagnetism|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
+2. **[[quick-context/[[learning/notes/quick-context/electromagnetism|electromagnetism]]|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
@@ -27,7 +27,7 @@ Every power plant, battery, and solar panel is fundamentally an energy converter
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[learning/notes/quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
 | **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
@@ -152,7 +152,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
 ## Faraday's Law Unifies Everything
 
-Generators and [[quick-context/inductor|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
+Generators and [[quick-context/[[learning/notes/quick-context/inductor|inductor]]|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
 
 ```
 FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
@@ -515,7 +515,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q4:** Why can't we simply store solar electricity in giant capacitors instead of batteries?
 <details>
 <summary>Answer</summary>
-**Capacitors have far lower energy density than batteries.** Energy stored in a capacitor is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
+**Capacitors have far lower energy density than batteries.** Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
 </details>
 
 **Q5:** Hydroelectric dams achieve 85-90% efficiency while coal plants achieve only 33-37%. What's the fundamental reason for this difference?

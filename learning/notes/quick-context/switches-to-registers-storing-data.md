@@ -3,15 +3,16 @@ topic: Switches to Registers — Storing Data with Real Hardware
 created: 2026-04-09
 ---
 
+> **Related:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/ram-addressing-decoder]]
 # Switches to Registers — Storing Data with Real Hardware
 
 > **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
 
-> **TL;DR:** A physical switch provides a 1 or 0, a clock signal says "capture NOW," and a [[learning/notes/quick-context/d-flip-flop|D flip-flop]] stores the bit at the clock edge. Chain eight flip-flops into a register (a real chip: the 74HC574), connect eight switches and eight LEDs, and you've built the fundamental unit of all computing memory. Every register in every CPU, every byte in every [[learning/notes/micro-context/sram|SRAM]] cache, and every address in every RAM chip is just a scaled-up version of this exact circuit.
+> **TL;DR:** A physical switch provides a 1 or 0, a clock signal says "capture NOW," and a [[learning/notes/quick-context/d-flip-flop|D flip-flop]] stores the bit at the [[learning/notes/micro-context/clock-edges|clock edge]]. Chain eight flip-flops into a register (a real chip: the 74HC574), connect eight switches and eight LEDs, and you've built the fundamental unit of all computing memory. Every register in every CPU, every byte in every [[learning/notes/micro-context/sram|SRAM]] cache, and every address in every RAM chip is just a scaled-up version of this exact circuit.
 
 ## The Core Problem
 
-Combinational logic (AND, OR, NOT gates built from [[learning/notes/quick-context/transistor|transistors]]) can *compute* — but it can't *remember*. The instant you remove the inputs, the outputs vanish. To do anything useful — count, accumulate, follow a sequence of instructions — a circuit needs to **store a value and hold it stable** until deliberately changed. The D flip-flop solves this: it captures one bit at a [[learning/notes/micro-context/clock-edges|clock edge]] and holds it until the next edge. An 8-bit register is just eight of these in parallel, and from registers you can build RAM, CPUs, and every digital system that has ever existed.
+Combinational logic (AND, OR, NOT gates built from transistor|transistors]]) can *compute* — but it can't *remember*. The instant you remove the inputs, the outputs vanish. To do anything useful — count, accumulate, follow a sequence of instructions — a circuit needs to **store a value and hold it stable** until deliberately changed. The D flip-flop solves this: it captures one bit at a [[learning/notes/micro-context/clock-edges|clock edge]] and holds it until the next edge. An 8-bit register is just eight of these in parallel, and from registers you can build RAM, CPUs, and every digital system that has ever existed.
 
 ## 5 Essential Terms
 
@@ -130,7 +131,7 @@ STORING THE LETTER "A" (ASCII 65 = 0b01000001):
      LEDs update to: ○ ● ○ ○ ○ ○ ● ○   ← now storing "B"
 ```
 
-**What's inside the 74HC574?** Eight [[learning/notes/quick-context/d-flip-flop|D flip-flops]], all wired to the same clock pin. Each flip-flop is built from ~6 NAND gates, each NAND gate from 4 [[learning/notes/micro-context/mosfet|MOSFETs]]. So the chip contains roughly $8 \times 6 \times 4 = 192$ transistors — all working together to store 8 bits.
+**What's inside the 74HC574?** Eight [[learning/notes/quick-context/d-flip-flop|D flip-flops]], all wired to the same clock pin. Each flip-flop is built from ~6 NAND gates, each NAND gate from 4 mosfet|MOSFETs]]. So the chip contains roughly $8 \times 6 \times 4 = 192$ transistors — all working together to store 8 bits.
 
 ### Timing: Why the Clock Matters
 
@@ -270,7 +271,7 @@ Remove any one of these and digital computing is impossible. The [[learning/note
 
 Yes — with one caveat. The flip-flop-based register is the foundation of **synchronous digital computing**, which covers essentially all modern computers, phones, embedded controllers, GPUs, and FPGAs. There are alternative computing paradigms (analog computers, asynchronous logic, quantum computers, neuromorphic chips) that don't use clocked registers, but they represent a tiny fraction of computing today.
 
-Every [[learning/notes/micro-context/stm32-microcontroller|STM32 microcontroller]] on the Pupper robot, every Intel CPU, every GPU rendering your screen — they all work by clocking data through registers billions of times per second. Your breadboard circuit with 8 switches and a 74HC574 is doing the *exact same thing*, just once per button press instead of 180 million times per second.
+Every microcontroller|STM32 microcontroller]] on the Pupper robot, every Intel CPU, every GPU rendering your screen — they all work by clocking data through registers billions of times per second. Your breadboard circuit with 8 switches and a 74HC574 is doing the *exact same thing*, just once per button press instead of 180 million times per second.
 
 </details>
 
@@ -346,7 +347,7 @@ This is the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[learning/notes/quick-context/d-flip-flop]]** — Deep dive into the D flip-flop itself: how it's built from NAND gates (SR latch → gated latch → master-slave edge-triggered), the Nand2Tetris Python implementation, and how flip-flops compose into registers, shift registers, and counters.
 
@@ -360,11 +361,11 @@ This is the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch
 
 - **[[learning/notes/micro-context/clock-edges]]** — The precise definition of rising/falling clock edges and why edge-triggered sampling is the foundation of synchronous digital design.
 
-- **[[learning/notes/micro-context/clock-source]]** — Where clock signals come from in real systems: crystal oscillators, ceramic resonators, RC oscillators. The push button in the breadboard circuit is the simplest possible "clock source."
+- **[[learning/notes/micro-context/clock-source]]** — Where clock signals come from in real systems: crystal oscillators, ceramic resonators, RC oscillators. The push button in the breadboard circuit is the simplest possible "[[learning/notes/micro-context/clock-source|clock source]]."
 
 - **[[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]** — Historical context: the earliest computers used vacuum tubes as switches and magnetic core memory (tiny ferrite rings) as registers. The 74HC574 on your breadboard does what a room-sized relay rack did in 1945.
 
-- **[[learning/notes/quick-context/bare-minimal-data-storage-circuit]]** — A variant of the same circuit where the digital switch is replaced by an *analog* source plus a [[learning/notes/quick-context/comparator|comparator]], and the manual button clock is replaced by a [[learning/notes/micro-context/crystal-oscillator|quartz crystal oscillator]]. Maps each block back to one line of the Nand2Tetris `BitRegisterChip`.
+- **[[learning/notes/quick-context/bare-minimal-data-storage-circuit]]** — A variant of the same circuit where the digital switch is replaced by an *analog* source plus a comparator|comparator]], and the manual button clock is replaced by a [[learning/notes/micro-context/crystal-oscillator|quartz crystal oscillator]]. Maps each block back to one line of the Nand2Tetris `BitRegisterChip`.
 
 </details>
 
@@ -380,7 +381,7 @@ The D flip-flop is **edge-triggered** — it only samples its D input at the ris
 **Q2:** The 74HC574 has an Output Enable (OE) pin. What would happen if you connected OE to HIGH instead of GND?
 <details>
 <summary>Answer</summary>
-The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing voltage conflicts. See: 5 Essential Terms (Output Enable).
+The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing [[learning/notes/quick-context/voltage|voltage]] conflicts. See: 5 Essential Terms (Output Enable).
 </details>
 
 **Q3:** How is the 74HC574 register on your breadboard related to the register file inside an ARM CPU?

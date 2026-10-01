@@ -3,6 +3,7 @@ topic: Covariance Matrix
 created: 2026-04-04
 ---
 
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/similarity-transform]]
 # Covariance Matrix
 
 > **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
@@ -40,7 +41,7 @@ Given $n$ paired observations of vectors $\mathbf{x}$ (input) and $\mathbf{y}$ (
 
 $$H = \sum_{i=1}^{n} (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$$
 
-This is the matrix used in the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|Kabsch/absolute orientation algorithm]]. It is *not* necessarily symmetric and *not* necessarily square (if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions). The [[quick-context/singular-value-decomposition|SVD]] of $H$ directly yields the optimal rotation matrix.
+This is the matrix used in the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|Kabsch/[[learning/notes/quick-context/absolute-orientation|absolute orientation]] algorithm]]. It is *not* necessarily symmetric and *not* necessarily square (if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions). The [[quick-context/singular-value-decomposition|SVD]] of $H$ directly yields the optimal rotation matrix.
 
 ### Geometric interpretation: the covariance ellipsoid
 
@@ -216,7 +217,7 @@ The cross-covariance matrix $H$ encodes all the rotational information. The [[qu
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses the cross-covariance matrix $H$ as the key input to SVD-based rotation estimation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of finding the best rigid-body transform between two point sets, solved through cross-covariance + SVD
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The decomposition $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the Helmert transform with scale; covariance is used in least-squares estimation of all parameters
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the [[learning/notes/quick-context/helmert-transform|Helmert transform]] with scale; covariance is used in least-squares estimation of all parameters
 - **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal components; the dominant eigenvectors capture the most variance
 - **Mahalanobis distance** -- Distance metric $d = \sqrt{(\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)}$ that accounts for covariance structure, used in outlier detection and Kalman filter gating
 - **Kalman filter** -- Propagates a state estimate and its covariance matrix through time; the covariance matrix tracks uncertainty at every step

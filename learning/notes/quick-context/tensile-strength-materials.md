@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+> **Related:** [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/tensor]] | [[learning/notes/quick-context/van-der-waals-forces]]
 
 > **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
 
@@ -18,7 +18,7 @@ updated: 2026-01-21
 
 | Term | Definition |
 |------|------------|
-| **MPa (Megapascal)** | Unit of pressure/stress—1 MPa = 1 N/mm², about 145 PSI. Technically one component of the full [[quick-context/tensor|stress tensor]] |
+| **MPa (Megapascal)** | Unit of pressure/stress—1 MPa = 1 N/mm², about 145 PSI. Technically one component of the full [[quick-context/[[learning/notes/quick-context/tensor|tensor]]|stress tensor]] |
 | **Yield strength** | Stress where permanent deformation begins—the "point of no return" before ultimate failure |
 | **Ultimate tensile strength (UTS)** | Maximum stress before complete fracture—the number usually quoted |
 | **Ductility** | How much a material stretches before breaking—ductile fails gradually, brittle fails suddenly |
@@ -222,7 +222,7 @@ High-flow hotend + 0.8mm nozzle | 70-85%         | ~20-23 MPa      | Proper melt
 <details>
 <summary>Answer</summary>
 
-Tensile strength in polymers depends heavily on *intermolecular* forces (attractions *between* chains), not just intramolecular backbone bonds (*within* chains). When you pull a polymer apart, you're typically separating chains from each other—not breaking covalent bonds. A polymer with a strong C-C backbone but only weak [[quick-context/van-der-waals-forces|van der Waals forces]] between chains (like polyethylene) will have lower tensile strength than one with a moderate backbone but strong [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] between chains (like nylon). Adding hydrogen-bonding groups, [[quick-context/pi-pi-stacking-aromatic-interactions|aromatic rings for π-π stacking]], or increasing chain entanglement all strengthen the inter-chain "glue" without changing the backbone chemistry. This is why layer adhesion in 3D prints (an intermolecular phenomenon) determines real-world strength more than the material's rated tensile strength. See: [[quick-context/polymer-chemical-bonds]] and [[quick-context/chemical-bonds-spectrum]]
+Tensile strength in polymers depends heavily on *intermolecular* forces (attractions *between* chains), not just intramolecular backbone bonds (*within* chains). When you pull a polymer apart, you're typically separating chains from each other—not breaking [[learning/notes/quick-context/covalent-bonds|covalent bonds]]. A polymer with a strong C-C backbone but only weak [[quick-context/van-der-waals-forces|van der Waals forces]] between chains (like polyethylene) will have lower tensile strength than one with a moderate backbone but strong [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] between chains (like nylon). Adding hydrogen-bonding groups, [[quick-context/pi-pi-stacking-aromatic-interactions|aromatic rings for π-π stacking]], or increasing chain entanglement all strengthen the inter-chain "glue" without changing the backbone chemistry. This is why layer adhesion in 3D prints (an intermolecular phenomenon) determines real-world strength more than the material's rated tensile strength. See: [[quick-context/polymer-chemical-bonds]] and [[quick-context/chemical-bonds-spectrum]]
 </details>
 
 </details>

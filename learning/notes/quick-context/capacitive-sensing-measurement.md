@@ -3,15 +3,16 @@ topic: Capacitive Sensing and Measurement
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]]
 # Capacitive Sensing and Measurement
 
 > **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[micro-context/adc-analog-to-digital-converter]]
 
-> **TL;DR:** Capacitance can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
+> **TL;DR:** [[learning/notes/quick-context/capacitance|Capacitance]] can't be measured with DC -- a charged [[quick-context/[[learning/notes/quick-context/capacitor|capacitor]]|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
 
 ## The Core Problem
 
-Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a voltage or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
+Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a [[learning/notes/quick-context/voltage|voltage]] or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
 
 ## 5 Essential Terms
 
@@ -64,7 +65,7 @@ THREE FAMILIES OF CAPACITANCE MEASUREMENT
 
 ### Family 1: RC Timing
 
-The simplest approach: charge $C_x$ through a known [[quick-context/resistor|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = RC$, the time is directly proportional to capacitance.
+The simplest approach: charge $C_x$ through a known [[quick-context/[[learning/notes/quick-context/resistor|resistor]]|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = RC$, the time is directly proportional to capacitance.
 
 ```
 RC TIMING — HOW TOUCHSCREEN CONTROLLERS WORK
@@ -96,7 +97,7 @@ RC TIMING — HOW TOUCHSCREEN CONTROLLERS WORK
     The MCU just watches for count changes — no analog circuitry needed.
 ```
 
-This is how the [[quick-context/rc-oscillator|RC oscillator]] principle gets repurposed for sensing: instead of generating a clock, the RC circuit measures an unknown capacitance by timing the charge curve. Simple enough to implement on a bare [[micro-context/microcontroller|microcontroller]] GPIO pin with no external ICs.
+This is how the [[quick-context/rc-oscillator|RC oscillator]] principle gets repurposed for sensing: instead of generating a clock, the RC circuit measures an unknown capacitance by timing the charge curve. Simple enough to implement on a bare [[micro-context/[[learning/notes/micro-context/microcontroller|microcontroller]]|microcontroller]] GPIO pin with no external ICs.
 
 **Where it's used:** Capacitive touch buttons, simple proximity sensors, liquid level probes, some low-cost humidity sensors.
 
@@ -237,7 +238,7 @@ Camera photodiode         │ NOT capacitive sensing  │ N/A             │ Ch
                           │ on junction capacitance │                 │
 ```
 
-Note: [[quick-context/camera-fundamentals|Camera photodiodes]] are *not* capacitive sensors -- they exploit the photoelectric effect (photons free electrons in [[quick-context/doped-silicon|doped silicon]]). But the accumulated charge IS stored on the junction capacitance of the reverse-biased [[quick-context/diode|diode]], and the readout circuit must deal with that capacitance. The underlying physics is photon-to-electron conversion, not geometry-to-capacitance transduction.
+Note: [[quick-context/camera-fundamentals|Camera photodiodes]] are *not* capacitive sensors -- they exploit the photoelectric effect (photons free electrons in [[quick-context/doped-silicon|doped silicon]]). But the accumulated charge IS stored on the junction capacitance of the reverse-biased [[quick-context/[[learning/notes/quick-context/diode|diode]]|diode]], and the readout circuit must deal with that capacitance. The underlying physics is photon-to-electron conversion, not geometry-to-capacitance transduction.
 
 </details>
 
@@ -291,7 +292,7 @@ THE RESOLUTION-SPEED TRADEOFF
     Smaller C = more noise = harder to measure precisely.
 ```
 
-The dominant trend in modern sensor design is sigma-delta CDC integration: put the converter on the same die as the sensor element, so the tiny analog signals never leave the chip. This is why modern sensor ICs (SHT40, BMP390, ADXL345) output clean digital numbers over [[micro-context/i2c|I2C]] or [[micro-context/spi|SPI]] -- the entire capacitance-to-digital chain is inside the package.
+The dominant trend in modern sensor design is sigma-delta CDC integration: put the converter on the same die as the sensor element, so the tiny analog signals never leave the chip. This is why modern sensor ICs (SHT40, BMP390, ADXL345) output clean digital numbers over [[micro-context/[[learning/notes/micro-context/i2c|i2c]]|I2C]] or [[micro-context/[[learning/notes/micro-context/spi|spi]]|SPI]] -- the entire capacitance-to-digital chain is inside the package.
 
 </details>
 
@@ -351,7 +352,7 @@ The same sigma-delta CDC architecture appears in MEMS accelerometers, but measur
 
 - **[[quick-context/capacitor]]** -- Capacitor types, charge/discharge curves, and RC time constants. The RC charge curve ($V(t) = V_s(1 - e^{-t/RC})$) is the mathematical basis of RC timing measurement.
 
-- **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An RC oscillator is essentially a capacitive sensor that measures its own capacitance continuously.
+- **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An [[learning/notes/quick-context/rc-oscillator|RC oscillator]] is essentially a capacitive sensor that measures its own capacitance continuously.
 
 - **[[quick-context/impedance-and-reactance]]** -- Capacitive reactance $X_C = 1/(2\pi fC)$ is the basis of AC impedance measurement, and explains why capacitive sensors need AC excitation.
 

@@ -3,15 +3,16 @@ topic: Voltage-Current Causality (Which Causes Which?)
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/current-electrons-per-second]]
 # Voltage-Current Causality
 
 > **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
 
-> **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
+> **TL;DR:** Neither [[learning/notes/quick-context/voltage|voltage]] "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
 ## The Core Problem
 
-You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like voltage is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
+You've learned $V = IR$ ([[quick-context/[[learning/notes/quick-context/resistor|resistor]]|Ohm's law]]). It seems like voltage is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/[[learning/notes/quick-context/inductor|inductor]]|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
 
 ## 5 Essential Terms
 
@@ -20,7 +21,7 @@ You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like vo
 | **Electric Field** | The actual force-carrying entity. It pushes charges (creating current) and its integral over distance defines voltage. The field is always the mediator between V and I. |
 | **Voltage Source** | A device (battery, power supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
 | **Current Source** | A device that maintains a fixed current; voltage adjusts to whatever is needed. Here, current is the *constraint* and voltage is the *response*---so it looks like "I causes V." |
-| **Constitutive Relation** | The equation relating V and I for a specific component: $V = IR$ for [[quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[quick-context/capacitor|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
+| **Constitutive Relation** | The equation relating V and I for a specific component: $V = IR$ for [[quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[quick-context/[[learning/notes/quick-context/capacitor|capacitor]]|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
 | **Kirchhoff's Laws** | The circuit constraints: voltages around a loop sum to zero (KVL), currents into a node sum to zero (KCL). These enforce consistency but don't say which quantity "caused" the other. |
 
 <details>
@@ -188,8 +189,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[learning/notes/quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -303,7 +304,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes electrons; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
 

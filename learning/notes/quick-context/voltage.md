@@ -3,6 +3,7 @@ topic: Voltage
 created: 2026-02-13
 ---
 
+> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]]
 # Voltage
 
 > **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
@@ -287,7 +288,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/voltage-current-causality]]** — Does voltage cause current or current cause voltage? Neither, universally. The electric field is the mediator; which quantity is "cause" depends on what's driving the circuit.
 
@@ -301,7 +302,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an [[learning/notes/quick-context/inductor|inductor]] creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 
@@ -318,7 +319,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 **12 V/m** (assuming uniform field and ignoring resistance variations). E = V/d = 12V / 1m. In reality, most of the field would concentrate in any resistive components, with very little in the low-resistance wire itself.
 </details>
 
-**Q2:** If you double the voltage across a resistor, what happens to the electric field inside it?
+**Q2:** If you double the voltage across a [[learning/notes/quick-context/resistor|resistor]], what happens to the electric field inside it?
 <details>
 <summary>Answer</summary>
 **The field doubles.** Voltage is the integral of the field over distance. If distance stays the same and voltage doubles, field must double. This doubled field exerts twice the force on electrons, which (in an ohmic material) doubles the current—consistent with I = V/R.

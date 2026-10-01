@@ -4,6 +4,7 @@ created: 2026-03-10
 updated: 2026-03-11
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[micro-context/homogeneous-transformation-matrix]]
