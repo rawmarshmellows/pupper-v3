@@ -3,6 +3,7 @@ topic: Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 created: 2026-03-10
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]]
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]

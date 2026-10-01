@@ -3,6 +3,7 @@ topic: From Human Calculators to Coding on Screens — How Programming Interface
 created: 2026-03-26
 ---
 
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
 # From Human Calculators to Coding on Screens
 
 > **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/transistor]] | [[quick-context/transistor-design-history]]
@@ -11,7 +12,7 @@ created: 2026-03-26
 
 ## The Core Problem
 
-You sit in front of a screen, type `x = 2 + 3`, press a button, and your program runs. But the computer is just a pile of [[quick-context/transistor|transistors]] switching on and off — it has no concept of "screens," "keyboards," or "files." Someone had to build every layer between your keystrokes and the CPU's fetch-execute cycle: the keyboard controller that converts key presses to character codes, the operating system that buffers those characters in RAM, the filesystem that persists them to disk, the compiler that translates them to machine code, and the loader that places those instructions where the CPU can find them. Each of these layers was itself [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, stretching back to an era when "programming" meant physically rewiring cables between [[quick-context/transistor-design-history|vacuum tube]] circuits — and before that, when "computer" meant a *person* sitting at a desk with a pencil and a mechanical calculator.
+You sit in front of a screen, type `x = 2 + 3`, press a button, and your program runs. But the computer is just a pile of [[quick-context/[[learning/notes/quick-context/transistor|transistor]]|transistors]] switching on and off — it has no concept of "screens," "keyboards," or "files." Someone had to build every layer between your keystrokes and the CPU's fetch-execute cycle: the keyboard controller that converts key presses to character codes, the operating system that buffers those characters in RAM, the filesystem that persists them to disk, the compiler that translates them to machine code, and the loader that places those instructions where the CPU can find them. Each of these layers was itself [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, stretching back to an era when "programming" meant physically rewiring cables between [[quick-context/transistor-design-history|vacuum tube]] circuits — and before that, when "computer" meant a *person* sitting at a desk with a pencil and a mechanical calculator.
 
 ## 5 Essential Terms
 
@@ -617,7 +618,7 @@ ERA 4: FROM SCREEN TO CPU -- THE MODERN WORKFLOW
   +------------------------------------------+
 ```
 
-For embedded/firmware development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
+For embedded/firmware development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/[[learning/notes/micro-context/microcontroller|microcontroller]]|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
 
 ### Where Is Your Code Stored?
 
@@ -777,7 +778,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The compilation chain in full detail: how source code becomes machine instructions through 7 layers of abstraction, and how the first compiler was bootstrapped from hand-coded binary. This document covers what happens *after* you save your file and invoke the compiler.
 

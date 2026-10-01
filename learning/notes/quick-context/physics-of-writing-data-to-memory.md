@@ -3,9 +3,9 @@ topic: Physics of Writing Data to Memory — How Bits Become Charges, Voltages, 
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/d-flip-flop]]
 
-> **TL;DR:** Every bit stored in a computer is a physical thing — a voltage held stable by cross-coupled [[learning/notes/micro-context/mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad capacitor that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips transistor states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
+> **TL;DR:** Every bit stored in a computer is a physical thing — a [[learning/notes/quick-context/voltage|voltage]] held stable by cross-coupled mosfet|transistors]] (SRAM), a tiny charge on a ~10-30 femtofarad [[learning/notes/quick-context/capacitor|capacitor]] that leaks away in milliseconds (DRAM), or electrons trapped on a floating gate surrounded by insulating oxide that holds them for decades without power (flash). Writing a bit means physically moving charge: SRAM flips [[learning/notes/quick-context/transistor|transistor]] states in <1 ns, DRAM dumps charge onto a capacitor through an access transistor, and flash forces electrons through an oxide barrier using 15-20V pulses via Fowler-Nordheim tunneling. When you type `x = 5` in a `.py` file, the letter `x` exists as a voltage pattern in DRAM, a trapped-electron pattern on your SSD, and — if it's machine code being [[learning/notes/quick-context/from-code-to-running-firmware|flashed to an MCU]] — electrons jammed onto floating gates inside the chip's flash memory by a debug probe.
 
 ## The Core Problem
 
@@ -212,12 +212,10 @@ STEP 1: KEYBOARD → SCAN CODE → USB → PC (mechanical → electrical)
 
   Inside the keyboard is a small MCU (often a CH552 or 8051)
   whose firmware exists as trapped electrons on floating gates
-  in flash — [[learning/notes/quick-context/from-code-to-running-
-  firmware|programmed at the factory]] via the same Fowler-
+  in flash — programmed at the factory via the same Fowler-
   Nordheim tunneling physics described in STEP 5 below.
 
-  The MCU's [[learning/notes/quick-context/code-to-gates-and-
-  bootstrapping|fetch-execute cycle]] runs a scan loop:
+  The MCU's fetch-execute cycle runs a scan loop:
   drive each matrix row LOW, read columns. Row 2, Col 1 reads
   LOW → "x" detected → firmware looks up the USB HID scan
   code (0x1B) from a table in flash → packages an 8-byte HID
@@ -336,7 +334,7 @@ STEP 5: DRAM → SSD FLASH (when you hit Ctrl+S)
 
 ### What about machine code on an MCU?
 
-When you [[learning/notes/quick-context/from-code-to-running-firmware|flash firmware]] to an [[learning/notes/micro-context/stm32-microcontroller|STM32]], the same floating-gate physics applies, but the path is different:
+When you [[learning/notes/quick-context/from-code-to-running-firmware|flash firmware]] to an microcontroller|STM32]], the same floating-gate physics applies, but the path is different:
 
 1. The [[learning/notes/micro-context/st-link-v2-programmer|ST-Link]] debug probe sends the machine code bytes over [[learning/notes/micro-context/swd-serial-wire-debug|SWD]] (2 wires: SWDIO + SWCLK)
 2. The SWD protocol writes to the MCU's flash controller registers via the AHB bus
@@ -354,7 +352,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code becomes the machine code binary patterns that ultimately get written into memory. This document explains *what* those patterns are; the current document explains *how* they get physically stored.
 

@@ -4,6 +4,7 @@ created: 2026-02-10
 updated: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]]
 # Miller Heiman Strategic Selling / LAMP
 
 > **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]

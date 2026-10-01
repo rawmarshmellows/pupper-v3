@@ -3,6 +3,7 @@ topic: Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 created: 2026-03-10
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]

@@ -3,6 +3,7 @@ topic: Challenger Sale Methodology
 created: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sales-methodology-layering]]
 # Challenger Sale Methodology
 
 > **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]]
