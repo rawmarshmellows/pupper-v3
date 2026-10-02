@@ -3,6 +3,8 @@ term: ADS1110 (Battery Voltage ADC)
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]]
+
 
 # ADS1110 (Battery Voltage ADC)
 
@@ -12,7 +14,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A resistor voltage divider scales the battery voltage (7–24V) down to the ADC's 0–2.048V input range.
+- A [[learning/notes/quick-context/resistor|resistor]] voltage divider scales the battery voltage (7–24V) down to the ADC's 0–2.048V input range.
 - The ADS1110's delta-sigma converter oversamples the input and digitally filters it, trading speed for high resolution (16-bit at 15 SPS).
 - The STM32 reads the digital result over I2C (address 0x48) and multiplies by the divider ratio to recover the true battery voltage.
 

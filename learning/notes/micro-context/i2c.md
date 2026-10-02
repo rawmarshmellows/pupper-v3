@@ -3,6 +3,8 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]]
+
 
 # I2C
 

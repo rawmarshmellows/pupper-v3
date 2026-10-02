@@ -3,9 +3,9 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/short-circuit]]
 
-> **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
+> **TL;DR:** A multimeter measures [[learning/notes/quick-context/voltage|voltage]], current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
 # Oscilloscope and Multimeter
 

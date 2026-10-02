@@ -3,6 +3,8 @@ term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/impedance-and-reactance]]
+
 
 # Decoupling Capacitor
 

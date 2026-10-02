@@ -3,12 +3,14 @@ term: MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor)
 created: 2026-02-25
 updated: 2026-06-08
 ---
+> **Related:** [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/current-mirror]]
+
 
 # MOSFET
 
 > **See also:** [[quick-context/transistor]]
 
-**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a capacitor—applying voltage creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
+**Definition:** The dominant [[quick-context/transistor|transistor]] type in modern electronics. A voltage-controlled switch where a thin oxide layer insulates the gate from the [[quick-context/doped-silicon|doped silicon]] channel, forming a [[learning/notes/quick-context/capacitor|capacitor]]—applying [[learning/notes/quick-context/voltage|voltage]] creates an electric field that turns the channel on or off without the gate drawing current. NMOS and PMOS variants pair together in CMOS logic.
 
 ## How It Works
 

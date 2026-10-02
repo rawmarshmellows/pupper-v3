@@ -3,7 +3,7 @@ topic: Doped Silicon
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** Doped silicon is pure silicon with tiny amounts of impurity atoms added to create controllable electrical properties—n-type (extra electrons) or p-type (missing electrons/"holes")—enabling transistors by creating PN junctions that act as voltage-controlled switches.
 
@@ -378,7 +378,7 @@ Step 5: Repeat many times with different masks and dopants
 
 - **[[quick-context/electric-current|Electric Current]]** — Understanding how electrons flow helps you grasp why doping creates free charge carriers that enable current flow.
 
-- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through covalent bonds; doping works because it disrupts this sharing pattern.
+- **[[quick-context/covalent-bonds|Covalent Bonds]]** — Silicon atoms share electrons with neighbors through [[learning/notes/quick-context/covalent-bonds|covalent bonds]]; doping works because it disrupts this sharing pattern.
 
 - **Band Gap Theory** — The deeper physics of why semiconductors behave differently from conductors and insulators; explains energy levels that electrons must overcome to move.
 
