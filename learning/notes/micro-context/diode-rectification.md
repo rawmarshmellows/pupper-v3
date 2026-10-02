@@ -3,6 +3,8 @@ term: Diode Rectification (AC → DC)
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/diode]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]]
+
 
 # Diode Rectification (AC → DC)
 
@@ -13,7 +15,7 @@ updated: 2026-03-27
 - During the positive half of the AC cycle, the diode is forward-biased and passes current through to the load.
 - During the negative half, the diode blocks current (reverse-biased), preventing reverse flow.
 - The result is pulsating DC — all-positive but still bumpy with gaps where the negative half was removed.
-- A smoothing capacitor fills in the gaps by storing charge during peaks and releasing it during dips, producing steady DC.
+- A smoothing [[learning/notes/quick-context/capacitor|capacitor]] fills in the gaps by storing charge during peaks and releasing it during dips, producing steady DC.
 
 ```
 AC input               After diodes            + Capacitor

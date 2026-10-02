@@ -5,9 +5,9 @@ created: 2026-03-28
 
 # Capacitance
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/transistor]]
 
-> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
+> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, [[learning/notes/quick-context/transistor|transistor]] gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
 ## The Core Problem
 
@@ -26,7 +26,7 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 <details>
 <summary><strong>How It Works</strong> -- Capacitance as a geometric property</summary>
 
-Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a capacitor -- the physics doesn't care. The key equation is:
+Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a [[learning/notes/quick-context/capacitor|capacitor]] -- the physics doesn't care. The key equation is:
 
 $$C = \frac{\varepsilon_0 \cdot \varepsilon_r \cdot A}{d}$$
 
@@ -136,7 +136,7 @@ DERIVATION AT A GLANCE
     I = C·dV/dt
 ```
 
-**Physical intuition** — think of voltage as the *height* of charge piled on the plates:
+**Physical intuition** — think of [[learning/notes/quick-context/voltage|voltage]] as the *height* of charge piled on the plates:
 
 - $V$ rising = charge being *pumped onto* the plate. Pump rate = current.
 - $V$ falling = charge *draining off*. Drain rate = current (other direction).
@@ -647,7 +647,7 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).

@@ -3,6 +3,8 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/esp32]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-source]]
+
 
 # Microcontroller
 

@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Whitespace Mapping
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]]
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 
