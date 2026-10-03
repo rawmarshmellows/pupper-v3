@@ -3,6 +3,7 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, I3C, and When to Use Each]] | [[learning/notes/micro-context/can-bus-termination|CAN Bus Termination]] | [[learning/notes/micro-context/can-bus-transceiver|CAN Bus Transceiver]] | [[learning/notes/micro-context/i2s-audio-amplifier|I2S Audio Amplifier]]
 
 # I2C
 

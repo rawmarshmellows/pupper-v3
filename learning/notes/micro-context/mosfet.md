@@ -3,6 +3,7 @@ term: MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor)
 created: 2026-02-25
 updated: 2026-06-08
 ---
+> **Related:** [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/quick-context/bjt-specifications|BJT Specifications]] | [[learning/notes/quick-context/bjt|BJT]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
 
 # MOSFET
 

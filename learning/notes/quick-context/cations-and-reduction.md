@@ -3,7 +3,7 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/anions-and-oxidation|Anions and Oxidation]] | [[learning/notes/quick-context/electrolysis|Electrolysis]] | [[learning/notes/quick-context/electrolyte|Electrolyte]] | [[learning/notes/micro-context/diode-rectification|Diode Rectification]]
 
 > **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
 

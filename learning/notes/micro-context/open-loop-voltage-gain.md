@@ -2,6 +2,7 @@
 term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift]]
 
 # Open-Loop Voltage Gain ($A_V$)
 

@@ -2,6 +2,7 @@
 topic: Butyric Acid
 created: 2026-04-06
 ---
+> **Related:** [[learning/notes/quick-context/making-electrolytes|How to Make an Electrolyte]] | [[learning/notes/micro-context/oxidation|Oxidation]]
 
 # Butyric Acid
 

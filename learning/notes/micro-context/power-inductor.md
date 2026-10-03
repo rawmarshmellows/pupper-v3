@@ -3,6 +3,7 @@ term: Power Inductor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/inductor|Inductor]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/micro-context/power-supply-rejection-ratio|Power-Supply Rejection Ratio]] | [[learning/notes/quick-context/power-watts-joules|Electrical Power]] | [[learning/notes/micro-context/decoupling-capacitor|Decoupling Capacitor]]
 
 # Power Inductor
 

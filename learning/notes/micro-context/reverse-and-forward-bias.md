@@ -3,6 +3,7 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/input-bias-current|Input Bias Current]] | [[learning/notes/quick-context/ac-to-dc-rectification|AC-to-DC Rectification]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/micro-context/anode|Anode]]
 
 # Reverse and Forward Bias
 

@@ -2,6 +2,7 @@
 term: Capacitive Voltage Sensing
 created: 2026-06-08
 ---
+> **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift]] | [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain]]
 
 # Capacitive Voltage Sensing
 

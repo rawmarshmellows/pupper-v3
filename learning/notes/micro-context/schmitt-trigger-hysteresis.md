@@ -2,6 +2,7 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/quick-context/voltage|Voltage]]
 
 # Schmitt Trigger & Hysteresis
 

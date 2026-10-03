@@ -93,8 +93,7 @@ PHASE 0: KEYPRESS → SCAN CODE → ENDPOINT BUFFER
   The keyboard MCU (often a CH552, 8051, or Cortex-M0) has
   firmware stored in its flash memory — machine code that exists
   as trapped electrons on floating gates, written at the factory
-  via the same [[learning/notes/quick-context/from-code-to-running-
-  firmware|link-flash-boot pipeline]] used for any MCU. That
+  via the same link-flash-boot pipeline used for any MCU. That
   firmware runs a continuous scan loop:
 
   a) KEY MATRIX SCAN — The MCU's CPU fetches instructions from
@@ -143,14 +142,12 @@ PHASE 0: KEYPRESS → SCAN CODE → ENDPOINT BUFFER
      peripheral's endpoint buffer. This is a dedicated block of
      SRAM inside the MCU — the bytes now exist as voltage states
      across cross-coupled [[learning/notes/micro-context/mosfet|
-     transistor]] pairs (see [[learning/notes/quick-context/
-     physics-of-writing-data-to-memory|physics of memory]] for
+     transistor]] pairs (see physics of memory for
      how SRAM stores bits).
 
      At the hardware level, this store instruction is a machine
      code binary pattern fetched from flash (trapped electrons)
-     by the [[learning/notes/quick-context/code-to-gates-and-
-     bootstrapping|fetch-execute cycle]], decoded by the CPU's
+     by the fetch-execute cycle, decoded by the CPU's
      control unit (logic gates), which routes the data byte
      through the internal bus to the USB peripheral's SRAM
      address.

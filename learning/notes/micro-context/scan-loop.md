@@ -2,6 +2,7 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain]] | [[learning/notes/micro-context/switch-matrix|Switch Matrix]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|Physics of Writing Data to Memory — How Bits Become Charges, Voltages, and Trapped Electrons]] | [[learning/notes/quick-context/usb-peripheral-hardware|USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire]]
 
 # Scan Loop
 

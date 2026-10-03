@@ -2,6 +2,7 @@
 term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio|Common-Mode Rejection Ratio]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage]] | [[learning/notes/quick-context/common-ic-packages|Common IC Packages]] | [[learning/notes/quick-context/comparator|Comparator]]
 
 # Input Common-Mode Range ($CMVR$)
 

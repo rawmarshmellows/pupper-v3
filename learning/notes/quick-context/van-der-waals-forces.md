@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules, and Polymers Basics]] | [[learning/notes/quick-context/breaking-elongation-rate|Breaking Elongation Rate]] | [[learning/notes/quick-context/chemical-bonds-spectrum|Chemical Bonds - The Full Spectrum]] | [[learning/notes/quick-context/covalent-bonds|Covalent Bonds]] | [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-Dipole Interactions]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 

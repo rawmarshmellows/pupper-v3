@@ -3,6 +3,7 @@ term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete Fabrication]] | [[learning/notes/quick-context/soldering|Soldering]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/micro-context/decoupling-capacitor|Decoupling Capacitor]]
 
 # SMD Resistor
 

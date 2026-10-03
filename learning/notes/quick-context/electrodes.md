@@ -3,7 +3,7 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/anode|Anode]] | [[learning/notes/micro-context/cathode|Cathode]] | [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/electrolysis|Electrolysis]] | [[learning/notes/quick-context/electrolyte|Electrolyte]]
 
 > **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
 

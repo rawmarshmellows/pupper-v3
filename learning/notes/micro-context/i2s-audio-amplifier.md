@@ -3,6 +3,7 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/i2s|I2S]] | [[learning/notes/quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[learning/notes/quick-context/op-amp|Op-Amp]] | [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/micro-context/can-bus-termination|CAN Bus Termination]]
 
 # I2S Audio Amplifier
 

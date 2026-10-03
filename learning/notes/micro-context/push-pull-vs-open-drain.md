@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain]] | [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/quick-context/voltage|Voltage]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 

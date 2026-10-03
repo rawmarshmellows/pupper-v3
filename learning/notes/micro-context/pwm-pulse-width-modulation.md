@@ -3,6 +3,7 @@ term: PWM (Pulse Width Modulation)
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pwm-controller-circuit|PWM Controller Circuit]] | [[learning/notes/micro-context/buck-converter|Buck Converter]] | [[learning/notes/micro-context/power-supply-rejection-ratio|Power-Supply Rejection Ratio]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/comparator|Comparator]]
 
 # PWM (Pulse Width Modulation)
 
