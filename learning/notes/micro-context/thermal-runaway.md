@@ -3,6 +3,7 @@ term: Thermal Runaway
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/thermal-noise-electronics|Thermal Noise in Electronics]] | [[learning/notes/micro-context/clock-speed|Clock Speed]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]] | [[learning/notes/quick-context/transistor|Transistor]]
 
 # Thermal Runaway
 

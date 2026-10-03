@@ -3,6 +3,7 @@ term: Buck Converter
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC]] | [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]] | [[learning/notes/quick-context/pwm-controller-circuit|PWM Controller Circuit]] | [[learning/notes/micro-context/power-supply-rejection-ratio|Power-Supply Rejection Ratio]] | [[learning/notes/quick-context/comparator|Comparator]]
 
 # Buck Converter
 

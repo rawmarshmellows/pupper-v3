@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/spi|SPI]] | [[learning/notes/micro-context/can-bus-termination|CAN Bus Termination]] | [[learning/notes/micro-context/can-bus-transceiver|CAN Bus Transceiver]] | [[learning/notes/micro-context/i2c|I2C]] | [[learning/notes/micro-context/i2s-audio-amplifier|I2S Audio Amplifier]]
 
 # SPIneV1.elf
 

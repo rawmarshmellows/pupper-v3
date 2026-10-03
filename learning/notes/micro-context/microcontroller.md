@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[learning/notes/quick-context/esp32|ESP32]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, I3C, and When to Use Each]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[learning/notes/quick-context/from-code-to-running-firmware|From Code to Running Firmware — Linking, Flashing, and Booting on an MCU]]
 
 # Microcontroller
 

@@ -2,6 +2,7 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/micro-context/piezoelectric-effect|Piezoelectric Effect]] | [[learning/notes/micro-context/mosfet|MOSFET]]
 
 # Coriolis Effect
 

@@ -3,6 +3,7 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/quick-context/esp32|ESP32]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle|The CPU Fetch-Execute Cycle — How a Machine Runs Instructions]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, I3C, and When to Use Each]]
 
 # STM32 Microcontroller
 

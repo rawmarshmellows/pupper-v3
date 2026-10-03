@@ -2,6 +2,7 @@
 term: Input Bias Current (I_B)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/micro-context/current-mirror|Current Mirror]] | [[learning/notes/micro-context/input-common-mode-range|Input Common-Mode Range]]
 
 # Input Bias Current ($I_B$)
 

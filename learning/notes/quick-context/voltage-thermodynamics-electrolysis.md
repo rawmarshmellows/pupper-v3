@@ -3,7 +3,7 @@ topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electrolysis|Electrolysis]] | [[learning/notes/quick-context/voltage|Voltage]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift]]
 
 > **TL;DR:** The equation dG = -nFE links the energy requirement of a reaction (Gibbs free energy) to the minimum voltage needed for electrolysis, with water splitting requiring at least 1.23V theoretically but 1.8-2.5V in practice due to overpotential losses.
 

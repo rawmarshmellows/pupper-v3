@@ -2,6 +2,7 @@
 term: Piezoelectric Effect
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/coriolis-effect|Coriolis Effect]] | [[learning/notes/micro-context/ceramic-resonator|Ceramic Resonator]] | [[learning/notes/micro-context/mosfet|MOSFET]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]] | [[learning/notes/quick-context/voltage|Voltage]]
 
 # Piezoelectric Effect
 

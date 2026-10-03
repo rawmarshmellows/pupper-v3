@@ -2,6 +2,7 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/plc-vs-software|PLC and why it's different to software and how it's implemented]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller]] | [[learning/notes/quick-context/pwm-controller-circuit|PWM Controller Circuit]]
 
 # PLC (Programmable Logic Controller)
 

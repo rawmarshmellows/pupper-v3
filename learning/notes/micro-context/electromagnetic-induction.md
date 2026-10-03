@@ -3,6 +3,7 @@ term: Electromagnetic Induction
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/self-induction|Self-Induction]] | [[learning/notes/quick-context/lenzs-law|Lenz's Law]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[learning/notes/quick-context/faraday-tensor|Faraday Tensor]]
 
 # Electromagnetic Induction
 

@@ -2,6 +2,7 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/micro-context/oxidation|Oxidation]] | [[learning/notes/quick-context/soldering|Soldering]] | [[learning/notes/quick-context/voltage|Voltage]]
 
 # DuPont Jumper Wires
 

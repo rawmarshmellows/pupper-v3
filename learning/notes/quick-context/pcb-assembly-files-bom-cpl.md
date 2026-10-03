@@ -17,9 +17,9 @@ A bare PCB is just patterned copper — empty pads. A contract assembler (JLCPCB
 
 | Term | Definition |
 |------|------------|
-| **BOM (Bill of Materials)** | The purchasing list — **one row per unique part type**, with quantity, the [[learning/notes/quick-context/resistor\|value]], [[learning/notes/quick-context/common-ic-packages\|footprint]], manufacturer part number (MPN), and supplier catalog number. It's the recipe for *buying*. |
-| **CPL / Pick-and-Place** | The placement list — **one row per physical component**, giving centroid XY, rotation, board side, and pin count. It's the instructions for *placing*. See [[learning/notes/micro-context/pick-and-place-file\|Pick and Place File]]. |
-| **Reference Designator** | The unique ID stamped on each part: `Q`=transistor, `C`=[[learning/notes/quick-context/capacitor\|cap]], `R`=[[learning/notes/quick-context/resistor\|resistor]], `D`=[[learning/notes/quick-context/diode\|diode]], `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
+| **BOM (Bill of Materials)** | The purchasing list — **one row per unique part type**, with quantity, the value, footprint, manufacturer part number (MPN), and supplier catalog number. It's the recipe for *buying*. |
+| **CPL / Pick-and-Place** | The placement list — **one row per physical component**, giving centroid XY, rotation, board side, and pin count. It's the instructions for *placing*. See Pick and Place File. |
+| **Reference Designator** | The unique ID stamped on each part: `Q`=transistor, `C`=cap, `R`=resistor, `D`=diode, `U`=IC, `CN`/`J`=connector, `SW`=switch. **This is the join key** linking BOM ↔ CPL ↔ schematic ↔ silkscreen. |
 | **Footprint** | The physical pad pattern / package the part solders to (`C0402`, `SOT-23-5`, `SMA`, `PG-TDSON-8`). Must match the real part exactly, or it won't fit. |
 | **Centroid + Rotation + Layer** | The four numbers the machine actually needs: **Mid X/Y** (part center), **Rotation** (degrees CCW), and **Layer** (`T` top / `B` bottom). `SMD = Yes/No` tells it surface-mount vs through-hole. |
 

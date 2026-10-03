@@ -3,6 +3,7 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electrodes|Electrodes]] | [[learning/notes/micro-context/anode|Anode]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete Fabrication]] | [[learning/notes/micro-context/diode-rectification|Diode Rectification]]
 
 # Cathode
 

@@ -3,6 +3,7 @@ term: Ceramic Resonator
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/piezoelectric-effect|Piezoelectric Effect]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]] | [[learning/notes/micro-context/clock-source|Clock Source]] | [[learning/notes/micro-context/microcontroller|Microcontroller]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]]
 
 # Ceramic Resonator
 

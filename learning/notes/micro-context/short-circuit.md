@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]] | [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] | [[learning/notes/quick-context/pwm-controller-circuit|PWM Controller Circuit]] | [[learning/notes/quick-context/bjt|BJT]] | [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]]
 
 # Short Circuit
 

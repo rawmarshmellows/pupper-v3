@@ -3,6 +3,7 @@ term: SPI
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, I3C, and When to Use Each]] | [[learning/notes/micro-context/can-bus-termination|CAN Bus Termination]] | [[learning/notes/micro-context/can-bus-transceiver|CAN Bus Transceiver]] | [[learning/notes/micro-context/i2c|I2C]]
 
 # SPI
 

@@ -2,6 +2,7 @@
 term: CAN Bus Termination
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-transceiver|CAN Bus Transceiver]] | [[learning/notes/quick-context/can-bus|CAN Bus]] | [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485, 1-Wire, USB, I3C, and When to Use Each]] | [[learning/notes/micro-context/i2c|I2C]]
 
 # CAN Bus Termination
 

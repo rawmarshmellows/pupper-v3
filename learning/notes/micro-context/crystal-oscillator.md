@@ -2,6 +2,7 @@
 term: Crystal Oscillator
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/rc-oscillator|RC Oscillator]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]] | [[learning/notes/micro-context/clock-source|Clock Source]] | [[learning/notes/micro-context/clock-edges|Clock Edge]] | [[learning/notes/micro-context/clock-speed-vs-temperature|Clock Speed vs Temperature]]
 
 # Crystal Oscillator
 
