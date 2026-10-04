@@ -3,6 +3,8 @@ term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/voltage]]
+
 # Schmitt Trigger & Hysteresis
 
 > **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
@@ -28,4 +30,4 @@ created: 2026-06-07
              hysteresis band
 ```
 
-**Key insight:** A single-threshold comparator *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.
+**Key insight:** A single-threshold [[learning/notes/quick-context/comparator|comparator]] *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.

@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]]
+
 # CNC Milling
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
