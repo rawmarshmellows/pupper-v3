@@ -3,7 +3,7 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/resistor]]
 
 > **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 
@@ -229,7 +229,7 @@ EMI FILTER
 **Q5:** To make an RC high-pass filter from an RC low-pass filter, what do you change?
 <details>
 <summary>Answer</summary>
-**Swap the resistor and capacitor positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
+**Swap the [[learning/notes/quick-context/resistor|resistor]] and [[learning/notes/quick-context/capacitor|capacitor]] positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
 </details>
 
 </details>

@@ -6,7 +6,7 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/tensor]]
 
 > **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
 
@@ -58,7 +58,7 @@ $$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what 
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
 | $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How [[learning/notes/quick-context/ppo-proximal-policy-optimization|PPO]] uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)
@@ -322,7 +322,7 @@ The $K_p = 7.5$ and $K_d = 0.25$ gains (from `init_kps` and `init_kds` in config
 
 ### Step 5: Motor Execution
 
-The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN bus (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
+The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ [[learning/notes/quick-context/can-bus|CAN bus]] (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
 
 ```
 ONE FULL INFERENCE CYCLE (out of ~52 per second)

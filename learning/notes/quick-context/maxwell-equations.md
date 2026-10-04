@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/faraday-tensor]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
@@ -510,7 +510,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[learning/notes/quick-context/electromagnetism|electromagnetism]].
 
 </details>
 
@@ -526,7 +526,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q2:** Why did Maxwell add the displacement current term (ε₀ ∂E/∂t) to Ampère's law?
 <details>
 <summary>Answer</summary>
-**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a capacitor would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
+**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a [[learning/notes/quick-context/capacitor|capacitor]] would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
 </details>
 
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?
