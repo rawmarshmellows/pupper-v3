@@ -5,9 +5,9 @@ created: 2026-03-27
 
 # CAN Bus (Controller Area Network)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/firmware]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[quick-context/embedded-communication-protocols]] | [[micro-context/can-bus-termination]] | [[micro-context/can-bus-transceiver]] | [[quick-context/pupper-brain|Pupper Control Board Rev 3.5 - The Robot's Brain]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]]
 
-> **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire differential pair without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
+> **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire [[quick-context/differential-pair|differential pair]] without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
 
 ## The Core Problem
 
@@ -293,7 +293,7 @@ CANH and CANL on a scope during one frame:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts the MCU's single-ended digital TX/RX into differential CANH/CANL signals. This micro-context covers the physical layer interface that CAN depends on.
 

@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # Clock Edge
 
+
+> **Related:** [[quick-context/clock-sources-and-timing]] | [[micro-context/clock-speed]] | [[quick-context/d-flip-flop|D Flip-Flop — The Atom of Digital Memory]] | [[quick-context/transistor-analog-to-digital|Transistors: Imperfect Analog Devices Masquerading as Digital Switches]] | [[micro-context/clock-speed-vs-temperature]]
+
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
 **Definition:** The precise moment when a clock signal transitions between states—either rising (0→1) or falling (1→0). Digital circuits like [[quick-context/d-flip-flop|D flip-flops]] sample data only at clock edges, avoiding the "forbidden zone" where signals are mid-transition and invalid.

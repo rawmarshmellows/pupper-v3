@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # Reverse and Forward Bias
 
+
+> **Related:** [[quick-context/doped-silicon]] | [[micro-context/input-bias-current]] | [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete]]
+
 **Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works

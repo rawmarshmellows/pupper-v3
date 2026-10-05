@@ -3,7 +3,7 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/ros2-architecture|ROS2 Architecture — Robot Operating System 2 for Pupper v3]] | [[quick-context/pcb-printed-circuit-board|PCB]] | [[quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum]] | [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
@@ -15,20 +15,20 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
-| **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
-| **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
-| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[micro-context/microcontroller|STM32F446]]** | ARM Cortex-M4 [[micro-context/microcontroller|microcontroller]] @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[quick-context/can-bus|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
+| **BNO086 IMU** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
+| **[[micro-context/buck-converter|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
+| **[[quick-context/capacitor|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
+1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over [[micro-context/i2c|I2C]] directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
 
-2. **State estimation**: The Pi combines IMU data with motor feedback (received over SPI) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
+2. **State estimation**: The Pi combines IMU data with motor feedback (received over [[micro-context/spi|SPI]]) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
 
 3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
 
@@ -124,7 +124,7 @@ See: [[micro-context/can-bus-transceiver]]
 
 9-axis IMU with sensor fusion. Note: no supplier part number!
 May need to source separately from Bosch/Mouser.
-See: [[small-context/imu-robot-balance-sensing]]
+See: imu-robot-balance-sensing
 
 
 "21 | 1 | 60.4kΩ | R5 | R0402"
@@ -150,7 +150,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/stm32-microcontroller]] — The dual ARM Cortex-M4 MCUs running the show
 - [[micro-context/can-bus-transceiver]] — How differential signaling enables reliable motor communication
 - [[micro-context/buck-converter]] — Switching power supply converting battery to 5V
-- [[small-context/imu-robot-balance-sensing]] — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
+- imu-robot-balance-sensing — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work

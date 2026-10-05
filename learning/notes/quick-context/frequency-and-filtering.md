@@ -3,7 +3,7 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/wifi-chip-arduino-uno-r4|WiFi Chip — How Radio Becomes Data]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete]]
 
 > **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 

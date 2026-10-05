@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/glass-transition-temperature]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics|Atoms, Molecules, and Polymers Basics]] | [[quick-context/melt-index]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 

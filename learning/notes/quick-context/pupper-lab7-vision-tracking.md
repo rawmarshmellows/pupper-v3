@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control]] | [[quick-context/ros2-architecture|ROS2 Architecture — Robot Operating System 2 for Pupper v3]] | [[quick-context/pupper-brain|Pupper Control Board Rev 3.5 - The Robot's Brain]] | [[quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum]] | [[quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 

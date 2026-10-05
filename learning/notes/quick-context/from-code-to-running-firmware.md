@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
+> **Related:** [[quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]] | [[quick-context/firmware|Firmware — Software That Lives on Hardware]] | [[quick-context/physics-of-writing-data-to-memory|Physics of Writing Data to Memory — How Bits Become Charges, Voltages, and Trapped Electrons]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens|From Human Calculators to Coding on Screens]] | [[quick-context/how-source-code-is-stored|How Source Code Is Stored — Text, Encoding, and Bytes in Memory]]
 
 > **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
@@ -266,7 +266,7 @@ The compiler produces `can.o` with four sections — but no fixed addresses yet.
 
 ### Step 2: Linking
 
-The linker reads `STM32F446RETX_FLASH.ld` and stitches together `main.o`, `can.o`, `spi.o`, `startup_stm32f446retx.o`, and HAL library objects:
+The linker reads `STM32F446RETX_FLASH.ld` and stitches together `main.o`, `can.o`, `[[micro-context/spi|spi]].o`, `startup_stm32f446retx.o`, and HAL library objects:
 
 ```
 arm-none-eabi-ld -T STM32F446RETX_FLASH.ld \
@@ -330,7 +330,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
 

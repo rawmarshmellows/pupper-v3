@@ -3,9 +3,9 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/power-watts-joules|Electrical Power]] | [[quick-context/galvanic-cells-batteries|Galvanic Cells]] | [[quick-context/electric-current]]
 
-> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
+> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
 # How Electricity is Created
 

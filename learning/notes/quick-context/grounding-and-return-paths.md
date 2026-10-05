@@ -3,7 +3,7 @@ topic: Grounding and Return Paths
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/impedance-and-reactance]] | [[quick-context/pcb-printed-circuit-board|PCB]] | [[quick-context/thermal-noise-electronics|Thermal Noise: Why Heat Makes Electrons Misbehave]] | [[quick-context/electric-current]]
 
 > **TL;DR:** "Ground" is not a magical electron dump—it's the return path that completes every circuit, and [[quick-context/electric-current|current]] always flows in a loop; getting grounding wrong causes noise, interference, and mysterious failures, making it the single most misunderstood and most important concept in practical electronics.
 
@@ -192,7 +192,7 @@ THE CLASSIC GROUND LOOP PROBLEM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Current flows in loops. The return current through ground is equal in magnitude to the signal current. This is Kirchhoff's current law in action.
 

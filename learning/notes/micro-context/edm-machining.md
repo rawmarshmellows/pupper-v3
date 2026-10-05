@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # EDM Machining (Electrical Discharge Machining)
 
+
+> **Related:** [[quick-context/cnc-machining]] | [[quick-context/electrodes]] | [[quick-context/electrolysis]] | [[quick-context/power-watts-joules|Electrical Power]] | [[quick-context/bambu-ams-automatic-material-system|Bambu AMS]]
+
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/electrolysis]] | [[quick-context/electrodes]]
 
 **Definition:** A subtractive manufacturing process that removes metal by creating rapid electrical sparks between an electrode and the workpiece, vaporizing tiny amounts of material without mechanical contact. Ideal for cutting hard metals and complex shapes that conventional tools cannot machine.

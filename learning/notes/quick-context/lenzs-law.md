@@ -5,7 +5,7 @@ created: 2026-02-17
 
 # Lenz's Law
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/self-induction]] | [[quick-context/electricity-generation]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[micro-context/electromagnetic-induction]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/self-induction|Self-Induction]]
 
 > **TL;DR:** Lenz's Law is the minus sign in Faraday's Law (EMF = -N × dΦ/dt) — it states that any induced [[quick-context/electric-current|current]] creates a magnetic field that opposes the change in flux that caused it. This isn't arbitrary; it's conservation of energy enforced at the electromagnetic level. Without this opposition, you could extract infinite energy from nothing.
 
@@ -499,7 +499,7 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
 
-    See [[quick-context/inductor#rl-time-constant|RL Time Constant]] for the
+    See [[quick-context/inductor|RL Time Constant]] for the
     mathematics: the time constant τ = L/R determines how fast this happens.
 ```
 
@@ -581,7 +581,7 @@ THE DEEP INSIGHT:
 |--------|------------------------|-------------------|
 | Generator | Rotation of coil | Mechanical → electrical conversion |
 | Motor | Current flow | Electrical → mechanical conversion |
-| [[quick-context/inductor\|Inductor]] | Current changes | Energy storage in magnetic field |
+| [[quick-context/inductor|Inductor]] | Current changes | Energy storage in magnetic field |
 | Transformer | Flux changes in primary | Power transfer to secondary |
 | Eddy current brake | Motion of conductor | Magnetic braking (no friction wear) |
 
@@ -730,7 +730,7 @@ COMBINED EFFECT:
 
 - **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and electromagnetic induction, of which Lenz's Law specifies the direction.
 
-- **[[small-context/inductor-current-magnetic-field-emf]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
+- **[[quick-context/inductor]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
 
 - **Eddy Currents** — Induced currents in bulk conductors (not wires). Used in induction heating, magnetic braking, and metal detectors. Lenz's Law determines their direction and explains why they oppose motion.
 

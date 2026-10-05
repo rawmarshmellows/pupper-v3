@@ -3,7 +3,7 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels|ISA-95 Levels]] | [[quick-context/bambu-ams-automatic-material-system|Bambu AMS]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/melt-index]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 

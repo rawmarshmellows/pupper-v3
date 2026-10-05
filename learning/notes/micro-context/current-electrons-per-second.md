@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # Current and Electrons Per Second
 
+
+> **Related:** [[quick-context/electric-current]] | [[quick-context/physics-of-writing-data-to-memory|Physics of Writing Data to Memory — How Bits Become Charges, Voltages, and Trapped Electrons]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/voltage-current-causality|Voltage-Current Causality]] | [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]]
+
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
 **Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.

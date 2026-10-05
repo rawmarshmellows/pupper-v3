@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Faraday Tensor
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[quick-context/tensor]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/electric-current]] | [[quick-context/electromagnetism]]
 
 > **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 
@@ -283,7 +283,7 @@ APPROACH 2: UNIFIED FARADAY TENSOR (relativistic, elegant)
 | When to Use | E/B Separate | Faraday Tensor |
 |-------------|--------------|----------------|
 | Circuit design | Better | Overkill |
-| [[quick-context/inductor\|Inductor]]/[[quick-context/capacitor\|capacitor]] analysis | Better | Overkill |
+| [[quick-context/inductor|Inductor]]/[[quick-context/capacitor|capacitor]] analysis | Better | Overkill |
 | High-velocity particles | Works but messy | Natural |
 | Particle physics | Awkward | Required |
 | General relativity + EM | Impossible | Required |
