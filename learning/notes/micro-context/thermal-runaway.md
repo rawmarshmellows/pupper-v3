@@ -6,13 +6,16 @@ updated: 2026-03-27
 
 # Thermal Runaway
 
+
+> **Related:** [[quick-context/thermal-noise-electronics|Thermal Noise: Why Heat Makes Electrons Misbehave]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital|Transistors: Imperfect Analog Devices Masquerading as Digital Switches]] | [[micro-context/adc-analog-to-digital-converter|ADC]] | [[micro-context/clock-speed]]
+
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[micro-context/clock-speed-vs-temperature]]
 
 **Definition:** A destructive feedback loop where heat increases [[quick-context/transistor-analog-to-digital|leakage current]], which generates more heat, which increases leakage further—until the chip throttles, shuts down, or permanently damages itself.
 
 ## How It Works
 
-- Transistor leakage current grows exponentially with temperature due to increased carrier energy in the silicon.
+- [[quick-context/transistor|Transistor]] leakage current grows exponentially with temperature due to increased carrier energy in the silicon.
 - More leakage means more power dissipated as heat, even when the chip is idle.
 - The extra heat further raises temperature, creating a positive feedback loop that accelerates until cooling can no longer keep up.
 - Protection circuits detect the rising temperature and throttle clock speed or shut down the chip before permanent damage occurs.

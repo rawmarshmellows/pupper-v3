@@ -5,13 +5,16 @@ created: 2026-06-07
 
 # Input Offset Voltage ($V_{OS}$)
 
+
+> **Related:** [[quick-context/differential-pair]] | [[micro-context/offset-voltage-drift]] | [[micro-context/input-bias-current]] | [[quick-context/voltage-current-causality|Voltage-Current Causality]] | [[micro-context/ads1110-battery-adc|ADS1110]]
+
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
 
-**Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
+**Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by [[quick-context/transistor|transistor]] mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
 
 ## How It Works
 
-- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the tail current evenly at exactly $V(+) = V(-)$.
+- The input pair (Q1/Q2) is *drawn* identical, but real silicon etches slightly differently, so the two transistors don't split the [[micro-context/tail-current|tail current]] evenly at exactly $V(+) = V(-)$.
 - The few millivolts of input difference needed to re-balance them *is* the offset voltage.
 - It's a fixed DC error per part, not noise — so it stacks directly onto any reference-divider tolerance to set total threshold accuracy.
 - Datasheets list a *Typ* (statistical center at 25°C) and guaranteed *Limit* columns; the **boldface** limit holds over the full temperature range.

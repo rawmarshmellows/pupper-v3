@@ -5,6 +5,9 @@ created: 2026-05-04
 
 # Thread Pitch (Screws)
 
+
+> **Related:** [[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]] | [[quick-context/chemical-bonds-spectrum|Chemical Bonds: The Full Spectrum]] | [[quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]] | [[quick-context/how-source-code-is-stored|How Source Code Is Stored — Text, Encoding, and Bytes in Memory]] | [[quick-context/keypress-to-pixel-pipeline|Keypress to Pixel — The Full Path from a Key to a Letter on Screen]]
+
 **Definition:** The axial distance between two adjacent thread crests on a screw — i.e. how far the screw advances per full turn. Metric specs it in millimeters (e.g. $M3 \times 0.5$ = 3 mm diameter, 0.5 mm pitch); imperial specs it as threads per inch (TPI, e.g. $\frac{1}{4}\text{-}20$ = 20 threads per inch).
 
 ## How It Works

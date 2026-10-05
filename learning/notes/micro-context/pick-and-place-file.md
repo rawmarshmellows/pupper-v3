@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # Pick and Place File
 
+
+> **Related:** [[quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/pcb-printed-circuit-board|PCB]] | [[quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]] | [[quick-context/plc-vs-software|PLC: Why It's Different From Software]]
+
 > **See also:** [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
 
 **Definition:** A spreadsheet (CSV/Excel) exported from PCB design software that tells automated assembly machines exactly where to place each component on a [[quick-context/pcb-printed-circuit-board|PCB]]—including XY coordinates, rotation angle, and which side of the board. Used by contract manufacturers (JLCPCB, PCBWay) to populate your bare PCB with components.
@@ -34,4 +37,4 @@ PICK AND PLACE WORKFLOW:
                                                               └───┘
 ```
 
-**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-soldering).
+**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-[[quick-context/soldering|soldering]]).

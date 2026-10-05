@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # Coulomb (Unit History)
 
+
+> **Related:** [[micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[quick-context/electric-current]] | [[quick-context/transistor-design-history]] | [[quick-context/bambu-ams-automatic-material-system|Bambu AMS]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]]
+
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]
 
 **Definition:** The coulomb (C) is the SI unit of electric charge, named after French physicist Charles-Augustin de Coulomb (1736–1806). Originally defined by electrostatic force experiments, it's now defined as the charge transported by 1 ampere in 1 second.

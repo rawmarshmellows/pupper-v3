@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # I2S Audio Amplifier
 
+
+> **Related:** [[quick-context/pcb-printed-circuit-board|PCB]] | [[quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[quick-context/electric-current]] | [[micro-context/i2s]] | [[quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]]
+
 > **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
 
 **Definition:** A chip that receives digital audio over I2S (Inter-IC Sound) protocol and directly drives a speaker—combining DAC and amplifier in one package. The MAX98357A in your Pupper takes serial digital audio from the MCU and outputs up to 3.2W to a speaker, enabling the robot to make sounds without external audio hardware.

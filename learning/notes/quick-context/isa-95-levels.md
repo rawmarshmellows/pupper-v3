@@ -3,7 +3,7 @@ topic: ISA-95 Levels
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[quick-context/oee-overall-equipment-effectiveness|OEE]] | [[quick-context/plc-vs-software-control|PLC vs Software Control in Robotic Arm Systems]] | [[quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[quick-context/bambu-ams-automatic-material-system|Bambu AMS]] | [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]]
 
 > **TL;DR:** ISA-95 defines a five-level hierarchy that standardizes communication between factory floor systems and business systems, solving the integration chaos between ERPs and manufacturing equipment.
 

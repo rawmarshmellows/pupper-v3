@@ -6,6 +6,9 @@ updated: 2026-03-27
 
 # Current Behavior with Inductors vs Capacitors
 
+
+> **Related:** [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/electric-current]] | [[quick-context/voltage-current-causality|Voltage-Current Causality]] | [[micro-context/ac-dc-current|AC vs DC Current]] | [[micro-context/current-electrons-per-second|Current and Electrons Per Second]]
+
 **Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
 
 ## How It Works

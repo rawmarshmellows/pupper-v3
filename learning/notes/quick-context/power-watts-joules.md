@@ -3,7 +3,7 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/fundamental-electronic-parts-index|Fundamental Electronic Parts — Index]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[micro-context/edm-machining]] | [[micro-context/power-inductor]]
 
 > **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
 
@@ -113,7 +113,7 @@ THE THERMAL CONSTRAINT
 | Power Source | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |
@@ -168,7 +168,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 

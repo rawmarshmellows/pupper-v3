@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[quick-context/electric-current]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[quick-context/voltage-thermodynamics-electrolysis|Voltage and Thermodynamic Relationship in Electrolysis]] | [[micro-context/ac-dc-current|AC vs DC Current]]
 
 > **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor|Inductors]] (where changing I creates V), current sources, [[micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -303,7 +303,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes electrons; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
 

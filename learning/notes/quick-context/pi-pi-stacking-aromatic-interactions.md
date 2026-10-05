@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[quick-context/hydrogen-bonds-beginners|Hydrogen Bonds for Beginners]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/covalent-bonds|Quick Context: Covalent Bonds]] | [[quick-context/glass-transition-temperature]]
 
 > **TL;DR:** Pi-pi stacking is a molecular "velcro" effect where flat aromatic rings (like benzene in ABS plastic) attract each other through their electron clouds, requiring higher print temperatures to overcome and causing warping when these attractions re-form during cooling.
 

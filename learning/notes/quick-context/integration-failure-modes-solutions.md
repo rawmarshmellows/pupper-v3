@@ -3,7 +3,7 @@ topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
+> **Related:** [[quick-context/robot-cell-integration-best-practices|Robot Cell Integration Best Practices, Tools, and VLM Applications]] | [[quick-context/plc-vs-software-control|PLC vs Software Control in Robotic Arm Systems]] | [[quick-context/preempt-rt|PREEMPT_RT: Real-Time Linux for Industrial Control]] | [[quick-context/oee-overall-equipment-effectiveness|OEE]] | [[quick-context/pupper-brain|Pupper Control Board Rev 3.5 - The Robot's Brain]]
 
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 
