@@ -5,7 +5,7 @@ created: 2026-01-30
 
 # Capacitor
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/rc-oscillator]]
 
 > **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
 
@@ -479,7 +479,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
     Gets worse when cold     │ Ceramic cap loses capacitance at low temp
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking capacitors are just "smoothing" or "filtering." In digital circuits, decoupling capacitors are **local energy storage** - they're tiny batteries that can discharge in nanoseconds. The CPU doesn't draw smooth, constant current; it draws violent spikes every time transistors switch. No power supply, no matter how good, can respond fast enough. The capacitors aren't filtering anything out - they're actively injecting current into the circuit to fill demand that the power supply can't meet in time. Without them, every fast digital circuit would fail.
+**The one thing most outsiders get wrong about this is...** thinking capacitors are just "smoothing" or "filtering." In digital circuits, [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitors]] are **local energy storage** - they're tiny batteries that can discharge in nanoseconds. The CPU doesn't draw smooth, constant current; it draws violent spikes every time transistors switch. No power supply, no matter how good, can respond fast enough. The capacitors aren't filtering anything out - they're actively injecting current into the circuit to fill demand that the power supply can't meet in time. Without them, every fast digital circuit would fail.
 
 </details>
 
@@ -536,7 +536,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 **Q4:** An engineer removes all the 0.1 uF ceramic capacitors near a CPU to "simplify the design." What will likely happen?
 <details>
 <summary>Answer</summary>
-**The system will crash, produce errors, or fail to boot.** Without decoupling capacitors, sudden current demands from switching transistors cause massive voltage drops due to power trace inductance (V = L × di/dt). The CPU sees voltage dipping below its minimum operating level, causing logic errors or complete failure. This is especially true at high clock speeds where current transients are faster and more severe. See: Concrete Example (The Problem: Sudden Current Demands).
+**The system will crash, produce errors, or fail to boot.** Without decoupling capacitors, sudden current demands from switching transistors cause massive voltage drops due to power trace inductance (V = L × di/dt). The CPU sees voltage dipping below its minimum operating level, causing logic errors or complete failure. This is especially true at high [[learning/notes/micro-context/clock-speed|clock speeds]] where current transients are faster and more severe. See: Concrete Example (The Problem: Sudden Current Demands).
 </details>
 
 **Q5:** Why do DRAM chips need to be "refreshed" periodically, and how do capacitors relate to this requirement?

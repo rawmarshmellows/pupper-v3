@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
+> **Related:** [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/micro-context/full-bridge-rectifier]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 
@@ -102,21 +102,21 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 **Walking each stage in plain language:**
 
-1. **Switch closes (a bit is born).** Under each key is a switch. Pressing it shorts two contacts together — exactly the [[learning/notes/quick-context/switches-to-registers-storing-data|switch-makes-a-bit]] idea at the very bottom of this ladder. Open = 0, closed = 1. That is the *entire* physical input: one bit.
+1. **Switch closes (a bit is born).** Under each key is a switch. Pressing it shorts two contacts together — exactly the switch-makes-a-bit idea at the very bottom of this ladder. Open = 0, closed = 1. That is the *entire* physical input: one bit.
 
 2. **Matrix scan.** Keyboards do not run one wire per key (that would be ~100 wires). Keys sit at the crossings of a grid of rows and columns. A small chip drives one row at a time and reads the columns; a crossing that reads "shorted" tells it *which key* is down. This is cheap multiplexing: about $\sqrt{N}$ wires instead of $N$.
 
-3. **Debounce.** A metal contact physically bounces for a few milliseconds, opening and closing several times. The keyboard's [[learning/notes/quick-context/firmware|microcontroller]] waits until the signal is stable so one press is not read as ten.
+3. **Debounce.** A metal contact physically bounces for a few milliseconds, opening and closing several times. The keyboard's microcontroller waits until the signal is stable so one press is not read as ten.
 
 4. **Encode to a scancode.** The keyboard chip converts "row 3, column 5 just went down" into a **scancode** — a number that names the key. Crucially it is *not* the letter: the key labeled "A" sends the same scancode whether or not Shift is held. Meaning is added much later.
 
-5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or microcontroller, the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
+5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or [[learning/notes/micro-context/microcontroller|microcontroller]], the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
 
 6. **Transport.** The packet rides a [[learning/notes/quick-context/embedded-communication-protocols|serial protocol]] — [[learning/notes/quick-context/usb-peripheral-hardware|USB]] or [[learning/notes/quick-context/uart|UART]] — across a wire to the host's controller, which handles framing, addressing, and error checks.
 
 7. **Interrupt.** The host controller raises an **interrupt**: a wire to the CPU that says "stop what you're doing, something arrived." Without interrupts the CPU would have to poll ("any key? any key?") forever, wasting nearly all its cycles.
 
-8. **Interrupt handler reads the scancode.** The interrupt diverts the CPU's [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]] into a small piece of [[learning/notes/quick-context/firmware|firmware/OS]] code whose job is to read the scancode out of the controller and stash it.
+8. **Interrupt handler reads the scancode.** The interrupt diverts the CPU's [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]] into a small piece of firmware/OS code whose job is to read the scancode out of the controller and stash it.
 
 9. **Keymap: scancode -> character.** The OS looks the scancode up in a **keymap** table, combines it with the current modifier state (Shift held? which keyboard layout?), and produces a **character code** — e.g. ASCII 65 / Unicode U+0041 for `A`. *This is the exact rung where "a physical key" becomes "a letter."*
 
@@ -126,7 +126,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 12. **Character -> glyph.** To display the letter, software looks up its **glyph** in a font: the actual picture of `A` as a small grid of pixels (or a vector outline rasterized to pixels).
 
-13. **Glyph -> framebuffer.** The renderer copies the glyph's pixels into the **framebuffer** — a region of RAM with one value per screen pixel. RAM is just an enormous array of memory cells, which are [[learning/notes/quick-context/switches-to-registers-storing-data|scaled-up registers]]. "Drawing" literally means *writing numbers into memory addresses*.
+13. **Glyph -> framebuffer.** The renderer copies the glyph's pixels into the **framebuffer** — a region of RAM with one value per screen pixel. RAM is just an enormous array of memory cells, which are scaled-up registers. "Drawing" literally means *writing numbers into memory addresses*.
 
 14. **Scan-out.** A GPU / display controller continuously reads the framebuffer in order, ~60 times a second, and streams the pixel values to the panel.
 
@@ -244,7 +244,7 @@ Constantly checking (polling) would burn nearly all the CPU's cycles spinning on
 **Q4:** A friend says "the framebuffer is where the computer stores the letters that are on screen." Why is that wrong, and what does the framebuffer actually store?
 <details>
 <summary>Answer</summary>
-There are no "letters" in the framebuffer — it stores **pixel values**, one per screen dot, in a region of RAM (i.e. scaled-up [[learning/notes/quick-context/switches-to-registers-storing-data|registers]]). The letter only exists transiently as a *character code* in the application's data and a *glyph* in the font; rendering flattens that glyph into raw pixel values before they hit the framebuffer. The display controller reading the framebuffer has no idea an `A` is there — it just emits dots. See: Concrete Example.
+There are no "letters" in the framebuffer — it stores **pixel values**, one per screen dot, in a region of RAM (i.e. scaled-up registers). The letter only exists transiently as a *character code* in the application's data and a *glyph* in the font; rendering flattens that glyph into raw pixel values before they hit the framebuffer. The display controller reading the framebuffer has no idea an `A` is there — it just emits dots. See: Concrete Example.
 </details>
 
 **Q5:** In the Nand-to-Tetris Hack machine, the keyboard and screen are just memory addresses, yet a real PC has USB controllers, interrupts, and a GPU. What is the single shared mechanism that makes both work, and why is the toy a faithful kernel of the real thing?

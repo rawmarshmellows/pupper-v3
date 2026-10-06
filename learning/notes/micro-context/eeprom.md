@@ -3,6 +3,8 @@ term: EEPROM (Electrically Erasable Programmable Read-Only Memory)
 created: 2026-04-07
 ---
 
+> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/micro-context/plc-programmable-logic-controller]]
+
 # EEPROM (Electrically Erasable Programmable Read-Only Memory)
 
 **Definition:** A non-volatile memory chip that retains data without power, can be electrically rewritten byte-by-byte, and is used to store small amounts of configuration data (typically 1 KB – 64 KB). It sits between one-time-programmable ROM (write once) and [[learning/notes/micro-context/sram|SRAM]] (volatile, loses data on power-off).
@@ -40,5 +42,5 @@ EEPROM CELL (floating-gate MOSFET)
 ## Common Uses
 
 - **Raspberry Pi HAT EEPROM:** Stores a device tree overlay telling the Pi what the board is and how to configure itself at boot (read via [[learning/notes/micro-context/i2c|I2C]] on GPIO 0 & 1)
-- **Microcontroller calibration:** Factory-programmed temperature sensor offsets, oscillator trim values
+- **[[learning/notes/micro-context/microcontroller|Microcontroller]] calibration:** Factory-programmed temperature sensor offsets, oscillator trim values
 - **Serial number / MAC address storage** on network devices

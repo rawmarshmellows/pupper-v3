@@ -5,9 +5,9 @@ created: 2026-03-28
 
 # Qwiic / STEMMA QT — Plug-and-Play I2C
 
-> **Related:** [[micro-context/i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/resistor]]
 
-> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate soldering and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
+> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate [[learning/notes/quick-context/soldering|soldering]] and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
 
 ## The Core Problem
 
@@ -114,7 +114,7 @@ Every Qwiic/STEMMA QT breakout board includes:
 3. **3.3V voltage regulator** — so you can power from 3.3-5V
 4. **I2C pull-up resistors** (typically 2.2–10k$\Omega$) — already on the board
 5. **Address jumper** — solder bridge to change the I2C address if you have two of the same sensor
-6. **Decoupling capacitor** — for stable power to the sensor
+6. **[[learning/notes/micro-context/decoupling-capacitor|Decoupling capacitor]]** — for stable power to the sensor
 
 This means the breakout board handles all the electrical details. You just plug in the cable.
 
@@ -130,7 +130,7 @@ This means the breakout board handles all the electrical details. You just plug 
 | **Connector** | JST SH 1.0mm | JST SH 1.0mm | HY 2.0mm |
 | **Cross-compatible** | ✓ with STEMMA QT | ✓ with Qwiic | ✗ different connector |
 | **Logic voltage** | 3.3V only | 3.3V and 5V | 3.3V and 5V |
-| **Protocols** | I2C only | I2C only | I2C, UART, analog, digital |
+| **Protocols** | I2C only | I2C only | I2C, [[learning/notes/quick-context/uart|UART]], analog, digital |
 | **Board count** | ~200+ | ~300+ | ~400+ |
 | **Pull-ups on board** | ✓ | ✓ | ✓ |
 | **Typical price** | $5-15 per board | $5-15 per board | $3-12 per board |
