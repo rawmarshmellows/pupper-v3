@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # From Human Calculators to Coding on Screens
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/transistor]] | [[quick-context/transistor-design-history]]
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/microcontroller]]
 
 > **TL;DR:** Computing evolved through five eras of human-machine interfaces: teams of human "computers" doing arithmetic by hand with pencils and desk calculators (1600s-1940s), rewiring plugboards on vacuum-tube machines (1940s), feeding punch cards to stored-program computers (1950s), typing on teletype terminals connected to time-sharing systems (1960s), and editing code on CRT screens with compilers running locally (1970s+). The word "computer" originally meant a *person* — rooms full of people, mostly women, who performed calculations as assembly lines of arithmetic. Electronic computers replaced them because ENIAC could compute a ballistics trajectory in 30 seconds that took a human 20 hours. Today, when you type code on a screen, the keystrokes become characters stored in RAM then saved to disk; the compiler reads that file, translates it through the [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] into machine code, and the OS (or a [[quick-context/firmware|flash programmer]], for embedded systems) loads those binary instructions into memory where the CPU fetches and executes them.
 
@@ -768,7 +768,7 @@ CPU EXECUTING THE ADDITION (nanosecond timescale)
   The same addition on ENIAC: ~200 microseconds (600,000x slower)
 ```
 
-For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] microcontroller (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
+For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] [[learning/notes/micro-context/microcontroller|microcontroller]] (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
 
 **The one thing most outsiders get wrong about this is...** thinking that "interactive programming" means the computer understands your keystrokes directly. The screen, keyboard, text editor, filesystem, compiler, and OS are all elaborate layers of software that translate your intent into the only thing the CPU can do: fetch a binary instruction, decode it, and execute it through [[quick-context/code-to-gates-and-bootstrapping|logic gates]]. When you type on a screen and see output, you're interacting with at least six software layers — each one was [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, going all the way back to binary on punch cards.
 
@@ -789,7 +789,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 
-- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
+- **[[quick-context/uart]]** — Deep dive into how the [[learning/notes/quick-context/uart|UART]] hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
 
 - **Von Neumann Architecture** — The stored-program concept that made the transition from plugboards to software possible. Instructions and data share the same memory, enabling programs to be loaded and replaced without rewiring.
 

@@ -5,9 +5,9 @@ created: 2026-03-27
 
 # PWM Controller Circuit
 
-> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]]
 
-> **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
+> **TL;DR:** Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a [[learning/notes/quick-context/comparator|comparator]] intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 
 ## The Core Problem
 
@@ -73,7 +73,7 @@ $$V_{FB} = V_{OUT} \times \frac{R_2}{R_1 + R_2} \quad \xrightarrow{\text{IC regu
 
 **Why two resistors, not one?** A single resistor wouldn't create a defined division ratio. You need two resistors to form a ratio that depends *only* on R1 and R2, not on the IC's internals. The FB pin has extremely high input impedance (megaohms), so it draws negligible current and doesn't disturb the divider — the voltage at FB is determined purely by the R1/R2 ratio and $V_{OUT}$.
 
-**R1 and R2 are the converter's "programming interface."** Changing the output voltage means changing one resistor. The IC, MOSFET, inductor, and capacitor can all stay the same — only the feedback divider ratio determines $V_{OUT}$.
+**R1 and R2 are the converter's "programming interface."** Changing the output voltage means changing one resistor. The IC, [[learning/notes/micro-context/mosfet|MOSFET]], inductor, and capacitor can all stay the same — only the feedback divider ratio determines $V_{OUT}$.
 
 ### Step-by-Step: How One PWM Cycle Happens
 
@@ -270,7 +270,7 @@ VOUT drops → V_FB drops below Vref → error amplifier output rises → compar
 Change R1 in the feedback divider (the resistor between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
 </details>
 
-**Q3:** Why can't you just use a microcontroller's PWM output to regulate a buck converter?
+**Q3:** Why can't you just use a [[learning/notes/micro-context/microcontroller|microcontroller]]'s PWM output to regulate a buck converter?
 <details>
 <summary>Answer</summary>
 A microcontroller's PWM timer typically runs at kHz rates with microsecond resolution, but a buck converter needs cycle-by-cycle correction at 500kHz+ with nanosecond switching transitions. Even though hardware interrupt latency is fast (~12 cycles, ~71ns on a 168MHz Cortex-M4), the total response time including ISR entry, ADC sampling, and computation pushes practical latency to ~1μs — comparable to an entire switching period. The analog comparator inside the IC responds in nanoseconds with no software overhead. Also, the gate driver needs to source/sink amps of current to charge the MOSFET gate capacitance — an MCU GPIO pin can't do that.

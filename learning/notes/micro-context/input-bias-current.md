@@ -3,13 +3,15 @@ term: Input Bias Current (I_B)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]]
+
 # Input Bias Current ($I_B$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/mosfet]] | [[quick-context/resistor]]
 
-**Definition:** The tiny current that flows into (or out of) a comparator's or op-amp's input pin to bias its input transistors. For CMOS-input parts it is essentially zero — picoamps.
+**Definition:** The tiny current that flows into (or out of) a [[learning/notes/quick-context/comparator|comparator]]'s or op-amp's input pin to bias its input transistors. For CMOS-input parts it is essentially zero — picoamps.
 
-> **What "bias the input transistors" means:** *Biasing* a transistor = holding it at the standing DC operating point where it sits **turned-on, in its active (amplifying) region**, ready to respond. The input differential pair must be biased "on" *before* it can sense `V(+) − V(−)`. $I_B$ is the current that upkeep costs — pulled from whatever drives the input pin.
+> **What "bias the input transistors" means:** *Biasing* a transistor = holding it at the standing DC operating point where it sits **turned-on, in its active (amplifying) region**, ready to respond. The input [[learning/notes/quick-context/differential-pair|differential pair]] must be biased "on" *before* it can sense `V(+) − V(−)`. $I_B$ is the current that upkeep costs — pulled from whatever drives the input pin.
 
 ## How It Works
 

@@ -5,13 +5,13 @@ created: 2026-06-07
 
 # RAM — Addressing an Array of Registers
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/short-circuit]]
 
 > **TL;DR:** A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] stores exactly one word. RAM (Random-Access Memory) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its address**. Two switching circuits do the picking: a **DMUX** routes the "write now" signal to the one register you want to change, and a **MUX** selects the one register's value you want to read. With $n$ address bits you can name $2^n$ words, and you build big RAM by stacking eight small RAMs and gluing on three more address bits — over and over.
 
 ## The Core Problem
 
-A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a short circuit, and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
+A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a [[learning/notes/micro-context/short-circuit|short circuit]], and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
 
 ## 5 Essential Terms
 
@@ -19,16 +19,16 @@ A single register can hold one word, but a useful program needs thousands or mil
 |------|------------|
 | **Word** | The fixed-size chunk RAM stores and returns per address — one register's worth of bits. In the Nand-to-Tetris machine modeled here a word is 16 bits (`Bits16`); on a PC it is usually 8, 32, or 64. |
 | **Address** | A binary number that names one word in the array. With $n$ address bits there are $2^n$ distinct addresses, so an $n$-bit address selects one of $2^n$ words. |
-| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the clock edge. |
+| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the [[learning/notes/micro-context/clock-edges|clock edge]]. |
 | **MUX (multiplexer)** | A many-to-1 selector on the **read path**. Every register is always outputting its stored value; the MUX picks **exactly one** of those outputs to pass through, chosen by the address. |
-| **Load / clock-enable** | The gate that decides whether a register captures new data on the next [[learning/notes/micro-context/clock-edges|clock edge]]. If `load = 1` the register overwrites itself at the edge; if `load = 0` it holds. The DMUX sets exactly one register's `load` to 1. |
+| **Load / clock-enable** | The gate that decides whether a register captures new data on the next clock edge. If `load = 1` the register overwrites itself at the edge; if `load = 0` it holds. The DMUX sets exactly one register's `load` to 1. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
 
 ### One register, then many
 
-Start from one register. It has three things going in — the data word `in`, a `load` bit (write or hold), and a clock — and one thing coming out: the stored word `out`. (See [[learning/notes/quick-context/switches-to-registers-storing-data|switches to registers]] for how that one register is built from [[learning/notes/quick-context/d-flip-flop|D flip-flops]].)
+Start from one register. It has three things going in — the data word `in`, a `load` bit (write or hold), and a clock — and one thing coming out: the stored word `out`. (See switches to registers for how that one register is built from [[learning/notes/quick-context/d-flip-flop|D flip-flops]].)
 
 ```
             in[16] ─────────────►┌───────────┐
@@ -260,7 +260,7 @@ $16384 / 4096 = 4$, not 8 — so RAM16K is built from **four** RAM4Ks, not eight
 **Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a clock edge. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
 <details>
 <summary>Answer</summary>
-Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the [[learning/notes/quick-context/d-flip-flop|D flip-flop]] provides at the single-bit level.
+Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the D flip-flop provides at the single-bit level.
 </details>
 
 </details>

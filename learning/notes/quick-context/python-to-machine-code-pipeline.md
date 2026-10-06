@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
-> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]]
 
 > **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
 
@@ -21,7 +21,7 @@ A CPU understands exactly one thing: binary machine-code instructions for *its* 
 | **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip can run it directly. |
 | **Virtual Machine (VM)** | A program that pretends to be a CPU. CPython's VM is an **evaluation loop** (conceptually `ceval`) that reads one bytecode op and updates a **value stack**. "Interpreting bytecode" = this loop running. |
 | **Interpreter** | The whole `python` program: it compiles your source to bytecode, then its VM loop executes that bytecode. Crucially, the interpreter itself is **machine code** (a C program compiled ahead of time). |
-| **Machine code** | The binary instructions the physical CPU actually fetches and executes via the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]. Every execution route ends here — this is where software meets hardware. |
+| **Machine code** | The binary instructions the physical CPU actually fetches and executes via the fetch-execute cycle. Every execution route ends here — this is where software meets hardware. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
@@ -99,7 +99,7 @@ for (;;) {
 ```
 
 That `for(;;) { fetch; switch; }` shape should look familiar — it is a
-**software re-creation of the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]**, but the
+**software re-creation of the fetch-execute cycle**, but the
 "instructions" are Python bytecodes and the "registers" are the value stack.
 This loop *is* the virtual machine.
 
@@ -252,7 +252,7 @@ is_address_instruction = self.not_gate(op_code)   # top bit = 0 -> A-instruction
 ```
 
 No `if opcode == "ADD"` anywhere — the bits *are* the control wires (see
-[[learning/notes/quick-context/cpu-fetch-execute-cycle|the fetch-execute note]] for the full trace of how
+the fetch-execute note for the full trace of how
 `D=D+A` becomes mux/ALU selects). Whether the machine code came from Jack via the
 full Part-2 chain, from C via gcc, or is the compiled `python` interpreter
 itself, **this `cpu.py`-style fetch-execute is the bottom of the tower.**

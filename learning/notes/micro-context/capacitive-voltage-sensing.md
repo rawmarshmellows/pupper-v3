@@ -3,6 +3,8 @@ term: Capacitive Voltage Sensing
 created: 2026-06-08
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/capacitance]]
+
 # Capacitive Voltage Sensing
 
 > **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | [[micro-context/capacitive-sensing-measurement]]
@@ -40,7 +42,7 @@ created: 2026-06-08
 **Is it measured relative to ground? Then is the voltage different at different points along the conductor?**
 Yes, relative to ground — [[quick-context/voltage|voltage]] is always a difference, and the return path reaches earth through $C_{ref}$ or your body's capacitance (no ground path → no current → nothing to sense). But **no**, the voltage is *not* different along the conductor: a wire is one **equipotential** node — negligible $IR$ drop means the same potential everywhere along it at a given instant. What varies is *time* (the AC swing the sensor detects) and *different nodes* (across a load), not position on the wire. (Exception: at RF, where wire length ≈ wavelength, transmission-line standing waves do make position matter — but 60 Hz mains has λ ≈ 5000 km, so any normal wire is equipotential.)
 
-**Where does the differential pair's reference come from?**
+**Where does the [[learning/notes/quick-context/differential-pair|differential pair]]'s reference come from?**
 For single-ended sensing (this diagram) the "ref" is just the device's own **ground / 0 V** node — the pair amplifies $V_{sense} - 0$. Other architectures: a **non-contact tester** compares against a fixed **threshold** (bandgap/divider) and beeps when exceeded; a **differential capacitive sensor** (e.g. MEMS accelerometer) uses a **second plate** moving the opposite way, measuring $C_1 - C_2$.
 
 **Why is a capacitor in series *less* capacitance?**

@@ -5,7 +5,7 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/full-bridge-rectifier]] | [[learning/notes/quick-context/diode]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/micro-context/ac-dc-current]]
 
 > **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
 
@@ -150,7 +150,7 @@ The RC time constant (R_load x C) determines how much ripple remains. Bigger cap
 |----------|--------|------|------|
 | **Half-wave** | 1 | Simplest, cheapest | Wastes 50% of AC, more ripple, larger cap needed |
 | **Full-bridge** | 4 | Uses both halves, less ripple, smaller cap | 1.4V total drop (2 diodes always in series), more components |
-| **Synchronous rectification** | 0 (MOSFETs) | Lowest loss (~50mV drop), highest efficiency | Complex gate drive, expensive, used in modern switch-mode supplies |
+| **Synchronous rectification** | 0 ([[learning/notes/micro-context/mosfet|MOSFETs]]) | Lowest loss (~50mV drop), highest efficiency | Complex gate drive, expensive, used in modern switch-mode supplies |
 
 The 1.4V drop matters most at low voltages. Rectifying 120V AC? The 1.4V is negligible (1.2%). Rectifying 5V AC for USB? That 1.4V is a 28% loss -- this is why modern USB chargers use switch-mode topologies with synchronous rectification instead of simple bridge rectifiers.
 

@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -137,7 +137,7 @@ The right K depends on the polymer's [[learning/notes/quick-context/melt-index|m
 
 Flow ratio is the slicer's "how much filament to push per mm of toolpath." Three molecular reasons it varies:
 - **Pigment loading.** Black PLA often has 1–3% carbon black; matte PLA has glass beads or chalk. These fillers displace polymer volume but don't melt — they raise the *effective* viscosity and reduce volumetric output per gram fed.
-- **Molecular weight distribution.** Different production batches have slightly different chain-length distributions, which changes [[learning/notes/quick-context/melt-index|melt index]] and therefore flow at the same temperature.
+- **Molecular weight distribution.** Different production batches have slightly different chain-length distributions, which changes melt index and therefore flow at the same temperature.
 - **Diameter tolerance.** "1.75 mm" filament is really 1.70–1.80 mm. The extruder feeds by length but the slicer assumes nominal diameter. A 1.78 mm spool delivers 3.4% more cross-section than 1.75 mm.
 
 Calibration zeroes out all three sources at once.
@@ -153,7 +153,7 @@ But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-
 
 ### 5. Why layer adhesion needs heat — polymer interdiffusion
 
-Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
+Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + hydrogen bonds across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.
@@ -247,14 +247,14 @@ Bambu Studio → your project → Process → Quality:
   • Top surface ironing:         ON (for flat top parts)
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking "Bambu = perfect prints out of the box." Stock profiles are *good*, not optimal. Two hours of per-spool calibration upfront beats months of fighting stringing, ghosting, and weak overhangs. The P2S hardware ([[learning/notes/quick-context/3d-printer-hotends|hotend]] + DynaSense extruder + Adaptive Airflow) is only as good as the K-value and flow ratio you feed it.
+**The one thing most outsiders get wrong about this is...** thinking "Bambu = perfect prints out of the box." Stock profiles are *good*, not optimal. Two hours of per-spool calibration upfront beats months of fighting stringing, ghosting, and weak overhangs. The P2S hardware (hotend + DynaSense extruder + Adaptive Airflow) is only as good as the K-value and flow ratio you feed it.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[learning/notes/quick-context/3d-printing-slicer-settings]]** — Layer height × nozzle width × speed = volumetric flow rate. Calibrating K and flow ratio on the P2S is meaningless if your slicer settings demand more flow than the [[learning/notes/quick-context/3d-printer-hotends|hotend]] can melt.
+- **[[learning/notes/quick-context/3d-printing-slicer-settings]]** — Layer height × nozzle width × speed = volumetric flow rate. Calibrating K and flow ratio on the P2S is meaningless if your slicer settings demand more flow than the hotend can melt.
 - **[[learning/notes/quick-context/3d-printer-hotends]]** — P2S hardened-steel hotend handles fiber-reinforced filaments and reaches 300°C. Max volumetric throughput is the hard ceiling that no amount of K-value tuning can exceed.
 - **[[learning/notes/quick-context/3d-printing-filament-types]]** — Each material (PLA / PETG / ABS / PA-CF) has a different optimal K-value, flow ratio, dry temp, and cooling target. Calibration is *per material*, not just per printer.
 - **[[learning/notes/quick-context/bambu-ams-automatic-material-system]]** — P2S ships with AMS 2 Pro, which actively vents to dry filament 30% faster than sealed heating. Dry filament is precondition #1 for quality.

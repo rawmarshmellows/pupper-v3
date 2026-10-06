@@ -3,9 +3,9 @@ topic: Anions and Oxidation
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/voltage]]
 
-> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and oxidation is the process of losing electrons—in electrolysis, anions migrate to the positive anode where they get oxidized, releasing electrons that flow through the circuit.
+> **TL;DR:** Anions are negatively-charged atoms (from gaining electrons), and [[learning/notes/micro-context/oxidation|oxidation]] is the process of losing electrons—in [[learning/notes/quick-context/electrolysis|electrolysis]], anions migrate to the positive [[learning/notes/micro-context/anode|anode]] where they get oxidized, releasing electrons that flow through the circuit.
 
 ## The Core Problem
 
@@ -186,7 +186,7 @@ so they go to the Anode to lose electrons!
 
 2. **Electrochemical Series** — A ranking of how easily different species lose or gain electrons. This determines which anion gets oxidized when multiple are present (the selectivity problem mentioned above).
 
-3. **[[quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without electrolytes, anions couldn't exist in solution and electrolysis couldn't occur. See: [[quick-context/electrolysis]]
+3. **[[quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without [[learning/notes/quick-context/electrolyte|electrolytes]], anions couldn't exist in solution and electrolysis couldn't occur. See: [[quick-context/electrolysis]]
 
 4. **Electron Configuration** — Understanding *why* atoms gain or lose electrons requires knowing how electrons arrange themselves around atoms. Atoms "want" stable configurations, which drives ion formation.
 
@@ -218,7 +218,7 @@ Factors like concentration, electrode material, and applied voltage determine se
 **Q4:** After 4 OH⁻ ions are oxidized to form O₂ + 2H₂O, how many electrons have been released into the circuit?
 <details>
 <summary>Answer</summary>
-Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the electric current in the circuit. See: The Concrete Example, hydroxide oxidation section.
+Four electrons (4e⁻). Each hydroxide ion had one extra electron, and all four are released during oxidation. This electron flow is what constitutes the [[learning/notes/quick-context/electric-current|electric current]] in the circuit. See: The Concrete Example, hydroxide oxidation section.
 </details>
 
 **Q5:** What's the relationship between the terms "anode," "anion," and "oxidation"?

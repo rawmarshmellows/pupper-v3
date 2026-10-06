@@ -4,6 +4,8 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/comparator]]
+
 # Push-Pull vs Open-Collector / Open-Drain
 
 ## Human notes
@@ -69,11 +71,11 @@ Examples:
 
 **Polarity footnote (why you'll also hear "wired-OR"):** same circuit, flipped labels. If the *signal* is active-LOW (LOW = "asserted"), then "any device pulls LOW" reads as "any device asserts" = **OR**. Voltage view → wired-AND (HIGH needs all releasing); active-low signal view → wired-OR (asserted if *any* device asserts). The FAULT bus above is exactly this: HIGH only while every comparator releases (wired-AND on voltage), but read as "fault if *any* comparator trips" (wired-OR on the active-low meaning). A shared `/INT` interrupt line works the same way.
 
-This is exactly why [[learning/notes/micro-context/i2c|I2C]] and shared interrupt lines use open-drain: any chip can assert the line, and no combination of drivers can ever short the bus.
+This is exactly why I2C and shared interrupt lines use open-drain: any chip can assert the line, and no combination of drivers can ever short the bus.
 
 **What is "OUT" in the diagram?** It's the chip's single output pin — where the transistor structure meets the outside wire. Push-pull vs open-drain describes *how* that pin is driven.
 
-In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carrying the 1-bit decision "is V+ > V−?", driven by the output stage (Q6 in the LMC7211-N — see [[learning/notes/quick-context/comparator-specification|datasheet specs]]):
+In a comparator, OUT is the pin carrying the 1-bit decision "is V+ > V−?", driven by the output stage (Q6 in the LMC7211-N — see datasheet specs):
 
 ```
    V(+) ──┐
@@ -96,8 +98,8 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
 
 - **Push-pull:** a high-side transistor connects the pin to VCC (sources current, drives HIGH) and a low-side transistor connects it to GND (sinks current, drives LOW); only one is on at a time.
 - Push-pull gives strong, fast drive in both directions, but two such outputs must never share a wire — one driving HIGH against another driving LOW is a near-short (bus contention).
-- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] raises it HIGH.
-- This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different logic voltage — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
+- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external pull-up resistor raises it HIGH.
+- This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different logic voltage — which is why I2C buses and interrupt lines use open-drain.
 
 ```
    PUSH-PULL (totem-pole)            OPEN-DRAIN / OPEN-COLLECTOR

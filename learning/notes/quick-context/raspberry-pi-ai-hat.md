@@ -5,7 +5,7 @@ created: 2026-04-07
 
 # Raspberry Pi AI HAT+ — Edge AI Acceleration
 
-> **Related:** [[quick-context/raspberry-pi-5-components]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/camera-fundamentals]]
+> **Related:** [[learning/notes/quick-context/raspberry-pi-5-components]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/tensor]]
 
 > **TL;DR:** The Raspberry Pi AI HAT+ is a family of add-on boards that snap onto a [[quick-context/raspberry-pi-5-components|Raspberry Pi 5]] and provide a dedicated NPU (Neural Processing Unit) for running AI inference locally — 10-40x faster than the CPU alone at a fraction of the power. The lineup ranges from a 13 TOPS vision-focused board ($70) to the AI HAT+ 2 with 40 TOPS and its own 8GB RAM for running small LLMs on-device ($180).
 
@@ -264,7 +264,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 | AI HAT+ 26T | Oct 2024 | Hailo-8 (soldered) | 26 | INT8 | None | ~$110 | High-perf vision |
 | AI HAT+ 2 | Apr 2026 | Hailo-10H (soldered) | 40 | INT4 | 8GB DDR | $180 | LLMs + vision |
 
-The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of soldering the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
+The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of [[learning/notes/quick-context/soldering|soldering]] the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
 
 ### Which One to Buy?
 
