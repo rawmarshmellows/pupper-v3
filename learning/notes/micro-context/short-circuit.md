@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/tensor]] | [[learning/notes/quick-context/voltage]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]
@@ -11,7 +13,7 @@ created: 2026-04-17
 
 ## How It Works
 
-- A conductive path forms where none was designed — solder bridge, frayed wire, damaged insulation, or component failure.
+- A conductive path forms where none was designed — [[learning/notes/quick-context/soldering|solder]] bridge, frayed wire, damaged insulation, or component failure.
 - Current divides among all available paths inversely proportional to their resistance — so when the short's resistance approaches zero, it carries almost all the current and starves the intended load.
 - Power dissipated as heat is $P = I^2 R$ across the wire's tiny residual resistance, which still produces enough energy to melt traces or ignite insulation.
 - Protection devices (fuses, breakers, current-limited supplies) detect the surge and cut power before damage spreads.

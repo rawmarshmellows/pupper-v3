@@ -5,30 +5,30 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/full-bridge-rectifier]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/reverse-and-forward-bias]]
 
-> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
+> **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing [[learning/notes/quick-context/voltage|capacitors]] to flatten the ripple into steady voltage.
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, [[learning/notes/quick-context/diode|LED]], and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[learning/notes/quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
+| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step [[learning/notes/quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
-| **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
-| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
-| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by capacitance, load current, and rectification frequency (RC time constant). |
+| **[[learning/notes/micro-context/reverse-and-forward-bias|Forward Bias]]** | Applying positive [[learning/notes/quick-context/voltage|voltage]] to the P-side and negative to the N-side of a [[learning/notes/quick-context/diode|PN junction]]. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for [[learning/notes/quick-context/transistor|silicon]] diodes. |
+| **[[learning/notes/micro-context/reverse-and-forward-bias|Reverse Bias]]** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until [[learning/notes/quick-context/diode|breakdown voltage]] is reached. |
+| **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[learning/notes/quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 ### Step 1: AC from the Grid
 
-AC is produced by rotating a coil in a magnetic field (generator), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
+AC is produced by rotating a coil in a magnetic field ([[learning/notes/quick-context/electricity-generation|generator]]), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
 
 ```
 AC from the wall (e.g. 120V, 60 Hz):
@@ -43,7 +43,7 @@ AC from the wall (e.g. 120V, 60 Hz):
 
 ### Step 2: The PN Junction -- Forward and Reverse Bias
 
-A diode is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
+A [[learning/notes/quick-context/diode|diode]] is a PN junction: [[learning/notes/quick-context/differential-pair|P-type silicon]] (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
 
 ```
 Forward bias: current flows           Reverse bias: current blocked
@@ -126,7 +126,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[learning/notes/quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):
@@ -137,19 +137,19 @@ After bridge (bumpy):            + Capacitor (smooth):
  still pulsating                  nearly flat DC output
 ```
 
-The RC time constant (R_load x C) determines how much ripple remains. Bigger capacitor or lighter load = smoother DC. Full-wave rectification helps too -- the capacitor only has to bridge half the gap compared to half-wave.
+The RC time constant (R_load x C) determines how much ripple remains. Bigger [[learning/notes/quick-context/capacitor|capacitor]] or lighter load = smoother DC. Full-wave rectification helps too -- the capacitor only has to bridge half the gap compared to half-wave.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Efficiency vs. Simplicity vs. Cost
 
 | Approach | Diodes | Pros | Cons |
 |----------|--------|------|------|
 | **Half-wave** | 1 | Simplest, cheapest | Wastes 50% of AC, more ripple, larger cap needed |
-| **Full-bridge** | 4 | Uses both halves, less ripple, smaller cap | 1.4V total drop (2 diodes always in series), more components |
+| **Full-bridge** | 4 | Uses both halves, less ripple, smaller cap | 1.4V [[learning/notes/quick-context/similarity-transform|total]] drop (2 diodes always in series), more [[learning/notes/quick-context/tensor|components]] |
 | **Synchronous rectification** | 0 (MOSFETs) | Lowest loss (~50mV drop), highest efficiency | Complex gate drive, expensive, used in modern switch-mode supplies |
 
 The 1.4V drop matters most at low voltages. Rectifying 120V AC? The 1.4V is negligible (1.2%). Rectifying 5V AC for USB? That 1.4V is a 28% loss -- this is why modern USB chargers use switch-mode topologies with synchronous rectification instead of simple bridge rectifiers.
@@ -182,22 +182,22 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 ### Source Micro-Contexts (Glossary Stubs)
 
-- **[[micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
-- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
-- **[[micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
-- **[[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
+- **[[learning/notes/micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
+- **[[learning/notes/micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
+- **[[learning/notes/micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
+- **[[learning/notes/micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
 
 ### Related Quick-Contexts
 
-- **[[quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
-- **[[quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
-- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs electron flow.
-- **[[quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
-- **[[quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
+- **[[learning/notes/quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, [[learning/notes/quick-context/diode|Zener]], freewheeling diodes.
+- **[[learning/notes/quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
+- **[[learning/notes/quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs [[learning/notes/quick-context/anions-and-oxidation|electron]] flow.
+- **[[learning/notes/quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
+- **[[learning/notes/quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
 
 </details>
 
@@ -213,7 +213,7 @@ Transformers only work with AC, and transformers allow stepping voltage up for e
 **Q2:** A silicon diode is forward-biased. What voltage does it drop, and why is this approximately constant regardless of current?
 <details>
 <summary>Answer</summary>
-~0.7V. This is the built-in potential of the PN junction's depletion zone. The I-V curve is exponential (Shockley equation), meaning voltage changes very slowly as current increases -- from ~0.6V at low current to ~0.8V at high current. It appears approximately constant over a wide operating range.
+~0.7V[[learning/notes/quick-context/glass-transition-temperature|. This is the]] built-in potential of the PN junction's depletion zone. The I-V curve is exponential (Shockley equation), meaning voltage changes very slowly as current increases -- from ~0.6V at low current to ~0.8V at high current. It appears approximately constant over a wide operating range.
 </details>
 
 **Q3:** Half-wave rectification uses one diode. Why is full-bridge (four diodes) worth the extra complexity?
@@ -228,10 +228,10 @@ Half-wave throws away the entire negative half of AC, wasting 50% of the availab
 Two diodes are always in the current path (one on each side of the bridge). Each silicon diode drops ~0.7V, so 2 x 0.7V = 1.4V is lost as heat in the diodes. This is why low-voltage supplies use Schottky diodes (~0.3V each, 0.6V total drop) or synchronous rectification with MOSFETs (~50mV drop).
 </details>
 
-**Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
+**Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]], and why?
 <details>
 <summary>Answer</summary>
-The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the capacitance. To reduce ripple under heavier load, you need a larger capacitor.
+The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the [[learning/notes/quick-context/capacitance|capacitance]]. To reduce ripple under heavier load, you need a larger capacitor.
 </details>
 
 </details>

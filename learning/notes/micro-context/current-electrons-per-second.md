@@ -4,15 +4,17 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/voltage]]
+
 # Current and Electrons Per Second
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
+> **See also:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
 
-**Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
+**Definition:** [[learning/notes/quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
 
 ## How It Works
 
-- An electric field (from a voltage source) pushes free electrons through the conductor in a coordinated drift.
+- An [[learning/notes/quick-context/voltage-current-causality|electric field]] (from a [[learning/notes/quick-context/voltage-current-causality|voltage source]]) pushes free electrons through the conductor in a coordinated drift.
 - At any cross-section of the wire, the number of electrons passing per second determines the current in amperes.
 - One ampere equals one coulomb (6.24 × 10¹⁸ electrons) flowing past that point every second.
 
@@ -31,4 +33,4 @@ updated: 2026-03-27
               └───────────────┘
 ```
 
-**Key insight:** The conversion factor (6.24 × 10¹⁸) is simply 1 divided by the electron's charge (1.6 × 10⁻¹⁹ coulombs)—current in amps times this number gives electrons per second.
+**Key insight:** The conversion factor (6.24 × 10¹⁸) is simply 1 divided by the [[learning/notes/quick-context/anions-and-oxidation|electron]]'s charge (1.6 × 10⁻¹⁹ coulombs)—current in amps times this number gives electrons per second.
