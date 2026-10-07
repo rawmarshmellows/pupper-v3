@@ -4,16 +4,18 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/tensor]]
+
 # Clock Speed
 
-> **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
+**Definition:** The frequency at which a CPU's [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[learning/notes/micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
 
 ## How It Works
 
 - An oscillator circuit generates a continuous square wave at the rated frequency (e.g., 3 GHz = 3 billion toggles/sec).
-- Each rising edge triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
+- Each rising edge triggers the CPU's pipeline to advance one step — [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]], [[learning/notes/quick-context/cpu-fetch-execute-cycle|decode]], or execute an [[learning/notes/quick-context/cpu-fetch-execute-cycle|instruction]].
 - Faster clocks mean less time between edges, so signals must propagate and settle through all logic gates within a shrinking window.
 
 ```
@@ -33,4 +35,4 @@ CLOCK SPEED = How many edges per second
   Light travels just 6 cm in that time.
 ```
 
-**Key insight:** Clock speed is limited by how fast transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.
+**Key insight:** Clock [[learning/notes/quick-context/physics-of-writing-data-to-memory|speed]] is limited by [[learning/notes/quick-context/electric-current|how fast]] transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.

@@ -4,16 +4,18 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/tensor]]
+
 # Oxidation
 
-> **See also:** [[quick-context/anions-and-oxidation]]
+> **See also:** [[learning/notes/quick-context/anions-and-oxidation]]
 
-**Definition:** The loss of electrons by an atom, ion, or molecule—always paired with [[quick-context/cations-and-reduction|reduction]] (electron gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
+**Definition:** The loss of electrons by an atom, [[learning/notes/quick-context/anions-and-oxidation|ion]], or [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]]—always paired with [[learning/notes/quick-context/cations-and-reduction|reduction]] ([[learning/notes/quick-context/anions-and-oxidation|electron]] gain) somewhere else, forming a redox reaction. Despite the name, oxygen need not be involved.
 
 ## How It Works
 
 - An atom or ion releases one or more electrons, increasing its oxidation state (becoming more positive).
-- The released electrons must be accepted by another species (the oxidizing agent), which undergoes reduction — the two half-reactions are always coupled.
+- The released electrons must be accepted by another species (the oxidizing agent), which undergoes [[learning/notes/quick-context/cations-and-reduction|reduction]] — the two half-reactions are always coupled.
 - The driving force is the difference in electron affinity: electrons flow from species that hold them weakly to species that attract them strongly.
 
 ```
@@ -33,4 +35,4 @@ Oxidation = losing electrons
    2Cl⁻  → Cl₂  + 2e⁻   (electrolysis)
 ```
 
-**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[quick-context/rust|Rusting iron]], a [[quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[quick-context/electrolysis|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.
+**Key insight:** Oxidation doesn't require oxygen—it just means losing electrons. [[learning/notes/quick-context/rust|Rusting iron]], a [[learning/notes/quick-context/galvanic-cells-batteries|battery]] discharging, and chlorine forming during [[learning/notes/quick-context/electrolysis|electrolysis]] are all oxidation because electrons leave, regardless of whether oxygen participates.

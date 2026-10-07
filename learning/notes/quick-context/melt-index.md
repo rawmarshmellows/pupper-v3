@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/polymer-chemical-bonds]]
 
 > **TL;DR:** Melt Index (MFI/MFR) measures how easily a polymer flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (MFR)**, measures how easily a thermoplastic [[quick-context/atoms-molecules-polymers-basics|polymer]] flows when melted—specifically, how many grams of polymer extrude through a standardized die in 10 minutes under controlled temperature and load. Your value of **36.5 ± 2.6 g/10 min** indicates a relatively high-flow material (easy to process, lower viscosity). Without this metric, manufacturers would be flying blind: injection molding machines, extruders, and blow molding equipment all require precise viscosity matching. Too low an MI means incomplete mold filling, short shots, and excessive machine wear from fighting a sluggish melt. Too high means the material runs like water—poor mechanical properties, flash at mold seams, and dimensional instability. MI is the universal handshake between resin suppliers and processors; it determines whether a given polymer will actually work in your specific process and equipment.
+Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (MFR)**, measures how easily a thermoplastic [[learning/notes/quick-context/atoms-molecules-polymers-basics|polymer]] flows when melted—specifically, how many grams of polymer extrude through a standardized die in 10 minutes under controlled temperature and load. Your value of **36.5 ± 2.6 g/10 min** indicates a relatively high-flow material (easy to process, lower viscosity). Without this metric, manufacturers would be flying blind: injection molding machines, extruders, and blow molding equipment all require precise viscosity matching. Too low an MI means incomplete mold filling, short shots, and excessive machine wear from fighting a sluggish melt. Too high means the material runs like water—poor mechanical properties, flash at mold seams, and dimensional instability. MI is the universal handshake between resin suppliers and processors; it determines whether a given polymer will actually work in your specific process and equipment.
 
 ## 5 Essential Terms
 
@@ -76,7 +76,7 @@ Note: Same polymer, higher MFI = shorter chains = easier flow = weaker part
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff is **processability vs. mechanical performance**. Higher MI polymers flow easily (faster cycle times, lower injection pressures, complex geometries possible) but have shorter molecular chains, meaning weaker [[quick-context/tensile-strength-materials|tensile strength]], lower impact resistance, and reduced chemical resistance. Lower MI materials are tougher and more durable but demand higher processing temperatures, pressures, and longer cycle times—increasing energy costs and equipment stress. Practitioners constantly argue about the "sweet spot": automotive engineers want low-MI for crash-worthy parts; packaging engineers want high-MI for thin-wall containers produced at high speed. The ± 2.6 tolerance in your spec reflects batch-to-batch variation—too wide a window and your process becomes unpredictable; too tight and you pay premium pricing for tighter quality control.
+The fundamental tradeoff is **processability vs. mechanical performance**. Higher MI polymers flow easily (faster cycle times, lower injection pressures, complex geometries possible) but have shorter molecular chains, meaning weaker [[learning/notes/quick-context/tensile-strength-materials|tensile strength]], lower impact resistance, and reduced chemical resistance. Lower MI materials are tougher and more durable but demand higher processing temperatures, pressures, and longer cycle times—increasing energy costs and equipment stress. Practitioners constantly argue about the "sweet spot": automotive engineers want low-MI for crash-worthy parts; packaging engineers want high-MI for thin-wall containers produced at high speed. The ± 2.6 tolerance in your spec reflects batch-to-batch variation—too wide a window and your process becomes unpredictable; too tight and you pay premium pricing for tighter quality control.
 
 </details>
 
@@ -122,12 +122,12 @@ In practice, if batch A-2024-004 enters your injection molding process, you'd se
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/glass-transition-temperature]]**: The temperature at which a polymer transitions from rigid/glassy to flexible/rubbery—MFI testing must occur well above this point for meaningful flow measurements.
-- **[[quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than amorphous ones.
-- **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
-- **[[quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
-- **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
-- **[[quick-context/bambu-p2s-print-quality]]**: MFI variation between batches drives why per-spool flow ratio and pressure advance (K-value) calibration matters on the P2S—different MFI means different optimal extrusion settings.
+- **[[learning/notes/quick-context/glass-transition-temperature]]**: The temperature at which a polymer transitions from rigid/glassy to flexible/rubbery—MFI testing must occur well above this point for meaningful flow measurements.
+- **[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than amorphous ones.
+- **[[learning/notes/quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
+- **[[learning/notes/quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
+- **[[learning/notes/quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.
+- **[[learning/notes/quick-context/bambu-p2s-print-quality]]**: MFI variation between batches drives why per-spool flow ratio and pressure advance (K-value) calibration matters on the P2S—different MFI means different optimal extrusion settings.
 
 </details>
 

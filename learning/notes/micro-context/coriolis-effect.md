@@ -3,11 +3,13 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/tensor]]
+
 # Coriolis Effect
 
-> **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]
+> **See also:** mems-gyroscope-vibration-drift | imu-robot-balance-sensing | [[learning/notes/quick-context/pupper-bom-control-board]]
 
-**Definition:** A pseudo-force that acts on objects moving within a rotating reference frame, deflecting them perpendicular to their velocity. The force is $F_{\text{Coriolis}} = -2m(\vec{\omega} \times \vec{v})$ — proportional to both the rotation rate $\omega$ and the object's velocity $v$, and always at right angles to the motion. It's called a "pseudo-force" because it vanishes in a non-rotating frame — nothing is actually pushing the object; it just *appears* to curve because the frame itself is rotating underneath it.
+**Definition:** A pseudo-force that acts on objects moving within a rotating reference [[learning/notes/quick-context/can-bus|frame]], deflecting them perpendicular to their velocity. The force is $F_{\text{Coriolis}} = -2m(\vec{\omega} \times \vec{v})$ — proportional to both the rotation rate $\omega$ and the object's velocity $v$, and always at right angles to the motion. It's called a "pseudo-force" because it vanishes in a non-rotating frame — nothing is actually pushing the object; it just *appears* to curve because the frame itself is rotating [[learning/notes/quick-context/bga-ball-grid-array|underneath]] it.
 
 ## How It Works
 

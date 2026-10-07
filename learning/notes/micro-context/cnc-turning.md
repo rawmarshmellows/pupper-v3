@@ -4,15 +4,17 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/tensor]]
+
 # CNC Turning
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
+> **See also:** [[learning/notes/quick-context/cnc-machining]] (full treatment) | [[learning/notes/micro-context/cnc-milling]]
 
-**Definition:** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting tool removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally symmetric parts like shafts, bolts, and bushings.
+**Definition:** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting [[learning/notes/quick-context/epson-rc-plus-programming|tool]] removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally [[learning/notes/quick-context/singular-value-decomposition|symmetric]] parts like shafts, bolts, and bushings.
 
 ## How It Works
 
-- The workpiece is clamped in a rotating chuck that spins it at high speed (hundreds to thousands of RPM).
+- The workpiece is clamped in a rotating chuck that spins it at high [[learning/notes/quick-context/physics-of-writing-data-to-memory|speed]] (hundreds to thousands of RPM).
 - A stationary cutting tool is fed into the spinning workpiece, shaving off material in a continuous spiral.
 - The CNC controller moves the tool along and into the workpiece axis to produce the programmed cylindrical profile.
 

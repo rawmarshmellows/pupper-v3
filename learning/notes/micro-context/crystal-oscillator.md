@@ -3,11 +3,13 @@ term: Crystal Oscillator
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/comparator]]
+
 # Crystal Oscillator
 
-> **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** A circuit that uses a quartz crystal's piezoelectric resonance to generate a precise, stable frequency — the universal clock source for CPUs. Every digital processor, from a laptop's Intel chip to a Pupper's [[micro-context/stm32-microcontroller|STM32]], derives its [[micro-context/clock-speed|clock]] from some form of crystal or resonator oscillator, with PLLs multiplying the base frequency up to operating speed. Far more accurate than [[quick-context/rc-oscillator|RC oscillators]] (±20 ppm vs. ±1-5%), but requires an external component.
+**Definition:** A circuit that uses a quartz crystal's piezoelectric resonance to generate a precise, stable frequency — the universal [[learning/notes/micro-context/clock-source|clock source]] for CPUs. Every digital processor, from a laptop's Intel chip to a Pupper's [[learning/notes/micro-context/stm32-microcontroller|STM32]], derives its [[learning/notes/micro-context/clock-speed|clock]] from some form of crystal or resonator oscillator, with PLLs multiplying the base frequency up to operating speed. Far more accurate than [[learning/notes/quick-context/rc-oscillator|RC oscillators]] (±20 ppm vs. ±1-5%), but requires an external component.
 
 ## How It Works
 
@@ -32,4 +34,4 @@ QUARTZ CRYSTAL → OSCILLATOR CIRCUIT → PLL → CPU CLOCK
   MCU:       8 MHz crystal → PLL → 180 MHz
 ```
 
-**Key insight:** No CPU runs directly off a crystal — the crystal just provides an accurate *reference* frequency that PLLs multiply up. The crystal's job is stability, not speed; the PLL's job is speed, not stability.
+**Key insight:** No CPU runs directly off a crystal — the crystal just provides an accurate *reference* frequency that PLLs multiply up. The crystal's job is stability, not [[learning/notes/quick-context/physics-of-writing-data-to-memory|speed]]; the PLL's job is speed, not stability.
