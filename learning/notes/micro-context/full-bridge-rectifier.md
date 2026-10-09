@@ -51,7 +51,7 @@ WHEN AC SWINGS + ON LEFT:        WHEN AC SWINGS − ON LEFT:
      SAME DIRECTION THROUGH LOAD BOTH TIMES!
 ```
 
-**Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-voltage supplies.
+**Key insight:** Two diodes always conduct at once, so the output is ~1.4V below the AC peak (2 × 0.7V drop)—this is why Schottky bridges are used in low-[[learning/notes/quick-context/voltage|voltage]] supplies.
 
 ---
 > **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]

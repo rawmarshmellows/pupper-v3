@@ -5,6 +5,8 @@ created: 2026-05-04
 
 # Thread Pitch (Screws)
 
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/quick-context/tensile-strength-materials]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]]
+
 **Definition:** The axial distance between two adjacent thread crests on a screw — i.e. how far the screw advances per full turn. Metric specs it in millimeters (e.g. $M3 \times 0.5$ = 3 mm diameter, 0.5 mm pitch); imperial specs it as threads per inch (TPI, e.g. $\frac{1}{4}\text{-}20$ = 20 threads per inch).
 
 ## How It Works
