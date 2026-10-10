@@ -3,6 +3,8 @@ term: Crystal Oscillator
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]] | [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/micro-context/power-supply-rejection-ratio]]
+
 # Crystal Oscillator
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]

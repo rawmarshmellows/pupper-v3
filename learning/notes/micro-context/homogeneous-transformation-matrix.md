@@ -4,6 +4,8 @@ created: 2026-03-11
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 # Homogeneous Transformation Matrix
 
 **Definition:** A $4 \times 4$ matrix that encodes both rotation and translation in a single structure, allowing chained coordinate frame transformations via matrix multiplication. The standard representation in [[quick-context/pupper-lab2-forward-kinematics|forward kinematics]] for computing end-effector position from joint angles.

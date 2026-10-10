@@ -3,11 +3,13 @@ term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/power-inductor]]
+
 # Schmitt Trigger & Hysteresis
 
 > **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
 
-**Definition:** A [[learning/notes/quick-context/comparator|comparator]]-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
+**Definition:** A [[learning/notes/quick-context/comparator|comparator]]-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate [[learning/notes/quick-context/voltage|voltage]] gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
 
 ## How It Works
 

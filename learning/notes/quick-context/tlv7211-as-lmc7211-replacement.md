@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Can the TLV7211 / TLV7211A Replace the LMC7211-N?
 
-> **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541 (C623499) as an LMC7211 replacement]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/differential-pair]]
 >
 > **Parts compared:** [LMC7211-N (TI/National) — local PDF](lmc7211-n.pdf) vs **TLV7211 / TLV7211A** (TI) — [datasheet PDF](tlv7211.pdf). Checklist source: [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
 
@@ -197,7 +197,7 @@ Because the TLV7211 is **the same silicon re-named** (National → TI), its data
 **Q5:** Both the TLV7211 and the MCP6541 "fit the LMC7211-N's SOT23-5 footprint." Why is only one of them an *unconditional* replacement?
 <details>
 <summary>Answer</summary>
-**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-voltage, slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
+**Same footprint ≠ same part.** The TLV7211 matches the footprint *and* every electrical spec (it's the renamed LMC7211), so it's unconditional. The [[quick-context/mcp6541-as-lmc7211-replacement|MCP6541]] matches the footprint but is a different design — it caps at 5.5 V (vs 15 V), is ~9× slower, and adds fixed hysteresis — so it's a drop-in *only* for low-[[learning/notes/quick-context/voltage|voltage]], slow designs. Form-compatibility is necessary but never sufficient; function decides. See: The Key Tension (spectrum diagram).
 </details>
 
 </details>

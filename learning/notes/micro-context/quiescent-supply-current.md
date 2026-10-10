@@ -3,6 +3,8 @@ term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/power-inductor]]
+
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]

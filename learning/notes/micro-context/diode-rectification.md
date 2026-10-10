@@ -4,6 +4,8 @@ created: 2026-02-07
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]] | [[learning/notes/micro-context/quiescent-supply-current]]
+
 # Diode Rectification (AC → DC)
 
 **Definition:** Using [[quick-context/diode|diodes]] as one-way valves to convert AC to DC. Since diodes only let current flow in one direction, they block or flip the negative portions of AC, producing output that's always positive.

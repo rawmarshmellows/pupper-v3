@@ -3,6 +3,8 @@ term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]] | [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/micro-context/power-supply-rejection-ratio]]
+
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]

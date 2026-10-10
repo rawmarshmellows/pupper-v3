@@ -4,11 +4,13 @@ created: 2026-02-08
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/cnc-process-selection]]
+
 # Electromagnetic Induction
 
 > **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]
 
-**Definition:** The phenomenon where a changing magnetic field through a conductor induces a voltage (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
+**Definition:** The phenomenon where a changing magnetic field through a conductor induces a [[learning/notes/quick-context/voltage|voltage]] (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
 
 ## How It Works
 
