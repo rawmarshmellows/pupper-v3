@@ -3,6 +3,8 @@ term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/plc-programmable-logic-controller]]
+
 # I2S (Inter-IC Sound)
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]

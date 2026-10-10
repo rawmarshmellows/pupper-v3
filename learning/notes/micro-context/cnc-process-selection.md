@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 # CNC Process Selection
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]

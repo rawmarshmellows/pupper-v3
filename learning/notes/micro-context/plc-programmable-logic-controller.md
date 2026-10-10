@@ -3,6 +3,8 @@ term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
 
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/microcontroller]]
+
 # PLC (Programmable Logic Controller)
 
 > **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]

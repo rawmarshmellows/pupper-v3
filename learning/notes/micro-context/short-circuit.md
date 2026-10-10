@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/schmitt-trigger-hysteresis]] | [[learning/notes/micro-context/quiescent-supply-current]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/power-inductor]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]

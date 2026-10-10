@@ -5,9 +5,9 @@ created: 2026-03-29
 
 # Clock Sources and Timing
 
-> **Related:** [[quick-context/rc-oscillator|RC Oscillator]] | [[micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]
+> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]
 
-> **TL;DR:** A microcontroller's clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
+> **TL;DR:** A [[learning/notes/micro-context/microcontroller|microcontroller]]'s clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
 
 ## The Core Problem
 
@@ -19,9 +19,9 @@ Every digital circuit needs a heartbeat -- a precise, repeating signal that tell
 |------|------------|
 | **Clock Source** | The component that generates the base frequency reference -- either an on-chip [[quick-context/rc-oscillator|RC oscillator]] (HSI), an external [[micro-context/ceramic-resonator|ceramic resonator]], or a [[micro-context/crystal-oscillator|quartz crystal]] (HSE). The Pupper v3 uses an 8 MHz ceramic resonator. |
 | **PLL (Phase-Locked Loop)** | An on-chip circuit that multiplies the low base frequency up to operating speed. The Pupper's STM32F446 multiplies 8 MHz $\times$ 22.5 = 180 MHz. The PLL's job is speed; the source's job is stability. |
-| **Clock Edge** | The precise moment when the clock signal transitions between states -- rising (0->1) or falling (1->0). [[micro-context/clock-edges|Flip-flops and registers]] capture data only at edges, ignoring the messy analog transitions in between. |
+| **[[learning/notes/micro-context/clock-edges|Clock Edge]]** | The precise moment when the clock signal transitions between states -- rising (0->1) or falling (1->0). [[micro-context/clock-edges|Flip-flops and registers]] capture data only at edges, ignoring the messy analog transitions in between. |
 | **SYSCLK / Bus Dividers** | The PLL output (SYSCLK) is too fast for some peripherals, so it's divided down: APB1 at $\div 4$ (45 MHz max), APB2 at $\div 2$ (90 MHz max) on the STM32F446. |
-| **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges transistor gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with voltage -- the fundamental reason CPUs throttle when hot. |
+| **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges [[learning/notes/quick-context/transistor|transistor]] gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with voltage -- the fundamental reason CPUs throttle when hot. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -134,8 +134,8 @@ WHY CLOCK SPEED HAS A CEILING
 $$P_{dynamic} = C \times V^2 \times f$$
 
 Where:
-- $C$ = total switched capacitance (fixed by chip design)
-- $V$ = supply voltage (dominates because it's squared)
+- $C$ = total switched [[learning/notes/quick-context/capacitance|capacitance]] (fixed by chip design)
+- $V$ = supply [[learning/notes/quick-context/voltage|voltage]] (dominates because it's squared)
 - $f$ = clock frequency (linear relationship)
 
 ```
@@ -239,7 +239,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 
 **Related quick-context files:**
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: resistor-capacitor charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: resistor-[[learning/notes/quick-context/capacitor|capacitor]] charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
 - **[[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]** -- The full BOM including the two muRata CSTNE8M00G55A000R0 ceramic resonators (X1, X2).
 - **[[quick-context/can-bus|CAN Bus]]** -- The communication protocol that drives the Pupper's clock source choice: its ±1.58% tolerance makes ceramic resonators sufficient.
 - **[[quick-context/firmware|Firmware]]** -- The code that configures the clock tree at startup: selecting HSE, configuring PLL multipliers, switching SYSCLK.

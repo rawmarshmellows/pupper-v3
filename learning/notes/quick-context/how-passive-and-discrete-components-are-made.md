@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete
 
-> **Related:** [[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index]]
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/voltage]]
 
 > **TL;DR:** The same four everyday parts get manufactured two completely different ways. **On-chip (monolithic):** a resistor is a doped strip, a capacitor is two metal/silicon layers with a thin insulator between them, a diode is a PN junction, and a comparator is a whole integrated circuit of many transistors — all *patterned together* on one silicon wafer by the same [[learning/notes/quick-context/semiconductor-fabrication|photolithography process]] that makes transistors. **Discrete:** each is a tiny standalone object built by its own specialized process (screen-printed resistive paste, stacked ceramic layers, a single junction die) and then soldered onto a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]].
 
@@ -214,7 +214,7 @@ WHY ON-CHIP PARTS ARE "SLOPPY" BUT DISCRETE PARTS CAN BE PRECISE
 | **Max value** | Small (R, C) | Large (mF caps, MΩ resistors) |
 | **Tuning** | Fixed at mask design | Laser-trimmed per part |
 
-This is exactly why a comparator is an *on-chip* assembly of many transistors but you still put a *discrete* MLCC and a *discrete* pull-up resistor next to it on the board: the precise pull-up value and the bulk decoupling capacitance are things the chip process is bad at, so they live on the PCB.
+This is exactly why a comparator is an *on-chip* assembly of many transistors but you still put a *discrete* MLCC and a *discrete* pull-up resistor next to it on the board: the precise pull-up value and the bulk decoupling [[learning/notes/quick-context/capacitance|capacitance]] are things the chip process is bad at, so they live on the PCB.
 
 </details>
 
@@ -255,10 +255,10 @@ ONE BATTERY-MONITOR CIRCUIT — which parts are on-chip vs discrete?
 
 Walk it through:
 
-1. **The comparator chip itself** is one die fabricated like any IC — its differential pair, current mirror, *its own internal bias resistor (an on-chip poly strip)*, and *its internal PN-junction diodes* were all patterned together in the same fab. You can't buy "the resistor inside the comparator" separately; it's etched into the die.
+1. **The comparator chip itself** is one die fabricated like any IC — its [[learning/notes/quick-context/differential-pair|differential pair]], current mirror, *its own internal bias resistor (an on-chip poly strip)*, and *its internal PN-junction diodes* were all patterned together in the same fab. You can't buy "the resistor inside the comparator" separately; it's etched into the die.
 2. **R1 and R2** (the divider) are **discrete** thick-film [[learning/notes/micro-context/smd-resistor|SMD resistors]] precisely because the divider *ratio* sets the trip voltage and must be accurate — laser-trimmed discretes deliver the ±1% the chip process can't.
 3. **The pull-up resistor** for the open-drain output is **discrete** — its exact value (RC speed vs. power) is a board-level choice.
-4. **The decoupling capacitor** is a **discrete MLCC** — a co-fired ceramic block providing bulk capacitance no on-chip cap could match in value.
+4. **The [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]]** is a **discrete MLCC** — a co-fired ceramic block providing bulk capacitance no on-chip cap could match in value.
 
 Down the ladder, every "on-chip" part above traces to the raw [[learning/notes/quick-context/semiconductor-fabrication|fabrication]] cycle on a [[learning/notes/quick-context/silicon-die|silicon die]]; every "discrete" part traces to its own screen-print / co-fire / junction-dicing line and then a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] solder joint, with the finished chips landing in their [[learning/notes/quick-context/substrate-ic-packaging|packages]] first.
 
@@ -298,7 +298,7 @@ The resistor's value is $R = R_s \cdot (L/W)$ — the *doping level* fixes the s
 **Q3:** Why is a comparator *never* a discrete two-lead part the way a diode can be?
 <details>
 <summary>Answer</summary>
-Because a comparator is not a single circuit element — it is an *integrated circuit*: a dozen-plus transistors plus on-chip resistors and capacitors (a differential pair, a current mirror, a bias resistor, an output stage) all fabricated together on one die. A diode is one PN junction, which fits on a single tiny die with two terminals. You can package one junction with two leads; you cannot reduce a multi-transistor circuit to a single two-terminal element. A comparator is therefore made like any chip, not like a passive part. See: How It Works (comparator) and the misconception note.
+Because a comparator is not a single circuit element — it is an *integrated circuit*: a dozen-plus transistors plus on-chip resistors and capacitors (a differential pair, a [[learning/notes/micro-context/current-mirror|current mirror]], a bias resistor, an output stage) all fabricated together on one die. A diode is one PN junction, which fits on a single tiny die with two terminals. You can package one junction with two leads; you cannot reduce a multi-transistor circuit to a single two-terminal element. A comparator is therefore made like any chip, not like a passive part. See: How It Works (comparator) and the misconception note.
 </details>
 
 **Q4:** A designer says: "I'll just use the resistors inside my chip for the voltage divider that sets my reference — saves two parts." What's wrong with relying on on-chip resistors for an *accurate absolute* value?

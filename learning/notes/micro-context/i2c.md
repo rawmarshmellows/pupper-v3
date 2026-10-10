@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/plc-programmable-logic-controller]]
+
 # I2C
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]

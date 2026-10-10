@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/cnc-machining]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
