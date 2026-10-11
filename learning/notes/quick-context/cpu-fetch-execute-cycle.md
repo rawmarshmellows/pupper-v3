@@ -21,7 +21,7 @@ You've built [[learning/notes/quick-context/switches-to-registers-storing-data|r
 | **Instruction** | A single number (16 bits on the Hack CPU, 32 on ARM) stored in memory. Its individual bit-fields *are* control signals — they directly drive mux selects, ALU operation bits, and register load-enables. An instruction is a list of switch settings. |
 | **Fetch** | Use the PC as an address to read RAM, pulling the instruction number into the CPU so its bits are available as control wires. |
 | **Decode** | There is no separate "decoder brain" — decode is just *wiring*. The instruction's bits are fed straight to the control inputs of the muxes, ALU, and registers. Routing, not interpreting. |
-| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the clock edge a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
+| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the [[learning/notes/micro-context/clock-edges|clock edge]] a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
@@ -291,7 +291,7 @@ happen to play.
 
 - **Pipelining / caches / microcode** — The same loop, scaled: overlapping stages, fast local copies of memory, and a tiny program inside the decoder. More machinery, identical meaning.
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity up to running code. This note is rung L8, the rung where "registers + ALU + RAM" becomes "a running program."
+- **how-a-computer-works-index** — The hub: the full ladder from electricity up to running code. This note is rung L8, the rung where "registers + ALU + RAM" becomes "a running program."
 
 </details>
 

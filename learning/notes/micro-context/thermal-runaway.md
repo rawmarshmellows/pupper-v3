@@ -12,10 +12,10 @@ updated: 2026-03-27
 
 ## How It Works
 
-- Transistor leakage current grows exponentially with temperature due to increased carrier energy in the silicon.
+- [[learning/notes/quick-context/transistor|Transistor]] leakage current grows exponentially with temperature due to increased carrier energy in the silicon.
 - More leakage means more power dissipated as heat, even when the chip is idle.
 - The extra heat further raises temperature, creating a positive feedback loop that accelerates until cooling can no longer keep up.
-- Protection circuits detect the rising temperature and throttle clock speed or shut down the chip before permanent damage occurs.
+- Protection circuits detect the rising temperature and throttle [[learning/notes/micro-context/clock-speed|clock speed]] or shut down the chip before permanent damage occurs.
 
 ```
 THE THERMAL RUNAWAY FEEDBACK LOOP

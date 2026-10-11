@@ -287,7 +287,7 @@ fetch-executing machine code.
 
 - **GIL / reference counting** — Other things the CPython VM loop does between ops (memory management, the Global Interpreter Lock) that make the per-instruction overhead — and Python's single-core threading limits — what they are.
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
+- **how-a-computer-works-index** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
 
 </details>
 

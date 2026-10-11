@@ -15,11 +15,11 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
-| **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
-| **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
-| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[learning/notes/micro-context/stm32-microcontroller|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[learning/notes/quick-context/can-bus|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
+| **[[small-context/[[small-context/imu-robot-balance-sensing]]\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
+| **[[learning/notes/micro-context/buck-converter|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
+| **[[learning/notes/micro-context/decoupling-capacitor|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -150,7 +150,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 - [[micro-context/stm32-microcontroller]] — The dual ARM Cortex-M4 MCUs running the show
 - [[micro-context/can-bus-transceiver]] — How differential signaling enables reliable motor communication
 - [[micro-context/buck-converter]] — Switching power supply converting battery to 5V
-- [[small-context/imu-robot-balance-sensing]] — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
+- imu-robot-balance-sensing — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
@@ -177,10 +177,10 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 <details>
 <summary>Answer</summary>
 
-These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
+These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing [[learning/notes/quick-context/voltage|voltage]] dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
-**Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
+**Q3:** The [[learning/notes/micro-context/buck-converter|buck converter]] uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
 
 <details>
 <summary>Answer</summary>
@@ -196,7 +196,7 @@ They form a voltage divider in the feedback network that sets the output voltage
 Multiple reasons: (1) **Bandwidth**—with 12 servos sending position feedback at 1kHz, one bus approaches saturation; splitting into 2-4 buses reduces congestion. (2) **Redundancy**—if one bus fails, only some legs are affected. (3) **Topology**—front legs might be physically far from rear legs; separate buses simplify wiring. (4) **Isolation**—a short or fault on one bus doesn't take down the whole robot. See: [[micro-context/can-bus-transceiver]].
 </details>
 
-**Q5:** The BNO086 IMU entry shows no LCSC supplier part number. What does this mean for building the board?
+**Q5:** The [[small-context/imu-robot-balance-sensing\|BNO086 IMU]] entry shows no LCSC supplier part number. What does this mean for building the board?
 
 <details>
 <summary>Answer</summary>
