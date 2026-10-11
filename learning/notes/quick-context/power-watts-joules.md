@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: Where Does the Energy Go?
 
-A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
+A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and [[learning/notes/quick-context/voltage|voltage]] alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
 
 ## 5 Essential Terms
 
@@ -113,7 +113,7 @@ THE THERMAL CONSTRAINT
 | Power Source | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[learning/notes/micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |
@@ -172,11 +172,11 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 
 - **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 
-- **[[quick-context/resistor]]** — Every resistor in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
+- **[[quick-context/resistor]]** — Every [[learning/notes/quick-context/resistor|resistor]] in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
 
-- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
+- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The [[learning/notes/quick-context/inductor|inductor]] stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 

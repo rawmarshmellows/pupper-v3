@@ -11,9 +11,9 @@ created: 2026-01-25
 
 ## The Core Problem: Getting Signals Out of an Impossibly Small Chip
 
-A modern computer chip contains **billions of transistors**, each one smaller than a virus (~5 nanometers). These transistors need to communicate with the outside world—they need power coming in and data going out. But here's the problem: you can't attach a wire to something that small. A human hair is about 70,000 nanometers wide; even the thinnest wire we can make is thousands of times larger than a transistor.
+A modern computer chip contains **billions of transistors**, each one smaller than a virus (~5 nanometers). These transistors need to communicate with the outside world—they need power coming in and data going out. But here's the problem: you can't attach a wire to something that small. A human hair is about 70,000 nanometers wide; even the thinnest wire we can make is thousands of times larger than a [[learning/notes/quick-context/transistor|transistor]].
 
-**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the silicon die where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
+**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the [[learning/notes/quick-context/silicon-die|silicon die]] where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
 
 **What breaks without bond pads?** Everything. A chip without bond pads is like a brain with no nerves connecting it to the body—it might be doing complex computations inside, but there's no way to power it, program it, or receive any output. The chip would be an expensive, useless square of silicon.
 
@@ -228,7 +228,7 @@ THE BOND PAD TRILEMMA
 
 **What practitioners argue about:**
 
-| Trade-off | Wire Bonding Camp | Flip-Chip Camp |
+| Trade-off | [[learning/notes/quick-context/wire-bonding|Wire Bonding]] Camp | Flip-Chip Camp |
 |-----------|-------------------|----------------|
 | **Cost** | "Wire bonding is 5-10x cheaper per connection" | "But flip-chip needs fewer packages for high I/O" |
 | **Density** | "Edge pads limit us to ~1000 connections" | "Area array gives us 3000+ connections" |
@@ -327,7 +327,7 @@ TYPICAL BOND PAD DIMENSIONS:
                       │                │ prevent edge damage
 ```
 
-**Example: A Simple Microcontroller vs. A Modern CPU**
+**Example: A Simple [[learning/notes/micro-context/microcontroller|Microcontroller]] vs. A Modern CPU**
 
 ```
 COMPARISON: Bond Pad Requirements
@@ -366,7 +366,7 @@ COMPARISON: Bond Pad Requirements
 
 - **[[quick-context/electrodes|Electrodes]] and Metallurgy** — Bond pads are made of specific metals (aluminum, copper, gold) chosen for their electrical conductivity and ability to form reliable bonds; understanding why matters for reliability.
 
-- **Electromigration** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
+- **[[learning/notes/quick-context/electromigration|Electromigration]]** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
 
 - **ESD (Electrostatic Discharge) Protection** — Bond pads are the entry points for static electricity that can destroy a chip; every pad needs protection circuits that can shunt thousands of volts safely.
 

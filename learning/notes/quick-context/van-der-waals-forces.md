@@ -384,7 +384,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-1. **[[quick-context/dipole-dipole-interactions]]** — Dipole-dipole interactions are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
+1. **[[quick-context/dipole-dipole-interactions]]** — [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-dipole interactions]] are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
 
 2. **[[quick-context/hydrogen-bonds-beginners]]** — Hydrogen bonds are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
 
@@ -394,7 +394,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **biology-fundamentals** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

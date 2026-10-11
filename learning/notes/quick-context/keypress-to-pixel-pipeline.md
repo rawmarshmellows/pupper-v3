@@ -110,7 +110,7 @@ KEYPRESS -> PIXEL : THE FULL ABSTRACTION LADDER
 
 4. **Encode to a scancode.** The keyboard chip converts "row 3, column 5 just went down" into a **scancode** — a number that names the key. Crucially it is *not* the letter: the key labeled "A" sends the same scancode whether or not Shift is held. Meaning is added much later.
 
-5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or microcontroller, the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
+5. **Wrap for transport.** On a PC keyboard the scancode is packed into a **USB HID** packet. On a bare-metal toy or [[learning/notes/micro-context/microcontroller|microcontroller]], the equivalent step is simply *writing the value into a memory-mapped keyboard register* — a fixed memory address the CPU can read (this is the anchor below, and the kernel of the whole idea).
 
 6. **Transport.** The packet rides a [[learning/notes/quick-context/embedded-communication-protocols|serial protocol]] — [[learning/notes/quick-context/usb-peripheral-hardware|USB]] or [[learning/notes/quick-context/uart|UART]] — across a wire to the host's controller, which handles framing, addressing, and error checks.
 
@@ -208,7 +208,7 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 <details>
 <summary><strong>Peripheral Knowledge</strong> — The rungs this capstone ties together</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
+- **how-a-computer-works-index** — The hub for the whole "electricity up to code executing" ladder; this note (L11) is its capstone.
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — The bottom anchor: a switch makes a bit, flip-flops store it, registers/RAM are scaled-up versions — i.e. both the key switch (rung 1) and the framebuffer (rung 13).
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The engine that runs the interrupt handler, the keymap lookup, and the application's drawing code (rungs 8-11). *(sibling — may not exist yet)*
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — How an address selects one cell; the top-bit dmux/mux in the anchor is exactly this, and it is what makes a memory-mapped keyboard/screen possible. *(sibling — may not exist yet)*
