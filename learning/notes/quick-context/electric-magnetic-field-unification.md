@@ -11,7 +11,7 @@ created: 2026-02-10
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
-Students learn voltage, current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
+Students learn [[learning/notes/quick-context/voltage|voltage]], current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
 
 ## 5 Essential Terms
 
@@ -495,9 +495,9 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[learning/notes/quick-context/electrolysis|electrolysis]] and circuits.
 
 - **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 

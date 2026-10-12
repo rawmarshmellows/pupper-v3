@@ -153,7 +153,7 @@ But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-
 
 ### 5. Why layer adhesion needs heat — polymer interdiffusion
 
-Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
+Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.

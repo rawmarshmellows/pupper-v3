@@ -11,7 +11,7 @@ created: 2026-01-30
 
 ## The Core Problem
 
-Electronics need stable voltage to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
+Electronics need stable [[learning/notes/quick-context/voltage|voltage]] to operate correctly, but power supplies fluctuate, digital circuits draw sudden bursts of [[quick-context/electric-current|current]], and signals contain unwanted noise. Capacitors solve these problems by acting as tiny, fast-responding energy reservoirs. When voltage rises, capacitors absorb excess charge; when voltage dips, they release stored charge to fill the gap. This happens in nanoseconds - far faster than any battery or power supply can respond. Without capacitors, your computer's CPU would crash from voltage fluctuations every time millions of [[quick-context/transistor|transistors]] switched simultaneously. The humble capacitor is what keeps digital circuits from descending into electrical chaos.
 
 ## 5 Essential Terms
 
@@ -488,7 +488,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** - The transistor's gate-oxide-semiconductor structure forms a MOS capacitor. Understanding capacitors is essential for understanding how transistors switch: applying gate voltage charges this capacitor, creating the electric field that forms the channel.
+- **[[quick-context/transistor]]** - The transistor's gate-oxide-[[learning/notes/quick-context/semiconductor-fabrication|semiconductor]] structure forms a MOS capacitor. Understanding capacitors is essential for understanding how transistors switch: applying gate voltage charges this capacitor, creating the electric field that forms the channel.
 
 - **[[quick-context/electric-current]]** - Current and capacitors are intimately related. Current equals the rate of charge flow: I = dQ/dt = C × dV/dt. A capacitor only "conducts" when voltage is changing.
 
@@ -508,7 +508,7 @@ DECOUPLING FAILURE - WHAT GOES WRONG:
 
 - **[[small-context/permanent-magnet-creation]]** - Capacitor discharge circuits store energy at high voltage (E = ½CV²) then release it in milliseconds to create 15,000+ amp pulses for magnetizing iron. A practical example of how capacitors enable high-power applications from low-power sources.
 
-- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC impedance techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
+- **[[quick-context/capacitive-sensing-measurement]]** -- How capacitive sensors (humidity, MEMS accelerometers, touchscreens) measure capacitance changes using RC timing, sigma-delta CDCs, and AC [[learning/notes/quick-context/impedance-and-reactance|impedance]] techniques. The RC charge/discharge curve described above is the mathematical basis of the simplest measurement family.
 
 </details>
 

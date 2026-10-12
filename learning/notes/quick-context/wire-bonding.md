@@ -11,7 +11,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-Inside every computer chip is a tiny silicon die with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
+Inside every computer chip is a tiny [[learning/notes/quick-context/silicon-die|silicon die]] with connection points only about 50 micrometers wide—thinner than a human hair—that need to connect to the outside world for power and data. Wire bonding solves this by using specialized machines to attach extremely thin wires (about 25 micrometers) between the chip and its protective housing, making it possible for chips to actually function in devices.
 
 ## 5 Essential Terms
 
@@ -30,7 +30,7 @@ Wire bonding is essentially robotic micro-sewing. A machine called a "wire bonde
 
 **Step 1: Ball Formation** — An electrical spark melts the tip of the gold or copper wire, forming a tiny ball (like a match head, but microscopic). Surface tension makes it perfectly round.
 
-**Step 2: Ball Bond** — The machine presses this ball onto the chip's bond pad while applying ultrasonic vibration. The vibration creates friction heat that welds the ball to the pad in milliseconds. This is the first attachment point.
+**Step 2: Ball Bond** — The machine presses this ball onto the chip's [[learning/notes/quick-context/bond-pad|bond pad]] while applying ultrasonic vibration. The vibration creates friction heat that welds the ball to the pad in milliseconds. This is the first attachment point.
 
 **Step 3: Looping** — The machine lifts up and arcs the wire over to the substrate's landing pad, creating a curved bridge. The loop shape is precisely controlled.
 
@@ -308,7 +308,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
                                             (huge by comparison!)
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming wire bonding is primitive or outdated technology. In reality, it's incredibly precise—modern wire bonders place thousands of wires per hour with micron-level accuracy, and the ultrasonic welding creates bonds stronger than the wire itself. Wire bonding handles the majority of chips manufactured today (billions annually) because it's the perfect balance of cost and reliability for most applications. The "better" alternatives like flip-chip are only necessary when you need extreme speed or density. A $5 microcontroller and a $500 CPU both need connections to the outside world—wire bonding makes the $5 chip economically possible.
+**The one thing most outsiders get wrong about this is...** assuming wire bonding is primitive or outdated technology. In reality, it's incredibly precise—modern wire bonders place thousands of wires per hour with micron-level accuracy, and the ultrasonic welding creates bonds stronger than the wire itself. Wire bonding handles the majority of chips manufactured today (billions annually) because it's the perfect balance of cost and reliability for most applications. The "better" alternatives like flip-chip are only necessary when you need extreme speed or density. A $5 [[learning/notes/micro-context/microcontroller|microcontroller]] and a $500 CPU both need connections to the outside world—wire bonding makes the $5 chip economically possible.
 
 </details>
 

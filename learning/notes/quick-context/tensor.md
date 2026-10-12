@@ -298,7 +298,7 @@ COMBINED LOADING (real-world):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The most important tensor in [[learning/notes/quick-context/electromagnetism|electromagnetism]]: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
 - **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 

@@ -11,7 +11,7 @@ created: 2026-04-09
 
 ## The Core Problem
 
-Combinational logic (AND, OR, NOT gates built from [[learning/notes/quick-context/transistor|transistors]]) can *compute* — but it can't *remember*. The instant you remove the inputs, the outputs vanish. To do anything useful — count, accumulate, follow a sequence of instructions — a circuit needs to **store a value and hold it stable** until deliberately changed. The D flip-flop solves this: it captures one bit at a [[learning/notes/micro-context/clock-edges|clock edge]] and holds it until the next edge. An 8-bit register is just eight of these in parallel, and from registers you can build RAM, CPUs, and every digital system that has ever existed.
+Combinational logic (AND, OR, NOT gates built from [[learning/notes/quick-context/transistor|transistors]]) can *compute* — but it can't *remember*. The instant you remove the inputs, the outputs vanish. To do anything useful — count, accumulate, follow a sequence of instructions — a circuit needs to **store a value and hold it stable** until deliberately changed. The [[learning/notes/quick-context/d-flip-flop|D flip-flop]] solves this: it captures one bit at a [[learning/notes/micro-context/clock-edges|clock edge]] and holds it until the next edge. An 8-bit register is just eight of these in parallel, and from registers you can build RAM, CPUs, and every digital system that has ever existed.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Combinational logic (AND, OR, NOT gates built from [[learning/notes/quick-contex
 | **Clock Signal** | A square wave that alternates between HIGH and LOW at a fixed rate. In this circuit, even a push button can serve as a manual clock — each press creates one rising edge that tells the flip-flop "capture now." See [[learning/notes/micro-context/clock-edges]]. |
 | **D Flip-Flop (DFF)** | A circuit that stores one bit. On the rising [[learning/notes/micro-context/clock-edges|clock edge]], it captures whatever value is on its D input and holds it at Q until the next clock edge. The 74HC74 chip contains two independent DFFs. See [[learning/notes/quick-context/d-flip-flop]]. |
 | **8-Bit Register** | Eight D flip-flops sharing a single clock line. On one clock edge, all eight capture their D inputs simultaneously — storing a full byte. The 74HC574 is a real chip that does exactly this. |
-| **Output Enable (OE)** | A control pin on the 74HC574 that connects or disconnects the outputs from the rest of the circuit (tri-state). When OE is LOW, outputs are active. When HIGH, they go high-impedance — as if the chip isn't there. This lets multiple registers share one data bus. |
+| **Output Enable (OE)** | A control pin on the 74HC574 that connects or disconnects the outputs from the rest of the circuit (tri-state). When OE is LOW, outputs are active. When HIGH, they go high-[[learning/notes/quick-context/impedance-and-reactance|impedance]] — as if the chip isn't there. This lets multiple registers share one data bus. |
 
 <details>
 <summary><strong>How It Works</strong> — The bare minimal circuit</summary>
@@ -380,7 +380,7 @@ The D flip-flop is **edge-triggered** — it only samples its D input at the ris
 **Q2:** The 74HC574 has an Output Enable (OE) pin. What would happen if you connected OE to HIGH instead of GND?
 <details>
 <summary>Answer</summary>
-The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing voltage conflicts. See: 5 Essential Terms (Output Enable).
+The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing [[learning/notes/quick-context/voltage|voltage]] conflicts. See: 5 Essential Terms (Output Enable).
 </details>
 
 **Q3:** How is the 74HC574 register on your breadboard related to the register file inside an ARM CPU?

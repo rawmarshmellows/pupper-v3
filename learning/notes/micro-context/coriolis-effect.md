@@ -3,6 +3,8 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]]
+
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

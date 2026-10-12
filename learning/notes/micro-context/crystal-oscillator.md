@@ -3,6 +3,8 @@ term: Crystal Oscillator
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/piezoelectric-effect]]
+
 # Crystal Oscillator
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-source]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -13,7 +15,7 @@ created: 2026-03-27
 
 - An amplifier circuit drives a thin quartz crystal, which mechanically vibrates at its natural resonant frequency (determined by its cut and thickness).
 - The crystal's vibration generates an extremely stable electrical signal — quartz holds frequency to ±20 ppm (±0.002%), far better than any electronic-only oscillator.
-- This low base frequency (typically 8–40 MHz) feeds into one or more PLLs that multiply it up to the CPU's operating frequency (e.g., 8 MHz $\times$ 22.5 = 180 MHz on STM32, or 38.4 MHz $\rightarrow$ PLL $\rightarrow$ 100 MHz BCLK $\rightarrow$ PLL $\times$ 50 = 5 GHz on a modern desktop CPU).
+- This low base frequency (typically 8–40 MHz) feeds into one or more PLLs that multiply it up to the CPU's operating frequency (e.g., 8 MHz $\times$ 22.5 = 180 MHz on [[learning/notes/micro-context/stm32-microcontroller|STM32]], or 38.4 MHz $\rightarrow$ PLL $\rightarrow$ 100 MHz BCLK $\rightarrow$ PLL $\times$ 50 = 5 GHz on a modern desktop CPU).
 
 ```
 QUARTZ CRYSTAL → OSCILLATOR CIRCUIT → PLL → CPU CLOCK

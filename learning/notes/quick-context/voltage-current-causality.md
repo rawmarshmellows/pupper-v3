@@ -11,7 +11,7 @@ created: 2026-03-27
 
 ## The Core Problem
 
-You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like voltage is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
+You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like [[learning/notes/quick-context/voltage|voltage]] is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
 
 ## 5 Essential Terms
 
@@ -188,8 +188,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[learning/notes/quick-context/transistor|transistor]] bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```

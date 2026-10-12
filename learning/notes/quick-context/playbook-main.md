@@ -4,6 +4,8 @@
 
 ---
 
+> **Related:** [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sales-methodology-layering]]
+
 ## How to Use This Playbook
 
 This playbook is designed to be followed sequentially for each account, then maintained through regular rituals. Work through Steps 1-6 when onboarding a new account or taking over an existing one, then use the Ongoing Rituals section to maintain momentum.
