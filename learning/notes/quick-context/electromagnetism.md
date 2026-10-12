@@ -19,7 +19,7 @@ Before the 1800s, electricity and magnetism seemed unrelated. Static electricity
 |------|------------|
 | **Magnetic Field (B)** | A vector field created by moving charges (current) or changing electric fields. Measured in tesla (T). Earth's field: ~50 μT. Strong magnet: 1 T. MRI machine: 1.5-3 T. |
 | **Electric Field (E)** | A vector field created by charges or changing magnetic fields. Measured in volts/meter. Pushes charges in the direction of the field (positive charges) or opposite (negative). |
-| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces voltage: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
+| **Electromagnetic Induction** | A changing magnetic flux through a conductor induces [[learning/notes/quick-context/voltage|voltage]]: EMF = -N × dΦ/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) means the induced current opposes the change that caused it. This is how [[quick-context/electricity-generation|generators]] and [[quick-context/inductor|inductors]] work. |
 | **Lorentz Force** | The force on a moving charge in electromagnetic fields: F = q(E + v × B). Electric fields push charges; magnetic fields deflect moving charges perpendicular to their velocity. This is how motors and CRT screens work. |
 | **Electromagnetic Wave** | Self-propagating oscillations of electric and magnetic fields, traveling at the speed of light (c = 3×10⁸ m/s in vacuum). Radio, microwaves, infrared, visible light, UV, X-rays, and gamma rays are all electromagnetic waves at different frequencies. |
 
@@ -236,7 +236,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 | Power generation | Faraday's law (changing B → E) | Generator, alternator |
 | Electric motors | Lorentz force (I × B → F) | DC motor, AC motor |
 | Transformers | Faraday's law (mutual induction) | Power transformer |
-| [[quick-context/inductor|Inductors]] | Faraday's law (self-induction) | Chokes, filter coils |
+| [[quick-context/inductor|Inductors]] | Faraday's law ([[learning/notes/quick-context/self-induction|self-induction]]) | Chokes, filter coils |
 | Wireless communication | EM wave propagation | Antennas, radio |
 | Magnetic storage | Hysteresis in magnetic materials | Hard drives, tape |
 
@@ -247,7 +247,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 
 ## How a Generator Creates Electricity
 
-A generator converts mechanical rotation into electrical current using electromagnetic induction. This is how 99%+ of grid electricity is produced.
+A generator converts mechanical rotation into electrical current using [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]. This is how 99%+ of grid electricity is produced.
 
 ```
 GENERATOR OPERATION — Step by Step

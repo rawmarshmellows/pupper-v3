@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
+
 # SPI
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]

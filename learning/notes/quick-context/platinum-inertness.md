@@ -124,7 +124,7 @@ IRON NAIL AS ANODE                    PLATINUM AS ANODE
                                           give up electrons
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that any metal electrode will eventually dissolve if enough current flows through it. Platinum's inertness isn't about durability or hardness—it's about thermodynamics. The reduction potential tells us platinum atoms are far more stable as solid metal than as dissolved ions, so they simply refuse to participate in oxidation reactions that would dissolve them.
+**The one thing most outsiders get wrong about this is...** assuming that any metal electrode will eventually dissolve if enough current flows through it. Platinum's inertness isn't about durability or hardness—it's about thermodynamics. The reduction potential tells us platinum atoms are far more stable as solid metal than as dissolved ions, so they simply refuse to participate in [[learning/notes/micro-context/oxidation|oxidation]] reactions that would dissolve them.
 
 </details>
 

@@ -4,6 +4,8 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/short-circuit]] | [[learning/notes/quick-context/power-watts-joules]] | [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/3d-printing-filament-types]]
+
 # Thermal Runaway
 
 > **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[micro-context/clock-speed-vs-temperature]]
@@ -37,4 +39,4 @@ THE THERMAL RUNAWAY FEEDBACK LOOP
   └── Thermal design power (TDP): design limit
 ```
 
-**Key insight:** The "off" transistors that [[quick-context/transistor-analog-to-digital|leak current even when supposedly off]] leak MORE when hot—this is why cooling isn't optional and why chips have thermal limits baked into firmware.
+**Key insight:** The "off" transistors that [[quick-context/transistor-analog-to-digital|leak current even when supposedly off]] leak MORE when hot—this is why cooling isn't optional and why chips have thermal limits baked into [[learning/notes/quick-context/firmware|firmware]].

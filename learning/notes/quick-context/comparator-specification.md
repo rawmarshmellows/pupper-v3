@@ -13,16 +13,16 @@ created: 2026-06-06
 
 ## The Core Problem: "It Works on the Bench" Is Not a Spec
 
-A comparator that switches cleanly on your bench at room temperature can fail in the field if you run it past its rated supply, ask it to decide faster than its propagation delay allows, or trust a "typical" number that is only centered---not guaranteed---at 25°C. The datasheet's spec section exists to answer three questions precisely: *which* numbers are guaranteed, *under what conditions*, and *where the cliffs are*. Misreading it is how designs pass prototype and die in production.
+A [[learning/notes/quick-context/comparator|comparator]] that switches cleanly on your bench at room temperature can fail in the field if you run it past its rated supply, ask it to decide faster than its propagation delay allows, or trust a "typical" number that is only centered---not guaranteed---at 25°C. The datasheet's spec section exists to answer three questions precisely: *which* numbers are guaranteed, *under what conditions*, and *where the cliffs are*. Misreading it is how designs pass prototype and die in production.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Absolute Maximum Ratings** | Stress limits you must never exceed, even for an instant. Beyond them the part can be permanently damaged. These are *not* an operating range---a part is not designed to run at its absolute max. |
-| **Operating Ratings** | The conditions (supply voltage, temperature) under which the device is functional and the electrical specs are guaranteed. The "safe operating envelope." |
+| **Operating Ratings** | The conditions (supply [[learning/notes/quick-context/voltage|voltage]], temperature) under which the device is functional and the electrical specs are guaranteed. The "safe operating envelope." |
 | **Typical vs. Limit (boldface)** | *Typical* (Typ) is the average part at 25°C and nominal conditions---not guaranteed. *Limit* columns are tested and guaranteed worst case. **Boldface** limits hold across the full temperature range, not just at 25°C. |
-| **Input Offset Voltage ($V_{OS}$)** | A small built-in voltage error between the two inputs from transistor mismatch. The real switching point is $V_{REF} \pm V_{OS}$, so $V_{OS}$ sets your threshold accuracy. |
+| **Input Offset Voltage ($V_{OS}$)** | A small built-in voltage error between the two inputs from [[learning/notes/quick-context/transistor|transistor]] mismatch. The real switching point is $V_{REF} \pm V_{OS}$, so $V_{OS}$ sets your threshold accuracy. |
 | **Propagation Delay ($t_{PD}$)** | Time from the input crossing the threshold until the output actually switches. It *shrinks as input overdrive grows*---a comparator hovering near its threshold is slow. |
 
 <details>
@@ -75,12 +75,12 @@ SPEC  →  WHICH STAGE OF THE COMPARATOR IT GRADES
 | Spec | Grades which stage (see [[quick-context/comparator]]) |
 |---|---|
 | $V_{OS}$, $TCV_{OS}$ | The [[quick-context/differential-pair|differential pair]] (Q1/Q2) --- offset *is* its built-in mismatch |
-| $I_B$ | The MOSFET input gates --- insulated, so ~zero current flows in |
-| $CMRR$ | The tail current source (Q5) --- how well it holds total current fixed and ignores common-mode |
+| $I_B$ | The [[learning/notes/micro-context/mosfet|MOSFET]] input gates --- insulated, so ~zero current flows in |
+| $CMRR$ | The [[learning/notes/micro-context/tail-current|tail current]] source (Q5) --- how well it holds total current fixed and ignores common-mode |
 | $A_V$ | The [[quick-context/high-gain-amplifier-stage|high-gain node]] + mirror load --- the gain that slams the output to a rail |
 | $CMVR$ | The input pair's usable voltage window (the rail-to-rail-and-beyond design) |
-| $V_{OH}$, $V_{OL}$, $I_{SC}$ | The output stage (Q6 push-pull) --- how hard and how close to the rails it drives |
-| $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no compensation capacitor** --- the structural reason a comparator is fast |
+| $V_{OH}$, $V_{OL}$, $I_{SC}$ | The output stage (Q6 [[learning/notes/micro-context/push-pull-vs-open-drain|push-pull]]) --- how hard and how close to the rails it drives |
+| $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no compensation [[learning/notes/quick-context/capacitor|capacitor]]** --- the structural reason a comparator is fast |
 | $I_S$ | The standing bias current (tail + mirror) the chip burns just to stay alive |
 
 ### 4.1 Absolute Maximum Ratings --- "the do-not-cross lines"
@@ -96,11 +96,11 @@ These are **stress limits, not operating specs**. Exceed any one of them---even 
 | Current at Power Supply pin | **40 mA** | Hard ceiling on what the supply pin can pass. |
 | ESD Tolerance (HBM) | **2 kV** | Survives a 2 kV human-body-model static zap (1.5 kΩ + 100 pF). |
 | Storage Temperature | **−65 to +150°C** | Survival range with no power applied. |
-| Junction Temperature | **150°C** | The silicon die itself must never get this hot. |
+| Junction Temperature | **150°C** | The [[learning/notes/quick-context/silicon-die|silicon die]] itself must never get this hot. |
 
 **Key idea:** a part is *not* designed to *operate* at these numbers---they only bound what won't break it. Notice the supply absolute max (16 V) sits just above the operating max (15 V): a deliberate 1 V margin.
 
-> **↳ In the circuit:** these limits guard specific hardware inside the [[quick-context/comparator|comparator]]. The "stay within 0.3 V of the rails" input/output limit exists because every pin has on-chip ESD protection diodes to V+ and V−; push a pin past a rail and those diodes conduct, which is why the ±5 mA input limit then matters (you must add a series resistor to hold their current down). The ±30 mA output limit is the breakdown ceiling of the output transistor (Q6) that drives `Vout`. So 4.1 is really "don't cook the protection diodes or the output FET."
+> **↳ In the circuit:** these limits guard specific hardware inside the [[quick-context/comparator|comparator]]. The "stay within 0.3 V of the rails" input/output limit exists because every pin has on-chip ESD protection diodes to V+ and V−; push a pin past a rail and those diodes conduct, which is why the ±5 mA input limit then matters (you must add a series [[learning/notes/quick-context/resistor|resistor]] to hold their current down). The ±30 mA output limit is the breakdown ceiling of the output transistor (Q6) that drives `Vout`. So 4.1 is really "don't cook the protection diodes or the output FET."
 
 ### 4.2 Operating Ratings --- "where the guarantees apply"
 
@@ -147,7 +147,7 @@ Key LMC7211-N rows at 2.7 V:
 |---|---|---|---|
 | $V_{OS}$ | [[micro-context/input-offset-voltage|Input Offset Voltage]] | 3 mV (max 5 / 8) | Built-in threshold error. The "–NAI" grade guarantees ≤5 mV (≤8 mV hot); the "–NBI" grade ≤15 mV. |
 | $TCV_{OS}$ | [[micro-context/offset-voltage-drift|Offset Drift]] | 1.0 µV/°C | How much the offset wanders per degree. |
-| $I_B$ | [[micro-context/input-bias-current|Input Current]] | 0.04 pA | Almost nothing---CMOS gates draw essentially zero current, so high-impedance sources are fine. |
+| $I_B$ | [[micro-context/input-bias-current|Input Current]] | 0.04 pA | Almost nothing---CMOS gates draw essentially zero current, so high-[[learning/notes/quick-context/impedance-and-reactance|impedance]] sources are fine. |
 | $CMRR$ | [[micro-context/common-mode-rejection-ratio|Common-Mode Rejection]] | 75 dB | How well it ignores a voltage common to both inputs. |
 | $PSRR$ | [[micro-context/power-supply-rejection-ratio|Power-Supply Rejection]] | 80 dB | How well it ignores supply-rail wiggle. |
 | $A_V$ | [[micro-context/open-loop-voltage-gain|Voltage Gain]] | 100 dB | The open-loop gain that slams the output to a rail. |

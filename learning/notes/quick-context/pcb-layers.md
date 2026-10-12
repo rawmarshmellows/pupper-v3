@@ -11,7 +11,7 @@ updated: 2026-02-21
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
 > **Reference Board:** Pupper v3 Control Board Rev 3.5.2 (Gabrael & Nathan) — all examples in this document reference this 2-layer board.
-> ![Pupper PCB Gerber View](quick-context/Pupper%20PCB.png)
+> ![Pupper [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] Gerber View](quick-context/Pupper%20PCB.png)
 
 ## The Core Problem: One Board, Many Manufacturing Steps
 
@@ -22,7 +22,7 @@ A PCB isn't a single thing — it's a stack of 10+ distinct layers, each with a 
 | Term | Definition |
 |------|------------|
 | **Copper Layer** | The conductive layer where [[quick-context/pcb-printed-circuit-board#traces-and-vias\|traces, pads, and planes]] are etched from a solid copper sheet — this IS the circuit |
-| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from oxidation |
+| **Soldermask** | A polymer coating (typically green) applied over copper, with openings only at [[quick-context/soldering\|solder]] pads — prevents shorts and protects traces from [[learning/notes/micro-context/oxidation|oxidation]] |
 | **Silkscreen (Legend)** | White ink printed on top of the soldermask showing component outlines, reference designators (R1, C3, U1), and labels for human readability |
 | **Paste Mask (Stencil)** | Defines where [[quick-context/soldering#reflow\|solder paste]] gets deposited during SMD assembly — openings match (or slightly shrink) the pad locations |
 | **Drill File** | Instructions for the CNC drill specifying hole locations, diameters, and whether holes are plated (PTH) or non-plated (NPTH) |
@@ -269,7 +269,7 @@ SOLDERMASK (LPI) APPLICATION PROCESS
 
 **12. Document Layer** — `Gerber_DocumentLayer.GDL`
 
-*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, impedance control requirements, and UL markings.
+*What it is:* Fabrication notes, dimensions, tolerances, material specs, layer stackup instructions, and any special requirements. Not part of the physical board — instructions for the manufacturer. May include: board thickness, copper weight, soldermask color, surface finish type, [[learning/notes/quick-context/impedance-and-reactance|impedance]] control requirements, and UL markings.
 
 </details>
 
