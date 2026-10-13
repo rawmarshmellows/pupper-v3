@@ -2,26 +2,28 @@
 topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/substrate-ic-packaging]]
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin [[learning/notes/quick-context/switches-to-registers-storing-data|count]], thermal [[learning/notes/quick-context/bond-pad|performance]], and ease of assembly.
 
 # Common IC Packages
 
 ## The Core Problem: Bridging Microscopic to Human-Scale
 
-The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines can work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you can actually solder it by hand.
+The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points [[learning/notes/quick-context/comparator-specification|only]] ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The [[learning/notes/quick-context/silicon-die|package]] protects the die and provides connections (pins, leads, or [[learning/notes/quick-context/soldering|solder]] balls) at a [[learning/notes/quick-context/bga-ball-grid-array|pitch]] that humans and machines can work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and [[learning/notes/quick-context/differential-pair|whether]] you can actually solder it by hand.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
-| **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
-| **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
-| **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
-| **Thermal pad (exposed pad)** | A large metal pad on the bottom of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for power components. |
+| **Through-hole** | Package with wire leads that go through [[learning/notes/quick-context/bjt-specifications|holes]] in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
+| **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top [[learning/notes/quick-context/pcb-layers|copper layer]] only. Smaller, cheaper, machine-friendly. |
+| **Pitch** | The [[learning/notes/quick-context/embedded-communication-protocols|distance]] between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
+| **Pin count** | [[learning/notes/quick-context/similarity-transform|Total]] number of electrical connections. A simple [[learning/notes/quick-context/ac-to-dc-rectification|voltage regulator]]: 3-5 pins. [[learning/notes/micro-context/microcontroller|Microcontroller]]: 20-100 pins. Processor: 500-3000+ pins. |
+| **Thermal pad (exposed pad)** | A large metal pad on the [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] of some packages, soldered directly to the PCB. Conducts heat from the die into the board—critical for [[learning/notes/quick-context/d-flip-flop|power]] [[learning/notes/quick-context/tensor|components]]. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -119,16 +121,16 @@ PIN NUMBERING
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Hand-Solderable vs. Machine-Only vs. Thermal Performance
 
-| Package | Hand Solder? | Pins | Thermal | Size | Production Cost |
+| Package | Hand Solder? | Pins | Thermal | Size | Production [[learning/notes/quick-context/bond-pad|Cost]] |
 |---------|-------------|------|---------|------|-----------------|
 | **DIP** | Easy | 8-40 | Poor | Large | High (through-hole) |
 | **SOIC** | Moderate | 8-28 | Moderate | Medium | Low |
 | **SOT-23** | Moderate | 3-6 | Poor | Tiny | Very low |
-| **QFP** | Hard (needs flux) | 32-256 | Moderate | Medium | Low |
+| **QFP** | Hard (needs [[learning/notes/quick-context/soldering|flux]]) | 32-256 | Moderate | Medium | Low |
 | **QFN** | Hot air only | 8-100+ | Excellent (EP) | Small | Low |
 | **BGA** | Impossible | 50-3000+ | Good | Small-large | Medium |
 
@@ -200,25 +202,25 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
 
-- **[[quick-context/soldering]]** — Package type dictates soldering method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
+- **[[quick-context/soldering]]** — Package [[learning/notes/quick-context/bjt-specifications|type]] dictates [[learning/notes/quick-context/soldering|soldering]] method. DIP = through-hole [[learning/notes/quick-context/platinum-inertness|iron]]. SOIC/QFP = SMD iron with flux. QFN = hot air or [[learning/notes/quick-context/bga-ball-grid-array|reflow]] oven. BGA = reflow oven only.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Package footprint (land pattern) must match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
+- **[[quick-context/pcb-printed-circuit-board]]** — Package [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|footprint]] (land pattern) [[learning/notes/quick-context/ros2-architecture|must]] match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
 
-- **[[quick-context/wire-bonding]]** — Inside most packages (DIP, QFP, QFN), the die is connected to the lead frame via wire bonds. BGA packages typically use [[quick-context/flip-chip|flip-chip]] bonding.
+- **[[quick-context/wire-bonding]]** — Inside most packages (DIP, QFP, QFN), the die is connected to the lead [[learning/notes/quick-context/can-bus|frame]] via wire bonds. BGA packages typically use [[quick-context/flip-chip|flip-chip]] bonding.
 
-- **[[quick-context/substrate-ic-packaging]]** — High-pin-count packages (BGA) use a multi-layer substrate between the die and the solder balls, acting as a miniature PCB inside the package.
+- **[[quick-context/substrate-ic-packaging]]** — High-pin-count packages (BGA) use a multi-layer [[learning/notes/quick-context/flip-chip|substrate]] between the die and the solder balls, acting as a miniature PCB inside the package.
 
-- **[[quick-context/pupper-bom-control-board]]** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package choice affects assembly (the LGA-28 BNO086 can't be sourced through standard JLCPCB assembly).
+- **[[quick-context/pupper-bom-control-board]]** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package [[learning/notes/quick-context/transistor-analog-to-digital|choice]] affects assembly (the LGA-28 [[learning/notes/quick-context/pupper-bom-control-board|BNO086]] can't be sourced through standard JLCPCB assembly).
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** Why would a commercial product use QFN instead of DIP for the same chip?
 <details>
 <summary>Answer</summary>
-**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
+**Smaller (10× less board area), [[learning/notes/quick-context/comparator-specification|better]] thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at [[learning/notes/quick-context/absolute-orientation|scale]]), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
 </details>
 
 **Q2:** How do you find pin 1 on an IC?
@@ -230,19 +232,19 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q3:** Why can't you hand-solder a QFN package with a regular soldering iron?
 <details>
 <summary>Answer</summary>
-**The pads are underneath the package, not on protruding leads.** A QFN has flat pads on its bottom surface with no leads extending beyond the package edge. A soldering iron can't reach under the package. You need hot air (heats the entire area from above, reflowing solder paste underneath) or a reflow oven. The exposed thermal pad on the bottom also must be soldered, which is impossible with an iron.
+**The pads are [[learning/notes/quick-context/bga-ball-grid-array|underneath]] the package, not on protruding leads.** A QFN has flat pads on its bottom surface with no leads extending beyond the package edge. A soldering iron can't reach under the package. You need hot air (heats the entire area from above, reflowing solder paste underneath) or a reflow oven. The exposed thermal pad on the bottom also must be soldered, which is impossible with an iron.
 </details>
 
 **Q4:** A BGA package has 1mm pitch and is 15mm × 15mm. Approximately how many balls does it have?
 <details>
 <summary>Answer</summary>
-**Roughly 225 (15 × 15 grid).** At 1mm pitch on a 15mm package, you get approximately 15 rows × 15 columns = 225 positions. In practice, some positions are depopulated (removed for routing or thermal reasons), so the actual pin count might be ~200. Finer pitch (0.5mm) on the same package would give ~900 balls.
+**Roughly 225 (15 × 15 grid).** At 1mm pitch on a 15mm package, you get approximately 15 rows × 15 columns = 225 positions. In practice, some positions are depopulated (removed for routing or thermal [[learning/notes/quick-context/pupper-lab7-vision-tracking|reasons]]), so the actual pin count might be ~200. Finer pitch (0.5mm) on the same package would give ~900 balls.
 </details>
 
-**Q5:** What is the thermal pad (exposed pad) on the bottom of a QFN, and why does it matter?
+**Q5:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] is the thermal pad (exposed pad) on the bottom of a QFN, and why does it matter?
 <details>
 <summary>Answer</summary>
-**It's a large metal pad connected to the die attach paddle inside the package, providing a direct thermal path from the chip to the PCB.** Heat from the die conducts through the paddle to this exposed pad, then through solder into the PCB copper (especially if thermal vias connect to internal ground planes). Without soldering the exposed pad, the IC can overheat even at moderate power levels. It often also serves as the ground connection.
+**It's a large metal pad connected to the [[learning/notes/quick-context/wire-bonding|die attach]] paddle inside the package, providing a direct thermal path from the chip to the PCB.** Heat from the die conducts through the paddle to this exposed pad, then through solder into the PCB copper (especially if thermal vias connect to internal ground planes). Without soldering the exposed pad, the IC can overheat even at moderate power levels. It often also serves as the ground connection.
 </details>
 
 </details>

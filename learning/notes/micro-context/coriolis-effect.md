@@ -2,16 +2,18 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]]
+
 
 # Coriolis Effect
 
-> **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]
+> **[[learning/notes/micro-context/4-wire-kelvin-measurement|See also:]]** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]
 
-**Definition:** A pseudo-force that acts on objects moving within a rotating reference frame, deflecting them perpendicular to their velocity. The force is $F_{\text{Coriolis}} = -2m(\vec{\omega} \times \vec{v})$ — proportional to both the rotation rate $\omega$ and the object's velocity $v$, and always at right angles to the motion. It's called a "pseudo-force" because it vanishes in a non-rotating frame — nothing is actually pushing the object; it just *appears* to curve because the frame itself is rotating underneath it.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Definition:]]** A pseudo-force that acts on objects moving within a rotating [[learning/notes/quick-context/comparator|reference]] [[learning/notes/quick-context/can-bus|frame]], deflecting them perpendicular to their velocity. The force is $F_{\[[learning/notes/quick-context/how-source-code-is-stored|text]]{Coriolis}} = -2m(\vec{\omega} \times \vec{v})$ — proportional to [[learning/notes/quick-context/bjt-specifications|both]] the [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|rotation]] rate $\omega$ and the object's velocity $v$, and always at right angles to the motion. It's called a "pseudo-force" because it vanishes in a non-rotating frame — nothing is actually pushing the object; it just *appears* to curve because the frame itself is rotating [[learning/notes/quick-context/bga-ball-grid-array|underneath]] it.
 
 ## How It Works
 
-- An object moving in a straight line (inertial frame) appears to curve when observed from a rotating frame. The Coriolis force explains this apparent deflection.
+- An object moving in a straight line (inertial frame) appears to curve [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] observed from a rotating frame. The Coriolis force explains this apparent deflection.
 - The cross product $\vec{\omega} \times \vec{v}$ means the force is perpendicular to both the rotation axis and the velocity — it deflects the object sideways, never speeding it up or slowing it down.
 - The force scales linearly with both rotation rate and velocity: faster object or faster rotation = stronger deflection.
 
@@ -42,11 +44,11 @@ CORIOLIS EFFECT — ROTATING FRAME vs INERTIAL FRAME
   No rotation → no Coriolis force → no sense-axis deflection → output = 0
 ```
 
-**Key insight:** MEMS gyroscopes exploit this by continuously vibrating a proof mass (providing $v$) — when the chip rotates ($\omega$), the Coriolis force deflects the mass along a perpendicular sense axis by an amount directly proportional to angular velocity. The vibration is the "moving object," and the rotating chip is the "rotating reference frame."
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Key insight:]]** MEMS gyroscopes exploit this by continuously vibrating a proof mass (providing $v$) — when the chip rotates ($\omega$), the Coriolis force deflects the mass along a perpendicular sense axis by an amount directly proportional to angular velocity. The vibration is the "moving object," and the rotating chip is the "rotating reference frame."
 
 ### Real-World Examples
 
-| Scale | Example | Mechanism |
+| [[learning/notes/quick-context/absolute-orientation|Scale]] | Example | [[learning/notes/quick-context/silymarin|Mechanism]] |
 |-------|---------|-----------|
 | Planetary | Weather cyclones | Air moving toward low-pressure deflects right (N. hemisphere) / left (S. hemisphere) |
 | Laboratory | Foucault pendulum | Pendulum's swing plane rotates as Earth turns beneath it: $T = T_{\text{Earth}} / \sin(\text{latitude})$ |

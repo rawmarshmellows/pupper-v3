@@ -2,25 +2,27 @@
 topic: Electric and Magnetic Field Unification
 created: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/coulomb-history]]
+
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** [[learning/notes/quick-context/capacitance|Current]], [[learning/notes/quick-context/voltage|voltage]], electric [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]], and magnetic fields are [[learning/notes/quick-context/ram-addressing-decoder|four]] aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[learning/notes/quick-context/electromagnetism|electromagnetism]]."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
-Students learn voltage, current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
+Students learn voltage, current, electric fields, and magnetic fields as separate [[learning/notes/quick-context/ros2-architecture|topics]]—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
-| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
-| **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
-| **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
+| **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of [[learning/notes/quick-context/cations-and-reduction|charge]]—the thing actually doing work in circuits. |
+| **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that [[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]] charges. It's a difference in electric potential between two points. |
+| **[[learning/notes/quick-context/voltage-current-causality|Electric Field]] (E)** | The force per unit charge at each [[learning/notes/quick-context/epson-rc-plus-programming|point]] in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
+| **[[learning/notes/quick-context/coil-magnetic-field|Magnetic Field (B)]]** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
 | **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
 
 <details>
@@ -286,11 +288,11 @@ WHY CAPACITORS AND INDUCTORS ARE "DUALS"
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Two Valid Worldviews: Charges vs. Fields
 
-Physicists argued about this for decades. Both views are correct—they're complementary.
+Physicists argued about this for decades. [[learning/notes/quick-context/bjt-specifications|Both]] views are correct—they're complementary.
 
 ```
 THE TWO WAYS TO THINK ABOUT ELECTRICITY
@@ -343,12 +345,12 @@ WHICH IS "TRUE"?
     real things—they carry energy even where there are no charges.
 ```
 
-| Situation | Better Mental Model |
+| Situation | [[learning/notes/quick-context/comparator-specification|Better]] Mental Model |
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
-| Capacitor charging | electric field building between plates |
-| Inductor charging | magnetic field building in coil |
+| [[learning/notes/quick-context/capacitor|Capacitor]] charging | electric field building between plates |
+| [[learning/notes/quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
 | Radio transmission | E and B waves propagating through space |
 | Lightning | Charges discharge, massive current, huge magnetic field |
@@ -360,7 +362,7 @@ WHICH IS "TRUE"?
 
 ## Tracing the Physics Through a Simple Circuit
 
-Let's follow exactly what happens when you connect a battery to a light bulb:
+Let's follow exactly [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] happens [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you connect a battery to a light bulb:
 
 ```
 WHAT'S ACTUALLY HAPPENING — Physics Step by Step
@@ -488,34 +490,34 @@ SUMMARY: The Four Quantities in Action
     • 4.5 joules per second converted from chemical → electrical → light + heat
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking voltage "flows" or gets "used up." Voltage is a *difference*—like altitude. When you hike from 5000 ft to 4000 ft elevation, you don't "use up" altitude; you convert gravitational potential energy to kinetic energy (and heat in your muscles). Similarly, electrons "fall" through voltage, converting electrical potential energy to other forms. The voltage across the battery stays 9V whether the bulb is connected or not. What changes when you connect the bulb is that *current* starts flowing, allowing that potential energy to be converted to light and heat.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** thinking voltage "flows" or gets "used up." Voltage is a *difference*—like altitude. When you hike from 5000 ft to 4000 ft elevation, you don't "use up" altitude; you convert gravitational potential energy to kinetic energy (and heat in [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] muscles). Similarly, [[learning/notes/quick-context/anions-and-oxidation|electrons]] "fall" through voltage, converting electrical potential energy to other forms. The voltage across the battery stays 9V [[learning/notes/quick-context/differential-pair|whether]] the bulb is connected or not. What changes when you connect the bulb is that *current* starts flowing, allowing that potential energy to be converted to light and heat.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and [[learning/notes/quick-context/maxwell-equations|electromagnetic waves.]] Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[learning/notes/quick-context/electrolysis|electrolysis]] and circuits.
 
-- **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
+- **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding [[learning/notes/quick-context/voltage|capacitors]] is understanding electric field energy [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]] in a practical [[learning/notes/quick-context/silicon-die|package]].
 
 - **[[quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
 
-- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The resistor shows what happens when current flows but the energy isn't stored—it's dissipated.
+- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The [[learning/notes/quick-context/resistor|resistor]] shows what happens when current flows but the energy isn't stored—it's dissipated.
 
-- **[[quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical cost).
+- **[[quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical [[learning/notes/quick-context/bond-pad|cost]]).
 
-- **[[quick-context/voltage]]** — Electric field defines voltage; field strength drives current through materials.
+- **[[quick-context/voltage]]** — Electric field defines voltage; field [[learning/notes/quick-context/cnc-machining|strength]] drives current through [[learning/notes/quick-context/cnc-machining|materials]].
 
-- **[[quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
+- **[[quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains [[learning/notes/quick-context/coil-magnetic-field|solenoid]] field calculations and why coiling concentrates the field.
 
-- **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
+- **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different [[learning/notes/quick-context/comparator|reference]] frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one [[learning/notes/quick-context/ram-addressing-decoder|word]].
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] containing all six field [[learning/notes/quick-context/tensor|components]]. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
-- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
+- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They [[learning/notes/quick-context/code-to-gates-and-bootstrapping|encode]] the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 
 </details>
 
@@ -525,31 +527,31 @@ SUMMARY: The Four Quantities in Action
 **Q1:** A wire carries steady DC current. Is there an electric field in the wire? A magnetic field? Both?
 <details>
 <summary>Answer</summary>
-**Both.** There must be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). Ohm's law in microscopic form is J = σE (current density = conductivity × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
+**Both.** There [[learning/notes/quick-context/ros2-architecture|must]] be an electric field inside the wire—that's what pushes the electrons and creates current (F = qE). [[learning/notes/quick-context/resistor|Ohm's law]] in microscopic [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] is J = σE ([[learning/notes/quick-context/electric-current|current density]] = [[learning/notes/quick-context/electrolyte|conductivity]] × electric field). The current also creates a magnetic field that circles around the wire. For steady DC, these fields are constant in time.
 </details>
 
-**Q2:** Why can a magnetic field deflect an electron but can't change its speed?
+**Q2:** Why can a magnetic field deflect an [[learning/notes/quick-context/anions-and-oxidation|electron]] but can't change its speed?
 <details>
 <summary>Answer</summary>
-**The Lorentz force from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.
+**The [[learning/notes/quick-context/electromagnetism|Lorentz force]] from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. [[learning/notes/quick-context/comparator-specification|Only]] electric fields can add or remove energy from charges.
 </details>
 
 **Q3:** You measure 5V across a resistor and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
 <details>
 <summary>Answer</summary>
-**Almost certainly not.** Voltage is the integral of electric field over distance: V = E × d (for uniform field). If the resistor is 1 cm long and the capacitor gap is 0.1 mm, then E_resistor = 5V/0.01m = 500 V/m, while E_capacitor = 5V/0.0001m = 50,000 V/m—100× stronger! Same voltage, vastly different field strength, because of different dimensions.
+**Almost certainly not.** Voltage is the integral of electric field over [[learning/notes/quick-context/embedded-communication-protocols|distance]]: V = E × d (for uniform field). If the resistor is 1 cm long and the capacitor gap is 0.1 mm, then E_resistor = 5V/0.01m = 500 V/m, while E_capacitor = 5V/0.0001m = 50,000 V/m—100× stronger! Same voltage, vastly different field strength, because of different dimensions.
 </details>
 
 **Q4:** In a transformer, no current flows between primary and secondary coils (they're electrically isolated). How does energy transfer between them?
 <details>
 <summary>Answer</summary>
-**Through the magnetic field.** Current in the primary creates a magnetic field in the core. When that current changes (AC), the magnetic field changes. By Faraday's law, changing B creates E. That induced electric field exists in the secondary coil and pushes electrons, creating current. Energy flows: electrical (primary) → magnetic (core) → electrical (secondary). The magnetic field is the intermediary that carries energy across the galvanic isolation.
+**Through the magnetic field.** Current in the primary creates a magnetic field in the core. When that current changes (AC), the magnetic field changes. By [[learning/notes/quick-context/lenzs-law|Faraday's law]], changing B creates E. That induced electric field exists in the secondary coil and pushes electrons, creating current. Energy flows: electrical (primary) → magnetic (core) → electrical (secondary). The magnetic field is the intermediary that carries energy across the galvanic [[learning/notes/quick-context/pupper-brain|isolation]].
 </details>
 
 **Q5:** If electric and magnetic fields are "really the same thing" (as relativity says), why do circuits have separate capacitors (electric field storage) and inductors (magnetic field storage)?
 <details>
 <summary>Answer</summary>
-**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
+**They're the same thing at rest in different reference frames, but in our [[learning/notes/quick-context/can-bus|frame]] (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field [[learning/notes/quick-context/galvanic-cells-batteries|energy density]] ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
 </details>
 
 </details>

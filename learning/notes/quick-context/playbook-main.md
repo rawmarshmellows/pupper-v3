@@ -1,3 +1,5 @@
+> **Related:** [[learning/notes/quick-context/existing-account-management-playbook]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -6,15 +8,15 @@
 
 ## How to Use This Playbook
 
-This playbook is designed to be followed sequentially for each account, then maintained through regular rituals. Work through Steps 1-6 when onboarding a new account or taking over an existing one, then use the Ongoing Rituals section to maintain momentum.
+This playbook is designed to be followed sequentially for each account, then maintained through regular rituals. Work through Steps 1-6 [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] onboarding a new account or taking over an existing one, then use the Ongoing Rituals section to maintain momentum.
 
-**Linked Databases:** This playbook works with several database templates (imported separately as CSVs). Link them to your account pages for full functionality.
+**Linked Databases:** This playbook works with several database templates (imported separately as CSVs). Link them to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] account pages for [[learning/notes/quick-context/singular-value-decomposition|full]] functionality.
 
 ---
 
 ## Step 1: Segment the Account (KARE)
 
-**Goal:** Classify the account into Keep, Attain, Recapture, or Expand to determine time and resource allocation.
+**[[learning/notes/quick-context/existing-account-management-playbook|Goal:]]** Classify the account into [[learning/notes/quick-context/existing-account-management-playbook|Keep]], [[learning/notes/quick-context/existing-account-management-playbook|Attain]], [[learning/notes/quick-context/existing-account-management-playbook|Recapture]], or [[learning/notes/quick-context/existing-account-management-playbook|Expand]] to determine time and resource allocation.
 
 ### 1.1 Classify Using KARE
 
@@ -50,9 +52,9 @@ This playbook is designed to be followed sequentially for each account, then mai
 
 **Key Questions:**
 - Is this an existing customer or a new/lost prospect?
-- If existing: Is there whitespace to expand, or are we at full usage?
+- If existing: Is there [[learning/notes/quick-context/whitespace-mapping|whitespace]] to expand, or are we at full usage?
 - If lost/former: Have circumstances changed (new buyer, competitor failed)?
-- If new: Does it fit ICP? Is there an identified pain or trigger?
+- If new: Does it fit ICP? Is there an identified pain or [[learning/notes/quick-context/oscilloscope-and-multimeter|trigger]]?
 
 ### 1.2 KARE Classification
 
@@ -78,12 +80,12 @@ This playbook is designed to be followed sequentially for each account, then mai
 
 | Framework | Question It Answers | When to Use |
 |---|---|---|
-| **KARE** | What motion am I running? (Defend, Hunt, Re-engage, Grow) | Portfolio allocation, deciding where to spend time |
+| **KARE** | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] motion am I running? (Defend, Hunt, Re-engage, Grow) | Portfolio allocation, deciding where to spend time |
 | **Value/Potential Matrix** | How much engagement does this customer deserve? | Determining CSM investment for existing customers |
 
 **How they work together:**
 
-For existing customers (KEEP and EXPAND), layer the Value/Potential matrix to determine engagement intensity:
+For existing customers (KEEP and EXPAND), [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] the Value/Potential matrix to determine engagement intensity:
 
 ```
                     LOW GROWTH          HIGH GROWTH
@@ -100,23 +102,23 @@ VALUE           │    MAINTAIN     │    GROWTH       │
 ```
 
 - **KEEP accounts** land in Protect (high value, defend) or Maintain (low value, efficient)
-- **EXPAND accounts** land in Strategic (high value + potential) or Growth (low value but high potential)
+- **EXPAND accounts** land in Strategic (high value + potential) or [[learning/notes/quick-context/existing-account-management-playbook|Growth]] (low value but high potential)
 - **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification (MEDDPICC) instead
 
 **Decision flow:**
 1. **First:** Assign KARE category (portfolio motion)
 2. **Then:** For KEEP/EXPAND, assess Value/Potential (engagement intensity)
-3. **Result:** Know both *what* you're doing and *how much* to invest
+3. **Result:** Know [[learning/notes/quick-context/bjt-specifications|both]] *what* you're doing and *how much* to invest
 
 ### 1.5 Internal Revenue KPIs
 
-Track these metrics to measure account management effectiveness:
+Track these [[learning/notes/quick-context/meddpicc-qualification-framework|metrics]] to measure account management effectiveness:
 
 | Metric | Definition | Target |
 |---|---|---|
 | **Gross Revenue Retention (GRR)** | Revenue retained excluding expansion (churned $/starting $) | >90% |
-| **Net Revenue Retention (NRR)** | Revenue retained including expansion and contraction | >110% |
-| **Expansion Revenue %** | New revenue from existing customers / total new revenue | >30% |
+| **Net Revenue Retention (NRR)** | Revenue retained including expansion and [[learning/notes/quick-context/tensor|contraction]] | >110% |
+| **Expansion Revenue %** | New revenue from existing customers / [[learning/notes/quick-context/similarity-transform|total]] new revenue | >30% |
 | **Logo Retention** | Customers retained / customers at start of period | >85% |
 | **Time to First Expansion** | Days from initial close to first expansion deal | <365 days |
 
@@ -126,7 +128,7 @@ Track these metrics to measure account management effectiveness:
 |---|---|---|
 | **KEEP** | GRR, Logo Retention | NPS, Health Score |
 | **EXPAND** | Expansion Revenue, NRR | Whitespace Penetration |
-| **ATTAIN** | New Logo Count, New ARR | Win Rate, Sales Cycle Length |
+| **ATTAIN** | New Logo [[learning/notes/quick-context/switches-to-registers-storing-data|Count]], New ARR | Win Rate, Sales Cycle Length |
 | **RECAPTURE** | Win-back Rate, Recaptured ARR | Time to Re-engage |
 
 ---
@@ -140,19 +142,19 @@ Track these metrics to measure account management effectiveness:
 | Stage | Characteristics | Focus Question |
 |---|---|---|
 | **EXPLORATORY** | Testing fit, limited trust, no commitment | "Can we work together?" |
-| **BASIC** | Transaction-focused, price-driven, low switching costs | "What's the cost?" |
-| **COOPERATIVE** | Preferred supplier, sharing information, multiple contacts | "How can we work better?" |
+| **BASIC** | Transaction-focused, [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|price]]-driven, low switching costs | "What's the [[learning/notes/quick-context/bond-pad|cost]]?" |
+| **COOPERATIVE** | Preferred supplier, sharing information, multiple contacts | "How can we work [[learning/notes/quick-context/comparator-specification|better]]?" |
 | **INTERDEPENDENT** | Joint planning, high switching costs, shared goals | "How do we grow together?" |
 | **INTEGRATED** | One organization, joint P&L, mutual dependency | "We win or lose together" |
 
 ### Relationship Pattern Assessment
 
-**Bow-Tie (Fragile):**
-- Single point of contact on each side
+**[[learning/notes/quick-context/existing-account-management-playbook|Bow-Tie (Fragile):]]**
+- Single [[learning/notes/quick-context/epson-rc-plus-programming|point]] of contact on each side
 - If that person leaves, relationship breaks
 - Information bottleneck
 
-**Diamond (Resilient):**
+**[[learning/notes/quick-context/existing-account-management-playbook|Diamond (Resilient):]]**
 - Multiple connections at multiple levels
 - Relationship survives personnel changes
 - Rich information flow
@@ -167,19 +169,19 @@ Track these metrics to measure account management effectiveness:
 
 | Role | Definition | Key Question |
 |---|---|---|
-| **Economic Buyer** | Final authority to approve spending. Can say yes when everyone says no. | "Who controls the budget?" |
-| **User Buyer** | Day-to-day users who judge success by job impact | "Whose life improves?" |
-| **Technical Buyer** | Screens against specs/compliance. Can veto but not approve. | "Who can block us?" |
-| **Coach** | Internal advocate who provides intel and guides strategy | "Who's helping us win?" |
+| **[[learning/notes/quick-context/meddpicc-qualification-framework|Economic Buyer]]** | Final authority to approve spending. Can say yes when everyone says no. | "Who controls the budget?" |
+| **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|User Buyer]]** | Day-to-day users who judge success by job impact | "Whose life improves?" |
+| **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Technical Buyer]]** | Screens against specs/compliance. Can veto but not approve. | "Who can block us?" |
+| **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Coach]]** | Internal advocate who provides intel and guides strategy | "Who's helping us win?" |
 
 ### Stakeholder Stance Definitions
 
 | Stance | Meaning | Your Approach |
 |---|---|---|
 | **GROWTH** | Sees opportunity to win/advance | Fuel their vision, make them the hero |
-| **TROUBLE** | Current situation is painful | Emphasize relief, show quick wins |
-| **EVEN KEEL** | Not feeling acute pain or opportunity | Create urgency, highlight hidden costs |
-| **OVERCONFIDENT** | Believes current approach is fine | Bring data that challenges assumptions |
+| **[[learning/notes/quick-context/existing-account-management-playbook|TROUBLE]]** | [[learning/notes/quick-context/capacitance|Current]] situation is painful | Emphasize relief, show quick wins |
+| **[[learning/notes/quick-context/existing-account-management-playbook|EVEN KEEL]]** | Not feeling acute pain or opportunity | Create urgency, highlight hidden costs |
+| **[[learning/notes/quick-context/existing-account-management-playbook|OVERCONFIDENT]]** | Believes current approach is [[learning/notes/micro-context/thread-pitch-screws|fine]] | Bring data that challenges assumptions |
 
 **Use the Stakeholder Tracker database to document each stakeholder.**
 
@@ -230,9 +232,9 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 - Competitive monitoring: Continuous
 
 **EXPAND Accounts (Existing - Grow Revenue):**
-- Champion call: Bi-weekly
+- [[learning/notes/quick-context/meddpicc-qualification-framework|Champion]] call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[learning/notes/quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
@@ -240,16 +242,16 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 - Prospecting cadence: Per sales playbook
 - Discovery calls: As scheduled
 - Demo/evaluation: As qualified
-- *Note: Follow new business sales process*
+- *[[learning/notes/quick-context/post-sale-account-engagement|Note:]] Follow new business sales process*
 
 **RECAPTURE Accounts (Re-engagement):**
 - Trigger monitoring: Continuous (job changes, competitor news)
 - Re-engagement outreach: When triggers fire
 - Discovery refresh: If re-engaged
-- *Note: Only pursue when circumstances have genuinely changed*
+- *Note: [[learning/notes/quick-context/comparator-specification|Only]] pursue when circumstances have genuinely changed*
 
 **Use the Engagement Touchpoints database to schedule and track.**
-**Use the 90-Day Action Plan database for immediate planning.**
+**Use the 90-Day [[learning/notes/quick-context/pupper-lab5-neural-controller|Action]] Plan database for immediate planning.**
 
 ---
 
@@ -264,7 +266,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 3. **RATIONAL DROWNING** - "Here's the cost of the problem you didn't know you had..."
 4. **EMOTIONAL IMPACT** - "And here's what happens when this goes wrong..."
 5. **NEW WAY** - "Companies solving this do X differently..."
-6. **YOUR SOLUTION** - "Here's how we enable that..."
+6. **YOUR SOLUTION** - "Here's how we [[learning/notes/quick-context/d-flip-flop|enable]] that..."
 
 ### Tailor by Stakeholder
 
@@ -277,7 +279,7 @@ Each stakeholder has different priorities. Prepare tailored insight angles for:
 
 Anticipate pushback scenarios:
 - Discount requests
-- Scope creep
+- Scope [[learning/notes/quick-context/glass-transition-temperature|creep]]
 - Timeline stalls
 - Wrong stakeholder engagement
 
@@ -288,7 +290,7 @@ Anticipate pushback scenarios:
 ### Weekly (15 min)
 - Review health score / usage dashboard
 - Check for triggered alerts
-- Update CRM with new intel
+- [[learning/notes/quick-context/ppo-proximal-policy-optimization|Update]] CRM with new intel
 - Confirm upcoming touchpoints
 
 ### Monthly (30 min)
@@ -300,7 +302,7 @@ Anticipate pushback scenarios:
 ### Quarterly (1-2 hours)
 - Full account plan refresh
 - KARE re-classification check
-- Relationship maturity re-diagnosis
+- [[learning/notes/quick-context/mcdonald-kam-model|Relationship maturity]] re-diagnosis
 - QBR preparation
 - Competitive intel update
 - Whitespace analysis refresh
@@ -373,7 +375,7 @@ Anticipate pushback scenarios:
 ### Usage Risks
 - Login frequency declining
 - Feature adoption stalled
-- Support ticket volume spiking
+- Support ticket [[learning/notes/quick-context/cnc-machining|volume]] spiking
 - Key users not engaging
 
 ### Competitive Risks
@@ -385,7 +387,7 @@ Anticipate pushback scenarios:
 ### Business Risks
 - Company restructuring
 - Budget cuts announced
-- Strategic priority shifts
+- Strategic [[learning/notes/quick-context/data-bus-and-arbitration|priority]] shifts
 - M&A activity
 
 ---

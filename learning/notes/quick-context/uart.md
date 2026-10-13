@@ -2,29 +2,31 @@
 topic: UART — Universal Asynchronous Receiver/Transmitter
 created: 2026-04-08
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/i2s]]
+
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
-> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/embedded-communication-protocols]] | [[quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[quick-context/usb-peripheral-hardware]]
 
-> **TL;DR:** A UART is a hardware peripheral that converts between serial (one-bit-at-a-time on a wire) and parallel (a full byte on the CPU's data bus). It's the oldest and simplest serial protocol still in widespread use — two wires (TX and RX), no clock wire, and both sides must pre-agree on a baud rate. Internally, the key component is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** A [[learning/notes/quick-context/embedded-communication-protocols|UART]] is a [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]] peripheral that converts between [[learning/notes/quick-context/data-bus-and-arbitration|serial]] (one-bit-at-a-time on a wire) and [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] (a [[learning/notes/quick-context/singular-value-decomposition|full]] [[learning/notes/quick-context/how-source-code-is-stored|byte]] on the CPU's [[learning/notes/quick-context/data-bus-and-arbitration|data bus]]). It's the oldest and simplest [[learning/notes/quick-context/data-bus-and-arbitration|serial protocol]] still in widespread use — two wires (TX and RX), no [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] wire, and [[learning/notes/quick-context/bjt-specifications|both]] sides [[learning/notes/quick-context/ros2-architecture|must]] pre-agree on a baud rate. Internally, the key [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] is a **shift register**: a chain of flip-flops that captures bits one at a time from the wire and, once a full byte is assembled, latches it into a data register the CPU can read. UARTs were originally separate chips (the Western Digital WD1402A in 1971, then the National Semiconductor INS8250 and NS16550), but today they're built into virtually every [[micro-context/stm32-microcontroller|microcontroller]] as on-chip peripherals.
 
 ## The Core Problem
 
-A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over its data bus. But wires between devices carry one bit at a time (serial). Something has to sit at the boundary and convert between these two worlds: accumulate incoming serial bits into a parallel byte, and break outgoing parallel bytes into serial bits. That something is the UART. Without it, every serial device (debug console, GPS module, Bluetooth radio, another MCU) would need custom bit-banging code that ties up the CPU for every single bit.
+A CPU works in parallel — it reads and writes 8, 16, or 32 bits at once over its data bus. But wires between devices carry one bit at a time (serial). Something has to sit at the boundary and convert between these two worlds: accumulate incoming serial bits into a parallel byte, and break outgoing parallel [[learning/notes/quick-context/how-source-code-is-stored|bytes]] into serial bits. That something is the UART. Without it, every serial device (debug console, GPS module, Bluetooth radio, another MCU) would need custom [[learning/notes/micro-context/st-link-v2-programmer|bit-banging]] code that ties up the CPU for every single bit.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Baud Rate** | The number of signal transitions per second. Both sides must agree on this before communication. Common rates: 9600, 115200. At 115200 baud, each bit lasts ~8.68 $\mu$s. |
-| **Frame** | The packaging around each byte: 1 start bit + 8 data bits + (optional parity) + 1-2 stop bits. The most common format is **8N1** (8 data, no parity, 1 stop = 10 bits per byte). |
-| **Shift Register** | A chain of [[micro-context/clock-edges|edge-triggered]] flip-flops that captures one bit per clock tick, shifting all previous bits over. After 8 ticks, it holds a complete byte. This is the core hardware that converts serial ↔ parallel. |
-| **Data Register** | A parallel latch that holds the completed byte for the CPU to read (receive) or accepts a byte from the CPU to transmit. Decoupled from the shift register so the CPU and the serial line can work at different speeds. |
+| **Baud Rate** | The number of [[learning/notes/quick-context/comparator|signal]] transitions per second. Both sides must agree on this before communication. Common rates: 9600, 115200. At 115200 baud, each bit lasts ~8.68 $\mu$s. |
+| **[[learning/notes/quick-context/can-bus|Frame]]** | The packaging around each byte: 1 start bit + 8 data bits + (optional parity) + 1-2 [[learning/notes/quick-context/camera-fundamentals|stop]] bits. The most common format is **8N1** (8 data, no parity, 1 stop = 10 bits per byte). |
+| **Shift Register** | A chain of [[micro-context/clock-edges|edge-triggered]] flip-flops that captures one bit per clock tick, shifting all previous bits over. After 8 ticks, it [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] a complete byte. This is the core hardware that converts serial ↔ parallel. |
+| **Data Register** | A parallel [[learning/notes/quick-context/d-flip-flop|latch]] that holds the completed byte for the CPU to read (receive) or accepts a byte from the CPU to transmit. Decoupled from the shift register so the CPU and the serial line can work at different speeds. |
 | **Oversampling** | The UART's internal clock runs at 16× the baud rate (e.g., 1,843,200 Hz for 115200 baud). It samples the RX line 16 times per bit period and uses the middle samples to determine the bit value, tolerating clock drift and noise. |
 
 <details>
-<summary><strong>How It Works</strong> — From voltage on a wire to a byte in a register</summary>
+<summary><strong>How It Works</strong> — From [[learning/notes/quick-context/voltage|voltage]] on a wire to a byte in a register</summary>
 
 ### High-Level: Two Jobs
 
@@ -55,7 +57,7 @@ UART — HIGH-LEVEL INPUTS AND OUTPUTS
 
 ### The Frame on the Wire
 
-Before diving into the hardware, here's what a single byte looks like as a voltage waveform:
+Before diving into the hardware, here's [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] a single byte looks like as a voltage waveform:
 
 ```
 UART FRAME FORMAT (8N1) — Sending ASCII "A" (0x41 = 01000001)
@@ -86,7 +88,7 @@ UART FRAME FORMAT (8N1) — Sending ASCII "A" (0x41 = 01000001)
 
 ### How the Receive Shift Register Actually Works
 
-This is the heart of the UART. The shift register is a chain of 8 D flip-flops connected in series — the output of each flip-flop feeds the input of the next. On every baud clock tick, each flip-flop captures its neighbor's value, and the first flip-flop captures whatever voltage is on the RX pin. Bits "shift" through the chain like items on a conveyor belt.
+This is the heart of the UART. The shift register is a chain of 8 D flip-flops connected in [[learning/notes/quick-context/parallel-vs-series-voltage|series]] — the output of each [[learning/notes/quick-context/d-flip-flop|flip-flop]] feeds the input of the next. On every baud clock tick, each flip-flop captures its neighbor's value, and the first flip-flop captures whatever voltage is on the RX pin. Bits "shift" through the chain like items on a conveyor belt.
 
 ```
 RECEIVE SHIFT REGISTER — 8 D FLIP-FLOPS IN A CHAIN
@@ -113,7 +115,7 @@ RECEIVE SHIFT REGISTER — 8 D FLIP-FLOPS IN A CHAIN
 
 **Step-by-step: receiving "A" (0x41 = 01000001, sent LSB first)**
 
-The wire sends bits in order: `1, 0, 0, 0, 0, 0, 1, 0` (LSB first). After each baud clock tick, here's what's in the shift register:
+The wire sends bits in [[learning/notes/quick-context/frequency-and-filtering|order]]: `1, 0, 0, 0, 0, 0, 1, 0` (LSB first). After each baud clock tick, here's what's in the shift register:
 
 ```
 SHIFT REGISTER FILLING UP — ONE BIT PER CLOCK TICK
@@ -189,7 +191,7 @@ This two-stage design (shift register + data register) is what lets the UART ope
 
 ### Oversampling: How the UART Knows When to Sample
 
-The UART doesn't have a clock wire from the sender. So how does it know exactly when each bit is present on the RX line? It uses **oversampling** — its internal clock runs at 16× the baud rate:
+The UART doesn't have a clock wire from the sender. So how does it know exactly [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] each bit is present on the RX line? It uses **oversampling** — its internal clock runs at 16× the baud rate:
 
 ```
 OVERSAMPLING AT 16× BAUD RATE
@@ -248,31 +250,31 @@ TRANSMIT PATH
 
 ### Historical Context: The Teletype Connection
 
-The UART was invented specifically to interface teletypes with computers. In the 1960s, a teletype's keyboard mechanically encoded characters as 7-bit ASCII and transmitted them as [[quick-context/from-vacuum-tubes-to-coding-on-screens|20mA current loop]] serial signals at 110 baud. On the computer side, a UART captured these bits and presented them as parallel bytes. The ASR-33 teletype's frame format — 1 start bit, 7 data bits, 2 stop bits, at 110 baud — was the original UART standard.
+The UART was invented specifically to interface teletypes with computers. In the 1960s, a teletype's [[learning/notes/quick-context/data-bus-and-arbitration|keyboard]] mechanically encoded [[learning/notes/quick-context/how-source-code-is-stored|characters]] as 7-bit [[learning/notes/quick-context/how-source-code-is-stored|ASCII]] and transmitted them as [[quick-context/from-vacuum-tubes-to-coding-on-screens|20mA current loop]] serial signals at 110 baud. On the computer side, a UART captured these bits and presented them as parallel bytes. The ASR-33 teletype's frame format — 1 start bit, 7 data bits, 2 stop bits, at 110 baud — was the original UART standard.
 
-For the full teletype-to-computer I/O path (keyboard encoding → current loop → UART → interrupt → OS buffer → echo back → print mechanism), see [[quick-context/from-vacuum-tubes-to-coding-on-screens|From Vacuum Tubes to Coding on Screens, Era 3]].
+For the full teletype-to-computer I/O path (keyboard [[learning/notes/quick-context/how-source-code-is-stored|encoding]] → [[learning/notes/quick-context/capacitance|current]] loop → UART → [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupt]] → OS buffer → echo back → print [[learning/notes/quick-context/silymarin|mechanism]]), see [[quick-context/from-vacuum-tubes-to-coding-on-screens|From Vacuum Tubes to Coding on Screens, Era 3]].
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Simplicity vs. robustness</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — [[learning/notes/quick-context/embedded-communication-protocols|Simplicity]] vs. [[learning/notes/quick-context/pupper-lab5-neural-controller|robustness]]</summary>
 
 UART sits at the "dead simple" end of the [[quick-context/embedded-communication-protocols|protocol spectrum]]:
 
-| | UART | SPI | I2C | CAN |
+| | UART | [[learning/notes/micro-context/spi|SPI]] | [[learning/notes/micro-context/i2c|I2C]] | CAN |
 |---|---|---|---|---|
 | **Wires** | 2 (TX, RX) | 4+ (SCLK, MOSI, MISO, CS) | 2 (SDA, SCL) | 2 (CANH, CANL) |
-| **Clock** | None (async) | Shared clock wire | Shared clock wire | None (async) |
-| **Topology** | Point-to-point | Star (1 CS per device) | Multi-drop bus | Multi-drop bus |
-| **Error detection** | Optional parity bit | None built-in | ACK/NACK only | CRC-15 + 5 error types |
+| **Clock** | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] (async) | Shared clock wire | Shared clock wire | None (async) |
+| **[[learning/notes/quick-context/pupper-brain|Topology]]** | [[learning/notes/quick-context/epson-rc-plus-programming|Point]]-to-point | Star (1 CS per device) | Multi-drop bus | Multi-drop bus |
+| **Error detection** | Optional parity bit | None built-in | ACK/NACK [[learning/notes/quick-context/comparator-specification|only]] | CRC-15 + 5 error types |
 | **Max speed** | ~10 Mbps (typical 115200) | 50+ MHz | 3.4 Mbps | 1 Mbps (FD: 8 Mbps) |
-| **Max distance** | ~15 m (TTL) | ~30 cm | ~1 m | 40 m |
+| **Max [[learning/notes/quick-context/embedded-communication-protocols|distance]]** | ~15 m (TTL) | ~30 cm | ~1 m | 40 m |
 
-**UART's advantage is simplicity:** two wires, no clock to route, no addressing, no protocol overhead. This makes it the default choice for debug consoles, GPS modules, and any point-to-point link where you just need to send bytes.
+**UART's advantage is simplicity:** two wires, no clock to route, no addressing, no protocol overhead. This makes it the default [[learning/notes/quick-context/transistor-analog-to-digital|choice]] for debug consoles, GPS modules, and any point-to-point link where you just need to send bytes.
 
-**UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
+**UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no [[learning/notes/quick-context/embedded-communication-protocols|multi-device]] support, no [[learning/notes/quick-context/embedded-communication-protocols|noise immunity]] (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] a physical standard [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] (RS-232 for voltage levels, RS-485 for differential long-haul) or [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] to a different protocol entirely.
 
-The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
+The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous [[learning/notes/quick-context/qwiic-stemma-qt-i2c|protocols]] (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
 
 </details>
 
@@ -315,15 +317,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 Under the hood, `HAL_UART_Receive_IT` enables the UART's RXNE interrupt. When a byte arrives:
 1. The shift register captures 8 bits from the RX pin (oversampled at 16×)
 2. The byte latches into the data register → RXNE flag set → IRQ fires
-3. The HAL's ISR reads the data register → clears RXNE → calls your callback
+3. The HAL's ISR reads the data register → clears RXNE → calls [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] callback
 
 **Baud rate generation on STM32:** The STM32's UART peripheral divides the peripheral bus clock (APB clock) to produce the baud rate. For 115200 baud with 16× oversampling on a 72 MHz APB clock:
 
-$$\text{USARTDIV} = \frac{f_{\text{APB}}}{16 \times \text{baud}} = \frac{72{,}000{,}000}{16 \times 115{,}200} = 39.0625$$
+$$\[[learning/notes/quick-context/how-source-code-is-stored|text]]{USARTDIV} = \frac{f_{\text{APB}}}{16 \times \text{baud}} = \frac{72{,}000{,}000}{16 \times 115{,}200} = 39.0625$$
 
 The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in BRR[3:0]. The actual baud rate is $72{,}000{,}000 / (16 \times 39.0625) = 115{,}200$ exactly.
 
-**The one thing most outsiders get wrong about this is...** thinking UART is a "protocol" like I2C or CAN. UART is really just the **hardware peripheral** — it handles framing (start/stop bits) and serial↔parallel conversion, but it defines no electrical standard (voltage levels, signaling, connectors). RS-232, RS-485, and 20mA current loop are all **physical layers** that carry UART frames. When someone says "UART" they usually mean TTL-level (0V/3.3V) point-to-point, but the same UART peripheral can drive any of these physical layers through an external transceiver chip.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** thinking UART is a "protocol" like I2C or CAN. UART is really just the **hardware peripheral** — it handles framing (start/stop bits) and serial↔parallel conversion, but it defines no electrical standard (voltage levels, signaling, connectors). RS-232, RS-485, and 20mA current loop are all **physical layers** that carry UART frames. When someone says "UART" they usually mean TTL-level (0V/3.3V) point-to-point, but the same UART peripheral can drive any of these physical layers through an external transceiver chip.
 
 </details>
 
@@ -336,19 +338,19 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The historical context: how UARTs enabled the transition from punch cards to interactive terminals in the 1960s. Covers the full teletype I/O loop: keyboard → current loop → UART → interrupt → OS buffer → echo.
 
-- **[[quick-context/usb-peripheral-hardware]]** — How USB works at the hardware level inside an MCU. USB's Serial Interface Engine (SIE) is conceptually similar to a UART — it has shift registers for serial↔parallel conversion — but adds NRZI encoding, bit stuffing, CRC, and packet framing.
+- **[[quick-context/usb-peripheral-hardware]]** — How USB works at the hardware level inside an MCU. USB's [[learning/notes/quick-context/usb-peripheral-hardware|Serial Interface Engine (SIE)]] is conceptually similar to a UART — it has [[learning/notes/quick-context/d-flip-flop|shift registers]] for serial↔parallel conversion — but adds NRZI encoding, [[learning/notes/quick-context/can-bus|bit stuffing]], CRC, and packet framing.
 
 - **[[micro-context/stm32-microcontroller]]** — The STM32 family of microcontrollers that include UART peripherals. The Pupper v3 uses UART for debug console output.
 
-- **[[quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to edge-triggered master-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
+- **[[quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to [[learning/notes/quick-context/switches-to-registers-storing-data|edge-triggered]] [[learning/notes/quick-context/data-bus-and-arbitration|master]]-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
 
-- **[[micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
+- **[[micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the [[learning/notes/quick-context/bare-minimal-data-storage-circuit|rising edge]] of the baud clock.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these gate-level primitives.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these [[learning/notes/quick-context/transistor|gate]]-level primitives.
 
 - **RS-232** — The electrical standard that defines bipolar voltage levels (±3-15V) for UART signals. Requires a level-shifting IC like the MAX232. See [[quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
 
-- **RS-485** — Differential signaling physical layer for UART frames. Enables multi-drop buses over 1200 m. See [[quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
+- **RS-485** — [[learning/notes/quick-context/embedded-communication-protocols|Differential signaling]] physical layer for UART frames. Enables multi-drop buses over 1200 m. See [[quick-context/embedded-communication-protocols|embedded communication protocols]] for details.
 
 </details>
 
@@ -370,19 +372,19 @@ The **two-stage design**: shift register + data register. Once 8 bits are receiv
 **Q3:** At 115200 baud, how much clock mismatch between sender and receiver can the UART tolerate before bits get misread?
 <details>
 <summary>Answer</summary>
-About **±3-4%**. At 16× oversampling, the receiver samples at the center of each bit (ticks 8-10 out of 16). Over a 10-bit frame, a 3% clock error accumulates to ~0.3 bits of drift by the last bit — still within the ±0.5 bit tolerance window. Beyond ~4-5%, the sampling point drifts past the bit boundary and you get framing errors. This is why both sides typically use crystal oscillators (~50 ppm accuracy = 0.005%) rather than internal RC oscillators (~1-5% accuracy). See: Oversampling in How It Works.
+About **±3-4%**. At 16× oversampling, the receiver samples at the center of each bit (ticks 8-10 out of 16). Over a 10-bit frame, a 3% clock error accumulates to ~0.3 bits of drift by the last bit — still within the ±0.5 bit [[learning/notes/quick-context/cnc-machining|tolerance]] window. Beyond ~4-5%, the sampling point drifts past the bit boundary and you get framing errors. This is why both sides typically use crystal oscillators (~50 ppm [[learning/notes/quick-context/rc-oscillator|accuracy]] = 0.005%) rather than internal RC oscillators (~1-5% accuracy). See: Oversampling in How It Works.
 </details>
 
 **Q4:** Someone claims "UART can't go over 5 meters." Is this right?
 <details>
 <summary>Answer</summary>
-It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to capacitance and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high reliability. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
+It depends on the **physical layer**, not the UART itself. TTL-level UART (0V/3.3V single-ended) degrades over long wires due to [[learning/notes/quick-context/capacitance|capacitance]] and noise — practically limited to ~15 m at 115200 baud, though 5 m is safer for high [[learning/notes/quick-context/bond-pad|reliability]]. But the same UART frames can travel 1200 m over RS-485 (differential signaling) or miles over 20mA current loop (as teletypes did in the 1960s). UART is the framing/conversion hardware; the physical layer determines distance. See: The Key Tension and [[quick-context/embedded-communication-protocols]].
 </details>
 
-**Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? Will it work?
+**Q5:** On an STM32 running at 72 MHz with 16× oversampling, what happens if you configure the UART for 2,000,000 baud? [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Will it work?]]
 <details>
 <summary>Answer</summary>
-Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — signal integrity becomes critical. TTL-level UART over more than a few centimeters of PCB trace may suffer from ringing, crosstalk, and capacitive loading. You'd need short traces, good ground planes, and probably impedance matching. The UART peripheral is fine; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
+Calculate: $\text{USARTDIV} = 72{,}000{,}000 / (16 \times 2{,}000{,}000) = 2.25$. The BRR register can represent this (integer 2, fraction 0.25 × 16 = 4). The actual baud rate would be $72{,}000{,}000 / (16 \times 2.25) = 2{,}000{,}000$ exactly. So the hardware *can* generate it. But will it work? At 2 Mbps, each bit is 500 ns — [[learning/notes/quick-context/bga-ball-grid-array|signal integrity]] becomes critical. TTL-level UART over more than a few centimeters of PCB [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] may suffer from ringing, crosstalk, and capacitive [[learning/notes/quick-context/teep|loading]]. You'd need short traces, good ground planes, and probably impedance [[learning/notes/quick-context/differential-pair|matching.]] The UART peripheral is [[learning/notes/micro-context/thread-pitch-screws|fine]]; the physics of the wire is the limit. Many STM32s support even higher rates (up to 10+ Mbps) with 8× oversampling mode, which doubles the max baud rate for a given clock.
 </details>
 
 </details>

@@ -2,16 +2,18 @@
 topic: Soldering
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/bga-ball-grid-array]]
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and [[quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** Soldering creates [[learning/notes/quick-context/bambu-p2s-print-quality|permanent]] electrical and mechanical connections by [[learning/notes/quick-context/chemical-bonds-spectrum|melting]] a metal alloy (solder) between [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] leads and [[quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
 
 # Soldering
 
 ## The Core Problem: Making Reliable Permanent Connections
 
-You have a component (resistor, IC, connector) and a PCB with copper pads. You need to create a connection that is electrically conductive, mechanically strong, and reliable for years. Breadboards and wire-wrapping are temporary. Soldering is permanent: a low-melting-point metal alloy (solder) is melted to form a metallurgical bond between the component lead and the copper pad. The joint must wet properly (solder flows and adheres to clean metal surfaces) and solidify into a reliable, low-resistance connection. Bad solder joints are the #1 cause of electronic failures in the field.
+You have a component ([[learning/notes/quick-context/resistor|resistor]], IC, [[learning/notes/quick-context/qwiic-stemma-qt-i2c|connector]]) and a PCB with copper pads. You need to create a connection that is electrically conductive, mechanically strong, and [[learning/notes/quick-context/ros2-architecture|reliable]] for years. [[learning/notes/quick-context/dupont-jumper-wires|Breadboards]] and wire-wrapping are temporary. Soldering is permanent: a low-melting-[[learning/notes/quick-context/epson-rc-plus-programming|point]] metal alloy (solder) is melted to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] a metallurgical bond between the component lead and the copper pad. The joint [[learning/notes/quick-context/ros2-architecture|must]] wet properly (solder flows and adheres to clean metal surfaces) and solidify into a reliable, low-resistance connection. Bad solder joints are the #1 cause of electronic failures in the field.
 
 ## 5 Essential Terms
 
@@ -19,8 +21,8 @@ You have a component (resistor, IC, connector) and a PCB with copper pads. You n
 |------|------------|
 | **Solder** | A metal alloy that melts at 180-220°C (far below copper's 1085°C). Traditional: 63% tin / 37% lead (melts at 183°C). Lead-free: SAC305 (Sn96.5/Ag3.0/Cu0.5, melts at 217°C). |
 | **Flux** | A chemical agent (rosin or acid-based) that removes oxide layers from metal surfaces so solder can wet them. Without flux, solder beads up and won't stick. Flux is in the core of solder wire and in solder paste. |
-| **Wetting** | When molten solder flows onto and adheres to a metal surface, forming a concave fillet. Good wetting = shiny, smooth, concave joint. Poor wetting = balled-up solder that barely touches the pad. |
-| **Reflow** | Machine soldering process: solder paste (tiny solder balls + flux) is printed onto PCB pads, components are placed by pick-and-place machines, then the whole board goes through an oven that melts the paste. Used for SMD production. |
+| **Wetting** | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] molten solder flows onto and adheres to a metal surface, [[learning/notes/quick-context/electrolysis|forming]] a concave fillet. Good wetting = shiny, smooth, concave joint. Poor wetting = balled-up solder that barely touches the pad. |
+| **[[learning/notes/quick-context/bga-ball-grid-array|Reflow]]** | Machine soldering process: solder paste (tiny solder balls + flux) is printed onto PCB pads, [[learning/notes/quick-context/tensor|components]] are placed by pick-and-place machines, then the whole board goes through an oven that melts the paste. Used for SMD production. |
 | **Cold Joint** | A defective solder joint where the solder didn't fully melt or the parts moved during cooling. Looks dull and grainy instead of shiny and smooth. Has high resistance or is intermittent. |
 
 <details>
@@ -90,7 +92,7 @@ THROUGH-HOLE vs SURFACE MOUNT
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Leaded vs. Lead-Free Solder
 
@@ -170,49 +172,49 @@ REFLOW SOLDERING PROCESS (SMD production)
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — PCB pad design, soldermask openings, and copper finish (HASL, ENIG, OSP) all affect solder joint quality. The PCB and soldering process are designed together.
+- **[[quick-context/pcb-printed-circuit-board]]** — PCB pad design, [[learning/notes/quick-context/pcb-layers|soldermask]] openings, and copper finish ([[learning/notes/quick-context/pcb-layers|HASL]], [[learning/notes/quick-context/pcb-layers|ENIG]], OSP) all affect solder joint [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]]. The PCB and soldering process are designed together.
 
-- **[[quick-context/pcb-layers]]** — The paste mask layer is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder volume and prevent bridging.
+- **[[quick-context/pcb-layers]]** — The [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|paste mask]] [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] is specifically designed for stencil printing during reflow. Paste openings are 5-10% smaller than pads to control solder [[learning/notes/quick-context/cnc-machining|volume]] and prevent bridging.
 
-- **[[quick-context/bga-ball-grid-array]]** — BGA packages are soldered using reflow only (no hand soldering possible). The solder balls ARE the connection. X-ray inspection is required because joints are hidden under the package.
+- **[[quick-context/bga-ball-grid-array]]** — BGA packages are soldered using reflow [[learning/notes/quick-context/comparator-specification|only]] (no hand soldering possible). The solder balls ARE the connection. [[learning/notes/quick-context/bga-ball-grid-array|X-ray inspection]] is required because joints are hidden under the [[learning/notes/quick-context/silicon-die|package]].
 
-- **[[quick-context/flip-chip]]** — Flip-chip solder bumps (C4) are a microscopic version of the same soldering principle, connecting the die directly to the substrate.
+- **[[quick-context/flip-chip]]** — [[learning/notes/quick-context/flip-chip|Flip-chip]] solder bumps (C4) are a microscopic version of the same soldering principle, connecting the die directly to the [[learning/notes/quick-context/flip-chip|substrate]].
 
-- **[[quick-context/common-ic-packages]]** — Package type determines soldering method. DIP = through-hole (easy hand solder). QFP = SMD (hand-solderable with care). QFN = SMD (hot air or reflow only). BGA = reflow only.
+- **[[quick-context/common-ic-packages]]** — Package [[learning/notes/quick-context/bjt-specifications|type]] determines soldering method. DIP = [[learning/notes/quick-context/common-ic-packages|through-hole]] (easy hand solder). QFP = SMD (hand-solderable with care). QFN = SMD (hot air or reflow only). BGA = reflow only.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
-**Q1:** What does flux do, and why is it necessary?
+**Q1:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] does flux do, and why is it necessary?
 <details>
 <summary>Answer</summary>
-**Flux removes oxide layers from metal surfaces so solder can wet them.** All metals oxidize in air. Copper oxide and tin oxide prevent solder from bonding to the metal underneath. Flux is a mildly acidic or rosin-based chemical that dissolves these oxides when heated, exposing clean metal for the solder to bond to. Without flux, solder beads up and rolls off the pad.
+**Flux removes oxide layers from metal surfaces so solder can wet them.** All metals oxidize in air. Copper oxide and tin oxide prevent solder from bonding to the metal [[learning/notes/quick-context/bga-ball-grid-array|underneath]]. Flux is a mildly acidic or rosin-based chemical that dissolves these oxides when heated, exposing clean metal for the solder to bond to. Without flux, solder beads up and rolls off the pad.
 </details>
 
 **Q2:** What's the difference between a cold joint and a good joint, visually?
 <details>
 <summary>Answer</summary>
-**A good joint is shiny, smooth, and has a concave fillet shape.** A cold joint is dull, grainy or rough-textured, and may have an irregular or convex shape. Cold joints occur when the solder didn't fully melt, the parts moved during cooling, or there was insufficient heat. Note: lead-free solder naturally has a slightly duller finish than leaded—this is normal, not a defect.
+**A good joint is shiny, smooth, and has a concave fillet shape.** A cold joint is dull, grainy or rough-textured, and may have an irregular or convex shape. Cold joints occur when the solder didn't fully melt, the parts moved during cooling, or there was insufficient heat. [[learning/notes/quick-context/post-sale-account-engagement|Note:]] lead-free solder naturally has a slightly duller finish than leaded—this is normal, not a defect.
 </details>
 
 **Q3:** Why is the reflow oven temperature profile so critical?
 <details>
 <summary>Answer</summary>
-**Each zone serves a specific purpose.** Preheat: gradually raises temperature to avoid thermal shock. Soak: activates flux and equalizes temperature across the board. Peak/reflow: solder melts and wets the pads (must exceed liquidus temperature). Cooling: controlled rate prevents brittle joints and thermal stress. Too fast, too hot, or too cold at any stage produces defective joints or damaged components.
+**Each zone serves a specific purpose.** Preheat: gradually raises temperature to avoid thermal shock. Soak: activates flux and equalizes temperature across the board. Peak/reflow: solder melts and wets the pads (must exceed liquidus temperature). Cooling: controlled rate prevents [[learning/notes/quick-context/breaking-elongation-rate|brittle]] joints and thermal stress. Too [[learning/notes/quick-context/comparator|fast]], too hot, or too cold at any stage produces defective joints or damaged components.
 </details>
 
 **Q4:** Why is leaded solder easier to work with than lead-free?
 <details>
 <summary>Answer</summary>
-**Lower melting point (183°C vs 217°C), better wetting, and a clear shiny/dull visual indicator of joint quality.** The lower temperature gives more working time and is less likely to damage components or PCBs. Leaded solder flows more easily and creates shinier joints. Lead-free requires higher temperatures, more flux, and the natural dull finish makes visual inspection of joint quality harder.
+**Lower melting point (183°C vs 217°C), [[learning/notes/quick-context/comparator-specification|better]] wetting, and a clear shiny/dull visual indicator of joint quality.** The lower temperature gives more working time and is less likely to damage components or PCBs. Leaded solder flows more easily and creates shinier joints. Lead-free requires higher temperatures, more flux, and the natural dull finish makes visual inspection of joint quality harder.
 </details>
 
 **Q5:** How are BGA packages inspected after soldering if you can't see the joints?
 <details>
 <summary>Answer</summary>
-**X-ray inspection.** The solder balls are hidden under the package, invisible to optical inspection. X-rays pass through the PCB and package but are absorbed by the dense solder, creating an image of each ball. Voids (air bubbles), bridges (shorts between adjacent balls), and missing balls are visible. This is why BGA rework is expensive and why BGA designs need careful DFM (Design for Manufacturability).
+**X-ray inspection.** The solder balls are hidden under the package, invisible to optical inspection. X-rays pass through the PCB and package but are absorbed by the dense solder, creating an image of each ball. [[learning/notes/quick-context/electromigration|Voids]] (air bubbles), bridges (shorts between adjacent balls), and missing balls are visible. This is why BGA rework is expensive and why BGA designs need careful DFM (Design for [[learning/notes/quick-context/pcb-printed-circuit-board|Manufacturability]]).
 </details>
 
 </details>

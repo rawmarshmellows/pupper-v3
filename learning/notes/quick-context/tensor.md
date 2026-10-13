@@ -2,33 +2,35 @@
 topic: Tensor
 created: 2026-03-04
 ---
+> **Related:** [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]]
+
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
 
-> **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** A tensor is a mathematical object that generalizes scalars ([[learning/notes/quick-context/singular-value-decomposition|rank]] 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
 ## The Core Problem
 
-Physics and engineering need quantities that exist independently of how you choose to measure them. A force doesn't change just because you rotate your ruler. Stress inside a material doesn't depend on which direction you call "x." But the *numbers* you use to describe these quantities do change with your coordinate choice. Tensors solve this: they package multi-directional information with built-in transformation rules, so the underlying reality is preserved even as the description changes.
+Physics and engineering need quantities that exist independently of how you choose to measure them. A force doesn't change just because you rotate [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] ruler. Stress inside a material doesn't depend on [[learning/notes/quick-context/differential-pair|which direction]] you call "x." But the *numbers* you use to describe these quantities do change with your coordinate [[learning/notes/quick-context/transistor-analog-to-digital|choice]]. Tensors solve this: they [[learning/notes/quick-context/silicon-die|package]] multi-directional information with built-in transformation rules, so the underlying reality is preserved even as the description changes.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Rank (Order)** | The number of indices needed to specify a component. A scalar is rank 0 (no index), a vector is rank 1 (one index: $v_i$), a matrix-like tensor is rank 2 (two indices: $T_{ij}$), and so on. |
+| **Rank ([[learning/notes/quick-context/frequency-and-filtering|Order]])** | The number of indices needed to specify a [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]]. A scalar is rank 0 (no index), a vector is rank 1 (one index: $v_i$), a matrix-like tensor is rank 2 (two indices: $T_{ij}$), and so on. |
 | **Components** | The individual numbers that make up a tensor in a particular coordinate system. A rank-2 tensor in 3D has $3^2 = 9$ components; in 4D spacetime, $4^2 = 16$. |
-| **Transformation Law** | The rule specifying how tensor components change when you switch coordinate systems. This is *the* defining property: if it transforms like a tensor, it is a tensor. |
-| **Contraction** | Summing over a repeated upper and lower index (Einstein summation), which reduces the rank by 2. Example: contracting a rank-2 tensor $T^i{}_i$ gives a scalar (rank 0)—the trace. |
-| **Metric Tensor ($g_{ij}$)** | A rank-2 tensor that defines distances and angles in a space. In flat 3D space it's just the identity matrix; in curved spacetime (general relativity) it encodes gravity. |
+| **Transformation Law** | The rule specifying how tensor components change [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] coordinate systems. This is *the* defining property: if it transforms like a tensor, it is a tensor. |
+| **Contraction** | Summing over a repeated upper and lower index (Einstein summation), which reduces the rank by 2. [[learning/notes/quick-context/teep|Example:]] contracting a rank-2 tensor $T^i{}_i$ gives a scalar (rank 0)—the [[learning/notes/quick-context/pcb-printed-circuit-board|trace]]. |
+| **Metric Tensor ($g_{ij}$)** | A rank-2 tensor that defines distances and angles in a space. In flat 3D space it's just the identity matrix; in curved spacetime ([[learning/notes/quick-context/faraday-tensor|general relativity]]) it encodes gravity. |
 
 <details>
 <summary><strong>How It Works</strong> — The hierarchy from scalars to tensors</summary>
 
 ## Building Up: Scalars, Vectors, Tensors
 
-The key idea is that tensors are a *generalization*. Each level adds a new "direction" of information:
+The key idea is that tensors are a *[[learning/notes/quick-context/pupper-lab5-neural-controller|generalization]]*. Each level adds a new "direction" of information:
 
 ```
 THE TENSOR HIERARCHY
@@ -109,7 +111,7 @@ HIGHER RANKS: More indices, more directions
 
 ## The Defining Property: Transformation Rules
 
-What makes a tensor a tensor (and not just a collection of numbers) is *how it transforms*:
+[[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] makes a tensor a tensor (and not just a collection of numbers) is *how it transforms*:
 
 ```
 WHY TRANSFORMATION IS THE KEY
@@ -168,7 +170,7 @@ WHAT FAILS THE TEST:
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Abstract math vs. concrete physics</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Abstract math vs. concrete physics</summary>
 
 ## Index Gymnastics vs. Geometric Intuition
 
@@ -206,22 +208,22 @@ APPROACH 2: GEOMETRIC/ABSTRACT (modern math, general relativity)
 
 | When to Use | Component View | Geometric View |
 |-------------|---------------|----------------|
-| Engineering stress analysis | Better | Overkill |
+| Engineering stress analysis | [[learning/notes/quick-context/comparator-specification|Better]] | Overkill |
 | Numerical computation (FEM, CFD) | Required | Background |
 | General relativity | Needed for calculation | Needed for understanding |
 | Machine learning ("tensors" in PyTorch) | It's just arrays | N/A (not real tensors) |
-| Building physical intuition | Start here | Graduate to this |
+| Building [[learning/notes/quick-context/capacitance|physical intuition]] | Start here | Graduate to this |
 
-The deepest understanding comes from fluency in both: knowing *what* a tensor represents geometrically, and being able to *compute* with its components.
+The deepest understanding comes from fluency in [[learning/notes/quick-context/bjt-specifications|both]]: knowing *what* a tensor represents geometrically, and being able to *compute* with its components.
 
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — The stress tensor in materials</summary>
+<summary><strong>Concrete Example</strong> — The stress tensor in [[learning/notes/quick-context/cnc-machining|materials]]</summary>
 
 ## Stress: Why a Single Number Isn't Enough
 
-When we say a material has a [[quick-context/tensile-strength-materials|tensile strength]] of 27 MPa, that's a simplification. Internally, the stress state at any point is described by a rank-2 tensor with 9 components (6 independent, due to symmetry):
+When we say a material has a [[quick-context/tensile-strength-materials|tensile strength]] of 27 MPa, that's a simplification. Internally, the stress state at any [[learning/notes/quick-context/epson-rc-plus-programming|point]] is described by a rank-2 tensor with 9 components (6 independent, due to symmetry):
 
 ```
 THE STRESS TENSOR IN ACTION
@@ -291,18 +293,18 @@ COMBINED LOADING (real-world):
     tensors are designed to handle.
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A rotation matrix R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning libraries (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** confusing tensors with matrices. Every rank-2 tensor can be *represented* as a matrix in a given coordinate system, but not every matrix is a tensor. The difference: a tensor has a transformation law tied to coordinate changes that preserves physical meaning. A [[learning/notes/quick-context/helmert-transform|rotation matrix]] R itself is not a tensor—it describes the *relationship between* coordinate systems, not a physical quantity that exists in space. Similarly, "tensors" in machine learning [[learning/notes/quick-context/firmware|libraries]] (PyTorch, TensorFlow) are just multi-dimensional arrays with no transformation law—they borrowed the name but not the physics.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The most important tensor in [[learning/notes/quick-context/electromagnetism|electromagnetism]]: a rank-2 antisymmetric tensor that packages the electric and magnetic [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]] into a single object. Demonstrates how tensor transformation laws explain why E and B mix between [[learning/notes/quick-context/comparator|reference]] frames.
 
-- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
+- **[[quick-context/maxwell-equations]]** — Maxwell's [[learning/notes/quick-context/ram-addressing-decoder|four]] equations reduce to two tensor equations using the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]], making Lorentz [[learning/notes/quick-context/covariance-matrix|covariance]] manifest. This is the [[learning/notes/quick-context/d-flip-flop|power]] of the tensor formulation: compactness and [[learning/notes/quick-context/can-bus|frame]]-independence.
 
-- **[[quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
+- **[[quick-context/tensile-strength-materials]]** — Tensile [[learning/notes/quick-context/cnc-machining|strength]] (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the [[learning/notes/quick-context/singular-value-decomposition|full]] rank-2 stress tensor.
 
 - **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
 
@@ -322,31 +324,31 @@ COMBINED LOADING (real-world):
 **Q1:** Temperature at a point is a scalar (rank-0 tensor). Velocity is a vector (rank-1 tensor). Why is stress a rank-2 tensor and not just a vector?
 <details>
 <summary>Answer</summary>
-**Because stress requires two directions to specify: the direction of force AND the orientation of the surface it acts on.** A vector only has one direction. When you say "20 MPa tensile stress," you're implicitly specifying both the pulling direction and the cross-section orientation. The stress tensor $\sigma_{ij}$ captures force in direction $i$ acting on a surface whose normal points in direction $j$. This two-directional nature is exactly what makes it rank 2. See: Concrete Example.
+**Because stress requires two directions to specify: the direction of force AND the orientation of the surface it acts on.** A vector [[learning/notes/quick-context/comparator-specification|only]] has one direction. When you say "20 MPa tensile stress," you're implicitly specifying both the pulling direction and the cross-section orientation. The stress tensor $\sigma_{ij}$ captures force in direction $i$ acting on a surface whose normal points in direction $j$. This two-directional nature is exactly what makes it rank 2. See: Concrete Example.
 </details>
 
-**Q2:** A rank-2 tensor in 3D has 9 components. The stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). How many independent components does it have?
+**Q2:** A rank-2 tensor in 3D has 9 components. The stress tensor is [[learning/notes/quick-context/singular-value-decomposition|symmetric]] ($\sigma_{ij} = \sigma_{ji}$). How many independent components does it have?
 <details>
 <summary>Answer</summary>
-**6.** The 3 diagonal components ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) are independent, and of the 6 off-diagonal components, symmetry pairs them: $\sigma_{xy} = \sigma_{yx}$, $\sigma_{xz} = \sigma_{zx}$, $\sigma_{yz} = \sigma_{zy}$. So 3 diagonal + 3 independent off-diagonal = 6 total. Compare to the [[quick-context/faraday-tensor|Faraday tensor]], which is *anti*symmetric ($F^{\mu\nu} = -F^{\nu\mu}$) in 4D, also giving 6 independent components.
+**6.** The 3 diagonal components ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) are independent, and of the 6 off-diagonal components, symmetry pairs them: $\sigma_{xy} = \sigma_{yx}$, $\sigma_{xz} = \sigma_{zx}$, $\sigma_{yz} = \sigma_{zy}$. So 3 diagonal + 3 independent off-diagonal = 6 [[learning/notes/quick-context/similarity-transform|total]]. Compare to the [[quick-context/faraday-tensor|Faraday tensor]], which is *anti*symmetric ($F^{\mu\nu} = -F^{\nu\mu}$) in 4D, also giving 6 independent components.
 </details>
 
 **Q3:** The [[quick-context/faraday-tensor|Faraday tensor]] is antisymmetric ($F^{\mu\nu} = -F^{\nu\mu}$) and the stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). What does this difference mean physically?
 <details>
 <summary>Answer</summary>
-**Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
+**Antisymmetry means the "diagonal" (same-index) components are [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]], and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational [[learning/notes/quick-context/how-source-code-is-stored|character]]—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry [[learning/notes/quick-context/bjt-specifications|type]] constrains which physical quantities the tensor can represent.
 </details>
 
 **Q4:** In PyTorch, you create a "tensor" with `torch.tensor([1, 2, 3])`. Is this a tensor in the physics/math sense? Why or why not?
 <details>
 <summary>Answer</summary>
-**No.** A PyTorch "tensor" is just a multi-dimensional array of numbers—it has no transformation law. A real tensor must transform in a specific way under coordinate changes so that the physical quantity it represents is preserved. PyTorch tensors don't "know" about coordinate systems or transformations; they're data containers optimized for GPU computation. The name was borrowed from mathematics for its connotation of "multi-dimensional," but the defining property (transformation law) is absent.
+**No.** A PyTorch "tensor" is just a multi-dimensional array of numbers—it has no transformation law. A real tensor [[learning/notes/quick-context/ros2-architecture|must]] transform in a specific way under coordinate changes so that the physical quantity it represents is preserved. PyTorch tensors don't "know" about coordinate systems or transformations; they're data containers optimized for GPU computation. The name was borrowed from mathematics for its connotation of "multi-dimensional," but the defining property (transformation law) is absent.
 </details>
 
-**Q5:** The metric tensor in flat 3D Euclidean space is the identity matrix ($g_{ij} = \delta_{ij}$). In curved spacetime near a black hole, $g_{ij}$ has complex, position-dependent entries. What physical quantity is the metric tensor encoding in each case?
+**Q5:** The metric tensor in flat 3D Euclidean space is the identity matrix ($g_{ij} = \delta_{ij}$). In curved spacetime near a black hole, $g_{ij}$ has complex, position-dependent entries. What physical quantity is the metric tensor [[learning/notes/quick-context/how-source-code-is-stored|encoding]] in each case?
 <details>
 <summary>Answer</summary>
-**Distances and angles.** In flat space, $g_{ij} = \delta_{ij}$ means distance is computed by the Pythagorean theorem: $ds^2 = dx^2 + dy^2 + dz^2$. Near a black hole, the metric tensor encodes how spacetime is *curved* by gravity—distances and time intervals are warped. The line element $ds^2 = g_{\mu\nu} dx^\mu dx^\nu$ gives the "true" spacetime distance between nearby events. The metric tensor is what makes the abstract math of tensors connect to physical measurements of rulers and clocks. Einstein's key insight was that gravity isn't a force—it's the curvature of spacetime described by the metric tensor.
+**Distances and angles.** In flat space, $g_{ij} = \delta_{ij}$ means [[learning/notes/quick-context/embedded-communication-protocols|distance]] is computed by the Pythagorean theorem: $ds^2 = dx^2 + dy^2 + dz^2$. Near a black hole, the metric tensor encodes how spacetime is *curved* by gravity—distances and time intervals are warped. The line element $ds^2 = g_{\mu\nu} dx^\mu dx^\nu$ gives the "true" spacetime distance between nearby events. The metric tensor is what makes the abstract math of tensors connect to physical measurements of rulers and clocks. Einstein's key insight was that gravity isn't a force—it's the curvature of spacetime described by the metric tensor.
 </details>
 
 </details>

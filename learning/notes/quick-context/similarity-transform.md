@@ -2,16 +2,18 @@
 topic: Similarity Transform
 created: 2026-04-04
 ---
+> **Related:** [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]]
+
 
 # N-Dimensional Similarity Transform
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/covariance-matrix|Covariance Matrix]]
 
-> **TL;DR:** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, rotation, and translation -- it is the most general transform that keeps "similar" figures similar, in any number of dimensions.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** A similarity transform preserves shape (angles and ratios of distances) while allowing uniform scaling, [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|rotation]], and [[learning/notes/quick-context/pupper-lab2-forward-kinematics|translation]] -- it is the most [[learning/notes/quick-context/singular-value-decomposition|general]] transform that keeps "similar" figures similar, in [[learning/notes/quick-context/ros2-architecture|any number]] of dimensions.
 
 ## The Core Problem
 
-Many tasks in science and engineering require comparing or aligning objects that have the same shape but differ in position, orientation, and size. A biologist compares two protein structures measured at different scales. A surveyor reconciles GPS coordinates with a local map. A computer vision system matches a 3D model to a scene viewed from an unknown angle and distance. In every case you need a transform that can absorb differences in pose and scale while guaranteeing that the intrinsic geometry -- all angles, all distance ratios -- stays untouched. Without similarity transforms, you would need to manually strip away each degree of freedom (translation, rotation, scale) in separate ad-hoc steps with no unified mathematical framework.
+Many tasks in science and engineering require comparing or aligning objects that have the same shape but differ in position, orientation, and size. A biologist compares two protein structures measured at different scales. A surveyor reconciles GPS coordinates with a local map. A computer vision system matches a 3D model to a scene viewed from an unknown angle and [[learning/notes/quick-context/embedded-communication-protocols|distance]]. In every case you need a transform that can absorb differences in pose and [[learning/notes/quick-context/absolute-orientation|scale]] while guaranteeing that the intrinsic geometry -- all angles, all distance ratios -- stays untouched. Without similarity transforms, you would need to manually strip away each degree of freedom (translation, rotation, scale) in separate ad-hoc steps with no unified mathematical framework.
 
 ## 5 Essential Terms
 
@@ -21,10 +23,10 @@ Many tasks in science and engineering require comparing or aligning objects that
 | **Isometry** | A similarity transform with $s = 1$ (also called a rigid transform or Euclidean motion) -- preserves absolute distances, not just ratios |
 | **Degrees of freedom** | The number of independent parameters defining a transform; a similarity in $n$ dimensions has $\frac{n(n+1)}{2} + 1$ DOF |
 | **Conformal map** | Any smooth map that preserves angles locally; similarity transforms are the *global* conformal maps of Euclidean space (angle-preserving everywhere, not just infinitesimally) |
-| **Procrustes analysis** | A statistical method that finds the optimal similarity transform to superimpose two or more point configurations, minimizing the sum of squared distances between corresponding points |
+| **[[learning/notes/quick-context/absolute-orientation|Procrustes analysis]]** | A statistical method that finds the optimal similarity transform to superimpose two or more [[learning/notes/quick-context/epson-rc-plus-programming|point]] configurations, minimizing the sum of squared distances between [[learning/notes/quick-context/absolute-orientation|corresponding points]] |
 
 <details>
-<summary><strong>How It Works</strong> -- The essential mechanism</summary>
+<summary><strong>How It Works</strong> -- The essential [[learning/notes/quick-context/silymarin|mechanism]]</summary>
 
 ### The General Form
 
@@ -33,15 +35,15 @@ A similarity transform in $n$-dimensional Euclidean space is:
 $$T(\mathbf{x}) = sR\mathbf{x} + \mathbf{t}$$
 
 where:
-- $s > 0$ is a uniform scale factor (one scalar, same in every direction)
-- $R \in SO(n)$ is a proper rotation matrix ($R^TR = I$, $\det(R) = +1$)
+- $s > 0$ is a uniform [[learning/notes/quick-context/helmert-transform|scale factor]] (one scalar, same in every direction)
+- $R \in SO(n)$ is a proper [[learning/notes/quick-context/helmert-transform|rotation matrix]] ($R^TR = I$, $\det(R) = +1$)
 - $\mathbf{t} \in \mathbb{R}^n$ is a translation vector
 
 If you also allow reflections ($\det(R) = \pm 1$, i.e., $R \in O(n)$), you get an *improper* similarity, sometimes called an opposite similarity.
 
 ### Degrees of Freedom in N Dimensions
 
-Each component contributes a specific number of free parameters:
+Each [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] contributes a specific number of free parameters:
 
 | Component | DOF | Why |
 |-----------|-----|-----|
@@ -61,7 +63,7 @@ Concrete values:
 
 ### The Transform Hierarchy
 
-Geometric transforms form a strict inclusion chain. Each level relaxes one constraint and loses one invariant:
+Geometric transforms [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] a strict inclusion chain. Each level relaxes one [[learning/notes/quick-context/voltage-current-causality|constraint]] and loses one invariant:
 
 ```
                     What it preserves
@@ -81,7 +83,7 @@ Geometric transforms form a strict inclusion chain. Each level relaxes one const
                     (perspective allowed)
 ```
 
-A quick reference of what is preserved and what is lost at each level:
+A quick [[learning/notes/quick-context/comparator|reference]] of [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] is preserved and what is lost at each level:
 
 ```
   Preserved?        Rigid   Similarity   Affine   Projective
@@ -111,7 +113,7 @@ In matrix form, compare:
 
 ### N-Dimensional Generalization
 
-Everything above works identically in any dimension $n \geq 1$. The rotation group $SO(n)$ has dimension $\frac{n(n-1)}{2}$ because rotations in $n$-space are specified by choosing a 2D plane (there are $\binom{n}{2}$ of them) and an angle in each. The full similarity group $\text{Sim}(n)$ is the semidirect product:
+Everything above works identically in any dimension $n \geq 1$. The rotation group $SO(n)$ has dimension $\frac{n(n-1)}{2}$ because rotations in $n$-space are specified by choosing a 2D plane (there are $\binom{n}{2}$ of them) and an angle in each. The [[learning/notes/quick-context/singular-value-decomposition|full]] similarity group $\[[learning/notes/quick-context/how-source-code-is-stored|text]]{Sim}(n)$ is the semidirect product:
 
 $$\text{Sim}(n) = (\mathbb{R}^+ \times SO(n)) \ltimes \mathbb{R}^n$$
 
@@ -123,7 +125,7 @@ Given two sets of $m$ corresponding points $\{\mathbf{p}_i\}$ and $\{\mathbf{q}_
 
 $$\sum_{i=1}^{m} \| \mathbf{q}_i - (sR\mathbf{p}_i + \mathbf{t}) \|^2$$
 
-Umeyama's algorithm (1991) solves this in closed form:
+[[learning/notes/quick-context/absolute-orientation|Umeyama]]'s algorithm (1991) solves this in closed form:
 
 1. **Center the points:** $\bar{\mathbf{p}} = \frac{1}{m}\sum \mathbf{p}_i$, $\bar{\mathbf{q}} = \frac{1}{m}\sum \mathbf{q}_i$
 2. **Compute the [[quick-context/covariance-matrix|cross-covariance matrix]]:** $H = \frac{1}{m}\sum (\mathbf{p}_i - \bar{\mathbf{p}})(\mathbf{q}_i - \bar{\mathbf{q}})^T$
@@ -133,14 +135,14 @@ Umeyama's algorithm (1991) solves this in closed form:
 6. **Scale:** $s = \frac{\text{tr}(\Sigma S)}{\sigma_p^2}$, where $\sigma_p^2 = \frac{1}{m}\sum \|\mathbf{p}_i - \bar{\mathbf{p}}\|^2$
 7. **Translation:** $\mathbf{t} = \bar{\mathbf{q}} - sR\bar{\mathbf{p}}$
 
-The reflection-correction step (step 4) is Umeyama's key contribution -- earlier SVD-based methods (Arun et al., 1987) could produce improper rotations (reflections) when point data was noisy or nearly coplanar.
+The reflection-correction step (step 4) is Umeyama's key contribution -- earlier SVD-based methods ([[learning/notes/quick-context/absolute-orientation|Arun et al.]], 1987) could produce improper rotations (reflections) [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] point data was noisy or nearly coplanar.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> -- Similarity vs affine: when is uniform scale not enough?</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> -- Similarity vs affine: when is uniform scale not enough?</summary>
 
-The fundamental tradeoff is **model simplicity vs modeling power**.
+The fundamental tradeoff is **model [[learning/notes/quick-context/embedded-communication-protocols|simplicity]] vs modeling [[learning/notes/quick-context/d-flip-flop|power]]**.
 
 | Factor | Similarity | Affine |
 |--------|-----------|--------|
@@ -149,13 +151,13 @@ The fundamental tradeoff is **model simplicity vs modeling power**.
 | Preserves angles | Yes | No |
 | Preserves parallelism | Yes | Yes |
 | Handles non-uniform scale / shear | No | Yes |
-| Robustness to noise | Higher (fewer params) | Lower (more params to estimate) |
+| [[learning/notes/quick-context/pupper-lab5-neural-controller|Robustness]] to noise | Higher (fewer params) | Lower (more params to estimate) |
 | Overfitting risk | Lower | Higher |
 
 **When similarity suffices:**
 - Aligning two views of the same rigid object measured at different scales (e.g., a laser scan vs a photogrammetric model)
 - Registering coordinate systems in geodesy (the [[quick-context/helmert-transform|Helmert transform]] is exactly this)
-- Comparing biological shapes in morphometrics where growth is roughly isotropic
+- Comparing biological shapes in morphometrics where [[learning/notes/quick-context/existing-account-management-playbook|growth]] is roughly isotropic
 - Any [[quick-context/absolute-orientation|absolute orientation]] problem where the objects are known to be geometrically similar
 
 **When you need affine (or beyond):**
@@ -164,7 +166,7 @@ The fundamental tradeoff is **model simplicity vs modeling power**.
 - Texture mapping where perspective foreshortening creates directional compression
 - Any scenario where the physical process introduces shear or anisotropic scaling
 
-**The practitioner's rule of thumb:** Start with similarity. If the residuals after fitting show a systematic directional pattern (e.g., errors are consistently larger along one axis), upgrade to affine. Going straight to affine when similarity would suffice wastes degrees of freedom on noise.
+**The practitioner's rule of thumb:** Start with similarity. If the [[learning/notes/quick-context/absolute-orientation|residuals]] after fitting show a systematic directional pattern (e.g., errors are consistently larger along one axis), [[learning/notes/quick-context/comparator-specification|upgrade]] to affine. Going straight to affine when similarity would suffice wastes degrees of freedom on noise.
 
 </details>
 
@@ -271,7 +273,7 @@ print(f"Translation: {t_est}  (true: {t_true})")
 
 ### Generalizing to 3D
 
-The same function works for 3D (or any dimension) -- just pass $(m \times 3)$ arrays. A 3D similarity has 7 DOF, so you need at least 3 non-collinear point correspondences. This is exactly the [[quick-context/absolute-orientation|absolute orientation]] problem: given matched 3D landmarks in two coordinate frames, recover the 7-parameter similarity relating them.
+The same [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] works for 3D (or any dimension) -- just pass $(m \times 3)$ arrays. A 3D similarity has 7 DOF, so you need at least [[learning/notes/quick-context/helmert-transform|3 non-collinear]] point correspondences. This is exactly the [[quick-context/absolute-orientation|absolute orientation]] [[learning/notes/quick-context/d-flip-flop|problem:]] given matched 3D landmarks in two coordinate frames, recover the 7-parameter similarity relating them.
 
 ```python
 # 3D example: 10 random points, scale=1.5, arbitrary rotation, shift
@@ -288,25 +290,25 @@ print(f"Rotation error (Frobenius): {np.linalg.norm(R_hat - R_3d):.2e}")
 print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 ```
 
-**The one thing most outsiders get wrong about this is...** confusing a *geometric* similarity transform with a *matrix* similarity transform ($A' = P^{-1}AP$). They share the name but are completely different operations. The geometric version maps points in Euclidean space preserving shape. The matrix version is a change of basis that preserves eigenvalues. When someone says "similarity transform" in a linear algebra textbook, they almost always mean the matrix kind; in computer vision, geodesy, or shape analysis, they almost always mean the geometric kind.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** confusing a *geometric* similarity transform with a *matrix* similarity transform ($A' = P^{-1}AP$). They share the name but are completely different operations. The geometric version maps points in Euclidean space preserving shape. The matrix version is a change of basis that preserves eigenvalues. When someone says "similarity transform" in a [[learning/notes/quick-context/tensor|linear algebra]] textbook, they almost always mean the matrix kind; in computer vision, geodesy, or shape analysis, they almost always mean the geometric kind.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> -- Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter 3D similarity transform used in geodesy to convert between coordinate datums (WGS 84, NAD 83, etc.)
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of recovering a similarity (or rigid) transform from matched 3D point pairs; Umeyama's method is a standard solution
-- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the cross-covariance matrix to extract rotation
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between source and destination points encodes the rotation and scale information that SVD extracts
-- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; Horn's method (1987) solves absolute orientation via a quaternion eigenproblem instead of SVD
+- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine behind Umeyama's method; decomposes the [[learning/notes/quick-context/helmert-transform|cross-covariance matrix]] to extract rotation
+- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance between [[learning/notes/quick-context/differential-pair|source]] and destination points encodes the rotation and scale information that SVD extracts
+- **Quaternion methods** -- Unit quaternions offer an alternative parameterization of 3D rotations; [[learning/notes/quick-context/absolute-orientation|Horn's method]] (1987) solves [[learning/notes/quick-context/absolute-orientation|absolute orientation]] via a quaternion eigenproblem instead of SVD
 - **Lie groups** -- The similarity group $\text{Sim}(n)$ is a Lie group; its Lie algebra $\mathfrak{sim}(n)$ parameterizes infinitesimal similarities, useful for optimization on the group manifold
-- **RANSAC** -- When point correspondences contain outliers, RANSAC wraps around Umeyama to robustly estimate the similarity transform from a minimal sample
+- **[[learning/notes/quick-context/absolute-orientation|RANSAC]]** -- When point correspondences contain outliers, RANSAC wraps around Umeyama to robustly estimate the similarity transform from a minimal sample
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong> -- 5 progressive questions</summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong> -- 5 progressive questions</summary>
 
 **Q1:** A similarity transform has 7 DOF in 3D. What are they, and how many come from each component?
 <details>
@@ -317,13 +319,13 @@ print(f"Translation error: {np.linalg.norm(t_hat - t_3d):.2e}")
 **Q2:** Why does a similarity transform preserve angles but not distances?
 <details>
 <summary>Answer</summary>
-The rotation $R$ preserves both angles and distances. The translation $\mathbf{t}$ preserves both (it is just a shift). The uniform scale $s$ multiplies *all* distances by the same factor -- so ratios of distances and all angles are unchanged, but absolute distances are scaled by $s$. Since angles depend only on direction (ratios), they survive scaling. See: How It Works, "The Transform Hierarchy."
+The rotation $R$ preserves [[learning/notes/quick-context/bjt-specifications|both]] angles and distances. The translation $\mathbf{t}$ preserves both (it is just a shift). The uniform scale $s$ multiplies *all* distances by the same factor -- so ratios of distances and all angles are unchanged, but absolute distances are scaled by $s$. Since angles depend [[learning/notes/quick-context/comparator-specification|only]] on direction (ratios), they survive scaling. See: How It Works, "The Transform Hierarchy."
 </details>
 
 **Q3:** You fit a similarity transform to align two point clouds and notice the residuals are 3x larger along the Z-axis than along X and Y. What does this suggest, and what should you try next?
 <details>
 <summary>Answer</summary>
-Systematic directional residuals suggest the true relationship between the point clouds includes non-uniform scaling or shear -- something a similarity transform cannot model. You should upgrade to an affine transform (12 DOF in 3D), which allows independent scale factors along each axis. If the affine fit's residuals are still patterned, consider whether there is lens distortion or non-linear deformation. See: The Key Tension.
+Systematic directional residuals suggest the true relationship between the point clouds includes non-uniform scaling or shear -- something a similarity transform cannot model. You should upgrade to an affine transform (12 DOF in 3D), which allows independent scale factors along each axis. If the affine fit's residuals are still patterned, consider [[learning/notes/quick-context/differential-pair|whether]] there is lens distortion or non-linear deformation. See: The Key Tension.
 </details>
 
 **Q4:** Someone claims: "I only have 2 point correspondences in 3D, but that gives me 6 equations (2 points times 3 coordinates), which is enough to solve for 7 DOF if I add one more constraint." What is wrong with this reasoning?
@@ -335,7 +337,7 @@ Two points in 3D define a line segment, which constrains 6 of the 7 DOF: 3 trans
 **Q5:** In Umeyama's method, step 4 checks $\det(UV^T)$ and potentially flips the sign of the last diagonal entry. What would happen if you skipped this step, and under what geometric conditions does it matter?
 <details>
 <summary>Answer</summary>
-Without the reflection correction, the SVD solution minimizes the least-squares cost but may return an improper rotation (a reflection, $\det(R) = -1$) instead of a proper rotation ($\det(R) = +1$). This happens when the point data is nearly coplanar (or nearly collinear in 2D), heavily noisy, or when the smallest singular value of $H$ is close to zero -- the SVD "flips" the weakest axis because the cost function barely distinguishes the two orientations. In practice this would produce a mirror-image alignment that is geometrically nonsensical. Umeyama's correction guarantees a proper rotation by absorbing the sign flip into the scale computation. See: How It Works, "Estimating a Similarity Transform: Umeyama's Method."
+Without the reflection correction, the SVD solution minimizes the least-squares [[learning/notes/quick-context/bond-pad|cost]] but may return an improper rotation (a reflection, $\det(R) = -1$) instead of a proper rotation ($\det(R) = +1$). This happens when the point data is nearly coplanar (or nearly collinear in 2D), heavily noisy, or when the smallest singular value of $H$ is close to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] -- the SVD "flips" the weakest axis because the [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|cost function]] barely distinguishes the two orientations. In practice this would produce a mirror-image alignment that is geometrically nonsensical. Umeyama's correction guarantees a proper rotation by absorbing the sign flip into the scale computation. See: How It Works, "Estimating a Similarity Transform: Umeyama's Method."
 </details>
 
 </details>

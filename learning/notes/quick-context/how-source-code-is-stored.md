@@ -2,16 +2,18 @@
 topic: How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]]
+
 
 # How Source Code Is Stored — Text, Encoding, and Bytes in Memory
 
-> **Related:** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/index/how-a-computer-works-index]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/index/how-a-computer-works-index]]
 
-> **TL;DR:** A source file like `hello.py` is not magic — it is plain **text**, a sequence of characters. Each character is turned into one or more **bytes** by an **encoding** (ASCII for the basics, UTF-8 in practice), and those bytes are stored exactly like any other data: as numbers in addressable memory (a file on disk/flash, copied into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] when you open it). The big idea is **code is data** — the same bytes-in-memory mechanism holds your text, the compiled artifact, and the final machine code. Nothing about the bytes themselves makes them "code"; that depends only on how they are later interpreted or executed.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** A [[learning/notes/quick-context/differential-pair|source]] file like `hello.py` is not magic — it is plain **text**, a sequence of characters. Each character is turned into one or more **bytes** by an **encoding** (ASCII for the basics, UTF-8 in practice), and those bytes are stored exactly like any other data: as numbers in addressable [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]] (a file on disk/flash, copied into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you open it). The big idea is **code is data** — the same bytes-in-memory [[learning/notes/quick-context/silymarin|mechanism]] [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] text, the compiled artifact, and the final [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]]. Nothing about the bytes themselves makes them "code"; that depends [[learning/notes/quick-context/comparator-specification|only]] on how they are later interpreted or executed.
 
 ## The Core Problem
 
-Before a single thing gets *compiled* or *run*, your program has to *exist somewhere* as a concrete object you can save, copy, and reopen. If a "program" were some special intangible substance, there would be no way to email it, store it on a disk, or load it into memory. The resolution is almost anticlimactic: a program-on-disk is just **text encoded as bytes**, and bytes are just numbers living in the same addressable memory cells that hold everything else. This is rung **B1** — the bottom of the SOFTWARE tower — and it answers "what *is* a program before any of the clever transformation happens?" Later rungs ([[learning/notes/quick-context/python-to-machine-code-pipeline|the pipeline]], [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation to gates]]) take these bytes and transform them; B1 is about the raw starting material and where it sits.
+Before a single thing gets *compiled* or *run*, your program has to *exist somewhere* as a concrete object you can save, copy, and reopen. If a "program" were some special intangible substance, there would be no way to email it, store it on a disk, or load it into memory. The [[learning/notes/quick-context/semiconductor-fabrication|resolution]] is almost anticlimactic: a program-on-disk is just **text encoded as bytes**, and bytes are just numbers living in the same addressable memory cells that [[learning/notes/quick-context/d-flip-flop|hold]] everything else. This is rung **B1** — the [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] of the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|SOFTWARE]] tower — and it answers "[[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] *is* a program before any of the clever transformation happens?" Later rungs ([[learning/notes/quick-context/python-to-machine-code-pipeline|the pipeline]], [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation to gates]]) take these bytes and transform them; B1 is about the raw starting material and where it sits.
 
 ## 5 Essential Terms
 
@@ -19,9 +21,9 @@ Before a single thing gets *compiled* or *run*, your program has to *exist somew
 |------|------------|
 | **Character** | A single abstract symbol a human reads — a letter (`x`), a digit (`2`), a space, a `+`, or an invisible control mark like newline. A text file is a *sequence* of these. |
 | **Byte** | A group of 8 bits, holding a number from 0 to 255 (`0x00`–`0xFF`). The smallest unit memory and disks address. Everything stored is ultimately a string of bytes. |
-| **Encoding** | The agreed-upon lookup table that maps each character to one or more byte values (and back). **ASCII** covers the basic 128 symbols in 1 byte each; **UTF-8** extends this to every Unicode character using 1–4 bytes, while staying byte-for-byte identical to ASCII for the basics. |
-| **Plain text** | A file that *is* just the encoded characters, with no hidden formatting — exactly what an editor shows you, glyph for glyph. Source code is plain text; a `.docx` or `.png` is not. |
-| **Code is data** | The reframe at the heart of B1: source text, compiled output, and runnable machine code are *all* just bytes in the same kind of [[learning/notes/quick-context/ram-addressing-decoder|addressable memory]]. What makes some bytes "code" is only that something later *interprets or executes* them. |
+| **Encoding** | The agreed-upon lookup table that maps each character to one or more byte values (and back). **ASCII** covers the [[learning/notes/quick-context/playbook-main|basic]] 128 symbols in 1 byte each; **UTF-8** extends this to every Unicode character using 1–4 bytes, while staying byte-for-byte [[learning/notes/quick-context/ram-addressing-decoder|identical]] to ASCII for the basics. |
+| **Plain text** | A file that *is* just the encoded characters, with no hidden formatting — exactly what an editor shows you, [[learning/notes/quick-context/keypress-to-pixel-pipeline|glyph]] for glyph. Source code is plain text; a `.docx` or `.png` is not. |
+| **Code is data** | The reframe at the heart of B1: source text, compiled output, and runnable machine code are *all* just bytes in the same kind of [[learning/notes/quick-context/ram-addressing-decoder|addressable memory]]. What makes some bytes "code" is only that something later *[[learning/notes/quick-context/python-to-machine-code-pipeline|interprets]] or executes* them. |
 
 <details>
 <summary><strong>How It Works</strong> — From a glyph you see to a number in a memory cell</summary>
@@ -37,7 +39,7 @@ position:    0    1    2    3    4    5    6    7    8    9
                      (' ' = a space character)
 ```
 
-The editor's whole job is to *render* each character as a shape on screen. But the file is the *characters*, not the shapes.
+The editor's whole job is to *render* each character as a shape on [[learning/notes/quick-context/data-bus-and-arbitration|screen]]. But the file is the *characters*, not the shapes.
 
 ### Step 2 — An encoding turns each character into byte values
 
@@ -56,7 +58,7 @@ So the human-readable line becomes a list of ten byte values. That list of bytes
 
 ### Step 3 — A conceptual hexdump
 
-A "hexdump" is just a tool that shows you a file's raw bytes (in hex) next to the characters they decode to. The whole `x = 2 + 3\n` file looks like this:
+A "hexdump" is just a [[learning/notes/quick-context/epson-rc-plus-programming|tool]] that shows you a file's raw bytes (in hex) next to the characters they [[learning/notes/quick-context/cpu-fetch-execute-cycle|decode]] to. The whole `x = 2 + 3\n` file looks like this:
 
 ```
 offset    raw bytes (hex)                  decoded chars
@@ -70,7 +72,7 @@ Left column: where in the file each chunk starts (the *offset*, like an address)
 
 ### Step 4 — Those bytes live in addressable memory
 
-When the file sits on disk or flash, those ten bytes occupy ten storage locations. When you *open* the file, the operating system copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can fetch or store any cell by its number. (How a bit is physically held in a cell — a voltage, a charge, trapped electrons — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
+When the file sits on disk or flash, those ten bytes occupy ten [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]] locations. When you *open* the file, the [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|operating system]] copies the bytes into [[learning/notes/quick-context/ram-addressing-decoder|RAM]] — an array of cells, each with a numbered **address**, where you can [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]] or store any cell by its number. (How a bit is physically held in a cell — a [[learning/notes/quick-context/voltage|voltage]], a [[learning/notes/quick-context/cations-and-reduction|charge]], trapped [[learning/notes/quick-context/anions-and-oxidation|electrons]] — is [[learning/notes/quick-context/physics-of-writing-data-to-memory|the rung below]].)
 
 ```
 RAM as a numbered array of byte-cells (the file loaded at address 1000)
@@ -87,16 +89,16 @@ RAM as a numbered array of byte-cells (the file loaded at address 1000)
      a property of the cells.
 ```
 
-This is exactly the model in the Nand-to-Tetris machine: there is **one addressable memory space**, and *everything* — data, text, instructions — is a number in some cell, reached by its address. The `Memory` chip in `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/memory.py` takes an `address` and returns the one word stored there; it has no concept of "this address holds code" vs "this address holds data." Both are just words in the same array. That is the simplest possible "all bytes live in one addressable space" model, and it is the whole point of B1.
+This is exactly the model in the Nand-to-Tetris machine: there is **one addressable memory space**, and *everything* — data, text, instructions — is a number in some cell, reached by its address. The `Memory` chip in `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/memory.py` takes an `address` and returns the one [[learning/notes/quick-context/ram-addressing-decoder|word]] stored there; it has no concept of "this address holds code" vs "this address holds data." [[learning/notes/quick-context/bjt-specifications|Both]] are just words in the same array. That is the simplest possible "all bytes live in one addressable space" model, and it is the whole [[learning/notes/quick-context/epson-rc-plus-programming|point]] of B1.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — ASCII vs. UTF-8, and the "code is data" double-edge</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — ASCII vs. UTF-8, and the "code is data" double-edge</summary>
 
 ### Tension 1 — Which encoding? ASCII's simplicity vs. UTF-8's universality
 
-ASCII is dead simple: 128 characters, one byte each, no ambiguity. But it only covers English letters, digits, and basic punctuation — no `é`, no `中`, no emoji. The modern default is **UTF-8**, which can encode every character in Unicode (over 150,000 assigned, out of a ~1.1 million code-point space) using a *variable* number of bytes (1 to 4). The brilliance of UTF-8 is that its 1-byte encodings are **byte-for-byte identical to ASCII**, so plain English source code is exactly the same bytes either way — but non-English text and symbols "just work."
+ASCII is dead simple: 128 characters, one byte each, no ambiguity. But it only covers English letters, digits, and basic punctuation — no `é`, no `中`, no emoji. The modern default is **UTF-8**, which can [[learning/notes/quick-context/code-to-gates-and-bootstrapping|encode]] every character in Unicode (over 150,000 assigned, out of a ~1.1 million code-point space) using a *variable* number of bytes (1 to 4). The brilliance of UTF-8 is that its 1-byte encodings are **byte-for-byte identical to ASCII**, so plain English source code is exactly the same bytes either way — but non-English text and symbols "just work."
 
 | | ASCII | UTF-8 |
 |---|---|---|
@@ -107,11 +109,11 @@ ASCII is dead simple: 128 characters, one byte each, no ambiguity. But it only c
 | Self-synchronizing / ASCII-compatible | n/a | Yes (a superset of ASCII) |
 | Today's default for source files | legacy | Yes |
 
-The tradeoff: fixed-width (ASCII, or fixed multi-byte like UTF-32) makes "jump to the Nth character" trivial but wastes space; variable-width (UTF-8) is compact and universal but you can't assume "byte N = character N." For source code — overwhelmingly ASCII characters — UTF-8 gives you the best of both: ASCII-cheap for the common case, universal when you need it.
+[[learning/notes/quick-context/from-code-to-running-firmware|The tradeoff:]] fixed-width (ASCII, or fixed multi-byte like UTF-32) makes "jump to the Nth character" trivial but wastes space; variable-width (UTF-8) is compact and universal but you can't assume "byte N = character N." For source code — overwhelmingly ASCII characters — UTF-8 gives you the best of both: ASCII-cheap for the common case, universal when you need it.
 
 ### Tension 2 — "Code is data" cuts both ways
 
-Treating code as ordinary bytes is what makes compilers, interpreters, editors, and version control possible: a compiler is just a program that *reads bytes* (your source) and *writes other bytes* (the compiled artifact). But the same flexibility is the root of whole classes of security bugs — if attacker-supplied *data* can be made to *execute* as code (buffer overflows, injection, self-modifying malware), the machine happily runs it, because nothing in the bytes distinguishes the two. Hardware and OSes claw some safety back by marking memory regions as "executable" or "not" (the NX / W^X bit), precisely *because* the bytes themselves carry no such label.
+Treating code as ordinary bytes is what makes compilers, interpreters, editors, and version control possible: a [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compiler]] is just a program that *reads bytes* (your source) and *writes other bytes* (the compiled artifact). But the same flexibility is the root of whole classes of security bugs — if attacker-supplied *data* can be made to *execute* as code (buffer overflows, injection, self-modifying malware), the machine happily runs it, because nothing in the bytes distinguishes the [[learning/notes/quick-context/faraday-tensor|two.]] [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Hardware]] and OSes claw some safety back by marking memory regions as "executable" or "not" (the NX / W^X bit), precisely *because* the bytes themselves carry no such label.
 
 </details>
 
@@ -120,7 +122,7 @@ Treating code as ordinary bytes is what makes compilers, interpreters, editors, 
 
 ### Looking at the actual bytes
 
-You can prove all of this at a terminal. Write the one-line file and dump its bytes:
+You can prove all of this at a [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|terminal]]. Write the one-line file and dump its bytes:
 
 ```bash
 $ printf 'x = 2 + 3\n' > hello.py     # write the 10 characters to disk
@@ -132,7 +134,7 @@ $ xxd hello.py                         # hexdump: bytes (hex) | decoded chars
           └──────── the 10 bytes ────────┘      └ decoded ┘
 ```
 
-The `.` at the end of the decoded column is the newline (`0a`), which `xxd` can't draw as a glyph. Notice `wc -c` reports **10 bytes** — character count equals byte count *only because every character here is plain ASCII*. Add one accented letter and the byte count would exceed the character count, because UTF-8 spends extra bytes on it:
+The `.` at the end of the decoded column is the newline (`0a`), which `xxd` can't draw as a glyph. Notice `wc -c` reports **10 bytes** — character [[learning/notes/quick-context/switches-to-registers-storing-data|count]] equals byte count *only because every character here is plain ASCII*. Add one accented letter and the byte count would exceed the character count, because UTF-8 spends extra bytes on it:
 
 ```bash
 $ printf 'café\n' > x.txt
@@ -164,31 +166,31 @@ B1 is only about artifact (a). It is easy to conflate these three, but they are 
 ```
 
 - **(a) Source text** — what you edit. Plain text, this note's whole subject. Lives as a file; loaded into RAM as bytes when opened.
-- **(b) Compiled artifact** — the bytecode or machine code produced *from* (a) by a compiler/assembler. *Different bytes* than the source, but still just bytes in a file (see [[learning/notes/quick-context/code-to-gates-and-bootstrapping|code to gates]]).
+- **(b) Compiled artifact** — the [[learning/notes/quick-context/python-to-machine-code-pipeline|bytecode]] or machine code produced *from* (a) by a compiler/assembler. *Different bytes* than the source, but still just bytes in a file (see [[learning/notes/quick-context/code-to-gates-and-bootstrapping|code to gates]]).
 - **(c) Running process** — artifact (b) loaded into RAM and actually executed by the CPU, with its live data and stack alongside. This is where "code" finally *does* something.
 
 The transformation (a) → (b) → (c) is the SOFTWARE tower above B1; the [[learning/notes/quick-context/python-to-machine-code-pipeline|Python-to-machine-code pipeline]] walks it.
 
-**The one thing most outsiders get wrong about this is...** thinking a source file is somehow a *special kind of object* — that "a program" is fundamentally different from "a document" or "a photo." It is not. `hello.py`, a love letter, and a JPEG are all the same species of thing: a sequence of bytes in a file. The `.py` extension is just a hint to humans and tools; the bytes carry no built-in "I am code" flag. A file becomes "source code" only the moment some *other* program (a compiler or interpreter) chooses to read its bytes that way. Code is data, all the way down.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** thinking a source file is somehow a *special kind of object* — that "a program" is fundamentally different from "a document" or "a photo." It is not. `hello.py`, a love letter, and a JPEG are all the same species of thing: a sequence of bytes in a file. The `.py` extension is just a hint to humans and tools; the bytes carry no built-in "I am code" flag. A file becomes "source code" only the moment some *other* program (a compiler or [[learning/notes/quick-context/python-to-machine-code-pipeline|interpreter]]) chooses to read its bytes that way. Code is data, all the way down.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — The rung directly below: how "addressable memory" is actually built — an array of registers picked one at a time by a numeric address. The cells your file's bytes land in.
-- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — One level deeper still: how a single byte's bits are *physically* held — a voltage in SRAM, a charge in DRAM, trapped electrons in the flash that stores `hello.py` on an SSD.
+- **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — One level deeper still: how a single byte's bits are *physically* held — a voltage in [[learning/notes/quick-context/ram-addressing-decoder|SRAM]], a charge in [[learning/notes/quick-context/ram-addressing-decoder|DRAM]], trapped electrons in the flash that stores `hello.py` on an SSD.
 - **[[learning/notes/quick-context/python-to-machine-code-pipeline]]** — The rung directly above: how the source bytes from B1 get transformed into bytecode and machine code — artifacts (b) and (c).
-- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain that turns these source bytes all the way down into binary instructions the CPU's gates execute.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The [[learning/notes/quick-context/singular-value-decomposition|full]] compilation chain that turns these source bytes all the way down into binary instructions the CPU's gates execute.
 - **[[learning/notes/index/how-a-computer-works-index]]** — The spine hub: the full ladder from electricity up to running code. This note is B1, the foot of the SOFTWARE tower.
-- **Unicode & code points** — The character-numbering standard that UTF-8 encodes; the layer above "which encoding" that defines *which* characters exist in the first place.
+- **Unicode & code points** — The character-numbering standard that UTF-8 encodes; the [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] above "which encoding" that defines *which* characters exist in the first place.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** A source file `hello.py` — what is it, physically, before anything compiles or runs it?
+**Q1:** A source file `hello.py` — what is it, physically, before anything [[learning/notes/quick-context/python-to-machine-code-pipeline|compiles]] or runs it?
 <details>
 <summary>Answer</summary>
 A sequence of **bytes** stored as a file on disk/flash. Those bytes are the **characters** of the program turned into numbers by an **encoding** (ASCII/UTF-8). It is plain text — exactly the glyphs the editor shows, nothing hidden. See "How It Works," steps 1–2.
@@ -197,7 +199,7 @@ A sequence of **bytes** stored as a file on disk/flash. Those bytes are the **ch
 **Q2:** The line `x = 2 + 3` (with no newline) has 9 characters. In ASCII, how many bytes is that, and why?
 <details>
 <summary>Answer</summary>
-9 bytes — one byte per character, because ASCII encodes each of its 128 characters in exactly one byte (and `x`, space, `=`, `2`, `+`, `3` are all ASCII). Add a trailing newline `\n` and it becomes 10 bytes. See the hexdump in "How It Works," step 3.
+9 bytes — one byte per character, because ASCII encodes each of its 128 characters in [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] byte (and `x`, space, `=`, `2`, `+`, `3` are all ASCII). Add a trailing newline `\n` and it becomes 10 bytes. See the hexdump in "How It Works," step 3.
 </details>
 
 **Q3:** Why do `wc -m` (characters) and `wc -c` (bytes) report the *same* number for `hello.py` but *different* numbers for a file containing `café`?
@@ -215,7 +217,7 @@ There is no special "program substance." Source text, compiled artifacts, and ru
 **Q5:** If the bytes of source code, compiled bytecode, and running machine code are all "just bytes in addressable memory," what actually distinguishes the three artifacts — and why does that distinction matter for security?
 <details>
 <summary>Answer</summary>
-The distinction is **not in the bytes** but in **who reads them and how**: (a) source is read by a compiler/interpreter *as text to translate*; (b) the compiled artifact is read by the runtime/CPU *as instructions to consume*; (c) a running process is those instruction-bytes *actively executed* by the CPU, alongside its live data. Since nothing intrinsic separates "data" from "executable code," an attacker who can get their *data* executed *as code* (injection, buffer overflow) gets the machine to run it. That is exactly why CPUs/OSes add an explicit "this region is executable / not" marker (NX / W^X) — to impose a distinction the bytes don't carry on their own. See "Concrete Example" (three artifacts) and "The Key Tension," Tension 2.
+The distinction is **not in the bytes** but in **who reads them and how**: (a) source is read by a compiler/interpreter *as text to translate*; (b) the compiled artifact is read by the runtime/CPU *as instructions to consume*; (c) a running process is those [[learning/notes/quick-context/cpu-fetch-execute-cycle|instruction]]-bytes *actively executed* by the CPU, alongside its live data. Since nothing intrinsic separates "data" from "executable code," an attacker who can get their *data* executed *as code* (injection, buffer overflow) gets the machine to run it. That is exactly why CPUs/OSes add an explicit "this region is executable / not" marker (NX / W^X) — to impose a distinction the bytes don't carry on their own. See "Concrete Example" (three artifacts) and "The Key Tension," Tension 2.
 </details>
 
 </details>

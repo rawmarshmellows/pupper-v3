@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
 
-> **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess [[learning/notes/quick-context/differential-pair|whether]] a deal is winnable before investing significant sales resources.
 
 ## The Core Problem
 
-Sales teams waste enormous effort on deals that were never going to close. Reps spend months nurturing opportunities only to discover at the 11th hour that there's no budget, the wrong stakeholder was engaged, or a competitor had an insurmountable advantage. Without a systematic qualification framework, pipeline becomes fiction—inflated with "opportunities" that have no realistic path to revenue.
+Sales teams [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|waste]] enormous effort on deals that were never going to close. Reps spend months nurturing opportunities [[learning/notes/quick-context/comparator-specification|only]] to discover at the 11th hour that there's no budget, the wrong stakeholder was engaged, or a competitor had an insurmountable advantage. Without a systematic [[learning/notes/quick-context/sales-methodology-layering|qualification framework]], pipeline becomes fiction—inflated with "opportunities" that have no realistic path to revenue.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ Sales teams waste enormous effort on deals that were never going to close. Reps 
 |------|------------|
 | **Metrics** | The quantifiable business outcomes the customer expects; "success" defined in numbers they'll measure you against |
 | **Economic Buyer** | The single person with discretionary authority to spend the money—not a committee, but the individual who can say "yes" alone |
-| **Champion** | An internal advocate with power and influence who actively sells on your behalf when you're not in the room |
+| **Champion** | An internal advocate with [[learning/notes/quick-context/d-flip-flop|power]] and influence who actively sells on [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] behalf [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you're not in the room |
 | **Paper Process** | The legal, procurement, security, and administrative steps between verbal agreement and signed contract |
 | **Decision Process** | The sequence of events, approvals, and stakeholders between "interested" and "decision made" |
 
@@ -77,7 +77,7 @@ MEDDPICC creates a checklist that forces reps to validate—not assume—each el
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Scoring Example:**
+**Scoring [[learning/notes/quick-context/teep|Example:]]**
 
 Most teams score each element 0-3:
 - **0** = Unknown/not validated
@@ -85,9 +85,9 @@ Most teams score each element 0-3:
 - **2** = Validated and moderate
 - **3** = Confirmed and strong
 
-A deal with total score <12 out of 24 should not be in commit forecast.
+A deal with [[learning/notes/quick-context/similarity-transform|total]] score <12 out of 24 should not be in commit forecast.
 
-**The Critical Distinction: Champion vs. Coach**
+**The Critical Distinction: Champion vs. [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Coach]]**
 
 ```
 COACH (from Miller Heiman)          CHAMPION (MEDDPICC)
@@ -104,7 +104,7 @@ A Coach is valuable but insufficient. A Champion actively spends political capit
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Rigor vs. velocity</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Rigor vs. velocity</summary>
 
 MEDDPICC creates friction by design—it slows down unqualified deals. The tension:
 
@@ -114,18 +114,18 @@ MEDDPICC creates friction by design—it slows down unqualified deals. The tensi
 | Fewer deals in pipeline | Larger pipeline coverage |
 | Higher win rates | More at-bats |
 | Longer average cycle | Some winners slip through |
-| Works for $100K+ ACV | Works for high-volume SMB |
+| Works for $100K+ ACV | Works for high-[[learning/notes/quick-context/cnc-machining|volume]] SMB |
 
-**The practitioner debate:** Enterprise sales leaders argue unvalidated pipeline is worse than useless—it creates false forecasts and misallocated resources. Velocity-focused leaders counter that over-qualification kills momentum and some deals are won through hustle, not process.
+**[[learning/notes/quick-context/challenger-sale-methodology|The practitioner debate:]]** Enterprise sales leaders argue unvalidated pipeline is worse than useless—it creates false forecasts and misallocated resources. Velocity-focused leaders counter that over-qualification kills momentum and some deals are won through hustle, not process.
 
-**The research:** Studies show 41% higher win rates and 26% shorter cycles for consistent MEDDPICC users. The rigor pays off for deals above ~$25K ACV where the cost of losing a qualified deal exceeds the cost of qualification time.
+**The research:** Studies show 41% higher win rates and 26% shorter cycles for consistent MEDDPICC users. The rigor pays off for deals above ~$25K ACV where the [[learning/notes/quick-context/bond-pad|cost]] of losing a qualified deal exceeds the cost of qualification time.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong> — MEDDPICC scorecard mid-deal</summary>
 
-**Scenario:** Selling a $75K/year DevOps platform to a 200-person fintech.
+**[[learning/notes/quick-context/challenger-sale-methodology|Scenario:]]** Selling a $75K/year DevOps platform to a 200-person fintech.
 
 ```
 DEAL: FinTech Corp - DevOps Platform
@@ -171,16 +171,16 @@ NEXT ACTIONS:
 3. Directly ask: "Who else are you evaluating?" (fix Competition)
 ```
 
-**The one thing most outsiders get wrong about this is...** they treat MEDDPICC as a data collection exercise rather than a deal strategy tool. Knowing the Decision Process isn't enough—you need to ask "given this process, what's our plan to navigate it?" Each element should trigger strategy, not just documentation.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** they treat MEDDPICC as a data collection exercise rather than a deal strategy [[learning/notes/quick-context/epson-rc-plus-programming|tool]]. Knowing the Decision Process isn't enough—you need to ask "given this process, [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]]'s our plan to navigate it?" Each element should [[learning/notes/quick-context/oscilloscope-and-multimeter|trigger]] strategy, not just documentation.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides account-level strategy; MEDDPICC validates deal-level viability. They're complementary.
 - **[[quick-context/challenger-sale-methodology]]** — Once MEDDPICC confirms a deal is qualified, Challenger informs how to engage stakeholders
-- **[[quick-context/sandler-kare-segmentation]]** — KARE decides which accounts to pursue; MEDDPICC qualifies specific opportunities within those accounts
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]] decides which accounts to pursue; MEDDPICC qualifies specific opportunities within those accounts
 - **BANT** — The predecessor qualification framework (Budget, Authority, Need, Timeline); MEDDPICC is its enterprise evolution
 - **Force Management** — The consulting firm that popularized MEDDPICC and trains Fortune 500 sales teams
 
@@ -198,7 +198,7 @@ Paper Process—the legal, procurement, and administrative steps between verbal 
 **Q2:** A rep says "I have a great Champion—she's given me tons of insider info about their process." What question should you ask?
 <details>
 <summary>Answer</summary>
-"What has she *done* to advance the deal?" Information-giving is Coach behavior. A Champion takes action: schedules meetings with the Economic Buyer, lobbies internally, fights for budget. The test is action, not access. See: How It Works, Champion vs. Coach.
+"What has she *done* to advance the deal?" Information-giving is Coach behavior. A Champion takes [[learning/notes/quick-context/pupper-lab5-neural-controller|action]]: schedules meetings with the Economic Buyer, lobbies internally, fights for budget. The test is action, not access. See: How It Works, Champion vs. Coach.
 </details>
 
 **Q3:** Your deal scores 20/24 on MEDDPICC but you haven't identified Competition. Why is this still a red flag?
@@ -213,10 +213,10 @@ Competition includes "do nothing"—if you don't know what alternatives they're 
 MEDDPICC qualifies deals but doesn't teach you how to sell. You might have perfect information about the Decision Process but execute poorly in meetings. MEDDPICC pairs with selling methodologies like [[quick-context/challenger-sale-methodology|Challenger]] or SPIN that guide customer interactions.
 </details>
 
-**Q5:** A startup founder says "MEDDPICC is overhead we can't afford at our stage." When would you agree vs. disagree?
+**Q5:** A [[learning/notes/quick-context/firmware|startup]] founder says "MEDDPICC is overhead we can't afford at our stage." When would you agree vs. disagree?
 <details>
 <summary>Answer</summary>
-Agree if: ACV <$10K, sales cycle <30 days, high volume. The qualification overhead exceeds the cost of losing some deals. Disagree if: ACV >$25K, complex multi-stakeholder sales, limited sales capacity. Here, wasting months on unwinnable deals is more expensive than qualification time. The framework can be simplified (MEDDIC without both Ps) but the mental model of systematic qualification should always apply.
+Agree if: ACV <$10K, sales cycle <30 days, high volume. The qualification overhead exceeds the cost of losing some deals. Disagree if: ACV >$25K, complex multi-stakeholder sales, limited sales capacity. Here, wasting months on unwinnable deals is more expensive than qualification time. The framework can be simplified (MEDDIC without [[learning/notes/quick-context/bjt-specifications|both]] Ps) but the mental model of systematic qualification should always apply.
 </details>
 
 </details>

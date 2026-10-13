@@ -2,18 +2,20 @@
 topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
 
-> **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** PLCs handle deterministic real-time motion and safety, while [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] handles complex planning and intelligence - modern robotic systems need [[learning/notes/quick-context/bjt-specifications|both]] working together.
 
 # PLC vs Software Control in Robotic Arm Systems
 
 ## The Core Problem: Who Executes the Motion Control Loop?
 
-The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, ladder logic, fail-safe behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC hardware and software.
+The robotic arm API stack described in [[quick-context/robotic-arm-api-levels]] glosses over a critical architectural question: who actually executes the motion control loop? For PLC fundamentals (scan cycle, [[learning/notes/quick-context/plc-vs-software|ladder logic]], [[learning/notes/quick-context/plc-vs-software|fail-safe]] behavior, and why PLCs exist), see [[quick-context/plc-vs-software]]. This article focuses on how modern robotic systems split work between PLC [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]] and software.
 
-The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel interrupt causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing inverse kinematics in Structured Text and praying.
+The problem is that manufacturing demands both: PLCs excel at discrete I/O coordination (conveyors, safety interlocks, sequencing) but are terrible at complex math and high-level logic, while software excels at trajectory planning and integration but can't guarantee hard real-time response. If you put motion control in software without real-time guarantees, a garbage collection pause or kernel [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupt]] causes the arm to jerk or fault. If you try to do everything in the PLC, you end up writing [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] in Structured [[learning/notes/quick-context/how-source-code-is-stored|Text]] and praying.
 
 ## 5 Essential Terms
 
@@ -21,9 +23,9 @@ The problem is that manufacturing demands both: PLCs excel at discrete I/O coord
 |------|------------|
 | **Scan Cycle** | See [[quick-context/plc-vs-software]] — the PLC's deterministic read-execute-write loop (1–10ms for motion, 10–50ms for discrete I/O). |
 | **Structured Text (ST)** | The IEC 61131-3 programming language that looks like Pascal and runs on PLCs—the closest thing to "real programming" in PLC-land. |
-| **PREEMPT_RT** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time performance—the bridge that lets software pretend to be a PLC. |
+| **[[learning/notes/quick-context/preempt-rt|PREEMPT_RT]]** | A Linux kernel patch that makes the kernel preemptible, enabling soft real-time [[learning/notes/quick-context/bond-pad|performance]]—the bridge that lets software pretend to be a PLC. |
 | **Soft PLC** | Software that implements PLC runtime semantics on commodity hardware (Beckhoff TwinCAT, CODESYS)—looks like a PLC to the plant, runs on a PC. |
-| **Fieldbus** | The industrial network (PROFINET, EtherNet/IP, EtherCAT) connecting PLCs to I/O, drives, and robots—the nervous system of the automation cell. |
+| **Fieldbus** | The industrial network (PROFINET, EtherNet/IP, [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|EtherCAT]]) connecting PLCs to I/O, drives, and robots—the nervous system of the automation cell. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -114,14 +116,14 @@ class TrajectoryPlanner(Node):
                 time.sleep(0.05)  # Non-RT polling is fine
 ```
 
-The key insight: ROS does the smart stuff (vision, planning) on commodity hardware without real-time constraints, then throws a simplified trajectory over the fence to the PLC which handles the microsecond-level servo control and safety monitoring. Neither system could do the other's job well.
+The [[learning/notes/micro-context/4-wire-kelvin-measurement|key insight:]] ROS does the smart stuff (vision, planning) on commodity hardware without real-time constraints, then throws a simplified trajectory over the fence to the PLC which handles the microsecond-level servo control and safety monitoring. Neither system could do the other's job well.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels (PREEMPT_RT, Xenomai), careful architecture, and loses most safety certifications.
+The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency [[learning/notes/quick-context/camera-fundamentals|stop]] handling and 20-year part [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|availability]]. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich [[learning/notes/quick-context/firmware|libraries]], machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels (PREEMPT_RT, [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|Xenomai]]), careful architecture, and loses most safety certifications.
 
 The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Windows with a real-time hypervisor, ROS2 added deterministic DDS transports, and "soft PLCs" blur the line entirely. But in regulated industries (automotive, pharma, food), auditors still want to see traditional PLC programs for anything safety-related, regardless of technical capability.
 
@@ -130,29 +132,29 @@ The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Window
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-The architecture diagram above shows a real-world split: the Linux IPC running ROS2 handles vision processing at 30fps, ML-based object detection, and MoveIt trajectory planning. None of this needs real-time guarantees. The computed trajectory waypoints are sent via OPC-UA to the Siemens S7-1500 PLC, which runs a 2ms scan cycle handling safety monitoring, conveyor control, and the actual motion interpolation. The PLC then commands servo drives over PROFINET IRT at 250 microsecond cycles.
+The architecture diagram above shows a real-world split: the Linux IPC running ROS2 handles vision processing at 30fps, ML-based object detection, and MoveIt trajectory planning. [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] of this needs real-time guarantees. The computed trajectory waypoints are sent via [[learning/notes/quick-context/robot-cell-integration-best-practices|OPC-UA]] to the Siemens S7-1500 PLC, which runs a 2ms scan cycle handling safety monitoring, conveyor control, and the actual motion interpolation. The PLC then commands servo drives over PROFINET IRT at 250 microsecond cycles.
 
-This division means: software does the "thinking" (where to move, what to pick up), PLC does the "doing" (actually moving safely and precisely). The PLC code is deliberately simple—interpolate waypoints, check safety every scan, command drives. The software code can be arbitrarily complex without risking motion quality.
+This division means: software does the "thinking" (where to move, [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] to pick up), PLC does the "doing" (actually moving safely and precisely). The PLC code is deliberately simple—interpolate waypoints, check safety every scan, command drives. The software code can be arbitrarily complex without risking motion [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]].
 
-**The one thing most outsiders get wrong about this is...** thinking the PLC is "dumb" legacy tech being replaced by software. The PLC isn't handling motion because engineers don't know Python—it's there because when the light curtain trips, the arm must stop within 50ms regardless of what your ML model is doing. The "dumb" scan cycle that runs the same 2000 lines of ladder logic forever is a feature, not a bug. Software replaces the PLC for flexibility; it doesn't replace it for reliability.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** thinking the PLC is "dumb" legacy tech being replaced by software. The PLC isn't handling motion because engineers don't know Python—it's there because [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] the light curtain trips, the arm [[learning/notes/quick-context/ros2-architecture|must]] stop within 50ms regardless of what [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] ML model is doing. The "dumb" scan cycle that runs the same 2000 lines of ladder logic forever is a feature, not a bug. Software replaces the PLC for flexibility; it doesn't replace it for [[learning/notes/quick-context/bond-pad|reliability]].
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/robotic-arm-api-levels]]** - The full API stack from high-level task planning down to servo control
+- **[[quick-context/robotic-arm-api-levels]]** - The [[learning/notes/quick-context/singular-value-decomposition|full]] API stack from high-level task planning down to servo control
 - **[[quick-context/preempt-rt]]** - The Linux kernel patch that enables soft real-time, bridging the gap between software and PLC
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|ADLINK ROScube]], [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|Beckhoff TwinCAT on Linux]]) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
 - **[[quick-context/plc-vs-software]]** - Deeper dive into PLC architecture and why it differs fundamentally from software
-- **[[quick-context/sil-rated-safety-functions]]** - Why safety-critical functions still require certified hardware
+- **[[quick-context/sil-rated-safety-functions]]** - Why [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|safety-critical functions]] still require certified hardware
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Why can't you just run trajectory interpolation in a ROS2 node with a 1ms timer callback?
+**Q1:** Why can't you just run trajectory interpolation in a ROS2 [[learning/notes/quick-context/ros2-architecture|node]] with a 1ms timer callback?
 <details>
 <summary>Answer</summary>
 Because Linux (without PREEMPT_RT) provides no guarantees about when your callback will actually run. A garbage collection pause, kernel interrupt, or disk I/O could delay your "1ms" callback by 10-50ms, causing the robot arm to jerk, overshoot, or fault the servo drive. The PLC's scan cycle is deterministic—it runs every 2ms regardless of what else is happening.
@@ -161,7 +163,7 @@ Because Linux (without PREEMPT_RT) provides no guarantees about when your callba
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?
 <details>
 <summary>Answer</summary>
-Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for SIL-rated safety functions. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
+Two [[learning/notes/quick-context/pupper-lab7-vision-tracking|reasons]]: (1) PREEMPT_RT provides bounded [[learning/notes/quick-context/embedded-communication-protocols|latency]] (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—[[learning/notes/micro-context/thread-pitch-screws|fine]] for 1ms loops but not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
 </details>
 
 **Q3:** What's the role of OPC-UA in this architecture?
@@ -173,13 +175,13 @@ OPC-UA serves as the bridge between the non-real-time software world and the rea
 **Q4:** What is a "Soft PLC" and why is it blurring the line between PLC and software control?
 <details>
 <summary>Answer</summary>
-A Soft PLC (like Beckhoff TwinCAT or CODESYS) implements PLC runtime semantics on commodity PC hardware, often using a real-time hypervisor to guarantee scan cycle timing. To the plant floor, it looks like a PLC (same programming languages, same I/O interfaces); to IT, it's a Windows or Linux PC. This enables running PLC logic and high-level software on the same hardware, reducing integration complexity—though safety certification remains more challenging than traditional PLCs.
+A Soft PLC (like Beckhoff TwinCAT or CODESYS) implements PLC runtime semantics on commodity PC hardware, often using a real-time hypervisor to guarantee scan cycle [[learning/notes/quick-context/comparator-specification|timing]]. To the plant floor, it looks like a PLC (same programming [[learning/notes/quick-context/firmware|languages]], same I/O interfaces); to IT, it's a Windows or Linux PC. This enables running PLC logic and high-level software on the same hardware, reducing integration complexity—though safety certification remains more challenging than traditional PLCs.
 </details>
 
 **Q5:** Why do regulated industries (pharma, automotive, food) still insist on traditional PLCs for safety functions despite software capabilities?
 <details>
 <summary>Answer</summary>
-Safety certifications (SIL, PLe) require auditable, deterministic systems with proven track records. Traditional PLCs have decades of certification history, simple architectures that auditors understand, and guaranteed long-term part availability. Software-based safety requires proving the entire stack (OS, runtime, application) meets certification requirements—possible but expensive and scrutinized heavily. The regulatory burden, not technical capability, drives the choice.
+Safety certifications (SIL, PLe) require auditable, deterministic systems with proven track records. Traditional PLCs have decades of certification [[learning/notes/quick-context/ros2-architecture|history]], simple architectures that auditors understand, and guaranteed long-term part availability. Software-based safety requires proving the entire stack (OS, runtime, application) meets certification requirements—possible but expensive and scrutinized heavily. The regulatory burden, not technical capability, drives the [[learning/notes/quick-context/transistor-analog-to-digital|choice]].
 </details>
 
 </details>
