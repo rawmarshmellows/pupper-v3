@@ -3,12 +3,14 @@ term: CNC Turning
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/edm-machining]] | [[learning/notes/micro-context/thread-pitch-screws]]
+
 
 # CNC Turning
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
+> **[[learning/notes/micro-context/4-wire-kelvin-measurement|See also:]]** [[quick-context/cnc-machining]] ([[learning/notes/quick-context/singular-value-decomposition|full]] treatment) | [[micro-context/cnc-milling]]
 
-**Definition:** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting tool removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally symmetric parts like shafts, bolts, and bushings.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Definition:]]** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting [[learning/notes/quick-context/epson-rc-plus-programming|tool]] removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally [[learning/notes/quick-context/singular-value-decomposition|symmetric]] parts like shafts, bolts, and bushings.
 
 ## How It Works
 
@@ -34,4 +36,4 @@ MILLING vs TURNING:
                                          │       (moves along axis)
 ```
 
-**Key insight:** Turning is inherently limited to parts with rotational symmetry (round cross-sections), but produces extremely smooth cylindrical surfaces and tight concentricity that milling struggles to match.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Key insight:]]** Turning is inherently limited to parts with rotational symmetry (round cross-sections), but produces extremely smooth cylindrical surfaces and tight concentricity that milling struggles to match.

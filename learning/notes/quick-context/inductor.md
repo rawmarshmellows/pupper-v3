@@ -2,31 +2,33 @@
 topic: Inductor
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** An inductor stores energy in a magnetic field created by [[learning/notes/quick-context/capacitance|current]] flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an [[learning/notes/quick-context/voltage-current-causality|electric field]]) and is essential for [[learning/notes/quick-context/d-flip-flop|power]] supplies, [[learning/notes/quick-context/pupper-lab7-vision-tracking|filters]], and energy conversion.
 
 # Inductor
 
 ## The Core Problem: Smoothing and Converting Power
 
-A switching power supply chops a DC voltage on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
+A switching power supply chops a DC [[learning/notes/quick-context/voltage|voltage]] on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and [[learning/notes/quick-context/ac-to-dc-rectification|voltage regulator]] on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|tuning]], and they [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] filters that block high-frequency noise while passing DC.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Inductance (L)** | The ability to store energy in a magnetic field per unit current change, measured in henrys (H). Most practical inductors are microhenrys (μH) to millihenrys (mH). |
-| **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt ([[quick-context/lenzs-law|Lenz's Law]]). Try to suddenly stop current through an inductor and it generates a voltage spike (potentially destructive). |
-| **Saturation Current** | The current at which the core's magnetic material can't hold any more flux—inductance drops sharply and the inductor stops working properly. Exceeding this is a common design mistake. |
-| **DCR (DC Resistance)** | The resistance of the wire in the coil. Lower is better—DCR wastes power as heat. Thicker wire = lower DCR but larger inductor. |
-| **Core Material** | What the coil is wound around. Air (no saturation, low inductance), ferrite (high inductance, saturates), powdered iron (good for power, gradual saturation). |
+| **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt ([[quick-context/lenzs-law|Lenz's Law]]). Try to suddenly [[learning/notes/quick-context/camera-fundamentals|stop]] current through an inductor and it generates a voltage spike (potentially destructive). |
+| **[[learning/notes/quick-context/bjt|Saturation]] Current** | The current at which the core's magnetic material can't [[learning/notes/quick-context/d-flip-flop|hold]] any more [[learning/notes/quick-context/soldering|flux]]—inductance drops sharply and the inductor stops working properly. Exceeding this is a common design mistake. |
+| **DCR (DC Resistance)** | The resistance of the wire in the coil. Lower is [[learning/notes/quick-context/comparator-specification|better]]—DCR wastes power as heat. [[learning/notes/micro-context/mosfet|Thicker]] wire = lower DCR but larger inductor. |
+| **Core Material** | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] the coil is wound around. Air (no saturation, low inductance), ferrite (high inductance, saturates), powdered [[learning/notes/quick-context/platinum-inertness|iron]] (good for power, gradual saturation). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-When [[quick-context/electric-current|current]] flows through a wire, it creates a magnetic field around the wire (see [[quick-context/electromagnetism]] and [[quick-context/coil-magnetic-field|coil magnetic field]]). Coiling the wire concentrates the field. The key behavior: an inductor resists changes to the current flowing through it—the exact opposite of a [[quick-context/capacitor|capacitor]], which resists changes in voltage.
+[[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] [[quick-context/electric-current|current]] flows through a wire, it creates a magnetic field around the wire (see [[quick-context/electromagnetism]] and [[quick-context/coil-magnetic-field|coil magnetic field]]). Coiling the wire concentrates the field. The key behavior: an inductor resists changes to the current flowing through it—the exact opposite of a [[quick-context/capacitor|capacitor]], which resists changes in voltage.
 
 ```
 WHY A COIL, NOT JUST A STRAIGHT WIRE?
@@ -551,7 +553,7 @@ THE ANSWER: The magnetic field contains energy that MUST go somewhere.
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Inductance vs. Size vs. Saturation vs. Loss
 
@@ -568,7 +570,7 @@ THE CORE TRADEOFFS
     component on a power supply PCB.
 ```
 
-| Type | Inductance | Current | Frequency | Best For |
+| [[learning/notes/quick-context/bjt-specifications|Type]] | Inductance | Current | Frequency | Best For |
 |------|-----------|---------|-----------|----------|
 | **Air core** | Very low (nH) | Unlimited (no saturation) | GHz | RF circuits, antennas |
 | **Ferrite core** | High (μH-mH) | Limited by saturation | kHz-MHz | Power supplies, filters |
@@ -584,7 +586,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[learning/notes/micro-context/buck-converter|buck converter]] uses a [[learning/notes/quick-context/switches-to-registers-storing-data|switch]], [[learning/notes/quick-context/diode|diode]], inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a [[learning/notes/quick-context/resistor|resistor]] [[learning/notes/quick-context/pwm-controller-circuit|voltage divider]], which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -642,48 +644,48 @@ BUCK CONVERTER OPERATION
     The output capacitor smooths this ripple into steady DC.
 ```
 
-**Why not just use a resistor to drop voltage?** A resistor dropping 12V to 3.3V at 1A would waste P = 8.7V × 1A = 8.7W as heat. The buck converter wastes only ~0.5W for the same job. At scale (millions of devices, 24/7 operation), this efficiency difference is enormous.
+**Why not just use a resistor to drop voltage?** A resistor dropping 12V to 3.3V at 1A would [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|waste]] P = 8.7V × 1A = 8.7W as heat. The buck converter wastes [[learning/notes/quick-context/comparator-specification|only]] ~0.5W for the same job. At [[learning/notes/quick-context/absolute-orientation|scale]] (millions of devices, 24/7 operation), this efficiency difference is enormous.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic capacitance interacts with inductance in real circuits.
+- **[[quick-context/capacitor]]** — Inductors and [[learning/notes/quick-context/voltage|capacitors]] are exact duals: one stores energy in magnetic [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]], the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-[[learning/notes/quick-context/frequency-and-filtering|order]] filters. See [[quick-context/capacitance]] for the underlying property and how [[learning/notes/quick-context/capacitance|parasitic capacitance]] interacts with inductance in real circuits.
 
-- **[[quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as charge flow is essential.
+- **[[quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as [[learning/notes/quick-context/cations-and-reduction|charge]] flow is essential.
 
 - **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[learning/notes/micro-context/power-inductor|Power inductor]] layout is critical for switching power supply [[learning/notes/quick-context/bond-pad|performance]].
 
-- **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
+- **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
-- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
+- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. [[learning/notes/quick-context/lenzs-law|Faraday's law]] (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field, and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
+- **[[quick-context/coil-magnetic-field]]** — [[learning/notes/quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]], and how to calculate field [[learning/notes/quick-context/cnc-machining|strength]] (B = μ₀nI). The coil field is what inductors store energy in.
 
 - **[[quick-context/lenzs-law]]** — The physics behind back-EMF: why the induced voltage always opposes current changes. This is conservation of energy enforced electromagnetically.
 
-- **[[quick-context/self-induction]]** — The complete cycle: how current creates flux, changing flux creates back-EMF, and what happens when you disconnect the battery (the field collapses, pushing current through the load until all energy is dissipated). Includes voltage across both inductor and load at each phase.
+- **[[quick-context/self-induction]]** — The complete cycle: how current creates flux, changing flux creates back-EMF, and what happens when you disconnect the battery (the field collapses, pushing current through the load until all energy is dissipated). Includes voltage across [[learning/notes/quick-context/bjt-specifications|both]] inductor and load at each phase.
 
-- **[[small-context/permanent-magnet-creation]]** — A magnetizer is essentially a high-current inductor used to align magnetic domains in ferromagnetic materials. The same principle (current creates magnetic field) but applied to create permanent magnets.
+- **[[small-context/permanent-magnet-creation]]** — A magnetizer is essentially a high-current inductor used to align magnetic domains in ferromagnetic [[learning/notes/quick-context/cnc-machining|materials]]. The same principle (current creates magnetic field) but applied to create [[learning/notes/quick-context/bambu-p2s-print-quality|permanent]] magnets.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
-**Q1:** Why does an inductor generate a voltage spike when you suddenly interrupt its current?
+**Q1:** Why does an inductor generate a voltage spike when you suddenly [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupt]] its current?
 <details>
 <summary>Answer</summary>
-**V = L × dI/dt. If dt approaches zero (instant cutoff), the voltage approaches infinity.** The inductor's magnetic field is collapsing and it will do whatever it takes to keep current flowing—even generating hundreds of volts across a small inductor. This is why flyback diodes are placed across inductive loads like motors and relays: they give the current a safe path to flow during turn-off.
+**V = L × dI/dt. If dt approaches [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] (instant cutoff), the voltage approaches infinity.** The inductor's magnetic field is collapsing and it will do whatever it takes to [[learning/notes/quick-context/existing-account-management-playbook|keep]] current flowing—even generating hundreds of volts across a small inductor. This is why flyback diodes are placed across [[learning/notes/quick-context/bjt-specifications|inductive]] loads like motors and relays: they give the current a safe path to flow during turn-off.
 </details>
 
-**Q2:** An inductor and a capacitor are "duals." What does this mean practically?
+**Q2:** An inductor and a [[learning/notes/quick-context/capacitor|capacitor]] are "duals." What does this mean practically?
 <details>
 <summary>Answer</summary>
-**They have opposite behaviors in every way.** Capacitors block DC and pass AC; inductors pass DC and block AC. Capacitors oppose voltage changes; inductors oppose current changes. Their series/parallel formulas are swapped. Their time constant formulas are inverted (τ = RC vs τ = L/R). Together they create resonance at f = 1/(2π√LC).
+**They have opposite behaviors in every way.** Capacitors [[learning/notes/quick-context/capacitance|block DC]] and pass AC; inductors pass DC and block AC. Capacitors oppose voltage changes; inductors oppose current changes. Their series/parallel formulas are swapped. Their time constant formulas are inverted (τ = RC vs τ = L/R). Together they create resonance at f = 1/(2π√LC).
 </details>
 
 **Q3:** A buck converter has Vin = 5V and needs Vout = 1.8V. What duty cycle is needed?
@@ -692,16 +694,16 @@ BUCK CONVERTER OPERATION
 **36%.** Duty cycle D = Vout/Vin = 1.8/5 = 0.36 = 36%. The switch is ON for 36% of each cycle, during which the inductor charges, and OFF for 64%, during which it discharges.
 </details>
 
-**Q4:** Why are inductors typically the largest component on a power supply PCB?
+**Q4:** Why are inductors typically the largest [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] on a power supply PCB?
 <details>
 <summary>Answer</summary>
-**Magnetic energy storage requires physical volume.** More inductance needs more turns of wire. Higher current needs a larger core to avoid saturation. Lower losses need thicker wire (lower DCR). All of these push toward larger size. Unlike capacitors (which can be made very thin with ceramic layers), inductors fundamentally need 3D volume for their magnetic field.
+**Magnetic energy [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]] requires physical [[learning/notes/quick-context/cnc-machining|volume]].** More inductance needs more turns of wire. Higher current needs a larger core to avoid saturation. Lower losses need thicker wire (lower DCR). All of these push toward larger size. Unlike capacitors (which can be made very thin with ceramic layers), inductors fundamentally need 3D volume for their magnetic field.
 </details>
 
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[learning/notes/micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[learning/notes/quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>

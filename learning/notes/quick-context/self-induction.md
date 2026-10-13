@@ -2,12 +2,14 @@
 topic: Self-Induction
 created: 2026-02-17
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/diode-rectification]]
+
 
 # Self-Induction
 
-> **Related:** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/inductor]] | [[quick-context/lenzs-law]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/voltage]]
 
-> **TL;DR:** Self-induction is the phenomenon where a coil's own changing current creates a changing magnetic flux, which induces a voltage (back-EMF) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an inductor, and why the magnetic field "pushes" current when you try to stop it.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** Self-induction is the phenomenon where a coil's own changing [[learning/notes/quick-context/capacitance|current]] creates a changing magnetic [[learning/notes/quick-context/soldering|flux]], which induces a [[learning/notes/quick-context/voltage|voltage]] ([[learning/notes/quick-context/inductor|back-EMF]]) that opposes the current change. The current creates the flux, but it's the *rate of change* of flux that creates the opposition. This explains why current can't change instantly in an [[learning/notes/quick-context/inductor|inductor]], and why the magnetic field "[[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]]" current [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you try to [[learning/notes/quick-context/camera-fundamentals|stop]] it.
 
 ## The Core Question
 
@@ -21,7 +23,7 @@ The answer: **the flux doesn't oppose the current directly — the *changing* fl
 |------|------------|
 | **Self-Induction** | When a coil's own changing current induces a voltage in itself. The coil's flux links with its own turns, so any current change creates back-EMF. |
 | **Back-EMF** | The voltage induced in a coil that opposes the change in current. Equal to V = L × dI/dt. It's called "back" because it opposes the applied voltage. |
-| **Flux Linkage** | The total magnetic flux linking with a coil: Λ = N × Φ = L × I. For a coil, each turn links with flux from all turns, multiplying the effect. |
+| **Flux Linkage** | The [[learning/notes/quick-context/similarity-transform|total]] magnetic flux linking with a coil: Λ = N × Φ = L × I. For a coil, each turn links with flux from all turns, multiplying the effect. |
 | **Mutual Induction** | When changing current in one coil induces voltage in a nearby coil. Self-induction is the special case where the coil induces voltage in itself. |
 | **Steady State** | When current is constant (dI/dt = 0), so there's no changing flux, no back-EMF, and the inductor acts like a plain wire. |
 
@@ -30,7 +32,7 @@ The answer: **the flux doesn't oppose the current directly — the *changing* fl
 
 ## The Self-Induction Feedback Loop
 
-The key insight: **current creates flux, but changing flux creates back-EMF**.
+The [[learning/notes/micro-context/4-wire-kelvin-measurement|key insight:]] **current creates flux, but changing flux creates back-EMF**.
 
 ```
 THE CAUSAL CHAIN
@@ -64,7 +66,7 @@ THE CAUSAL CHAIN
 
 ## Complete Circuit Analysis: Inductor + Load
 
-Let's trace through the COMPLETE cycle with actual voltages, including what happens when you disconnect the battery.
+Let's [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] through the COMPLETE cycle with actual voltages, including [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] happens when you disconnect the battery.
 
 ```
 THE CIRCUIT
@@ -354,7 +356,7 @@ VOLTAGE ACROSS INDUCTOR AND LOAD THROUGH ALL PHASES
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Self-induction: friend or foe?</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Self-induction: friend or foe?</summary>
 
 ## Self-Induction Creates Both Problems and Solutions
 
@@ -396,7 +398,7 @@ SOLUTION: The same physics enables useful applications
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Why your car needs an ignition coil</summary>
+<summary><strong>Concrete Example</strong> — Why [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] car needs an ignition coil</summary>
 
 ## Ignition Coil: Self-Induction Creates 40,000 Volts
 
@@ -449,19 +451,19 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/inductor]]** — Complete treatment of inductors: energy storage, RL time constants, why coils have more inductance than straight wires, and the physics of why current can't change instantly.
+- **[[quick-context/inductor]]** — Complete treatment of inductors: energy [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]], RL time constants, why coils have more inductance than straight [[learning/notes/quick-context/uart|wires]], and the physics of why current can't change instantly.
 
 - **[[quick-context/lenzs-law]]** — Why the induced EMF always opposes the change: energy conservation requires it. Includes detailed explanation of increasing vs. decreasing flux.
 
-- **[[quick-context/voltage]]** — The electric field perspective on voltage. The back-EMF in an inductor is a real voltage created by the changing magnetic flux.
+- **[[quick-context/voltage]]** — The [[learning/notes/quick-context/voltage-current-causality|electric field]] perspective on voltage. The back-EMF in an inductor is a real voltage created by the changing magnetic flux.
 
-- **[[quick-context/electromagnetism]]** — The unified picture: changing magnetic fields create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
+- **[[quick-context/electromagnetism]]** — The unified picture: changing magnetic [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]] create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
 
-- **[[quick-context/capacitor]]** — The dual of an inductor. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
+- **[[quick-context/capacitor]]** — The [[learning/notes/quick-context/comparator-specification|dual]] of an inductor. [[learning/notes/quick-context/voltage|Capacitors]] store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the magnetic field that stores energy.
+- **[[quick-context/electric-current]]** — Current is the flow of [[learning/notes/quick-context/cations-and-reduction|charge]]. In an inductor, the current creates the magnetic field that stores energy.
 
-- **[[micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the switch is on and releases it when the switch is off, enabling efficient DC-DC conversion.
+- **[[micro-context/buck-converter]]** — Practical application of self-induction: the inductor stores energy when the [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] is on and releases it when the switch is off, enabling efficient DC-DC conversion.
 
 </details>
 
@@ -471,31 +473,31 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 **Q1:** Current is flowing steadily through an inductor. Is there any self-induced EMF?
 <details>
 <summary>Answer</summary>
-**No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction only matters when current is *changing*.
+**No.** Self-induced EMF = L × dI/dt. If current is steady, dI/dt = 0, so EMF = 0. The magnetic flux exists, but it's not changing, so no voltage is induced. The inductor acts like a plain wire. Self-induction [[learning/notes/quick-context/comparator-specification|only]] matters when current is *changing*.
 </details>
 
-**Q2:** At the instant you connect a battery to an inductor-resistor circuit, why does the load see 0V even though the battery is 10V?
+**Q2:** At the instant you connect a battery to an inductor-[[learning/notes/quick-context/resistor|resistor]] circuit, why does the load see 0V even though the battery is 10V?
 <details>
 <summary>Answer</summary>
-**The inductor absorbs all the voltage as back-EMF.** At t=0, current is zero but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire source voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.
+**The inductor absorbs all the voltage as back-EMF.** At t=0, current is [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] but trying to change rapidly. This rapid change (large dI/dt) creates a large back-EMF (V_L = L × dI/dt = 10V). By KVL, V_R = Vs - V_L = 10V - 10V = 0V. The entire [[learning/notes/quick-context/differential-pair|source]] voltage is "used up" opposing the current change, leaving nothing for the load. As current builds up and dI/dt decreases, V_L drops and V_R rises.
 </details>
 
 **Q3:** When you disconnect the battery from an inductor carrying current, the inductor voltage reverses polarity. Why?
 <details>
 <summary>Answer</summary>
-**The inductor switches from absorbing energy to releasing it.** While charging, current was increasing, so the inductor opposed by creating voltage that fought the source (positive V_L, absorbing power). When disconnected, current tries to decrease, so the inductor opposes by creating voltage that *maintains* current flow (negative V_L relative to original, now delivering power). The inductor has become the source, pushing its stored energy through the load.
+**The inductor switches from absorbing energy to releasing it.** While charging, current was increasing, so the inductor opposed by creating voltage that fought the source (positive V_L, absorbing [[learning/notes/quick-context/d-flip-flop|power]]). When disconnected, current tries to decrease, so the inductor opposes by creating voltage that *maintains* current flow (negative V_L relative to original, now delivering power). The inductor has become the source, pushing its stored energy through the load.
 </details>
 
 **Q4:** An inductor stores 1 joule of energy in its magnetic field. You disconnect it from the source. Where does that 1 joule go?
 <details>
 <summary>Answer</summary>
-**It's converted to heat in whatever the current flows through.** The magnetic field collapses, inducing voltage that drives current through any available path. If a resistor is connected, the current flows through it, dissipating energy as heat (P = I²R). If NO path exists, the inductor generates enough voltage to arc through air or destroy components — the energy still dissipates, just destructively. Energy is always conserved; it transforms from magnetic field energy to thermal energy.
+**It's converted to heat in whatever the current flows through.** The magnetic field collapses, inducing voltage that drives current through any available path. If a resistor is connected, the current flows through it, dissipating energy as heat (P = I²R). If NO path exists, the inductor generates enough voltage to arc through air or destroy [[learning/notes/quick-context/tensor|components]] — the energy still dissipates, just destructively. Energy is always conserved; it transforms from magnetic field energy to thermal energy.
 </details>
 
 **Q5:** A coil has inductance L. You wind it with twice as many turns (2N instead of N), keeping everything else the same. How does the self-inductance change?
 <details>
 <summary>Answer</summary>
-**It quadruples (becomes 4L).** Inductance is proportional to N² because: (1) more turns create a stronger magnetic field for the same current, and (2) more turns link with that stronger field. Each turn both contributes to the field and links with flux from all other turns. So doubling turns gives 2× field strength AND 2× flux linkage = 4× total inductance. See [[quick-context/inductor]] for the full explanation of the N² effect.
+**It quadruples (becomes 4L).** Inductance is proportional to N² because: (1) more turns create a stronger magnetic field for the same current, and (2) more turns link with that stronger field. Each turn [[learning/notes/quick-context/bjt-specifications|both]] contributes to the field and links with flux from all other turns. So [[learning/notes/quick-context/camera-fundamentals|doubling]] turns gives 2× field [[learning/notes/quick-context/cnc-machining|strength]] AND 2× flux linkage = 4× total inductance. See [[quick-context/inductor]] for the [[learning/notes/quick-context/singular-value-decomposition|full]] explanation of the N² effect.
 </details>
 
 </details>

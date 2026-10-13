@@ -3,18 +3,20 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/spinev1-elf]]
+
 
 # Microcontroller
 
-> **See also:** [[quick-context/embedded-communication-protocols]]
+> **[[learning/notes/micro-context/4-wire-kelvin-measurement|See also:]]** [[quick-context/embedded-communication-protocols]]
 
-**Definition:** A complete computer on a single chip — CPU, memory (RAM + flash), and I/O peripherals all integrated into one package. Unlike a general-purpose CPU that needs external RAM, storage, and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[micro-context/stm32-microcontroller|STM32]] (ARM), [[quick-context/esp32|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Definition:]]** A complete computer on a single chip — CPU, [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]] (RAM + flash), and I/O peripherals all [[learning/notes/quick-context/playbook-main|integrated]] into one [[learning/notes/quick-context/silicon-die|package]]. Unlike a [[learning/notes/quick-context/singular-value-decomposition|general]]-purpose CPU that needs external RAM, [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]], and a motherboard, a microcontroller is self-contained and runs a single dedicated program. Common families include [[micro-context/stm32-microcontroller|STM32]] (ARM), [[quick-context/esp32|ESP32]] (Xtensa/RISC-V + integrated WiFi/BLE radio), ATmega (AVR/Arduino), and PIC.
 
 ## How It Works
 
-- On power-up, the CPU core begins fetching instructions from a fixed address in on-chip flash memory (the reset vector).
-- The program runs in a loop, reading sensor data through peripheral interfaces (ADC, I2C, SPI), processing it, and driving outputs (PWM, GPIO, CAN).
-- Hardware interrupts allow the MCU to respond to external events (timer tick, incoming data, pin change) within microseconds, pausing the main loop and jumping to a handler.
+- On [[learning/notes/quick-context/d-flip-flop|power]]-up, the CPU core begins fetching instructions from a fixed [[learning/notes/quick-context/how-source-code-is-stored|address]] in on-chip flash memory (the [[learning/notes/quick-context/firmware|reset vector]]).
+- The program runs in a loop, reading sensor data through peripheral interfaces (ADC, [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]]), processing it, and driving outputs (PWM, [[learning/notes/quick-context/raspberry-pi-5-components|GPIO]], CAN).
+- [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Hardware]] [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupts]] allow the MCU to respond to external events (timer tick, incoming data, pin change) within microseconds, pausing the main loop and jumping to a handler.
 - All of this — CPU, memory, and peripherals — runs on a single chip costing $0.20–$15, powered by milliwatts.
 
 ```
@@ -33,4 +35,4 @@ MICROCONTROLLER vs GENERAL-PURPOSE CPU:
        $0.20 - $15+                     needs a motherboard
 ```
 
-**Key insight:** A microcontroller trades raw power for integration and real-time determinism — it runs [[micro-context/plc-programmable-logic-controller|bare metal or RTOS]] code with microsecond timing, which is why robots, cars, and appliances use them instead of full computers for control tasks.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Key insight:]]** A microcontroller trades raw power for integration and real-time determinism — it runs [[micro-context/plc-programmable-logic-controller|bare metal or RTOS]] code with microsecond [[learning/notes/quick-context/comparator-specification|timing]], which is why robots, cars, and appliances use them instead of [[learning/notes/quick-context/singular-value-decomposition|full]] computers for control tasks.

@@ -3,25 +3,27 @@ topic: Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485,
 created: 2026-03-27
 updated: 2026-04-06
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/i2s]]
+
 
 # Embedded Communication Protocols
 
-> **Related:** [[quick-context/can-bus]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/can-bus]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Embedded systems choose between a family of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], RS-232, RS-485, 1-Wire, USB, I3C, and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, noise immunity, and complexity. The Pupper v3 uses four simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** Embedded systems choose between a family of [[learning/notes/quick-context/data-bus-and-arbitration|serial protocols]] — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], [[learning/notes/quick-context/uart|RS-232]], [[learning/notes/quick-context/uart|RS-485]], 1-Wire, USB, I3C, and Ethernet — each optimizing a different [[learning/notes/quick-context/epson-rc-plus-programming|point]] in the tradeoff space of speed, distance, wire [[learning/notes/quick-context/switches-to-registers-storing-data|count]], noise immunity, and complexity. The Pupper v3 uses [[learning/notes/quick-context/ram-addressing-decoder|four]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]]: [[learning/notes/micro-context/spi|SPI]] between MCUs, [[learning/notes/micro-context/i2c|I2C]] for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
 
 ## The Core Problem
 
-A microcontroller needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] only has 100 or so pins, and dedicating one pin per data bit (parallel communication) wastes pins and board space. Serial protocols solve this by sending data one bit at a time over just 1-4 wires, using a clock signal or agreed-upon timing to keep sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends 2 bytes every second (I2C is fine), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do). And sometimes you need to talk to a PC (USB), reach industrial equipment 1200 m away (RS-485), or wire dozens of sensors on a single wire through a building (1-Wire).
+A [[learning/notes/micro-context/microcontroller|microcontroller]] needs to talk to other chips — sensors, motors, displays, other MCUs, a host computer. But a typical [[micro-context/stm32-microcontroller|STM32]] [[learning/notes/quick-context/comparator-specification|only]] has 100 or so pins, and dedicating one pin per data bit ([[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] communication) wastes pins and [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|board space]]. Serial protocols solve this by sending data one bit at a time over just 1-[[learning/notes/micro-context/stm32-microcontroller|4 wires]], using a [[learning/notes/quick-context/switches-to-registers-storing-data|clock signal]] or agreed-upon [[learning/notes/quick-context/comparator-specification|timing]] to [[learning/notes/quick-context/existing-account-management-playbook|keep]] sender and receiver synchronized. The challenge is that different peripherals have wildly different needs: a temperature sensor sends [[learning/notes/quick-context/how-source-code-is-stored|2 bytes]] every second (I2C is [[learning/notes/micro-context/thread-pitch-screws|fine]]), but a motor controller needs 8 bytes every millisecond over a 1-meter cable with motors generating EMI (only CAN will do). And sometimes you need to talk to a PC (USB), reach industrial equipment 1200 m away (RS-485), or wire dozens of sensors on a single wire through a building (1-Wire).
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Synchronous vs. Asynchronous** | Synchronous protocols (SPI, I2C, I3C) send a clock signal alongside data so both sides stay in lockstep. Asynchronous protocols (UART, RS-232, RS-485, CAN) pre-agree on a baud rate and each side runs its own clock — simpler wiring but requires matched clock accuracy. |
-| **Full-duplex vs. Half-duplex** | Full-duplex (SPI, UART, RS-232, USB 3.x) can send and receive simultaneously on separate wires. Half-duplex (I2C, I3C, CAN, RS-485, 1-Wire) shares the same wire(s) for both directions, taking turns. |
-| **Differential signaling** | Encoding data as the voltage *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN, RS-485, USB, and Ethernet use this; UART, I2C, SPI, and 1-Wire don't. |
-| **Bus topology** | How multiple devices connect. Point-to-point (UART, RS-232, USB): one sender, one receiver. Multi-drop bus (I2C, I3C, CAN, RS-485, 1-Wire): many devices on shared wires. Star (SPI): one master with a dedicated select line per device. |
+| **Synchronous vs. [[learning/notes/quick-context/uart|Asynchronous]]** | Synchronous protocols (SPI, I2C, I3C) send a clock signal alongside data so [[learning/notes/quick-context/bjt-specifications|both]] sides stay in lockstep. Asynchronous protocols (UART, RS-232, RS-485, CAN) pre-agree on a [[learning/notes/quick-context/uart|baud rate]] and each side runs its own clock — [[learning/notes/quick-context/can-bus|simpler wiring]] but requires matched clock [[learning/notes/quick-context/rc-oscillator|accuracy]]. |
+| **[[learning/notes/quick-context/singular-value-decomposition|Full]]-duplex vs. Half-duplex** | Full-duplex (SPI, UART, RS-232, USB 3.x) can send and receive simultaneously on separate wires. Half-duplex (I2C, I3C, CAN, RS-485, 1-Wire) shares the same wire(s) for both directions, taking turns. |
+| **Differential signaling** | [[learning/notes/quick-context/how-source-code-is-stored|Encoding]] data as the [[learning/notes/quick-context/voltage|voltage]] *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] the receiver subtracts them, enabling long noisy cable runs. CAN, RS-485, USB, and Ethernet use this; UART, I2C, SPI, and 1-Wire don't. |
+| **Bus [[learning/notes/quick-context/pupper-brain|topology]]** | How multiple devices connect. Point-to-point (UART, RS-232, USB): one sender, one receiver. Multi-drop bus (I2C, I3C, CAN, RS-485, 1-Wire): many devices on shared wires. Star (SPI): one [[learning/notes/quick-context/data-bus-and-arbitration|master]] with a dedicated select line per device. |
 | **Baud rate / Bit rate** | The number of signal transitions (baud) or data bits (bit rate) per second. For most embedded protocols these are equal. UART's 115200 baud = 115.2 kbps; CAN's 1 Mbps means each bit is 1 $\mu$s wide. USB uses encoding schemes where baud and bit rate differ. |
 
 <details>
@@ -56,7 +58,7 @@ Ethernet      2-4  100 Mbps+   100 m      Star/switched    Cameras, high-bandwid
 
 ### UART — The Simplest Protocol
 
-[[quick-context/uart|UART]] (Universal Asynchronous Receiver-Transmitter) is the oldest and simplest serial protocol. No clock wire — both sides agree on a baud rate beforehand (typically 115200 baud). Two wires: TX (transmit) and RX (receive), crossed between devices. For the full internal mechanics (shift registers, oversampling, baud rate generation), see the [[quick-context/uart|dedicated UART article]].
+[[quick-context/uart|UART]] (Universal Asynchronous Receiver-Transmitter) is the oldest and simplest [[learning/notes/quick-context/data-bus-and-arbitration|serial protocol]]. No clock wire — both sides agree on a baud rate beforehand (typically 115200 baud). Two wires: TX (transmit) and RX (receive), crossed between devices. For the full internal mechanics ([[learning/notes/quick-context/d-flip-flop|shift registers]], [[learning/notes/quick-context/uart|oversampling]], baud rate generation), see the [[quick-context/uart|dedicated UART article]].
 
 ```
 UART — Asynchronous, point-to-point:
@@ -79,12 +81,12 @@ UART — Asynchronous, point-to-point:
   10 bits per byte → 115200 baud ÷ 10 = 11,520 bytes/sec max
 ```
 
-**Strengths:** Dead simple, universally supported, only 2 wires, good debug interface.
-**Weaknesses:** Slow, point-to-point only (can't share a bus), no error detection built in, clock drift causes framing errors at high speeds.
+**[[learning/notes/quick-context/cnc-machining|Strengths:]]** Dead simple, universally supported, only 2 wires, good debug interface.
+**Weaknesses:** Slow, point-to-point only (can't share a bus), no [[learning/notes/quick-context/uart|error detection]] built in, clock drift causes framing errors at high speeds.
 
 ### RS-232 — UART's Physical Layer Standard
 
-RS-232 is not a separate protocol — it defines the **electrical characteristics** for UART signals. While bare UART uses TTL/CMOS levels (0 V / 3.3 V), RS-232 uses inverted bipolar voltages: logic 1 = $-3$ to $-15$ V, logic 0 = $+3$ to $+15$ V. This wider voltage swing provides better noise margin over longer cables, but requires a level-shifting IC like the MAX232 (which uses charge pumps to generate ±7.5 V from a single 5 V supply).
+RS-232 is not a separate protocol — it defines the **electrical characteristics** for UART signals. While bare UART uses TTL/CMOS levels (0 V / 3.3 V), RS-232 uses inverted bipolar voltages: logic 1 = $-3$ to $-15$ V, logic 0 = $+3$ to $+15$ V. This wider voltage swing provides [[learning/notes/quick-context/comparator-specification|better]] [[learning/notes/quick-context/transistor-analog-to-digital|noise margin]] over longer cables, but requires a level-shifting IC like the MAX232 (which uses [[learning/notes/quick-context/cations-and-reduction|charge]] pumps to generate ±7.5 V from a single 5 V supply).
 
 ```
 RS-232 — UART with bipolar voltage levels:
@@ -108,14 +110,14 @@ RS-232 — UART with bipolar voltage levels:
   (undefined) — valid signals must exceed ±3V.
 ```
 
-The DE-9 connector (often incorrectly called "DB-9") has 9 pins, but most embedded use only needs 3: TXD, RXD, and GND. The extra pins (RTS, CTS, DTR, DSR, DCD, RI) provide hardware flow control and modem signaling — remnants of the dial-up era, but still used in industrial equipment.
+The DE-9 [[learning/notes/quick-context/qwiic-stemma-qt-i2c|connector]] (often incorrectly called "DB-9") has 9 pins, but most embedded use only needs 3: TXD, RXD, and GND. The extra pins (RTS, CTS, DTR, DSR, DCD, RI) provide [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]] flow control and modem signaling — remnants of the dial-up era, but still used in industrial equipment.
 
 **Strengths:** Better noise margin than TTL UART (wider voltage swing), standardized connector (DE-9), hardware flow control pins, huge legacy ecosystem (industrial PLCs, lab instruments, CNC machines).
 **Weaknesses:** Still single-ended and point-to-point, max ~15 m at 115200 baud, requires level-shifting IC, bulky connectors, largely obsolete for new designs (replaced by USB or RS-485).
 
 ### RS-485 — The Industrial Long-Haul Bus
 
-RS-485 takes the UART data frame and transmits it over differential signaling — similar conceptually to CAN but without CAN's built-in arbitration and framing. Two wires (A and B) carry the differential signal, enabling multi-drop networks of up to 32 devices (or 256 with high-impedance receivers) over cables up to 1200 m.
+RS-485 takes the UART data [[learning/notes/quick-context/can-bus|frame]] and transmits it over differential signaling — similar conceptually to CAN but without CAN's built-in [[learning/notes/quick-context/can-bus|arbitration]] and framing. Two wires (A and B) carry the [[learning/notes/quick-context/differential-pair|differential signal]], enabling multi-drop networks of up to 32 devices (or 256 with high-impedance receivers) over cables up to 1200 m.
 
 ```
 RS-485 — Differential, multi-drop:
@@ -141,14 +143,14 @@ RS-485 — Differential, multi-drop:
   Receiver needs only 200 mV differential → very noise-immune
 ```
 
-RS-485 is **half-duplex** on 2 wires — a direction-control pin (DE/RE) on the transceiver switches between transmit and receive. Full-duplex requires 4 wires (two differential pairs). Note: RS-422 (TIA-422) is a related but separate standard that specifies one driver with up to 10 receivers — similar physical layer but different topology than multi-driver RS-485. Unlike CAN, RS-485 has **no built-in arbitration or framing** — if two nodes transmit simultaneously, the data collides. Software protocols (Modbus RTU, PROFIBUS) layer addressing and collision avoidance on top.
+RS-485 is **half-duplex** on 2 wires — a direction-control pin (DE/RE) on the transceiver switches between transmit and receive. Full-duplex requires 4 wires (two [[learning/notes/quick-context/capacitance|differential pairs]]). [[learning/notes/quick-context/post-sale-account-engagement|Note:]] RS-422 (TIA-422) is a related but separate standard that specifies one driver with up to 10 receivers — similar [[learning/notes/quick-context/uart|physical layer]] but different topology than multi-driver RS-485. Unlike CAN, RS-485 has **no built-in arbitration or framing** — if two nodes transmit simultaneously, the data collides. [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Software]] protocols (Modbus RTU, PROFIBUS) layer addressing and collision avoidance [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]].
 
 **Strengths:** 1200 m range (at lower speeds), differential noise immunity, up to 10 Mbps, multi-drop (32+ nodes), simple transceivers (~$0.30), well-established in industrial automation.
-**Weaknesses:** Half-duplex (need software turn-around), no hardware arbitration (collisions possible), no standardized framing (need Modbus/PROFIBUS on top), software must manage bus access, 120 $\Omega$ termination required at both ends.
+**Weaknesses:** Half-duplex (need software turn-around), no hardware arbitration (collisions possible), no standardized framing (need Modbus/PROFIBUS on top), software [[learning/notes/quick-context/ros2-architecture|must]] manage bus access, 120 $\Omega$ termination required at both ends.
 
 ### 1-Wire — The Minimalist Bus
 
-1-Wire (originally by Dallas Semiconductor, now Analog Devices) pushes minimalism to the extreme: a single data wire plus ground. Power can even be derived parasitically from the data line itself, eliminating the need for a VCC wire. Each device has a factory-programmed **64-bit unique ROM code**, so the master can individually address any device on the bus — no address conflicts, ever.
+1-Wire (originally by Dallas Semiconductor, now Analog Devices) [[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]] minimalism to the extreme: a single data wire plus ground. [[learning/notes/quick-context/d-flip-flop|Power]] can even be derived parasitically from the data line itself, eliminating the need for a VCC wire. Each device has a factory-programmed **64-bit unique ROM code**, so the master can individually [[learning/notes/quick-context/how-source-code-is-stored|address]] any device on the bus — no [[learning/notes/quick-context/qwiic-stemma-qt-i2c|address conflicts]], ever.
 
 ```
 1-Wire — Single wire, parasitic power:
@@ -184,11 +186,11 @@ RS-485 is **half-duplex** on 2 wires — a direction-control pin (DE/RE) on the 
 The master discovers devices using the **ROM search algorithm** — a binary tree walk that identifies all 64-bit ROM codes on the bus, even without knowing how many devices are connected. This makes 1-Wire uniquely suited for hot-pluggable sensor networks.
 
 **Strengths:** Absolute minimum wiring (1 wire + ground, or even parasitic 1-wire-only), 100 m range, unique 64-bit addresses (no conflicts), simple protocol, great for distributed temperature sensing.
-**Weaknesses:** Very slow (~16 kbps standard, ~142 kbps overdrive), timing-critical (often bit-banged, not hardware-supported on most MCUs), limited device ecosystem (mostly temperature sensors and ID chips), parasitic power can't supply high-current operations without a strong pull-up.
+**Weaknesses:** Very slow (~16 kbps standard, ~142 kbps [[learning/notes/quick-context/bjt-specifications|overdrive]]), timing-critical (often bit-banged, not hardware-supported on most MCUs), limited device ecosystem (mostly temperature sensors and ID chips), parasitic power can't supply high-[[learning/notes/quick-context/capacitance|current]] operations without a strong pull-up.
 
 ### I2C — The Sensor Bus
 
-[[micro-context/i2c|I2C]] (Inter-Integrated Circuit) uses 2 wires — SDA (data) and SCL (clock) — with open-drain drivers and pull-up [[quick-context/resistor|resistors]]. A master generates the clock and addresses devices by their 7-bit address (up to 128 devices on one bus, though typically 10-20).
+[[micro-context/i2c|I2C]] (Inter-[[learning/notes/quick-context/playbook-main|Integrated]] Circuit) uses 2 wires — SDA (data) and SCL (clock) — with [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] drivers and pull-up [[quick-context/resistor|resistors]]. A master generates the clock and addresses devices by their 7-bit address (up to 128 devices on one bus, though typically 10-20).
 
 ```
 I2C — Synchronous, multi-drop, half-duplex:
@@ -213,11 +215,11 @@ I2C — Synchronous, multi-drop, half-duplex:
 ```
 
 **Strengths:** Only 2 wires for many devices, simple addressing, widely supported by sensors.
-**Weaknesses:** Slow (400 kbps in Fast Mode, the most common embedded speed), short range (~1 m due to capacitive loading), half-duplex, pull-ups consume power, ACK/NACK is the only error handling, a slave can hang the bus by clock-stretching indefinitely.
+**Weaknesses:** Slow (400 kbps in [[learning/notes/quick-context/comparator|Fast]] Mode, the most common embedded speed), short range (~1 m due to capacitive [[learning/notes/quick-context/teep|loading]]), half-duplex, pull-ups consume power, ACK/NACK is the only error handling, a slave can hang the bus by clock-stretching indefinitely.
 
 ### I3C — I2C's Successor
 
-I3C (MIPI Improved Inter-Integrated Circuit) is designed to replace I2C while maintaining backward compatibility. It uses the same 2 wires (SDA and SCL) and can share a bus with legacy I2C devices, but switches from open-drain to **push-pull signaling** for dramatically higher speeds and lower power.
+I3C (MIPI Improved Inter-Integrated Circuit) is designed to replace I2C while maintaining backward compatibility. It uses the same 2 wires (SDA and SCL) and can share a bus with legacy I2C devices, but switches from open-drain to **[[learning/notes/micro-context/push-pull-vs-open-drain|push-pull]] signaling** for dramatically higher speeds and [[learning/notes/quick-context/high-gain-amplifier-stage|lower power]].
 
 ```
 I3C — Backward-compatible with I2C, much faster:
@@ -248,10 +250,10 @@ I3C — Backward-compatible with I2C, much faster:
   ─────────────────────────────────────────────────
 ```
 
-I3C's **in-band interrupts (IBI)** let a sensor signal the controller on the same SDA/SCL lines — no extra IRQ wire needed. **Dynamic addressing** means the controller assigns addresses at runtime, eliminating address conflicts. HDR (High Data Rate) modes reach 25-100+ Mbps using multi-lane or ternary encoding.
+I3C's **in-band [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupts]] (IBI)** let a sensor signal the controller on the same SDA/SCL lines — no extra IRQ wire needed. **Dynamic addressing** means the controller assigns addresses at runtime, eliminating address conflicts. HDR (High Data Rate) modes reach 25-100+ Mbps using multi-lane or ternary encoding.
 
 **Strengths:** Backward-compatible with I2C devices, 12.5 Mbps in standard mode (vs I2C's 3.4 Mbps max), in-band interrupts, dynamic addressing, lower power (push-pull), hot-join support.
-**Weaknesses:** Still new — limited device availability as of 2026 (growing in mobile/IoT), more complex controller IP, short range (~30 cm, same as I2C/SPI), specification is managed by MIPI Alliance (membership required for full spec access).
+**Weaknesses:** Still new — limited device [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|availability]] as of 2026 (growing in mobile/IoT), more complex controller IP, short range (~30 cm, same as I2C/SPI), specification is managed by MIPI Alliance (membership required for full spec access).
 
 ### SPI — The Fast On-Board Bus
 
@@ -306,11 +308,11 @@ CAN — Asynchronous*, differential, linear bus:
 ```
 
 **Strengths:** Differential = noise-immune, 40 m range, hardware arbitration (no collisions), 5-layer error detection, multi-master, 2 wires only.
-**Weaknesses:** 1 Mbps max (classic CAN), 8-byte payload limit, needs [[micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per node), [[micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
+**Weaknesses:** 1 Mbps max (classic CAN), 8-[[learning/notes/quick-context/how-source-code-is-stored|byte]] payload limit, needs [[micro-context/can-bus-transceiver|transceivers]] ($0.50-1 per [[learning/notes/quick-context/ros2-architecture|node]]), [[micro-context/can-bus-termination|120$\Omega$ termination]] at both ends.
 
 ### USB — The Host-Device Standard
 
-USB (Universal Serial Bus) is a host-controlled protocol using differential signaling over a tiered star topology. Unlike the other protocols here, USB requires **enumeration** — when a device plugs in, the host interrogates it to discover its capabilities, assigns an address, and loads the appropriate driver. This complexity buys you plug-and-play convenience and very high speeds.
+USB (Universal Serial Bus) is a host-controlled protocol using differential signaling over a tiered star topology. Unlike the other protocols here, USB requires **enumeration** — when a device plugs in, the host interrogates it to discover its capabilities, assigns an address, and loads the appropriate driver. This complexity buys you plug-and-play [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|convenience]] and very high speeds.
 
 ```
 USB — Host-controlled, differential, tiered star:
@@ -348,16 +350,16 @@ USB — Host-controlled, differential, tiered star:
   ──────────────────────────────────────────
 ```
 
-In embedded systems, USB appears in two roles: (1) the MCU acts as a **USB device** (presenting as a serial port, HID, mass storage, etc. to a host PC), or (2) the MCU acts as a **USB host** (reading a flash drive, controlling a camera). Most STM32s have USB 2.0 Full Speed (12 Mbps) built in; some have High Speed (480 Mbps) with an external PHY.
+In embedded systems, USB appears in two roles: (1) the MCU acts as a **USB device** (presenting as a serial port, HID, mass [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]], etc. to a host PC), or (2) the MCU acts as a **USB host** (reading a flash drive, controlling a camera). Most STM32s have [[learning/notes/quick-context/raspberry-pi-5-components|USB 2.0]] Full Speed (12 Mbps) built in; some have High Speed (480 Mbps) with an external PHY.
 
-**Strengths:** Universal PC connectivity, plug-and-play, powers devices (5 V / 500 mA–3 A), extremely high bandwidth, standardized device classes (CDC serial, HID, MSC).
+**Strengths:** Universal PC connectivity, plug-and-play, powers devices (5 V / 500 mA–3 A), extremely high [[learning/notes/quick-context/oscilloscope-and-multimeter|bandwidth]], standardized device classes (CDC serial, HID, MSC).
 **Weaknesses:** Host-device model (not peer-to-peer), complex protocol stack (descriptors, endpoints, enumeration), 5 m max cable length (USB 2.0), requires USB-capable hardware on the MCU, high latency for real-time control (1 ms frame period on USB 2.0).
 
 ### Ethernet — The High-Bandwidth Option
 
 Ethernet (typically 100BASE-TX or 1000BASE-T) uses differential pairs over Cat5/6 cable with a full TCP/IP or UDP stack. Massive bandwidth but significant complexity and latency for embedded use.
 
-**Strengths:** 100 Mbps+, 100 m range, standard networking stack, switches enable complex topologies.
+**Strengths:** 100 Mbps+, 100 m range, standard networking stack, switches [[learning/notes/quick-context/d-flip-flop|enable]] complex topologies.
 **Weaknesses:** High latency (milliseconds for TCP), large software stack (lwIP or Linux), per-node PHY chip + magnetics, power-hungry, overkill for simple sensor data.
 
 ### How the Pupper Uses Four Protocols
@@ -399,14 +401,14 @@ PUPPER v3 — FOUR PROTOCOLS WORKING TOGETHER:
 
 Each protocol is chosen for its sweet spot:
 - **SPI** between Pi↔MCU: high-speed joint commands at 1 kHz, Pi and board are stacked via 40-pin header
-- **I2C** for IMU: low data volume, IMU has I2C interface, Pi reads orientation directly without MCU relay
+- **I2C** for IMU: low data [[learning/notes/quick-context/cnc-machining|volume]], IMU has I2C interface, Pi reads orientation directly without MCU relay
 - **CAN** for servos: signals travel through leg cables where motors generate EMI, differential signaling is essential
-- **UART** for debug: simple printf-style logging to a terminal, no configuration needed
+- **UART** for debug: simple printf-style [[learning/notes/quick-context/pupper-lab5-neural-controller|logging]] to a [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|terminal]], no configuration needed
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — No protocol wins on all axes</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — No protocol wins on all axes</summary>
 
 Every protocol makes tradeoffs between five axes. No protocol wins on more than 2-3:
 
@@ -462,14 +464,14 @@ PROTOCOL TRADEOFF RADAR:
 | **Multi-device** | I2C/I3C (128+ addresses), 1-Wire (unlimited, 64-bit IDs) | UART/RS-232 (point-to-point only) |
 | **Latency** | SPI (hardware, microseconds) | Ethernet/TCP (milliseconds), USB (1 ms frames) |
 
-**The real-world rule:** Pick the simplest protocol that meets your distance and speed requirements. For on-board sensors → I2C (or I3C for new designs). For on-board fast data → SPI. For off-board in noisy environments → CAN. For long-haul industrial → RS-485. For minimal wiring over distance → 1-Wire. For PC connectivity → USB. For high bandwidth → Ethernet. For debug → UART.
+**The real-world rule:** Pick the simplest protocol that meets [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] distance and speed requirements. For on-board sensors → I2C (or I3C for new designs). For on-board fast data → SPI. For off-board in noisy environments → CAN. For long-haul industrial → RS-485. For minimal wiring over distance → 1-Wire. For PC connectivity → USB. For high bandwidth → Ethernet. For debug → UART.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong> — Reading a sensor over I2C vs. SPI</summary>
 
-The same BNO086 IMU supports both I2C and SPI. Here's what the transaction looks like for each:
+The same [[learning/notes/quick-context/pupper-bom-control-board|BNO086]] IMU supports both I2C and SPI. Here's [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] the transaction looks like for each:
 
 ### I2C Read (2 wires, 400 kHz)
 
@@ -520,7 +522,7 @@ Total: ~5.6 μs at 10 MHz for 6 bytes
 
 SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't share the bus with other sensors without extra CS lines. On the Pupper, the BNO086 uses I2C because the board already has I2C pull-ups and other I2C devices sharing the bus, and the IMU only sends data at ~100 Hz — 180 $\mu$s per read is negligible.
 
-**The one thing most outsiders get wrong about this is...** assuming faster protocols are always better. SPI at 50 MHz sounds impressive, but if your sensor only produces 100 bytes/second, the 400 kbps I2C bus is utilizing 0.2% of its bandwidth — the "slow" protocol is more than fast enough, and you saved 2 PCB traces and a CS pin. Protocol selection is about matching the *minimum viable protocol* to the actual data requirements, not picking the fastest option.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** assuming faster protocols are always better. SPI at 50 MHz sounds impressive, but if your sensor only produces 100 bytes/second, the 400 kbps I2C bus is utilizing 0.2% of its bandwidth — the "slow" protocol is more than fast enough, and you saved 2 PCB traces and a CS pin. Protocol selection is about matching the *minimum viable protocol* to the actual data requirements, not picking the fastest option.
 
 </details>
 
@@ -529,7 +531,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/uart]]** — Deep dive into UART internals: the receive shift register (chain of D flip-flops), 16× oversampling, parallel latch to data register, baud rate generation. The simplest protocol in the comparison, with its own article covering the hardware mechanics.
+- **[[quick-context/uart]]** — Deep dive into UART internals: the receive [[learning/notes/quick-context/uart|shift register]] (chain of D flip-flops), 16× oversampling, parallel [[learning/notes/quick-context/d-flip-flop|latch]] to [[learning/notes/quick-context/uart|data register]], baud rate generation. The simplest protocol in the comparison, with its own article covering the hardware mechanics.
 
 - **[[quick-context/can-bus]]** — Deep dive into CAN: arbitration, frame format, differential signaling, error detection, and the Pupper's 4-bus motor architecture. This is the most complex protocol in the comparison and gets its own article.
 
@@ -537,21 +539,21 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[micro-context/spi]]** — SPI protocol details: clock polarity/phase modes (CPOL/CPHA), full-duplex data shifting, chip select. The fastest on-board bus.
 
-- **[[micro-context/i2s]]** — I2S (Inter-IC Sound): a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
+- **[[micro-context/i2s]]** — [[learning/notes/micro-context/i2s|I2S (Inter-IC Sound)]]: a specialized SPI variant for streaming digital audio. Used on the Pupper between U1 and the MAX98357A amplifier.
 
 - **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential CAN bus voltages. Every CAN node needs one.
 
 - **[[micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a CAN bus to prevent signal reflections.
 
-- **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing all four protocols in action: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
+- **[[quick-context/pupper-brain]]** — The full [[learning/notes/quick-context/comparator-specification|dual]]-MCU + Raspberry Pi architecture showing all four protocols in [[learning/notes/quick-context/pupper-lab5-neural-controller|action]]: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical components implementing these protocols: STM32s with hardware CAN/SPI/I2C peripherals, MAX3051 transceivers, pull-up resistors, connectors.
+- **[[quick-context/pupper-bom-control-board]]** — The physical [[learning/notes/quick-context/tensor|components]] implementing these protocols: STM32s with hardware CAN/SPI/I2C peripherals, MAX3051 transceivers, pull-up resistors, connectors.
 
-- **[[quick-context/oscilloscope-and-multimeter]]** — How to debug protocol issues: oscilloscope shows signal integrity (rise times, reflections, noise), logic analyzer decodes the actual data frames.
+- **[[quick-context/oscilloscope-and-multimeter]]** — How to debug protocol issues: [[learning/notes/quick-context/oscilloscope-and-multimeter|oscilloscope]] shows [[learning/notes/quick-context/bga-ball-grid-array|signal integrity]] (rise times, reflections, noise), logic analyzer decodes the actual data frames.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: radio transceiver, OFDM modulation, MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
+- **[[quick-context/wifi-chip-arduino-uno-r4]]** — How WiFi works at the chip level: [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|radio transceiver]], OFDM [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|modulation]], MAC/PHY layers, and antenna design. WiFi complements the wired protocols here — great for internet connectivity but too unreliable and high-latency for real-time control.
 
-- **[[quick-context/usb-peripheral-hardware]]** — Deep dive into how the USB peripheral inside an MCU works at the hardware level: the Serial Interface Engine (SIE), NRZI encoding, bit stuffing, CRC generation, and the MOSFET output drivers that create voltage transitions on D+/D- at 12 MHz. Covers the bridge between "firmware writes to a buffer" and "voltage appears on the wire."
+- **[[quick-context/usb-peripheral-hardware]]** — Deep dive into how the USB peripheral inside an MCU works at the hardware level: the [[learning/notes/quick-context/usb-peripheral-hardware|Serial Interface Engine (SIE)]], NRZI encoding, [[learning/notes/quick-context/can-bus|bit stuffing]], CRC generation, and the [[learning/notes/micro-context/mosfet|MOSFET]] output drivers that create voltage transitions on D+/D- at 12 MHz. Covers the bridge between "[[learning/notes/quick-context/firmware|firmware]] writes to a buffer" and "voltage appears on the wire."
 
 </details>
 
@@ -567,13 +569,13 @@ The IMU only outputs data at ~100 Hz — roughly 600 bytes/second. I2C at 400 kb
 **Q2:** You need to read temperature from 50 sensors spread across a large building (cable runs up to 80 m). Which protocol and why?
 <details>
 <summary>Answer</summary>
-**1-Wire.** Each DS18B20 temperature sensor has a unique 64-bit ROM code, so all 50 can share a single data wire + ground — just 2 conductors running through the building. 1-Wire supports up to 100 m cable runs. The data rate (~16 kbps) is more than sufficient: 50 sensors × 2 bytes × once per second = 100 bytes/sec. I2C can't reach 80 m (limited to ~1 m). CAN could do the distance but requires transceivers at every node ($0.50-1 × 50 = $25-50 in transceivers alone) and each sensor would need an MCU to speak CAN. 1-Wire sensors cost ~$1 each and need no additional hardware.
+**1-Wire.** Each DS18B20 temperature sensor has a unique 64-bit ROM code, so all 50 can share a single data wire + ground — just 2 conductors running through the building. 1-Wire supports up to 100 m cable runs. The data rate (~16 kbps) is more than sufficient: 50 sensors × 2 bytes × once per second = 100 bytes/sec. I2C can't reach 80 m (limited to ~1 m). CAN could do the distance but requires transceivers at every node ($0.50-1 × 50 = $25-50 in transceivers alone) and each sensor would need an MCU to speak CAN. 1-Wire sensors [[learning/notes/quick-context/bond-pad|cost]] ~$1 each and need no additional hardware.
 </details>
 
 **Q3:** An engineer wants to replace the Pupper's CAN motor bus with RS-485 to save money on transceivers. What problems would they face?
 <details>
 <summary>Answer</summary>
-Two critical problems: (1) **No hardware arbitration** — RS-485 is a raw differential bus with no collision detection. If the MCU sends a command while a motor driver is responding, both signals collide and corrupt each other. The engineer would need to implement software turn-around timing and a master-slave polling protocol (like Modbus), adding latency. CAN's hardware arbitration handles this automatically with zero data loss. (2) **No built-in error detection** — CAN has 5-layer error detection (CRC, frame check, ACK, bit monitoring, bit stuffing) with automatic retransmission. RS-485 has none — the software protocol must add checksums and retry logic. At 1 kHz motor control with 12 servos, any missed or corrupted frame could cause the robot to stumble. The ~$6 saved on transceivers isn't worth the reliability loss.
+Two critical problems: (1) **No hardware arbitration** — RS-485 is a raw differential bus with no collision detection. If the MCU sends a command while a motor driver is responding, both signals collide and corrupt each other. The engineer would need to implement software turn-around timing and a master-slave [[learning/notes/quick-context/keypress-to-pixel-pipeline|polling]] protocol (like Modbus), adding latency. CAN's hardware arbitration handles this automatically with [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] data loss. (2) **No built-in error detection** — CAN has 5-layer error detection (CRC, [[learning/notes/quick-context/can-bus|frame check]], ACK, [[learning/notes/quick-context/can-bus|bit monitoring]], bit stuffing) with automatic retransmission. RS-485 has [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|none]] — the software protocol must add checksums and retry logic. At 1 kHz motor control with 12 servos, any missed or corrupted frame could cause the robot to stumble. The ~$6 saved on transceivers isn't worth the [[learning/notes/quick-context/bond-pad|reliability]] loss.
 </details>
 
 **Q4:** RS-232 and UART carry the same data frames. Why does RS-232 exist at all — why not just use TTL UART everywhere?
@@ -591,9 +593,9 @@ Each interface has different distance, speed, and topology requirements that no 
 
 2. **1-Wire for the 20 temperature probes:** They're spread over 50 m of cable — far beyond I2C's ~1 m range. 1-Wire DS18B20 sensors can share a single wire over 100 m, each with a unique 64-bit ID. I2C would need repeaters every meter and can only address 128 devices with potential conflicts. Running 20 individual I2C buses is impractical.
 
-3. **Ethernet for the cloud gateway:** Needs reliable, high-bandwidth connectivity over 100 m to a router. I2C maxes out at 3.4 Mbps over 1 m — it can't physically reach the router, let alone carry TCP/IP traffic.
+3. **Ethernet for the cloud gateway:** Needs [[learning/notes/quick-context/ros2-architecture|reliable]], high-bandwidth connectivity over 100 m to a router. I2C maxes out at 3.4 Mbps over 1 m — it can't physically reach the router, let alone carry TCP/IP traffic.
 
-The MCU hub connects all three: I3C on-board pins → accelerometer, a GPIO bit-banging 1-Wire → temperature string, and an Ethernet PHY → network. The colleague's I2C-for-everything approach fails on distance (temperature probes) and connectivity (cloud gateway).
+The MCU hub connects all three: I3C on-board pins → accelerometer, a [[learning/notes/quick-context/raspberry-pi-5-components|GPIO]] [[learning/notes/micro-context/st-link-v2-programmer|bit-banging]] 1-Wire → temperature string, and an [[learning/notes/quick-context/raspberry-pi-5-components|Ethernet PHY]] → network. The colleague's I2C-for-everything approach [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|fails]] on distance (temperature probes) and connectivity (cloud gateway).
 </details>
 
 </details>

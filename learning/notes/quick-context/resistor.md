@@ -2,16 +2,18 @@
 topic: Resistor
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/micro-context/smd-resistor]]
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
-> **TL;DR:** A resistor opposes the flow of [[quick-context/electric-current|electric current]], converting electrical energy into heat according to Ohm's law (V = IR)—it's the simplest and most ubiquitous electronic component, used to limit current, divide voltages, set bias points, and terminate signals in virtually every circuit ever built.
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** A resistor opposes the flow of [[quick-context/electric-current|electric current]], converting electrical energy into heat according to [[learning/notes/quick-context/parallel-vs-series-voltage|Ohm's law (V = IR)]]—it's the simplest and most ubiquitous electronic [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]], used to limit [[learning/notes/quick-context/capacitance|current]], divide voltages, set bias points, and terminate signals in virtually every circuit ever built.
 
 # Resistor
 
 ## The Core Problem: Controlling How Much Current Flows
 
-Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery pushes as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more voltage it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] bias network, every sensor interface uses resistors. They're the glue that makes all other components work together at the right voltage and current levels.
+Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at 2V. Without anything limiting the current, the battery [[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]] as much as it can—hundreds of milliamps—and the LED burns out instantly. You need something that "uses up" the extra 7V and limits current to 20 mA. That's a resistor: it opposes current flow, and the harder current pushes through it, the more [[learning/notes/quick-context/voltage|voltage]] it "drops" across itself. Ohm's law (V = IR) is the single most-used equation in electronics. Every [[quick-context/capacitor|capacitor]] charging circuit, every [[quick-context/transistor|transistor]] [[learning/notes/quick-context/inside-the-triangle|bias network]], every sensor interface uses resistors. They're the glue that makes all other [[learning/notes/quick-context/tensor|components]] work together at the right voltage and current levels.
 
 ## 5 Essential Terms
 
@@ -19,14 +21,14 @@ Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at
 |------|------------|
 | **Resistance (R)** | The opposition to current flow, measured in ohms (Ω). Higher resistance = less current for a given voltage. |
 | **Ohm's Law** | V = I × R. The voltage across a resistor equals the current through it times its resistance. The most fundamental equation in electronics. |
-| **Power Dissipation** | P = I²R = V²/R = IV. Resistors convert electrical energy to heat. Every resistor has a maximum power rating (commonly 1/8W, 1/4W, 1/2W). Exceed it and the resistor burns. |
-| **Tolerance** | How close the actual resistance is to the labeled value. A 1kΩ resistor at ±5% could be 950Ω to 1050Ω. Precision circuits need ±1% or better. |
-| **Voltage Divider** | Two resistors in series that split a voltage proportionally: Vout = Vin × R2/(R1+R2). The most common resistor circuit after simple current limiting. |
+| **[[learning/notes/quick-context/d-flip-flop|Power]] Dissipation** | P = I²R = V²/R = IV. Resistors convert electrical energy to heat. Every resistor has a maximum power rating (commonly 1/8W, 1/4W, 1/2W). Exceed it and the resistor burns. |
+| **[[learning/notes/quick-context/cnc-machining|Tolerance]]** | How close the actual resistance is to the labeled value. A 1kΩ resistor at ±5% could be 950Ω to 1050Ω. Precision circuits need ±1% or [[learning/notes/quick-context/comparator-specification|better]]. |
+| **[[learning/notes/quick-context/pwm-controller-circuit|Voltage Divider]]** | Two resistors in [[learning/notes/quick-context/parallel-vs-series-voltage|series]] that split a voltage proportionally: Vout = Vin × R2/(R1+R2). The most common resistor circuit after simple current limiting. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-At the atomic level, resistance comes from electrons colliding with atoms as they flow through a material. Metals have lots of free electrons but the atoms still get in the way—each collision transfers energy from the electron to the atom, which vibrates more (heat). Longer, thinner wires have more resistance; shorter, thicker wires have less.
+At the atomic level, resistance comes from [[learning/notes/quick-context/anions-and-oxidation|electrons]] colliding with atoms as they flow through a material. Metals have lots of free electrons but the atoms still get in the way—each collision transfers energy from the [[learning/notes/quick-context/anions-and-oxidation|electron]] to the atom, which vibrates more (heat). Longer, thinner [[learning/notes/quick-context/uart|wires]] have more resistance; shorter, [[learning/notes/micro-context/mosfet|thicker]] wires have less.
 
 ```
 OHM'S LAW: THE FOUNDATION
@@ -123,13 +125,13 @@ READING COLOR CODES (4-band)
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Precision vs. Cost vs. Power vs. Size
 
-| Type | Tolerance | Power | Cost | Best For |
+| [[learning/notes/quick-context/bjt-specifications|Type]] | Tolerance | Power | [[learning/notes/quick-context/bond-pad|Cost]] | Best For |
 |------|-----------|-------|------|----------|
-| **Carbon film** | ±5% | 1/8-1/2W | Lowest | Hobby, general purpose |
+| **Carbon [[learning/notes/quick-context/capacitor|film]]** | ±5% | 1/8-1/2W | Lowest | Hobby, [[learning/notes/quick-context/singular-value-decomposition|general]] purpose |
 | **Metal film** | ±1%, ±0.1% | 1/8-1W | Low | Precision, most production |
 | **Wirewound** | ±0.01% | 1-100W+ | High | Power resistors, precision refs |
 | **SMD thick film** | ±1-5% | 1/16-1W | Very low | Production PCBs |
@@ -167,7 +169,7 @@ Values like 4.7kΩ and 2.2kΩ come from the E12/E24 series—logarithmically spa
 
 ## Pull-Up Resistors: Making Digital Signals Reliable
 
-Every I2C bus, every button input, every open-drain output needs pull-up resistors. Without them, the signal floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
+Every [[learning/notes/micro-context/i2c|I2C]] bus, every button input, every [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] output needs pull-up resistors. Without them, the [[learning/notes/quick-context/comparator|signal]] floats at an undefined voltage and [[quick-context/transistor|transistor]] inputs reading it go haywire.
 
 ```
 THE PROBLEM: FLOATING INPUTS
@@ -209,27 +211,27 @@ I2C BUS PULL-UPS
 
 - **[[quick-context/electric-current]]** — Ohm's law (V = IR) is the direct relationship between resistance and current. Understanding current flow is prerequisite to understanding resistors.
 
-- **[[quick-context/voltage-current-causality]]** — V = IR is a *constraint*, not a causal arrow. Whether voltage causes current or current causes voltage depends on what's driving the circuit (voltage source vs. current source).
+- **[[quick-context/voltage-current-causality]]** — V = IR is a *[[learning/notes/quick-context/voltage-current-causality|constraint]]*, not a causal arrow. [[learning/notes/quick-context/differential-pair|Whether]] voltage causes current or current causes voltage depends on [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]]'s driving the circuit ([[learning/notes/quick-context/voltage-current-causality|voltage source]] vs. [[learning/notes/quick-context/voltage-current-causality|current source]]).
 
-- **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and frequency response.
+- **[[quick-context/capacitor]]** — Resistors and [[learning/notes/quick-context/voltage|capacitors]] [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] RC circuits: the most common filter and [[learning/notes/quick-context/comparator-specification|timing]] element. The time constant tau = RC governs charging, discharging, and frequency response.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern transistor power delivery.
+- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] resistors divide current. Same [[learning/notes/quick-context/voltage-current-causality|Kirchhoff's laws]] that govern [[learning/notes/quick-context/transistor|transistor]] power delivery.
 
 - **[[quick-context/transistor]]** — Resistors set bias points for transistors, limit base/gate current, and form loads in amplifier circuits.
 
-- **[[quick-context/thermal-noise-electronics]]** — Every resistor generates thermal noise: V_noise = sqrt(4kTRB). Higher resistance = more noise, setting fundamental limits on sensitive analog circuits.
+- **[[quick-context/thermal-noise-electronics]]** — Every resistor generates [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]]: V_noise = sqrt(4kTRB). Higher resistance = more noise, setting fundamental limits on sensitive analog circuits.
 
-- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** — How a single resistor plus a button turns a floating GPIO into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
+- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** — How a single resistor plus a button turns a floating [[learning/notes/quick-context/raspberry-pi-5-components|GPIO]] into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** You have a 5V supply and an LED that needs 20 mA at 2V forward drop. What resistor value do you need?
 <details>
 <summary>Answer</summary>
-**150Ω.** The resistor must drop 5V - 2V = 3V. R = V/I = 3V / 0.020A = 150Ω. Power: P = 3V × 20mA = 60 mW—well within a 1/8W rating.
+**150Ω.** The resistor [[learning/notes/quick-context/ros2-architecture|must]] drop 5V - 2V = 3V. R = V/I = 3V / 0.020A = 150Ω. Power: P = 3V × 20mA = 60 mW—well within a 1/8W rating.
 </details>
 
 **Q2:** Two 10kΩ resistors in series? In parallel?
@@ -250,10 +252,10 @@ I2C BUS PULL-UPS
 **1kΩ ±5%.** Brown=1, Black=0, Red=×100, Gold=±5%. So 10 × 100 = 1000Ω = 1kΩ.
 </details>
 
-**Q5:** Why can't you use a very high-value pull-up resistor (e.g., 10MΩ) on a digital input?
+**Q5:** Why can't you use a very high-value [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|pull-up resistor]] (e.g., 10MΩ) on a digital input?
 <details>
 <summary>Answer</summary>
-**The RC time constant becomes too large.** Every wire has parasitic capacitance. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
+**The RC time constant becomes too large.** Every wire has [[learning/notes/quick-context/capacitance|parasitic capacitance]]. With 10MΩ and even 10 pF of stray capacitance, tau = 10M × 10p = 100 μs. The signal would take hundreds of microseconds to rise, far too slow for any reasonable digital communication. Also, the tiny current (0.33 μA at 3.3V) would be overwhelmed by leakage currents and noise.
 </details>
 
 </details>

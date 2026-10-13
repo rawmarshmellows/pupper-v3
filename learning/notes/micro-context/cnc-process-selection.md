@@ -3,18 +3,20 @@ term: CNC Process Selection
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/edm-machining]] | [[learning/notes/micro-context/thread-pitch-screws]]
+
 
 # CNC Process Selection
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
+> **[[learning/notes/micro-context/4-wire-kelvin-measurement|See also:]]** [[quick-context/cnc-machining]] ([[learning/notes/quick-context/singular-value-decomposition|full]] treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
 
-**Definition:** A decision framework for when to use CNC machining over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Definition:]]** A decision framework for [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] to use [[learning/notes/quick-context/cnc-machining|CNC machining]] over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
 
 ## How It Works
 
 - Evaluate part geometry: cylindrical parts favor turning, prismatic/complex shapes favor milling, hardened metals with sharp internal corners favor EDM.
-- Consider volume: CNC is cost-effective for 1–1000 parts; injection molding or casting wins at 10,000+.
-- Check tolerance requirements: CNC achieves ±0.001" routinely, which 3D printing and casting generally cannot match.
+- Consider [[learning/notes/quick-context/cnc-machining|volume]]: CNC is [[learning/notes/quick-context/bond-pad|cost]]-effective for 1–1000 parts; injection molding or casting wins at 10,000+.
+- Check [[learning/notes/quick-context/cnc-machining|tolerance]] requirements: CNC achieves ±0.001" routinely, which 3D printing and casting generally cannot match.
 
 ```
 1. SHOULD YOU USE CNC AT ALL?
@@ -33,4 +35,4 @@ updated: 2026-03-27
    TURNING              MILLING                      EDM
 ```
 
-**Key insight:** CNC is the default for precision metal parts in low volumes—only consider alternatives when you need internal cavities (3D print), high volumes (molding), or can sacrifice precision (casting).
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Key insight:]]** CNC is the default for precision metal parts in low volumes—[[learning/notes/quick-context/comparator-specification|only]] consider alternatives when you need [[learning/notes/quick-context/cnc-machining|internal cavities]] (3D print), high volumes (molding), or can sacrifice precision (casting).

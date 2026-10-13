@@ -2,33 +2,35 @@
 topic: Maxwell's Equations
 created: 2026-02-20
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/electromagnetic-induction]]
+
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
 
-> **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** Maxwell's equations are [[learning/notes/quick-context/ram-addressing-decoder|four]] mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]] create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
 ## The Core Problem: Unifying Electricity and Magnetism
 
-Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling predicts electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an electromagnetic wave. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
+Before Maxwell, electricity and magnetism seemed like separate phenomena with unexplained connections. [[quick-context/electric-current|Current]] deflects compass needles (Oersted, 1820). Moving magnets induce [[quick-context/voltage|voltage]] (Faraday, 1831). But why? Maxwell's genius was realizing these connections weren't coincidental—they were manifestations of a single underlying reality. His four equations, published in 1865, showed that electric and magnetic fields are coupled: each can create the other through change. This coupling [[learning/notes/quick-context/bambu-p2s-print-quality|predicts]] electromagnetic waves that travel at exactly the measured speed of light, revealing that light *is* an [[learning/notes/quick-context/electromagnetism|electromagnetic wave]]. Radio, microwaves, X-rays, and gamma rays followed as predictions confirmed by experiment.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electric Field (E)** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
-| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
-| **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates total flux to enclosed charge. |
+| **[[learning/notes/quick-context/electric-magnetic-field-unification|Electric Field (E)]]** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
+| **[[learning/notes/quick-context/coil-magnetic-field|Magnetic Field (B)]]** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
+| **Electric [[learning/notes/quick-context/soldering|Flux]] ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates [[learning/notes/quick-context/similarity-transform|total]] flux to enclosed [[learning/notes/quick-context/cations-and-reduction|charge]]. |
 | **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[quick-context/lenzs-law|Faraday's law]]). |
-| **Displacement Current** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
+| **Displacement [[learning/notes/quick-context/capacitance|Current]]** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
 
 <details>
 <summary><strong>How It Works</strong> — The four equations explained</summary>
 
 ## The Four Equations: What Each Says
 
-Maxwell's equations can be written in multiple forms (integral, differential, with or without materials). Here's the differential form in vacuum, with physical meaning:
+Maxwell's equations can be written in multiple forms (integral, differential, with or without [[learning/notes/quick-context/cnc-machining|materials]]). Here's the differential [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] in vacuum, with physical meaning:
 
 ```
 MAXWELL'S EQUATIONS — Differential Form (Vacuum)
@@ -178,7 +180,7 @@ MAXWELL'S SOLUTION:
 
 ## How the Equations Predict Electromagnetic Waves
 
-The revolutionary consequence: combining Faraday's law and the Ampère-Maxwell law shows that E and B fields can sustain each other through empty space.
+The revolutionary consequence: combining [[learning/notes/quick-context/lenzs-law|Faraday's law]] and the Ampère-Maxwell law shows that E and B fields can sustain each other through empty space.
 
 ```
 DERIVING ELECTROMAGNETIC WAVES
@@ -257,11 +259,11 @@ THE SELF-SUSTAINING WAVE
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Integral vs. differential form</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Integral vs. differential form</summary>
 
 ## Two Ways to Write the Same Physics
 
-Maxwell's equations can be expressed in integral form (useful for calculations with symmetry) or differential form (useful for general analysis and deriving waves). They're mathematically equivalent via Stokes' and Gauss's theorems.
+Maxwell's equations can be expressed in integral form (useful for calculations with symmetry) or differential form (useful for [[learning/notes/quick-context/singular-value-decomposition|general]] analysis and deriving waves). They're mathematically equivalent via Stokes' and Gauss's theorems.
 
 ```
 INTEGRAL vs. DIFFERENTIAL FORMS
@@ -342,12 +344,12 @@ EQUATION 4: AMPÈRE-MAXWELL LAW
     Best for: General field analysis
 ```
 
-| When to Use | Integral Form | Differential Form |
+| [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] to Use | Integral Form | Differential Form |
 |-------------|---------------|-------------------|
-| High-symmetry problems | Better | Works but overkill |
+| High-symmetry problems | [[learning/notes/quick-context/comparator-specification|Better]] | Works but overkill |
 | Deriving wave equations | Awkward | Required |
 | Circuit analysis (EMF, flux) | Better | Works |
-| Numerical simulation | Possible | Required |
+| Numerical [[learning/notes/quick-context/epson-rc-plus-programming|simulation]] | Possible | Required |
 | Relativistic formulation | Possible | Natural ([[quick-context/tensor|tensor]] form) |
 | Conceptual understanding | Often clearer | More compact |
 
@@ -483,7 +485,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
     that changing B creates E, bootstrapping through empty space.
 ```
 
-**The one thing most outsiders get wrong about Maxwell's equations is...** thinking they're just a mathematical formalism for what we already knew. They're not. Before Maxwell added the displacement current term ($\varepsilon_0 \partial \mathbf{E}/\partial t$), there was no theoretical basis for electromagnetic waves. The equations predicted that light is an electromagnetic wave *before* this was experimentally confirmed. They predicted radio waves 20+ years before Hertz detected them. Maxwell's equations are genuinely predictive physics, not just a summary of known phenomena.
+**[[learning/notes/quick-context/epson-rc-plus-programming|The one thing most outsiders get wrong]] about Maxwell's equations is...** thinking they're just a mathematical formalism for [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] we already knew. They're not. Before Maxwell added the displacement current term ($\varepsilon_0 \partial \mathbf{E}/\partial t$), there was no theoretical basis for electromagnetic waves. The equations predicted that light is an electromagnetic wave *before* this was experimentally confirmed. They predicted radio waves 20+ years before Hertz detected them. Maxwell's equations are genuinely predictive physics, not just a summary of known phenomena.
 
 </details>
 
@@ -494,39 +496,39 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Why E and B are two aspects of one underlying field, connected through the motion of observers. The conceptual foundation for Maxwell's unification.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two tensor equations, making Lorentz covariance manifest. E and B mix together under velocity transformations.
+- **[[quick-context/faraday-tensor]]** — The relativistic formulation: Maxwell's four equations compress into two [[learning/notes/quick-context/tensor|tensor]] equations, making Lorentz [[learning/notes/quick-context/covariance-matrix|covariance]] manifest. E and B mix together under velocity transformations.
 
 - **[[quick-context/inductor]]** — Practical application of Faraday's law: V = L × dI/dt. Inductors store energy in magnetic fields and oppose current changes.
 
-- **[[quick-context/capacitor]]** — Stores energy in electric fields. Displacement current flows "through" capacitors during charging, completing the circuit conceptually.
+- **[[quick-context/capacitor]]** — Stores energy in electric fields. Displacement current flows "through" [[learning/notes/quick-context/voltage|capacitors]] during charging, completing the circuit conceptually.
 
 - **[[quick-context/lenzs-law]]** — The physics behind the minus sign in Faraday's law: induced effects always oppose the change that caused them, enforcing energy conservation.
 
 - **[[quick-context/electricity-generation]]** — How generators convert mechanical energy to electricity using Faraday's law. The practical workhorse application of Maxwell's equations.
 
-- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the solenoid formula B = μ₀nI derived from Ampère's law.
+- **[[quick-context/coil-magnetic-field]]** — Detailed treatment of how current through coils creates magnetic fields, including the [[learning/notes/quick-context/coil-magnetic-field|solenoid]] formula B = μ₀nI derived from [[learning/notes/quick-context/coil-magnetic-field|Ampère's law]].
 
-- **[[quick-context/voltage]]** — Electric field integrated along a path gives voltage. Maxwell's equations govern the field; voltage is how we measure it in circuits.
+- **[[quick-context/voltage]]** — Electric field [[learning/notes/quick-context/playbook-main|integrated]] along a path gives [[learning/notes/quick-context/voltage|voltage]]. Maxwell's equations govern the field; voltage is how we measure it in circuits.
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **[[learning/notes/quick-context/electric-magnetic-field-unification|Special Relativity]]** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[learning/notes/quick-context/electromagnetism|electromagnetism]].
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** Gauss's law for magnetism states ∇ · B = 0. What does this physically mean?
 <details>
 <summary>Answer</summary>
-**There are no magnetic monopoles.** Magnetic field lines always form closed loops—they never start or end at a point. Every N pole comes with an S pole. If you draw any closed surface, the same amount of B-field that enters must exit. This contrasts with electric fields, where ∇ · E = ρ/ε₀ means field lines can start on positive charges and end on negative charges.
+**There are no magnetic monopoles.** Magnetic field lines always form closed loops—they never start or end at a [[learning/notes/quick-context/epson-rc-plus-programming|point]]. Every N pole comes with an S pole. If you draw any closed surface, the same amount of B-field that enters [[learning/notes/quick-context/ros2-architecture|must]] exit. This contrasts with electric fields, where ∇ · E = ρ/ε₀ means field lines can start on positive charges and end on negative charges.
 </details>
 
 **Q2:** Why did Maxwell add the displacement current term (ε₀ ∂E/∂t) to Ampère's law?
 <details>
 <summary>Answer</summary>
-**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a capacitor would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
+**To fix a mathematical inconsistency with charging capacitors.** Without it, Ampère's law ∮ B · dl = μ₀I would give different answers depending on which surface you used to calculate enclosed current. A loop around a wire carrying current to a [[learning/notes/quick-context/capacitor|capacitor]] would show I ≠ 0, but the same loop using a surface passing through the capacitor gap would show I = 0 (no charges crossing). Maxwell realized that the changing E-field between the plates acts like a current for creating B-fields, restoring consistency. See: Concrete Example (displacement current section).
 </details>
 
 **Q3:** Maxwell calculated electromagnetic wave speed as c = 1/√(μ₀ε₀). Why was this result so significant?
@@ -538,7 +540,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 **Q4:** Faraday's law says ∇ × E = -∂B/∂t. How does this equation explain why inductors resist current changes?
 <details>
 <summary>Answer</summary>
-**Changing current creates changing B, which creates opposing E.** In an [[quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-zero). This induced E-field manifests as back-EMF: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced voltage opposes the change in current.
+**Changing current creates changing B, which creates opposing E.** In an [[quick-context/inductor|inductor]], current I creates magnetic field B = μ₀nI. If I changes, B changes, so ∂B/∂t ≠ 0. Faraday's law says this creates a circulating E-field (the curl of E is non-[[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]]). This induced E-field manifests as [[learning/notes/quick-context/inductor|back-EMF]]: V = -L × dI/dt. The minus sign ([[quick-context/lenzs-law|Lenz's Law]]) ensures the induced voltage opposes the change in current.
 </details>
 
 **Q5:** In empty space with no charges or currents, Maxwell's equations still allow solutions. What are these solutions?

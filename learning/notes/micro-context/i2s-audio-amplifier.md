@@ -3,18 +3,20 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
+
 
 # I2S Audio Amplifier
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
+> **[[learning/notes/micro-context/4-wire-kelvin-measurement|See also:]]** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
 
-**Definition:** A chip that receives digital audio over I2S (Inter-IC Sound) protocol and directly drives a speaker—combining DAC and amplifier in one package. The MAX98357A in your Pupper takes serial digital audio from the MCU and outputs up to 3.2W to a speaker, enabling the robot to make sounds without external audio hardware.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Definition:]]** A chip that receives digital audio over [[learning/notes/micro-context/i2s|I2S (Inter-IC Sound)]] protocol and directly drives a speaker—combining DAC and amplifier in one [[learning/notes/quick-context/silicon-die|package]]. The MAX98357A in [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] Pupper takes [[learning/notes/quick-context/data-bus-and-arbitration|serial]] digital audio from the MCU and outputs up to 3.2W to a speaker, enabling the robot to make sounds without external audio [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]].
 
 ## How It Works
 
-- The MCU transmits audio samples as a serial bit stream over three I2S lines: bit clock (BCLK), left/right select (LRCLK), and data (DIN).
+- The MCU transmits audio samples as a serial bit stream over three I2S lines: bit [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] (BCLK), left/right select (LRCLK), and data (DIN).
 - The MAX98357A's internal DAC reconstructs the analog waveform from the digital samples.
-- A Class-D amplifier stage converts the analog signal into high-frequency PWM that drives the speaker coil.
+- A Class-D amplifier stage converts the analog [[learning/notes/quick-context/comparator|signal]] into high-frequency PWM that drives the speaker coil.
 - The speaker's mechanical inertia acts as a natural low-pass filter, reproducing the original audio waveform.
 
 ```
@@ -37,4 +39,4 @@ I2S AUDIO SIGNAL CHAIN:
   DIN:   ◄──L channel──►◄──R channel──►  (audio data)
 ```
 
-**Key insight:** I2S amplifiers eliminate the analog audio path entirely—digital data goes straight to the speaker driver, avoiding noise pickup and simplifying PCB layout compared to traditional analog audio chains.
+**[[learning/notes/micro-context/4-wire-kelvin-measurement|Key insight:]]** I2S amplifiers eliminate the analog audio path entirely—digital data goes straight to the speaker driver, avoiding noise pickup and simplifying PCB layout compared to traditional analog audio chains.

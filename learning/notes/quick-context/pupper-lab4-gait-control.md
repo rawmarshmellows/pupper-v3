@@ -2,28 +2,30 @@
 topic: Pupper Lab 4 — Gait Control (Trotting Quadruped)
 created: 2026-03-10
 ---
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]]
+
 
 # Pupper Lab 4 — Gait Control (Trotting Quadruped)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab5-neural-controller]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab5-neural-controller]]
 
-> **TL;DR:** Lab 4 extends single-leg FK/IK from Labs 2-3 to all four legs simultaneously, coordinating them into a trotting gait where diagonal leg pairs (FR+BL, FL+BR) move in anti-phase. All target joint positions for one complete gait cycle are pre-cached via IK at startup to avoid real-time computational cost, then the 200 Hz control loop simply indexes into the cached trajectory with per-leg phase offsets.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** Lab 4 extends single-leg FK/IK from Labs 2-3 to all [[learning/notes/quick-context/ram-addressing-decoder|four]] legs [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]], coordinating them into a trotting gait where diagonal leg pairs (FR+BL, FL+BR) move in anti-phase. All target joint positions for one complete gait cycle are pre-cached via IK at [[learning/notes/quick-context/firmware|startup]] to avoid real-time computational [[learning/notes/quick-context/bond-pad|cost]], then the 200 Hz control loop simply indexes into the cached trajectory with per-leg phase offsets.
 
 ## The Core Problem
 
-Making a quadruped robot walk requires solving three problems simultaneously: where each foot should be at every instant (trajectory planning), what joint angles achieve those foot positions (inverse kinematics), and how to coordinate four legs so the robot stays balanced (gait timing). Labs 2 and 3 solved the first two problems for a single leg — Lab 2 gave us forward kinematics to know where the foot is, Lab 3 gave us inverse kinematics to command where it should go, and a triangle trajectory to step. Lab 4's challenge is scaling this to four legs that must work in concert.
+Making a quadruped robot walk requires solving three problems simultaneously: where each foot should be at every instant (trajectory planning), [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] joint angles achieve those foot positions ([[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]]), and how to coordinate four legs so the robot stays balanced (gait [[learning/notes/quick-context/comparator-specification|timing]]). Labs 2 and 3 solved the first two problems for a single leg — Lab 2 gave us forward kinematics to know where the foot is, Lab 3 gave us inverse kinematics to command where it should go, and a [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|triangle trajectory]] to step. Lab 4's challenge is scaling this to four legs that [[learning/notes/quick-context/ros2-architecture|must]] work in concert.
 
-The trotting gait is the natural starting point for quadruped locomotion because it is the simplest dynamically stable two-phase gait. At any instant during a trot, two diagonally opposite feet are on the ground while the other two are swinging through the air. This diagonal pairing ensures the support polygon — the line connecting the two grounded feet — passes roughly under the robot's center of mass, preventing roll or pitch instability. Compare this to pacing (same-side legs swing together), which causes lateral rocking, or bounding (front pair and rear pair alternate), which causes fore-aft pitching. Trotting minimizes both failure modes, making it the most forgiving gait for a student-built controller.
+The trotting gait is the natural starting [[learning/notes/quick-context/epson-rc-plus-programming|point]] for quadruped locomotion because it is the simplest dynamically stable two-phase gait. At any instant during a trot, two diagonally opposite feet are on the ground while the other two are swinging through the air. This diagonal pairing ensures the support polygon — the line connecting the two grounded feet — passes roughly under the robot's center of mass, preventing roll or [[learning/notes/quick-context/bga-ball-grid-array|pitch]] instability. Compare this to pacing (same-side legs swing together), which causes lateral rocking, or bounding (front pair and rear pair alternate), which causes fore-aft pitching. Trotting minimizes [[learning/notes/quick-context/bjt-specifications|both]] failure modes, making it the most forgiving gait for a student-built controller.
 
-The computational cost of inverse kinematics is the hidden bottleneck. Lab 3's gradient-descent IK requires many FK evaluations per solve — each evaluation involves multiplying four $4 \times 4$ homogeneous transformation matrices, and convergence may take tens of iterations. Running IK for all four legs at 200 Hz would consume most of the available CPU budget on the Raspberry Pi. Lab 4's elegant solution is pre-caching: before the robot starts walking, compute all IK solutions for every waypoint of every leg for one complete gait cycle, then store the resulting joint angle arrays. At runtime, the control loop simply looks up the correct index in the cache, adds the appropriate phase offset per leg, and sends joint commands. This trades startup time and memory for deterministic, near-zero runtime cost — but it sacrifices the ability to adapt trajectories on the fly, a limitation that Lab 5's neural controller eventually overcomes.
+The computational cost of inverse kinematics is the hidden bottleneck. Lab 3's gradient-descent IK requires many FK evaluations per solve — each evaluation involves multiplying four $4 \times 4$ homogeneous transformation matrices, and convergence may take tens of iterations. Running IK for all four legs at 200 Hz would consume most of the available CPU budget on the Raspberry Pi. Lab 4's elegant solution is pre-caching: before the robot starts walking, compute all IK solutions for every waypoint of every leg for one complete gait cycle, then store the resulting joint angle arrays. At runtime, the control loop simply looks up the correct index in the cache, adds the appropriate phase offset per leg, and sends joint commands. This trades [[learning/notes/quick-context/rc-oscillator|startup time]] and [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]] for deterministic, near-[[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] runtime cost — but it sacrifices the ability to adapt trajectories on the fly, a limitation that Lab 5's neural controller eventually overcomes.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Trotting Gait** | A two-phase quadruped gait where diagonal leg pairs (FR+BL and FL+BR) alternate between swing and stance; the most common gait for medium-speed quadruped locomotion |
-| **Phase Offset** | The fractional delay ($\phi \in [0, 1)$) applied to a leg's gait cycle relative to a reference leg; for trotting, diagonal partners share $\phi = 0$ while the other pair has $\phi = 0.5$ |
-| **Stance Phase** | The portion of the gait cycle when a foot is on the ground and pushing the body forward; the foot moves backward relative to the body at ground contact speed |
+| **Phase Offset** | The fractional delay ($\phi \in [0, 1)$) applied to a leg's gait cycle relative to a [[learning/notes/quick-context/comparator|reference]] leg; for trotting, diagonal partners share $\phi = 0$ while the other pair has $\phi = 0.5$ |
+| **Stance Phase** | The portion of the gait cycle [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] a foot is on the ground and pushing the body forward; the foot moves backward relative to the body at ground contact speed |
 | **Swing Phase** | The portion of the gait cycle when a foot is in the air, traveling from liftoff to the next touchdown position; trajectory must clear the ground to avoid scuffing |
 | **Gait Cycle** | One complete period $T$ of a leg's motion, from touchdown through stance, liftoff, swing, and back to the next touchdown; all legs share the same cycle period but differ in phase |
 
@@ -32,11 +34,11 @@ The computational cost of inverse kinematics is the hidden bottleneck. Lab 3's g
 
 ### Extending FK to All Four Legs
 
-In Lab 2, FK was implemented for the front-left leg only. Lab 4 requires FK for all four legs, each with different hip offsets from the body center. The transformation chain for each leg is:
+In Lab 2, FK was implemented for the front-left leg [[learning/notes/quick-context/comparator-specification|only]]. Lab 4 requires FK for all four legs, each with different hip offsets from the body center. The transformation chain for each leg is:
 
-$$T_{0 \to \text{foot}}^{(i)} = T_{\text{body} \to \text{hip}}^{(i)} \cdot T_{\text{hip} \to \text{thigh}}^{(i)} \cdot T_{\text{thigh} \to \text{shin}}^{(i)} \cdot T_{\text{shin} \to \text{foot}}^{(i)}$$
+$$T_{0 \to \[[learning/notes/quick-context/how-source-code-is-stored|text]]{foot}}^{(i)} = T_{\text{body} \to \text{hip}}^{(i)} \cdot T_{\text{hip} \to \text{thigh}}^{(i)} \cdot T_{\text{thigh} \to \text{shin}}^{(i)} \cdot T_{\text{shin} \to \text{foot}}^{(i)}$$
 
-The body-to-hip transform $T_{\text{body} \to \text{hip}}^{(i)}$ differs per leg, encoding the $x$ (fore-aft) and $y$ (lateral) offset of each hip from the body center. Front legs have positive $x$ offset, back legs negative. Left legs have positive $y$ offset, right legs negative. The remaining transforms in the chain use the same link lengths and joint-axis definitions as Lab 2, but with sign flips for left vs. right legs on the hip abduction axis.
+The body-to-hip transform $T_{\text{body} \to \text{hip}}^{(i)}$ differs per leg, [[learning/notes/quick-context/how-source-code-is-stored|encoding]] the $x$ (fore-aft) and $y$ (lateral) offset of each hip from the body center. Front legs have positive $x$ offset, back legs negative. Left legs have positive $y$ offset, right legs negative. The remaining transforms in the chain use the same link lengths and joint-axis definitions as Lab 2, but with sign flips for left vs. right legs on the hip abduction axis.
 
 ### Diagonal Pairing and Phase Timing
 
@@ -117,7 +119,7 @@ SINGLE-LEG TRAJECTORY (side view, body frame)
 
 ### Pre-Caching the Gait
 
-Before the robot begins walking, Lab 4 discretizes one full gait cycle into $N$ timesteps (e.g., $N = 100$). For each timestep $k$ and each leg $i$:
+Before the robot begins walking, Lab 4 discretizes one [[learning/notes/quick-context/singular-value-decomposition|full]] gait cycle into $N$ timesteps (e.g., $N = 100$). For each timestep $k$ and each leg $i$:
 
 1. Compute the foot target position $\mathbf{p}_k^{(i)}$ by interpolating between waypoints, applying leg $i$'s phase offset $\phi_i$
 2. Run gradient-descent IK to solve for joint angles: $\boldsymbol{\theta}_k^{(i)} = \text{IK}(\mathbf{p}_k^{(i)})$
@@ -145,17 +147,17 @@ PRE-CACHE STRUCTURE (conceptual)
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Pre-cached vs. real-time IK</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Pre-cached vs. real-time IK</summary>
 
 Lab 4's pre-caching strategy is a deliberate engineering tradeoff that reveals a fundamental tension in robot control: **determinism vs. adaptability**.
 
 ### Why Pre-Cache?
 
-**Computational cost.** Lab 3's gradient-descent IK solves one leg at ~20 Hz. Scaling to four legs in real time would drop the effective rate to ~5 Hz per leg — far too slow for smooth locomotion. Pre-caching moves all IK computation to a one-time startup phase, leaving the 200 Hz runtime loop free for PD control alone.
+**Computational cost.** Lab 3's gradient-descent IK solves one leg at ~20 Hz. Scaling to four legs in real time would drop the effective rate to ~5 Hz per leg — far too slow for smooth locomotion. Pre-caching moves all IK computation to a one-time startup phase, leaving the 200 Hz runtime loop free for [[learning/notes/quick-context/pupper-v3-labs|PD control]] alone.
 
-**Determinism.** Gradient descent is iterative and its convergence time varies depending on the initial guess and target proximity. In real time, an IK solve that takes 3x longer than average could cause a missed control deadline, producing a visible hitch in the gait. Pre-cached trajectories eliminate this variability entirely — every timestep costs exactly one array lookup.
+**Determinism.** [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Gradient descent]] is iterative and its convergence time varies depending on the initial guess and target proximity. In real time, an IK solve that takes 3x longer than average could cause a missed control [[learning/notes/quick-context/ros2-architecture|deadline]], producing a visible hitch in the gait. Pre-cached trajectories eliminate this variability entirely — every timestep costs [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] array lookup.
 
-**Reproducibility.** The same cache produces the same gait every time. This makes debugging straightforward: if the robot stumbles, the problem is in PD tuning or hardware, not in a non-deterministic IK solution that happened to converge to a different local minimum.
+**Reproducibility.** The same cache produces the same gait every time. This makes [[learning/notes/quick-context/firmware|debugging]] straightforward: if the robot stumbles, the problem is in PD [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|tuning]] or [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]], not in a non-deterministic IK solution that happened to converge to a different local minimum.
 
 ### What You Lose
 
@@ -163,14 +165,14 @@ Lab 4's pre-caching strategy is a deliberate engineering tradeoff that reveals a
 
 **Velocity changes.** Changing walking speed requires either recomputing the entire cache (expensive) or interpolating between pre-computed caches at different speeds (complex). A real-time IK system could simply adjust foot targets on the fly.
 
-**Reactive balance.** When the robot is pushed or tilts unexpectedly, the pre-cached gait cannot shift foot placements to recover balance. The PD controller can resist perturbations to some degree, but the foot trajectory itself is fixed.
+**[[learning/notes/quick-context/pupper-lab7-vision-tracking|Reactive]] balance.** When the robot is pushed or tilts unexpectedly, the pre-cached gait cannot shift foot placements to recover balance. The PD controller can resist perturbations to some degree, but the foot trajectory itself is fixed.
 
-This is precisely the limitation that motivates Lab 5: a neural network policy trained via reinforcement learning replaces the entire FK + IK + gait pipeline. The RL policy runs at ~52 Hz, outputs joint targets directly (no IK solve needed), and has learned to adapt to perturbations, terrain variation, and even missing legs — capabilities that are effectively impossible with a pre-cached open-loop gait.
+This is precisely the limitation that motivates Lab 5: a neural network [[learning/notes/quick-context/pupper-lab5-neural-controller|policy]] trained via reinforcement learning replaces the entire FK + IK + gait pipeline. The RL policy runs at ~52 Hz, outputs joint targets directly (no IK solve needed), and has learned to adapt to perturbations, terrain variation, and even missing legs — capabilities that are effectively impossible with a pre-cached open-loop gait.
 
 | Aspect | Pre-Cached (Lab 4) | Real-Time IK | Neural Policy (Lab 5) |
 |--------|--------------------|--------------|-----------------------|
 | Runtime cost per leg | $O(1)$ array lookup | $O(n \cdot k)$ per IK solve | $O(1)$ network forward pass |
-| Terrain adaptation | None | Possible with sensor feedback | Learned from simulation |
+| Terrain adaptation | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] | Possible with sensor feedback | Learned from [[learning/notes/quick-context/epson-rc-plus-programming|simulation]] |
 | Velocity changes | Requires re-cache | Adjust targets directly | Commanded via `/cmd_vel` |
 | Predictability | Fully deterministic | Varies per solve | Stochastic but robust |
 | Setup complexity | Moderate | Low | High (sim training) |
@@ -258,7 +260,7 @@ FR JOINT ANGLES OVER ONE GAIT CYCLE
       0%    25%    50%    75%    100%
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming gait control is primarily about leg trajectories. In practice, the hard part is timing coordination. A single leg following a perfect triangle trajectory is easy (Lab 3 already does it). Making four legs share a single clock, maintain precise phase relationships, and transition cleanly between stance and swing without the PD controllers fighting each other — that is where Lab 4's real complexity lives. The pre-caching strategy elegantly sidesteps per-leg IK timing jitter, but the phase offset math and hip offset transforms are where students spend most of their debugging time.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** assuming gait control is primarily about leg trajectories. In practice, the hard part is timing coordination. A single leg following a perfect triangle trajectory is easy (Lab 3 already does it). Making four legs share a single [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]], maintain precise phase relationships, and transition cleanly between stance and swing without the PD controllers fighting each other — that is where Lab 4's real complexity lives. The pre-caching strategy elegantly sidesteps per-leg IK timing [[learning/notes/quick-context/preempt-rt|jitter]], but the phase offset math and hip offset transforms are where students spend most of their debugging time.
 
 </details>
 
@@ -266,8 +268,8 @@ FR JOINT ANGLES OVER ONE GAIT CYCLE
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 4 sits at the pivot point between single-leg control (Labs 1-3) and full-system intelligence (Labs 5-7). Everything after Lab 4 assumes a working trotting gait.
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware that runs this gait. The 200 Hz PD loop executes on the Pi's ROS2 stack, while the 1 kHz motor control loop runs on the STM32, meaning Lab 4's cached joint targets are downsampled and interpolated by the microcontroller firmware.
-- **Other quadruped gaits** — Trotting is one of many: *walking* (3 feet always grounded, slowest but most stable), *pacing* (ipsilateral pairs, used by camels), *bounding* (front/back pairs, fast but unstable), *galloping* (asymmetric, fastest). Each has different duty factors and phase relationships.
+- **[[quick-context/pupper-brain]]** — The [[learning/notes/quick-context/comparator-specification|dual]]-STM32 + Raspberry Pi hardware that runs this gait. The 200 Hz PD loop executes on the Pi's ROS2 stack, while the 1 kHz motor control loop runs on the STM32, meaning Lab 4's cached joint targets are downsampled and interpolated by the [[learning/notes/micro-context/microcontroller|microcontroller]] [[learning/notes/quick-context/firmware|firmware]].
+- **Other quadruped gaits** — Trotting is one of many: *walking* (3 feet always grounded, slowest but most stable), *pacing* (ipsilateral pairs, used by camels), *bounding* (front/back pairs, [[learning/notes/quick-context/comparator|fast]] but unstable), *galloping* (asymmetric, fastest). Each has different duty factors and phase relationships.
 - **Static vs. dynamic stability** — A statically stable gait keeps the center of mass within the support polygon at all times (requires 3+ feet on the ground). Trotting is only *dynamically* stable — with just 2 feet down, the robot relies on momentum and fast gait cycling to avoid falling. This is why trot speed matters: too slow and the robot tips between steps.
 - **Zero Moment Point (ZMP)** — A formal stability criterion used in humanoid and quadruped robotics. The ZMP is the point on the ground where the net moment of inertial and gravitational forces is zero. If the ZMP stays within the support polygon, the robot won't tip. Lab 4's trot doesn't explicitly compute ZMP, but the diagonal pairing implicitly keeps it near the body center.
 - **Central Pattern Generators (CPGs)** — Biological approach to gait generation inspired by neural circuits in animal spinal cords. CPGs use coupled oscillators to produce rhythmic leg motion with tunable phase relationships, offering a more biologically plausible alternative to Lab 4's waypoint interpolation.
@@ -275,7 +277,7 @@ FR JOINT ANGLES OVER ONE GAIT CYCLE
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** Why does the trotting gait pair diagonal legs (FR+BL) rather than same-side legs (FR+BR) or same-end legs (FR+FL)?
 
@@ -288,14 +290,14 @@ Diagonal pairing maximizes stability by placing the two support points on opposi
 
 <details>
 <summary>Answer</summary>
-Yes, this works and is a common trick. By incrementing the cache index every 2nd tick instead of every tick, the same 100-waypoint trajectory is played back over 1.0 s instead of 0.5 s. The foot positions remain identical — only the timing changes. However, there are limits: the stance-phase foot velocity relative to the ground must match the body's forward velocity, or the feet will slip. If you halve the playback speed, the body also moves at half speed (since stance pushback is half as fast), so the gait remains self-consistent. But you cannot independently change speed and stride length without recomputing the cache with different waypoint positions.
+Yes, this works and is a common trick. By incrementing the cache index every 2nd tick instead of every tick, the same 100-waypoint trajectory is played back over 1.0 s instead of 0.5 s. The foot positions remain [[learning/notes/quick-context/ram-addressing-decoder|identical]] — only the timing changes. However, there are limits: the stance-phase foot velocity relative to the ground must match the body's forward velocity, or the feet will slip. If you halve the playback speed, the body also moves at half speed (since stance pushback is half as fast), so the gait remains self-consistent. But you cannot independently change speed and stride length without recomputing the cache with different waypoint positions.
 </details>
 
-**Q3:** Lab 4 pre-caches all IK solutions at startup. What would happen if one leg's IK fails to converge for a particular waypoint, and how might you detect or handle this?
+**Q3:** Lab 4 pre-caches all IK solutions at startup. What would happen if one leg's IK [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|fails]] to converge for a particular waypoint, and how might you detect or handle this?
 
 <details>
 <summary>Answer</summary>
-If gradient-descent IK fails to converge (cost remains above threshold after max iterations), the cached joint angles for that waypoint will be wrong — the foot won't reach its target position. During the gait, this manifests as the leg "missing" a step or jerking to an unexpected pose. Detection strategies: (1) check the final IK cost after each solve during pre-caching and flag waypoints that didn't converge below a threshold, (2) verify that consecutive cached angles don't have discontinuous jumps (which indicate the IK found a different local minimum). Handling strategies: increase iteration count, use the previous waypoint's solution as the initial guess (warm-starting), or reduce the waypoint spacing so targets are closer together and easier to solve.
+If gradient-descent IK fails to converge (cost remains above [[learning/notes/micro-context/capacitive-voltage-sensing|threshold]] after max iterations), the cached joint angles for that waypoint will be wrong — the foot won't reach its target position. During the gait, this manifests as the leg "missing" a step or jerking to an unexpected pose. Detection strategies: (1) check the final IK cost after each solve during pre-caching and flag waypoints that didn't converge below a threshold, (2) verify that consecutive cached angles don't have discontinuous jumps (which indicate the IK found a different local minimum). Handling strategies: increase iteration [[learning/notes/quick-context/switches-to-registers-storing-data|count]], use the previous waypoint's solution as the initial guess (warm-starting), or reduce the waypoint spacing so targets are closer together and easier to solve.
 </details>
 
 </details>

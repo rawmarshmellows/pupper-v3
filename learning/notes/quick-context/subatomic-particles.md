@@ -2,26 +2,28 @@
 topic: Subatomic Particles - Quarks, Protons, Neutrons, Electrons
 created: 2026-02-14
 ---
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
+
 
 # Subatomic Particles
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+> **[[learning/notes/quick-context/3d-printer-hotends|Related:]]** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
 
-> **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
+> **[[learning/notes/quick-context/3d-printer-hotends|TL;DR:]]** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and [[learning/notes/quick-context/anions-and-oxidation|electrons]] (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] element you have, and [[learning/notes/quick-context/anions-and-oxidation|electron]] behavior explains all of chemistry.
 
 ## The Core Problem
 
-Everything around you—your body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What holds an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton count and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear power.
+Everything around you—[[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] body, your computer, the air you breathe—is made of atoms. But what makes a carbon atom different from an oxygen atom? What [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] an atom together? Why do some atoms bond while others don't? The answers lie in subatomic structure. If protons, neutrons, and electrons didn't exist with their specific properties, matter as we know it wouldn't exist. The positive protons and negative electrons create the electromagnetic forces that [[quick-context/covalent-bonds|hold atoms together in molecules]]. The number of protons determines which element you're looking at (change the proton [[learning/notes/quick-context/switches-to-registers-storing-data|count]] and you've transmuted one element into another). [[quick-context/electric-current|Electric current]] is literally the flow of electrons. Understanding subatomic particles is the foundation for everything from [[quick-context/doped-silicon|semiconductor electronics]] to [[quick-context/electrolysis|electrochemistry]] to nuclear [[learning/notes/quick-context/d-flip-flop|power]].
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Proton** | A positively charged particle in the nucleus; its count defines the element (1 proton = hydrogen, 6 = carbon, 79 = gold). Mass: ~1.67 × 10⁻²⁷ kg. Charge: +1 elementary charge. |
+| **Proton** | A positively charged particle in the nucleus; its count defines the element (1 proton = hydrogen, 6 = carbon, 79 = gold). Mass: ~1.67 × 10⁻²⁷ kg. [[learning/notes/quick-context/cations-and-reduction|Charge]]: +1 elementary charge. |
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
 | **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[learning/notes/quick-context/electromagnetism|electromagnetism]] but [[learning/notes/quick-context/comparator-specification|only]] works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -244,7 +246,7 @@ THE NUCLEAR STABILITY PUZZLE
 
 ## How This Connects to Electronics and Chemistry
 
-The electrons are where the action is for chemistry and electronics:
+The electrons are where the [[learning/notes/quick-context/pupper-lab5-neural-controller|action]] is for chemistry and electronics:
 
 ```
 ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
@@ -310,11 +312,11 @@ ELECTRONS: THE CHEMISTRY AND ELECTRONICS PARTICLE
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Classical vs. Quantum: Two Ways to Think About Atoms
 
-**Classical (Bohr model):** Electrons orbit the nucleus like planets around the sun, in fixed circular paths at specific energy levels. Simple, intuitive, and useful for basic chemistry—but fundamentally wrong.
+**Classical (Bohr model):** Electrons orbit the nucleus like planets around the sun, in fixed circular paths at specific energy levels. Simple, intuitive, and useful for [[learning/notes/quick-context/playbook-main|basic]] chemistry—but fundamentally wrong.
 
 **Quantum (modern):** Electrons don't have definite positions; they exist as probability clouds (orbitals) where they're likely to be found. The electron is "everywhere at once" until measured. This is mathematically correct but deeply counterintuitive.
 
@@ -482,7 +484,7 @@ COPPER (Cu) — The Conductor
 
 ## Example: Why Sodium Explodes in Water
 
-Understanding atomic structure explains violent chemical reactions:
+Understanding atomic structure explains violent [[learning/notes/quick-context/electricity-generation|chemical reactions]]:
 
 ```
 SODIUM IN WATER — A Subatomic Explanation
@@ -537,7 +539,7 @@ SODIUM IN WATER — A Subatomic Explanation
     The energy required to remove that electron matters enormously.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking electrons orbit the nucleus like planets orbit the sun. They don't. Electrons exist as probability clouds—the electron is statistically more likely to be found in certain regions, but it doesn't trace a definite path. This matters because it explains why atoms can bond (electron clouds overlap), why quantum tunneling works (electrons can "teleport" through barriers), and why semiconductor physics requires quantum mechanics. For basic chemistry, the planetary model is a useful lie. For understanding modern electronics at a fundamental level, you need the quantum picture.
+**[[learning/notes/quick-context/3d-printer-hotends|The one thing most outsiders get wrong about this is...]]** thinking electrons orbit the nucleus like planets orbit the sun. They don't. Electrons exist as probability clouds—the electron is statistically more likely to be found in certain regions, but it doesn't [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] a definite path. This matters because it explains why atoms can bond (electron clouds overlap), why [[learning/notes/quick-context/transistor|quantum tunneling]] works (electrons can "teleport" through barriers), and why semiconductor physics requires quantum mechanics. For basic chemistry, the planetary model is a useful lie. For understanding modern electronics at a fundamental level, you need the quantum picture.
 
 </details>
 
@@ -546,17 +548,17 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/atoms-molecules-polymers-basics]]** — Builds on atomic structure to explain how atoms combine into molecules and polymers. The electron behavior described here is what enables covalent bonding.
 
-- **[[quick-context/covalent-bonds]]** — The sharing of electrons between atoms to form molecules. Understanding electron shells explains why carbon forms 4 bonds, oxygen forms 2, hydrogen forms 1.
+- **[[quick-context/covalent-bonds]]** — The sharing of electrons between atoms to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] molecules. Understanding electron shells explains why carbon forms 4 bonds, oxygen forms 2, hydrogen forms 1.
 
-- **[[quick-context/doped-silicon]]** — Manipulating electron counts at the atomic level (adding dopants) to create controllable semiconductors. The free electrons and holes are literally extra or missing electrons relative to pure silicon.
+- **[[quick-context/doped-silicon]]** — Manipulating electron counts at the atomic level (adding dopants) to create controllable semiconductors. The free electrons and [[learning/notes/quick-context/bjt-specifications|holes]] are literally extra or missing electrons relative to pure [[learning/notes/quick-context/transistor|silicon]].
 
-- **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
+- **[[quick-context/electric-current]]** — [[learning/notes/quick-context/capacitance|Current]] is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[learning/notes/micro-context/cathode|cathode]] to [[learning/notes/quick-context/anions-and-oxidation|ions]] in solution, enabling chemical transformations.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
+- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest [[learning/notes/quick-context/electrodes|electron flow]] from spontaneous chemical reactions. The [[learning/notes/quick-context/cations-and-reduction|electrode]] potential differences come from how strongly different atoms [[learning/notes/quick-context/d-flip-flop|hold]] their electrons.
 
-- **Radioactivity and Nuclear Physics** — When the nucleus is unstable (too many or too few neutrons), it decays by emitting particles. Alpha decay, beta decay, and gamma radiation all involve subatomic particle transformations.
+- **Radioactivity and Nuclear Physics** — [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] the nucleus is unstable (too many or too few neutrons), it decays by emitting particles. Alpha decay, beta decay, and gamma radiation all involve subatomic particle transformations.
 
 - **The Standard Model** — The complete theory of fundamental particles: 6 quarks, 6 leptons (including the electron), and force-carrying bosons (photons, gluons, W/Z bosons, Higgs). Everything we've discussed is the "low-energy" corner of this theory.
 
@@ -580,19 +582,19 @@ SODIUM IN WATER — A Subatomic Explanation
 **Q3:** Why do heavier elements need proportionally more neutrons than lighter elements to remain stable?
 <details>
 <summary>Answer</summary>
-**Electromagnetic repulsion increases faster than strong force attraction.** As more protons pack into the nucleus, each proton repels every other proton (electromagnetic force has infinite range). But the strong force only attracts immediate neighbors (very short range). With more protons, you need more neutrons to add strong-force "glue" without adding more repulsion. Above ~83 protons, no configuration is stable enough—all very heavy elements are radioactive. See: "Why the Nucleus Doesn't Fly Apart."
+**Electromagnetic repulsion increases faster than strong force attraction.** As more protons [[learning/notes/quick-context/code-to-gates-and-bootstrapping|pack]] into the nucleus, each proton repels every other proton (electromagnetic force has infinite range). But the strong force only attracts immediate neighbors (very short range). With more protons, you need more neutrons to add strong-force "glue" without adding more repulsion. Above ~83 protons, no configuration is stable enough—all very heavy elements are radioactive. See: "Why the Nucleus Doesn't Fly Apart."
 </details>
 
-**Q4:** Copper and sodium both have 1 electron in their outer shell. Why does sodium explode in water while copper is safe for water pipes?
+**Q4:** Copper and sodium [[learning/notes/quick-context/bjt-specifications|both]] have 1 electron in their outer shell. Why does sodium explode in water while copper is safe for water pipes?
 <details>
 <summary>Answer</summary>
-**Sodium's outer electron is much easier to remove.** While both have 1 outer electron, sodium's electron is in the 3rd shell far from a nucleus with only +11 charge. Copper's electron is effectively in a higher shell but with +29 nuclear charge (and d-orbital effects make it even harder to remove). The ionization energy (energy to remove that electron) is much lower for sodium, making it violently reactive. See: "Why Sodium Explodes in Water" example.
+**Sodium's outer electron is much easier to remove.** While both have 1 outer electron, sodium's electron is in the 3rd shell far from a nucleus with only +11 charge. Copper's electron is effectively in a higher shell but with +29 nuclear charge (and d-orbital effects make it even harder to remove). The [[learning/notes/quick-context/platinum-inertness|ionization energy]] (energy to remove that electron) is much lower for sodium, making it violently [[learning/notes/quick-context/pupper-lab7-vision-tracking|reactive]]. See: "Why Sodium Explodes in Water" example.
 </details>
 
-**Q5:** How does understanding subatomic particles help explain why [[quick-context/doped-silicon|doping silicon]] creates n-type and p-type semiconductors?
+**Q5:** How does understanding subatomic particles help explain why [[quick-context/doped-silicon|doping silicon]] creates n-[[learning/notes/quick-context/bjt-specifications|type]] and p-type semiconductors?
 <details>
 <summary>Answer</summary>
-**Doping adds or removes electrons at the atomic level.** Pure silicon has 4 outer electrons, all used for bonding with neighbors. Adding phosphorus (5 outer electrons) provides one extra electron that's free to conduct—this is n-type (negative charge carriers). Adding boron (3 outer electrons) creates a "hole" (missing electron) that acts like a positive charge carrier—this is p-type. Understanding that electrical properties come from electron counts, and that we can surgically modify those counts by adding specific atoms, explains how semiconductor devices work.
+**[[learning/notes/quick-context/doped-silicon|Doping]] adds or removes electrons at the atomic level.** Pure silicon has 4 outer electrons, all used for bonding with neighbors. Adding phosphorus (5 outer electrons) provides one extra electron that's free to conduct—this is n-type (negative charge carriers). Adding boron (3 outer electrons) creates a "hole" (missing electron) that acts like a positive charge carrier—this is p-type. Understanding that electrical properties come from electron counts, and that we can surgically modify those counts by adding specific atoms, explains how semiconductor devices work.
 </details>
 
 </details>
