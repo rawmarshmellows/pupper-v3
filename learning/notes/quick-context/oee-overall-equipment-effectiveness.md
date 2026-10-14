@@ -3,7 +3,7 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/quick-context/teep]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 
@@ -24,7 +24,7 @@ The brilliance is the decomposition: when OEE drops, you immediately know which 
 | **Six Big Losses** | The canonical taxonomy: breakdowns, setup/changeover, minor stops, slow cycles, startup rejects, and production rejects—OEE exists to quantify these |
 | **Ideal Cycle Time** | The theoretical minimum time to produce one unit, against which actual cycle times are compared for Performance calculation |
 | **Planned Production Time** | The scheduled hours minus planned downtime like meals or maintenance windows—your denominator for Availability |
-| **TEEP** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
+| **[[learning/notes/quick-context/teep|TEEP]]** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
 | **Pareto of Losses** | The analysis technique of ranking losses by impact to focus improvement efforts—"we're losing 12% to changeovers and 3% to breakdowns, so attack changeovers first" |
 
 <details>
@@ -87,7 +87,7 @@ A beverage company's bottling line shows 68% OEE. Breaking it down:
 3. Startup rejects: 4% of total losses (tune fill parameters for faster startup)
 4. Breakdowns: 3% of total losses (preventive maintenance on the problematic filler valve)
 
-Without OEE decomposition, management might have blamed "old equipment" and requested capital for a new line. The data showed the existing line could reach 80%+ OEE with changeover reduction and jam elimination—no capital required.
+Without OEE decomposition, management might have blamed "old equipment" and requested capital for a new line. The data showed the existing line could reach 80%+ OEE with changeover [[learning/notes/quick-context/cations-and-reduction|reduction]] and jam elimination—no capital required.
 
 **The one thing most outsiders get wrong about this is...** thinking 85% OEE is a universal target. World-class for a dedicated single-product line might be 95%; world-class for a high-mix job shop with 50 changeovers per day might be 55%. The number is meaningless without context—OEE is a diagnostic tool for identifying loss categories, not a leaderboard for comparing dissimilar operations.
 

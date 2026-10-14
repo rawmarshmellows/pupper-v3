@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/glass-transition-temperature]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 
@@ -20,7 +20,7 @@ Here's the critical insight: when plastic cools, crystalline regions **shrink mo
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain molecule made of repeating units - like a pearl necklace where each pearl is a small molecule linked to its neighbors. |
+| **Polymer** | A long chain molecule made of repeating units - like a pearl necklace where each pearl is a small molecule linked to its neighbors. |
 | **Crystalline** | Regions where polymer chains are packed in orderly, repeating patterns - denser, stronger, but shrinks significantly when cooling. |
 | **Amorphous** | Regions where polymer chains are randomly tangled with no pattern - less dense, more flexible, shrinks less when cooling. |
 | **[[quick-context/glass-transition-temperature|Glass Transition Temperature]] (Tg)** | The temperature where amorphous regions go from rigid to rubbery - below this, the plastic is stiff; above it, it's soft and pliable. |

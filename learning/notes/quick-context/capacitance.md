@@ -5,13 +5,13 @@ created: 2026-03-28
 
 # Capacitance
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
-> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
+> **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] capacitors: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 
 ## The Core Problem
 
-Every pair of conductors separated by an insulator has capacitance. Discrete [[quick-context/capacitor|capacitors]] exploit this intentionally, but *parasitic* capacitance -- the unintended capacitance baked into every wire, trace, connector, and [[quick-context/transistor|transistor]] gate -- is what limits how fast digital circuits can switch, how far analog signals can travel without distortion, and how much power a CPU burns. Understanding capacitance as a *property of geometry and materials* (not just a component spec) is the key to understanding signal integrity, switching speed, and power dissipation in modern electronics.
+Every pair of conductors separated by an insulator has capacitance. Discrete capacitors exploit this intentionally, but *parasitic* capacitance -- the unintended capacitance baked into every wire, trace, connector, and [[quick-context/transistor|transistor]] gate -- is what limits how fast digital circuits can switch, how far analog signals can travel without distortion, and how much power a CPU burns. Understanding capacitance as a *property of geometry and materials* (not just a component spec) is the key to understanding signal integrity, switching speed, and power dissipation in modern electronics.
 
 ## 5 Essential Terms
 
@@ -19,14 +19,14 @@ Every pair of conductors separated by an insulator has capacitance. Discrete [[q
 |------|------------|
 | **Farad (F)** | The unit of capacitance. 1 farad = 1 coulomb stored per volt applied ($C = Q/V$). Practical values range from femtofarads (fF, transistor gates) through picofarads (pF, PCB traces) to microfarads ($\mu$F, [[micro-context/decoupling-capacitor|decoupling caps]]). |
 | **Parasitic Capacitance** | Unintended capacitance between conductors in a circuit -- PCB traces, IC pins, wire bundles. Always present, often dominant at high frequencies, and the primary speed limiter in digital circuits. |
-| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 ([[quick-context/pcb-printed-circuit-board|PCB]] substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
-| **$C = \varepsilon A / d$** | The parallel-plate formula: capacitance scales with plate area ($A$) and [[quick-context/voltage|dielectric constant]] ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
+| **Dielectric Constant ($\varepsilon_r$)** | How much a material amplifies capacitance compared to vacuum. Air: ~1. FR-4 (PCB substrate): ~4.5. Silicon dioxide (transistor gate): ~3.9. Higher $\varepsilon_r$ = more capacitance for same geometry. |
+| **$C = \varepsilon A / d$** | The [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]]-plate formula: capacitance scales with plate area ($A$) and dielectric constant ($\varepsilon$), and inversely with plate separation ($d$). This governs both intentional and parasitic capacitance. |
 | **Miller Capacitance** | The effective input capacitance of an amplifying stage, multiplied by $(1 + \text{gain})$. A 2 pF drain-gate capacitance in a [[quick-context/transistor|transistor]] with gain of 50 looks like ~102 pF at the input, severely limiting switching speed. |
 
 <details>
 <summary><strong>How It Works</strong> -- Capacitance as a geometric property</summary>
 
-Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a capacitor -- the physics doesn't care. The key equation is:
+Capacitance exists whenever two conductors are separated by an insulator. It doesn't matter whether you intended to create a [[learning/notes/quick-context/capacitor|capacitor]] -- the physics doesn't care. The key equation is:
 
 $$C = \frac{\varepsilon_0 \cdot \varepsilon_r \cdot A}{d}$$
 
@@ -136,7 +136,7 @@ DERIVATION AT A GLANCE
     I = C·dV/dt
 ```
 
-**Physical intuition** — think of voltage as the *height* of charge piled on the plates:
+**Physical intuition** — think of [[learning/notes/quick-context/voltage|voltage]] as the *height* of charge piled on the plates:
 
 - $V$ rising = charge being *pumped onto* the plate. Pump rate = current.
 - $V$ falling = charge *draining off*. Drain rate = current (other direction).
@@ -180,7 +180,7 @@ $$\text{Switching time} \approx \frac{C \times \Delta V}{I_{\text{drive}}}$$
 More capacitance on a node means:
 - More [[quick-context/electric-current|current]] needed to switch at the same speed, or
 - Slower switching with the same drive current, or
-- More [[quick-context/power-watts-joules|power]] consumed at the same speed ($P = C V^2 f$)
+- More power consumed at the same speed ($P = C V^2 f$)
 
 ```
 WHY CAPACITANCE = SPEED LIMIT
@@ -224,7 +224,7 @@ WHY CAPACITANCE = SPEED LIMIT
 
 ### Capacitance in Series and Parallel
 
-Like [[quick-context/resistor|resistors]], capacitances combine -- but with inverted rules:
+Like resistors, capacitances combine -- but with inverted rules:
 
 ```
 COMBINING CAPACITANCES
@@ -259,7 +259,7 @@ $$\frac{C_{\text{total}}}{C_1} = \frac{C_2}{C_1 + C_2} < 1 \quad \text{(since } 
 
 So $C_{\text{total}} < C_1$ = smallest. Numeric sanity: C1 = 1 µF, C2 = 1000 µF → C_total ≈ 0.999 µF. Even C2 → ∞ gives C_total → C1, never exceeds it.
 
-**Physical intuition:** series stack adds plate-to-plate distance. Same charge Q sits on each cap (charge can't flow through dielectric — what enters one plate must leave the other), but voltage across stack = V1 + V2. Bigger V for same Q → smaller C (since C = Q/V). Series cap stack acts like one cap with thicker dielectric.
+**Physical intuition:** [[learning/notes/quick-context/parallel-vs-series-voltage|series]] stack adds plate-to-plate distance. Same charge Q sits on each cap (charge can't flow through dielectric — what enters one plate must leave the other), but voltage across stack = V1 + V2. Bigger V for same Q → smaller C (since C = Q/V). Series cap stack acts like one cap with thicker dielectric.
 
 ### Where Parasitic Capacitance on a Bus Comes From
 
@@ -299,7 +299,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
                                  — reverse-biased diodes are capacitors
                                  (depletion-region capacitance, ~2-5 pF)
       • Gate capacitance      : the actual MOSFET input on the die
-                                 (oxide capacitance — see [[quick-context/code-to-gates-and-bootstrapping|code-to-gates]])
+                                 (oxide capacitance — see code-to-gates)
 
     All sit between the signal node and AC ground (VCC or GND, same thing
     for AC since VCC is bypassed). So they ADD in parallel:
@@ -307,7 +307,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
         C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
 ```
 
-The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+The ESD [[learning/notes/quick-context/diode|diode]] usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
 
 ### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
 
@@ -394,7 +394,7 @@ Charge on a capacitor only moves when the voltage *across* it changes. C_AB sits
 
 - **Differential pairs** (USB, Ethernet, HDMI, LVDS) deliberately use opposite switching. Drivers are sized for the 2·C_AB hit. In exchange: common-mode noise on both wires cancels at the receiver.
 - **Parallel buses** (DDR, parallel flash): a switching "aggressor" line slows down *and* injects a glitch into a quiet "victim" line. Routing rules space high-speed lines apart to shrink C_AB.
-- **Data Bus Inversion (DBI):** DDR4+ optionally flips a whole byte if it would cause too many adjacent lines to switch opposite. Forces more same-direction switching → smaller effective C → faster, lower power.
+- **[[learning/notes/quick-context/data-bus-and-arbitration|Data Bus]] Inversion (DBI):** DDR4+ optionally flips a whole byte if it would cause too many adjacent lines to switch opposite. Forces more same-direction switching → smaller effective C → faster, lower power.
 - **Miller effect in amplifiers:** same physics. Capacitance between input and output of an inverting stage looks bigger by gain factor (1 + A_v) because the output swings opposite to the input.
 
 Same $I = C \cdot dV/dt$ as always — but *C* is now an *effective* C that depends on the neighbor's waveform.
@@ -403,7 +403,7 @@ Same $I = C \cdot dV/dt$ as always — but *C* is now an *effective* C that depe
 
 Every device connected to a shared signal line adds its input capacitance in parallel. This is the direct consequence of the parallel rule above: $C_{\text{total}} = C_1 + C_2 + C_3 + \ldots$. Add enough devices and the total bus capacitance becomes so large that the signal can't transition fast enough to be read correctly.
 
-The clearest real-world example is [[micro-context/i2c|I2C]]. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up [[quick-context/resistor|resistors]] can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
+The clearest real-world example is I2C. Each device on the bus adds ~10 pF of input capacitance (from its pin, bond wire, ESD protection diode, and PCB pad). The I2C spec caps total bus capacitance at **400 pF** -- beyond that, the open-drain pull-up resistors can't charge the line fast enough for the clock to reach a valid HIGH before the next edge.
 
 ```
 WHY DAISY CHAINS HIT A WALL
@@ -498,9 +498,9 @@ The fundamental tension in electronics is that the same physical phenomenon -- c
 |---|---|
 | [[micro-context/decoupling-capacitor|Decoupling]] (local energy storage) | It slows down signal transitions |
 | Filtering (frequency selectivity) | It couples noise between traces (crosstalk) |
-| Energy storage | It increases dynamic [[quick-context/power-watts-joules|power]] ($P = CV^2f$) |
+| Energy storage | It increases dynamic power ($P = CV^2f$) |
 | Setting [[quick-context/impedance-and-reactance|impedance]] (transmission lines) | Miller effect multiplies it at amplifier inputs |
-| Timing circuits ([[quick-context/rc-oscillator|RC oscillators]], time constants) | It limits I/O speed at package pins |
+| Timing circuits (RC oscillators, time constants) | It limits I/O speed at package pins |
 
 ```
 THE SPEED-POWER-NOISE TRIANGLE
@@ -534,7 +534,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[learning/notes/micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
@@ -644,10 +644,10 @@ DYNAMIC POWER IN A CMOS INVERTER
 **Q2:** Why does $P = CV^2f$ mean that reducing voltage is more effective than reducing capacitance for power savings?
 <details>
 <summary>Answer</summary>
-**Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power reduction technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
+**Because voltage is squared.** Cutting voltage in half reduces power by 4x ($0.5^2 = 0.25$), while cutting capacitance in half only reduces power by 2x. That's why voltage scaling has been the dominant power [[learning/notes/quick-context/cations-and-reduction|reduction]] technique in chip design. However, voltage can't drop below the threshold voltage of the transistors, so eventually capacitance reduction (smaller transistors, low-k dielectrics) becomes the only option. See: Concrete Example.
 </details>
 
-**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF decoupling capacitor is also connected. What's the total capacitance the driver must charge?
+**Q3:** Two parallel PCB traces each contribute 3 pF of parasitic capacitance to a signal node. A 10 pF [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] is also connected. What's the total capacitance the driver must charge?
 <details>
 <summary>Answer</summary>
 **16 pF.** Capacitances in parallel add: 3 + 3 + 10 = 16 pF. The driver must supply $I = C \times dV/dt = 16 \text{ pF} \times dV/dt$ to change the node voltage. This is why parasitic capacitance budgeting matters -- every additional trace, pin, or component on a node adds to the total load. See: How It Works (Combining Capacitances).

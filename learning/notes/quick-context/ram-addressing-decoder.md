@@ -5,9 +5,9 @@ created: 2026-06-07
 
 # RAM — Addressing an Array of Registers
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/capacitive-sensing-measurement]]
 
-> **TL;DR:** A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] stores exactly one word. RAM (Random-Access Memory) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its address**. Two switching circuits do the picking: a **DMUX** routes the "write now" signal to the one register you want to change, and a **MUX** selects the one register's value you want to read. With $n$ address bits you can name $2^n$ words, and you build big RAM by stacking eight small RAMs and gluing on three more address bits — over and over.
+> **TL;DR:** A register stores exactly one word. RAM (Random-Access Memory) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its address**. Two switching circuits do the picking: a **DMUX** routes the "write now" signal to the one register you want to change, and a **MUX** selects the one register's value you want to read. With $n$ address bits you can name $2^n$ words, and you build big RAM by stacking eight small RAMs and gluing on three more address bits — over and over.
 
 ## The Core Problem
 
@@ -19,7 +19,7 @@ A single register can hold one word, but a useful program needs thousands or mil
 |------|------------|
 | **Word** | The fixed-size chunk RAM stores and returns per address — one register's worth of bits. In the Nand-to-Tetris machine modeled here a word is 16 bits (`Bits16`); on a PC it is usually 8, 32, or 64. |
 | **Address** | A binary number that names one word in the array. With $n$ address bits there are $2^n$ distinct addresses, so an $n$-bit address selects one of $2^n$ words. |
-| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the clock edge. |
+| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the [[learning/notes/micro-context/clock-edges|clock edge]]. |
 | **MUX (multiplexer)** | A many-to-1 selector on the **read path**. Every register is always outputting its stored value; the MUX picks **exactly one** of those outputs to pass through, chosen by the address. |
 | **Load / clock-enable** | The gate that decides whether a register captures new data on the next [[learning/notes/micro-context/clock-edges|clock edge]]. If `load = 1` the register overwrites itself at the edge; if `load = 0` it holds. The DMUX sets exactly one register's `load` to 1. |
 
@@ -28,7 +28,7 @@ A single register can hold one word, but a useful program needs thousands or mil
 
 ### One register, then many
 
-Start from one register. It has three things going in — the data word `in`, a `load` bit (write or hold), and a clock — and one thing coming out: the stored word `out`. (See [[learning/notes/quick-context/switches-to-registers-storing-data|switches to registers]] for how that one register is built from [[learning/notes/quick-context/d-flip-flop|D flip-flops]].)
+Start from one register. It has three things going in — the data word `in`, a `load` bit (write or hold), and a clock — and one thing coming out: the stored word `out`. (See [[learning/notes/quick-context/switches-to-registers-storing-data|switches to registers]] for how that one register is built from D flip-flops.)
 
 ```
             in[16] ─────────────►┌───────────┐
@@ -37,7 +37,7 @@ Start from one register. It has three things going in — the data word `in`, a 
    clock ──────────────────────► └───────────┘
 ```
 
-Now line up eight of them. The data word `in` is broadcast to **all eight** registers at once — that part is just parallel wires, no decision. The clever bit is the two circuits that turn "all eight" into "exactly one".
+Now line up eight of them. The data word `in` is broadcast to **all eight** registers at once — that part is just [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] wires, no decision. The clever bit is the two circuits that turn "all eight" into "exactly one".
 
 ```
 RAM8 = 8 registers + a 3-bit address + a DMUX (write) + a MUX (read)
@@ -98,9 +98,9 @@ address = 5 (binary 101)        load = 1
 <details>
 <summary><strong>The Key Tension</strong> — What practitioners argue about</summary>
 
-The central design tension in real RAM is **speed vs. density vs. cost**, and it shows up as the SRAM-vs-DRAM split.
+The central design tension in real RAM is **speed vs. density vs. cost**, and it shows up as the [[learning/notes/micro-context/sram|SRAM]]-vs-DRAM split.
 
-The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a capacitor — one transistor plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
+The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a [[learning/notes/quick-context/capacitor|capacitor]] — one transistor plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
 
 | | SRAM (register-like) | DRAM (capacitor) |
 |---|---|---|
@@ -260,7 +260,7 @@ $16384 / 4096 = 4$, not 8 — so RAM16K is built from **four** RAM4Ks, not eight
 **Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a clock edge. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
 <details>
 <summary>Answer</summary>
-Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the [[learning/notes/quick-context/d-flip-flop|D flip-flop]] provides at the single-bit level.
+Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the D flip-flop provides at the single-bit level.
 </details>
 
 </details>

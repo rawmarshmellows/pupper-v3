@@ -4,6 +4,7 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/crystal-oscillator]] | [[learning/notes/micro-context/coriolis-effect]]
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]
@@ -33,4 +34,4 @@ MICROCONTROLLER vs GENERAL-PURPOSE CPU:
        $0.20 - $15+                     needs a motherboard
 ```
 
-**Key insight:** A microcontroller trades raw power for integration and real-time determinism — it runs [[micro-context/plc-programmable-logic-controller|bare metal or RTOS]] code with microsecond timing, which is why robots, cars, and appliances use them instead of full computers for control tasks.
+**Key insight:** A microcontroller trades raw power for integration and real-time determinism — it runs bare metal or RTOS code with microsecond timing, which is why robots, cars, and appliances use them instead of full computers for control tasks.

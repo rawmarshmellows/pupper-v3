@@ -4,6 +4,7 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/crystal-oscillator]]
 # Coulomb (Unit History)
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/current-electrons-per-second]]

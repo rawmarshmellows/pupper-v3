@@ -3,9 +3,9 @@ topic: Schematic Reading
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/ceramic-resonator]]
 
-> **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like voltage dividers, decoupling networks, and pull-ups.
+> **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like [[learning/notes/quick-context/voltage|voltage]] dividers, decoupling networks, and pull-ups.
 
 # Schematic Reading
 
@@ -17,7 +17,7 @@ You download a datasheet or open-source hardware project and need to understand 
 
 | Term | Definition |
 |------|------------|
-| **Schematic Symbol** | A standardized graphical representation of a component. Each part type has a unique symbol (zigzag for [[quick-context/resistor|resistor]], two parallel lines for [[quick-context/capacitor|capacitor]], triangle for [[quick-context/diode|diode]], etc.). |
+| **Schematic Symbol** | A standardized graphical representation of a component. Each part type has a unique symbol (zigzag for [[quick-context/resistor|resistor]], two [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] lines for [[quick-context/capacitor|capacitor]], triangle for [[quick-context/diode|diode]], etc.). |
 | **Reference Designator** | A unique label identifying each component: R1, R2 (resistors), C1, C2 (capacitors), U1 (ICs), Q1 (transistors), D1 (diodes), L1 (inductors), J1 (connectors). |
 | **Net** | An electrical connection between two or more pins. All points on the same net are electrically connected, even if no line is drawn between them (connected by net labels). |
 | **Value Annotation** | The component value written next to the symbol: "10kΩ", "100nF", "3.3V". Tells you what specific part to use. |
@@ -186,7 +186,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[learning/notes/micro-context/mosfet|MOSFET]] and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 
@@ -211,7 +211,7 @@ SIMPLE LED BLINK CIRCUIT
 **Yes.** Net labels are implicit connections. Any two points with the same net label are electrically connected, regardless of where they appear on the schematic (even on different pages). This convention reduces visual clutter by eliminating long wires that would otherwise cross the entire schematic.
 </details>
 
-**Q3:** Why is there always a small capacitor (100nF) next to every IC's power pins on a schematic?
+**Q3:** Why is there always a small [[learning/notes/quick-context/capacitor|capacitor]] (100nF) next to every IC's power pins on a schematic?
 <details>
 <summary>Answer</summary>
 **Decoupling.** When the IC's internal transistors switch, they draw sudden spikes of current. The decoupling capacitor, placed physically close to the IC, provides this current instantly from its stored charge. Without it, the power supply voltage droops momentarily, causing logic errors. See [[quick-context/capacitor|Capacitor - Concrete Example]] for the full explanation.

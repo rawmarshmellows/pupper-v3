@@ -5,9 +5,9 @@ created: 2026-02-10
 
 # Challenger Sale Methodology
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
-> **TL;DR:** The Challenger Sale is a selling methodology where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
+> **TL;DR:** The Challenger Sale is a [[learning/notes/quick-context/sales-methodology-layering|selling methodology]] where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
 
 ## The Core Problem
 

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/electromigration]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]
 
 > **TL;DR:** Pi-pi stacking is a molecular "velcro" effect where flat aromatic rings (like benzene in ABS plastic) attract each other through their electron clouds, requiring higher print temperatures to overcome and causing warping when these attractions re-form during cooling.
 
@@ -60,7 +60,7 @@ This "pi-pi stacking" acts like molecular velcro—it's what holds polymer chain
 
 Pi-pi stacking occurs because aromatic rings have a special electronic structure. In a benzene ring, six carbon atoms share electrons in a delocalized "pi electron cloud" that floats above and below the flat ring plane. This creates a unique charge distribution: the ring edges (where the hydrogens attach) are slightly positive, while the faces (above and below the ring) are slightly negative due to the pi electron density. When two aromatic rings approach each other, these charge distributions interact—the positive edge of one ring is attracted to the negative face of another.
 
-The most common stacking geometries arise from this charge pattern. In "offset parallel" (or "parallel-displaced") stacking, two rings align face-to-face but shifted sideways so the positive edge of one overlaps with the negative face of the other. In "edge-to-face" (or "T-shaped") stacking, one ring's positive edge hydrogen points directly at another ring's negative pi cloud. Both arrangements are stabilized by the same electrostatic complementarity, plus contributions from [[quick-context/van-der-waals-forces|London dispersion forces]] between the large, polarizable electron clouds.
+The most common stacking geometries arise from this charge pattern. In "offset [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]]" (or "parallel-displaced") stacking, two rings align face-to-face but shifted sideways so the positive edge of one overlaps with the negative face of the other. In "edge-to-face" (or "T-shaped") stacking, one ring's positive edge hydrogen points directly at another ring's negative pi cloud. Both arrangements are stabilized by the same electrostatic complementarity, plus contributions from [[quick-context/van-der-waals-forces|London dispersion forces]] between the large, polarizable electron clouds.
 
 ```
 STEP-BY-STEP: HOW PI-PI STACKING WORKS
@@ -254,9 +254,9 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 ## Peripheral Knowledge
 
 - **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of van der Waals interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
-- **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: covalent bonds along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
+- **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: [[learning/notes/quick-context/covalent-bonds|covalent bonds]] along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
 - **[[quick-context/covalent-bonds]]** — The "real" bonds that hold atoms together within molecules; pi-pi stacking is fundamentally different—it's an attraction *between* molecules, not within them.
-- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
+- **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered ([[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|amorphous]]); aromatic rings tend to promote local ordering.
 
 </details>
 
@@ -292,7 +292,7 @@ Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacki
 **Q5:** Compare pi-pi stacking to [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] and [[quick-context/van-der-waals-forces|van der Waals forces]]. Where does pi-pi stacking fit in the intermolecular force hierarchy, and why?
 <details>
 <summary>Answer</summary>
-Pi-pi stacking falls between typical van der Waals forces and hydrogen bonds in strength (~2-10 kJ/mol vs ~0.5-5 kJ/mol for London dispersion and ~10-40 kJ/mol for hydrogen bonds). Mechanistically, it's a specialized type of van der Waals interaction—the delocalized electron clouds of aromatic rings create larger polarizable surfaces for London dispersion forces, plus electrostatic interactions between the quadrupole moments of the rings. Unlike hydrogen bonds (which require specific H-O/N/F donors and acceptors), pi-pi stacking just requires flat aromatic surfaces to align. This explains why materials like graphite (pure pi-pi stacking) are slippery between layers but strong within them—the stacking is significant but less directional than hydrogen bonds. See: [[quick-context/chemical-bonds-spectrum]] for the full intermolecular force hierarchy.
+Pi-pi stacking falls between typical van der Waals forces and [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] in strength (~2-10 kJ/mol vs ~0.5-5 kJ/mol for London dispersion and ~10-40 kJ/mol for hydrogen bonds). Mechanistically, it's a specialized type of van der Waals interaction—the delocalized electron clouds of aromatic rings create larger polarizable surfaces for London dispersion forces, plus electrostatic interactions between the quadrupole moments of the rings. Unlike hydrogen bonds (which require specific H-O/N/F donors and acceptors), pi-pi stacking just requires flat aromatic surfaces to align. This explains why materials like graphite (pure pi-pi stacking) are slippery between layers but strong within them—the stacking is significant but less directional than hydrogen bonds. See: [[quick-context/chemical-bonds-spectrum]] for the full intermolecular force hierarchy.
 </details>
 
 </details>

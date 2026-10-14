@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/grounding-and-return-paths]]
+> **Related:** [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 

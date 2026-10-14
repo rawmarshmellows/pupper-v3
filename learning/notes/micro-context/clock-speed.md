@@ -4,6 +4,7 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/cnc-process-selection]]
 # Clock Speed
 
 > **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
@@ -13,7 +14,7 @@ updated: 2026-03-27
 ## How It Works
 
 - An oscillator circuit generates a continuous square wave at the rated frequency (e.g., 3 GHz = 3 billion toggles/sec).
-- Each rising edge triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
+- Each rising edge triggers the CPU's pipeline to advance one step — [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]], decode, or execute an instruction.
 - Faster clocks mean less time between edges, so signals must propagate and settle through all logic gates within a shrinking window.
 
 ```

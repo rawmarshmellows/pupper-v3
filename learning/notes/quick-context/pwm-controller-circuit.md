@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # PWM Controller Circuit
 
-> **Related:** [[micro-context/buck-converter]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]]
 
 > **TL;DR:** Inside every buck converter IC is a tiny analog feedback loop: an oscillator generates a sawtooth wave, an error amplifier compares the output voltage to a reference, and a comparator intersects the two signals to produce the PWM pulse that drives the [[micro-context/mosfet|MOSFET]] gate. The whole loop runs autonomously at hundreds of kHz with no software involvement.
 

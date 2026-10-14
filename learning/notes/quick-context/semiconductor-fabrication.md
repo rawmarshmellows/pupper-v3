@@ -4,7 +4,7 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -12,7 +12,7 @@ source: Branch Education video on CPU manufacturing
 
 ## The Core Problem: Building Structures Smaller Than Light Can See
 
-You need to build billions of [[quick-context/transistor|transistors]], each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You can't "see" what you're building, you can't touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
+You need to build billions of transistors, each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You can't "see" what you're building, you can't touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ You need to build billions of [[quick-context/transistor|transistors]], each onl
 | **Photolithography** | Using light projected through a mask to pattern photoresist, defining where material will be added or removed—the "printing press" of chip manufacturing |
 | **Deposition** | Adding thin layers of material (metals, oxides, silicon) onto the wafer using chemical vapor (CVD), physical vapor (PVD), or atomic layer deposition (ALD) |
 | **Etching** | Selectively removing material using plasma (dry etch) or chemicals (wet etch) to carve the patterns defined by photolithography |
-| **Ion Implantation** | Shooting dopant atoms (phosphorus, boron) into silicon at high velocity to create [[quick-context/doped-silicon|n-type and p-type regions]] for transistors |
+| **Ion Implantation** | Shooting dopant atoms (phosphorus, boron) into silicon at high velocity to create n-type and p-type regions for transistors |
 | **CMP (Chemical Mechanical Planarization)** | Polishing the wafer flat between layers so subsequent layers can be built on a smooth surface |
 
 <details>
@@ -313,7 +313,7 @@ MAJOR FABRICATION EQUIPMENT
    ─────────────────────────────────────────────────────────────────────────
    • Accelerates dopant ions (B⁺, P⁺, As⁺) to high velocity
    • Ions embed in silicon at precise depth
-   • Creates [[quick-context/doped-silicon|n-type and p-type regions]]
+   • Creates n-type and p-type regions
 
         Ion source → Accelerator → Mass separator → Wafer
          (plasma)   (100+ keV)     (selects isotope)
@@ -502,7 +502,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 
-- **[[quick-context/transistor|Transistors]]** — The fundamental components being fabricated. Knowing how a transistor works (gate, source, drain, channel) clarifies why specific fabrication steps exist.
+- **Transistors** — The fundamental components being fabricated. Knowing how a transistor works (gate, source, drain, channel) clarifies why specific fabrication steps exist.
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — Ion implantation creates doped regions. Understanding n-type vs p-type silicon explains why implantation is essential.
 
@@ -544,7 +544,7 @@ Chip fabrication faces a fundamental tradeoff between throughput, resolution, an
 **Q5:** How does the fabrication process connect the raw material (silicon wafer) to the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]]? What would happen to the hierarchy if ion implantation suddenly became impossible?
 <details>
 <summary>Answer</summary>
-Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "silicon die" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
+Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "[[learning/notes/quick-context/silicon-die|silicon die]]" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
 </details>
 
 </details>

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/melt-index]]
 
 > **TL;DR:** Covalent bonds form when atoms share electrons to complete their outer shells, creating the strong intra-molecular connections that hold polymer chains together—these bonds never break during normal 3D printing.
 

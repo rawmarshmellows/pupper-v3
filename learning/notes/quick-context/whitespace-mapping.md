@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Whitespace Mapping
 
-> **Related:** [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/post-sale-account-engagement]]
+> **Related:** [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/wire-bonding]]
 
 > **TL;DR:** Whitespace mapping is a visual framework (often a matrix) that plots customer buying centers (divisions, regions, departments) against your product offerings to identify untapped expansion opportunities—cells that are neither won nor lost represent revenue potential hiding inside existing accounts.
 
@@ -284,7 +284,7 @@ Prioritize cells where the champion has influence. If they're in the Engineering
 No—keep it visible but coded red. Lost cells can become RECAPTURE opportunities when triggers occur: competitor contract renewal, delivery failure, buyer turnover, or your product evolving to address the gap. Removing lost cells hides account history and prevents systematic re-engagement when circumstances change.
 </details>
 
-**Q5:** How does [[quick-context/mcdonald-kam-model|relationship maturity]] affect whitespace strategy?
+**Q5:** How does relationship maturity affect whitespace strategy?
 <details>
 <summary>Answer</summary>
 Relationship maturity determines *which* whitespace is accessible. At Basic/Exploratory stages, you're often limited to single buying centers (bow-tie relationship). At Cooperative/Interdependent stages, multi-threading enables cross-BC expansion—your champions can introduce you to other divisions. Trying to pursue whitespace in buying centers you can't access wastes resources. Match whitespace prioritization to relationship reach.

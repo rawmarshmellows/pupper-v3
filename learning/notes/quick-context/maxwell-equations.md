@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/absolute-orientation]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 

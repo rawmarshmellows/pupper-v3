@@ -5,13 +5,13 @@ created: 2026-03-28
 
 # Capacitive Sensing and Measurement
 
-> **Related:** [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/rc-oscillator]] | [[micro-context/adc-analog-to-digital-converter]]
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/post-sale-account-engagement]]
 
-> **TL;DR:** Capacitance can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a capacitor and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
+> **TL;DR:** [[learning/notes/quick-context/capacitance|Capacitance]] can't be measured with DC -- a charged [[quick-context/capacitor|capacitor]] is an open circuit -- so every capacitive sensor relies on some form of AC excitation: repeatedly charge/discharge a [[learning/notes/quick-context/capacitor|capacitor]] and time it, pump charge between a sensor and reference capacitor and count the ratio, or drive an AC signal and measure the impedance. These three families of techniques -- RC timing, charge-balance (sigma-delta), and impedance measurement -- underpin every capacitive sensor from [[small-context/humidity-temperature-sensor|humidity films]] and [[small-context/mems-accelerometer-capacitive-sensing|MEMS accelerometers]] to touchscreens and proximity detectors.
 
 ## The Core Problem
 
-Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a voltage or a current -- you can't just connect a [[micro-context/adc-analog-to-digital-converter|ADC]] to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
+Dozens of physical quantities -- humidity, acceleration, pressure, proximity, touch, liquid level -- can be transduced into a [[quick-context/capacitance|capacitance]] change by varying the plate area, gap distance, or dielectric constant of a capacitor structure. But capacitance isn't a [[learning/notes/quick-context/voltage|voltage]] or a current -- you can't just connect a ADC to a capacitor and read a number. You need a measurement circuit that *converts* capacitance into something digital. The choice of conversion technique determines the sensor's resolution, speed, noise rejection, and cost -- and the same three families of technique keep appearing across wildly different sensor types.
 
 ## 5 Essential Terms
 
@@ -291,7 +291,7 @@ THE RESOLUTION-SPEED TRADEOFF
     Smaller C = more noise = harder to measure precisely.
 ```
 
-The dominant trend in modern sensor design is sigma-delta CDC integration: put the converter on the same die as the sensor element, so the tiny analog signals never leave the chip. This is why modern sensor ICs (SHT40, BMP390, ADXL345) output clean digital numbers over [[micro-context/i2c|I2C]] or [[micro-context/spi|SPI]] -- the entire capacitance-to-digital chain is inside the package.
+The dominant trend in modern sensor design is sigma-delta CDC integration: put the converter on the same die as the sensor element, so the tiny analog signals never leave the chip. This is why modern sensor ICs (SHT40, BMP390, ADXL345) output clean digital numbers over I2C or SPI -- the entire capacitance-to-digital chain is inside the package.
 
 </details>
 
@@ -340,18 +340,18 @@ COMPLETE CAPACITIVE SENSING CHAIN (SHT40 humidity measurement)
 
 The same sigma-delta CDC architecture appears in MEMS accelerometers, but measuring femtofarads (not picofarads) from comb-finger displacement instead of dielectric change. See [[small-context/mems-accelerometer-capacitive-sensing]] for that chain.
 
-**The one thing most outsiders get wrong about this is...** thinking that capacitive sensors "measure capacitance" the way a multimeter measures resistance -- as a static property you read once. In reality, capacitance measurement is always *dynamic*: the circuit is constantly cycling excitation signals through the sensor at kHz-MHz rates, integrating tiny charge packets, and averaging millions of samples to extract a stable reading. A "single measurement" from an SHT40 actually involves millions of charge-balance cycles executed in 8 milliseconds. The sensor is never at rest -- it's continuously pumping charge to track a moving target.
+**The one thing most outsiders get wrong about this is...** thinking that capacitive sensors "measure capacitance" the way a [[learning/notes/quick-context/oscilloscope-and-multimeter|multimeter]] measures resistance -- as a static property you read once. In reality, capacitance measurement is always *dynamic*: the circuit is constantly cycling excitation signals through the sensor at kHz-MHz rates, integrating tiny charge packets, and averaging millions of samples to extract a stable reading. A "single measurement" from an SHT40 actually involves millions of charge-balance cycles executed in 8 milliseconds. The sensor is never at rest -- it's continuously pumping charge to track a moving target.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitance]]** -- The physics of $C = \varepsilon A / d$, parasitic capacitance, and why capacitance shows up everywhere in electronics. This article covers how capacitance is *created*; the current article covers how it's *measured*.
+- **[[quick-context/capacitance]]** -- The physics of $C = \varepsilon A / d$, [[learning/notes/quick-context/capacitance|parasitic capacitance]], and why capacitance shows up everywhere in electronics. This article covers how capacitance is *created*; the current article covers how it's *measured*.
 
 - **[[quick-context/capacitor]]** -- Capacitor types, charge/discharge curves, and RC time constants. The RC charge curve ($V(t) = V_s(1 - e^{-t/RC})$) is the mathematical basis of RC timing measurement.
 
-- **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An RC oscillator is essentially a capacitive sensor that measures its own capacitance continuously.
+- **[[quick-context/rc-oscillator]]** -- The same RC timing principle used for capacitive measurement also generates clock signals. An [[learning/notes/quick-context/rc-oscillator|RC oscillator]] is essentially a capacitive sensor that measures its own capacitance continuously.
 
 - **[[quick-context/impedance-and-reactance]]** -- Capacitive reactance $X_C = 1/(2\pi fC)$ is the basis of AC impedance measurement, and explains why capacitive sensors need AC excitation.
 
@@ -396,7 +396,7 @@ The RC time constants are $\tau_{\text{no touch}} = 10\text{k}\Omega \times 10\t
 Resolution and accuracy are different. The 16-bit sigma-delta CDC can *resolve* tiny capacitance changes (0.01% RH steps) because oversampling averages noise effectively. But *accuracy* is limited by the physical sensor: the polymer film's response to humidity is nonlinear, hysteretic, temperature-dependent, and changes with aging. Even with perfect calibration at the factory, these physical effects introduce ±1.8% systematic error that no amount of digital resolution can fix. Resolution tells you the smallest *change* you can detect; accuracy tells you how close the *absolute* reading is to truth. See: Concrete Example.
 </details>
 
-**Q5:** The $kT/C$ thermal noise limit gives $V_{\text{noise}} = \sqrt{kT/C}$. A MEMS accelerometer has comb-finger capacitance of ~1 pF, while a humidity sensor has ~190 pF. Which has a harder time with thermal noise, and what does this mean for readout circuit design?
+**Q5:** The $kT/C$ [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] limit gives $V_{\text{noise}} = \sqrt{kT/C}$. A MEMS accelerometer has comb-finger capacitance of ~1 pF, while a humidity sensor has ~190 pF. Which has a harder time with thermal noise, and what does this mean for readout circuit design?
 <details>
 <summary>Answer</summary>
 The accelerometer. At 1 pF: $V_{\text{noise}} = \sqrt{1.38 \times 10^{-23} \times 300 / 10^{-12}} \approx 64\ \mu\text{V}$ rms. At 190 pF: $V_{\text{noise}} \approx 4.7\ \mu\text{V}$ rms -- about 14x lower. The smaller capacitance means the charge per measurement cycle is tiny and noise is relatively large. This is why MEMS accelerometers use differential sensing (doubles signal, cancels common-mode noise), shielded readout paths, and often correlated double sampling. The humidity sensor's large base capacitance gives it a natural noise advantage, so simpler readout suffices. The $kT/C$ limit also explains why DRAM capacitors can't shrink indefinitely -- see [[quick-context/capacitor|capacitor thermal noise discussion]].

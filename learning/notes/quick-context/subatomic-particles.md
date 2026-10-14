@@ -5,7 +5,7 @@ created: 2026-02-14
 
 # Subatomic Particles
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
+> **Related:** [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/electromagnetism]]
 
 > **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 

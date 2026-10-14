@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/robotic-arm-api-levels]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -25,7 +25,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 | **PackML** | The ISA-TR88 standard state model (Execute, Stopped, Held, Aborted, etc.) that gives every cell a common vocabulary for operating modes. |
 | **Virtual Commissioning** | Debugging integration logic in simulation before hardware arrives, catching handshake errors and collision paths early. |
 | **I/O Mapping** | The document listing every signal, its source, destination, and meaning; without this, integration debugging is archaeology. |
-| **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just discrete signals. |
+| **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] signals. |
 
 <details>
 <summary><strong>How It Works</strong></summary>

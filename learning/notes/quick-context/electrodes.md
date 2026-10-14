@@ -3,15 +3,15 @@ topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/making-electrolytes]] | [[learning/notes/quick-context/electromigration]]
 
-> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the cathode (negative) is where reduction happens, the anode (positive) is where oxidation happens.
+> **TL;DR:** Electrodes are conductive surfaces where electrons enter or leave a liquid to drive chemical reactions—the [[learning/notes/micro-context/cathode|cathode]] (negative) is where [[learning/notes/quick-context/cations-and-reduction|reduction]] happens, the [[learning/notes/micro-context/anode|anode]] (positive) is where [[learning/notes/micro-context/oxidation|oxidation]] happens.
 
 # Electrodes (Cathode and Anode)
 
 ## The Core Problem: Getting Electrons Where They Need to Go
 
-Imagine you want to use electricity to make a chemical reaction happen—like splitting water into hydrogen and oxygen, or coating a ring with gold. Electricity travels through wires as electrons (tiny particles with negative charge). But here's the problem: how do those electrons actually *enter* and *leave* the liquid where the chemistry happens? You need a "doorway" between the solid wire world and the liquid chemical world. That's what **electrodes** do—they're conductive surfaces (usually metal) that you dip into the liquid, acting as the entry and exit points for [[quick-context/electric-current|electrons]].
+Imagine you want to use electricity to make a chemical reaction happen—like splitting water into hydrogen and oxygen, or coating a ring with gold. Electricity travels through wires as electrons (tiny particles with negative charge). But here's the problem: how do those electrons actually *enter* and *leave* the liquid where the chemistry happens? You need a "doorway" between the solid wire world and the liquid chemical world. That's what **electrodes** do—they're conductive surfaces (usually metal) that you dip into the liquid, acting as the entry and exit points for electrons.
 
 Without electrodes, you couldn't run any electrical process through a liquid. No electroplating (coating objects with metal), no producing metals like aluminum from ore, no making hydrogen fuel from water, no rechargeable [[quick-context/galvanic-cells-batteries|batteries]]. The electrodes are literally where the action happens—the exact spot where electrons jump from metal to chemicals (or vice versa), causing atoms to transform.
 
@@ -21,7 +21,7 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 |------|------------|
 | **Electrode** | Any conductive solid surface where electrons enter or leave a liquid/solution to make chemistry happen—the "meeting point" of electricity and chemistry |
 | **Cathode** | The NEGATIVE electrode where electrons flow IN. Positive ions (cations) travel here. [[quick-context/cations-and-reduction|Reduction]] (gaining electrons) happens here. Memory trick: **C**athode attracts **C**ations |
-| **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions (anions) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
+| **Anode** | The POSITIVE electrode where electrons flow OUT. Negative ions ([[learning/notes/quick-context/anions-and-oxidation|anions]]) travel here. [[quick-context/anions-and-oxidation|Oxidation]] (losing electrons) happens here. Memory trick: **A**node attracts **A**nions |
 | **Reduction** | A chemical reaction where something GAINS electrons. Happens at the cathode. (Think: the charge is "reduced"—becomes less positive or more negative) |
 | **Oxidation** | A chemical reaction where something LOSES electrons. Happens at the anode. Originally named because oxygen was often involved, but it's really about electron loss |
 
@@ -104,7 +104,7 @@ The other tension: **surface area vs. practicality**. More surface area = more r
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Water Electrolysis with Platinum Electrodes
+Water [[learning/notes/quick-context/electrolysis|Electrolysis]] with Platinum Electrodes
 
 Let's walk through exactly what happens when you split water into hydrogen and oxygen gases:
 
@@ -138,7 +138,7 @@ Let's walk through exactly what happens when you split water into hydrogen and o
 
         The liquid is water + a small amount of acid (H₂SO₄)
         or base (NaOH) to help conduct electricity.
-        Pure water barely conducts! (See: [[quick-context/making-electrolytes|electrolyte]])
+        Pure water barely conducts! (See: electrolyte)
 ```
 
 ### What's Actually Happening (Step by Step)
@@ -267,9 +267,9 @@ STEP 4: THE CIRCUIT COMPLETES
 **Q3:** A student uses iron nails as electrodes for water electrolysis. After an hour, the anode nail looks rusty and pitted while the cathode nail looks unchanged. Explain why.
 <details>
 <summary>Answer</summary>
-**The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form rust). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from [[quick-context/rust|corrosion]]. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
+**The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form [[learning/notes/quick-context/rust|rust]]). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from corrosion. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
 
-**Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become [[quick-context/rust|hydrated]]—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-dipole attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface atom by atom, creating microscopic craters.
+**Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become hydrated—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-[[learning/notes/quick-context/dipole-dipole-interactions|dipole]] attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface atom by atom, creating microscopic craters.
 </details>
 
 **Q4:** Using the memory tricks in this document, if you know that Na⁺ (sodium ion) is a CATION (positively charged ion), which electrode will it travel toward during electrolysis?

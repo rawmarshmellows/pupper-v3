@@ -5,13 +5,13 @@ created: 2026-03-26
 
 # From Human Calculators to Coding on Screens
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/from-code-to-running-firmware]] | [[quick-context/transistor]] | [[quick-context/transistor-design-history]]
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/ram-addressing-decoder]]
 
-> **TL;DR:** Computing evolved through five eras of human-machine interfaces: teams of human "computers" doing arithmetic by hand with pencils and desk calculators (1600s-1940s), rewiring plugboards on vacuum-tube machines (1940s), feeding punch cards to stored-program computers (1950s), typing on teletype terminals connected to time-sharing systems (1960s), and editing code on CRT screens with compilers running locally (1970s+). The word "computer" originally meant a *person* — rooms full of people, mostly women, who performed calculations as assembly lines of arithmetic. Electronic computers replaced them because ENIAC could compute a ballistics trajectory in 30 seconds that took a human 20 hours. Today, when you type code on a screen, the keystrokes become characters stored in RAM then saved to disk; the compiler reads that file, translates it through the [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] into machine code, and the OS (or a [[quick-context/firmware|flash programmer]], for embedded systems) loads those binary instructions into memory where the CPU fetches and executes them.
+> **TL;DR:** Computing evolved through five eras of human-machine interfaces: teams of human "computers" doing arithmetic by hand with pencils and desk calculators (1600s-1940s), rewiring plugboards on vacuum-tube machines (1940s), feeding punch cards to stored-program computers (1950s), typing on teletype terminals connected to time-sharing systems (1960s), and editing code on CRT screens with compilers running locally (1970s+). The word "computer" originally meant a *person* — rooms full of people, mostly women, who performed calculations as assembly lines of arithmetic. Electronic computers replaced them because ENIAC could compute a ballistics trajectory in 30 seconds that took a human 20 hours. Today, when you type code on a screen, the keystrokes become characters stored in RAM then saved to disk; the compiler reads that file, translates it through the compilation chain into [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]], and the OS (or a flash programmer, for embedded systems) loads those binary instructions into memory where the CPU fetches and executes them.
 
 ## The Core Problem
 
-You sit in front of a screen, type `x = 2 + 3`, press a button, and your program runs. But the computer is just a pile of [[quick-context/transistor|transistors]] switching on and off — it has no concept of "screens," "keyboards," or "files." Someone had to build every layer between your keystrokes and the CPU's fetch-execute cycle: the keyboard controller that converts key presses to character codes, the operating system that buffers those characters in RAM, the filesystem that persists them to disk, the compiler that translates them to machine code, and the loader that places those instructions where the CPU can find them. Each of these layers was itself [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, stretching back to an era when "programming" meant physically rewiring cables between [[quick-context/transistor-design-history|vacuum tube]] circuits — and before that, when "computer" meant a *person* sitting at a desk with a pencil and a mechanical calculator.
+You sit in front of a screen, type `x = 2 + 3`, press a button, and your program runs. But the computer is just a pile of transistors switching on and off — it has no concept of "screens," "keyboards," or "files." Someone had to build every layer between your keystrokes and the CPU's [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]]-execute cycle: the keyboard controller that converts key presses to character codes, the operating system that buffers those characters in RAM, the filesystem that persists them to disk, the compiler that translates them to machine code, and the loader that places those instructions where the CPU can find them. Each of these layers was itself bootstrapped from something simpler, stretching back to an era when "programming" meant physically rewiring cables between vacuum tube circuits — and before that, when "computer" meant a *person* sitting at a desk with a pencil and a mechanical calculator.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ You sit in front of a screen, type `x = 2 + 3`, press a button, and your program
 | **Batch Processing** | The dominant computing mode of the 1950s-60s: you submit a deck of punch cards, wait hours, and get results back on a printout. No interaction with the running program. |
 | **Time-Sharing** | A technique (1961+) where one computer rapidly switches between multiple users, giving each the illusion of an interactive, dedicated machine. This is what made typing programs on terminals possible. |
 | **Terminal** | A keyboard + display device (first teletypes printing on paper, then CRT screens) connected to a computer, allowing real-time interaction. The terminal replaced punch cards as the programming interface. |
-| **Operating System** | The master program that manages hardware, files, memory, and user programs. It connects your keystrokes on screen to the compiler and CPU — and was itself [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from simpler programs. |
+| **Operating System** | The master program that manages hardware, files, memory, and user programs. It connects your keystrokes on screen to the compiler and CPU — and was itself bootstrapped from simpler programs. |
 
 <details>
 <summary><strong>How It Works</strong> — Five eras of programming interfaces</summary>
@@ -83,7 +83,7 @@ ERA 0: HUMAN COMPUTERS (1600s-1940s)
 By WW2, human computing had become a major wartime operation:
 
 - **Aberdeen Proving Ground:** ~100-200 women with math degrees computed artillery firing tables. A single ballistics trajectory took **~20 hours** with a desk calculator. A complete firing table (750-1,000 trajectories) took a team weeks to months.
-- **Manhattan Project (Los Alamos):** Richard Feynman organized teams of ~20-30 human computers into a "human parallel processor" — each person performed one step and passed the result forward, mimicking what we'd later call pipelining.
+- **Manhattan Project (Los Alamos):** Richard Feynman organized teams of ~20-30 human computers into a "human [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] processor" — each person performed one step and passed the result forward, mimicking what we'd later call pipelining.
 - **NACA/NASA (from 1935):** Langley hired women as computers for aeronautics research. The West Area Computers — a segregated group of Black women mathematicians established in 1943 — included Dorothy Vaughan, Katherine Johnson, and Mary Jackson (the "Hidden Figures"). Johnson later calculated trajectories for Mercury and Apollo missions; John Glenn specifically requested she verify the electronic computer's calculations for his 1962 orbital flight.
 
 The word "computer" shifted from person to machine gradually between 1945 and 1955. For a brief period both coexisted — some institutions even spelled the human role "computor" to distinguish it. By the mid-1950s the machine meaning dominated, though human computers continued working at NASA into the 1960s.
@@ -127,7 +127,7 @@ ERA 1: PLUGBOARD PROGRAMMING (1940s)
 
 ### Era 2: Punch Cards and the Stored-Program Revolution (1950s)
 
-The breakthrough was the **stored-program concept** (von Neumann, 1945): store instructions in the same memory as data. Now programs were sequences of numbers in memory, not physical wires. EDSAC (1949) was the first stored-program computer to enter routine service (the Manchester Baby ran a stored program in 1948, but EDSAC was the first used for real work). By the 1950s, vacuum tubes were being replaced by [[quick-context/transistor|transistors]] (first transistor: 1947; first transistorized computer: Manchester University's 1953 prototype), making machines smaller, more reliable, and cheaper.
+The breakthrough was the **stored-program concept** (von Neumann, 1945): store instructions in the same memory as data. Now programs were sequences of numbers in memory, not physical wires. EDSAC (1949) was the first stored-program computer to enter routine service (the Manchester Baby ran a stored program in 1948, but EDSAC was the first used for real work). By the 1950s, vacuum tubes were being replaced by transistors (first transistor: 1947; first transistorized computer: Manchester University's 1953 prototype), making machines smaller, more reliable, and cheaper.
 
 But how do you get a program into memory? **Punch cards.** Each card had 80 columns of holes representing characters. A programmer wrote code on paper, a keypunch operator punched it onto cards, the card reader fed them into memory, and hours later you got printed output. This was **batch processing** — no interaction with the running machine.
 
@@ -617,7 +617,7 @@ ERA 4: FROM SCREEN TO CPU -- THE MODERN WORKFLOW
   +------------------------------------------+
 ```
 
-For embedded/firmware development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
+For embedded/[[learning/notes/quick-context/firmware|firmware]] development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a flash programmer writes directly to the microcontroller's flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
 
 ### Where Is Your Code Stored?
 
@@ -646,9 +646,9 @@ There's no magic — every step is explicit:
 
 1. **The text editor knows the file path** because you opened or created it (e.g., `/home/user/main.c`). It reads from and writes to that path via OS system calls.
 2. **The compiler is invoked by you** (or your build system) with the file path as an argument: `gcc main.c`. The compiler asks the OS to read that file from disk.
-3. **The linker knows where to place code in memory** from the linker script (for embedded) or OS conventions (for desktop). See [[quick-context/from-code-to-running-firmware|linker scripts]].
+3. **The linker knows where to place code in memory** from the linker script (for embedded) or OS conventions (for desktop). See linker scripts.
 4. **The OS loader knows the entry point** because it's recorded in the ELF/PE executable header.
-5. **The CPU knows where to start** because the OS sets the Program Counter to the entry point address — or, on bare metal, the [[quick-context/code-to-gates-and-bootstrapping|Reset Vector]] is hardwired into the CPU.
+5. **The CPU knows where to start** because the OS sets the Program Counter to the entry point address — or, on bare metal, the Reset Vector is hardwired into the CPU.
 
 Nothing is automatic or implicit. Every "how does the computer know?" has the same answer: some earlier layer of software (or hardware) was explicitly configured to provide that information.
 
@@ -669,7 +669,7 @@ The entire history of programming interfaces is a tension between **human intera
 
 Each transition happened when economics flipped. Rooms full of human computers were replaced by ENIAC when a single machine could outperform hundreds of people. Then batch processing replaced manual machine setup. Then the shift from batch to interactive programming happened when the economics flipped again. In the 1950s, a computer cost millions of dollars and programmer time was cheap — it made sense to maximize machine utilization with batch processing, even if programmers waited hours. By the 1960s, programmer salaries exceeded computer costs, and the wasted hours spent debugging from printouts became the bottleneck. Time-sharing was the solution: sacrifice some machine efficiency to dramatically increase programmer productivity.
 
-This same tension plays out today in the choice between compiled and interpreted languages (see [[quick-context/code-to-gates-and-bootstrapping|Abstraction vs. Performance]]), and between desktop development (instant feedback, virtual memory, OS manages everything) versus [[quick-context/from-code-to-running-firmware|embedded development]] (cross-compile, flash, reboot — slower iteration but direct hardware control).
+This same tension plays out today in the choice between compiled and interpreted languages (see Abstraction vs. Performance), and between desktop development (instant feedback, virtual memory, OS manages everything) versus embedded development (cross-compile, flash, reboot — slower iteration but direct hardware control).
 
 </details>
 
@@ -768,9 +768,9 @@ CPU EXECUTING THE ADDITION (nanosecond timescale)
   The same addition on ENIAC: ~200 microseconds (600,000x slower)
 ```
 
-For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] microcontroller (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in [[quick-context/from-code-to-running-firmware|flash]], and the CPU executes the ADD instruction directly — no interpreter overhead.
+For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM32]] [[learning/notes/micro-context/microcontroller|microcontroller]] (compiled C, not interpreted Python), step 3 would be replaced by ahead-of-time compilation: `gcc` produces machine code stored in flash, and the CPU executes the ADD instruction directly — no interpreter overhead.
 
-**The one thing most outsiders get wrong about this is...** thinking that "interactive programming" means the computer understands your keystrokes directly. The screen, keyboard, text editor, filesystem, compiler, and OS are all elaborate layers of software that translate your intent into the only thing the CPU can do: fetch a binary instruction, decode it, and execute it through [[quick-context/code-to-gates-and-bootstrapping|logic gates]]. When you type on a screen and see output, you're interacting with at least six software layers — each one was [[quick-context/code-to-gates-and-bootstrapping|bootstrapped]] from something simpler, going all the way back to binary on punch cards.
+**The one thing most outsiders get wrong about this is...** thinking that "interactive programming" means the computer understands your keystrokes directly. The screen, keyboard, text editor, filesystem, compiler, and OS are all elaborate layers of software that translate your intent into the only thing the CPU can do: fetch a binary instruction, decode it, and execute it through [[quick-context/code-to-gates-and-bootstrapping|logic gates]]. When you type on a screen and see output, you're interacting with at least six software layers — each one was bootstrapped from something simpler, going all the way back to binary on punch cards.
 
 </details>
 
@@ -789,7 +789,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 
-- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
+- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel [[learning/notes/quick-context/data-bus-and-arbitration|data bus]].
 
 - **Von Neumann Architecture** — The stored-program concept that made the transition from plugboards to software possible. Instructions and data share the same memory, enabling programs to be loaded and replaced without rewiring.
 
@@ -824,7 +824,7 @@ The CPU encounters `2` in multiple forms at different stages, but **the CPU is i
 Because time-sharing required expensive terminals and communications infrastructure that most organizations couldn't afford. A single teletype terminal cost $500-$1,000 in the 1960s (equivalent to $5,000-$10,000 today), and you needed one per user plus a time-sharing-capable computer. Most computing centers had one mainframe serving hundreds of users through batch queues — adding terminals for everyone was prohibitively expensive. Punch cards remained the cheapest way to submit programs at scale until personal computers made terminals obsolete in the 1980s. The transition was economic, not technical.
 </details>
 
-**Q5:** The bootstrapping chain started with hand-coded binary on punch cards. But today, if every compiler on Earth were deleted, could we rebuild the toolchain? How?
+**Q5:** The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|bootstrapping]] chain started with hand-coded binary on punch cards. But today, if every compiler on Earth were deleted, could we rebuild the toolchain? How?
 <details>
 <summary>Answer</summary>
 Yes — because the CPU hardware still exists and can execute binary instructions. You would repeat the original [[quick-context/code-to-gates-and-bootstrapping|bootstrapping]] process: (1) hand-write a minimal assembler in binary, enter it via any means of getting bytes into memory (hex editor, serial port, even toggle switches if needed), (2) use that assembler to write a better assembler, (3) use that to write a minimal C compiler (this has been done — the "stage0" and bootstrappable.org projects maintain a chain from hex to full compiler), (4) use the minimal compiler to compile GCC or LLVM. The bootstrapping chain is reconstructible because each step only requires tools from the previous step. In practice, this would take months, not decades, because we know what to build — the original pioneers had to invent it. See: Concrete Example in code-to-gates-and-bootstrapping.

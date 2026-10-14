@@ -3,9 +3,9 @@ topic: Soldering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/silymarin]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/sales-methodology-layering]]
 
-> **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and [[quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
+> **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and PCB pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
 
 # Soldering
 

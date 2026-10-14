@@ -3,9 +3,9 @@ topic: Thermal Noise in Electronics
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/electric-current]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/making-electrolytes]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electromigration]]
 
-> **TL;DR:** Thermal noise is the unavoidable random voltage fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
+> **TL;DR:** Thermal noise is the unavoidable random [[learning/notes/quick-context/voltage|voltage]] fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
 
 # Thermal Noise: Why Heat Makes Electrons Misbehave
 
@@ -110,7 +110,7 @@ THE kT ENERGY SCALE
     │  Random electron motion           │  ~kT            │  1×              │
     │  Transistor subthreshold leakage  │  ~kT            │  1×              │
     │  Thermal voltage noise            │  ~kT/q          │  1×              │
-    │  [[quick-context/glass-transition-temperature|Polymer chain mobility]] (at Tg) │  ~10-100 kT     │  10-100×         │
+    │  Polymer chain mobility (at Tg) │  ~10-100 kT     │  10-100×         │
     │  Covalent bond breaking           │  ~100-200 kT    │  100-200×        │
     └─────────────────────────────────────────────────────────────────────────┘
 
@@ -260,7 +260,7 @@ ENGINEERING RESPONSES:
 
 Thermal Noise in a Sense Amplifier
 
-Memory chips must detect tiny voltage differences (often <100mV) stored in [[quick-context/capacitor|capacitors]]. Thermal noise directly limits how small these differences can be:
+Memory chips must detect tiny voltage differences (often <100mV) stored in capacitors. Thermal noise directly limits how small these differences can be:
 
 ```
 DRAM SENSE AMPLIFIER: Where Thermal Noise Matters Most
@@ -318,7 +318,7 @@ THE NOISE PROBLEM:
 THIS IS WHY:
 ─────────────────────────────────────────────────────────────────────────────
 
-    • DRAM [[quick-context/capacitor|capacitors]] can't shrink indefinitely (noise floor)
+    • DRAM capacitors can't shrink indefinitely (noise floor)
     • Memory refresh cycles are needed (charge leaks, signal degrades)
     • ECC (Error Correcting Code) memory exists
     • Server-grade RAM uses more conservative designs
@@ -341,7 +341,7 @@ THIS IS WHY:
 
 - **Statistical Mechanics / Boltzmann Distribution** — The deeper physics explaining why thermal noise follows specific statistical distributions; temperature determines the probability of finding electrons at different energy levels.
 
-- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller capacitance means more thermal noise relative to signal.
+- **[[quick-context/capacitor|Capacitor]]** — DRAM uses tiny capacitors to store bits. The fundamental noise floor V_n = sqrt(kT/C) limits how small these capacitors can be—smaller [[learning/notes/quick-context/capacitance|capacitance]] means more thermal noise relative to signal.
 
 </details>
 
@@ -372,7 +372,7 @@ Two reasons: (1) All practical conductors have some resistance—even supercondu
 Because noise margins have shrunk dramatically. The 180nm generation operated at 1.8V with ~0.5V noise margin; 3nm operates at 0.65V with only ~0.12V noise margin. Thermal noise of ~1mV was 0.2% of the old margin but is 0.8% of the new margin—4× worse relatively. The noise floor hasn't changed (it's set by physics), but the signal levels dropped closer to it. See: The Key Tension and The Scaling Problem.
 </details>
 
-**Q5:** How does the kT thermal energy scale connect thermal noise in electronics to completely different phenomena like [[quick-context/glass-transition-temperature|polymer glass transition]] and [[quick-context/doped-silicon|transistor leakage current]]?
+**Q5:** How does the kT thermal energy scale connect thermal noise in electronics to completely different phenomena like [[quick-context/glass-transition-temperature|polymer glass transition]] and transistor leakage current?
 <details>
 <summary>Answer</summary>
 The kT energy (~26 meV at room temperature) is the fundamental "activation energy" for random thermal processes in all systems. In electronics, kT determines the average energy of random electron motion (thermal noise) and the probability of electrons crossing barriers (subthreshold leakage current ∝ e^(V/kT)). In polymers, thermal energy must exceed intermolecular bond strengths for chains to move; at Tg, thermal energy (~10-100 kT accumulated in chain segments) becomes sufficient to overcome van der Waals forces, enabling chain mobility. All these phenomena are governed by the Boltzmann distribution—temperature determines the probability of overcoming energy barriers, whether those barriers are in silicon transistors or polymer chains. See: The kT Energy Scale.

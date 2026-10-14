@@ -4,6 +4,7 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/decoupling-capacitor]]
 # I2S Audio Amplifier
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
