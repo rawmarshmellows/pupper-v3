@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Sandler KARE Account Segmentation
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/sales-methodology-layering]]
 
 > **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), Recapture (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
 
@@ -187,7 +187,7 @@ Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 **Q1:** What's the difference between a KEEP account and an EXPAND account?
 <details>
 <summary>Answer</summary>
-KEEP accounts are at or near full usage with no major expansion path—the goal is protecting existing revenue. EXPAND accounts are existing customers with whitespace (new departments, products, users) representing growth opportunities. The difference is potential: KEEP is defensive, EXPAND is offensive. See: 5 Essential Terms.
+KEEP accounts are at or near full usage with no major expansion path—the goal is protecting existing revenue. EXPAND accounts are existing customers with [[learning/notes/quick-context/whitespace-mapping|whitespace]] (new departments, products, users) representing growth opportunities. The difference is potential: KEEP is defensive, EXPAND is offensive. See: 5 Essential Terms.
 </details>
 
 **Q2:** Why should RECAPTURE typically get the smallest time allocation?

@@ -5,13 +5,13 @@ created: 2026-03-10
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/switches-to-registers-storing-data]]
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 
 ## The Core Problem
 
-A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The inverse kinematics solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The LLM voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
+A walking robot that sees, talks, and tracks objects is not one program — it is dozens of programs running simultaneously. The PD controller needs joint positions at 200 Hz. The [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solver runs at 20 Hz. The neural locomotion policy updates at 50 Hz. The vision detector processes frames at 5 Hz. The LLM voice agent responds in seconds. These processes have wildly different rates, different programming languages, and different computational requirements (some run on the Pi's ARM cores, others could run on edge accelerators). Without a communication framework, you would spend more time writing socket code, serialization formats, and synchronization logic than writing actual robotics algorithms.
 
 ROS2 (Robot Operating System 2) solves this by providing a standardized publish/subscribe middleware built on DDS (Data Distribution Service). Each software component runs as an independent **node**. Nodes communicate by publishing **messages** to named **topics** — any node can subscribe to any topic, and ROS2 handles the serialization, transport, and delivery. This decouples producers from consumers: the PD controller doesn't know or care whether its joint commands came from a hand-tuned IK solver (Lab 3), a gait generator (Lab 4), or a neural network (Lab 5). It just reads from the same topic.
 
@@ -231,7 +231,7 @@ CONTROL FREQUENCY TIERS
   "never miss a deadline"          "usually meets deadlines"
 ```
 
-The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, neural network inference, vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
+The STM32 microcontrollers handle everything that must happen every millisecond without exception — current regulation, encoder reading, CAN communication. ROS2 on the Pi handles everything above 5 ms period — joint-level PD control, trajectory planning, [[learning/notes/quick-context/pupper-lab5-neural-controller|neural network inference]], vision, voice. The ros2_control `forward_command_controller` sits at the boundary: it runs as a ROS2 node but communicates with the STM32 hardware interface over SPI at a fixed rate.
 
 This split explains a recurring pattern in the labs: **you never write code that directly talks to motors**. Your ROS2 nodes publish joint targets or velocity commands, and the ros2_control + STM32 stack translates those into actual motor current at rates your ROS2 node could never sustain reliably.
 
@@ -880,7 +880,7 @@ executor.spin()
 
 **ReentrantCallbackGroup**: **any number** of callbacks run simultaneously. You **must** use explicit locks for shared state.
 
-**Critical rule:** mutual exclusion is *within* a group only. Callbacks in *different* MutuallyExclusiveCallbackGroups **can** run in parallel with each other.
+**Critical rule:** mutual exclusion is *within* a group only. Callbacks in *different* MutuallyExclusiveCallbackGroups **can** run in [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] with each other.
 
 ```python
 import threading
@@ -1117,7 +1117,7 @@ The neural controller needs `/cmd_vel` to know *what* the robot should do (walk 
 <details>
 <summary>Answer</summary>
 
-ROS2 topics support multiple publishers — the subscriber (neural controller) receives messages from *both* publishers interleaved by arrival time. This means the robot would receive conflicting velocity commands: the state machine might say "rotate to search" while Karel says "move forward." The result is erratic behavior as the neural controller alternates between contradictory commands. In practice, the labs are designed so only one high-level controller is active at a time — the state machine only publishes when tracking is active, and Karel publishes discrete motion commands that complete before the next one starts. But this is a convention, not an enforcement. In production systems, you would use a **cmd_vel_mux** (velocity multiplexer) node that accepts commands from multiple sources with priorities and only forwards the highest-priority active source.
+ROS2 topics support multiple publishers — the subscriber (neural controller) receives messages from *both* publishers interleaved by arrival time. This means the robot would receive conflicting velocity commands: the state machine might say "rotate to search" while Karel says "move forward." The result is erratic behavior as the neural controller alternates between contradictory commands. In practice, the labs are designed so only one high-level controller is active at a time — the state machine only publishes when tracking is active, and Karel publishes [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] motion commands that complete before the next one starts. But this is a convention, not an enforcement. In production systems, you would use a **cmd_vel_mux** (velocity multiplexer) node that accepts commands from multiple sources with priorities and only forwards the highest-priority active source.
 </details>
 
 **Q3:** The PD controller runs at 200 Hz, but the neural controller only publishes new joint targets at ~50 Hz. What does the PD controller do during the 3 out of every 4 cycles when no new target arrives?

@@ -3,6 +3,7 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/short-circuit]] | [[learning/notes/micro-context/cnc-process-selection]]
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

@@ -6,7 +6,7 @@ updated: 2026-03-11
 
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[micro-context/homogeneous-transformation-matrix]]
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-v3-labs]]
 
 > **TL;DR:** Lab 3 flips the FK problem: given a desired foot position in 3D space, find the joint angles that reach it by minimizing a cost function via gradient descent, then drives a single leg through a triangle stepping trajectory using a dual-rate architecture (200 Hz PD tracking + 20 Hz IK solving).
 
@@ -198,7 +198,7 @@ HYBRID IK PIPELINE (production systems)
 
 - **MoveIt's pick_ik** — Combines a local gradient descent optimizer with a global evolutionary algorithm. In `local` mode it takes a seed (from analytical IK or the current configuration) and optimizes cost functions for joint displacement, joint centering, and avoiding limits. In `global` mode it uses an evolutionary algorithm to escape local minima.
 
-- **TRAC-IK** — Runs two solvers in parallel: a fast KDL-based numerical solver and a sequential quadratic programming (SQP) solver with joint limit constraints. Returns whichever finds a valid solution first.
+- **TRAC-IK** — Runs two solvers in [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]]: a fast KDL-based numerical solver and a sequential quadratic programming (SQP) solver with joint limit constraints. Returns whichever finds a valid solution first.
 
 - **Recent research (Cohn et al., 2026)** — Uses the analytical IK solution as a *change of variables* in the optimization formulation itself, so the optimizer works in a space where the kinematic constraint is automatically satisfied. This achieves higher success rates on problems involving collision avoidance, grasp selection, and humanoid stability than either approach alone.
 
@@ -255,7 +255,7 @@ $p_{new} = FK([0.22, -0.462, 0.851]) = [0.0495, -0.0988, -0.1483]$
 
 $C_{new} = (0.0495 - 0.05)^2 + (-0.0988 + 0.10)^2 + (-0.1483 + 0.15)^2 = 0.0000063$
 
-Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ reduction in one step. A few more iterations and the cost will be below the convergence tolerance, at which point the IK solver returns $\theta_{new}$ as the solution and the 200 Hz PD loop begins driving the motors to these angles.
+Cost dropped from $0.000093$ to $0.0000063$ — a $93\%$ [[learning/notes/quick-context/cations-and-reduction|reduction]] in one step. A few more iterations and the cost will be below the convergence tolerance, at which point the IK solver returns $\theta_{new}$ as the solution and the 200 Hz PD loop begins driving the motors to these angles.
 
 **Computation cost of this one step:** 4 FK evaluations (1 base + 3 perturbations). A typical solve takes 5-15 steps, so 20-60 FK evaluations total. Each FK evaluation chains three 4x4 matrix multiplications (from Lab 2), which is why this is too expensive to run at 200 Hz.
 

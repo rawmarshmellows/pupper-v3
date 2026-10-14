@@ -4,9 +4,9 @@ created: 2026-02-14
 updated: 2026-04-07
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
+> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/clock-sources-and-timing]]
 
-> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
+> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, [[learning/notes/quick-context/python-to-machine-code-pipeline|virtual machine]], assembler, [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]]—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from transistors. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a linker, and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
 
 # Code to Gates — The Full Compilation Chain and Bootstrapping
 
@@ -16,17 +16,17 @@ How does machine code actually get written — what is the encoding process that
 
 ## The Core Problem
 
-You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|transistors]] on a [[quick-context/silicon-die|silicon die]] physically switch on and off to make that happen. How? There are roughly **7 layers of abstraction** between your code and the hardware, each translating the layer above into simpler instructions for the layer below. And there's a deeper puzzle: the very first layer (the compiler) is itself a program—so what compiled *it*? The answer is bootstrapping, a process that started with humans manually encoding binary on punch cards.
+You type `x = 2 + 3` in Python. Somehow, billions of transistors on a [[quick-context/silicon-die|silicon die]] physically switch on and off to make that happen. How? There are roughly **7 layers of abstraction** between your code and the hardware, each translating the layer above into simpler instructions for the layer below. And there's a deeper puzzle: the very first layer (the compiler) is itself a program—so what compiled *it*? The answer is bootstrapping, a process that started with humans manually encoding binary on punch cards.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
+| **Compiler** | A program that translates high-level source code (C, [[learning/notes/quick-context/rust|Rust]]) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
 | **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
 | **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM) whose bit fields encode the opcode, registers, and operands according to the ISA. |
 | **ISA (Instruction Set Architecture)** | The contract between software and hardware. It defines every instruction the CPU supports, its binary encoding (which bits mean what), the available registers, and addressing modes. ARM, x86, RISC-V, and Hack are all different ISAs. |
-| **Logic Gate** | A circuit built from [[quick-context/transistor|transistors]] that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
+| **Logic Gate** | A circuit built from transistors that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
 | **Bootstrapping** | The process of building complex tools from simpler ones, starting from nothing. In computing: hand-coded binary → first assembler → first compiler → better compiler → modern toolchains. |
 
 <details>
@@ -74,7 +74,7 @@ LAYER 3: CPU MICROARCHITECTURE         Program Counter → fetch instruction fro
               ▼
 LAYER 2: LOGIC GATES                   ALU is built from: Adders ← Full Adders
          (AND, OR, NOT, NAND,          ← Half Adders ← XOR + AND gates
-          XOR, MUX, DMUX)             Registers ← MUX + [[quick-context/d-flip-flop|Data Flip-Flop]]
+          XOR, MUX, DMUX)             Registers ← MUX + Data Flip-Flop
               │                        RAM ← DMUX + Registers + MUX
               │  GATES ARE BUILT FROM...
               ▼
@@ -83,7 +83,7 @@ LAYER 1: TRANSISTORS                   NAND gate = 4 transistors (2 NMOS
           doped silicon)               on gate → conducts (ON) or blocks (OFF)
 ```
 
-The Fetch-Execute Cycle (Layer 3 in detail)
+The [[learning/notes/quick-context/cpu-fetch-execute-cycle|Fetch]]-Execute Cycle (Layer 3 in detail)
 
 This is the heartbeat of every computer. The CPU repeats this cycle billions of times per second:
 
@@ -459,7 +459,7 @@ POWER-ON SEQUENCE
   it's physically part of the hardware.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching [[quick-context/transistor|transistors]] on and off.
+**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching transistors on and off.
 
 </details>
 
@@ -468,7 +468,7 @@ POWER-ON SEQUENCE
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works ([[learning/notes/quick-context/voltage|voltage]] on gate controls current flow) is the foundation for understanding how gates compute.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
 
@@ -484,9 +484,9 @@ POWER-ON SEQUENCE
 
 - **HDL (Hardware Description Language)** — Languages like VHDL and Verilog used to design and verify logic gate implementations before manufacturing. The "source code" for hardware.
 
-- **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
+- **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the [[learning/notes/quick-context/from-code-to-running-firmware|startup code]] boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[learning/notes/micro-context/sram|SRAM]], DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 
@@ -506,7 +506,7 @@ The assembler looks up the ISA encoding for `ADD` to get the opcode bit pattern,
 **Q2:** Where does machine code physically end up on a desktop vs. an embedded MCU?
 <details>
 <summary>Answer</summary>
-On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug probe ([[micro-context/swd-serial-wire-debug|SWD]]/JTAG). The code persists without power and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
+On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug probe (SWD/JTAG). The code persists without power and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
 </details>
 
 **Q3:** If a CPU only understands binary, how can Python — an interpreted language — run on it?

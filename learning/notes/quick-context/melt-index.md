@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/maxwell-equations]]
 
 > **TL;DR:** Melt Index (MFI/MFR) measures how easily a polymer flows when melted - grams extruded through a standard die in 10 minutes. Higher MFI means easier processing but weaker parts; lower MFI means tougher parts but harder to process. It's the universal handshake between resin suppliers and processors.
 
@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (MFR)**, measures how easily a thermoplastic [[quick-context/atoms-molecules-polymers-basics|polymer]] flows when melted—specifically, how many grams of polymer extrude through a standardized die in 10 minutes under controlled temperature and load. Your value of **36.5 ± 2.6 g/10 min** indicates a relatively high-flow material (easy to process, lower viscosity). Without this metric, manufacturers would be flying blind: injection molding machines, extruders, and blow molding equipment all require precise viscosity matching. Too low an MI means incomplete mold filling, short shots, and excessive machine wear from fighting a sluggish melt. Too high means the material runs like water—poor mechanical properties, flash at mold seams, and dimensional instability. MI is the universal handshake between resin suppliers and processors; it determines whether a given polymer will actually work in your specific process and equipment.
+Melt Index (MI), formally called **Melt Flow Index (MFI)** or **Melt Flow Rate (MFR)**, measures how easily a thermoplastic polymer flows when melted—specifically, how many grams of polymer extrude through a standardized die in 10 minutes under controlled temperature and load. Your value of **36.5 ± 2.6 g/10 min** indicates a relatively high-flow material (easy to process, lower viscosity). Without this metric, manufacturers would be flying blind: injection molding machines, extruders, and blow molding equipment all require precise viscosity matching. Too low an MI means incomplete mold filling, short shots, and excessive machine wear from fighting a sluggish melt. Too high means the material runs like water—poor mechanical properties, flash at mold seams, and dimensional instability. MI is the universal handshake between resin suppliers and processors; it determines whether a given polymer will actually work in your specific process and equipment.
 
 ## 5 Essential Terms
 
@@ -123,7 +123,7 @@ In practice, if batch A-2024-004 enters your injection molding process, you'd se
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/glass-transition-temperature]]**: The temperature at which a polymer transitions from rigid/glassy to flexible/rubbery—MFI testing must occur well above this point for meaningful flow measurements.
-- **[[quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than amorphous ones.
+- **[[quick-context/polymer-crystallinity-vs-amorphous]]**: Crystalline regions in a polymer melt more sharply and affect flow behavior; semi-crystalline polymers often show more dramatic MFI changes with temperature than [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|amorphous]] ones.
 - **[[quick-context/3d-printing-filament-types]]**: Different filament materials (PLA, ABS, PETG) have characteristic MFI ranges that determine optimal printing temperatures and speeds.
 - **[[quick-context/3d-printer-hotends]]**: Hotend design must accommodate the viscosity (related to MFI) of target materials—all-metal hotends handle higher temperatures for low-MFI engineering polymers.
 - **[[quick-context/tensile-strength-materials]]**: Higher MFI generally correlates with lower tensile strength due to shorter polymer chains—the fundamental processability vs. performance tradeoff.

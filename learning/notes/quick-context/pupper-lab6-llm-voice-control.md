@@ -5,13 +5,13 @@ created: 2026-03-10
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
 ## The Core Problem
 
-Telling a robot "go forward and then do a little dance" is trivially easy for a human to understand but involves a surprisingly deep pipeline to execute. The voice signal must be captured, streamed to a speech-understanding model, interpreted as a sequence of discrete robot commands, translated into velocity messages the locomotion controller accepts, and finally converted to joint torques by the neural policy running on the real-time control loop. Every layer operates at a different timescale: audio at 24 kHz, the LLM at hundreds of milliseconds, ROS2 topics at tens of Hz, and the motor loop at 1 kHz. Lab 6 asks students to build the top two layers of this stack and connect them to the bottom layers they already have from Labs 4-5.
+Telling a robot "go forward and then do a little dance" is trivially easy for a human to understand but involves a surprisingly deep pipeline to execute. The voice signal must be captured, streamed to a speech-understanding model, interpreted as a sequence of [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] robot commands, translated into velocity messages the locomotion controller accepts, and finally converted to joint torques by the neural policy running on the real-time control loop. Every layer operates at a different timescale: audio at 24 kHz, the LLM at hundreds of milliseconds, ROS2 topics at tens of Hz, and the motor loop at 1 kHz. Lab 6 asks students to build the top two layers of this stack and connect them to the bottom layers they already have from Labs 4-5.
 
 The KarelPupper abstraction exists because LLMs produce text, not Twist messages. Rather than asking the LLM to output raw linear and angular velocities (which it would hallucinate constantly), students define a small vocabulary of named actions — `move_forward`, `turn_left`, `bob`, `dance` — each implemented as a method that publishes the correct Twist sequence to `/cmd_vel`. This reduces the LLM's job from "generate arbitrary floating-point velocity vectors" to "pick from a menu of action names," which is a dramatically easier task for a language model and produces reliable behavior.
 
@@ -89,7 +89,7 @@ VOICE-TO-ACTION PIPELINE
 
 6. **Karel execution**: The matched method (e.g., `move_forward()`) publishes a Twist message to `/cmd_vel` with the appropriate linear and angular velocities, held for a duration (typically 1-2 seconds per movement step).
 
-7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via CAN bus.
+7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via [[learning/notes/quick-context/can-bus|CAN bus]].
 
 ### Audio muting for echo prevention
 
@@ -179,7 +179,7 @@ def dance(self):
 
 Each method call publishes a Twist to `/cmd_vel` and sleeps for the movement duration before the next step.
 
-**T=1400-8000ms (in parallel) — Neural controller executes**
+**T=1400-8000ms (in [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]]) — Neural controller executes**
 While `dance()` sequences through its moves, the Lab 5 neural policy continuously reads `/cmd_vel` at ~50 Hz. For each Twist command, it generates 12 joint position targets that make the robot physically spin, strafe, and bob. The CAN bus carries these targets to the servo motors at 1 kHz.
 
 **T=1400-2000ms (in parallel) — Audio playback**

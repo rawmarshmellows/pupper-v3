@@ -1,6 +1,8 @@
+
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
+> A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]], KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
 
@@ -36,7 +38,7 @@ Based on your primary motion with this account:
 | Classification | Definition | Your Account? |
 |---|---|---|
 | **KEEP** | Stable revenue, no major expansion path. Focus: protect from churn | [ ] |
-| **EXPAND** | Existing customer with whitespace. Focus: grow revenue | [ ] |
+| **EXPAND** | Existing customer with [[learning/notes/quick-context/whitespace-mapping|whitespace]]. Focus: grow revenue | [ ] |
 | **ATTAIN** | (Not applicable - this is for new logos) | - |
 | **RECAPTURE** | (Not applicable - this is for lost customers) | - |
 

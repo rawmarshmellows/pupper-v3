@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Absolute Orientation Problem
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/helmert-transform]]
 
 > **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 
@@ -39,10 +39,10 @@ The key insight (shared by all closed-form methods) is that translation decouple
 | Method | Year | Rotation Representation | Handles Scale? | Key Matrix |
 |--------|------|------------------------|----------------|------------|
 | **Horn** | 1987 | Unit quaternion | Yes | $4 \times 4$ symmetric $N$ |
-| **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
+| **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-[[learning/notes/quick-context/covariance-matrix|covariance]] $H$ |
 | **Umeyama** | 1991 | SVD with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
 
-Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
+Umeyama's extension fixed a flaw in Arun's method where the SVD could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
 
 ### Step-by-Step: SVD Solution (Arun/Umeyama)
 
@@ -296,16 +296,16 @@ Centering the data decouples translation from rotation. Once you subtract centro
 Three point pairs minimum, and they must be non-collinear (not all on the same line). Three non-collinear points define a plane, providing 9 scalar equations (3 points x 3 coordinates) for the 7 unknowns (3 rotation + 3 translation + 1 scale). If the points are collinear, the rotation around the line is ambiguous. See: How It Works, Minimum Points Required table.
 </details>
 
-**Q3:** The SVD of the cross-covariance matrix produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
+**Q3:** The SVD of the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
 <details>
 <summary>Answer</summary>
-$R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The singular values in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
+$R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The [[learning/notes/quick-context/singular-value-decomposition|singular values]] in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
 </details>
 
 **Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a [[learning/notes/quick-context/similarity-transform|similarity transform]] when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?

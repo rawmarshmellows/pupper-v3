@@ -5,7 +5,7 @@ created: 2026-02-13
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/soldering]]
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
@@ -297,11 +297,11 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[quick-context/electromagnetism]]** — The electric field is one component of the electromagnetic field. Moving charges create magnetic fields; changing magnetic fields create electric fields.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — In series, voltages add (same current, field adds up). In parallel, voltages are equal (current divides).
+- **[[quick-context/parallel-vs-series-voltage]]** — In [[learning/notes/quick-context/parallel-vs-series-voltage|series]], voltages add (same current, field adds up). In [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]], voltages are equal (current divides).
 
 - **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through [[learning/notes/quick-context/lenzs-law|Faraday's Law]]. The collapsing magnetic field can generate very high voltages.
 
 - **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 
@@ -327,7 +327,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 **Q3:** Two wires carry the same current: one copper, one nichrome (resistive). Which has the stronger electric field inside?
 <details>
 <summary>Answer</summary>
-**Nichrome has the stronger field.** From J = σE, current density J is the same (same current, assume same wire thickness). Nichrome has lower conductivity σ, so to maintain the same J, you need a higher E. This higher field corresponds to a higher voltage drop across the nichrome wire—which is exactly how resistors work.
+**Nichrome has the stronger field.** From J = σE, [[learning/notes/quick-context/electric-current|current density]] J is the same (same current, assume same wire thickness). Nichrome has lower conductivity σ, so to maintain the same J, you need a higher E. This higher field corresponds to a higher voltage drop across the nichrome wire—which is exactly how resistors work.
 </details>
 
 **Q4:** A spark plug has a 0.5mm gap and requires 20,000V to fire. What's the field strength?

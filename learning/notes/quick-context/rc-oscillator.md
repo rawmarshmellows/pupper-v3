@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # RC Oscillator
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/frequency-and-filtering]] | [[quick-context/pwm-controller-circuit]]
+> **Related:** [[learning/notes/micro-context/crystal-oscillator]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
 
 > **TL;DR:** An RC oscillator generates a repeating waveform (sawtooth, square, or triangle) using only [[quick-context/resistor|resistors]] and [[quick-context/capacitor|capacitors]] -- no quartz crystal or resonator needed. It's the cheap, "good enough" clock source inside PWM controller ICs, 555 timers, and microcontroller internal oscillators (like the STM32's HSI), where ±1-5% frequency accuracy is acceptable because a feedback loop or protocol tolerance compensates for drift.
 

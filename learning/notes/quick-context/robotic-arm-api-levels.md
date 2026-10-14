@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/platinum-inertness]] | [[learning/notes/quick-context/pupper-v3-labs]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Bridging Human Intent to Motor Commands
 
-Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
+Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
 
 The abstraction layers exist because manufacturing needs both determinism (a welding robot must follow the exact same path every cycle) and flexibility (reprogramming for a new product shouldn't require a PhD in control theory). Without these layers, you'd either have unmaintainable low-level code or be locked into vendor-specific high-level tools with no escape hatch.
 

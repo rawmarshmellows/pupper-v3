@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/electrodes]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 
@@ -11,14 +11,14 @@ created: 2026-01-26
 
 ## The Core Problem: Electrons Are Tiny But Relentless
 
-When [[quick-context/electric-current|current flows through a wire]], it's not just energy moving—it's billions of electrons physically colliding with metal atoms. Each collision transfers a tiny bit of momentum. At low current densities, this is negligible. But in modern chip [[quick-context/metal-interconnect-layers|interconnects]], current densities reach 10⁶ to 10⁷ A/cm²—a million times higher than household wiring. At these densities, the cumulative "electron wind" pushes metal atoms like sand grains in a river, slowly eroding wire from one end and depositing it downstream. Over months or years of operation, this creates **voids** (gaps where atoms left) and **hillocks** (bumps where atoms accumulated). Voids increase resistance until the wire fails open; hillocks can short-circuit to neighboring wires. Without designing around electromigration, chips would fail within days. It's the reason copper replaced aluminum in chips, why wire widths can't shrink indefinitely, and why every chip has strict current limits for each wire.
+When [[quick-context/electric-current|current flows through a wire]], it's not just energy moving—it's billions of electrons physically colliding with metal atoms. Each collision transfers a tiny bit of momentum. At low current densities, this is negligible. But in modern chip interconnects, current densities reach 10⁶ to 10⁷ A/cm²—a million times higher than household wiring. At these densities, the cumulative "electron wind" pushes metal atoms like sand grains in a river, slowly eroding wire from one end and depositing it downstream. Over months or years of operation, this creates **voids** (gaps where atoms left) and **hillocks** (bumps where atoms accumulated). Voids increase resistance until the wire fails open; hillocks can short-circuit to neighboring wires. Without designing around electromigration, chips would fail within days. It's the reason copper replaced aluminum in chips, why wire widths can't shrink indefinitely, and why every chip has strict current limits for each wire.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Electron Wind** | The net force on metal atoms from momentum transfer during electron-atom collisions; the fundamental driver of electromigration |
-| **Current Density (J)** | Current per unit cross-sectional area (A/cm²); electromigration rate scales exponentially with J, making thin wires far more vulnerable |
+| **[[learning/notes/quick-context/electric-current|Current Density]] (J)** | Current per unit cross-sectional area (A/cm²); electromigration rate scales exponentially with J, making thin wires far more vulnerable |
 | **Void** | A gap where atoms have been swept away by electron wind; voids increase resistance and eventually cause open-circuit failure |
 | **Hillock** | A bump where atoms accumulate after being pushed by electrons; hillocks can grow tall enough to short-circuit neighboring wires |
 | **MTTF (Mean Time to Failure)** | The average time before electromigration causes wire failure; depends strongly on current density, temperature, and wire material/geometry |
@@ -253,7 +253,7 @@ THE TRADEOFF MAP:
 |--------|-----------|
 | Wire material | Copper (better conductivity) vs. Cobalt/Ruthenium (better EM resistance at thin dimensions) |
 | Barrier layers | Thicker barriers (better EM protection) vs. thinner barriers (more copper, lower resistance) |
-| Redundant wiring | Multiple parallel paths (EM-safe) vs. single wires (area-efficient) |
+| Redundant wiring | Multiple [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] paths (EM-safe) vs. single wires (area-efficient) |
 | Current limits | Conservative limits (reliable) vs. aggressive limits (faster, smaller chips) |
 | Operating temperature | Higher temp (cheaper cooling) vs. lower temp (longer lifetime) |
 
@@ -352,7 +352,7 @@ ENGINEERING SOLUTIONS:
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How copper interconnects are deposited and patterned; the damascene process (depositing copper into trenches) creates the grain structure that determines electromigration pathways.
 
-- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: thermal noise (random electron motion creating voltage fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
+- **[[quick-context/thermal-noise-electronics|Thermal Noise]]** — Temperature appears in both phenomena: [[learning/notes/quick-context/thermal-noise-electronics|thermal noise]] (random electron motion creating [[learning/notes/quick-context/voltage|voltage]] fluctuations) and electromigration (thermal activation of atomic diffusion). Both scale with kT.
 
 - **Copper vs. Aluminum** — The semiconductor industry switched from aluminum to copper interconnects in the late 1990s partly because copper has better electromigration resistance (higher activation energy for diffusion).
 
@@ -378,7 +378,7 @@ Electron wind pushes atoms in the direction of electron flow (opposite to conven
 **Q3:** A chip designer wants to double the current through a wire. What are three ways they could maintain the same electromigration lifetime?
 <details>
 <summary>Answer</summary>
-From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while doubling current: (1) Double the wire cross-sectional area (2× width or 2× height)—this keeps current density constant. (2) Lower operating temperature—roughly 20°C reduction doubles lifetime. (3) Use a material with higher activation energy (e.g., switch from aluminum to copper). In practice, designers typically widen the wire since the other options have system-level constraints. See: The Key Tension and Black's Equation.
+From Black's law (MTTF ∝ J⁻² × exp(Ea/kT)), to maintain lifetime while doubling current: (1) Double the wire cross-sectional area (2× width or 2× height)—this keeps current density constant. (2) Lower operating temperature—roughly 20°C [[learning/notes/quick-context/cations-and-reduction|reduction]] doubles lifetime. (3) Use a material with higher activation energy (e.g., switch from aluminum to copper). In practice, designers typically widen the wire since the other options have system-level constraints. See: The Key Tension and Black's Equation.
 </details>
 
 **Q4:** Someone claims: "Electromigration isn't a concern for my design because our chip runs very cool (40°C)." What's wrong with this reasoning?

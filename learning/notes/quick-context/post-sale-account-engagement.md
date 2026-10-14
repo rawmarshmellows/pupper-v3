@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Post-Sale Account Engagement
 
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]]
 
 > **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
 
@@ -509,7 +509,7 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
 Unit economics don't support it. A CSM managing 20 strategic accounts can do QBRs, executive alignment, and proactive expansion. The same CSM managing 200 small accounts can only react to issues. Giving white-glove treatment to low-value accounts means either unsustainable costs or neglecting high-value accounts. Segmentation matches investment to return.
 </details>
 
-**Q2:** A $15K ACV account just closed. Their company recently raised a Series B and is hiring aggressively. What segment should they start in, and why?
+**Q2:** A $15K ACV account just closed. Their company recently raised a [[learning/notes/quick-context/parallel-vs-series-voltage|Series]] B and is hiring aggressively. What segment should they start in, and why?
 <details>
 <summary>Answer</summary>
 Growth, not Maintain. Current ACV is low, but growth trajectory signals high potential. Series B + aggressive hiring means they'll likely need more seats and features soon. Investing in the relationship now positions you for expansion when they scale. The company characteristic (hyper-growth) overrides the current ACV for segmentation.
@@ -518,7 +518,7 @@ Growth, not Maintain. Current ACV is low, but growth trajectory signals high pot
 **Q3:** Your strategic account's champion just left for another company. What should you do?
 <details>
 <summary>Answer</summary>
-Three parallel tracks: (1) Develop new champion internally—identify who has influence and interest, invest in their success; (2) Protect the relationship with remaining stakeholders—don't let the account become single-threaded again; (3) Follow the champion—their new company is now a warm lead. Champion departure is a churn risk indicator; fast action prevents regression from Strategic to Protect.
+Three [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] tracks: (1) Develop new champion internally—identify who has influence and interest, invest in their success; (2) Protect the relationship with remaining stakeholders—don't let the account become single-threaded again; (3) Follow the champion—their new company is now a warm lead. Champion departure is a churn risk indicator; fast action prevents regression from Strategic to Protect.
 </details>
 
 **Q4:** A Growth account has declined three expansion proposals over 18 months. Usage is stable but not increasing. What should you do?

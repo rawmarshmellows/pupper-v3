@@ -5,7 +5,7 @@ created: 2026-06-06
 
 # Comparator Specifications (Reading the LMC7211-N Datasheet)
 
-> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/resistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/semiconductor-fabrication]]
 >
 > **Source datasheet:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) — the worked example throughout this note. Section numbers (§4.1–4.6, §5) reference this file.
 

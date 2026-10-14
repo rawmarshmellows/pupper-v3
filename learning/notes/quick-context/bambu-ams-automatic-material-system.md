@@ -4,7 +4,7 @@ created: 2026-01-21
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/melt-index]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]] | [[learning/notes/quick-context/polymer-chemical-bonds]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 
@@ -22,12 +22,12 @@ The AMS (Automatic Material System) solves two problems that plague FDM 3D print
 | **RFID tag** | Embedded chip in Bambu spools that the AMS reads to auto-detect material type, color, and remaining length—third-party filaments require manual profile configuration. |
 | **Filament buffer/hub** | The junction box between AMS and printer that manages filament paths and provides slack for the reverse-Bowden tube—each AMS connects through this. |
 | **Spool backup** | AMS feature that automatically switches to another slot when current spool runs out—requires pre-mapping which slots contain the same material. |
-| **AMS Lite vs AMS vs AMS 2 Pro** | Lite is simpler/cheaper for A1 series (4 colors max, no drying); standard AMS for X1/P1 series (stackable to 16 colors); AMS 2 Pro adds active drying up to 65°C and faster motors. |
+| **AMS Lite vs AMS vs AMS 2 Pro** | Lite is simpler/cheaper for A1 [[learning/notes/quick-context/parallel-vs-series-voltage|series]] (4 colors max, no drying); standard AMS for X1/P1 series (stackable to 16 colors); AMS 2 Pro adds active drying up to 65°C and faster motors. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's firmware. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the hotend and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
+The AMS operates through a coordinated sequence of mechanical actions controlled by the printer's [[learning/notes/quick-context/firmware|firmware]]. When a color change is needed, the extruder first reverses direction to pull the current filament back out of the hotend and through the Bowden tube. A cutting mechanism inside the AMS then snips the filament tip clean, ensuring a fresh end for the next load. The AMS hub—a central junction box—manages the routing between up to four AMS units (16 total slots) and the single path to the printer's toolhead.
 
 For loading, the AMS uses motorized rollers to feed the selected filament through its internal path, into the hub, and down the reverse-Bowden tube to the extruder. The extruder gears then grip the filament and push it through the hotend. Before printing resumes, the printer must **purge** the old color from the nozzle—this is done by extruding material into a waste tower or into the model's infill until only the new color emerges. RFID readers at each slot detect Bambu-branded spools and automatically configure temperature, flow rate, and material type; third-party filaments require manual profile selection in the slicer software.
 
@@ -76,7 +76,7 @@ FILAMENT CHANGE SEQUENCE
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the [[quick-context/3d-printer-hotends|hotend]] before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these materials.
+The central tradeoff is **print time vs. color capability vs. material waste**. Every color change requires purging the old color from the hotend before the new color can print cleanly—this purge block wastes 1-3g of filament per swap. A 16-color artistic print might waste 200g+ of filament just on purging (often more than the actual model). Practitioners optimize this through: (1) **purge-to-infill** techniques that hide purge material inside the model, (2) careful color ordering to minimize dark→light transitions, and (3) designing models that minimize color changes per layer. There's also a speed penalty: each swap adds 15-30 seconds of retract/cut/load/purge time. The AMS 2 Pro reduces this with faster motors (60% quicker feeds), but multi-color prints are inherently slower than single-color. Material compatibility is another tension—soft filaments (TPU), abrasive filaments (carbon fiber), and hygroscopic filaments (PVA) can jam the AMS feeding mechanism, forcing manual loading for these materials.
 
 </details>
 
@@ -193,7 +193,7 @@ A **prime tower** is a separate sacrificial structure printed alongside your mod
 **Q4:** Why might you choose to manually load TPU filament even if you have an AMS?
 <details>
 <summary>Answer</summary>
-[[quick-context/3d-printing-filament-types|TPU]] (flexible filament) is soft and elastic, which causes feeding problems in the AMS's Bowden tube system. The filament can compress, stretch, or buckle instead of pushing smoothly through the tube, leading to jams or inconsistent feeding. The AMS was designed primarily for rigid filaments like [[quick-context/3d-printing-filament-types|PLA]] and PETG. For TPU and other flexible materials, direct manual loading into the printer's extruder (bypassing the AMS entirely) provides reliable feeding. Similar issues occur with very abrasive filaments (carbon fiber, glow-in-the-dark) that can wear AMS components.
+TPU (flexible filament) is soft and elastic, which causes feeding problems in the AMS's Bowden tube system. The filament can compress, stretch, or buckle instead of pushing smoothly through the tube, leading to jams or inconsistent feeding. The AMS was designed primarily for rigid filaments like PLA and PETG. For TPU and other flexible materials, direct manual loading into the printer's extruder (bypassing the AMS entirely) provides reliable feeding. Similar issues occur with very abrasive filaments (carbon fiber, glow-in-the-dark) that can wear AMS components.
 </details>
 
 **Q5:** The AMS enables multi-material prints. How do differences in Tg, thermal expansion, and inter-material adhesion create challenges that single-material printing doesn't face?

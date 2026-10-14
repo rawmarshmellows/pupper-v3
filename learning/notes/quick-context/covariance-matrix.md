@@ -5,7 +5,7 @@ created: 2026-04-04
 
 # Covariance Matrix
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
 
 > **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal holds variances and its off-diagonals hold covariances. It's the fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis distance, and point cloud alignment.
 
@@ -40,7 +40,7 @@ Given $n$ paired observations of vectors $\mathbf{x}$ (input) and $\mathbf{y}$ (
 
 $$H = \sum_{i=1}^{n} (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$$
 
-This is the matrix used in the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|Kabsch/absolute orientation algorithm]]. It is *not* necessarily symmetric and *not* necessarily square (if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions). The [[quick-context/singular-value-decomposition|SVD]] of $H$ directly yields the optimal rotation matrix.
+This is the matrix used in the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|Kabsch/absolute orientation algorithm]]. It is *not* necessarily symmetric and *not* necessarily square (if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions). The SVD of $H$ directly yields the optimal rotation matrix.
 
 ### Geometric interpretation: the covariance ellipsoid
 
@@ -106,7 +106,7 @@ Covariance is based on squared deviations, making it highly sensitive to outlier
 
 ### Cross-covariance: no Bessel's correction needed?
 
-In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the SVD's $U$ or $V$ matrices.
+In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via SVD depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the SVD's $U$ or $V$ matrices.
 
 </details>
 
@@ -204,7 +204,7 @@ print(R)
 #  [ 0.  0.  1.]]
 ```
 
-The cross-covariance matrix $H$ encodes all the rotational information. The [[quick-context/singular-value-decomposition|SVD]] extracts it cleanly.
+The cross-covariance matrix $H$ encodes all the rotational information. The SVD extracts it cleanly.
 
 **The one thing most outsiders get wrong about this is...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by SVD to find the rotation.
 
@@ -216,7 +216,7 @@ The cross-covariance matrix $H$ encodes all the rotational information. The [[qu
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses the cross-covariance matrix $H$ as the key input to SVD-based rotation estimation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of finding the best rigid-body transform between two point sets, solved through cross-covariance + SVD
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The decomposition $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the Helmert transform with scale; covariance is used in least-squares estimation of all parameters
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the [[learning/notes/quick-context/helmert-transform|Helmert transform]] with scale; covariance is used in least-squares estimation of all parameters
 - **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal components; the dominant eigenvectors capture the most variance
 - **Mahalanobis distance** -- Distance metric $d = \sqrt{(\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)}$ that accounts for covariance structure, used in outlier detection and Kalman filter gating
 - **Kalman filter** -- Propagates a state estimate and its covariance matrix through time; the covariance matrix tracks uncertainty at every step
@@ -242,7 +242,7 @@ The quantity $\mathbf{v}^T \Sigma \mathbf{v}$ equals the variance of the linear 
 **Q3:** In the Helmert transform, why can we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
 <details>
 <summary>Answer</summary>
-The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the singular values $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.
+The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the [[learning/notes/quick-context/singular-value-decomposition|singular values]] $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.
 </details>
 
 **Q4:** Someone claims "the cross-covariance matrix is always symmetric." What's wrong with this statement, and when *is* a covariance matrix guaranteed to be symmetric?

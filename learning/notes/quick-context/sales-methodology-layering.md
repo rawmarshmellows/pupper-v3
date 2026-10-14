@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Sales Methodology Layering
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/mcdonald-kam-model]]
 
 > **TL;DR:** No single sales methodology covers the entire account management lifecycle—the most effective organizations layer three types: a qualification framework (deal viability), a selling methodology (how to engage), and an account planning framework (long-term strategy), combining strengths while avoiding redundancy.
 
@@ -19,7 +19,7 @@ Sales leaders often pick one methodology and expect it to solve all problems. Bu
 |------|------------|
 | **Qualification Framework** | A checklist-based system for assessing whether a deal is worth pursuing based on validated criteria (e.g., [[quick-context/meddpicc-qualification-framework|MEDDPICC]]) |
 | **Selling Methodology** | A philosophy and set of tactics for how to engage buyers and conduct sales conversations (e.g., [[quick-context/challenger-sale-methodology|Challenger]], SPIN) |
-| **Account Planning Framework** | A strategic system for managing key relationships over 1-3 year horizons (e.g., [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]], [[quick-context/mcdonald-kam-model|KAM]]) |
+| **Account Planning Framework** | A strategic system for managing key relationships over 1-3 year horizons (e.g., [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]], KAM) |
 | **Segmentation Framework** | A portfolio-level tool for deciding where to invest limited time across accounts (e.g., [[quick-context/sandler-kare-segmentation|KARE]]) |
 | **Framework Collision** | When multiple methodologies create conflicting guidance, duplicated documentation, or overhead that exceeds value |
 

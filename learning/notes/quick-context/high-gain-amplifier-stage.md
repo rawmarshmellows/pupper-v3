@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # High-Gain Amplifier Stage
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/transistor]]
+> **Related:** [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/platinum-inertness]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/impedance-and-reactance]]
 
 > **TL;DR:** The high-gain amplifier stage sits between the [[quick-context/differential-pair|differential pair]] input and the output buffer in [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---it converts the differential pair's small current difference (microamps) into a large voltage swing (volts) by forcing that current through a very high impedance node, achieving 60--100 dB of voltage gain with just a few [[quick-context/transistor|transistors]].
 

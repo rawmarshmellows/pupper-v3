@@ -3,6 +3,7 @@ term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/smd-resistor]]
 # I2S (Inter-IC Sound)
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]
@@ -14,7 +15,7 @@ created: 2026-03-27
 - The master generates BCLK (bit clock) to shift audio samples out one bit at a time, and LRCLK (word select) to indicate left vs. right channel.
 - When LRCLK is low, the left channel sample is transmitted; when high, the right channel — one complete stereo frame per LRCLK cycle.
 - The receiver latches data on the rising edge of BCLK (transmitters typically transition on the falling edge so data is stable in time). MSB (most significant bit) is sent first, one clock cycle after the LRCLK transition.
-- Unlike [[micro-context/spi|SPI]], I2S has no chip-select — it's a dedicated point-to-point audio link, not a shared bus.
+- Unlike SPI, I2S has no chip-select — it's a dedicated point-to-point audio link, not a shared bus.
 
 ```
 I2S TIMING (16-bit stereo):
@@ -32,4 +33,4 @@ SD:      X MSB  ...  LSB    MSB  ...  LSB
          ↑ MSB 1 BCLK after WS transition
 ```
 
-**Key insight:** I2S is essentially [[micro-context/spi|SPI]] repurposed for audio — same clock-and-data shifting, but with LRCLK replacing chip-select to multiplex stereo channels on a single data line.
+**Key insight:** I2S is essentially SPI repurposed for audio — same clock-and-data shifting, but with LRCLK replacing chip-select to multiplex stereo channels on a single data line.

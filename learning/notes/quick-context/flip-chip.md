@@ -3,9 +3,9 @@ topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]
 
-> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
+> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic [[learning/notes/quick-context/silicon-die|silicon die]] to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
 
 # Flip-Chip (C4) Packaging
 
@@ -128,7 +128,7 @@ The central tradeoff in flip-chip packaging is **performance versus manufacturin
 
 **More expensive substrates:** Flip-chip requires substrates with finer features and more routing layers than wire-bonded packages.
 
-**Rework is harder:** If a flip-chip connection fails, you can't easily "re-wire" it like you might repair a wire bond.
+**Rework is harder:** If a flip-chip connection fails, you can't easily "re-wire" it like you might repair a [[learning/notes/quick-context/bond-pad|wire bond]].
 
 ```
 FLIP-CHIP TRADEOFFS AT A GLANCE:

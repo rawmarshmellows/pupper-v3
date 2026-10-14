@@ -5,13 +5,13 @@ created: 2026-03-26
 
 # From Code to Running Firmware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]
+> **Related:** [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
 
-> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing machine code, initialized data, and debug symbols. A debug probe [[quick-context/firmware|flashes]] the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
+> **TL;DR:** After the compiler produces object files, the **linker** combines them using a **linker script** that maps code and data to physical memory regions (flash at `0x08000000`, RAM at `0x20000000`). The result is an **ELF file** containing [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]], initialized data, and debug symbols. A debug probe flashes the relevant sections into the MCU's flash memory. On power-up, the CPU loads the stack pointer from address 0x0, jumps to `Reset_Handler`, which copies `.data` from flash to RAM, zeros `.bss`, calls `SystemInit()`, and finally calls `main()`.
 
 ## The Core Problem
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
+The compilation chain explains how source code becomes machine instructions, but it stops at "binary instructions." A real [[micro-context/microcontroller|microcontroller]] has two distinct memories (flash and RAM) at fixed addresses, a vector table the CPU reads on boot, and startup code that must run before your `main()` function. The linker, linker script, ELF format, flash programmer, and startup code are the missing layers between "compiled object files" and "robot legs moving."
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] explains
 
 ### The Full Pipeline
 
-The [[quick-context/code-to-gates-and-bootstrapping|compilation chain]] gets you from source to object files. This document picks up from there:
+The compilation chain gets you from source to object files. This document picks up from there:
 
 ```
 THE LINK → FLASH → BOOT PIPELINE
@@ -222,7 +222,7 @@ Steps 4-5 are why the linker script exports symbols like `_sdata`, `_edata`, `_s
 <details>
 <summary><strong>The Key Tension</strong> — Flash vs. RAM and the .data problem</summary>
 
-The fundamental tension in embedded firmware is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
+The fundamental tension in embedded [[learning/notes/quick-context/firmware|firmware]] is: **code and constants can live in flash (cheap, large, persistent), but variables must live in RAM (expensive, small, volatile)**. This creates the `.data` problem.
 
 A global variable like `int speed = 100;` needs to be `100` when your code first reads it. But RAM is empty after power-on. The only persistent storage is flash. So the initial value `100` must be stored in flash, then copied to RAM before `main()` runs. This is why:
 
@@ -247,7 +247,7 @@ The `.bss` optimization is elegant: since all uninitialized globals start at zer
 <details>
 <summary><strong>Concrete Example</strong> — Tracing SPIneV1.elf from source to boot</summary>
 
-Here's the exact journey for the Pupper's [[micro-context/spinev1-elf|SPIneV1.elf]] firmware:
+Here's the exact journey for the Pupper's SPIneV1.elf firmware:
 
 ### Step 1: Compilation
 
@@ -291,7 +291,7 @@ SYMBOL RESOLUTION EXAMPLE:
 
 ### Step 3: ELF File Contents
 
-The resulting [[micro-context/spinev1-elf|SPIneV1.elf]] contains:
+The resulting SPIneV1.elf contains:
 
 | Section | Address (VMA) | Size | Contents |
 |---------|--------------|------|----------|
@@ -304,7 +304,7 @@ The resulting [[micro-context/spinev1-elf|SPIneV1.elf]] contains:
 
 ### Step 4: Flashing
 
-OpenOCD reads the ELF, extracts the loadable sections, and writes them to flash via the [[micro-context/st-link-v2-programmer|ST-Link]] over [[micro-context/swd-serial-wire-debug|SWD]]:
+OpenOCD reads the ELF, extracts the loadable sections, and writes them to flash via the ST-Link over SWD:
 
 ```bash
 openocd -f interface/stlink.cfg -f target/stm32f4x.cfg \
@@ -332,7 +332,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]]-execute cycle processes them. This document picks up where that one leaves off.
 
 - **[[micro-context/spinev1-elf]]** — The specific ELF firmware for the Pupper's motor control MCU. A concrete instance of everything described here.
 
@@ -340,7 +340,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains what happens on the wire when OpenOCD programs the chip.
 
-- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, SRAM, and peripherals.
+- **[[micro-context/stm32-microcontroller]]** — The STM32F446 MCU that this whole pipeline targets. Includes the block diagram showing flash, [[learning/notes/micro-context/sram|SRAM]], and peripherals.
 
 - **[[quick-context/pupper-bom-control-board]]** — The hardware BOM showing the dual STM32s (U1, U5) that each receive their own firmware through this pipeline.
 

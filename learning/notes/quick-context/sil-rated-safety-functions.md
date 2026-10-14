@@ -3,7 +3,7 @@ topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/similarity-transform]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/singular-value-decomposition]]
 
 > **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
 
@@ -204,7 +204,7 @@ SIL certification requires proving statistical reliability of the entire hardwar
 OSSD outputs are self-testing safety outputs that verify the entire signal path is functioning. They pulse the output and verify the signal propagates correctly, detecting failures like welded contacts or shorted wiring. In the light curtain example, OSSD outputs self-test every 50ms, ensuring that a failure is detected within that window rather than remaining undetected until the safety function is actually demanded.
 </details>
 
-**Q3:** Why does a SIL 2 light curtain implementation use two contactors (K1 and K2) in series rather than just one?
+**Q3:** Why does a SIL 2 light curtain implementation use two contactors (K1 and K2) in [[learning/notes/quick-context/parallel-vs-series-voltage|series]] rather than just one?
 <details>
 <summary>Answer</summary>
 Series dual contactors eliminate single-point failures at the final control element. If K1 welds closed (a common failure mode), K2 can still open to stop the robot. The PLC monitors feedback from both contactors—if one fails to open when commanded, the system detects the fault and prevents restart. This redundancy is essential for achieving the PFD targets required for SIL 2.

@@ -3,9 +3,9 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/silicon-die]]
 
-> **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
+> **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar [[learning/notes/micro-context/mosfet|MOSFET]] (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 
 # Transistor Design History
 
@@ -87,14 +87,14 @@ ERA 3: PLANAR MOSFET (1960-2011)
 ────────────────────────────────────────────────────────────────────────────────
 Invented: Kahng & Atalla at Bell Labs (1960)
 
-    The [[quick-context/transistor|MOSFET]] revolutionized electronics because it's
+    The MOSFET revolutionized electronics because it's
     VOLTAGE-controlled (gate draws almost no current) and easy to manufacture.
 
                     GATE (metal)
                          │
                     ┌────┴────┐
                     │  OXIDE  │  ← Gate oxide (SiO₂) ~1-5nm
-                    └────┬────┘    (this is the [[quick-context/transistor|MOS capacitor]])
+                    └────┬────┘    (this is the MOS capacitor)
     ┌────────────────────┴────────────────────┐
     │                                         │
     │ SOURCE          CHANNEL           DRAIN │
@@ -118,7 +118,7 @@ Invented: Kahng & Atalla at Bell Labs (1960)
 
     THE WALL (2000s): Below ~28nm, the channel became so short that
     the gate couldn't control it—electrons would leak from source to
-    drain even when "off" ([[quick-context/transistor-analog-to-digital|short-channel effects]]).
+    drain even when "off" (short-channel effects).
 
 
 ERA 4: FinFET / Tri-Gate (2011-2024)
@@ -255,7 +255,7 @@ WHY MORE GATE COVERAGE MATTERS:
 
    ┌─────────────────────────────────────────────────────────────────────────┐
    │ • Gate electric field reaches MORE of the channel                       │
-   │ • Better suppression of [[quick-context/transistor-analog-to-digital|leakage current]] when OFF               │
+   │ • Better suppression of leakage current when OFF               │
    │ • More uniform current flow when ON                                     │
    │ • Can make channel SHORTER without losing control                       │
    │ • = Smaller transistors possible!                                       │
@@ -404,7 +404,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
     Timeline (per IMEC roadmap): ~2031 at "A7" node
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking "Moore's Law" is about shrinking the same transistor. It's not. The planar MOSFET of 1960 is unrecognizable compared to a 2024 GAA nanosheet. What's really happening is a series of complete architectural reinventions, each buying another decade of scaling. The engineers aren't making smaller versions of the same thing—they're inventing entirely new ways to build switches. A FinFET is as different from a planar MOSFET as a jet engine is from a propeller: same job (make thrust / switch current), completely different physics and manufacturing. Understanding transistor history means understanding that every "nm" number represents a different *kind* of transistor, not just a smaller one.
+**The one thing most outsiders get wrong about this is...** thinking "Moore's Law" is about shrinking the same transistor. It's not. The planar MOSFET of 1960 is unrecognizable compared to a 2024 GAA nanosheet. What's really happening is a [[learning/notes/quick-context/parallel-vs-series-voltage|series]] of complete architectural reinventions, each buying another decade of scaling. The engineers aren't making smaller versions of the same thing—they're inventing entirely new ways to build switches. A FinFET is as different from a planar MOSFET as a jet engine is from a propeller: same job (make thrust / switch current), completely different physics and manufacturing. Understanding transistor history means understanding that every "nm" number represents a different *kind* of transistor, not just a smaller one.
 
 </details>
 
@@ -417,7 +417,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 
 - **[[quick-context/doped-silicon|Doped Silicon]]** — The N-type and P-type regions that form transistor junctions. Both BJT and MOSFET rely on carefully controlled doping.
 
-- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different [[quick-context/semiconductor-fabrication|photolithography]] and etching processes.
+- **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are manufactured. Each architecture requires different photolithography and etching processes.
 
 - **[[quick-context/transistor-analog-to-digital|Transistor Analog-to-Digital Behavior]]** — Why leakage current matters and how it drives architectural innovation. Covers the "short channel effects" that killed planar MOSFETs.
 
@@ -433,7 +433,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 **Q1:** What was the key advantage of BJT over point-contact transistors, and why did MOSFET eventually replace BJT for digital logic?
 <details>
 <summary>Answer</summary>
-BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-semiconductor point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is voltage-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"
+BJT (junction transistor) was far more reliable and manufacturable than point-contact transistors because it used PN junctions throughout the device rather than finicky metal-to-semiconductor point contacts. However, MOSFET replaced BJT for digital logic because MOSFET is [[learning/notes/quick-context/voltage|voltage]]-controlled (gate draws almost no current), while BJT is current-controlled (base needs continuous current when ON). This makes MOSFET far more power-efficient for digital circuits where billions of transistors switch constantly. See: Era 2 and Era 3 in "How It Works"
 </details>
 
 **Q2:** What fundamental limitation of planar MOSFETs made FinFET necessary?

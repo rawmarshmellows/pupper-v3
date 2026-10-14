@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/transistor-design-history]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/challenger-sale-methodology]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -19,7 +19,7 @@ Imagine you have two neutral atoms—no positive or negative charge, just sittin
 | Term | Definition |
 |------|------------|
 | **Dispersion forces (London forces)** | The specific type of van der Waals force caused by temporary, random electron movements creating instant dipoles—this is what we focus on here |
-| **Dipole** | An uneven distribution of electrical charge, like a tiny battery with a + end and a - end |
+| **[[learning/notes/quick-context/dipole-dipole-interactions|Dipole]]** | An uneven distribution of electrical charge, like a tiny battery with a + end and a - end |
 | **Polarizability** | How easily an atom's electron cloud can be distorted—larger atoms with more electrons are more polarizable and have stronger van der Waals forces |
 | **Instantaneous dipole** | A temporary, fleeting moment when electrons randomly cluster on one side of an atom, creating a brief + and - end |
 | **Induced dipole** | When one atom's instantaneous dipole causes a neighboring atom's electrons to shift in response, creating a second dipole |
@@ -384,9 +384,9 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-1. **[[quick-context/dipole-dipole-interactions]]** — Dipole-dipole interactions are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
+1. **[[quick-context/dipole-dipole-interactions]]** — [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-dipole interactions]] are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
 
-2. **[[quick-context/hydrogen-bonds-beginners]]** — Hydrogen bonds are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
+2. **[[quick-context/hydrogen-bonds-beginners]]** — [[learning/notes/quick-context/hydrogen-bonds-beginners|Hydrogen bonds]] are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
 
 3. **[[quick-context/pi-pi-stacking-aromatic-interactions]]** — Pi-pi stacking in aromatic rings relies heavily on van der Waals forces between the electron clouds of flat ring structures, explaining why molecules like DNA bases stack so neatly.
 
@@ -394,7 +394,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **quick-context/biology-fundamentals** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

@@ -5,7 +5,7 @@ created: 2026-02-14
 
 # Why Current Through a Coil Creates a Magnetic Field
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
+> **Related:** [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/sil-rated-safety-functions]] | [[learning/notes/micro-context/electromagnetic-induction]]
 
 > **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
 

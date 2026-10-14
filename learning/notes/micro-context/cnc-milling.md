@@ -4,6 +4,7 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/crystal-oscillator]]
 # CNC Milling
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
@@ -36,4 +37,4 @@ SUBTRACTIVE vs ADDITIVE:
       ╚═╝    cuts into material
 ```
 
-**Key insight:** CNC milling produces parts with full material strength (no layer adhesion weakness like FDM prints), but wastes material as chips and can't create fully enclosed internal cavities.
+**Key insight:** [[learning/notes/quick-context/cnc-machining|CNC milling]] produces parts with full material strength (no layer adhesion weakness like FDM prints), but wastes material as chips and can't create fully enclosed internal cavities.
