@@ -4,17 +4,19 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
-# Clock Speed
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]]
+
+# Clock Speed[[learning/notes/quick-context/tensile-strength-materials|]]
 
 > **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
+**[[learning/notes/quick-context/capacitance|Definition]]:** [[learning/notes/quick-context/capacitance|The]] frequency at which [[learning/notes/quick-context/anions-and-oxidation|a]] CPU's [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] generates edges, measured in GHz (billions of cycles per second). A [[learning/notes/quick-context/meddpicc-qualification-framework|3]] GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers [[learning/notes/quick-context/ram-addressing-decoder|one]] step of computation.
 
 ## How It Works
 
-- An oscillator circuit generates a continuous square wave at the rated frequency (e.g., 3 GHz = 3 billion toggles/sec).
-- Each rising edge triggers the CPU's pipeline to advance one step — fetch, decode, or execute an instruction.
-- Faster clocks mean less time between edges, so signals must propagate and settle through all logic gates within a shrinking window.
+- An oscillator circuit generates a continuous square wave at the rated frequency ([[learning/notes/quick-context/bjt-specifications|e]].[[learning/notes/quick-context/cations-and-reduction|g]]., 3 GHz = 3 billion toggles/sec).
+- Each [[learning/notes/quick-context/bare-minimal-data-storage-circuit|rising edge]] triggers the CPU's pipeline to advance one step — [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]], [[learning/notes/quick-context/cpu-fetch-execute-cycle|decode]], [[learning/notes/micro-context/push-pull-vs-open-drain|or]] execute an [[learning/notes/quick-context/cpu-fetch-execute-cycle|instruction]].
+- Faster clocks mean less time between edges, so signals [[learning/notes/quick-context/ros2-architecture|must]] propagate [[learning/notes/micro-context/push-pull-vs-open-drain|and]] settle through all logic gates within a shrinking window.
 
 ```
 CLOCK SPEED = How many edges per second
@@ -33,4 +35,4 @@ CLOCK SPEED = How many edges per second
   Light travels just 6 cm in that time.
 ```
 
-**Key insight:** Clock speed is limited by how fast transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.
+**Key insight:** Clock [[learning/notes/quick-context/embedded-communication-protocols|speed]] is limited by [[learning/notes/quick-context/electric-current|how fast]] transistors [[learning/notes/quick-context/embedded-communication-protocols|can]] [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] AND how [[learning/notes/quick-context/comparator|fast]] signals can propagate—you can't clock faster than [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] slowest circuit path can settle between edges.

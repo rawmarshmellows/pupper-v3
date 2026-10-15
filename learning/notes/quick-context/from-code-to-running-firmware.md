@@ -3,6 +3,8 @@ topic: From Code to Running Firmware — Linking, Flashing, and Booting on an MC
 created: 2026-03-26
 ---
 
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]]
+
 # From Code to Running Firmware
 
 > **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]]

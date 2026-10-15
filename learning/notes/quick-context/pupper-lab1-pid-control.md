@@ -3,6 +3,8 @@ topic: Pupper Lab 1 — PID Control (Single Joint)
 created: 2026-03-10
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/pupper-brain]]
+
 # Pupper Lab 1 — PID Control (Single Joint)
 
 > **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab2-forward-kinematics]]

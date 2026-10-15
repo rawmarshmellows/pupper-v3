@@ -3,6 +3,8 @@ topic: Post-Sale Account Engagement
 created: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]]
+
 # Post-Sale Account Engagement
 
 > **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]

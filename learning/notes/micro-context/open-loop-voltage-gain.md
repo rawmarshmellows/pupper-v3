@@ -3,18 +3,20 @@ term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
+
 # Open-Loop Voltage Gain ($A_V$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
+> **[[learning/notes/quick-context/tensile-strength-materials|]]See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
 
-**Definition:** The enormous gain a comparator or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
+**[[learning/notes/quick-context/capacitance|Definition]]:** [[learning/notes/quick-context/capacitance|The]] enormous gain [[learning/notes/quick-context/anions-and-oxidation|a]] [[learning/notes/quick-context/comparator|comparator]] [[learning/notes/micro-context/push-pull-vs-open-drain|or]] op-amp applies to the tiny [[learning/notes/quick-context/voltage|voltage]] difference between its inputs before any feedback — typically 100 dB (100[[learning/notes/quick-context/how-passive-and-discrete-components-are-made|,]]000×) — which is [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] slams the output hard against a supply rail.
 
 ## How It Works
 
-- The [[quick-context/differential-pair|differential pair]] turns an input difference into a small current imbalance.
+- The [[quick-context/differential-pair|differential pair]] turns an input difference into a small [[learning/notes/quick-context/capacitance|current]] imbalance.
 - That imbalance drives a very high-impedance [[quick-context/high-gain-amplifier-stage|gain node]] (the current-mirror load), so even microamps create a huge voltage swing.
-- 100 dB = 100,000×, so a millivolt of input difference would demand a 100 V output — far past the rails — so the output simply pins to $V^+$ or $V^-$.
-- This rail-slamming saturation *is* the clean digital snap a comparator is built to produce.
+- 100 dB = 100,000×, so a millivolt of input difference would demand a 100 [[learning/notes/quick-context/capacitor|V]] output — far past the rails — so the output simply pins to $V^+$ or $V^-$.
+- This rail-slamming [[learning/notes/quick-context/bjt|saturation]] *is* the clean digital snap a comparator is built to produce.
 
 ```
    tiny dV in                        output pinned to rail
@@ -30,4 +32,4 @@ created: 2026-06-07
    fully to a rail -> the digital decision.
 ```
 
-**Key insight:** It's the "gain" you never use *as* gain — it's so large the output can't stay linear, which is exactly the point: a comparator wants to saturate to a rail, not amplify proportionally.
+**Key insight:** It's the "gain" you never use *as* gain — it's so large the output [[learning/notes/quick-context/embedded-communication-protocols|can]]'t stay linear, which is exactly the [[learning/notes/quick-context/epson-rc-plus-programming|point]]: a comparator wants to saturate to a rail, [[learning/notes/micro-context/can-bus-termination|not]] amplify proportionally.

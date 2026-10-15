@@ -4,23 +4,25 @@ created: 2026-06-07
 updated: 2026-06-07
 ---
 
-# Push-Pull vs Open-Collector / Open-Drain
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain]]
+
+# Push-Pull vs Open-Collector / Open-Drain[[learning/notes/quick-context/tensile-strength-materials|]]
 
 ## Human notes
 
-**What does "This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight)" mean?**
+**[[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] does "This lets many outputs share [[learning/notes/quick-context/ram-addressing-decoder|one]] line safely (wired-AND: any device [[learning/notes/quick-context/embedded-communication-protocols|can]] pull LOW, [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|none]] fight)" mean?**
 
-An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] does that, holding the line HIGH whenever everyone has released.
+An [[learning/notes/quick-context/comparator-specification|open-drain]] output has [[learning/notes/quick-context/comparator-specification|only]] [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting [[learning/notes/quick-context/capacitance|the]] line to [[learning/notes/quick-context/qwiic-stemma-qt-i2c|GND]]) or **release** (NMOS [[learning/notes/quick-context/bjt-specifications|off]], line floats). It can *never* drive HIGH on its own — [[learning/notes/quick-context/anions-and-oxidation|a]] single shared [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] does that, holding the line HIGH whenever everyone has released.
 
-- **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving transistor, so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
+- **"none fight"** → [[learning/notes/quick-context/data-bus-and-arbitration|Bus contention]] (a near-short) only happens [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] one output drives HIGH while another drives LOW — that's two transistors fighting, [[learning/notes/quick-context/qwiic-stemma-qt-i2c|VCC]] dumping straight to GND. Open-[[learning/notes/quick-context/differential-pair|drain]] *deletes* the HIGH-driving [[learning/notes/quick-context/silicon-die|transistor]], so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small [[learning/notes/quick-context/capacitance|current]] — harmless.
 - **"any device can pull LOW"** → One device turning on its NMOS drags the *whole* shared line LOW, regardless of what the others do. Low always wins.
-- **"wired-AND"** → Treat *released* = logic 1, *pulling LOW* = logic 0. The line reads HIGH **only if every device releases** (all 1s). If *any one* pulls LOW, the line is LOW. That is a logical AND of all the devices' states — computed by the wire itself, no gate needed. Hence "wired-AND."
+- **"wired-AND"** → Treat *released* = logic [[learning/notes/quick-context/meddpicc-qualification-framework|1]], *pulling LOW* = logic [[learning/notes/quick-context/meddpicc-qualification-framework|0]]. The line reads HIGH **only if every device releases** (all 1s). If *any one* pulls LOW, the line is LOW. That is a logical AND of all the devices' states — computed by the wire itself, [[learning/notes/micro-context/capacitive-voltage-sensing|no]] [[learning/notes/quick-context/transistor|gate]] needed. Hence "wired-AND."
 
 ### "Any device can pull LOW" — where OUT/NMOS sit, and why low always wins
 
-Each "device" on a shared open-drain line is an IC whose output stage is open-drain: the box's top is its **OUT** pin, and the NMOS inside is that chip's *own* output transistor. For a [[learning/notes/quick-context/comparator|comparator]] that NMOS is **Q6** (the output stage the [[learning/notes/quick-context/comparator-specification|datasheet]] grades). A **"released" device** has its NMOS *off* — OUT is then an open circuit: high-impedance, floating (it can't pull HIGH — open-drain has no high-side transistor — and isn't pulling LOW). A device that *trips* turns its NMOS on, connecting OUT to GND.
+Each "device" on a shared open-drain line is an IC whose output stage is open-drain: the box's [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] is its **OUT** pin, and the NMOS inside is that chip's *own* output transistor. For a [[learning/notes/quick-context/comparator|comparator]] that NMOS is **Q6** (the output stage the [[learning/notes/quick-context/comparator-specification|datasheet]] grades). A **"released" device** has its NMOS *off* — OUT is then an open circuit: high-impedance, floating (it can't pull HIGH — open-drain has no high-side transistor — and isn't pulling LOW). A device that *trips* turns its NMOS on, connecting OUT to GND.
 
-The pull-up is *weak* (e.g. 4.7 kΩ); an NMOS turned on is a *strong* path to GND (tens of ohms), so one tripped device drags the WHOLE line near 0 V (~0.7 mA in the lopsided divider). Released devices supply no current and can't fight it. Below, three open-drain comparators share one FAULT line; **CMP A has tripped, B and C are released:**
+The pull-up is *weak* ([[learning/notes/quick-context/bjt-specifications|e]].[[learning/notes/quick-context/cations-and-reduction|g]]. [[learning/notes/quick-context/similarity-transform|4]].[[learning/notes/quick-context/similarity-transform|7]] kΩ); an NMOS turned on is a *strong* path to GND (tens of ohms), so one tripped device drags the WHOLE line near 0 [[learning/notes/quick-context/capacitor|V]] (~0.7 mA in the lopsided divider). Released devices supply no current and can't fight it. Below, three open-drain comparators share one FAULT line; **CMP A has tripped, [[learning/notes/quick-context/faraday-tensor|B]] and [[learning/notes/micro-context/cathode|C]] are released:**
 
 ```
           VCC
@@ -42,16 +44,16 @@ The pull-up is *weak* (e.g. 4.7 kΩ); an NMOS turned on is a *strong* path to GN
                    pulls LOW
 ```
 
-Read one column top-to-bottom: the shared FAULT line → that comparator's **OUT** pin → its internal **NMOS (Q6)** → GND. CMP A's Q6 is ON (solid path to GND), so it pulls FAULT LOW; CMP B and C are released (Q6 off, OUT open) and just float with whatever the line does. Even if all three tripped, they'd be parallel paths to GND — still LOW, no short. **No number of released devices beats one that's pulling.** Only an *open-drain* comparator (LMC7221) can sit here — a push-pull part (LMC7211-N) has a high-side transistor too and would fight (contention). The leftmost `●` is just where the single pull-up taps the line, not a device.
+Read one column top-to-[[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]]: the shared FAULT line → that [[learning/notes/quick-context/comparator|comparator]]'s **OUT** pin → its internal **NMOS (Q6)** → GND. CMP A's Q6 is ON (solid path to GND), so it pulls FAULT LOW; CMP B and C are released (Q6 off, OUT open) and just float [[learning/notes/quick-context/breaking-elongation-rate|with]] whatever the line does. Even if all three tripped, they'd be [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] paths to GND — still LOW, no short. **No number of released devices beats one that's pulling.** Only an *open-drain* comparator ([[learning/notes/quick-context/comparator-specification|LMC7221]]) can sit here — a [[learning/notes/quick-context/comparator-specification|push-pull]] part ([[learning/notes/quick-context/comparator-specification|LMC7211-N]]) has a high-side transistor too and would fight (contention). The leftmost `●` is just where the single pull-up taps the line, [[learning/notes/micro-context/can-bus-termination|not]] a device.
 
 Examples:
-- **Fault/alarm bus** (the diagram above) — several open-drain comparators, each watching a different rail; any one tripping pulls FAULT LOW, so the MCU watches a single pin for "something's wrong."
-- **I2C ACK bit** — the sender releases [[learning/notes/micro-context/i2c|SDA]]; the receiver yanks it LOW for one clock = "got your byte." One device, one pull, whole line LOW.
+- **Fault/alarm [[learning/notes/quick-context/data-bus-and-arbitration|bus]]** (the diagram above) — several open-drain comparators, each watching a different rail; any one tripping pulls FAULT LOW, so the MCU watches a single pin for "something's wrong."
+- **[[learning/notes/micro-context/i2c|I2C]] ACK bit** — the sender releases [[learning/notes/micro-context/i2c|SDA]]; the receiver yanks it LOW for one [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] = "got [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] [[learning/notes/quick-context/how-source-code-is-stored|byte]]." One device, one pull, whole line LOW.
 - **Buttons on a pulled-up pin** — wire several buttons-to-GND on one line; pressing *any* one makes the line LOW, so the MCU reads "a button is down" on a single pin.
 
 ### "Wired-AND" — the logic that fact implements
 
-With *released* = 1 and *pulling LOW* = 0, the wire computes `line = A AND B AND C` — no gate, just the resistor and the NMOS transistors:
+With *released* = 1 and *pulling LOW* = 0, the wire computes `line = A AND B AND C` — no gate, just the [[learning/notes/quick-context/fundamental-electronic-parts-index|resistor]] and the NMOS transistors:
 
 ```
   A   B   C  │ line
@@ -64,10 +66,10 @@ With *released* = 1 and *pulling LOW* = 0, the wire computes `line = A AND B AND
 HIGH only when every input is 1 = the AND truth table.
 
 Examples:
-- **"All ready" barrier** — each board holds the line LOW while busy, releases when done. The line goes HIGH only when *every* board is done (`done_A AND done_B AND …`), so the CPU learns the whole system is ready from one pin.
-- **I2C clock stretching** — SCL is wired-AND: the master pulses the clock, but any slow slave can *hold SCL LOW* to say "wait." SCL rises only when master **and** all slaves release — the slowest device gates the clock.
+- **"All ready" barrier** — each board [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] the line LOW while busy, releases when done. The line goes HIGH only when *every* board is done (`done_A AND done_B AND …`), so the CPU learns the whole system is ready from one pin.
+- **I2C clock stretching** — [[learning/notes/quick-context/qwiic-stemma-qt-i2c|SCL]] is wired-AND: the [[learning/notes/quick-context/data-bus-and-arbitration|master]] pulses the clock, but any slow slave can *[[learning/notes/quick-context/d-flip-flop|hold]] SCL LOW* to say "wait." SCL rises only when master **and** all slaves release — the slowest device gates the clock.
 
-**Polarity footnote (why you'll also hear "wired-OR"):** same circuit, flipped labels. If the *signal* is active-LOW (LOW = "asserted"), then "any device pulls LOW" reads as "any device asserts" = **OR**. Voltage view → wired-AND (HIGH needs all releasing); active-low signal view → wired-OR (asserted if *any* device asserts). The FAULT bus above is exactly this: HIGH only while every comparator releases (wired-AND on voltage), but read as "fault if *any* comparator trips" (wired-OR on the active-low meaning). A shared `/INT` interrupt line works the same way.
+**Polarity footnote ([[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] you'll also hear "wired-OR"):** same circuit, flipped labels. If the *[[learning/notes/quick-context/comparator|signal]]* is active-LOW (LOW = "asserted"), then "any device pulls LOW" reads as "any device asserts" = **OR**. [[learning/notes/quick-context/voltage|Voltage]] view → wired-AND (HIGH needs all releasing); active-low signal view → wired-OR (asserted if *any* device asserts). The FAULT bus above is exactly this: HIGH only while every comparator releases (wired-AND on voltage), but read as "fault if *any* comparator trips" (wired-OR on the active-low meaning). A shared `/INT` [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupt]] line works the same way.
 
 This is exactly why [[learning/notes/micro-context/i2c|I2C]] and shared interrupt lines use open-drain: any chip can assert the line, and no combination of drivers can ever short the bus.
 
@@ -83,21 +85,21 @@ In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carr
                             driven by the OUTPUT STAGE (Q6)
 ```
 
-- **Push-pull OUT** (LMC7211-N): actively driven HIGH *and* LOW — clean levels, drives an LED or logic gate directly, but can't share a wire.
+- **Push-pull OUT** (LMC7211-N): actively driven HIGH *and* LOW — clean levels, drives an [[learning/notes/quick-context/diode|LED]] or [[learning/notes/quick-context/code-to-gates-and-bootstrapping|logic gate]] directly, but can't share a wire.
 - **Open-drain OUT** (its cousin the LMC7221): only pulls LOW, needs a pull-up to go HIGH — lets the pull-up set the HIGH level from a different rail (level-shifting) and lets many outputs share one line.
 
-The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$` (how hard OUT drives) both grade this exact pin.
+The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$` (how hard OUT drives) [[learning/notes/quick-context/bjt-specifications|both]] grade this exact pin.
 
 > **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**[[learning/notes/quick-context/capacitance|Definition]]:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** ([[learning/notes/micro-context/mosfet|MOSFET]]) output uses a single transistor that can only pull LOW — going HIGH relies on an external [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|pull-up resistor]].
 
 ## How It Works
 
 - **Push-pull:** a high-side transistor connects the pin to VCC (sources current, drives HIGH) and a low-side transistor connects it to GND (sinks current, drives LOW); only one is on at a time.
-- Push-pull gives strong, fast drive in both directions, but two such outputs must never share a wire — one driving HIGH against another driving LOW is a near-short (bus contention).
+- Push-pull gives strong, [[learning/notes/quick-context/comparator|fast]] drive in both directions, but two such outputs [[learning/notes/quick-context/ros2-architecture|must]] never share a wire — one driving HIGH against another driving LOW is a near-short (bus contention).
 - **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] raises it HIGH.
-- This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different logic voltage — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
+- This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different [[learning/notes/quick-context/qwiic-stemma-qt-i2c|logic voltage]] — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
 
 ```
    PUSH-PULL (totem-pole)            OPEN-DRAIN / OPEN-COLLECTOR
@@ -117,4 +119,4 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
    Never wire two together              Many share one line (wired-AND)
 ```
 
-**Key insight:** Open-drain trades active drive strength for the ability to share a wire — that "weakness" (only pulling LOW) is exactly what stops multiple devices from short-circuiting each other on a shared bus.
+**Key insight:** Open-drain trades active drive [[learning/notes/quick-context/cnc-machining|strength]] for the ability to share a wire — that "weakness" (only pulling LOW) is exactly what stops multiple devices from short-circuiting each other on a shared bus.

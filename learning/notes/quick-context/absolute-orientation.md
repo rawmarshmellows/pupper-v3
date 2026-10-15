@@ -3,25 +3,27 @@ topic: Absolute Orientation
 created: 2026-04-04
 ---
 
-# Absolute Orientation Problem
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
+
+# Absolute Orientation Problem[[learning/notes/quick-context/tensile-strength-materials|]]
 
 > **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/similarity-transform|Similarity Transform]] | [[quick-context/singular-value-decomposition|SVD]] | [[quick-context/covariance-matrix|Covariance Matrix]]
 
-> **TL;DR:** The absolute orientation problem asks: given two sets of corresponding 3D points, find the rotation, scale, and translation that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
+> **TL;DR:** [[learning/notes/quick-context/capacitance|The]] absolute orientation problem asks: given [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] sets of corresponding 3D points, find the [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|rotation]], scale, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] [[learning/notes/quick-context/pupper-lab2-forward-kinematics|translation]] that best aligns them -- fundamental to photogrammetry, robotics, and 3D reconstruction.
 
 ## The Core Problem
 
-Every measurement system lives in its own coordinate frame. A LIDAR scanner, a photogrammetric model, a robot arm, and a GPS receiver each produce points in different coordinate systems with different origins, orientations, and scales. Without a way to align these frames, you cannot combine data from multiple sensors, register a 3D model to the real world, or verify that a manufactured part matches its CAD design. Absolute orientation is the mathematical machinery that bridges isolated coordinate systems into a single coherent reference frame.
+Every measurement system lives in its own coordinate [[learning/notes/quick-context/can-bus|frame]]. [[learning/notes/quick-context/anions-and-oxidation|A]] LIDAR scanner, a photogrammetric model, a robot arm, and a GPS receiver each produce points in different coordinate systems [[learning/notes/quick-context/breaking-elongation-rate|with]] different origins, orientations, and scales. Without a way to align these frames, you cannot combine data from multiple sensors, register a 3D model to the real world, [[learning/notes/micro-context/push-pull-vs-open-drain|or]] verify that a manufactured part matches its CAD design. Absolute orientation is the mathematical machinery that bridges isolated coordinate systems into a single coherent [[learning/notes/quick-context/comparator|reference]] frame.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Corresponding points** | Matched pairs of points $(p_i, q_i)$ measured in two different coordinate systems -- the known input to the problem |
-| **Least-squares alignment** | Finding the transformation parameters that minimize $\sum \|\|s R \mathbf{p_i} + \mathbf{t} - \mathbf{q_i}\|\|^2$ across all point pairs |
-| **Horn's method** | Closed-form solution (1987) that represents rotation as a unit quaternion and finds it via the eigenvector of a $4 \times 4$ symmetric matrix |
-| **Unit quaternion** | A 4-component vector $q = (q_0, q_x, q_y, q_z)$ with $\|q\| = 1$ that encodes a 3D rotation without gimbal lock or trigonometric singularities |
-| **Residual error** | The RMS distance between transformed source points and their target correspondences after alignment -- measures solution quality |
+| **Least-squares alignment** | Finding the transformation parameters that minimize $\sum \|\|s [[learning/notes/quick-context/cations-and-reduction|R]] \mathbf{p_i} + \mathbf{t} - \mathbf{q_i}\|\|^[[learning/notes/quick-context/meddpicc-qualification-framework|2]]$ across all [[learning/notes/quick-context/epson-rc-plus-programming|point]] pairs |
+| **Horn's method** | Closed-[[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] solution (1987) that represents rotation as a unit quaternion and finds it [[learning/notes/quick-context/metal-interconnect-layers|via]] the eigenvector of a $[[learning/notes/quick-context/similarity-transform|4]] \times 4$ [[learning/notes/quick-context/singular-value-decomposition|symmetric]] matrix |
+| **Unit quaternion** | A 4-[[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] vector $[[learning/notes/quick-context/capacitor|q]] = (q_0, q_x, q_y, q_z)$ with $\|q\| = [[learning/notes/quick-context/meddpicc-qualification-framework|1]]$ that encodes a 3D rotation without gimbal lock or trigonometric singularities |
+| **Residual error** | The RMS [[learning/notes/quick-context/embedded-communication-protocols|distance]] between transformed [[learning/notes/quick-context/differential-pair|source]] points and their target correspondences after alignment -- measures solution [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]] |
 
 <details>
 <summary><strong>How It Works</strong> -- From point pairs to optimal alignment</summary>
@@ -30,23 +32,23 @@ Every measurement system lives in its own coordinate frame. A LIDAR scanner, a p
 
 Given $n$ corresponding point pairs $\{(\mathbf{p}_i, \mathbf{q}_i)\}$, find scale $s$, rotation $R$, and translation $\mathbf{t}$ that minimize:
 
-$$E = \sum_{i=1}^{n} \| s R \mathbf{p}_i + \mathbf{t} - \mathbf{q}_i \|^2$$
+$$[[learning/notes/quick-context/bjt-specifications|E]] = \sum_{[[learning/notes/quick-context/anions-and-oxidation|i]]=1}^{n} \| s R \mathbf{p}_i + \mathbf{t} - \mathbf{q}_i \|^2$$
 
-The key insight (shared by all closed-form methods) is that translation decouples from rotation when you work with centroid-subtracted coordinates.
+The key insight (shared by all closed-form methods) is that translation decouples from rotation [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you work with centroid-subtracted coordinates.
 
 ### Three Major Solution Methods
 
 | Method | Year | Rotation Representation | Handles Scale? | Key Matrix |
 |--------|------|------------------------|----------------|------------|
 | **Horn** | 1987 | Unit quaternion | Yes | $4 \times 4$ symmetric $N$ |
-| **Arun et al.** | 1987 | SVD of cross-covariance | No (rigid only) | $3 \times 3$ cross-covariance $H$ |
+| **Arun et al.** | 1987 | [[learning/notes/quick-context/singular-value-decomposition|SVD]] of [[learning/notes/quick-context/covariance-matrix|cross-covariance]] | [[learning/notes/micro-context/capacitive-voltage-sensing|No]] (rigid [[learning/notes/quick-context/comparator-specification|only]]) | $[[learning/notes/quick-context/meddpicc-qualification-framework|3]] \times 3$ cross-[[learning/notes/quick-context/covariance-matrix|covariance]] $H$ |
 | **Umeyama** | 1991 | SVD with scale correction | Yes | $3 \times 3$ cross-covariance $H$ |
 
-Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in general. Arun's ad-hoc fix of flipping a column of $U$ does not always yield the correct least-squares solution; Umeyama provided a principled correction using $\det(V)\det(U)$.
+Umeyama's extension fixed a flaw in Arun's method where the [[quick-context/singular-value-decomposition|SVD]] could produce a reflection (determinant $-1$) instead of a proper rotation -- most obviously with coplanar points, but also with severely noisy data in [[learning/notes/quick-context/singular-value-decomposition|general]]. Arun's ad-hoc fix of flipping a column of $U$ does [[learning/notes/micro-context/can-bus-termination|not]] always [[learning/notes/quick-context/silicon-die|yield]] the correct least-squares solution; Umeyama provided a principled correction using $\det([[learning/notes/quick-context/capacitor|V]])\det(U)$.
 
 ### Step-by-Step: SVD Solution (Arun/Umeyama)
 
-This is the most widely implemented approach and the one used in the [[quick-context/helmert-transform|Helmert Transform]].
+This is the most widely implemented approach and the [[learning/notes/quick-context/ram-addressing-decoder|one]] used in the [[quick-context/helmert-transform|Helmert Transform]].
 
 **Step 1 -- Compute centroids and center the data**
 
@@ -66,7 +68,7 @@ $$H = U \Sigma V^T$$
 
 **Step 4 -- Extract rotation**
 
-$$R = V \, \text{diag}(1, \; 1, \; \det(V) \cdot \det(U)) \, U^T$$
+$$R = V \, \[[learning/notes/quick-context/how-source-code-is-stored|text]]{diag}(1, \; 1, \; \det(V) \cdot \det(U)) \, U^T$$
 
 The middle diagonal matrix prevents reflections. When $\det(VU^T) = +1$, this simplifies to $R = VU^T$.
 
@@ -116,20 +118,20 @@ $$\mathbf{t} = \bar{\mathbf{q}} - s R \, \bar{\mathbf{p}}$$
 
 ### Minimum Points Required
 
-| Scenario | Minimum Points | Why |
+| Scenario | Minimum Points | [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] |
 |----------|---------------|-----|
-| Rigid (6 DOF: 3 rotation + 3 translation) | 3 non-collinear | 3 points define a plane, giving 9 equations for 6 unknowns |
-| [[quick-context/similarity-transform|Similarity]] (7 DOF: + scale) | 3 non-collinear | Scale adds 1 DOF but 3 points still provide enough constraints |
-| Robust estimation | 5+ recommended | Redundancy allows outlier detection and error estimation |
+| Rigid (6 DOF: 3 rotation + 3 translation) | [[learning/notes/quick-context/helmert-transform|3 non-collinear]] | 3 points define a plane, giving 9 equations for 6 unknowns |
+| [[quick-context/similarity-transform|Similarity]] ([[learning/notes/quick-context/similarity-transform|7]] DOF: + scale) | 3 non-collinear | Scale adds 1 DOF but 3 points still provide enough constraints |
+| Robust estimation | 5+ recommended | [[learning/notes/quick-context/pupper-brain|Redundancy]] allows outlier detection and error estimation |
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> -- Closed-form vs iterative, clean data vs messy reality</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> -- Closed-form vs iterative, clean data vs messy reality</summary>
 
 ### Closed-Form vs Iterative (ICP)
 
-The three classical methods (Horn, Arun, Umeyama) all assume **known correspondences** -- you already know which point in set A matches which point in set B. This is the clean, solved problem.
+The three classical methods (Horn, Arun, Umeyama) all assume **known correspondences** -- you already know which point in set A matches which point in set [[learning/notes/quick-context/faraday-tensor|B]][[learning/notes/quick-context/glass-transition-temperature|. This is the]] clean, solved problem.
 
 In practice, correspondences are often unknown. The **Iterative Closest Point (ICP)** algorithm handles this by alternating between:
 1. Estimating correspondences (nearest-neighbor matching)
@@ -140,25 +142,25 @@ In practice, correspondences are often unknown. The **Iterative Closest Point (I
 |--------|--------------------------------|-----------------|
 | Correspondences | Required as input | Discovered iteratively |
 | Solution | Global optimum (given correct pairs) | Local optimum (sensitive to initialization) |
-| Speed | Single pass, $O(n)$ | Many iterations, $O(n \log n)$ per iteration (kd-tree) |
-| Outlier handling | None built-in | Variants exist (trimmed ICP, robust kernels) |
+| [[learning/notes/quick-context/embedded-communication-protocols|Speed]] | Single pass, $[[learning/notes/quick-context/anions-and-oxidation|O]](n)$ | Many iterations, $O(n \log n)$ per iteration (kd-tree) |
+| Outlier handling | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] built-in | Variants exist (trimmed ICP, robust kernels) |
 | Typical use | Survey control points, fiducial markers | Raw scan-to-scan alignment, SLAM |
 
 ### The Outlier Problem
 
-Closed-form solutions are least-squares methods -- a single mismatched correspondence can badly skew the result. Practitioners use **RANSAC** (Random Sample Consensus) to handle this:
+Closed-form solutions are least-squares methods -- a single mismatched correspondence [[learning/notes/quick-context/embedded-communication-protocols|can]] badly [[learning/notes/quick-context/data-bus-and-arbitration|skew]] the result. Practitioners use **[[learning/notes/quick-context/similarity-transform|RANSAC]]** (Random Sample Consensus) to handle this:
 
 1. Randomly select the minimum subset (3 point pairs)
 2. Compute the transformation using a closed-form solver
-3. Count how many other pairs agree (inliers)
-4. Repeat many times; keep the transformation with the most inliers
+3. [[learning/notes/quick-context/switches-to-registers-storing-data|Count]] how many other pairs agree (inliers)
+4. Repeat many times; [[learning/notes/quick-context/existing-account-management-playbook|keep]] the transformation with the most inliers
 5. Recompute using all inliers
 
-This wraps the elegant closed-form math inside a robust statistical framework -- combining the best of both worlds.
+This wraps the elegant closed-form math inside a robust statistical framework -- combining the best of [[learning/notes/quick-context/bjt-specifications|both]] worlds.
 
 ### Connection to Procrustes Analysis
 
-In statistics, the same problem is called **orthogonal Procrustes analysis** (named after the mythological Greek bandit who stretched or cut travelers to fit his bed). The mathematical formulation is identical -- minimize $\|RA - B\|_F^2$ subject to $R^T R = I$ -- but the communities (photogrammetry, computer vision, statistics) developed solutions independently and use different terminology for the same underlying math.
+In statistics, the same problem is called **orthogonal [[learning/notes/quick-context/helmert-transform|Procrustes analysis]]** (named after the mythological Greek bandit who stretched or cut travelers to fit his bed). The mathematical formulation is [[learning/notes/quick-context/ram-addressing-decoder|identical]] -- minimize $\|RA - B\|_F^2$ subject to $R^T R = I$ -- but the communities (photogrammetry, computer vision, statistics) developed solutions independently and use different terminology for the same underlying math.
 
 </details>
 
@@ -167,7 +169,7 @@ In statistics, the same problem is called **orthogonal Procrustes analysis** (na
 
 ### Scenario
 
-You have reconstructed a 3D model from drone photographs using Structure-from-Motion (SfM). The model exists in an arbitrary coordinate system. You also have 5 ground control points (GCPs) measured with a total station in a real-world coordinate system (e.g., UTM). You need to register the model to the real world.
+You have reconstructed a 3D model from drone photographs using Structure-from-Motion (SfM). The model exists in an arbitrary coordinate system. You also have 5 ground control points (GCPs) measured with a [[learning/notes/quick-context/similarity-transform|total]] station in a real-world coordinate system (e.[[learning/notes/quick-context/cations-and-reduction|g]]., UTM). You need to register the model to the real world.
 
 ### Python Implementation
 
@@ -260,58 +262,58 @@ print(f"RMS error: {np.sqrt(np.mean(residuals**2)):.4f} m")
 
 - **Scale** will be large (roughly the ratio of world-frame distances to model-frame distances)
 - **Residuals** should be small if the SfM model is accurate; large residuals on specific points suggest either a bad GCP measurement or a model distortion
-- **3 points** give zero residual (exact fit); 5+ points give residual information that reveals data quality
+- **3 points** give [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] residual (exact fit); 5+ points give residual information that reveals data quality
 
-**The one thing most outsiders get wrong about this is...** assuming you need special software to do it. The core algorithm is 10 lines of linear algebra. The hard part is never the math -- it is getting reliable correspondences. In photogrammetry, that means carefully surveying GCPs with sub-centimeter accuracy and correctly identifying them in the imagery. In robotics, it means precise calibration targets. The algorithm itself is a solved problem from 1987; the engineering challenge is in the data.
+**The one thing most outsiders get wrong about this is...** assuming you need special [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] to do it. The core algorithm is 10 lines of [[learning/notes/quick-context/tensor|linear algebra]]. The hard part is never the math -- it is getting [[learning/notes/quick-context/ros2-architecture|reliable]] correspondences. In photogrammetry, that means carefully surveying GCPs with sub-centimeter [[learning/notes/quick-context/rc-oscillator|accuracy]] and correctly identifying them in the imagery. In robotics, it means precise calibration targets. The algorithm itself is a solved problem from 1987; the engineering challenge is in the data.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> -- Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- The 7-parameter similarity transformation (3 rotation + 3 translation + 1 scale) that is the direct solution to the absolute orientation problem
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- The class of geometric transformations (preserving shape but not size) that absolute orientation recovers
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The matrix factorization at the heart of the Arun/Umeyama solution methods
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ between centered point sets is the key intermediate quantity in the SVD solution
-- **Relative orientation** -- Finding the transformation between two camera views without ground control; must be solved before absolute orientation in the classical photogrammetric pipeline
+- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The [[learning/notes/quick-context/helmert-transform|cross-covariance matrix]] $H$ between centered point sets is the key intermediate quantity in the SVD solution
+- **Relative orientation** -- Finding the transformation between two camera views without ground control; [[learning/notes/quick-context/ros2-architecture|must]] be solved before absolute orientation in the classical photogrammetric pipeline
 - **Iterative Closest Point (ICP)** -- Iterative algorithm that solves absolute orientation repeatedly to align point clouds when correspondences are unknown
 - **RANSAC** -- Robust estimation framework that wraps around absolute orientation solvers to handle outlier correspondences
-- **Procrustes analysis** -- The statistical name for the same problem; orthogonal Procrustes = rigid alignment, generalized Procrustes = aligning multiple shapes simultaneously
+- **Procrustes analysis** -- The statistical name for the same problem; orthogonal Procrustes = rigid alignment, generalized Procrustes = aligning multiple shapes [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]]
 - **Structure from Motion (SfM)** -- 3D reconstruction pipeline where absolute orientation is the final step that geo-references the model
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong> -- 5 progressive questions</summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong> -- 5 progressive questions</summary>
 
 **Q1:** Why do all closed-form absolute orientation methods start by subtracting the centroids from each point set?
 <details>
 <summary>Answer</summary>
-Centering the data decouples translation from rotation. Once you subtract centroids, the remaining problem is purely rotational (and optionally scale). Translation is recovered last as $\mathbf{t} = \bar{\mathbf{q}} - sR\bar{\mathbf{p}}$. This decomposition reduces a 7-parameter optimization to a simpler 4-parameter problem (3 rotation + 1 scale). See: How It Works, Steps 1 and 6.
+Centering the data decouples translation from rotation. Once you subtract centroids, the remaining problem is purely rotational (and optionally scale). Translation is recovered last as $\mathbf{t} = \bar{\mathbf{q}} - sR\bar{\mathbf{p}}$. This [[learning/notes/quick-context/chemical-bonds-spectrum|decomposition]] reduces a 7-parameter optimization to a simpler 4-parameter problem (3 rotation + 1 scale). See: How It Works, Steps 1 and 6.
 </details>
 
-**Q2:** What is the minimum number of corresponding point pairs needed to solve absolute orientation, and what geometric condition must they satisfy?
+**Q2:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] is the minimum number of corresponding point pairs needed to solve absolute orientation, and what geometric condition must they satisfy?
 <details>
 <summary>Answer</summary>
 Three point pairs minimum, and they must be non-collinear (not all on the same line). Three non-collinear points define a plane, providing 9 scalar equations (3 points x 3 coordinates) for the 7 unknowns (3 rotation + 3 translation + 1 scale). If the points are collinear, the rotation around the line is ambiguous. See: How It Works, Minimum Points Required table.
 </details>
 
-**Q3:** The SVD of the cross-covariance matrix produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
+**Q3:** The SVD of the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
 <details>
 <summary>Answer</summary>
-$R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The singular values in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
+$R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The [[learning/notes/quick-context/singular-value-decomposition|singular values]] in $\Sigma$ [[learning/notes/quick-context/code-to-gates-and-bootstrapping|encode]] the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" [[learning/notes/quick-context/tensor|components]] ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.
 </details>
 
-**Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of 0.02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
+**Q4:** You solve absolute orientation using 4 ground control points and get an RMS residual of [[learning/notes/quick-context/meddpicc-qualification-framework|0]].02 m. Your colleague says "the alignment is accurate to 2 cm." What is wrong with this claim?
 <details>
 <summary>Answer</summary>
-The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure absolute accuracy, which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) whether the transformation model is appropriate (e.g., using a similarity transform when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
+The residual only measures internal consistency -- how well the transformation fits the control points used to compute it. It does not measure [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|absolute accuracy]], which also depends on: (1) measurement error in the GCPs themselves, (2) systematic errors like lens distortion or datum inconsistencies, and (3) [[learning/notes/quick-context/differential-pair|whether]] the transformation model is appropriate (e.g., using a [[learning/notes/quick-context/similarity-transform|similarity transform]] when there is local deformation). With only 4 points for a 7-parameter model, there is almost no redundancy to detect bad data. A low residual with few points can mask large real-world errors. You need independent check points -- points not used in the solution -- to validate accuracy. See: The Key Tension, Concrete Example.
 </details>
 
 **Q5:** A SLAM system builds a local map using ICP (which solves absolute orientation at each iteration). Over time, the map drifts. When it detects a loop closure (revisiting a known location), it needs to correct the accumulated drift. How does absolute orientation fit into the loop closure correction, and why is the closed-form solution alone insufficient?
 <details>
 <summary>Answer</summary>
-At loop closure, the system has two representations of the same place -- the current scan and the earlier map. Absolute orientation (via ICP) can align these to compute the drift correction. However, the closed-form solution alone is insufficient for two reasons: (1) the correction must be distributed across all poses in the trajectory, not just applied at the closure point, requiring a graph optimization (pose-graph SLAM) that adjusts all transformations jointly; (2) the accumulated drift means correspondences between the current scan and the old map may be significantly offset, requiring ICP's iterative correspondence-estimation rather than pre-known pairs. The closed-form absolute orientation solver is a building block used inside ICP and inside pose-graph optimization, but the system-level problem requires additional machinery. See: The Key Tension (closed-form vs iterative).
+At loop closure, the system has two representations of the same place -- the [[learning/notes/quick-context/capacitance|current]] scan and the earlier map. Absolute orientation (via ICP) can align these to compute the drift correction. However, the closed-form solution alone is insufficient for two [[learning/notes/quick-context/pupper-lab7-vision-tracking|reasons]]: (1) the correction must be distributed across all poses in the trajectory, not just applied at the closure point, requiring a graph optimization (pose-graph SLAM) that adjusts all transformations jointly; (2) the accumulated drift means correspondences between the current scan and the old map may be significantly offset, requiring ICP's iterative correspondence-estimation rather than pre-known pairs. The closed-form absolute orientation solver is a building block used inside ICP and inside pose-graph optimization, but the system-level problem requires additional machinery. See: The Key Tension (closed-form vs iterative).
 </details>
 
 </details>
