@@ -4,18 +4,20 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
-# CAN Bus Transceiver
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/data-bus-and-arbitration]]
+
+# CAN Bus Transceiver[[learning/notes/quick-context/tensile-strength-materials|]]
 
 > **See also:** [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/embedded-communication-protocols]]
 
-**Definition:** A chip that converts the microcontroller's digital TX/RX signals into differential voltage signals for the CAN bus (and vice versa). CAN bus is a robust 2-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU only deals with data.
+**[[learning/notes/quick-context/capacitance|Definition]]:** [[learning/notes/quick-context/anions-and-oxidation|A]] chip that converts [[learning/notes/quick-context/capacitance|the]] [[learning/notes/micro-context/microcontroller|microcontroller]]'s digital TX/RX signals into differential [[learning/notes/quick-context/voltage|voltage]] signals for the [[learning/notes/quick-context/embedded-communication-protocols|CAN]] [[learning/notes/quick-context/data-bus-and-arbitration|bus]] ([[learning/notes/micro-context/push-pull-vs-open-drain|and]] vice versa). CAN bus is a robust [[learning/notes/quick-context/meddpicc-qualification-framework|2]]-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU [[learning/notes/quick-context/comparator-specification|only]] deals [[learning/notes/quick-context/breaking-elongation-rate|with]] data.
 
 ## How It Works
 
-- The MCU's CAN peripheral generates a serial data stream (TX) using the CAN protocol's bit timing and arbitration rules.
-- The transceiver converts this single-ended TX signal into a differential pair (CANH and CANL) with opposite voltage swings.
+- The MCU's CAN peripheral generates a [[learning/notes/quick-context/data-bus-and-arbitration|serial]] data stream (TX) using the CAN protocol's bit [[learning/notes/quick-context/comparator-specification|timing]] and [[learning/notes/quick-context/can-bus|arbitration]] rules.
+- The transceiver converts this single-ended TX [[learning/notes/quick-context/comparator|signal]] into a [[learning/notes/quick-context/differential-pair|differential pair]] (CANH and CANL) with opposite voltage swings.
 - On receive, the transceiver subtracts CANL from CANH, canceling any common-mode noise picked up on the wire pair.
-- This differential signaling allows reliable multi-drop communication over long cables in electrically noisy environments.
+- This [[learning/notes/quick-context/embedded-communication-protocols|differential signaling]] allows [[learning/notes/quick-context/ros2-architecture|reliable]] multi-drop communication over long cables in electrically noisy environments.
 
 ```
 MCU to CAN BUS signal conversion:
@@ -39,4 +41,4 @@ MCU to CAN BUS signal conversion:
           (inverted)
 ```
 
-**Key insight:** CAN transceivers are why robots can communicate reliably over long cables in electrically noisy environments—the differential signaling rejects interference that would corrupt single-wire connections.
+**Key insight:** CAN transceivers are [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] robots can communicate reliably over long cables in electrically noisy environments—the differential signaling rejects interference that would corrupt single-wire connections.

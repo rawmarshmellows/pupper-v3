@@ -3,32 +3,34 @@ topic: Why Current Through a Coil Creates a Magnetic Field
 created: 2026-02-14
 ---
 
-# Why Current Through a Coil Creates a Magnetic Field
+> **Related:** [[learning/notes/quick-context/electric-magnetic-field-unification]]
+
+# Why Current Through a Coil Creates a Magnetic Field[[learning/notes/quick-context/tensile-strength-materials|]]
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/inductor]] | [[quick-context/electric-current]] | [[quick-context/electric-magnetic-field-unification|Field Unification]]
 
-> **TL;DR:** Moving electric charges create magnetic fields—this is a fundamental law of nature confirmed by Maxwell's equations and explained by special relativity. When you coil a wire, you concentrate and align the circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose strength is calculated by B = μ₀nI (field = permeability × turns per length × current).
+> **TL;DR:** Moving electric charges create magnetic [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]]—this is [[learning/notes/quick-context/anions-and-oxidation|a]] fundamental law of nature confirmed by [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] [[learning/notes/micro-context/push-pull-vs-open-drain|and]] explained by [[learning/notes/quick-context/electric-magnetic-field-unification|special relativity]]. [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] you coil a wire, you concentrate and align [[learning/notes/quick-context/capacitance|the]] circular magnetic fields from each turn, creating a strong, uniform field inside the coil whose [[learning/notes/quick-context/cnc-machining|strength]] is calculated by [[learning/notes/quick-context/faraday-tensor|B]] = μ₀nI (field = permeability × turns per length × [[learning/notes/quick-context/capacitance|current]]).
 
 ## The Core Problem
 
-You've wrapped wire into a coil and run [[quick-context/electric-current|current]] through it. Suddenly it acts like a magnet—attracting iron, deflecting compasses, storing energy. But *why* does moving charge create magnetism at all? And once you accept that it does, how do you calculate the resulting field strength? These questions sit at the heart of [[quick-context/electromagnetism|electromagnetism]]: understanding them unlocks motors, generators, [[quick-context/inductor|inductors]], transformers, MRI machines, and the physics of how all wireless communication works.
+You've wrapped wire into a coil and run [[quick-context/electric-current|current]] through it. Suddenly it acts like a magnet—attracting [[learning/notes/quick-context/platinum-inertness|iron]], deflecting compasses, storing energy. But *[[learning/notes/quick-context/atoms-molecules-polymers-basics|why]]* does moving [[learning/notes/quick-context/cations-and-reduction|charge]] create magnetism at all? And once you accept that it does, how do you calculate the resulting field strength? These questions sit at the heart of [[quick-context/electromagnetism|electromagnetism]]: understanding them unlocks motors, generators, [[quick-context/inductor|inductors]], transformers, MRI machines, and the physics of how all wireless communication works.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Ampère's Law** | A circulating current creates a magnetic field that curls around the current. Mathematically: ∮B·dl = μ₀I (the line integral of B around any closed loop equals μ₀ times the enclosed current). |
-| **Permeability (μ₀)** | The fundamental constant relating current to magnetic field in a vacuum: μ₀ = 4π × 10⁻⁷ T·m/A. In magnetic materials like iron, effective permeability μ can be 1000-100,000× higher. |
-| **Solenoid** | A coil of wire wound in a helix. When current flows, it creates a nearly uniform magnetic field inside and near-zero field outside—an ideal electromagnet geometry. |
-| **Magnetic Field (B)** | The vector field created by moving charges. Measured in tesla (T). Earth's field: ~50 μT. Strong permanent magnet: ~1 T. MRI machine: 1.5-7 T. |
-| **Right-Hand Rule** | Point thumb in current direction; fingers curl in direction of magnetic field. For a coil: curl fingers in current direction; thumb points to north pole (field direction inside). |
+| **Permeability (μ₀)** | The fundamental constant relating current to magnetic field in a vacuum: μ₀ = 4π × 10⁻⁷ T·m/A. In magnetic [[learning/notes/quick-context/cnc-machining|materials]] like iron, effective permeability μ [[learning/notes/quick-context/embedded-communication-protocols|can]] be 1000-100[[learning/notes/quick-context/how-passive-and-discrete-components-are-made|,]]000× higher. |
+| **Solenoid** | A coil of wire wound in a helix. When current flows, it creates a nearly uniform magnetic field inside and near-[[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] field outside—an ideal electromagnet geometry. |
+| **Magnetic Field (B)** | The vector field created by moving charges. Measured in tesla (T). Earth's field: ~50 μT. Strong [[learning/notes/quick-context/bambu-p2s-print-quality|permanent]] magnet: ~[[learning/notes/quick-context/meddpicc-qualification-framework|1]] T. MRI machine: 1.5-[[learning/notes/quick-context/similarity-transform|7]] T. |
+| **Right-Hand Rule** | [[learning/notes/quick-context/epson-rc-plus-programming|Point]] thumb in current direction; fingers curl in direction of magnetic field. For a coil: curl fingers in current direction; thumb points to north pole (field direction inside). |
 
 <details>
 <summary><strong>How It Works</strong> — From single wire to powerful electromagnet</summary>
 
 ## The Fundamental Fact: Moving Charges Create Magnetic Fields
 
-This isn't derived from something more basic—it's a law of nature. Experiments show it. Maxwell's equations encode it. Special relativity explains it as a consequence of how electric fields transform between reference frames. But at the practical level: **any moving electric charge creates a magnetic field that circles around its direction of motion.**
+This isn't derived from something more [[learning/notes/quick-context/playbook-main|basic]]—it's a law of nature. Experiments show it. [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] [[learning/notes/quick-context/code-to-gates-and-bootstrapping|encode]] it. Special relativity explains it as a consequence of how electric fields transform between [[learning/notes/quick-context/comparator|reference]] frames. But at the practical level: **any moving electric charge creates a magnetic field that circles around its direction of motion.**
 
 ```
 WHY MOVING CHARGES CREATE MAGNETIC FIELDS — The Deep Answer
@@ -154,7 +156,7 @@ THE RIGHT-HAND RULE:
 
 ## Why Coiling the Wire Amplifies the Field
 
-A single loop of wire creates a magnetic field, but most of it spreads out into space. When you wind many turns close together, something powerful happens:
+A single loop of wire creates a magnetic field, but most of it spreads [[learning/notes/micro-context/push-pull-vs-open-drain|out]] into space. When you wind many turns close together, something powerful happens:
 
 ```
 FROM SINGLE LOOP TO SOLENOID — Field Amplification
@@ -354,7 +356,7 @@ PRACTICAL CALCULATIONS:
 
 ## Adding a Magnetic Core: Massive Amplification
 
-Air-core solenoids are limited. Wrapping the coil around iron or ferrite dramatically increases the field:
+Air-core solenoids are limited. Wrapping the coil around iron [[learning/notes/micro-context/push-pull-vs-open-drain|or]] ferrite dramatically increases the field:
 
 ```
 EFFECT OF MAGNETIC CORE MATERIAL
@@ -440,11 +442,11 @@ EFFECT OF MAGNETIC CORE MATERIAL
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Field strength vs. practical limits</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Field strength vs. practical limits</summary>
 
 ## More Current = Stronger Field... Until Reality Intervenes
 
-The formula B = μ₀nI seems to promise unlimited field strength: just add more turns or more current. In practice, several factors limit what's achievable:
+The formula B = μ₀nI seems to promise unlimited field strength: just add more turns or more current. In practice, several factors limit [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]]'s achievable:
 
 ```
 THE ENGINEERING TRADEOFFS
@@ -494,12 +496,12 @@ THE HEAT PROBLEM IN DETAIL:
 
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
-| Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
-| Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
+| Door electromagnet | [[learning/notes/quick-context/meddpicc-qualification-framework|0]].01-0.1 T | Air gap, iron core, modest current |
+| [[quick-context/inductor\|Inductor]] in [[learning/notes/quick-context/d-flip-flop|power]] supply | Specified inductance, [[learning/notes/micro-context/can-bus-termination|not]] field | Ferrite or [[learning/notes/quick-context/inductor|powdered iron]] core |
+| Motor/[[learning/notes/quick-context/electricity-generation|Generator]] | 0.5-[[learning/notes/quick-context/meddpicc-qualification-framework|2]] T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
-| Pulsed magnets | 100+ T | Capacitor discharge, coil often destroyed |
+| Pulsed magnets | 100+ T | [[learning/notes/quick-context/capacitor|Capacitor]] discharge, coil often destroyed |
 
 </details>
 
@@ -508,7 +510,7 @@ THE HEAT PROBLEM IN DETAIL:
 
 ## Example: Building an Electromagnet to Lift Iron
 
-Let's design a practical electromagnet and calculate its performance.
+Let's design a practical electromagnet and calculate its [[learning/notes/quick-context/bond-pad|performance]].
 
 ```
 ELECTROMAGNET DESIGN WALKTHROUGH
@@ -633,43 +635,43 @@ FINAL DESIGN:
     └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance R. With a fixed voltage supply, higher R means *less* current (I = V/R). Since B depends on both n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core saturation. Simply wrapping more wire isn't the answer.
+**The [[learning/notes/quick-context/ram-addressing-decoder|one]] thing most outsiders get wrong about this is...** assuming more wire always means a stronger magnet. More turns increase n (turns per length), which increases B—but more wire also increases resistance [[learning/notes/quick-context/cations-and-reduction|R]]. [[learning/notes/quick-context/breaking-elongation-rate|With]] a fixed [[learning/notes/quick-context/voltage|voltage]] supply, higher R means *less* current ([[learning/notes/quick-context/anions-and-oxidation|I]] = [[learning/notes/quick-context/capacitor|V]]/R). Since B depends on [[learning/notes/quick-context/bjt-specifications|both]] n and I, there's an optimum point. You can have a coil with thousands of turns that produces a weak field because the current is tiny. The art of electromagnet design is balancing turns, current, resistance, heat dissipation, and core [[learning/notes/quick-context/bjt|saturation]]. Simply wrapping more wire isn't the answer.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The full picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; electromagnetism covers the universal principles.
+- **[[quick-context/electromagnetism]]** — The [[learning/notes/quick-context/singular-value-decomposition|full]] picture of how electric and magnetic fields interact, including [[quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. This document explains the specific case; [[learning/notes/quick-context/electromagnetism|electromagnetism]] covers the universal principles.
 
-- **[[quick-context/inductor]]** — An inductor is a coil designed to store energy in its magnetic field. The inductor equation V = L×dI/dt comes directly from how changing current changes the magnetic flux through the coil (Faraday's Law).
+- **[[quick-context/inductor]]** — An [[learning/notes/quick-context/fundamental-electronic-parts-index|inductor]] is a coil designed to store energy in its magnetic field. The inductor equation V = [[learning/notes/quick-context/anions-and-oxidation|L]]×dI/dt comes directly from how changing current changes the magnetic [[learning/notes/quick-context/soldering|flux]] through the coil ([[learning/notes/quick-context/lenzs-law|Faraday's Law]]).
 
 - **[[quick-context/electric-current]]** — Current is moving charge, and moving charge is what creates the magnetic field. Understanding current as "coulombs per second" connects to calculating the field strength.
 
-- **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Explains why moving charges create magnetic fields from first principles: electric and magnetic fields are two aspects of one electromagnetic field, transformed by relative motion.
+- **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Explains why moving charges create magnetic fields from first principles: electric and magnetic fields are [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] aspects of one electromagnetic field, transformed by relative motion.
 
 - **[[quick-context/electricity-generation]]** — Generators use the reverse principle: moving a coil through a magnetic field induces current. Same physics, different application.
 
 - **[[small-context/permanent-magnet-creation]]** — Shows a practical application: using a high-current coil to magnetize iron. The magnetizer is just a solenoid optimized for maximum field strength during a brief pulse.
 
-- **Helmholtz Coils** — Two identical coils separated by their radius create a very uniform field in the region between them. Used for calibration and research.
+- **Helmholtz Coils** — Two [[learning/notes/quick-context/ram-addressing-decoder|identical]] coils separated by their radius create a very uniform field in the region between them. Used for calibration and research.
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]]. What one observer sees as a pure [[learning/notes/quick-context/voltage-current-causality|electric field]], another moving observer sees as a mix of [[learning/notes/quick-context/bjt-specifications|E]] and B—the [[learning/notes/quick-context/tensor|tensor]] transforms correctly between frames.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
-**Q1:** A compass needle deflects when placed near a wire carrying DC current. What would happen if you reversed the current direction?
+**Q1:** A compass needle deflects when placed near a wire carrying [[learning/notes/micro-context/mosfet|DC]] current. What would happen if you reversed the current direction?
 <details>
 <summary>Answer</summary>
 **The compass would deflect in the opposite direction.** The magnetic field direction follows the right-hand rule: thumb points in current direction, fingers curl in field direction. Reverse the current, and the field circles the other way. The compass needle (a small magnet) aligns with this field, so it deflects opposite to before.
 </details>
 
-**Q2:** You have a solenoid with 1000 turns over 10 cm carrying 3 amps. Calculate the magnetic field inside (air core).
+**Q2:** You have a solenoid with 1000 turns over 10 cm carrying [[learning/notes/quick-context/meddpicc-qualification-framework|3]] amps. Calculate the magnetic field inside ([[learning/notes/quick-context/inductor|air core]]).
 <details>
 <summary>Answer</summary>
 **B = 0.0377 T = 37.7 mT.** Using B = μ₀nI: n = 1000/0.1 = 10,000 turns/m. B = (4π × 10⁻⁷) × 10,000 × 3 = 1.257 × 10⁻⁶ × 30,000 = 0.0377 T. This is about 750× Earth's field.
@@ -678,7 +680,7 @@ FINAL DESIGN:
 **Q3:** You add an iron core (μᵣ = 4000) to the solenoid from Q2. What's the new field strength?
 <details>
 <summary>Answer</summary>
-**Approximately 2 T (limited by saturation).** Theoretically, B = μᵣ × B_air = 4000 × 0.0377 = 151 T. But iron saturates around 2 T—once all magnetic domains are aligned, no further increase is possible. The actual field would be close to the saturation value of the specific iron used, typically 1.5-2 T.
+**Approximately 2 T (limited by saturation).** Theoretically, B = μᵣ × B_air = 4000 × 0.0377 = 151 T. But iron saturates around 2 T—once all magnetic domains are aligned, [[learning/notes/micro-context/capacitive-voltage-sensing|no]] further increase is possible. The actual field would be close to the saturation value of the specific iron used, typically 1.5-2 T.
 </details>
 
 **Q4:** Why does wrapping wire into a coil create a stronger field than a straight wire carrying the same current?
@@ -690,7 +692,7 @@ FINAL DESIGN:
 **Q5:** An electromagnet runs at 2A and gets warm. To get a stronger field, you double the current to 4A. How much more heat does it generate?
 <details>
 <summary>Answer</summary>
-**4× more heat (quadruple).** Power dissipation P = I²R. When you double I, P increases by 2² = 4. The field only doubles, but heat generation quadruples. This is the fundamental challenge of high-field electromagnets—you hit thermal limits before you hit magnetic limits. See: "The Heat Problem" in The Key Tension.
+**[[learning/notes/quick-context/similarity-transform|4]]× more heat (quadruple).** [[learning/notes/quick-context/resistor|Power dissipation]] P = I²R. When you double I, P increases by 2² = 4. The field [[learning/notes/quick-context/comparator-specification|only]] doubles, but [[learning/notes/quick-context/electric-current|heat generation]] quadruples[[learning/notes/quick-context/glass-transition-temperature|. This is the]] fundamental challenge of high-field electromagnets—you hit thermal limits before you hit magnetic limits. See: "The Heat Problem" in The Key Tension.
 </details>
 
 </details>

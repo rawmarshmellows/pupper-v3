@@ -3,6 +3,8 @@ topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
+
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
 > **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]

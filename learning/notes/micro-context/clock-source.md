@@ -3,16 +3,18 @@ term: Clock Source
 created: 2026-03-27
 ---
 
-# Clock Source
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/how-source-code-is-stored]]
+
+# Clock Source[[learning/notes/quick-context/tensile-strength-materials|]]
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** The component or circuit that generates the base frequency reference for a [[micro-context/stm32-microcontroller|microcontroller's]] clock system. On the Pupper v3 board, each STM32's clock source is an external 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (HSE), which the on-chip PLL multiplies to the 180 MHz operating frequency.
+**[[learning/notes/quick-context/capacitance|Definition]]:** [[learning/notes/quick-context/capacitance|The]] [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] [[learning/notes/micro-context/push-pull-vs-open-drain|or]] circuit that generates the base frequency [[learning/notes/quick-context/comparator|reference]] for [[learning/notes/quick-context/anions-and-oxidation|a]] [[micro-context/stm32-microcontroller|microcontroller's]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] system. On the Pupper v3 board, each STM32's [[learning/notes/quick-context/clock-sources-and-timing|clock source]] is an external [[learning/notes/quick-context/comparator-specification|8]] MHz [[micro-context/ceramic-resonator|ceramic resonator]] (HSE), which the on-chip PLL multiplies to the 180 MHz operating frequency.
 
 ## How It Works
 
-- The MCU selects one of several clock sources at startup: an internal [[quick-context/rc-oscillator|RC oscillator]] (HSI, ~16 MHz, ±1% accuracy at 25°C but degrades over temperature) or an external crystal/resonator (HSE, higher accuracy).
-- The selected source feeds into the PLL (phase-locked loop), which multiplies the frequency up — e.g., $8\text{ MHz} \times 22.5 = 180\text{ MHz}$ for the Pupper's STM32F446.
+- The MCU selects [[learning/notes/quick-context/ram-addressing-decoder|one]] of several clock sources at [[learning/notes/quick-context/firmware|startup]]: an internal [[quick-context/rc-oscillator|RC oscillator]] (HSI, ~16 MHz, ±[[learning/notes/quick-context/meddpicc-qualification-framework|1]]% [[learning/notes/quick-context/rc-oscillator|accuracy]] at 25°[[learning/notes/micro-context/cathode|C]] but degrades over temperature) or an external crystal/resonator (HSE, higher accuracy).
+- The selected [[learning/notes/quick-context/differential-pair|source]] feeds into the PLL (phase-locked loop), which multiplies the frequency up — [[learning/notes/quick-context/bjt-specifications|e]].[[learning/notes/quick-context/cations-and-reduction|g]]., $8\[[learning/notes/quick-context/how-source-code-is-stored|text]]{ MHz} \times 22.5 = 180\text{ MHz}$ for the Pupper's STM32F446.
 - The PLL output then drives the system clock (SYSCLK), which is further divided down for peripheral buses (APB1 at 45 MHz max, APB2 at 90 MHz max).
 
 ```
@@ -29,4 +31,4 @@ CLOCK SOURCE → PLL → SYSTEM CLOCK
      Pupper uses this
 ```
 
-**Key insight:** The external ceramic resonator isn't the MCU's actual operating frequency — it's just a stable reference that the PLL multiplies up. The MCU couldn't run directly at 8 MHz fast enough for 1 kHz motor control; the PLL is what bridges the gap to 180 MHz.
+**Key insight:** The external [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]] isn't the MCU's actual operating frequency — it's just a stable reference that the PLL multiplies up. The MCU couldn't run directly at 8 MHz [[learning/notes/quick-context/comparator|fast]] enough for 1 kHz motor control; the PLL is [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] bridges the gap to 180 MHz.

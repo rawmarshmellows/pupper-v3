@@ -4,17 +4,19 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
-# Decoupling Capacitor
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/quick-context/capacitor]]
+
+# Decoupling Capacitor[[learning/notes/quick-context/tensile-strength-materials|]]
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]
 
-**Definition:** Small capacitors (typically 100nF ceramic) placed near IC power pins to provide instant local charge when the chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise and supplying transient current faster than the distant power source can respond.
+**[[learning/notes/quick-context/capacitance|Definition]]:** Small [[learning/notes/quick-context/voltage|capacitors]] (typically 100nF ceramic) placed near IC [[learning/notes/quick-context/d-flip-flop|power]] pins to provide instant local [[learning/notes/quick-context/cations-and-reduction|charge]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] [[learning/notes/quick-context/capacitance|the]] chip switches states. They "decouple" the IC from the power supply by filtering high-frequency noise [[learning/notes/micro-context/push-pull-vs-open-drain|and]] supplying transient [[learning/notes/quick-context/capacitance|current]] faster than the distant power [[learning/notes/quick-context/differential-pair|source]] [[learning/notes/quick-context/embedded-communication-protocols|can]] respond.
 
 ## How It Works
 
-- When an IC switches states, it demands a sudden spike of current from the power rail.
-- The distant power supply can't respond instantly because PCB trace inductance limits current slew rate.
-- A small capacitor placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
+- When an IC switches states, it demands [[learning/notes/quick-context/anions-and-oxidation|a]] sudden spike of current from the [[learning/notes/quick-context/schematic-reading|power rail]].
+- The distant power supply can't respond instantly because PCB [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] inductance limits current slew rate.
+- A small [[learning/notes/quick-context/capacitor|capacitor]] placed right next to the IC's power pin stores local charge and releases it instantly during the demand spike.
 - The capacitor then slowly recharges from the power supply, ready for the next switching event.
 
 ```

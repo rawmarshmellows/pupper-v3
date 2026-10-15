@@ -3,6 +3,8 @@ topic: Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and 
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]]
+
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
 > **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/index/how-a-computer-works-index]]

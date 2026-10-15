@@ -4,18 +4,20 @@ created: 2026-03-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/quick-context/wire-bonding]]
+
 # SWD (Serial Wire Debug)
 
-> **See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]
+> **[[learning/notes/quick-context/tensile-strength-materials|]]See also:** [[micro-context/st-link-v2-programmer|ST-Link V2]] | [[micro-context/stm32-microcontroller|STM32]] | [[micro-context/i2c|I2C]] | [[micro-context/spi|SPI]]
 
-**Definition:** A 2-signal debug protocol designed by ARM for Cortex-M microcontrollers. It replaces the older 4+ wire JTAG interface with just **SWDIO** (bidirectional data) and **SWCLK** (clock), providing the same core debug features: flash programming, breakpoints, single-stepping, and live memory/register inspection. A typical SWD cable adds 3.3V power and GND for a 4-wire connection total.
+**[[learning/notes/quick-context/capacitance|Definition]]:** [[learning/notes/quick-context/anions-and-oxidation|A]] [[learning/notes/quick-context/meddpicc-qualification-framework|2]]-[[learning/notes/quick-context/comparator|signal]] debug protocol designed by ARM for Cortex-M microcontrollers. It replaces [[learning/notes/quick-context/capacitance|the]] older [[learning/notes/quick-context/similarity-transform|4]]+ wire JTAG interface [[learning/notes/quick-context/breaking-elongation-rate|with]] just **SWDIO** ([[learning/notes/quick-context/data-bus-and-arbitration|bidirectional]] data) [[learning/notes/micro-context/push-pull-vs-open-drain|and]] **SWCLK** ([[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]]), providing the same core debug features: flash programming, breakpoints, single-stepping, and live [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]]/register inspection. A typical SWD cable adds [[learning/notes/quick-context/meddpicc-qualification-framework|3]].3V [[learning/notes/quick-context/d-flip-flop|power]] and [[learning/notes/quick-context/qwiic-stemma-qt-i2c|GND]] for a 4-wire connection [[learning/notes/quick-context/similarity-transform|total]].
 
 ## How It Works
 
 - The debugger drives SWCLK and exchanges data bidirectionally on SWDIO using a rigid request→ACK→data packet protocol.
-- Each SWD transaction accesses the chip's Debug Access Port (DAP), which bridges to the internal bus — giving the debugger the same memory access as the CPU.
-- Through this bus access, the debugger can erase and write flash (programming), set hardware breakpoints, single-step instructions, and inspect registers/memory in real time.
-- All of this happens over just 2 signal wires (plus power and ground), replacing the older 4+ wire JTAG interface.
+- Each SWD transaction accesses the chip's Debug Access Port (DAP), which bridges to the internal [[learning/notes/quick-context/data-bus-and-arbitration|bus]] — giving the debugger the same memory access as the CPU.
+- Through this bus access, the debugger [[learning/notes/quick-context/embedded-communication-protocols|can]] erase and [[learning/notes/quick-context/d-flip-flop|write]] flash (programming), set [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]] breakpoints, single-step instructions, and inspect registers/memory in real time.
+- All of this happens over just 2 signal [[learning/notes/quick-context/uart|wires]] (plus power and ground), replacing the older 4+ wire JTAG interface.
 
 ## Physical Connection
 
@@ -37,7 +39,7 @@ SWCLK is always driven by the debugger (typically 1-4 MHz)
 
 ## How SWD Fits Into the ARM Debug Architecture
 
-SWD isn't just a wire protocol — it's the transport layer for ARM's **CoreSight** debug architecture. Understanding the layers helps you know what's happening when you click "Debug" in your IDE.
+SWD isn't just a wire protocol — it's the transport [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] for ARM's **CoreSight** debug architecture. Understanding the layers helps you know [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]]'s happening [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you click "Debug" in [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] IDE.
 
 ```
 YOUR PC                     DEBUG PROBE              TARGET MCU
@@ -67,8 +69,8 @@ DAP = Debug Access Port = DP + AP together. Every Cortex-M has one.
 ```
 
 **Key terminology:**
-- **DP (Debug Port):** The SWD-facing side. Manages the wire protocol, handshake, and error detection. Every SWD transaction talks to the DP first.
-- **MEM-AP (Memory Access Port):** Bridges the DP to the chip's AHB/APB bus. This is what lets an external debugger read/write any memory address — flash, SRAM, peripheral registers — as if it were the CPU itself.
+- **DP (Debug Port):** The SWD-facing side. Manages the wire protocol, [[learning/notes/quick-context/robot-cell-integration-best-practices|handshake]], and [[learning/notes/quick-context/uart|error detection]]. Every SWD transaction talks to the DP first.
+- **MEM-AP (Memory Access Port):** Bridges the DP to the chip's AHB/APB bus. This is what lets an external debugger read/write any memory [[learning/notes/quick-context/how-source-code-is-stored|address]] — flash, [[learning/notes/quick-context/ram-addressing-decoder|SRAM]], peripheral registers — as if it were the CPU itself.
 - **DAP (Debug Access Port):** The DP + AP(s) together. The ARM spec name for the whole debug subsystem.
 
 ## The SWD Protocol: What Happens on the Wire
@@ -108,21 +110,21 @@ SWDIO: [--8-bit request-->][T][ACK][T][---32-bit data + parity---]
                                          direction changes)
 ```
 
-**Why this matters practically:** When you see "SWD communication failed" errors in OpenOCD, it usually means the ACK phase returned FAULT or WAIT instead of OK, or the parity check failed (noise on the wire, bad connection). The protocol's built-in error detection is why SWD works reliably with cheap jumper wires at short distances.
+**[[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] this matters practically:** When you see "SWD communication failed" errors in OpenOCD, it usually means the ACK phase returned FAULT [[learning/notes/micro-context/push-pull-vs-open-drain|or]] WAIT instead of OK, or the parity check failed (noise on the wire, bad connection). The protocol's built-in error detection is why SWD works reliably with cheap jumper wires at short distances.
 
 ## What You Can Do Through SWD
 
 SWD gives the debugger the same bus access as the CPU. Here's what that enables:
 
-| Capability | How it works via SWD |
+| Capability | How it works [[learning/notes/quick-context/metal-interconnect-layers|via]] SWD |
 |---|---|
-| **Flash programming** | Write to flash controller registers to unlock flash, erase sectors, then write 32-bit words. The debug probe's software (OpenOCD, STM32CubeProgrammer) automates this sequence. |
-| **Hardware breakpoints** | Write a target address into one of the CPU's FPB (Flash Patch and Breakpoint) comparator registers. Cortex-M4 has 6 hardware breakpoints. When the PC matches, the CPU halts. |
-| **Software breakpoints** | Replace an instruction with `BKPT` (0xBExx). Unlimited count but only works in RAM, not flash (without erasing). |
+| **Flash programming** | Write to flash controller registers to unlock flash, erase sectors, then write 32-bit words. The debug [[learning/notes/quick-context/oscilloscope-and-multimeter|probe]]'s [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] (OpenOCD, STM32CubeProgrammer) automates this sequence. |
+| **Hardware breakpoints** | Write a target address into [[learning/notes/quick-context/ram-addressing-decoder|one]] of the CPU's FPB (Flash Patch and Breakpoint) [[learning/notes/quick-context/comparator|comparator]] registers. Cortex-M4 has 6 hardware breakpoints. When the [[learning/notes/quick-context/bambu-p2s-print-quality|PC]] matches, the CPU halts. |
+| **Software breakpoints** | Replace an [[learning/notes/quick-context/cpu-fetch-execute-cycle|instruction]] with `BKPT` (0xBExx). Unlimited [[learning/notes/quick-context/switches-to-registers-storing-data|count]] but [[learning/notes/quick-context/comparator-specification|only]] works in RAM, [[learning/notes/micro-context/can-bus-termination|not]] flash (without erasing). |
 | **Single-stepping** | Set the STEP bit in the Debug Halting Control register (DHCSR). CPU executes one instruction then halts again. |
 | **Register inspection** | Read/write all CPU registers (R0-R15, PSR, etc.) through the DCRSR/DCRDR register pair while the CPU is halted. |
-| **Live memory view** | Read any address in the memory map without halting the CPU. This is how "live watch" works in IDEs — it polls memory via SWD while the program runs. |
-| **SWO trace (optional)** | A third wire (not part of SWD itself) that streams `printf`-style trace data from the ITM (Instrumentation Trace Macrocell). Requires hardware support — official [[micro-context/st-link-v2-programmer|ST-Link V2]] has it, most clones don't. |
+| **Live memory view** | Read any address in the memory map without halting the CPU. This is how "live watch" works in IDEs — it [[learning/notes/quick-context/keypress-to-pixel-pipeline|polls]] memory via SWD while the program runs. |
+| **SWO [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] (optional)** | A third wire (not part of SWD itself) that streams `printf`-style trace data from the ITM (Instrumentation Trace Macrocell). Requires hardware support — official [[micro-context/st-link-v2-programmer|ST-Link V2]] has it, most clones don't. |
 
 ## SWD vs JTAG: When Each Wins
 
@@ -152,7 +154,7 @@ Use JTAG when: Multiple devices on one debug chain, need boundary
                scan for board-level testing, or targeting Cortex-A/R
 ```
 
-**Why SWD won for Cortex-M:** ARM designed SWD specifically for the microcontroller market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the silicon is almost identical — so there's no feature penalty for the simpler wiring.
+**Why SWD won for Cortex-M:** ARM designed SWD specifically for the [[learning/notes/micro-context/microcontroller|microcontroller]] market where boards are small, there's only one debug target, and boundary scan is overkill. The 2-wire protocol reuses the same DAP architecture as JTAG internally — the [[learning/notes/quick-context/transistor|silicon]] is almost [[learning/notes/quick-context/ram-addressing-decoder|identical]] — so there's [[learning/notes/micro-context/capacitive-voltage-sensing|no]] feature penalty for the [[learning/notes/quick-context/can-bus|simpler wiring]].
 
 ## SWD in the Pupper
 
@@ -175,4 +177,4 @@ On the Pupper V3 control board, the [[micro-context/stm32-microcontroller|STM32F
 
 The `DPIDR` register (Debug Port ID Register) is the first thing read over SWD — it confirms the target is alive and identifies the ARM core variant. If you see `Error: SWD DPIDR 0x00000000`, the target isn't powered or the wires are wrong.
 
-**Key insight:** SWD gives you god-mode access to the chip's entire memory map through just 2 wires. The protocol is simple enough that a $10 clone programmer running open-source software provides the same flash/debug experience as a $500 J-Link for hobby and coursework use. JTAG only becomes necessary when you're debugging multiple chips on one board or need IEEE boundary scan for manufacturing test.
+**Key insight:** SWD gives you god-mode access to the chip's entire memory map through just 2 wires. The protocol is simple enough that a $10 clone programmer running open-[[learning/notes/quick-context/differential-pair|source]] software provides the same flash/debug experience as a $500 J-Link for hobby and coursework use. JTAG only becomes necessary when you're [[learning/notes/quick-context/firmware|debugging]] multiple chips on one board or need IEEE boundary scan for manufacturing test.
