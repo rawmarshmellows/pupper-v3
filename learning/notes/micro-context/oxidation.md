@@ -2,7 +2,9 @@
 term: Oxidation
 created: 2026-02-25
 updated: 2026-03-27
----
+---> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/butyric-acid]]
+
+
 
 # Oxidation
 

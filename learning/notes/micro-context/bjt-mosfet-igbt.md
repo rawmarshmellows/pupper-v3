@@ -1,7 +1,9 @@
 ---
 term: BJT vs MOSFET vs IGBT
 created: 2026-06-02
----
+---> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]
+
+
 
 # BJT vs MOSFET vs IGBT
 
