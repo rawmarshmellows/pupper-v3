@@ -2,13 +2,15 @@
 term: Anode
 created: 2026-02-25
 updated: 2026-03-27
----
+---> **Related:** [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/full-bridge-rectifier]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/quick-context/diode]]
+
+
 
 # Anode
 
 > **See also:** [[quick-context/electrodes]]
 
-**Definition:** The electrode where [[quick-context/anions-and-oxidation|oxidation]] occurs — species lose electrons here, and those electrons flow out through the external circuit. In electrolysis the anode is positive (+); in [[quick-context/galvanic-cells-batteries|batteries]] it's negative (−). The name comes from Greek *anodos* ("way up").
+**Definition:** The electrode where [[quick-context/anions-and-oxidation|oxidation]] occurs — species lose electrons here, and those electrons flow out through the external circuit. In [[learning/notes/quick-context/electrolysis|electrolysis]] the anode is positive (+); in [[quick-context/galvanic-cells-batteries|batteries]] it's negative (−). The name comes from Greek *anodos* ("way up").
 
 ## How It Works
 
