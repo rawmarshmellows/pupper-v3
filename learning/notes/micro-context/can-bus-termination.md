@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # CAN Bus Termination
 
-> **See also:** [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
+> **See also:** [[micro-context/can-bus-transceiver]] | [[micro-context/spi]] | [[micro-context/i2c]] | [[micro-context/smd-resistor]] | [[micro-context/i2s]]
 
 **Definition:** A 120Ω [[quick-context/resistor|resistor]] placed at each end of a [[quick-context/can-bus|CAN bus]] to match the cable's characteristic [[quick-context/impedance-and-reactance|impedance]] and prevent signal reflections. On the Pupper v3 control board, R1–R4 are the termination resistors for the 4 CAN buses connecting to 12 servo motors.
 

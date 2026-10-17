@@ -14,7 +14,7 @@ Make the ASCII diagrams clearer, in particular on the relationship between [[qui
 
 **Who controls the [[micro-context/pwm-pulse-width-modulation|PWM]] and how is it connected?** A dedicated buck converter IC (e.g., TPS54302, LM2596, MP1584) contains the PWM controller — it's not the [[micro-context/stm32-microcontroller|MCU]]. The IC connects to VIN for its own power and to drive the [[micro-context/mosfet|MOSFET]] gate (often the MOSFET is integrated *inside* the IC). A resistor divider from VOUT feeds back to the IC's feedback (FB) pin. The IC compares this to an internal voltage reference (~0.8V) and adjusts the duty cycle: if VOUT drops → longer ON time → more energy → voltage recovers. This closed-loop control runs autonomously at hundreds of kHz — no software involved.
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/inductor]] | [[quick-context/capacitor]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/pwm-controller-circuit]]
+> **See also:** [[quick-context/pwm-controller-circuit]] | [[micro-context/pwm-pulse-width-modulation]] | [[quick-context/rc-oscillator]] | [[quick-context/inductor]] | [[quick-context/self-induction]]
 
 **Definition:** A switching power supply that efficiently steps down voltage (e.g., 12V battery → 5V for logic). Unlike linear regulators that waste excess voltage as heat, buck converters use rapid switching (100kHz–2MHz) and an inductor to achieve 85–95% efficiency.
 

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
+> **Related:** [[quick-context/breaking-elongation-rate]] | [[quick-context/glass-transition-temperature]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/3d-printing-filament-types]]
 
 > **TL;DR:** Tensile strength (measured in MPa) tells you the maximum pulling stress a material can handle before breaking; for 3D printed parts, layer adhesion typically limits actual strength to 50-80% of the rated material value, making print orientation and settings more important than filament choice.
 

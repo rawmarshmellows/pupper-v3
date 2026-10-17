@@ -6,7 +6,7 @@ updated: 2026-04-05
 
 # STM32 Microcontroller
 
-> **See also:** [[quick-context/transistor]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/raspberry-pi-5-components]] | [[quick-context/esp32]]
+> **See also:** [[micro-context/microcontroller]] | [[quick-context/raspberry-pi-5-components]] | [[micro-context/st-link-v2-programmer]] | [[micro-context/swd-serial-wire-debug]] | [[micro-context/plc-programmable-logic-controller]]
 
 **Definition:** A family of 32-bit ARM Cortex-M microcontrollers made by STMicroelectronics. They're the "brain" of embedded systems—running code, reading sensors, and controlling outputs. The Pupper v3 uses two STM32 MCUs in LQFP64 packages (64-pin, low-profile quad flat package) on its custom PCB. They run at up to 180MHz with hardware support for [[quick-context/can-bus|CAN bus]], [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], USART, and USB.
 

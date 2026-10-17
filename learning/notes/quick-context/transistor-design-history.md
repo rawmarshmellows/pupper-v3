@@ -3,7 +3,7 @@ topic: Transistor Design History
 created: 2026-01-30
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/doped-silicon]] | [[quick-context/silicon-die]] | [[quick-context/metal-interconnect-layers]]
 
 > **TL;DR:** Transistor design has evolved through five major eras—point-contact (1947), bipolar junction (1950s), planar MOSFET (1960-2011), FinFET (2011-2024), and Gate-All-Around (2022+)—with each generation solving the previous one's scaling limits by gaining better control over the channel, ultimately wrapping the gate around the channel from zero sides to all four.
 

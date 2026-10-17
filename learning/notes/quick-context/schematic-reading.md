@@ -3,7 +3,7 @@ topic: Schematic Reading
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/fundamental-electronic-parts-index]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/bjt]] | [[quick-context/pcb-printed-circuit-board]]
 
 > **TL;DR:** A schematic is a symbolic diagram showing how electronic components are electrically connected—it's the universal language of electronics, and reading one means understanding the symbols for each component, tracing how signals flow, and recognizing common circuit patterns like voltage dividers, decoupling networks, and pull-ups.
 

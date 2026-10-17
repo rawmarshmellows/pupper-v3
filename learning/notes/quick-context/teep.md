@@ -3,7 +3,7 @@ topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
+> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]] | [[quick-context/whitespace-mapping]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/sandler-kare-segmentation]]
 
 > **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
 

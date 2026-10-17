@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[quick-context/keypress-to-pixel-pipeline]] | [[quick-context/ram-addressing-decoder]] | [[quick-context/d-flip-flop]] | [[quick-context/cpu-fetch-execute-cycle]] | [[quick-context/switches-to-registers-storing-data]]
 
 > **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
@@ -18,7 +18,7 @@ A computer is dozens of chips that all need to exchange bytes: the CPU reads an 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data|Output Enable (OE)]] pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |

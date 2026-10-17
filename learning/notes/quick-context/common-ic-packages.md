@@ -3,7 +3,7 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/bga-ball-grid-array]] | [[quick-context/substrate-ic-packaging]] | [[quick-context/soldering]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]]
 
 > **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
 

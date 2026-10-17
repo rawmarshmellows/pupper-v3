@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # CNC Milling
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
+> **See also:** [[micro-context/cnc-turning]] | [[quick-context/cnc-machining]] | [[micro-context/cnc-process-selection]] | [[micro-context/edm-machining]] | [[micro-context/current-inductor-capacitor-relationship]]
 
 **Definition:** A subtractive manufacturing process where a computer-controlled rotating cutter removes material from a solid block (workpiece) to create precise parts. The opposite of 3D printing—you start with more material than you need and carve away the excess.
 

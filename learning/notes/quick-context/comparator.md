@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/inside-the-triangle]] | [[quick-context/op-amp]] | [[quick-context/differential-pair]] | [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
@@ -17,10 +17,10 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp|op-amp]], but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>

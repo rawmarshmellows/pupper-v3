@@ -3,7 +3,7 @@ topic: Electric Current
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/voltage]] | [[quick-context/electric-magnetic-field-unification]] | [[quick-context/electricity-generation]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/inductor]]
 
 > **TL;DR:** Electric current is the flow of electric charge (electrons moving through a conductor) that carries energy from source to destination, and in electrochemistry, current directly determines reaction rate through Faraday's law (Q = I x t)—double the current means double the product.
 

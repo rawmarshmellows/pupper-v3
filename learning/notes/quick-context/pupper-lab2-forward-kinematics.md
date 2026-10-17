@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab3-inverse-kinematics]]
+> **Related:** [[quick-context/helmert-transform]] | [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/similarity-transform]] | [[quick-context/singular-value-decomposition]]
 
 > **TL;DR:** Forward kinematics computes where the foot ends up in 3D space given three joint angles, by chaining 4x4 homogeneous transformation matrices along the leg's kinematic chain. This is the mathematical foundation reused in every subsequent Pupper lab.
 

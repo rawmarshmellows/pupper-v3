@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Input Offset Voltage ($V_{OS}$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
+> **See also:** [[micro-context/offset-voltage-drift]] | [[micro-context/input-common-mode-range]] | [[micro-context/common-mode-rejection-ratio]] | [[micro-context/power-supply-rejection-ratio]] | [[micro-context/open-loop-voltage-gain]]
 
 **Definition:** A small built-in voltage error between a comparator's (or op-amp's) two inputs, caused by transistor mismatch in the [[quick-context/differential-pair|differential input pair]]. It shifts the real switching point to $V_{REF} \pm V_{OS}$ instead of exactly $V_{REF}$, so it sets your threshold accuracy.
 

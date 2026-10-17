@@ -5,7 +5,7 @@ created: 2026-03-29
 
 # Clock Sources and Timing
 
-> **Related:** [[quick-context/rc-oscillator|RC Oscillator]] | [[micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]
+> **Related:** [[quick-context/rc-oscillator]] | [[quick-context/d-flip-flop]] | [[quick-context/switches-to-registers-storing-data]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator]]
 
 > **TL;DR:** A microcontroller's clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
 

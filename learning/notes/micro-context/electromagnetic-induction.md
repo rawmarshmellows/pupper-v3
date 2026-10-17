@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # Electromagnetic Induction
 
-> **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]
+> **See also:** [[micro-context/current-inductor-capacitor-relationship]] | [[micro-context/power-inductor]] | [[micro-context/ac-dc-current]] | [[micro-context/current-electrons-per-second]] | [[micro-context/full-bridge-rectifier]]
 
 **Definition:** The phenomenon where a changing magnetic field through a conductor induces a voltage (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
 

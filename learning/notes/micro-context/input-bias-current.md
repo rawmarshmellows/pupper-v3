@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Input Bias Current ($I_B$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[micro-context/mosfet]] | [[quick-context/resistor]]
+> **See also:** [[micro-context/mosfet]] | [[micro-context/quiescent-supply-current]] | [[micro-context/input-common-mode-range]] | [[micro-context/offset-voltage-drift]] | [[micro-context/open-loop-voltage-gain]]
 
 **Definition:** The tiny current that flows into (or out of) a comparator's or op-amp's input pin to bias its input transistors. For CMOS-input parts it is essentially zero — picoamps.
 

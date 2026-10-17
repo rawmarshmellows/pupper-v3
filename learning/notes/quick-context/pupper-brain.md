@@ -3,7 +3,7 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/clock-sources-and-timing]] | [[quick-context/firmware]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
@@ -15,11 +15,11 @@ A quadruped robot like Pupper needs to simultaneously know its orientation in 3D
 
 | Term | Definition |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
-| **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
-| **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
-| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[micro-context/stm32-microcontroller|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
+| **[[quick-context/can-bus|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
+| **[[small-context/imu-robot-balance-sensing|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
+| **[[micro-context/buck-converter|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
+| **[[micro-context/decoupling-capacitor|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>

@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/chemical-bonds-spectrum]] | [[quick-context/covalent-bonds]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/electrodes]] | [[quick-context/galvanic-cells-batteries]]
+> **Related:** [[quick-context/voltage-thermodynamics-electrolysis]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/electrolyte]]
 
 > **TL;DR:** Electrolysis uses electricity to force non-spontaneous chemical reactions (like splitting water into hydrogen and oxygen), essentially running a battery in reverse by supplying energy to break stable bonds rather than harvesting energy from spontaneous reactions.
 

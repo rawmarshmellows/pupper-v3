@@ -3,7 +3,7 @@ topic: Raspberry Pi 5 — Board Components
 created: 2026-04-05
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-brain]] | [[micro-context/stm32-microcontroller]] | [[quick-context/common-ic-packages]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[micro-context/stm32-microcontroller]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/raspberry-pi-ai-hat]] | [[quick-context/esp32]]
 
 > **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[micro-context/stm32-microcontroller|STM32 microcontrollers]].
 

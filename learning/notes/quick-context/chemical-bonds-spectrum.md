@@ -3,7 +3,7 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/van-der-waals-forces]] | [[quick-context/covalent-bonds]]
 
 > **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
@@ -18,7 +18,7 @@ Every material property you care about—melting point, strength, flexibility, w
 | Term | Definition |
 |------|------------|
 | **Intermolecular force** | Any attraction *between* molecules—van der Waals, dipole-dipole, hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
-| **Intramolecular bond** | The [[quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
+| **Intramolecular bond** | The [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
 | **Electronegativity** | An atom's "greed" for electrons—oxygen and fluorine are greedy (high EN), carbon and hydrogen share more equally—determines bond polarity. |
 | **Partial charge (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
 | **Non-covalent interaction** | Umbrella term for all intermolecular forces—emphasizes that these aren't "real" bonds in the electron-sharing sense, but still profoundly affect material behavior. |

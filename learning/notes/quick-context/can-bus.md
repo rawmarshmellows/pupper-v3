@@ -5,7 +5,7 @@ created: 2026-03-27
 
 # CAN Bus (Controller Area Network)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/firmware]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[quick-context/embedded-communication-protocols]] | [[quick-context/usb-peripheral-hardware]] | [[quick-context/uart]] | [[quick-context/qwiic-stemma-qt-i2c]] | [[quick-context/pupper-brain]]
 
 > **TL;DR:** CAN bus is a robust, multi-master serial protocol that lets dozens of devices communicate over a shared 2-wire differential pair without a central controller — originally designed for cars in the 1980s, it's now the backbone of automotive, industrial, and robotic systems (including Pupper's motor control) because it prioritizes reliability in electrically noisy environments over raw speed.
 

@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/polymer-chemical-bonds]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/chemical-bonds-spectrum]] | [[quick-context/dipole-dipole-interactions]]
 
 > **TL;DR:** Covalent bonds form when atoms share electrons to complete their outer shells, creating the strong intra-molecular connections that hold polymer chains together—these bonds never break during normal 3D printing.
 
@@ -33,8 +33,8 @@ Everything around you—your desk, your skin, your 3D printer filament—is made
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/subatomic-particles\|Electron]]** | A tiny negatively-charged [[quick-context/subatomic-particles\|subatomic particle]] that orbits atoms and gets shared in covalent bonds |
-| **[[quick-context/atoms-molecules-polymers-basics\|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
+| **[[quick-context/subatomic-particles|Electron]]** | A tiny negatively-charged [[quick-context/subatomic-particles|subatomic particle]] that orbits atoms and gets shared in covalent bonds |
+| **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain molecule made of repeating units (monomers) connected by covalent bonds—what your 3D printer filament is made of |
 | **Monomer** | The single repeating unit that links together to form a polymer chain (like a single LEGO brick) |
 | **Cross-linking** | When polymer chains form covalent bonds sideways to neighboring chains, creating a rigid network |
 | **Thermoplastic** | A polymer that softens when heated and hardens when cooled (reversible)—what FDM 3D printing uses |

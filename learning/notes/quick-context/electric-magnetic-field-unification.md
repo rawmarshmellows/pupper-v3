@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/electromagnetism]] | [[quick-context/maxwell-equations]] | [[quick-context/faraday-tensor]] | [[quick-context/voltage]] | [[quick-context/voltage-current-causality]]
 
 > **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
 
@@ -17,11 +17,11 @@ Students learn voltage, current, electric fields, and magnetic fields as separat
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
+| **[[quick-context/electric-current|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
 | **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
-| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
+| **[[quick-context/electromagnetism|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
