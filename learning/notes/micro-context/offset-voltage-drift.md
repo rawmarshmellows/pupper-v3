@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Offset Voltage Drift ($TCV_{OS}$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[quick-context/differential-pair]]
+> **See also:** [[micro-context/input-offset-voltage]] | [[micro-context/input-common-mode-range]] | [[micro-context/common-mode-rejection-ratio]] | [[micro-context/power-supply-rejection-ratio]] | [[micro-context/input-bias-current]]
 
 **Definition:** The rate at which a comparator's or op-amp's [[micro-context/input-offset-voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
 

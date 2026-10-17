@@ -4,7 +4,7 @@ created: 2026-01-22
 updated: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]] | [[quick-context/making-electrolytes]] | [[quick-context/electrodes]]
+> **Related:** [[quick-context/making-electrolytes]] | [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/electrolysis]]
 
 > **TL;DR:** Electrolytes are substances (acids, bases, or salts) that dissolve in water to release free ions, enabling the liquid to conduct electricity; pure water is essentially an insulator, but adding an electrolyte can increase conductivity by 500,000x.
 

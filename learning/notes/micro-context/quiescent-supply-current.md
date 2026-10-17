@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Quiescent Supply Current ($I_S$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]
+> **See also:** [[micro-context/input-bias-current]] | [[micro-context/power-supply-rejection-ratio]] | [[micro-context/open-loop-voltage-gain]] | [[micro-context/input-common-mode-range]] | [[micro-context/output-voltage-swing]]
 
 **Definition:** The standing current a comparator or op-amp draws from its supply just to stay biased and ready, even when its output isn't switching. For micropower parts it is microamps.
 

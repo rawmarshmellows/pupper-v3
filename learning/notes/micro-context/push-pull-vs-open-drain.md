@@ -88,7 +88,7 @@ In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carr
 
 The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$` (how hard OUT drives) both grade this exact pin.
 
-> **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[quick-context/data-bus-and-arbitration]] | [[quick-context/comparator]] | [[quick-context/high-gain-amplifier-stage]] | [[micro-context/i2c]] | [[quick-context/inside-the-triangle]]
 
 **Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 

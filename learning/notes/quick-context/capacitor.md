@@ -5,7 +5,7 @@ created: 2026-01-30
 
 # Capacitor
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electric-current]] | [[quick-context/transistor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/transistor]] | [[quick-context/capacitance]] | [[quick-context/inductor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** A capacitor stores energy in an electric field between two conductive plates separated by an insulator; unlike batteries that store chemical energy and release it slowly, capacitors store electrical energy directly and can charge/discharge almost instantly, making them essential for stabilizing power supplies, filtering signals, and enabling transistor switching.
 

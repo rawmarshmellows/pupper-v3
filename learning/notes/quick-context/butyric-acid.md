@@ -5,7 +5,7 @@ created: 2026-04-06
 
 # Butyric Acid
 
-> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]
+> **Related:** [[quick-context/silymarin]] | [[quick-context/electrolysis]] | [[quick-context/covalent-bonds]] | [[quick-context/van-der-waals-forces]] | [[quick-context/pi-pi-stacking-aromatic-interactions]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 

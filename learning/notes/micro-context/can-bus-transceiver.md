@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # CAN Bus Transceiver
 
-> **See also:** [[quick-context/can-bus]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/embedded-communication-protocols]]
+> **See also:** [[micro-context/i2s]] | [[micro-context/can-bus-termination]] | [[micro-context/i2s-audio-amplifier]] | [[micro-context/i2c]] | [[micro-context/spi]]
 
 **Definition:** A chip that converts the microcontroller's digital TX/RX signals into differential voltage signals for the CAN bus (and vice versa). CAN bus is a robust 2-wire communication protocol used in cars and robots where multiple devices share the same wire pair. The MAX3051 handles the electrical interface so the MCU only deals with data.
 

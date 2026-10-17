@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Inside the Triangle
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[quick-context/differential-pair]] | [[quick-context/op-amp]] | [[quick-context/pwm-controller-circuit]]
 
 > **TL;DR:** The triangle symbol on a schematic hides 5--20 [[quick-context/transistor|transistors]] wired in three stages: a [[quick-context/differential-pair|differential pair]] that senses the input difference, a [[quick-context/high-gain-amplifier-stage|current-mirror gain stage]] that amplifies it to a full-rail swing, and an output stage that drives the load. The same three stages appear in both [[quick-context/op-amp|op-amps]] and [[quick-context/comparator|comparators]]---the only difference is whether a compensation capacitor is added between stages 2 and 3.
 
@@ -28,8 +28,8 @@ Datasheets tell you the gain is 100,000x, input impedance is infinite, and outpu
 
 | Term | Definition |
 |------|------------|
-| **Stage 1: [[quick-context/differential-pair\|Differential pair]]** | Two matched transistors + tail current source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
-| **Stage 2: [[quick-context/high-gain-amplifier-stage\|High-gain amplifier]]** | Current mirror active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
+| **Stage 1: [[quick-context/differential-pair|Differential pair]]** | Two matched transistors + tail current source. Converts a voltage difference ($V_+ - V_-$) into a current difference. Rejects common-mode signals. |
+| **Stage 2: [[quick-context/high-gain-amplifier-stage|High-gain amplifier]]** | Current mirror active load on the differential pair. Converts the $\mu$A current difference into a full-rail voltage swing by exploiting the high impedance at the mirror output node. |
 | **Stage 3: Output buffer** | Drives the external load. Push-pull (op-amp) or open-drain/open-collector (comparator). Provides low output impedance so the signal doesn't droop under load. |
 | **Compensation capacitor ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a comparator.** |
 | **Bias network** | Current mirrors and voltage references that set the DC operating point for every transistor. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |

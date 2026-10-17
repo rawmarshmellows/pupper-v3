@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/physics-of-writing-data-to-memory]] | [[quick-context/capacitor]] | [[quick-context/transistor-design-history]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 

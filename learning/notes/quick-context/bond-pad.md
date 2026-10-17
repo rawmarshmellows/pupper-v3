@@ -3,7 +3,7 @@ topic: Bond Pad
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/flip-chip]] | [[quick-context/substrate-ic-packaging]] | [[quick-context/wire-bonding]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/bga-ball-grid-array]]
 
 > **TL;DR:** Bond pads are the tiny metal squares (~50 micrometers) on a chip's surface that serve as the "doorways" where all internal wiring converges, enabling billions of transistors to connect with the outside world for power and data.
 

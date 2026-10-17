@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
+> **See also:** [[micro-context/open-loop-voltage-gain]] | [[micro-context/full-bridge-rectifier]] | [[micro-context/quiescent-supply-current]] | [[micro-context/offset-voltage-drift]] | [[micro-context/schmitt-trigger-hysteresis]]
 
 **Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 

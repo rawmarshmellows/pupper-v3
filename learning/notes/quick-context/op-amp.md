@@ -3,7 +3,7 @@ topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/inside-the-triangle|Inside the Triangle]] | [[micro-context/tail-current|Tail Current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/comparator]] | [[quick-context/inside-the-triangle]] | [[quick-context/differential-pair]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/high-gain-amplifier-stage]]
 
 > **TL;DR:** An op-amp is a high-gain differential amplifier IC that, with [[quick-context/resistor|resistor]] feedback networks, becomes a precision building block for amplification, filtering, and signal conditioning—it's the universal analog component, as fundamental to analog circuits as the [[quick-context/transistor|transistor]] is to digital ones.
 

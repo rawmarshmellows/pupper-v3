@@ -5,7 +5,7 @@ created: 2026-04-01
 
 # Differential Pair
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/comparator]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/pwm-controller-circuit]]
 
 > **TL;DR:** A differential pair is two matched [[quick-context/transistor|transistors]] sharing a single tail current source, forming the universal input stage of [[quick-context/op-amp|op-amps]], [[quick-context/comparator|comparators]], and ADCs---it converts a voltage difference between two inputs into a current difference, rejecting any signal common to both inputs.
 

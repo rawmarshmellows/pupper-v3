@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # Anode
 
-> **See also:** [[quick-context/electrodes]]
+> **See also:** [[micro-context/cathode]] | [[micro-context/oxidation]] | [[quick-context/anions-and-oxidation]] | [[micro-context/ac-dc-current]] | [[micro-context/diode-rectification]]
 
 **Definition:** The electrode where [[quick-context/anions-and-oxidation|oxidation]] occurs — species lose electrons here, and those electrons flow out through the external circuit. In electrolysis the anode is positive (+); in [[quick-context/galvanic-cells-batteries|batteries]] it's negative (−). The name comes from Greek *anodos* ("way up").
 

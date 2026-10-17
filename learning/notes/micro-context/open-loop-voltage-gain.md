@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Open-Loop Voltage Gain ($A_V$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/comparator]] | [[small-context/decibels-across-domains]]
+> **See also:** [[micro-context/input-common-mode-range]] | [[micro-context/output-voltage-swing]] | [[micro-context/power-supply-rejection-ratio]] | [[micro-context/common-mode-rejection-ratio]] | [[micro-context/input-offset-voltage]]
 
 **Definition:** The enormous gain a comparator or op-amp applies to the tiny voltage difference between its inputs before any feedback — typically 100 dB (100,000×) — which is what slams the output hard against a supply rail.
 

@@ -3,7 +3,7 @@ topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/substrate-ic-packaging]] | [[quick-context/flip-chip]] | [[quick-context/bond-pad]] | [[quick-context/bga-ball-grid-array]]
 
 > **TL;DR:** PCBs replace the nightmare of hand-soldered wire connections with thin copper pathways printed onto a rigid fiberglass board, providing the physical foundation for reliable, manufacturable, and repairable electronics in every smartphone, computer, and electronic device.
 

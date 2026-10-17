@@ -3,7 +3,7 @@ topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/electrodes]]
+> **Related:** [[quick-context/electrodes]] | [[quick-context/rust]] | [[quick-context/anions-and-oxidation]] | [[quick-context/cations-and-reduction]] | [[quick-context/electrolyte]]
 
 > **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 

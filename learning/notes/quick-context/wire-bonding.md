@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/flip-chip]] | [[quick-context/bond-pad]] | [[quick-context/substrate-ic-packaging]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/pcb-chip-transistor-hierarchy]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 

@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # Cathode
 
-> **See also:** [[quick-context/electrodes]]
+> **See also:** [[micro-context/anode]] | [[micro-context/oxidation]] | [[micro-context/diode-rectification]] | [[micro-context/ac-dc-current]] | [[quick-context/anions-and-oxidation]]
 
 **Definition:** The terminal where electrons flow IN — regardless of context. In [[quick-context/electrolysis|electrolysis]], it's the negative electrode where reduction (electron gain) occurs. In a [[quick-context/diode|diode]], it's the bar side of the symbol, marked K — where conventional current exits.
 

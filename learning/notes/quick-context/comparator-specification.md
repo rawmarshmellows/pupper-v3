@@ -5,7 +5,7 @@ created: 2026-06-06
 
 # Comparator Specifications (Reading the LMC7211-N Datasheet)
 
-> **Related:** [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/resistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/mcp6541-as-lmc7211-replacement]] | [[quick-context/comparator]] | [[quick-context/bjt-specifications]] | [[quick-context/tlv7211-as-lmc7211-replacement]] | [[quick-context/inside-the-triangle]]
 >
 > **Source datasheet:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) — the worked example throughout this note. Section numbers (§4.1–4.6, §5) reference this file.
 
@@ -338,7 +338,7 @@ FINDING A REPLACEMENT --- TWO QUESTIONS
 
 | What to check | Datasheet section | Replacement rule |
 |---|---|---|
-| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a [[quick-context/comparator\|pull-up resistor]]; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
+| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a [[quick-context/comparator|pull-up resistor]]; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
 | **Supply voltage range** | §4.2 Operating Ratings | New part's operating range must *contain* your rail, with margin. |
 | **Input common-mode range** ($CMVR$) | §4.3 | Must include every voltage your inputs actually see. If you relied on rail-to-rail-and-beyond, keep it. |
 | **Input offset grade** ($V_{OS}$) | §4.3 | New boldface $V_{OS}$ ≤ your threshold-error budget (don't regress accuracy). |

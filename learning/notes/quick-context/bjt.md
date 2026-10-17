@@ -3,7 +3,7 @@ topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/bjt-specifications|BJT Specifications]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[quick-context/bjt-specifications]] | [[quick-context/diode]] | [[quick-context/differential-pair]] | [[quick-context/inside-the-triangle]] | [[quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
 

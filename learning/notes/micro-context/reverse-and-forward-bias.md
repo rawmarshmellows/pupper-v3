@@ -30,4 +30,4 @@ Forward bias:  current flows          Reverse bias:  current blocked
 
 **Key insight:** The same PN junction does both jobs—forward bias is how diodes conduct, reverse bias is how they block, and every [[quick-context/transistor|transistor]] relies on biasing junctions in specific combinations to switch on and off.
 
-> **See also:** [[quick-context/ac-to-dc-rectification|AC-to-DC Rectification (quick-context)]]
+> **See also:** [[micro-context/diode-rectification]] | [[micro-context/full-bridge-rectifier]] | [[quick-context/ac-to-dc-rectification]] | [[quick-context/diode]] | [[micro-context/anode]]

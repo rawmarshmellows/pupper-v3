@@ -5,7 +5,7 @@ created: 2026-02-25
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
+> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-assembly-files-bom-cpl]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/fundamental-electronic-parts-index]]
 
 > **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
@@ -20,11 +20,11 @@ Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
 
 | Term | Definition |
 |------|------------|
-| **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
-| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
+| **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
+| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading|schematic]] and PCB: R = [[quick-context/resistor|resistor]], C = [[quick-context/capacitor|capacitor]], U = IC, L = [[quick-context/inductor|inductor]], D = [[quick-context/diode|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages|IC Packages]]. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
-| **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
+| **Decoupling Network** | The system of [[quick-context/capacitor|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
 
 <details>
 <summary><strong>How It Works</strong> — The BOM organized by function</summary>

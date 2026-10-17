@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # Capacitance
 
-> **Related:** [[quick-context/capacitor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/voltage]] | [[quick-context/electric-current]]
+> **Related:** [[quick-context/capacitor]] | [[quick-context/capacitive-sensing-measurement]] | [[quick-context/transistor]] | [[quick-context/physics-of-writing-data-to-memory]] | [[quick-context/inductor]]
 
 > **TL;DR:** Capacitance is the ability of any two conductors separated by an insulator to store electric charge -- measured in farads ($C = Q/V$) -- and it shows up everywhere in electronics, not just in discrete [[quick-context/capacitor|capacitors]]: PCB traces, transistor gates, cable shields, and even bare wires all have parasitic capacitance that limits speed, causes crosstalk, and determines how fast signals can switch.
 

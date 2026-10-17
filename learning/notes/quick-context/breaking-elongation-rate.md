@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
+> **Related:** [[quick-context/tensile-strength-materials]] | [[quick-context/glass-transition-temperature]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/atoms-molecules-polymers-basics]]
 
 > **TL;DR:** Breaking elongation rate measures how far a material can stretch before snapping (as a percentage of original length)—TPU with ">650%" can stretch to 7.5x its original length, making it ideal for impact-absorbing applications where flexibility matters more than rigidity.
 

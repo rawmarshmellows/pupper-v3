@@ -3,7 +3,7 @@ topic: USB Peripheral Hardware — How an MCU Turns Bytes into Voltage on a Wire
 created: 2026-04-07
 ---
 
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/transistor]]
+> **Related:** [[quick-context/physics-of-writing-data-to-memory]] | [[quick-context/uart]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/bare-minimal-data-storage-circuit]] | [[quick-context/switches-to-registers-storing-data]]
 
 > **TL;DR:** When firmware writes a byte to a USB endpoint buffer, a dedicated hardware block inside the MCU — the **Serial Interface Engine (SIE)** — autonomously serializes it into a bitstream, encodes it using NRZI (where a "0" bit = voltage transition, "1" = no transition), inserts bit-stuffing to guarantee clock recovery, appends a CRC, and drives the D+/D- lines through push-pull [[learning/notes/micro-context/mosfet|MOSFET]] pairs that toggle between 3.3V and 0V at 12 MHz. The CPU's job ends at writing bytes to a buffer in SRAM; the SIE's transistor-level logic gates handle the rest in hardware, responding to host requests within ~500 ns — far too fast for firmware. The device can never transmit spontaneously; the host PC initiates every transaction.
 

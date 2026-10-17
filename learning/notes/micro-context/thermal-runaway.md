@@ -6,7 +6,7 @@ updated: 2026-03-27
 
 # Thermal Runaway
 
-> **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[micro-context/clock-speed-vs-temperature]]
+> **See also:** [[micro-context/clock-speed-vs-temperature]] | [[micro-context/clock-edges]] | [[micro-context/clock-source]] | [[micro-context/clock-speed]] | [[micro-context/quiescent-supply-current]]
 
 **Definition:** A destructive feedback loop where heat increases [[quick-context/transistor-analog-to-digital|leakage current]], which generates more heat, which increases leakage further—until the chip throttles, shuts down, or permanently damages itself.
 

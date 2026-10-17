@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Input Common-Mode Range ($CMVR$)
 
-> **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
+> **See also:** [[micro-context/open-loop-voltage-gain]] | [[micro-context/input-offset-voltage]] | [[micro-context/input-bias-current]] | [[micro-context/tail-current]] | [[micro-context/offset-voltage-drift]]
 
 **Definition:** The range of input voltage (common to both pins) over which a comparator or op-amp still works correctly. "Rail-to-rail-and-beyond" parts accept inputs slightly *past* both supply rails.
 
