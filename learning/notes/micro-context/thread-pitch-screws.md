@@ -2,6 +2,7 @@
 term: Thread Pitch (Screws)
 created: 2026-05-04
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
 
 # Thread Pitch (Screws)
 

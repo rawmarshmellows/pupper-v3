@@ -2,6 +2,7 @@
 topic: Bambu P2S Print Quality
 created: 2026-04-29
 ---
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 # Bambu P2S Print Quality
 

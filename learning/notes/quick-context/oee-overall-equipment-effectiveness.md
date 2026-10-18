@@ -2,8 +2,9 @@
 topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/teep]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/quick-context/teep]] | [[learning/notes/quick-context/isa-95-levels]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 
@@ -24,7 +25,7 @@ The brilliance is the decomposition: when OEE drops, you immediately know which 
 | **Six Big Losses** | The canonical taxonomy: breakdowns, setup/changeover, minor stops, slow cycles, startup rejects, and production rejects—OEE exists to quantify these |
 | **Ideal Cycle Time** | The theoretical minimum time to produce one unit, against which actual cycle times are compared for Performance calculation |
 | **Planned Production Time** | The scheduled hours minus planned downtime like meals or maintenance windows—your denominator for Availability |
-| **TEEP** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
+| **[[learning/notes/quick-context/teep|TEEP]]** | Total Effective Equipment Performance—OEE's bigger sibling that measures against *all* calendar time, exposing capacity hidden in unscheduled shifts |
 | **Pareto of Losses** | The analysis technique of ranking losses by impact to focus improvement efforts—"we're losing 12% to changeovers and 3% to breakdowns, so attack changeovers first" |
 
 <details>
@@ -96,8 +97,8 @@ Without OEE decomposition, management might have blamed "old equipment" and requ
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/teep]]** - Extends OEE to measure against all calendar time, revealing hidden capacity in unscheduled hours
-- **[[quick-context/isa-95-levels]]** - Level 3 MES systems are where OEE calculations typically live and get reported
+- **[[learning/notes/quick-context/teep]]** - Extends OEE to measure against all calendar time, revealing hidden capacity in unscheduled hours
+- **[[learning/notes/quick-context/isa-95-levels]]** - Level 3 MES systems are where OEE calculations typically live and get reported
 
 </details>
 
