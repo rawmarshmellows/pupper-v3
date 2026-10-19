@@ -3,9 +3,9 @@ topic: Malcolm McDonald KAM Model
 created: 2026-02-10
 ---
 
+> **Related:** [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]
 # Malcolm McDonald KAM Model (Cranfield)
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/e2e-sales-process-skand-80-20]]
 
 > **TL;DR:** Malcolm McDonald's Key Account Management (KAM) model from Cranfield University provides a five-stage relationship maturity framework—Exploratory → Basic → Cooperative → Interdependent → Integrated—helping teams diagnose where each account relationship stands and what's needed to deepen it.
 

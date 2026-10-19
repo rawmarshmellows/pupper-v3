@@ -3,15 +3,15 @@ topic: Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/quick-context/uart]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]]
 # Qwiic / STEMMA QT — Plug-and-Play I2C
 
-> **Related:** [[micro-context/i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate soldering and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
+> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate [[learning/notes/quick-context/soldering|soldering]] and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
 
 ## The Core Problem
 
-Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply voltage, typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
+Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply [[learning/notes/quick-context/voltage|voltage]], typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
 
 ## 5 Essential Terms
 

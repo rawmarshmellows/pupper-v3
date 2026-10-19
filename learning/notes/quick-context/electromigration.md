@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/micro-context/tail-current]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 

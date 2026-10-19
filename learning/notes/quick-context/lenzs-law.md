@@ -11,7 +11,7 @@ created: 2026-02-17
 
 ## The Core Problem: Why the Minus Sign?
 
-Faraday discovered that changing magnetic flux through a coil induces voltage. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
+Faraday discovered that changing magnetic flux through a coil induces [[learning/notes/quick-context/voltage|voltage]]. But in which direction? If the induced current reinforced the flux change, it would create a positive feedback loop: more flux → more current → even more flux → infinite energy from nothing. This would violate the first law of thermodynamics. Lenz's Law prevents this: the induced EMF always creates effects that oppose the change. Push a magnet toward a coil, and the coil becomes a magnet that pushes back. Try to stop current through an [[quick-context/inductor|inductor]], and it generates voltage that tries to keep current flowing. Nature resists change, and Lenz's Law is how [[quick-context/electromagnetism|electromagnetism]] enforces that resistance.
 
 ## 5 Essential Terms
 
@@ -728,7 +728,7 @@ COMBINED EFFECT:
 
 - **[[quick-context/power-watts-joules]]** — The energy perspective on Lenz's Law: the work done against magnetic opposition equals the electrical energy generated. Power = work/time connects mechanical and electrical domains.
 
-- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and electromagnetic induction, of which Lenz's Law specifies the direction.
+- **[[micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]], of which Lenz's Law specifies the direction.
 
 - **[[small-context/inductor-current-magnetic-field-emf]]** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
 

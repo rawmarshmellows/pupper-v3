@@ -3,11 +3,12 @@ term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/micro-context/open-loop-voltage-gain]]
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
-**Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
+**Definition:** How close a comparator's or [[learning/notes/quick-context/op-amp|op-amp]]'s output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
 
