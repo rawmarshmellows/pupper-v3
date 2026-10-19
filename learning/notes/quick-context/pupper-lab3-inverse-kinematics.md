@@ -4,9 +4,9 @@ created: 2026-03-10
 updated: 2026-03-11
 ---
 
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-lab4-gait-control]]
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[micro-context/homogeneous-transformation-matrix]]
 
 > **TL;DR:** Lab 3 flips the FK problem: given a desired foot position in 3D space, find the joint angles that reach it by minimizing a cost function via gradient descent, then drives a single leg through a triangle stepping trajectory using a dual-rate architecture (200 Hz PD tracking + 20 Hz IK solving).
 
@@ -14,7 +14,7 @@ updated: 2026-03-11
 
 In Lab 2 you solved forward kinematics: plug in joint angles $\theta_1, \theta_2, \theta_3$, get foot position $p \in \mathbb{R}^3$. That's a clean, closed-form mapping. But a walking robot doesn't think in joint angles — it thinks in foot positions. You want to say "put the foot here" and have the robot figure out which angles achieve that. This is the **inverse kinematics** problem, and for most robots it's far harder than FK because the mapping from Cartesian space back to joint space can be nonlinear, non-unique, or even nonexistent (if the target is out of reach).
 
-Pupper's 3-DOF leg actually does have a closed-form analytical IK solution — you could derive it with trigonometry. But Lab 3 deliberately uses **numerical gradient descent** instead, for two reasons. First, the gradient descent approach generalizes: it works for any robot geometry (6-DOF arms, redundant manipulators, humanoid legs) without rederiving equations. Second, it teaches the optimization-based thinking that underlies modern robotics — trajectory optimization, model-predictive control, and even neural network training all share the same gradient-based core.
+Pupper's [[learning/notes/quick-context/pupper-lab2-forward-kinematics|3-DOF leg]] actually does have a closed-form analytical IK solution — you could derive it with trigonometry. But Lab 3 deliberately uses **numerical gradient descent** instead, for two reasons. First, the gradient descent approach generalizes: it works for any robot geometry (6-DOF arms, redundant manipulators, humanoid legs) without rederiving equations. Second, it teaches the optimization-based thinking that underlies modern robotics — trajectory optimization, model-predictive control, and even neural network training all share the same gradient-based core.
 
 The lab also introduces a critical systems concept: **dual-rate control**. The IK solver runs at 20 Hz because each solve requires multiple FK evaluations (one per joint per gradient step), making it computationally expensive. But the motors need smooth, high-frequency commands to avoid jerky motion. So a separate PD control loop runs at 200 Hz, tracking whatever joint targets the IK solver most recently produced. This separation of planning rate from execution rate is standard in real robot architectures — Lab 5's neural controller uses the same pattern at 50 Hz policy / 500 Hz PD.
 

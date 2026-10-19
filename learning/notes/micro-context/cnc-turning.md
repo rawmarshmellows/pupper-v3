@@ -4,6 +4,7 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/micro-context/edm-machining]]
 # CNC Turning
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]

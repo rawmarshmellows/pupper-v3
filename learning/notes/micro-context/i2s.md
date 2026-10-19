@@ -3,6 +3,7 @@ term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/quick-context/uart]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/spinev1-elf]]
 # I2S (Inter-IC Sound)
 
 > **See also:** [[micro-context/i2s-audio-amplifier]] | [[micro-context/spi]] | [[quick-context/embedded-communication-protocols]]

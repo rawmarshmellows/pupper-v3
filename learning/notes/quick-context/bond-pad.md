@@ -3,7 +3,7 @@ topic: Bond Pad
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/oxidation]]
 
 > **TL;DR:** Bond pads are the tiny metal squares (~50 micrometers) on a chip's surface that serve as the "doorways" where all internal wiring converges, enabling billions of transistors to connect with the outside world for power and data.
 
@@ -11,9 +11,9 @@ created: 2026-01-25
 
 ## The Core Problem: Getting Signals Out of an Impossibly Small Chip
 
-A modern computer chip contains **billions of transistors**, each one smaller than a virus (~5 nanometers). These transistors need to communicate with the outside world—they need power coming in and data going out. But here's the problem: you can't attach a wire to something that small. A human hair is about 70,000 nanometers wide; even the thinnest wire we can make is thousands of times larger than a transistor.
+A modern computer chip contains **billions of transistors**, each one smaller than a virus (~5 nanometers). These transistors need to communicate with the outside world—they need power coming in and data going out. But here's the problem: you can't attach a wire to something that small. A human hair is about 70,000 nanometers wide; even the thinnest wire we can make is thousands of times larger than a [[learning/notes/quick-context/transistor|transistor]].
 
-**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the silicon die where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
+**Bond pads solve this by being the "doorways" of the chip**—tiny metal squares (~50 micrometers, or 0.05 millimeters) placed at the edges or bottom of the [[learning/notes/quick-context/silicon-die|silicon die]] where all the internal wiring converges. Think of them as the exits of a massive highway system: billions of transistors connect through progressively larger metal lines inside the chip, all eventually funneling to these ~3,000 bond pads that form the chip's only interface with the outside world.
 
 **What breaks without bond pads?** Everything. A chip without bond pads is like a brain with no nerves connecting it to the body—it might be doing complex computations inside, but there's no way to power it, program it, or receive any output. The chip would be an expensive, useless square of silicon.
 
@@ -23,7 +23,7 @@ A modern computer chip contains **billions of transistors**, each one smaller th
 |------|------------|
 | **Bond Pad** | A small metal square (~50 μm) on a chip's surface that serves as a connection point for wires or solder bumps to enter/exit the die |
 | **Die** | The actual silicon chip itself—a thin square of patterned silicon containing all transistors, typically ~10mm across (see [[quick-context/pcb-chip-transistor-hierarchy]]) |
-| **Wire Bond** | A thin metal wire (~25 μm diameter) ultrasonically welded from a bond pad to the package substrate—the older, cheaper connection method |
+| **Wire Bond** | A thin metal wire (~25 μm diameter) ultrasonically welded from a bond pad to the package [[learning/notes/quick-context/substrate-ic-packaging|substrate]]—the older, cheaper connection method |
 | **Flip-chip Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the substrate—newer, denser |
 | **Passivation** | A protective insulating layer (like glass) covering the entire chip surface except for the bond pads, which must remain exposed for connection |
 
@@ -327,7 +327,7 @@ TYPICAL BOND PAD DIMENSIONS:
                       │                │ prevent edge damage
 ```
 
-**Example: A Simple Microcontroller vs. A Modern CPU**
+**Example: A Simple [[learning/notes/micro-context/microcontroller|Microcontroller]] vs. A Modern CPU**
 
 ```
 COMPARISON: Bond Pad Requirements

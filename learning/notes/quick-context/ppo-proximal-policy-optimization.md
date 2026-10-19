@@ -7,7 +7,7 @@ created: 2026-03-13
 
 > **Related:** [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab4-gait-control]]
 
-> **TL;DR:** PPO is a reinforcement learning algorithm that trains a neural network policy by collecting batches of experience in the environment, estimating which actions were better than average (advantage), and updating the policy weights — but with a clipping mechanism that prevents any single update from changing the policy too drastically, making training stable enough to work reliably on continuous control tasks like robot locomotion.
+> **TL;DR:** PPO is a [[learning/notes/quick-context/pupper-lab5-neural-controller|reinforcement learning]] algorithm that trains a neural network policy by collecting batches of experience in the environment, estimating which actions were better than average (advantage), and updating the policy weights — but with a clipping mechanism that prevents any single update from changing the policy too drastically, making training stable enough to work reliably on continuous control tasks like robot locomotion.
 
 ## The Core Problem
 

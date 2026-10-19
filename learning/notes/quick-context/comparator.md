@@ -3,9 +3,9 @@ topic: Comparator
 created: 2026-04-01
 ---
 
+> **Related:** [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/micro-context/i2s-audio-amplifier]]
 # Comparator
 
-> **Related:** [[quick-context/differential-pair]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inside-the-triangle|All Stages Together]] | [[quick-context/op-amp]] | [[quick-context/transistor]] | [[quick-context/pwm-controller-circuit]] | [[quick-context/comparator-specification|Datasheet Specs]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** A comparator is a circuit that takes two analog voltages as input and outputs a digital HIGH or LOW depending on which input is larger---it's the bridge between the analog and digital worlds, built from the same [[quick-context/transistor|transistor]] differential pairs as an [[quick-context/op-amp|op-amp]] but optimized for speed and clean digital output rather than linear amplification.
 
@@ -28,7 +28,7 @@ A battery monitor needs to answer a simple question: "Is the battery voltage abo
 
 ### The Functional View: What a Comparator Does
 
-A comparator is the simplest possible analog-to-digital converter: 1-bit resolution, no clock needed, continuous output.
+A comparator is the simplest possible [[learning/notes/micro-context/adc-analog-to-digital-converter|analog-to-digital converter]]: 1-bit resolution, no clock needed, continuous output.
 
 ```
 COMPARATOR FUNCTION
