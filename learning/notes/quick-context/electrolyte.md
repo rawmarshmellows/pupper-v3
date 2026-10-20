@@ -46,7 +46,7 @@ See [[quick-context/making-electrolytes]] for detailed preparation methods.
 
 ## The Core Problem: Making Liquids Conduct Electricity
 
-Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS/cm because water molecules barely split into ions (only 10⁻⁷ M H⁺ and OH⁻ from autoionization). Without an electrolyte, you cannot run [[quick-context/electrolysis|electrolysis]], batteries cannot function, and electrochemical processes halt completely. The ions physically move through the liquid—[[quick-context/cations-and-reduction|cations]] toward the [[quick-context/electrodes|cathode]], [[quick-context/anions-and-oxidation|anions]] toward the [[quick-context/electrodes|anode]]—carrying charge and enabling the electrode reactions. No electrolyte means no current flow through the liquid, which means no chemistry happens at the electrodes.
+Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS/cm because water molecules barely split into ions (only 10⁻⁷ M H⁺ and OH⁻ from autoionization). Without an electrolyte, you cannot run [[quick-context/electrolysis|electrolysis]], batteries cannot function, and electrochemical processes halt completely. The ions physically move through the liquid—[[quick-context/cations-and-reduction|cations]] toward the [[quick-context/electrodes|cathode]], [[quick-context/anions-and-oxidation|anions]] toward the [[quick-context/electrodes|anode]]—carrying charge and enabling the electrode reactions. No electrolyte means no current flow through the liquid, which means no chemistry happens at the [[learning/notes/quick-context/electrodes|electrodes]].
 
 ## 5 Essential Terms
 
@@ -54,7 +54,7 @@ Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS
 |------|------------|
 | **Ion** | An atom or molecule with net electric charge from gaining or losing electrons (Na⁺, Cl⁻, SO₄²⁻) |
 | **Dissociation** | The process where ionic compounds split into free ions when dissolved or melted |
-| **Conductivity** | A measure of how well a solution carries electric current, measured in siemens per centimeter (S/cm) |
+| **Conductivity** | A measure of how well a solution carries [[learning/notes/quick-context/electric-current|electric current]], measured in siemens per centimeter (S/cm) |
 | **Strong electrolyte** | Substances that fully dissociate into ions (NaCl, HCl, NaOH)—high conductivity |
 | **Weak electrolyte** | Substances that only partially dissociate (acetic acid, ammonia)—lower conductivity |
 
@@ -134,7 +134,7 @@ Both parts MUST work for the circuit to be complete
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-Practitioners constantly balance **maximizing conductivity** (more ions = lower resistance = more efficient current flow) against **avoiding unwanted reactions** (some electrolytes participate in electrode reactions you don't want). For water electrolysis, you want H₂ and O₂—but if you use NaCl as your electrolyte, chlorine gas forms at the anode instead of oxygen. The "ideal" electrolyte provides high ionic conductivity while remaining electrochemically inert at your operating voltages. Sulfuric acid (H₂SO₄) and sodium sulfate (Na₂SO₄) work well for water splitting because SO₄²⁻ is harder to oxidize than water. Concentration matters too: more electrolyte increases conductivity but can shift reaction selectivity, corrode equipment, or create disposal problems. Industrial processes carefully tune electrolyte composition, concentration, temperature, and pH to hit the sweet spot between efficiency and product purity.
+Practitioners constantly balance **maximizing conductivity** (more ions = lower resistance = more efficient current flow) against **avoiding unwanted reactions** (some electrolytes participate in electrode reactions you don't want). For water [[learning/notes/quick-context/electrolysis|electrolysis]], you want H₂ and O₂—but if you use NaCl as your electrolyte, chlorine gas forms at the anode instead of oxygen. The "ideal" electrolyte provides high ionic conductivity while remaining electrochemically inert at your operating voltages. Sulfuric acid (H₂SO₄) and sodium sulfate (Na₂SO₄) work well for water splitting because SO₄²⁻ is harder to oxidize than water. Concentration matters too: more electrolyte increases conductivity but can shift reaction selectivity, corrode equipment, or create disposal problems. Industrial processes carefully tune electrolyte composition, concentration, temperature, and pH to hit the sweet spot between efficiency and product purity.
 
 </details>
 
@@ -245,7 +245,7 @@ Seawater contains ~3.5% dissolved salts (primarily NaCl, plus MgCl₂, MgSO₄, 
 **Q3:** Why is sodium sulfate considered a "better" electrolyte than sodium chloride for water electrolysis, even though both fully dissociate and provide similar conductivity?
 <details>
 <summary>Answer</summary>
-Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a higher oxidation potential than water and remain inert at the anode. Chloride ions (Cl⁻) oxidize more easily than water, producing chlorine gas instead of oxygen. The electrolyte must conduct current without chemically participating in the electrode reactions. See: The Key Tension
+Selectivity, not conductivity, is the issue. Sulfate ions (SO₄²⁻) have a higher [[learning/notes/micro-context/oxidation|oxidation]] potential than water and remain inert at the anode. Chloride ions (Cl⁻) oxidize more easily than water, producing chlorine gas instead of oxygen. The electrolyte must conduct current without chemically participating in the electrode reactions. See: The Key Tension
 </details>
 
 **Q4:** Acetic acid (vinegar) is a weak electrolyte while hydrochloric acid is a strong electrolyte. If you made two solutions with equal molar concentrations, which would have higher conductivity and why?

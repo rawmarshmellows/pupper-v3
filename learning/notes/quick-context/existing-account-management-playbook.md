@@ -1,3 +1,5 @@
+
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/post-sale-account-engagement]]
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -528,7 +530,7 @@ When you're stuck, remember which framework to consult:
 | Question | Framework | Answer Location |
 |---|---|---|
 | "How much time should this account get?" | KARE + Post-Sale Segmentation | Step 1 |
-| "Where does this relationship actually stand?" | McDonald KAM Model | Step 2 |
+| "Where does this relationship actually stand?" | [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]] | Step 2 |
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
