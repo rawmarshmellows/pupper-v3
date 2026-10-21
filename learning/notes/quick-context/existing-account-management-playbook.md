@@ -225,7 +225,7 @@ _____________________________________________________________
 2.
 3.
 
-### 4.3 [[quick-context/whitespace-mapping|Whitespace Analysis]]
+### 4.3 [[learning/notes/quick-context/whitespace-mapping|Whitespace Analysis]]
 
 Where can we expand within this account?
 
