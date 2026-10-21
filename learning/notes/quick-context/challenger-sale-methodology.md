@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Challenger Sale Methodology
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sandler-kare-segmentation]]
 
 > **TL;DR:** The Challenger Sale is a selling methodology where reps lead with commercial insights that reframe how customers think about their problems, rather than building relationships first—based on CEB/Gartner research showing 40% of top performers fit this "Challenger" profile that teaches, tailors, and takes control.
 
@@ -162,8 +162,8 @@ The Challenger pitch never asked "what are your priorities?"—it *told* the cus
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/meddpicc-qualification-framework]]** — Use MEDDPICC to qualify whether the deal is worth pursuing; use Challenger to shape how you pursue it
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP identifies stakeholders; Challenger's "Tailor" pillar customizes the insight message per stakeholder
+- **[[learning/notes/quick-context/meddpicc-qualification-framework]]** — Use MEDDPICC to qualify whether the deal is worth pursuing; use Challenger to shape how you pursue it
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP identifies stakeholders; Challenger's "Tailor" pillar customizes the insight message per stakeholder
 - **SPIN Selling** — Neil Rackham's methodology focused on questioning; Challenger shifts from questioning to teaching
 - **The Challenger Customer** — The sequel book applying Challenger principles to mobilizing customer buying groups
 - **Insight Selling** — Broader category that includes Challenger; emphasizes leading with ideas rather than products
