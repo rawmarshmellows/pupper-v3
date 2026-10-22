@@ -3,6 +3,8 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller]]
+
 
 # SPIneV1.elf
 

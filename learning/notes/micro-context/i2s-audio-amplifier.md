@@ -3,6 +3,8 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/i2s]]
+
 
 # I2S Audio Amplifier
 
