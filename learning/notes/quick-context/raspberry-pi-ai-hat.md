@@ -5,30 +5,30 @@ created: 2026-04-07
 
 # Raspberry Pi AI HAT+ — Edge AI Acceleration
 
-> **Related:** [[quick-context/raspberry-pi-5-components]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/camera-fundamentals]]
+> **Related:** [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]
 
-> **TL;DR:** The Raspberry Pi AI HAT+ is a family of add-on boards that snap onto a [[quick-context/raspberry-pi-5-components|Raspberry Pi 5]] and provide a dedicated NPU (Neural Processing Unit) for running AI inference locally — 10-40x faster than the CPU alone at a fraction of the power. The lineup ranges from a 13 TOPS vision-focused board ($70) to the AI HAT+ 2 with 40 TOPS and its own 8GB RAM for running small LLMs on-device ($180).
+> **TL;DR:** [[learning/notes/quick-context/capacitance|The]] Raspberry Pi AI HAT+ is a family of add-on boards that snap onto a [[quick-context/raspberry-pi-5-components|Raspberry Pi 5]] [[learning/notes/micro-context/push-pull-vs-open-drain|and]] provide a dedicated NPU (Neural Processing Unit) for running AI inference locally — 10-40x faster than the CPU alone at a fraction of the [[learning/notes/quick-context/d-flip-flop|power]]. The lineup ranges from a 13 TOPS vision-focused board ($70) to the AI HAT+ 2 with 40 TOPS and its own 8GB RAM for running small LLMs on-device ($180).
 
 ## The Core Problem
 
-Running AI models (object detection, pose estimation, image classification) on a Raspberry Pi's CPU is slow (~2 FPS for YOLOv8) and pegs all four cores at 100%, leaving nothing for the rest of your application. The AI HAT+ offloads neural network math to a purpose-built Hailo NPU over [[quick-context/raspberry-pi-5-components|PCIe]], freeing the CPU while delivering real-time inference at low power (2.5-3W). This also enables fully local, cloud-free AI — critical for privacy, latency, cost, and offline operation in applications like [[quick-context/pupper-lab7-vision-tracking|Pupper's autonomous tracking]].
+Running AI models (object detection, pose estimation, image classification) on a Raspberry Pi's CPU is slow (~2 FPS for YOLOv8) and pegs all [[learning/notes/quick-context/ram-addressing-decoder|four]] cores at 100%, leaving [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]] for the rest of [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] application. The AI HAT+ offloads neural network math to a purpose-built Hailo NPU over [[quick-context/raspberry-pi-5-components|PCIe]], freeing the CPU while delivering real-time inference at low power (2.5-3W). This also enables fully local, cloud-free AI — critical for privacy, [[learning/notes/quick-context/embedded-communication-protocols|latency]], [[learning/notes/quick-context/bond-pad|cost]], and offline operation in applications like [[quick-context/pupper-lab7-vision-tracking|Pupper's autonomous tracking]].
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
-| **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively parallel datapaths that a general-purpose CPU cannot match |
-| **TOPS (Tera Operations Per Second)** | NPU throughput metric — how many trillion math operations per second the chip can perform. Caveat: TOPS depends on precision (INT4 vs INT8) and does not capture memory bandwidth or software efficiency |
+| **HAT ([[learning/notes/quick-context/code-to-gates-and-bootstrapping|Hardware]] Attached [[learning/notes/quick-context/pupper-lab5-neural-controller|on Top]])** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin [[learning/notes/quick-context/raspberry-pi-5-components|GPIO]] header, [[learning/notes/micro-context/i2c|I2C]] EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
+| **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] datapaths that a [[learning/notes/quick-context/singular-value-decomposition|general]]-purpose CPU cannot match |
+| **TOPS (Tera Operations Per Second)** | NPU [[learning/notes/quick-context/semiconductor-fabrication|throughput]] metric — how many trillion math operations per second the chip [[learning/notes/quick-context/embedded-communication-protocols|can]] perform. Caveat: TOPS depends on precision (INT4 vs INT8) and does [[learning/notes/micro-context/can-bus-termination|not]] capture [[learning/notes/quick-context/firmware|memory]] [[learning/notes/quick-context/oscilloscope-and-multimeter|bandwidth]] or [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] efficiency |
 | **Hailo** | Israeli semiconductor company that manufactures the NPU chips used in all Pi AI HATs: Hailo-8L (13 TOPS), Hailo-8 (26 TOPS), and Hailo-10H (40 TOPS) |
 | **Edge AI** | Running inference on the device itself rather than sending data to cloud servers — trading model size for privacy, latency, cost, and offline capability |
 
 <details>
-<summary><strong>How It Works</strong> — From camera frame to detection result</summary>
+<summary><strong>How It Works</strong> — From camera [[learning/notes/quick-context/can-bus|frame]] to detection result</summary>
 
 ### Physical Connection
 
-The AI HAT+ mounts on top of the Pi 5 via standoffs and a 40-pin stacking header. A flat ribbon cable (FPC) plugs into the Pi 5's PCIe connector (the 16-pin FPC port labeled J20 on the [[quick-context/raspberry-pi-5-components|Pi 5 board]]). This gives the Hailo NPU a direct PCIe Gen 3 link to the SoC — much faster than USB.
+The AI HAT+ mounts on [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] of the Pi 5 [[learning/notes/quick-context/metal-interconnect-layers|via]] standoffs and a 40-pin stacking header. A flat ribbon cable (FPC) plugs into the Pi 5's [[learning/notes/quick-context/raspberry-pi-5-components|PCIe]] [[learning/notes/quick-context/qwiic-stemma-qt-i2c|connector]] (the 16-pin FPC port labeled J20 on the [[quick-context/raspberry-pi-5-components|Pi 5 board]]). This gives the Hailo NPU a direct PCIe Gen 3 link to the SoC — much faster than USB.
 
 ```
 PHYSICAL STACK (side view)
@@ -57,12 +57,12 @@ For computer vision workloads on the original AI HAT+ (13T or 26T):
 
 1. [[quick-context/camera-fundamentals|Camera]] captures a frame via MIPI CSI
 2. Pi CPU preprocesses the image (resize, normalize, color convert)
-3. Preprocessed tensor is sent to the Hailo NPU over PCIe
+3. Preprocessed [[learning/notes/quick-context/tensor|tensor]] is sent to the Hailo NPU over PCIe
 4. NPU executes the neural network (e.g., YOLOv8) in its internal pipeline
 5. Results (bounding boxes, class IDs, confidence scores) return over PCIe
 6. Pi CPU post-processes results (non-max suppression, coordinate mapping)
 
-The model weights live in the **Pi's system RAM** and are streamed to the NPU each inference pass. This works fine for vision models (a few MB of weights), but becomes a bottleneck for LLMs (hundreds of MB).
+The model weights live in the **Pi's system RAM** and are streamed to the NPU each inference pass. This works [[learning/notes/micro-context/thread-pitch-screws|fine]] for vision models (a few MB of weights), but becomes a bottleneck for LLMs (hundreds of MB).
 
 ```
 DATA FLOW — VISION INFERENCE (AI HAT+ 13T/26T)
@@ -79,7 +79,7 @@ DATA FLOW — VISION INFERENCE (AI HAT+ 13T/26T)
 
 ### Data Flow: AI HAT+ 2 (Generative AI)
 
-The AI HAT+ 2 changes the architecture fundamentally: the Hailo-10H chip has its **own dedicated 8GB DDR RAM** soldered onto the HAT board, invisible to the Pi. Model weights live entirely in this on-board memory, eliminating the PCIe bottleneck for model loading.
+The AI HAT+ 2 changes the architecture fundamentally: the Hailo-10H chip has its **own dedicated 8GB DDR RAM** soldered onto the HAT board, invisible to the Pi. Model weights live entirely in this on-board memory, eliminating the PCIe bottleneck for model [[learning/notes/quick-context/teep|loading]].
 
 ```
 DATA FLOW — LLM INFERENCE (AI HAT+ 2)
@@ -107,7 +107,7 @@ The Raspberry Pi OS auto-detects the Hailo NPU at boot. The software ecosystem i
 - **`rpicam-apps` / `picamera2`** — Camera frameworks with native Hailo integration. Adding `--post-process-file detect.json` to a camera command runs YOLO inference automatically.
 - **HailoRT** — Low-level runtime and API for loading compiled models (`.hef` files) and running inference.
 - **Hailo Model Zoo** — Pre-compiled models for common tasks: YOLOv5/v8 detection, pose estimation, segmentation, image classification.
-- **Hailo Dataflow Compiler** — Converts models from ONNX/TensorFlow to Hailo's `.hef` format, applying quantization (FP32 → INT8/INT4) and layer fusion.
+- **Hailo Dataflow [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Compiler]]** — Converts models from ONNX/TensorFlow to Hailo's `.hef` format, applying quantization (FP32 → INT8/INT4) and [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] fusion.
 - **Hailo Ollama server** (AI HAT+ 2 only) — Exposes a standard Ollama REST API for LLM chat, compatible with tools that speak the Ollama protocol.
 
 </details>
@@ -121,14 +121,14 @@ The official AI HAT+ mounts on top of the Pi 5 via the 40-pin GPIO stacking head
 
 ### What the GPIO Header Actually Does on the AI HAT+
 
-| Function | Pins Used | Required for Inference? |
+| [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Function]] | Pins Used | Required for Inference? |
 |----------|-----------|----------------------|
 | Mechanical mounting / alignment | All 40 | No |
-| Power delivery (5V from Pi) | 5V + GND pins | No (FPC carries 5V too) |
+| Power delivery (5V from Pi) | 5V + [[learning/notes/quick-context/qwiic-stemma-qt-i2c|GND]] pins | No (FPC carries 5V too) |
 | HAT ID EEPROM (auto-detect at boot) | GPIO 0 & 1 (I2C0) | No (manual config.txt works) |
-| PCIe data transfer | None — uses FPC cable | N/A |
+| PCIe data transfer | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] — uses FPC cable | N/A |
 
-**Bottom line:** Zero GPIO pins carry inference data. The FPC connector (J20) on the Pi 5 provides PCIe (1 lane, Gen 2/3), 5V power (1A / 5W max), and control signals — everything needed to run a Hailo module.
+**[[learning/notes/quick-context/keypress-to-pixel-pipeline|Bottom]] line:** [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Zero]] GPIO pins carry inference data. The FPC connector (J20) on the Pi 5 provides PCIe (1 lane, Gen 2/3), 5V power (1A / 5W max), and control signals — everything needed to run a Hailo module.
 
 ### The Pi 5 PCIe FPC Connector (J20) — What It Carries
 
@@ -169,15 +169,15 @@ These boards connect ONLY via the FPC ribbon cable — zero GPIO contact, all 40
 - Power: 5W from FPC only — fine for Hailo-8L (~1.5W typ, ~4W peak), tight for Hailo-8 (~8.25W peak)
 
 **Pineboards HatDrive! Bottom**
-- Mounts underneath the Pi 5 board
-- 40mm FPC cable, integrated 3A voltage regulator
+- Mounts [[learning/notes/quick-context/bga-ball-grid-array|underneath]] the Pi 5 board
+- 40mm FPC cable, [[learning/notes/quick-context/playbook-main|integrated]] 3A [[learning/notes/quick-context/ac-to-dc-rectification|voltage regulator]]
 - M.2 M-Key, supports 2230/2242/2280
 - GPIO completely unobstructed on top
 
 **Seeed Studio PCIe 3.0 Dual M.2 HAT (back-mounted)**
 - ~$45, mounts on the back of the Pi
-- Two M.2 slots — run NVMe storage + Hailo simultaneously (solves the PCIe exclusivity problem)
-- PCIe Gen 3 with ASM2806 switch
+- [[learning/notes/micro-context/schmitt-trigger-hysteresis|Two]] M.2 slots — run NVMe [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]] + Hailo simultaneously (solves the PCIe exclusivity problem)
+- PCIe Gen 3 with ASM2806 [[learning/notes/quick-context/switches-to-registers-storing-data|switch]]
 - GPIO free on top
 
 ```
@@ -221,12 +221,12 @@ PINEBOARDS BOTTOM-MOUNT:
 
 ### Option 2: Stacking Header Workaround (If You Already Own the AI HAT+)
 
-If you already have the official AI HAT+, you can use extra-tall stacking headers (15mm pin length) so GPIO pins protrude above the HAT board. The HAT only electrically uses GPIO 0 & 1 (I2C EEPROM) — the other ~36 pins pass through and are fully usable. Physical access with jumper wires is the main challenge, not electrical incompatibility.
+If you already have the official AI HAT+, you can use extra-tall stacking headers (15mm pin length) so GPIO pins protrude above the HAT board. The HAT only electrically uses GPIO 0 & 1 (I2C EEPROM) — the other ~36 pins pass through and are fully usable. Physical access with jumper [[learning/notes/quick-context/uart|wires]] is the main challenge, not electrical incompatibility.
 
 ### Option 3: USB-Based (Not Recommended for Pi 5)
 
-Hailo-8 M.2 modules can work inside USB3-to-NVMe enclosures, and Hailo has confirmed basic functionality. However:
-- Pi 5 lacks USB4/Thunderbolt — stuck with USB 3.0 bandwidth
+Hailo-8 M.2 modules can work inside USB3-to-NVMe enclosures, and Hailo has confirmed [[learning/notes/quick-context/playbook-main|basic]] functionality. However:
+- Pi 5 lacks USB4/Thunderbolt — stuck with [[learning/notes/quick-context/raspberry-pi-5-components|USB 3.0]] bandwidth
 - Added CPU overhead defeats the purpose of a dedicated accelerator
 - Hailo does not recommend this configuration for Pi 5
 
@@ -238,16 +238,16 @@ Hailo-8 M.2 modules can work inside USB3-to-NVMe enclosures, and Hailo has confi
 | Hailo-8 (26 TOPS) | ~2.5W | ~8.25W | Risky — peak exceeds 5W |
 | Hailo-10H (40 TOPS) | TBD | TBD | Verify with adapter specs |
 
-For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe choice**. If you need 26+ TOPS, look for adapters with auxiliary power input (Geekworm X1003, Seeed dual M.2) or use the GPIO stacking header workaround.
+For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe [[learning/notes/quick-context/transistor-analog-to-digital|choice]]**. If you need 26+ TOPS, look for adapters with auxiliary power input (Geekworm X1003, Seeed dual M.2) or use the GPIO stacking header workaround.
 
 ### Recommendation for Pupper v3
 
 **Geekworm M901 + Hailo-8L (M-key)** is the simplest path:
 - ~$15-20 for the adapter + ~$45-55 for the Hailo-8L M.2 module
-- FPC-only: all 40 GPIO pins free for motor control, IMU, CAN bus
+- FPC-only: all 40 GPIO pins free for motor control, IMU, CAN [[learning/notes/quick-context/data-bus-and-arbitration|bus]]
 - 13 TOPS is sufficient for real-time YOLOv8 at ~15 FPS
 - Power draw stays well within FPC's 5W budget
-- One line in config.txt: `dtparam=pciex1_gen=3`
+- [[learning/notes/quick-context/ram-addressing-decoder|One]] line in config.txt: `dtparam=pciex1_gen=3`
 - Trade-off: no auto-detect EEPROM (trivial) and the official AI HAT+ has slightly better thermal design (the soldered Hailo chip has a heatsink integrated into the PCB)
 
 </details>
@@ -257,14 +257,14 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 
 ### Evolution
 
-| Product | Released | Hailo Chip | TOPS | Precision | On-board RAM | Price | Primary Use |
+| Product | Released | Hailo Chip | TOPS | Precision | On-board RAM | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|Price]] | Primary Use |
 |---------|----------|-----------|------|-----------|-------------|-------|-------------|
 | AI Kit | Jun 2024 | Hailo-8L (M.2 module) | 13 | INT8 | None | ~$70 | First-gen, modular design |
 | AI HAT+ 13T | Oct 2024 | Hailo-8L (soldered) | 13 | INT8 | None | ~$70 | Budget vision |
 | AI HAT+ 26T | Oct 2024 | Hailo-8 (soldered) | 26 | INT8 | None | ~$110 | High-perf vision |
 | AI HAT+ 2 | Apr 2026 | Hailo-10H (soldered) | 40 | INT4 | 8GB DDR | $180 | LLMs + vision |
 
-The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of soldering the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
+The progression from AI Kit to AI HAT+ eliminated the M.2 module in favor of [[learning/notes/quick-context/soldering|soldering]] the Hailo chip directly to the PCB — better thermals, simpler assembly, and a thinner stack.
 
 ### Which One to Buy?
 
@@ -289,20 +289,20 @@ DECISION TREE
 
 ### Total System Cost
 
-| Component | Cost |
+| [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|Component]] | Cost |
 |-----------|------|
 | Raspberry Pi 5 (4GB) | $60 |
 | AI HAT+ 26T | $110 |
 | Camera Module 3 | $25 |
 | Power supply + SD card | $20 |
-| **Total edge AI system** | **~$215** |
+| **[[learning/notes/quick-context/similarity-transform|Total]] edge AI system** | **~$215** |
 
 Compare to an NVIDIA Jetson Orin Nano Super ($249 board alone, no camera, no storage).
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — TOPS don't tell the whole story</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — TOPS don't tell the whole story</summary>
 
 ### TOPS vs. Real-World Performance
 
@@ -314,7 +314,7 @@ The headline metric for NPUs is TOPS — but it's misleading across architecture
 | Hailo-8 | 26 | INT8 | 26 |
 | Hailo-10H | 40 | INT4 | ~20 (INT8 equiv.) |
 
-The Hailo-10H's "40 TOPS" uses INT4 precision — each operation does half the numerical work of an INT8 operation. For vision tasks that need INT8 accuracy, the 26T actually outperforms the AI HAT+ 2. Real-world YOLOv8-XL benchmarks confirm this:
+The Hailo-10H's "40 TOPS" uses INT4 precision — each operation does half the numerical work of an INT8 operation. For vision tasks that need INT8 [[learning/notes/quick-context/rc-oscillator|accuracy]], the 26T actually outperforms the AI HAT+ 2. Real-world YOLOv8-XL benchmarks confirm this:
 
 - AI HAT+ 26T: ~28 FPS
 - AI HAT+ 2: ~25 FPS
@@ -330,21 +330,21 @@ Paradoxically, the Pi 5's CPU can sometimes match or beat the Hailo-10H in raw L
 | Pi 5 CPU (llama.cpp) | ~10W | ~8-10 |
 | AI HAT+ 2 (Hailo Ollama) | ~3W | ~6-8 |
 
-The NPU is power-limited (3W thermal budget) while the CPU can burst up to 10W. The NPU's real advantage is **concurrency** — it runs inference without consuming any CPU cycles, so the Pi can simultaneously handle other tasks (camera capture, ROS 2 nodes, network I/O).
+The NPU is power-limited (3W thermal budget) while the CPU can burst up to 10W. The NPU's real advantage is **[[learning/notes/quick-context/firmware|concurrency]]** — it runs inference without consuming any CPU cycles, so the Pi can simultaneously handle other tasks (camera capture, ROS 2 nodes, network I/O).
 
 ### The PCIe Exclusivity Problem
 
 The Pi 5 has a **single PCIe lane**. Using an AI HAT means you cannot simultaneously use:
-- An NVMe SSD via PCIe (must use USB or SD storage instead)
+- An NVMe SSD via PCIe ([[learning/notes/quick-context/ros2-architecture|must]] use USB or SD storage instead)
 - Any other PCIe expansion card
 
-This forces a choice between fast storage and AI acceleration — a real constraint for applications that need both (e.g., video recording + real-time analysis).
+This forces a choice between fast storage and AI acceleration — a real [[learning/notes/quick-context/voltage-current-causality|constraint]] for applications that need [[learning/notes/quick-context/ram-addressing-decoder|both]] (e.g., video recording + real-time analysis).
 
 ### LLM Quality Ceiling
 
 The 8GB of dedicated RAM on the AI HAT+ 2 constrains models to ~1.5-2 billion parameters at INT4 quantization. For context:
 
-| Model Size | Parameters | Quality Level |
+| Model Size | Parameters | [[learning/notes/quick-context/oee-overall-equipment-effectiveness|Quality]] Level |
 |-----------|-----------|--------------|
 | AI HAT+ 2 max | ~1.5-2B | Basic chat, simple Q&A — frequent errors, no nuance |
 | Llama 2 70B class | ~70B | Competent general assistant |
@@ -411,7 +411,7 @@ while True:
 
 ### In Pupper's Vision Stack
 
-[[quick-context/pupper-lab7-vision-tracking|Lab 7]] uses the Hailo accelerator (26 TOPS variant) to run YOLOv5 at ~5 FPS on the robot. The detection results feed into a ROS 2 node that publishes `Detection2DArray` messages, which drive the IDLE → SEARCH → TRACK state machine for autonomous object following. The NPU handles inference while the Pi simultaneously runs ROS 2, the LLM voice interface from Lab 6, and the neural locomotion controller from Lab 5.
+[[quick-context/pupper-lab7-vision-tracking|Lab 7]] uses the Hailo accelerator (26 TOPS variant) to run YOLOv5 at ~5 FPS on the robot. The detection results feed into a ROS 2 [[learning/notes/quick-context/ros2-architecture|node]] that publishes `[[learning/notes/quick-context/pupper-lab7-vision-tracking|Detection2DArray]]` [[learning/notes/quick-context/ros2-architecture|messages]], which drive the IDLE → SEARCH → TRACK [[learning/notes/quick-context/integration-failure-modes-solutions|state machine]] for autonomous object following. The NPU handles inference while the Pi simultaneously runs ROS 2, the LLM voice interface from Lab 6, and the neural locomotion controller from Lab 5.
 
 ### Custom Model Pipeline
 
@@ -434,9 +434,9 @@ Your Model (PyTorch/TF/ONNX)
   Deploy .hef to Pi + Hailo      ← Just copy the file
 ```
 
-The compilation step is the main friction point — it requires an x86 Linux machine with Hailo's SDK, and the quantization can reduce model accuracy. You need to validate that your model's accuracy survives the FP32 → INT8 conversion.
+The compilation step is the main friction [[learning/notes/quick-context/epson-rc-plus-programming|point]] — it requires an x86 Linux machine with Hailo's SDK, and the quantization can reduce model accuracy. You need to validate that your model's accuracy survives the FP32 → INT8 conversion.
 
-**The one thing most outsiders get wrong about this is...** thinking higher TOPS automatically means better performance. In practice, the 26T (26 TOPS, INT8) outperforms the AI HAT+ 2 (40 TOPS, INT4) on most vision tasks because INT8 precision is more efficient for the models that actually run on these boards. TOPS is like engine horsepower — it matters, but tire grip (memory bandwidth), transmission (software stack), and aerodynamics (model optimization) determine lap times.
+**[[learning/notes/quick-context/breaking-elongation-rate|The one thing most outsiders get wrong about this is]]...** thinking higher TOPS automatically means better [[learning/notes/quick-context/bond-pad|performance]]. In practice, the 26T (26 TOPS, INT8) outperforms the AI HAT+ 2 (40 TOPS, INT4) on most vision tasks because INT8 precision is more efficient for the models that actually run on these boards. TOPS is like engine horsepower — it matters, but tire grip (memory bandwidth), transmission (software stack), and aerodynamics (model optimization) determine lap times.
 
 </details>
 
@@ -448,7 +448,7 @@ The compilation step is the main friction point — it requires an x86 Linux mac
 | **Pi AI HAT+ 26T** | 26 (INT8) | ~3W | $110 + $60 Pi | Pi ecosystem, rpicam | Hobbyist vision, robotics |
 | **Pi AI HAT+ 2** | 40 (INT4) | ~3W | $180 + $60 Pi | Pi ecosystem, Ollama | Edge LLM experiments |
 | **Google Coral USB** | 4 (INT8) | ~2W | ~$60 | TFLite only | Simple classification |
-| **NVIDIA Jetson Orin Nano Super** | 67 (INT8) | 7-15W | $249 | CUDA, full PyTorch | Production vision/LLM |
+| **NVIDIA Jetson Orin Nano Super** | 67 (INT8) | 7-15W | $249 | CUDA, [[learning/notes/quick-context/singular-value-decomposition|full]] PyTorch | Production vision/LLM |
 | **Pi AI Camera (IMX500)** | ~3 (INT8) | ~1W | $70 | Camera-only | Single-camera detection |
 
 The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable than Coral, and integrated into the massive Raspberry Pi ecosystem. The tradeoff is vendor lock-in to Hailo's model compiler and `.hef` format — you can't run arbitrary PyTorch models directly.
@@ -456,16 +456,16 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
-- **[[quick-context/raspberry-pi-5-components]]** — The host board: PCIe connector, GPIO header, BCM2712 SoC, LPDDR4X RAM — everything the AI HAT connects to
+- **[[quick-context/raspberry-pi-5-components]]** — The host board: PCIe connector, GPIO header, [[learning/notes/quick-context/raspberry-pi-5-components|BCM2712 SoC]], [[learning/notes/quick-context/raspberry-pi-5-components|LPDDR4X RAM]] — everything the AI HAT connects to
 - **[[quick-context/pupper-lab7-vision-tracking]]** — Real-world use: Hailo 26T running YOLOv5 for autonomous object tracking on the Pupper robot
 - **[[quick-context/camera-fundamentals]]** — How cameras capture the frames that the AI HAT processes — sensors, lenses, intrinsics
-- **[[quick-context/pupper-lab5-neural-controller]]** — Neural network inference for locomotion — a different kind of on-device AI (policy networks vs. vision models)
-- **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many protocols; understanding the communication layer between Pi and NPU
-- **[[quick-context/common-ic-packages]]** — The Hailo chips use BGA packages soldered to the HAT PCB
-- **[[quick-context/silicon-die]]** — What's inside the Hailo chip at the transistor level
-- **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep topic in its own right
+- **[[quick-context/pupper-lab5-neural-controller]]** — [[learning/notes/quick-context/pupper-lab5-neural-controller|Neural network inference]] for locomotion — a different kind of on-device AI ([[learning/notes/quick-context/pupper-lab5-neural-controller|policy]] networks vs. vision models)
+- **[[quick-context/embedded-communication-protocols]]** — PCIe is one of many [[learning/notes/quick-context/qwiic-stemma-qt-i2c|protocols]]; understanding the communication layer between Pi and NPU
+- **[[quick-context/common-ic-packages]]** — The Hailo chips use [[learning/notes/quick-context/common-ic-packages|BGA]] packages soldered to the HAT PCB
+- **[[quick-context/silicon-die]]** — [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|What]]'s inside the Hailo chip at the [[learning/notes/quick-context/silicon-die|transistor]] level
+- **Model quantization** — The process of converting FP32 weights to INT8/INT4 for NPU deployment — a deep [[learning/notes/quick-context/ros2-architecture|topic]] in its own right
 - **ONNX (Open Neural Network Exchange)** — The intermediate model format used as input to Hailo's compiler
 
 </details>
@@ -473,7 +473,7 @@ The Pi AI HAT occupies a sweet spot: cheaper than Jetson, vastly more capable th
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** Why can't you just run YOLOv8 on the Pi 5's CPU instead of buying an AI HAT?
+**Q1:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] can't you just run YOLOv8 on the Pi 5's CPU instead of buying an AI HAT?
 <details>
 <summary>Answer</summary>
 You can, but at ~2 FPS while consuming all four CPU cores at 100%. The AI HAT delivers 15-28 FPS at ~3W while leaving the CPU free for your application logic. See: The Core Problem.
@@ -488,7 +488,7 @@ The 40 TOPS figure is measured at INT4 precision (4-bit operations), while the 2
 **Q3:** Why does the AI HAT+ 2 need its own 8GB of RAM when the Pi 5 already has up to 8GB?
 <details>
 <summary>Answer</summary>
-LLM weights (hundreds of MB) need to be streamed to the NPU continuously during token generation. On the original AI HAT+, this streams over the PCIe bus from the Pi's RAM, creating a bandwidth bottleneck. The AI HAT+ 2's on-board RAM holds the entire model next to the NPU, eliminating PCIe round-trips for weight access and freeing Pi RAM for other uses. See: How It Works — Data Flow: AI HAT+ 2.
+LLM weights (hundreds of MB) need to be streamed to the NPU continuously during token generation. On the original AI HAT+, this streams over the PCIe bus from the Pi's RAM, creating a bandwidth bottleneck. The AI HAT+ 2's on-board RAM [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] the entire model next to the NPU, eliminating PCIe round-trips for weight access and freeing Pi RAM for other uses. See: How It Works — Data Flow: AI HAT+ 2.
 </details>
 
 **Q4:** "The AI HAT+ 2 can run a ChatGPT-quality assistant locally." What's wrong with this claim?
@@ -500,7 +500,7 @@ The 8GB RAM constrains models to ~1.5-2B parameters at INT4. Frontier LLMs use 7
 **Q5:** You're designing a robot that needs to simultaneously run object detection at 15+ FPS, record video to an NVMe SSD, and serve a web dashboard. Can you use a Pi 5 + AI HAT+ for this? What's the architectural problem, and how would you solve it?
 <details>
 <summary>Answer</summary>
-The Pi 5 has only one PCIe lane, so you must choose between the AI HAT (NPU acceleration) and an NVMe SSD (fast storage). You can't use both simultaneously. Solutions: (1) Use USB 3.0 storage instead of NVMe — slower but workable for video recording at moderate bitrates. (2) Use a Compute Module 5 with an I/O board that exposes multiple PCIe lanes. (3) Use the AI Camera (IMX500) for detection instead of an AI HAT — it doesn't use PCIe — and keep the PCIe lane for the NVMe SSD. (4) Use a Seeed Studio PCIe 3.0 Dual M.2 adapter with a PCIe switch — gives you two M.2 slots (NVMe + Hailo) on the single PCIe lane, at the cost of shared bandwidth. Each solution has tradeoffs in cost, performance, and complexity. See: The PCIe Exclusivity Problem and GPIO-Free Alternatives.
+The Pi 5 has only one PCIe lane, so you must choose between the AI HAT (NPU acceleration) and an NVMe SSD (fast storage). You can't use both simultaneously. Solutions: (1) Use USB 3.0 storage instead of NVMe — slower but workable for video recording at moderate bitrates. (2) Use a Compute Module 5 with an I/O board that exposes multiple PCIe lanes. (3) Use the AI Camera (IMX500) for detection instead of an AI HAT — it doesn't use PCIe — and [[learning/notes/quick-context/existing-account-management-playbook|keep]] the PCIe lane for the NVMe SSD. (4) Use a Seeed Studio PCIe 3.0 Dual M.2 adapter with a PCIe switch — gives you two M.2 slots (NVMe + Hailo) on the single PCIe lane, at the cost of shared bandwidth. Each solution has tradeoffs in cost, performance, and complexity. See: The PCIe Exclusivity Problem and GPIO-Free Alternatives.
 </details>
 
 </details>

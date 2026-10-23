@@ -5,28 +5,28 @@ created: 2026-02-10
 
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/challenger-sale-methodology]]
 
-> **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
+> **TL;DR:** [[learning/notes/quick-context/capacitance|The]] [[learning/notes/quick-context/ram-addressing-decoder|four]] buyer roles—[[learning/notes/quick-context/playbook-main|Economic Buyer]], [[learning/notes/quick-context/playbook-main|User Buyer]], [[learning/notes/quick-context/playbook-main|Technical Buyer]], [[learning/notes/micro-context/push-pull-vs-open-drain|and]] [[learning/notes/quick-context/playbook-main|Coach]]—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
 ## The Core Problem
 
-Sales reps often sell to whoever will take a meeting, then discover they've been talking to someone without authority to buy. Complex deals involve multiple stakeholders with different priorities—the person who uses your product daily cares about different things than the person writing the check. Without mapping these roles, reps misjudge deal health, miss key influencers, and get blindsided by objections from stakeholders they never engaged.
+Sales reps often sell to whoever will take a meeting, then discover they've been talking to someone without authority to buy. Complex deals involve multiple stakeholders with different priorities—the person who uses [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] product daily cares about different things than the person writing the check. Without mapping these roles, reps misjudge deal health, miss key influencers, and get blindsided by objections from stakeholders they never engaged.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Economic Buyer** | The single person with discretionary authority to approve the purchase—can say "yes" when everyone else says "no," and controls the budget |
-| **User Buyer** | The person(s) who will work with your solution day-to-day and judges success based on job impact and personal convenience |
+| **Economic Buyer** | The single person with discretionary authority to approve the purchase—[[learning/notes/quick-context/embedded-communication-protocols|can]] say "yes" [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] everyone else says "no," and controls the budget |
+| **User Buyer** | The person(s) who will work with [[learning/notes/quick-context/existing-account-management-playbook|your solution]] day-to-day and judges success based on job impact and personal [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|convenience]] |
 | **Technical Buyer** | The gatekeeper who screens against specifications, compliance, or technical requirements—can veto but cannot approve alone |
 | **Coach** | An internal advocate who provides intelligence about the organization's decision process, politics, and how to navigate to the Economic Buyer |
-| **Buyer Mode** | The psychological stance of each buyer: Growth (seeking improvement), Trouble (reacting to pain), Even Keel (status quo), or Overconfident (dismissive) |
+| **Buyer Mode** | The psychological stance of each buyer: [[learning/notes/quick-context/existing-account-management-playbook|Growth]] (seeking improvement), [[learning/notes/quick-context/existing-account-management-playbook|Trouble]] (reacting to pain), [[learning/notes/quick-context/existing-account-management-playbook|Even Keel]] (status quo), or [[learning/notes/quick-context/existing-account-management-playbook|Overconfident]] (dismissive) |
 
 <details>
 <summary><strong>How It Works</strong> — Identifying and engaging each role</summary>
 
-The four roles are *functions*, not job titles. One person may hold multiple roles; a role may be filled by multiple people.
+The four roles are *functions*, [[learning/notes/micro-context/can-bus-termination|not]] job titles. [[learning/notes/quick-context/ram-addressing-decoder|One]] person may [[learning/notes/quick-context/d-flip-flop|hold]] multiple roles; a role may be filled by multiple people.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -124,11 +124,11 @@ Each buyer exists in one of four modes affecting their receptivity:
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Coverage vs. efficiency</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Coverage vs. efficiency</summary>
 
 The framework creates pressure to engage all buyers, but time is limited:
 
-| Full Coverage | Efficient Coverage |
+| [[learning/notes/quick-context/singular-value-decomposition|Full]] Coverage | Efficient Coverage |
 |---------------|-------------------|
 | Meet all four roles before proposing | Focus on Economic + key influencer |
 | Multiple discovery calls | Consolidated qualification |
@@ -138,9 +138,9 @@ The framework creates pressure to engage all buyers, but time is limited:
 **The practitioner debate:**
 
 - **"Always map all buyers"**: Any unmapped buyer can kill the deal. A veto from a Technical Buyer you never met is worse than a longer cycle.
-- **"Focus on the money"**: Economic Buyer is the only one who can say yes. Get to them fast, let them manage their organization.
+- **"Focus on the money"**: Economic Buyer is the [[learning/notes/quick-context/comparator-specification|only]] one who can say yes. Get to them [[learning/notes/quick-context/comparator|fast]], let them manage their organization.
 
-**The pragmatic answer:** Scale coverage to deal size. $10K deal? Meet Economic Buyer and one User Buyer. $100K+ deal? Full stakeholder map and engagement plan for all four roles.
+**The pragmatic answer:** [[learning/notes/quick-context/absolute-orientation|Scale]] coverage to deal size. $10K deal? Meet Economic Buyer and one User Buyer. $100K+ deal? Full stakeholder map and engagement plan for all four roles.
 
 </details>
 
@@ -206,34 +206,34 @@ PRIORITY ACTIONS:
 3. Arm James with ROI data for internal selling
 ```
 
-**The one thing most outsiders get wrong about this is...** they think the roles are job titles. A "VP of Engineering" could be Economic Buyer at one company and Technical Buyer at another—it depends on who actually controls the budget. Similarly, a CEO might be nominally Economic Buyer but in practice rubber-stamps their CTO's decisions. The roles describe *decision-making functions*, not org chart positions.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** they think the roles are job titles. A "VP of Engineering" could be Economic Buyer at one company and Technical Buyer at another—it depends on who actually controls the budget. Similarly, a CEO might be nominally Economic Buyer but in practice rubber-stamps their CTO's decisions. The roles describe *decision-making functions*, not org chart positions.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
 - **[[quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
-- **Org Chart Analysis** — The practical skill of mapping formal and informal power structures
-- **Multi-threading** — Sales tactic of building relationships across multiple stakeholders to avoid single-point-of-failure
+- **Org Chart Analysis** — The practical skill of mapping formal and informal [[learning/notes/quick-context/d-flip-flop|power]] structures
+- **Multi-threading** — Sales tactic of building relationships across multiple stakeholders to avoid single-[[learning/notes/quick-context/epson-rc-plus-programming|point]]-of-failure
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** What's the key difference between Economic Buyer and Technical Buyer authority?
+**Q1:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]]'s the key difference between Economic Buyer and Technical Buyer authority?
 <details>
 <summary>Answer</summary>
-Economic Buyer can approve—they control the budget and can say "yes" when everyone else says "no." Technical Buyer can only veto—they screen for compliance and specifications but cannot approve the purchase alone. See: How It Works.
+Economic Buyer can approve—they control the budget and can say "yes" when everyone else says "no." Technical Buyer can only veto—they [[learning/notes/quick-context/data-bus-and-arbitration|screen]] for compliance and specifications but cannot approve the purchase alone. See: How It Works.
 </details>
 
 **Q2:** Your deal has strong User Buyer support but you've never met the Economic Buyer. What's the risk?
 <details>
 <summary>Answer</summary>
-User Buyers can't approve budget. Without Economic Buyer engagement, your deal can stall at proposal stage when it escalates for approval and the EB has no context, relationship, or urgency. Common failure: months of work invalidated by someone you never met asking "why do we need this?"
+User Buyers can't approve budget. Without Economic Buyer engagement, your deal can stall at proposal stage when it escalates for approval and the EB has no context, relationship, or urgency. Common failure: months of work invalidated by someone you never met asking "[[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] do we need this?"
 </details>
 
 **Q3:** A Coach says "I think the CFO would approve this." Is this enough Economic Buyer coverage?
@@ -248,7 +248,7 @@ No. Coach *opinion* isn't the same as Economic Buyer *engagement*. You need to v
 A User Buyer in TROUBLE mode is receptive—lead with quick pain relief. A User Buyer in EVEN KEEL mode needs disruption—use [[quick-context/challenger-sale-methodology|Challenger]] insights to create dissatisfaction with status quo. Same role, opposite strategies. Mode determines receptivity; role determines criteria.
 </details>
 
-**Q5:** Your Technical Buyer (VP Security) is in OVERCONFIDENT mode about their current solution. How do you proceed?
+**Q5:** Your Technical Buyer (VP Security) is in OVERCONFIDENT mode about their [[learning/notes/quick-context/capacitance|current]] solution. How do you proceed?
 <details>
 <summary>Answer</summary>
 OVERCONFIDENT is the hardest mode—they don't see the problem. Options: (1) Go around them to Economic Buyer with business case (risky—they may feel bypassed), (2) Wait for a crisis that shakes their confidence, (3) Use industry data/peer examples to create doubt, (4) Find a different sponsor who can influence them. Sometimes the right answer is disqualify—a blocker in OVERCONFIDENT mode can kill deals regardless of other support.

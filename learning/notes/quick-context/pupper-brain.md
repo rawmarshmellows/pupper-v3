@@ -3,36 +3,36 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/electric-current]] | [[quick-context/pupper-v3-labs]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pwm-controller-circuit]]
 
-> **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, CAN bus communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
+> **TL;DR:** [[learning/notes/quick-context/capacitance|The]] Pupper control board is a custom PCB that combines [[learning/notes/quick-context/comparator-specification|dual]] STM32 microcontrollers, [[learning/notes/quick-context/embedded-communication-protocols|CAN]] [[learning/notes/quick-context/data-bus-and-arbitration|bus]] communication to motors, a 9-axis IMU for balance sensing, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] [[learning/notes/quick-context/d-flip-flop|power]] regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
 ## The Core Problem
 
-A quadruped robot like Pupper needs to simultaneously know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized components—IMU, CAN transceivers, microcontrollers, power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure reliable operation.
+A quadruped robot like Pupper needs to [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]] know its orientation in 3D space, send coordinated position commands to 12 servo motors (3 per leg), receive sensor feedback from those motors, run real-time control algorithms at 1000Hz, and communicate with a host computer for high-level commands. The control board integrates all these specialized [[learning/notes/quick-context/tensor|components]]—IMU, CAN transceivers, microcontrollers, power supply—onto a single PCB with carefully routed traces and proper decoupling to ensure [[learning/notes/quick-context/ros2-architecture|reliable]] operation.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **[[micro-context/stm32-microcontroller\|STM32F446]]** | ARM Cortex-M4 microcontroller @ 180MHz—runs real-time motor control loops; two are used (one for sensors, one for motors) |
-| **[[quick-context/can-bus\|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
-| **[[small-context/imu-robot-balance-sensing\|BNO086 IMU]]** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
-| **[[micro-context/buck-converter\|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
-| **[[micro-context/decoupling-capacitor\|Decoupling Caps]]** | The 100nF capacitors sprinkled near every IC—provide instant local charge when chips switch, preventing glitches |
+| **[[learning/notes/micro-context/stm32-microcontroller|STM32F446]]** | ARM Cortex-M4 [[learning/notes/micro-context/microcontroller|microcontroller]] @ 180MHz—runs real-time motor control loops; [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] are used ([[learning/notes/quick-context/ram-addressing-decoder|one]] for sensors, one for motors) |
+| **[[learning/notes/quick-context/can-bus|CAN Bus]]** | Differential 2-wire protocol used in cars/robots—allows all 12 servos to share one wire pair with collision-free messaging |
+| **BNO086 IMU** | 9-axis sensor (accel + gyro + mag) with built-in fusion—outputs quaternions telling which way the robot is tilting |
+| **[[learning/notes/micro-context/buck-converter|Buck Converter]]** | Switching power supply that efficiently converts 12-24V battery to 5V logic power at 90%+ efficiency |
+| **[[learning/notes/micro-context/decoupling-capacitor|Decoupling Caps]]** | The 100nF [[learning/notes/quick-context/voltage|capacitors]] sprinkled near every IC—provide instant local [[learning/notes/quick-context/cations-and-reduction|charge]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] chips [[learning/notes/quick-context/switches-to-registers-storing-data|switch]], preventing glitches |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-When Pupper walks, here's what happens every millisecond (1000Hz control loop):
+When Pupper walks, here's [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] happens every millisecond (1000Hz control loop):
 
-1. **Orientation sensing**: The IMU continuously measures acceleration, rotation, and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over I2C directly to the Raspberry Pi (via `/dev/i2c-N` through the 40-pin header — not through U1). Source: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
+1. **Orientation sensing**: The IMU continuously measures acceleration, [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|rotation]], and magnetic field. Its internal processor fuses these into a quaternion (4 numbers representing 3D orientation) and sends it over [[learning/notes/micro-context/i2c|I2C]] directly to the Raspberry Pi ([[learning/notes/quick-context/metal-interconnect-layers|via]] `/dev/i2c-N` through the 40-pin header — [[learning/notes/micro-context/can-bus-termination|not]] through U1). [[learning/notes/quick-context/differential-pair|Source]]: [`rt_bno055.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_bno055.cpp).
 
-2. **State estimation**: The Pi combines IMU data with motor feedback (received over SPI) to estimate the robot's current pose—where each foot is, which way the body is tilting, how fast it's moving.
+2. **State estimation**: The Pi combines IMU data with motor feedback (received over [[learning/notes/micro-context/spi|SPI]]) to estimate the robot's [[learning/notes/quick-context/capacitance|current]] pose—where each foot is, which way the body is tilting, [[learning/notes/quick-context/electric-current|how fast]] it's moving.
 
-3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to keep the robot upright while executing the desired gait (walking pattern).
+3. **Control calculation**: The Pi runs a balance controller (in ROS2) that computes desired joint angles for all 12 motors to [[learning/notes/quick-context/existing-account-management-playbook|keep]] the robot upright while executing the desired gait (walking pattern).
 
-4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
+4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN [[learning/notes/quick-context/ros2-architecture|messages]]. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
 
 5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
@@ -56,13 +56,13 @@ When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The dual-MCU architecture reflects a fundamental tension in robot control: **real-time guarantees vs. software flexibility**.
+The dual-MCU architecture reflects a fundamental tension in robot control: **real-time guarantees vs. [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] flexibility**.
 
-**Why not use just a Raspberry Pi?** Linux is great for WiFi, Python, machine learning—but it's not real-time. A garbage collection pause or kernel interrupt could delay motor commands by 10ms, causing the robot to stumble. The STM32s run bare-metal or RTOS code with deterministic microsecond timing.
+**[[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] not use just a Raspberry Pi?** Linux is great for WiFi, Python, machine learning—but it's not real-time. A garbage collection pause or kernel [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupt]] could delay motor commands by 10ms, causing the robot to stumble. The STM32s run bare-metal or RTOS code with deterministic microsecond [[learning/notes/quick-context/comparator-specification|timing]].
 
-**Why not use just STM32s?** Microcontrollers are terrible at high-level tasks: no WiFi stack, no filesystem, limited memory for neural networks or path planning. The Pi handles everything that doesn't need precise timing.
+**Why not use just STM32s?** Microcontrollers are terrible at high-level tasks: no WiFi stack, no filesystem, limited [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]] for neural networks or path planning. The Pi handles everything that doesn't need precise timing.
 
 **Why two STM32s?** The original design used one, but motor CAN traffic and IMU processing competed for CPU time. Separating them ensures neither starves the other. U1 handles sensors and high-level commands; U5 handles the demanding 1000Hz motor loop with 4 CAN buses.
 
@@ -88,7 +88,7 @@ ARCHITECTURE TRADEOFFS:
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Here's how to interpret key entries from the Bill of Materials:
+Here's how to interpret key entries from the Bill of [[learning/notes/quick-context/cnc-machining|Materials]]:
 
 ```
 LINE-BY-LINE BOM ANALYSIS:
@@ -124,7 +124,7 @@ See: [[micro-context/can-bus-transceiver]]
 
 9-axis IMU with sensor fusion. Note: no supplier part number!
 May need to source separately from Bosch/Mouser.
-See: [[small-context/imu-robot-balance-sensing]]
+See: imu-robot-balance-sensing
 
 
 "21 | 1 | 60.4kΩ | R5 | R0402"
@@ -135,12 +135,12 @@ VOUT = VREF × (1 + R5/R6) = 0.8V × (1 + 60.4/11.5) ≈ 5.0V
 See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 ```
 
-**Common BOM gotchas:**
+**Common [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|BOM]] gotchas:**
 - Empty "Supplier Part" field (like BNO086) means manual sourcing required
 - "LCSC" supplier = designed for JLCPCB assembly service
-- C0402 parts are nearly impossible to hand-solder—use assembly service or hot air
+- C0402 parts are nearly impossible to hand-[[learning/notes/quick-context/soldering|solder]]—use assembly service or [[learning/notes/quick-context/bjt-specifications|hot]] air
 
-**The one thing most outsiders get wrong about this is...** thinking a robot control board is just "a bunch of sensors and motors connected to a computer." The critical insight is that real-time control requires deterministic timing—you cannot run a 1000Hz balance loop on a general-purpose OS like Linux because garbage collection, kernel interrupts, or WiFi processing can randomly delay your code by milliseconds. This is why the architecture uses dedicated microcontrollers for timing-critical tasks while offloading flexible but latency-tolerant work (networking, logging, ML) to the Raspberry Pi.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking a robot control board is just "a bunch of sensors and motors connected to a computer." The critical insight is that real-time control requires deterministic timing—you cannot run a 1000Hz balance loop on a [[learning/notes/quick-context/singular-value-decomposition|general]]-purpose OS like Linux because garbage collection, kernel [[learning/notes/quick-context/keypress-to-pixel-pipeline|interrupts]], or WiFi processing can randomly delay [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] code by milliseconds. This is why the architecture uses dedicated microcontrollers for timing-critical tasks while offloading flexible but [[learning/notes/quick-context/embedded-communication-protocols|latency]]-tolerant work (networking, logging, ML) to the Raspberry Pi.
 
 </details>
 
@@ -148,16 +148,16 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - [[micro-context/stm32-microcontroller]] — The dual ARM Cortex-M4 MCUs running the show
-- [[micro-context/can-bus-transceiver]] — How differential signaling enables reliable motor communication
+- [[micro-context/can-bus-transceiver]] — How [[learning/notes/quick-context/embedded-communication-protocols|differential signaling]] enables reliable motor communication
 - [[micro-context/buck-converter]] — Switching power supply converting battery to 5V
-- [[small-context/imu-robot-balance-sensing]] — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
+- imu-robot-balance-sensing — IMU sensor fusion for robot balance (accelerometer + gyroscope + magnetometer → quaternion)
 - [[micro-context/adc-analog-to-digital-converter]] — 16-bit ADC for battery monitoring
 - [[micro-context/decoupling-capacitor]] — Why every IC needs nearby 100nF caps
 - [[quick-context/pcb-printed-circuit-board]] — How traces, vias, and layers work
-- [[quick-context/pcb-chip-transistor-hierarchy]] — The scale hierarchy from transistors to boards
+- [[quick-context/pcb-chip-transistor-hierarchy]] — The [[learning/notes/quick-context/absolute-orientation|scale]] hierarchy from transistors to boards
 - [[quick-context/electric-current]] — Fundamentals of current flow
 - **[[quick-context/pupper-bom-control-board]]** — Every part on this board explained: what it does, why that value, and how it connects to the system. The BOM companion to this architectural overview.
-- **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/inverse kinematics, gait generation, RL policies, LLM voice control, and vision tracking.
+- **[[quick-context/pupper-v3-labs]]** — The CS123 lab sequence (Labs 1-7) that programs this board: PID control, forward/[[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]], gait generation, RL policies, LLM voice control, and vision tracking.
 
 </details>
 
@@ -169,7 +169,7 @@ See: [[micro-context/smd-resistor]], [[micro-context/buck-converter]]
 <details>
 <summary>Answer</summary>
 
-Separation of concerns for real-time reliability. The motor control MCU (U5) must maintain a strict 1000Hz control loop—any delay causes jerky motion or falls. By dedicating U5 solely to CAN communication and motor control, it's protected from IMU processing, audio output, or Pi communication stealing CPU cycles. U1 handles everything else without risking motor timing. See: The Key Tension section.
+Separation of concerns for real-time [[learning/notes/quick-context/bond-pad|reliability]]. The motor control MCU (U5) [[learning/notes/quick-context/ros2-architecture|must]] maintain a strict 1000Hz control loop—any delay causes jerky motion or falls. By dedicating U5 solely to CAN communication and motor control, it's protected from IMU processing, audio output, or Pi communication stealing CPU cycles. U1 handles everything else without risking motor timing. See: The Key Tension section.
 </details>
 
 **Q2:** The BOM shows 12× 100nF capacitors (C0402 size) scattered across designators C2, C5, C6, etc. What are these for and why so many?
@@ -177,15 +177,15 @@ Separation of concerns for real-time reliability. The motor control MCU (U5) mus
 <details>
 <summary>Answer</summary>
 
-These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing voltage dips that could cause glitches. Each IC needs its own nearby cap because PCB trace inductance limits how fast distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
+These are decoupling capacitors, placed near each IC's power pins. When a chip switches states, it draws a brief spike of current. The decoupling cap provides this current instantly from local stored charge, preventing [[learning/notes/quick-context/voltage|voltage]] dips that could cause glitches. Each IC needs its own nearby cap because PCB [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] inductance limits how [[learning/notes/quick-context/comparator|fast]] distant capacitors can respond. 12 caps for roughly 12 IC power pins (STM32s have multiple power pins each). See: [[micro-context/decoupling-capacitor]].
 </details>
 
-**Q3:** The buck converter uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
+**Q3:** The [[learning/notes/micro-context/buck-converter|buck converter]] uses resistors R5 (60.4kΩ) and R6 (11.5kΩ). What do these specific values accomplish?
 
 <details>
 <summary>Answer</summary>
 
-They form a voltage divider in the feedback network that sets the output voltage. The TPS54561 regulates to keep its feedback pin at 0.8V (internal reference). With R5 and R6 dividing the output: VOUT = 0.8V × (1 + 60.4k/11.5k) = 0.8V × 6.25 ≈ 5.0V. The odd precision values (not round numbers like 60kΩ) achieve the exact 5.0V target. See: [[micro-context/buck-converter]], [[micro-context/smd-resistor]].
+They [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] a [[learning/notes/quick-context/resistor|voltage divider]] in the [[learning/notes/quick-context/op-amp|feedback network]] that sets the output voltage. The TPS54561 regulates to keep its feedback pin at 0.8V (internal [[learning/notes/quick-context/comparator|reference]]). With R5 and R6 dividing the output: VOUT = 0.8V × (1 + 60.4k/11.5k) = 0.8V × 6.25 ≈ 5.0V. The odd precision values (not round numbers like 60kΩ) achieve the exact 5.0V target. See: [[micro-context/buck-converter]], [[micro-context/smd-resistor]].
 </details>
 
 **Q4:** Why does the board use 4 CAN transceivers (MAX3051) when CAN is designed to have many devices on one bus?
@@ -193,7 +193,7 @@ They form a voltage divider in the feedback network that sets the output voltage
 <details>
 <summary>Answer</summary>
 
-Multiple reasons: (1) **Bandwidth**—with 12 servos sending position feedback at 1kHz, one bus approaches saturation; splitting into 2-4 buses reduces congestion. (2) **Redundancy**—if one bus fails, only some legs are affected. (3) **Topology**—front legs might be physically far from rear legs; separate buses simplify wiring. (4) **Isolation**—a short or fault on one bus doesn't take down the whole robot. See: [[micro-context/can-bus-transceiver]].
+Multiple reasons: (1) **[[learning/notes/quick-context/oscilloscope-and-multimeter|Bandwidth]]**—with 12 servos sending position feedback at 1kHz, one bus approaches [[learning/notes/quick-context/bjt|saturation]]; splitting into 2-4 buses reduces congestion. (2) **Redundancy**—if one bus [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|fails]], [[learning/notes/quick-context/comparator-specification|only]] some legs are affected. (3) **[[learning/notes/quick-context/uart|Topology]]**—front legs might be physically far from rear legs; separate buses simplify wiring. (4) **Isolation**—a short or fault on one bus doesn't take down the whole robot. See: [[micro-context/can-bus-transceiver]].
 </details>
 
 **Q5:** The BNO086 IMU entry shows no LCSC supplier part number. What does this mean for building the board?
@@ -201,7 +201,7 @@ Multiple reasons: (1) **Bandwidth**—with 12 servos sending position feedback a
 <details>
 <summary>Answer</summary>
 
-The BNO086 isn't available through JLCPCB's standard assembly service. You'll need to either: (1) Order the BNO086 separately from distributors like Mouser/Digi-Key and hand-solder it (difficult—it's an LGA package), (2) Use JLCPCB's "consignment" service where you ship them the parts, or (3) Find a different assembly house that stocks Bosch sensors. This is common for specialized sensors not in LCSC's catalog. See: Concrete Example section on BOM interpretation.
+The BNO086 isn't available through JLCPCB's standard assembly service. You'll need to either: (1) [[learning/notes/quick-context/frequency-and-filtering|Order]] the BNO086 separately from distributors like Mouser/Digi-Key and hand-solder it (difficult—it's an LGA [[learning/notes/quick-context/silicon-die|package]]), (2) Use JLCPCB's "consignment" service where you ship them the parts, or (3) Find a different assembly house that stocks Bosch sensors. This is common for specialized sensors not in LCSC's catalog. See: Concrete Example section on BOM interpretation.
 </details>
 
 </details>

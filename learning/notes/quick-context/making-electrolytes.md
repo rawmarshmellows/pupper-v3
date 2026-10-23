@@ -3,32 +3,32 @@ topic: How to Make an Electrolyte (Acid, Base, or Salt)
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electrodes]] | [[learning/notes/quick-context/electrolysis]] | [[learning/notes/quick-context/electrolyte]] | [[learning/notes/quick-context/rust]]
 
-> **TL;DR:** Pure water is almost a perfect insulator - you must add an electrolyte (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
+> **TL;DR:** Pure water is almost a perfect insulator - you [[learning/notes/quick-context/ros2-architecture|must]] add an electrolyte (acid, base, or salt) to create mobile [[learning/notes/quick-context/anions-and-oxidation|ions]] that carry electrical [[learning/notes/quick-context/capacitance|current]]. [[learning/notes/quick-context/capacitance|The]] electrolyte dissociates into charged particles that [[learning/notes/quick-context/d-flip-flop|enable]] electricity to flow through the liquid.
 
 # How to Make an Electrolyte (Acid, Base, or Salt)
 
 ## The Core Problem: Pure Water Does Not Conduct Electricity
 
-Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick two electrodes into distilled water and apply voltage, almost nothing happens. No bubbles. No current. Why? Because electricity travels through liquids only when there are charged particles (called **ions**) free to move around. Pure water has almost none—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially zero. Without ions to carry the electrical charge from one electrode to the other, the circuit cannot complete. This is the fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) can work.
+Here is a fact that surprises most people: **pure water is almost a perfect insulator**. If you stick [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] electrodes into distilled water [[learning/notes/micro-context/push-pull-vs-open-drain|and]] apply [[learning/notes/quick-context/voltage|voltage]], almost [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]] happens. No bubbles. No current. [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]]? Because electricity travels through liquids [[learning/notes/quick-context/comparator-specification|only]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] there are charged particles (called **ions**) free to move around. Pure water has almost [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|none]]—only about 0.0000001 moles per liter (written as 10^-7 M), giving it a conductivity of roughly 0.05 microsiemens per centimeter. That is essentially [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]]. Without ions to carry the electrical [[learning/notes/quick-context/cations-and-reduction|charge]] from [[learning/notes/quick-context/ram-addressing-decoder|one]] [[learning/notes/quick-context/cations-and-reduction|electrode]] to the other, the circuit cannot complete[[learning/notes/quick-context/glass-transition-temperature|. This is the]] fundamental reason you must add an **electrolyte**—a substance that creates mobile ions in water—before [[quick-context/electrolysis|electrolysis]] (using electricity to split water or other compounds) [[learning/notes/quick-context/embedded-communication-protocols|can]] work.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Ion** | An atom or molecule with an electrical charge (+ or -) because it lost or gained electrons. Like a person carrying either a positive or negative flag. |
+| **[[learning/notes/quick-context/anions-and-oxidation|Ion]]** | An atom or [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]] with an electrical charge (+ or -) because it lost or gained [[learning/notes/quick-context/anions-and-oxidation|electrons]]. Like a person carrying either a positive or negative flag. |
 | **Electrolyte** | A substance that creates free-moving ions when dissolved in water (or melted), allowing the liquid to conduct electricity. Like adding "electricity carriers" to water. |
-| **Dissociation** | The process where a compound splits into its component ions when dissolved. Like a team breaking into individual players who can now run around the field. |
+| **Dissociation** | The process where a compound splits into its [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] ions when dissolved. Like a team breaking into individual players who can now run around the field. |
 | **Conductivity** | A measure of how well a solution carries electrical current (more ions = higher conductivity). Like measuring how wide a highway is for traffic. |
-| **Molten salt** | A salt heated until it melts into liquid form, where ions can move freely without needing water. Like melting ice so the water molecules can flow. |
+| **Molten salt** | A salt heated until it melts into liquid [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]], where ions can move freely without needing water. Like [[learning/notes/quick-context/chemical-bonds-spectrum|melting]] ice so the water molecules can flow. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 When you add an electrolyte to water, the compound **dissociates**—it splits apart into its constituent ions. This happens because water molecules are **polar**: the oxygen end carries a partial negative charge, and the hydrogen ends carry partial positive charges. When a salt crystal (like NaCl) contacts water, the water molecules surround the ions on the crystal's surface. The partially negative oxygens attract the positive sodium ions (Na+), while the partially positive hydrogens attract the negative chloride ions (Cl-). These attractions are strong enough to pull individual ions away from the crystal lattice, one by one, until the entire crystal dissolves.
 
-Once freed, the ions become **mobile charge carriers**. When you apply a voltage across two electrodes in the solution, the positive ions (cations) migrate toward the negative electrode (cathode), while the negative ions (anions) migrate toward the positive electrode (anode). This movement of charged particles IS the electric current through the liquid. The more ions you have dissolved, the more charge carriers are available, and the higher the solution's conductivity. This is why adding more electrolyte (up to the saturation limit) increases conductivity proportionally.
+Once freed, the ions become **mobile charge carriers**. When you apply a voltage across two electrodes in the solution, the positive ions (cations) migrate toward the negative electrode ([[learning/notes/micro-context/cathode|cathode]]), while the negative ions ([[learning/notes/quick-context/anions-and-oxidation|anions]]) migrate toward the positive electrode ([[learning/notes/micro-context/anode|anode]]). This movement of charged particles IS the electric current through the liquid. The more ions you have dissolved, the more charge carriers are available, and the higher the solution's conductivity. This is why adding more electrolyte (up to the [[learning/notes/quick-context/bjt|saturation]] limit) increases conductivity proportionally.
 
 ```
 HOW ELECTROLYTES ENABLE CONDUCTION
@@ -93,7 +93,7 @@ Conductivity │                           ●  SATURATION
                water    conc.     conc.       conc.    solution
 ```
 
-**What is an ion?** Ions are just atoms (or groups of atoms) that have gained or lost electrons, giving them an electrical charge. A positive ion (cation) like Na+ has lost an electron; a negative ion (anion) like Cl- has gained one. These charged particles can move through liquid, carrying electricity with them.
+**[[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] is an ion?** Ions are just atoms (or groups of atoms) that have gained or lost electrons, giving them an electrical charge. A positive ion ([[learning/notes/quick-context/cations-and-reduction|cation]]) like Na+ has lost an [[learning/notes/quick-context/anions-and-oxidation|electron]]; a negative ion ([[learning/notes/quick-context/anions-and-oxidation|anion]]) like Cl- has gained one. These charged particles can move through liquid, carrying electricity with them.
 
 ```
 ATOMS AND IONS - A Visual Guide
@@ -214,9 +214,9 @@ RESULT: Free-floating Na⁺ and Cl⁻ ions can now carry electrical current
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-When choosing an electrolyte, practitioners face a fundamental tradeoff. You want **high conductivity** (lots of ions = [[quick-context/electric-current|electricity flows easily]]), but you also want the electrolyte to **not interfere** with the reaction you are trying to achieve. The ions must carry [[quick-context/electric-current|current]] without themselves being the substances that react at the [[quick-context/electrodes|electrodes]].
+When choosing an electrolyte, practitioners face a fundamental tradeoff. You want **high conductivity** (lots of ions = [[quick-context/electric-current|electricity flows easily]]), but you also want the electrolyte to **[[learning/notes/micro-context/can-bus-termination|not]] interfere** with the reaction you are trying to achieve. The ions must carry [[quick-context/electric-current|current]] without themselves being the substances that react at the [[quick-context/electrodes|electrodes]].
 
 ```
 THE ELECTROLYTE SELECTION TRADEOFF
@@ -346,11 +346,11 @@ WHAT IS HAPPENING:
 |-------------|---------|--------------|--------------|------|------|
 | Sulfuric acid (dilute) | H₂SO₄ | H⁺, SO₄²⁻ | Very high | Excellent conductivity, cheap | Corrosive, dangerous |
 | Sodium hydroxide | NaOH | Na⁺, OH⁻ | Very high | Great for industrial use | Caustic, burns skin |
-| Potassium hydroxide | KOH | K⁺, OH⁻ | Very high | Slightly better than NaOH | More expensive |
+| Potassium hydroxide | KOH | K⁺, OH⁻ | Very high | Slightly [[learning/notes/quick-context/comparator-specification|better]] than NaOH | More expensive |
 | Sodium sulfate | Na₂SO₄ | Na⁺, SO₄²⁻ | High | Safe, non-corrosive | Slightly lower conductivity |
 | Baking soda | NaHCO₃ | Na⁺, HCO₃⁻ | Moderate | Safe, household item | Lower conductivity, CO₂ issues |
 
-**Special Case: Molten Salt Electrolytes.** Sometimes you cannot use water at all. To extract highly reactive metals like sodium, lithium, or aluminum, you must melt the salt itself:
+**Special Case: Molten Salt Electrolytes.** Sometimes you cannot use water at all. To extract highly [[learning/notes/quick-context/pupper-lab7-vision-tracking|reactive]] metals like sodium, lithium, or aluminum, you must melt the salt itself:
 
 ```
 MOLTEN SALT ELECTROLYSIS (No Water Involved)
@@ -388,7 +388,7 @@ SOLUTION: Remove the water entirely
 ═══════════════════════════════════════════════════════════════════════
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that water itself conducts electricity. Movies show people being electrocuted in bathtubs or pools, but pure water is actually an insulator. What conducts is the **dissolved stuff** in the water—minerals, salts, chlorine in pool water, soap residue. Tap water conducts reasonably well because of dissolved minerals. Distilled or deionized water barely conducts at all. This misconception leads to a common failed experiment: someone tries to split water with a battery and two wires, uses distilled water, and wonders why nothing happens. The answer is simple—you forgot the electrolyte! You must add ions for the electricity to have something to "ride on" through the liquid.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** assuming that water itself conducts electricity. Movies show people being electrocuted in bathtubs or pools, but pure water is actually an insulator. What conducts is the **dissolved stuff** in the water—minerals, salts, chlorine in pool water, soap residue. Tap water conducts reasonably well because of dissolved minerals. Distilled or deionized water barely conducts at all. This misconception leads to a common failed experiment: someone tries to split water with a battery and two [[learning/notes/quick-context/uart|wires]], uses distilled water, and wonders why nothing happens. The answer is simple—you forgot the electrolyte! You must add ions for the electricity to have something to "ride on" through the liquid.
 
 </details>
 
@@ -397,20 +397,20 @@ SOLUTION: Remove the water entirely
 
 - **[[quick-context/electrolysis]]** — The process that actually uses these electrolytes. Understanding electrolysis explains WHY you need electrolytes and what happens at the electrodes once current flows.
 
-- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. covalent bonds helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
+- **[[quick-context/chemical-bonds-spectrum]]** — Understanding ionic vs. [[learning/notes/quick-context/covalent-bonds|covalent bonds]] helps explain why salts dissociate into ions (ionic bonds break easily in water) while covalent compounds like sugar do not.
 
-- **pH and Acid-Base Chemistry** — Acids and bases are defined by whether they release H⁺ or OH⁻ ions. The pH scale measures this ion concentration, which directly affects conductivity.
+- **pH and Acid-Base Chemistry** — Acids and bases are defined by [[learning/notes/quick-context/differential-pair|whether]] they [[learning/notes/micro-context/push-pull-vs-open-drain|release]] H⁺ or OH⁻ ions. The pH [[learning/notes/quick-context/absolute-orientation|scale]] measures this ion concentration, which directly affects conductivity.
 
-- **Concentration and Molarity** — How much electrolyte you add matters. More dissolved salt = more ions = higher conductivity, but only up to a point (saturation limit).
+- **Concentration and Molarity** — How much electrolyte you add matters. More dissolved salt = more ions = higher conductivity, but only up to a [[learning/notes/quick-context/epson-rc-plus-programming|point]] (saturation limit).
 
-- **Electrochemical Series** — A ranking of how easily different ions gain or lose electrons. This determines which electrolyte works for which application (and which would interfere with your reaction).
+- **[[learning/notes/quick-context/anions-and-oxidation|Electrochemical Series]]** — A ranking of how easily different ions gain or lose electrons. This determines which electrolyte works for which application (and which would interfere with [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] reaction).
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** You have two beakers: one with distilled water, one with tap water. You connect a battery and light bulb in series with electrodes dipping into each. Which beaker lights the bulb, and why?
+**Q1:** You have two beakers: one with distilled water, one with tap water. You connect a battery and light bulb in [[learning/notes/quick-context/parallel-vs-series-voltage|series]] with electrodes dipping into each. Which beaker lights the bulb, and why?
 <details>
 <summary>Answer</summary>
 **The tap water beaker lights the bulb.** Tap water contains dissolved minerals (calcium, magnesium, chloride, etc.) that provide ions to conduct electricity. Distilled water has had these minerals removed, leaving almost no ions (only ~10^-7 M from water's autoionization), so it cannot conduct enough current to light the bulb. See: The Core Problem
@@ -419,13 +419,13 @@ SOLUTION: Remove the water entirely
 **Q2:** You want to electrolyze water to produce hydrogen and oxygen. You have table salt (NaCl) and Epsom salt (MgSO₄) available. Which should you choose, and why?
 <details>
 <summary>Answer</summary>
-**Choose Epsom salt (MgSO₄).** While both dissolve to create ions, NaCl releases chloride ions (Cl⁻) which get oxidized at the anode before water does, producing toxic chlorine gas instead of oxygen. MgSO₄ releases sulfate ions (SO₄²⁻) which are harder to oxidize than water, so they just carry current while water molecules react to form oxygen. See: The Key Tension (bad electrolyte choice example)
+**Choose Epsom salt (MgSO₄).** While [[learning/notes/quick-context/bjt-specifications|both]] dissolve to create ions, NaCl releases chloride ions (Cl⁻) which get oxidized at the anode before water does, producing toxic chlorine gas instead of oxygen. MgSO₄ releases sulfate ions (SO₄²⁻) which are harder to oxidize than water, so they just carry current while water molecules react to form oxygen. See: The Key Tension (bad electrolyte [[learning/notes/quick-context/transistor-analog-to-digital|choice]] example)
 </details>
 
 **Q3:** Why must aluminum be produced using molten salt electrolysis rather than dissolving an aluminum compound in water?
 <details>
 <summary>Answer</summary>
-**Aluminum is too reactive—water would be reduced instead.** Aluminum ions (Al³⁺) have a very negative reduction potential, meaning they "want" electrons less than water molecules do. In aqueous solution, the cathode would reduce water (producing hydrogen gas) before it would reduce Al³⁺ to aluminum metal. By using molten aluminum oxide (Al₂O₃) with no water present, Al³⁺ becomes the only reducible species, so aluminum metal forms. See: Special Case: Molten Salt Electrolytes
+**Aluminum is too reactive—water would be reduced instead.** Aluminum ions (Al³⁺) have a very negative [[learning/notes/quick-context/cations-and-reduction|reduction]] potential, meaning they "want" electrons less than water molecules do. In aqueous solution, the cathode would reduce water (producing hydrogen gas) before it would reduce Al³⁺ to aluminum metal. By using molten aluminum oxide (Al₂O₃) with no water present, Al³⁺ becomes the only reducible species, so aluminum metal forms. See: Special Case: Molten Salt Electrolytes
 </details>
 
 **Q4:** A solid salt crystal contains ions but does not conduct electricity. Why not?
@@ -437,7 +437,7 @@ SOLUTION: Remove the water entirely
 **Q5:** Baking soda (NaHCO₃) and washing soda (Na₂CO₃) both dissolve in water. If both solutions have the same molar concentration, which has more free ions and thus higher conductivity?
 <details>
 <summary>Answer</summary>
-**Washing soda (Na₂CO₃) has higher conductivity.** Each formula unit of Na₂CO₃ produces 3 ions when dissolved (2 Na⁺ + 1 CO₃²⁻), while each NaHCO₃ produces only 2 ions (1 Na⁺ + 1 HCO₃⁻). At equal molar concentration, washing soda provides 50% more ions. Additionally, the carbonate ion (CO₃²⁻) carries twice the charge of bicarbonate (HCO₃⁻), further increasing current-carrying capacity. See: Alternative Electrolytes Compared (relationship between ion count and conductivity)
+**Washing soda (Na₂CO₃) has higher conductivity.** Each formula unit of Na₂CO₃ produces 3 ions when dissolved (2 Na⁺ + 1 CO₃²⁻), while each NaHCO₃ produces only 2 ions (1 Na⁺ + 1 HCO₃⁻). At equal molar concentration, washing soda provides 50% more ions. Additionally, the carbonate ion (CO₃²⁻) carries twice the charge of bicarbonate (HCO₃⁻), further increasing current-carrying capacity. See: Alternative Electrolytes Compared (relationship between ion [[learning/notes/quick-context/switches-to-registers-storing-data|count]] and conductivity)
 </details>
 
 </details>

@@ -3,25 +3,25 @@ topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/clock-sources-and-timing]]
 
-> **TL;DR:** Power (watts) is the rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, and understanding power is essential because every watt not delivered to the load becomes heat that must be managed, making thermal design the central constraint of modern electronics.
+> **TL;DR:** [[learning/notes/quick-context/d-flip-flop|Power]] (watts) is [[learning/notes/quick-context/capacitance|the]] rate at which energy (joules) is transferred or converted—P = V × I tells you how much work a circuit does per second, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] understanding power is essential because every watt [[learning/notes/micro-context/can-bus-termination|not]] delivered to the load becomes heat that [[learning/notes/quick-context/ros2-architecture|must]] be managed, making thermal design the central [[learning/notes/quick-context/voltage-current-causality|constraint]] of modern electronics.
 
 # Electrical Power
 
 ## The Core Problem: Where Does the Energy Go?
 
-A phone charger pulls 10W from the wall but delivers only 8W to the battery. The missing 2W becomes heat—which is why chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip can't dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers both questions, and energy (E = P × t) tells you the total accumulated cost. Every electronic design is ultimately a thermal management problem.
+A phone charger pulls 10W from the wall but delivers [[learning/notes/quick-context/comparator-specification|only]] 8W to the battery. The missing 2W becomes heat—which is [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] chargers get warm. A CPU runs at 150W, and every watt not doing useful computation heats the chip. If the chip [[learning/notes/quick-context/embedded-communication-protocols|can]]'t dissipate that heat, it throttles or dies. [[quick-context/electric-current|Current]] and voltage alone don't tell you how much work is being done or how much heat is being generated. Power (P = V × I) answers [[learning/notes/quick-context/ram-addressing-decoder|both]] questions, and energy (E = P × t) tells you the [[learning/notes/quick-context/similarity-transform|total]] accumulated [[learning/notes/quick-context/bond-pad|cost]]. Every electronic design is ultimately a [[learning/notes/quick-context/bga-ball-grid-array|thermal management]] problem.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Power (P)** | Rate of energy transfer, measured in watts (W). P = V × I = I²R = V²/R. One watt = one joule per second. |
-| **Energy (E)** | Total work done, measured in joules (J). E = P × t. Your electricity bill is in kilowatt-hours (1 kWh = 3,600,000 J). |
-| **Watt-hour (Wh)** | A practical energy unit: 1 Wh = 3600 J. A phone battery holds ~15 Wh. A laptop battery ~50 Wh. |
+| **Power (P)** | Rate of energy transfer, measured in watts (W). P = V × I = I²R = V²/R. [[learning/notes/quick-context/ram-addressing-decoder|One]] watt = one joule per second. |
+| **Energy (E)** | Total work done, measured in joules (J). E = P × t. [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] electricity bill is in kilowatt-hours (1 kWh = 3,600,000 J). |
+| **Watt-hour (Wh)** | A practical energy unit: 1 Wh = 3600 J. A phone battery [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] ~15 Wh. A laptop battery ~50 Wh. |
 | **Efficiency (η)** | Pout / Pin × 100%. A 90%-efficient power supply converts 90W of input to useful output and wastes 10W as heat. |
-| **Thermal Dissipation** | The process of removing waste heat. Every watt of loss must be carried away by conduction, convection, or radiation—or the temperature rises until something breaks. |
+| **Thermal Dissipation** | The process of removing [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|waste]] heat. Every watt of loss must be carried away by conduction, convection, or radiation—or the temperature rises until something breaks. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -85,7 +85,7 @@ POWER RATINGS: WHY THEY MATTER
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Power vs. Efficiency vs. Size (The Thermal Wall)
 
@@ -110,10 +110,10 @@ THE THERMAL CONSTRAINT
     (bigger heatsink, more airflow, better package)
 ```
 
-| Power Source | Efficiency | Waste Heat | Use Case |
+| Power [[learning/notes/quick-context/differential-pair|Source]] | Efficiency | Waste Heat | Use Case |
 |-------------|-----------|-----------|----------|
 | **Linear regulator** | 30-60% | High | Low-noise analog, <500 mA |
-| **Buck converter** | 85-95% | Low | Step-down, most digital |
+| **[[learning/notes/micro-context/buck-converter|Buck converter]]** | 85-95% | Low | Step-down, most digital |
 | **Boost converter** | 80-92% | Low | Step-up, battery-powered |
 | **Class D amplifier** | 85-93% | Low | Audio amplification |
 | **Class AB amplifier** | 50-70% | Medium-high | High-fidelity audio |
@@ -168,15 +168,15 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
+- **[[quick-context/electric-current]]** — Power is the product of voltage and [[learning/notes/quick-context/capacitance|current]] (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 
-- **[[quick-context/resistor]]** — Every resistor in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
+- **[[quick-context/resistor]]** — Every [[learning/notes/quick-context/fundamental-electronic-parts-index|resistor]] in a circuit converts power to heat (P = I²R). Power ratings determine how much current a resistor can safely carry.
 
-- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The inductor stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
+- **[[quick-context/inductor]]** — Switching power supplies use inductors to convert voltage efficiently. The [[learning/notes/quick-context/fundamental-electronic-parts-index|inductor]] stores and releases energy each switching cycle, achieving 85-95% efficiency vs. 30-60% for linear regulators.
 
-- **[[quick-context/capacitor]]** — Energy stored in a capacitor is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors charge/discharge in nanoseconds.
+- **[[quick-context/capacitor]]** — Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². This is usually very small compared to batteries, but the power (rate of delivery) can be enormous because capacitors [[learning/notes/quick-context/electrodes|charge]]/discharge in nanoseconds.
 
 - **[[quick-context/transistor]]** — CPU power consumption is dominated by switching power (P = C×V²×f) and leakage power. Both increase as transistors shrink, driving the "power wall" that ended single-core frequency scaling.
 
@@ -185,10 +185,10 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A USB device draws 500 mA at 5V. How much power does it consume?
+**Q1:** A [[learning/notes/quick-context/embedded-communication-protocols|USB device]] draws 500 mA at 5V. How much power does it consume?
 <details>
 <summary>Answer</summary>
-**2.5W.** P = V × I = 5V × 0.5A = 2.5W. This is the standard USB 2.0 power budget per port.
+**2.5W.** P = V × I = 5V × 0.5A = 2.5W[[learning/notes/quick-context/glass-transition-temperature|. This is the]] standard [[learning/notes/quick-context/raspberry-pi-5-components|USB 2.0]] power budget per port.
 </details>
 
 **Q2:** A linear regulator converts 12V to 3.3V at 200 mA. How much power is wasted as heat?
@@ -200,19 +200,19 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q3:** Your phone battery is 15 Wh. At 4W average power consumption, how long does it last?
 <details>
 <summary>Answer</summary>
-**3.75 hours.** Time = Energy / Power = 15 Wh / 4W = 3.75 hours. In practice it varies because power consumption fluctuates (screen brightness, radio activity, CPU load).
+**3.75 hours.** Time = Energy / Power = 15 Wh / 4W = 3.75 hours. In practice it varies because power consumption fluctuates ([[learning/notes/quick-context/data-bus-and-arbitration|screen]] brightness, radio activity, CPU load).
 </details>
 
-**Q4:** A PCB trace has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
+**Q4:** A PCB [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] has 50 milliohms of resistance and carries 3A. How much power is wasted in the trace?
 <details>
 <summary>Answer</summary>
-**0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider (lower resistance) or use multiple layers.
+**0.45W.** P = I²R = 3² × 0.05 = 0.45W. This heats the trace. For a thin trace on FR-4, 0.45W could raise the temperature significantly. This is why high-current traces are made wider ([[learning/notes/quick-context/pcb-printed-circuit-board|lower resistance]]) or use multiple layers.
 </details>
 
-**Q5:** Why did fast charging standards move to higher voltages (9V, 12V, 20V) instead of higher current?
+**Q5:** Why did [[learning/notes/quick-context/comparator|fast]] charging standards move to higher voltages (9V, 12V, 20V) instead of higher current?
 <details>
 <summary>Answer</summary>
-**To reduce I²R losses in the cable.** For the same power, doubling voltage halves current, which reduces cable heating by 4× (since P_loss = I²R). Delivering 60W at 5V requires 12A (massive cable losses), but 60W at 20V requires only 3A (manageable losses with standard cables). The phone internally converts the high voltage down to battery voltage using an efficient buck converter.
+**To reduce I²R losses in the cable.** For the same power, [[learning/notes/quick-context/camera-fundamentals|doubling]] voltage halves current, which reduces cable heating by 4× (since P_loss = I²R). Delivering 60W at 5V requires 12A (massive cable losses), but 60W at 20V requires only 3A (manageable losses with standard cables). The phone internally converts the high voltage down to battery voltage using an efficient buck converter.
 </details>
 
 </details>

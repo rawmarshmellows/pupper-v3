@@ -5,30 +5,30 @@ created: 2026-03-26
 
 # Firmware — Software That Lives on Hardware
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/bjt-specifications]]
 
-> **TL;DR:** Firmware is software permanently stored in a device's non-volatile memory (typically flash) that runs immediately at power-on without an operating system, bootloader chain, or filesystem. It's the code that makes hardware *be* what it is — the STM32s on the Pupper control board run firmware that turns raw silicon into a motor controller and sensor hub.
+> **TL;DR:** Firmware is [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] permanently stored in a device's non-volatile memory (typically flash) that runs immediately at [[learning/notes/quick-context/d-flip-flop|power]]-on without an [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|operating system]], bootloader chain, or filesystem. It's [[learning/notes/quick-context/capacitance|the]] code that makes [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]] *be* [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|what]] it is — the STM32s on the Pupper control board run firmware that turns raw [[learning/notes/quick-context/transistor|silicon]] into a motor controller [[learning/notes/micro-context/push-pull-vs-open-drain|and]] sensor hub.
 
 ## The Core Problem
 
-Hardware alone does nothing. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a general-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an inert PCB. With `SPIneV1.elf` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
+Hardware alone does [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]]. An [[micro-context/stm32-microcontroller|STM32 microcontroller]] fresh from the factory is a [[learning/notes/quick-context/singular-value-decomposition|general]]-purpose chip — it could be a motor controller, a thermostat, or a MIDI synthesizer. The firmware is what commits it to a specific job. Without firmware, the Pupper's control board is an [[learning/notes/quick-context/platinum-inertness|inert]] PCB. With `[[learning/notes/micro-context/spinev1-elf|SPIneV1.elf]]` [[quick-context/firmware|flashed]] onto the STM32s, it becomes a real-time robot controller reading IMU data, computing joint targets, and driving 12 servos at 1 kHz.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[micro-context/plc-programmable-logic-controller\|bare metal or under an RTOS]] with no general-purpose OS |
-| **[[quick-context/firmware\|Flashing]]** | Writing compiled firmware into a microcontroller's flash memory via a debug probe ([[micro-context/st-link-v2-programmer\|ST-Link]]) and debug protocol ([[micro-context/swd-serial-wire-debug\|SWD]]) — erases old code, writes new code, resets the chip |
-| **ELF file (.elf)** | Executable and Linkable Format — the compiler's output containing machine code, memory layout, and debug symbols; the flash tool extracts the code sections and writes them to the chip |
-| **Reset vector** | The hardwired memory address the CPU reads its first instruction from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
-| **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/UART before jumping to the application code; some STM32 projects skip this and flash the application directly |
+| **Firmware** | Software stored in non-volatile memory (flash/ROM) that controls hardware directly, typically running [[learning/notes/micro-context/plc-programmable-logic-controller|bare metal or under an RTOS]] with no general-purpose OS |
+| **[[learning/notes/quick-context/firmware|Flashing]]** | Writing compiled firmware into a [[learning/notes/micro-context/microcontroller|microcontroller]]'s flash memory [[learning/notes/quick-context/metal-interconnect-layers|via]] a debug [[learning/notes/quick-context/oscilloscope-and-multimeter|probe]] ([[learning/notes/micro-context/st-link-v2-programmer|ST-Link]]) and debug protocol ([[learning/notes/micro-context/swd-serial-wire-debug|SWD]]) — erases old code, writes new code, resets the chip |
+| **ELF file (.elf)** | Executable and Linkable Format — the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compiler]]'s output containing [[learning/notes/quick-context/python-to-machine-code-pipeline|machine code]], memory layout, and debug symbols; the flash [[learning/notes/quick-context/epson-rc-plus-programming|tool]] extracts the code sections and writes them to the chip |
+| **Reset vector** | The hardwired memory [[learning/notes/quick-context/how-source-code-is-stored|address]] the CPU reads its first [[learning/notes/quick-context/cpu-fetch-execute-cycle|instruction]] from at power-on — on STM32, this is `0x08000000`, the start of flash memory |
+| **Bootloader** | Optional firmware that runs before the main firmware, typically to check for updates over USB/[[learning/notes/quick-context/embedded-communication-protocols|UART]] before jumping to the application code; some STM32 projects skip this and flash the application directly |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
 ### From Source Code to Running Robot
 
-Firmware goes through a build-flash-run pipeline that's fundamentally different from desktop software:
+Firmware goes through a build-flash-run pipeline that's fundamentally different from [[learning/notes/quick-context/code-to-gates-and-bootstrapping|desktop]] software:
 
 ```
 FIRMWARE PIPELINE (vs. Desktop Software)
@@ -57,7 +57,7 @@ DESKTOP SOFTWARE:                    FIRMWARE:
 
 ### What Happens at Power-On
 
-When the Pupper's battery connects, the STM32 begins executing firmware from flash in microseconds — no boot screen, no kernel, no login:
+When the Pupper's battery connects, the STM32 begins executing firmware from flash in microseconds — no boot [[learning/notes/quick-context/data-bus-and-arbitration|screen]], no kernel, no login:
 
 ```
 STM32 POWER-ON SEQUENCE:
@@ -106,7 +106,7 @@ STM32 POWER-ON SEQUENCE:
 
 ### Inside the ELF File
 
-The compiler produces an ELF file that contains more than just code — it's a structured container that the flash tool and debugger both use:
+The compiler produces an ELF file that contains more than just code — it's a structured container that the flash tool and debugger [[learning/notes/quick-context/ram-addressing-decoder|both]] use:
 
 ```
 SPIneV1.elf STRUCTURE:
@@ -142,7 +142,7 @@ SPIneV1.elf STRUCTURE:
 
 ### Linker Script: The Memory Map
 
-The linker script (`.ld` file) tells the compiler where each section goes in the STM32's memory:
+The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|linker]] script (`.ld` file) tells the compiler where each section goes in the STM32's memory:
 
 ```
 STM32F446 MEMORY MAP:
@@ -175,33 +175,33 @@ STM32F446 MEMORY MAP:
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ### Firmware vs. Application Software
 
-The fundamental tension is **control vs. convenience**. Firmware gives you direct hardware access and deterministic timing, but you give up everything a general-purpose OS provides:
+The fundamental tension is **control vs. convenience**. Firmware gives you direct hardware access and deterministic [[learning/notes/quick-context/comparator-specification|timing]], but you give up everything a general-purpose OS provides:
 
 | | Firmware (STM32) | Application Software (Raspberry Pi) |
 |---|---|---|
-| **Startup** | ~10 ms to main() | ~30 seconds to shell |
+| **Startup** | ~10 ms to main() | ~[[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens|30 seconds]] to shell |
 | **Timing** | Deterministic microsecond loops | Non-deterministic (kernel, GC) |
-| **Memory** | 128 KB SRAM, no virtual memory | 4 GB RAM, full MMU |
+| **Memory** | 128 KB [[learning/notes/quick-context/ram-addressing-decoder|SRAM]], no virtual memory | 4 GB RAM, [[learning/notes/quick-context/singular-value-decomposition|full]] MMU |
 | **Storage** | 512 KB flash, no filesystem | 32 GB+ SD card, ext4 |
-| **Debugging** | SWD + GDB (hardware breakpoints) | SSH, printf, strace |
-| **Updates** | Requires flash tool + physical access | `apt update && apt upgrade` |
+| **Debugging** | SWD + GDB ([[learning/notes/micro-context/swd-serial-wire-debug|hardware breakpoints]]) | SSH, printf, strace |
+| **Updates** | Requires flash tool + physical access | `apt [[learning/notes/quick-context/ppo-proximal-policy-optimization|update]] && apt [[learning/notes/quick-context/comparator-specification|upgrade]]` |
 | **Languages** | C, C++, Rust (no runtime) | Python, C++, anything |
 | **Libraries** | Vendor HAL, hand-rolled drivers | pip, apt, npm |
-| **Crash recovery** | Watchdog timer resets chip | systemd restarts process |
-| **Concurrency** | Interrupts, DMA, maybe RTOS tasks | Threads, processes, async |
+| **Crash recovery** | [[learning/notes/quick-context/integration-failure-modes-solutions|Watchdog timer]] resets chip | systemd restarts process |
+| **[[learning/notes/quick-context/raspberry-pi-ai-hat|Concurrency]]** | [[learning/notes/quick-context/keypress-to-pixel-pipeline|Interrupts]], DMA, maybe RTOS tasks | Threads, processes, async |
 
-This is exactly why the Pupper uses both — the STM32s run firmware for the 1 kHz motor control loop where a missed deadline means the robot falls, and the Raspberry Pi runs Linux for WiFi, ML inference, voice processing, and everything that doesn't need hard real-time guarantees. See [[quick-context/pupper-brain]] for the full architecture.
+This is exactly [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] the Pupper uses both — the STM32s run firmware for the 1 kHz motor control loop where a missed [[learning/notes/quick-context/ros2-architecture|deadline]] means the robot falls, and the Raspberry Pi runs Linux for WiFi, ML inference, voice processing, and everything that doesn't need hard real-time guarantees. See [[quick-context/pupper-brain]] for the full architecture.
 
 ### The Update Problem
 
 Desktop software updates are trivial — download, replace, restart. Firmware updates are risky: if power is lost mid-flash, the chip boots into corrupted code and may be unrecoverable ("bricked"). This is why:
-- Production devices use **dual-bank flash** (bank A runs while bank B is updated, then swap)
+- Production devices use **[[learning/notes/quick-context/comparator-specification|dual]]-bank flash** (bank A runs while bank B is updated, then swap)
 - Bootloaders verify new firmware before committing
-- Some systems keep a known-good "golden image" that can't be overwritten
+- Some systems [[learning/notes/quick-context/existing-account-management-playbook|keep]] a known-good "golden image" that [[learning/notes/quick-context/embedded-communication-protocols|can]]'t be overwritten
 - For the Pupper, you just re-flash via ST-Link — bricking is recoverable because the debug interface bypasses firmware entirely
 
 </details>
@@ -270,28 +270,28 @@ FILE FORMAT COMPARISON:
   .elf → .hex:  arm-none-eabi-objcopy -O ihex SPIneV1.elf SPIneV1.hex
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking firmware is just "software for small computers." The difference isn't size — it's the execution model. Desktop software runs *on top of* an operating system that manages memory, schedules tasks, handles crashes, and provides a filesystem. Firmware runs *instead of* an operating system — it IS the lowest layer, talking directly to hardware registers, managing its own interrupts, and executing from the very first instruction at power-on. When your firmware crashes, there's no kernel to catch the exception and restart you — the chip hangs until the watchdog timer fires or someone cycles power.
+**[[learning/notes/quick-context/breaking-elongation-rate|The one thing most outsiders get wrong about this is]]...** thinking firmware is just "software for small computers." The difference isn't size — it's the execution model. Desktop software runs *[[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of* an operating system that manages memory, schedules tasks, handles crashes, and provides a filesystem. Firmware runs *instead of* an operating system — it IS the lowest [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]], talking directly to hardware registers, managing its own interrupts, and executing from the very first instruction at power-on. When [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] firmware crashes, there's no kernel to catch the exception and restart you — the chip hangs until the watchdog timer fires or someone cycles power.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is [[learning/notes/quick-context/ram-addressing-decoder|one]] rung of it.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from source code to logic gates. Firmware lives at layers 4-5 of this chain: compiled to machine code, running directly on the CPU's fetch-execute cycle. The bootstrapping section explains the Reset Vector — the exact mechanism firmware uses to begin executing at power-on.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from [[learning/notes/quick-context/differential-pair|source]] code to logic gates. Firmware lives at layers 4-5 of this chain: compiled to machine code, running directly on the CPU's [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch]]-execute cycle. The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|bootstrapping]] section explains the Reset Vector — the exact [[learning/notes/quick-context/silymarin|mechanism]] firmware uses to begin executing at power-on.
 
 - **[[quick-context/pupper-brain]]** — The dual-MCU + Raspberry Pi architecture. Explains why Pupper needs firmware on the STM32s (real-time motor control) alongside Linux on the Pi (WiFi, ML, voice). Firmware handles the timing-critical 1 kHz loop; the Pi handles everything else.
 
-- **[[quick-context/pupper-bom-control-board]]** — Every hardware component the firmware interacts with: the STM32F446 MCUs it runs on, the CAN transceivers it drives, the IMU it reads, the audio amplifier it feeds. The BOM is the hardware; the firmware is what makes it move.
+- **[[quick-context/pupper-bom-control-board]]** — Every hardware [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] the firmware interacts with: the STM32F446 MCUs it runs on, the CAN transceivers it drives, the IMU it reads, the audio amplifier it feeds. The [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|BOM]] is the hardware; the firmware is what makes it move.
 
-- **[[micro-context/stm32-microcontroller]]** — The specific chip this firmware targets. The STM32F446's 512 KB flash, 128 KB SRAM, CAN/SPI/I2C peripherals, and 180 MHz clock define the firmware's constraints.
+- **[[micro-context/stm32-microcontroller]]** — The specific chip this firmware targets. The STM32F446's 512 KB flash, 128 KB SRAM, CAN/[[learning/notes/micro-context/spi|SPI]]/[[learning/notes/micro-context/i2c|I2C]] peripherals, and 180 MHz [[learning/notes/quick-context/switches-to-registers-storing-data|clock]] define the firmware's constraints.
 
-- **[[quick-context/firmware|flashing firmware]]** — The micro-context companion: a concise definition of the flash process itself (erase → write → verify → reset).
+- **[[quick-context/firmware|flashing firmware]]** — The micro-context companion: a concise definition of the flash process itself (erase → [[learning/notes/quick-context/d-flip-flop|write]] → verify → reset).
 
 - **[[micro-context/swd-serial-wire-debug]]** — The 2-wire debug protocol used to flash firmware and set breakpoints. Explains the full SWD transaction format, the DAP architecture, and why a $10 clone programmer works for hobbyist use.
 
-- **[[micro-context/plc-programmable-logic-controller]]** — The spectrum of execution environments firmware can target. The Pupper's STM32s run bare metal (no OS), which gives maximum speed but no safety net.
+- **[[micro-context/plc-programmable-logic-controller]]** — The spectrum of execution environments firmware can target. The Pupper's STM32s run bare metal (no OS), which gives maximum [[learning/notes/quick-context/embedded-communication-protocols|speed]] but no safety [[learning/notes/quick-context/schematic-reading|net]].
 
 </details>
 
@@ -301,28 +301,28 @@ FILE FORMAT COMPARISON:
 **Q1:** What's the difference between firmware and regular application software?
 <details>
 <summary>Answer</summary>
-Firmware runs directly on hardware with no operating system underneath — it starts at the reset vector on power-on, manages its own memory and interrupts, and talks to hardware registers directly. Application software runs on top of an OS that provides memory management, scheduling, filesystems, and crash recovery. Firmware is stored in non-volatile flash and persists across power cycles without any storage device. See: The Key Tension.
+Firmware runs directly on hardware with no operating system [[learning/notes/quick-context/bga-ball-grid-array|underneath]] — it starts at the reset vector on power-on, manages its own memory and interrupts, and talks to hardware registers directly. Application software runs on [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] of an OS that provides memory management, scheduling, filesystems, and crash recovery. Firmware is stored in non-volatile flash and persists across power cycles without any storage device. See: The Key Tension.
 </details>
 
 **Q2:** Why does the flash tool need the `.elf` file rather than just raw machine code?
 <details>
 <summary>Answer</summary>
-The ELF file contains not just machine code but also metadata telling the flash tool *where* to load each section in memory. The `.text` section goes to flash at `0x08000000`, the `.data` section's initial values also go to flash (to be copied to RAM at boot). Without this metadata, the tool wouldn't know the correct load addresses. A raw `.bin` file works too, but you must manually specify the base address. The ELF also contains debug symbols (`.symtab`) that let GDB map addresses to function names. See: How It Works — Inside the ELF File.
+The ELF file contains [[learning/notes/micro-context/can-bus-termination|not]] just machine code but also metadata telling the flash tool *where* to load each section in memory. The `.[[learning/notes/quick-context/how-source-code-is-stored|text]]` section goes to flash at `0x08000000`, the `.data` section's initial values also go to flash (to be copied to RAM at boot). Without this metadata, the tool wouldn't know the correct load addresses. A raw `.bin` file works too, but you [[learning/notes/quick-context/ros2-architecture|must]] manually specify the base address. The ELF also contains debug symbols (`.symtab`) that let GDB map addresses to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] names. See: How It Works — Inside the ELF File.
 </details>
 
-**Q3:** The Pupper has two STM32 MCUs (U1 and U5). Do they run the same firmware?
+**Q3:** The Pupper has [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] STM32 MCUs (U1 and U5). Do they run the same firmware?
 <details>
 <summary>Answer</summary>
-No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the BNO086 IMU, reads battery voltage, communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
+No — they run different firmware for different roles. U1 (Main MCU) runs firmware that reads the [[learning/notes/quick-context/pupper-bom-control-board|BNO086]] IMU, reads battery [[learning/notes/quick-context/voltage|voltage]], communicates with the Raspberry Pi, and sends audio. U5 (Motor MCU) runs the `SPIneV1` firmware that handles the 1 kHz motor control loop — receiving joint targets from U1 over SPI and commanding all 12 servos via 4 CAN buses. Each MCU is flashed independently. See: [[quick-context/pupper-brain]] and [[quick-context/pupper-bom-control-board]].
 </details>
 
 **Q4:** If firmware runs from flash memory, why does the STM32 also need SRAM?
 <details>
 <summary>Answer</summary>
-Code executes from flash, but runtime data needs RAM. The stack (function call frames, local variables), heap (dynamic allocations), `.data` section (initialized global variables copied from flash at boot), and `.bss` section (zero-initialized globals) all live in SRAM. Flash is non-volatile but slow to write and has limited erase cycles (~10,000) — you can't use it as working memory. The CPU reads instructions from flash at full speed (with wait states and cache), but reads/writes data from SRAM at zero wait states. See: How It Works — Linker Script: The Memory Map.
+Code executes from flash, but runtime data needs RAM. The stack (function [[learning/notes/quick-context/d-flip-flop|call]] frames, local variables), heap (dynamic allocations), `.data` section (initialized global variables copied from flash at boot), and `.bss` section ([[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]]-initialized globals) all live in SRAM. Flash is non-volatile but slow to write and has limited erase cycles (~10,000) — you can't use it as working memory. The CPU reads instructions from flash at full speed (with wait states and cache), but reads/writes data from SRAM at zero wait states. See: How It Works — Linker Script: The Memory Map.
 </details>
 
-**Q5:** A firmware update fails halfway — power was lost during the flash erase step. What happens when the chip powers back on, and how would you recover?
+**Q5:** A firmware update [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|fails]] halfway — power was lost during the flash erase step. What happens when the chip powers back on, and how would you recover?
 <details>
 <summary>Answer</summary>
 The CPU reads the reset vector from `0x08000000`, but that flash sector was erased and now contains `0xFFFFFFFF` (erased flash reads as all-ones). The CPU attempts to execute at address `0xFFFFFFFF`, which is invalid — the chip immediately hard-faults and hangs. However, it is NOT permanently bricked: the SWD debug interface is implemented in hardware, not firmware, so the ST-Link can still connect, erase the corrupted flash, and write fresh firmware. This is why SWD is the recovery mechanism of last resort — it works regardless of what's in flash. Production devices avoid this with dual-bank flash or bootloaders that verify firmware integrity before jumping to application code. See: [[micro-context/swd-serial-wire-debug]] and The Key Tension — The Update Problem.

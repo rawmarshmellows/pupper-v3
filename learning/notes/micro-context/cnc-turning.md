@@ -4,16 +4,18 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]]
+
 # CNC Turning
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
+> **See also:** [[quick-context/cnc-machining]] ([[learning/notes/quick-context/singular-value-decomposition|full]] treatment) | [[micro-context/cnc-milling]]
 
-**Definition:** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting tool removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally symmetric parts like shafts, bolts, and bushings.
+**[[learning/notes/quick-context/capacitance|Definition]]:** A subtractive manufacturing process where a computer-controlled lathe spins [[learning/notes/quick-context/capacitance|the]] workpiece while a stationary cutting [[learning/notes/quick-context/epson-rc-plus-programming|tool]] removes material. The inverse of milling—here the part rotates, [[learning/notes/micro-context/can-bus-termination|not]] the tool. Used to create cylindrical or rotationally [[learning/notes/quick-context/singular-value-decomposition|symmetric]] parts like shafts, bolts, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] bushings.
 
 ## How It Works
 
-- The workpiece is clamped in a rotating chuck that spins it at high speed (hundreds to thousands of RPM).
-- A stationary cutting tool is fed into the spinning workpiece, shaving off material in a continuous spiral.
+- The workpiece is clamped in a rotating chuck that spins it at high [[learning/notes/quick-context/embedded-communication-protocols|speed]] (hundreds to thousands of RPM).
+- A stationary cutting tool is fed into the spinning workpiece, shaving [[learning/notes/quick-context/bjt-specifications|off]] material in a continuous spiral.
 - The CNC controller moves the tool along and into the workpiece axis to produce the programmed cylindrical profile.
 
 ```

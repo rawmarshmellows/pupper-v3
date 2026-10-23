@@ -3,23 +3,23 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/electric-current]]
 
-> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
+> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of [[learning/notes/quick-context/anions-and-oxidation|electrons]]—[[learning/notes/quick-context/differential-pair|whether]] through chemical reactions (batteries), changing magnetic [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]] (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field [[learning/notes/micro-context/push-pull-vs-open-drain|and]] electrons are forced to move.
 
 # How Electricity is Created
 
 ## The Core Problem: Energy Conversion
 
-Electricity doesn't exist freely in nature in a useful form. Lightning is too brief and uncontrollable. Static electricity dissipates instantly. To power civilization, we must *continuously convert* other energy forms into the sustained, controllable flow of electrons through circuits.
+Electricity doesn't exist freely in nature in a useful [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]]. Lightning is too brief and uncontrollable. Static electricity dissipates instantly. To [[learning/notes/quick-context/d-flip-flop|power]] civilization, we [[learning/notes/quick-context/ros2-architecture|must]] *continuously convert* other energy forms into the sustained, controllable flow of electrons through circuits.
 
 There are fundamentally three ways to force electrons to move:
 
-1. **Chemical reactions** — Batteries exploit spontaneous redox reactions where certain atoms "want" to give up electrons while others "want" to accept them. See [[quick-context/galvanic-cells-batteries]].
+1. **Chemical reactions** — Batteries exploit spontaneous [[learning/notes/quick-context/anions-and-oxidation|redox reactions]] where certain atoms "want" to give up electrons while others "want" to accept them. See [[quick-context/galvanic-cells-batteries]].
 
 2. **[[quick-context/electromagnetism|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
 
-3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
+3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor [[learning/notes/quick-context/cnc-machining|materials]], creating [[learning/notes/quick-context/parallel-vs-series-voltage|current]]. Solar panels work this way.
 
 Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
 
@@ -27,11 +27,11 @@ Every power plant, battery, and solar panel is fundamentally an energy converter
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
-| **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
-| **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
+| **Electromagnetic Induction** | A changing magnetic field through a conductor induces [[learning/notes/quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic [[learning/notes/quick-context/soldering|flux]] change). This is how generators work. |
+| **Generator** | A machine that converts mechanical [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|rotation]] into electricity [[learning/notes/quick-context/metal-interconnect-layers|via]] electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
+| **Photovoltaic Effect** | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] photons strike certain semiconductors, they knock electrons loose, creating current. [[learning/notes/quick-context/transistor|Silicon]] solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
-| **Primary Energy Source** | The original energy form before conversion: coal, natural gas, nuclear fuel, sunlight, wind, falling water. Each gets converted through various steps into electricity. |
+| **Primary Energy [[learning/notes/quick-context/differential-pair|Source]]** | The original energy form before conversion: coal, natural gas, nuclear fuel, sunlight, wind, falling water. Each gets converted through various steps into electricity. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -152,7 +152,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
 ## Faraday's Law Unifies Everything
 
-Generators and [[quick-context/inductor|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
+Generators and [[quick-context/inductor|inductors]] are governed by the **exact same equation**—[[learning/notes/quick-context/lenzs-law|Faraday's Law]]. The difference is [[learning/notes/quick-context/comparator-specification|only]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] causes the magnetic flux to change:
 
 ```
 FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
@@ -291,12 +291,12 @@ THE LENZ'S LAW INSIGHT:
     • Energy is stored in the magnetic field, not created or destroyed
 ```
 
-**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a passive component. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An inductor creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
+**[[learning/notes/quick-context/epson-rc-plus-programming|The one thing most outsiders get wrong]] about generators vs inductors:** They seem like completely different devices—[[learning/notes/quick-context/ram-addressing-decoder|one]] makes electricity, the other is a [[learning/notes/quick-context/fundamental-electronic-parts-index|passive component]]. But they're [[learning/notes/quick-context/bjt-specifications|both]] coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An [[learning/notes/quick-context/fundamental-electronic-parts-index|inductor]] creates its *own* flux from current, so changing the current changes the flux, inducing [[learning/notes/quick-context/inductor|back-EMF]]. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] transformers work (mutual inductance between [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 ## Dispatchability vs. Sustainability
 
@@ -337,7 +337,7 @@ Every electricity source trades off between three goals:
                                        BUT high emissions
 ```
 
-**The storage problem:** Solar produces peak power at noon; demand peaks in evening. Wind is unpredictable. Without massive energy storage (batteries, pumped hydro, hydrogen), renewables can't provide baseload power. This is why the grid still needs "dispatchable" sources (gas, nuclear, hydro) that can ramp up on demand.
+**The [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]] problem:** Solar produces peak power at noon; demand peaks in evening. Wind is unpredictable. Without massive energy storage (batteries, pumped hydro, hydrogen), renewables [[learning/notes/quick-context/embedded-communication-protocols|can]]'t provide baseload power. This is why the grid still needs "dispatchable" sources (gas, nuclear, hydro) that can ramp up on demand.
 
 | Source | Dispatchable? | Capacity Factor | CO₂ (g/kWh) |
 |--------|---------------|-----------------|-------------|
@@ -464,7 +464,7 @@ OVERALL EFFICIENCY:
 | Wind | Kinetic → Mechanical → Electrical | 35-45% (of wind energy) |
 | Solar PV | Light → Electrical (direct!) | 20-25% |
 
-Solar PV is unique: no moving parts, no intermediate conversions. Light directly creates electron flow. This simplicity is why solar costs have dropped 99% since 1976.
+Solar PV is unique: no moving parts, no intermediate conversions. Light directly creates [[learning/notes/quick-context/electrodes|electron flow]]. This [[learning/notes/quick-context/embedded-communication-protocols|simplicity]] is why solar costs have dropped 99% since 1976.
 
 </details>
 
@@ -475,35 +475,35 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 
 - **[[quick-context/galvanic-cells-batteries]]** — The chemistry of how batteries convert chemical potential energy to electrical energy. Batteries are the portable alternative to grid generation.
 
-- **[[quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
+- **[[quick-context/electrolysis]]** — The reverse of batteries and a potential storage [[learning/notes/quick-context/silymarin|mechanism]]. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
 
 - **[[quick-context/power-watts-joules]]** — Power (watts) is the rate of energy transfer. A 1 GW power plant generates 1 billion joules per second. Understanding power helps connect generation capacity to energy consumption.
 
-- **[[quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
+- **[[quick-context/inductor]]** — Inductors are the key [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
 
-- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
+- **[[quick-context/capacitor]]** — [[learning/notes/quick-context/voltage|Capacitors]] store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
 
 - **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
 
-- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
+- **[[quick-context/maxwell-equations]]** — The [[learning/notes/quick-context/ram-addressing-decoder|four]] equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and [[learning/notes/quick-context/coil-magnetic-field|Ampère's law]] (which explains electromagnets).
 
-- **[[quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
+- **[[quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field [[learning/notes/quick-context/cnc-machining|strength]]. The B = μ₀nI formula governs electromagnet and generator design.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** A wind turbine and a coal plant both use generators. What's fundamentally different about how they spin the generator?
 <details>
 <summary>Answer</summary>
-**The energy source and conversion chain.** Coal burns to heat water into steam, which expands through a steam turbine connected to the generator (chemical → thermal → mechanical → electrical). Wind directly pushes turbine blades connected to the generator (kinetic → mechanical → electrical). The generator itself works identically in both cases—electromagnetic induction converts rotation to electricity. The difference is what provides the rotation.
+**The energy source and conversion chain.** Coal burns to heat water into steam, which expands through a steam turbine connected to the generator (chemical → thermal → mechanical → electrical). Wind directly [[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]] turbine blades connected to the generator (kinetic → mechanical → electrical). The generator itself works identically in both cases—electromagnetic induction converts rotation to electricity. The difference is what provides the rotation.
 </details>
 
 **Q2:** Solar panels produce DC electricity, but the grid runs on AC. Why do we use AC for the grid instead of DC?
 <details>
 <summary>Answer</summary>
-**AC can be easily transformed to different voltages.** Transformers only work with AC (they rely on changing magnetic fields). To minimize transmission losses (P = I²R), we step voltage up to hundreds of thousands of volts for long-distance transmission, then step it down for distribution and household use. With DC, voltage conversion requires expensive power electronics. Historically, AC won because transformers were cheap and efficient. Modern HVDC (high-voltage DC) is now used for very long distances and undersea cables, but the grid remains predominantly AC.
+**AC can be easily transformed to different voltages.** Transformers only work with AC (they rely on changing magnetic fields). To minimize transmission losses (P = I²R), we step voltage up to hundreds of thousands of volts for long-[[learning/notes/quick-context/embedded-communication-protocols|distance]] transmission, then step it down for distribution and household use. With DC, voltage conversion requires expensive power electronics. Historically, AC won because transformers were cheap and efficient. Modern HVDC (high-voltage DC) is now used for very long distances and undersea cables, but the grid remains predominantly AC.
 </details>
 
 **Q3:** A nuclear plant and a coal plant have similar overall efficiencies (33-37%), yet nuclear produces almost no CO₂. Why the similar efficiency if the fuel is so different?
@@ -515,13 +515,13 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q4:** Why can't we simply store solar electricity in giant capacitors instead of batteries?
 <details>
 <summary>Answer</summary>
-**Capacitors have far lower energy density than batteries.** Energy stored in a capacitor is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
+**Capacitors have far lower energy [[learning/notes/quick-context/bond-pad|density]] than batteries.** Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-[[learning/notes/quick-context/anions-and-oxidation|ion]] batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid [[learning/notes/quick-context/cations-and-reduction|charge]]/discharge (high power density) but can't [[learning/notes/quick-context/d-flip-flop|hold]] much [[learning/notes/quick-context/similarity-transform|total]] energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
 </details>
 
 **Q5:** Hydroelectric dams achieve 85-90% efficiency while coal plants achieve only 33-37%. What's the fundamental reason for this difference?
 <details>
 <summary>Answer</summary>
-**Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-scale generation technology.
+**Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-[[learning/notes/quick-context/absolute-orientation|scale]] generation technology.
 </details>
 
 **Q6:** A generator and an inductor both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
@@ -530,7 +530,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **The source of the changing magnetic flux is different.** In a generator, mechanical rotation moves the coil through an external magnetic field—the flux changes because the coil's orientation changes. In an inductor, the coil creates its own magnetic field from the current flowing through it—the flux changes because the current changes (Φ = L × I, so dΦ/dt = L × dI/dt). Same equation (EMF = -N × dΦ/dt), but generator converts mechanical motion to electricity, while inductor opposes changes in current by generating back-EMF. See: Generators and Inductors section.
 </details>
 
-**Q7:** Transformers only work with AC, not DC. Using Faraday's Law, explain why.
+**Q7:** Transformers only work with AC, [[learning/notes/micro-context/can-bus-termination|not]] DC. Using Faraday's Law, explain why.
 <details>
 <summary>Answer</summary>
 **DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces voltage in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at steady state, dI/dt = 0, so V = L × dI/dt = 0.

@@ -3,28 +3,28 @@ topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/capacitance]]
 
-> **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
+> **TL;DR:** TEEP extends [[learning/notes/quick-context/isa-95-levels|OEE]] by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets [[learning/notes/micro-context/push-pull-vs-open-drain|and]] exposing capacity hidden in unscheduled shifts.
 
 # TEEP (Total Effective Equipment Performance)
 
 ## The Core Problem: OEE Hides Unused Capacity
 
-TEEP exists because OEE lies to you by omission. OEE measures how well you use equipment *during scheduled production time*, but says nothing about the other 8,760 hours in a year. A line running one shift with 85% OEE looks great on paper, but you're only using 28% of your theoretical capacity.
+TEEP exists because OEE lies to you by omission. OEE measures how well you use equipment *during scheduled production time*, but says [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]] about the other 8,760 hours in a year. A line running [[learning/notes/quick-context/ram-addressing-decoder|one]] shift with 85% OEE looks great on paper, but you're [[learning/notes/quick-context/comparator-specification|only]] using 28% of [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] theoretical capacity.
 
-TEEP exposes this by measuring against *all calendar time*—24 hours a day, 365 days a year. The formula is simple: TEEP = OEE x Utilization, where Utilization is scheduled time divided by total calendar time.
+TEEP exposes this by measuring against *all calendar time*—24 hours a day, 365 days a year. The formula is simple: TEEP = OEE x Utilization, where Utilization is scheduled time divided by [[learning/notes/quick-context/similarity-transform|total]] calendar time.
 
-If this metric doesn't exist, you get capital planning disasters: companies buy new equipment when they could run a second shift, or they benchmark facilities without accounting for different scheduling practices. A plant running two shifts at 70% OEE might actually be outperforming one running a single shift at 90% OEE, and without TEEP you'd never see it.
+If this metric doesn't exist, you get capital planning disasters: companies buy new equipment [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] they could run a second shift, or they benchmark facilities without accounting for different scheduling practices. A plant running [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] shifts at 70% OEE might actually be outperforming one running a single shift at 90% OEE, and without TEEP you'd never see it.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Utilization** | The percentage of calendar time that's actually scheduled for production—the multiplier that distinguishes TEEP from OEE |
-| **Loading** | What the industry calls scheduled production time as a fraction of available time, sometimes used interchangeably with utilization |
+| **Loading** | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] the industry calls scheduled production time as a fraction of available time, sometimes used interchangeably with utilization |
 | **Calendar Time** | The 8,760 hours per year (or 168 hours per week) that serves as TEEP's unforgiving denominator |
-| **Hidden Capacity** | The gap between current scheduling and theoretical 24/7 operation, which TEEP quantifies in dollar terms |
+| **Hidden Capacity** | The gap between [[learning/notes/quick-context/parallel-vs-series-voltage|current]] scheduling and theoretical 24/7 operation, which TEEP quantifies in dollar terms |
 | **Asset Intensity** | How much output you extract per unit of capital invested—what TEEP ultimately measures at the strategic level |
 
 <details>
@@ -62,13 +62,13 @@ Plant B produces 2.3x more despite "worse" OEE.
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The central tension is **demonstrated capacity vs. theoretical capacity** and what counts as "avoidable" downtime. Purists argue TEEP should be the primary metric because it reveals all hidden capacity—every holiday, every weekend, every maintenance window is time you *chose* not to produce.
+The central tension is **demonstrated capacity vs. theoretical capacity** and what counts as "avoidable" downtime. Purists argue TEEP should be the primary metric because it reveals all hidden capacity—every holiday, every weekend, every maintenance window is time you *chose* [[learning/notes/micro-context/can-bus-termination|not]] to produce.
 
-Pragmatists counter that not all calendar time is actually available: you can't run during legally mandated shutdowns, market demand might not justify additional shifts, and some processes require cooldown periods. The debate gets contentious around planned downtime: if you schedule a maintenance day, does that represent lost capacity (TEEP says yes) or responsible asset management (operations says yes)?
+Pragmatists counter that not all calendar time is actually available: you [[learning/notes/quick-context/embedded-communication-protocols|can]]'t run during legally mandated shutdowns, market demand might not justify additional shifts, and some processes require cooldown periods. The debate gets contentious around planned downtime: if you schedule a maintenance day, does that represent lost capacity (TEEP says yes) or responsible asset management (operations says yes)?
 
-Organizations fight about whether TEEP is a strategic planning tool showing where to invest, or a stick that makes every site look bad regardless of business context.
+Organizations fight about [[learning/notes/quick-context/differential-pair|whether]] TEEP is a strategic planning [[learning/notes/quick-context/epson-rc-plus-programming|tool]] showing where to invest, or a stick that makes every site look bad regardless of business context.
 
 </details>
 
@@ -89,38 +89,38 @@ A medical device manufacturer needs 30% more capacity. Two options:
 - TEEP: 80% x 23.8% = 19%
 
 **TEEP reveals the answer:**
-At 19% TEEP, the plant uses less than one-fifth of its theoretical capacity. Adding a second shift on both lines would:
+At 19% TEEP, the plant uses less than one-fifth of its theoretical capacity. Adding a second shift on [[learning/notes/quick-context/bjt-specifications|both]] lines would:
 - Double scheduled time: Utilization becomes 47.6%
 - Even with slightly lower second-shift OEE (75%), TEEP = 75% x 47.6% = 35.7%
 - Nearly doubles capacity with minimal capital investment
 
 The new line isn't needed—the hidden capacity was always there. Without TEEP, leadership would have spent $2M solving a problem that required only hiring and training.
 
-**The one thing most outsiders get wrong about this is...** thinking low TEEP is always bad. A single-shift operation with 20% TEEP has 80% of its capacity available for growth without capital investment—that's a strategic reserve, not a failure. TEEP becomes a problem only when you're buying new equipment while existing assets sit idle, or when you're benchmarking plants without accounting for scheduling differences.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking low TEEP is always bad. A single-shift operation with 20% TEEP has 80% of its capacity available for [[learning/notes/quick-context/existing-account-management-playbook|growth]] without capital investment—that's a strategic reserve, not a failure. TEEP becomes a problem only when you're buying new equipment while existing assets sit idle, or when you're benchmarking plants without accounting for scheduling differences.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - The foundation metric that TEEP extends; must understand OEE's three factors before TEEP makes sense
-- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions (Level 4) meet production execution (Level 3)
+- **[[quick-context/oee-overall-equipment-effectiveness]]** - The foundation metric that TEEP extends; [[learning/notes/quick-context/ros2-architecture|must]] understand OEE's three factors before TEEP makes sense
+- **[[quick-context/isa-95-levels]]** - Where capacity planning decisions ([[learning/notes/quick-context/isa-95-levels|Level 4]]) meet production execution ([[learning/notes/quick-context/isa-95-levels|Level 3]])
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A plant manager boasts 92% OEE. Why might this be misleading without knowing the TEEP?
+**Q1:** A plant manager boasts 92% OEE. [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] might this be misleading without knowing the TEEP?
 <details>
 <summary>Answer</summary>
-92% OEE only measures performance during scheduled production. If the plant runs one shift (24% utilization), TEEP is only 22%—meaning 78% of the capital asset sits idle. A competitor with 75% OEE running three shifts would have TEEP of 53% and produce more than twice as much from equivalent equipment.
+92% OEE only measures [[learning/notes/quick-context/d-flip-flop|performance]] during scheduled production. If the plant runs one shift (24% utilization), TEEP is only 22%—meaning 78% of the capital asset sits idle. A competitor with 75% OEE running three shifts would have TEEP of 53% and produce more than twice as much from equivalent equipment.
 </details>
 
 **Q2:** Why do some practitioners argue TEEP is unfair to operations teams?
 <details>
 <summary>Answer</summary>
-Operations teams control OEE—how well they execute during scheduled time. They don't control Utilization—that's a business decision about how many shifts to run, driven by demand, labor availability, and strategy. Judging operations on TEEP penalizes them for decisions made by leadership. TEEP is a capital efficiency metric, not an operational performance metric.
+Operations teams control OEE—how well they execute during scheduled time. They don't control Utilization—that's a business decision about how many shifts to run, driven by demand, labor [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|availability]], and strategy. Judging operations on TEEP penalizes them for decisions made by leadership. TEEP is a capital efficiency metric, not an operational performance metric.
 </details>
 
 **Q3:** When would a low TEEP with high OEE be the *correct* business strategy?
@@ -132,7 +132,7 @@ When demand doesn't justify more production: niche products with limited markets
 **Q4:** How does TEEP change capital planning conversations compared to using OEE alone?
 <details>
 <summary>Answer</summary>
-OEE shows how well you use scheduled time; TEEP shows how much theoretical capacity remains untapped. When a plant requests new equipment citing "high OEE," TEEP asks: "But are you using the equipment you have?" A plant at 85% OEE running one shift (TEEP ~20%) has four times more capacity available through scheduling changes than through operational improvements. TEEP forces the question: add shifts or add equipment?
+OEE shows how well you use scheduled time; TEEP shows how much theoretical capacity remains untapped. When a plant requests new equipment citing "high OEE," TEEP asks: "But are you using the equipment you have?" A plant at 85% OEE running one shift (TEEP ~20%) has [[learning/notes/quick-context/ram-addressing-decoder|four]] times more capacity available through scheduling changes than through operational improvements. TEEP forces the question: add shifts or add equipment?
 </details>
 
 **Q5:** What's the difference between "Utilization" and "Loading" in TEEP calculations?

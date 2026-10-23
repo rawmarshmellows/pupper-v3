@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -11,18 +11,18 @@ created: 2026-01-16
 
 ## The Core Problem: Bridging Human Intent to Motor Commands
 
-Robotic arms are fundamentally dumb servo motors arranged in a kinematic chain. Without layered abstractions, every programmer would need to solve inverse kinematics (translating "move the gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion timing at millisecond precision, and coordinate with sensors and other machines.
+Robotic arms are fundamentally dumb servo motors arranged in a [[learning/notes/quick-context/pupper-lab2-forward-kinematics|kinematic chain]]. Without layered abstractions, every programmer would need to solve [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] (translating "move [[learning/notes/quick-context/capacitance|the]] gripper here" into "rotate joint 3 by 47.2 degrees"), handle trajectory planning to avoid collisions, manage real-time motion [[learning/notes/quick-context/comparator-specification|timing]] at millisecond precision, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] coordinate with sensors and other machines.
 
-The abstraction layers exist because manufacturing needs both determinism (a welding robot must follow the exact same path every cycle) and flexibility (reprogramming for a new product shouldn't require a PhD in control theory). Without these layers, you'd either have unmaintainable low-level code or be locked into vendor-specific high-level tools with no escape hatch.
+The abstraction layers exist because manufacturing needs [[learning/notes/quick-context/bjt-specifications|both]] determinism (a welding robot [[learning/notes/quick-context/ros2-architecture|must]] follow the exact same path every cycle) and flexibility (reprogramming for a new product shouldn't require a PhD in control theory). Without these layers, you'd either have unmaintainable low-level code or be locked into vendor-specific high-level tools with no escape hatch.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Inverse Kinematics (IK)** | Math that converts a desired end-effector pose (position + orientation) into the joint angles needed to achieve it—the fundamental translation between "where" and "how." |
+| **Inverse Kinematics (IK)** | Math that converts a desired [[learning/notes/quick-context/pupper-lab2-forward-kinematics|end-effector]] pose (position + orientation) into the joint angles needed to achieve it—the fundamental [[learning/notes/quick-context/pupper-lab2-forward-kinematics|translation]] between "where" and "how." |
 | **Teach Pendant** | The handheld device operators use to manually jog the robot and record waypoints; the "no-code" interface to industrial arms. |
 | **Motion Primitive** | A reusable building block (linear move, circular arc, spline) that the motion planner stitches together into complete trajectories. |
-| **Real-Time Bus** | The deterministic communication layer (EtherCAT, PROFINET IRT, Sercos) that guarantees joint commands arrive within microseconds—lose this timing and the arm stutters or faults. |
+| **Real-Time [[learning/notes/quick-context/data-bus-and-arbitration|Bus]]** | The deterministic communication [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] ([[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|EtherCAT]], PROFINET IRT, Sercos) that guarantees joint commands arrive within microseconds—lose this timing and the arm stutters or faults. |
 | **MoveGroup** | In ROS/MoveIt, the logical grouping of joints that move together (e.g., "arm" vs. "gripper"), the unit of motion planning. |
 
 <details>
@@ -31,18 +31,18 @@ The abstraction layers exist because manufacturing needs both determinism (a wel
 The API stack for robotic arms typically has three main levels:
 
 **Level 1: Vendor High-Level Scripts**
-- Languages like KUKA KRL, Fanuc TP, ABB RAPID
+- [[learning/notes/quick-context/firmware|Languages]] like KUKA KRL, Fanuc TP, ABB RAPID
 - Teach pendant programmable
-- Motion primitives like PTP (point-to-point), LIN (linear), CIRC (circular)
+- Motion primitives like PTP ([[learning/notes/quick-context/epson-rc-plus-programming|point]]-to-point), LIN (linear), CIRC (circular)
 - Vendor handles IK, trajectory generation, and safety
-- Limited customization but fast deployment
+- Limited customization but [[learning/notes/quick-context/comparator|fast]] deployment
 
 **Level 2: Middleware Abstraction (ROS/MoveIt)**
 - Language-agnostic (Python, C++)
 - Automatic collision checking and motion planning
 - IK solved by configurable solvers
 - Works across robot brands with driver plugins
-- Higher latency, less deterministic than Level 1
+- Higher [[learning/notes/quick-context/embedded-communication-protocols|latency]], less deterministic than Level 1
 
 **Level 3: Direct Servo Control**
 - Raw joint position/velocity/torque commands
@@ -56,22 +56,22 @@ Most production systems use multiple levels: high-level for task sequencing, dro
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 The central tradeoff is **abstraction vs. control latency**.
 
 High-level APIs (like ROS MoveIt or vendor teach pendants) let you say "pick up the widget" but introduce planning latency and hide timing guarantees. Low-level APIs give you direct joint control at 1kHz+ but require you to handle everything—singularities, velocity limits, emergency stops.
 
-Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-speed pick-and-place.
+Practitioners argue endlessly about where to draw the line: integrators want high-level abstractions for faster deployment, while controls engineers want deterministic real-time access for precision applications like surgical robots or high-[[learning/notes/quick-context/embedded-communication-protocols|speed]] pick-and-place.
 
-The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant source of pain.
+The rise of "real-time capable" middleware (EtherCAT, ROS2 with DDS) is an attempt to have both, but the impedance mismatch between IT-style APIs and OT-style timing requirements remains a constant [[learning/notes/quick-context/differential-pair|source]] of pain.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Here's what the same "pick and place" operation looks like at different abstraction levels:
+Here's [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] the same "pick and place" operation looks like at different abstraction levels:
 
 **Level 1: Vendor High-Level Script (KUKA KRL)**
 ```krl
@@ -109,7 +109,7 @@ arm.set_pose_target(place_pose)
 arm.go(wait=True)
 ```
 
-**Level 3: Direct Joint Control (EtherCAT via SOEM)**
+**Level 3: Direct Joint Control (EtherCAT [[learning/notes/quick-context/metal-interconnect-layers|via]] SOEM)**
 ```c
 // Real-time loop running at 1kHz - you own everything
 void realtime_loop() {
@@ -130,7 +130,7 @@ void realtime_loop() {
 }
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming these API levels are cleanly separated like a web stack. In practice, they're deeply intertwined—a "high-level" vendor script might need inline low-level overrides for timing-critical sections, and "low-level" EtherCAT applications still rely on vendor-specific motion kernels running on the drive itself. The real skill isn't picking a level, it's knowing when to punch through the abstraction.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** assuming these API levels are cleanly separated like a web stack. In practice, they're deeply intertwined—a "high-level" vendor script might need inline low-level overrides for timing-critical sections, and "low-level" EtherCAT applications still rely on vendor-specific motion kernels running on the drive itself. The real skill isn't picking a level, it's knowing [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] to punch through the abstraction.
 
 </details>
 
@@ -140,12 +140,12 @@ void realtime_loop() {
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
 - **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
-- **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
+- **[[quick-context/preempt-rt]]** - Linux real-time [[learning/notes/quick-context/ros2-architecture|extensions]] for running Level 3 control on commodity hardware
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** What problem does inverse kinematics solve?
 <details>
@@ -153,7 +153,7 @@ void realtime_loop() {
 Inverse kinematics converts a desired end-effector pose (position and orientation in Cartesian space) into the joint angles required to achieve that pose. It answers "what joint values put the gripper at this location?"
 </details>
 
-**Q2:** Why would you choose Level 3 (direct servo control) over Level 1 (vendor scripts)?
+**Q2:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] would you choose Level 3 (direct servo control) over Level 1 (vendor scripts)?
 <details>
 <summary>Answer</summary>
 Level 3 gives maximum control over timing and behavior, essential for applications requiring custom motion profiles, sub-millisecond coordination, or integration with non-standard sensors. Examples include surgical robots, high-speed pick-and-place, or research platforms where you need to implement novel control algorithms.
@@ -165,16 +165,16 @@ Level 3 gives maximum control over timing and behavior, essential for applicatio
 A real-time bus (EtherCAT, PROFINET IRT, Sercos) is a deterministic communication layer that guarantees joint commands arrive within microseconds. Without this timing guarantee, the arm would stutter, overshoot, or fault because commands arrive too late for the servo control loop.
 </details>
 
-**Q4:** Why might a production system use multiple API levels simultaneously?
+**Q4:** Why might a production system use multiple API levels [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]]?
 <details>
 <summary>Answer</summary>
-High-level APIs handle task sequencing and general motion efficiently, while low-level access is needed for timing-critical operations or custom motion profiles. For example, a cell might use ROS for task planning but drop to direct servo control for a precision assembly step.
+High-level APIs handle task sequencing and [[learning/notes/quick-context/singular-value-decomposition|general]] motion efficiently, while low-level access is needed for timing-critical operations or custom motion profiles. For example, a cell might use ROS for task planning but drop to direct servo control for a precision assembly step.
 </details>
 
 **Q5:** What is the main tradeoff when choosing higher abstraction levels?
 <details>
 <summary>Answer</summary>
-Higher abstraction levels are easier to program and faster to deploy, but they introduce planning latency and hide timing guarantees. You lose fine-grained control over exactly when and how motion occurs, which matters for precision or high-speed applications.
+Higher abstraction levels are easier to program and faster to deploy, but they introduce planning latency and hide timing guarantees. You lose [[learning/notes/micro-context/thread-pitch-screws|fine]]-grained control over exactly when and how motion occurs, which matters for precision or high-speed applications.
 </details>
 
 </details>

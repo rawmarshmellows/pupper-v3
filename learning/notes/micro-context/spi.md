@@ -4,18 +4,20 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
+
 # SPI
 
 > **See also:** [[quick-context/pupper-bom-control-board]] | [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
 
-**Definition:** Serial Peripheral Interface — a 4-wire full-duplex serial protocol where a master clocks data in and out of peripherals simultaneously. Unlike [[micro-context/i2c|I2C]] which uses addresses on a shared bus, SPI selects each device with a dedicated chip-select (CS) line. Runs at 1-50+ MHz — much faster than I2C, but costs an extra pin per device. In your [[quick-context/pupper-brain|Pupper]], U1 sends joint targets to U5 over SPI.
+**[[learning/notes/quick-context/capacitance|Definition]]:** [[learning/notes/quick-context/data-bus-and-arbitration|Serial]] Peripheral Interface — a 4-wire [[learning/notes/quick-context/singular-value-decomposition|full]]-duplex [[learning/notes/quick-context/data-bus-and-arbitration|serial protocol]] where a [[learning/notes/quick-context/data-bus-and-arbitration|master]] clocks data in [[learning/notes/micro-context/push-pull-vs-open-drain|and]] [[learning/notes/micro-context/push-pull-vs-open-drain|out]] of peripherals [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]]. Unlike [[micro-context/i2c|I2C]] which uses addresses on a shared [[learning/notes/quick-context/data-bus-and-arbitration|bus]], [[learning/notes/quick-context/embedded-communication-protocols|SPI]] selects each device with a dedicated chip-select (CS) line. Runs at 1-50+ MHz — much faster than [[learning/notes/micro-context/i2c|I2C]], but costs an extra pin per device. In [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] [[quick-context/pupper-brain|Pupper]], U1 sends joint targets to U5 over SPI.
 
 ## How It Works
 
-- The master asserts chip-select (CS) low to activate the target peripheral, then drives the clock (SCLK).
-- On each clock edge, the master shifts one bit out on MOSI while simultaneously reading one bit in from MISO.
+- [[learning/notes/quick-context/capacitance|The]] master asserts chip-select (CS) low to activate the target peripheral, then drives the [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] (SCLK).
+- On each [[learning/notes/micro-context/clock-edges|clock edge]], the master shifts [[learning/notes/quick-context/ram-addressing-decoder|one]] bit out on MOSI while simultaneously reading one bit in from MISO.
 - After all bits are clocked, the master de-asserts CS to end the transaction.
-- Because data flows in both directions simultaneously, SPI is full-duplex — reads and writes happen in the same clock cycle.
+- Because data flows in [[learning/notes/quick-context/bjt-specifications|both]] directions simultaneously, SPI is full-duplex — reads and writes happen in the same clock cycle.
 
 ```
   Master (STM32)                Peripheral
@@ -37,4 +39,4 @@ updated: 2026-03-27
                   (simultaneous both directions)
 ```
 
-**Key insight:** SPI is full-duplex — the master and peripheral exchange one bit on every clock cycle, so reads and writes happen at the same time. This makes it faster but less pin-efficient than I2C, which is the core tradeoff between the two most common embedded buses.
+**Key insight:** SPI is full-duplex — the master and peripheral exchange one bit on every clock cycle, so reads and writes happen at the same time. This makes it faster but less pin-efficient than I2C, which is the core tradeoff between the [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] most common embedded buses.

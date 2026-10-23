@@ -5,23 +5,23 @@ created: 2026-04-04
 
 # Covariance Matrix
 
-> **Related:** [[quick-context/helmert-transform|Helmert Transform]] | [[quick-context/absolute-orientation|Absolute Orientation]] | [[quick-context/singular-value-decomposition|Singular Value Decomposition]] | [[quick-context/similarity-transform|Similarity Transform]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/singular-value-decomposition]] | [[learning/notes/quick-context/whitespace-mapping]]
 
-> **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal holds variances and its off-diagonals hold covariances. It's the fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis distance, and point cloud alignment.
+> **TL;DR:** A covariance matrix captures how pairs of variables move together -- its diagonal [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] variances [[learning/notes/micro-context/push-pull-vs-open-drain|and]] its [[learning/notes/quick-context/bjt-specifications|off]]-diagonals [[learning/notes/quick-context/d-flip-flop|hold]] covariances. It's [[learning/notes/quick-context/capacitance|the]] fundamental object for understanding multivariate spread, correlation, and the basis for PCA, Mahalanobis [[learning/notes/quick-context/embedded-communication-protocols|distance]], and [[learning/notes/quick-context/epson-rc-plus-programming|point]] cloud alignment.
 
 ## The Core Problem
 
-A single variable has variance -- one number that describes how spread out it is. But when you have two or more variables, variance alone is blind to their *relationships*. Two sensors might drift together, three GPS coordinates might be correlated through satellite geometry, or twelve point-cloud dimensions might cluster along a hidden axis. The covariance matrix is the minimal structure that captures all pairwise linear relationships in multivariate data. Without it, you cannot perform principal component analysis, compute Mahalanobis distance, estimate Kalman filter uncertainty, or solve the [[quick-context/absolute-orientation|absolute orientation]] problem.
+A single variable has variance -- [[learning/notes/quick-context/ram-addressing-decoder|one]] number that describes how spread [[learning/notes/micro-context/push-pull-vs-open-drain|out]] it is. But [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you have [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] or more variables, variance alone is blind to their *relationships*. Two sensors might drift together, three GPS coordinates might be correlated through satellite geometry, or twelve point-cloud dimensions might cluster along a hidden axis. The covariance matrix is the minimal structure that captures all pairwise linear relationships in multivariate data. Without it, you cannot perform principal component analysis, compute Mahalanobis distance, estimate Kalman filter uncertainty, or solve the [[quick-context/absolute-orientation|absolute orientation]] problem.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Variance** | The expected squared deviation of a single variable from its mean: $\sigma^2 = E[(X - \mu)^2]$ -- the diagonal entries of a covariance matrix |
-| **Covariance** | The expected product of deviations of two variables from their means: $\text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]$ -- the off-diagonal entries |
-| **Positive semi-definite** | A matrix property guaranteeing $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all vectors $\mathbf{v}$ -- every covariance matrix must satisfy this because variance can never be negative |
-| **Cross-covariance** | A covariance matrix between *two different* vectors $\mathbf{x}$ and $\mathbf{y}$, written $H = E[(\mathbf{x} - \bar{\mathbf{x}})(\mathbf{y} - \bar{\mathbf{y}})^T]$ -- not necessarily square or symmetric, and central to the [[quick-context/helmert-transform|Helmert transform]] |
-| **Correlation matrix** | The covariance matrix normalized so every diagonal entry is 1: $R_{ij} = \Sigma_{ij} / (\sigma_i \sigma_j)$ -- strips out magnitude, leaving only the strength and direction of linear relationships |
+| **Covariance** | The expected product of deviations of two variables from their means: $\[[learning/notes/quick-context/how-source-code-is-stored|text]]{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]$ -- the off-diagonal entries |
+| **Positive semi-definite** | A matrix property guaranteeing $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all vectors $\mathbf{v}$ -- every covariance matrix [[learning/notes/quick-context/ros2-architecture|must]] satisfy this because variance [[learning/notes/quick-context/embedded-communication-protocols|can]] never be negative |
+| **Cross-covariance** | A covariance matrix between *two different* vectors $\mathbf{x}$ and $\mathbf{y}$, written $H = E[(\mathbf{x} - \bar{\mathbf{x}})(\mathbf{y} - \bar{\mathbf{y}})^T]$ -- [[learning/notes/micro-context/can-bus-termination|not]] necessarily square or symmetric, and central to the [[quick-context/helmert-transform|Helmert transform]] |
+| **Correlation matrix** | The covariance matrix normalized so every diagonal entry is 1: $R_{ij} = \Sigma_{ij} / (\sigma_i \sigma_j)$ -- strips out magnitude, leaving [[learning/notes/quick-context/comparator-specification|only]] the [[learning/notes/quick-context/cnc-machining|strength]] and direction of linear relationships |
 
 <details>
 <summary><strong>How It Works</strong> -- Building and interpreting covariance matrices</summary>
@@ -40,11 +40,11 @@ Given $n$ paired observations of vectors $\mathbf{x}$ (input) and $\mathbf{y}$ (
 
 $$H = \sum_{i=1}^{n} (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$$
 
-This is the matrix used in the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|Kabsch/absolute orientation algorithm]]. It is *not* necessarily symmetric and *not* necessarily square (if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions). The [[quick-context/singular-value-decomposition|SVD]] of $H$ directly yields the optimal rotation matrix.
+This is the matrix used in the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|Kabsch/absolute orientation algorithm]]. It is *not* necessarily symmetric and *not* necessarily square (if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions). The [[quick-context/singular-value-decomposition|SVD]] of $H$ directly yields the optimal [[learning/notes/quick-context/pupper-lab2-forward-kinematics|rotation matrix]].
 
 ### Geometric interpretation: the covariance ellipsoid
 
-The covariance matrix defines an ellipsoid in $p$-dimensional space. The eigenvectors of $\Sigma$ are the principal axes of this ellipsoid, and the eigenvalues are the variances along those axes. This is exactly what PCA extracts.
+The covariance matrix defines an ellipsoid in $p$-dimensional space. The eigenvectors of $\Sigma$ are the principal axes of this ellipsoid, and the eigenvalues are the variances along those axes. This is exactly [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] PCA extracts.
 
 In 2D, the covariance matrix defines an ellipse. The shape of the ellipse tells you the correlation:
 
@@ -82,7 +82,7 @@ A covariance matrix is strictly positive *definite* (all eigenvalues > 0) when n
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> -- Sample vs population and the bias-variance tradeoff</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> -- Sample vs population and the bias-variance tradeoff</summary>
 
 ### Bessel's correction: $n$ vs $n - 1$
 
@@ -94,19 +94,19 @@ A covariance matrix is strictly positive *definite* (all eigenvalues > 0) when n
 
 The $n - 1$ denominator (Bessel's correction) accounts for the fact that using the sample mean $\bar{\mathbf{x}}$ instead of the true mean $\mu$ costs one degree of freedom. The sample points are, on average, slightly closer to $\bar{\mathbf{x}}$ than to $\mu$, so dividing by $n$ systematically underestimates the true variance. Dividing by $n - 1$ corrects this bias.
 
-**Important caveat:** While $\frac{1}{n-1}$ gives an unbiased *variance* estimate, the square root of this is *not* an unbiased estimate of the standard deviation. And the unbiased estimator does not minimize mean squared error -- it trades MSE for zero bias.
+**Important caveat:** While $\frac{1}{n-1}$ gives an unbiased *variance* estimate, the square root of this is *not* an unbiased estimate of the standard deviation. And the unbiased estimator does not minimize mean squared error -- it trades MSE for [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] bias.
 
 ### Sensitivity to outliers
 
 Covariance is based on squared deviations, making it highly sensitive to outliers. A single extreme point can dominate the entire matrix. Robust alternatives include:
 
 - **Minimum covariance determinant (MCD)** -- finds the subset of points with smallest determinant covariance
-- **Ledoit-Wolf shrinkage** -- shrinks the sample covariance toward a structured target (e.g., diagonal matrix)
+- **Ledoit-Wolf [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|shrinkage]]** -- shrinks the sample covariance toward a structured target (e.g., diagonal matrix)
 - **Median absolute deviation (MAD)** -- replaces variance with a robust scale estimator
 
 ### Cross-covariance: no Bessel's correction needed?
 
-In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted via [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the SVD's $U$ or $V$ matrices.
+In the [[quick-context/helmert-transform|Helmert transform]] and [[quick-context/absolute-orientation|absolute orientation]] problem, the cross-covariance $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ is typically written *without* the $\frac{1}{n-1}$ factor. This is because the rotation extracted [[learning/notes/quick-context/metal-interconnect-layers|via]] [[quick-context/singular-value-decomposition|SVD]] depends only on the *direction* of $H$'s singular vectors, not its magnitude. Scaling $H$ by a constant does not change the SVD's $U$ or $V$ matrices.
 
 </details>
 
@@ -206,26 +206,26 @@ print(R)
 
 The cross-covariance matrix $H$ encodes all the rotational information. The [[quick-context/singular-value-decomposition|SVD]] extracts it cleanly.
 
-**The one thing most outsiders get wrong about this is...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by SVD to find the rotation.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** confusing the auto-covariance matrix with the cross-covariance matrix. The auto-covariance $\Sigma$ describes the spread of a *single* dataset -- it is always symmetric and positive semi-definite. The cross-covariance $H$ describes the *correspondence* between two datasets -- it is generally not symmetric, not positive semi-definite, and not even necessarily square. In the [[quick-context/helmert-transform|Helmert transform]], it is the cross-covariance $H$ (not the auto-covariance $\Sigma$) that gets decomposed by SVD to find the rotation.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> -- Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses the cross-covariance matrix $H$ as the key input to SVD-based rotation estimation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem of finding the best rigid-body transform between two point sets, solved through cross-covariance + SVD
-- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The decomposition $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
+- **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The [[learning/notes/quick-context/chemical-bonds-spectrum|decomposition]] $H = U\Sigma V^T$ that extracts rotation from the cross-covariance matrix
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- Extends the Helmert transform with scale; covariance is used in least-squares estimation of all parameters
-- **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal components; the dominant eigenvectors capture the most variance
+- **Principal Component Analysis (PCA)** -- Eigendecomposition of the auto-covariance matrix yields the principal [[learning/notes/quick-context/tensor|components]]; the dominant eigenvectors capture the most variance
 - **Mahalanobis distance** -- Distance metric $d = \sqrt{(\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu)}$ that accounts for covariance structure, used in outlier detection and Kalman filter gating
 - **Kalman filter** -- Propagates a state estimate and its covariance matrix through time; the covariance matrix tracks uncertainty at every step
-- **Correlation matrix** -- The standardized form of the covariance matrix where all diagonal entries equal 1; obtained by dividing each entry by the product of the marginal standard deviations
+- **Correlation matrix** -- The standardized [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] of the covariance matrix where all diagonal entries equal 1; obtained by dividing each entry by the product of the marginal standard deviations
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong> -- 5 progressive questions</summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong> -- 5 progressive questions</summary>
 
 **Q1:** What does the $(i, j)$ entry of a covariance matrix represent, and what do the diagonal entries specifically tell you?
 <details>
@@ -233,7 +233,7 @@ The cross-covariance matrix $H$ encodes all the rotational information. The [[qu
 The $(i, j)$ entry is the covariance between variable $i$ and variable $j$ -- how much they tend to move together. The diagonal entries ($i = j$) are the variances of each individual variable. See: 5 Essential Terms.
 </details>
 
-**Q2:** Why must every covariance matrix be positive semi-definite? What would it mean physically if an eigenvalue were negative?
+**Q2:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] must every covariance matrix be positive semi-definite? What would it mean physically if an eigenvalue were negative?
 <details>
 <summary>Answer</summary>
 The quantity $\mathbf{v}^T \Sigma \mathbf{v}$ equals the variance of the linear combination $\mathbf{v}^T \mathbf{x}$. Variance is always $\geq 0$, so $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all $\mathbf{v}$. A negative eigenvalue would imply that some linear combination of your variables has negative variance -- which is impossible. If you encounter a "covariance matrix" with a negative eigenvalue, something has gone wrong numerically. See: How It Works.
@@ -242,13 +242,13 @@ The quantity $\mathbf{v}^T \Sigma \mathbf{v}$ equals the variance of the linear 
 **Q3:** In the Helmert transform, why can we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
 <details>
 <summary>Answer</summary>
-The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the singular values $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.
+The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the singular values $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is [[learning/notes/quick-context/ram-addressing-decoder|identical]] with or without the normalization factor. See: The Key Tension.
 </details>
 
 **Q4:** Someone claims "the cross-covariance matrix is always symmetric." What's wrong with this statement, and when *is* a covariance matrix guaranteed to be symmetric?
 <details>
 <summary>Answer</summary>
-The cross-covariance matrix $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ relates two *different* vectors and is generally not symmetric -- its transpose gives the cross-covariance in the opposite direction. It is not even necessarily square if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions. The *auto-covariance* matrix $\Sigma = \frac{1}{n-1}\sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{x}_i - \bar{\mathbf{x}})^T$ is always symmetric because $\text{Cov}(X_j, X_k) = \text{Cov}(X_k, X_j)$. See: Concrete Example, "The one thing most outsiders get wrong."
+The cross-covariance matrix $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{y}_i - \bar{\mathbf{y}})^T$ relates two *different* vectors and is generally not symmetric -- its transpose gives the cross-covariance in the opposite direction. It is not even necessarily square if $\mathbf{x}$ and $\mathbf{y}$ have different dimensions. The *auto-covariance* matrix $\Sigma = \frac{1}{n-1}\sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{x}_i - \bar{\mathbf{x}})^T$ is always symmetric because $\text{Cov}(X_j, X_k) = \text{Cov}(X_k, X_j)$. See: Concrete Example, "[[learning/notes/quick-context/epson-rc-plus-programming|The one thing most outsiders get wrong]]."
 </details>
 
 **Q5:** You have a 3D point cloud with covariance matrix $\Sigma$ whose eigenvalues are $\lambda_1 = 100$, $\lambda_2 = 100$, $\lambda_3 = 0.01$. What does this tell you about the geometry of the point cloud, and how would this affect the [[quick-context/helmert-transform|Helmert transform]] if this were one of your input point sets?

@@ -5,26 +5,26 @@ created: 2026-02-10
 
 # Sandler KARE Account Segmentation
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/whitespace-mapping]] | [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/playbook-main]]
 
-> **TL;DR:** KARE is a four-bucket portfolio segmentation framework from Sandler Training—Keep (protect revenue), Attain (win new), Recapture (re-engage lost), Expand (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
+> **TL;DR:** KARE is a [[learning/notes/quick-context/ram-addressing-decoder|four]]-bucket portfolio segmentation framework from Sandler Training—[[learning/notes/quick-context/existing-account-management-playbook|Keep]] (protect revenue), [[learning/notes/quick-context/existing-account-management-playbook|Attain]] (win new), [[learning/notes/quick-context/existing-account-management-playbook|Recapture]] (re-engage lost), [[learning/notes/quick-context/existing-account-management-playbook|Expand]] (grow existing)—that helps sales teams decide where to invest limited time across their entire account base.
 
 ## The Core Problem
 
-Every sales rep has finite hours. Treating all accounts equally means under-investing in high-potential opportunities and over-investing in low-yield accounts. Without portfolio-level thinking, reps default to working whatever feels urgent—usually squeaky-wheel accounts or comfortable relationships—while strategic opportunities languish.
+Every sales rep has finite hours. Treating all accounts equally means under-investing in high-potential opportunities [[learning/notes/micro-context/push-pull-vs-open-drain|and]] over-investing in low-[[learning/notes/quick-context/silicon-die|yield]] accounts. Without portfolio-level thinking, reps default to working whatever feels urgent—usually squeaky-wheel accounts or comfortable relationships—while strategic opportunities languish.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Keep** | Core accounts generating reliable revenue that must be protected from churn or competitive displacement |
-| **Attain** | Net-new logos and greenfield accounts that represent growth beyond the existing customer base |
+| **Keep** | Core accounts generating [[learning/notes/quick-context/ros2-architecture|reliable]] revenue that [[learning/notes/quick-context/ros2-architecture|must]] be protected from churn or competitive displacement |
+| **Attain** | [[learning/notes/quick-context/schematic-reading|Net]]-new logos and greenfield accounts that represent [[learning/notes/quick-context/existing-account-management-playbook|growth]] beyond [[learning/notes/quick-context/capacitance|the]] existing customer base |
 | **Recapture** | Former customers or lost opportunities that warrant re-engagement based on changed circumstances |
 | **Expand** | Existing customers with [[quick-context/whitespace-mapping|whitespace]]—additional products, users, departments, or use cases to sell into |
 | **Portfolio Velocity** | The concept that accounts should move between KARE categories over time as relationships evolve |
 
 <details>
-<summary><strong>How It Works</strong> — Categorizing and actioning your account base</summary>
+<summary><strong>How It Works</strong> — Categorizing and actioning [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] account base</summary>
 
 KARE creates a simple 2x2-ish framework for portfolio decisions:
 
@@ -79,7 +79,7 @@ RECAPTURE    10-15%             Opportunistic—only when signals change
 **The Segmentation Process:**
 
 1. **List all accounts** (customers, prospects, lost accounts)
-2. **Assign each to ONE bucket** based on primary motion
+2. **Assign each to [[learning/notes/quick-context/ram-addressing-decoder|ONE]] bucket** based on primary motion
 3. **Validate against criteria** (see below)
 4. **Allocate time proportionally** to strategy
 5. **Re-evaluate quarterly** as circumstances change
@@ -103,7 +103,7 @@ RECAPTURE: ✓ Previous customer OR lost deal  ✓ Circumstances changed
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Growth vs. retention investment</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Growth vs. retention investment</summary>
 
 KARE forces explicit tradeoffs that companies often avoid:
 
@@ -113,12 +113,12 @@ KARE forces explicit tradeoffs that companies often avoid:
 | Prioritizes new logos, market share | Prioritizes NRR, expansion |
 | Higher revenue growth rate | Higher profitability, lower CAC |
 | Higher churn risk if KEEP neglected | May miss market expansion windows |
-| Startup/land-grab mentality | Mature SaaS/net revenue retention focus |
+| [[learning/notes/quick-context/firmware|Startup]]/land-grab mentality | Mature SaaS/net revenue retention focus |
 
 **The practitioner debate:**
 
 - **"Attain is everything"**: New logos prove product-market fit, expand TAM, and generate case studies. Existing customers renew by default.
-- **"Expand is everything"**: Net Revenue Retention (NRR) >100% creates compounding growth. Existing customers are 5-7x cheaper to sell to. Reference customers come from depth, not breadth.
+- **"Expand is everything"**: Net Revenue Retention (NRR) >100% creates compounding growth. Existing customers are 5-7x cheaper to sell to. [[learning/notes/quick-context/comparator|Reference]] customers come from depth, [[learning/notes/micro-context/can-bus-termination|not]] breadth.
 
 The right balance depends on market maturity, competition, and company stage. KARE makes the tradeoff explicit rather than accidental.
 
@@ -165,35 +165,35 @@ Rep A: Owns EXPAND + KEEP (relationship depth focus)
 Rep B: Owns ATTAIN + RECAPTURE (hunter focus)
 ```
 
-**The one thing most outsiders get wrong about this is...** they treat KARE as a static snapshot rather than a dynamic portfolio. Accounts move: a successful ATTAIN becomes an EXPAND opportunity; an EXPAND at full penetration becomes a KEEP; a neglected KEEP churns and (maybe later) becomes a RECAPTURE. The quarterly re-segmentation is as important as the initial categorization.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** they treat KARE as a static snapshot rather than a dynamic portfolio. Accounts move: a successful ATTAIN becomes an EXPAND opportunity; an EXPAND at [[learning/notes/quick-context/singular-value-decomposition|full]] penetration becomes a KEEP; a neglected KEEP churns and (maybe later) becomes a RECAPTURE. The quarterly re-segmentation is as important as the initial categorization.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Once KARE identifies which accounts deserve strategic focus, LAMP provides the account planning framework for KEEP and EXPAND accounts
 - **[[quick-context/meddpicc-qualification-framework]]** — KARE decides where to focus; MEDDPICC qualifies specific opportunities within those accounts
-- **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model helps understand where KEEP vs. EXPAND accounts stand
+- **[[quick-context/mcdonald-kam-model]]** — McDonald's [[learning/notes/quick-context/mcdonald-kam-model|relationship maturity]] model helps understand where KEEP vs. EXPAND accounts stand
 - **Territory Management** — The broader discipline of dividing accounts across reps; KARE informs territory strategy
 - **Net Revenue Retention (NRR)** — The SaaS metric that makes EXPAND strategy visible; companies with NRR >110% are essentially KARE-optimized
-- **[[quick-context/whitespace-mapping]]** — The visual tool for identifying exactly where EXPAND opportunities exist within accounts
+- **[[quick-context/whitespace-mapping]]** — The visual [[learning/notes/quick-context/epson-rc-plus-programming|tool]] for identifying exactly where EXPAND opportunities exist within accounts
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** What's the difference between a KEEP account and an EXPAND account?
+**Q1:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]]'s the difference between a KEEP account and an EXPAND account?
 <details>
 <summary>Answer</summary>
 KEEP accounts are at or near full usage with no major expansion path—the goal is protecting existing revenue. EXPAND accounts are existing customers with whitespace (new departments, products, users) representing growth opportunities. The difference is potential: KEEP is defensive, EXPAND is offensive. See: 5 Essential Terms.
 </details>
 
-**Q2:** Why should RECAPTURE typically get the smallest time allocation?
+**Q2:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] should RECAPTURE typically get the smallest time allocation?
 <details>
 <summary>Answer</summary>
-RECAPTURE is opportunistic—it only works when circumstances have genuinely changed (new buyer, failed competitor, evolved product). Without such a trigger, you're just relitigating a lost battle. The time investment should match the signal strength, not hope. Most accounts stay lost; the rare exceptions shouldn't consume primary focus.
+RECAPTURE is opportunistic—it [[learning/notes/quick-context/comparator-specification|only]] works [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] circumstances have genuinely changed (new buyer, failed competitor, evolved product). Without such a [[learning/notes/quick-context/oscilloscope-and-multimeter|trigger]], you're just relitigating a lost battle. The time investment should match the [[learning/notes/quick-context/comparator|signal]] [[learning/notes/quick-context/cnc-machining|strength]], not hope. Most accounts stay lost; the rare exceptions shouldn't consume primary focus.
 </details>
 
 **Q3:** A startup has 5 customers and 200 prospects. What's wrong with applying the typical KARE percentages?
@@ -205,13 +205,13 @@ With only 5 customers, there's limited EXPAND and KEEP opportunity regardless of
 **Q4:** How does KARE interact with [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]] account planning?
 <details>
 <summary>Answer</summary>
-KARE operates at portfolio level (which accounts deserve focus), LAMP at individual account level (how to plan that account). Use KARE to identify your top 10-15 accounts, then apply full LAMP treatment to those. The other 70 accounts might get lightweight tracking rather than full Gold Sheets. KARE triages; LAMP plans.
+KARE operates at portfolio level (which accounts deserve focus), LAMP at individual account level (how to plan that account). Use KARE to identify your [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] 10-15 accounts, then apply full LAMP treatment to those. The other 70 accounts might get lightweight tracking rather than full Gold Sheets. KARE triages; LAMP plans.
 </details>
 
 **Q5:** A sales leader says "We don't have RECAPTURE opportunities—once we lose a deal, they're gone forever." How would you challenge this?
 <details>
 <summary>Answer</summary>
-This ignores common triggers: buyer turnover (the champion who rejected you leaves), competitor failure (their choice doesn't deliver), product evolution (you now solve a problem you couldn't before), and company changes (org restructure, new priorities). The leader should track lost deals/churned customers and set alerts for these triggers. "Gone forever" is usually "not worth pursuing *right now*" until circumstances change.
+This ignores common triggers: buyer turnover (the champion who rejected you leaves), competitor failure (their [[learning/notes/quick-context/transistor-analog-to-digital|choice]] doesn't deliver), product evolution (you now solve a problem you couldn't before), and company changes (org restructure, new priorities). The leader should track lost deals/churned customers and set alerts for these triggers. "Gone forever" is usually "not worth pursuing *right now*" until circumstances change.
 </details>
 
 </details>

@@ -3,22 +3,24 @@ topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
 
+> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/capacitance]]
+
 # DuPont Jumper Wires
 
-> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
+> **TL;DR:** DuPont jumper [[learning/notes/quick-context/uart|wires]] are cheap, [[learning/notes/quick-context/soldering|solder]]-free cables with 2.54mm-[[learning/notes/quick-context/bga-ball-grid-array|pitch]] crimp connectors used to quickly wire up breadboard [[learning/notes/micro-context/push-pull-vs-open-drain|and]] [[learning/notes/micro-context/microcontroller|microcontroller]] circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without soldering. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of [[learning/notes/quick-context/tensor|components]] -- sensors, microcontrollers, displays, motors -- without [[learning/notes/quick-context/soldering|soldering]]. You need connections you [[learning/notes/quick-context/embedded-communication-protocols|can]] make in seconds, rearrange freely, and discard [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **2.54mm pitch** | The 0.1" (100 mil) spacing between adjacent pins -- the universal standard for breadboards, Arduino headers, and Raspberry Pi GPIO |
+| **2.54mm pitch** | The 0.1" (100 mil) spacing between adjacent pins -- the universal standard for breadboards, Arduino headers, and Raspberry Pi [[learning/notes/quick-context/raspberry-pi-5-components|GPIO]] |
 | **Crimp contact** | The stamped metal pin or socket inside the plastic housing, mechanically squeezed onto the wire rather than soldered |
-| **Housing** | The small rectangular plastic shell (nylon 66) that holds crimp contacts; comes in 1P through 20P sizes for single or multi-pin groupings |
-| **Gender** | Male (pin) vs female (socket); jumper wires come in M-M, M-F, and F-F combinations depending on what endpoints you're connecting |
+| **Housing** | The small rectangular plastic shell (nylon 66) that [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] crimp contacts; comes in 1P through 20P sizes for single or multi-pin groupings |
+| **Gender** | Male (pin) vs female (socket); jumper wires come in M-M, M-F, and F-F combinations depending on [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] endpoints you're connecting |
 | **Mini-PV** | The original Berg Electronics connector design ("Perpetual Virgin" -- named because the contact performed like new even after hundreds of mating cycles) that DuPont acquired in 1972 -- the ancestor of all modern "DuPont" connectors |
 
 <details>
@@ -52,7 +54,7 @@ A DuPont jumper wire has three parts: wire, crimp contact, and housing.
       Strain relief         Electrical connection
 ```
 
-**The mating mechanism:** The female socket contains a leaf spring that grips a 0.025" (0.64mm) square male pin through friction alone. There are no latches, clips, or keying features -- the connection is held purely by spring tension against the pin. This is what makes DuPont connectors both easy to use and prone to loosening.
+**The mating [[learning/notes/quick-context/silymarin|mechanism]]:** The female socket contains a leaf spring that grips a 0.025" (0.64mm) square male pin through friction alone. There are no latches, clips, or keying features -- the connection is held purely by spring tension against the pin. This is what makes DuPont connectors [[learning/notes/quick-context/ram-addressing-decoder|both]] easy to use and prone to loosening.
 
 **Ribbon cable construction:** Most jumper wires are sold as 40-wire rainbow ribbon cables that can be peeled apart into any grouping:
 
@@ -92,26 +94,26 @@ A DuPont jumper wire has three parts: wire, crimp contact, and housing.
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> -- Convenience vs reliability</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> -- [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|Convenience]] vs [[learning/notes/quick-context/bond-pad|reliability]]</summary>
 
-The fundamental tradeoff with DuPont jumper wires is **speed of connection vs quality of connection**.
+The fundamental tradeoff with DuPont jumper wires is **[[learning/notes/quick-context/embedded-communication-protocols|speed]] of connection vs [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]] of connection**.
 
 | Factor | DuPont Jumpers | Soldered / Latched Connectors |
 |--------|---------------|-------------------------------|
-| Setup time | Seconds | Minutes to hours |
+| [[learning/notes/quick-context/d-flip-flop|Setup time]] | Seconds | Minutes to hours |
 | Reconfigurability | Unlimited | Destructive to change |
 | Connection reliability | Poor (friction only) | Excellent |
 | Vibration resistance | Very poor | Good to excellent |
-| Current capacity | ~1A practical (26 AWG) | Limited only by wire gauge |
-| Cost per connection | ~$0.05 | ~$0.10-1.00 |
-| Keying / polarity | None | Usually keyed |
+| [[learning/notes/quick-context/parallel-vs-series-voltage|Current]] capacity | ~1A practical (26 AWG) | Limited only by wire gauge |
+| [[learning/notes/quick-context/bond-pad|Cost]] per connection | ~$0.05 | ~$0.10-1.00 |
+| Keying / polarity | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] | Usually keyed |
 | Skill required | None | Soldering or proper crimping |
 
 **The practitioner debate:** When should you graduate from DuPont wires to proper connectors?
 
 - **"Prototype only" camp:** DuPont wires should never leave the bench. Any project that moves past breadboard should use JST, Molex, or soldered connections.
-- **"Good enough" camp:** For low-current, low-vibration applications (desktop sensor stations, display projects), DuPont connections with hot glue strain relief work fine permanently.
-- **The middle ground:** Use DuPont for signal-level connections (<100mA) in static environments, but always use rated connectors for power delivery and anything that moves.
+- **"Good enough" camp:** For low-current, low-vibration applications ([[learning/notes/quick-context/code-to-gates-and-bootstrapping|desktop]] sensor stations, display projects), DuPont connections with hot glue strain relief work [[learning/notes/micro-context/thread-pitch-screws|fine]] permanently.
+- **The middle ground:** Use DuPont for [[learning/notes/quick-context/comparator|signal]]-level connections (<100mA) in static environments, but always use rated connectors for [[learning/notes/quick-context/d-flip-flop|power]] delivery and anything that moves.
 
 ### Ratings: Datasheet vs Reality
 
@@ -120,7 +122,7 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 | Current | 3A | ~1A max, 500mA comfortable |
 | Mating cycles | 500+ | 50-100 before loosening |
 | Contact resistance | 15-20 m$\Omega$ | 50-200+ m$\Omega$ (variable) |
-| Voltage | 250V AC/DC | Rarely the limiting factor |
+| [[learning/notes/quick-context/voltage|Voltage]] | 250V AC/DC | Rarely the limiting factor |
 | Temperature | -25$^\circ$C to +85$^\circ$C | PVC degrades above 80$^\circ$C |
 
 </details>
@@ -152,9 +154,9 @@ A typical robotics task: connecting an RC servo motor to an Arduino Uno.
 ```
 
 **Current concern:** A typical hobby servo draws 200-500mA under load, and up to 1-2A at stall. A single 26 AWG DuPont jumper wire on the power line is marginal. For multiple servos (as in a quadruped robot), you should:
-1. Power servos from a separate supply, not through the Arduino's 5V pin
-2. Use thicker gauge wire (22 AWG or heavier) for the power line
-3. Consider XT30 connectors or screw terminals for the main power bus
+1. Power servos from a separate supply, [[learning/notes/micro-context/can-bus-termination|not]] through the Arduino's 5V pin
+2. Use [[learning/notes/micro-context/mosfet|thicker]] gauge wire (22 AWG or heavier) for the power line
+3. Consider XT30 connectors or screw terminals for the main power [[learning/notes/quick-context/data-bus-and-arbitration|bus]]
 
 **Color coding convention:**
 | Color | Typical Use |
@@ -162,17 +164,17 @@ A typical robotics task: connecting an RC servo motor to an Arduino Uno.
 | Red | VCC / positive supply |
 | Black | GND / ground |
 | White | Data / signal |
-| Yellow | Clock / SCL |
+| Yellow | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Clock]] / SCL |
 | Blue | SDA / chip select |
 | Green | MOSI / TX |
 | Orange | MISO / RX |
 
-**The one thing most outsiders get wrong about this is...** that DuPont connectors are a standardized, specified product. They are not. "DuPont connector" is a genericized brand name with no official spec sheet for the clones that dominate the market. Every batch from every factory is slightly different. The original Berg Mini-PV connector is a real, specified product (now sold by Amphenol) -- but it costs roughly 2x as much and is rarely what hobbyists are buying. When you buy a bag of "DuPont jumper wires" from Amazon or AliExpress, you're getting unspecified clones with no guaranteed tolerances.
+**[[learning/notes/quick-context/breaking-elongation-rate|The one thing most outsiders get wrong about this is]]...** that DuPont connectors are a standardized, specified product. They are not. "DuPont connector" is a genericized brand name with no official spec sheet for the clones that dominate the market. Every batch from every factory is slightly different. The original Berg Mini-PV connector is a real, specified product (now sold by Amphenol) -- but it costs roughly 2x as much and is rarely what hobbyists are buying. When you buy a bag of "DuPont jumper wires" from Amazon or AliExpress, you're getting unspecified clones with no guaranteed tolerances.
 
 </details>
 
 <details>
-<summary><strong>History</strong> -- Why they're called "DuPont"</summary>
+<summary><strong>[[learning/notes/quick-context/ros2-architecture|History]]</strong> -- [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] they're called "DuPont"</summary>
 
 The name traces through decades of corporate acquisitions:
 
@@ -192,24 +194,24 @@ The name persists because the clones flooded the hobbyist market during the 1990
 <details>
 <summary><strong>Common Mistakes</strong></summary>
 
-1. **Reversed polarity** -- No keying means VCC and GND can be swapped. This is the #1 way hobbyists destroy sensors and microcontrollers. Always double-check before powering on.
+1. **Reversed polarity** -- No keying means VCC and GND can be swapped[[learning/notes/quick-context/glass-transition-temperature|. This is the]] #1 way hobbyists destroy sensors and microcontrollers. Always double-check before powering on.
 
-2. **Off-by-one pin errors** -- Plugging a multi-pin connector shifted by one position sends power into signal pins. Mark pin 1 with a dot of paint or tape.
+2. **Off-by-[[learning/notes/quick-context/ram-addressing-decoder|one]] pin errors** -- Plugging a multi-pin connector shifted by one position sends power into signal pins. Mark pin 1 with a dot of paint or tape.
 
 3. **Exceeding current limits** -- Using a single 26 AWG jumper to power a servo motor (stall current 1-2A). The wire heats up, contact resistance increases, and the housing can melt.
 
-4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, I2C failures, serial corruption. When debugging, suspect the physical layer first.
+4. **Trusting loose connections** -- Intermittent contact from weak spring tension causes phantom bugs: sensors returning random values, [[learning/notes/micro-context/i2c|I2C]] failures, [[learning/notes/quick-context/data-bus-and-arbitration|serial]] corruption. When [[learning/notes/quick-context/firmware|debugging]], suspect the [[learning/notes/quick-context/uart|physical layer]] first.
 
-5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
+5. **Using pliers to crimp** -- A proper ratcheting crimp [[learning/notes/quick-context/epson-rc-plus-programming|tool]] ($20-30) is essential for [[learning/notes/quick-context/ros2-architecture|reliable]] DIY cables. Pliers produce inconsistent crimps that fail under load.
 
-6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from oxidation, vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
+6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from [[learning/notes/micro-context/oxidation|oxidation]], vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
 
 7. **Mixing 2.54mm and 2.0mm pitch** -- Some boards (certain ESP modules, fine-pitch breakouts) use 2.0mm headers. Standard DuPont connectors won't seat properly.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> -- Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **Breadboards** -- The solderless prototyping boards that DuPont jumpers are designed to connect to; share the 2.54mm pitch standard
 - **Pin headers** -- The male 0.1" pitch headers on PCBs that DuPont female connectors mate with
@@ -227,7 +229,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 | Connector | Pitch | Latching? | Current | Best For |
 |-----------|-------|-----------|---------|----------|
 | **DuPont** | 2.54mm | No | ~1A practical | Breadboard prototyping |
-| **JST XH** | 2.5mm | Friction tab | 3A | Semi-permanent wire-to-board |
+| **JST XH** | 2.5mm | Friction [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|tab]] | 3A | Semi-permanent wire-to-board |
 | **JST PH** | 2.0mm | Yes | 2A | Compact connections, LiPo batteries |
 | **JST SH** | 1.0mm | Yes | 1A | Qwiic/STEMMA QT I2C bus |
 | **Molex KK 254** | 2.54mm | Polarized | 4A | Keyed 0.1" connections |
@@ -238,7 +240,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** What pitch dimension defines a DuPont connector, and why does that number matter?
 <details>
@@ -255,10 +257,10 @@ The original Mini-PV used a separate beryllium copper spring for consistent tens
 **Q3:** You're powering 4 hobby servos through DuPont jumper wires from an Arduino's 5V pin. Each servo draws 300mA under load. What will go wrong and how would you fix it?
 <details>
 <summary>Answer</summary>
-Two problems: (1) Total current is 1.2A through a single 26 AWG DuPont wire, exceeding the practical 1A limit -- the wire will heat up and voltage will drop noticeably (~0.4-0.6V including wire resistance and clone contact resistance at two junctions). (2) The Arduino's onboard 5V regulator can only supply ~500mA total. Fix: use a separate 5V power supply with appropriately rated wiring (XT30 or screw terminals for the main bus), and distribute power to servos through 22 AWG or thicker wire. See: The Key Tension, Concrete Example.
+[[learning/notes/micro-context/schmitt-trigger-hysteresis|Two]] problems: (1) [[learning/notes/quick-context/similarity-transform|Total]] current is 1.2A through a single 26 AWG DuPont wire, exceeding the practical 1A limit -- the wire will heat up and voltage will drop noticeably (~0.4-0.6V including wire resistance and clone contact resistance at two junctions). (2) The Arduino's onboard 5V regulator can only supply ~500mA total. Fix: use a separate 5V power supply with appropriately rated wiring (XT30 or screw terminals for the main bus), and distribute power to servos through 22 AWG or thicker wire. See: The Key Tension, Concrete Example.
 </details>
 
-**Q4:** Someone claims "DuPont connectors are rated for 3A, so they're fine for powering my 12V LED strip." What's wrong with this reasoning?
+**Q4:** Someone claims "DuPont connectors are rated for 3A, so they're fine for powering my 12V [[learning/notes/quick-context/diode|LED]] strip." What's wrong with this reasoning?
 <details>
 <summary>Answer</summary>
 The 3A rating applies to genuine-spec connectors with properly crimped 22 AWG wire. Pre-made DuPont jumper wires use 26 AWG wire and clone contacts with poor spring tension and tin plating. The practical limit for these is ~1A, and even that assumes a good crimp and fresh contacts. Additionally, the contact resistance of clone connectors (50-200+ m$\Omega$) causes meaningful voltage drop and heating at higher currents. The datasheet rating cannot be applied to unspecified clones. See: Ratings: Datasheet vs Reality table.
@@ -267,7 +269,7 @@ The 3A rating applies to genuine-spec connectors with properly crimped 22 AWG wi
 **Q5:** You're designing a robot that uses DuPont jumpers for sensor connections during prototyping. The robot will eventually be deployed in a school classroom where students will handle it daily. What's your connector migration strategy, and what criteria determine when each connection type gets upgraded?
 <details>
 <summary>Answer</summary>
-Migration strategy: (1) Keep DuPont for bench prototyping and iterating on sensor placement. (2) Once sensor positions are finalized, migrate signal-level connections (<100mA, static) to JST XH or PH connectors for keying and retention. (3) All power connections (servos, motor drivers) should use screw terminals or XT30 connectors from the start of integration testing. (4) For the I2C sensor bus, adopt Qwiic/STEMMA QT (JST SH 4-pin) for standardized, keyed, daisy-chainable connections. Upgrade criteria: any connection that (a) carries >500mA, (b) will be subject to vibration or movement, (c) could be reversed with damaging consequences, or (d) needs to survive repeated student handling should be upgraded to a keyed/latched connector before deployment. See: The Key Tension, Alternatives Comparison.
+Migration strategy: (1) [[learning/notes/quick-context/existing-account-management-playbook|Keep]] DuPont for bench prototyping and iterating on sensor placement. (2) Once sensor positions are finalized, migrate signal-level connections (<100mA, static) to JST XH or PH connectors for keying and retention. (3) All power connections (servos, motor drivers) should use screw terminals or XT30 connectors from the start of integration testing. (4) For the I2C sensor bus, adopt Qwiic/STEMMA QT (JST SH 4-pin) for standardized, keyed, daisy-chainable connections. [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Upgrade]] criteria: any connection that (a) carries >500mA, (b) will be subject to vibration or movement, (c) could be reversed with damaging consequences, or (d) needs to survive repeated student handling should be upgraded to a keyed/latched connector before deployment. See: The Key Tension, Alternatives Comparison.
 </details>
 
 </details>

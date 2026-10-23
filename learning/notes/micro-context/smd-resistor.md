@@ -4,15 +4,17 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/anode]]
+
 # SMD Resistor
 
-> **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]] | pull-up-pull-down-resistors
 
-**Definition:** Surface-mount resistors are tiny rectangular components that limit current flow. The "0402" size (1.0mm × 0.5mm) used in your Pupper BOM is about the size of a grain of sand. Values like "10kΩ" set voltage dividers, pull-ups, current limits, and feedback networks throughout the circuit.
+**[[learning/notes/quick-context/capacitance|Definition]]:** Surface-mount resistors are tiny rectangular [[learning/notes/quick-context/tensor|components]] that limit [[learning/notes/quick-context/capacitance|current]] flow. [[learning/notes/quick-context/capacitance|The]] "0402" size (1.0mm × 0.5mm) used in [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] Pupper [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|BOM]] is about the size of a grain of sand. Values like "10kΩ" set [[learning/notes/quick-context/voltage|voltage]] dividers, pull-ups, current limits, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] feedback networks throughout the circuit.
 
 ## How It Works
 
-- A thin film or thick film of resistive material is deposited on a ceramic substrate, with metal terminations on each end for soldering.
+- A thin [[learning/notes/quick-context/capacitor|film]] or thick film of resistive material is deposited on a ceramic [[learning/notes/quick-context/flip-chip|substrate]], with metal terminations on each end for [[learning/notes/quick-context/soldering|soldering]].
 - Current flowing through the resistive film converts electrical energy to heat according to $P = I^2R$.
 - The resistance value is set during manufacturing by the film's composition, thickness, and laser-trimmed geometry.
 
@@ -38,4 +40,4 @@ SMD RESISTOR SIZES (to scale):
   └────────────┴─────────┴─────────────────────────┘
 ```
 
-**Key insight:** The odd resistor values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the buck converter—they set the exact output voltage through a voltage divider ratio.
+**Key insight:** The odd [[learning/notes/quick-context/fundamental-electronic-parts-index|resistor]] values (60.4kΩ, 11.5kΩ, 174kΩ) in your BOM are feedback resistors for the [[learning/notes/micro-context/buck-converter|buck converter]]—they set the exact output voltage through a [[learning/notes/quick-context/pwm-controller-circuit|voltage divider]] ratio.

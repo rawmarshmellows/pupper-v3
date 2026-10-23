@@ -5,26 +5,26 @@ created: 2026-06-07
 
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
-> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/rc-oscillator]]
 
-> **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
+> **TL;DR:** [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Python [[learning/notes/quick-context/differential-pair|source]] never runs on [[learning/notes/quick-context/capacitance|the]] CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, [[learning/notes/micro-context/can-bus-termination|not]] for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes [[learning/notes/quick-context/ram-addressing-decoder|one]] at a time [[learning/notes/micro-context/push-pull-vs-open-drain|and]] acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms [[learning/notes/micro-context/push-pull-vs-open-drain|out]] in the same place: **machine-code instructions the CPU fetch-executes**. That meeting [[learning/notes/quick-context/epson-rc-plus-programming|point]] is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
 
 ## The Core Problem
 
-A CPU understands exactly one thing: binary machine-code instructions for *its* instruction set, fetched from memory one at a time. It has never heard of `def`, `+`, or `x = 2 + 3`. So if a CPU only eats machine code, how does a language like Python — which is never compiled to machine code — run at all? The answer is a tower of translation, and the whole point of this note is to make the tower concrete and show **where every language, no matter how it's processed, finally hands real machine code to the CPU.**
+A CPU understands [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] thing: binary machine-code instructions for *its* instruction set, fetched from [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]] one at a time. It has never heard of `def`, `+`, or `x = 2 + 3`. So if a CPU [[learning/notes/quick-context/comparator-specification|only]] eats machine code, how does a language like Python — which is never compiled to machine code — run at all? The answer is a tower of [[learning/notes/quick-context/pupper-lab2-forward-kinematics|translation]], and the whole point of this note is to make the tower concrete and show **where every language, no matter how it's processed, finally hands real machine code to the CPU.**
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Compile** | Translate source into a *lower* form ahead of running it. CPython compiles `.py` source into **bytecode** before execution (not into CPU machine code). A C compiler instead compiles all the way down to CPU machine code. |
-| **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip can run it directly. |
+| **Compile** | Translate source into a *lower* [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] ahead of running it. CPython compiles `.py` source into **bytecode** before execution (not into CPU machine code). A C compiler instead compiles all the way down to CPU machine code. |
+| **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip [[learning/notes/quick-context/ros2-architecture|can]] run it directly. |
 | **Virtual Machine (VM)** | A program that pretends to be a CPU. CPython's VM is an **evaluation loop** (conceptually `ceval`) that reads one bytecode op and updates a **value stack**. "Interpreting bytecode" = this loop running. |
 | **Interpreter** | The whole `python` program: it compiles your source to bytecode, then its VM loop executes that bytecode. Crucially, the interpreter itself is **machine code** (a C program compiled ahead of time). |
-| **Machine code** | The binary instructions the physical CPU actually fetches and executes via the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]. Every execution route ends here — this is where software meets hardware. |
+| **Machine code** | The binary instructions the physical CPU actually fetches and executes [[learning/notes/quick-context/metal-interconnect-layers|via]] the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]. Every execution route ends here — this is where software meets hardware. |
 
 <details>
-<summary><strong>How It Works</strong> — The essential mechanism</summary>
+<summary><strong>How It Works</strong> — The essential [[learning/notes/quick-context/silymarin|mechanism]]</summary>
 
 ### Step 1: source → bytecode (CPython COMPILES, it doesn't "just run")
 
@@ -54,15 +54,15 @@ dis.dis("a = 2\nb = 3\nx = a + b")
 
 (Opcode names drift between versions: CPython 3.11+ replaced the dedicated
 `BINARY_ADD` with a single generic `BINARY_OP` op that carries an argument
-saying *which* operator — but the shape is identical. The output above is from
+saying *which* operator — but the shape is [[learning/notes/quick-context/ram-addressing-decoder|identical]]. The output above is from
 CPython 3.6.)
 
 ### Bytecode targets a STACK machine
 
 Notice there are no register names. Every op either **pushes** a value onto a
-shared stack or **pops** values off it. `BINARY_ADD` doesn't say "add R1 and R2";
-it says "pop the top two, add them, push the result." This is a **stack machine**,
-and it's why bytecode is so compact and portable — it assumes nothing about how
+shared stack or **pops** values [[learning/notes/quick-context/bjt-specifications|off]] it. `BINARY_ADD` doesn't say "add [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|R1 and R2]]";
+it says "pop the [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]], add them, push the result." This is a **stack machine**,
+and it's [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] bytecode is so compact and portable — it assumes [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]] about how
 many registers a real CPU has.
 
 ```
@@ -81,7 +81,7 @@ THE VALUE STACK while running  x = a + b   (a=2, b=3)
 
 Bytecode is data, not anything a CPU can run. So *something* has to walk the
 list and actually do each op. That something is CPython's **evaluation loop**,
-conceptually a giant function called `ceval` ("C eval"). In spirit it is just:
+conceptually a giant [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] called `ceval` ("C eval"). In spirit it is just:
 
 ```c
 /* conceptual sketch of CPython's bytecode interpreter loop */
@@ -98,7 +98,7 @@ for (;;) {
 }
 ```
 
-That `for(;;) { fetch; switch; }` shape should look familiar — it is a
+That `for(;;) { fetch; [[learning/notes/quick-context/switches-to-registers-storing-data|switch]]; }` shape should look familiar — it is a
 **software re-creation of the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]**, but the
 "instructions" are Python bytecodes and the "registers" are the value stack.
 This loop *is* the virtual machine.
@@ -108,7 +108,7 @@ This loop *is* the virtual machine.
 Here is the move that confuses everyone the first time. The VM loop above is
 written in C. Before you ever ran `python`, that C was compiled **ahead of
 time** by a C compiler into real CPU machine code, producing the `python`
-executable on your disk. So when you run a Python script:
+executable on your disk. So [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] you run a Python script:
 
 ```
 WHO ACTUALLY EXECUTES WHAT
@@ -135,12 +135,12 @@ that the interpreter's machine code happens to be chewing through.
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — What practitioners argue about</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] practitioners argue about</summary>
 
 ### Translate everything up front, or translate as you go?
 
 Every language picks a strategy for getting from source to running on the CPU,
-trading **startup/portability** against **raw speed**. There are four main
+trading **startup/portability** against **raw [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|speed]]**. There are [[learning/notes/quick-context/ram-addressing-decoder|four]] main
 routes, but they all converge on the same destination: machine code in the CPU.
 
 ```
@@ -167,16 +167,16 @@ FOUR ROUTES FROM SOURCE TO THE CPU  (all end at the same place)
 
 | Route | Translated when | Runs on CPU as | Trade |
 |-------|-----------------|----------------|-------|
-| **Compiled (AOT)** | Before running | Your code, as machine code | Fastest exec; slow build; one binary per CPU type |
-| **Interpreted/bytecode** | Source→bytecode up front, then a loop | The *interpreter's* machine code | Portable + fast startup; per-op loop overhead is slow |
-| **JIT** | Bytecode→machine code *during* run, for hot paths | Mostly machine code after warm-up | Near-compiled speed; warm-up cost + memory + complexity |
+| **Compiled (AOT)** | Before running | Your code, as machine code | Fastest exec; slow build; one binary per CPU [[learning/notes/quick-context/bjt-specifications|type]] |
+| **Interpreted/bytecode** | Source→bytecode up front, then a loop | The *interpreter's* machine code | Portable + [[learning/notes/quick-context/comparator|fast]] startup; per-op loop overhead is slow |
+| **JIT** | Bytecode→machine code *during* run, for [[learning/notes/quick-context/bjt-specifications|hot]] paths | Mostly machine code after warm-up | Near-compiled speed; warm-up [[learning/notes/quick-context/bond-pad|cost]] + memory + complexity |
 | **Transpiled** | Source→other source | Whatever the target language runs as | Just shifts the problem down one language; needs an engine |
 
 The real argument: **CPython chooses simplicity and portability over speed.**
 Its plain VM loop spends most of its time on per-instruction bookkeeping rather
 than your actual arithmetic — which is exactly why **PyPy** (a JIT) and tools
 like Cython or Numba exist: they push hot Python down route (1) or (3) to get
-machine code on the fast path. But none of them changes the destination; they
+machine code on the fast path. But [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|none]] of them changes the destination; they
 only change *when* and *how much* gets turned into machine code.
 
 </details>
@@ -200,7 +200,7 @@ dis.dis("x = 2 + 3")
               6 RETURN_VALUE
 ```
 
-There is no `BINARY_ADD` at all. Because both operands are **literal constants**,
+There is no `BINARY_ADD` at all. Because [[learning/notes/quick-context/bjt-specifications|both]] operands are **literal constants**,
 the CPython compiler does **constant folding** at compile time: it adds `2 + 3`
 *while compiling* and bakes the literal `5` straight into the bytecode. The
 addition never happens at runtime. This is why the "How It Works" example used
@@ -243,7 +243,7 @@ the thing every route in this note ultimately targets: a CPU that fetch-executes
 machine code. That CPU is real, runnable Python at
 `learning/references/courses/python-nand-to-tetris-part-1/src/hardware/computer/cpu.py`.
 Its very first act mirrors a real CPU's decode — split the instruction on its top
-bit with a single gate:
+bit with a single [[learning/notes/quick-context/transistor|gate]]:
 
 ```python
 # cpu.py — the instruction's top bit decides address-load vs. compute
@@ -251,43 +251,43 @@ is_compute_instruction = op_code            # top bit = 1 -> C-instruction
 is_address_instruction = self.not_gate(op_code)   # top bit = 0 -> A-instruction
 ```
 
-No `if opcode == "ADD"` anywhere — the bits *are* the control wires (see
-[[learning/notes/quick-context/cpu-fetch-execute-cycle|the fetch-execute note]] for the full trace of how
-`D=D+A` becomes mux/ALU selects). Whether the machine code came from Jack via the
+No `if opcode == "ADD"` anywhere — the bits *are* the control [[learning/notes/quick-context/uart|wires]] (see
+[[learning/notes/quick-context/cpu-fetch-execute-cycle|the fetch-execute note]] for the [[learning/notes/quick-context/singular-value-decomposition|full]] [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] of how
+`D=D+A` becomes [[learning/notes/quick-context/ram-addressing-decoder|mux]]/ALU selects). [[learning/notes/quick-context/differential-pair|Whether]] the machine code came from Jack via the
 full Part-2 chain, from C via gcc, or is the compiled `python` interpreter
-itself, **this `cpu.py`-style fetch-execute is the bottom of the tower.**
+itself, **this `cpu.py`-style fetch-execute is the [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] of the tower.**
 
-**The one thing most outsiders get wrong about this is...** thinking "Python is
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking "Python is
 interpreted" means there is no compilation. There absolutely is — CPython
 compiles your source to bytecode every time (caching it in `.pyc`). What's
 "interpreted" is the *bytecode*, by the VM loop. And that VM loop is not magic
 either: it's a C program that was **compiled ahead of time to machine code**.
 "Interpreted vs. compiled" isn't a property of a language, it's a property of an
-implementation — and underneath *every* implementation, the CPU is still just
+implementation — and [[learning/notes/quick-context/bga-ball-grid-array|underneath]] *every* implementation, the CPU is still just
 fetch-executing machine code.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The destination of this whole pipeline. The VM loop here is a software re-creation of this hardware loop; the real CPU runs the *interpreter's* machine code via this exact cycle. The down-link toward hardware.
 
-- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The fuller picture: the complete 7-layer chain from a high-level statement all the way down to NAND gates and transistors, plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The fuller picture: the complete 7-[[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] chain from a high-level statement all the way down to NAND gates and transistors, plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
 
 - **[[learning/notes/quick-context/how-source-code-is-stored]]** — The up-link: how the `.py` text (and the `.pyc` bytecode cache) physically exist as bytes on disk before any of this translation begins. *(sibling note — may not exist yet.)*
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The compiled-AOT route in detail for embedded targets: how machine code is placed at real addresses by the linker, flashed to a chip, and reached at the reset vector. The mirror image of Python's runtime route.
 
-- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from power-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
+- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from [[learning/notes/quick-context/d-flip-flop|power]]-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
 
 - **AST (Abstract Syntax Tree)** — The tree the compiler builds between parsing your source and emitting bytecode. The `ast` module lets you inspect it; it's where structure (loops, expressions, scope) is captured before flattening to a stack-machine op list.
 
 - **JIT compilation (PyPy, V8, HotSpot)** — Route (3): profiling which bytecode runs hot, then compiling just those paths to machine code at runtime to skip the VM loop's overhead. Where interpreted and compiled blur together.
 
-- **GIL / reference counting** — Other things the CPython VM loop does between ops (memory management, the Global Interpreter Lock) that make the per-instruction overhead — and Python's single-core threading limits — what they are.
+- **GIL / [[learning/notes/quick-context/comparator|reference]] counting** — Other things the CPython VM loop does between ops (memory management, the Global Interpreter Lock) that make the per-instruction overhead — and Python's single-core threading limits — what they are.
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
+- **how-a-computer-works-index** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
 
 </details>
 
@@ -315,7 +315,7 @@ The **`python` interpreter's own machine code**. CPython's VM loop is a C progra
 **Q4:** You disassemble `x = 2 + 3` and there's no `BINARY_ADD` — just `LOAD_CONST 5`. Did the disassembler lie?
 <details>
 <summary>Answer</summary>
-No — CPython did **constant folding** at compile time. Because both operands are literal constants, the compiler computed `2 + 3 = 5` while compiling and baked the literal `5` into the bytecode, so the addition never runs at runtime. To see an actual `BINARY_ADD`/`BINARY_OP` you must use values the compiler can't know in advance, e.g. variables (`x = a + b`). See: Concrete Example (the surprise that CPython folds it).
+No — CPython did **constant folding** at compile time. Because both operands are literal constants, the compiler computed `2 + 3 = 5` while compiling and baked the literal `5` into the bytecode, so the addition never runs at runtime. To see an actual `BINARY_ADD`/`BINARY_OP` you [[learning/notes/quick-context/ros2-architecture|must]] use values the compiler can't know in advance, e.g. variables (`x = a + b`). See: Concrete Example (the surprise that CPython folds it).
 </details>
 
 **Q5:** A JIT (PyPy), a transpiler (TypeScript→JavaScript), and an AOT compiler (Rust) all process source very differently. What is the single thing they nonetheless share, and where does this repo's code prove it?

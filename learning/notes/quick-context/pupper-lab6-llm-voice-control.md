@@ -5,32 +5,32 @@ created: 2026-03-10
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
-> **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
+> **TL;DR:** Students build a voice-controlled robot by wiring together [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), [[learning/notes/micro-context/push-pull-vs-open-drain|and]] an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing [[learning/notes/quick-context/capacitance|the]] loop from spoken English to motor movement.
 
 ## The Core Problem
 
-Telling a robot "go forward and then do a little dance" is trivially easy for a human to understand but involves a surprisingly deep pipeline to execute. The voice signal must be captured, streamed to a speech-understanding model, interpreted as a sequence of discrete robot commands, translated into velocity messages the locomotion controller accepts, and finally converted to joint torques by the neural policy running on the real-time control loop. Every layer operates at a different timescale: audio at 24 kHz, the LLM at hundreds of milliseconds, ROS2 topics at tens of Hz, and the motor loop at 1 kHz. Lab 6 asks students to build the top two layers of this stack and connect them to the bottom layers they already have from Labs 4-5.
+Telling a robot "go forward and then do a little dance" is trivially easy for a human to understand but involves a surprisingly deep pipeline to execute. The voice [[learning/notes/quick-context/comparator|signal]] must be captured, streamed to a speech-understanding model, interpreted as a sequence of discrete robot commands, translated into velocity messages the locomotion controller accepts, and finally converted to joint torques by the neural policy running on the real-time control loop. Every [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] operates at a different timescale: audio at 24 kHz, the LLM at hundreds of milliseconds, ROS2 topics at tens of Hz, and the motor loop at 1 kHz. Lab 6 asks students to build the [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] two layers of this stack and connect them to the [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] layers they already have from Labs 4-5.
 
-The KarelPupper abstraction exists because LLMs produce text, not Twist messages. Rather than asking the LLM to output raw linear and angular velocities (which it would hallucinate constantly), students define a small vocabulary of named actions — `move_forward`, `turn_left`, `bob`, `dance` — each implemented as a method that publishes the correct Twist sequence to `/cmd_vel`. This reduces the LLM's job from "generate arbitrary floating-point velocity vectors" to "pick from a menu of action names," which is a dramatically easier task for a language model and produces reliable behavior.
+The KarelPupper abstraction exists because LLMs produce [[learning/notes/quick-context/how-source-code-is-stored|text]], [[learning/notes/micro-context/can-bus-termination|not]] Twist messages. Rather than asking the LLM to output raw linear and angular velocities (which it would hallucinate constantly), students define a small vocabulary of named actions — `move_forward`, `turn_left`, `bob`, `dance` — each implemented as a method that publishes the correct Twist sequence to `/cmd_vel`. This reduces the LLM's job from "generate arbitrary floating-[[learning/notes/quick-context/epson-rc-plus-programming|point]] velocity vectors" to "pick from a menu of action names," which is a dramatically easier task for a language model and produces reliable behavior.
 
-The hardest part of the lab is prompt engineering. The system prompt fed to the OpenAI Realtime API must accomplish two competing goals: it must be flexible enough that the LLM understands varied natural-language requests ("go forward," "walk ahead," "move up"), yet constrained enough that every LLM response contains exactly one parseable action keyword. Students discover that vague prompts produce verbose, unparseable responses, while overly rigid prompts make the robot feel unresponsive to natural speech. Finding the balance is the core design challenge.
+The hardest part of the lab is prompt engineering. The system prompt fed to the OpenAI Realtime API must accomplish two competing goals: it must be flexible enough that the LLM understands varied natural-language requests ("go forward," "walk ahead," "move up"), yet constrained enough that every LLM response contains [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] parseable action keyword. Students discover that vague prompts produce verbose, unparseable responses, while overly rigid prompts make the robot feel unresponsive to natural speech. Finding the balance is the core design challenge.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **KarelPupper** | Python class in `karel.py` that wraps ROS2 Twist publishing into named methods (`move_forward()`, `bob()`, `dance()`), giving the LLM a discrete action vocabulary instead of continuous velocity space |
 | **Realtime API** | OpenAI's WebSocket-based voice interface that accepts streaming PCM16 audio and returns text/audio responses with server-side VAD — replaces the traditional Whisper + GPT + TTS three-step pipeline with a single persistent connection |
-| **VAD (Voice Activity Detection)** | Server-side algorithm that detects when the user has stopped speaking, triggering the LLM to generate a response — eliminates the need for push-to-talk or client-side silence detection |
+| **VAD (Voice Activity Detection)** | Server-side algorithm that detects [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] the user has stopped speaking, triggering the LLM to generate a response — eliminates the need for push-to-talk or client-side silence detection |
 | **Twist message** | ROS2 `geometry_msgs/msg/Twist` containing `linear.x/y/z` and `angular.x/y/z` velocities — the universal interface between high-level commands and the locomotion controller on `/cmd_vel` |
-| **System prompt** | The instruction text sent to the Realtime API that constrains the LLM's output format to parseable action commands — the critical bridge between natural language understanding and structured robot control |
+| **System prompt** | The [[learning/notes/quick-context/cpu-fetch-execute-cycle|instruction]] text sent to the Realtime API that constrains the LLM's output format to parseable action commands — the critical bridge between natural language understanding and structured robot control |
 
 <details>
 <summary><strong>How It Works</strong> — Voice command pipeline</summary>
 
-The full pipeline from spoken word to motor movement passes through seven stages, each at a different abstraction level:
+The [[learning/notes/quick-context/singular-value-decomposition|full]] pipeline from spoken [[learning/notes/quick-context/ram-addressing-decoder|word]] to motor movement passes through seven stages, each at a different abstraction level:
 
 ```
 VOICE-TO-ACTION PIPELINE
@@ -83,13 +83,13 @@ VOICE-TO-ACTION PIPELINE
 
 3. **Server-side VAD**: OpenAI's server detects when the user has finished speaking (a pause in the audio stream). This triggers response generation without requiring explicit "I'm done talking" signals from the client.
 
-4. **LLM response generation**: The model processes the transcribed speech against the system prompt, which instructs it to respond with exactly one action keyword (e.g., `move_forward`, `dance`). The response arrives as a `response.done` event on the WebSocket.
+4. **LLM response generation**: The model processes the transcribed speech against the system prompt, which instructs it to respond with exactly [[learning/notes/quick-context/ram-addressing-decoder|one]] action keyword (e.g., `move_forward`, `dance`). The response arrives as a `response.done` event on the WebSocket.
 
 5. **Command parsing**: The client-side parser in `realtime_voice.py` extracts the action keyword from the LLM's text response using string matching. The parsed command is published to `/gpt4_response_topic` for logging and dispatched to the corresponding Karel method.
 
 6. **Karel execution**: The matched method (e.g., `move_forward()`) publishes a Twist message to `/cmd_vel` with the appropriate linear and angular velocities, held for a duration (typically 1-2 seconds per movement step).
 
-7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via CAN bus.
+7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos [[learning/notes/quick-context/metal-interconnect-layers|via]] [[learning/notes/quick-context/embedded-communication-protocols|CAN]] [[learning/notes/quick-context/data-bus-and-arbitration|bus]].
 
 ### Audio muting for echo prevention
 
@@ -98,13 +98,13 @@ A critical implementation detail: the robot has a speaker for audio playback (th
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Natural language vs. structured commands</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Natural language vs. structured commands</summary>
 
 Lab 6 exposes a fundamental mismatch at the heart of LLM-controlled robotics: natural language is fluid, ambiguous, and context-dependent, while robot APIs demand precise, unambiguous, structured inputs.
 
-**The problem in concrete terms:** A user might say "go forward," "walk ahead," "move up," "advance," or "head that way" — all meaning the same thing. The LLM understands all of these. But the command parser only recognizes `move_forward`. If the LLM responds with "Sure, I'll walk ahead now!" instead of "move_forward," the robot does nothing.
+**The problem in concrete terms:** A user might say "go forward," "walk ahead," "move up," "advance," or "head that way" — all meaning the same thing. The LLM understands all of these. But the command parser [[learning/notes/quick-context/comparator-specification|only]] recognizes `move_forward`. If the LLM responds with "Sure, I'll walk ahead now!" instead of "move_forward," the robot does [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]].
 
-**The system prompt as a bridge:** Students must write a system prompt that threads the needle:
+**The system prompt as a bridge:** Students must [[learning/notes/quick-context/d-flip-flop|write]] a system prompt that threads the needle:
 
 ```
 Too loose:
@@ -128,19 +128,19 @@ The sweet spot:
   → Parser finds "dance" on its own line → robot dances
 ```
 
-This tension is not unique to this lab — it is the central unsolved problem in LLM-to-API systems everywhere. The industry is converging on two solutions: (1) structured output / function calling, where the LLM emits JSON or calls predefined functions rather than free text, and (2) constrained decoding, where the model's token probabilities are masked to only allow valid outputs. Both approaches sacrifice some natural-language flexibility for reliability. Students discover this tradeoff firsthand.
+This tension is not unique to this lab — it is the central unsolved problem in LLM-to-API systems everywhere. The industry is converging on two solutions: (1) structured output / [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] calling, where the LLM emits JSON or calls predefined functions rather than free text, and (2) constrained decoding, where the model's token probabilities are masked to only allow valid outputs. [[learning/notes/quick-context/bjt-specifications|Both]] approaches sacrifice some natural-language flexibility for [[learning/notes/quick-context/bond-pad|reliability]]. Students discover this tradeoff firsthand.
 
-**Why not just use function calling?** The OpenAI Realtime API does support function calling, and Lab 7 uses it. Lab 6 intentionally uses text-based command parsing so students experience the prompt engineering challenge directly. Understanding why structured output exists requires first struggling with unstructured output.
+**[[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] not just use function calling?** The OpenAI Realtime API does support function calling, and Lab 7 uses it. Lab 6 intentionally uses text-based command parsing so students experience the prompt engineering challenge directly. Understanding why structured output exists requires first struggling with unstructured output.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong> — "Dance for me" end to end</summary>
 
-Here is the complete trace of what happens when a student says "Dance for me" to the Pupper running the Lab 6 system:
+Here is the complete [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] of [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] happens when a student says "Dance for me" to the Pupper running the Lab 6 system:
 
 **T=0ms — Audio capture**
-The USB microphone captures the phrase at 24 kHz, 16-bit PCM. "Dance for me" is roughly 600ms of audio = ~28,800 samples = ~57,600 bytes of raw PCM16 data.
+The USB microphone captures the phrase at 24 kHz, 16-bit PCM. "Dance for me" is roughly 600ms of audio = ~28,800 samples = ~57,600 [[learning/notes/quick-context/how-source-code-is-stored|bytes]] of raw PCM16 data.
 
 **T=0-600ms — Streaming to OpenAI**
 Audio chunks are base64-encoded and sent as `input_audio_buffer.append` events over the WebSocket. The chunks stream in real time — there is no "record then send" step.
@@ -177,15 +177,15 @@ def dance(self):
     self.bob()          # finish with another bob
 ```
 
-Each method call publishes a Twist to `/cmd_vel` and sleeps for the movement duration before the next step.
+Each method [[learning/notes/quick-context/d-flip-flop|call]] publishes a Twist to `/cmd_vel` and sleeps for the movement duration before the next step.
 
-**T=1400-8000ms (in parallel) — Neural controller executes**
+**T=1400-8000ms (in [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]]) — Neural controller executes**
 While `dance()` sequences through its moves, the Lab 5 neural policy continuously reads `/cmd_vel` at ~50 Hz. For each Twist command, it generates 12 joint position targets that make the robot physically spin, strafe, and bob. The CAN bus carries these targets to the servo motors at 1 kHz.
 
 **T=1400-2000ms (in parallel) — Audio playback**
 The Realtime API also returns an audio version of "Time to bust a move!" as `response.audio.delta` events. The client decodes these and plays them through the speaker. During playback, the microphone input is muted to prevent echo.
 
-**Net result:** ~1.4 seconds from the end of speech to the robot starting to dance, with the LLM's voice response playing simultaneously. The user perceives near-instant responsiveness.
+**[[learning/notes/quick-context/schematic-reading|Net]] result:** ~1.4 seconds from the end of speech to the robot starting to dance, with the LLM's voice response playing [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]]. The user perceives near-instant responsiveness.
 
 </details>
 
@@ -193,23 +193,23 @@ The Realtime API also returns an audio version of "Time to bust a move!" as `res
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 6 sits between the neural controller (Lab 5) and vision tracking (Lab 7), adding the voice-to-command layer.
-- **[[quick-context/pupper-brain]]** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
+- **[[quick-context/pupper-brain]]** — The [[learning/notes/quick-context/sil-rated-safety-functions|hardware architecture]] [[learning/notes/quick-context/bga-ball-grid-array|underneath]]: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
 - **WebSocket protocol** — Lab 6 uses a persistent WebSocket (`wss://`) rather than REST API calls. WebSockets provide full-duplex communication: audio streams up while responses stream down simultaneously, which is essential for real-time voice interaction. REST would require "record, send, wait, receive" — far too slow for conversational feel.
-- **PCM16 audio format** — Pulse-Code Modulation at 16-bit depth. Each sample is a signed 16-bit integer (-32768 to +32767) representing the instantaneous amplitude. At 24 kHz, this produces 48,000 bytes/second of raw audio. No compression (unlike MP3/Opus), which means low latency but high bandwidth.
+- **PCM16 audio format** — Pulse-Code [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|Modulation]] at 16-bit depth. Each sample is a signed 16-bit integer (-32768 to +32767) representing the instantaneous amplitude. At 24 kHz, this produces 48,000 bytes/second of raw audio. No compression (unlike MP3/Opus), which means low [[learning/notes/quick-context/embedded-communication-protocols|latency]] but high [[learning/notes/quick-context/oscilloscope-and-multimeter|bandwidth]].
 - **Echo cancellation** — In production voice systems, acoustic echo cancellation (AEC) algorithms subtract the known speaker output from the microphone input in real time. Lab 6 uses a simpler approach (mute during playback) because full AEC requires DSP expertise beyond the lab's scope. The tradeoff: the robot cannot hear new commands while it is speaking.
 - **OpenAI function calling** — A more robust alternative to text-based command parsing where the LLM emits structured JSON matching a predefined schema. Lab 7 upgrades to this approach. Function calling eliminates the parsing ambiguity problem but removes the instructive struggle of prompt engineering.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** Why does the KarelPupper class exist as an abstraction layer rather than having the LLM directly output Twist messages with specific linear and angular velocity values?
 
 <details>
 <summary>Answer</summary>
 
-Three reasons: (1) **LLMs are unreliable with numbers.** Asking a language model to output `Twist(linear.x=0.5, angular.z=0.0)` would frequently produce hallucinated values — wrong magnitudes, swapped axes, or invalid formats. Named actions reduce the output space from infinite continuous values to a handful of discrete keywords. (2) **Temporal sequencing.** A Twist message is instantaneous, but actions like `bob()` and `dance()` require timed sequences of multiple Twist messages with sleeps in between. The LLM cannot manage real-time timing. (3) **Safety.** Karel methods can enforce velocity limits and duration caps, preventing the LLM from accidentally commanding dangerous speeds.
+Three [[learning/notes/quick-context/pupper-lab7-vision-tracking|reasons]]: (1) **LLMs are unreliable with numbers.** Asking a language model to output `Twist(linear.x=0.5, angular.z=0.0)` would frequently produce hallucinated values — wrong magnitudes, swapped axes, or invalid formats. Named actions reduce the output space from infinite continuous values to a handful of discrete keywords. (2) **Temporal sequencing.** A Twist message is instantaneous, but actions like `bob()` and `dance()` require timed sequences of multiple Twist messages with sleeps in between. The LLM cannot manage real-time [[learning/notes/quick-context/comparator-specification|timing]]. (3) **Safety.** Karel methods can enforce velocity limits and duration caps, preventing the LLM from accidentally commanding dangerous speeds.
 </details>
 
 **Q2:** The Realtime API uses server-side VAD rather than client-side silence detection. What advantage does this provide, and what is the tradeoff?
@@ -217,7 +217,7 @@ Three reasons: (1) **LLMs are unreliable with numbers.** Asking a language model
 <details>
 <summary>Answer</summary>
 
-**Advantage:** Server-side VAD is tuned by OpenAI and can use the LLM's language understanding to better detect utterance boundaries — it knows when a sentence is semantically complete, not just when audio amplitude drops. It also reduces client-side complexity (no need to implement and tune silence thresholds). **Tradeoff:** The server controls when to trigger a response, and the client cannot override this timing. If the VAD triggers too early (mid-sentence), the LLM responds to an incomplete command. If it triggers too late, the user perceives lag. Client-side VAD gives developers fine-grained control over these thresholds at the cost of more implementation work.
+**Advantage:** Server-side VAD is tuned by OpenAI and can use the LLM's language understanding to [[learning/notes/quick-context/comparator-specification|better]] detect utterance boundaries — it knows when a sentence is semantically complete, not just when audio amplitude drops. It also reduces client-side complexity (no need to implement and tune silence thresholds). **Tradeoff:** The server controls when to [[learning/notes/quick-context/oscilloscope-and-multimeter|trigger]] a response, and the client cannot override this timing. If the VAD triggers too early (mid-sentence), the LLM responds to an incomplete command. If it triggers too late, the user perceives lag. Client-side VAD gives developers [[learning/notes/micro-context/thread-pitch-screws|fine]]-grained control over these thresholds at the [[learning/notes/quick-context/bond-pad|cost]] of more implementation work.
 </details>
 
 **Q3:** During audio playback, the system mutes the microphone to prevent echo loops. Why would an echo loop occur, and why is it particularly problematic with an LLM in the pipeline?
@@ -225,7 +225,7 @@ Three reasons: (1) **LLMs are unreliable with numbers.** Asking a language model
 <details>
 <summary>Answer</summary>
 
-The speaker plays the LLM's audio response. The microphone picks up this audio. The system streams it to OpenAI as if it were new user speech. The LLM processes its own words as a new command and generates another response, which plays through the speaker, which gets picked up again — an infinite feedback loop. This is worse than a traditional audio echo because the LLM actively interprets and responds to the echoed content, potentially triggering robot actions nobody requested. Each loop iteration also incurs API costs. The simple mute approach works but means the robot is temporarily deaf while speaking — a limitation that production systems solve with proper acoustic echo cancellation (AEC) algorithms.
+The speaker plays the LLM's audio response. The microphone picks up this audio. The system streams it to OpenAI as if it were new user speech. The LLM processes its own words as a new command and generates another response, which plays through the speaker, which gets picked up again — an infinite feedback loop. This is worse than a traditional audio echo because the LLM actively [[learning/notes/quick-context/python-to-machine-code-pipeline|interprets]] and responds to the echoed content, potentially triggering robot actions nobody requested. Each loop iteration also incurs API costs. The simple mute approach works but means the robot is temporarily deaf while speaking — a limitation that production systems solve with proper acoustic echo cancellation (AEC) algorithms.
 </details>
 
 </details>

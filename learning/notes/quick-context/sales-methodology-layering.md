@@ -5,23 +5,23 @@ created: 2026-02-10
 
 # Sales Methodology Layering
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/strategic-selling-buyer-roles]]
 
-> **TL;DR:** No single sales methodology covers the entire account management lifecycle—the most effective organizations layer three types: a qualification framework (deal viability), a selling methodology (how to engage), and an account planning framework (long-term strategy), combining strengths while avoiding redundancy.
+> **TL;DR:** No single sales methodology covers [[learning/notes/quick-context/capacitance|the]] entire account management lifecycle—the most effective organizations [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] three types: a qualification framework (deal viability), a selling methodology (how to engage), [[learning/notes/micro-context/push-pull-vs-open-drain|and]] an account planning framework (long-term strategy), combining strengths while avoiding [[learning/notes/quick-context/pupper-brain|redundancy]].
 
 ## The Core Problem
 
-Sales leaders often pick one methodology and expect it to solve all problems. But MEDDPICC doesn't teach you how to sell, Challenger doesn't tell you who to sell to, and LAMP doesn't help you qualify deals. Using just one framework leaves gaps; using too many creates overhead and confusion. Without intentional layering, teams either under-process (missing deals they should win) or over-process (bureaucracy that slows momentum).
+Sales leaders often pick [[learning/notes/quick-context/ram-addressing-decoder|one]] methodology and expect it to solve all problems. But MEDDPICC doesn't teach you how to sell, Challenger doesn't tell you who to sell to, and LAMP doesn't help you qualify deals. Using just one framework leaves gaps; using too many creates overhead and confusion. Without intentional layering, teams either under-process (missing deals they should win) or over-process (bureaucracy that slows momentum).
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Qualification Framework** | A checklist-based system for assessing whether a deal is worth pursuing based on validated criteria (e.g., [[quick-context/meddpicc-qualification-framework|MEDDPICC]]) |
+| **Qualification Framework** | A checklist-based system for assessing [[learning/notes/quick-context/differential-pair|whether]] a deal is worth pursuing based on validated criteria (e.g., [[quick-context/meddpicc-qualification-framework|MEDDPICC]]) |
 | **Selling Methodology** | A philosophy and set of tactics for how to engage buyers and conduct sales conversations (e.g., [[quick-context/challenger-sale-methodology|Challenger]], SPIN) |
 | **Account Planning Framework** | A strategic system for managing key relationships over 1-3 year horizons (e.g., [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]], [[quick-context/mcdonald-kam-model|KAM]]) |
-| **Segmentation Framework** | A portfolio-level tool for deciding where to invest limited time across accounts (e.g., [[quick-context/sandler-kare-segmentation|KARE]]) |
-| **Framework Collision** | When multiple methodologies create conflicting guidance, duplicated documentation, or overhead that exceeds value |
+| **Segmentation Framework** | A portfolio-level [[learning/notes/quick-context/epson-rc-plus-programming|tool]] for deciding where to invest limited time across accounts (e.g., [[quick-context/sandler-kare-segmentation|KARE]]) |
+| **Framework Collision** | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] multiple methodologies create conflicting guidance, duplicated documentation, or overhead that exceeds value |
 
 <details>
 <summary><strong>How It Works</strong> — The three-layer model</summary>
@@ -132,29 +132,29 @@ REPEAT: Update MEDDPICC scorecard, refine LAMP account plan
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Process discipline vs. overhead</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Process discipline vs. overhead</summary>
 
 Every framework adds cognitive load and documentation. The tension:
 
 | Over-Processed | Under-Processed |
 |----------------|-----------------|
 | Gold Sheets for 50 accounts | No account plans at all |
-| Full MEDDPICC for $5K deals | Gut-feel pipeline, fiction forecasts |
+| [[learning/notes/quick-context/singular-value-decomposition|Full]] MEDDPICC for $5K deals | Gut-feel pipeline, fiction forecasts |
 | Challenger scripts for every meeting | Relationship-selling everything |
 | Methodology becomes the goal | Chaos, inconsistent results |
 
 **The practitioner debate:**
 
-- **"Process is freedom"**: Methodology creates consistency, enables coaching, and surfaces problems early. Top performers follow the frameworks too.
+- **"Process is freedom"**: Methodology creates consistency, enables coaching, and surfaces problems early. [[learning/notes/quick-context/keypress-to-pixel-pipeline|Top]] performers follow the frameworks too.
 - **"Process kills deals"**: Overloading reps with documentation steals selling time. Good reps have instincts—let them sell.
 
-**The pragmatic answer:** Layer ruthlessly. Full treatment for deals >$50K ACV and strategic accounts. Lightweight versions for the rest. The goal is informed judgment, not bureaucracy.
+**The pragmatic answer:** Layer ruthlessly. Full treatment for deals >$50K ACV and strategic accounts. Lightweight versions for the rest. The goal is informed judgment, [[learning/notes/micro-context/can-bus-termination|not]] bureaucracy.
 
 | ACV Range | Recommended Stack |
 |-----------|-------------------|
 | <$10K | Light MEDDPICC (4 elements), Challenger mindset, no formal LAMP |
 | $10-50K | Full MEDDPICC, abbreviated LAMP (1-pager), Challenger |
-| $50K+ | Full MEDDPICC, Full LAMP, Challenger, KARE segmentation |
+| $50K+ | Full MEDDPICC, Full LAMP, Challenger, [[learning/notes/quick-context/playbook-main|KARE]] segmentation |
 | Strategic | All of above + KAM relationship diagnostics, exec alignment |
 
 </details>
@@ -243,55 +243,55 @@ Time: 60 minutes
 Time: 20 minutes
 ```
 
-**The one thing most outsiders get wrong about this is...** they think more frameworks means more overhead. Actually, layered frameworks *reduce* work by giving clear answers for common questions. "Is this deal real?" → MEDDPICC. "Who do I call?" → LAMP stakeholder map. "What do I say?" → Challenger insight. Without layers, reps reinvent these decisions every time.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** they think more frameworks means more overhead. Actually, layered frameworks *reduce* work by giving clear answers for common questions. "Is this deal real?" → MEDDPICC. "Who do I [[learning/notes/quick-context/d-flip-flop|call]]?" → LAMP stakeholder map. "[[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] do I say?" → Challenger insight. Without layers, reps reinvent these decisions every time.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/meddpicc-qualification-framework]]** — The most common Layer 2 (qualification) framework
 - **[[quick-context/challenger-sale-methodology]]** — The dominant Layer 1 (selling) methodology for enterprise
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The classic Layer 3 (account planning) framework
 - **[[quick-context/sandler-kare-segmentation]]** — Portfolio segmentation that informs Layer 3 prioritization
-- **[[quick-context/mcdonald-kam-model]]** — Relationship maturity diagnostic that enhances Layer 3 planning
-- **CRM Design** — The practical implementation of layered frameworks; how fields and stages map to methodology elements
-- **Sales Enablement** — The function responsible for training reps on methodology adoption and measuring compliance
+- **[[quick-context/mcdonald-kam-model]]** — [[learning/notes/quick-context/mcdonald-kam-model|Relationship maturity]] diagnostic that enhances Layer 3 planning
+- **CRM Design** — The practical implementation of layered frameworks; how [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]] and stages map to methodology elements
+- **Sales Enablement** — The [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] responsible for training reps on methodology adoption and measuring compliance
 - **[[quick-context/whitespace-mapping]]** — Visual tool for identifying expansion opportunities within accounts; informs Layer 3 account planning
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** Why can't MEDDPICC alone replace the need for other methodologies?
+**Q1:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] [[learning/notes/quick-context/embedded-communication-protocols|can]]'t MEDDPICC alone replace the need for other methodologies?
 <details>
 <summary>Answer</summary>
 MEDDPICC qualifies deals but doesn't teach you how to sell or how to manage accounts strategically. It tells you whether a deal is real, not what to say in meetings (Challenger's role) or how to develop the account over years (LAMP's role). It's Layer 2 without Layers 1 and 3.
 </details>
 
-**Q2:** If an early-stage startup has only 2 reps and 50 prospects, which layers should they implement?
+**Q2:** If an early-stage [[learning/notes/quick-context/firmware|startup]] has [[learning/notes/quick-context/comparator-specification|only]] 2 reps and 50 prospects, which layers should they implement?
 <details>
 <summary>Answer</summary>
-Layer 1 (Challenger mindset) and abbreviated Layer 2 (MEDDIC without both Ps). Skip formal LAMP—there aren't enough accounts to justify full Gold Sheets. Use lightweight KARE to prioritize the 50 prospects. Add formal account planning only when they have repeat customers worth expanding.
+Layer 1 (Challenger mindset) and abbreviated Layer 2 (MEDDIC without [[learning/notes/quick-context/bjt-specifications|both]] Ps). Skip formal LAMP—there aren't enough accounts to justify full Gold Sheets. Use lightweight KARE to prioritize the 50 prospects. Add formal account planning only when they have repeat customers worth expanding.
 </details>
 
 **Q3:** A sales leader says "We use MEDDPICC for everything." What are they probably missing?
 <details>
 <summary>Answer</summary>
-Likely missing: (1) A selling methodology—reps may qualify deals well but execute poorly in meetings; (2) Account planning—they may win deals but fail to expand accounts or protect renewals; (3) Portfolio segmentation—they may over-invest in low-potential accounts while under-investing in strategic ones.
+Likely missing: (1) A selling methodology—reps may qualify deals well but execute poorly in meetings; (2) Account planning—they may win deals but fail to [[learning/notes/quick-context/playbook-main|expand accounts]] or protect renewals; (3) Portfolio segmentation—they may over-invest in low-potential accounts while under-investing in strategic ones.
 </details>
 
-**Q4:** When would you add [[quick-context/mcdonald-kam-model|KAM relationship maturity]] assessment on top of [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]]?
+**Q4:** When would you add [[quick-context/mcdonald-kam-model|KAM relationship maturity]] assessment [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of [[quick-context/miller-heiman-strategic-selling-lamp|LAMP]]?
 <details>
 <summary>Answer</summary>
-When you need to diagnose *why* account relationships aren't deepening. LAMP provides structure for account planning; KAM explains the progression from transactional to strategic. Use KAM when: (1) accounts are "stuck" at superficial relationships despite planning, (2) you're building a customer success function, or (3) you need to tier accounts by relationship potential, not just revenue.
+When you need to diagnose *why* account relationships aren't deepening. LAMP provides structure for account planning; KAM explains the progression from transactional to strategic. Use KAM when: (1) accounts are "stuck" at superficial relationships despite planning, (2) you're building a [[learning/notes/quick-context/mcdonald-kam-model|customer success]] function, or (3) you need to tier accounts by relationship potential, not just revenue.
 </details>
 
 **Q5:** A company adopts Challenger, MEDDPICC, LAMP, and KARE all at once. What could go wrong?
 <details>
 <summary>Answer</summary>
-Methodology collision and adoption failure. Reps get overwhelmed with documentation, training takes too long, and none of the frameworks get implemented well. Better approach: Start with one layer (usually Layer 2/MEDDPICC since it's most concrete), train to proficiency, then add layers sequentially. It takes 6-12 months to make one methodology habitual—introducing all four simultaneously means mastering none.
+Methodology collision and adoption failure. Reps get overwhelmed with documentation, training takes too long, and [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|none]] of the frameworks get implemented well. [[learning/notes/quick-context/comparator-specification|Better]] approach: Start with one layer (usually Layer 2/MEDDPICC since it's most concrete), train to proficiency, then add layers sequentially. It takes 6-12 months to make one methodology habitual—introducing all [[learning/notes/quick-context/ram-addressing-decoder|four]] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]] means mastering none.
 </details>
 
 </details>

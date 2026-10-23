@@ -3,26 +3,26 @@ topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]]
 
-> **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
+> **TL;DR:** EPSON RC+ is [[learning/notes/quick-context/capacitance|the]] IDE [[learning/notes/micro-context/push-pull-vs-open-drain|and]] SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|tuning]] of [[learning/notes/quick-context/embedded-communication-protocols|speed]], accuracy, and path smoothness tradeoffs.
 
 # EPSON RC+ Programming
 
 ## The Core Problem: Translating Intent into Precise, Repeatable Motion
 
-EPSON RC+ is the integrated development environment for programming Epson SCARA and 6-axis robots. It solves the fundamental problem of translating human intent—"pick this part, place it there, don't crash into the fixture"—into precise, repeatable motion that runs on Epson's robot controllers. Without it, you'd be stuck with teach pendants for point-by-point recording (tedious, inflexible) or trying to shoehorn generic PLCs into motion control they weren't designed for.
+EPSON RC+ is the [[learning/notes/quick-context/playbook-main|integrated]] development environment for programming Epson SCARA and 6-axis robots. It solves the fundamental problem of translating human intent—"pick this part, place it there, don't crash into the fixture"—into precise, repeatable motion that runs on Epson's robot controllers. Without it, you'd be stuck with teach pendants for point-by-point recording (tedious, inflexible) or trying to shoehorn generic PLCs into motion control they weren't designed for.
 
-The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+ programming language into one environment, which matters because industrial robotics lives or dies on the integration between motion planning, sensing, and cell-level logic.
+The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+ programming language into [[learning/notes/quick-context/ram-addressing-decoder|one]] environment, which matters because industrial robotics lives or dies on the integration between motion planning, sensing, and cell-level logic.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **SPEL+** | Epson's BASIC-like robot programming language; not intuitive if you're expecting Python, but straightforward once you accept the syntax. |
+| **SPEL+** | Epson's [[learning/notes/quick-context/playbook-main|BASIC]]-like robot programming language; [[learning/notes/micro-context/can-bus-termination|not]] intuitive if you're expecting Python, but straightforward once you accept the syntax. |
 | **Point** | A stored position (X, Y, Z, U, V, W or joint angles) that the robot moves to; points live in a point file, not inline in code. |
 | **Go/Move/Jump** | The three motion commands: `Go` for joint interpolation (fastest, but unpredictable path), `Move` for linear interpolation (straight line in Cartesian space), `Jump` for pick-place arcs with Z-axis retract. |
-| **Tool** | A coordinate frame offset from the robot's flange to the actual end-effector tip; get this wrong and your positions are all shifted. |
+| **Tool** | A coordinate [[learning/notes/quick-context/can-bus|frame]] offset from the robot's flange to the actual [[learning/notes/quick-context/pupper-lab2-forward-kinematics|end-effector]] tip; get this wrong and [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] positions are all shifted. |
 | **CP (Continuous Path)** | A mode where the robot blends through waypoints without stopping, trading positional accuracy for speed. |
 
 <details>
@@ -30,9 +30,9 @@ The IDE bundles simulation, I/O configuration, vision integration, and the SPEL+
 
 EPSON RC+ provides a complete workflow for robot programming:
 
-1. **Point Teaching**: Define positions using the teach pendant or 3D simulation, storing them as point numbers (P1, P2, etc.) in a point file separate from code.
+1. **Point Teaching**: Define positions using the [[learning/notes/quick-context/robotic-arm-api-levels|teach pendant]] or 3D simulation, storing them as point numbers (P1, P2, etc.) in a point file separate from code.
 
-2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
+2. **Motion Programming**: [[learning/notes/quick-context/d-flip-flop|Write]] SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)
    - `Move` - Linear interpolation (straight Cartesian path)
    - `Jump` - Arc motion with automatic Z-retract for pick-and-place
@@ -43,16 +43,16 @@ EPSON RC+ provides a complete workflow for robot programming:
 
 5. **I/O Integration**: Control grippers, sensors, and external devices through digital I/O commands integrated into the motion sequence.
 
-6. **Simulation**: Test programs in the built-in simulator before running on hardware.
+6. **Simulation**: Test programs in the built-in simulator before running on [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]].
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
 The core tension in EPSON robot programming is **cycle time vs. motion smoothness vs. positional accuracy**.
 
-You can move fast with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `Fine` motion termination, but the robot decelerates to zero velocity at every point, killing throughput.
+You [[learning/notes/quick-context/embedded-communication-protocols|can]] move [[learning/notes/quick-context/comparator|fast]] with aggressive acceleration (Speed/Accel commands), but the robot will overshoot or vibrate at endpoints. You can hit positions exactly with `[[learning/notes/micro-context/thread-pitch-screws|Fine]]` motion termination, but the robot decelerates to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] velocity at every point, killing [[learning/notes/quick-context/semiconductor-fabrication|throughput]].
 
 Practitioners spend real effort tuning `CP` (Continuous Path) motion, `Arch` parameters for pick-and-place Z-clearances, and acceleration curves to thread this needle.
 
@@ -97,7 +97,7 @@ Fend
 
 The `Jump` command is doing the heavy lifting here—it automatically retracts in Z before moving in X/Y, then descends at the target, creating the "arch" motion that avoids dragging parts across surfaces. `P1`, `P2`, and `P0` are point numbers defined in the Point Editor, not coordinates hardcoded in the program. The `LimZ(50)` parameter overrides the default arch height to 50mm.
 
-**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a PLC with motion coprocessors than a Python interpreter.
+**The one thing most outsiders get wrong** is assuming SPEL+ programs run like sequential scripts. They're actually compiled to the controller and run in a real-time environment with multitasking—you can have background tasks monitoring sensors, a main task running motion, and trap handlers for errors, all executing concurrently. The IDE simulation looks like running code on your laptop, but the real execution model is closer to a PLC with motion coprocessors than a Python [[learning/notes/quick-context/python-to-machine-code-pipeline|interpreter]].
 
 </details>
 
@@ -114,16 +114,16 @@ The `Jump` command is doing the heavy lifting here—it automatically retracts i
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** What is the difference between `Go`, `Move`, and `Jump` commands in SPEL+?
+**Q1:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|What]] is the difference between `Go`, `Move`, and `Jump` commands in SPEL+?
 <details>
 <summary>Answer</summary>
 `Go` uses joint interpolation (fastest but curved path), `Move` uses linear interpolation (straight line in Cartesian space), and `Jump` creates arc motion with automatic Z-axis retract for pick-and-place operations.
 </details>
 
-**Q2:** Why are points stored in a separate point file rather than hardcoded in the program?
+**Q2:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] are points stored in a separate point file rather than hardcoded in the program?
 <details>
 <summary>Answer</summary>
-Separating points from code allows positions to be updated (via teaching or offset adjustments) without modifying the program logic. This makes programs more maintainable and adaptable to fixture variations or mechanical wear.
+Separating points from code allows positions to be updated ([[learning/notes/quick-context/metal-interconnect-layers|via]] teaching or offset adjustments) without modifying the program logic. This makes programs more maintainable and adaptable to fixture variations or mechanical wear.
 </details>
 
 **Q3:** What does the `Tool` command configure and why is it important?
@@ -141,7 +141,7 @@ SPEL+ programs are compiled to the controller and run in a real-time multitaskin
 **Q5:** What is the tradeoff when using `CP` (Continuous Path) motion?
 <details>
 <summary>Answer</summary>
-CP mode allows the robot to blend through waypoints without stopping, which improves cycle time and motion smoothness. However, this trades off positional accuracy—the robot won't hit each waypoint exactly, it will cut corners to maintain velocity.
+CP mode allows the robot to blend through waypoints without stopping, which improves cycle time and motion smoothness. However, this trades [[learning/notes/quick-context/bjt-specifications|off]] positional accuracy—the robot won't hit each waypoint exactly, it will cut corners to maintain velocity.
 </details>
 
 </details>
