@@ -5,30 +5,30 @@ created: 2026-06-07
 
 # RAM — Addressing an Array of Registers
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]]
 
-> **TL;DR:** A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] stores exactly one word. RAM (Random-Access Memory) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its address**. Two switching circuits do the picking: a **DMUX** routes the "write now" signal to the one register you want to change, and a **MUX** selects the one register's value you want to read. With $n$ address bits you can name $2^n$ words, and you build big RAM by stacking eight small RAMs and gluing on three more address bits — over and over.
+> **TL;DR:** A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] stores exactly [[learning/notes/quick-context/ros2-architecture|one]] word. RAM (Random-Access [[learning/notes/quick-context/firmware|Memory]]) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its [[learning/notes/quick-context/how-source-code-is-stored|address]]**. [[learning/notes/micro-context/schmitt-trigger-hysteresis|Two]] switching circuits do [[learning/notes/quick-context/capacitance|the]] picking: a **DMUX** routes the "write now" [[learning/notes/quick-context/comparator|signal]] to the one register you want to change, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] a **MUX** selects the one register's value you want to read. With $n$ address bits you [[learning/notes/quick-context/embedded-communication-protocols|can]] name $2^n$ words, and you build big RAM by stacking [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|eight]] small RAMs and gluing on three more address bits — over and over.
 
 ## The Core Problem
 
-A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a short circuit, and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
+A single register can hold one word, but a useful program needs thousands or millions of words and [[learning/notes/quick-context/ros2-architecture|must]] be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a [[learning/notes/micro-context/short-circuit|short circuit]], and if you pulsed every register's [[learning/notes/quick-context/uart|clock]] at once you'd overwrite all of them. RAM solves [[learning/notes/quick-context/bjt-specifications|both]]: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Word** | The fixed-size chunk RAM stores and returns per address — one register's worth of bits. In the Nand-to-Tetris machine modeled here a word is 16 bits (`Bits16`); on a PC it is usually 8, 32, or 64. |
 | **Address** | A binary number that names one word in the array. With $n$ address bits there are $2^n$ distinct addresses, so an $n$-bit address selects one of $2^n$ words. |
-| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the clock edge. |
+| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the [[learning/notes/quick-context/clock-sources-and-timing|clock edge]]. |
 | **MUX (multiplexer)** | A many-to-1 selector on the **read path**. Every register is always outputting its stored value; the MUX picks **exactly one** of those outputs to pass through, chosen by the address. |
-| **Load / clock-enable** | The gate that decides whether a register captures new data on the next [[learning/notes/micro-context/clock-edges|clock edge]]. If `load = 1` the register overwrites itself at the edge; if `load = 0` it holds. The DMUX sets exactly one register's `load` to 1. |
+| **Load / clock-enable** | The [[learning/notes/quick-context/transistor|gate]] that decides [[learning/notes/quick-context/differential-pair|whether]] a register captures new data on the next [[learning/notes/micro-context/clock-edges|clock edge]]. If `load = 1` the register overwrites itself at the edge; if `load = 0` it [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]]. The DMUX sets exactly one register's `load` to 1. |
 
 <details>
-<summary><strong>How It Works</strong> — The essential mechanism</summary>
+<summary><strong>How It Works</strong> — The essential [[learning/notes/quick-context/silymarin|mechanism]]</summary>
 
 ### One register, then many
 
-Start from one register. It has three things going in — the data word `in`, a `load` bit (write or hold), and a clock — and one thing coming out: the stored word `out`. (See [[learning/notes/quick-context/switches-to-registers-storing-data|switches to registers]] for how that one register is built from [[learning/notes/quick-context/d-flip-flop|D flip-flops]].)
+Start from one register. It has three things going in — the data word `in`, a `load` bit (write or hold), and a clock — and one thing coming [[learning/notes/micro-context/push-pull-vs-open-drain|out]]: the stored word `out`. (See [[learning/notes/quick-context/switches-to-registers-storing-data|switches to registers]] for how that one register is built from [[learning/notes/quick-context/d-flip-flop|D flip-flops]].)
 
 ```
             in[16] ─────────────►┌───────────┐
@@ -37,7 +37,7 @@ Start from one register. It has three things going in — the data word `in`, a 
    clock ──────────────────────► └───────────┘
 ```
 
-Now line up eight of them. The data word `in` is broadcast to **all eight** registers at once — that part is just parallel wires, no decision. The clever bit is the two circuits that turn "all eight" into "exactly one".
+Now line up eight of them. The data word `in` is broadcast to **all eight** registers at once — that part is just [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] [[learning/notes/quick-context/uart|wires]], no decision. The clever bit is the two circuits that turn "all eight" into "exactly one".
 
 ```
 RAM8 = 8 registers + a 3-bit address + a DMUX (write) + a MUX (read)
@@ -82,7 +82,7 @@ The asymmetry is the whole trick. Writing must be **gated by the clock** so data
 
 ### Why the DMUX prevents clobbering
 
-Every register shares the same clock. If you simply let all of them capture on every edge, one write would overwrite all eight. The DMUX is what makes the array behave like memory instead of a broadcast: it converts a single `load` into a **one-hot** vector (exactly one wire high) so the clock edge only "lands" on the addressed register.
+Every register shares the same clock. If you simply let all of them capture on every edge, one write would overwrite all eight. The DMUX is [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|what]] makes the array behave like memory instead of a broadcast: it converts a single `load` into a **one-[[learning/notes/quick-context/bjt-specifications|hot]]** vector (exactly one wire high) so the clock edge [[learning/notes/quick-context/comparator-specification|only]] "lands" on the addressed register.
 
 ```
 address = 5 (binary 101)        load = 1
@@ -96,11 +96,11 @@ address = 5 (binary 101)        load = 1
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — What practitioners argue about</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — What practitioners argue about</summary>
 
-The central design tension in real RAM is **speed vs. density vs. cost**, and it shows up as the SRAM-vs-DRAM split.
+The central design tension in real RAM is **[[learning/notes/quick-context/embedded-communication-protocols|speed]] vs. [[learning/notes/quick-context/bond-pad|density]] vs. [[learning/notes/quick-context/bond-pad|cost]]**, and it shows up as the SRAM-vs-DRAM split.
 
-The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a capacitor — one transistor plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
+The Nand-to-Tetris model in this note treats each cell as a [[learning/notes/quick-context/singular-value-decomposition|full]] register (a bundle of flip-flops). That is essentially **SRAM**: [[learning/notes/quick-context/comparator|fast]], holds its value as long as [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|power]] is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny [[learning/notes/quick-context/cations-and-reduction|charge]] on a [[learning/notes/quick-context/capacitor|capacitor]] — one [[learning/notes/quick-context/silicon-die|transistor]] plus [[learning/notes/quick-context/inside-the-triangle|one capacitor]] — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
 
 | | SRAM (register-like) | DRAM (capacitor) |
 |---|---|---|
@@ -110,9 +110,9 @@ The Nand-to-Tetris model in this note treats each cell as a full register (a bun
 | Needs refresh? | No (static while powered) | Yes (charge leaks) |
 | Typical use | CPU registers, cache | Main memory (the GBs of "RAM") |
 
-So a machine uses **both**: a little fast SRAM right next to the CPU (registers and cache) and a lot of cheap DRAM as main memory. See [[learning/notes/micro-context/sram|SRAM]] for the cross-coupled-inverter cell and [[learning/notes/quick-context/physics-of-writing-data-to-memory|the physics of writing data to memory]] for why the capacitor approach leaks. The decoder/MUX/DMUX addressing logic in this note is **identical** for both — it is independent of how each cell physically stores its bit.
+So a machine uses **both**: a little fast SRAM right next to the CPU (registers and cache) and a lot of cheap DRAM as main memory. See [[learning/notes/micro-context/sram|SRAM]] for the cross-coupled-inverter cell and [[learning/notes/quick-context/physics-of-writing-data-to-memory|the physics of writing data to memory]] for [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] the capacitor approach leaks. The decoder/MUX/DMUX addressing logic in this note is **identical** for both — it is independent of how each cell physically stores its bit.
 
-The other recurring argument is **decoder cost as $n$ grows**. A flat decoder for $2^n$ words needs a fan-out that grows exponentially, which is why real chips (and the recursive build below) decompose the address into stages — a few bits per level — rather than one giant decoder.
+The other recurring argument is **decoder cost as $n$ grows**. A flat decoder for $2^n$ words needs a [[learning/notes/quick-context/raspberry-pi-5-components|fan]]-out that grows exponentially, which is why real chips (and the recursive build below) decompose the address into stages — a few bits per level — rather than one giant decoder.
 
 </details>
 
@@ -120,8 +120,8 @@ The other recurring argument is **decoder cost as $n$ grows**. A flat decoder fo
 <summary><strong>Concrete Example</strong> — The recursive build, as real runnable code</summary>
 
 This repository contains a working Python model of exactly this hierarchy in
-`learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/`.
-The pattern is **recursive**: each bigger RAM is *eight copies of the next smaller RAM* with **three more address bits** layered on top — the top 3 bits pick which sub-RAM, the remaining bits are handed down inside it.
+`learning/references/courses/python-nand-to-tetris-part-1/src/[[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]]/sequential_chips/`.
+The pattern is **recursive**: each bigger RAM is *eight copies of the next smaller RAM* with **three more address bits** layered [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] — the [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] 3 bits pick which sub-RAM, the remaining bits are handed down inside it.
 
 ### The scaling table
 
@@ -194,7 +194,7 @@ def dmux8way_gate(a, sel0, sel1, sel2):
 
 ### RAM64: the recursion, in real code
 
-From `ram64_chip.py` — now the eight cells are themselves `Ram8Chip`s, and the 6-bit address is split: top 3 bits (`address[:3]`) pick the sub-RAM, bottom 3 bits (`address[3:]`) are passed down:
+From `ram64_chip.py` — now the eight cells are themselves `Ram8Chip`s, and the 6-bit address is split: top 3 bits (`address[:3]`) pick the sub-RAM, [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] 3 bits (`address[3:]`) are passed down:
 
 ```python
 def __call__(self, in_bits: Bits16, load: Bit, address: Bits6) -> Bits16:
@@ -214,19 +214,19 @@ def __call__(self, in_bits: Bits16, load: Bit, address: Bits6) -> Bits16:
 
 `ram512_chip.py` and `ram4K_chip.py` are the **identical** pattern with `Ram64Chip` and `Ram512Chip` as the cells and 9- and 12-bit addresses. `ram16K_chip.py` is the same idea but with `Dmux4WayGate`/`Mux4Way16Gate` and `address[:2]` because it only needs four RAM4Ks.
 
-**The one thing most outsiders get wrong about this is...** thinking RAM "searches" for the address, like flipping through a notebook to find the right page — so they assume bigger memory is slower to find a word in. It does not search at all. The address is fed straight into the decoder, which is pure combinational logic, and the selected register is reached in essentially constant time no matter how big the array is. That is the whole meaning of **"random access"**: every address costs the same, in any order. (The recursive tree adds a few gate delays per level, but it is still constant for a fixed size — not a scan.)
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking RAM "searches" for the address, like flipping through a notebook to find the right page — so they assume bigger memory is slower to find a word in. It does [[learning/notes/micro-context/can-bus-termination|not]] search at all. The address is fed straight into the decoder, which is pure combinational logic, and the selected register is reached in essentially constant time no matter how big the array is. That is the whole meaning of **"random access"**: every address costs the same, in any [[learning/notes/quick-context/frequency-and-filtering|order]]. (The recursive tree adds a few gate delays per level, but it is still constant for a fixed size — not a scan.)
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — The rung below this one: how a single register (one word) is built from switches, a clock, and flip-flops. RAM is just an array of these.
-- **[[learning/notes/quick-context/d-flip-flop]]** — The 1-bit storage element underneath every register; the `load`/clock-edge behavior of a whole register comes straight from the DFF.
+- **[[learning/notes/quick-context/d-flip-flop]]** — The 1-bit [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|storage]] element [[learning/notes/quick-context/bga-ball-grid-array|underneath]] every register; the `load`/clock-edge behavior of a whole register comes straight from the DFF.
 - **[[learning/notes/micro-context/sram]]** — How a real fast memory cell stores a bit with six cross-coupled transistors. The "register per word" model in this note is essentially SRAM.
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — The other side of the SRAM-vs-DRAM split: why a capacitor-based cell is dense and cheap but leaks and needs refresh.
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The rung above this one: the CPU repeatedly reads instructions and data from RAM by address, then writes results back — it is the main "customer" of this addressing machinery.
-- **[[learning/notes/index/how-a-computer-works-index]]** — The spine hub: the full ladder from electricity up to running code. RAM is rung L7, sitting above the register and below the CPU.
+- **how-a-computer-works-index** — The spine hub: the full ladder from electricity up to running code. RAM is rung L7, sitting above the register and below the CPU.
 
 </details>
 
@@ -260,7 +260,7 @@ $16384 / 4096 = 4$, not 8 — so RAM16K is built from **four** RAM4Ks, not eight
 **Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a clock edge. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
 <details>
 <summary>Answer</summary>
-Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the [[learning/notes/quick-context/d-flip-flop|D flip-flop]] provides at the single-bit level.
+Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment[[learning/notes/quick-context/glass-transition-temperature|. This is the]] same edge-triggered discipline the [[learning/notes/quick-context/d-flip-flop|D flip-flop]] provides at the single-bit level.
 </details>
 
 </details>

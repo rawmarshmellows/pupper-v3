@@ -5,30 +5,30 @@ created: 2026-02-20
 
 # Faraday Tensor
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/voltage]] | [[quick-context/coil-magnetic-field]]
+> **Related:** [[learning/notes/quick-context/tensor]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/can-bus]]
 
-> **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
+> **TL;DR:** The Faraday tensor (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the [[learning/notes/quick-context/voltage-current-causality|electric field]] **E** [[learning/notes/micro-context/push-pull-vs-open-drain|and]] magnetic field **B** into a single mathematical object, revealing that they are [[learning/notes/micro-context/can-bus-termination|not]] separate phenomena but [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] aspects of [[learning/notes/quick-context/ram-addressing-decoder|one]] unified electromagnetic field that transforms together under [[learning/notes/quick-context/maxwell-equations|special relativity]]—[[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]].
 
 ## The Core Problem: E and B Transform Weirdly
 
-When you learn [[quick-context/electromagnetism|electromagnetism]], electric and magnetic fields seem like distinct things: **E** pushes charges regardless of their motion, **B** only affects moving charges. But there's a puzzle: a stationary charge next to a current-carrying wire sees a magnetic field (from the moving electrons). If you run alongside those electrons at the same speed, you now see stationary charges—and stationary charges don't create magnetic fields. Where did the B field go? The answer is that from your moving reference frame, what was a magnetic field now appears as an electric field. E and B aren't separate—they're components of a single entity that rotates into each other when you change velocity. The Faraday tensor is the mathematical object that captures this unity.
+[[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] you learn [[quick-context/electromagnetism|electromagnetism]], electric and magnetic fields seem like distinct things: **E** [[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]] charges regardless of their motion, **B** [[learning/notes/quick-context/comparator-specification|only]] affects moving charges. But there's a puzzle: a stationary [[learning/notes/quick-context/cations-and-reduction|charge]] next to a [[learning/notes/quick-context/parallel-vs-series-voltage|current]]-carrying wire sees a magnetic field (from the moving [[learning/notes/quick-context/anions-and-oxidation|electrons]]). If you run alongside those electrons at the same [[learning/notes/quick-context/embedded-communication-protocols|speed]], you now see stationary charges—and stationary charges don't create magnetic fields. Where did the B field go? The answer is that from [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] moving [[learning/notes/quick-context/comparator|reference]] [[learning/notes/quick-context/uart|frame]], what was a magnetic field now appears as an electric field. E and B aren't separate—they're components of a single entity that rotates into each other when you change velocity. The Faraday tensor is the mathematical object that captures this unity.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Faraday Tensor ($F^{\mu\nu}$)** | A rank-2 antisymmetric tensor encoding both **E** and **B** fields in a 4×4 matrix. The indices μ and ν run from 0 to 3 (time and three spatial dimensions). Antisymmetric means $F^{\mu\nu} = -F^{\nu\mu}$. |
-| **Four-Vector** | A quantity with four components (one time, three space) that transforms properly under Lorentz transformations. Examples: position $(ct, x, y, z)$, momentum $(E/c, p_x, p_y, p_z)$, current density $(c\rho, J_x, J_y, J_z)$. |
+| **Faraday Tensor ($F^{\mu\nu}$)** | A [[learning/notes/quick-context/singular-value-decomposition|rank]]-2 antisymmetric tensor [[learning/notes/quick-context/how-source-code-is-stored|encoding]] [[learning/notes/quick-context/bjt-specifications|both]] **E** and **B** fields in a 4×4 matrix. The indices μ and ν run from 0 to 3 (time and three spatial dimensions). Antisymmetric means $F^{\mu\nu} = -F^{\nu\mu}$. |
+| **[[learning/notes/quick-context/ram-addressing-decoder|Four]]-Vector** | A quantity with four components (one time, three space) that transforms properly under Lorentz transformations. Examples: position $(ct, x, y, z)$, momentum $(E/c, p_x, p_y, p_z)$, [[learning/notes/quick-context/electric-current|current density]] $(c\rho, J_x, J_y, J_z)$. |
 | **Lorentz Transformation** | The rules for converting measurements between reference frames moving relative to each other at constant velocity. Length contracts, time dilates, and the Faraday tensor components mix together. |
-| **Dual Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to write the other half of Maxwell's equations. |
-| **Covariant** | A formulation that takes the same mathematical form in all inertial reference frames. The Faraday tensor makes electromagnetism manifestly covariant—you write the equations once, and they automatically work in any frame. |
+| **[[learning/notes/quick-context/comparator-specification|Dual]] Tensor ($\tilde{F}^{\mu\nu}$)** | The "partner" tensor obtained by swapping E and B (with sign changes): where $F$ has E components, $\tilde{F}$ has B, and vice versa. Used to [[learning/notes/quick-context/d-flip-flop|write]] the other half of [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]]. |
+| **Covariant** | A formulation that takes the same mathematical [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] in all inertial reference frames. The Faraday tensor makes electromagnetism manifestly covariant—you write the equations once, and they automatically work in any frame. |
 
 <details>
 <summary><strong>How It Works</strong> — Packaging E and B into one object</summary>
 
 ## The Electric and Magnetic Fields as Tensor Components
 
-In three-dimensional physics, we have two vector fields: **E** = $(E_x, E_y, E_z)$ and **B** = $(B_x, B_y, B_z)$—six independent components total. The Faraday tensor packages all six into a 4×4 matrix:
+In three-dimensional physics, we have two vector fields: **E** = $(E_x, E_y, E_z)$ and **B** = $(B_x, B_y, B_z)$—six independent components [[learning/notes/quick-context/similarity-transform|total]]. The Faraday tensor packages all six into a 4×4 matrix:
 
 ```
 THE FARADAY TENSOR — Structure and Components
@@ -83,7 +83,7 @@ THE FARADAY TENSOR — Structure and Components
 
 ## Why the Tensor Form Matters: Lorentz Transformations
 
-The power of the tensor formulation becomes clear when you change reference frames. Under a Lorentz transformation (boost), the Faraday tensor transforms according to standard tensor rules:
+The [[learning/notes/quick-context/d-flip-flop|power]] of the tensor formulation becomes clear when you change reference frames. Under a Lorentz transformation (boost), the Faraday tensor transforms according to standard tensor rules:
 
 ```
 HOW E AND B MIX UNDER BOOSTS
@@ -222,7 +222,7 @@ WHY THIS MATTERS:
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Mathematical elegance vs. physical intuition</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Mathematical elegance vs. physical intuition</summary>
 
 ## The Tensor Hides the Fields; the Fields Hide the Unity
 
@@ -282,11 +282,11 @@ APPROACH 2: UNIFIED FARADAY TENSOR (relativistic, elegant)
 
 | When to Use | E/B Separate | Faraday Tensor |
 |-------------|--------------|----------------|
-| Circuit design | Better | Overkill |
-| [[quick-context/inductor\|Inductor]]/[[quick-context/capacitor\|capacitor]] analysis | Better | Overkill |
+| Circuit design | [[learning/notes/quick-context/comparator-specification|Better]] | Overkill |
+| [[learning/notes/quick-context/inductor|Inductor]]/[[learning/notes/quick-context/capacitor|capacitor]] analysis | Better | Overkill |
 | High-velocity particles | Works but messy | Natural |
 | Particle physics | Awkward | Required |
-| General relativity + EM | Impossible | Required |
+| [[learning/notes/quick-context/singular-value-decomposition|General]] relativity + EM | Impossible | Required |
 | Building physical intuition | Better | Abstract |
 
 The deepest understanding comes from knowing both perspectives and switching between them as needed.
@@ -406,7 +406,7 @@ EXAMPLE: Current-Carrying Wire
         E' · B' = 0          (still zero!)
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that since E and B transform into each other, you could boost to a frame where a magnetic field completely disappears, or where any electric field becomes purely magnetic. You can't—the invariants constrain what's possible. For electromagnetic waves, both E and B are always present in every frame (B² - E²/c² = 0 means neither dominates). For a pure electric field (B² - E²/c² < 0), you can find a frame with B = 0 but never B without E. The Faraday tensor respects these invariants under all transformations.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking that since E and B transform into each other, you could boost to a frame where a magnetic field completely disappears, or where any electric field becomes purely magnetic. You [[learning/notes/quick-context/embedded-communication-protocols|can]]'t—the invariants constrain what's possible. For electromagnetic waves, both E and B are always present in every frame (B² - E²/c² = 0 means neither dominates). For a pure electric field (B² - E²/c² < 0), you can find a frame with B = 0 but never B without E. The Faraday tensor respects these invariants under all transformations.
 
 </details>
 
@@ -415,13 +415,13 @@ EXAMPLE: Current-Carrying Wire
 
 - **[[quick-context/electromagnetism]]** — The classical treatment with separate E and B fields. The Faraday tensor is the relativistic packaging of these fields into a single geometric object.
 
-- **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Explains from a physical perspective why moving charges create magnetic fields and why E and B are really one phenomenon. The Faraday tensor is the mathematical formalization of this unity.
+- **[[quick-context/electric-magnetic-field-unification|Field Unification]]** — Explains from a physical perspective [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] moving charges create magnetic fields and why E and B are really one phenomenon. The Faraday tensor is the mathematical formalization of this unity.
 
 - **[[quick-context/coil-magnetic-field]]** — The relativistic explanation section discusses how magnetism is "relativistic electricity"—what the Faraday tensor makes mathematically precise.
 
-- **[[quick-context/voltage]]** — Voltage is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
+- **[[quick-context/voltage]]** — [[learning/notes/quick-context/voltage|Voltage]] is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
 
-- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of Maxwell's equations in tensor form.
+- **[[quick-context/electric-current]]** — Current appears in the [[learning/notes/quick-context/differential-pair|source]] term (4-current $J^\mu$) of Maxwell's equations in tensor form.
 
 - **Special Relativity** — The Lorentz transformations that mix E and B components come from special relativity. The Faraday tensor is defined to transform correctly under these transformations.
 
@@ -429,7 +429,7 @@ EXAMPLE: Current-Carrying Wire
 
 - **Differential Forms** — In advanced mathematics, the Faraday tensor is understood as a 2-form on spacetime. This explains why it has 6 independent components (ways to choose 2 dimensions from 4) and why it's antisymmetric.
 
-- **[[quick-context/maxwell-equations]]** — The four classical Maxwell equations reduce to two tensor equations when written using the Faraday tensor: ∂_μ F^μν = μ₀ J^ν and ∂_μ F̃^μν = 0. This is the most compact form of classical electromagnetism.
+- **[[quick-context/maxwell-equations]]** — The four classical Maxwell equations reduce to two tensor equations when written using the Faraday tensor: ∂_μ F^μν = μ₀ J^ν and ∂_μ F̃^μν = 0[[learning/notes/quick-context/glass-transition-temperature|. This is the]] most compact form of classical electromagnetism.
 
 - **General Relativity** — In curved spacetime, the Faraday tensor formulation generalizes naturally. You replace ordinary derivatives with covariant derivatives, and the formalism still works.
 
@@ -443,13 +443,13 @@ EXAMPLE: Current-Carrying Wire
 **Q1:** The Faraday tensor is a 4×4 matrix, giving 16 entries. Why does it only represent 6 independent field components?
 <details>
 <summary>Answer</summary>
-**Antisymmetry.** $F^{\mu\nu} = -F^{\nu\mu}$ forces the diagonal entries to zero (4 entries) and pairs the off-diagonal entries as negatives of each other. Of the remaining 12 off-diagonal entries, each pair contains the same information with opposite sign, leaving 6 independent components—exactly matching the 3 components of **E** and 3 components of **B**.
+**Antisymmetry.** $F^{\mu\nu} = -F^{\nu\mu}$ forces the diagonal entries to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] (4 entries) and pairs the [[learning/notes/quick-context/bjt-specifications|off]]-diagonal entries as negatives of each other. Of the remaining 12 off-diagonal entries, each pair contains the same information with opposite sign, leaving 6 independent components—exactly matching the 3 components of **E** and 3 components of **B**.
 </details>
 
 **Q2:** A reference frame exists where a certain electromagnetic field is purely electric (B = 0). What can you conclude about the invariants?
 <details>
 <summary>Answer</summary>
-**B² - E²/c² < 0 and E · B = 0.** In the frame where B = 0, the first invariant equals -E²/c² < 0, so it must be negative in all frames. The second invariant E · B = 0 because B = 0. These values are the same in every frame, so any observer would find B² - E²/c² < 0 (electric-dominated) and E · B = 0 (perpendicular fields).
+**B² - E²/c² < 0 and E · B = 0.** In the frame where B = 0, the first invariant equals -E²/c² < 0, so it [[learning/notes/quick-context/ros2-architecture|must]] be negative in all frames. The second invariant E · B = 0 because B = 0. These values are the same in every frame, so any observer would find B² - E²/c² < 0 (electric-dominated) and E · B = 0 (perpendicular fields).
 </details>
 
 **Q3:** For an electromagnetic wave, B² - E²/c² = 0 and E · B = 0. Can you find a reference frame where the wave looks like a static electric or magnetic field?
@@ -461,7 +461,7 @@ EXAMPLE: Current-Carrying Wire
 **Q4:** In classical 3D vector notation, Maxwell's equations are four separate equations. In tensor form, how many equations are there?
 <details>
 <summary>Answer</summary>
-**Two.** The equation $\partial_\mu F^{\mu\nu} = \mu_0 J^\nu$ contains Gauss's law for E (ν=0 component) and the Ampère-Maxwell law (ν=1,2,3 components). The equation $\partial_\mu \tilde{F}^{\mu\nu} = 0$ contains Gauss's law for B and Faraday's law. The tensor formulation is more compact and manifestly covariant.
+**Two.** The equation $\partial_\mu F^{\mu\nu} = \mu_0 J^\nu$ contains Gauss's law for E (ν=0 [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]]) and the Ampère-Maxwell law (ν=1,2,3 components). The equation $\partial_\mu \tilde{F}^{\mu\nu} = 0$ contains Gauss's law for B and [[learning/notes/quick-context/lenzs-law|Faraday's law]]. The tensor formulation is more compact and manifestly covariant.
 </details>
 
 **Q5:** A stationary charge sees only an electric field from another stationary charge. If you run past this setup at high speed, will you see a magnetic field?

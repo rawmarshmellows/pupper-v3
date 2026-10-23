@@ -1,12 +1,14 @@
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/mcdonald-kam-model]]
+
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
+> A step-by-step guide for managing [[learning/notes/micro-context/push-pull-vs-open-drain|and]] growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
 
 ## How to Use This Playbook
 
-This playbook is designed to be followed sequentially for each account, then maintained through regular rituals. Work through Steps 1-6 when onboarding a new account or taking over an existing one, then use the Ongoing Rituals section to maintain momentum.
+This playbook is designed to be followed sequentially for each account, then maintained through regular rituals. Work through Steps 1-6 [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] onboarding a new account or taking over an existing [[learning/notes/quick-context/ram-addressing-decoder|one]], then use [[learning/notes/quick-context/capacitance|the]] Ongoing Rituals section to maintain momentum.
 
 ---
 
@@ -18,26 +20,26 @@ This playbook is designed to be followed sequentially for each account, then mai
 
 | | Low Growth Potential | High Growth Potential |
 |---|---|---|
-| **High Current Value** | PROTECT | STRATEGIC |
+| **High [[learning/notes/quick-context/capacitance|Current]] Value** | PROTECT | STRATEGIC |
 | **Low Current Value** | MAINTAIN | GROWTH |
 
 **Answer these questions:**
 
-- [ ] What is the current ARR/ACV? $_______
-- [ ] What is the total addressable spend within this account? $_______
+- [ ] [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] is the current ARR/ACV? $_______
+- [ ] What is the [[learning/notes/quick-context/similarity-transform|total]] addressable spend within this account? $_______
 - [ ] Are there expansion opportunities (new teams, use cases, products)? Yes / No
 - [ ] Is the company growing, stable, or declining?
-- [ ] What is their strategic importance beyond revenue (reference, logo, industry)?
+- [ ] What is their strategic importance beyond revenue ([[learning/notes/quick-context/comparator|reference]], logo, industry)?
 
 ### 1.2 Assign KARE Classification
 
-Based on your primary motion with this account:
+Based on [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] primary motion with this account:
 
-| Classification | Definition | Your Account? |
+| Classification | [[learning/notes/quick-context/capacitance|Definition]] | Your Account? |
 |---|---|---|
 | **KEEP** | Stable revenue, no major expansion path. Focus: protect from churn | [ ] |
-| **EXPAND** | Existing customer with whitespace. Focus: grow revenue | [ ] |
-| **ATTAIN** | (Not applicable - this is for new logos) | - |
+| **EXPAND** | Existing customer with [[learning/notes/quick-context/whitespace-mapping|whitespace]]. Focus: grow revenue | [ ] |
+| **ATTAIN** | ([[learning/notes/micro-context/can-bus-termination|Not]] applicable - this is for new logos) | - |
 | **RECAPTURE** | (Not applicable - this is for lost customers) | - |
 
 ### 1.3 Determine Engagement Level
@@ -47,7 +49,7 @@ Based on your primary motion with this account:
 | STRATEGIC | Dedicated | Weekly | Quarterly | 10-20 |
 | GROWTH | Shared | Bi-weekly | Semi-annual | 30-50 |
 | PROTECT | Dedicated (retention focus) | Monthly | Quarterly (value-focused) | 20-30 |
-| MAINTAIN | Pooled/Tech-touch | Triggered only | None (automated) | 100+ |
+| MAINTAIN | Pooled/Tech-touch | Triggered [[learning/notes/quick-context/comparator-specification|only]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|None]] (automated) | 100+ |
 
 **My account is:** _____________ **Engagement level:** _____________
 
@@ -67,7 +69,7 @@ Rate each indicator (0 = Not true, 1 = Somewhat true, 2 = Very true):
 - [ ] No real commitment yet ___
 
 **BASIC (Transaction-focused)**
-- [ ] Price is their primary decision driver ___
+- [ ] [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|Price]] is their primary decision driver ___
 - [ ] Low switching costs - we're easily replaceable ___
 - [ ] Relationship is through procurement only ___
 
@@ -79,7 +81,7 @@ Rate each indicator (0 = Not true, 1 = Somewhat true, 2 = Very true):
 **INTERDEPENDENT (Joint planning)**
 - [ ] We do joint planning and problem-solving ___
 - [ ] Switching costs are high - processes intertwined ___
-- [ ] We share metrics and goals ___
+- [ ] We share [[learning/notes/quick-context/meddpicc-qualification-framework|metrics]] and goals ___
 
 **INTEGRATED (One team)**
 - [ ] Effectively operating as one organization ___
@@ -94,7 +96,7 @@ Rate each indicator (0 = Not true, 1 = Somewhat true, 2 = Very true):
 ```
 Our CSM ──────────── Their Procurement
 ```
-- [ ] Single point of contact on each side
+- [ ] Single [[learning/notes/quick-context/epson-rc-plus-programming|point]] of contact on each side
 - [ ] If that person leaves, relationship breaks
 - [ ] Information bottleneck
 
@@ -112,7 +114,7 @@ Our Support ─────── Their Users
 
 ### 2.3 Document Contact Map
 
-| Level | Our Contact | Their Contact | Relationship Strength (1-5) |
+| Level | Our Contact | Their Contact | Relationship [[learning/notes/quick-context/cnc-machining|Strength]] (1-5) |
 |---|---|---|---|
 | Executive | | | |
 | Management | | | |
@@ -131,18 +133,18 @@ Our Support ─────── Their Users
 ### 3.1 Identify the Four Buyer Roles
 
 #### Economic Buyer (The Wallet)
-*Final authority to approve spending. Can say yes when everyone else says no.*
+*Final authority to approve spending. [[learning/notes/quick-context/embedded-communication-protocols|Can]] say yes when everyone else says no.*
 
 | Field | Details |
 |---|---|
 | Name | |
 | Title | |
 | Stance | GROWTH / TROUBLE / EVEN KEEL / OVERCONFIDENT |
-| Priority | |
+| [[learning/notes/quick-context/data-bus-and-arbitration|Priority]] | |
 | Access level | None / Limited / Moderate / Strong |
 | Win theme | "What message resonates with them?" |
 | Red flags | |
-| Action needed | |
+| [[learning/notes/quick-context/pupper-lab5-neural-controller|Action]] needed | |
 
 #### User Buyer(s) (Day-to-day users)
 *Judge success based on job impact. Their satisfaction = your retention.*
@@ -153,7 +155,7 @@ Our Support ─────── Their Users
 | | | | | | |
 
 #### Technical Buyer(s) (The Filter)
-*Screen against specs, compliance, security. Can veto but can't approve.*
+*[[learning/notes/quick-context/data-bus-and-arbitration|Screen]] against specs, compliance, security. Can veto but can't approve.*
 
 | Name | Title | Stance | Priority | Access | Action |
 |---|---|---|---|---|---|
@@ -179,7 +181,7 @@ Our Support ─────── Their Users
 | **GROWTH** | Sees opportunity to win/advance | Fuel their vision, make them the hero |
 | **TROUBLE** | Current situation is painful | Emphasize relief, show quick wins |
 | **EVEN KEEL** | Not feeling acute pain or opportunity | Create urgency, highlight hidden costs |
-| **OVERCONFIDENT** | Believes current approach is fine | Bring data that challenges assumptions |
+| **OVERCONFIDENT** | Believes current approach is [[learning/notes/micro-context/thread-pitch-screws|fine]] | Bring data that challenges assumptions |
 
 ---
 
@@ -189,7 +191,7 @@ Our Support ─────── Their Users
 
 ### 4.1 Charter Statement
 
-Write a customer-centric statement of what you're trying to achieve FOR them (not your sales target):
+[[learning/notes/quick-context/d-flip-flop|Write]] a customer-centric statement of what you're trying to achieve FOR them (not your sales target):
 
 > "[Customer name]'s [team/division] will achieve [specific outcome] within [timeframe] by [how], resulting in [measurable benefit]."
 
@@ -229,7 +231,7 @@ _____________________________________________________________
 
 Where can we expand within this account?
 
-| Opportunity | Potential Value | Champion Available? | Timeline | Priority |
+| Opportunity | Potential Value | [[learning/notes/quick-context/meddpicc-qualification-framework|Champion]] Available? | Timeline | Priority |
 |---|---|---|---|---|
 | | | | | |
 | | | | | |
@@ -240,7 +242,7 @@ Where can we expand within this account?
 | Competitor | Their Position | Our Angle |
 |---|---|---|
 | | | |
-| Status Quo (doing nothing) | | |
+| Status Quo (doing [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]]) | | |
 
 ---
 
@@ -254,9 +256,9 @@ Where can we expand within this account?
 
 | Touchpoint | Frequency | Owner | Purpose |
 |---|---|---|---|
-| Executive alignment call | Monthly | AE + CSM | Strategic relationship, expansion discovery |
+| Executive alignment [[learning/notes/quick-context/d-flip-flop|call]] | Monthly | AE + CSM | Strategic relationship, expansion discovery |
 | Operational check-in | Weekly | CSM | Usage, issues, quick wins |
-| QBR | Quarterly | Full team | Value review, roadmap, expansion proposal |
+| QBR | Quarterly | [[learning/notes/quick-context/singular-value-decomposition|Full]] team | Value review, roadmap, expansion proposal |
 | Product roadmap session | Quarterly | Product | Influence, co-development |
 | Executive dinner/visit | Bi-annual | Leadership | Relationship deepening |
 
@@ -283,8 +285,8 @@ Where can we expand within this account?
 | Touchpoint | Frequency | Owner | Purpose |
 |---|---|---|---|
 | Automated onboarding | Day 1-30 | System | Self-service setup |
-| Health score monitoring | Continuous | System | Trigger interventions |
-| Intervention outreach | When triggered | Pooled CSM | Address usage drops |
+| Health score monitoring | Continuous | System | [[learning/notes/quick-context/oscilloscope-and-multimeter|Trigger]] interventions |
+| Intervention outreach | When triggered | Pooled CSM | [[learning/notes/quick-context/how-source-code-is-stored|Address]] usage drops |
 | Renewal sequence | -60 days | System | Automated renewal |
 
 ### 5.2 First 90 Days Plan
@@ -325,27 +327,27 @@ For each key stakeholder persona, prepare an insight that:
 |---|---|
 | **Warmer** | "Here's what we see in your industry..." |
 | **Reframe** | "But here's what most companies miss..." |
-| **Rational Drowning** | "Here's the cost of the problem you didn't know you had..." |
+| **Rational Drowning** | "Here's the [[learning/notes/quick-context/bond-pad|cost]] of the problem you didn't know you had..." |
 | **Emotional Impact** | "And here's what happens when this goes wrong..." |
 | **New Way** | "Companies solving this do X differently..." |
-| **Your Solution** | "Here's how we enable that..." |
+| **Your Solution** | "Here's how we [[learning/notes/quick-context/d-flip-flop|enable]] that..." |
 
 ### 6.2 Tailor by Stakeholder
 
 | Stakeholder | Their Priority | Tailored Insight Angle |
 |---|---|---|
-| Economic Buyer | | |
-| User Buyer | | |
-| Technical Buyer | | |
+| [[learning/notes/quick-context/meddpicc-qualification-framework|Economic Buyer]] | | |
+| [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|User Buyer]] | | |
+| [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Technical Buyer]] | | |
 
 ### 6.3 Take Control Preparation
 
 Anticipate where you'll need to push back:
 
-| Scenario | Their Request | Your Pushback | Why It Serves Them |
+| Scenario | Their Request | Your Pushback | [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] It Serves Them |
 |---|---|---|---|
-| Discount request | "Can you do 20% off?" | | |
-| Scope creep | "Can you add X feature?" | | |
+| Discount request | "Can you do 20% [[learning/notes/quick-context/bjt-specifications|off]]?" | | |
+| Scope [[learning/notes/quick-context/glass-transition-temperature|creep]] | "Can you add X feature?" | | |
 | Timeline stall | "Let's revisit next quarter" | | |
 | Wrong stakeholder | "Just work with procurement" | | |
 
@@ -357,7 +359,7 @@ Anticipate where you'll need to push back:
 
 - [ ] Review health score / usage dashboard for this account
 - [ ] Check for triggered alerts (usage drop, support patterns)
-- [ ] Update CRM with any new intel
+- [ ] [[learning/notes/quick-context/ppo-proximal-policy-optimization|Update]] CRM with any new intel
 - [ ] Confirm upcoming touchpoints scheduled
 
 ### Monthly (30 min)
@@ -397,7 +399,7 @@ Anticipate where you'll need to push back:
 - [ ] Moves into target vertical/size
 
 **Growth to Strategic:**
-- [ ] Deal size crosses threshold (e.g., $100K ACV)
+- [ ] Deal size crosses [[learning/notes/micro-context/capacitive-voltage-sensing|threshold]] (e.g., $100K ACV)
 - [ ] Multi-department expansion
 - [ ] Executive sponsor engaged
 - [ ] Strategic partnership potential
@@ -421,7 +423,7 @@ Anticipate where you'll need to push back:
 
 ## Red Flags Checklist
 
-Review monthly for early warning signs:
+Review monthly for early [[learning/notes/quick-context/galvanic-cells-batteries|warning]] signs:
 
 ### Relationship Risks
 - [ ] Champion left or changing roles
@@ -432,7 +434,7 @@ Review monthly for early warning signs:
 ### Usage Risks
 - [ ] Login frequency declining
 - [ ] Feature adoption stalled
-- [ ] Support ticket volume spiking
+- [ ] Support ticket [[learning/notes/quick-context/cnc-machining|volume]] spiking
 - [ ] Key users not engaging
 
 ### Competitive Risks
@@ -459,7 +461,7 @@ Use this for Strategic and Protect account quarterly reviews.
 - [ ] Document value delivered (quantified if possible)
 - [ ] Identify 2-3 insights to share
 - [ ] Prepare expansion proposal (if appropriate)
-- [ ] Confirm attendees from both sides
+- [ ] Confirm attendees from [[learning/notes/quick-context/bjt-specifications|both]] sides
 - [ ] Send pre-read/agenda
 
 ### QBR Agenda (60-90 min)
@@ -501,7 +503,7 @@ Use this for Strategic and Protect account quarterly reviews.
 
 ### Champion Development Checklist
 
-- [ ] Identify potential champion (power + will to advocate)
+- [ ] Identify potential champion ([[learning/notes/quick-context/d-flip-flop|power]] + will to advocate)
 - [ ] Understand their personal win from our success
 - [ ] Provide them with internal talking points
 - [ ] Give them early access to roadmap/features
@@ -514,7 +516,7 @@ Use this for Strategic and Protect account quarterly reviews.
 Use these to uncover whitespace:
 
 1. "What other teams face similar challenges to yours?"
-2. "If budget wasn't a constraint, where else would you deploy this?"
+2. "If budget wasn't a [[learning/notes/quick-context/voltage-current-causality|constraint]], where else would you deploy this?"
 3. "What's on your roadmap that we should know about?"
 4. "Who else in your organization should we be talking to?"
 5. "What's the biggest problem you're solving that we're not helping with yet?"
@@ -523,7 +525,7 @@ Use these to uncover whitespace:
 
 ## Quick Reference: Methodology Layers
 
-When you're stuck, remember which framework to consult:
+When you're stuck, [[learning/notes/quick-context/d-flip-flop|remember]] which framework to consult:
 
 | Question | Framework | Answer Location |
 |---|---|---|
@@ -532,7 +534,7 @@ When you're stuck, remember which framework to consult:
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | MEDDPICC | (separate [[learning/notes/quick-context/sales-methodology-layering|qualification framework]]) |
 
 ---
 
@@ -549,7 +551,7 @@ Rate 1-5 for each dimension quarterly:
 | **Relationship Health** | | |
 | Champion strength | | |
 | Executive access | | |
-| Multi-threading | | |
+| [[learning/notes/quick-context/strategic-selling-buyer-roles|Multi-threading]] | | |
 | **Business Health** | | |
 | Renewal likelihood | | |
 | Expansion potential | | |

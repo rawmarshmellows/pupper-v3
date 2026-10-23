@@ -6,13 +6,13 @@ updated: 2026-02-10
 
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sales-methodology-layering]]
 
-> **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
+> **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles [[learning/notes/micro-context/push-pull-vs-open-drain|and]] builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using [[learning/notes/quick-context/capacitance|the]] "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 
 ## Human notes
 
-Give a more in-depth dive for what a Gold Sheet summary will look like.
+Give a more in-depth dive for [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] a Gold Sheet summary will look like.
 
 ## The Core Problem
 
@@ -20,13 +20,13 @@ Complex B2B sales involve multiple stakeholders with different priorities, and r
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Gold Sheet** | A structured multi-page document that captures the complete strategic picture of a large account—situation appraisal, charter statement, stakeholder map, goals, focus/stop investments, and revenue targets |
-| **Economic Buyer** | The person with final authority to release funds and approve the purchase; they can say "yes" when everyone else says "no" |
-| **User Buyer** | The person(s) who will actually use your product day-to-day and judge success based on job impact |
-| **Technical Buyer** | The gatekeeper who screens vendors against specifications, compliance, or technical requirements—they can't approve but can veto |
-| **Coach** | An internal advocate who provides intelligence about the organization's decision process and guides your strategy |
+| **Gold Sheet** | A structured multi-page document that captures the complete strategic picture of a large account—situation appraisal, charter statement, stakeholder map, goals, focus/[[learning/notes/quick-context/camera-fundamentals|stop]] investments, and revenue targets |
+| **[[learning/notes/quick-context/playbook-main|Economic Buyer]]** | The person with final authority to [[learning/notes/micro-context/push-pull-vs-open-drain|release]] funds and approve the purchase; they [[learning/notes/quick-context/embedded-communication-protocols|can]] say "yes" [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] everyone else says "no" |
+| **[[learning/notes/quick-context/playbook-main|User Buyer]]** | The person(s) who will actually use [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] product day-to-day and judge success based on job impact |
+| **[[learning/notes/quick-context/playbook-main|Technical Buyer]]** | The gatekeeper who screens vendors against specifications, compliance, or technical requirements—they can't approve but can veto |
+| **[[learning/notes/quick-context/playbook-main|Coach]]** | An internal advocate who provides intelligence about the organization's decision process and guides your strategy |
 
 <details>
 <summary><strong>How It Works</strong> — The LAMP three-phase process</summary>
@@ -56,9 +56,9 @@ LAMP (Large Account Management Process) structures account planning into three d
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-**The Four Buyer Roles**
+**The [[learning/notes/quick-context/ram-addressing-decoder|Four]] Buyer Roles**
 
-Every significant deal has these four roles (sometimes one person fills multiple):
+Every significant deal has these four roles (sometimes [[learning/notes/quick-context/ram-addressing-decoder|one]] person fills multiple):
 
 ```
                     ┌─────────────────────┐
@@ -79,33 +79,33 @@ Every significant deal has these four roles (sometimes one person fills multiple
    └───────────────┘   └───────────────┘   └───────────────┘
 ```
 
-The Gold Sheet captures all four roles plus their current stance (growth, trouble, even keel, overconfident) and your coverage strategy for each.
+The Gold Sheet captures all four roles plus their [[learning/notes/quick-context/capacitance|current]] stance ([[learning/notes/quick-context/existing-account-management-playbook|growth]], [[learning/notes/quick-context/existing-account-management-playbook|trouble]], [[learning/notes/quick-context/existing-account-management-playbook|even keel]], [[learning/notes/quick-context/existing-account-management-playbook|overconfident]]) and your coverage strategy for each.
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Depth vs. scalability</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Depth vs. scalability</summary>
 
 LAMP's comprehensive approach creates an inherent tension:
 
 | Deep LAMP | Lightweight Adaptation |
 |-----------|----------------------|
-| Full Gold Sheets per account | Simplified templates |
+| [[learning/notes/quick-context/singular-value-decomposition|Full]] Gold Sheets per account | Simplified templates |
 | Quarterly strategic reviews | Monthly check-ins |
 | 3+ hours per account plan | 30-60 minutes |
 | Works for 10-20 accounts | Scales to 50+ |
 | Maximum strategic insight | Good-enough coverage |
 
-**The practitioner debate:** Purists argue the Gold Sheet's depth is the whole point—shortcuts lose the strategic value. Pragmatists counter that most B2B teams can't afford that depth for every account and need tiered approaches (full LAMP for top 10, simplified for the rest).
+**The practitioner debate:** Purists argue the Gold Sheet's depth is the whole [[learning/notes/quick-context/epson-rc-plus-programming|point]]—shortcuts lose the strategic value. Pragmatists counter that most B2B teams can't afford that depth for every account and need tiered approaches (full LAMP for [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] 10, simplified for the rest).
 
-Modern adaptations often digitize the Gold Sheet into CRM fields, losing some nuance but gaining scalability and consistency.
+Modern adaptations often digitize the Gold Sheet into CRM [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]], losing some nuance but gaining scalability and consistency.
 
 </details>
 
 <details>
 <summary><strong>Concrete Example</strong> — A complete Gold Sheet walkthrough</summary>
 
-**Scenario:** You're selling infrastructure monitoring software to a 500-person manufacturing company. Below is a complete Gold Sheet demonstrating all major sections.
+**Scenario:** You're selling infrastructure monitoring [[learning/notes/quick-context/code-to-gates-and-bootstrapping|software]] to a 500-person manufacturing company. Below is a complete Gold Sheet demonstrating all major sections.
 
 ---
 
@@ -174,7 +174,7 @@ FIELD OF PLAY OPPORTUNITIES
 
 #### SECTION 3: CHARTER STATEMENT
 
-*A Charter Statement defines what you're committing to achieve FOR the customer—not your sales quota.*
+*A Charter Statement defines what you're committing to achieve FOR the customer—[[learning/notes/micro-context/can-bus-termination|not]] your sales quota.*
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -201,7 +201,7 @@ WHY THIS CHARTER WORKS:
 **Bad Charter Example (for contrast):**
 > "We will sell Precision Manufacturing $180K of monitoring software that will transform their operations and help us exceed Q4 quota."
 
-This fails because it's about *us*, not *them*.
+This [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|fails]] because it's about *us*, not *them*.
 
 ---
 
@@ -394,18 +394,18 @@ ACCOUNT HEALTH: YELLOW (Winnable but requires active management)
 
 ---
 
-**The one thing most outsiders get wrong about this is...** they think the four buyer roles are job titles. They're not—they're *functions*. A single person can be both Economic and User Buyer in a small company. In large enterprises, you might have three User Buyers across different departments. The roles describe decision-making power, not org chart positions.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** they think the four buyer roles are job titles. They're not—they're *functions*. A single person can be [[learning/notes/quick-context/bjt-specifications|both]] Economic and User Buyer in a small company. In large enterprises, you might have three User Buyers across different departments. The roles describe decision-making [[learning/notes/quick-context/d-flip-flop|power]], not org chart positions.
 
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC is a qualification complement to LAMP; use MEDDPICC to validate deal viability, LAMP to plan account strategy
 - **[[quick-context/challenger-sale-methodology]]** — Challenger provides the *how* of customer interactions; LAMP provides the *who* and *when*
-- **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model adds a diagnostic layer to LAMP's stakeholder mapping
-- **[[quick-context/sandler-kare-segmentation]]** — KARE helps decide which accounts deserve full LAMP treatment vs. lighter touch
-- **[[quick-context/whitespace-mapping]]** — Visual tool for identifying expansion opportunities; feeds into LAMP's situation appraisal
+- **[[quick-context/mcdonald-kam-model]]** — McDonald's [[learning/notes/quick-context/mcdonald-kam-model|relationship maturity]] model adds a diagnostic [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] to LAMP's stakeholder mapping
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]] helps decide which accounts deserve full LAMP treatment vs. lighter touch
+- **[[quick-context/whitespace-mapping]]** — Visual [[learning/notes/quick-context/epson-rc-plus-programming|tool]] for identifying expansion opportunities; feeds into LAMP's situation appraisal
 - **Value Selling** — Complementary methodology for quantifying the business case LAMP identifies
 
 </details>
@@ -419,7 +419,7 @@ ACCOUNT HEALTH: YELLOW (Winnable but requires active management)
 Technical Buyer screens for specifications and can veto but cannot approve. Economic Buyer has final authority to release funds—they can say yes when everyone else says no. See: 5 Essential Terms.
 </details>
 
-**Q2:** Why does the Charter Statement focus on the customer's outcomes rather than your sales targets?
+**Q2:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] does the Charter Statement focus on the customer's outcomes rather than your sales targets?
 <details>
 <summary>Answer</summary>
 A Charter Statement that reads like a sales goal ("sell $180K") can't be shared with the customer or used internally by your champion. A customer-centric charter ("achieve 99.5% uptime") becomes something the customer's team can present to their leadership as *their* initiative. It also forces you to understand what success looks like from their perspective, which shapes your entire strategy.
@@ -428,19 +428,19 @@ A Charter Statement that reads like a sales goal ("sell $180K") can't be shared 
 **Q3:** In the example Gold Sheet, why is "Status Quo" listed as a competitor alongside Apex Controls?
 <details>
 <summary>Answer</summary>
-The real competition is often inaction, not another vendor. Even if you beat Apex Controls in every evaluation, the customer might decide "we'll revisit this next year" or "we'll make do with spreadsheets." Treating status quo as a competitor forces you to address the *cost of doing nothing*—in this case, the $340K downtime losses.
+The real competition is often inaction, not another vendor. Even if you beat Apex Controls in every evaluation, the customer might decide "we'll revisit this next year" or "we'll make do with spreadsheets." Treating status quo as a competitor forces you to [[learning/notes/quick-context/how-source-code-is-stored|address]] the *[[learning/notes/quick-context/bond-pad|cost]] of doing [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]]*—in this case, the $340K downtime losses.
 </details>
 
 **Q4:** The example shows Alex Rivera (Coach) providing intel but not yet actively advocating. What's the strategic value of developing him further?
 <details>
 <summary>Answer</summary>
-A coach who only provides information is useful but limited—you still have to do all the selling. A coach who actively advocates speaks on your behalf in meetings you're not in. The difference: Alex telling you "budget cycle is in Q4" vs. Alex saying to the CTO "we should prioritize this monitoring initiative for October planning." The Gold Sheet's "Coach Development" section tracks this progression.
+A coach who [[learning/notes/quick-context/comparator-specification|only]] provides information is useful but limited—you still have to do all the selling. A coach who actively advocates speaks on your behalf in meetings you're not in. The difference: Alex telling you "budget cycle is in Q4" vs. Alex saying to the CTO "we should prioritize this monitoring initiative for October planning." The Gold Sheet's "Coach Development" section tracks this progression.
 </details>
 
 **Q5:** If Precision Manufacturing's CFO (Maria) strongly prefers capex purchases but your product is subscription-only, how would you adjust the strategy using the Gold Sheet framework?
 <details>
 <summary>Answer</summary>
-The Gold Sheet reveals Maria listens to "compliance/audit angles more than ROI" (per Coach intel). The strategy adjustment: (1) Reframe the subscription as a compliance advantage—"always current = audit-ready" vs. capex software that ages, (2) Use the FAA audit timeline (Q3) to create urgency that bypasses the capex preference, (3) Have your Executive Sponsor (VP Ops) speak to Maria about how other aerospace suppliers handle this. The Gold Sheet's "Focus Investments" section should add "Finance packaging—explore annual prepay or capex-like structuring" as a resource priority.
+The Gold Sheet reveals Maria listens to "compliance/audit angles more than ROI" (per Coach intel). The strategy adjustment: (1) [[learning/notes/quick-context/existing-account-management-playbook|Reframe]] the subscription as a compliance advantage—"always current = audit-ready" vs. capex software that ages, (2) Use the FAA audit timeline (Q3) to create urgency that bypasses the capex preference, (3) Have your Executive Sponsor (VP Ops) speak to Maria about how other aerospace suppliers handle this. The Gold Sheet's "Focus Investments" section should add "Finance packaging—explore annual prepay or capex-like structuring" as a resource [[learning/notes/quick-context/data-bus-and-arbitration|priority]].
 </details>
 
 </details>

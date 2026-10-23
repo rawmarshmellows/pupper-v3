@@ -4,23 +4,23 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/galvanic-cells-batteries]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement]]
 
-> **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
+> **TL;DR:** Crystalline [[learning/notes/quick-context/atoms-molecules-polymers-basics|polymer]] regions shrink more than amorphous regions when cooling, causing 3D print [[learning/notes/quick-context/3d-printing-filament-types|warping]]. [[learning/notes/quick-context/cnc-machining|Materials]] like Nylon (semi-crystalline) warp aggressively, while [[learning/notes/quick-context/bambu-p2s-print-quality|PLA]] (mostly amorphous) prints easily.
 
 # Polymer Crystallinity vs Amorphous: A Beginner's Guide to 3D Printing Warping
 
 ## The Core Problem
 
-Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that can arrange themselves in two fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines whether your 3D print stays flat or curls up like a potato chip.
+Plastics aren't just "plastic" - they're long chains of molecules called [[quick-context/atoms-molecules-polymers-basics|polymers]] (think of them as microscopic spaghetti strands) that [[learning/notes/quick-context/embedded-communication-protocols|can]] arrange themselves in [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] fundamentally different ways. **Crystalline** regions have chains lined up neatly in rows, like uncooked spaghetti in a box. **Amorphous** regions are tangled chaos, like cooked spaghetti dumped on a plate. This molecular arrangement determines [[learning/notes/quick-context/differential-pair|whether]] [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] 3D print stays flat or curls up like a potato chip.
 
-Here's the critical insight: when plastic cools, crystalline regions **shrink more** than amorphous regions. If your print cools unevenly (which it always does - the bottom touches the cold bed while the top is still hot), different parts shrink by different amounts at different times. The result? Your print warps, delaminates, or pops off the bed entirely. Materials like PLA are mostly amorphous and print easily. Materials like Nylon or PEEK are semi-crystalline and will warp aggressively if you don't manage cooling carefully.
+Here's [[learning/notes/quick-context/capacitance|the]] critical insight: when plastic cools, crystalline regions **shrink more** than amorphous regions. If your print cools unevenly (which it always does - the [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] touches the cold bed while the [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] is still [[learning/notes/quick-context/bjt-specifications|hot]]), different parts shrink by different amounts at different times. The result? Your print warps, delaminates, or [[learning/notes/quick-context/python-to-machine-code-pipeline|pops]] [[learning/notes/quick-context/bjt-specifications|off]] the bed entirely. Materials like PLA are mostly amorphous [[learning/notes/micro-context/push-pull-vs-open-drain|and]] print easily. Materials like Nylon or PEEK are semi-crystalline and will warp aggressively if you don't manage cooling carefully.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain molecule made of repeating units - like a pearl necklace where each pearl is a small molecule linked to its neighbors. |
+| **[[quick-context/atoms-molecules-polymers-basics|Polymer]]** | A long chain [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecule]] made of repeating units - like a pearl necklace where each pearl is a small molecule linked to its neighbors. |
 | **Crystalline** | Regions where polymer chains are packed in orderly, repeating patterns - denser, stronger, but shrinks significantly when cooling. |
 | **Amorphous** | Regions where polymer chains are randomly tangled with no pattern - less dense, more flexible, shrinks less when cooling. |
 | **[[quick-context/glass-transition-temperature|Glass Transition Temperature]] (Tg)** | The temperature where amorphous regions go from rigid to rubbery - below this, the plastic is stiff; above it, it's soft and pliable. |
@@ -29,9 +29,9 @@ Here's the critical insight: when plastic cools, crystalline regions **shrink mo
 <details>
 <summary><strong>How It Works</strong></summary>
 
-When molten plastic exits the printer nozzle, its polymer chains are in a disordered, high-energy state—like a pot of boiling spaghetti. As the plastic cools, two competing processes happen simultaneously. First, thermal contraction: all materials shrink when they lose heat, just like a hot air balloon deflating. Second, and this is the key differentiator, semi-crystalline polymers undergo **crystallization**: their chains spontaneously reorganize from random tangles into tightly packed, ordered arrangements. This reorganization releases additional heat (latent heat of crystallization) and causes extra shrinkage beyond simple thermal contraction.
+When molten plastic exits the printer [[learning/notes/quick-context/3d-printer-hotends|nozzle]], its polymer chains are in a disordered, high-energy state—like a pot of boiling spaghetti. As the plastic cools, two competing processes happen simultaneously. First, thermal [[learning/notes/quick-context/tensor|contraction]]: all materials shrink when they lose heat, just like a hot air balloon deflating. Second, and this is the key differentiator, semi-crystalline polymers undergo **crystallization**: their chains spontaneously reorganize from random tangles into tightly packed, ordered arrangements. This reorganization releases additional heat (latent heat of crystallization) and causes extra shrinkage beyond simple thermal contraction.
 
-The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but not so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the glass transition temperature and melting point) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to pack efficiently. This is why heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
+The crystallization process is temperature and time dependent. Chains need enough thermal energy to move around and find their neighbors, but [[learning/notes/micro-context/can-bus-termination|not]] so much that they stay in chaotic motion. There's a "sweet spot" temperature window (between the [[learning/notes/quick-context/3d-printing-filament-types|glass transition temperature]] and [[learning/notes/quick-context/chemical-bonds-spectrum|melting]] [[learning/notes/quick-context/epson-rc-plus-programming|point]]) where crystallization happens fastest. Cool too quickly through this window, and you get mostly amorphous structure—chains freeze in place before they can organize. Cool slowly, and you get higher crystallinity—chains have time to [[learning/notes/quick-context/code-to-gates-and-bootstrapping|pack]] efficiently. This is [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] heated chambers and slow cooling help with semi-crystalline materials: you're giving the molecules time to crystallize uniformly throughout the part rather than creating stress gradients.
 
 ```
 WHAT HAPPENS WHEN PLASTIC COOLS: Two Paths
@@ -72,12 +72,12 @@ MOLTEN STATE (all plastics start here):
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The fundamental tradeoff practitioners argue about: **crystallinity gives you strength, heat resistance, and chemical resistance - but it also gives you warping headaches**. Semi-crystalline plastics (Nylon, PEEK, PP, POM) are engineering-grade materials that can replace metal parts. But they shrink 1.5-3% when cooling, versus 0.3-0.5% for amorphous plastics like PLA or PETG.
+The fundamental tradeoff practitioners argue about: **crystallinity gives you [[learning/notes/quick-context/cnc-machining|strength]], heat resistance, and chemical resistance - but it also gives you warping headaches**. Semi-crystalline plastics (Nylon, PEEK, PP, POM) are engineering-grade materials that can replace metal parts. But they shrink 1.5-3% when cooling, versus 0.3-0.5% for amorphous plastics like PLA or [[learning/notes/quick-context/bambu-p2s-print-quality|PETG]].
 
 This creates a constant optimization battle:
-- **Want easy printing?** Use amorphous materials (PLA, PETG, ABS). Accept weaker, less heat-resistant parts.
+- **Want easy printing?** Use amorphous materials (PLA, PETG, [[learning/notes/quick-context/3d-printing-filament-types|ABS]]). Accept weaker, less heat-resistant parts.
 - **Want strong parts?** Use semi-crystalline materials. Accept that you need heated chambers, heated beds at 80-120C, and slower cooling strategies to prevent warping.
 
 Some practitioners modify materials with additives to reduce crystallinity (trading strength for printability). Others build expensive enclosed heated chambers to control cooling rates. There's no free lunch.
@@ -198,7 +198,7 @@ Annealing after print       │ Relieve internal stress gradually     │ Crysta
 Draft shields               │ Block air currents, even cooling      │ ABS, Nylon
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming all plastics warp for the same reason. ABS warps because it has high thermal contraction (it shrinks a lot as it cools, but it's amorphous). Nylon warps because it crystallizes (molecules reorganize into dense, ordered regions that take up less space). The fixes are different: ABS needs an enclosure to slow cooling uniformly, while Nylon needs *very* slow cooling and sometimes annealing to let crystallization happen gradually. Treating "warping" as one problem with one solution is why people fail when they switch from PLA to engineering materials.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** assuming all plastics warp for the same reason. ABS warps because it has high thermal contraction (it shrinks a lot as it cools, but it's amorphous). Nylon warps because it crystallizes (molecules reorganize into dense, ordered regions that take up less space). The fixes are different: ABS needs an enclosure to slow cooling uniformly, while Nylon needs *very* slow cooling and sometimes annealing to let crystallization happen gradually. Treating "warping" as [[learning/notes/quick-context/ram-addressing-decoder|one]] problem with one solution is why people fail when they [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] from PLA to engineering materials.
 
 </details>
 
@@ -211,19 +211,19 @@ Draft shields               │ Block air currents, even cooling      │ ABS, N
 
 - **[[quick-context/tensile-strength-materials|Tensile strength]]** — Crystalline regions dramatically increase tensile strength by creating dense, ordered molecular packing that resists pulling forces.
 
-- **[[quick-context/melt-index]]** — A measure of how easily a polymer flows when melted. Semi-crystalline materials often behave differently during melting because crystalline regions must fully break down before flow begins.
+- **[[quick-context/melt-index]]** — A measure of how easily a polymer flows when melted. Semi-crystalline materials often behave differently during melting because crystalline regions [[learning/notes/quick-context/ros2-architecture|must]] fully break down before flow begins.
 
-- **[[quick-context/bambu-p2s-print-quality]]** — Why semi-crystalline filaments (PA, PP, PE) need an enclosed chamber and minimal fan on the P2S, while amorphous PLA tolerates 100% cooling — crystallization kinetics drive cooling-strategy choices.
+- **[[quick-context/bambu-p2s-print-quality]]** — Why semi-crystalline filaments (PA, PP, PE) need an enclosed chamber and minimal [[learning/notes/quick-context/raspberry-pi-5-components|fan]] on the P2S, while amorphous PLA tolerates 100% cooling — crystallization kinetics drive cooling-strategy choices.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Why does Nylon warp more aggressively than PLA, even though both are thermoplastics?
+**Q1:** Why does Nylon warp more aggressively than PLA, even though [[learning/notes/quick-context/bjt-specifications|both]] are thermoplastics?
 <details>
 <summary>Answer</summary>
-Nylon is semi-crystalline with high crystallinity (shrinkage of 1.5-2.0%), while PLA has very low crystallinity (shrinkage of 0.3-0.5%). When Nylon cools, its polymer chains reorganize into dense, ordered crystalline regions that occupy significantly less volume than the original molten state. This causes much greater shrinkage and internal stress, leading to aggressive warping. PLA remains mostly amorphous when it cools, so there is minimal volume change and much less warping.
+Nylon is semi-crystalline with high crystallinity (shrinkage of 1.5-2.0%), while PLA has very low crystallinity (shrinkage of 0.3-0.5%). When Nylon cools, its polymer chains reorganize into dense, ordered crystalline regions that occupy significantly less [[learning/notes/quick-context/cnc-machining|volume]] than the original molten state. This causes much greater shrinkage and internal stress, leading to aggressive warping. PLA remains mostly amorphous when it cools, so there is minimal volume change and much less warping.
 </details>
 
 **Q2:** ABS is amorphous, so why does it still warp? How is this different from Nylon warping?
@@ -232,7 +232,7 @@ Nylon is semi-crystalline with high crystallinity (shrinkage of 1.5-2.0%), while
 ABS warps due to high thermal contraction, not crystallization. As ABS cools from its melt temperature, it contracts significantly (0.7-0.8%) simply because hot materials occupy more volume than cold materials. This is a purely thermal effect. Nylon warping, by contrast, involves both thermal contraction AND crystallization shrinkage - the molecules are reorganizing into denser packed structures. The fix for ABS is an enclosure to slow cooling uniformly. The fix for Nylon requires even slower cooling and sometimes post-print annealing to allow crystallization to happen gradually without building up internal stress.
 </details>
 
-**Q3:** You are printing a part that needs high chemical resistance and strength. You choose Nylon, but your prints keep warping badly. What three strategies would you try?
+**Q3:** You are printing a part that needs high chemical resistance and strength. You choose Nylon, but your prints [[learning/notes/quick-context/existing-account-management-playbook|keep]] warping badly. [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|What]] three strategies would you try?
 <details>
 <summary>Answer</summary>
 Three effective strategies for reducing Nylon warping:
@@ -243,13 +243,13 @@ Three effective strategies for reducing Nylon warping:
 
 3. **Annealing after printing** — Place the finished part in an oven at a controlled temperature to relieve internal stresses gradually, allowing any remaining crystallization to complete without warping the part.
 
-Other valid answers include: using a brim/raft for better adhesion, printing slower to reduce thermal shock, or using draft shields to prevent uneven cooling from air currents.
+Other valid answers include: using a brim/raft for [[learning/notes/quick-context/comparator-specification|better]] adhesion, printing slower to reduce thermal shock, or using draft shields to prevent uneven cooling from air currents.
 </details>
 
 **Q4:** A colleague says "just use a heated bed and all warping problems are solved." Why is this advice incomplete?
 <details>
 <summary>Answer</summary>
-A heated bed only addresses part of the warping problem. While it slows cooling of the bottom layers and improves bed adhesion, it does not address:
+A heated bed [[learning/notes/quick-context/comparator-specification|only]] addresses part of the warping problem. While it slows cooling of the bottom layers and improves bed adhesion, it does not [[learning/notes/quick-context/how-source-code-is-stored|address]]:
 
 1. **Uneven cooling throughout the part** — Upper layers still cool in open air while bottom layers are kept warm, creating temperature gradients and stress.
 
@@ -257,7 +257,7 @@ A heated bed only addresses part of the warping problem. While it slows cooling 
 
 3. **Air currents** — Drafts can cause uneven cooling on different sides of the part, which a heated bed cannot fix.
 
-For highly crystalline materials like Nylon or PEEK, you typically also need a heated chamber, controlled cooling rates, draft shields, and potentially post-print annealing. The heated bed is necessary but not sufficient.
+For highly crystalline materials like Nylon or PEEK, you typically also need a heated chamber, controlled cooling rates, draft shields, and potentially post-print annealing. The heated bed is necessary but [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|not sufficient]].
 </details>
 
 **Q5:** Looking at the material comparison table, why might someone choose PETG over Nylon for a functional part, despite Nylon being "stronger"?
@@ -267,13 +267,13 @@ PETG offers a practical middle ground with several advantages:
 
 1. **Dramatically easier printing** — PETG has low crystallinity (0.5-0.8% shrinkage) versus Nylon's high crystallinity (1.5-2.0%), making it far less prone to warping.
 
-2. **No heated chamber required** — Nylon often requires expensive enclosed heated chambers for reliable printing, while PETG prints well on standard machines.
+2. **No heated chamber required** — Nylon often requires expensive enclosed heated chambers for [[learning/notes/quick-context/ros2-architecture|reliable]] printing, while PETG prints well on standard machines.
 
-3. **Good enough for many applications** — While Nylon is stronger and more wear-resistant, PETG still makes functional parts suitable for many uses. The strength difference only matters if you actually need that extra performance.
+3. **Good enough for many applications** — While Nylon is stronger and more wear-resistant, PETG still makes functional parts suitable for many uses. The strength difference only matters if you actually need that extra [[learning/notes/quick-context/bond-pad|performance]].
 
 4. **Less moisture-sensitive** — Nylon absorbs moisture aggressively and must be dried before printing, adding complexity.
 
-The "strongest" material is not always the best choice. Printability, cost, equipment requirements, and "good enough" performance often make lower-crystallinity materials the practical winner for real-world projects.
+The "strongest" material is not always the best [[learning/notes/quick-context/transistor-analog-to-digital|choice]]. Printability, [[learning/notes/quick-context/bond-pad|cost]], equipment requirements, and "good enough" performance often make lower-crystallinity materials the practical winner for real-world projects.
 </details>
 
 </details>

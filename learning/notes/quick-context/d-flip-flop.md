@@ -5,30 +5,30 @@ created: 2026-04-08
 
 # D Flip-Flop — The Atom of Digital Memory
 
-> **Related:** [[quick-context/code-to-gates-and-bootstrapping]] | [[quick-context/uart]] | [[quick-context/physics-of-writing-data-to-memory]] | [[micro-context/clock-edges]]
+> **Related:** [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/uart]]
 
-> **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, SRAM — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
+> **TL;DR:** A D flip-flop (DFF) is a circuit that stores [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] bit. It has [[learning/notes/quick-context/ram-addressing-decoder|one]] data input (D), one output (Q), [[learning/notes/micro-context/push-pull-vs-open-drain|and]] a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and [[learning/notes/quick-context/pupper-lab7-vision-tracking|holds]] it at Q until [[learning/notes/quick-context/capacitance|the]] next [[learning/notes/micro-context/clock-edges|clock edge]] — ignoring all input changes in between. This "sample once per tick" behavior is [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|what]] makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, [[learning/notes/quick-context/ram-addressing-decoder|SRAM]] — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/[[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]]/sequential_chips/data_flip_flop_chip.py), each [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|function]] [[learning/notes/quick-context/keypress-to-pixel-pipeline|call]] represents one clock tick: `[[learning/notes/micro-context/push-pull-vs-open-drain|out]](t) = in(t-1)`.
 
 ## The Core Problem
 
-Combinational logic (AND, OR, NOT gates) can compute any function, but it has no memory — the output changes the instant the inputs change. To build anything useful (a counter, a register, a CPU), you need circuits that can **remember** a value and only update it at controlled moments. The D flip-flop solves this: it samples its input once per clock edge and holds the result stable, giving the rest of the circuit a reliable, unchanging value to work with until the next tick.
+Combinational logic (AND, OR, [[learning/notes/micro-context/can-bus-termination|NOT]] gates) [[learning/notes/quick-context/embedded-communication-protocols|can]] compute any function, but it has no [[learning/notes/quick-context/firmware|memory]] — the output changes the instant the inputs change. To build anything useful (a counter, a register, a CPU), you need circuits that can **remember** a value and [[learning/notes/quick-context/comparator-specification|only]] [[learning/notes/quick-context/ppo-proximal-policy-optimization|update]] it at controlled moments. The D flip-flop solves this: it samples its input once per clock edge and holds the result stable, giving the rest of the circuit a [[learning/notes/quick-context/ros2-architecture|reliable]], unchanging value to work with until the next tick.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **D (Data) Input** | The single data input to the flip-flop. Whatever binary value (0 or 1) is present here at the moment of the clock edge gets captured. |
 | **Q (Output)** | The stored value. After a clock edge, Q holds the value that D had at that edge. Q stays stable until the next clock edge, regardless of what D does in between. |
 | **Clock (CLK)** | A continuous square wave that drives all flip-flops in a synchronous circuit. The flip-flop only "looks" at D during the clock edge (rising or falling, depending on design). Between edges, input changes are ignored. See [[micro-context/clock-edges]]. |
-| **Latch vs. Flip-Flop** | A **latch** is level-sensitive: it passes input to output whenever the enable signal is HIGH (transparent). A **flip-flop** is edge-sensitive: it captures input only at the clock transition instant. Flip-flops are preferred in synchronous design because they avoid race conditions. |
-| **Setup & Hold Time** | The data input must be stable for a minimum time *before* the clock edge (**setup time**, $t_{su}$) and *after* (**hold time**, $t_h$). Violating these causes **metastability** — the flip-flop enters an undefined state between 0 and 1. |
+| **Latch vs. Flip-Flop** | A **latch** is level-sensitive: it passes input to output whenever the enable signal is HIGH (transparent). A **flip-flop** is edge-sensitive: it captures input only at the clock transition instant. Flip-flops are preferred in synchronous design because they avoid [[learning/notes/quick-context/integration-failure-modes-solutions|race conditions]]. |
+| **Setup & Hold Time** | The data input [[learning/notes/quick-context/ros2-architecture|must]] be stable for a minimum time *before* the clock edge (**setup time**, $t_{su}$) and *after* (**hold time**, $t_h$). Violating these causes **metastability** — the flip-flop enters an undefined state between 0 and 1. |
 
 <details>
 <summary><strong>How It Works</strong> — From cross-coupled gates to edge-triggered memory</summary>
 
 ### The Core Idea: Feedback Creates Memory
 
-Memory in digital circuits comes from **feedback loops**. If you connect two gates so that each one's output feeds the other's input, the circuit has two stable states — it "remembers" which state it was pushed into. This is identical to the [[quick-context/physics-of-writing-data-to-memory|cross-coupled inverters in SRAM]].
+Memory in digital circuits comes from **feedback loops**. If you connect [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] gates so that each one's output feeds the other's input, the circuit has two stable states — it "remembers" which state it was pushed into. This is [[learning/notes/quick-context/ram-addressing-decoder|identical]] to the [[quick-context/physics-of-writing-data-to-memory|cross-coupled inverters in SRAM]].
 
 ### Level 1: The SR Latch (2 NAND gates — the simplest memory)
 
@@ -66,7 +66,7 @@ SR LATCH FROM 2 NAND GATES
   the loop reinforces itself — the latch remembers.
 ```
 
-**Problem:** Two separate inputs (S, R) and a forbidden state. We want one data input and controlled timing.
+**Problem:** Two separate inputs (S, R) and a forbidden state. We want one data input and controlled [[learning/notes/quick-context/comparator-specification|timing]].
 
 ### Level 2: The Gated D Latch (4 NAND gates — adding a clock)
 
@@ -102,7 +102,7 @@ GATED D LATCH — ADDING CLOCK CONTROL
 
 ### Level 3: The Edge-Triggered D Flip-Flop (Master-Slave, ~6 NAND gates)
 
-The solution: chain two D latches with **opposite enable signals**. The first (master) is transparent when the clock is LOW; the second (slave) is transparent when the clock is HIGH. Data can never pass through both at the same time.
+The solution: chain two D latches with **opposite enable signals**. The first ([[learning/notes/quick-context/data-bus-and-arbitration|master]]) is transparent when the clock is LOW; the second (slave) is transparent when the clock is HIGH. Data can never pass through [[learning/notes/quick-context/bjt-specifications|both]] at the same time.
 
 ```
 MASTER-SLAVE D FLIP-FLOP (POSITIVE EDGE-TRIGGERED)
@@ -246,11 +246,11 @@ BUILDING BLOCKS FROM D FLIP-FLOPS
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Speed vs. reliability (the clock constraint)</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — [[learning/notes/quick-context/embedded-communication-protocols|Speed]] vs. [[learning/notes/quick-context/bond-pad|reliability]] (the clock [[learning/notes/quick-context/voltage-current-causality|constraint]])</summary>
 
-The fundamental tension in synchronous design is **clock speed vs. correctness**.
+The fundamental tension in synchronous design is **[[learning/notes/micro-context/clock-speed|clock speed]] vs. correctness**.
 
-Every combinational logic path between two flip-flops has a **propagation delay** — the time for a signal to ripple through all the gates. The clock period must be long enough for the slowest path (the "critical path") to settle before the next clock edge samples the result. Too fast → signals haven't settled → flip-flops capture wrong values → the circuit produces garbage.
+Every combinational logic path between two flip-flops has a **[[learning/notes/quick-context/comparator-specification|propagation delay]]** — the time for a signal to ripple through all the gates. The clock period must be long enough for the slowest path (the "critical path") to settle before the next clock edge samples the result. Too fast → signals haven't settled → flip-flops capture wrong values → the circuit produces garbage.
 
 ```
 THE CRITICAL PATH CONSTRAINT
@@ -270,16 +270,16 @@ THE CRITICAL PATH CONSTRAINT
     → error propagates through the entire circuit
 ```
 
-| Choice | Faster Clock | Slower Clock |
+| [[learning/notes/quick-context/transistor-analog-to-digital|Choice]] | Faster Clock | Slower Clock |
 |--------|-------------|-------------|
-| **Performance** | More operations/sec | Fewer operations/sec |
-| **Power** | Higher (more switching/sec) | Lower |
+| **[[learning/notes/quick-context/bond-pad|Performance]]** | More operations/sec | Fewer operations/sec |
+| **[[learning/notes/quick-context/physics-of-writing-data-to-memory|Power]]** | Higher (more switching/sec) | Lower |
 | **Reliability** | Risk of timing violations | Safe margins |
 | **Design effort** | Must optimize critical path | More relaxed |
 
-This is why CPU clock speeds plateaued around 4-5 GHz (~2005). The causes are intertwined: higher frequency means shorter clock periods, leaving less time for signals to settle (timing), *and* power consumption grows super-linearly with frequency ($P \propto fCV^2$), making thermal dissipation unsustainable (Dennard scaling breakdown). The solution was going multi-core — more flip-flops running in parallel at a manageable speed — rather than faster clocks.
+This is [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] CPU clock speeds plateaued around 4-5 GHz (~2005). The causes are intertwined: higher frequency means shorter clock periods, leaving less time for signals to settle (timing), *and* power consumption grows super-linearly with frequency ($P \propto fCV^2$), making [[learning/notes/quick-context/power-watts-joules|thermal dissipation]] unsustainable (Dennard scaling breakdown). The solution was going multi-core — more flip-flops running in [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] at a manageable speed — rather than faster clocks.
 
-**Metastability** — the worst failure mode: if setup/hold times are violated, the flip-flop can enter a state that is neither 0 nor 1, hovering at a voltage in the "forbidden zone" between logic levels. This metastable state eventually resolves to 0 or 1, but it takes an unpredictable amount of time. This is a real problem at clock domain boundaries (e.g., data crossing from a [[quick-context/uart|UART's]] baud rate clock to the CPU's system clock), and is typically solved with synchronizer chains (2-3 flip-flops in series).
+**Metastability** — the worst [[learning/notes/quick-context/pupper-lab5-neural-controller|failure mode]]: if setup/hold times are violated, the flip-flop can enter a state that is neither 0 nor 1, hovering at a [[learning/notes/quick-context/voltage|voltage]] in the "forbidden zone" between logic levels. This metastable state eventually resolves to 0 or 1, but it takes an unpredictable amount of time. This is a real problem at clock domain boundaries (e.g., data crossing from a [[quick-context/uart|UART's]] baud rate clock to the CPU's system clock), and is typically solved with synchronizer chains (2-3 flip-flops in [[learning/notes/quick-context/parallel-vs-series-voltage|series]]).
 
 </details>
 
@@ -311,7 +311,7 @@ class DataFlipFlopChip:
         return self.to_return
 ```
 
-The clock is **implicit** — in real hardware it's an explicit electrical signal, but in this simulation each `__call__` represents one rising clock edge. The behavior is exactly `out(t) = in(t-1)`: what you get out is what you put in *last tick*.
+The clock is **implicit** — in real hardware it's an explicit electrical signal, but in this [[learning/notes/quick-context/epson-rc-plus-programming|simulation]] each `__call__` represents one rising clock edge. The behavior is exactly `out(t) = in(t-1)`: what you get out is what you put in *last tick*.
 
 ### The Bit Register: DFF + MUX = Loadable Storage
 
@@ -330,11 +330,11 @@ class BitRegisterChip:
         return self.data_flip_flop_chip(mux_output)       # feed MUX result to DFF
 ```
 
-When `load=0`: the MUX selects `previous` (the DFF's own output) and feeds it back as input → the DFF stores the same value again → **hold**.
+When `load=0`: the [[learning/notes/quick-context/ram-addressing-decoder|MUX]] selects `previous` (the DFF's own output) and feeds it back as input → the DFF stores the same value again → **hold**.
 
 When `load=1`: the MUX selects `in_bit` (new data) → the DFF stores the new value → **write**.
 
-This is the fundamental building block. The [16-bit RegisterChip](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/register_chip.py) is just 16 of these in parallel, and the RAM chips are arrays of registers with address decoding.
+This is the fundamental building block. The [16-bit RegisterChip](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/register_chip.py) is just 16 of these in parallel, and the RAM chips are arrays of registers with [[learning/notes/quick-context/how-source-code-is-stored|address]] decoding.
 
 ### Tracing Three Clock Ticks
 
@@ -360,22 +360,22 @@ TRACING THE BIT REGISTER — 3 TICKS
 
 ### Why the DFF Is Treated as a Primitive in Nand2Tetris
 
-In the course, the DFF is given as a built-in primitive (not built from NAND gates). This is a deliberate abstraction: in real hardware, a DFF requires ~6 NAND gates (master-slave configuration), but its behavior is simple enough to treat as an atom. The course focuses on what you can *build with* flip-flops (registers, RAM, CPU) rather than how flip-flops are built *from* gates. See "How It Works" above for the full gate-level construction.
+In the course, the DFF is given as a built-in primitive (not built from NAND gates). This is a deliberate abstraction: in real hardware, a DFF requires ~6 NAND gates (master-slave configuration), but its behavior is simple enough to treat as an atom. The course focuses on what you can *build with* flip-flops (registers, RAM, CPU) rather than how flip-flops are built *from* gates. See "How It Works" above for the [[learning/notes/quick-context/singular-value-decomposition|full]] [[learning/notes/quick-context/transistor|gate]]-level construction.
 
-**The one thing most outsiders get wrong about this is...** thinking the clock is just "there" as some abstract timing concept. The clock is a **physical electrical signal** — a square wave generated by a [[micro-context/crystal-oscillator|crystal oscillator]] that is routed as a wire to every single flip-flop in the chip. On a modern CPU with billions of flip-flops, distributing this clock signal so that it arrives at all flip-flops within picoseconds of each other ("clock skew") is one of the hardest physical design challenges. Clock distribution networks consume ~30-40% of a chip's total power. In the Nand2Tetris simulation, `__call__` hides all of this — but in the real [[micro-context/stm32-microcontroller|STM32]], there's a [[micro-context/clock-source|clock tree]] that physically routes the oscillator signal to every peripheral.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking the clock is just "there" as some abstract timing concept. The clock is a **physical electrical signal** — a square wave generated by a [[micro-context/crystal-oscillator|crystal oscillator]] that is routed as a wire to every single flip-flop in the chip. On a modern CPU with billions of flip-flops, distributing this clock signal so that it arrives at all flip-flops within picoseconds of each other ("clock [[learning/notes/quick-context/data-bus-and-arbitration|skew]]") is one of the hardest physical design challenges. Clock distribution networks consume ~30-40% of a chip's [[learning/notes/quick-context/similarity-transform|total]] power. In the Nand2Tetris simulation, `__call__` hides all of this — but in the real [[micro-context/stm32-microcontroller|STM32]], there's a [[micro-context/clock-source|clock tree]] that physically routes the oscillator signal to every peripheral.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from code to logic gates. Layer 2 shows how registers are built from "MUX + Data Flip-Flop" — the exact pattern in the Nand2Tetris BitRegisterChip.
+- **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from code to logic gates. [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|Layer]] 2 shows how registers are built from "MUX + Data Flip-Flop" — the exact pattern in the Nand2Tetris BitRegisterChip.
 
-- **[[quick-context/uart]]** — The UART's receive shift register is a chain of 8 D flip-flops where each Q feeds the next D. On each baud clock tick, bits shift through the chain. The flip-flop is the hardware atom that makes serial-to-parallel conversion possible.
+- **[[quick-context/uart]]** — The [[learning/notes/quick-context/embedded-communication-protocols|UART]]'s receive shift register is a chain of 8 D flip-flops where each Q feeds the next D. On each baud clock tick, bits shift through the chain. The flip-flop is the hardware atom that makes [[learning/notes/quick-context/data-bus-and-arbitration|serial]]-to-parallel conversion possible.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The cross-coupled inverters in SRAM are the continuous-time analog of a flip-flop's feedback loop. Both use feedback to create bistable states, but SRAM cells are optimized for density (6 transistors) while flip-flops are optimized for speed and clean edge-triggered behavior.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The [[learning/notes/quick-context/physics-of-writing-data-to-memory|cross-coupled inverters]] in SRAM are the continuous-time analog of a flip-flop's feedback loop. Both use feedback to create bistable states, but SRAM cells are optimized for [[learning/notes/quick-context/bond-pad|density]] (6 transistors) while flip-flops are optimized for speed and clean edge-triggered behavior.
 
 - **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are forced to behave as digital switches. The flip-flop's edge-triggered discipline is one of the key engineering tricks: by only sampling at clock edges, the circuit ignores the messy analog transitions between them.
 
@@ -383,11 +383,11 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 
 - **[[micro-context/clock-source]]** — Where the clock signal comes from: crystal oscillators, ceramic resonators, internal RC oscillators. The clock tree routes this signal to every flip-flop in the system.
 
-- **[[micro-context/crystal-oscillator]]** — The physical component that generates the precise square wave driving all flip-flops. Crystal accuracy (~50 ppm) matters for UART baud rate generation.
+- **[[micro-context/crystal-oscillator]]** — The physical [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]] that generates the precise square wave driving all flip-flops. Crystal [[learning/notes/quick-context/rc-oscillator|accuracy]] (~50 ppm) matters for UART baud rate generation.
 
-- **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit showing how a physical switch, clock button, and D flip-flop chip (74HC74/74HC574) store data — and how this minimal setup scales to build every register, RAM, and CPU.
+- **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit showing how a physical switch, clock button, and D flip-flop chip (74HC74/[[learning/notes/quick-context/data-bus-and-arbitration|74HC574]]) store data — and how this minimal setup scales to build every register, RAM, and CPU.
 
-- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], comparator, and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
+- **[[quick-context/bare-minimal-data-storage-circuit]]** — Adds the analog front-end to the picture: how a power supply, [[micro-context/crystal-oscillator|quartz crystal]], [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|comparator]], and the register's `in_bit`/`load` signals fit together physically, and how each block maps to a line in the Nand2Tetris `BitRegisterChip`.
 
 </details>
 
@@ -397,19 +397,19 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 **Q1:** What's the fundamental difference between a latch and a flip-flop?
 <details>
 <summary>Answer</summary>
-A **latch** is **level-sensitive** — it passes input to output whenever the enable signal is HIGH (transparent mode). A **flip-flop** is **edge-sensitive** — it captures input only at the clock transition (rising or falling edge) and holds it stable the rest of the time. Flip-flops are preferred because level-sensitive latches can cause race conditions when multiple latches feed each other in a loop — a change can ripple through multiple latches in a single clock period. See: Level 2 (Gated D Latch) vs. Level 3 (Edge-Triggered) in How It Works.
+A **latch** is **level-sensitive** — it passes input to output whenever the enable signal is HIGH (transparent mode). A **flip-flop** is **edge-sensitive** — it captures input only at the clock transition (rising or falling edge) and holds it stable the rest of the time. Flip-flops are preferred because level-sensitive latches can cause race conditions when multiple latches feed each other in a loop — a change can ripple through multiple latches in a single clock period. See: [[learning/notes/quick-context/isa-95-levels|Level 2]] (Gated D Latch) vs. [[learning/notes/quick-context/isa-95-levels|Level 3]] (Edge-Triggered) in How It Works.
 </details>
 
 **Q2:** In the Nand2Tetris `DataFlipFlopChip`, why does the first call return 0 instead of the input value?
 <details>
 <summary>Answer</summary>
-Because the DFF's contract is `out(t) = in(t-1)` — the output at time t equals the input at time t-1. On the very first tick (t=0), there is no t-1 input, so the output is the initial value (0). The input provided at t=0 will appear at the output on t=1. This one-tick delay is the entire point of the flip-flop — it creates a boundary between "now" and "one clock ago," which is what makes sequential logic possible. See: Concrete Example.
+Because the DFF's contract is `out(t) = in(t-1)` — the output at time t equals the input at time t-1. On the very first tick (t=0), there is no t-1 input, so the output is the initial value (0). The input provided at t=0 will appear at the output on t=1. This one-tick delay is the entire [[learning/notes/quick-context/epson-rc-plus-programming|point]] of the flip-flop — it creates a boundary between "now" and "one clock ago," which is what makes sequential logic possible. See: Concrete Example.
 </details>
 
 **Q3:** Why does the `BitRegisterChip` feed the DFF's *own output* back through a MUX?
 <details>
 <summary>Answer</summary>
-To implement **hold** behavior. A bare DFF always captures whatever is on D at each clock edge — it can't "choose" to keep its current value. The MUX adds that choice: when `load=0`, the MUX routes the DFF's current output back to its input, so the DFF re-stores the same value. When `load=1`, the MUX routes the new input data instead. Without the feedback MUX, you'd need to continuously drive the correct value on D every tick, which is impractical when you want to "set and forget" a register value. See: Concrete Example (BitRegisterChip).
+To implement **hold** behavior. A bare DFF always captures whatever is on D at each clock edge — it can't "choose" to [[learning/notes/quick-context/existing-account-management-playbook|keep]] its [[learning/notes/quick-context/capacitance|current]] value. The MUX adds that choice: when `load=0`, the MUX routes the DFF's current output back to its input, so the DFF re-stores the same value. When `load=1`, the MUX routes the new input data instead. Without the feedback MUX, you'd need to continuously drive the correct value on D every tick, which is impractical when you want to "set and forget" a register value. See: Concrete Example (BitRegisterChip).
 </details>
 
 **Q4:** If flip-flops only sample at clock edges, what happens if you chain the output of one flip-flop into the input of another?

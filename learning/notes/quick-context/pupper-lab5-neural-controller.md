@@ -6,42 +6,42 @@ updated: 2026-03-12
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/ros2-architecture]]
+> **Related:** [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/sil-rated-safety-functions]]
 
-> **TL;DR:** Lab 5 replaces the entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained via reinforcement learning in MuJoCo simulation, then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking and parkour) that would be nearly impossible to hand-engineer.
+> **TL;DR:** Lab 5 replaces [[learning/notes/quick-context/capacitance|the]] entire hand-tuned PD + FK/IK + gait pipeline from Labs 1-4 with a single neural network policy trained [[learning/notes/quick-context/metal-interconnect-layers|via]] reinforcement learning in [[learning/notes/quick-context/pupper-v3-labs|MuJoCo]] [[learning/notes/quick-context/epson-rc-plus-programming|simulation]], then deployed to the real Pupper at ~52 Hz to directly output 12 joint position targets — achieving robust locomotion (including three-legged walking [[learning/notes/micro-context/push-pull-vs-open-drain|and]] parkour) that would be nearly impossible to hand-engineer.
 
 ## Human notes
 
-What are the current best practices in the industry for RL-based robot locomotion? How does Lab 5's approach compare to what production teams and research labs are doing now (2025-2026)?
+[[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] are the [[learning/notes/quick-context/capacitance|current]] best practices in the industry for RL-based robot locomotion? How does Lab 5's approach compare to what production teams and research labs are doing now (2025-2026)?
 
-Expand on: what is the neural network actually trying to predict? What do the tuples $(o_t, a_t, r_t, o_{t+1})$ mean? What are the concrete variables in the observation and action space?
+[[learning/notes/quick-context/existing-account-management-playbook|Expand]] on: what is the neural network actually trying to predict? What do the tuples $(o_t, a_t, r_t, o_{t+1})$ mean? What are the concrete variables in the observation and action space?
 
 ## The Core Problem
 
-Labs 1-4 build a classical robotics stack: PD control drives individual joints (Lab 1), forward kinematics maps joint angles to foot positions (Lab 2), inverse kinematics solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all four legs into a trotting pattern (Lab 4). This pipeline works, but it is brittle. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
+Labs 1-4 build a classical robotics stack: [[learning/notes/quick-context/pupper-v3-labs|PD control]] drives individual joints (Lab 1), forward kinematics maps joint angles to foot positions (Lab 2), [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|inverse kinematics]] solves for joint angles given desired foot positions (Lab 3), and a gait controller coordinates all [[learning/notes/quick-context/ram-addressing-decoder|four]] legs into a trotting pattern (Lab 4). This pipeline works, but it is [[learning/notes/quick-context/breaking-elongation-rate|brittle]]. Every parameter — step height, stride length, phase offsets, PD gains — is hand-tuned for flat ground. Push the robot, change the surface friction, or remove a leg, and the entire stack breaks down because no part of the pipeline was designed to adapt.
 
-Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward function) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
+Reinforcement learning offers a fundamentally different approach. Instead of manually specifying *how* the robot should move, you specify *what* good movement looks like (a reward [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]]) and let an optimization algorithm discover the control policy through millions of simulated trials. The policy — a small neural network — learns to map sensor observations (IMU orientation, joint positions, joint velocities, velocity commands) directly to joint position targets. Because training happens in simulation with randomized physics parameters (friction, mass, motor delays), the resulting policy generalizes to conditions it has never explicitly seen, including the real robot.
 
-The sim-to-real gap is the central challenge. A policy that works perfectly in MuJoCo can fail on the real Pupper because simulation never perfectly captures motor dynamics, sensor noise, communication delays, or floor surfaces. Lab 5's approach mitigates this through domain randomization during training — deliberately varying simulation parameters so the policy learns to be robust rather than optimal for any single configuration. The `config.yaml` on the real robot then provides the bridge: PD gains ($K_p = 7.5$, $K_d = 0.25$ for all joints), default joint poses, and timing parameters that match the assumptions baked into the trained policy.
+The sim-to-real gap is the central challenge. A policy that works perfectly in MuJoCo [[learning/notes/quick-context/embedded-communication-protocols|can]] fail on the real Pupper because simulation never perfectly captures motor dynamics, sensor noise, communication delays, or floor surfaces. Lab 5's approach mitigates this through domain randomization during training — deliberately varying simulation parameters so the policy learns to be robust rather than optimal for any single configuration. The `config.yaml` on the real robot then provides the bridge: PD gains ($K_p = 7.5$, $K_d = 0.25$ for all joints), default joint poses, and [[learning/notes/quick-context/comparator-specification|timing]] parameters that match the assumptions baked into the trained policy.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Reinforcement Learning Policy** | A neural network $\pi_\theta(a \mid o)$ that maps an observation vector $o$ to an action vector $a$ (12 joint position targets). Trained by maximizing cumulative reward in simulation using [[quick-context/ppo-proximal-policy-optimization|PPO]]. |
 | **Sim-to-Real Transfer** | Deploying a policy trained entirely in simulation to a physical robot. Bridged by domain randomization (varying sim physics) and careful config matching (`config.yaml` gains, timing). |
-| **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides fast, differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
-| **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from BNO086 IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
-| **Action Space** | The 12-dimensional output vector: one position target per joint. These are *not* torques — the lower-level PD controller on the STM32 tracks these targets at the full 520 Hz update rate. |
+| **MuJoCo** | Multi-Joint dynamics with Contact — the physics simulator used for training. Provides [[learning/notes/quick-context/comparator|fast]], differentiable contact dynamics essential for generating the millions of rollouts RL requires. |
+| **Observation Space** | The vector of sensor readings fed to the policy each inference step: body orientation (from [[learning/notes/quick-context/pupper-bom-control-board|BNO086]] IMU), angular velocity, joint positions, joint velocities, and commanded velocity — everything the network needs to decide what to do next. |
+| **Action Space** | The 12-dimensional output vector: [[learning/notes/quick-context/ram-addressing-decoder|one]] position target per joint. These are *[[learning/notes/micro-context/can-bus-termination|not]]* torques — the lower-level PD controller on the STM32 tracks these targets at the [[learning/notes/quick-context/singular-value-decomposition|full]] 520 Hz update rate. |
 
 <details>
 <summary><strong>How It Works</strong> — RL policy deployment pipeline</summary>
 
-The pipeline spans two phases: offline training (simulation) and online deployment (real robot).
+The pipeline spans [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] phases: offline training (simulation) and online deployment (real robot).
 
 ### What the Neural Network Learns
 
-The neural network is **not** predicting what will happen (that's a dynamics model). It is learning a **policy** — a function that says "given what I currently sense about the world, what joint positions should I command *right now* to maximize long-term walking quality?" Formally, the network $\pi_\theta(a \mid o)$ maps an observation $o$ (what the robot senses) to an action $a$ (12 joint position targets). The "learning" is adjusting the weights $\theta$ so that the actions the policy chooses lead to high cumulative reward over time.
+The neural network is **not** predicting what will happen (that's a dynamics model). It is learning a **policy** — a function that says "given what I currently sense about the world, what joint positions should I command *right now* to maximize long-term walking [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]]?" Formally, the network $\pi_\theta(a \mid o)$ maps an observation $o$ (what the robot senses) to an action $a$ (12 joint position targets). The "learning" is adjusting the weights $\theta$ so that the actions the policy chooses lead to high cumulative reward over time.
 
 This is fundamentally different from supervised learning. There is no "correct answer" dataset of observation→action pairs. Instead, the robot discovers good actions through trial and error: try something, see how much reward you get, adjust the policy to do more of what worked and less of what didn't.
 
@@ -49,16 +49,16 @@ This is fundamentally different from supervised learning. There is no "correct a
 
 During training, the simulated robot collects **experience tuples** — each one is a single timestep of interaction:
 
-$$\underbrace{(o_t,}_{\text{what I sensed}} \quad \underbrace{a_t,}_{\text{what I did}} \quad \underbrace{r_t,}_{\text{how good it was}} \quad \underbrace{o_{t+1})}_{\text{what happened next}}$$
+$$\underbrace{(o_t,}_{\[[learning/notes/quick-context/how-source-code-is-stored|text]]{what I sensed}} \quad \underbrace{a_t,}_{\text{what I did}} \quad \underbrace{r_t,}_{\text{how good it was}} \quad \underbrace{o_{t+1})}_{\text{what happened next}}$$
 
 | Symbol | Meaning | Concrete Pupper Example |
 |--------|---------|------------------------|
 | $o_t$ | **Observation** at time $t$ — everything the robot can sense | IMU orientation, angular velocity, 12 joint positions, 12 joint velocities, velocity command, previous action |
 | $a_t$ | **Action** taken at time $t$ — the policy's output | 12 joint position offsets from default pose (e.g., $[+0.05, -0.02, +0.08, \ldots]$ rad) |
 | $r_t$ | **Reward** received for this transition — a scalar score | e.g., $r_t = 0.85$ (good forward tracking) or $r_t = -0.3$ (fell over, energy wasted) |
-| $o_{t+1}$ | **Next observation** — the world's response to your action | Updated joint positions/velocities after physics simulation stepped forward |
+| $o_{t+1}$ | **Next observation** — the world's response to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] action | Updated joint positions/velocities after physics simulation stepped forward |
 
-**How PPO uses these tuples:** Thousands of tuples are collected across parallel simulated robots. PPO estimates the *advantage* — "was this action better or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
+**How PPO uses these tuples:** Thousands of tuples are collected across [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] simulated robots. PPO estimates the *advantage* — "was this action [[learning/notes/quick-context/comparator-specification|better]] or worse than average for this observation?" — and adjusts the policy weights to increase the probability of above-average actions and decrease below-average ones. The clipped surrogate objective prevents any single update from changing the policy too drastically.
 
 ```
 ONE TRAINING EPISODE (simplified)
@@ -82,7 +82,7 @@ ONE TRAINING EPISODE (simplified)
 
 ### Observation Space — What the Robot Senses
 
-The observation vector $o_t$ is a flat array of floats concatenated in this order:
+The observation vector $o_t$ is a flat array of floats concatenated in this [[learning/notes/quick-context/frequency-and-filtering|order]]:
 
 ```
 OBSERVATION VECTOR BREAKDOWN (~48 dimensions)
@@ -114,14 +114,14 @@ OBSERVATION VECTOR BREAKDOWN (~48 dimensions)
                                        smoothness)
 ```
 
-**Why these specific variables?**
+**[[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] these specific variables?**
 - **Velocity command** tells the policy *what* to do (walk forward, turn left)
-- **Angular velocity + projected gravity** tell the policy the body's orientation and how fast it's rotating — essential for balance
-- **Joint position offsets** (not raw positions) are centered near zero, which helps the neural network learn faster. The offset from the default standing pose is more informative than the raw angle
+- **Angular velocity + projected gravity** tell the policy the body's orientation and [[learning/notes/quick-context/electric-current|how fast]] it's rotating — essential for balance
+- **Joint position offsets** (not raw positions) are centered near [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]], which helps the neural network learn faster. The offset from the default standing pose is more informative than the raw angle
 - **Joint velocities** tell the policy how fast each joint is currently moving — needed to predict where the joint will be next
 - **Previous action** provides temporal context so the policy can produce smooth, continuous motions rather than jerky independent decisions
 
-**What's NOT in the observation (and why):** foot contact sensors (not available on Pupper hardware), terrain heightmap (not available without cameras — this is what the teacher-student pipeline adds via privileged learning), and absolute position/velocity (not available without external tracking). The policy must infer ground contact and terrain from the *pattern* of joint positions and IMU readings.
+**What's NOT in the observation (and why):** foot contact sensors (not available on Pupper [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]]), terrain heightmap (not available without cameras — this is what the teacher-student pipeline adds via privileged learning), and absolute position/velocity (not available without external tracking). The policy [[learning/notes/quick-context/ros2-architecture|must]] infer ground contact and terrain from the *pattern* of joint positions and IMU readings.
 
 ### Action Space — What the Robot Commands
 
@@ -162,14 +162,14 @@ ACTION VECTOR BREAKDOWN (12 dimensions)
 
 ### Training Phase (Offline, GPU Cluster)
 
-1. **Environment setup**: A MuJoCo model of Pupper is loaded with randomized physics — friction coefficients, link masses, motor strength, observation noise, and communication delays are sampled from distributions each episode.
+1. **Environment setup**: A MuJoCo model of Pupper is loaded with randomized physics — friction coefficients, link masses, motor [[learning/notes/quick-context/cnc-machining|strength]], observation noise, and communication delays are sampled from distributions each episode.
 2. **Rollout collection**: The current policy $\pi_\theta$ controls the simulated robot for thousands of parallel episodes. At each timestep, the simulator records the experience tuple $(o_t, a_t, r_t, o_{t+1})$ — what was observed, what action the policy chose, how much reward that transition earned, and what the world looked like after. A single training batch might contain 100,000+ tuples from thousands of parallel robots.
 3. **Reward shaping**: The reward $r_t$ typically includes terms for:
    - Forward velocity tracking: $r_{vel} = \exp(-\|v_{cmd} - v_{actual}\|^2)$
    - Energy penalty: $r_{energy} = -\sum_i |\tau_i \cdot \dot{q}_i|$
    - Smoothness: $r_{smooth} = -\|a_t - a_{t-1}\|^2$
    - Orientation: $r_{orient} = -\|\text{projected gravity} - [0, 0, -1]\|^2$
-4. **Policy update**: PPO uses the collected tuples to estimate which actions were better than average (positive advantage) and updates the network weights $\theta$ to make good actions more likely. The clipped surrogate objective prevents the policy from changing too drastically in any single update.
+4. **Policy update**: PPO uses the collected tuples to estimate which actions were better than average (positive advantage) and [[learning/notes/quick-context/firmware|updates]] the network weights $\theta$ to make good actions more likely. The clipped surrogate objective prevents the policy from changing too drastically in any single update.
 5. **Logging**: Weights & Biases (wandb) tracks reward curves, episode lengths, and periodically saves policy checkpoints as `.json` files (project: `pupperv3-mjx-rl`).
 
 ### Deployment Phase (Real Robot, Raspberry Pi)
@@ -217,7 +217,7 @@ DEPLOYMENT PIPELINE
 - **Neural network inference**: $520 / 10 = 52$ Hz — each action is held for 10 control ticks
 - **PD tracking**: Runs at the full 520 Hz between neural network updates
 - **Init sequence**: 2.0s ramp to default pose (`init_duration`) + 2.0s fade-in to policy control (`fade_in_duration`)
-- **Safety threshold**: `max_body_angle: 1.5` rad (~86 degrees) — if exceeded, the controller triggers e-stop
+- **Safety [[learning/notes/micro-context/capacitive-voltage-sensing|threshold]]**: `max_body_angle: 1.5` rad (~86 degrees) — if exceeded, the controller triggers e-[[learning/notes/quick-context/camera-fundamentals|stop]]
 
 ### Downloading a Policy
 
@@ -238,23 +238,23 @@ The downloaded `.json` file is copied to `policy_latest.json` in the neural_cont
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Classical vs. learned control</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Classical vs. learned control</summary>
 
-Lab 5 sits at the inflection point of the CS123 curriculum: everything before it is classical robotics, everything after it builds on top of the neural policy. This transition exposes a fundamental tradeoff that the entire field of robotics grapples with.
+Lab 5 sits at the inflection [[learning/notes/quick-context/epson-rc-plus-programming|point]] of the CS123 curriculum: everything before it is classical robotics, everything after it builds on [[learning/notes/quick-context/keypress-to-pixel-pipeline|top]] of the neural policy. This transition exposes a fundamental tradeoff that the entire field of robotics grapples with.
 
 ### The Classical Stack (Labs 1-4)
 
-Every equation is visible. You can prove that the FK chain $T_{0 \to ee} = T_{0 \to 1} \cdot T_{1 \to 2} \cdot T_{2 \to 3} \cdot T_{3 \to ee}$ correctly maps joint angles to foot positions. You can verify the IK gradient $\nabla_\theta C = \nabla_\theta \|FK(\theta) - p_{target}\|^2$ converges. You can trace exactly why the robot stumbles — a gain too high, a phase offset wrong, a step height insufficient. But you pay for this transparency with rigidity: the gait works on flat carpet and fails on gravel, works with four legs and breaks with three.
+Every equation is visible. You can prove that the FK chain $T_{0 \to ee} = T_{0 \to 1} \cdot T_{1 \to 2} \cdot T_{2 \to 3} \cdot T_{3 \to ee}$ correctly maps joint angles to foot positions. You can verify the IK gradient $\nabla_\theta C = \nabla_\theta \|FK(\theta) - p_{target}\|^2$ converges. You can [[learning/notes/quick-context/pcb-printed-circuit-board|trace]] exactly why the robot stumbles — a gain too high, a phase offset wrong, a step height insufficient. But you pay for this transparency with rigidity: the gait works on flat carpet and [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|fails]] on gravel, works with four legs and breaks with three.
 
 ### The Learned Stack (Lab 5)
 
-A single policy file (`policy_latest.json`) replaces hundreds of lines of FK/IK/gait code. It handles terrain variation, perturbations, missing legs, and velocity commands — behaviors that would each require a separate engineering effort in the classical stack. The parkour policy navigates obstacles that no reasonable hand-tuned gait could handle. But the policy is a black box: when the robot falls, you cannot point to a specific weight or neuron and say "that's the bug."
+A single policy file (`policy_latest.json`) replaces hundreds of lines of FK/IK/gait code. It handles terrain variation, perturbations, missing legs, and velocity commands — behaviors that would each require a separate engineering effort in the classical stack. The parkour policy navigates obstacles that no reasonable hand-tuned gait could handle. But the policy is a black box: [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] the robot falls, you cannot point to a specific weight or neuron and say "that's the bug."
 
 | Aspect | Classical (Labs 1-4) | Learned (Lab 5) |
 |--------|---------------------|-----------------|
 | **Interpretability** | Full — every matrix, gain, and equation is visible | Low — weights are opaque, behavior is emergent |
 | **Robustness** | Fragile — tuned for specific conditions | Robust — domain randomization covers a distribution |
-| **Development cost** | Weeks of hand-tuning per behavior | Hours of training (but weeks of reward engineering + sim setup) |
+| **Development [[learning/notes/quick-context/bond-pad|cost]]** | Weeks of hand-[[learning/notes/quick-context/how-passive-and-discrete-components-are-made|tuning]] per behavior | Hours of training (but weeks of reward engineering + sim setup) |
 | **Failure mode** | Predictable, traceable to a specific parameter | Sudden, catastrophic, hard to reproduce |
 | **Generalization** | Manual: each new behavior requires new code | Emergent: reshape reward to get new behavior |
 | **Safety guarantees** | Can prove joint limits, torque bounds | Statistical — works 99% of the time is not 100% |
@@ -262,9 +262,9 @@ A single policy file (`policy_latest.json`) replaces hundreds of lines of FK/IK/
 
 ### The Hybrid Reality
 
-In practice, Lab 5 does not fully abandon classical control. The neural network outputs *position targets*, not torques. The PD controller from Lab 1 — $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — still runs at every tick to track those targets. This is a deliberate design choice: letting the RL policy output torques directly would require much more training data and be far less safe. The classical PD layer provides a safety floor — even if the neural network outputs a bad target, the PD controller limits how fast the joints can move to reach it.
+In practice, Lab 5 does not fully abandon classical control. The neural network outputs *position targets*, not torques. The PD controller from Lab 1 — $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — still runs at every tick to track those targets. This is a deliberate design [[learning/notes/quick-context/transistor-analog-to-digital|choice]]: letting the RL policy output torques directly would require much more training data and be far less safe. The classical PD [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] provides a safety floor — even if the neural network outputs a bad target, the PD controller limits how fast the joints can move to reach it.
 
-The e-stop controller (`estop_controller.cpp`) provides another classical safety layer: a C++ node that monitors joystick buttons and can instantly deactivate all neural controllers, publishing to `/emergency_stop` and commanding zero gains. This layered architecture — learned policy for behavior, classical PD for tracking, hardcoded safety for emergencies — is how production robot systems actually work.
+The e-stop controller (`estop_controller.cpp`) provides another classical safety layer: a C++ [[learning/notes/quick-context/ros2-architecture|node]] that monitors joystick buttons and can instantly deactivate all neural controllers, publishing to `/emergency_stop` and commanding zero gains. This layered architecture — learned policy for behavior, classical PD for tracking, hardcoded safety for emergencies — is how production robot systems actually work.
 
 </details>
 
@@ -322,7 +322,7 @@ The $K_p = 7.5$ and $K_d = 0.25$ gains (from `init_kps` and `init_kds` in config
 
 ### Step 5: Motor Execution
 
-The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN bus (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
+The torque commands travel: ROS2 controller manager $\to$ hardware interface $\to$ CAN [[learning/notes/quick-context/data-bus-and-arbitration|bus]] (via MAX3051 transceivers) $\to$ 12 servo motors. Each servo's internal encoder reports back position and velocity for the next observation.
 
 ```
 ONE FULL INFERENCE CYCLE (out of ~52 per second)
@@ -352,19 +352,19 @@ ONE FULL INFERENCE CYCLE (out of ~52 per second)
            ~19.2ms between NN inferences
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy only needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing jitter on the Raspberry Pi.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** assuming the neural network directly outputs motor torques. It does not. It outputs *position targets* that the classical PD controller from Lab 1 tracks at full rate. This separation is critical: the RL policy [[learning/notes/quick-context/comparator-specification|only]] needs to run at 52 Hz (deciding *where* joints should go), while the PD controller handles the fast, reactive torque computation at 520 Hz (deciding *how hard* to push to get there). This makes training easier, deployment safer, and the system more robust to timing [[learning/notes/quick-context/preempt-rt|jitter]] on the Raspberry Pi.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/ppo-proximal-policy-optimization|PPO (Proximal Policy Optimization)]]** — The RL algorithm used to train the policy. PPO constrains each gradient update to stay close to the previous policy (via a clipped surrogate objective), preventing catastrophic policy collapse. It is the standard algorithm for continuous control tasks like locomotion because it balances training stability with simplicity.
+- **[[quick-context/ppo-proximal-policy-optimization|PPO (Proximal Policy Optimization)]]** — The RL algorithm used to train the policy. PPO constrains each gradient update to stay close to the previous policy (via a clipped surrogate objective), preventing catastrophic policy collapse. It is the standard algorithm for continuous control tasks like locomotion because it balances training stability with [[learning/notes/quick-context/embedded-communication-protocols|simplicity]].
 - **Domain Randomization** — During training, simulation parameters (friction $\mu \in [0.3, 1.5]$, link masses $\pm 20\%$, motor strength, observation delay) are randomized each episode. The policy cannot overfit to any single configuration, forcing it to learn robust strategies that transfer to the real robot's unknown true parameters.
 - **Reward Shaping** — The art of designing $r_t$ to elicit desired behavior. Naive rewards (e.g., just forward velocity) produce degenerate gaits — the robot may learn to fall forward. Careful penalty terms for energy, joint acceleration, body orientation, and foot contact patterns guide the optimizer toward natural locomotion.
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
+- **[[quick-context/pupper-brain]]** — The [[learning/notes/quick-context/comparator-specification|dual]]-STM32 + Raspberry Pi hardware architecture. The STM32 motor MCU (U5) executes PD tracking at 1 kHz on the CAN bus; the Pi runs the neural network inference. The 520 Hz update rate in `config.yaml` is the rate at which the ROS2 controller manager ticks the hardware interface.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab CS123 curriculum. Lab 5 is the pivot point: Labs 1-4 build understanding of what the neural network replaces, Labs 6-7 build on top of the neural controller for voice control and vision tracking.
-- **Emergency Stop System** — The `estop_controller.cpp` node (C++) subscribes to `/joy` and monitors PS4 controller buttons. Pressing the right joystick (button 12) instantly deactivates all neural controllers and publishes to `/emergency_stop`. The start button (button 9) reactivates the last-used controller. Buttons X/O/Triangle/Square switch between the four controller modes (normal, three-legged, parkour, test).
+- **Emergency Stop System** — The `estop_controller.cpp` node (C++) subscribes to `/joy` and monitors PS4 controller buttons. Pressing the right joystick (button 12) instantly deactivates all neural controllers and publishes to `/emergency_stop`. The start button (button 9) reactivates the last-used controller. Buttons X/O/Triangle/Square [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] between the four controller modes (normal, three-legged, parkour, test).
 - **Weights & Biases (wandb)** — MLOps platform used for experiment tracking. Each training run logs reward curves, episode statistics, and policy checkpoints to the `pupperv3-mjx-rl` project. Students download specific runs by number: `python3 download_latest_policy.py --run_number 42`. The script auto-detects the logged-in user's wandb entity.
 
 </details>
@@ -378,7 +378,7 @@ Lab 5's approach — PPO + MuJoCo + domain randomization + position-target actio
 
 **Position targets + PD tracking.** Lab 5 outputs joint position targets, not torques. This remains the industry standard. NVIDIA's Isaac Lab locomotion examples, ETH Zurich's ANYmal controllers, and virtually all deployed quadruped policies use the same pattern: NN outputs positions at 50-100 Hz, PD controller tracks at 200-1000 Hz. The reason hasn't changed — it's safer, trains faster, and transfers better to real hardware.
 
-**PPO as the RL algorithm.** PPO (specifically the RSL-RL implementation) remains the dominant algorithm for locomotion. Despite advances in off-policy methods and diffusion-based policies, PPO's stability and simplicity make it the default choice. NVIDIA's Isaac Lab uses PPO with RSL-RL for all their locomotion benchmarks across 11 different robot morphologies (A1, Go1/2, Spot, ANYmal-B/C/D, Cassie, etc.).
+**PPO as the RL algorithm.** PPO (specifically the RSL-RL implementation) remains the dominant algorithm for locomotion. Despite advances in [[learning/notes/quick-context/bjt-specifications|off]]-policy methods and diffusion-based policies, PPO's stability and simplicity make it the default choice. NVIDIA's Isaac Lab uses PPO with RSL-RL for all their locomotion benchmarks across 11 different robot morphologies (A1, Go1/2, Spot, ANYmal-B/C/D, Cassie, etc.).
 
 **Domain randomization for sim-to-real.** Still essential. Every production pipeline randomizes friction, masses, motor delays, and sensor noise. The only change is that some teams now use **Automatic Domain Randomization (ADR)**, which adaptively expands randomization ranges during training rather than hand-picking distributions.
 
@@ -418,23 +418,23 @@ TEACHER-STUDENT PIPELINE (industry standard since ~2023)
   └────────────────────────────────────────────┘
 ```
 
-**Why this matters:** The teacher has access to information (terrain shape, true friction) that makes the RL problem much easier — it just needs to learn the right foot placement for known conditions. The student then learns to *infer* these hidden variables from the pattern of joint positions and IMU readings over time. This two-stage approach converges faster, produces more robust policies, and handles terrain variation far better than end-to-end training with domain randomization alone. Lab 5's single-stage approach is simpler but leaves performance on the table.
+**Why this matters:** The teacher has access to information (terrain shape, true friction) that makes the RL problem much easier — it just needs to learn the right foot placement for known conditions. The student then learns to *infer* these hidden variables from the pattern of joint positions and IMU readings over time. This two-stage approach converges faster, produces more robust policies, and handles terrain variation far better than end-to-end training with domain randomization alone. Lab 5's single-stage approach is simpler but leaves [[learning/notes/quick-context/bond-pad|performance]] on the table.
 
-Recent variants include Concurrent Teacher-Student (CTS) learning where both are trained simultaneously, and Generative Adversarial Distillation (GAD) which uses adversarial training to transfer the teacher's motion distribution to the student while preserving naturalness from human motion-capture data.
+Recent variants include Concurrent Teacher-Student (CTS) learning where [[learning/notes/quick-context/bjt-specifications|both]] are trained [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]], and Generative Adversarial Distillation (GAD) which uses adversarial training to transfer the teacher's motion distribution to the student while preserving naturalness from human motion-capture data.
 
 **2. GPU-Parallel Simulation (Isaac Lab / Isaac Gym)**
 
-Lab 5 uses MuJoCo, which is excellent for accuracy but runs environments sequentially (or with limited parallelism via MJX on GPU). Current best practice uses NVIDIA Isaac Lab (successor to Isaac Gym), which runs **thousands of environments in parallel on GPU**:
+Lab 5 uses MuJoCo, which is excellent for [[learning/notes/quick-context/rc-oscillator|accuracy]] but runs environments sequentially (or with limited parallelism via MJX on GPU). Current best practice uses NVIDIA Isaac Lab (successor to Isaac Gym), which runs **thousands of environments in parallel on GPU**:
 
 | Aspect | MuJoCo (Lab 5) | Isaac Lab (Industry) |
 |--------|----------------|---------------------|
 | Parallelism | Tens of envs (CPU) or hundreds (MJX/GPU) | 4,096-8,192 parallel envs (GPU) |
-| Throughput | ~10K steps/sec | ~90K frames/sec (RTX A6000) |
+| [[learning/notes/quick-context/semiconductor-fabrication|Throughput]] | ~10K steps/sec | ~90K frames/sec (RTX A6000) |
 | Training time | Hours to days | Minutes to hours |
-| Tensor pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
+| [[learning/notes/quick-context/tensor|Tensor]] pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
 | Physics fidelity | Excellent (MuJoCo gold standard) | Good (PhysX-based, improving) |
 
-Isaac Lab exposes physics results directly as PyTorch tensors, eliminating CPU-GPU data transfer. Training a locomotion policy for ANYmal or Spot typically takes 30-60 minutes on a single GPU. Lab 5's MuJoCo approach is pedagogically clearer (easier to understand one environment) but wouldn't scale to the thousands of terrain variations that production systems train on.
+Isaac Lab exposes physics results directly as PyTorch tensors, eliminating CPU-GPU data transfer. Training a locomotion policy for ANYmal or Spot typically takes 30-60 minutes on a single GPU. Lab 5's MuJoCo approach is pedagogically clearer (easier to understand one environment) but wouldn't [[learning/notes/quick-context/absolute-orientation|scale]] to the thousands of terrain variations that production systems train on.
 
 **3. Terrain Curriculum Learning**
 
@@ -463,7 +463,7 @@ Two newer trends are beginning to influence locomotion, though PPO remains domin
 
 **Diffusion policies** (DPPO — Diffusion Policy Policy Optimization) use denoising diffusion models as policy representations instead of MLPs. They handle multimodal action distributions gracefully — useful when multiple valid gaits exist for the same command. Still mostly used in manipulation; locomotion adoption is early.
 
-**Vision-Language-Action (VLA) models** are the frontier for combining locomotion with semantic understanding. Figure AI's Helix model controls entire humanoid bodies from vision + language inputs. WholeBodyVLA (ICLR 2026) learns locomotion + manipulation jointly from egocentric video. These don't replace low-level RL locomotion policies — they sit *above* them as high-level controllers, similar to how Lab 6-7's LLM sits above Lab 5's neural policy. The layered architecture Lab 5 teaches (NN → PD → motors) is exactly how these systems work at the bottom of the stack.
+**Vision-Language-Action (VLA) models** are the frontier for combining locomotion with semantic understanding. Figure AI's Helix model controls entire humanoid bodies from vision + language inputs. WholeBodyVLA (ICLR 2026) learns locomotion + manipulation jointly from egocentric video. These don't replace low-level RL locomotion policies — they sit *above* them as high-level controllers, similar to how Lab 6-7's LLM sits above Lab 5's neural policy. The layered architecture Lab 5 teaches (NN → PD → motors) is exactly how these systems work at the [[learning/notes/quick-context/keypress-to-pixel-pipeline|bottom]] of the stack.
 
 ### Summary: Where Lab 5 Sits
 
@@ -510,7 +510,7 @@ The RL policy is trained with these exact gains in simulation — they are part 
 <details>
 <summary>Answer</summary>
 
-Because you can never make simulation perfectly accurate — there will always be a gap (unmodeled motor dynamics, cable stiffness, floor texture). A policy optimized for a single "perfect" simulation overfits to that simulation's specific parameters and fails when reality inevitably differs. Domain randomization forces the policy to be robust across a *distribution* of physics parameters, so the real robot's true parameters are likely somewhere within that distribution. It's the difference between memorizing one exam vs. studying broadly — the randomized policy sacrifices peak performance in any single environment for reliable performance across all of them.
+Because you can never make simulation perfectly accurate — there will always be a gap (unmodeled motor dynamics, cable stiffness, floor texture). A policy optimized for a single "perfect" simulation overfits to that simulation's specific parameters and fails when reality inevitably differs. Domain randomization forces the policy to be robust across a *distribution* of physics parameters, so the real robot's true parameters are likely somewhere within that distribution. It's the difference between memorizing one exam vs. studying broadly — the randomized policy sacrifices peak performance in any single environment for [[learning/notes/quick-context/ros2-architecture|reliable]] performance across all of them.
 </details>
 
 **Q4:** The teacher-student distillation pipeline (industry standard) trains a teacher with privileged information (true terrain, friction), then distills to a student using only real-sensor observations. Why not just train the student directly with domain randomization, as Lab 5 does? What specific failure mode does the teacher avoid?
@@ -518,15 +518,15 @@ Because you can never make simulation perfectly accurate — there will always b
 <details>
 <summary>Answer</summary>
 
-The core problem is that without privileged information, the RL optimization must simultaneously learn two things: (1) how to *infer* hidden environment properties (terrain shape, friction) from proprioceptive history, and (2) how to *act optimally* given those properties. This joint optimization is much harder and often converges to suboptimal policies that are "cautious everywhere" rather than terrain-adaptive. The teacher-student split separates these concerns: the teacher only learns optimal behavior (easy, because it sees the terrain), and the student only learns to *predict* what the teacher would do from limited sensor data (a supervised learning problem, which is well-understood). The result is a student that implicitly infers terrain and adapts its gait, rather than Lab 5's approach of learning a single "average" policy that works acceptably on all terrains but optimally on none.
+The core problem is that without privileged information, the RL optimization must simultaneously learn two things: (1) how to *infer* hidden environment properties (terrain shape, friction) from proprioceptive [[learning/notes/quick-context/ros2-architecture|history]], and (2) how to *act optimally* given those properties. This joint optimization is much harder and often converges to suboptimal policies that are "cautious everywhere" rather than terrain-adaptive. The teacher-student split separates these concerns: the teacher only learns optimal behavior (easy, because it sees the terrain), and the student only learns to *predict* what the teacher would do from limited sensor data (a supervised learning problem, which is well-understood). The result is a student that implicitly infers terrain and adapts its gait, rather than Lab 5's approach of learning a single "average" policy that works acceptably on all terrains but optimally on [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|none]].
 </details>
 
-**Q5:** VLA models (Helix, WholeBodyVLA) and diffusion policies are emerging trends. Where do they sit relative to Lab 5's neural controller in the control stack — do they replace it, or layer on top of it? What architectural principle from the Pupper labs predicts this?
+**Q5:** VLA models (Helix, WholeBodyVLA) and diffusion policies are emerging trends. Where do they sit relative to Lab 5's neural controller in the control stack — do they replace it, or layer on top of it? What architectural principle from the Pupper labs [[learning/notes/quick-context/bambu-p2s-print-quality|predicts]] this?
 
 <details>
 <summary>Answer</summary>
 
-They layer **on top** of it, not replace it. VLA models operate at the semantic level ("pick up the cup on the table") and output high-level commands (velocity targets, waypoints, or task-space goals). These get translated into joint-level actions by a low-level locomotion policy — exactly Lab 5's neural controller. The Pupper labs already demonstrate this architecture: Lab 6-7's LLM outputs text commands → Karel translates to Twist messages → Lab 5's neural controller converts to joint positions → PD tracks at full rate. VLA models are a more capable version of the LLM layer, and diffusion policies are an alternative policy *representation* (replacing Lab 5's MLP) but still output position targets tracked by PD control. The architectural principle is **separation of timescales**: slow deliberation (LLM/VLA at ~1 Hz) → fast reactive locomotion (NN at ~50 Hz) → fastest motor tracking (PD at ~500 Hz). Each layer only talks to its neighbors, not to hardware directly.
+They layer **on top** of it, not replace it. VLA models operate at the semantic level ("pick up the cup on the table") and output high-level commands (velocity targets, waypoints, or task-space goals). These get translated into joint-level actions by a low-level locomotion policy — exactly Lab 5's neural controller. The Pupper labs already demonstrate this architecture: Lab 6-7's LLM outputs text commands → [[learning/notes/quick-context/pupper-v3-labs|Karel]] translates to Twist [[learning/notes/quick-context/ros2-architecture|messages]] → Lab 5's neural controller converts to joint positions → PD tracks at full rate. VLA models are a more capable version of the LLM layer, and diffusion policies are an alternative policy *representation* (replacing Lab 5's MLP) but still output position targets tracked by PD control. The architectural principle is **separation of timescales**: slow deliberation (LLM/VLA at ~1 Hz) → fast reactive locomotion (NN at ~50 Hz) → fastest motor tracking (PD at ~500 Hz). Each layer only talks to its neighbors, not to hardware directly.
 </details>
 
 </details>

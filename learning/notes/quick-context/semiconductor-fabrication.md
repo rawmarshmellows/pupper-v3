@@ -4,22 +4,22 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-layers]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
 
-> **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
+> **TL;DR:** Semiconductor fabrication builds [[learning/notes/quick-context/bond-pad|billions of transistors]] (each ~5 nanometers wide) on [[learning/notes/quick-context/transistor|silicon]] wafers by cycling through [[learning/notes/quick-context/metal-interconnect-layers|photolithography]], deposition, etching, [[learning/notes/quick-context/anions-and-oxidation|ion]] implantation, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] planarization 50-100+ times over 3+ months, making it [[learning/notes/quick-context/capacitance|the]] most complex manufacturing process humanity has ever developed.
 
 # Semiconductor Fabrication: Manufacturing Process and Tools
 
 ## The Core Problem: Building Structures Smaller Than Light Can See
 
-You need to build billions of [[quick-context/transistor|transistors]], each only 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You can't "see" what you're building, you can't touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
+You need to build billions of [[quick-context/transistor|transistors]], each [[learning/notes/quick-context/comparator-specification|only]] 5 nanometers wide, arranged in precise patterns on a [[quick-context/silicon-die|silicon die]]. The problem: visible light has a wavelength of ~400-700 nm—over 100× larger than the features you're trying to create. You [[learning/notes/quick-context/embedded-communication-protocols|can]]'t "see" [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] you're building, you can't touch it (a fingerprint would destroy thousands of transistors), and a single dust particle is a catastrophic defect. Without the specialized fabrication tools and processes, you'd have no chips, no computers, no modern electronics. A single fab costs $20+ billion because this is the most complex manufacturing process humanity has ever developed.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Photolithography** | Using light projected through a mask to pattern photoresist, defining where material will be added or removed—the "printing press" of chip manufacturing |
-| **Deposition** | Adding thin layers of material (metals, oxides, silicon) onto the wafer using chemical vapor (CVD), physical vapor (PVD), or atomic layer deposition (ALD) |
+| **Deposition** | Adding thin layers of material (metals, oxides, silicon) onto the [[learning/notes/quick-context/silicon-die|wafer]] using chemical vapor (CVD), physical vapor (PVD), or atomic [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] deposition (ALD) |
 | **Etching** | Selectively removing material using plasma (dry etch) or chemicals (wet etch) to carve the patterns defined by photolithography |
 | **Ion Implantation** | Shooting dopant atoms (phosphorus, boron) into silicon at high velocity to create [[quick-context/doped-silicon|n-type and p-type regions]] for transistors |
 | **CMP (Chemical Mechanical Planarization)** | Polishing the wafer flat between layers so subsequent layers can be built on a smooth surface |
@@ -27,7 +27,7 @@ You need to build billions of [[quick-context/transistor|transistors]], each onl
 <details>
 <summary><strong>How It Works: The Layer-by-Layer Cycle</strong></summary>
 
-Building one layer of a CPU requires cycling through six categories of tools, repeated 50-100+ times to build all the layers of a complete chip. The wafer moves around the fab in a carefully choreographed dance.
+Building [[learning/notes/quick-context/ram-addressing-decoder|one]] layer of a CPU requires cycling through six categories of tools, repeated 50-100+ times to build all the layers of a complete chip. The wafer moves around the fab in a carefully choreographed dance.
 
 ```
 THE SIX TOOL CATEGORIES IN SEMICONDUCTOR FABRICATION
@@ -62,7 +62,7 @@ THE SIX TOOL CATEGORIES IN SEMICONDUCTOR FABRICATION
 
 ### The Manufacturing Cycle for ONE Layer
 
-Each layer of a chip—whether it's a transistor layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
+Each layer of a chip—[[learning/notes/quick-context/differential-pair|whether]] it's a [[learning/notes/quick-context/silicon-die|transistor]] layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
 
 ```
 ONE LAYER MANUFACTURING CYCLE
@@ -354,13 +354,13 @@ MAJOR FABRICATION EQUIPMENT
 </details>
 
 <details>
-<summary><strong>The Key Tension: Resolution vs. Throughput vs. Cost</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]: Resolution vs. Throughput vs. [[learning/notes/quick-context/bond-pad|Cost]]</strong></summary>
 
 The semiconductor industry battles a three-way tradeoff:
 
 | Factor | Push for more | Consequence |
 |--------|--------------|-------------|
-| **Resolution** | Smaller features (3nm → 2nm → 1.4nm) | Requires EUV, multi-patterning, exotic materials—exponentially more expensive |
+| **Resolution** | Smaller features (3nm → 2nm → 1.4nm) | Requires EUV, multi-patterning, exotic [[learning/notes/quick-context/cnc-machining|materials]]—exponentially more expensive |
 | **Throughput** | More wafers/hour, faster time-to-market | Less time for careful alignment, inspection; higher defect rates |
 | **Cost** | Cheaper fabs, lower chip prices | Older process nodes, larger features, less competitive products |
 
@@ -394,7 +394,7 @@ REAL NUMBERS:
 </details>
 
 <details>
-<summary><strong>Concrete Example: Building a Transistor Gate (FEOL)</strong></summary>
+<summary><strong>Concrete Example: Building a Transistor [[learning/notes/quick-context/transistor|Gate]] (FEOL)</strong></summary>
 
 Let's trace how the gate of a single [[quick-context/transistor|FinFET transistor]] gets built in the "front-end-of-line" (FEOL) process:
 
@@ -491,42 +491,42 @@ This is ONE transistor. A modern CPU has 50+ BILLION of these.
 Each fin is ~5-7nm wide. The process repeats hundreds of times.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking chip manufacturing is like printing or stamping—one shot and done. In reality, it's more like building a skyscraper one floor at a time, where each floor requires demolishing parts of the previous floor, filling in new materials, polishing everything flat, and then checking for microscopic cracks before building the next floor. A single chip requires 500-1000+ individual process steps over 3+ months. One mistake at step 400 can render the entire wafer—worth millions of dollars—into scrap. This is why "semiconductor fabrication" isn't manufacturing in the traditional sense; it's closer to performing surgery on atoms.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking chip manufacturing is like printing or stamping—one shot and done. In reality, it's more like building a skyscraper one floor at a time, where each floor requires demolishing parts of the previous floor, filling in new materials, polishing everything flat, and then checking for microscopic cracks before building the next floor. A single chip requires 500-1000+ individual process steps over 3+ months. One mistake at step 400 can render the entire wafer—worth millions of dollars—into scrap. This is [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] "semiconductor fabrication" isn't manufacturing in the traditional sense; it's closer to performing surgery on atoms.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
+- **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding [[learning/notes/quick-context/bond-pad|die]] structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 
-- **[[quick-context/transistor|Transistors]]** — The fundamental components being fabricated. Knowing how a transistor works (gate, source, drain, channel) clarifies why specific fabrication steps exist.
+- **[[quick-context/transistor|Transistors]]** — The fundamental [[learning/notes/quick-context/tensor|components]] being fabricated. Knowing how a transistor works (gate, [[learning/notes/quick-context/differential-pair|source]], [[learning/notes/quick-context/differential-pair|drain]], [[learning/notes/micro-context/mosfet|channel]]) clarifies why specific fabrication steps exist.
 
-- **[[quick-context/doped-silicon|Doped Silicon]]** — Ion implantation creates doped regions. Understanding n-type vs p-type silicon explains why implantation is essential.
+- **[[quick-context/doped-silicon|Doped Silicon]]** — Ion implantation creates doped regions. Understanding n-[[learning/notes/quick-context/bjt-specifications|type]] vs [[learning/notes/quick-context/differential-pair|p-type silicon]] explains why implantation is essential.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — Where fabricated dies fit in the larger system. The die is just one level in a hierarchy from transistors to complete devices.
 
-- **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
+- **[[learning/notes/quick-context/transistor-design-history|Moore's Law]] & Process Nodes** — The economic driver behind fabrication innovation. Each new [[learning/notes/quick-context/ros2-architecture|node]] (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from [[learning/notes/quick-context/transistor-design-history|planar MOSFET]] to [[learning/notes/quick-context/transistor-design-history|FinFET]] to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** What are the six categories of fabrication tools, and what is the primary purpose of each?
 <details>
 <summary>Answer</summary>
-(1) **Mask Layer** tools (photolithography, spin coater, developer) define patterns. (2) **Adding Material** tools (CVD, PVD, ALD, epitaxial growth) deposit thin films. (3) **Removing Material** tools (plasma etcher, wet etcher, CMP) selectively remove material. (4) **Modifying Material** tools (ion implanter, annealer) change material properties. (5) **Cleaning** tools (wet bench, ultrasonic, megasonic) remove contaminants. (6) **Inspecting** tools (optical/SEM microscopes, defect inspection) verify quality. See: The Six Tool Categories diagram
+(1) **Mask Layer** tools (photolithography, spin coater, developer) define patterns. (2) **Adding Material** tools (CVD, PVD, ALD, epitaxial [[learning/notes/quick-context/existing-account-management-playbook|growth]]) deposit thin films. (3) **Removing Material** tools (plasma etcher, wet etcher, CMP) selectively remove material. (4) **Modifying Material** tools (ion implanter, annealer) change material properties. (5) **Cleaning** tools (wet bench, ultrasonic, megasonic) remove contaminants. (6) **Inspecting** tools (optical/SEM microscopes, defect inspection) verify [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]]. See: The Six [[learning/notes/quick-context/epson-rc-plus-programming|Tool]] Categories diagram
 </details>
 
-**Q2:** Why must CMP (planarization) be performed between layers?
+**Q2:** Why [[learning/notes/quick-context/ros2-architecture|must]] CMP (planarization) be performed between layers?
 <details>
 <summary>Answer</summary>
-Photolithography requires a perfectly flat surface to project patterns accurately. If the surface has bumps or trenches from previous layers, the light won't focus correctly, and features will be distorted or misaligned. CMP polishes the wafer flat so each new layer can be built on a smooth foundation. Without CMP, you couldn't stack 10+ metal layers on top of each other. See: CMP explanation and "Building a FinFET" example
+Photolithography requires a perfectly flat surface to project patterns accurately. If the surface has bumps or trenches from previous layers, the light won't focus correctly, and features will be distorted or misaligned. CMP polishes the wafer flat so each new layer can be built on a smooth foundation. Without CMP, you couldn't stack 10+ metal layers [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of each other. See: CMP explanation and "Building a FinFET" example
 </details>
 
 **Q3:** Why is EUV lithography necessary for leading-edge nodes (below ~7nm), and what makes it so expensive?
@@ -538,13 +538,13 @@ Visible/UV light wavelengths (~193nm for DUV) are too large to pattern features 
 **Q4:** Someone claims: "Making chips faster just means running the machines faster." What's wrong with this understanding?
 <details>
 <summary>Answer</summary>
-Chip fabrication faces a fundamental tradeoff between throughput, resolution, and cost—you can't simply "speed up" without sacrificing something. Running faster means less time for precise alignment in lithography (causing defects), less thorough inspection (missing killer defects), and rushed processes that hurt yield. A single wafer takes ~3 months to complete through 500-1000+ steps because each step requires extreme precision. Rushing any step could turn a $10,000+ wafer into scrap. The industry optimizes for yield and quality, not raw speed. See: The Key Tension section
+Chip fabrication faces a fundamental tradeoff between throughput, resolution, and cost—you can't simply "[[learning/notes/quick-context/embedded-communication-protocols|speed]] up" without sacrificing something. Running faster means less time for precise alignment in lithography (causing defects), less thorough inspection (missing killer defects), and rushed processes that hurt [[learning/notes/quick-context/silicon-die|yield]]. A single wafer takes ~3 months to complete through 500-1000+ steps because each step requires extreme precision. Rushing any step could turn a $10,000+ wafer into scrap. The industry optimizes for yield and quality, [[learning/notes/micro-context/can-bus-termination|not]] [[learning/notes/quick-context/python-to-machine-code-pipeline|raw speed]]. See: The Key Tension section
 </details>
 
 **Q5:** How does the fabrication process connect the raw material (silicon wafer) to the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]]? What would happen to the hierarchy if ion implantation suddenly became impossible?
 <details>
 <summary>Answer</summary>
-Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "silicon die" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
+Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "[[learning/notes/quick-context/silicon-die|silicon die]]" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|form]] PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to [[learning/notes/quick-context/silicon-die|package]] → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially [[learning/notes/quick-context/doped-silicon|doping]] [[learning/notes/quick-context/metal-interconnect-layers|via]] ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
 </details>
 
 </details>

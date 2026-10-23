@@ -5,21 +5,21 @@ created: 2026-02-10
 
 # Post-Sale Account Engagement
 
-> **Related:** [[quick-context/sales-methodology-layering]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/miller-heiman-strategic-selling-lamp]]
+> **Related:** [[learning/notes/quick-context/sales-methodology-layering]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
-> **TL;DR:** Winning an account is the starting line, not the finish—effective post-sale engagement requires segmenting accounts by strategic potential and relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for growth accounts, and efficient automation for transactional accounts.
+> **TL;DR:** Winning an account is [[learning/notes/quick-context/capacitance|the]] starting line, [[learning/notes/micro-context/can-bus-termination|not]] the finish—effective post-sale engagement requires segmenting accounts by strategic potential [[learning/notes/micro-context/push-pull-vs-open-drain|and]] relationship maturity, then applying differentiated playbooks: high-touch for strategic accounts, scaled engagement for [[learning/notes/quick-context/existing-account-management-playbook|growth]] accounts, and efficient automation for transactional accounts.
 
 ## The Core Problem
 
-Most organizations treat post-sale like a handoff: sales closes, success onboards, and then... reactive support until renewal. This leaves expansion revenue on the table, creates churn risk, and turns strategic accounts into transactional ones. The challenge is that not every account deserves the same investment—white-glove treatment for 500 accounts isn't sustainable, but neglecting your future enterprise accounts is equally costly. Without a segmented engagement model, teams either over-invest in low-potential accounts or under-invest in high-potential ones.
+Most organizations treat post-sale like a handoff: sales closes, success onboards, and then... [[learning/notes/quick-context/pupper-lab7-vision-tracking|reactive]] support until renewal. This leaves expansion revenue on the table, creates churn risk, and turns strategic accounts into transactional ones. The challenge is that not every account deserves the same investment—white-glove treatment for 500 accounts isn't sustainable, but neglecting [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] future enterprise accounts is equally costly. Without a segmented engagement model, teams either over-invest in low-potential accounts or under-invest in high-potential ones.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Account Segmentation** | Categorizing accounts by characteristics (revenue potential, strategic value, relationship maturity) to determine engagement intensity |
 | **Time-to-Value (TTV)** | How quickly a customer realizes the core benefit of your product; the primary goal of early engagement |
-| **Expansion Revenue** | Additional revenue from existing customers through upsells (higher tiers), cross-sells (new products), and seat expansion—identified via [[quick-context/whitespace-mapping|whitespace mapping]] |
+| **Expansion Revenue** | Additional revenue from existing customers through upsells (higher tiers), cross-sells (new products), and seat expansion—identified [[learning/notes/quick-context/metal-interconnect-layers|via]] [[quick-context/whitespace-mapping|whitespace mapping]] |
 | **Customer Health Score** | A composite metric combining usage, engagement, support patterns, and satisfaction signals to predict retention and growth |
 | **Relationship Maturity** | The depth of partnership, from transactional vendor-buyer to strategic business partner (see [[quick-context/mcdonald-kam-model|KAM Model]]) |
 
@@ -28,7 +28,7 @@ Most organizations treat post-sale like a handoff: sales closes, success onboard
 
 Effective post-sale engagement starts with segmentation, then applies appropriate playbooks.
 
-**Note:** This matrix determines *engagement intensity* for existing customers. It layers on top of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. KEEP accounts typically land in Protect/Maintain; EXPAND accounts in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
+**Note:** This matrix determines *engagement intensity* for existing customers. It layers [[learning/notes/quick-context/pupper-lab5-neural-controller|on top]] of [[quick-context/sandler-kare-segmentation|KARE]], which determines *portfolio motion*. [[learning/notes/quick-context/playbook-main|KEEP accounts]] typically land in Protect/Maintain; [[learning/notes/quick-context/playbook-main|EXPAND accounts]] in Strategic/Growth. See [[quick-context/playbook-main|Playbook]] section 1.4 for how these frameworks work together.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -235,7 +235,7 @@ Beyond the 2x2 matrix, account characteristics influence engagement tactics:
 |----------------|------------------------|
 | **Enterprise (5000+ employees)** | Multi-threaded relationships required; 5+ stakeholders minimum; long decision cycles for expansion; formal procurement for any change |
 | **Mid-Market (200-5000)** | 2-3 key stakeholders typically; faster decisions but still formal; growing pains create expansion opportunities |
-| **SMB (<200 employees)** | 1-2 stakeholders; fast decisions; high churn risk if value unclear; price sensitivity higher |
+| **SMB (<200 employees)** | 1-2 stakeholders; [[learning/notes/quick-context/comparator|fast]] decisions; high churn risk if value unclear; [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|price]] sensitivity higher |
 
 **By Technical Sophistication:**
 
@@ -249,9 +249,9 @@ Beyond the 2x2 matrix, account characteristics influence engagement tactics:
 
 | Origin | Engagement Implication |
 |--------|------------------------|
-| **Champion-led sale** | Protect the champion; they're your internal advocate; their success = your retention |
-| **Executive mandate** | Find operational champions fast; exec sponsorship is necessary but not sufficient for adoption |
-| **Bottom-up adoption** | Expand footprint before formalizing; usage is your leverage; beware of shadow IT concerns |
+| **Champion-[[learning/notes/quick-context/diode|led]] sale** | Protect the champion; they're your internal advocate; their success = your retention |
+| **Executive mandate** | Find operational champions fast; exec sponsorship is necessary but [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|not sufficient]] for adoption |
+| **[[learning/notes/quick-context/keypress-to-pixel-pipeline|Bottom]]-up adoption** | [[learning/notes/quick-context/existing-account-management-playbook|Expand]] [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|footprint]] before formalizing; usage is your leverage; beware of shadow IT concerns |
 | **RFP/Procurement-led** | Often transactional mindset; work to establish relationships beyond purchasing; value realization messaging critical |
 
 **By Growth Trajectory:**
@@ -259,14 +259,14 @@ Beyond the 2x2 matrix, account characteristics influence engagement tactics:
 | Trajectory | Engagement Implication |
 |------------|------------------------|
 | **Hyper-growth company** | They're changing fast; stay close, adapt, grow with them; high expansion potential but also chaos |
-| **Stable enterprise** | Predictable but slow; focus on deepening relationships; long-term account planning pays off |
+| **Stable enterprise** | Predictable but slow; focus on deepening relationships; long-term account planning pays [[learning/notes/quick-context/bjt-specifications|off]] |
 | **Declining/restructuring** | Churn risk; focus on essential value; be ready for consolidation discussions; protect existing revenue |
 | **Acquisition target/acquirer** | M&A creates expansion and churn risks; multi-thread aggressively; understand integration plans |
 
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> — Personalization vs. scale</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> — Personalization vs. [[learning/notes/quick-context/absolute-orientation|scale]]</summary>
 
 The fundamental tension in post-sale engagement:
 
@@ -275,12 +275,12 @@ The fundamental tension in post-sale engagement:
 | CSMs become account therapists | Customers feel like tickets |
 | Unsustainable unit economics | Miss expansion signals |
 | Heroic effort, inconsistent results | Low NPS, high churn |
-| Can't scale the team | Competitors outmaneuver with relationships |
+| [[learning/notes/quick-context/embedded-communication-protocols|Can]]'t scale the team | Competitors outmaneuver with relationships |
 
 **The practitioner debate:**
 
 - **"Relationships drive retention"**: Every customer wants to feel important. A CSM who knows their business prevents churn and drives expansion. You can't automate trust.
-- **"Data drives retention"**: Usage patterns predict churn better than gut feel. Scale with automation, intervene surgically. Relationships are nice but not necessary.
+- **"Data drives retention"**: Usage patterns predict churn [[learning/notes/quick-context/comparator-specification|better]] than gut feel. Scale with automation, intervene surgically. Relationships are nice but not necessary.
 
 **The pragmatic answer:** Match investment to potential. Strategic accounts get relationship investment because the ROI justifies it. Maintain accounts get efficient automation because the math doesn't support high-touch. Growth accounts get the hardest treatment—enough touch to identify winners, enough efficiency to not drown.
 
@@ -321,7 +321,7 @@ Growth → Maintain
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — Engagement playbooks in action</summary>
+<summary><strong>Concrete Example</strong> — Engagement playbooks in [[learning/notes/quick-context/pupper-lab5-neural-controller|action]]</summary>
 
 **Scenario:** CSM at a spatial data platform company (GIS, asset management, field operations) managing a mixed portfolio of infrastructure asset owners
 
@@ -476,7 +476,7 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
   → Decision: Yes, treat as new logo opportunities, not expansions
 ```
 
-**The one thing most outsiders get wrong about this is...** they think the segments are about how much you *like* the customer. They're not—they're about matching investment to expected return. A $20K consultancy with a fantastic champion still can't justify monthly on-site visits. A difficult $300K rail authority with expansion potential still warrants flying to Wellington for QBRs. The model is economic, not emotional.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** they think the segments are about how much you *like* the customer. They're not—they're about matching investment to expected return. A $20K consultancy with a fantastic champion still can't justify monthly on-site visits. A difficult $300K rail authority with expansion potential still warrants flying to Wellington for QBRs. The model is economic, not emotional.
 
 **Asset owner-specific nuances:**
 - **Government/public sector:** Budget cycles are annual and rigid; multi-year deals need Treasury approval; political changes can restructure your buyer overnight
@@ -486,14 +486,14 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
 </details>
 
 <details>
-<summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
+<summary><strong>Peripheral Knowledge</strong> — Related [[learning/notes/quick-context/ros2-architecture|topics]] to explore</summary>
 
 - **[[quick-context/sales-methodology-layering]]** — How pre-sale methodology connects to post-sale engagement
 - **[[quick-context/mcdonald-kam-model]]** — Relationship maturity framework for deepening strategic partnerships
-- **[[quick-context/sandler-kare-segmentation]]** — KARE model that informs growth vs. protect designations
+- **[[quick-context/sandler-kare-segmentation]]** — [[learning/notes/quick-context/playbook-main|KARE]] model that informs growth vs. protect designations
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — Account planning for strategic accounts continues post-sale
-- **Customer Health Scoring** — Building the metrics that trigger engagement actions
-- **[[quick-context/whitespace-mapping]]** — The visual tool for identifying which products can be sold to which buying centers
+- **Customer Health Scoring** — Building the metrics that [[learning/notes/quick-context/oscilloscope-and-multimeter|trigger]] engagement actions
+- **[[quick-context/whitespace-mapping]]** — The visual [[learning/notes/quick-context/epson-rc-plus-programming|tool]] for identifying which products can be sold to which buying centers
 - **Expansion Playbooks** — Structured approaches to upsell and cross-sell within accounts
 - **Renewal Management** — The specialized discipline of protecting existing revenue
 - **Customer Marketing** — Advocacy, references, and community programs that complement CSM work
@@ -503,22 +503,22 @@ FRIDAY — PORTFOLIO REVIEW & PLANNING
 <details>
 <summary><strong>Test Your Understanding</strong> — 5 progressive questions</summary>
 
-**Q1:** Why shouldn't every account get the same level of engagement?
+**Q1:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] shouldn't every account get the same level of engagement?
 <details>
 <summary>Answer</summary>
-Unit economics don't support it. A CSM managing 20 strategic accounts can do QBRs, executive alignment, and proactive expansion. The same CSM managing 200 small accounts can only react to issues. Giving white-glove treatment to low-value accounts means either unsustainable costs or neglecting high-value accounts. Segmentation matches investment to return.
+Unit economics don't support it. A CSM managing 20 strategic accounts can do QBRs, executive alignment, and proactive expansion. The same CSM managing 200 small accounts can [[learning/notes/quick-context/comparator-specification|only]] react to issues. Giving white-glove treatment to low-value accounts means either unsustainable costs or neglecting high-value accounts. Segmentation matches investment to return.
 </details>
 
-**Q2:** A $15K ACV account just closed. Their company recently raised a Series B and is hiring aggressively. What segment should they start in, and why?
+**Q2:** A $15K ACV account just closed. Their company recently raised a [[learning/notes/quick-context/parallel-vs-series-voltage|Series]] B and is hiring aggressively. [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]] segment should they start in, and why?
 <details>
 <summary>Answer</summary>
-Growth, not Maintain. Current ACV is low, but growth trajectory signals high potential. Series B + aggressive hiring means they'll likely need more seats and features soon. Investing in the relationship now positions you for expansion when they scale. The company characteristic (hyper-growth) overrides the current ACV for segmentation.
+Growth, not Maintain. [[learning/notes/quick-context/capacitance|Current]] ACV is low, but growth trajectory signals high potential. Series B + aggressive hiring means they'll likely need more seats and features soon. Investing in the relationship now positions you for expansion [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] they scale. The company characteristic (hyper-growth) overrides the current ACV for segmentation.
 </details>
 
 **Q3:** Your strategic account's champion just left for another company. What should you do?
 <details>
 <summary>Answer</summary>
-Three parallel tracks: (1) Develop new champion internally—identify who has influence and interest, invest in their success; (2) Protect the relationship with remaining stakeholders—don't let the account become single-threaded again; (3) Follow the champion—their new company is now a warm lead. Champion departure is a churn risk indicator; fast action prevents regression from Strategic to Protect.
+Three [[learning/notes/quick-context/parallel-vs-series-voltage|parallel]] tracks: (1) Develop new champion internally—identify who has influence and interest, invest in their success; (2) Protect the relationship with remaining stakeholders—don't let the account become single-threaded again; (3) Follow the champion—their new company is now a warm lead. Champion departure is a churn risk indicator; fast action prevents regression from Strategic to Protect.
 </details>
 
 **Q4:** A Growth account has declined three expansion proposals over 18 months. Usage is stable but not increasing. What should you do?
@@ -527,10 +527,10 @@ Three parallel tracks: (1) Develop new champion internally—identify who has in
 Consider segment migration to Protect or Maintain. Stable usage with repeated expansion rejection signals the account has reached its ceiling with you. Continued Growth-level investment (frequent touchpoints, expansion discovery) isn't yielding returns. Move to retention-focused engagement: ensure they renew, document value, reduce CSM time investment. Reallocate that time to accounts with actual expansion potential.
 </details>
 
-**Q5:** A Maintain account suddenly shows 3x usage increase and requests a call with your CEO. What's happening, and how should you respond?
+**Q5:** A Maintain account suddenly shows 3x usage increase and requests a [[learning/notes/quick-context/d-flip-flop|call]] with your CEO. What's happening, and how should you respond?
 <details>
 <summary>Answer</summary>
-This is a segment migration signal—possibly from Maintain directly to Strategic. The usage spike indicates they've found significant value; the CEO request suggests they want a partnership conversation, not just support. Immediate actions: (1) Research what changed at their company (funding, growth, new initiative); (2) Upgrade engagement immediately—assign a named CSM; (3) Prep your exec for the conversation—this could be a major expansion or strategic partnership opportunity. Don't treat this like a routine Maintain touchpoint.
+This is a segment migration [[learning/notes/quick-context/comparator|signal]]—possibly from Maintain directly to Strategic. The usage spike indicates they've found significant value; the CEO request suggests they want a partnership conversation, not just support. Immediate actions: (1) Research what changed at their company (funding, growth, new initiative); (2) [[learning/notes/quick-context/comparator-specification|Upgrade]] engagement immediately—assign a named CSM; (3) Prep your exec for the conversation—this could be a major expansion or strategic partnership opportunity. Don't treat this like a routine Maintain touchpoint.
 </details>
 
 </details>

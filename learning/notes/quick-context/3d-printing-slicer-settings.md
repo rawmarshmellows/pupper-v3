@@ -4,30 +4,30 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/uart]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/breaking-elongation-rate]]
 
-> **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed; settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
+> **TL;DR:** A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] applying settings like temperature and [[learning/notes/quick-context/embedded-communication-protocols|speed]]; settings interact multiplicatively ([[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
 ## The Core Problem
 
-A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed. The challenge is that settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
+A slicer converts 3D models into printer instructions by cutting models into layers, planning nozzle paths, and applying settings like temperature and speed. [[learning/notes/quick-context/capacitance|The]] challenge is that settings interact multiplicatively (layer height x nozzle width x speed = flow rate), and understanding these interactions prevents failed prints.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
 | **Layer height** | Thickness of each horizontal layer (thinner = smoother but slower) |
 | **Infill** | Percentage of interior that's solid plastic vs air (15% = mostly hollow) |
 | **Walls/perimeters** | Number of solid outlines on the exterior shell |
-| **Volumetric flow rate** | How much plastic (mm³/s) must melt and extrude—limited by hotend capacity |
-| **G-code** | The text file of line-by-line commands that tell the printer exactly what to do |
+| **Volumetric flow rate** | How much plastic (mm³/s) [[learning/notes/quick-context/ros2-architecture|must]] melt and extrude—limited by hotend capacity |
+| **[[learning/notes/quick-context/cnc-machining|G-code]]** | The [[learning/notes/quick-context/how-source-code-is-stored|text]] file of line-by-line commands that tell the printer exactly [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] to do |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The slicer performs three essential transformations on your 3D model. First, **slicing**: it cuts your model into horizontal layers (like slicing a loaf of bread), with each slice becoming one pass of the print head. Second, **pathing**: for each layer, it plans the exact route the nozzle will travel—where to start, which direction to move, when to extrude plastic, when to retract. Third, **parameter application**: it applies your settings (temperature, speed, infill pattern, etc.) to generate the final machine instructions. The output is G-code, a text file of line-by-line commands that tell motors exactly where to move and heaters exactly what temperature to maintain.
+The slicer performs three essential transformations on [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] 3D model. First, **slicing**: it cuts your model into horizontal layers (like slicing a loaf of bread), with each slice becoming [[learning/notes/quick-context/ram-addressing-decoder|one]] pass of the print head. Second, **pathing**: for each layer, it plans the exact route the nozzle will travel—where to start, [[learning/notes/quick-context/differential-pair|which direction]] to move, [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] to extrude plastic, when to retract. Third, **parameter application**: it applies your settings (temperature, speed, infill pattern, etc.) to generate the final machine instructions. The output is G-code, a text file of line-by-line commands that tell motors exactly where to move and heaters exactly what temperature to maintain.
 
-The relationship between settings is multiplicative, not independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[quick-context/3d-printer-hotends|hotend's]] melting capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the hardware can't fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
+The relationship between settings is multiplicative, [[learning/notes/micro-context/can-bus-termination|not]] independent. Layer height and nozzle width together determine how much plastic exits per millimeter of travel. Print speed multiplied by that cross-section gives you the **volumetric flow rate** (mm³/s)—which must stay within your [[quick-context/3d-printer-hotends|hotend's]] [[learning/notes/quick-context/chemical-bonds-spectrum|melting]] capacity. Setting a 0.8mm nozzle with 0.4mm layer height at 150mm/s demands ~48 mm³/s, which exceeds most standard hotends. The slicer doesn't warn you; it just sends commands the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|hardware]] [[learning/notes/quick-context/embedded-communication-protocols|can]]'t fulfill, resulting in under-extrusion and failed prints. Understanding how settings interact prevents this.
 
 ```
 THE SLICING PROCESS: From Model to Machine Instructions
@@ -133,9 +133,9 @@ HOW SETTINGS INTERACT: The Flow Rate Equation
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-The fundamental tension in slicer settings is **speed vs. quality vs. strength**. Thicker layers print faster but show visible stepping. Higher infill increases strength but wastes material and time. Faster print speeds reduce quality and can exceed hotend flow capacity. Every setting is a tradeoff, and the "best" profile depends entirely on what you're making—a display piece needs thin layers and slow speeds, while a functional bracket prioritizes walls and can tolerate thick layers.
+The fundamental tension in slicer settings is **speed vs. [[learning/notes/quick-context/oee-overall-equipment-effectiveness|quality]] vs. [[learning/notes/quick-context/cnc-machining|strength]]**. [[learning/notes/micro-context/mosfet|Thicker]] layers print faster but show visible stepping. Higher infill increases strength but wastes material and time. Faster print speeds reduce quality and can exceed hotend flow capacity. Every setting is a tradeoff, and the "best" profile depends entirely on what you're making—a display piece needs thin layers and slow speeds, while a functional bracket prioritizes walls and can tolerate thick layers.
 
 </details>
 
@@ -144,7 +144,7 @@ The fundamental tension in slicer settings is **speed vs. quality vs. strength**
 
 People think "more infill = stronger part." Not really. A part with **3 walls and 15% infill** is often stronger than **2 walls and 50% infill** because the outer shell carries most of the load in real-world use. Cranking infill to 100% wastes plastic and time for minimal strength gain.
 
-**The one thing most outsiders get wrong about this is...** assuming that slicer settings are independent of each other. In reality, layer height, nozzle width, and print speed combine multiplicatively to determine volumetric flow rate—and if that exceeds your hotend's capacity, you get weak parts with poor layer adhesion regardless of what your other settings say.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** assuming that slicer settings are independent of each other. In reality, layer height, nozzle width, and print speed combine multiplicatively to determine volumetric flow rate—and if that exceeds your hotend's capacity, you get weak parts with poor [[learning/notes/quick-context/3d-printing-filament-types|layer adhesion]] regardless of what your other settings say.
 
 </details>
 
@@ -153,47 +153,47 @@ People think "more infill = stronger part." Not really. A part with **3 walls an
 
 Concepts that connect to slicer settings and deepen your understanding:
 
-- **[[quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. PLA prints cooler and faster; PETG needs higher temps and slower speeds; ABS requires enclosures. Your material choice drives half your slicer decisions.
+- **[[quick-context/3d-printing-filament-types]]** — Different plastics require different slicer profiles. [[learning/notes/quick-context/covalent-bonds|PLA]] prints cooler and faster; PETG needs higher temps and slower speeds; [[learning/notes/quick-context/3d-printing-filament-types|ABS]] requires enclosures. Your material [[learning/notes/quick-context/transistor-analog-to-digital|choice]] drives half your slicer decisions.
 
-- **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
+- **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which [[learning/notes/quick-context/cnc-machining|materials]] you can print, and its heat break design affects [[learning/notes/quick-context/electric-current|how fast]] you can push plastic through (volumetric flow rate).
 
 - **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High melt index plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
 
-- **[[quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines both print bed temperature (to help adhesion without warping) and the max operating temperature of your finished part.
+- **[[quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines [[learning/notes/quick-context/bjt-specifications|both]] print bed temperature (to help adhesion without [[learning/notes/quick-context/3d-printing-filament-types|warping]]) and the max operating temperature of your finished part.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Why might you increase wall count instead of infill percentage when you need a stronger part?
+**Q1:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] might you increase wall [[learning/notes/quick-context/switches-to-registers-storing-data|count]] instead of infill percentage when you need a stronger part?
 <details>
 <summary>Answer</summary>
 The outer walls carry most of the structural load in real-world use because forces typically act on the surface of a part. Increasing walls from 3 to 4-5 adds solid material where stress concentrates, while increasing infill adds material to the interior where it contributes less to strength. A part with 4 walls and 15% infill is often stronger than one with 2 walls and 50% infill, while using similar amounts of material and print time.
 </details>
 
-**Q2:** If you switch from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
+**Q2:** If you [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] from PLA to PETG mid-project, which slicer settings would you need to adjust and why?
 <details>
 <summary>Answer</summary>
-You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher glass transition temperature and different flow characteristics.
+You would need to increase nozzle temperature (PETG melts at ~230-250C vs PLA's ~200-220C), bed temperature (PETG needs ~70-80C vs PLA's ~50-60C), and adjust retraction settings (PETG is stringier). Print speed is often slower for PETG to allow proper layer adhesion, and cooling is typically reduced. These changes account for PETG's higher [[learning/notes/quick-context/3d-printing-filament-types|glass transition temperature]] and different flow characteristics.
 </details>
 
 **Q3:** When would you choose a 0.2mm layer height over a 0.3mm setting?
 <details>
 <summary>Answer</summary>
-Choose thinner layers (0.2mm) when printing parts with curved or angled surfaces where stair-stepping would be visible, creating display pieces or gifts where surface finish matters, printing parts with fine details or small text, or making parts that need precise tolerances. The trade-off is print time—0.2mm layers take roughly 50% longer than 0.3mm layers for the same part.
+Choose thinner layers (0.2mm) when printing parts with curved or angled surfaces where stair-stepping would be visible, creating display pieces or gifts where [[learning/notes/quick-context/cnc-machining|surface finish]] matters, printing parts with [[learning/notes/micro-context/thread-pitch-screws|fine]] details or small text, or making parts that need precise tolerances. The trade-[[learning/notes/quick-context/bjt-specifications|off]] is print time—0.2mm layers take roughly 50% longer than 0.3mm layers for the same part.
 </details>
 
 **Q4:** What problem does tree support solve that regular block supports don't?
 <details>
 <summary>Answer</summary>
-Tree supports branch upward from the build plate to reach overhangs, touching the model only where absolutely necessary. They provide easier removal (branch tips snap off cleanly), better surface finish (minimal contact points mean fewer support scars), less material waste (branches use far less filament), and sometimes better access to interior overhangs. The trade-off is slightly longer slicing time and occasionally less stability for very heavy overhangs.
+Tree supports branch upward from the build plate to reach overhangs, touching the model [[learning/notes/quick-context/comparator-specification|only]] where absolutely necessary. They provide easier removal (branch tips snap off cleanly), [[learning/notes/quick-context/comparator-specification|better]] surface finish (minimal contact points mean fewer support scars), less material [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|waste]] (branches use far less filament), and sometimes better access to interior overhangs. The trade-off is slightly longer slicing time and occasionally less stability for very heavy overhangs.
 </details>
 
-**Q5:** Two filaments have identical melting points (240C), but one is semi-crystalline and one is amorphous. Why might the same slicer profile produce good results with one but failures with the other?
+**Q5:** [[learning/notes/micro-context/schmitt-trigger-hysteresis|Two]] filaments have [[learning/notes/quick-context/ram-addressing-decoder|identical]] melting points (240C), but one is [[learning/notes/quick-context/glass-transition-temperature|semi-crystalline]] and one is [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|amorphous]]. Why might the same slicer profile produce good results with one but failures with the other?
 <details>
 <summary>Answer</summary>
-Melting point is just one property—crystallinity and glass transition temperature profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
+Melting [[learning/notes/quick-context/epson-rc-plus-programming|point]] is just one property—crystallinity and glass transition temperature profoundly affect printing behavior. A semi-[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|crystalline]] material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
 </details>
 
 </details>

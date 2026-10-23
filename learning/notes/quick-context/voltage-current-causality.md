@@ -5,28 +5,28 @@ created: 2026-03-27
 
 # Voltage-Current Causality
 
-> **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
+> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/capacitance]]
 
-> **TL;DR:** Neither voltage "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
+> **TL;DR:** Neither [[learning/notes/quick-context/voltage|voltage]] "causes" [[learning/notes/quick-context/parallel-vs-series-voltage|current]] nor current "causes" voltage in any universal sense---the relationship depends on context. [[learning/notes/quick-context/bare-minimal-data-storage-circuit|What]]'s really happening is that the **[[learning/notes/quick-context/voltage|electric field]]** is the fundamental entity: it [[learning/notes/quick-context/ram-addressing-decoder|both]] defines [[quick-context/voltage|voltage]] (as the integral of the field over [[learning/notes/quick-context/embedded-communication-protocols|distance]]) [[learning/notes/micro-context/push-pull-vs-open-drain|and]] drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, [[learning/notes/micro-context/can-bus-termination|not]] a [[learning/notes/quick-context/ram-addressing-decoder|one]]-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
 ## The Core Problem
 
-You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like voltage is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], chemical reactions---not voltage---are the true starting point. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding when each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
+You've learned $V = IR$ ([[quick-context/resistor|Ohm's law]]). It seems like voltage is the cause and current is the effect---apply voltage, get current. But then you learn that a changing current in an [[quick-context/inductor|inductor]] creates voltage ($V = L \times dI/dt$), and that in a [[quick-context/galvanic-cells-batteries|battery]], [[learning/notes/quick-context/electricity-generation|chemical reactions]]---not voltage---are the true starting [[learning/notes/quick-context/epson-rc-plus-programming|point]]. The "voltage causes current" story breaks down because it was always an oversimplification. Understanding [[learning/notes/quick-context/bare-minimal-data-storage-circuit|when]] each perspective applies (and when neither does) is the difference between memorizing equations and understanding circuits.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electric Field** | The actual force-carrying entity. It pushes charges (creating current) and its integral over distance defines voltage. The field is always the mediator between V and I. |
-| **Voltage Source** | A device (battery, power supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
+| **Electric Field** | The actual force-carrying entity. It [[learning/notes/quick-context/python-to-machine-code-pipeline|pushes]] charges (creating current) and its integral over distance defines voltage. The field is always the mediator between V and I. |
+| **Voltage [[learning/notes/quick-context/transistor|Source]]** | A device (battery, [[learning/notes/quick-context/d-flip-flop|power]] supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
 | **Current Source** | A device that maintains a fixed current; voltage adjusts to whatever is needed. Here, current is the *constraint* and voltage is the *response*---so it looks like "I causes V." |
-| **Constitutive Relation** | The equation relating V and I for a specific component: $V = IR$ for [[quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[quick-context/capacitor|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
-| **Kirchhoff's Laws** | The circuit constraints: voltages around a loop sum to zero (KVL), currents into a node sum to zero (KCL). These enforce consistency but don't say which quantity "caused" the other. |
+| **Constitutive Relation** | The equation relating V and I for a specific [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|component]]: $V = IR$ for [[quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[quick-context/capacitor|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
+| **Kirchhoff's Laws** | The circuit constraints: voltages around a loop sum to [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|zero]] (KVL), currents into a [[learning/notes/quick-context/ros2-architecture|node]] sum to zero (KCL). These enforce consistency but don't say which quantity "caused" the other. |
 
 <details>
-<summary><strong>How It Works</strong> --- Why the causality question is a trap</summary>
+<summary><strong>How It Works</strong> --- [[learning/notes/quick-context/atoms-molecules-polymers-basics|Why]] the causality question is a trap</summary>
 
-The confusion comes from treating $V = IR$ as a causal statement ("voltage causes current") rather than what it really is: a **constraint** that voltage and current must satisfy simultaneously.
+The confusion comes from treating $V = IR$ as a causal statement ("voltage causes current") rather than what it really is: a **constraint** that voltage and current [[learning/notes/quick-context/ros2-architecture|must]] satisfy [[learning/notes/quick-context/bare-minimal-data-storage-circuit|simultaneously]].
 
 ```
 THE CAUSAL CHAIN DEPENDS ON WHAT'S DRIVING THE CIRCUIT
@@ -129,7 +129,7 @@ SCENARIO 4: GENERATOR ("Mechanical motion causes both")
                     changing magnetic flux.
 ```
 
-The real picture: **the electric field is the fundamental thing**, and voltage and current are two different ways of measuring what the field does.
+The real picture: **the electric field is the fundamental thing**, and voltage and current are [[learning/notes/micro-context/schmitt-trigger-hysteresis|two]] different ways of measuring what the field does.
 
 ```
 THE FIELD-CENTRIC VIEW (the right mental model)
@@ -182,14 +182,14 @@ WHY Ohm's Law ISN'T a causal statement:
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> --- Voltage-source thinking vs. current-source thinking</summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong> --- Voltage-source thinking vs. current-source thinking</summary>
 
-Most introductory courses teach circuits from a "voltage-source" perspective: batteries provide voltage, and current results. This is fine for simple resistive circuits but breaks down for more complex scenarios.
+Most introductory courses teach circuits from a "voltage-source" perspective: batteries provide voltage, and current results. This is [[learning/notes/micro-context/thread-pitch-screws|fine]] for simple resistive circuits but breaks down for more complex scenarios.
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[learning/notes/quick-context/inductor|Inductors]] (where changing I creates V), current sources, [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] |
+| **"I causes V"** | Current sources, [[learning/notes/quick-context/silicon-die|transistor]] bias analysis, [[learning/notes/quick-context/fundamental-electronic-parts-index|inductor]] [[learning/notes/quick-context/inductor|back-EMF]] | Voltage sources, [[learning/notes/quick-context/capacitor|capacitors]] (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -220,7 +220,7 @@ The expert mental model: think of circuits as **systems of simultaneous constrai
 <details>
 <summary><strong>Concrete Example</strong> --- Same circuit, three causal stories</summary>
 
-Consider a simple series circuit: a source driving a [[quick-context/resistor|resistor]] (1 k$\Omega$) and an [[quick-context/inductor|inductor]] (10 mH) in series.
+Consider a simple [[learning/notes/quick-context/parallel-vs-series-voltage|series circuit]]: a source driving a [[quick-context/resistor|resistor]] (1 k$\Omega$) and an [[quick-context/inductor|inductor]] (10 mH) in [[learning/notes/quick-context/parallel-vs-series-voltage|series]].
 
 ```
 THREE STORIES ABOUT THE SAME CIRCUIT
@@ -296,33 +296,33 @@ STORY 3: "Constraints determine everything" (the real answer)
     determined simultaneously by the constraints.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that Ohm's law ($V = IR$) tells you that voltage always comes first and current follows. This is a misreading of what the equation says. $V = IR$ is an *algebraic relationship*, not a causal arrow. It's like $F = ma$---does force cause acceleration, or does acceleration cause force? In Newtonian mechanics, force is the cause. But in general relativity, what we call "gravitational force" is actually a consequence of curved spacetime. The "causality" depends on which level of physics you're using. Similarly, in circuits: at the field level, the electric field is fundamental. At the circuit level, it depends on what you're controlling. Asking "does V cause I?" is like asking "does the left side of the equation cause the right side?" The equation doesn't have a direction.
+**[[learning/notes/quick-context/breaking-elongation-rate|The one thing most outsiders get wrong about this is]]...** thinking that [[learning/notes/quick-context/resistor|Ohm's law]] ($V = IR$) tells you that voltage always comes first and current follows. This is a misreading of what the equation says. $V = IR$ is an *algebraic relationship*, not a causal arrow. It's like $F = ma$---does force cause acceleration, or does acceleration cause force? In Newtonian mechanics, force is the cause. But in [[learning/notes/quick-context/faraday-tensor|general relativity]], what we [[learning/notes/quick-context/d-flip-flop|call]] "gravitational force" is actually a consequence of curved spacetime. The "causality" depends on which level of physics you're using. Similarly, in circuits: at the field level, the electric field is fundamental. At the circuit level, it depends on what you're controlling. Asking "does V cause I?" is like asking "does the left side of the equation cause the right side?" The equation doesn't have a direction.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes electrons; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
+- **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes [[learning/notes/quick-context/anions-and-oxidation|electrons]]; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
 
-- **[[quick-context/electric-current]]** --- Current is the flow of charge in response to the electric field. In different materials, the same field produces different currents (J = $\sigma$E), which is why resistance matters.
+- **[[quick-context/electric-current]]** --- Current is the flow of [[learning/notes/quick-context/cations-and-reduction|charge]] in response to the electric field. In different [[learning/notes/quick-context/cnc-machining|materials]], the same field produces different currents (J = $\sigma$E), which is why resistance matters.
 
-- **[[quick-context/resistor]]** --- The simplest V-I relationship (V = IR). In a resistor, V and I are proportional and in phase---no time delay, no stored energy, so the "cause" question is purely about what's driving the circuit.
+- **[[quick-context/resistor]]** --- The simplest V-I relationship (V = IR). In a [[learning/notes/quick-context/fundamental-electronic-parts-index|resistor]], V and I are proportional and in phase---no time delay, no stored energy, so the "cause" question is purely about what's driving the circuit.
 
-- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, capacitors and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
+- **[[quick-context/impedance-and-reactance]]** --- In AC circuits, [[learning/notes/quick-context/voltage|capacitors]] and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
 
 - **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an inductor creates back-EMF. The current change comes first; the voltage is the response.
 
 - **[[quick-context/galvanic-cells-batteries]]** --- In batteries, chemistry is the true cause. Chemical reactions create charge separation, which creates the electric field, which manifests as both voltage and current. Neither V nor I is the root cause.
 
-- **[[quick-context/electricity-generation]]** --- In generators, mechanical motion changes magnetic flux, which induces both voltage and current. The electromagnetic field mediates everything.
+- **[[quick-context/electricity-generation]]** --- In generators, mechanical motion changes magnetic [[learning/notes/quick-context/soldering|flux]], which induces both voltage and current. The electromagnetic field mediates everything.
 
 </details>
 
 <details>
-<summary><strong>Test Your Understanding</strong></summary>
+<summary><strong>Test [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|Your]] Understanding</strong></summary>
 
 **Q1:** A 9V battery is connected to a 100$\Omega$ resistor. Does the voltage "cause" the current?
 <details>
@@ -330,13 +330,13 @@ STORY 3: "Constraints determine everything" (the real answer)
 **It depends on what you mean by "cause."** At the circuit level, the battery fixes the voltage at 9V, and current results (I = 9V/100$\Omega$ = 90 mA). In that sense, voltage is the constraint and current is the response---so yes, "V causes I" is a useful description. But at the physics level, the battery's chemical reactions create an electric field, and both the voltage (integral of the field) and the current (field pushing electrons) are consequences of that field. Neither truly "causes" the other. See: How It Works (Scenario 1).
 </details>
 
-**Q2:** You suddenly open a switch in a circuit carrying current through an inductor. What happens, and which "causes" which?
+**Q2:** You suddenly open a [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] in a circuit carrying current through an inductor. What happens, and which "causes" which?
 <details>
 <summary>Answer</summary>
-**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
+**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very [[learning/notes/quick-context/comparator|fast]] dI/dt creates a very large voltage. This [[learning/notes/quick-context/embedded-communication-protocols|can]] be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage[[learning/notes/quick-context/glass-transition-temperature|. This is the]] most vivid example of "I causes V." See: How It Works (Scenario 2) and [[quick-context/self-induction]].
 </details>
 
-**Q3:** In an AC circuit with a capacitor, current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
+**Q3:** In an AC circuit with a [[learning/notes/quick-context/capacitor|capacitor]], current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?
 <details>
 <summary>Answer</summary>
 **No---phase lead doesn't mean temporal causation.** The 90-degree phase shift is a steady-state relationship: both the voltage and current sinusoids have existed "forever" in the AC analysis. The relationship $I = C \times dV/dt$ means current is proportional to the *rate of change* of voltage. When voltage is changing fastest (zero crossing), current is at its peak. When voltage is at its peak (not changing), current is zero. This is a constraint, not a causal sequence. If forced to pick a "cause," the AC source driving the circuit is the cause of both. See: [[quick-context/impedance-and-reactance]].
@@ -345,13 +345,13 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Q4:** A student says "Ohm's law proves voltage always causes current because V = IR means voltage is on the left side." What's wrong with this reasoning?
 <details>
 <summary>Answer</summary>
-**Equation arrangement doesn't imply causation.** You can equally write I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
+**Equation arrangement doesn't imply causation.** You can equally [[learning/notes/quick-context/d-flip-flop|write]] I = V/R or R = V/I. The same equation written three ways doesn't change the physics. It's like saying $F = ma$ proves force causes acceleration, but $a = F/m$ proves acceleration causes force. Which variable is "cause" depends on which one you're controlling in your experiment, not which side of the equals sign it's on. With a voltage source, V is the input and I is the output. With a current source, I is the input and V is the output. The equation itself is direction-neutral. See: How It Works (Why Ohm's Law ISN'T a causal statement).
 </details>
 
 **Q5:** A piezoelectric sensor produces voltage when you squeeze it. A thermocouple produces voltage from a temperature difference. How do these fit into the "voltage vs. current causality" picture?
 <details>
 <summary>Answer</summary>
-**They demonstrate that neither voltage nor current is always the root cause---other physical phenomena are.** A piezoelectric crystal converts mechanical stress into charge separation (and thus voltage). A thermocouple converts thermal energy into voltage via the Seebeck effect. In both cases, the "cause" is something entirely outside the V-I framework: force and heat respectively. This reinforces the field-centric view: various energy sources create electric fields through different mechanisms. Voltage and current are both *downstream consequences* of those fields. The real question is always "what creates the field?"---and the answer varies: chemistry (batteries), magnetism (generators), mechanical stress (piezo), heat (thermocouples), light (photovoltaics).
+**They demonstrate that neither voltage nor current is always the root cause---other physical phenomena are.** A piezoelectric crystal converts mechanical stress into charge separation (and thus voltage). A thermocouple converts thermal energy into voltage [[learning/notes/quick-context/metal-interconnect-layers|via]] the Seebeck effect. In both cases, the "cause" is something entirely outside the V-I framework: force and heat respectively. This reinforces the field-centric view: various energy sources create electric [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fields]] through different mechanisms. Voltage and current are both *downstream consequences* of those fields. The real question is always "what creates the field?"---and the answer varies: chemistry (batteries), magnetism (generators), mechanical stress (piezo), heat (thermocouples), light (photovoltaics).
 </details>
 
 </details>

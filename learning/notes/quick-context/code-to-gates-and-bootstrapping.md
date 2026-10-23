@@ -4,35 +4,35 @@ created: 2026-02-14
 updated: 2026-04-07
 ---
 
-> **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
+> **Related:** [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/python-to-machine-code-pipeline]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]]
 
-> **TL;DR:** Every line of code you write gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, and routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by the assembler, which encodes each mnemonic into a fixed-width binary word whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded bytes get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile memory via a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build better tools, all the way up to modern compilers.
+> **TL;DR:** Every line of code you [[learning/notes/quick-context/d-flip-flop|write]] gets transformed through a chain of abstractions—compiler, virtual machine, assembler, machine code—until it becomes binary instructions that a CPU executes by fetching, decoding, [[learning/notes/micro-context/push-pull-vs-open-drain|and]] routing signals through logic gates built from [[quick-context/transistor|transistors]]. Machine code is produced by [[learning/notes/quick-context/capacitance|the]] assembler, which encodes each mnemonic into a fixed-width binary [[learning/notes/quick-context/ram-addressing-decoder|word]] whose bit fields are defined by the CPU's Instruction Set Architecture (ISA). Those encoded [[learning/notes/quick-context/how-source-code-is-stored|bytes]] get written into an object file on disk, combined by a [[quick-context/from-code-to-running-firmware|linker]], and ultimately placed at their final destination: loaded into RAM by an OS loader (desktop), flashed to non-volatile [[learning/notes/quick-context/bare-minimal-data-storage-circuit|memory]] [[learning/notes/quick-context/metal-interconnect-layers|via]] a [[micro-context/swd-serial-wire-debug|debug probe]] (embedded), or historically punched onto cards or paper tape. The chicken-and-egg problem of "how do you compile the first compiler?" was solved by bootstrapping: humans hand-encoded binary instructions via punch cards to build the first assembler, then used that assembler to build [[learning/notes/quick-context/comparator-specification|better]] tools, all the way up to modern compilers.
 
 # Code to Gates — The Full Compilation Chain and Bootstrapping
 
 ## Human notes
 
-How does machine code actually get written — what is the encoding process that turns assembly into binary? And where does the resulting machine code physically end up?
+How does machine code actually get written — [[learning/notes/quick-context/bare-minimal-data-storage-circuit|what]] is the [[learning/notes/quick-context/how-source-code-is-stored|encoding]] process that turns assembly into binary? And where does the resulting machine code physically end up?
 
 ## The Core Problem
 
-You type `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|transistors]] on a [[quick-context/silicon-die|silicon die]] physically switch on and off to make that happen. How? There are roughly **7 layers of abstraction** between your code and the hardware, each translating the layer above into simpler instructions for the layer below. And there's a deeper puzzle: the very first layer (the compiler) is itself a program—so what compiled *it*? The answer is bootstrapping, a process that started with humans manually encoding binary on punch cards.
+You [[learning/notes/quick-context/bjt-specifications|type]] `x = 2 + 3` in Python. Somehow, billions of [[quick-context/transistor|transistors]] on a [[quick-context/silicon-die|silicon die]] physically [[learning/notes/quick-context/switches-to-registers-storing-data|switch]] on and [[learning/notes/quick-context/bjt-specifications|off]] to make that happen. How? There are roughly **7 layers of abstraction** between [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|your]] code and the hardware, each translating the [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|layer]] above into simpler instructions for the layer below. And there's a deeper puzzle: the very first layer (the compiler) is itself a program—so what compiled *it*? The answer is bootstrapping, a process that started with humans manually encoding binary on punch cards.
 
 ## 5 Essential Terms
 
-| Term | Definition |
+| Term | [[learning/notes/quick-context/capacitance|Definition]] |
 |------|------------|
-| **Compiler** | A program that translates high-level source code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
-| **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes exactly one machine instruction. |
-| **Machine Code (Instructions)** | The binary patterns a CPU can directly execute. Each instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM) whose bit fields encode the opcode, registers, and operands according to the ISA. |
+| **Compiler** | A program that translates high-level [[learning/notes/quick-context/differential-pair|source]] code (C, Rust) into lower-level code (assembly or machine code). Ahead-of-time compilers do this before execution; JIT compilers do it during. |
+| **Assembler** | Translates human-readable assembly mnemonics (`ADD R1, R2`) into binary machine code (`0110001100`). It's a 1-to-1 mapping—each assembly instruction becomes [[learning/notes/quick-context/ram-addressing-decoder|exactly one]] machine instruction. |
+| **Machine Code (Instructions)** | The binary patterns a CPU [[learning/notes/quick-context/embedded-communication-protocols|can]] directly execute. Each instruction is a fixed-width binary word (16-bit on Hack, 32-bit on ARM) whose bit fields encode the opcode, registers, and operands according to the ISA. |
 | **ISA (Instruction Set Architecture)** | The contract between software and hardware. It defines every instruction the CPU supports, its binary encoding (which bits mean what), the available registers, and addressing modes. ARM, x86, RISC-V, and Hack are all different ISAs. |
-| **Logic Gate** | A circuit built from [[quick-context/transistor|transistors]] that implements a boolean function (AND, OR, NOT, NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
-| **Bootstrapping** | The process of building complex tools from simpler ones, starting from nothing. In computing: hand-coded binary → first assembler → first compiler → better compiler → modern toolchains. |
+| **Logic [[learning/notes/quick-context/transistor|Gate]]** | A circuit built from [[quick-context/transistor|transistors]] that implements a boolean [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement|function]] (AND, OR, [[learning/notes/micro-context/can-bus-termination|NOT]], NAND). All computation ultimately happens here—NAND gates alone can implement any boolean function. |
+| **Bootstrapping** | The process of building complex tools from simpler ones, starting from [[learning/notes/quick-context/tlv7211-as-lmc7211-replacement|nothing]]. In computing: hand-coded binary → first assembler → first compiler → better compiler → modern toolchains. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The Full Stack: Code to Gates
+The [[learning/notes/quick-context/singular-value-decomposition|Full]] Stack: Code to Gates
 
 The entire chain from high-level code to physical hardware looks like this:
 
@@ -218,9 +218,9 @@ The assembler is essentially a **lookup table + symbol resolver**:
 2. **Look up** the opcode in the ISA encoding table → get the bit pattern for the opcode field
 3. **Encode** register names as numbers: `R1`=001, `R2`=010, `R3`=011
 4. **Pack** the fields into a binary word according to the ISA format
-5. **Resolve labels**: if the instruction references a label like `loop:`, substitute the address where that label was defined
+5. **Resolve labels**: if the instruction references a label like `loop:`, substitute the [[learning/notes/quick-context/how-source-code-is-stored|address]] where that label was defined
 
-For a compiler (not assembler), the process is more complex — one high-level statement may generate many machine instructions, requiring register allocation, instruction selection, and optimization. But every instruction still ends up encoded through the same ISA bit-field rules.
+For a compiler (not assembler), the process is more complex — [[learning/notes/quick-context/ram-addressing-decoder|one]] high-level statement may generate many machine instructions, requiring register allocation, instruction selection, and optimization. But every instruction still ends up encoded through the same ISA bit-field rules.
 
 Where Machine Code Ends Up: From Object File to Final Destination
 
@@ -307,24 +307,24 @@ STAGE 3: FINAL DESTINATION (depends on the target)
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong></summary>
+<summary><strong>[[learning/notes/quick-context/3d-printing-filament-types|The Key Tension]]</strong></summary>
 
-Abstraction vs. Performance
+Abstraction vs. [[learning/notes/quick-context/bond-pad|Performance]]
 
 The compilation chain is a tower of abstractions, and the core tension is: **each layer of abstraction trades performance for productivity**.
 
 | Approach | Productivity | Performance | Control |
 |----------|-------------|-------------|---------|
-| Python (interpreted, Layer 7) | Highest — write fast, debug fast | Slowest — multiple translation layers at runtime | Least — can't control memory layout |
+| Python (interpreted, Layer 7) | Highest — write [[learning/notes/quick-context/comparator|fast]], debug fast | Slowest — multiple [[learning/notes/quick-context/pupper-lab2-forward-kinematics|translation]] layers at runtime | Least — can't control memory layout |
 | C (compiled, Layer 5→4) | Medium — manual memory, but fast compilation | Fast — compiles directly to machine code | High — control memory, pointers |
 | Assembly (Layer 5) | Low — tedious, architecture-specific | Very fast — 1:1 with machine instructions | Very high — register-level control |
-| Hand-coded binary (Layer 4) | Terrible — error-prone, unreadable | Identical to assembly (same output) | Total — but impractical |
+| Hand-coded binary (Layer 4) | Terrible — error-prone, unreadable | [[learning/notes/quick-context/ram-addressing-decoder|Identical]] to assembly (same output) | [[learning/notes/quick-context/similarity-transform|Total]] — but impractical |
 | Custom hardware / FPGA (Layer 2) | Lowest — design gates directly in HDL | Fastest — no instruction overhead | Absolute — but weeks of development |
 
-The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or Rust. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
+The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. [[learning/notes/quick-context/bare-minimal-data-storage-circuit|When]] it matters (game engines, OS kernels, real-time systems), you drop to C or Rust. You [[learning/notes/quick-context/comparator-specification|only]] write assembly for device drivers, [[learning/notes/quick-context/from-code-to-running-firmware|bootloaders]], or extreme optimization. And you only touch gates when designing actual hardware.
 
 The other tension is **hardware vs. software implementation**. Any function can be implemented in either:
-- **Hardware** (dedicated circuit): faster but fixed, costs die area
+- **Hardware** (dedicated circuit): faster but fixed, costs [[learning/notes/quick-context/bond-pad|die]] area
 - **Software** (sequence of simpler instructions): slower but flexible
 
 For example, a CPU could implement multiplication as a dedicated circuit (fast, expensive) or as repeated addition in software (slow, free). Modern CPUs make different tradeoffs — ARM's RISC philosophy uses simpler hardware with more software, while x86's CISC approach puts more into hardware.
@@ -420,7 +420,7 @@ STEP 5: MODERN TOOLCHAINS
   descends from hand-encoded binary.
 ```
 
-How the CPU Knows Where to Start: The Reset Vector
+How the CPU Knows Where to Start: The [[learning/notes/quick-context/firmware|Reset Vector]]
 
 Once you have instructions in memory, how does the CPU know where to begin?
 
@@ -459,38 +459,38 @@ POWER-ON SEQUENCE
   it's physically part of the hardware.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching [[quick-context/transistor|transistors]] on and off.
+**[[learning/notes/quick-context/bjt-specifications|The one thing most outsiders get wrong about this is]]...** thinking that "code runs on hardware" means the CPU somehow understands your programming language. The CPU understands *nothing* — it's a machine that reads binary patterns and routes electrical signals through gates. Every abstraction layer (compiler, VM, assembler) exists purely to translate human intent into the specific binary patterns that configure those gates. Python doesn't "run" — it gets translated through 4+ layers until it's just voltages switching [[quick-context/transistor|transistors]] on and off.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
+- **[[quick-context/transistor]]** — The [[learning/notes/quick-context/switches-to-registers-storing-data|physical switch]] that implements logic gates. Understanding how a [[learning/notes/quick-context/silicon-die|transistor]] works ([[learning/notes/quick-context/voltage|voltage]] on gate controls [[learning/notes/quick-context/capacitance|current]] flow) is the foundation for understanding how gates compute.
 
-- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains why the gate abstraction works at all.
+- **[[quick-context/transistor-analog-to-digital]]** — How imperfect analog transistors are engineered to behave as perfect digital switches, using noise margins and CMOS logic. Explains [[learning/notes/quick-context/atoms-molecules-polymers-basics|why]] the gate abstraction works at all.
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The physical packaging hierarchy from 5nm transistors to millimeter-scale connectors. Where the logic gates physically live on the die.
+- **[[quick-context/pcb-chip-transistor-hierarchy]]** — The physical [[learning/notes/quick-context/fundamental-electronic-parts-index|packaging hierarchy]] from 5nm transistors to millimeter-[[learning/notes/quick-context/absolute-orientation|scale]] connectors. Where the logic gates physically live on the die.
 
-- **[[quick-context/semiconductor-fabrication]]** — How billions of transistors (and therefore gates) are manufactured on silicon wafers through photolithography.
+- **[[quick-context/semiconductor-fabrication]]** — How [[learning/notes/quick-context/bond-pad|billions of transistors]] (and therefore gates) are manufactured on [[learning/notes/quick-context/transistor|silicon]] wafers through [[learning/notes/quick-context/metal-interconnect-layers|photolithography]].
 
 - **[[quick-context/silicon-die]]** — The actual piece of silicon containing the transistors, ALU, registers, and cache that execute your compiled instructions.
 
-- **Two's Complement** — How negative numbers are represented in binary, enabling the ALU to perform subtraction using only addition circuits. Elegant hack: flip all bits and add 1.
+- **[[learning/notes/micro-context/schmitt-trigger-hysteresis|Two]]'s Complement** — How negative numbers are represented in binary, enabling the ALU to perform subtraction using only addition circuits. Elegant hack: flip all bits and add 1.
 
 - **Von Neumann Architecture** — The architectural pattern where instructions and data share the same memory, which is why the fetch-execute cycle needs to distinguish between them.
 
-- **HDL (Hardware Description Language)** — Languages like VHDL and Verilog used to design and verify logic gate implementations before manufacturing. The "source code" for hardware.
+- **HDL (Hardware Description Language)** — [[learning/notes/quick-context/firmware|Languages]] like VHDL and Verilog used to design and verify logic gate implementations before manufacturing. The "source code" for hardware.
 
-- **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
+- **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the [[learning/notes/quick-context/from-code-to-running-firmware|linker]] places it at physical memory addresses, the flash programmer writes it to the chip, and the [[learning/notes/quick-context/from-code-to-running-firmware|startup code]] boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into SRAM, DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[learning/notes/quick-context/ram-addressing-decoder|SRAM]], [[learning/notes/quick-context/ram-addressing-decoder|DRAM]], and flash at the transistor/[[learning/notes/quick-context/cations-and-reduction|charge]] level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 
-- **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit (switches + clock + 74HC574 register chip) that makes Layer 2's "Registers = MUX + Data Flip-Flop" tangible. Demonstrates how the register pattern scales from 8 LEDs to a CPU's register file to RAM.
+- **[[quick-context/switches-to-registers-storing-data]]** — A hands-on breadboard circuit (switches + [[learning/notes/quick-context/bare-minimal-data-storage-circuit|clock]] + [[learning/notes/quick-context/data-bus-and-arbitration|74HC574]] register chip) that makes Layer 2's "Registers = [[learning/notes/quick-context/ram-addressing-decoder|MUX]] + Data [[learning/notes/quick-context/d-flip-flop|Flip-Flop]]" tangible. Demonstrates how the register pattern scales from 8 LEDs to a CPU's register file to RAM.
 
 </details>
 
@@ -500,13 +500,13 @@ POWER-ON SEQUENCE
 **Q1:** What does the assembler actually do when it encodes `ADD R1, R2`?
 <details>
 <summary>Answer</summary>
-The assembler looks up the ISA encoding for `ADD` to get the opcode bit pattern, converts register names to their numeric encodings (`R1`=001, `R2`=010), and packs these fields into a fixed-width binary word according to the ISA's instruction format. The result is a sequence of bytes (e.g., 2 bytes for Thumb, 4 bytes for ARM) that gets written into the `.text` section of an object file. It's essentially a lookup table + field packer — no optimization, no interpretation, just 1-to-1 encoding. See: How It Works (How Machine Code Gets Written)
+The assembler looks up the ISA encoding for `ADD` to get the opcode bit pattern, converts register names to their numeric encodings (`R1`=001, `R2`=010), and packs these fields into a fixed-width binary word according to the ISA's instruction format. The result is a sequence of bytes (e.g., [[learning/notes/quick-context/how-source-code-is-stored|2 bytes]] for Thumb, 4 bytes for ARM) that gets written into the `.[[learning/notes/quick-context/how-source-code-is-stored|text]]` section of an object file. It's essentially a lookup table + field packer — no optimization, no interpretation, just 1-to-1 encoding. See: How It Works (How Machine Code Gets Written)
 </details>
 
 **Q2:** Where does machine code physically end up on a desktop vs. an embedded MCU?
 <details>
 <summary>Answer</summary>
-On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug probe ([[micro-context/swd-serial-wire-debug|SWD]]/JTAG). The code persists without power and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
+On a **desktop**, the OS loader reads the executable from disk, allocates virtual memory pages, and copies the `.text` section into RAM — machine code lives in RAM and is reloaded from disk every time you run the program. On an **embedded MCU**, a flash programmer writes the machine code directly into non-volatile flash memory via a debug [[learning/notes/quick-context/oscilloscope-and-multimeter|probe]] ([[micro-context/swd-serial-wire-debug|SWD]]/JTAG). The code persists without [[learning/notes/quick-context/d-flip-flop|power]] and the CPU executes it directly from flash (execute-in-place). See: How It Works (Where Machine Code Ends Up)
 </details>
 
 **Q3:** If a CPU only understands binary, how can Python — an interpreted language — run on it?
@@ -518,13 +518,13 @@ On a **desktop**, the OS loader reads the executable from disk, allocates virtua
 **Q4:** Why can't the assembler write machine code directly into the CPU's memory? Why does it go through object files and a linker first?
 <details>
 <summary>Answer</summary>
-Because a real program is split across multiple source files, and the assembler processes them independently. When `main.o` calls a function in `can.o`, the assembler doesn't know that function's final address yet — it leaves a placeholder and a **relocation entry** saying "fill in the address of `can_transmit` here." Only the **linker** can resolve these cross-references, because it sees all object files at once and assigns final memory addresses using the linker script. On embedded targets, the linker also needs to know the physical memory map (flash at `0x08000000`, RAM at `0x20000000`) to place code correctly. See: How It Works (Where Machine Code Ends Up) and [[quick-context/from-code-to-running-firmware|From Code to Running Firmware]]
+Because a real program is split across multiple source files, and the assembler processes them independently. When `main.o` calls a function in `can.o`, the assembler doesn't know that function's final address yet — it leaves a placeholder and a **relocation entry** saying "fill in the address of `can_transmit` here." Only the **linker** can resolve these cross-references, because it sees all object files at once and assigns final memory addresses using the [[learning/notes/quick-context/from-code-to-running-firmware|linker script]]. On embedded targets, the linker also needs to know the physical memory map (flash at `0x08000000`, RAM at `0x20000000`) to place code correctly. See: How It Works (Where Machine Code Ends Up) and [[quick-context/from-code-to-running-firmware|From Code to Running Firmware]]
 </details>
 
 **Q5:** The bootstrapping chain starts with humans hand-encoding binary on punch cards. But even that requires knowing the ISA — how did the first CPU designers know what bit patterns to encode, and what would happen if the ISA changed between CPU revisions?
 <details>
 <summary>Answer</summary>
-The ISA is defined *by* the hardware designers — they choose the bit-field layout when they design the CPU's control unit (the decoder circuit). The truth table of the decoder *is* the ISA: input bit pattern X produces control signals Y. So the first programmers didn't "discover" the encoding — they read the hardware specification written by the people who wired the logic gates. If the ISA changes between revisions (new instructions, different encodings), all existing machine code breaks — it would decode to wrong operations or illegal instructions. This is why ISA backward compatibility is sacred: x86 CPUs in 2026 can still run 8086 binary from 1978. ARM maintains compatibility within architecture versions. Breaking the ISA means every assembler, compiler, and existing binary must be rebuilt — essentially restarting the bootstrapping chain. See: Concrete Example (THE BOOTSTRAPPING CHAIN) and 5 Essential Terms (ISA)
+The ISA is defined *by* the hardware designers — they choose the bit-field layout when they design the CPU's control unit (the decoder circuit). The truth table of the decoder *is* the ISA: input bit pattern X produces control signals Y. So the first programmers didn't "discover" the encoding — they read the hardware specification written by the people who wired the logic gates. If the ISA changes between revisions (new instructions, different encodings), all existing machine code breaks — it would decode to wrong operations or illegal instructions. This is why ISA backward compatibility is sacred: x86 CPUs in 2026 can still run 8086 binary from 1978. ARM maintains compatibility within architecture versions. [[learning/notes/quick-context/electrolysis|Breaking]] the ISA means every assembler, compiler, and existing binary [[learning/notes/quick-context/ros2-architecture|must]] be rebuilt — essentially restarting the bootstrapping chain. See: Concrete Example (THE BOOTSTRAPPING CHAIN) and 5 Essential Terms (ISA)
 </details>
 
 </details>
