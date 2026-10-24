@@ -2,6 +2,7 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/oxidation]]
 
 # Schmitt Trigger & Hysteresis
 
@@ -28,4 +29,4 @@ created: 2026-06-07
              hysteresis band
 ```
 
-**Key insight:** A single-threshold comparator *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.
+**Key insight:** A single-threshold [[learning/notes/quick-context/comparator|comparator]] *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.

@@ -3,7 +3,7 @@ topic: Silicon Die
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/metal-interconnect-layers]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/substrate-ic-packaging]]
 
 > **TL;DR:** A silicon die is a tiny piece of ultra-pure silicon containing billions of transistors and metal interconnect layers, manufactured simultaneously on wafers and then cut apart—it's where all actual computing happens, while everything else (package, PCB) just gets power in and signals out.
 
@@ -34,7 +34,7 @@ A silicon die is manufactured through a process that's essentially "printing" ci
 
 **Step 2: Slice into wafers.** The crystal ingot is sliced into thin discs called wafers (about 0.75mm thick, 300mm diameter). Each wafer will become hundreds of dies.
 
-**Step 3: Print the transistors.** Using photolithography (like darkroom photography, but with UV light and masks), patterns are projected onto the wafer. Chemicals are deposited and etched away, building up transistor structures atom-layer by atom-layer. This repeats hundreds of times.
+**Step 3: Print the transistors.** Using photolithography (like darkroom photography, but with UV light and masks), patterns are projected onto the wafer. Chemicals are deposited and etched away, building up [[learning/notes/quick-context/transistor|transistor]] structures atom-layer by atom-layer. This repeats hundreds of times.
 
 **Step 4: Add metal wiring.** After transistors are complete, copper wiring layers are added on top—typically 10-15 layers of microscopic metal lines connecting the transistors together.
 
@@ -219,17 +219,17 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
+- **PCB-Chip-Transistor Hierarchy** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
 
-- **[[quick-context/semiconductor-fabrication|Wafer Fabrication (Semiconductor Fab)]]** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
+- **Wafer Fabrication (Semiconductor Fab)** — The multi-billion-dollar factories that manufacture wafers; understanding fab processes explains why chips are expensive and why only a handful of companies can make leading-edge dies.
 
-- **[[quick-context/semiconductor-fabrication|Photolithography]]** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors can be.
+- **Photolithography** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors can be.
 
 - **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
-- **[[quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
+- **Electric Current** — Dies only work when electrons flow through their transistors; understanding current, voltage, and resistance explains why dies consume power and generate heat.
 
 </details>
 

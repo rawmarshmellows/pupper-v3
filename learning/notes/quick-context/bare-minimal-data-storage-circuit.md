@@ -6,7 +6,7 @@ updated: 2026-05-07
 
 # Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/sram]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]
+> **Related:** [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/resistor]]
 
 > **TL;DR:** Press a key on a 16-key keypad → an encoder chip emits a 4-bit code + a "key pressed" strobe → a tiny EEPROM converts that 4-bit code to the **8-bit ASCII value** of that key → those 8 lines sit on a *data bus* feeding the D inputs of an **8-bit register** ([[learning/notes/quick-context/d-flip-flop|74HC574]]) → meanwhile a 555 timer is producing a steady square-wave **clock** at ~2 Hz → an AND gate gates the clock so register updates only happen *while a key is held* → on the next rising clock edge, all 8 ASCII bits are captured **simultaneously** and lit up on 8 LEDs. **The clock is not deciding what to store — it is deciding *when* to store.** That single distinction is the entire intuition behind "how a clock controls a computer".
 
@@ -21,7 +21,7 @@ Most digital-logic curricula draw the clock as a small triangle on a schematic a
 1. The clock is a **physical voltage waveform** produced by an oscillator (a 555 timer, an [[learning/notes/quick-context/rc-oscillator|RC oscillator]], or a [[learning/notes/micro-context/crystal-oscillator|crystal]]). It has a frequency, a duty cycle, and a real wire you can poke with a scope.
 2. The clock signal is **broadcast** to every register in the system at the same time — that's how 32 D flip-flops in one register file all update on a single instant.
 3. **The clock does not choose *what* to store.** The data lines (the D inputs) do. The clock only chooses *when* the storage element samples those data lines.
-4. **Whether a given clock edge "counts" for a given register** is itself controlled by combinational logic — usually an AND gate that says "this register only updates when *its* enable line is HIGH right now."
+4. **Whether a given [[learning/notes/micro-context/clock-edges|clock edge]] "counts" for a given register** is itself controlled by combinational logic — usually an AND gate that says "this register only updates when *its* enable line is HIGH right now."
 
 Once you see all four facts on a breadboard with their own LEDs, "the clock controls the computer" stops being mystical and becomes: *the clock is a metronome every register listens to, and combinational logic picks which registers actually clap on each beat.*
 
@@ -33,7 +33,7 @@ That worked because the value-to-store was hardcoded into *which button you pres
 
 ## What the Clock Physically Is
 
-The clock is a square-wave voltage signal toggling between LOW (~0 V) and HIGH (~Vcc) at a fixed frequency:
+The clock is a square-wave [[learning/notes/quick-context/voltage|voltage]] signal toggling between LOW (~0 V) and HIGH (~Vcc) at a fixed frequency:
 
 ```
             HIGH ──┐    ┌────┐    ┌────┐    ┌────┐    ┌──
@@ -107,7 +107,7 @@ A D flip-flop's clock input is **edge-sensitive** — it only does anything at t
 
 Three independent signal *families* meet at the 74HC574:
 
-- **Data path** (8 wires): keypad → encoder → EEPROM → register's D[7:0]. Always reflects "the ASCII of the key currently pressed", or undefined when no key is held.
+- **Data path** (8 wires): keypad → encoder → [[learning/notes/micro-context/eeprom|EEPROM]] → register's D[7:0]. Always reflects "the ASCII of the key currently pressed", or undefined when no key is held.
 - **Clock path** (1 wire): 555 → AND gate → register's CLK. Free-running square wave, but only passed through to the register when DA is HIGH.
 - **Strobe / enable path** (1 wire): encoder DA → AND gate's other input. The "is there valid data right now?" combinational signal.
 
@@ -210,7 +210,7 @@ CHANNEL 3: GATED_CLK (AND gate output, register CLK pin)
 CHANNEL 4: D0        (one bit of the ASCII bus)
 ```
 
-You'll see CH1 metronoming away forever. CH2 only HIGH while a key is held. CH3 = CH1 ∧ CH2, so most of the time CH3 is silent and only "wakes up" during keypresses. CH4 changes whenever you press a different key — but the *register's output* only follows CH4 at moments where CH3 has a rising edge. **This is the mechanical picture of "clocked synchronous logic":** data lines are noisy and wiggling all the time; the register only believes them at clock edges; combinational gating decides which edges the register pays attention to.
+You'll see CH1 metronoming away forever. CH2 only HIGH while a key is held. CH3 = CH1 ∧ CH2, so most of the time CH3 is silent and only "wakes up" during keypresses. CH4 changes whenever you press a different key — but the *register's output* only follows CH4 at moments where CH3 has a rising edge. **This is the mechanical picture of "clocked synchronous logic":** data lines are noisy and wiggling all the time; the register only believes them at [[learning/notes/micro-context/clock-edges|clock edges]]; combinational gating decides which edges the register pays attention to.
 
 ## Why a Computer Needs a Free-Running Clock
 

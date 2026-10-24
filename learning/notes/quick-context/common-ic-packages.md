@@ -3,21 +3,21 @@ topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/silicon-die]]
 
-> **TL;DR:** IC packages are the protective housings that connect a microscopic [[quick-context/silicon-die|silicon die]] to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and [[quick-context/bga-ball-grid-array|BGA]] packages, each trading off size, pin count, thermal performance, and ease of assembly.
+> **TL;DR:** IC packages are the protective housings that connect a microscopic silicon die to the macroscopic world—they range from large, hand-solderable through-hole DIP packages to tiny surface-mount QFN and BGA packages, each trading off size, pin count, thermal performance, and ease of assembly.
 
 # Common IC Packages
 
 ## The Core Problem: Bridging Microscopic to Human-Scale
 
-The [[quick-context/silicon-die|silicon die]] inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines can work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you can actually solder it by hand.
+The silicon die inside a chip is fragile (a few mm across, ~0.5 mm thick), has connection points only ~50 μm apart, and would be destroyed by handling, moisture, or mechanical stress. The package protects the die and provides connections (pins, leads, or solder balls) at a pitch that humans and machines can work with. The same chip design often comes in multiple package options—choosing the right one involves tradeoffs between size, thermal performance, pin count, and whether you can actually solder it by hand.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Through-hole** | Package with wire leads that go through holes in the [[quick-context/pcb-printed-circuit-board|PCB]] and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
+| **Through-hole** | Package with wire leads that go through holes in the PCB and are soldered on the other side. Easy to hand-solder. Being replaced by SMD in production. |
 | **Surface mount (SMD/SMT)** | Package that sits flat on the PCB surface with leads or pads soldered to the top copper layer only. Smaller, cheaper, machine-friendly. |
 | **Pitch** | The distance between adjacent pin centers. Smaller pitch = more pins in less space, but harder to solder. DIP: 2.54 mm. QFP: 0.5-0.8 mm. BGA: 0.4-1.27 mm. |
 | **Pin count** | Total number of electrical connections. A simple voltage regulator: 3-5 pins. Microcontroller: 20-100 pins. Processor: 500-3000+ pins. |
@@ -196,19 +196,19 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
-- **[[quick-context/pcb-chip-transistor-hierarchy]]** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
+- **** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via wire bonds or flip-chip, and connects to the PCB via leads, pads, or BGA balls.
 
-- **[[quick-context/soldering]]** — Package type dictates soldering method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
+- **** — Package type dictates soldering method. DIP = through-hole iron. SOIC/QFP = SMD iron with flux. QFN = hot air or reflow oven. BGA = reflow oven only.
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Package footprint (land pattern) must match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
+- **** — Package footprint (land pattern) must match the PCB pads exactly. A QFN-32 with 0.5mm pitch needs PCB pads accurate to ~0.05mm. The exposed pad needs thermal vias to conduct heat to inner copper layers.
 
-- **[[quick-context/wire-bonding]]** — Inside most packages (DIP, QFP, QFN), the die is connected to the lead frame via wire bonds. BGA packages typically use [[quick-context/flip-chip|flip-chip]] bonding.
+- **** — Inside most packages (DIP, QFP, QFN), the die is connected to the lead frame via wire bonds. BGA packages typically use flip-chip bonding.
 
-- **[[quick-context/substrate-ic-packaging]]** — High-pin-count packages (BGA) use a multi-layer substrate between the die and the solder balls, acting as a miniature PCB inside the package.
+- **** — High-pin-count packages (BGA) use a multi-layer substrate between the die and the solder balls, acting as a miniature PCB inside the package.
 
-- **[[quick-context/pupper-bom-control-board]]** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package choice affects assembly (the LGA-28 BNO086 can't be sourced through standard JLCPCB assembly).
+- **** — A real BOM using LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages on one board. Shows how package choice affects assembly (the LGA-28 BNO086 can't be sourced through standard JLCPCB assembly).
 
 </details>
 
@@ -227,7 +227,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Look for the dot, notch, or line marking.** DIP packages have a notch on one end and/or a dot at pin 1. QFP/QFN packages have a dot at pin 1. BGA packages have a marking at the A1 corner. From pin 1, count counter-clockwise for DIP/QFP. For BGA, use the grid coordinates (rows = letters, columns = numbers).
 </details>
 
-**Q3:** Why can't you hand-solder a QFN package with a regular soldering iron?
+**Q3:** Why can't you hand-solder a QFN package with a regular [[learning/notes/quick-context/soldering|soldering]] iron?
 <details>
 <summary>Answer</summary>
 **The pads are underneath the package, not on protruding leads.** A QFN has flat pads on its bottom surface with no leads extending beyond the package edge. A soldering iron can't reach under the package. You need hot air (heats the entire area from above, reflowing solder paste underneath) or a reflow oven. The exposed thermal pad on the bottom also must be soldered, which is impossible with an iron.
