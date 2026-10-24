@@ -2,6 +2,7 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]]
 
 # Scan Loop
 

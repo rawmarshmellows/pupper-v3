@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/frequency-and-filtering]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -11,7 +11,7 @@ created: 2026-02-06
 
 ## The Core Problem: You Can't Debug What You Can't See
 
-A circuit doesn't work. Is the power supply providing 3.3V? Is the clock signal actually toggling? Is there noise on the data line? Is the signal arriving 100 ns too late? Without instruments, you're guessing. A **multimeter** gives you steady-state readings (DC voltage, resistance, continuity). An **oscilloscope** shows you the time-domain waveform—the actual shape of a signal as it changes over nanoseconds to seconds. Most debugging starts with "what voltage is on this pin?" (multimeter) and escalates to "what does the signal look like?" (oscilloscope).
+A circuit doesn't work. Is the power supply providing 3.3V? Is the clock signal actually toggling? Is there noise on the data line? Is the signal arriving 100 ns too late? Without instruments, you're guessing. A **multimeter** gives you steady-state readings (DC [[learning/notes/quick-context/voltage|voltage]], resistance, continuity). An **oscilloscope** shows you the time-domain waveform—the actual shape of a signal as it changes over nanoseconds to seconds. Most debugging starts with "what voltage is on this pin?" (multimeter) and escalates to "what does the signal look like?" (oscilloscope).
 
 ## 5 Essential Terms
 
@@ -176,13 +176,13 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
+- **** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
 
-- **[[quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
+- **** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
 
-- **[[quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
+- **** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
 
-- **[[quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
+- **** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
 
 </details>
 
@@ -192,7 +192,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q1:** You connect a multimeter set to "amps" in parallel across a component. What happens?
 <details>
 <summary>Answer</summary>
-**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a short circuit with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
+**You create a near-short circuit and blow the multimeter's fuse (or worse).** An ammeter has very low internal resistance (~0.1Ω) to minimize voltage drop. Connecting it in parallel puts that low resistance across the component, creating a [[learning/notes/micro-context/short-circuit|short circuit]] with potentially very high current. Always connect ammeters in SERIES (break the circuit and insert the meter in the current path).
 </details>
 
 **Q2:** A 50 MHz oscilloscope is displaying a 10 MHz square wave that looks like a sine wave. Why?
@@ -204,7 +204,7 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 **Q3:** Why should you use a 10× probe instead of a 1× probe for most measurements?
 <details>
 <summary>Answer</summary>
-**Lower capacitive loading and higher bandwidth.** A 1× probe presents ~100 pF of capacitance to the circuit, which can change the behavior of high-impedance or high-frequency signals. A 10× probe reduces this to ~10-15 pF. The tradeoff is 10× less signal amplitude, but the scope compensates by multiplying the display. Always use 10× for signals above ~1 MHz.
+**Lower capacitive loading and higher bandwidth.** A 1× probe presents ~100 pF of [[learning/notes/quick-context/capacitance|capacitance]] to the circuit, which can change the behavior of high-impedance or high-frequency signals. A 10× probe reduces this to ~10-15 pF. The tradeoff is 10× less signal amplitude, but the scope compensates by multiplying the display. Always use 10× for signals above ~1 MHz.
 </details>
 
 **Q4:** What does the trigger do on an oscilloscope?

@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/oxidation]]
 
 # Short Circuit
 

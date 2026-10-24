@@ -2,6 +2,7 @@
 term: Thread Pitch (Screws)
 created: 2026-05-04
 ---
+> **Related:** [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]]
 
 # Thread Pitch (Screws)
 

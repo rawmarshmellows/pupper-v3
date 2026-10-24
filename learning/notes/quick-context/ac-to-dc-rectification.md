@@ -5,13 +5,13 @@ created: 2026-03-29
 
 # AC-to-DC Rectification
 
-> **Related:** [[quick-context/diode]] | [[quick-context/capacitor]] | [[quick-context/electric-current]]
+> **Related:** [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/reverse-and-forward-bias]]
 
 > **TL;DR:** The power grid delivers AC because transformers make it efficient to transmit, but electronics need DC -- so every power supply uses diodes (one-way valves built from PN junctions) to rectify AC into DC, then smoothing capacitors to flatten the ripple into steady voltage.
 
 ## The Core Problem
 
-Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the diode. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
+Wall outlets deliver AC that swings positive and negative 50-60 times per second, but every chip, LED, and motor controller needs DC flowing in one constant direction. Converting AC to DC requires a component that acts as a one-way valve -- the [[learning/notes/quick-context/diode|diode]]. The full conversion chain (transformer, rectifier, filter, regulator) is inside every phone charger, laptop brick, and power supply on earth.
 
 ## 5 Essential Terms
 
@@ -28,7 +28,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 
 ### Step 1: AC from the Grid
 
-AC is produced by rotating a coil in a magnetic field (generator), naturally creating a sinusoidal voltage. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
+AC is produced by rotating a coil in a magnetic field (generator), naturally creating a sinusoidal [[learning/notes/quick-context/voltage|voltage]]. Transformers -- which only work with AC -- step voltage up for efficient long-distance transmission (less I^2*R loss) and down for safe household use. This is why AC won the "war of currents."
 
 ```
 AC from the wall (e.g. 120V, 60 Hz):
@@ -126,7 +126,7 @@ Both halves contribute → double the ripple frequency vs half-wave
 
 ### Step 5: Smoothing Capacitor -- From Pulsating to Steady DC
 
-A capacitor charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
+A [[learning/notes/quick-context/capacitor|capacitor]] charges during the voltage peaks and discharges through the load during the dips, filling in the valleys.
 
 ```
 After bridge (bumpy):            + Capacitor (smooth):
@@ -182,22 +182,22 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 ### Source Micro-Contexts (Glossary Stubs)
 
-- **[[micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
-- **[[micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
-- **[[micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
-- **[[micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
+- **AC vs DC Current** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
+- **Reverse and Forward Bias** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
+- **Diode Rectification** -- Half-wave rectification with a single diode, smoothing capacitor basics.
+- **Full-Wave Bridge Rectifier** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
 
 ### Related Quick-Contexts
 
-- **[[quick-context/diode]]** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
-- **[[quick-context/capacitor]]** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
-- **[[quick-context/electric-current]]** -- Fundamental concept: what current is, conventional vs electron flow.
-- **[[quick-context/inductor]]** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
-- **[[quick-context/voltage]]** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
+- **** -- The component itself: PN junction types, forward voltage drop, Schottky vs silicon, LEDs, Zener, freewheeling diodes.
+- **** -- Smoothing capacitors fill the ripple dips; RC time constant determines ripple voltage.
+- **** -- Fundamental concept: what current is, conventional vs electron flow.
+- **** -- Transformers (coupled inductors) are why AC exists on the grid in the first place.
+- **** -- Voltage drops across diodes, transformer voltage ratios, why stepping voltage up reduces transmission losses.
 
 </details>
 
@@ -231,7 +231,7 @@ Two diodes are always in the current path (one on each side of the bridge). Each
 **Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
 <details>
 <summary>Answer</summary>
-The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the capacitance. To reduce ripple under heavier load, you need a larger capacitor.
+The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the [[learning/notes/quick-context/capacitance|capacitance]]. To reduce ripple under heavier load, you need a larger capacitor.
 </details>
 
 </details>

@@ -5,7 +5,7 @@ created: 2026-04-09
 
 # Switches to Registers — Storing Data with Real Hardware
 
-> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]]
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/comparator]]
 
 > **TL;DR:** A physical switch provides a 1 or 0, a clock signal says "capture NOW," and a [[learning/notes/quick-context/d-flip-flop|D flip-flop]] stores the bit at the clock edge. Chain eight flip-flops into a register (a real chip: the 74HC574), connect eight switches and eight LEDs, and you've built the fundamental unit of all computing memory. Every register in every CPU, every byte in every [[learning/notes/micro-context/sram|SRAM]] cache, and every address in every RAM chip is just a scaled-up version of this exact circuit.
 
@@ -346,7 +346,7 @@ This is the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[learning/notes/quick-context/d-flip-flop]]** — Deep dive into the D flip-flop itself: how it's built from NAND gates (SR latch → gated latch → master-slave edge-triggered), the Nand2Tetris Python implementation, and how flip-flops compose into registers, shift registers, and counters.
 
@@ -374,19 +374,19 @@ This is the [[learning/notes/quick-context/code-to-gates-and-bootstrapping|fetch
 **Q1:** Why does the LED stay on after you flip the switch back to LOW (before pressing the clock button again)?
 <details>
 <summary>Answer</summary>
-The D flip-flop is **edge-triggered** — it only samples its D input at the rising edge of the clock. Between clock edges, it ignores all changes on D and holds its stored value at Q. The LED reflects Q (the stored value), not D (the current switch position). This is the fundamental property that makes it memory: capture once, hold until told otherwise. See: How It Works (Experiment 1).
+The D flip-flop is **edge-triggered** — it only samples its D input at the rising edge of the clock. Between [[learning/notes/micro-context/clock-edges|clock edges]], it ignores all changes on D and holds its stored value at Q. The LED reflects Q (the stored value), not D (the current switch position). This is the fundamental property that makes it memory: capture once, hold until told otherwise. See: How It Works (Experiment 1).
 </details>
 
 **Q2:** The 74HC574 has an Output Enable (OE) pin. What would happen if you connected OE to HIGH instead of GND?
 <details>
 <summary>Answer</summary>
-The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing voltage conflicts. See: 5 Essential Terms (Output Enable).
+The outputs would go to a **high-impedance (tri-state)** condition — electrically disconnected from the circuit. The LEDs would turn off, but the flip-flops inside are still holding their data. Pulling OE back to LOW would make the outputs reappear with the stored values intact. This feature lets multiple registers share a single data bus: only one register drives the bus at a time (OE = LOW), while others disconnect (OE = HIGH), preventing [[learning/notes/quick-context/voltage|voltage]] conflicts. See: 5 Essential Terms (Output Enable).
 </details>
 
 **Q3:** How is the 74HC574 register on your breadboard related to the register file inside an ARM CPU?
 <details>
 <summary>Answer</summary>
-They are functionally identical — both are arrays of D flip-flops that capture data on a clock edge. The ARM register file has 16 registers of 32 bits each (16 × 32 = 512 flip-flops), while the 74HC574 has 1 register of 8 bits (8 flip-flops). The ARM register file also has more complex addressing (a MUX selects which register to read/write) and runs at MHz-to-GHz clock speeds instead of button presses. But the core mechanism — "capture D at clock edge, hold at Q" — is identical. See: The Key Tension (FROM REGISTER TO COMPUTER diagram).
+They are functionally identical — both are arrays of D flip-flops that capture data on a [[learning/notes/micro-context/clock-edges|clock edge]]. The ARM register file has 16 registers of 32 bits each (16 × 32 = 512 flip-flops), while the 74HC574 has 1 register of 8 bits (8 flip-flops). The ARM register file also has more complex addressing (a MUX selects which register to read/write) and runs at MHz-to-GHz clock speeds instead of button presses. But the core mechanism — "capture D at clock edge, hold at Q" — is identical. See: The Key Tension (FROM REGISTER TO COMPUTER diagram).
 </details>
 
 **Q4:** If you removed the clock entirely and connected the switch directly to a latch (level-sensitive) instead of a flip-flop (edge-sensitive), what would go wrong?
