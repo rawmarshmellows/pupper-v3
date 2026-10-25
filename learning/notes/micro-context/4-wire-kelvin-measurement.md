@@ -3,18 +3,20 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug|SWD (Serial Wire Debug)]] | [[learning/notes/quick-context/wire-bonding|Wire Bonding]] | [[learning/notes/quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]]
+
 
 # 4-Wire Kelvin Measurement
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
-**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
+**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures [[learning/notes/quick-context/voltage|voltage]] directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works
 
 - Two "force" wires supply a known current through the unknown resistance from an external current source.
 - Two separate "sense" wires connect directly across the resistance to a high-impedance voltmeter.
-- Because the voltmeter draws negligible current, the sense wire resistance contributes essentially zero voltage drop.
+- Because the voltmeter draws negligible current, the sense wire resistance contributes essentially zero [[learning/notes/quick-context/voltage|voltage]] drop.
 - The unknown resistance is calculated as $R = V_{measured} / I_{known}$, free from lead wire error.
 
 ```
@@ -37,4 +39,4 @@ SOLUTION: 4-wire Kelvin separates current and voltage paths
     R = V_measured / I_known                                   ✓
 ```
 
-**Key insight:** The voltmeter's high input impedance means negligible current flows through the sense wires, so their resistance contributes essentially zero voltage drop to the measurement.
+**Key insight:** The voltmeter's high input impedance means negligible current flows through the sense wires, so their resistance contributes essentially zero [[learning/notes/quick-context/voltage|voltage]] drop to the measurement.

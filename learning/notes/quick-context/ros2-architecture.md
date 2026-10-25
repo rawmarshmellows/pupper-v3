@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-brain|pupper-brain]] | [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]]
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 

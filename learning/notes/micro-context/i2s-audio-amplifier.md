@@ -3,6 +3,8 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/i2s|I2S (Inter-IC Sound)]] | [[learning/notes/quick-context/op-amp|Op-Amp (Operational Amplifier)]] | [[learning/notes/quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]]
+
 
 # I2S Audio Amplifier
 

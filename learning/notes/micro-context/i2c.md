@@ -3,6 +3,8 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]
+
 
 # I2C
 

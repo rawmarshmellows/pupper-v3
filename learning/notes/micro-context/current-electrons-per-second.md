@@ -3,18 +3,20 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/quick-context/electric-current|Electric Current]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/micro-context/current-mirror|Current Mirror]]
+
 
 # Current and Electrons Per Second
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
-**Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
+**Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one [[learning/notes/micro-context/coulomb-history|coulomb]] per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
 
 ## How It Works
 
-- An electric field (from a voltage source) pushes free electrons through the conductor in a coordinated drift.
+- An electric field (from a [[learning/notes/quick-context/voltage|voltage]] source) pushes free electrons through the conductor in a coordinated drift.
 - At any cross-section of the wire, the number of electrons passing per second determines the current in amperes.
-- One ampere equals one coulomb (6.24 × 10¹⁸ electrons) flowing past that point every second.
+- One ampere equals one [[learning/notes/micro-context/coulomb-history|coulomb]] (6.24 × 10¹⁸ electrons) flowing past that point every second.
 
 ```
 1 Ampere = 1 Coulomb/second = 6.24 × 10¹⁸ electrons/second
