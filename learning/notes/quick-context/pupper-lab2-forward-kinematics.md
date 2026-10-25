@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 
-> **Related:** [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics (Gradient Descent)]] | [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)]]
+> **Related:** [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics (Gradient Descent)]] | [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking|Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)]]
 
 > **TL;DR:** Forward kinematics computes where the foot ends up in 3D space given three joint angles, by chaining 4x4 homogeneous transformation matrices along the leg's kinematic chain. This is the mathematical foundation reused in every subsequent Pupper lab.
 

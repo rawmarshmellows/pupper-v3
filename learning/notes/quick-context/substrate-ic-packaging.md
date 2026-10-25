@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-01-26
 ---
 
-> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/flip-chip|Flip-Chip (C4) Packaging]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|3D Printing Filament - Refill vs Spool]]
+> **Related:** [[learning/notes/quick-context/flip-chip|Flip-Chip (C4) Packaging]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|3D Printing Filament - Refill vs Spool]]
 
 > **TL;DR:** The substrate is the critical "translator" that takes a chip's thousands of microscopic connection points (~100 micrometer spacing) and fans them out to larger, more widely-spaced connections (~800 micrometer spacing) that can be soldered to a circuit board, making modern chips usable.
 
@@ -450,7 +450,7 @@ There's a fundamental tension between density, cost, and reliability. Finer trac
 **Q4:** Someone claims "the substrate is just the plastic case around a chip—it doesn't really matter for performance." What's wrong with this?
 <details>
 <summary>Answer</summary>
-The substrate is not just packaging—it's a sophisticated multi-layer circuit with its own complex signal routing. It directly affects electrical performance (signal integrity, power delivery), thermal performance (heat path from die), and mechanical reliability. For advanced chips, substrate design and manufacturing can cost more than the silicon die itself, and substrate availability has been a major production bottleneck. See: The one thing most outsiders get wrong...
+The substrate is not just packaging—it's a sophisticated multi-layer circuit with its own complex signal routing. It directly affects electrical performance (signal integrity, power delivery), thermal performance (heat path from die), and mechanical reliability. For advanced chips, substrate design and manufacturing can cost more than the [[learning/notes/quick-context/silicon-die|silicon die]] itself, and substrate availability has been a major production bottleneck. See: The one thing most outsiders get wrong...
 </details>
 
 **Q5:** Why does the "onion" fan-out pattern mean that center die bumps are the hardest to route, and what does this imply for substrate layer count as die bump density increases?

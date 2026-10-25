@@ -5,7 +5,7 @@ created: 2026-03-26
 
 # Firmware — Software That Lives on Hardware
 
-> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware|From Code to Running Firmware]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]]
+> **Related:** [[learning/notes/quick-context/from-code-to-running-firmware|From Code to Running Firmware]] | [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]]
 
 > **TL;DR:** Firmware is software permanently stored in a device's non-volatile memory (typically flash) that runs immediately at power-on without an operating system, bootloader chain, or filesystem. It's the code that makes hardware *be* what it is — the STM32s on the Pupper control board run firmware that turns raw silicon into a motor controller and sensor hub.
 
@@ -285,7 +285,7 @@ FILE FORMAT COMPARISON:
 
 - **[[quick-context/pupper-bom-control-board]]** — Every hardware component the firmware interacts with: the STM32F446 MCUs it runs on, the CAN transceivers it drives, the IMU it reads, the audio amplifier it feeds. The BOM is the hardware; the firmware is what makes it move.
 
-- **[[micro-context/stm32-microcontroller]]** — The specific chip this firmware targets. The STM32F446's 512 KB flash, 128 KB SRAM, CAN/SPI/I2C peripherals, and 180 MHz clock define the firmware's constraints.
+- **[[micro-context/stm32-microcontroller]]** — The specific chip this firmware targets. The STM32F446's 512 KB flash, 128 KB [[learning/notes/micro-context/sram|SRAM]], CAN/SPI/I2C peripherals, and 180 MHz clock define the firmware's constraints.
 
 - **[[quick-context/firmware|flashing firmware]]** — The micro-context companion: a concise definition of the flash process itself (erase → write → verify → reset).
 

@@ -40,4 +40,4 @@ WHY DECOUPLING IS NEEDED:
        then refills slowly from PSU
 ```
 
-**Key insight:** Every IC needs decoupling capacitors placed as close as possible to its power pins—the PCB trace inductance between capacitor and chip determines how well high-frequency noise is filtered.
+**Key insight:** Every IC needs decoupling capacitors placed as close as possible to its power pins—the PCB trace inductance between [[learning/notes/quick-context/capacitor|capacitor]] and chip determines how well high-frequency noise is filtered.

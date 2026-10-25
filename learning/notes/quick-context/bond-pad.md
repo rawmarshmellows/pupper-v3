@@ -24,7 +24,7 @@ A modern computer chip contains **billions of transistors**, each one smaller th
 | **Bond Pad** | A small metal square (~50 μm) on a chip's surface that serves as a connection point for wires or solder bumps to enter/exit the die |
 | **Die** | The actual silicon chip itself—a thin square of patterned silicon containing all transistors, typically ~10mm across (see [[quick-context/pcb-chip-transistor-hierarchy]]) |
 | **Wire Bond** | A thin metal wire (~25 μm diameter) ultrasonically welded from a bond pad to the package [[learning/notes/quick-context/substrate-ic-packaging|substrate]]—the older, cheaper connection method |
-| **Flip-chip Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the substrate—newer, denser |
+| **Flip-chip Bump** | A tiny solder ball (~100 μm) deposited on bond pads, allowing the die to be mounted face-down directly onto the [[learning/notes/quick-context/substrate-ic-packaging|substrate]]—newer, denser |
 | **Passivation** | A protective insulating layer (like glass) covering the entire chip surface except for the bond pads, which must remain exposed for connection |
 
 <details>
@@ -230,7 +230,7 @@ THE BOND PAD TRILEMMA
 
 | Trade-off | [[learning/notes/quick-context/wire-bonding|Wire Bonding]] Camp | Flip-Chip Camp |
 |-----------|-------------------|----------------|
-| **Cost** | "Wire bonding is 5-10x cheaper per connection" | "But flip-chip needs fewer packages for high I/O" |
+| **Cost** | "[[learning/notes/quick-context/wire-bonding|Wire bonding]] is 5-10x cheaper per connection" | "But flip-chip needs fewer packages for high I/O" |
 | **Density** | "Edge pads limit us to ~1000 connections" | "Area array gives us 3000+ connections" |
 | **Performance** | "Wire loops add inductance (slows signals)" | "Short bumps = lower inductance = faster" |
 | **Reliability** | "Wire bonds flex and survive thermal cycling" | "Bumps can crack if die and substrate expand differently" |
@@ -355,7 +355,7 @@ COMPARISON: Bond Pad Requirements
 
 ---
 
-**The one thing most outsiders get wrong about this is...** thinking that making chips faster just means making transistors smaller. In reality, the bond pads often become the bottleneck. A chip with 10 billion transistors is useless if you can only get data in and out through 100 connections. The reason modern CPUs cost so much isn't just the transistors—it's the sophisticated packaging and thousands of bond pads that let all those transistors actually communicate with memory, storage, and the outside world. The "chip" you see on a motherboard is mostly packaging; the actual silicon die with its bond pads is a small square hidden inside.
+**The one thing most outsiders get wrong about this is...** thinking that making chips faster just means making transistors smaller. In reality, the bond pads often become the bottleneck. A chip with 10 billion transistors is useless if you can only get data in and out through 100 connections. The reason modern CPUs cost so much isn't just the transistors—it's the sophisticated packaging and thousands of bond pads that let all those transistors actually communicate with memory, storage, and the outside world. The "chip" you see on a motherboard is mostly packaging; the actual [[learning/notes/quick-context/silicon-die|silicon die]] with its bond pads is a small square hidden inside.
 
 </details>
 
@@ -401,10 +401,10 @@ Wire bonding requires bond pads at the die edges only (since wires loop outward)
 Smaller bond pads create reliability problems: wire bonds may not stick properly, solder bumps may not form correctly, and the connections become more vulnerable to manufacturing defects and thermal stress. There's also an ESD risk—smaller pads concentrate current during static discharge events. The "bond pad trilemma" means you must balance density against reliability and cost; maximizing connections without considering these trade-offs leads to chips that fail in the field. See: The Key Tension.
 </details>
 
-**Q5:** A modern CPU has ~3000 bond pads while an Arduino microcontroller has only 28. Beyond just "more transistors," explain why the CPU needs 100x more connections in terms of what those connections actually do.
+**Q5:** A modern CPU has ~3000 bond pads while an Arduino [[learning/notes/micro-context/microcontroller|microcontroller]] has only 28. Beyond just "more transistors," explain why the CPU needs 100x more connections in terms of what those connections actually do.
 <details>
 <summary>Answer</summary>
-CPUs need massive parallel bandwidth: hundreds of connections for memory (each DDR5 channel needs ~100+ signals), hundreds more for PCIe lanes to GPUs and SSDs, hundreds for power delivery (modern CPUs draw 100+ amps, distributed across many pads to reduce current density and inductance), plus ground connections equal to power, test and debug pins, and clock/control signals. An Arduino runs a single program sequentially at low speed with minimal memory access; a CPU runs dozens of threads simultaneously, accessing RAM billions of times per second, which requires proportionally more "highway lanes" in and out. The bond pad count directly limits system throughput, not just transistor count. See: Concrete Example (comparison table) and [[quick-context/pcb-chip-transistor-hierarchy]].
+CPUs need massive parallel bandwidth: hundreds of connections for memory (each DDR5 channel needs ~100+ signals), hundreds more for PCIe lanes to GPUs and SSDs, hundreds for power delivery (modern CPUs draw 100+ amps, distributed across many pads to reduce current density and inductance), plus ground connections equal to power, test and debug pins, and clock/control signals. An Arduino runs a single program sequentially at low speed with minimal memory access; a CPU runs dozens of threads simultaneously, accessing RAM billions of times per second, which requires proportionally more "highway lanes" in and out. The bond pad count directly limits system throughput, not just [[learning/notes/quick-context/transistor|transistor]] count. See: Concrete Example (comparison table) and [[quick-context/pcb-chip-transistor-hierarchy]].
 </details>
 
 </details>

@@ -36,4 +36,4 @@ updated: 2026-03-27
   FLIPPED: which terminal is + vs −
 ```
 
-**Key insight:** "Anode" doesn't mean "positive electrode" — it means "where [[learning/notes/micro-context/oxidation|oxidation]] happens." The polarity flips between electrolysis (+) and batteries (−), but oxidation at the anode is always the same.
+**Key insight:** "Anode" doesn't mean "positive electrode" — it means "where [[learning/notes/micro-context/oxidation|oxidation]] happens." The polarity flips between [[learning/notes/quick-context/electrolysis|electrolysis]] (+) and batteries (−), but [[learning/notes/micro-context/oxidation|oxidation]] at the anode is always the same.

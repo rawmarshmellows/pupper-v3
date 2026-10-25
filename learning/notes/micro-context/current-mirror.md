@@ -2,7 +2,7 @@
 term: Current Mirror
 created: 2026-04-02
 ---
-> **Related:** [[learning/notes/micro-context/input-bias-current|Input Bias Current (I_B)]] | [[learning/notes/micro-context/quiescent-supply-current|Quiescent Supply Current (I_S)]] | [[learning/notes/micro-context/tail-current|Tail Current]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]]
+> **Related:** [[learning/notes/micro-context/tail-current|Tail Current]] | [[learning/notes/micro-context/input-bias-current|Input Bias Current (I_B)]] | [[learning/notes/micro-context/quiescent-supply-current|Quiescent Supply Current (I_S)]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]]
 
 
 # Current Mirror
@@ -13,7 +13,7 @@ created: 2026-04-02
 
 - A reference current $I_{ref}$ (set by a [[learning/notes/quick-context/resistor|resistor]] or upstream source) flows through a [[learning/notes/quick-context/diode|diode]]-connected [[micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
 - A second matched [[learning/notes/quick-context/transistor|transistor]] shares the same $V_{gs}$ (gates tied together), so it develops the same channel conditions and conducts the same current: $I_{out} \approx I_{ref}$.
-- Because the output transistor operates in saturation, its drain current is nearly independent of drain [[learning/notes/quick-context/voltage|voltage]] — giving high output impedance, which is what makes it a good current source.
+- Because the output [[learning/notes/quick-context/transistor|transistor]] operates in saturation, its drain current is nearly independent of drain [[learning/notes/quick-context/voltage|voltage]] — giving high output impedance, which is what makes it a good current source.
 - Scaling the output transistor's $W/L$ ratio relative to the reference transistor scales the copied current proportionally: $I_{out} = I_{ref} \times (W/L)_{out} / (W/L)_{ref}$.
 
 ```

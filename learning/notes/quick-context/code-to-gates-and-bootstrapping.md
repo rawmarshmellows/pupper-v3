@@ -321,7 +321,7 @@ The compilation chain is a tower of abstractions, and the core tension is: **eac
 | Hand-coded binary (Layer 4) | Terrible — error-prone, unreadable | Identical to assembly (same output) | Total — but impractical |
 | Custom hardware / FPGA (Layer 2) | Lowest — design gates directly in HDL | Fastest — no instruction overhead | Absolute — but weeks of development |
 
-The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or Rust. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
+The key insight: **you almost never need to go below your language's abstraction level**. Python's overhead is irrelevant for most applications. When it matters (game engines, OS kernels, real-time systems), you drop to C or [[learning/notes/quick-context/rust|Rust]]. You only write assembly for device drivers, bootloaders, or extreme optimization. And you only touch gates when designing actual hardware.
 
 The other tension is **hardware vs. software implementation**. Any function can be implemented in either:
 - **Hardware** (dedicated circuit): faster but fixed, costs die area
@@ -486,7 +486,7 @@ POWER-ON SEQUENCE
 
 - **[[quick-context/from-code-to-running-firmware]]** — The downstream story: once machine code exists, how the linker places it at physical memory addresses, the flash programmer writes it to the chip, and the startup code boots to `main()`. Picks up where this document leaves off.
 
-- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[learning/notes/micro-context/sram|SRAM]], DRAM, and flash at the transistor/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
+- **[[quick-context/physics-of-writing-data-to-memory]]** — The physical story: how bits actually get written into [[learning/notes/micro-context/sram|SRAM]], DRAM, and flash at the [[learning/notes/quick-context/transistor|transistor]]/charge level. Explains the hardware physics behind "writing to memory" that this document's compilation chain produces.
 
 - **[[quick-context/from-vacuum-tubes-to-coding-on-screens]]** — The upstream story: how programming interfaces evolved from plugboards and punch cards to interactive terminals and modern screens. Explains *how* humans went from hand-coding binary on punch cards (Step 1 of bootstrapping) to typing code in an editor.
 

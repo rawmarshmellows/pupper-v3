@@ -3,7 +3,7 @@ topic: Thermal Noise in Electronics
 created: 2026-01-26
 ---
 
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/subatomic-particles|Subatomic Particles]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/micro-context/thermal-runaway|Thermal Runaway]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions|Pi-Pi Stacking: Why Your 3D Prints Need Heat]]
+> **Related:** [[learning/notes/quick-context/subatomic-particles|Subatomic Particles]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions|Pi-Pi Stacking: Why Your 3D Prints Need Heat]] | [[learning/notes/micro-context/thermal-runaway|Thermal Runaway]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]]
 
 > **TL;DR:** Thermal noise is the unavoidable random [[learning/notes/quick-context/voltage|voltage]] fluctuation caused by electrons jiggling due to heat in any conductor above absolute zero, and it becomes increasingly problematic as transistors shrink and operate at lower voltages with tighter noise margins.
 
@@ -11,7 +11,7 @@ created: 2026-01-26
 
 ## The Core Problem: Random Motion Creates Random Signals
 
-Every conductor above absolute zero (−273°C) contains electrons in constant, chaotic thermal motion. This isn't a flaw—it's fundamental physics. The same thermal energy that keeps water liquid and polymers flexible also causes electrons to jiggle randomly in every wire, [[learning/notes/quick-context/resistor|resistor]], and [[quick-context/transistor|transistor]]. These random movements create tiny, unpredictable voltage fluctuations called **thermal noise** (or Johnson-Nyquist noise). In [[quick-context/transistor-analog-to-digital|digital circuits]], thermal noise randomly perturbs the voltage levels that represent "0" and "1". If a signal is supposed to be 0.9V but noise adds +0.05V or −0.08V at random moments, the actual measured voltage fluctuates unpredictably.
+Every conductor above absolute zero (−273°C) contains electrons in constant, chaotic thermal motion. This isn't a flaw—it's fundamental physics. The same thermal energy that keeps water liquid and polymers flexible also causes electrons to jiggle randomly in every wire, [[learning/notes/quick-context/resistor|resistor]], and [[quick-context/transistor|transistor]]. These random movements create tiny, unpredictable [[learning/notes/quick-context/voltage|voltage]] fluctuations called **thermal noise** (or Johnson-Nyquist noise). In [[quick-context/transistor-analog-to-digital|digital circuits]], thermal noise randomly perturbs the voltage levels that represent "0" and "1". If a signal is supposed to be 0.9V but noise adds +0.05V or −0.08V at random moments, the actual measured voltage fluctuates unpredictably.
 
 Why does this matter? Modern transistors operate at voltages below 1V with noise margins of only ~0.1-0.2V. At these scales, thermal noise (typically microvolts to millivolts) becomes a significant fraction of the operating margin. If noise exceeds the margin, a "1" might be misread as "0" or vice versa—a **bit flip**. In a chip with 50 billion transistors switching billions of times per second, even rare noise-induced errors accumulate. Without engineering around thermal noise, digital computing would produce unreliable garbage.
 
@@ -32,7 +32,7 @@ From Random Motion to Voltage Fluctuations
 
 ### The Microscopic Picture
 
-At any temperature above absolute zero, atoms vibrate and electrons possess kinetic energy. In a conductor, free electrons (the same ones that carry [[quick-context/electric-current|current]]) bounce around randomly, colliding with the vibrating atomic lattice. Each electron carries a tiny negative charge. When electrons randomly cluster more on one side of a resistor than the other—purely by statistical chance—a momentary voltage appears across the resistor. A nanosecond later, the random motion shifts the distribution, and the voltage changes. This creates a continuous, random "hiss" of voltage fluctuations.
+At any temperature above absolute zero, atoms vibrate and electrons possess kinetic energy. In a conductor, free electrons (the same ones that carry [[quick-context/electric-current|current]]) bounce around randomly, colliding with the vibrating atomic lattice. Each electron carries a tiny negative charge. When electrons randomly cluster more on one side of a [[learning/notes/quick-context/resistor|resistor]] than the other—purely by statistical chance—a momentary voltage appears across the resistor. A nanosecond later, the random motion shifts the distribution, and the voltage changes. This creates a continuous, random "hiss" of voltage fluctuations.
 
 ```
 THERMAL MOTION OF ELECTRONS IN A RESISTOR

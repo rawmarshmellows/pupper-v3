@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/quick-context/can-bus|CAN Bus (Controller Area Network)]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|WiFi Chip — How Radio Becomes Data]] | [[learning/notes/micro-context/can-bus-termination|CAN Bus Termination]] | [[learning/notes/quick-context/electromigration|Electromigration]]
+> **Related:** [[learning/notes/quick-context/can-bus|CAN Bus (Controller Area Network)]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|WiFi Chip — How Radio Becomes Data]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[learning/notes/quick-context/dupont-jumper-wires|DuPont Jumper Wires]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]]
 
 > **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a [[learning/notes/micro-context/short-circuit|short circuit]] and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
@@ -250,7 +250,7 @@ The **address bus** (which location — driven by the CPU), the **data bus** (th
 **Q2:** Why is it electrically dangerous for two chips to drive the same wire at the same time?
 <details>
 <summary>Answer</summary>
-Driving HIGH connects the wire to $V_{cc}$; driving LOW connects it to GND. If one chip drives HIGH while another drives LOW on the same wire, you've connected $V_{cc}$ straight to GND through two transistors — a near-short. Large current flows, the wire sits at an undefined middle voltage that's neither a valid 1 nor 0 (garbage data), and the output transistors can overheat or be damaged. This is **bus contention**. See: How It Works (Why two drivers on one wire is a disaster).
+Driving HIGH connects the wire to $V_{cc}$; driving LOW connects it to GND. If one chip drives HIGH while another drives LOW on the same wire, you've connected $V_{cc}$ straight to GND through two transistors — a near-short. Large current flows, the wire sits at an undefined middle [[learning/notes/quick-context/voltage|voltage]] that's neither a valid 1 nor 0 (garbage data), and the output transistors can overheat or be damaged. This is **bus contention**. See: How It Works (Why two drivers on one wire is a disaster).
 </details>
 
 **Q3:** How does the 74HC574's Output Enable pin make it safe to put several registers on one data bus?

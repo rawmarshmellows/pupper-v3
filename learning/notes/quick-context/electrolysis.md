@@ -22,8 +22,8 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 
 | Term | Definition |
 |------|------------|
-| **Electrolyte** | The ionic conductor that carries current between electrodes; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
-| **[[learning/notes/micro-context/cathode|Cathode]]/[[learning/notes/micro-context/anode|Anode]]** | Cathode = reduction (electrons flow in, cations migrate here); Anode = [[learning/notes/micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
+| **[[learning/notes/quick-context/electrolyte|Electrolyte]]** | The ionic conductor that carries current between [[learning/notes/quick-context/electrodes|electrodes]]; can be molten salt or ionic solution—pure water is NOT an electrolyte (too few ions) |
+| **[[learning/notes/micro-context/cathode|Cathode]]/[[learning/notes/micro-context/anode|Anode]]** | [[learning/notes/micro-context/cathode|Cathode]] = reduction (electrons flow in, cations migrate here); [[learning/notes/micro-context/anode|Anode]] = [[learning/notes/micro-context/oxidation|oxidation]] (electrons flow out, anions migrate here). Mnemonic: AN OX, RED CAT |
 | **Overpotential** | Extra [[learning/notes/quick-context/voltage|voltage]] beyond thermodynamic minimum needed for practical reaction rates; includes activation, concentration, and ohmic components |
 | **Faraday's Laws** | The quantitative link between electricity and chemistry—96,485 coulombs transfers to/from one mole of singly-charged ions |
 | **Current Efficiency** | Fraction of electrons doing useful chemistry vs. side reactions; industrial processes obsess over this since small losses mean millions in wasted electricity |
@@ -33,7 +33,7 @@ This reversal principle connects to [[quick-context/chemical-bonds-spectrum|chem
 
 Electrolysis operates through a coordinated dance of electrons and ions across two electrodes immersed in a conducting solution. When you connect a power supply, it acts as an "electron pump"—pulling electrons away from one electrode (the anode) and pushing them onto the other (the cathode). This creates an electrical imbalance that drives chemical change. At the cathode, the excess electrons need somewhere to go, so they transfer to positive ions (cations) in the solution, reducing them. At the anode, the electron deficiency pulls electrons away from negative ions (anions) or neutral molecules, oxidizing them. The solution itself doesn't conduct electrons—instead, ions physically migrate through the liquid to carry the current between electrodes, completing the circuit.
 
-The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where reduction needs to happen, and removing electrons where oxidation needs to happen. The minimum voltage required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
+The key to understanding electrolysis is recognizing that the power supply is doing two things simultaneously: providing electrons where reduction needs to happen, and removing electrons where [[learning/notes/micro-context/oxidation|oxidation]] needs to happen. The minimum [[learning/notes/quick-context/voltage|voltage]] required corresponds to the thermodynamic "cost" of the overall reaction—for water splitting, that's 1.23V because that's the energy needed to break O-H bonds and form H-H and O=O bonds. Any voltage above this minimum goes into overcoming kinetic barriers (activation energy) and resistive losses, appearing as heat.
 
 ```
 THE ELECTROLYSIS CIRCUIT: Electron and Ion Flow

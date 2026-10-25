@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # WiFi Chip — How Radio Becomes Data
 
-> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]]
+> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
 
 > **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an [[learning/notes/quick-context/esp32|ESP32]]-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
 
@@ -290,7 +290,7 @@ ESP32-S3 WiFi RADIO SUBSYSTEM (inside the chip):
                                             └─────────┘
 ```
 
-The antenna on the ESP32-S3-MINI-1 module is a printed copper trace on the module's [[quick-context/pcb-printed-circuit-board|PCB]] — not a separate component. It's shaped as a meandered inverted-F antenna (MIFA), tuned to resonate at 2.4 GHz. The entire radio — from digital baseband to RF power amplifier — is integrated on the same [[quick-context/silicon-die|silicon die]], which is why a complete WiFi solution costs under $3.
+The antenna on the [[learning/notes/quick-context/esp32|ESP32]]-S3-MINI-1 module is a printed copper trace on the module's [[quick-context/pcb-printed-circuit-board|PCB]] — not a separate component. It's shaped as a meandered inverted-F antenna (MIFA), tuned to resonate at 2.4 GHz. The entire radio — from digital baseband to RF power amplifier — is integrated on the same [[quick-context/silicon-die|silicon die]], which is why a complete WiFi solution costs under $3.
 
 ### Code Example: Connecting to WiFi on the Uno R4
 
@@ -366,7 +366,7 @@ OFDM splits the 20 MHz WiFi channel into 48+ narrow subcarriers (each 312.5 kHz 
 **Q2:** Why does the Arduino Uno R4 WiFi use two separate chips instead of just the ESP32-S3?
 <details>
 <summary>Answer</summary>
-Backward compatibility and [[learning/notes/quick-context/voltage|voltage]] levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
+Backward compatibility and [[learning/notes/quick-context/voltage|voltage]] levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: [[learning/notes/quick-context/can-bus|CAN bus]], a true 12-bit DAC, and an on-chip [[learning/notes/quick-context/op-amp|op-amp]]. See: Concrete Example — Why Two Chips.
 </details>
 
 **Q3:** Your WiFi connection drops when you microwave popcorn. Why?

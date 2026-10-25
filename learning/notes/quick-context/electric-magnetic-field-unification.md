@@ -7,7 +7,7 @@ created: 2026-02-10
 
 > **Related:** [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/quick-context/electric-current|Electric Current]]
 
-> **TL;DR:** Current, [[learning/notes/quick-context/voltage|voltage]], electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[learning/notes/quick-context/electromagnetism|electromagnetism]]."
+> **TL;DR:** Current, [[learning/notes/quick-context/voltage|voltage]], electric fields, and magnetic fields are four aspects of one underlying reality: charges push through [[learning/notes/quick-context/voltage|voltage]] differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[learning/notes/quick-context/electromagnetism|electromagnetism]]."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
@@ -511,9 +511,9 @@ SUMMARY: The Four Quantities in Action
 
 - **[[quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
 
-- **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
+- **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "[[learning/notes/quick-context/electromagnetism|electromagnetism]]" is one word.
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the [[learning/notes/quick-context/tensor|tensor]] components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
 - **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 
@@ -534,7 +534,7 @@ SUMMARY: The Four Quantities in Action
 **The Lorentz force from a magnetic field is always perpendicular to velocity.** F = qv × B means the force direction is perpendicular to both v and B. Since F is perpendicular to v, the force does no work: W = F·d, but F ⊥ d (displacement is along velocity), so W = 0. No work means no change in kinetic energy, so speed stays constant. The electron curves but doesn't speed up or slow down. Only electric fields can add or remove energy from charges.
 </details>
 
-**Q3:** You measure 5V across a resistor and 5V across a capacitor in the same circuit. Are the electric fields inside them the same strength?
+**Q3:** You measure 5V across a [[learning/notes/quick-context/resistor|resistor]] and 5V across a [[learning/notes/quick-context/capacitor|capacitor]] in the same circuit. Are the electric fields inside them the same strength?
 <details>
 <summary>Answer</summary>
 **Almost certainly not.** Voltage is the integral of electric field over distance: V = E × d (for uniform field). If the resistor is 1 cm long and the capacitor gap is 0.1 mm, then E_resistor = 5V/0.01m = 500 V/m, while E_capacitor = 5V/0.0001m = 50,000 V/m—100× stronger! Same voltage, vastly different field strength, because of different dimensions.
@@ -549,7 +549,7 @@ SUMMARY: The Four Quantities in Action
 **Q5:** If electric and magnetic fields are "really the same thing" (as relativity says), why do circuits have separate capacitors (electric field storage) and inductors (magnetic field storage)?
 <details>
 <summary>Answer</summary>
-**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an inductor. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
+**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an [[learning/notes/quick-context/inductor|inductor]]. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
 </details>
 
 </details>

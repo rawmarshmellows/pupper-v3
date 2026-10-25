@@ -2,7 +2,7 @@
 term: Offset Voltage Drift (TCV_OS)
 created: 2026-06-07
 ---
-> **Related:** [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage (V_OS)]] | [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain (A_V)]] | [[learning/notes/micro-context/output-voltage-swing|Output Voltage Swing (V_OH / V_OL)]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110 (Battery Voltage ADC)]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]]
+> **Related:** [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage (V_OS)]] | [[learning/notes/micro-context/output-voltage-swing|Output Voltage Swing (V_OH / V_OL)]] | [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain (A_V)]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110 (Battery Voltage ADC)]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]]
 
 
 # Offset Voltage Drift ($TCV_{OS}$)

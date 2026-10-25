@@ -3,7 +3,7 @@ topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
 
-> **Related:** [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/bjt-specifications|BJT Specifications — The 5 Numbers That Decide If a Transistor Survives]] | [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/micro-context/mosfet|MOSFET]]
+> **Related:** [[learning/notes/quick-context/bjt-specifications|BJT Specifications — The 5 Numbers That Decide If a Transistor Survives]] | [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/micro-context/mosfet|MOSFET]] | [[learning/notes/quick-context/transistor-design-history|Transistor Design History]]
 
 > **TL;DR:** A BJT is a current-controlled [[quick-context/transistor|transistor]] made from three layers of [[quick-context/doped-silicon|doped silicon]] (NPN or PNP) where a small base current controls a much larger collector-emitter current—still widely used in analog amplification, power switching, and current mirrors despite MOSFETs dominating digital electronics.
 
@@ -19,7 +19,7 @@ MOSFETs are [[learning/notes/quick-context/voltage|voltage]]-controlled switches
 |------|------------|
 | **NPN / PNP** | The two BJT types. NPN: current flows collector→emitter when base current flows in. PNP: current flows emitter→collector when base current flows out. NPN is more common. |
 | **Base (B)** | The control terminal. A small current into the base (for NPN) turns the [[learning/notes/quick-context/transistor|transistor]] on. Unlike a [[learning/notes/micro-context/mosfet|MOSFET]] gate, the base draws continuous current. |
-| **Collector (C) / Emitter (E)** | The high-current terminals. Current flows from collector to emitter (NPN) when the transistor is on. The emitter has the arrow in the schematic symbol. |
+| **Collector (C) / Emitter (E)** | The high-current terminals. Current flows from collector to emitter (NPN) when the [[learning/notes/quick-context/transistor|transistor]] is on. The emitter has the arrow in the schematic symbol. |
 | **Current Gain (β / hFE)** | Ic = β × Ib. Typical β = 50-300. A BJT with β=100 and Ib=100μA passes Ic=10mA. β varies with temperature and current—not a precision parameter, so designs use the *minimum* guaranteed value (see [[quick-context/bjt-specifications|BJT specifications]]). |
 | **Saturation** | When the BJT is fully "on" (both junctions forward biased). Vce drops to ~0.1-0.3V. Used for switching. Contrast with the "active" region used for linear amplification. |
 
@@ -139,7 +139,7 @@ The base current requirement is the BJT's biggest drawback for digital: in TTL l
 
 ## BJT as a Switch: Driving a Motor from a Microcontroller
 
-A microcontroller GPIO pin can only source ~20 mA. A small motor needs 200 mA. A BJT bridges the gap.
+A [[learning/notes/micro-context/microcontroller|microcontroller]] GPIO pin can only source ~20 mA. A small motor needs 200 mA. A BJT bridges the gap.
 
 ```
 MOTOR DRIVER CIRCUIT
@@ -197,7 +197,7 @@ MOTOR DRIVER CIRCUIT
 
 - **[[quick-context/bjt-specifications]]** — The buyer's checklist: the five datasheet numbers (type, V_CEO, I_C, P_C, β) you verify before dropping a BJT into a circuit, with a worked 2N2222 relay-driver example. This note is the *physics*; that one is the *selection*.
 
-- **[[quick-context/transistor]]** — The MOSFET is the BJT's sibling. Understanding one helps understand the other. MOSFETs are voltage-controlled; BJTs are current-controlled. Same purpose (switching/amplification), different physics.
+- **[[quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] is the BJT's sibling. Understanding one helps understand the other. MOSFETs are [[learning/notes/quick-context/voltage|voltage]]-controlled; BJTs are current-controlled. Same purpose (switching/amplification), different physics.
 
 - **[[quick-context/doped-silicon]]** — BJTs are built from three alternating layers of N-type and P-type silicon. The thin base region is what makes amplification possible.
 
@@ -221,7 +221,7 @@ MOTOR DRIVER CIRCUIT
 **Q2:** Why does a BJT base always draw current, but a MOSFET gate doesn't?
 <details>
 <summary>Answer</summary>
-**The BJT base-emitter junction is a forward-biased diode.** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate [[learning/notes/quick-context/capacitance|capacitance]], but no DC current flows through it.
+**The BJT base-emitter junction is a forward-biased [[learning/notes/quick-context/diode|diode]].** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate [[learning/notes/quick-context/capacitance|capacitance]], but no DC current flows through it.
 </details>
 
 **Q3:** What does "saturation" mean for a BJT, and how is it different from MOSFET saturation?

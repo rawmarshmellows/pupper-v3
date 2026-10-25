@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 1 — PID Control (Single Joint)
 
-> **Related:** [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics (Gradient Descent)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics (3-DOF Leg)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]]
+> **Related:** [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics (Gradient Descent)]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics (3-DOF Leg)]]
 
 > **TL;DR:** Lab 1 introduces closed-loop motor control by having students implement and tune a PD controller for a single joint — computing torque from position and velocity error at 200 Hz — which becomes the foundational control primitive reused in every subsequent lab.
 

@@ -3,7 +3,7 @@ topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/isa-95-levels|ISA-95 Levels]] | [[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication: Manufacturing Process and Tools]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/isa-95-levels|ISA-95 Levels]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication: Manufacturing Process and Tools]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 

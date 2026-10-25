@@ -6,7 +6,7 @@ updated: 2026-02-21
 
 # PCB Layers
 
-> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL (Pick-and-Place)]] | [[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/pcb-printed-circuit-board|PCB (Printed Circuit Board)]]
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL (Pick-and-Place)]] | [[learning/notes/quick-context/pcb-printed-circuit-board|PCB (Printed Circuit Board)]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]]
 
 > **TL;DR:** A PCB is a sandwich of distinct functional layers — copper for carrying signals and power, soldermask for protection, silkscreen for labeling, paste mask for assembly, and drill files for holes — each manufactured and designed separately, then stacked together to form the complete board you see in a Gerber viewer.
 
@@ -405,7 +405,7 @@ The Gerber file list maps directly to the layer stack:
 
 - **[[quick-context/pcb-printed-circuit-board]]** — The parent topic covering PCB fundamentals: what traces, vias, pads, and planes do. This layers file details the individual Gerber files that describe each manufacturing step.
 
-- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow soldering process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
+- **[[quick-context/soldering]]** — The paste mask layer is designed specifically for the reflow [[learning/notes/quick-context/soldering|soldering]] process. Stencil printing, paste volume, and pad opening ratios directly determine solder joint quality.
 
 - **[[quick-context/grounding-and-return-paths]]** — Ground planes live on copper layers. On a 2-layer board, one copper layer often serves as a partial ground plane; on 4+ layer boards, dedicated inner layers provide unbroken ground planes for better return paths.
 

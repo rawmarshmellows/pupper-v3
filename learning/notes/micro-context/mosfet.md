@@ -3,7 +3,7 @@ term: MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor)
 created: 2026-02-25
 updated: 2026-06-08
 ---
-> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/bjt-specifications|BJT Specifications — The 5 Numbers That Decide If a Transistor Survives]] | [[learning/notes/quick-context/transistor|Transistor]]
+> **Related:** [[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/micro-context/bjt-mosfet-igbt|BJT vs MOSFET vs IGBT]] | [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/bjt-specifications|BJT Specifications — The 5 Numbers That Decide If a Transistor Survives]]
 
 
 # MOSFET
@@ -14,7 +14,7 @@ updated: 2026-06-08
 
 ## How It Works
 
-- Applying voltage to the gate creates an electric field through the oxide insulator, attracting charge carriers into the channel region.
+- Applying [[learning/notes/quick-context/voltage|voltage]] to the gate creates an electric field through the oxide insulator, attracting charge carriers into the channel region.
 - Above the threshold voltage ($V_{th}$), enough carriers accumulate to form a conductive channel between source and drain.
 - Removing the gate voltage collapses the channel, turning the [[learning/notes/quick-context/transistor|transistor]] off — no gate current flows because the oxide is an insulator.
 - In CMOS logic, NMOS and PMOS transistors are paired so that one is always off, minimizing static power consumption.
@@ -49,7 +49,7 @@ The gate plate, the thin oxide, and the silicon channel form a **parallel-plate 
    gate │ oxide │ channel  =  capacitor C_gate
 ```
 
-- **Turning on charges it.** Driving the gate to $V_{gs}$ moves a charge $Q = C_{gate}\,V_{gs}$ onto the plate — a brief *transient* current. Once the gate sits at a steady DC voltage, $dQ/dt = 0$ and the current stops: **a capacitor blocks DC.** Holding the channel on (or off) costs ~zero gate current.
+- **Turning on charges it.** Driving the gate to $V_{gs}$ moves a charge $Q = C_{gate}\,V_{gs}$ onto the plate — a brief *transient* current. Once the gate sits at a steady DC voltage, $dQ/dt = 0$ and the current stops: **a [[learning/notes/quick-context/capacitor|capacitor]] blocks DC.** Holding the channel on (or off) costs ~zero gate current.
 - **Only leakage crosses the oxide.** A real gate passes a tiny DC leakage — quantum tunneling through ultra-thin oxide, reverse-biased junction / ESD-[[learning/notes/quick-context/diode|diode]] leakage at the pin, and PCB surface leakage — totaling picoamps (and roughly doubling every ~10 °C).
 - **Switching still costs charge.** "No current" is a *DC* statement: every on→off→on cycle re-charges $C_{gate}$, which is the source of CMOS dynamic power $P = C V^2 f$.
 

@@ -11,7 +11,7 @@ created: 2026-03-13
 
 ## The Core Problem
 
-Industrial automation has historically required two separate worlds: [[quick-context/plc-vs-software|PLCs]] for deterministic real-time control (motor loops, safety interlocks, fieldbus I/O) and general-purpose computers for intelligence (vision, path planning, AI). Integrating them means OPC-UA bridges, data format translations, and duplicate hardware — a tax on every project. The promise of PREEMPT_RT + ROS2 is collapsing these into one platform: a Linux system deterministic enough for 1 ms servo loops *and* capable enough for neural networks and SLAM. As of 2025-2026, this is no longer theoretical — production hardware exists and real factories are running it — but the safety certification gap means the PLC isn't dead yet.
+Industrial automation has historically required two separate worlds: [[quick-context/plc-vs-software|PLCs]] for deterministic real-time control (motor loops, safety interlocks, fieldbus I/O) and general-purpose computers for intelligence (vision, path planning, AI). Integrating them means OPC-UA bridges, data format translations, and duplicate hardware — a tax on every project. The promise of [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2 is collapsing these into one platform: a Linux system deterministic enough for 1 ms servo loops *and* capable enough for neural networks and SLAM. As of 2025-2026, this is no longer theoretical — production hardware exists and real factories are running it — but the safety certification gap means the PLC isn't dead yet.
 
 ## 5 Essential Terms
 

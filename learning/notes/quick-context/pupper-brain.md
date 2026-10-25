@@ -3,7 +3,7 @@ topic: Pupper Control Board Rev 3.5 - The Robot's Brain
 created: 2026-01-27
 ---
 
-> **Related:** [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi 5 — Board Components]] | [[learning/notes/quick-context/ros2-architecture|ROS2 Architecture — Robot Operating System 2 for Pupper v3]] | [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)]]
+> **Related:** [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi 5 — Board Components]] | [[learning/notes/quick-context/ros2-architecture|ROS2 Architecture — Robot Operating System 2 for Pupper v3]] | [[learning/notes/quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]]
 
 > **TL;DR:** The Pupper control board is a custom PCB that combines dual STM32 microcontrollers, [[learning/notes/quick-context/can-bus|CAN bus]] communication to motors, a 9-axis IMU for balance sensing, and power regulation—all the electronics needed to make a quadruped robot walk, sense its orientation, and respond to commands.
 
@@ -34,7 +34,7 @@ When Pupper walks, here's what happens every millisecond (1000Hz control loop):
 
 4. **Command transmission**: The Pi sends joint targets to the MCU over SPI (via `/dev/spidev0.0` and `/dev/spidev0.1` at 6 MHz through the 40-pin header). The MCU relays these as CAN messages. Source: [`rt_spi.cpp`](https://github.com/Nate711/pupperv3-monorepo/blob/main/ros2_ws/src/control_board_hardware_interface/src/rt/rt_spi.cpp).
 
-5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential CAN bus signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
+5. **Motor communication**: The MAX3051 transceivers convert U5's digital signals into differential [[learning/notes/quick-context/can-bus|CAN bus]] signals. Each servo receives its position command, moves its motor, and sends back encoder feedback—all on the same 2-wire bus.
 
 6. **Audio feedback**: If enabled, U1 sends audio samples over I2S to the MAX98357A amplifier for sound output (beeps, status indicators).
 
@@ -185,7 +185,7 @@ These are decoupling capacitors, placed near each IC's power pins. When a chip s
 <details>
 <summary>Answer</summary>
 
-They form a voltage divider in the feedback network that sets the output voltage. The TPS54561 regulates to keep its feedback pin at 0.8V (internal reference). With R5 and R6 dividing the output: VOUT = 0.8V × (1 + 60.4k/11.5k) = 0.8V × 6.25 ≈ 5.0V. The odd precision values (not round numbers like 60kΩ) achieve the exact 5.0V target. See: [[micro-context/buck-converter]], [[micro-context/smd-resistor]].
+They form a [[learning/notes/quick-context/voltage|voltage]] divider in the feedback network that sets the output voltage. The TPS54561 regulates to keep its feedback pin at 0.8V (internal reference). With R5 and R6 dividing the output: VOUT = 0.8V × (1 + 60.4k/11.5k) = 0.8V × 6.25 ≈ 5.0V. The odd precision values (not round numbers like 60kΩ) achieve the exact 5.0V target. See: [[micro-context/buck-converter]], [[micro-context/smd-resistor]].
 </details>
 
 **Q4:** Why does the board use 4 CAN transceivers (MAX3051) when CAN is designed to have many devices on one bus?

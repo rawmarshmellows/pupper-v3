@@ -5,7 +5,7 @@ created: 2026-02-14
 
 # Subatomic Particles
 
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/quick-context/thermal-noise-electronics|Thermal Noise in Electronics]]
+> **Related:** [[learning/notes/quick-context/thermal-noise-electronics|Thermal Noise in Electronics]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]]
 
 > **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
@@ -191,7 +191,7 @@ INSIDE PROTONS AND NEUTRONS: QUARKS
 
 ## Why the Nucleus Doesn't Fly Apart
 
-Here's a puzzle: protons are all positively charged. Positive charges repel each other (electromagnetism). So why doesn't the nucleus explode?
+Here's a puzzle: protons are all positively charged. Positive charges repel each other ([[learning/notes/quick-context/electromagnetism|electromagnetism]]). So why doesn't the nucleus explode?
 
 ```
 THE NUCLEAR STABILITY PUZZLE

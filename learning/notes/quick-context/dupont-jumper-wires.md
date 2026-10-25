@@ -11,7 +11,7 @@ created: 2026-04-03
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[learning/notes/quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[learning/notes/quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require [[learning/notes/quick-context/soldering|soldering]] or expensive connector systems.
 
 ## 5 Essential Terms
 
@@ -257,7 +257,7 @@ The original Mini-PV used a separate beryllium copper spring for consistent tens
 **Q3:** You're powering 4 hobby servos through DuPont jumper wires from an Arduino's 5V pin. Each servo draws 300mA under load. What will go wrong and how would you fix it?
 <details>
 <summary>Answer</summary>
-Two problems: (1) Total current is 1.2A through a single 26 AWG DuPont wire, exceeding the practical 1A limit -- the wire will heat up and voltage will drop noticeably (~0.4-0.6V including wire resistance and clone contact resistance at two junctions). (2) The Arduino's onboard 5V regulator can only supply ~500mA total. Fix: use a separate 5V power supply with appropriately rated wiring (XT30 or screw terminals for the main bus), and distribute power to servos through 22 AWG or thicker wire. See: The Key Tension, Concrete Example.
+Two problems: (1) Total current is 1.2A through a single 26 AWG DuPont wire, exceeding the practical 1A limit -- the wire will heat up and [[learning/notes/quick-context/voltage|voltage]] will drop noticeably (~0.4-0.6V including wire resistance and clone contact resistance at two junctions). (2) The Arduino's onboard 5V regulator can only supply ~500mA total. Fix: use a separate 5V power supply with appropriately rated wiring (XT30 or screw terminals for the main bus), and distribute power to servos through 22 AWG or thicker wire. See: The Key Tension, Concrete Example.
 </details>
 
 **Q4:** Someone claims "DuPont connectors are rated for 3A, so they're fine for powering my 12V LED strip." What's wrong with this reasoning?

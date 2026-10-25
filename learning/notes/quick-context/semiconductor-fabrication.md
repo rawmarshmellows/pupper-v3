@@ -4,7 +4,7 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete]] | [[learning/notes/quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[learning/notes/micro-context/cnc-process-selection|CNC Process Selection]] | [[learning/notes/quick-context/robot-cell-integration-best-practices|Robot Cell Integration Best Practices, Tools, and VLM Applications]]
+> **Related:** [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete]] | [[learning/notes/quick-context/robot-cell-integration-best-practices|Robot Cell Integration Best Practices, Tools, and VLM Applications]] | [[learning/notes/quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[learning/notes/micro-context/cnc-process-selection|CNC Process Selection]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
@@ -394,7 +394,7 @@ REAL NUMBERS:
 </details>
 
 <details>
-<summary><strong>Concrete Example: Building a Transistor Gate (FEOL)</strong></summary>
+<summary><strong>Concrete Example: Building a [[learning/notes/quick-context/transistor|Transistor]] Gate (FEOL)</strong></summary>
 
 Let's trace how the gate of a single [[quick-context/transistor|FinFET transistor]] gets built in the "front-end-of-line" (FEOL) process:
 

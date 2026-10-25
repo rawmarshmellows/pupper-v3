@@ -6,7 +6,7 @@ updated: 2026-04-06
 
 # Embedded Communication Protocols
 
-> **Related:** [[learning/notes/quick-context/uart|UART — Universal Asynchronous Receiver/Transmitter]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C]] | [[learning/notes/micro-context/spi|SPI]] | [[learning/notes/micro-context/i2c|I2C]]
+> **Related:** [[learning/notes/quick-context/uart|UART — Universal Asynchronous Receiver/Transmitter]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c|Qwiic / STEMMA QT — Plug-and-Play I2C]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/micro-context/spi|SPI]] | [[learning/notes/micro-context/i2c|I2C]]
 
 > **TL;DR:** Embedded systems choose between a family of serial protocols — UART, [[micro-context/i2c|I2C]], [[micro-context/spi|SPI]], [[quick-context/can-bus|CAN]], RS-232, RS-485, 1-Wire, USB, I3C, and Ethernet — each optimizing a different point in the tradeoff space of speed, distance, wire count, noise immunity, and complexity. The Pupper v3 uses four simultaneously: SPI between MCUs, I2C for sensors, CAN for motors, and UART for debug — because no single protocol is best at everything. https://www.youtube.com/watch?v=0rlpwVNyBO8
 
@@ -20,7 +20,7 @@ A [[learning/notes/micro-context/microcontroller|microcontroller]] needs to talk
 |------|------------|
 | **Synchronous vs. Asynchronous** | Synchronous protocols (SPI, I2C, I3C) send a clock signal alongside data so both sides stay in lockstep. Asynchronous protocols (UART, RS-232, RS-485, CAN) pre-agree on a baud rate and each side runs its own clock — simpler wiring but requires matched clock accuracy. |
 | **Full-duplex vs. Half-duplex** | Full-duplex (SPI, UART, RS-232, USB 3.x) can send and receive simultaneously on separate wires. Half-duplex (I2C, I3C, CAN, RS-485, 1-Wire) shares the same wire(s) for both directions, taking turns. |
-| **Differential signaling** | Encoding data as the [[learning/notes/quick-context/voltage|voltage]] *difference* between two wires rather than voltage relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN, RS-485, USB, and Ethernet use this; UART, I2C, SPI, and 1-Wire don't. |
+| **Differential signaling** | Encoding data as the [[learning/notes/quick-context/voltage|voltage]] *difference* between two wires rather than [[learning/notes/quick-context/voltage|voltage]] relative to ground. Electromagnetic noise affects both wires equally and cancels when the receiver subtracts them, enabling long noisy cable runs. CAN, RS-485, USB, and Ethernet use this; UART, I2C, SPI, and 1-Wire don't. |
 | **Bus topology** | How multiple devices connect. Point-to-point (UART, RS-232, USB): one sender, one receiver. Multi-drop bus (I2C, I3C, CAN, RS-485, 1-Wire): many devices on shared wires. Star (SPI): one master with a dedicated select line per device. |
 | **Baud rate / Bit rate** | The number of signal transitions (baud) or data bits (bit rate) per second. For most embedded protocols these are equal. UART's 115200 baud = 115.2 kbps; CAN's 1 Mbps means each bit is 1 $\mu$s wide. USB uses encoding schemes where baud and bit rate differ. |
 
@@ -541,7 +541,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 
 - **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts single-ended MCU signals to differential [[learning/notes/quick-context/can-bus|CAN bus]] voltages. Every CAN node needs one.
 
-- **[[micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a CAN bus to prevent signal reflections.
+- **[[micro-context/can-bus-termination]]** — The 120$\Omega$ termination resistors required at both ends of a [[learning/notes/quick-context/can-bus|CAN bus]] to prevent signal reflections.
 
 - **[[quick-context/pupper-brain]]** — The full dual-MCU + Raspberry Pi architecture showing all four protocols in action: SPI between MCUs, I2C to sensors, CAN to motors, UART for debug.
 

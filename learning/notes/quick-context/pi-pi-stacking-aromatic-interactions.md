@@ -286,7 +286,7 @@ Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacki
 **Q4:** You're designing a new polymer for high-temperature applications. Would you want more or fewer aromatic rings in your monomer structure? Explain the tradeoff.
 <details>
 <summary>Answer</summary>
-**More aromatic rings** would increase pi-pi stacking, raising the glass transition temperature and making the material more rigid at higher temperatures—good for heat resistance. However, this also means higher processing temperatures (harder to melt and mold), increased risk of thermal degradation during manufacturing, and greater shrinkage/warping. The tradeoff is: heat-resistant in use vs. difficult to manufacture. Engineers balance this by choosing the minimum aromatic content needed to meet thermal requirements.
+**More aromatic rings** would increase pi-pi stacking, raising the [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] and making the material more rigid at higher temperatures—good for heat resistance. However, this also means higher processing temperatures (harder to melt and mold), increased risk of thermal degradation during manufacturing, and greater shrinkage/warping. The tradeoff is: heat-resistant in use vs. difficult to manufacture. Engineers balance this by choosing the minimum aromatic content needed to meet thermal requirements.
 </details>
 
 **Q5:** Compare pi-pi stacking to [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] and [[quick-context/van-der-waals-forces|van der Waals forces]]. Where does pi-pi stacking fit in the intermolecular force hierarchy, and why?

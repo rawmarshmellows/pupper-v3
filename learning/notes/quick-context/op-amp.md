@@ -3,7 +3,7 @@ topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
 
-> **Related:** [[learning/notes/quick-context/inside-the-triangle|Inside the Triangle]] | [[learning/notes/quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[learning/notes/micro-context/i2s-audio-amplifier|I2S Audio Amplifier]]
+> **Related:** [[learning/notes/quick-context/high-gain-amplifier-stage|High-Gain Amplifier Stage]] | [[learning/notes/quick-context/inside-the-triangle|Inside the Triangle]] | [[learning/notes/micro-context/i2s-audio-amplifier|I2S Audio Amplifier]]
 
 > **TL;DR:** An op-amp is a high-gain differential amplifier IC that, with [[quick-context/resistor|resistor]] feedback networks, becomes a precision building block for amplification, filtering, and signal conditioning—it's the universal analog component, as fundamental to analog circuits as the [[quick-context/transistor|transistor]] is to digital ones.
 
@@ -19,7 +19,7 @@ A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. Y
 |------|------------|
 | **Inverting (-) / Non-inverting (+) inputs** | The two inputs. The op-amp amplifies the difference between them: Vout = A × (V+ - V-), where A is the open-loop gain (~100,000). |
 | **Open-loop gain (A)** | The raw gain without feedback. Enormous (10⁵) but useless alone—too high, too variable, too sensitive. Feedback tames it into precise, controlled gain. |
-| **Negative feedback** | Connecting the output back to the inverting input through a resistor network. This is what makes op-amp circuits predictable. It trades excess gain for stability and precision. |
+| **Negative feedback** | Connecting the output back to the inverting input through a [[learning/notes/quick-context/resistor|resistor]] network. This is what makes op-amp circuits predictable. It trades excess gain for stability and precision. |
 | **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the [[learning/notes/quick-context/voltage|voltage]] difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
 | **Rail-to-rail** | An op-amp whose output can swing to within millivolts of its supply voltages. Standard op-amps can only reach within ~1-2V of the rails, wasting headroom. |
 
@@ -603,9 +603,9 @@ SIGNAL CONDITIONING CHAIN
 
 - **[[quick-context/differential-pair]]** — The [[quick-context/differential-pair|differential pair]] is the op-amp's input stage. Two matched transistors sharing a [[learning/notes/micro-context/tail-current|tail current]] source convert V(+) - V(-) into a current difference. Understanding the pair explains the golden rules.
 
-- **[[quick-context/high-gain-amplifier-stage]]** — The [[quick-context/high-gain-amplifier-stage|high-gain amplifier stage]] (current mirror active load) is what gives the op-amp its enormous open-loop gain. The compensation [[learning/notes/quick-context/capacitor|capacitor]] at this stage's output node is what makes op-amps stable in feedback—and what makes them slow as comparators.
+- **[[quick-context/high-gain-amplifier-stage]]** — The [[quick-context/high-gain-amplifier-stage|high-gain amplifier stage]] ([[learning/notes/micro-context/current-mirror|current mirror]] active load) is what gives the op-amp its enormous open-loop gain. The compensation [[learning/notes/quick-context/capacitor|capacitor]] at this stage's output node is what makes op-amps stable in feedback—and what makes them slow as comparators.
 
-- **[[quick-context/transistor]]** — Op-amps are built from dozens of transistors internally. Understanding transistor amplification explains how op-amps achieve their high gain.
+- **[[quick-context/transistor]]** — Op-amps are built from dozens of transistors internally. Understanding [[learning/notes/quick-context/transistor|transistor]] amplification explains how op-amps achieve their high gain.
 
 - **[[quick-context/resistor]]** — Resistor ratios determine op-amp circuit gain. The precision of your gain depends on resistor tolerance, not the op-amp. Use ±1% metal film resistors for ±1% gain accuracy.
 
@@ -613,9 +613,9 @@ SIGNAL CONDITIONING CHAIN
 
 - **[[quick-context/electric-current]]** — The golden rule "no current into the inputs" means all current through the input resistor must flow through the feedback resistor—this is how you derive gain formulas using Kirchhoff's current law.
 
-- **[[quick-context/pwm-controller-circuit]]** — Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output voltage to a reference and adjusts duty cycle.
+- **[[quick-context/pwm-controller-circuit]]** — Inside every [[learning/notes/micro-context/buck-converter|buck converter]] IC, an op-amp serves as the error amplifier in the PWM feedback loop — a real-world application of negative feedback where the op-amp compares output [[learning/notes/quick-context/voltage|voltage]] to a reference and adjusts duty cycle.
 
-- **[[quick-context/comparator]]** — A [[learning/notes/quick-context/comparator|comparator]] shares the same differential-pair input stage as an op-amp but is optimized for speed and digital output. Removing the op-amp's negative feedback and compensation capacitor gives you a comparator—intentionally.
+- **[[quick-context/comparator]]** — A [[learning/notes/quick-context/comparator|comparator]] shares the same differential-pair input stage as an op-amp but is optimized for speed and digital output. Removing the op-amp's negative feedback and compensation [[learning/notes/quick-context/capacitor|capacitor]] gives you a [[learning/notes/quick-context/comparator|comparator]]—intentionally.
 
 </details>
 

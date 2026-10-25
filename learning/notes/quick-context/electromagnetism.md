@@ -247,7 +247,7 @@ carrying energy from the sun to Earth across 150 million km of vacuum.
 
 ## How a Generator Creates Electricity
 
-A generator converts mechanical rotation into electrical current using electromagnetic induction. This is how 99%+ of grid electricity is produced.
+A generator converts mechanical rotation into electrical current using [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]. This is how 99%+ of grid electricity is produced.
 
 ```
 GENERATOR OPERATION — Step by Step
@@ -345,7 +345,7 @@ GENERATOR OPERATION — Step by Step
 
 - **[[quick-context/coil-magnetic-field]]** — Detailed treatment of [[learning/notes/quick-context/coil-magnetic-field|why current through a coil creates a magnetic field]] and how to calculate field strength using B = μ₀nI. Includes solenoid field derivation and practical electromagnet design.
 
-- **[[quick-context/inductor]]** — An [[learning/notes/quick-context/inductor|inductor]] stores energy in a magnetic field created by current through a coil. The inductor equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a voltage opposing the change.
+- **[[quick-context/inductor]]** — An [[learning/notes/quick-context/inductor|inductor]] stores energy in a magnetic field created by current through a coil. The [[learning/notes/quick-context/inductor|inductor]] equation V = L×dI/dt is a direct application of Faraday's law: changing current changes the magnetic flux, which induces a [[learning/notes/quick-context/voltage|voltage]] opposing the change.
 
 - **[[quick-context/electricity-generation]]** — Electromagnetic induction is the dominant method for generating grid electricity. Generators, turbines, and the energy conversion chain all depend on Faraday's law.
 
@@ -361,7 +361,7 @@ GENERATOR OPERATION — Step by Step
 
 - **Special Relativity** — Einstein showed that electric and magnetic fields are the same phenomenon viewed from different reference frames. A moving charge sees a magnetic field as an electric field, and vice versa. This is why magnetism is sometimes called "relativistic electricity."
 
-- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] that packages both fields into a single object. Maxwell's four equations reduce to two tensor equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
+- **[[quick-context/faraday-tensor]]** — The mathematical formalization of the E/B unity: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] that packages both fields into a single object. Maxwell's four equations reduce to two [[learning/notes/quick-context/tensor|tensor]] equations, and Lorentz transformations automatically handle how E and B mix between reference frames.
 
 - **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi signals are electromagnetic waves at 2.4 GHz. A WiFi chip modulates data onto these waves and radiates them via an antenna — a direct, everyday application of Maxwell's prediction that changing electric fields create self-propagating EM waves.
 
@@ -379,7 +379,7 @@ GENERATOR OPERATION — Step by Step
 **Q2:** Why does an [[quick-context/inductor|inductor]] oppose changes in current?
 <details>
 <summary>Answer</summary>
-**Faraday's Law and Lenz's Law.** When current through an inductor changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
+**Faraday's Law and [[learning/notes/quick-context/lenzs-law|Lenz's Law]].** When current through an inductor changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a voltage (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
 </details>
 
 **Q3:** A transformer has 100 turns on the primary coil and 1000 turns on the secondary. If you apply 12V AC to the primary, what voltage appears on the secondary?

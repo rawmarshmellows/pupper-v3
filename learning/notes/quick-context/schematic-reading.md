@@ -21,7 +21,7 @@ You download a datasheet or open-source hardware project and need to understand 
 | **Reference Designator** | A unique label identifying each component: R1, R2 (resistors), C1, C2 (capacitors), U1 (ICs), Q1 (transistors), D1 (diodes), L1 (inductors), J1 (connectors). |
 | **Net** | An electrical connection between two or more pins. All points on the same net are electrically connected, even if no line is drawn between them (connected by net labels). |
 | **Value Annotation** | The component value written next to the symbol: "10kΩ", "100nF", "3.3V". Tells you what specific part to use. |
-| **Power Rail** | A named voltage supply (VCC, 3V3, 5V, VDD) or ground (GND, VSS) symbol. Components connect to these without explicit wires, reducing visual clutter. |
+| **Power Rail** | A named [[learning/notes/quick-context/voltage|voltage]] supply (VCC, 3V3, 5V, VDD) or ground (GND, VSS) symbol. Components connect to these without explicit wires, reducing visual clutter. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -186,7 +186,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — [[learning/notes/micro-context/mosfet|MOSFET]] and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[learning/notes/micro-context/mosfet|MOSFET]] and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel ([[learning/notes/micro-context/mosfet|MOSFET]]). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 
@@ -202,7 +202,7 @@ SIMPLE LED BLINK CIRCUIT
 **Q1:** You see "R47 10kΩ" on a schematic. What does each part mean?
 <details>
 <summary>Answer</summary>
-**R = [[learning/notes/quick-context/resistor|resistor]], 47 = the 47th resistor in this design, 10kΩ = its value (10,000 ohms).** R is the reference designator prefix for resistors. The number uniquely identifies this specific resistor. The value tells you what to install. Combined, they let you find, specify, and communicate about any component unambiguously.
+**R = [[learning/notes/quick-context/resistor|resistor]], 47 = the 47th [[learning/notes/quick-context/resistor|resistor]] in this design, 10kΩ = its value (10,000 ohms).** R is the reference designator prefix for resistors. The number uniquely identifies this specific resistor. The value tells you what to install. Combined, they let you find, specify, and communicate about any component unambiguously.
 </details>
 
 **Q2:** Two points on a schematic both have the label "SDA" but no wire between them. Are they connected?

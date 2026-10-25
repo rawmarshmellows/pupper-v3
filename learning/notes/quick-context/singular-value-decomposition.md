@@ -256,13 +256,13 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] of corresponding point sets
 - **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a [[learning/notes/quick-context/similarity-transform|similarity transform]] (rotation + scale + translation)
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the [[learning/notes/quick-context/absolute-orientation|absolute orientation problem]]
-- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
+- **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] is central to point cloud alignment; SVD of the covariance matrix yields PCA
 - **Principal Component Analysis (PCA)** -- PCA is SVD applied to the centered data matrix; the principal components are the right singular vectors, and the explained variance comes from the squared singular values
 - **Polar decomposition** -- Every matrix factors as $A = QS$ (orthogonal times symmetric positive semi-definite); SVD gives you this directly since $Q = UV^T$ and $S = V\Sigma V^T$
 - **Condition number** -- $\kappa(A) = \sigma_1 / \sigma_r$, the ratio of largest to smallest singular value; measures how sensitive $Ax = b$ is to perturbations
 - **Eckart-Young-Mirsky theorem** -- Proves that the truncated SVD gives the optimal low-rank matrix approximation in both Frobenius and spectral norms
 - **Moore-Penrose pseudoinverse** -- Computed via SVD as $A^+ = V\Sigma^+ U^T$; generalizes matrix inversion to non-square and rank-deficient matrices
-- **Procrustes analysis** -- The statistical version of the absolute orientation problem; SVD provides the optimal orthogonal transformation between shape configurations
+- **Procrustes analysis** -- The statistical version of the [[learning/notes/quick-context/absolute-orientation|absolute orientation problem]]; SVD provides the optimal orthogonal transformation between shape configurations
 
 </details>
 

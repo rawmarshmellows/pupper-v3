@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[learning/notes/quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] | [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/micro-context/plc-programmable-logic-controller|PLC (Programmable Logic Controller)]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/micro-context/plc-programmable-logic-controller|PLC (Programmable Logic Controller)]] | [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
@@ -121,7 +121,7 @@ The key insight: ROS does the smart stuff (vision, planning) on commodity hardwa
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels (PREEMPT_RT, Xenomai), careful architecture, and loses most safety certifications.
+The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels ([[learning/notes/quick-context/preempt-rt|PREEMPT_RT]], Xenomai), careful architecture, and loses most safety certifications.
 
 The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Windows with a real-time hypervisor, ROS2 added deterministic DDS transports, and "soft PLCs" blur the line entirely. But in regulated industries (automotive, pharma, food), auditors still want to see traditional PLC programs for anything safety-related, regardless of technical capability.
 

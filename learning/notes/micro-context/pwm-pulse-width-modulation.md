@@ -13,7 +13,7 @@ updated: 2026-03-27
 ## How It Works
 
 - A timer peripheral generates a square wave at a fixed frequency, toggling an output pin between fully ON (rail [[learning/notes/quick-context/voltage|voltage]]) and fully OFF (ground).
-- The duty cycle (fraction of time spent ON) is set by a compare register — changing this value changes the average output voltage.
+- The duty cycle (fraction of time spent ON) is set by a compare register — changing this value changes the average output [[learning/notes/quick-context/voltage|voltage]].
 - The load's natural inertia (mechanical, thermal, or an LC filter) smooths the rapid switching into a steady average.
 - Because the switch is always fully ON or fully OFF, very little power is wasted in the switch itself (unlike a linear regulator in the resistive middle).
 

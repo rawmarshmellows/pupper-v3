@@ -3,7 +3,7 @@ topic: Electromigration
 created: 2026-01-26
 ---
 
-> **Related:** [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[learning/notes/quick-context/electric-current|Electric Current]] | [[learning/notes/quick-context/dupont-jumper-wires|DuPont Jumper Wires]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]]
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/quick-context/data-bus-and-arbitration|The Data Bus and Bus Arbitration — How Chips Share Wires]] | [[learning/notes/quick-context/dupont-jumper-wires|DuPont Jumper Wires]] | [[learning/notes/quick-context/electric-current|Electric Current]]
 
 > **TL;DR:** Electromigration is the gradual physical movement of metal atoms in a wire caused by momentum transfer from flowing electrons—at high current densities, electrons literally "push" atoms downstream, creating voids that break wires and hillocks that short-circuit neighbors, setting the fundamental limit on how much current chip wires can carry.
 

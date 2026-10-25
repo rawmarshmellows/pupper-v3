@@ -4,7 +4,7 @@ created: 2026-01-25
 updated: 2026-02-21
 ---
 
-> **Related:** [[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/bjt-specifications|BJT Specifications — The 5 Numbers That Decide If a Transistor Survives]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/micro-context/mosfet|MOSFET]]
+> **Related:** [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[learning/notes/micro-context/mosfet|MOSFET]] | [[learning/notes/quick-context/bjt-specifications|BJT Specifications — The 5 Numbers That Decide If a Transistor Survives]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
 
 > **TL;DR:** A transistor is an electrically-controlled switch with no moving parts, made of specially-treated silicon, that can switch billions of times per second at nanometer scales—enabling all modern digital electronics by combining into logic gates that perform computation.
 
@@ -30,11 +30,11 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 <details>
 <summary><strong>How It Works</strong></summary>
 
-A transistor is fundamentally a **voltage-controlled switch**. Apply a small voltage to the gate, and the transistor "closes" (conducts electricity between source and drain). Remove the gate voltage, and the transistor "opens" (blocks current). This simple on/off behavior is the foundation of all digital computing: on = 1, off = 0.
+A transistor is fundamentally a **[[learning/notes/quick-context/voltage|voltage]]-controlled switch**. Apply a small voltage to the gate, and the transistor "closes" (conducts electricity between source and drain). Remove the gate voltage, and the transistor "opens" (blocks current). This simple on/off behavior is the foundation of all digital computing: on = 1, off = 0.
 
 The magic happens through semiconductor physics. Pure silicon is a poor conductor. But by adding tiny amounts of impurities (doping), we create two types of silicon: n-type (with extra free electrons that can carry current) and p-type (with "holes" where electrons are missing, which also carry current by moving in the opposite direction). A transistor arranges these differently-doped regions so that the gate can create or destroy a conductive path.
 
-**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate capacitor. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
+**The secret weapon: The oxide layer is a [[quick-context/capacitor|capacitor]].** The gate-oxide-semiconductor stack forms a parallel-plate [[learning/notes/quick-context/capacitor|capacitor]]. The metal gate is one plate, the semiconductor surface is the other "plate," and the thin oxide (SiO₂, essentially glass) is the dielectric insulator between them. This is called a **MOS capacitor** (Metal-Oxide-Semiconductor capacitor), and it is the fundamental building block that makes transistor switching possible.
 
 ```
 THE TRANSISTOR: A Voltage-Controlled Switch
@@ -497,7 +497,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 
 - **Moore's Law** - The observation that transistor density doubles roughly every two years. This exponential growth has driven 60 years of computing progress but is now slowing as we approach atomic limits.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar MOSFET, FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from point-contact (1947) through BJT, planar [[learning/notes/micro-context/mosfet|MOSFET]], FinFET, to Gate-All-Around. Each generation solved the previous one's scaling limits by gaining better control over the channel.
 
 </details>
 
@@ -525,7 +525,7 @@ NAND gates are "functionally complete" - any Boolean logic function can be expre
 **Q4:** If making the oxide layer thinner increases [[learning/notes/quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
-As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher capacitance = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
+As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher [[learning/notes/quick-context/capacitance|capacitance]] = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
 </details>
 
 **Q5:** A colleague claims that transistors work by "current flowing through the gate to control the channel." Explain why this is fundamentally wrong and what actually happens.

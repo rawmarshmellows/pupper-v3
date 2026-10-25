@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 
-> **Related:** [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)]] | [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]]
+> **Related:** [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-lab4-gait-control|Pupper Lab 4 — Gait Control (Trotting Quadruped)]] | [[learning/notes/quick-context/pupper-v3-labs|Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)]]
 
 > **TL;DR:** Lab 7 closes the autonomy loop by adding camera-based object detection (YOLOv5 on a Hailo edge accelerator) and a three-state tracking controller (IDLE/SEARCH/TRACK) so the Pupper can autonomously find and follow any of the 80 COCO object classes on spoken command, integrating every subsystem from Labs 1-6 into a single perception-planning-control pipeline.
 

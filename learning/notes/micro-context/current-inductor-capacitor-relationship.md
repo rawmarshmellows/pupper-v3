@@ -3,12 +3,12 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/micro-context/current-mirror|Current Mirror]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/micro-context/quiescent-supply-current|Quiescent Supply Current (I_S)]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/quick-context/electromigration|Electromigration]] | [[learning/notes/micro-context/current-mirror|Current Mirror]]
 
 
 # Current Behavior with Inductors vs Capacitors
 
-**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, [[learning/notes/quick-context/voltage|voltage]] can jump). Capacitors oppose [[learning/notes/quick-context/voltage|voltage]] *changes* (voltage stays steady, current can jump). They're exact duals.
+**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, [[learning/notes/quick-context/voltage|voltage]] can jump). Capacitors oppose [[learning/notes/quick-context/voltage|voltage]] *changes* ([[learning/notes/quick-context/voltage|voltage]] stays steady, current can jump). They're exact duals.
 
 ## How It Works
 

@@ -17,7 +17,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 
 | Term | Definition |
 |------|------------|
-| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step voltage up for efficient long-distance transmission and down for safe household use. |
+| **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step [[learning/notes/quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive voltage to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
 | **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
@@ -43,7 +43,7 @@ AC from the wall (e.g. 120V, 60 Hz):
 
 ### Step 2: The PN Junction -- Forward and Reverse Bias
 
-A diode is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
+A [[learning/notes/quick-context/diode|diode]] is a PN junction: P-type silicon (excess holes) meets N-type (excess electrons). A depletion zone forms at the boundary with a built-in field of ~0.7V.
 
 ```
 Forward bias: current flows           Reverse bias: current blocked
@@ -137,7 +137,7 @@ After bridge (bumpy):            + Capacitor (smooth):
  still pulsating                  nearly flat DC output
 ```
 
-The RC time constant (R_load x C) determines how much ripple remains. Bigger capacitor or lighter load = smoother DC. Full-wave rectification helps too -- the capacitor only has to bridge half the gap compared to half-wave.
+The RC time constant (R_load x C) determines how much ripple remains. Bigger [[learning/notes/quick-context/capacitor|capacitor]] or lighter load = smoother DC. Full-wave rectification helps too -- the capacitor only has to bridge half the gap compared to half-wave.
 
 </details>
 
@@ -231,7 +231,7 @@ Two diodes are always in the current path (one on each side of the bridge). Each
 **Q5:** You have a full-bridge rectifier feeding a smoothing capacitor. The load draws more current. What happens to the DC output quality, and why?
 <details>
 <summary>Answer</summary>
-The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the capacitance. To reduce ripple under heavier load, you need a larger capacitor.
+The ripple voltage increases. Higher load current discharges the capacitor faster between rectified peaks, so the voltage droops more before the next peak recharges it. The ripple is approximately V_ripple = I_load / (f * C), where f is the ripple frequency (2x line frequency for full-wave) and C is the [[learning/notes/quick-context/capacitance|capacitance]]. To reduce ripple under heavier load, you need a larger capacitor.
 </details>
 
 </details>

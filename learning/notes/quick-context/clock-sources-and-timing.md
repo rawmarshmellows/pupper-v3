@@ -5,7 +5,7 @@ created: 2026-03-29
 
 # Clock Sources and Timing
 
-> **Related:** [[learning/notes/micro-context/clock-source|Clock Source]] | [[learning/notes/micro-context/clock-edges|Clock Edge]] | [[learning/notes/micro-context/clock-speed|Clock Speed]] | [[learning/notes/micro-context/clock-speed-vs-temperature|Clock Speed vs Temperature]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]]
+> **Related:** [[learning/notes/micro-context/clock-source|Clock Source]] | [[learning/notes/micro-context/clock-speed|Clock Speed]] | [[learning/notes/micro-context/clock-edges|Clock Edge]] | [[learning/notes/micro-context/clock-speed-vs-temperature|Clock Speed vs Temperature]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit|Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage]]
 
 > **TL;DR:** A [[learning/notes/micro-context/microcontroller|microcontroller]]'s clock chain starts with a frequency source ([[learning/notes/quick-context/rc-oscillator|RC oscillator]], [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]], or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising [[learning/notes/micro-context/clock-edges|clock edge]] triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
 
@@ -17,9 +17,9 @@ Every digital circuit needs a heartbeat -- a precise, repeating signal that tell
 
 | Term | Definition |
 |------|------------|
-| **Clock Source** | The component that generates the base frequency reference -- either an on-chip [[quick-context/rc-oscillator|RC oscillator]] (HSI), an external [[micro-context/ceramic-resonator|ceramic resonator]], or a [[micro-context/crystal-oscillator|quartz crystal]] (HSE). The Pupper v3 uses an 8 MHz ceramic resonator. |
+| **[[learning/notes/micro-context/clock-source|Clock Source]]** | The component that generates the base frequency reference -- either an on-chip [[quick-context/rc-oscillator|RC oscillator]] (HSI), an external [[micro-context/ceramic-resonator|ceramic resonator]], or a [[micro-context/crystal-oscillator|quartz crystal]] (HSE). The Pupper v3 uses an 8 MHz [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]]. |
 | **PLL (Phase-Locked Loop)** | An on-chip circuit that multiplies the low base frequency up to operating speed. The Pupper's STM32F446 multiplies 8 MHz $\times$ 22.5 = 180 MHz. The PLL's job is speed; the source's job is stability. |
-| **Clock Edge** | The precise moment when the clock signal transitions between states -- rising (0->1) or falling (1->0). [[micro-context/clock-edges|Flip-flops and registers]] capture data only at edges, ignoring the messy analog transitions in between. |
+| **[[learning/notes/micro-context/clock-edges|Clock Edge]]** | The precise moment when the clock signal transitions between states -- rising (0->1) or falling (1->0). [[micro-context/clock-edges|Flip-flops and registers]] capture data only at edges, ignoring the messy analog transitions in between. |
 | **SYSCLK / Bus Dividers** | The PLL output (SYSCLK) is too fast for some peripherals, so it's divided down: APB1 at $\div 4$ (45 MHz max), APB2 at $\div 2$ (90 MHz max) on the STM32F446. |
 | **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges [[learning/notes/quick-context/transistor|transistor]] gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with [[learning/notes/quick-context/voltage|voltage]] -- the fundamental reason CPUs throttle when hot. |
 
@@ -135,7 +135,7 @@ $$P_{dynamic} = C \times V^2 \times f$$
 
 Where:
 - $C$ = total switched [[learning/notes/quick-context/capacitance|capacitance]] (fixed by chip design)
-- $V$ = supply voltage (dominates because it's squared)
+- $V$ = supply [[learning/notes/quick-context/voltage|voltage]] (dominates because it's squared)
 - $f$ = clock frequency (linear relationship)
 
 ```
@@ -166,7 +166,7 @@ THE HEAT-SPEED FEEDBACK LOOP
 
 The clock source selection is a four-way tradeoff between accuracy, cost, power, and temperature stability:
 
-**Accuracy vs. Cost:** A quartz crystal gives ±0.002% accuracy but needs two external load capacitors (board space + cost). A ceramic resonator gives ±0.5% with built-in caps (3-pin, no external parts). An RC oscillator is free but drifts ±1-5%, especially over temperature.
+**Accuracy vs. Cost:** A quartz crystal gives ±0.002% accuracy but needs two external load capacitors (board space + cost). A ceramic resonator gives ±0.5% with built-in caps (3-pin, no external parts). An [[learning/notes/quick-context/rc-oscillator|RC oscillator]] is free but drifts ±1-5%, especially over temperature.
 
 **Speed vs. Thermal Budget:** $P = CV^2f$ means every MHz of [[learning/notes/micro-context/clock-speed|clock speed]] costs power and generates heat. The STM32F446 at 180 MHz consumes ~100 mA; at 90 MHz it would consume roughly half that. The Pupper runs at full 180 MHz because motor control at 1 kHz loop rate demands the throughput, but this means the thermal design must handle the heat.
 
@@ -233,7 +233,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 - **[[micro-context/clock-source|Clock Source]]** -- HSI vs HSE selection, PLL multiplication, the full clock tree from source to peripheral buses.
 - **[[micro-context/crystal-oscillator|Crystal Oscillator]]** -- Quartz crystal mechanics, ±20 ppm accuracy, why crystals need external load capacitors.
 - **[[micro-context/ceramic-resonator|Ceramic Resonator]]** -- Piezoelectric ceramic resonance, ±0.5% accuracy, the muRata part on the Pupper v3 BOM.
-- **[[micro-context/clock-speed|Clock Speed]]** -- Frequency as edges per second, signal settling time constraints, why clock speed has a ceiling.
+- **[[micro-context/clock-speed|Clock Speed]]** -- Frequency as edges per second, signal settling time constraints, why [[learning/notes/micro-context/clock-speed|clock speed]] has a ceiling.
 - **[[micro-context/clock-speed-vs-temperature|Clock Speed vs Temperature]]** -- $P = CV^2f$, thermal throttling, the heat-speed feedback loop.
 - **[[micro-context/clock-edges|Clock Edges]]** -- Rising/falling edges as the atomic unit of digital computation, edge-triggered flip-flop discipline.
 
@@ -260,7 +260,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 <details>
 <summary>Answer</summary>
 
-8 MHz is far too slow for the Pupper's workload. At 1 kHz motor control loop rate, the MCU has only 1 ms per loop iteration to run PID control, read sensors via I2C/SPI, process CAN bus messages, and update PWM outputs. At 8 MHz that's only 8,000 clock cycles per iteration -- insufficient for floating-point sensor fusion and multi-axis PID. The PLL multiplies the 8 MHz reference to 180 MHz, giving 180,000 cycles per iteration. The resonator provides a *stable reference frequency*; the PLL provides *speed*. See: Concrete Example.
+8 MHz is far too slow for the Pupper's workload. At 1 kHz motor control loop rate, the MCU has only 1 ms per loop iteration to run PID control, read sensors via I2C/SPI, process [[learning/notes/quick-context/can-bus|CAN bus]] messages, and update PWM outputs. At 8 MHz that's only 8,000 clock cycles per iteration -- insufficient for floating-point sensor fusion and multi-axis PID. The PLL multiplies the 8 MHz reference to 180 MHz, giving 180,000 cycles per iteration. The resonator provides a *stable reference frequency*; the PLL provides *speed*. See: Concrete Example.
 </details>
 
 **Q2:** The Pupper uses ceramic resonators (±0.5%) instead of quartz crystals (±0.002%). Under what condition would this be a problem?
@@ -298,7 +298,7 @@ About 3x more power -- nearly triple. The frequency doubling contributes 2x, and
 <details>
 <summary>Answer</summary>
 
-**Advantages:** A single crystal oscillator module would give both MCUs phase-coherent clocks from one source, potentially simplifying CAN bus timing between the two MCUs. Crystal accuracy (±0.002%) would provide a 250x margin over CAN's ±1.58% requirement. One oscillator module replaces two resonators.
+**Advantages:** A single [[learning/notes/micro-context/crystal-oscillator|crystal oscillator]] module would give both MCUs phase-coherent clocks from one source, potentially simplifying CAN bus timing between the two MCUs. Crystal accuracy (±0.002%) would provide a 250x margin over CAN's ±1.58% requirement. One oscillator module replaces two resonators.
 
 **Disadvantages:** (1) A crystal oscillator module is more expensive than two $0.15 ceramic resonators and requires its own power supply. (2) It creates a single point of failure -- if it dies, both MCUs lose their clock, whereas independent resonators provide fault isolation. (3) Running a high-frequency clock trace between two MCUs on a PCB creates EMI and requires careful impedance-matched routing. (4) The STM32's HSE input expects a resonator or crystal on its OSC_IN/OSC_OUT pins, not a buffered clock output -- you'd need to use a different input mode (HSE bypass). (5) The existing ±0.5% accuracy is already 3x better than CAN requires, so the improved accuracy provides zero practical benefit. The engineering maxim applies: don't add complexity to solve a problem you don't have. See: Concrete Example (why ceramic over crystal).
 </details>

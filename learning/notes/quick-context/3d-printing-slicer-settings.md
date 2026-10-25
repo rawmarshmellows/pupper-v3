@@ -157,7 +157,7 @@ Concepts that connect to slicer settings and deepen your understanding:
 
 - **[[quick-context/3d-printer-hotends]]** — The [[quick-context/3d-printer-hotends|hotend]] melts filament before extrusion. Its max temperature limits which materials you can print, and its heat break design affects how fast you can push plastic through (volumetric flow rate).
 
-- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High [[learning/notes/quick-context/melt-index|melt index]] plastics flow freely and print faster but may string more. Low melt index plastics are stiffer, need higher temps, and print slower.
+- **[[quick-context/melt-index]]** — Measures how easily a plastic flows when melted. High [[learning/notes/quick-context/melt-index|melt index]] plastics flow freely and print faster but may string more. Low [[learning/notes/quick-context/melt-index|melt index]] plastics are stiffer, need higher temps, and print slower.
 
 - **[[quick-context/glass-transition-temperature]]** — The temperature where a plastic goes from rigid to rubbery. This determines both print bed temperature (to help adhesion without warping) and the max operating temperature of your finished part.
 
@@ -193,7 +193,7 @@ Tree supports branch upward from the build plate to reach overhangs, touching th
 **Q5:** Two filaments have identical melting points (240C), but one is semi-crystalline and one is amorphous. Why might the same slicer profile produce good results with one but failures with the other?
 <details>
 <summary>Answer</summary>
-Melting point is just one property—crystallinity and glass transition temperature profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
+Melting point is just one property—crystallinity and [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] profoundly affect printing behavior. A semi-crystalline material releases heat as it crystallizes during cooling, potentially staying soft longer than an amorphous material at the same temperature. Different Tg values mean different working windows where the material is moldable but not too soft. The semi-crystalline material may need slower cooling, different bed temps, and adjusted retraction. The slicer sees temperature; the physics depends on molecular architecture.
 </details>
 
 </details>

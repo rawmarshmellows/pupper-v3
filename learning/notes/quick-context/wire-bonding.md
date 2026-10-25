@@ -3,7 +3,7 @@ topic: Wire Bonding
 created: 2026-01-25
 ---
 
-> **Related:** [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]] | [[learning/notes/micro-context/swd-serial-wire-debug|SWD (Serial Wire Debug)]]
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug|SWD (Serial Wire Debug)]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]]
 
 > **TL;DR:** Wire bonding solves the problem of connecting impossibly small chip connection points (~50 micrometers) to the outside world by using specialized machines to attach extremely thin wires between the chip and its protective housing, making it the cheapest and most common chip connection method for billions of chips annually.
 
@@ -30,9 +30,9 @@ Wire bonding is essentially robotic micro-sewing. A machine called a "wire bonde
 
 **Step 1: Ball Formation** — An electrical spark melts the tip of the gold or copper wire, forming a tiny ball (like a match head, but microscopic). Surface tension makes it perfectly round.
 
-**Step 2: Ball Bond** — The machine presses this ball onto the chip's bond pad while applying ultrasonic vibration. The vibration creates friction heat that welds the ball to the pad in milliseconds. This is the first attachment point.
+**Step 2: Ball Bond** — The machine presses this ball onto the chip's [[learning/notes/quick-context/bond-pad|bond pad]] while applying ultrasonic vibration. The vibration creates friction heat that welds the ball to the pad in milliseconds. This is the first attachment point.
 
-**Step 3: Looping** — The machine lifts up and arcs the wire over to the substrate's landing pad, creating a curved bridge. The loop shape is precisely controlled.
+**Step 3: Looping** — The machine lifts up and arcs the wire over to the [[learning/notes/quick-context/substrate-ic-packaging|substrate]]'s landing pad, creating a curved bridge. The loop shape is precisely controlled.
 
 **Step 4: Wedge Bond** — At the destination, the machine presses the wire flat against the substrate pad (no ball this time) and uses ultrasonic welding again. Then it breaks the wire and moves to the next connection.
 

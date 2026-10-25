@@ -125,7 +125,7 @@ The official AI HAT+ mounts on top of the Pi 5 via the 40-pin GPIO stacking head
 |----------|-----------|----------------------|
 | Mechanical mounting / alignment | All 40 | No |
 | Power delivery (5V from Pi) | 5V + GND pins | No (FPC carries 5V too) |
-| HAT ID EEPROM (auto-detect at boot) | GPIO 0 & 1 (I2C0) | No (manual config.txt works) |
+| HAT ID [[learning/notes/micro-context/eeprom|EEPROM]] (auto-detect at boot) | GPIO 0 & 1 (I2C0) | No (manual config.txt works) |
 | PCIe data transfer | None — uses FPC cable | N/A |
 
 **Bottom line:** Zero GPIO pins carry inference data. The FPC connector (J20) on the Pi 5 provides PCIe (1 lane, Gen 2/3), 5V power (1A / 5W max), and control signals — everything needed to run a Hailo module.

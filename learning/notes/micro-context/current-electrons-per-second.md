@@ -3,7 +3,7 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/micro-context/current-mirror|Current Mirror]] | [[learning/notes/micro-context/quiescent-supply-current|Quiescent Supply Current (I_S)]] | [[learning/notes/quick-context/electric-current|Electric Current]]
+> **Related:** [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship|Current Behavior with Inductors vs Capacitors]] | [[learning/notes/quick-context/electric-current|Electric Current]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/micro-context/current-mirror|Current Mirror]]
 
 
 # Current and Electrons Per Second

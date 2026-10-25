@@ -13,7 +13,7 @@ created: 2026-06-07
 
 ## The Core Problem: A Datasheet Swap Is Two Questions, Not One
 
-A "replacement" must pass two independent tests: **will it fit?** (form — package, pinout, dimensions) and **will it work?** (function — every electrical spec the original met). A part can ace one and fail the other. The MCP6541 is the textbook case: a *perfect* mechanical fit that is electrically right for *low-[[learning/notes/quick-context/voltage|voltage]], slow* designs and electrically *wrong* for the high-voltage, faster designs the LMC7211-N was often chosen for. Confusing "same footprint" with "same part" is how a board re-spin passes assembly and dies at power-up.
+A "replacement" must pass two independent tests: **will it fit?** (form — package, pinout, dimensions) and **will it work?** (function — every electrical spec the original met). A part can ace one and fail the other. The MCP6541 is the textbook case: a *perfect* mechanical fit that is electrically right for *low-[[learning/notes/quick-context/voltage|voltage]], slow* designs and electrically *wrong* for the high-[[learning/notes/quick-context/voltage|voltage]], faster designs the LMC7211-N was often chosen for. Confusing "same footprint" with "same part" is how a board re-spin passes assembly and dies at power-up.
 
 ## 5 Essential Terms
 
@@ -119,7 +119,7 @@ The LMC7211-N has **zero** internal hysteresis — its threshold is a single poi
 <details>
 <summary><strong>The Key Tension</strong> — Range and speed vs current and integration</summary>
 
-These two parts sit on opposite sides of a classic comparator trade. The LMC7211-N buys **voltage range and speed** with a higher standing current and no built-in hysteresis. The MCP6541 buys **ultra-low current and integrated hysteresis** by giving up high-voltage operation and speed.
+These two parts sit on opposite sides of a classic [[learning/notes/quick-context/comparator|comparator]] trade. The LMC7211-N buys **voltage range and speed** with a higher standing current and no built-in hysteresis. The MCP6541 buys **ultra-low current and integrated hysteresis** by giving up high-voltage operation and speed.
 
 | Axis | LMC7211-N | MCP6541 (C623499) | Who wins |
 |---|---|---|---|
@@ -152,7 +152,7 @@ Run the [[quick-context/comparator-specification|spec checklist]] against two di
   Clean switch, no chatter     3.3 mV built-in hysteresis   ✓ free bonus
 ```
 
-**Verdict: a near-perfect drop-in *upgrade*.** Same SOT23-5 footprint, ~10× less current (longer battery life), and the built-in hysteresis actually *solves* the offset-chatter the spec note flagged for this exact circuit — no external feedback resistor needed. The only re-check (VOS) passes.
+**Verdict: a near-perfect drop-in *upgrade*.** Same SOT23-5 footprint, ~10× less current (longer battery life), and the built-in hysteresis actually *solves* the offset-chatter the spec note flagged for this exact circuit — no external feedback [[learning/notes/quick-context/resistor|resistor]] needed. The only re-check (VOS) passes.
 
 **Case B — 12 V industrial threshold detector driving a fast logic edge:**
 

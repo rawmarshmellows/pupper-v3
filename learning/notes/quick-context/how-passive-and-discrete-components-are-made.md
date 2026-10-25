@@ -11,7 +11,7 @@ created: 2026-06-07
 
 ## The Core Problem: A "Part" Is Not One Thing
 
-When the hardware tower says "put a 10 kΩ resistor here" or "use a comparator," it hides a fork in the road: that part can either be *grown into the silicon alongside the transistors* (cheap per unit once you're already making a chip, but only as good as the chip process allows) or *manufactured separately as a discrete object* and stuck on a board (more accurate, higher power, but it costs board space and a solder joint). If you don't know which world a part comes from, you can't reason about its accuracy, its size, why a comparator is *never* a discrete two-lead part, or why the resistor inside a chip is sloppy while the one on your board can hit ±1%.
+When the hardware tower says "put a 10 kΩ [[learning/notes/quick-context/resistor|resistor]] here" or "use a [[learning/notes/quick-context/comparator|comparator]]," it hides a fork in the road: that part can either be *grown into the silicon alongside the transistors* (cheap per unit once you're already making a chip, but only as good as the chip process allows) or *manufactured separately as a discrete object* and stuck on a board (more accurate, higher power, but it costs board space and a solder joint). If you don't know which world a part comes from, you can't reason about its accuracy, its size, why a comparator is *never* a discrete two-lead part, or why the resistor inside a chip is sloppy while the one on your board can hit ±1%.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ When the hardware tower says "put a 10 kΩ resistor here" or "use a comparator,"
 | **Discrete** | A standalone component manufactured by itself in its own process, then soldered onto a board as a separate physical object (e.g. an [[learning/notes/micro-context/smd-resistor|SMD chip resistor]]). |
 | **Sheet resistance ($R_s$)** | The resistance of one square of a thin doped or printed film, in ohms-per-square (Ω/□). Total resistance = $R_s \times (L/W)$ — value comes from *geometry*, not a separate "amount of resistor." |
 | **Thick-film** | A resistive (or conductive) paste *screen-printed* onto a ceramic body and fired in a furnace — the standard way discrete chip resistors and many hybrids are built. |
-| **Co-firing** | Stacking many printed ceramic + metal layers and baking them into one solid block in a single high-temperature step — how a multilayer ceramic capacitor (MLCC) is made. |
+| **Co-firing** | Stacking many printed ceramic + metal layers and baking them into one solid block in a single high-temperature step — how a multilayer ceramic [[learning/notes/quick-context/capacitor|capacitor]] (MLCC) is made. |
 
 <details>
 <summary><strong>How It Works</strong> — Two manufacturing worlds, part by part</summary>
@@ -55,7 +55,7 @@ TWO ROADS TO THE SAME FOUR PARTS
 
 ### ON-CHIP — all four are patterned together on one wafer
 
-Everything below is created by the *same* cycle described in [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]]: deposit a layer, spin photoresist, expose a mask, etch or implant, repeat. The mask shapes decide whether a given patch of silicon becomes a [[learning/notes/quick-context/transistor|transistor]], a resistor, a capacitor, or a diode. Nothing is "added on" — it is all carved out of the layer stack.
+Everything below is created by the *same* cycle described in [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]]: deposit a layer, spin photoresist, expose a mask, etch or implant, repeat. The mask shapes decide whether a given patch of silicon becomes a [[learning/notes/quick-context/transistor|transistor]], a resistor, a capacitor, or a [[learning/notes/quick-context/diode|diode]]. Nothing is "added on" — it is all carved out of the layer stack.
 
 ```
 ON-CHIP COMPONENTS — same wafer, same litho, different mask shapes
@@ -210,7 +210,7 @@ WHY ON-CHIP PARTS ARE "SLOPPY" BUT DISCRETE PARTS CAN BE PRECISE
 | **Matching to neighbor** | Excellent (ratios trustworthy) | Poor (separate parts) |
 | **Cost per part** | ~free (rides the chip run) | A real BOM line + a solder joint |
 | **Board space** | Zero (inside the die) | Takes a footprint |
-| **Power / voltage handling** | Tiny | High (big body sheds heat / withstands kV) |
+| **Power / [[learning/notes/quick-context/voltage|voltage]] handling** | Tiny | High (big body sheds heat / withstands kV) |
 | **Max value** | Small (R, C) | Large (mF caps, MΩ resistors) |
 | **Tuning** | Fixed at mask design | Laser-trimmed per part |
 
@@ -258,7 +258,7 @@ Walk it through:
 1. **The comparator chip itself** is one die fabricated like any IC — its [[learning/notes/quick-context/differential-pair|differential pair]], [[learning/notes/micro-context/current-mirror|current mirror]], *its own internal bias resistor (an on-chip poly strip)*, and *its internal PN-junction diodes* were all patterned together in the same fab. You can't buy "the resistor inside the comparator" separately; it's etched into the die.
 2. **R1 and R2** (the divider) are **discrete** thick-film [[learning/notes/micro-context/smd-resistor|SMD resistors]] precisely because the divider *ratio* sets the trip voltage and must be accurate — laser-trimmed discretes deliver the ±1% the chip process can't.
 3. **The pull-up resistor** for the open-drain output is **discrete** — its exact value (RC speed vs. power) is a board-level choice.
-4. **The [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]]** is a **discrete MLCC** — a co-fired ceramic block providing bulk capacitance no on-chip cap could match in value.
+4. **The [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]]** is a **discrete MLCC** — a co-fired ceramic block providing bulk [[learning/notes/quick-context/capacitance|capacitance]] no on-chip cap could match in value.
 
 Down the ladder, every "on-chip" part above traces to the raw [[learning/notes/quick-context/semiconductor-fabrication|fabrication]] cycle on a [[learning/notes/quick-context/silicon-die|silicon die]]; every "discrete" part traces to its own screen-print / co-fire / junction-dicing line and then a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] solder joint, with the finished chips landing in their [[learning/notes/quick-context/substrate-ic-packaging|packages]] first.
 
@@ -286,7 +286,7 @@ Down the ladder, every "on-chip" part above traces to the raw [[learning/notes/q
 **Q1:** What is the single biggest structural difference between an "on-chip" resistor and a "discrete" [[learning/notes/micro-context/smd-resistor|SMD resistor]]?
 <details>
 <summary>Answer</summary>
-The on-chip resistor is *part of the [[learning/notes/quick-context/silicon-die|silicon die]] itself* — a shaped patch of [[learning/notes/quick-context/doped-silicon|doped silicon]] (or polysilicon) patterned in the same fab run as the transistors, never a separate object. The discrete SMD resistor is a standalone product (resistive paste screen-printed and fired onto a tiny ceramic body, laser-trimmed, with solder end-caps) that is manufactured separately and then soldered onto the board. Same function, two entirely different manufacturing roads. See: How It Works.
+The on-chip resistor is *part of the [[learning/notes/quick-context/silicon-die|silicon die]] itself* — a shaped patch of [[learning/notes/quick-context/doped-silicon|doped silicon]] (or polysilicon) patterned in the same fab run as the transistors, never a separate object. The discrete [[learning/notes/micro-context/smd-resistor|SMD resistor]] is a standalone product (resistive paste screen-printed and fired onto a tiny ceramic body, laser-trimmed, with solder end-caps) that is manufactured separately and then soldered onto the board. Same function, two entirely different manufacturing roads. See: How It Works.
 </details>
 
 **Q2:** On-chip, what physically sets a resistor's value, and what sets a capacitor's value?
@@ -298,7 +298,7 @@ The resistor's value is $R = R_s \cdot (L/W)$ — the *doping level* fixes the s
 **Q3:** Why is a comparator *never* a discrete two-lead part the way a diode can be?
 <details>
 <summary>Answer</summary>
-Because a comparator is not a single circuit element — it is an *integrated circuit*: a dozen-plus transistors plus on-chip resistors and capacitors (a differential pair, a current mirror, a bias resistor, an output stage) all fabricated together on one die. A diode is one PN junction, which fits on a single tiny die with two terminals. You can package one junction with two leads; you cannot reduce a multi-transistor circuit to a single two-terminal element. A comparator is therefore made like any chip, not like a passive part. See: How It Works (comparator) and the misconception note.
+Because a comparator is not a single circuit element — it is an *integrated circuit*: a dozen-plus transistors plus on-chip resistors and capacitors (a [[learning/notes/quick-context/differential-pair|differential pair]], a [[learning/notes/micro-context/current-mirror|current mirror]], a bias resistor, an output stage) all fabricated together on one die. A diode is one PN junction, which fits on a single tiny die with two terminals. You can package one junction with two leads; you cannot reduce a multi-[[learning/notes/quick-context/transistor|transistor]] circuit to a single two-terminal element. A comparator is therefore made like any chip, not like a passive part. See: How It Works (comparator) and the misconception note.
 </details>
 
 **Q4:** A designer says: "I'll just use the resistors inside my chip for the voltage divider that sets my reference — saves two parts." What's wrong with relying on on-chip resistors for an *accurate absolute* value?

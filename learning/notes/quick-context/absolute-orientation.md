@@ -296,7 +296,7 @@ Centering the data decouples translation from rotation. Once you subtract centro
 Three point pairs minimum, and they must be non-collinear (not all on the same line). Three non-collinear points define a plane, providing 9 scalar equations (3 points x 3 coordinates) for the 7 unknowns (3 rotation + 3 translation + 1 scale). If the points are collinear, the rotation around the line is ambiguous. See: How It Works, Minimum Points Required table.
 </details>
 
-**Q3:** The SVD of the cross-covariance matrix produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
+**Q3:** The SVD of the cross-[[learning/notes/quick-context/covariance-matrix|covariance matrix]] produces $H = U\Sigma V^T$. Why do we use $R = VU^T$ instead of just $R = V\Sigma^{-1}U^T$ (the inverse)?
 <details>
 <summary>Answer</summary>
 $R$ must be an orthogonal matrix ($R^TR = I$, $\det(R) = +1$). The product $VU^T$ is guaranteed orthogonal because $U$ and $V$ are orthogonal matrices from the SVD. The singular values in $\Sigma$ encode the scale/magnitude of the covariance, not the rotation -- including them would produce a non-orthogonal matrix. The SVD separates the "rotation-like" components ($U$, $V$) from the "stretching" component ($\Sigma$), and we only need the rotational parts. See: How It Works, Steps 3-4.

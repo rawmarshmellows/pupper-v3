@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # Keypress to Pixel — The Full Path from a Key to a Letter on Screen
 
-> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]] | [[learning/notes/quick-context/inside-the-triangle|Inside the Triangle]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking|Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)]] | [[learning/notes/quick-context/chemical-bonds-spectrum|Chemical Bonds - The Full Spectrum]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]] | [[learning/notes/quick-context/chemical-bonds-spectrum|Chemical Bonds - The Full Spectrum]] | [[learning/notes/quick-context/inside-the-triangle|Inside the Triangle]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking|Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)]]
 
 > **TL;DR:** Pressing a key closes a tiny mechanical switch (a physical 1/0), and that single bit travels up a chain of ever-more-abstract layers — matrix scan, scancode, USB packet, CPU interrupt, keymap lookup, character code, application code, font glyph, framebuffer in RAM, display scan-out — until the display lights up a pattern of pixels shaped like the letter. This note is the **capstone**: it ties the whole "how a computer works" ladder together, from a switch making a bit at the bottom to a list of instructions (code) running on the CPU deciding what to draw at the top.
 

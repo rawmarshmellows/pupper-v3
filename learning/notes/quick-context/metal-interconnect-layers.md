@@ -270,7 +270,7 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 
 - **Photolithography** — The process used to pattern each metal layer; understanding lithography explains why wire pitch has physical limits and why each new "nm node" is a manufacturing breakthrough.
 
-- **RC Delay** — Resistance (R) × Capacitance (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
+- **RC Delay** — Resistance (R) × [[learning/notes/quick-context/capacitance|Capacitance]] (C) determines signal delay; this is the key equation for why thinner wires and tighter spacing hurt performance.
 
 - **Power Delivery Network (PDN)** — The top metal layers form a grid delivering power to transistors; poor PDN design causes [[learning/notes/quick-context/voltage|voltage]] droop and chip failure.
 

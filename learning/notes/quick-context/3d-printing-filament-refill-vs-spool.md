@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[learning/notes/quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]] | [[learning/notes/quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]] | [[learning/notes/quick-context/substrate-ic-packaging|Substrate (IC Packaging)]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]]
+> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings|3D Printing Slicer Settings]] | [[learning/notes/quick-context/3d-printing-filament-types|3D Printing Filament Types: PLA, PETG, ABS, and TPU]] | [[learning/notes/quick-context/substrate-ic-packaging|Substrate (IC Packaging)]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|Polymer Crystallinity vs Amorphous]] | [[learning/notes/quick-context/flip-chip|Flip-Chip (C4) Packaging]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 

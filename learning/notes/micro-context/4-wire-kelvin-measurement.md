@@ -3,7 +3,7 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/micro-context/swd-serial-wire-debug|SWD (Serial Wire Debug)]] | [[learning/notes/quick-context/wire-bonding|Wire Bonding]]
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug|SWD (Serial Wire Debug)]] | [[learning/notes/quick-context/wire-bonding|Wire Bonding]] | [[learning/notes/quick-context/capacitive-sensing-measurement|Capacitive Sensing and Measurement]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]]
 
 
 # 4-Wire Kelvin Measurement
@@ -39,4 +39,4 @@ SOLUTION: 4-wire Kelvin separates current and voltage paths
     R = V_measured / I_known                                   ✓
 ```
 
-**Key insight:** The voltmeter's high input impedance means negligible current flows through the sense wires, so their resistance contributes essentially zero voltage drop to the measurement.
+**Key insight:** The voltmeter's high input impedance means negligible current flows through the sense wires, so their resistance contributes essentially zero [[learning/notes/quick-context/voltage|voltage]] drop to the measurement.

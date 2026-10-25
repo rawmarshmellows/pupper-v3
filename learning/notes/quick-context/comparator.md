@@ -11,7 +11,7 @@ created: 2026-04-01
 
 ## The Core Problem: Making a Yes/No Decision from Analog Voltages
 
-A battery monitor needs to answer a simple question: "Is the battery [[learning/notes/quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "voltage A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
+A battery monitor needs to answer a simple question: "Is the battery [[learning/notes/quick-context/voltage|voltage]] above 3.0V or below?" A thermostat needs to know: "Is the temperature above the setpoint?" A [[quick-context/pwm-controller-circuit|PWM controller]] needs to determine, every nanosecond: "Is the error signal above or below the sawtooth ramp?" These are all binary decisions made from continuous analog signals. You need a circuit that cleanly converts "[[learning/notes/quick-context/voltage|voltage]] A is greater than voltage B" into a crisp digital 1 or 0---with no in-between, no ambiguity, and ideally no delay. That circuit is a comparator.
 
 ## 5 Essential Terms
 
@@ -334,7 +334,7 @@ HOW POSITIVE FEEDBACK CREATES HYSTERESIS:
 
 The other key tension is **dedicated comparator vs. [[learning/notes/quick-context/op-amp|op-amp]] used as a comparator**:
 
-| Factor | Dedicated Comparator | Op-Amp as Comparator |
+| Factor | Dedicated Comparator | [[learning/notes/quick-context/op-amp|Op-Amp]] as Comparator |
 |--------|---------------------|---------------------|
 | Speed | 1-500 ns | 1-50 $\mu$s (compensation cap slows it) |
 | Output | Logic-compatible or open-drain | Analog (may not reach rails) |
@@ -445,11 +445,11 @@ CURRENT CONSUMPTION:
 
 - **[[quick-context/op-amp]]** --- Shares the same differential-pair input stage. Understanding the [[quick-context/op-amp|op-amp's]] golden rules (virtual short, no input current) explains what happens when you remove the negative feedback: the virtual short breaks, and the output slams to the rails---which is exactly what a comparator does intentionally.
 
-- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: differential pair for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
+- **[[quick-context/transistor]]** --- Comparators are built from [[quick-context/transistor|transistors]] at every stage: [[learning/notes/quick-context/differential-pair|differential pair]] for sensing, current mirrors for biasing, output transistors for driving. The differential pair is the same circuit used in op-amps, ADCs, and voltage regulators.
 
 - **[[quick-context/pwm-controller-circuit]]** --- The comparator inside a [[quick-context/pwm-controller-circuit|buck converter IC]] intersects the error amplifier's output with the sawtooth ramp to produce the PWM pulse. This is the comparator's most common industrial application.
 
-- **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or transistor acting as one) to detect when the capacitor voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
+- **[[quick-context/rc-oscillator]]** --- Every [[quick-context/rc-oscillator|relaxation oscillator]] uses a comparator (or [[learning/notes/quick-context/transistor|transistor]] acting as one) to detect when the [[learning/notes/quick-context/capacitor|capacitor]] voltage hits the threshold. The comparator triggers the reset that starts the next cycle.
 
 - **[[quick-context/transistor-analog-to-digital]]** --- A comparator is the simplest possible 1-bit ADC---it makes a binary decision from an analog input. Flash ADCs use $2^n - 1$ comparators in parallel to get n-bit conversion in a single clock cycle.
 
@@ -498,7 +498,7 @@ CURRENT CONSUMPTION:
 Comparator A: V(+) = Vin, V(-) = 2.5V (lower limit). Output HIGH when Vin > 2.5V.
 Comparator B: V(+) = 3.5V (upper limit), V(-) = Vin. Output HIGH when Vin < 3.5V.
 
-Both outputs are open-drain, tied together with a single pull-up resistor. The combined output is HIGH only when BOTH comparators output HIGH (neither pulls LOW)---meaning Vin is above 2.5V AND below 3.5V. If Vin goes outside either limit, the corresponding comparator pulls the line LOW.
+Both outputs are open-drain, tied together with a single pull-up [[learning/notes/quick-context/resistor|resistor]]. The combined output is HIGH only when BOTH comparators output HIGH (neither pulls LOW)---meaning Vin is above 2.5V AND below 3.5V. If Vin goes outside either limit, the corresponding comparator pulls the line LOW.
 
 This is why open-drain outputs exist on comparators: wire-AND logic with no additional gate needed. See: 5 Essential Terms (Open-drain output).
 </details>

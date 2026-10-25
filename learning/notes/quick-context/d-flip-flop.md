@@ -5,7 +5,7 @@ created: 2026-04-08
 
 # D Flip-Flop — The Atom of Digital Memory
 
-> **Related:** [[learning/notes/quick-context/how-source-code-is-stored|How Source Code Is Stored — Text, Encoding, and Bytes in Memory]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/micro-context/eeprom|EEPROM (Electrically Erasable Programmable Read-Only Memory)]] | [[learning/notes/micro-context/sram|SRAM (Static Random-Access Memory)]] | [[learning/notes/quick-context/transistor-analog-to-digital|Transistors: Imperfect Analog Devices Masquerading as Digital Switches]]
+> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/micro-context/eeprom|EEPROM (Electrically Erasable Programmable Read-Only Memory)]] | [[learning/notes/micro-context/sram|SRAM (Static Random-Access Memory)]] | [[learning/notes/quick-context/how-source-code-is-stored|How Source Code Is Stored — Text, Encoding, and Bytes in Memory]] | [[learning/notes/quick-context/transistor-analog-to-digital|Transistors: Imperfect Analog Devices Masquerading as Digital Switches]]
 
 > **TL;DR:** A D flip-flop (DFF) is a circuit that stores exactly one bit. It has one data input (D), one output (Q), and a clock input. On each [[micro-context/clock-edges|clock edge]], it captures whatever value is on D and holds it at Q until the next clock edge — ignoring all input changes in between. This "sample once per tick" behavior is what makes digital systems work: it gives combinational logic a fixed window to settle before results are captured. Everything that stores state in a computer — registers, counters, shift registers, SRAM — is built from D flip-flops or their close relatives. In the [Nand2Tetris Python implementation](learning/references/courses/python-nand-to-tetris-part-1/src/hardware/sequential_chips/data_flip_flop_chip.py), each function call represents one clock tick: `out(t) = in(t-1)`.
 
@@ -17,7 +17,7 @@ Combinational logic (AND, OR, NOT gates) can compute any function, but it has no
 
 | Term | Definition |
 |------|------------|
-| **D (Data) Input** | The single data input to the flip-flop. Whatever binary value (0 or 1) is present here at the moment of the clock edge gets captured. |
+| **D (Data) Input** | The single data input to the flip-flop. Whatever binary value (0 or 1) is present here at the moment of the [[learning/notes/micro-context/clock-edges|clock edge]] gets captured. |
 | **Q (Output)** | The stored value. After a clock edge, Q holds the value that D had at that edge. Q stays stable until the next clock edge, regardless of what D does in between. |
 | **Clock (CLK)** | A continuous square wave that drives all flip-flops in a synchronous circuit. The flip-flop only "looks" at D during the clock edge (rising or falling, depending on design). Between edges, input changes are ignored. See [[micro-context/clock-edges]]. |
 | **Latch vs. Flip-Flop** | A **latch** is level-sensitive: it passes input to output whenever the enable signal is HIGH (transparent). A **flip-flop** is edge-sensitive: it captures input only at the clock transition instant. Flip-flops are preferred in synchronous design because they avoid race conditions. |

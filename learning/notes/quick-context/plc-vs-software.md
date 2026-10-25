@@ -3,7 +3,7 @@ topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
 
-> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller|PLC (Programmable Logic Controller)]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/micro-context/plc-programmable-logic-controller|PLC (Programmable Logic Controller)]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/robotic-arm-api-levels|Robotic Arm API Levels in Manufacturing]] | [[learning/notes/quick-context/firmware|Firmware — Software That Lives on Hardware]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 

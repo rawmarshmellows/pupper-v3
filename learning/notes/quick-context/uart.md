@@ -55,7 +55,7 @@ UART — HIGH-LEVEL INPUTS AND OUTPUTS
 
 ### The Frame on the Wire
 
-Before diving into the hardware, here's what a single byte looks like as a voltage waveform:
+Before diving into the hardware, here's what a single byte looks like as a [[learning/notes/quick-context/voltage|voltage]] waveform:
 
 ```
 UART FRAME FORMAT (8N1) — Sending ASCII "A" (0x41 = 01000001)

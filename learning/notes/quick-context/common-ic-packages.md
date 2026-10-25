@@ -218,7 +218,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q1:** Why would a commercial product use QFN instead of DIP for the same chip?
 <details>
 <summary>Answer</summary>
-**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-soldering is needed.
+**Smaller (10× less board area), better thermal performance (exposed pad), lower assembly cost (pick-and-place reflow is cheaper than through-hole at scale), and more available I/O pins.** DIP is larger, has no thermal pad, and through-hole assembly costs more in production. DIP is only preferred for prototyping and educational purposes where hand-[[learning/notes/quick-context/soldering|soldering]] is needed.
 </details>
 
 **Q2:** How do you find pin 1 on an IC?

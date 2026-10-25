@@ -164,10 +164,10 @@ The fundamental tradeoff: CNC gives you precision and strength but wastes materi
 
 Imagine you need to manufacture a custom motor shaft with a mounting bracket for a robotics project -- 50 units total.
 
-**Step 1: The shaft (CNC Turning)**
+**Step 1: The shaft ([[learning/notes/micro-context/cnc-turning|CNC Turning]])**
 The shaft is a cylindrical part with stepped diameters and a keyway. You start with a round bar of 4140 steel clamped in a lathe chuck. The CNC lathe spins it at 1,500 RPM while a carbide insert tool traverses along the axis, cutting each diameter step to $\pm 0.0005"$ concentricity. Turning is the obvious choice -- the part has rotational symmetry, and no other process matches turning's cylindrical surface finish.
 
-**Step 2: The mounting bracket (CNC Milling)**
+**Step 2: The mounting bracket ([[learning/notes/micro-context/cnc-milling|CNC Milling]])**
 The bracket is a rectangular aluminum plate with bolt holes and a central bore. A 3-axis CNC mill holds the aluminum block on a vise, and an end mill cuts the outer profile, drills the bolt holes, and bores the central pocket. Milling handles the prismatic geometry and multiple hole patterns easily.
 
 **Step 3: A hardened steel die insert (EDM)**

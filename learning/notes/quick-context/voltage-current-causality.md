@@ -7,7 +7,7 @@ created: 2026-03-27
 
 > **Related:** [[quick-context/voltage]] | [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/impedance-and-reactance]]
 
-> **TL;DR:** Neither [[learning/notes/quick-context/voltage|voltage]] "causes" current nor current "causes" voltage in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
+> **TL;DR:** Neither [[learning/notes/quick-context/voltage|voltage]] "causes" current nor current "causes" [[learning/notes/quick-context/voltage|voltage]] in any universal sense---the relationship depends on context. What's really happening is that the **electric field** is the fundamental entity: it both defines [[quick-context/voltage|voltage]] (as the integral of the field over distance) and drives [[quick-context/electric-current|current]] (as the force on charges). Voltage and current are *simultaneous constraints* on a circuit, not a one-way causal chain. The right question isn't "which causes which?" but "what establishes the field, and how does the circuit respond?"
 
 ## The Core Problem
 
@@ -313,7 +313,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 
 - **[[quick-context/impedance-and-reactance]]** --- In AC circuits, capacitors and inductors create phase shifts between V and I. Current leads voltage in capacitors; voltage leads current in inductors. The phase shift makes the "which causes which" question even more confused---neither peaks first in any absolute sense.
 
-- **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an inductor creates back-EMF. The current change comes first; the voltage is the response.
+- **[[quick-context/self-induction]]** --- The clearest case of "current causes voltage": changing current through an [[learning/notes/quick-context/inductor|inductor]] creates back-EMF. The current change comes first; the voltage is the response.
 
 - **[[quick-context/galvanic-cells-batteries]]** --- In batteries, chemistry is the true cause. Chemical reactions create charge separation, which creates the electric field, which manifests as both voltage and current. Neither V nor I is the root cause.
 
@@ -324,7 +324,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** A 9V battery is connected to a 100$\Omega$ resistor. Does the voltage "cause" the current?
+**Q1:** A 9V battery is connected to a 100$\Omega$ [[learning/notes/quick-context/resistor|resistor]]. Does the voltage "cause" the current?
 <details>
 <summary>Answer</summary>
 **It depends on what you mean by "cause."** At the circuit level, the battery fixes the voltage at 9V, and current results (I = 9V/100$\Omega$ = 90 mA). In that sense, voltage is the constraint and current is the response---so yes, "V causes I" is a useful description. But at the physics level, the battery's chemical reactions create an electric field, and both the voltage (integral of the field) and the current (field pushing electrons) are consequences of that field. Neither truly "causes" the other. See: How It Works (Scenario 1).

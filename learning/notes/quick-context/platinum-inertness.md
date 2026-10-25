@@ -124,7 +124,7 @@ IRON NAIL AS ANODE                    PLATINUM AS ANODE
                                           give up electrons
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that any metal electrode will eventually dissolve if enough current flows through it. Platinum's inertness isn't about durability or hardness—it's about thermodynamics. The reduction potential tells us platinum atoms are far more stable as solid metal than as dissolved ions, so they simply refuse to participate in oxidation reactions that would dissolve them.
+**The one thing most outsiders get wrong about this is...** assuming that any metal electrode will eventually dissolve if enough current flows through it. Platinum's inertness isn't about durability or hardness—it's about thermodynamics. The reduction potential tells us platinum atoms are far more stable as solid metal than as dissolved ions, so they simply refuse to participate in [[learning/notes/micro-context/oxidation|oxidation]] reactions that would dissolve them.
 
 </details>
 
@@ -134,7 +134,7 @@ IRON NAIL AS ANODE                    PLATINUM AS ANODE
 Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often use:
 - **Graphite** (carbon) — cheaper, reasonably inert
 - **Titanium with coatings** — good balance of cost and durability
-- **Sacrificial electrodes** — accept that the electrode will dissolve
+- **Sacrificial [[learning/notes/quick-context/electrodes|electrodes]]** — accept that the electrode will dissolve
 
 </details>
 
@@ -152,13 +152,13 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** Iron has a reduction potential of -0.44 V and platinum has +1.18 V. Which metal is more likely to dissolve when used as an anode, and why?
+**Q1:** Iron has a reduction potential of -0.44 V and platinum has +1.18 V. Which metal is more likely to dissolve when used as an [[learning/notes/micro-context/anode|anode]], and why?
 <details>
 <summary>Answer</summary>
 **Iron** is more likely to dissolve. The negative reduction potential means iron "prefers" to give up electrons and become Fe²⁺ ions. Platinum's positive potential means it strongly prefers to keep its electrons and stay as solid metal.
 </details>
 
-**Q2:** If platinum is so inert, how can electricity flow through it during electrolysis?
+**Q2:** If platinum is so inert, how can electricity flow through it during [[learning/notes/quick-context/electrolysis|electrolysis]]?
 <details>
 <summary>Answer</summary>
 Platinum conducts electricity by allowing electrons to flow *through* its metallic structure without the platinum atoms themselves reacting. The electrons enter one side, pass through the metal's "sea of electrons," and exit the other side. At the electrode surface, other species (like water or hydroxide ions) react instead of the platinum.

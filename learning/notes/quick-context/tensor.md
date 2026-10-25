@@ -304,7 +304,7 @@ COMBINED LOADING (real-world):
 
 - **[[quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
 
-- **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
+- **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]]).
 
 - **[[quick-context/electric-magnetic-field-unification]]** — The physical motivation for why E and B need tensor packaging: they transform into each other under velocity changes, which is precisely what the Faraday tensor's transformation law describes.
 

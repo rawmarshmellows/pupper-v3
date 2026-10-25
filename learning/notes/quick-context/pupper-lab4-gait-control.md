@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # Pupper Lab 4 — Gait Control (Trotting Quadruped)
 
-> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics (Gradient Descent)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics|Pupper Lab 2 — Forward Kinematics (3-DOF Leg)]]
+> **Related:** [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-lab5-neural-controller|Pupper Lab 5 — Neural Controller (Reinforcement Learning)]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|Pupper Lab 3 — Inverse Kinematics (Gradient Descent)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking|Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)]]
 
 > **TL;DR:** Lab 4 extends single-leg FK/IK from Labs 2-3 to all four legs simultaneously, coordinating them into a trotting gait where diagonal leg pairs (FR+BL, FL+BR) move in anti-phase. All target joint positions for one complete gait cycle are pre-cached via IK at startup to avoid real-time computational cost, then the 200 Hz control loop simply indexes into the cached trajectory with per-leg phase offsets.
 

@@ -3,7 +3,7 @@ topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
 
-> **Related:** [[learning/notes/quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]] | [[learning/notes/quick-context/d-flip-flop|D Flip-Flop — The Atom of Digital Memory]]
+> **Related:** [[learning/notes/quick-context/d-flip-flop|D Flip-Flop — The Atom of Digital Memory]] | [[learning/notes/quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]] | [[learning/notes/quick-context/switches-to-registers-storing-data|Switches to Registers — Storing Data with Real Hardware]]
 
 > **TL;DR:** Digital circuits are actually analog circuits in disguise—transistors are imperfect devices that smoothly transition, leak current, and suffer from noise, but engineering tricks like noise margins, regenerative CMOS logic, and clock timing force them to behave like perfect binary switches.
 
@@ -19,7 +19,7 @@ If we actually treated transistors as the messy analog devices they are, digital
 
 | Term | Definition |
 |------|------------|
-| **Threshold Voltage (Vth)** | The gate voltage at which a transistor begins to conduct; below this, it should be "off"—but leakage still occurs |
+| **Threshold [[learning/notes/quick-context/voltage|Voltage]] (Vth)** | The gate voltage at which a [[learning/notes/quick-context/transistor|transistor]] begins to conduct; below this, it should be "off"—but leakage still occurs |
 | **Leakage Current** | Current that flows through a transistor even when it's supposed to be off; worsens at smaller process nodes due to quantum tunneling |
 | **Noise Margin** | The voltage buffer between a valid logic level and the point where it might be misinterpreted; larger margins = more robust digital operation |
 | **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't turn off instantly—conductivity drops exponentially but never hits zero |

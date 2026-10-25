@@ -2,7 +2,7 @@
 term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
-> **Related:** [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift (TCV_OS)]] | [[learning/notes/micro-context/output-voltage-swing|Output Voltage Swing (V_OH / V_OL)]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage (V_OS)]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110 (Battery Voltage ADC)]]
+> **Related:** [[learning/notes/micro-context/output-voltage-swing|Output Voltage Swing (V_OH / V_OL)]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift (TCV_OS)]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]] | [[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage (V_OS)]] | [[learning/notes/micro-context/ads1110-battery-adc|ADS1110 (Battery Voltage ADC)]]
 
 
 # Open-Loop Voltage Gain ($A_V$)
@@ -32,4 +32,4 @@ created: 2026-06-07
    fully to a rail -> the digital decision.
 ```
 
-**Key insight:** It's the "gain" you never use *as* gain — it's so large the output can't stay linear, which is exactly the point: a comparator wants to saturate to a rail, not amplify proportionally.
+**Key insight:** It's the "gain" you never use *as* gain — it's so large the output can't stay linear, which is exactly the point: a [[learning/notes/quick-context/comparator|comparator]] wants to saturate to a rail, not amplify proportionally.

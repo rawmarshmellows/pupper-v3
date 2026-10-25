@@ -3,7 +3,7 @@ term: ADS1110 (Battery Voltage ADC)
 created: 2026-02-25
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC (Analog-to-Digital Converter)]] | [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain (A_V)]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift (TCV_OS)]] | [[learning/notes/micro-context/output-voltage-swing|Output Voltage Swing (V_OH / V_OL)]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]]
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter|ADC (Analog-to-Digital Converter)]] | [[learning/notes/micro-context/output-voltage-swing|Output Voltage Swing (V_OH / V_OL)]] | [[learning/notes/micro-context/offset-voltage-drift|Offset Voltage Drift (TCV_OS)]] | [[learning/notes/micro-context/open-loop-voltage-gain|Open-Loop Voltage Gain (A_V)]] | [[learning/notes/micro-context/capacitive-voltage-sensing|Capacitive Voltage Sensing]]
 
 
 # ADS1110 (Battery Voltage ADC)
@@ -14,7 +14,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- A [[learning/notes/quick-context/resistor|resistor]] [[learning/notes/quick-context/voltage|voltage]] divider scales the battery voltage (7–24V) down to the ADC's 0–2.048V input range.
+- A [[learning/notes/quick-context/resistor|resistor]] [[learning/notes/quick-context/voltage|voltage]] divider scales the battery [[learning/notes/quick-context/voltage|voltage]] (7–24V) down to the ADC's 0–2.048V input range.
 - The ADS1110's delta-sigma converter oversamples the input and digitally filters it, trading speed for high resolution (16-bit at 15 SPS).
 - The STM32 reads the digital result over I2C (address 0x48) and multiplies by the divider ratio to recover the true battery voltage.
 

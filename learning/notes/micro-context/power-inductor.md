@@ -43,4 +43,4 @@ INDUCTOR IN BUCK CONVERTER:
   Smaller L = more ripple, faster response
 ```
 
-**Key insight:** The inductor value (10µH) is chosen to balance ripple current against transient response—too large and the converter can't respond to load changes, too small and output [[learning/notes/quick-context/voltage|voltage]] becomes noisy.
+**Key insight:** The [[learning/notes/quick-context/inductor|inductor]] value (10µH) is chosen to balance ripple current against transient response—too large and the converter can't respond to load changes, too small and output [[learning/notes/quick-context/voltage|voltage]] becomes noisy.

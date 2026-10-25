@@ -3,7 +3,7 @@ term: SWD (Serial Wire Debug)
 created: 2026-03-25
 updated: 2026-03-27
 ---
-> **Related:** [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]] | [[learning/notes/quick-context/wire-bonding|Wire Bonding]]
+> **Related:** [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]] | [[learning/notes/quick-context/usb-peripheral-hardware|usb-peripheral-hardware]] | [[learning/notes/micro-context/4-wire-kelvin-measurement|4-Wire Kelvin Measurement]] | [[learning/notes/quick-context/wire-bonding|Wire Bonding]]
 
 
 # SWD (Serial Wire Debug)

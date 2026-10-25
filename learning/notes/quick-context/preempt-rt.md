@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/pupper-brain|pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]]
+> **Related:** [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/pupper-brain|pupper-brain]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -186,7 +186,7 @@ Spinlocks disable preemption while held—if a low-priority task holds a spinloc
 Probably not. The max latency of 47us is already half your cycle budget. Cyclictest measures scheduling latency, not your actual control code execution time. If your control iteration takes 30us and scheduling adds 47us, you're already at 77us—leaving only 23us margin. You'd want max latency under 20us for a 100us loop, or need to move to a dual-kernel solution like Xenomai.
 </details>
 
-**Q3:** Why can't PREEMPT_RT be used for SIL-rated safety functions?
+**Q3:** Why can't PREEMPT_RT be used for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]?
 <details>
 <summary>Answer</summary>
 SIL (Safety Integrity Level) certification requires formal proof of bounded behavior, extensive testing, and hardware-level fail-safes. PREEMPT_RT provides probabilistic guarantees ("typically under 100us") not formal ones—a misbehaving driver or hardware issue could still cause an unbounded delay. Additionally, the complexity of the Linux kernel makes formal verification effectively impossible. Safety PLCs have certified hardware watchdogs, redundant processors, and audited code paths that Linux cannot match.

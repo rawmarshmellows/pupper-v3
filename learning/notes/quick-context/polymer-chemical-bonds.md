@@ -200,7 +200,7 @@ PLA has a glass transition temperature (Tg) of only 55-60°C because its ester g
 **Q2:** TPU is flexible and elastic, yet it has strong hydrogen bonds. How is this possible?
 <details>
 <summary>Answer</summary>
-TPU achieves elasticity through phase separation. It contains "hard segments" (urethane linkages with strong H-bonds that form crystalline domains) and "soft segments" (flexible polyether/polyester chains with only weak van der Waals forces). The hard segments act as physical crosslinks providing structural integrity, while the soft segments provide the flexibility and elastic recovery. This is different from a homogeneous material where strong H-bonds would make it rigid throughout.
+TPU achieves elasticity through phase separation. It contains "hard segments" (urethane linkages with strong H-bonds that form crystalline domains) and "soft segments" (flexible polyether/polyester chains with only weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]]). The hard segments act as physical crosslinks providing structural integrity, while the soft segments provide the flexibility and elastic recovery. This is different from a homogeneous material where strong H-bonds would make it rigid throughout.
 </details>
 
 **Q3:** What does the "G" in PETG actually do at the molecular level?

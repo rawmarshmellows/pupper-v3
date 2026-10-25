@@ -5,11 +5,11 @@ created: 2026-06-07
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
-> **Related:** [[learning/notes/quick-context/comparator-specification|Comparator Specifications]] | [[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/micro-context/mosfet|MOSFET]]
+> **Related:** [[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]] | [[learning/notes/quick-context/comparator-specification|Comparator Specifications]] | [[learning/notes/quick-context/transistor-design-history|Transistor Design History]] | [[learning/notes/quick-context/transistor|Transistor]] | [[learning/notes/micro-context/mosfet|MOSFET]]
 >
 > **Companion note:** [[quick-context/bjt|BJT (how it works)]] explains the physics and operating regions. *This* note is the buyer's checklist — the datasheet numbers you check before you drop a part into a circuit.
 
-> **TL;DR:** Before you pick a [[quick-context/bjt|BJT]], five datasheet specs decide whether it survives your circuit: **type** (NPN vs PNP — polarity, not "less [[learning/notes/quick-context/voltage|voltage]]"), **$V_{CEO}$** (the off-state voltage it can hold before it breaks down), **$I_C$** (the most current it can carry), **$P_C$** (the most heat it can dissipate, $P = V_{CE}\cdot I_C$), and **$\beta$ / $h_{FE}$** (the current gain, which tells you the *minimum* base current you must supply). The first three are "do-not-cross" limits; the last is what you design *around*.
+> **TL;DR:** Before you pick a [[quick-context/bjt|BJT]], five datasheet specs decide whether it survives your circuit: **type** (NPN vs PNP — polarity, not "less [[learning/notes/quick-context/voltage|voltage]]"), **$V_{CEO}$** (the off-state [[learning/notes/quick-context/voltage|voltage]] it can hold before it breaks down), **$I_C$** (the most current it can carry), **$P_C$** (the most heat it can dissipate, $P = V_{CE}\cdot I_C$), and **$\beta$ / $h_{FE}$** (the current gain, which tells you the *minimum* base current you must supply). The first three are "do-not-cross" limits; the last is what you design *around*.
 
 ## The Core Problem: A Transistor That Works on the Bench Can Still Burn Up
 
@@ -91,7 +91,7 @@ B ─►┤  PNP  │
 ```
 
 **2. $V_{CEO}$ — the off-state voltage ceiling.**
-When a switch transistor is *off*, it is blocking the supply: almost the entire $V_{CC}$ drops across the collector–emitter terminals. $V_{CEO}$ is how much it can block before the junction avalanche-breaks-down and conducts uncontrollably (often destroying the part). The subscript spells out the test condition: **C**ollector–**E**mitter, base **O**pen.
+When a switch [[learning/notes/quick-context/transistor|transistor]] is *off*, it is blocking the supply: almost the entire $V_{CC}$ drops across the collector–emitter terminals. $V_{CEO}$ is how much it can block before the junction avalanche-breaks-down and conducts uncontrollably (often destroying the part). The subscript spells out the test condition: **C**ollector–**E**mitter, base **O**pen.
 
 $$V_{CEO} > V_{CC} \quad(\text{always — with margin, ideally } V_{CEO} \ge 2\times V_{CC})$$
 
@@ -182,7 +182,7 @@ PICKING THE PART — the decision order
 <details>
 <summary><strong>Concrete Example</strong> — Reading the 2N2222 spec line for a 0.3 A relay driver</summary>
 
-You want a generic small NPN to switch a 12 V, 300 mA relay from a 3.3 V microcontroller pin. You grab a **2N2222A** (a classic jellybean NPN) and check the five numbers against the circuit.
+You want a generic small NPN to switch a 12 V, 300 mA relay from a 3.3 V [[learning/notes/micro-context/microcontroller|microcontroller]] pin. You grab a **2N2222A** (a classic jellybean NPN) and check the five numbers against the circuit.
 
 ```
 PN2222A / TO-92 plastic  (ON Semi limits)  YOUR CIRCUIT NEEDS
@@ -196,7 +196,7 @@ PN2222A / TO-92 plastic  (ON Semi limits)  YOUR CIRCUIT NEEDS
 
 > **Watch the variant.** These are the values for the **TO-92 plastic PN2222A**. The original **metal-can TO-18 "2N2222A"** differs — typically $I_C = 800$ mA and $P_D = 500$ mW (it sheds heat differently). Same family name, different limits: always read the *specific* datasheet for the package you're [[learning/notes/quick-context/soldering|soldering]]. Also note $h_{FE,min}=100$ is quoted at a test current of $I_C = 150$ mA; the guaranteed minimum *falls* at higher $I_C$ (e.g. ≥40 at 500 mA) — another reason to overdrive the base.
 
-**Step 1 — Voltage fence.** Off-state, the relay coil pulls the collector to ~12 V, so $V_{CE}\approx 12$ V $< 40$ V $V_{CEO}$. Plus margin for the coil's inductive turn-off spike → add a flyback diode and you're safe. PASS.
+**Step 1 — Voltage fence.** Off-state, the relay coil pulls the collector to ~12 V, so $V_{CE}\approx 12$ V $< 40$ V $V_{CEO}$. Plus margin for the coil's inductive turn-off spike → add a flyback [[learning/notes/quick-context/diode|diode]] and you're safe. PASS.
 
 **Step 2 — Current fence.** $I_C = 300$ mA $< 600$ mA rating. PASS (but only 2× margin — fine for a relay, derate harder for continuous loads).
 
@@ -226,7 +226,7 @@ Check the pin can source 9 mA (most MCU pins do ~20 mA). Done — all five specs
 - **[[quick-context/bjt]]** — The companion note: the physics (NPN/PNP structure, the three operating regions, why the base is thin). Read it to understand *why* these specs exist; read this note to *use* them.
 - **[[quick-context/power-watts-joules]]** — $P_C$ is just $P = V \cdot I$ applied to the transistor, plus thermal resistance ($R_{\theta JA}$) deciding how fast that heat escapes. The heat ceiling is really a thermal problem.
 - **[[quick-context/resistor]]** — The base [[learning/notes/quick-context/resistor|resistor]] sets $I_B$ from $\beta$; it is the component that turns the gain spec into an actual circuit value.
-- **[[quick-context/transistor]]** — The MOSFET sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
+- **[[quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] sibling. Its spec sheet swaps $\beta$/$I_B$ for $V_{GS(th)}$ and $R_{DS(on)}$, and its "$V_{CEO}$" equivalent is $V_{DS(max)}$ — the survival-fence logic is identical.
 - **[[quick-context/diode]]** — A flyback/freewheeling diode protects the BJT from inductive spikes that would otherwise blow past $V_{CEO}$.
 - **[[quick-context/comparator-specification]]** — The same "read-the-datasheet-before-you-trust-it" discipline applied to a [[learning/notes/quick-context/comparator|comparator]] IC (absolute-max vs. guaranteed limits, typical vs. boldface).
 

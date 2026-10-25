@@ -60,7 +60,7 @@ THE FETCH-EXECUTE CYCLE
 
 ### The Program Counter is just a register with feedback
 
-You already know a [[learning/notes/quick-context/switches-to-registers-storing-data|register]] captures a value at the clock edge. Take that register, wire its output through a `+1` incrementer, and feed the incremented value back into its own input. Now every clock tick it counts up by one. Bolt on two muxes so you can *override* the count with a jump address (or with zero on reset), and you have a full Program Counter:
+You already know a [[learning/notes/quick-context/switches-to-registers-storing-data|register]] captures a value at the [[learning/notes/micro-context/clock-edges|clock edge]]. Take that register, wire its output through a `+1` incrementer, and feed the incremented value back into its own input. Now every clock tick it counts up by one. Bolt on two muxes so you can *override* the count with a jump address (or with zero on reset), and you have a full Program Counter:
 
 ```
 PROGRAM COUNTER = REGISTER + INCREMENTER + FEEDBACK + MUXES

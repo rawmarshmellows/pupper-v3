@@ -17,7 +17,7 @@ created: 2026-06-07
 
 - Each input pin connects to a [[learning/notes/quick-context/transistor|transistor]] gate (CMOS) or base (bipolar) that must be held at its DC operating point to stay in the active region.
 - Bipolar (BJT) inputs need a **continuous base current** to stay forward-active, so the part keeps drawing it from your source — real $I_B$ (nanoamps to microamps).
-- CMOS ([[micro-context/mosfet|MOSFET]]-gate) inputs sit behind a thin oxide insulator that makes the gate **one plate of a [[learning/notes/quick-context/capacitor|capacitor]]**. Charging it to the bias [[learning/notes/quick-context/voltage|voltage]] takes only a brief transient; at steady DC a [[learning/notes/quick-context/capacitor|capacitor]] passes no current, so holding the input transistor on costs ~zero. Only tiny leakage — oxide tunneling, ESD-[[learning/notes/quick-context/diode|diode]] and PCB surface leakage — crosses, giving the LMC7211-N its ~0.04 pA (leakage roughly doubles every ~10 °C). *Mechanism: [[micro-context/mosfet#The Gate as a Capacitor (No DC Gate Current)|MOSFET → the gate as a capacitor]].*
+- CMOS ([[micro-context/mosfet|MOSFET]]-gate) inputs sit behind a thin oxide insulator that makes the gate **one plate of a [[learning/notes/quick-context/capacitor|capacitor]]**. Charging it to the bias [[learning/notes/quick-context/voltage|voltage]] takes only a brief transient; at steady DC a [[learning/notes/quick-context/capacitor|capacitor]] passes no current, so holding the input [[learning/notes/quick-context/transistor|transistor]] on costs ~zero. Only tiny leakage — oxide tunneling, ESD-[[learning/notes/quick-context/diode|diode]] and PCB surface leakage — crosses, giving the LMC7211-N its ~0.04 pA (leakage roughly doubles every ~10 °C). *Mechanism: [[micro-context/mosfet#The Gate as a Capacitor (No DC Gate Current)|MOSFET → the gate as a capacitor]].*
 - Bias current flowing through your source or [[quick-context/resistor|resistor]] divider creates an error [[learning/notes/quick-context/voltage|voltage]] $I_B \times R$; near-zero $I_B$ means a high-impedance divider isn't loaded down.
 
 ```
@@ -34,4 +34,4 @@ created: 2026-06-07
    (A bipolar input would draw nA-uA and shift the node.)
 ```
 
-**Key insight:** Near-zero input current is exactly why a CMOS [[learning/notes/quick-context/comparator|comparator]] can sense a high-impedance [[learning/notes/quick-context/resistor|resistor]] divider without disturbing it — a bipolar part would bleed enough current to shift the divider's voltage and corrupt the threshold.
+**Key insight:** Near-zero input current is exactly why a CMOS [[learning/notes/quick-context/comparator|comparator]] can sense a high-impedance [[learning/notes/quick-context/resistor|resistor]] divider without disturbing it — a bipolar part would bleed enough current to shift the divider's [[learning/notes/quick-context/voltage|voltage]] and corrupt the threshold.

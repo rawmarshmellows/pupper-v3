@@ -3,7 +3,7 @@ topic: Electric Current
 created: 2026-01-22
 ---
 
-> **Related:** [[learning/notes/quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/quick-context/electromigration|Electromigration]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]]
+> **Related:** [[learning/notes/quick-context/electric-magnetic-field-unification|Electric and Magnetic Field Unification]] | [[learning/notes/quick-context/coil-magnetic-field|Why Current Through a Coil Creates a Magnetic Field]] | [[learning/notes/micro-context/ac-dc-current|AC vs DC Current]] | [[learning/notes/micro-context/current-electrons-per-second|Current and Electrons Per Second]] | [[learning/notes/quick-context/electromigration|Electromigration]]
 
 > **TL;DR:** Electric current is the flow of electric charge (electrons moving through a conductor) that carries energy from source to destination, and in electrochemistry, current directly determines reaction rate through Faraday's law (Q = I x t)—double the current means double the product.
 
@@ -16,7 +16,7 @@ Imagine you have energy in one place (a battery, a power plant) and you need to 
 | Term | Definition |
 |------|------------|
 | **Ampere (A)** | The unit of current. 1 ampere = 1 [[learning/notes/micro-context/coulomb-history|coulomb]] of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
-| **Coulomb (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in electrolysis. |
+| **[[learning/notes/micro-context/coulomb-history|Coulomb]] (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in [[learning/notes/quick-context/electrolysis|electrolysis]]. |
 | **Direct Current (DC)** | Current that flows in ONE direction only—like water flowing downhill. [[quick-context/galvanic-cells-batteries|Batteries]] produce DC. Electrolysis requires DC (electrons must consistently enter at [[quick-context/electrodes|cathode]], exit at [[quick-context/electrodes|anode]]). |
 | **Alternating Current (AC)** | Current that reverses direction many times per second (60 Hz in US = 60 reversals/second). Wall outlets provide AC. Must convert to DC for electrolysis. |
 | **Current Density** | Current per unit area (A/cm² or A/m²). Critical for electrolysis (too low = slow; too high = electrode damage) and [[quick-context/electromigration|electromigration]] in chip wires (too high = wire failure). |
@@ -206,7 +206,7 @@ The central tradeoff practitioners navigate is between **high current for fast r
 2. **Larger conductors**: High current requires thicker wires to avoid overheating—copper for house wiring, massive aluminum busbars in industrial facilities.
 3. **Safety hazards**: While [[learning/notes/quick-context/voltage|voltage]] is what causes shock, current is what kills. Just 0.1 amperes (100 milliamps) through the heart can be fatal.
 
-In electrolysis specifically, pushing more current increases "overpotential" losses—you need extra voltage to maintain high current flow, which wastes energy as heat. Industrial plants optimize by finding the current density (amps per square centimeter of electrode) that balances production speed against energy efficiency.
+In electrolysis specifically, pushing more current increases "overpotential" losses—you need extra [[learning/notes/quick-context/voltage|voltage]] to maintain high current flow, which wastes energy as heat. Industrial plants optimize by finding the current density (amps per square centimeter of electrode) that balances production speed against energy efficiency.
 
 </details>
 
@@ -374,7 +374,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 **Q3:** Why does electrolysis specifically require DC (direct current) rather than AC (alternating current)?
 <details>
 <summary>Answer</summary>
-**Electrolysis requires consistent electron flow direction.** At the cathode, positive ions must continuously gain electrons (reduction). At the [[learning/notes/micro-context/anode|anode]], negative ions must continuously lose electrons ([[learning/notes/micro-context/oxidation|oxidation]]). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the anode and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
+**Electrolysis requires consistent electron flow direction.** At the [[learning/notes/micro-context/cathode|cathode]], positive ions must continuously gain electrons (reduction). At the [[learning/notes/micro-context/anode|anode]], negative ions must continuously lose electrons ([[learning/notes/micro-context/oxidation|oxidation]]). With AC, the current reverses direction 60 times per second (in US)—the cathode becomes the [[learning/notes/micro-context/anode|anode]] and vice versa, constantly reversing the reactions. Any product formed in one half-cycle gets undone in the next. You'd produce nothing useful. DC maintains the cathode as always negative and anode as always positive, allowing continuous product accumulation. See: 5 Essential Terms (Direct Current definition)
 </details>
 
 **Q4:** Two electrolysis cells are connected in series (current passes through both). Cell A has electrode area of 10 cm², Cell B has electrode area of 100 cm². Which cell produces more product?

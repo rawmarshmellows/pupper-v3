@@ -2,7 +2,7 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
-> **Related:** [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/micro-context/eeprom|EEPROM (Electrically Erasable Programmable Read-Only Memory)]] | [[learning/notes/quick-context/can-bus|CAN Bus (Controller Area Network)]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software|PLC: Why It's Different From Software]] | [[learning/notes/quick-context/plc-vs-software-control|PLC vs Software Control for Robotic Arms]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement|PREEMPT_RT + ROS2 as PLC Replacement]] | [[learning/notes/micro-context/eeprom|EEPROM (Electrically Erasable Programmable Read-Only Memory)]] | [[learning/notes/quick-context/pwm-controller-circuit|PWM Controller Circuit]]
 
 
 # PLC (Programmable Logic Controller)

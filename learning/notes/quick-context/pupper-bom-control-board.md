@@ -5,7 +5,7 @@ created: 2026-02-25
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
-> **Related:** [[learning/notes/quick-context/pupper-brain|pupper-brain]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL (Pick-and-Place)]] | [[learning/notes/quick-context/raspberry-pi-5-components|Raspberry Pi 5 — Board Components]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]] | [[learning/notes/quick-context/pcb-printed-circuit-board|PCB (Printed Circuit Board)]]
+> **Related:** [[learning/notes/quick-context/pupper-brain|pupper-brain]] | [[learning/notes/quick-context/pcb-printed-circuit-board|PCB (Printed Circuit Board)]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL (Pick-and-Place)]] | [[learning/notes/quick-context/pupper-lab1-pid-control|Pupper Lab 1 — PID Control (Single Joint)]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control|Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)]]
 
 > **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
@@ -100,13 +100,13 @@ Each MCU requires:
 
 Four transceivers create 4 independent CAN buses. Each bus connects to 3 servo motors (4 buses × 3 servos = 12 total). The MAX3051 converts the MCU's single-ended TX/RX signals into differential CAN_H/CAN_L pairs that are noise-immune over long wires — critical for a robot where motor cables run through legs and pick up electromagnetic interference.
 
-The 120Ω resistors (R1-R4) are [[learning/notes/quick-context/can-bus|CAN bus]] termination [[quick-context/resistor|resistors]] — they match the characteristic [[quick-context/impedance-and-reactance|impedance]] of the CAN bus to prevent signal reflections.
+The 120Ω resistors (R1-R4) are [[learning/notes/quick-context/can-bus|CAN bus]] termination [[quick-context/resistor|resistors]] — they match the characteristic [[quick-context/impedance-and-reactance|impedance]] of the [[learning/notes/quick-context/can-bus|CAN bus]] to prevent signal reflections.
 
 ### Category 3: Sensing — IMU and ADC (U15, U16)
 
 **BNO086** (U15) — 9-axis IMU (accelerometer + gyroscope + magnetometer) with onboard Cortex-M0+ processor running sensor fusion. Outputs quaternions over I2C/SPI. LGA-28 package (5.2 × 3.8 mm). This tells the robot which way is up — essential for balance control.
 
-**ADS1110A0IDBVR** (U16) — 16-bit delta-sigma ADC with I2C interface, SOT-23-6 package. Monitors battery voltage through a [[quick-context/resistor|voltage divider]] so the system can warn of low battery and prevent over-discharge.
+**ADS1110A0IDBVR** (U16) — 16-bit delta-sigma ADC with I2C interface, SOT-23-6 package. Monitors battery [[learning/notes/quick-context/voltage|voltage]] through a [[quick-context/resistor|voltage divider]] so the system can warn of low battery and prevent over-discharge.
 
 ### Category 4: Audio — I2S Amplifier (U18)
 
@@ -114,7 +114,7 @@ The 120Ω resistors (R1-R4) are [[learning/notes/quick-context/can-bus|CAN bus]]
 
 ### Category 5: Power Supply — Buck Converter (U8, D1, L1)
 
-**TPS54561DPRR** (U8) — Wide-input (4.5–60V) buck converter, 5A output, adjustable frequency (100 kHz – 2.5 MHz), WSON-10 package with exposed thermal pad.
+**TPS54561DPRR** (U8) — Wide-input (4.5–60V) [[learning/notes/micro-context/buck-converter|buck converter]], 5A output, adjustable frequency (100 kHz – 2.5 MHz), WSON-10 package with exposed thermal pad.
 
 This is the board's main power supply, converting battery voltage (typically 7–24V) down to 5V for all logic. The supporting components form a complete switching power supply:
 
@@ -174,7 +174,7 @@ All small caps are C0402 (1.0 × 0.5 mm) — too small to hand-solder. The 47μF
 
 | Value | Qty | Designators | Function |
 |-------|-----|-------------|----------|
-| 120Ω | 4 | R1-R4 | CAN bus termination |
+| 120Ω | 4 | R1-R4 | [[learning/notes/micro-context/can-bus-termination|CAN bus termination]] |
 | 60.4kΩ / 11.5kΩ | 2 | R5,R6 | Buck converter feedback divider → 5.0V |
 | 34kΩ / 174kΩ | 2 | R10,R13 | Buck converter frequency set |
 | 10kΩ | 3 | R18,R21,R23 | Pull-up resistors (I2C, reset) |
@@ -240,7 +240,7 @@ The BNO086 IMU has no LCSC part number — it's not in JLCPCB's standard compone
 
 This is a common tension: the best sensor for the job (BNO086's onboard fusion processor is unmatched) doesn't always align with the easiest assembly path.
 
-**3. Why so many capacitor values?**
+**3. Why so many [[learning/notes/quick-context/capacitor|capacitor]] values?**
 
 The 7 different capacitor values (6.8pF to 47μF) aren't random — each serves a specific frequency range:
 
@@ -321,7 +321,7 @@ NOW TRACE IT ON THE BOARD:
      → exposed pad soldered to ground plane for heat sinking
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking a BOM is just a shopping list. It's actually a complete specification that encodes deep design decisions. The 60.4kΩ feedback resistor isn't "approximately 60k" — it's calculated to 3 significant figures from the voltage reference. The 100nF decoupling caps aren't "some capacitors near the chip" — each one is placed within 2mm of a specific power pin, and their impedance at the STM32's switching frequencies determines whether the MCU runs reliably. The BOM is the bridge between the schematic's electrical design and the physical board that gets built.
+**The one thing most outsiders get wrong about this is...** thinking a BOM is just a shopping list. It's actually a complete specification that encodes deep design decisions. The 60.4kΩ feedback [[learning/notes/quick-context/resistor|resistor]] isn't "approximately 60k" — it's calculated to 3 significant figures from the voltage reference. The 100nF decoupling caps aren't "some capacitors near the chip" — each one is placed within 2mm of a specific power pin, and their impedance at the STM32's switching frequencies determines whether the MCU runs reliably. The BOM is the bridge between the schematic's electrical design and the physical board that gets built.
 
 </details>
 
@@ -382,13 +382,13 @@ NOW TRACE IT ON THE BOARD:
 **Q4:** The BNO086 has no LCSC supplier part number. What are your options for building this board?
 <details>
 <summary>Answer</summary>
-**Three options:** (1) Use JLCPCB's consignment service — order the BNO086 from Mouser/Digi-Key and ship it to JLCPCB, who will place it during assembly. (2) Have JLCPCB assemble everything except the BNO086, then solder it yourself with a hot-air station (the LGA-28 package has pads only on the bottom — impossible with a soldering iron). (3) Find an alternative assembly house that stocks Bosch sensors. Option 1 is most common. This sourcing gap is typical for specialized sensors not in mainstream Chinese distributor catalogs.
+**Three options:** (1) Use JLCPCB's consignment service — order the BNO086 from Mouser/Digi-Key and ship it to JLCPCB, who will place it during assembly. (2) Have JLCPCB assemble everything except the BNO086, then solder it yourself with a hot-air station (the LGA-28 package has pads only on the bottom — impossible with a [[learning/notes/quick-context/soldering|soldering]] iron). (3) Find an alternative assembly house that stocks Bosch sensors. Option 1 is most common. This sourcing gap is typical for specialized sensors not in mainstream Chinese distributor catalogs.
 </details>
 
 **Q5:** If you removed the 10μH [[learning/notes/quick-context/inductor|inductor]] (L1) from the buck converter circuit, what would happen?
 <details>
 <summary>Answer</summary>
-**The 5V output would collapse into violent pulses instead of smooth DC.** The TPS54561's internal switch chops the battery voltage on and off at hundreds of kHz. The [[quick-context/inductor|inductor]] smooths these pulses by storing energy in its magnetic field during the "on" phase and releasing it during "off." Without L1, the output would be a square wave between battery voltage and 0V — no IC on the board could survive that. The output capacitors (C18, C19) would see massive ripple current and likely fail. The inductor is not optional in a buck converter; it IS the converter's fundamental energy storage element. See [[quick-context/inductor]] for the buck converter explanation.
+**The 5V output would collapse into violent pulses instead of smooth DC.** The TPS54561's internal switch chops the battery voltage on and off at hundreds of kHz. The [[quick-context/inductor|inductor]] smooths these pulses by storing energy in its magnetic field during the "on" phase and releasing it during "off." Without L1, the output would be a square wave between battery voltage and 0V — no IC on the board could survive that. The output capacitors (C18, C19) would see massive ripple current and likely fail. The [[learning/notes/quick-context/inductor|inductor]] is not optional in a buck converter; it IS the converter's fundamental energy storage element. See [[quick-context/inductor]] for the buck converter explanation.
 </details>
 
 </details>

@@ -7,7 +7,7 @@ created: 2026-02-20
 
 > **Related:** [[learning/notes/quick-context/tensor|Tensor]]
 
-> **TL;DR:** The Faraday [[learning/notes/quick-context/tensor|tensor]] (or electromagnetic field tensor) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
+> **TL;DR:** The Faraday [[learning/notes/quick-context/tensor|tensor]] (or electromagnetic field [[learning/notes/quick-context/tensor|tensor]]) is a 4×4 antisymmetric matrix that packages the electric field **E** and magnetic field **B** into a single mathematical object, revealing that they are not separate phenomena but two aspects of one unified electromagnetic field that transforms together under special relativity—what one observer sees as a pure electric field, another moving observer may see as a mix of electric and magnetic fields.
 
 ## The Core Problem: E and B Transform Weirdly
 
@@ -226,7 +226,7 @@ WHY THIS MATTERS:
 
 ## The Tensor Hides the Fields; the Fields Hide the Unity
 
-There's a pedagogical tension in how to teach electromagnetism:
+There's a pedagogical tension in how to teach [[learning/notes/quick-context/electromagnetism|electromagnetism]]:
 
 ```
 TWO WAYS TO UNDERSTAND ELECTROMAGNETISM
@@ -421,7 +421,7 @@ EXAMPLE: Current-Carrying Wire
 
 - **[[quick-context/voltage]]** — [[learning/notes/quick-context/voltage|Voltage]] is the line integral of the electric field. In tensor language, this connects to the time-space components of the Faraday tensor.
 
-- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of Maxwell's equations in tensor form.
+- **[[quick-context/electric-current]]** — Current appears in the source term (4-current $J^\mu$) of [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] in tensor form.
 
 - **Special Relativity** — The Lorentz transformations that mix E and B components come from special relativity. The Faraday tensor is defined to transform correctly under these transformations.
 

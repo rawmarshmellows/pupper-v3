@@ -5,7 +5,7 @@ created: 2026-01-22
 
 > **Related:** [[learning/notes/quick-context/electrolyte|Electrolyte]] | [[learning/notes/quick-context/butyric-acid|Butyric Acid]]
 
-> **TL;DR:** Pure water is almost a perfect insulator - you must add an [[learning/notes/quick-context/electrolyte|electrolyte]] (acid, base, or salt) to create mobile ions that carry electrical current. The electrolyte dissociates into charged particles that enable electricity to flow through the liquid.
+> **TL;DR:** Pure water is almost a perfect insulator - you must add an [[learning/notes/quick-context/electrolyte|electrolyte]] (acid, base, or salt) to create mobile ions that carry electrical current. The [[learning/notes/quick-context/electrolyte|electrolyte]] dissociates into charged particles that enable electricity to flow through the liquid.
 
 # How to Make an Electrolyte (Acid, Base, or Salt)
 
@@ -28,7 +28,7 @@ Here is a fact that surprises most people: **pure water is almost a perfect insu
 
 When you add an electrolyte to water, the compound **dissociates**—it splits apart into its constituent ions. This happens because water molecules are **polar**: the oxygen end carries a partial negative charge, and the hydrogen ends carry partial positive charges. When a salt crystal (like NaCl) contacts water, the water molecules surround the ions on the crystal's surface. The partially negative oxygens attract the positive sodium ions (Na+), while the partially positive hydrogens attract the negative chloride ions (Cl-). These attractions are strong enough to pull individual ions away from the crystal lattice, one by one, until the entire crystal dissolves.
 
-Once freed, the ions become **mobile charge carriers**. When you apply a voltage across two electrodes in the solution, the positive ions (cations) migrate toward the negative electrode ([[learning/notes/micro-context/cathode|cathode]]), while the negative ions (anions) migrate toward the positive electrode ([[learning/notes/micro-context/anode|anode]]). This movement of charged particles IS the [[learning/notes/quick-context/electric-current|electric current]] through the liquid. The more ions you have dissolved, the more charge carriers are available, and the higher the solution's conductivity. This is why adding more electrolyte (up to the saturation limit) increases conductivity proportionally.
+Once freed, the ions become **mobile charge carriers**. When you apply a [[learning/notes/quick-context/voltage|voltage]] across two [[learning/notes/quick-context/electrodes|electrodes]] in the solution, the positive ions (cations) migrate toward the negative electrode ([[learning/notes/micro-context/cathode|cathode]]), while the negative ions (anions) migrate toward the positive electrode ([[learning/notes/micro-context/anode|anode]]). This movement of charged particles IS the [[learning/notes/quick-context/electric-current|electric current]] through the liquid. The more ions you have dissolved, the more charge carriers are available, and the higher the solution's conductivity. This is why adding more electrolyte (up to the saturation limit) increases conductivity proportionally.
 
 ```
 HOW ELECTROLYTES ENABLE CONDUCTION
@@ -419,13 +419,13 @@ SOLUTION: Remove the water entirely
 **Q2:** You want to electrolyze water to produce hydrogen and oxygen. You have table salt (NaCl) and Epsom salt (MgSO₄) available. Which should you choose, and why?
 <details>
 <summary>Answer</summary>
-**Choose Epsom salt (MgSO₄).** While both dissolve to create ions, NaCl releases chloride ions (Cl⁻) which get oxidized at the anode before water does, producing toxic chlorine gas instead of oxygen. MgSO₄ releases sulfate ions (SO₄²⁻) which are harder to oxidize than water, so they just carry current while water molecules react to form oxygen. See: The Key Tension (bad electrolyte choice example)
+**Choose Epsom salt (MgSO₄).** While both dissolve to create ions, NaCl releases chloride ions (Cl⁻) which get oxidized at the [[learning/notes/micro-context/anode|anode]] before water does, producing toxic chlorine gas instead of oxygen. MgSO₄ releases sulfate ions (SO₄²⁻) which are harder to oxidize than water, so they just carry current while water molecules react to form oxygen. See: The Key Tension (bad electrolyte choice example)
 </details>
 
-**Q3:** Why must aluminum be produced using molten salt electrolysis rather than dissolving an aluminum compound in water?
+**Q3:** Why must aluminum be produced using molten salt [[learning/notes/quick-context/electrolysis|electrolysis]] rather than dissolving an aluminum compound in water?
 <details>
 <summary>Answer</summary>
-**Aluminum is too reactive—water would be reduced instead.** Aluminum ions (Al³⁺) have a very negative reduction potential, meaning they "want" electrons less than water molecules do. In aqueous solution, the cathode would reduce water (producing hydrogen gas) before it would reduce Al³⁺ to aluminum metal. By using molten aluminum oxide (Al₂O₃) with no water present, Al³⁺ becomes the only reducible species, so aluminum metal forms. See: Special Case: Molten Salt Electrolytes
+**Aluminum is too reactive—water would be reduced instead.** Aluminum ions (Al³⁺) have a very negative reduction potential, meaning they "want" electrons less than water molecules do. In aqueous solution, the [[learning/notes/micro-context/cathode|cathode]] would reduce water (producing hydrogen gas) before it would reduce Al³⁺ to aluminum metal. By using molten aluminum oxide (Al₂O₃) with no water present, Al³⁺ becomes the only reducible species, so aluminum metal forms. See: Special Case: Molten Salt Electrolytes
 </details>
 
 **Q4:** A solid salt crystal contains ions but does not conduct electricity. Why not?

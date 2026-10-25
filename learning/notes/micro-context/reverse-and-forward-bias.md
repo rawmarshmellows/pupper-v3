@@ -14,7 +14,7 @@ updated: 2026-03-27
 
 - At equilibrium, a depletion zone forms at the PN junction where mobile carriers have diffused away, creating a built-in electric field (~0.7V for silicon).
 - Forward bias applies positive [[learning/notes/quick-context/voltage|voltage]] to the P-side, opposing the built-in field and shrinking the depletion zone until carriers flood across — current flows.
-- Reverse bias applies positive voltage to the N-side, reinforcing the built-in field and widening the depletion zone — current is blocked.
+- Reverse bias applies positive [[learning/notes/quick-context/voltage|voltage]] to the N-side, reinforcing the built-in field and widening the depletion zone — current is blocked.
 - If reverse voltage exceeds the breakdown voltage, the field accelerates carriers enough to ionize atoms (avalanche), and current flows destructively.
 
 ```

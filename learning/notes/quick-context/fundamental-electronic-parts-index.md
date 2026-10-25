@@ -64,7 +64,7 @@ THE THREE FUNDAMENTAL PASSIVES
 | Part | Existing Quick-Context? | Key Concept |
 |------|------------------------|-------------|
 | **[[quick-context/capacitor\|Capacitor]]** | Yes | Q=CV (charge = [[learning/notes/quick-context/capacitance|capacitance]] × [[learning/notes/quick-context/voltage|voltage]]), dielectrics, RC time constants, decoupling |
-| **[[quick-context/resistor\|Resistor]]** | Yes | Ohm's law (V=IR: voltage = current × resistance), power dissipation (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
+| **[[quick-context/resistor\|Resistor]]** | Yes | Ohm's law (V=IR: [[learning/notes/quick-context/voltage|voltage]] = current × resistance), power dissipation (P=I²R: power = current² × resistance), voltage dividers, pull-up/pull-down |
 | **[[quick-context/inductor\|Inductor]]** | Yes | Magnetic energy storage (E=½LI²: energy = ½ × inductance × current²), opposes current changes, used in filters/power supplies |
 
 ## 2. Active Components — Amplify and Switch
@@ -95,7 +95,7 @@ ACTIVE COMPONENT FAMILY TREE
 | **[[quick-context/diode\|Diode]]** | Yes | PN junction, forward/reverse bias, rectification, LEDs |
 | **[[quick-context/bjt\|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
 | **[[quick-context/bjt-specifications\|BJT Specifications]]** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
-| **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback resistor / input resistor) |
+| **[[quick-context/op-amp\|Op-Amp]]** | Yes | Differential amplifier IC, negative feedback, gain = Rf/Rin (feedback [[learning/notes/quick-context/resistor|resistor]] / input resistor) |
 | **[[quick-context/comparator\|Comparator]]** | Yes | [[learning/notes/quick-context/op-amp|Op-amp]]'s sibling optimized for binary output; bridges analog signals to digital logic |
 | **[[quick-context/differential-pair\|Differential Pair]]** | Yes | Two matched transistors + [[learning/notes/micro-context/tail-current|tail current]] source; the universal input stage of op-amps, comparators, and ADCs |
 | **[[quick-context/high-gain-amplifier-stage\|High-Gain Amplifier Stage]]** | Yes | [[learning/notes/micro-context/current-mirror|Current mirror]] active load on a [[learning/notes/quick-context/differential-pair|differential pair]]; converts μA current difference into full-rail voltage swing |
@@ -284,9 +284,9 @@ Every signal in every electronic device passes through some combination of these
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/transistor]]** — The most important active component. Understanding the MOSFET is the gateway to understanding all digital electronics, from logic gates to CPUs.
+- **[[quick-context/transistor]]** — The most important active component. Understanding the [[learning/notes/micro-context/mosfet|MOSFET]] is the gateway to understanding all digital electronics, from logic gates to CPUs.
 
-- **[[quick-context/capacitor]]** — The most important passive for digital electronics. Decoupling capacitors are on every board; the MOS capacitor is inside every transistor.
+- **[[quick-context/capacitor]]** — The most important passive for digital electronics. Decoupling capacitors are on every board; the MOS [[learning/notes/quick-context/capacitor|capacitor]] is inside every [[learning/notes/quick-context/transistor|transistor]].
 
 - **[[quick-context/electric-current]]** — The foundational concept that connects all components. Current flows through resistors, charges capacitors, creates magnetic fields in inductors, and drives transistor switching.
 
@@ -308,7 +308,7 @@ Every signal in every electronic device passes through some combination of these
 **Q1:** What are the three fundamental passive components, and what form of energy does each store or dissipate?
 <details>
 <summary>Answer</summary>
-**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × capacitance × voltage²). **[[learning/notes/quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
+**Resistor** dissipates energy as heat. **Capacitor** stores energy in an electric field (E = ½CV²: energy = ½ × [[learning/notes/quick-context/capacitance|capacitance]] × voltage²). **[[learning/notes/quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
 </details>
 
 **Q2:** What is the difference between a passive and an active component?
@@ -317,7 +317,7 @@ Every signal in every electronic device passes through some combination of these
 A **passive component** can only store or dissipate energy—it cannot amplify a signal. Resistors, capacitors, and inductors are passive. An **active component** can amplify or switch signals by drawing energy from a power supply and injecting it into the signal path. Transistors are the primary example: a small voltage on the gate controls a much larger current between source and drain.
 </details>
 
-**Q3:** A capacitor "blocks DC but passes AC" and an inductor "blocks AC but passes DC." Why are these behaviors exactly opposite?
+**Q3:** A capacitor "blocks DC but passes AC" and an [[learning/notes/quick-context/inductor|inductor]] "blocks AC but passes DC." Why are these behaviors exactly opposite?
 <details>
 <summary>Answer</summary>
 They store energy in dual forms: capacitors in electric fields (voltage-dependent), inductors in magnetic fields (current-dependent). A capacitor opposes voltage changes (I = C × dV/dt: current = capacitance × rate of voltage change)—DC has no voltage change, so no current passes. An inductor opposes current changes (V = L × dI/dt: voltage = inductance × rate of current change)—DC has no current change, so the inductor acts like a wire. At higher frequencies, voltage and current change faster, amplifying these opposing behaviors. This duality is why LC combinations create resonance and second-order filters.
@@ -326,7 +326,7 @@ They store energy in dual forms: capacitors in electric fields (voltage-dependen
 **Q4:** In the packaging hierarchy, why are there multiple connection technologies ([[learning/notes/quick-context/wire-bonding|wire bonding]] vs. flip-chip) rather than just one?
 <details>
 <summary>Answer</summary>
-They serve different tradeoffs. **Wire bonding** is cheap, flexible, and well-understood, but limited in density and adds inductance (wires are long). **Flip-chip** offers higher density and lower inductance (shorter connections), but requires more complex manufacturing and underfill to handle thermal stress. Cost-sensitive, low-pin-count chips use wire bonding; high-performance processors use flip-chip. See [[quick-context/wire-bonding]] and [[quick-context/flip-chip]].
+They serve different tradeoffs. **[[learning/notes/quick-context/wire-bonding|Wire bonding]]** is cheap, flexible, and well-understood, but limited in density and adds inductance (wires are long). **Flip-chip** offers higher density and lower inductance (shorter connections), but requires more complex manufacturing and underfill to handle thermal stress. Cost-sensitive, low-pin-count chips use wire bonding; high-performance processors use flip-chip. See [[quick-context/wire-bonding]] and [[quick-context/flip-chip]].
 </details>
 
 **Q5:** If you had to explain to someone the purpose of the entire packaging hierarchy in one sentence, what would it be?

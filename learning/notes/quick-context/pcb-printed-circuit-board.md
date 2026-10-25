@@ -3,7 +3,7 @@ topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
 
-> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL (Pick-and-Place)]] | [[learning/notes/quick-context/pupper-brain|pupper-brain]] | [[learning/notes/micro-context/short-circuit|Short Circuit]]
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|PCB Assembly Files — BOM & CPL (Pick-and-Place)]] | [[learning/notes/quick-context/pupper-bom-control-board|Pupper v3 Control Board BOM — Every Part Explained]] | [[learning/notes/quick-context/pcb-layers|PCB Layers]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[learning/notes/quick-context/pupper-brain|pupper-brain]]
 
 > **TL;DR:** PCBs replace the nightmare of hand-soldered wire connections with thin copper pathways printed onto a rigid fiberglass board, providing the physical foundation for reliable, manufacturable, and repairable electronics in every smartphone, computer, and electronic device.
 
@@ -258,7 +258,7 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 
 - **Signal Integrity** — At high speeds (MHz to GHz), traces act like transmission lines and signals can reflect, ring, or crosstalk. This drives many PCB design choices like controlled impedance traces and ground plane placement.
 
-- **[[learning/notes/quick-context/soldering|Soldering]] and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow soldering explains why pad design matters for manufacturing reliability.
+- **[[learning/notes/quick-context/soldering|Soldering]] and SMT (Surface Mount Technology)** — How components actually attach to PCB pads. Understanding reflow [[learning/notes/quick-context/soldering|soldering]] explains why pad design matters for manufacturing reliability.
 
 - **[[quick-context/pcb-layers|PCB Layers]]** — Detailed breakdown of every layer in a PCB (copper, soldermask, silkscreen, paste mask, drill files, board outline) and their corresponding Gerber files. Essential for understanding what the manufacturer actually receives.
 
@@ -278,7 +278,7 @@ A **trace** is a copper pathway that runs along a single layer of the PCB, carry
 **Q2:** What does the soldermask (the green coating) actually do?
 <details>
 <summary>Answer</summary>
-The soldermask is a protective coating that covers most of the copper, leaving only the pads exposed. It prevents accidental short circuits (if a stray piece of metal touched two adjacent traces, it would connect them—the soldermask prevents this). It also protects the copper from oxidation and environmental damage. See: 5 Essential Terms.
+The soldermask is a protective coating that covers most of the copper, leaving only the pads exposed. It prevents accidental short circuits (if a stray piece of metal touched two adjacent traces, it would connect them—the soldermask prevents this). It also protects the copper from [[learning/notes/micro-context/oxidation|oxidation]] and environmental damage. See: 5 Essential Terms.
 </details>
 
 **Q3:** Why do PCB designers dedicate entire layers to power and ground "planes" instead of just routing power traces like signal traces?

@@ -2,7 +2,7 @@
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
-> **Related:** [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/micro-context/eeprom|EEPROM (Electrically Erasable Programmable Read-Only Memory)]] | [[learning/notes/quick-context/d-flip-flop|D Flip-Flop — The Atom of Digital Memory]] | [[learning/notes/quick-context/how-source-code-is-stored|How Source Code Is Stored — Text, Encoding, and Bytes in Memory]]
+> **Related:** [[learning/notes/micro-context/eeprom|EEPROM (Electrically Erasable Programmable Read-Only Memory)]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory|physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/d-flip-flop|D Flip-Flop — The Atom of Digital Memory]] | [[learning/notes/quick-context/how-source-code-is-stored|How Source Code Is Stored — Text, Encoding, and Bytes in Memory]]
 
 
 # SRAM (Static Random-Access Memory)

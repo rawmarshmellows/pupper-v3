@@ -82,7 +82,7 @@ The asymmetry is the whole trick. Writing must be **gated by the clock** so data
 
 ### Why the DMUX prevents clobbering
 
-Every register shares the same clock. If you simply let all of them capture on every edge, one write would overwrite all eight. The DMUX is what makes the array behave like memory instead of a broadcast: it converts a single `load` into a **one-hot** vector (exactly one wire high) so the clock edge only "lands" on the addressed register.
+Every register shares the same clock. If you simply let all of them capture on every edge, one write would overwrite all eight. The DMUX is what makes the array behave like memory instead of a broadcast: it converts a single `load` into a **one-hot** vector (exactly one wire high) so the [[learning/notes/micro-context/clock-edges|clock edge]] only "lands" on the addressed register.
 
 ```
 address = 5 (binary 101)        load = 1
@@ -100,11 +100,11 @@ address = 5 (binary 101)        load = 1
 
 The central design tension in real RAM is **speed vs. density vs. cost**, and it shows up as the [[learning/notes/micro-context/sram|SRAM]]-vs-DRAM split.
 
-The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a [[learning/notes/quick-context/capacitor|capacitor]] — one [[learning/notes/quick-context/transistor|transistor]] plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
+The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **[[learning/notes/micro-context/sram|SRAM]]**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a [[learning/notes/quick-context/capacitor|capacitor]] — one [[learning/notes/quick-context/transistor|transistor]] plus one [[learning/notes/quick-context/capacitor|capacitor]] — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
 
 | | SRAM (register-like) | DRAM (capacitor) |
 |---|---|---|
-| Cell | ~6 transistors (flip-flop) | 1 transistor + 1 capacitor |
+| Cell | ~6 transistors (flip-flop) | 1 [[learning/notes/quick-context/transistor|transistor]] + 1 capacitor |
 | Speed | Fastest (<1 ns) | Slower |
 | Density / cost | Low density, expensive | High density, cheap |
 | Needs refresh? | No (static while powered) | Yes (charge leaks) |
