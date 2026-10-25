@@ -3,9 +3,9 @@ topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/polymer-chemical-bonds|Polymer Chemical Bonds: Quick Context for 3D Printing Filaments]] | [[learning/notes/quick-context/covalent-bonds|Covalent Bonds]] | [[learning/notes/quick-context/hydrogen-bonds-beginners|Hydrogen Bonds: Why PLA Snaps and TPU Bounces]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping|Code to Gates — The Full Compilation Chain and Bootstrapping]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline|Keypress to Pixel — The Full Path from a Key to a Letter on Screen]]
 
-> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
+> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong [[learning/notes/quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that hold molecules together, down to weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
 # Chemical Bonds: The Full Spectrum
 
