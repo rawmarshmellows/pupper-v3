@@ -3,6 +3,7 @@ term: Coriolis Effect
 created: 2026-03-28
 ---
 
+> **Related:** [[learning/notes/micro-context/piezoelectric-effect]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/faraday-tensor]]
 # Coriolis Effect
 
 > **See also:** [[small-context/mems-gyroscope-vibration-drift]] | [[small-context/imu-robot-balance-sensing]] | [[quick-context/pupper-bom-control-board]]

@@ -4,6 +4,7 @@ created: 2026-03-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/scan-loop]]
 # Microcontroller
 
 > **See also:** [[quick-context/embedded-communication-protocols]]
