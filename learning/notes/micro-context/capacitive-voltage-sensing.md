@@ -6,7 +6,7 @@ created: 2026-06-08
 > **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/anode]]
 # Capacitive Voltage Sensing
 
-> **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | [[micro-context/capacitive-sensing-measurement]]
+> **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | 
 
 **Definition:** Detecting a [[learning/notes/quick-context/voltage|voltage]] *without touching* the conductor — a sense plate placed near a live conductor couples to it through the electric field, and the charge induced on the plate ($Q = CV$) reveals the source voltage. Used in non-contact voltage testers and high-voltage capacitive dividers.
 

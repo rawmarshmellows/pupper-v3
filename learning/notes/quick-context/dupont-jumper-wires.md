@@ -5,11 +5,11 @@ created: 2026-04-03
 
 # DuPont Jumper Wires
 
-> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and microcontroller circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
+> **TL;DR:** DuPont jumper wires are cheap, solder-free cables with 2.54mm-pitch crimp connectors used to quickly wire up breadboard and [[learning/notes/micro-context/microcontroller|microcontroller]] circuits. They're the universal prototyping cable of hobbyist electronics -- indispensable for experimentation, unreliable for anything permanent.
 
 ## The Core Problem
 
-Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without soldering. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
+Electronics prototyping requires connecting dozens of components -- sensors, microcontrollers, displays, motors -- without [[learning/notes/quick-context/soldering|soldering]]. You need connections you can make in seconds, rearrange freely, and discard when the design changes. DuPont jumper wires solve this by providing plug-and-play cables that mate with the 0.1" pin headers found on virtually every dev board. Without them, every breadboard experiment would require soldering or expensive connector systems.
 
 ## 5 Essential Terms
 
@@ -120,7 +120,7 @@ The fundamental tradeoff with DuPont jumper wires is **speed of connection vs qu
 | Current | 3A | ~1A max, 500mA comfortable |
 | Mating cycles | 500+ | 50-100 before loosening |
 | Contact resistance | 15-20 m$\Omega$ | 50-200+ m$\Omega$ (variable) |
-| Voltage | 250V AC/DC | Rarely the limiting factor |
+| [[learning/notes/quick-context/voltage|Voltage]] | 250V AC/DC | Rarely the limiting factor |
 | Temperature | -25$^\circ$C to +85$^\circ$C | PVC degrades above 80$^\circ$C |
 
 </details>
@@ -202,7 +202,7 @@ The name persists because the clones flooded the hobbyist market during the 1990
 
 5. **Using pliers to crimp** -- A proper ratcheting crimp tool ($20-30) is essential for reliable DIY cables. Pliers produce inconsistent crimps that fail under load.
 
-6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from oxidation, vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
+6. **Leaving them in production** -- DuPont connections left in place for months develop intermittent failures from [[learning/notes/micro-context/oxidation|oxidation]], vibration, and spring fatigue. Graduate to proper connectors for anything permanent.
 
 7. **Mixing 2.54mm and 2.0mm pitch** -- Some boards (certain ESP modules, fine-pitch breakouts) use 2.0mm headers. Standard DuPont connectors won't seat properly.
 

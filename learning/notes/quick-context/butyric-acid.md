@@ -11,13 +11,13 @@ created: 2026-04-06
 
 ## The Core Problem
 
-Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate oxidation, not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
+Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate [[learning/notes/micro-context/oxidation|oxidation]], not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Short-chain fatty acid (SCFA)** | Fatty acids with 2--6 carbon atoms produced by anaerobic bacterial fermentation of fiber in the colon; the three main SCFAs are acetate (~60%), propionate (~20%), and butyrate (~20%) |
+| **Short-chain fatty acid (SCFA)** | Fatty acids with 2--6 carbon [[learning/notes/quick-context/atoms-molecules-polymers-basics|atoms]] produced by anaerobic bacterial fermentation of fiber in the colon; the three main SCFAs are acetate (~60%), propionate (~20%), and butyrate (~20%) |
 | **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its primary energy source via $\beta$-oxidation in mitochondria |
 | **HDAC inhibitor** | A molecule that blocks histone deacetylase enzymes, loosening chromatin and activating gene expression --- butyrate's key epigenetic mechanism |
 | **Gut barrier** | The single-cell-thick epithelial layer separating the colonic lumen (trillions of bacteria) from the bloodstream; butyrate strengthens its tight junctions |
@@ -137,7 +137,7 @@ The emerging consensus: fiber first, supplements as a targeted intervention for 
 ### Scenario: High-fiber diet vs. low-fiber diet
 
 **Person A** eats 35g of fiber/day (lentils, oats, vegetables, resistant starch from cooled rice):
-- Colonic bacteria receive abundant substrate
+- Colonic bacteria receive abundant [[learning/notes/quick-context/substrate-ic-packaging|substrate]]
 - *Faecalibacterium prausnitzii* and *Roseburia* populations thrive
 - Estimated total SCFA production: ~400--600 mmol/day
 - Butyrate fraction (~20%): ~80--120 mmol/day
