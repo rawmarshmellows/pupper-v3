@@ -5,7 +5,7 @@ updated: 2026-01-21
 clarification: 2026-01-21
 ---
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -23,7 +23,7 @@ Imagine you're trying to understand why water boils at 100°C while methane (nat
 | **Electronegativity** | An atom's "greediness" for electrons—oxygen and nitrogen hog electrons; hydrogen and carbon share more fairly |
 | **Partial charge (δ+ / δ-)** | Not a full +1 or -1 charge, but a slight imbalance—written as delta-plus or delta-minus |
 | **Dipole** | A pair of equal and opposite partial charges separated by distance—the molecule has a "positive pole" and "negative pole" |
-| **Intermolecular force** | Any attraction *between* molecules (not the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule) |
+| **Intermolecular force** | Any attraction *between* molecules (not the [[quick-context/covalent-bonds|covalent bonds]] holding [[learning/notes/quick-context/atoms-molecules-polymers-basics|atoms]] together *within* a molecule) |
 
 <details>
 <summary><strong>How It Works</strong></summary>

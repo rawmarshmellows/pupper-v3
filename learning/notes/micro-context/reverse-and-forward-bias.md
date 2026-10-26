@@ -4,16 +4,17 @@ created: 2026-02-25
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/mosfet]]
 # Reverse and Forward Bias
 
-**Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
+**Definition:** The two ways to apply [[learning/notes/quick-context/voltage|voltage]] across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works
 
 - At equilibrium, a depletion zone forms at the PN junction where mobile carriers have diffused away, creating a built-in electric field (~0.7V for silicon).
 - Forward bias applies positive voltage to the P-side, opposing the built-in field and shrinking the depletion zone until carriers flood across — current flows.
 - Reverse bias applies positive voltage to the N-side, reinforcing the built-in field and widening the depletion zone — current is blocked.
-- If reverse voltage exceeds the breakdown voltage, the field accelerates carriers enough to ionize atoms (avalanche), and current flows destructively.
+- If reverse voltage exceeds the breakdown voltage, the field accelerates carriers enough to ionize [[learning/notes/quick-context/atoms-molecules-polymers-basics|atoms]] (avalanche), and current flows destructively.
 
 ```
 Forward bias:  current flows          Reverse bias:  current blocked
