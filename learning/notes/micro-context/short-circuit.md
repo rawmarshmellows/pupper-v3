@@ -2,6 +2,8 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/quick-context/impedance-and-reactance]]
+
 
 # Short Circuit
 

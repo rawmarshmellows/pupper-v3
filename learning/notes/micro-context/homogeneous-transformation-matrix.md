@@ -3,6 +3,8 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/scan-loop]]
+
 
 # Homogeneous Transformation Matrix
 
