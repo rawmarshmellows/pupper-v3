@@ -3,6 +3,8 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/raspberry-pi-5-components]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/firmware]]
+
 
 # Microcontroller
 

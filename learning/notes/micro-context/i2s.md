@@ -2,6 +2,8 @@
 term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/clock-edges]]
+
 
 # I2S (Inter-IC Sound)
 
