@@ -466,7 +466,7 @@ POWER-ON SEQUENCE
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
 

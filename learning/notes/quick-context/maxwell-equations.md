@@ -18,7 +18,7 @@ Before Maxwell, electricity and magnetism seemed like separate phenomena with un
 | Term | Definition |
 |------|------------|
 | **Electric Field (E)** | A vector field that exerts force on electric charges ($\mathbf{F} = q\mathbf{E}$). Created by charges and by changing magnetic fields. Measured in V/m or N/C. |
-| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by [[quick-context/electric-current\|currents]] (moving charges) and by changing electric fields. Measured in tesla (T). |
+| **Magnetic Field (B)** | A vector field that exerts force on moving charges ($\mathbf{F} = q\mathbf{v} \times \mathbf{B}$). Created by currents (moving charges) and by changing electric fields. Measured in tesla (T). |
 | **Electric Flux ($\Phi_E$)** | The "amount" of electric field passing through a surface: $\Phi_E = \int \mathbf{E} \cdot d\mathbf{A}$. Gauss's law relates total flux to enclosed charge. |
 | **Magnetic Flux ($\Phi_B$)** | The "amount" of magnetic field passing through a surface: $\Phi_B = \int \mathbf{B} \cdot d\mathbf{A}$. Changes in magnetic flux induce EMF ([[quick-context/lenzs-law|Faraday's law]]). |
 | **Displacement Current** | Maxwell's key addition: a changing electric field acts like a current for purposes of creating magnetic fields. Written as $\varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$. Completes the symmetry between E and B. |
