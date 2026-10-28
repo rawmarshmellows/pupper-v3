@@ -431,7 +431,7 @@ Lab 5 uses MuJoCo, which is excellent for accuracy but runs environments sequent
 | Parallelism | Tens of envs (CPU) or hundreds (MJX/GPU) | 4,096-8,192 parallel envs (GPU) |
 | Throughput | ~10K steps/sec | ~90K frames/sec (RTX A6000) |
 | Training time | Hours to days | Minutes to hours |
-| Tensor pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
+| [[learning/notes/quick-context/tensor|Tensor]] pipeline | Numpy → PyTorch | Pure PyTorch (zero copy) |
 | Physics fidelity | Excellent (MuJoCo gold standard) | Good (PhysX-based, improving) |
 
 Isaac Lab exposes physics results directly as PyTorch tensors, eliminating CPU-GPU data transfer. Training a locomotion policy for ANYmal or Spot typically takes 30-60 minutes on a single GPU. Lab 5's MuJoCo approach is pedagogically clearer (easier to understand one environment) but wouldn't scale to the thousands of terrain variations that production systems train on.

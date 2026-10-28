@@ -22,7 +22,7 @@ The transistor solved all of this: an **electrically-controlled switch with no m
 |------|------------|
 | **Silicon** | The most common semiconductor material; a purified form of sand (silicon dioxide). Neither a good conductor nor a good insulator, which makes it controllable. |
 | **Doping** | Intentionally adding impurities to silicon to change its electrical properties. Adding phosphorus creates "n-type" silicon (extra electrons); adding boron creates "p-type" silicon (missing electrons, called "holes"). |
-| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying voltage stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
+| **Gate** | The control terminal of a transistor. The gate, oxide layer, and semiconductor form a [[quick-context/capacitor|capacitor]]—applying [[learning/notes/quick-context/voltage|voltage]] stores charge on the gate, creating an electric field that attracts or repels electrons in the silicon below. |
 | **Source/Drain** | The two terminals between which [[quick-context/electric-current|current]] flows when the transistor is "on." Think of them as the inlet and outlet of a pipe controlled by the gate. |
 | **Channel** | The region between source and drain where current flows. The gate controls whether this channel conducts electricity or blocks it. |
 | **MOS Capacitor** | The gate-oxide-semiconductor sandwich that makes transistor switching possible. The oxide acts as the dielectric (insulator) of a [[quick-context/capacitor|capacitor]], allowing electric fields to pass through while blocking current flow. |
@@ -162,7 +162,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[learning/notes/micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR
@@ -481,7 +481,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to PCB; each level bridges a massive size gap.
 
