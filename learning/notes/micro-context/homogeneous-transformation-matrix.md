@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[quick-context/covariance-matrix]] | [[quick-context/absolute-orientation]] | [[quick-context/faraday-tensor]] | [[quick-context/helmert-transform]] | [[quick-context/similarity-transform]]
 
 # Homogeneous Transformation Matrix
 
