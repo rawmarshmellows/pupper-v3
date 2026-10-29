@@ -7,11 +7,11 @@ created: 2026-03-29
 
 > **Related:** [[quick-context/rc-oscillator|RC Oscillator]] | [[micro-context/stm32-microcontroller|STM32 Microcontroller]] | [[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]
 
-> **TL;DR:** A microcontroller's clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
+> **TL;DR:** A [[micro-context/microcontroller|microcontroller]]'s clock chain starts with a frequency source (RC oscillator, ceramic resonator, or quartz crystal), multiplied by a PLL to reach operating speed, then divided down for peripheral buses. Every rising clock edge triggers one step of computation, and each edge dissipates energy as heat ($P = CV^2f$), creating the fundamental speed-temperature tradeoff in all digital systems.
 
 ## The Core Problem
 
-Every digital circuit needs a heartbeat -- a precise, repeating signal that tells billions of transistors exactly when to "look" at their inputs. The clock source determines how accurate that heartbeat is, the PLL multiplies it to operating speed, and the clock edges are the atomic units of computation. But faster clocks generate more heat, and heat degrades performance, so the entire clock chain is a negotiation between speed, accuracy, power, and thermal limits.
+Every digital circuit needs a heartbeat -- a precise, repeating signal that tells billions of [[quick-context/transistor-analog-to-digital|transistors]] exactly when to "look" at their inputs. The clock source determines how accurate that heartbeat is, the PLL multiplies it to operating speed, and the clock edges are the atomic units of computation. But faster clocks generate more heat, and heat degrades performance, so the entire clock chain is a negotiation between speed, accuracy, power, and thermal limits.
 
 ## 5 Essential Terms
 
@@ -21,7 +21,7 @@ Every digital circuit needs a heartbeat -- a precise, repeating signal that tell
 | **PLL (Phase-Locked Loop)** | An on-chip circuit that multiplies the low base frequency up to operating speed. The Pupper's STM32F446 multiplies 8 MHz $\times$ 22.5 = 180 MHz. The PLL's job is speed; the source's job is stability. |
 | **Clock Edge** | The precise moment when the clock signal transitions between states -- rising (0->1) or falling (1->0). [[micro-context/clock-edges|Flip-flops and registers]] capture data only at edges, ignoring the messy analog transitions in between. |
 | **SYSCLK / Bus Dividers** | The PLL output (SYSCLK) is too fast for some peripherals, so it's divided down: APB1 at $\div 4$ (45 MHz max), APB2 at $\div 2$ (90 MHz max) on the STM32F446. |
-| **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges transistor gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with voltage -- the fundamental reason CPUs throttle when hot. |
+| **Dynamic Power ($P = CV^2f$)** | Every clock edge charges and discharges [[quick-context/transistor|transistor]] gate capacitances, converting electrical energy to heat. Power scales linearly with frequency and quadratically with [[quick-context/voltage|voltage]] -- the fundamental reason CPUs throttle when hot. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -239,7 +239,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 
 **Related quick-context files:**
 
-- **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: resistor-capacitor charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
+- **[[quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: [[quick-context/resistor|resistor]]-[[quick-context/capacitor|capacitor]] charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
 - **[[quick-context/pupper-bom-control-board|Pupper BOM Control Board]]** -- The full BOM including the two muRata CSTNE8M00G55A000R0 ceramic resonators (X1, X2).
 - **[[quick-context/can-bus|CAN Bus]]** -- The communication protocol that drives the Pupper's clock source choice: its ±1.58% tolerance makes ceramic resonators sufficient.
 - **[[quick-context/firmware|Firmware]]** -- The code that configures the clock tree at startup: selecting HSE, configuring PLL multipliers, switching SYSCLK.
@@ -268,7 +268,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 <details>
 <summary>Answer</summary>
 
-If the board needed USB connectivity. USB requires ±0.25% clock accuracy, and while ceramic resonators nominally meet this spec at room temperature, their accuracy degrades over the full operating temperature range. A quartz crystal's ±0.002% (20 ppm) provides a 100x margin. The Pupper v3 control board has no USB -- communication is via CAN bus (±1.58% tolerance) and UART -- so ceramic resonators are more than adequate and save 4 external capacitors across the two MCUs. See: The Key Tension (protocol requirements).
+If the board needed USB connectivity. USB requires ±0.25% clock accuracy, and while ceramic resonators nominally meet this spec at room temperature, their accuracy degrades over the full operating temperature range. A quartz crystal's ±0.002% (20 ppm) provides a 100x margin. The Pupper v3 control board has no USB -- communication is via CAN bus (±1.58% tolerance) and [[quick-context/uart|UART]] -- so ceramic resonators are more than adequate and save 4 external capacitors across the two MCUs. See: The Key Tension (protocol requirements).
 </details>
 
 **Q3:** If you doubled the Pupper's STM32 clock speed from 180 MHz to 360 MHz (and had to raise voltage from 1.8V to 2.2V to make it stable), how much more power would it dissipate?

@@ -218,7 +218,7 @@ Nylon contains amide groups (-NH-C=O-) with both N-H donors and C=O acceptors fo
 **Q5:** ABS prints at ~240°C while PLA prints at ~200°C, but ABS doesn't necessarily make stronger parts. Explain why.
 <details>
 <summary>Answer</summary>
-Print temperature only determines how well polymer chains mobilize for layer fusion—it doesn't determine final part strength. What matters is the strength of intermolecular forces that re-establish as the layer cools. ABS's higher print temperature is needed to overcome its strong π-π stacking and dipole-dipole interactions. Once cooled, those same forces provide excellent layer adhesion and heat resistance, but not necessarily higher ultimate tensile strength than PLA. In fact, PLA often has higher tensile strength than ABS—ABS's advantage is impact resistance (from the butadiene rubber phase) and thermal performance, not raw strength.
+Print temperature only determines how well polymer chains mobilize for layer fusion—it doesn't determine final part strength. What matters is the strength of intermolecular forces that re-establish as the layer cools. ABS's higher print temperature is needed to overcome its strong π-π stacking and dipole-dipole interactions. Once cooled, those same forces provide excellent layer adhesion and heat resistance, but not necessarily higher ultimate [[quick-context/tensile-strength-materials|tensile strength]] than PLA. In fact, PLA often has higher tensile strength than ABS—ABS's advantage is impact resistance (from the butadiene rubber phase) and thermal performance, not raw strength.
 </details>
 
 </details>

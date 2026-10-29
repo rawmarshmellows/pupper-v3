@@ -116,7 +116,7 @@ Filaments are [[learning/notes/quick-context/atoms-molecules-polymers-basics|pol
 
 Two failure modes when wet filament hits the 200–280°C melt zone:
 1. **Steam explosion.** Trapped H₂O flashes to vapor at >100°C → micro-bubbles in the extruded bead → popping sound, pockmarked surface, weak layer bonds.
-2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker tensile strength, brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
+2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker [[quick-context/tensile-strength-materials|tensile strength]], brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
 
 This is why nylon needs 95°C / 7h while PLA only needs 45°C / 6h. The amide groups in nylon trap water *between* chains via H-bonds; you must heat above the H-bond rupture energy to evict it.
 
