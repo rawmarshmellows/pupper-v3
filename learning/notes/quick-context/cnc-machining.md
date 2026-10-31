@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # CNC Machining
 
-> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[learning/notes/quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[learning/notes/quick-context/electrolysis|Electrolysis]] | [[learning/notes/quick-context/electrodes|Electrodes]]
 
 > **TL;DR:** CNC machining is subtractive manufacturing -- a computer-controlled cutting tool removes material from a solid block to create precision parts. It is the default choice for metal parts at low volumes ($1$--$1{,}000$ units) where tight tolerances ($\pm 0.001"$) and full material strength are required.
 
@@ -17,8 +17,8 @@ You need a metal part with precise dimensions, smooth surfaces, and full materia
 
 | Term | Definition |
 |------|-----------|
-| **CNC Milling** | Rotating cutter removes material from a stationary workpiece. Tool spins at thousands of RPM; CNC moves it along X/Y/Z axes. Produces prismatic and complex 3D shapes. |
-| **CNC Turning** | Lathe spins the workpiece while a stationary tool removes material. Inverse of milling. Produces cylindrical/rotationally symmetric parts (shafts, bolts, bushings). |
+| **[[learning/notes/micro-context/cnc-milling|CNC Milling]]** | Rotating cutter removes material from a stationary workpiece. Tool spins at thousands of RPM; CNC moves it along X/Y/Z axes. Produces prismatic and complex 3D shapes. |
+| **[[learning/notes/micro-context/cnc-turning|CNC Turning]]** | Lathe spins the workpiece while a stationary tool removes material. Inverse of milling. Produces cylindrical/rotationally symmetric parts (shafts, bolts, bushings). |
 | **EDM** | Electrical Discharge Machining -- removes metal via rapid electrical sparks between an electrode and the workpiece, vaporizing material without mechanical contact. Cuts any conductive material regardless of hardness. |
 | **G-code** | The instruction language CNC machines read. CAD model is converted into a sequence of tool movement commands specifying coordinates, feed rates, and spindle speeds. |
 | **Tolerance** | The allowable deviation from a specified dimension. CNC routinely achieves $\pm 0.001"$ ($\pm 0.025\text{mm}$), far tighter than 3D printing or casting. |
@@ -77,7 +77,7 @@ MILLING vs TURNING:
 
 ### EDM: Sparks Instead of Cutting
 
-A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-[[learning/notes/quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 
 ```
 EDM SPARK EROSION:
@@ -182,14 +182,14 @@ One component requires a square internal pocket with perfectly sharp corners in 
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] -- the additive manufacturing counterpart to CNC's subtractive approach
-- [[quick-context/tensile-strength-materials|Tensile Strength Materials]] -- why CNC parts retain full material strength while 3D printed parts have layer adhesion weaknesses
-- [[quick-context/electrolysis|Electrolysis]] -- the electrochemical principles behind EDM's spark erosion process
-- [[quick-context/electrodes|Electrodes]] -- the shaped tool in EDM that transfers its geometry to the workpiece
-- [[micro-context/cnc-milling|CNC Milling (micro)]] -- concise definition
-- [[micro-context/cnc-turning|CNC Turning (micro)]] -- concise definition
-- [[micro-context/cnc-process-selection|CNC Process Selection (micro)]] -- decision framework
-- [[micro-context/edm-machining|EDM Machining (micro)]] -- concise definition
+- [[learning/notes/quick-context/3d-printing-filament-types|3D Printing Filament Types]] -- the additive manufacturing counterpart to CNC's subtractive approach
+- [[learning/notes/quick-context/tensile-strength-materials|Tensile Strength Materials]] -- why CNC parts retain full material strength while 3D printed parts have layer adhesion weaknesses
+- [[learning/notes/quick-context/electrolysis|Electrolysis]] -- the electrochemical principles behind EDM's spark erosion process
+- [[learning/notes/quick-context/electrodes|Electrodes]] -- the shaped tool in EDM that transfers its geometry to the workpiece
+- [[learning/notes/micro-context/cnc-milling|CNC Milling (micro)]] -- concise definition
+- [[learning/notes/micro-context/cnc-turning|CNC Turning (micro)]] -- concise definition
+- [[learning/notes/micro-context/cnc-process-selection|CNC Process Selection (micro)]] -- decision framework
+- [[learning/notes/micro-context/edm-machining|EDM Machining (micro)]] -- concise definition
 
 </details>
 
