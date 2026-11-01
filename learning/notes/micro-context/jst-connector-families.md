@@ -3,6 +3,7 @@ term: JST Connector Families
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
 
 # JST Connector Families
 

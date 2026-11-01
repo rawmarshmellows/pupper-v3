@@ -2,8 +2,7 @@
 topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
-
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/micro-context/stm32-microcontroller]]
 
 > **TL;DR:** Robotic arm APIs exist at multiple abstraction levels from raw servo control (1kHz real-time) to high-level task planners, with each level trading control granularity for ease of use.
 
@@ -139,7 +138,7 @@ void realtime_loop() {
 
 - **[[quick-context/epson-rc-plus-programming]]** - Specific example of a vendor high-level API for SCARA robots
 - **[[quick-context/robot-cell-integration-best-practices]]** - How robots at any API level integrate with the broader manufacturing cell
-- **[[quick-context/plc-vs-software-control]]** - The PLC side of the robot-to-cell coordination problem
+- **[[quick-context/plc-vs-software-control]]** - The [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]] side of the robot-to-cell coordination problem
 - **[[quick-context/preempt-rt]]** - Linux real-time extensions for running Level 3 control on commodity hardware
 
 </details>

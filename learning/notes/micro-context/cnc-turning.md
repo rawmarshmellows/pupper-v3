@@ -3,6 +3,7 @@ term: CNC Turning
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/edm-machining]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
 
 # CNC Turning
 

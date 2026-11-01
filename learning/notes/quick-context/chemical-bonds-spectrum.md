@@ -2,10 +2,9 @@
 topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/bjt-specifications]]
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
-
-> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
+> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong [[learning/notes/quick-context/covalent-bonds|covalent bonds]] (~350 kJ/mol) that hold molecules together, down to weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
 # Chemical Bonds: The Full Spectrum
 

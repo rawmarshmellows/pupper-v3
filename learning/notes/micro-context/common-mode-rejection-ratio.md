@@ -2,12 +2,13 @@
 term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/i2s]]
 
 # Common-Mode Rejection Ratio ($CMRR$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/differential-pair]] | [[small-context/decibels-across-domains]]
 
-**Definition:** A measure (in dB) of how well a differential amplifier or comparator ignores a voltage applied *equally* to both inputs, responding only to the *difference* between them.
+**Definition:** A measure (in dB) of how well a differential amplifier or [[learning/notes/quick-context/comparator|comparator]] ignores a [[learning/notes/quick-context/voltage|voltage]] applied *equally* to both inputs, responding only to the *difference* between them.
 
 ## How It Works
 

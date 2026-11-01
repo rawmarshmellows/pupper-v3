@@ -2,6 +2,7 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]]
 
 # Coriolis Effect
 
