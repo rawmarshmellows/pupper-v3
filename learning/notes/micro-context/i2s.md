@@ -2,6 +2,7 @@
 term: I2S (Inter-IC Sound)
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/camera-fundamentals]]
 
 # I2S (Inter-IC Sound)
 

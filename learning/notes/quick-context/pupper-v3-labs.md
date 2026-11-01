@@ -2,10 +2,10 @@
 topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
+> **Related:** [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]] | [[learning/notes/quick-context/raspberry-pi-ai-hat]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]
 >
 > **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
 

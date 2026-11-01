@@ -2,10 +2,9 @@
 topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/esp32]]
 
-> **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
-
-> **TL;DR:** TEEP extends OEE by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
+> **TL;DR:** TEEP extends [[learning/notes/quick-context/oee-overall-equipment-effectiveness|OEE]] by measuring against all calendar time (24/7/365), revealing the true utilization of capital assets and exposing capacity hidden in unscheduled shifts.
 
 # TEEP (Total Effective Equipment Performance)
 

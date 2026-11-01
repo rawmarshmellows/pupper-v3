@@ -3,6 +3,7 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/ceramic-resonator]]
 
 # Cathode
 
@@ -13,8 +14,8 @@ updated: 2026-03-27
 ## How It Works
 
 - Electrons arrive at the cathode from the external circuit and are consumed by reduction reactions (species gain electrons here).
-- In electrolysis, the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
-- In a diode, conventional current exits through the cathode (marked K or bar) — electron flow enters.
+- In [[learning/notes/quick-context/electrolysis|electrolysis]], the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
+- In a [[learning/notes/quick-context/diode|diode]], conventional current exits through the cathode (marked K or bar) — electron flow enters.
 
 ```
   CHEMISTRY (electrolysis):         ELECTRONICS (diode):
