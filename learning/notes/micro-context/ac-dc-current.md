@@ -3,6 +3,7 @@ term: AC vs DC Current
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-mirror]]
 
 # AC vs DC Current
 
@@ -11,8 +12,8 @@ updated: 2026-03-27
 ## How It Works
 
 - DC is produced by chemical reactions (batteries) or photovoltaic cells, pushing electrons in a constant direction.
-- AC is produced by rotating a coil in a magnetic field (generator), which naturally creates a sinusoidal alternating voltage.
-- Transformers — which only work with AC — step voltage up for efficient long-distance transmission and down for safe household use.
+- AC is produced by rotating a coil in a magnetic field (generator), which naturally creates a sinusoidal alternating [[learning/notes/quick-context/voltage|voltage]].
+- Transformers — which only work with AC — step [[learning/notes/quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use.
 - Electronics internally convert AC to DC using rectifier diodes and filter capacitors (the power supply).
 
 ```

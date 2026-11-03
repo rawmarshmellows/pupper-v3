@@ -3,6 +3,7 @@ topic: Bambu AMS (Automatic Material System)
 created: 2026-01-21
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/melt-index]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 > **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
 

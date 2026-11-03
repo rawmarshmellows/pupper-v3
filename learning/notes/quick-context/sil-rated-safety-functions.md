@@ -2,6 +2,7 @@
 topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
+> **Related:** 
 
 > **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
 

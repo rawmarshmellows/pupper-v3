@@ -2,6 +2,7 @@
 topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/pupper-brain]]
 
 > **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
 

@@ -2,6 +2,7 @@
 topic: ISA-95 Levels
 created: 2026-01-14
 ---
+> **Related:** [[learning/notes/quick-context/robotic-arm-api-levels]]
 
 > **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
 

@@ -3,6 +3,7 @@ topic: Polymer Crystallinity vs Amorphous
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/dipole-dipole-interactions]]
 
 > **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
 

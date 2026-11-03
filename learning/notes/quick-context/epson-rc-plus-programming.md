@@ -2,6 +2,7 @@
 topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/quick-context/rc-oscillator]]
 
 > **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
 

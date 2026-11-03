@@ -2,6 +2,7 @@
 topic: Bambu P2S Print Quality
 created: 2026-04-29
 ---
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]]
 
 # Bambu P2S Print Quality
 

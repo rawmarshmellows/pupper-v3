@@ -2,6 +2,7 @@
 topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
+> **Related:** [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/pupper-brain]]
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
 

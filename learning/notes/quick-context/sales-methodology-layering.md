@@ -2,6 +2,7 @@
 topic: Sales Methodology Layering
 created: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]]
 
 # Sales Methodology Layering
 

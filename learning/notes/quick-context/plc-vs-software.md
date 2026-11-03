@@ -2,6 +2,7 @@
 topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/firmware]]
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
 

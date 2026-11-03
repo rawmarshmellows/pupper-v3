@@ -2,16 +2,17 @@
 topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
+> **Related:** [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/plc-vs-software]]
 
 > **Related:** [[quick-context/electrodes]]
 
-> **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
+> **TL;DR:** Platinum stays unreactive in [[learning/notes/quick-context/electrolysis|electrolysis]] because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 
 # Why Platinum is Chemically Inert
 
 ## The Core Problem
 
-In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the anode because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
+In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or co[[learning/notes/micro-context/anode|pper ]]dissolve at the anode because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
 
 ## 5 Essential Terms
 
@@ -19,8 +20,8 @@ In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct el
 |------|------------|
 | **Inert** | Chemically unreactive; doesn't participate in reactions |
 | **Ionization energy** | Energy required to remove an electron from an atom |
-| **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
-| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
+| **Reduction potential (E°)** | [[learning/notes/quick-context/voltage|Voltage]] indicating how much a species "wants" electrons; positive = wants to stay as metal |
+| **[[learning/notes/micro-context/oxidation|Oxidation]]** | Losing electrons (what happens to reactive metals at anodes) |
 | **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 
 <details>
@@ -134,7 +135,7 @@ IRON NAIL AS ANODE                    PLATINUM AS ANODE
 Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often use:
 - **Graphite** (carbon) — cheaper, reasonably inert
 - **Titanium with coatings** — good balance of cost and durability
-- **Sacrificial electrodes** — accept that the electrode will dissolve
+- **Sacrificial [[learning/notes/quick-context/electrodes|electrodes]]** — accept that the electrode will dissolve
 
 </details>
 

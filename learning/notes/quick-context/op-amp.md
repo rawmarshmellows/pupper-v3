@@ -2,6 +2,7 @@
 topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-common-mode-range]]
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/inside-the-triangle|Inside the Triangle]] | [[micro-context/tail-current|Tail Current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -11,7 +12,7 @@ created: 2026-02-06
 
 ## The Core Problem: Precise Analog Signal Processing
 
-A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. You need to amplify the signal exactly 330×, without adding noise or distortion, regardless of what's connected to the output. Doing this with discrete [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] requires careful design and the gain drifts with temperature. An op-amp solves this: it has enormous internal gain (100,000× or more), and by wrapping it in a negative feedback loop with resistors, the gain becomes determined entirely by the resistor ratio—which is stable, predictable, and easy to calculate. Op-amps make analog design almost as straightforward as digital. https://www.youtube.com/watch?v=_ZuJgt4NfFI
+A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. You need to amplify the signal exactly 330×, without adding noise or distortion, regardless of what's connected to the output. Doing this with discrete [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] requires careful design and the gain drifts with temperature. An op-amp solves this: it has enormous internal gain (100,000× or more), and by wrapping it in a negative feedback loop with resistors, the gain[[learning/notes/quick-context/resistor| becomes]] determined entirely by the resistor ratio—which is stable, predictable, and easy to calculate. Op-amps make analog design almost as straightforward as digital. https://www.youtube.com/watch?v=_ZuJgt4NfFI
 
 ## 5 Essential Terms
 
@@ -20,7 +21,7 @@ A sensor outputs 10 mV when it detects something. Your ADC needs 0-3.3V input. Y
 | **Inverting (-) / Non-inverting (+) inputs** | The two inputs. The op-amp amplifies the difference between them: Vout = A × (V+ - V-), where A is the open-loop gain (~100,000). |
 | **Open-loop gain (A)** | The raw gain without feedback. Enormous (10⁵) but useless alone—too high, too variable, too sensitive. Feedback tames it into precise, controlled gain. |
 | **Negative feedback** | Connecting the output back to the inverting input through a resistor network. This is what makes op-amp circuits predictable. It trades excess gain for stability and precision. |
-| **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the voltage difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
+| **Virtual short** | With negative feedback, the op-amp drives its output to make V+ ≈ V-. The inputs aren't physically connected, but the [[learning/notes/quick-context/voltage|voltage]] difference between them is driven to ~0. This simplifies all op-amp circuit analysis. |
 | **Rail-to-rail** | An op-amp whose output can swing to within millivolts of its supply voltages. Standard op-amps can only reach within ~1-2V of the rails, wasting headroom. |
 
 <details>
@@ -405,7 +406,7 @@ SUMMARY — Op-Amp as Analog Computer
 </details>
 
 <details>
-<summary><strong>Inside the Triangle: Transistor-Level Construction</strong></summary>
+<summary><strong>[[learning/notes/quick-context/inside-the-triangle|Inside the Triangle]]: Transistor-Level Construction</strong></summary>
 
 An op-amp isn't magic—it's ~20 [[quick-context/transistor|transistors]] and a few [[quick-context/resistor|resistors]] on a single chip. Here's the simplified architecture (based on the classic 741):
 
@@ -523,7 +524,7 @@ PARTS LIST (simplified 741-style op-amp)
      (Real 741 has ~20 transistors for protection & better biasing)
 ```
 
-The key insight: the triangle symbol on schematics hides a **feedback amplifier built from the same [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] you already know**. The differential pair subtracts, the current mirror maximizes gain, and the compensation [[quick-context/capacitor|capacitor]] ensures stability. Everything else is bias circuitry and output buffering.
+The key insight: the triangle symbol on schematics hides a **feedback amplifier built from the same [[quick-context/transistor|transistors]] and [[quick-context/resistor|resistors]] you already know**. T[[learning/notes/micro-context/current-mirror|he differentia]]l pair subtracts, the current mirror maximizes gain, and the compensation [[quick-context/capacitor|capacitor]] ensures stability. Everything else is bias circuitry and output buffering.
 
 </details>
 
@@ -601,11 +602,11 @@ SIGNAL CONDITIONING CHAIN
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/differential-pair]]** — The [[quick-context/differential-pair|differential pair]] is the op-amp's input stage. Two matched transistors sharing a tail current source convert V(+) - V(-) into a current difference. Understanding the pair explains the golden rules.
+- **[[quick-context/differential-pair]]** — The [[quick-context/differential-pair|differential pair]] is the op-amp's[[learning/notes/micro-context/tail-current| input stage]]. Two matched transistors sharing a tail current source convert V(+) - V(-) into a current difference. Understanding the pair explains the golden rules.
 
-- **[[quick-context/high-gain-amplifier-stage]]** — The [[quick-context/high-gain-amplifier-stage|high-gain amplifier stage]] (current mirror active load) is what gives the op-amp its enormous open-loop gain. The compensation capacitor at this stage's output node is what makes op-amps stable in feedback—and what makes them slow as comparators.
+- **[[quick-context/high-gain-amplifier-stage]]** — The [[quick-context/high-gain-amplifier-stage|high-gain amplifier stage]] (current mirror active load)[[learning/notes/quick-context/capacitor| is what ]]gives the op-amp its enormous open-loop gain. The compensation capacitor at this stage's output node is what makes op-amps stable in feedback—and what makes them slow as comparators.
 
-- **[[quick-context/transistor]]** — Op-amps are built from dozens of transistors internally. Understanding transistor amplification explains how op-amps achieve their high gain.
+- **[[quick-context/transistor]]** — Op-amps are built from dozens of transistors internally. Unders[[learning/notes/quick-context/transistor|tanding tr]]ansistor amplification explains how op-amps achieve their high gain.
 
 - **[[quick-context/resistor]]** — Resistor ratios determine op-amp circuit gain. The precision of your gain depends on resistor tolerance, not the op-amp. Use ±1% metal film resistors for ±1% gain accuracy.
 

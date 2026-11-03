@@ -2,6 +2,7 @@
 topic: Strategic Selling Buyer Roles
 created: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]
 
 # Strategic Selling Buyer Roles
 

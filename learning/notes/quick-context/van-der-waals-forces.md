@@ -3,6 +3,7 @@ topic: Van der Waals Forces
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]]
 
 > **Related:** [[quick-context/polymer-chemical-bonds]]
 
