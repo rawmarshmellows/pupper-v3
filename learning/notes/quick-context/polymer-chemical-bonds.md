@@ -3,6 +3,7 @@ topic: Polymer Chemical Bonds in 3D Printing Filaments
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/covalent-bonds]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/3d-printing-filament-types]]
 
 > **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
 
@@ -20,7 +21,7 @@ Understanding [[quick-context/chemical-bonds-spectrum|chemical bonds]] explains 
 |------|------------|
 | **Covalent bond** | Strong electron-sharing bond holding atoms together within molecules—breaking these (>300°C) means degradation, not melting; printing operates below this threshold. |
 | **Hydrogen bond** | Moderate intermolecular attraction between H attached to O/N and a nearby O/N—gives PLA its moderate Tg, gives TPU hard segments their cohesion, gives Nylon its strength and hygroscopicity. |
-| **Van der Waals forces** | Weak, universal attractions between all molecules from temporary electron fluctuations—always present but only dominant when stronger forces are absent (like in PE/PP). |
+| **[[learning/notes/quick-context/van-der-waals-forces|Van der Waals forces]]** | Weak, universal attractions between all molecules from temporary electron fluctuations—always present but only dominant when stronger forces are absent (like in PE/PP). |
 | **[[quick-context/glass-transition-temperature|Glass transition temperature]] (Tg)** | The temperature where amorphous regions mobilize and the polymer softens—controlled entirely by intermolecular force strength; below Tg = glassy/rigid, above Tg = rubbery/flexible. |
 | **[[quick-context/polymer-crystallinity-vs-amorphous|Crystallinity]]** | Degree of ordered chain packing—higher crystallinity = stronger intermolecular forces = higher shrinkage/warping; PETG's "G" (glycol) intentionally disrupts this for easier printing. |
 

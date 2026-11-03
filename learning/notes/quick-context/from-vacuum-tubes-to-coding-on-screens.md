@@ -2,6 +2,7 @@
 topic: From Human Calculators to Coding on Screens — How Programming Interfaces Evolved
 created: 2026-03-26
 ---
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]]
 
 # From Human Calculators to Coding on Screens
 
@@ -781,7 +782,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The compilation chain in full detail: how source code becomes machine instructions through 7 layers of abstraction, and how the first compiler was bootstrapped from hand-coded binary. This document covers what happens *after* you save your file and invoke the compiler.
 
-- **[[quick-context/from-code-to-running-firmware]]** — The embedded variant of the pipeline: linking, flashing, and booting on a microcontroller. What happens when your compiled code targets a chip with no OS.
+- **[[quick-context/from-code-to-running-firmware]]** — The embedded variant of the pipeline: linking, [[learning/notes/micro-context/microcontroller|flashing, and b]]ooting on a microcontroller. What happens when your compiled code targets a chip with no OS.
 
 - **[[quick-context/transistor]]** — The physical switch that replaced vacuum tubes and made modern computing possible. Every logic gate in the CPU is built from these.
 

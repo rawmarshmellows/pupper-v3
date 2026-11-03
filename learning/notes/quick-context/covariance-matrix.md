@@ -2,6 +2,7 @@
 topic: Covariance Matrix
 created: 2026-04-04
 ---
+> **Related:** [[learning/notes/micro-context/homogeneous-transformation-matrix]] | [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/similarity-transform]]
 
 # Covariance Matrix
 
@@ -239,7 +240,7 @@ The $(i, j)$ entry is the covariance between variable $i$ and variable $j$ -- ho
 The quantity $\mathbf{v}^T \Sigma \mathbf{v}$ equals the variance of the linear combination $\mathbf{v}^T \mathbf{x}$. Variance is always $\geq 0$, so $\mathbf{v}^T \Sigma \mathbf{v} \geq 0$ for all $\mathbf{v}$. A negative eigenvalue would imply that some linear combination of your variables has negative variance -- which is impossible. If you encounter a "covariance matrix" with a negative eigenvalue, something has gone wrong numerically. See: How It Works.
 </details>
 
-**Q3:** In the Helmert transform, why can we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
+**Q3:** In the [[learning/notes/quick-context/helmert-transform|Helmert transform]], why can we omit the $\frac{1}{n-1}$ factor when computing the cross-covariance matrix $H$?
 <details>
 <summary>Answer</summary>
 The rotation matrix is extracted from $H$ via SVD: $H = U\Sigma V^T$, and $R = V D U^T$. The singular vectors $U$ and $V$ depend only on the *direction* of $H$, not its magnitude. Multiplying $H$ by any positive scalar $\frac{1}{n-1}$ scales the singular values $\Sigma$ but leaves $U$ and $V$ unchanged. So the rotation result is identical with or without the normalization factor. See: The Key Tension.
@@ -254,7 +255,7 @@ The cross-covariance matrix $H = \sum (\mathbf{x}_i - \bar{\mathbf{x}})(\mathbf{
 **Q5:** You have a 3D point cloud with covariance matrix $\Sigma$ whose eigenvalues are $\lambda_1 = 100$, $\lambda_2 = 100$, $\lambda_3 = 0.01$. What does this tell you about the geometry of the point cloud, and how would this affect the [[quick-context/helmert-transform|Helmert transform]] if this were one of your input point sets?
 <details>
 <summary>Answer</summary>
-The eigenvalues describe the variance along the principal axes. Two large equal eigenvalues and one tiny eigenvalue mean the points lie nearly in a plane (a flat disk-shaped ellipsoid). For the Helmert transform, this is problematic: the rotation about the normal to that plane is well-determined (constrained by spread in two directions), but the rotation *within* the plane's normal direction is poorly conditioned because there is almost no depth variation to anchor it. The cross-covariance matrix $H$ will have one very small singular value, making the SVD solution sensitive to noise in that direction. In practice, you would need either more points with depth variation or additional constraints to stabilize the solution.
+The eigenvalues describe the variance along the principal axes. Two large equal eigenvalues and one tiny eigenvalue mean the points lie nearly in a plane (a flat disk-shaped ellipsoid). For the [[learning/notes/quick-context/helmert-transform|Helmert transform]], this is problematic: the rotation about the normal to that plane is well-determined (constrained by spread in two directions), but the rotation *within* the plane's normal direction is poorly conditioned because there is almost no depth variation to anchor it. The cross-covariance matrix $H$ will have one very small singular value, making the SVD solution sensitive to noise in that direction. In practice, you would need either more points with depth variation or additional constraints to stabilize the solution.
 </details>
 
 </details>

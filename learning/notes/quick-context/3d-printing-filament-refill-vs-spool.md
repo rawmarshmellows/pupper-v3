@@ -3,6 +3,7 @@ topic: 3D Printing Filament - Refill vs Spool
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/thermal-runaway]]
 
 > **Related:** [[quick-context/3d-printing-slicer-settings]]
 

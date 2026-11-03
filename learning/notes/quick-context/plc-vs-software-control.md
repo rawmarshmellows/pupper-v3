@@ -2,6 +2,7 @@
 topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/robotic-arm-api-levels]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
 
@@ -161,7 +162,7 @@ Because Linux (without PREEMPT_RT) provides no guarantees about when your callba
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?
 <details>
 <summary>Answer</summary>
-Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for SIL-rated safety functions. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
+Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
 </details>
 
 **Q3:** What's the role of OPC-UA in this architecture?

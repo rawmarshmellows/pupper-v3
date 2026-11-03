@@ -2,6 +2,7 @@
 topic: Sandler KARE Account Segmentation
 created: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/playbook-main]]
 
 # Sandler KARE Account Segmentation
 

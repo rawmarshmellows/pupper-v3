@@ -3,6 +3,7 @@ topic: Pi-Pi Stacking (Aromatic Ring Interactions)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/dipole-dipole-interactions]] | [[learning/notes/quick-context/platinum-inertness]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/micro-context/oxidation]]
 
 > **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
 
@@ -292,7 +293,7 @@ Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacki
 **Q5:** Compare pi-pi stacking to [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] and [[quick-context/van-der-waals-forces|van der Waals forces]]. Where does pi-pi stacking fit in the intermolecular force hierarchy, and why?
 <details>
 <summary>Answer</summary>
-Pi-pi stacking falls between typical van der Waals forces and hydrogen bonds in strength (~2-10 kJ/mol vs ~0.5-5 kJ/mol for London dispersion and ~10-40 kJ/mol for hydrogen bonds). Mechanistically, it's a specialized type of van der Waals interaction—the delocalized electron clouds of aromatic rings create larger polarizable surfaces for London dispersion forces, plus electrostatic interactions between the quadrupole moments of the rings. Unlike hydrogen bonds (which require specific H-O/N/F donors and acceptors), pi-pi stacking just requires flat aromatic surfaces to align. This explains why materials like graphite (pure pi-pi stacking) are slippery between layers but strong within them—the stacking is significant but less directional than hydrogen bonds. See: [[quick-context/chemical-bonds-spectrum]] for the full intermolecular force hierarchy.
+Pi-pi stacking falls between typical [[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]] and hydrogen bonds in strength (~2-10 kJ/mol vs ~0.5-5 kJ/mol for London dispersion and ~10-40 kJ/mol for hydrogen bonds). Mechanistically, it's a specialized type of van der Waals interaction—the delocalized electron clouds of aromatic rings create larger polarizable surfaces for London dispersion forces, plus electrostatic interactions between the quadrupole moments of the rings. Unlike hydrogen bonds (which require specific H-O/N/F donors and acceptors), pi-pi stacking just requires flat aromatic surfaces to align. This explains why materials like graphite (pure pi-pi stacking) are slippery between layers but strong within them—the stacking is significant but less directional than hydrogen bonds. See: [[quick-context/chemical-bonds-spectrum]] for the full intermolecular force hierarchy.
 </details>
 
 </details>

@@ -3,6 +3,7 @@ topic: Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 created: 2026-03-10
 updated: 2026-03-11
 ---
+> **Related:** [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]]
 
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 

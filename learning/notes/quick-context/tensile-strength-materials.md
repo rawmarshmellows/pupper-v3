@@ -3,6 +3,7 @@ topic: Tensile Strength in Materials (Understanding MPa Ratings)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/melt-index]] | [[learning/notes/micro-context/thermal-runaway]]
 
 > **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
 

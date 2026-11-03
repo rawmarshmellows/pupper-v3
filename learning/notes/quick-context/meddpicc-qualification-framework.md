@@ -2,6 +2,7 @@
 topic: MEDDPICC Qualification Framework
 created: 2026-02-10
 ---
+> **Related:** 
 
 # MEDDPICC Qualification Framework
 

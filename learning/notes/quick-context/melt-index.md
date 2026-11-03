@@ -3,6 +3,7 @@ topic: Melt Index (MFI/MFR)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/breaking-elongation-rate]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/tensile-strength-materials]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 > **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
 
