@@ -4,11 +4,13 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/oscilloscope-and-multimeter]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/quick-context/electric-current]]
+
 # 4-Wire Kelvin Measurement
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
+> **See also:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
 
-**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
+**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures [[learning/notes/quick-context/voltage|voltage]] directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works
 
@@ -37,4 +39,4 @@ SOLUTION: 4-wire Kelvin separates current and voltage paths
     R = V_measured / I_known                                   ✓
 ```
 
-**Key insight:** The voltmeter's high input impedance means negligible current flows through the sense wires, so their resistance contributes essentially zero voltage drop to the measurement.
+**Key insight:** The voltmeter's high input [[learning/notes/quick-context/impedance-and-reactance|impedance]] means negligible current flows through the sense wires, so their resistance contributes essentially zero voltage drop to the measurement.

@@ -3,7 +3,7 @@ topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/isa-95-levels]]
 
 > **TL;DR:** Safety Integrity Levels (SIL 1-4) quantify how reliably a safety function will prevent harm when demanded, requiring redundant hardware, certified components, and rigorous process—not just careful code.
 
@@ -27,7 +27,7 @@ Without this framework, there's no way to systematically design, verify, and cer
 | **Safe Failure Fraction (SFF)** | The proportion of failures that leave the system in a safe state (e.g., valve fails closed)—higher SFF allows higher SIL with less redundancy. |
 | **Dual-Channel Architecture (1oo2)** | Two independent systems that must both agree to allow operation; either can independently trigger shutdown—the standard pattern for SIL 2/3. |
 | **Diagnostic Coverage (DC)** | The percentage of dangerous failures detectable by automatic diagnostics—higher DC reduces the "undetected dangerous failure" rate that drives PFD. |
-| **Safety PLC** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
+| **Safety [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]]** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -173,7 +173,7 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 | Input A shorted high | Cross-check with B | Yes (discrepancy -> stop) | - |
 | Both inputs shorted | OSSD self-test | Yes (curtain detects) | Certified curtain |
 | Output relay welded | K1/K2 feedback monitoring | Yes (PLC detects, prevents restart) | Dual contactors |
-| F-CPU CPU failure | Dual-CPU cross-check | Yes (watchdog -> safe) | Safety PLC architecture |
+| F-CPU [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]] failure | Dual-CPU cross-check | Yes (watchdog -> safe) | Safety PLC architecture |
 
 **The one thing most outsiders get wrong about this is...** thinking SIL is about writing better code. It's not—it's about proving statistical reliability of the entire hardware/software/human system against specific failure modes. You can have perfect code and still fail SIL certification because your sensor has insufficient diagnostic coverage, or your change management process isn't documented. Conversely, a SIL 3 system might use trivially simple logic (light curtain breaks -> motor stops) that any junior engineer could write. The complexity isn't in the algorithm; it's in the assurance case.
 
@@ -182,10 +182,10 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
-- **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
-- **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
+- **[[learning/notes/quick-context/preempt-rt]]** - Real-time Linux limitations that explain why [[learning/notes/quick-context/ros2-architecture|ROS2]] cannot replace safety PLCs
+- **[[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
+- **[[learning/notes/quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 
 </details>
 

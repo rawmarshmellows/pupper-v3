@@ -5,9 +5,9 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]]
 
-> **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
+> **TL;DR:** A **bus** is a single bundle of wires that the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU]], RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a [[learning/notes/micro-context/short-circuit|short circuit]] and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
 ## The Core Problem
 
@@ -77,7 +77,7 @@ BUS CONTENTION = A SHORT CIRCUIT
               chips heat up, data is garbage
 ```
 
-The wire ends up at some undefined middle voltage that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
+The wire ends up at some undefined middle [[learning/notes/quick-context/voltage|voltage]] that's neither a valid 1 nor a valid 0, large current flows, and over time the output transistors can be damaged. **This is the central problem a bus must prevent.**
 
 ### The fix: tri-state and Output Enable
 
@@ -126,7 +126,7 @@ A SINGLE-MASTER BUS TRANSACTION (CPU reads one byte from RAM)
     RAM returns to Hi-Z. The bus is free for the next transaction.
 ```
 
-The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a comparator) that converts "an address appeared" into "this one chip's enable pin goes active."
+The **master** (here, the CPU) always owns the address and control buses. The **selected device** owns the data bus *only* during its turn, *only* in the direction the control bus dictates. Address decoding is just combinational logic (a few gates / a [[learning/notes/quick-context/comparator|comparator]]) that converts "an address appeared" into "this one chip's enable pin goes active."
 
 **Multi-master arbitration (one paragraph).** Some buses have several would-be masters (e.g. a CPU and a DMA controller, or many nodes on [[learning/notes/quick-context/can-bus|CAN]] / [[learning/notes/micro-context/i2c|I2C]]). Then you need a tiebreak rule for simultaneous requests. Schemes include a dedicated **arbiter** that grants the bus to one requester at a time, daisy-chained **priority** lines, or — elegantly — **bitwise arbitration** as on CAN: every node transmits its message ID while listening; a dominant 0 overrides a recessive 1, so a node that sees a bit different from what it sent knows it lost and backs off, all with zero wasted time and no central referee.
 
@@ -135,20 +135,20 @@ The **master** (here, the CPU) always owns the address and control buses. The **
 <details>
 <summary><strong>The Key Tension</strong> — Parallel bus vs. serial protocol</summary>
 
-The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], SPI, [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
+The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
 
-| | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, UART, CAN, USB) |
+| | **Parallel bus** (system bus) | **Serial protocol** ([[learning/notes/micro-context/i2c|I2C]], SPI, [[learning/notes/quick-context/uart|UART]], CAN, USB) |
 |---|---|---|
 | Data per clock | A whole word at once (8/16/32/64 bits) | 1 bit at a time |
 | Wire count | Many (1 per data bit + address + control) | Few (1–4) |
 | Speed *per pin* | Lower clock, but wide | Higher clock, but narrow |
-| Distance | Short — on-board, between dies | Short to very long (CAN ~40 m, RS-485 ~1200 m) |
+| Distance | Short — on-board, between dies | Short to very long (CAN ~40 m, [[learning/notes/quick-context/embedded-communication-protocols|RS-485]] ~1200 m) |
 | Skew problem | Severe — all bits must arrive aligned; long fast parallel buses suffer **skew** (bits drifting out of step) | None — one wire, no inter-wire skew |
 | Where you see it | Inside a chip / CPU↔cache↔RAM | Chip-to-chip, board-to-board, device-to-host |
 
 The historical arc is *parallel → serial*: old PCs had parallel printer ports, PATA disk ribbons, and a parallel PCI bus. Those were replaced by USB, SATA, and PCIe — all **serial**. Why? At high speed, keeping dozens of parallel wires perfectly aligned (no skew) gets harder than just clocking one or two wires very fast. So modern "buses" between boxes are serial, while **parallel buses survive where distance is tiny and width is free** — inside a CPU, and on the short CPU-to-RAM path.
 
-The deep idea, though, is shared by *both* worlds: a shared medium plus a rule for who-talks-when. I2C's open-drain SDA line with 7-bit addressing is conceptually the same as a parallel data bus with chip-select — it's just one wire and an addressing scheme instead of many wires and a decoder.
+The deep idea, though, is shared by *both* worlds: a shared medium plus a rule for who-talks-when. I2C's [[learning/notes/micro-context/push-pull-vs-open-drain|open-drain]] SDA line with 7-bit addressing is conceptually the same as a parallel data bus with chip-select — it's just one wire and an addressing scheme instead of many wires and a decoder.
 
 </details>
 
@@ -228,7 +228,7 @@ A SMALL 16-BIT MEMORY MAP (memory-mapped I/O)
 <summary><strong>Peripheral Knowledge</strong></summary>
 
 - **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Origin of the Output Enable / tri-state mechanism. The 74HC574's OE pin is the exact primitive that lets registers share a data bus; this note picks up where that one leaves off.
-- **[[learning/notes/quick-context/keypress-to-pixel-pipeline]]** — The next rung up the spine. Once memory-mapped I/O exists, a keypress (read from the keyboard address) can drive a pixel (write to a screen address) — the bus is the highway it all travels on.
+- **[[learning/notes/quick-context/keypress-to-pixel-pipeline]]** — The next rung up the spine. Once memory-mapped I/O exists, a [[learning/notes/quick-context/keypress-to-pixel-pipeline|keypress]] (read from the keyboard address) can drive a pixel (write to a screen address) — the bus is the highway it all travels on.
 - **[[learning/notes/quick-context/embedded-communication-protocols]]** — The serial alternative to a parallel bus: UART, I2C, SPI, CAN, USB, and when each wins on speed/distance/wire-count.
 - **[[learning/notes/quick-context/uart]]** — The simplest serial link (no shared-bus arbitration at all: just one TX → one RX), a clean contrast to a multi-drop bus.
 - **[[learning/notes/micro-context/i2c]]** — A 2-wire *shared* serial bus with 7-bit addressing and open-drain lines — serial-world chip-select; the closest serial cousin to address decoding.
@@ -268,7 +268,7 @@ On memory-mapped architectures (ARM, RISC-V, the Hack CPU) peripherals live in r
 **Q5:** Modern computers replaced parallel buses (PATA, parallel PCI, printer ports) with serial ones (SATA, PCIe, USB), yet CPUs *still* use a wide parallel bus to talk to cache and RAM. Reconcile these two facts.
 <details>
 <summary>Answer</summary>
-Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one differential pair very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
+Both choices optimize the same tradeoff (throughput vs. wire count vs. distance), and the right answer depends on **distance and skew**. Across a cable or board (centimeters to meters), keeping dozens of parallel wires perfectly time-aligned at high speed is harder than clocking one [[learning/notes/quick-context/differential-pair|differential pair]] very fast — so serial wins between boxes (USB, SATA, PCIe), avoiding inter-wire **skew** entirely. But CPU↔cache↔RAM links are millimeters long and width is essentially free on-die/on-package, so a wide parallel bus moves a whole 64-bit word per cycle with negligible skew and wins where it lives. Same physics, opposite verdict at different distances. See: The Key Tension (Parallel bus vs. serial protocol).
 </details>
 
 </details>
