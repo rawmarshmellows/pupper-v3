@@ -3,7 +3,7 @@ topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/robotic-arm-api-levels]]
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Making Disparate Devices Act in Concert
 
-Robot cell integration best practices exist to solve the coordination problem: making sure a robot, PLC, vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
+Robot cell integration best practices exist to solve the coordination problem: making sure a robot, [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]], vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
 
 Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
 
@@ -33,7 +33,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 **Tools of the trade include:**
 
 - **PLC programming environments**: Rockwell Studio 5000, Siemens TIA Portal
-- **Robot IDEs**: Fanuc Roboguide, ABB RobotStudio, EPSON RC+
+- **Robot IDEs**: Fanuc Roboguide, ABB RobotStudio, [[learning/notes/quick-context/epson-rc-plus-programming|EPSON RC+]]
 - **Industrial protocol analyzers**: Wireshark with EtherNet/IP dissectors
 - **Digital twin platforms**: Visual Components, Siemens Process Simulate, RoboDK
 
@@ -126,11 +126,11 @@ This pattern includes explicit timeout handling (2 seconds), retry logic (3 atte
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/epson-rc-plus-programming]]** - Example of robot-side programming that must integrate with PLC handshakes
-- **[[quick-context/robotic-arm-api-levels]]** - Understanding which API level handles integration vs. motion
-- **[[quick-context/plc-vs-software-control]]** - When to put coordination logic in PLC vs. robot vs. external software
-- **[[quick-context/integration-failure-modes-solutions]]** - Common integration failures and how to prevent them
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - Metrics for measuring how well integration is working in production
+- **[[learning/notes/quick-context/epson-rc-plus-programming]]** - Example of robot-side programming that must integrate with PLC handshakes
+- **[[learning/notes/quick-context/robotic-arm-api-levels]]** - Understanding which API level handles integration vs. motion
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - When to put coordination logic in PLC vs. robot vs. external software
+- **[[learning/notes/quick-context/integration-failure-modes-solutions]]** - Common integration failures and how to prevent them
+- **[[learning/notes/quick-context/oee-overall-equipment-effectiveness]]** - Metrics for measuring how well integration is working in production
 
 </details>
 

@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/micro-context/scan-loop]]
 
 > **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
 
@@ -21,7 +21,7 @@ You've built [[learning/notes/quick-context/switches-to-registers-storing-data|r
 | **Instruction** | A single number (16 bits on the Hack CPU, 32 on ARM) stored in memory. Its individual bit-fields *are* control signals — they directly drive mux selects, ALU operation bits, and register load-enables. An instruction is a list of switch settings. |
 | **Fetch** | Use the PC as an address to read RAM, pulling the instruction number into the CPU so its bits are available as control wires. |
 | **Decode** | There is no separate "decoder brain" — decode is just *wiring*. The instruction's bits are fed straight to the control inputs of the muxes, ALU, and registers. Routing, not interpreting. |
-| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the clock edge a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
+| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the [[learning/notes/micro-context/clock-edges|clock edge]] a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
@@ -277,7 +277,7 @@ happen to play.
 
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — How "PC points to an address in RAM" physically works: an address decoder (DMUX in, MUX out) selecting one cell among thousands. Fetch is one read from this structure. *(sibling note — may not exist yet.)*
 
-- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream chain: how source code becomes the exact 16-bit numbers traced above, including the Hack C-instruction bit-field layout and how the ALU is built from NAND gates.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream chain: how [[learning/notes/quick-context/how-source-code-is-stored|source code]] becomes the exact 16-bit numbers traced above, including the Hack C-instruction bit-field layout and how the ALU is built from NAND gates.
 
 - **[[learning/notes/micro-context/clock-edges]]** — The "do it now" pulse. Each fetch-execute step is gated by a clock edge so every register captures consistent, settled values at the same instant.
 

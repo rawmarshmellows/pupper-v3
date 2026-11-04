@@ -5,7 +5,7 @@ created: 2026-04-29
 
 # Bambu P2S Print Quality
 
-> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/melt-index]]
+> **Related:** [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 > **TL;DR:** The single highest-leverage move for P2S print quality is **per-filament calibration** (Flow Dynamics K-value + Flow Rate), followed by tuning **outer-wall mechanics** (slow outer wall ≤50 mm/s, accel 3000–5000 mm/s², outer-before-inner wall order). Hardware (PMSM servo extruder, Adaptive Airflow, hardened steel nozzle) does the rest if the filament is dry and the plate is clean.
 
@@ -98,25 +98,25 @@ P2S PRINT QUALITY STACK (top = highest leverage)
 </details>
 
 <details>
-<summary><strong>The Science Behind It</strong> — Polymer chemistry & physics for every knob</summary>
+<summary><strong>The Science Behind It</strong> — [[learning/notes/quick-context/polymer-chemical-bonds|Polymer]] chemistry & physics for every knob</summary>
 
 Every print-quality lever maps to a real physical or chemical mechanism. Understanding the science tells you *why* a setting matters and *when* a workaround will or won't work.
 
 ### 1. Why drying matters — hydrolysis + steam explosions
 
-Filaments are [[learning/notes/quick-context/atoms-molecules-polymers-basics|polymers]] — long chains of repeating monomer units held together by [[learning/notes/quick-context/covalent-bonds|covalent bonds]] within each chain and intermolecular forces between chains. Many of those intermolecular forces are [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] or [[learning/notes/quick-context/dipole-dipole-interactions|dipole-dipole interactions]]. Water (H₂O) is highly polar and forms strong hydrogen bonds with any polymer that has C=O, N-H, or O-H groups exposed.
+Filaments are [[learning/notes/quick-context/atoms-molecules-polymers-basics|polymers]] — long chains of repeating monomer units held together by [[learning/notes/quick-context/covalent-bonds|covalent bonds]] within each chain and intermolecular forces between chains. Many of those intermolecular forces are [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] or [[learning/notes/quick-context/dipole-dipole-interactions|dipole-dipole interactions]]. Water (H₂O) is highly polar and forms strong [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] with any polymer that has C=O, N-H, or O-H groups exposed.
 
 | Filament | Polar groups | Hygroscopic? | Why |
 |----------|--------------|--------------|-----|
 | **PLA** | Ester (–COO–) | Mild | Few H-bond acceptors |
-| **PETG** | Ester + glycol | Moderate | More polar groups |
+| **[[learning/notes/quick-context/3d-printing-filament-types|PETG]]** | Ester + glycol | Moderate | More polar groups |
 | **ABS** | Nitrile (–CN) | Low | Mostly non-polar backbone |
 | **PA / Nylon** | Amide (–CO–NH–) | Severe | Amide group is a near-perfect H-bond donor *and* acceptor — like a sponge for water |
 | **PC** | Carbonate ester | High | Hydrolyzes catastrophically when wet |
 
 Two failure modes when wet filament hits the 200–280°C melt zone:
 1. **Steam explosion.** Trapped H₂O flashes to vapor at >100°C → micro-bubbles in the extruded bead → popping sound, pockmarked surface, weak layer bonds.
-2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker tensile strength, brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
+2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker [[learning/notes/quick-context/tensile-strength-materials|tensile strength]], brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
 
 This is why nylon needs 95°C / 7h while PLA only needs 45°C / 6h. The amide groups in nylon trap water *between* chains via H-bonds; you must heat above the H-bond rupture energy to evict it.
 
@@ -131,7 +131,7 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[learning/notes/quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 
@@ -149,11 +149,11 @@ A freshly extruded bead is above the polymer's [[learning/notes/quick-context/gl
 But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|semi-crystalline polymers]] (PA, PP, PE) prevents proper crystal formation and reduces interlayer adhesion — the chains "freeze" before they can tangle across the layer boundary. This is why:
 - **PLA** (mostly amorphous): blast it with 100% fan — overhangs love it, layer adhesion fine.
 - **PETG** (slow-crystallizing): 30–50% fan — full fan weakens layers.
-- **ABS / PA**: minimal fan — needs slow cooling for crystallinity and warp control. **Enclose the chamber.** This is exactly what the P2S Adaptive Airflow seals shut for engineering filaments.
+- **ABS / PA**: minimal fan — needs slow cooling for [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|crystallinity]] and warp control. **Enclose the chamber.** This is exactly what the P2S Adaptive Airflow seals shut for engineering filaments.
 
 ### 5. Why layer adhesion needs heat — polymer interdiffusion
 
-Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
+Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.
@@ -186,7 +186,7 @@ NOZZLE WEAR (mechanical)             →  hardened steel for CF/GF filaments
 
 **Tension 2: Stock RFID profile vs. custom calibrated profile.** Bambu RFID auto-loads a generic profile per filament SKU. It's fine. A *calibrated* profile (your specific spool, your specific environment) is better. Real maker workflow: clone the stock profile, run K-value + flow rate calibrations once per spool batch, save as "Bambu PLA Matte — Spool 47."
 
-**Tension 3: P2S vs. P1S calibration UX.** P1S has no LiDAR or eddy sensor — calibration is manual visual judgment of test patterns. **P2S adds an eddy current sensor between extruder and hotend**, enabling automatic Flow Dynamics (K-value) calibration: start the routine, printer returns the K. Manual mode still exists for users who want fine control. Plan to spend ~20 min per new filament regardless.
+**Tension 3: P2S vs. P1S calibration UX.** P1S has no LiDAR or eddy sensor — calibration is manual visual judgment of test patterns. **P2S adds an eddy current sensor between extruder and [[learning/notes/quick-context/3d-printer-hotends|hotend]]**, enabling automatic Flow Dynamics (K-value) calibration: start the routine, printer returns the K. Manual mode still exists for users who want fine control. Plan to spend ~20 min per new filament regardless.
 
 | Setting | Stock default | Quality preset |
 |---------|---------------|----------------|
@@ -235,7 +235,7 @@ Workflow for a new spool of generic (non-RFID) PLA on P2S:
    Inspect: corners, overhangs, layer lines, top surface.
 ```
 
-Slicer settings to verify before clicking print:
+[[learning/notes/quick-context/3d-printing-slicer-settings|Slicer settings]] to verify before clicking print:
 
 ```
 Bambu Studio → your project → Process → Quality:
