@@ -7,6 +7,8 @@ created: 2026-03-27
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
+> **Related:** [[micro-context/ceramic-resonator|Ceramic Resonator]] | [[micro-context/microcontroller|Microcontroller]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+
 **Definition:** The component or circuit that generates the base frequency reference for a [[micro-context/stm32-microcontroller|microcontroller's]] clock system. On the Pupper v3 board, each STM32's clock source is an external 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (HSE), which the on-chip PLL multiplies to the 180 MHz operating frequency.
 
 ## How It Works
@@ -29,4 +31,4 @@ CLOCK SOURCE → PLL → SYSTEM CLOCK
      Pupper uses this
 ```
 
-**Key insight:** The external ceramic resonator isn't the MCU's actual operating frequency — it's just a stable reference that the PLL multiplies up. The MCU couldn't run directly at 8 MHz fast enough for 1 kHz motor control; the PLL is what bridges the gap to 180 MHz.
+**Key insight:** The external [[micro-context/ceramic-resonator|ceramic resonator]] isn't the MCU's actual operating frequency — it's just a stable reference that the PLL multiplies up. The MCU couldn't run directly at 8 MHz fast enough for 1 kHz motor control; the PLL is what bridges the gap to 180 MHz.

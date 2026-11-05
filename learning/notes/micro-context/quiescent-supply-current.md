@@ -7,6 +7,8 @@ created: 2026-06-07
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]
 
+> **Related:** [[quick-context/comparator|Comparator]]
+
 **Definition:** The standing current a comparator or op-amp draws from its supply just to stay biased and ready, even when its output isn't switching. For micropower parts it is microamps.
 
 ## How It Works
@@ -29,4 +31,4 @@ created: 2026-06-07
    7 uA -> years off a single coin cell.
 ```
 
-**Key insight:** Quiescent current is the price of always-on readiness — it's why a micropower comparator can watch a battery for years off the same cell it monitors, while a fast comparator might drain that cell in days.
+**Key insight:** Quiescent current is the price of always-on readiness — it's why a micropower [[quick-context/comparator|comparator]] can watch a battery for years off the same cell it monitors, while a fast comparator might drain that cell in days.

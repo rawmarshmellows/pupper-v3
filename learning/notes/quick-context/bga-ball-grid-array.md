@@ -3,11 +3,12 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
 # BGA (Ball Grid Array)
+
+> **Related:** [[quick-context/pcb-chip-transistor-hierarchy|PCB, Chip, Transistor, and Substrate Packaging Hierarchy]] | [[quick-context/pcb-printed-circuit-board|PCB (Printed Circuit Board)]] | [[quick-context/transistor|Transistor]] | [[quick-context/soldering|Soldering]] | [[quick-context/silicon-die|Silicon Die]]
 
 ## The Core Problem
 
@@ -129,7 +130,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
+The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a [[quick-context/soldering|soldering]] iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 
 </details>
 
@@ -214,7 +215,7 @@ X-RAY VIEW: What Inspectors See
     Real X-ray machines detect these at 1000+ joints per second
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming solder balls are placed individually during assembly. They're not—the balls are permanently attached to the chip package during manufacturing (by the chip vendor), and they stay there during shipping and storage. When you buy a BGA chip, it comes with balls already in place. During PCB assembly, you just add solder paste to the board, place the component, and reflow. The existing balls melt and merge with the paste to form the final joint. The balls are pre-attached to the package, not to the board.
+**The one thing most outsiders get wrong about this is...** assuming solder balls are placed individually during assembly. They're not—the balls are permanently attached to the chip package during manufacturing (by the chip vendor), and they stay there during shipping and storage. When you buy a BGA chip, it comes with balls already in place. During [[quick-context/pcb-chip-transistor-hierarchy]] assembly, you just add solder paste to the board, place the component, and reflow. The existing balls melt and merge with the paste to form the final joint. The balls are pre-attached to the package, not to the board.
 
 </details>
 
