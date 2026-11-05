@@ -4,11 +4,12 @@ created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
 > **TL;DR:** Semiconductor fabrication builds billions of transistors (each ~5 nanometers wide) on silicon wafers by cycling through photolithography, deposition, etching, ion implantation, and planarization 50-100+ times over 3+ months, making it the most complex manufacturing process humanity has ever developed.
 
 # Semiconductor Fabrication: Manufacturing Process and Tools
+
+> **Related:** [[quick-context/transistor|Transistor]] | [[quick-context/silicon-die|Silicon Die]] | [[micro-context/spi|SPI]] | [[quick-context/atoms-molecules-polymers-basics|atoms molecules polymers basics]] | [[quick-context/metal-interconnect-layers|metal interconnect layers]]
 
 ## The Core Problem: Building Structures Smaller Than Light Can See
 
@@ -21,7 +22,7 @@ You need to build billions of [[quick-context/transistor|transistors]], each onl
 | **Photolithography** | Using light projected through a mask to pattern photoresist, defining where material will be added or removed—the "printing press" of chip manufacturing |
 | **Deposition** | Adding thin layers of material (metals, oxides, silicon) onto the wafer using chemical vapor (CVD), physical vapor (PVD), or atomic layer deposition (ALD) |
 | **Etching** | Selectively removing material using plasma (dry etch) or chemicals (wet etch) to carve the patterns defined by photolithography |
-| **Ion Implantation** | Shooting dopant atoms (phosphorus, boron) into silicon at high velocity to create [[quick-context/doped-silicon|n-type and p-type regions]] for transistors |
+| **Ion Implantation** | Shooting dopant [[quick-context/atoms-molecules-polymers-basics|atoms]] (phosphorus, boron) into silicon at high velocity to create [[quick-context/doped-silicon|n-type and p-type regions]] for transistors |
 | **CMP (Chemical Mechanical Planarization)** | Polishing the wafer flat between layers so subsequent layers can be built on a smooth surface |
 
 <details>
@@ -62,7 +63,7 @@ THE SIX TOOL CATEGORIES IN SEMICONDUCTOR FABRICATION
 
 ### The Manufacturing Cycle for ONE Layer
 
-Each layer of a chip—whether it's a transistor layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
+Each layer of a chip—whether it's a [[quick-context/transistor|transistor]] layer or one of the 10+ [[quick-context/metal-interconnect-layers|metal interconnect layers]]—goes through a similar sequence:
 
 ```
 ONE LAYER MANUFACTURING CYCLE
@@ -510,7 +511,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar [[micro-context/mosfet]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 
@@ -544,7 +545,7 @@ Chip fabrication faces a fundamental tradeoff between throughput, resolution, an
 **Q5:** How does the fabrication process connect the raw material (silicon wafer) to the [[quick-context/pcb-chip-transistor-hierarchy|packaging hierarchy]]? What would happen to the hierarchy if ion implantation suddenly became impossible?
 <details>
 <summary>Answer</summary>
-Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "silicon die" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
+Fabrication transforms a blank silicon wafer into a patterned die containing billions of transistors and metal interconnects—the "[[quick-context/silicon-die|silicon die]]" level of the hierarchy. Without ion implantation, you couldn't create [[quick-context/doped-silicon|doped regions]] (n-type and p-type silicon), which means you couldn't form PN junctions, which means you couldn't make transistors. The entire hierarchy would collapse at its foundation: no transistors → no functional dies → no chips to package → no electronics. The hierarchy describes how transistors connect to the macroscopic world, but fabrication (especially doping via ion implantation) is what makes transistors exist in the first place. See: Ion Implanter section, and the connection to [[quick-context/doped-silicon]]
 </details>
 
 </details>

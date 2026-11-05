@@ -7,6 +7,8 @@ created: 2026-06-07
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/push-pull-vs-open-drain]] | [[quick-context/comparator]]
 
+> **Related:** [[quick-context/comparator|Comparator]] | [[quick-context/transistor|Transistor]]
+
 **Definition:** How close a comparator's or op-amp's output can drive to the positive rail ($V_{OH}$, output high) and to the negative rail or ground ($V_{OL}$, output low), measured under a stated load current.
 
 ## How It Works
