@@ -1,7 +1,8 @@
 ---
 topic: DuPont Jumper Wires
 created: 2026-04-03
----> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
+---
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
 
 # DuPont Jumper Wires

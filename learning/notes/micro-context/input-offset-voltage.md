@@ -1,7 +1,8 @@
 ---
 term: Input Offset Voltage (V_OS)
 created: 2026-06-07
----> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/transistor]]
+---
+> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/transistor]]
 
 
 # Input Offset Voltage ($V_{OS}$)

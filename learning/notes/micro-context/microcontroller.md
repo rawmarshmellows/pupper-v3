@@ -2,7 +2,8 @@
 term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]]
+---
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]]
 
 
 # Microcontroller

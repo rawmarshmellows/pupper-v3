@@ -2,7 +2,8 @@
 term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
----> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
 
 
 # Reverse and Forward Bias

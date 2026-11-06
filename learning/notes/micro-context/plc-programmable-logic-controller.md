@@ -1,7 +1,8 @@
 ---
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
----> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/epson-rc-plus-programming]]
+---
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/epson-rc-plus-programming]]
 
 
 # PLC (Programmable Logic Controller)

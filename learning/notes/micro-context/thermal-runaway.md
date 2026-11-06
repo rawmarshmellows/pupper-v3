@@ -2,7 +2,8 @@
 term: Thermal Runaway
 created: 2026-01-26
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/clock-sources-and-timing]]
+---
+> **Related:** [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/clock-sources-and-timing]]
 
 
 # Thermal Runaway

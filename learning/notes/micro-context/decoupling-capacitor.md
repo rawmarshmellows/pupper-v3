@@ -2,7 +2,8 @@
 term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/capacitance]]
+---
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/capacitance]]
 
 
 # Decoupling Capacitor

@@ -2,7 +2,8 @@
 term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/st-link-v2-programmer]]
+---
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
 
 # SPIneV1.elf

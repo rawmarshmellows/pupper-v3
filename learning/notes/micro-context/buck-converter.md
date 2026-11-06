@@ -2,7 +2,8 @@
 term: Buck Converter
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/micro-context/anode]]
+---
+> **Related:** [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/micro-context/anode]]
 
 
 # Buck Converter

@@ -1,7 +1,8 @@
 ---
 term: Scan Loop
 created: 2026-04-07
----> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
+---
+> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/usb-peripheral-hardware]]
 
 
 # Scan Loop

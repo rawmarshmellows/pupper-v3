@@ -1,7 +1,8 @@
 ---
 term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
----> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/quick-context/differential-pair]] | [[learning/notes/micro-context/tail-current]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/voltage]]
 
 
 # Common-Mode Rejection Ratio ($CMRR$)

@@ -2,7 +2,8 @@
 term: SMD Resistor
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
+---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/pcb-printed-circuit-board]]
 
 
 # SMD Resistor

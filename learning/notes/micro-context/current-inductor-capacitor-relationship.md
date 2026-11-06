@@ -2,7 +2,8 @@
 term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
----> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/voltage]]
 
 
 # Current Behavior with Inductors vs Capacitors

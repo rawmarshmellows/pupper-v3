@@ -2,7 +2,8 @@
 term: ST-Link V2 Programmer
 created: 2026-03-25
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/sram]] | [[learning/notes/micro-context/swd-serial-wire-debug]]
+---
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/sram]] | [[learning/notes/micro-context/swd-serial-wire-debug]]
 
 
 # ST-Link V2 Programmer

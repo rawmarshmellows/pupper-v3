@@ -1,7 +1,8 @@
 ---
 term: Current Mirror
 created: 2026-04-02
----> **Related:** [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/transistor]]
+---
+> **Related:** [[learning/notes/micro-context/tail-current]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/transistor]]
 
 
 # Current Mirror

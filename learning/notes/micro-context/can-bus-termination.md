@@ -1,7 +1,8 @@
 ---
 term: CAN Bus Termination
 created: 2026-03-27
----> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/smd-resistor]]
+---
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/smd-resistor]]
 
 
 # CAN Bus Termination

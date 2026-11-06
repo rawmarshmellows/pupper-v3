@@ -2,7 +2,8 @@
 term: PWM (Pulse Width Modulation)
 created: 2026-02-25
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/capacitor]]
+---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/capacitor]]
 
 
 # PWM (Pulse Width Modulation)

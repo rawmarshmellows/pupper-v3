@@ -2,7 +2,8 @@
 term: Ceramic Resonator
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/piezoelectric-effect]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/can-bus]]
+---
+> **Related:** [[learning/notes/micro-context/piezoelectric-effect]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/quick-context/can-bus]]
 
 
 # Ceramic Resonator

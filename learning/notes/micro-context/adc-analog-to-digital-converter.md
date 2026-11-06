@@ -2,7 +2,8 @@
 term: ADC (Analog-to-Digital Converter)
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/spi]] | [[learning/notes/quick-context/transistor]] | [[learning/notes/quick-context/voltage]]
 
 
 # ADC (Analog-to-Digital Converter)

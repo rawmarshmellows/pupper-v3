@@ -1,7 +1,8 @@
 ---
 term: Capacitive Voltage Sensing
 created: 2026-06-08
----> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/voltage]]
 
 
 # Capacitive Voltage Sensing

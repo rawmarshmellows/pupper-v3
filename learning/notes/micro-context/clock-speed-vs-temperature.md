@@ -2,7 +2,8 @@
 term: Clock Speed vs Temperature
 created: 2026-01-26
 updated: 2026-03-27
----> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/transistor]]
+---
+> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/transistor]]
 
 
 # Clock Speed vs Temperature

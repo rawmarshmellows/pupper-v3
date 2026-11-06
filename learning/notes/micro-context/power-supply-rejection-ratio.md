@@ -1,7 +1,8 @@
 ---
 term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
----> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/voltage]]
 
 
 # Power-Supply Rejection Ratio ($PSRR$)

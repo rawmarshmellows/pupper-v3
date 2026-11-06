@@ -1,7 +1,8 @@
 ---
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
----> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/st-link-v2-programmer]]
+---
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/voltage]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/st-link-v2-programmer]]
 
 
 # SRAM (Static Random-Access Memory)

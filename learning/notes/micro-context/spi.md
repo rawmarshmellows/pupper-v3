@@ -2,7 +2,8 @@
 term: SPI
 created: 2026-02-25
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/microcontroller]]
+---
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/microcontroller]]
 
 
 # SPI

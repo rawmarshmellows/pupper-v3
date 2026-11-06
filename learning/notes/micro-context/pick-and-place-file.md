@@ -2,7 +2,8 @@
 term: Pick and Place File
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
+---
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/soldering]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
 
 
 # Pick and Place File

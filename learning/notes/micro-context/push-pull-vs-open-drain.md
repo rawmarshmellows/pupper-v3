@@ -2,7 +2,8 @@
 term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
----> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/resistor]]
+---
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/resistor]]
 
 
 # Push-Pull vs Open-Collector / Open-Drain

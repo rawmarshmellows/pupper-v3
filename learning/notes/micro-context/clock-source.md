@@ -1,7 +1,8 @@
 ---
 term: Clock Source
 created: 2026-03-27
----> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/crystal-oscillator]]
+---
+> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/crystal-oscillator]]
 
 
 # Clock Source

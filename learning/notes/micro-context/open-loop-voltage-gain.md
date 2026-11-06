@@ -1,7 +1,8 @@
 ---
 term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
----> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/voltage]]
 
 
 # Open-Loop Voltage Gain ($A_V$)

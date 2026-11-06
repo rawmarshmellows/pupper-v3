@@ -2,7 +2,8 @@
 term: MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor)
 created: 2026-02-25
 updated: 2026-06-08
----> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/transistor]]
+---
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/diode]] | [[learning/notes/quick-context/transistor]]
 
 
 # MOSFET

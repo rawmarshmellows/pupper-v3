@@ -2,7 +2,8 @@
 term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
----> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]]
+---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]]
 
 
 # STM32 Microcontroller

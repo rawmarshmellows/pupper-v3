@@ -2,7 +2,8 @@
 term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/voltage]]
 
 
 # Current and Electrons Per Second

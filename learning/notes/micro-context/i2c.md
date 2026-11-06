@@ -2,7 +2,8 @@
 term: I2C
 created: 2026-02-25
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/ceramic-resonator]]
+---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/resistor]] | [[learning/notes/micro-context/ceramic-resonator]]
 
 
 # I2C

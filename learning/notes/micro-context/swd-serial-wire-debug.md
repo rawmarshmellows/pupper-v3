@@ -2,7 +2,8 @@
 term: SWD (Serial Wire Debug)
 created: 2026-03-25
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/comparator]]
+---
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/comparator]]
 
 
 # SWD (Serial Wire Debug)

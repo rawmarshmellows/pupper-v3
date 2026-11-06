@@ -2,7 +2,8 @@
 term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
----> **Related:** [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pupper-bom-control-board]]
+---
+> **Related:** [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 
 # I2S Audio Amplifier

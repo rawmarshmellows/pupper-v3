@@ -1,7 +1,8 @@
 ---
 term: Input Bias Current (I_B)
 created: 2026-06-07
----> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/comparator]]
+---
+> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/quick-context/comparator]]
 
 
 # Input Bias Current ($I_B$)

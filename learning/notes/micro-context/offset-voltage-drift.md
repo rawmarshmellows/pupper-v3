@@ -1,7 +1,8 @@
 ---
 term: Offset Voltage Drift (TCV_OS)
 created: 2026-06-07
----> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/voltage]]
+---
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/op-amp]] | [[learning/notes/quick-context/voltage]]
 
 
 # Offset Voltage Drift ($TCV_{OS}$)
