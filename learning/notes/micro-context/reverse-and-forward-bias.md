@@ -3,6 +3,8 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]]
+
 
 # Reverse and Forward Bias
 

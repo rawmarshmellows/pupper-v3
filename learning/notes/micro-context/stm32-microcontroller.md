@@ -3,6 +3,8 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
+> **Related:** [[learning/notes/micro-context/microcontroller]] | [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]
+
 
 # STM32 Microcontroller
 

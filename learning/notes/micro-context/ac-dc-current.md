@@ -3,6 +3,8 @@ term: AC vs DC Current
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/quiescent-supply-current]]
+
 
 # AC vs DC Current
 
