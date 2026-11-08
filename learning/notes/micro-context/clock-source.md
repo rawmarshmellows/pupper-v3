@@ -2,6 +2,8 @@
 term: Clock Source
 created: 2026-03-27
 ---
+> **Related:** clock sources and timing | clock edges | clock speed vs temperature | clock speed | how source code is stored
+
 
 # Clock Source
 

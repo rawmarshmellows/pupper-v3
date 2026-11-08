@@ -2,6 +2,8 @@
 topic: Common IC Packages (DIP, QFP, QFN, SOT)
 created: 2026-02-06
 ---
+> **Related:** can bus termination | common mode rejection ratio | input common mode range | thread pitch screws | bga ball grid array
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/soldering]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -196,7 +198,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy]]** — IC packages are one level in the hierarchy from die to PCB. The package contains the die, connected via [[quick-context/wire-bonding|wire bonds]] or [[quick-context/flip-chip|flip-chip]], and connects to the PCB via leads, pads, or [[quick-context/bga-ball-grid-array|BGA balls]].
 

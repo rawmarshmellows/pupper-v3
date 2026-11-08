@@ -2,6 +2,8 @@
 topic: From Code to Running Firmware — Linking, Flashing, and Booting on an MCU
 created: 2026-03-26
 ---
+> **Related:** firmware | from vacuum tubes to coding on screens | how source code is stored | python to machine code pipeline | keypress to pixel pipeline
+
 
 # From Code to Running Firmware
 
@@ -330,7 +332,7 @@ Your motor control loop starts running. The entire sequence from power-on to `ma
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The upstream story: how source code compiles to machine instructions, and how the CPU's fetch-execute cycle processes them. This document picks up where that one leaves off.
 

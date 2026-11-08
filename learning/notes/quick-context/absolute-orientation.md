@@ -2,6 +2,8 @@
 topic: Absolute Orientation
 created: 2026-04-04
 ---
+> **Related:** can bus termination | clock speed vs temperature | clock speed | challenger sale methodology | sales methodology layering
+
 
 # Absolute Orientation Problem
 

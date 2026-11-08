@@ -3,6 +3,8 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** transistor design history
+
 
 # Coulomb (Unit History)
 

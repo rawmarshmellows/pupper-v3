@@ -3,6 +3,8 @@ topic: Pi-Pi Stacking (Aromatic Ring Interactions)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** parallel vs series voltage | thermal noise electronics | can bus termination | 3d printing filament refill vs spool | 3d printing filament types
+
 
 > **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
 

@@ -3,6 +3,8 @@ topic: Bambu AMS (Automatic Material System)
 created: 2026-01-21
 updated: 2026-01-21
 ---
+> **Related:** bambu p2s print quality | melt index | polymer chemical bonds | can bus termination | covalent bonds
+
 
 > **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
 

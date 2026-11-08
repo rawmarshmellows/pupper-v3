@@ -2,6 +2,8 @@
 topic: Electromigration
 created: 2026-01-26
 ---
+> **Related:** bond pad | coil magnetic field | ac dc current | can bus termination | current electrons per second
+
 
 > **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

@@ -2,6 +2,8 @@
 topic: PCB, Chip, Transistor, and Substrate Packaging Hierarchy
 created: 2026-01-23
 ---
+> **Related:** flip chip | substrate ic packaging | can bus termination | 3d printing filament refill vs spool | pcb assembly files bom cpl
+
 
 
 > **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
@@ -214,7 +216,7 @@ TRACING A MEMORY READ: CPU → DRAM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — How transistors are actually built on silicon wafers using photolithography; explains why die size and yield matter for cost.
 

@@ -2,6 +2,8 @@
 topic: Differential Pair
 created: 2026-04-01
 ---
+> **Related:** common mode rejection ratio | can bus termination | clock source | push pull vs open drain | clock sources and timing
+
 
 # Differential Pair
 

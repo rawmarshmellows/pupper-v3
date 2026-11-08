@@ -2,6 +2,8 @@
 topic: WiFi Chip — How Radio Becomes Data (and the Arduino Uno R4 WiFi)
 created: 2026-03-28
 ---
+> **Related:** data bus and arbitration | bare minimal data storage circuit | cpu fetch execute cycle | how passive and discrete components are made | how source code is stored
+
 
 # WiFi Chip — How Radio Becomes Data
 

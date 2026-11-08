@@ -2,6 +2,8 @@
 topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
+> **Related:** inside the triangle | can bus termination
+
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/inside-the-triangle|Inside the Triangle]] | [[micro-context/tail-current|Tail Current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

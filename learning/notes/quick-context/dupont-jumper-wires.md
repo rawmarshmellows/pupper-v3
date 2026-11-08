@@ -2,6 +2,8 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** voltage | data bus and arbitration | electromigration | voltage current causality | ac dc current
+
 
 # DuPont Jumper Wires
 

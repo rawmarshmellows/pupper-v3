@@ -1,3 +1,5 @@
+> **Related:** playbook main | post sale account engagement | sandler kare segmentation | coil magnetic field | dipole dipole interactions
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.

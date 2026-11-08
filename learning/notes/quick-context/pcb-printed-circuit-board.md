@@ -2,6 +2,8 @@
 topic: PCB (Printed Circuit Board)
 created: 2026-01-25
 ---
+> **Related:** pcb layers | short circuit | bare minimal data storage circuit | pcb assembly files bom cpl | pwm controller circuit
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -250,7 +252,7 @@ CROSS-SECTION (side view, showing how a via might connect layers):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|The Packaging Hierarchy]]** — PCBs are one level in the hierarchy from transistors to complete systems. Understanding how chips, substrates, and PCBs connect gives context for why PCBs exist at the 100-400mm scale.
 

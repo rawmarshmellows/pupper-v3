@@ -2,6 +2,8 @@
 topic: Similarity Transform
 created: 2026-04-04
 ---
+> **Related:** helmert transform | mcp6541 as lmc7211 replacement | comparator specification | tlv7211 as lmc7211 replacement | 4 wire kelvin measurement
+
 
 # N-Dimensional Similarity Transform
 

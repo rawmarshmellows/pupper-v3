@@ -2,6 +2,8 @@
 topic: Anions and Oxidation
 created: 2026-01-22
 ---
+> **Related:** oxidation | anode | comparator specification | cpu fetch execute cycle | dipole dipole interactions
+
 
 > **Related:** [[quick-context/electrolysis]]
 

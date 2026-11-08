@@ -2,6 +2,8 @@
 topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
+> **Related:** plc vs software control | isa 95 levels | plc vs software | can bus termination | semiconductor fabrication
+
 
 > **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
 

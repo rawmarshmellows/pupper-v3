@@ -2,6 +2,8 @@
 topic: Bond Pad
 created: 2026-01-25
 ---
+> **Related:** electromigration | wire bonding | metal interconnect layers | can bus termination | parallel vs series voltage
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

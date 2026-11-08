@@ -2,6 +2,8 @@
 topic: D Flip-Flop — The Atom of Digital Memory
 created: 2026-04-08
 ---
+> **Related:** how source code is stored | physics of writing data to memory | bare minimal data storage circuit | camera fundamentals | cpu fetch execute cycle
+
 
 # D Flip-Flop — The Atom of Digital Memory
 
@@ -369,7 +371,7 @@ In the course, the DFF is given as a built-in primitive (not built from NAND gat
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — The full compilation chain from code to logic gates. Layer 2 shows how registers are built from "MUX + Data Flip-Flop" — the exact pattern in the Nand2Tetris BitRegisterChip.
 

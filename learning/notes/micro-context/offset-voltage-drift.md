@@ -2,6 +2,8 @@
 term: Offset Voltage Drift (TCV_OS)
 created: 2026-06-07
 ---
+> **Related:** input offset voltage | capacitive voltage sensing | open loop voltage gain | output voltage swing | voltage thermodynamics electrolysis
+
 
 # Offset Voltage Drift ($TCV_{OS}$)
 

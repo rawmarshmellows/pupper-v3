@@ -2,6 +2,8 @@
 topic: ROS2 Architecture — Robot Operating System 2 for Pupper v3
 created: 2026-03-10
 ---
+> **Related:** pupper bom control board | pupper lab2 forward kinematics | pupper v3 labs | pupper lab1 pid control | pupper lab3 inverse kinematics
+
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 

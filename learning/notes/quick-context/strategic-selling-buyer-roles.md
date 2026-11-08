@@ -2,6 +2,8 @@
 topic: Strategic Selling Buyer Roles
 created: 2026-02-10
 ---
+> **Related:** miller heiman strategic selling lamp | can bus termination
+
 
 # Strategic Selling Buyer Roles
 

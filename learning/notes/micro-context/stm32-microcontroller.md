@@ -3,6 +3,8 @@ term: STM32 Microcontroller
 created: 2026-01-27
 updated: 2026-04-05
 ---
+> **Related:** microcontroller | spinev1 elf | st link v2 programmer | code to gates and bootstrapping | polymer crystallinity vs amorphous
+
 
 # STM32 Microcontroller
 

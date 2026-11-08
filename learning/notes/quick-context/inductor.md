@@ -2,6 +2,8 @@
 topic: Inductor
 created: 2026-02-06
 ---
+> **Related:** power inductor | fundamental electronic parts index | current inductor capacitor relationship | can bus termination | 3d printing filament types
+
 
 > **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

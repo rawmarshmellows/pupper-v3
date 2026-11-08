@@ -2,6 +2,8 @@
 topic: Subatomic Particles - Quarks, Protons, Neutrons, Electrons
 created: 2026-02-14
 ---
+> **Related:** current electrons per second | 3d printing filament refill vs spool | chemical bonds spectrum | code to gates and bootstrapping | physics of writing data to memory
+
 
 # Subatomic Particles
 
@@ -366,7 +368,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding semiconductors | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 

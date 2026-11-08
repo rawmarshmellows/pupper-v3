@@ -3,6 +3,8 @@ topic: Transistor
 created: 2026-01-25
 updated: 2026-02-21
 ---
+> **Related:** transistor design history | silicon die | bjt specifications | parallel vs series voltage | pcb chip transistor hierarchy
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -481,7 +483,7 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** - How transistors connect to the outside world. Transistors are the bottom of a scale pyramid that goes transistor to die to package to PCB; each level bridges a massive size gap.
 

@@ -3,6 +3,8 @@ term: Clock Speed
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** clock speed vs temperature | clock edges | clock source | clock sources and timing
+
 
 # Clock Speed
 

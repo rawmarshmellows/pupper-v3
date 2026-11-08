@@ -2,6 +2,8 @@
 topic: Challenger Sale Methodology
 created: 2026-02-10
 ---
+> **Related:** sales methodology layering | can bus termination | post sale account engagement
+
 
 # Challenger Sale Methodology
 

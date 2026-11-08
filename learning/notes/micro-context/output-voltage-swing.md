@@ -2,6 +2,8 @@
 term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** capacitive voltage sensing | input offset voltage | offset voltage drift | open loop voltage gain | voltage thermodynamics electrolysis
+
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 

@@ -2,6 +2,8 @@
 topic: Pupper v3 Control Board BOM — Every Part Explained
 created: 2026-02-25
 ---
+> **Related:** pupper lab1 pid control | pupper lab4 gait control | pupper lab6 llm voice control | pupper v3 labs | ros2 architecture
+
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
@@ -11,7 +13,7 @@ created: 2026-02-25
 
 ## The Core Problem: What Are All These Parts and Why Are They There?
 
-A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are [[quick-context/capacitor#decoupling|decoupling caps]] keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
+A robot control board BOM (Bill of Materials) is intimidating — dozens of cryptic part numbers, odd resistor values like 60.4kΩ, and capacitors ranging from 6.8pF to 47μF. But every part has a specific job. The passives aren't random: the 12× 100nF [[quick-context/capacitor|capacitors]] are decoupling caps keeping IC power stable, the 60.4kΩ/11.5kΩ [[quick-context/resistor|resistors]] form a voltage divider setting the buck converter output to exactly 5.0V, and the 10μH [[quick-context/inductor|inductor]] is the energy storage element in the switching power supply. Understanding the BOM means understanding each part's role in the system.
 
 BOM: learning/notes/quick-context/BOM_Control Board Rev 3.5_PCB1_3_2025-02-20.xlsx
 Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
@@ -20,11 +22,11 @@ Pick and Place: learning/notes/quick-context/PickAndPlace_PCB1_3_2025-02-20.xlsx
 
 | Term | Definition |
 |------|------------|
-| **BOM (Bill of Materials)** | The complete parts list for a [[quick-context/pcb-printed-circuit-board\|PCB]] — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
-| **Reference Designator** | The unique label for each component on the [[quick-context/schematic-reading\|schematic]] and PCB: R = [[quick-context/resistor\|resistor]], C = [[quick-context/capacitor\|capacitor]], U = IC, L = [[quick-context/inductor\|inductor]], D = [[quick-context/diode\|diode]], CN/H = connector, LED = LED, X = crystal/resonator. |
-| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See [[quick-context/common-ic-packages\|IC Packages]]. |
+| **BOM (Bill of Materials)** | The complete parts list for a PCB — specifies every component's value, package, manufacturer part number, and board location (designator). It's the recipe for building the board. |
+| **Reference Designator** | The unique label for each component on the schematic and PCB: R = resistor, C = capacitor, U = IC, L = inductor, D = diode, CN/H = connector, LED = LED, X = crystal/resonator. |
+| **Footprint / Package** | The physical size and pad pattern of a component — C0402 means a capacitor in 0402 size (1.0 × 0.5 mm), LQFP-64 is a 64-pin quad flat package. See IC Packages. |
 | **LCSC Part Number** | A supplier catalog number from LCSC Electronics (JLCPCB's component library). Having an LCSC number means the part is available for automated assembly at JLCPCB. Missing numbers (like the BNO086) mean manual sourcing. |
-| **Decoupling Network** | The system of [[quick-context/capacitor\|capacitors]] placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
+| **Decoupling Network** | The system of capacitors placed near each IC's power pins — 100nF ceramics handle high-frequency transients, larger caps (1μF, 4.7μF, 10μF) handle medium-frequency noise, and bulk caps (47μF) provide energy reservoir. |
 
 <details>
 <summary><strong>How It Works</strong> — The BOM organized by function</summary>
@@ -92,7 +94,7 @@ Two are used with distinct roles:
 Each MCU requires:
 - One 8 MHz [[micro-context/ceramic-resonator|ceramic resonator]] (X1, X2) as its clock source
 - Multiple decoupling capacitors on its power pins (100nF + 1μF + 4.7μF)
-- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as CAN bus termination
+- 120Ω [[quick-context/resistor|resistors]] (R1-R4) as [[learning/notes/quick-context/can-bus|CAN bus termination]]
 
 ### Category 2: Communication — CAN Transceivers (U3, U4, U6, U7)
 
@@ -344,7 +346,7 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 

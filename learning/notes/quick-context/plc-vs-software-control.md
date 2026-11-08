@@ -2,6 +2,8 @@
 topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
+> **Related:** plc vs software | preempt rt | robotic arm api levels | preempt rt ros2 plc replacement | clock speed vs temperature
+
 
 > **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
 

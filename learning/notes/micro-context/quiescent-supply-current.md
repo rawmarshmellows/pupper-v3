@@ -2,6 +2,8 @@
 term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
+> **Related:** ac dc current | current electrons per second | current inductor capacitor relationship | current mirror | input bias current
+
 
 # Quiescent Supply Current ($I_S$)
 

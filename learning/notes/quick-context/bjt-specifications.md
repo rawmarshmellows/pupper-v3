@@ -2,6 +2,8 @@
 topic: BJT Specifications (Choosing a Transistor)
 created: 2026-06-07
 ---
+> **Related:** bjt | comparator specification | bjt mosfet igbt | pupper lab5 neural controller | raspberry pi 5 components
+
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 

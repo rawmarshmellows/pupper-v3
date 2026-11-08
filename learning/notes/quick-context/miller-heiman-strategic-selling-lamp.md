@@ -3,6 +3,8 @@ topic: Miller Heiman Strategic Selling / LAMP
 created: 2026-02-10
 updated: 2026-02-10
 ---
+> **Related:** strategic selling buyer roles | output voltage swing | push pull vs open drain | qwiic stemma qt i2c | tlv7211 as lmc7211 replacement
+
 
 # Miller Heiman Strategic Selling / LAMP
 

@@ -2,6 +2,8 @@
 topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
+> **Related:** robot cell integration best practices | ros2 architecture | can bus termination
+
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
 

@@ -2,6 +2,8 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** piezoelectric effect
+
 
 # Coriolis Effect
 

@@ -2,6 +2,8 @@
 topic: Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem
 created: 2026-03-28
 ---
+> **Related:** decoupling capacitor | i2c | push pull vs open drain | data bus and arbitration | inside the triangle
+
 
 # Qwiic / STEMMA QT — Plug-and-Play I2C
 
@@ -114,7 +116,7 @@ Every Qwiic/STEMMA QT breakout board includes:
 3. **3.3V voltage regulator** — so you can power from 3.3-5V
 4. **I2C pull-up resistors** (typically 2.2–10k$\Omega$) — already on the board
 5. **Address jumper** — solder bridge to change the I2C address if you have two of the same sensor
-6. **Decoupling capacitor** — for stable power to the sensor
+6. **capacitor|Decoupling capacitor]]** — for stable power to the sensor
 
 This means the breakout board handles all the electrical details. You just plug in the cable.
 

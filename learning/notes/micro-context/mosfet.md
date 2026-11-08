@@ -3,6 +3,8 @@ term: MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor)
 created: 2026-02-25
 updated: 2026-06-08
 ---
+> **Related:** bjt mosfet igbt | bjt specifications | bjt | ac dc current | adc analog to digital converter
+
 
 # MOSFET
 

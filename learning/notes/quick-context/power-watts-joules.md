@@ -2,6 +2,8 @@
 topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
+> **Related:** buck converter | power inductor | can bus termination | power supply rejection ratio
+
 
 > **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -168,7 +170,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Power is the product of voltage and current (P = VI). Understanding current flow is prerequisite to understanding where power is consumed.
 

@@ -2,6 +2,8 @@
 topic: Raspberry Pi AI HAT+ — Edge AI Acceleration
 created: 2026-04-07
 ---
+> **Related:** raspberry pi 5 components | data bus and arbitration | how passive and discrete components are made | wifi chip arduino uno r4 | clock edges
+
 
 # Raspberry Pi AI HAT+ — Edge AI Acceleration
 

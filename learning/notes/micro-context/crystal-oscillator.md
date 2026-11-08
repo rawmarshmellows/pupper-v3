@@ -2,6 +2,8 @@
 term: Crystal Oscillator
 created: 2026-03-27
 ---
+> **Related:** rc oscillator
+
 
 # Crystal Oscillator
 

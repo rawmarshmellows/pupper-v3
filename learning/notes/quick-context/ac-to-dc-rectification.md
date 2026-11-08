@@ -2,6 +2,8 @@
 topic: AC-to-DC Rectification
 created: 2026-03-29
 ---
+> **Related:** diode rectification | ac dc current | can bus termination | full bridge rectifier | reverse and forward bias
+
 
 # AC-to-DC Rectification
 
@@ -182,7 +184,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 ### Source Micro-Contexts (Glossary Stubs)
 

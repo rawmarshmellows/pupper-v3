@@ -3,6 +3,8 @@ term: Clock Speed vs Temperature
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** clock speed | clock edges | clock source | push pull vs open drain | 3d printing filament refill vs spool
+
 
 # Clock Speed vs Temperature
 

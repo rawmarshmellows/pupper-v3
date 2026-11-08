@@ -2,12 +2,14 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
+> **Related:** pcb assembly files bom cpl | can bus
+
 
 # Schmitt Trigger & Hysteresis
 
-> **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
+> **See also:** comparator | comparator specification
 
-**Definition:** A [[learning/notes/quick-context/comparator|comparator]]-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
+**Definition:** A comparator-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
 
 ## How It Works
 

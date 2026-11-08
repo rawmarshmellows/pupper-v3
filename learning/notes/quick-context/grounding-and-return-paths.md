@@ -2,6 +2,8 @@
 topic: Grounding and Return Paths
 created: 2026-02-06
 ---
+> **Related:** can bus termination
+
 
 > **Related:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -192,7 +194,7 @@ THE CLASSIC GROUND LOOP PROBLEM
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Current flows in loops. The return current through ground is equal in magnitude to the signal current. This is Kirchhoff's current law in action.
 

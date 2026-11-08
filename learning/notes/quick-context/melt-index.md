@@ -3,6 +3,8 @@ topic: Melt Index (MFI/MFR)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** fundamental electronic parts index | bambu ams automatic material system | polymer chemical bonds | can bus termination | covalent bonds
+
 
 > **Related:** [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]]
 

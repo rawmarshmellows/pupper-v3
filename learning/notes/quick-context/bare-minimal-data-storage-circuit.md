@@ -3,22 +3,24 @@ topic: Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII St
 created: 2026-05-03
 updated: 2026-05-07
 ---
+> **Related:** data bus and arbitration | switches to registers storing data | wifi chip arduino uno r4 | physics of writing data to memory | short circuit
+
 
 # Bare-Minimal Data Storage Circuit — Keyboard, Clock, and 8-bit ASCII Storage
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/sram]] | [[learning/notes/micro-context/decoupling-capacitor]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]
+> **Related:** switches to registers storing data | d flip flop | physics of writing data to memory | clock sources and timing | rc oscillator | code to gates and bootstrapping | from vacuum tubes to coding on screens | clock edges | clock source | sram | decoupling capacitor | eeprom | How a Computer Works — Index-Spine
 
-> **TL;DR:** Press a key on a 16-key keypad → an encoder chip emits a 4-bit code + a "key pressed" strobe → a tiny EEPROM converts that 4-bit code to the **8-bit ASCII value** of that key → those 8 lines sit on a *data bus* feeding the D inputs of an **8-bit register** ([[learning/notes/quick-context/d-flip-flop|74HC574]]) → meanwhile a 555 timer is producing a steady square-wave **clock** at ~2 Hz → an AND gate gates the clock so register updates only happen *while a key is held* → on the next rising clock edge, all 8 ASCII bits are captured **simultaneously** and lit up on 8 LEDs. **The clock is not deciding what to store — it is deciding *when* to store.** That single distinction is the entire intuition behind "how a clock controls a computer".
+> **TL;DR:** Press a key on a 16-key keypad → an encoder chip emits a 4-bit code + a "key pressed" strobe → a tiny EEPROM converts that 4-bit code to the **8-bit ASCII value** of that key → those 8 lines sit on a *data bus* feeding the D inputs of an **8-bit register** (74HC574) → meanwhile a 555 timer is producing a steady square-wave **clock** at ~2 Hz → an AND gate gates the clock so register updates only happen *while a key is held* → on the next rising clock edge, all 8 ASCII bits are captured **simultaneously** and lit up on 8 LEDs. **The clock is not deciding what to store — it is deciding *when* to store.** That single distinction is the entire intuition behind "how a clock controls a computer".
 
 ## Human notes
 
-The 1-bit version of this circuit had no clock — pressing a button instantly flipped the [[learning/notes/quick-context/d-flip-flop|SR latch]]. **In Nand2Tetris, the clock is a black box** (the curriculum just says "the register updates on the rising edge"), and the question that keeps not clicking is: what does that mean *electrically*? What is the clock physically? Where does it live on the breadboard? And *how* does it cause one specific instant to become the "store this now" instant? This document builds that intuition by extending the 1-bit storage circuit to an **8-bit ASCII keyboard storage circuit**, with the clock made fully visible — its own [[learning/notes/quick-context/rc-oscillator|oscillator chip]], its own probe-able wire, its own LED you can watch blink, and its own [[learning/notes/micro-context/clock-edges|edge-triggered]] gating into the register.
+The 1-bit version of this circuit had no clock — pressing a button instantly flipped the SR latch. **In Nand2Tetris, the clock is a black box** (the curriculum just says "the register updates on the rising edge"), and the question that keeps not clicking is: what does that mean *electrically*? What is the clock physically? Where does it live on the breadboard? And *how* does it cause one specific instant to become the "store this now" instant? This document builds that intuition by extending the 1-bit storage circuit to an **8-bit ASCII keyboard storage circuit**, with the clock made fully visible — its own oscillator chip, its own probe-able wire, its own LED you can watch blink, and its own edge-triggered gating into the register.
 
 ## The Core Problem: Nand2Tetris hides the clock; this circuit makes it physical
 
 Most digital-logic curricula draw the clock as a small triangle on a schematic and state "the register updates here." That's a *behavioural* description — true, but unsatisfying. What gets hidden:
 
-1. The clock is a **physical voltage waveform** produced by an oscillator (a 555 timer, an [[learning/notes/quick-context/rc-oscillator|RC oscillator]], or a [[learning/notes/micro-context/crystal-oscillator|crystal]]). It has a frequency, a duty cycle, and a real wire you can poke with a scope.
+1. The clock is a **physical voltage waveform** produced by an oscillator (a 555 timer, an RC oscillator, or a crystal). It has a frequency, a duty cycle, and a real wire you can poke with a scope.
 2. The clock signal is **broadcast** to every register in the system at the same time — that's how 32 D flip-flops in one register file all update on a single instant.
 3. **The clock does not choose *what* to store.** The data lines (the D inputs) do. The clock only chooses *when* the storage element samples those data lines.
 4. **Whether a given clock edge "counts" for a given register** is itself controlled by combinational logic — usually an AND gate that says "this register only updates when *its* enable line is HIGH right now."
@@ -29,7 +31,7 @@ Once you see all four facts on a breadboard with their own LEDs, "the clock cont
 
 The previous version of this circuit was an **SR latch on a single 74HC00**: two cross-coupled NAND gates, two pushbuttons (LOAD/RESET), pull-ups, and an LED. **No clock.** Press LOAD → Q goes HIGH and stays HIGH. Press RESET → Q goes LOW and stays LOW. The cross-coupled feedback *is* the memory.
 
-That worked because the value-to-store was hardcoded into *which button you pressed* — LOAD inherently meant "1", RESET inherently meant "0". As soon as you want to store **arbitrary external data** (an 8-bit ASCII byte from a keypress), the SR latch can no longer do it: there's no D input. You graduate to a [[learning/notes/quick-context/d-flip-flop|D flip-flop]], which has both a data input *and* a clock input, and that's where the clock enters the picture for real. See [[learning/notes/quick-context/switches-to-registers-storing-data]] for the conceptual ladder from latch → flip-flop → register.
+That worked because the value-to-store was hardcoded into *which button you pressed* — LOAD inherently meant "1", RESET inherently meant "0". As soon as you want to store **arbitrary external data** (an 8-bit ASCII byte from a keypress), the SR latch can no longer do it: there's no D input. You graduate to a D flip-flop, which has both a data input *and* a clock input, and that's where the clock enters the picture for real. See switches to registers storing data for the conceptual ladder from latch → flip-flop → register.
 
 ## What the Clock Physically Is
 
@@ -47,9 +49,9 @@ The clock is a square-wave voltage signal toggling between LOW (~0 V) and HIGH (
             T = 1/f, e.g. 500 ms for 2 Hz, or 1 ns for 1 GHz
 ```
 
-For our circuit we use a **555 timer in astable mode** running at ~2 Hz so you can *see* each cycle on an LED. A real CPU runs the same waveform at $10^9$ Hz (1 GHz = 1 cycle per nanosecond), but the geometry is identical — only the time axis is compressed by ~$5×10^8$. The 555's output is a single wire that fans out to every register in the system. See [[learning/notes/quick-context/rc-oscillator]] for how the oscillator generates this waveform from an RC charging loop, and [[learning/notes/micro-context/clock-source]] for the spectrum of clock generators (RC → ceramic resonator → crystal → PLL).
+For our circuit we use a **555 timer in astable mode** running at ~2 Hz so you can *see* each cycle on an LED. A real CPU runs the same waveform at $10^9$ Hz (1 GHz = 1 cycle per nanosecond), but the geometry is identical — only the time axis is compressed by ~$5×10^8$. The 555's output is a single wire that fans out to every register in the system. See rc oscillator for how the oscillator generates this waveform from an RC charging loop, and clock source for the spectrum of clock generators (RC → ceramic resonator → crystal → PLL).
 
-A D flip-flop's clock input is **edge-sensitive** — it only does anything at the moment the clock voltage transitions from LOW to HIGH (the **rising edge**). For the rest of the cycle, the input D can wiggle freely; the flip-flop ignores it. This is the entire mechanism behind "synchronous" digital logic. See [[learning/notes/micro-context/clock-edges]] for why edge-triggering exists rather than level-triggering.
+A D flip-flop's clock input is **edge-sensitive** — it only does anything at the moment the clock voltage transitions from LOW to HIGH (the **rising edge**). For the rest of the cycle, the input D can wiggle freely; the flip-flop ignores it. This is the entire mechanism behind "synchronous" digital logic. See clock edges for why edge-triggering exists rather than level-triggering.
 
 ## 5 Essential Terms
 
@@ -58,7 +60,7 @@ A D flip-flop's clock input is **edge-sensitive** — it only does anything at t
 | **555 timer (astable mode)** | An 8-pin chip that, with two resistors and a capacitor on its timing pins, produces a continuous square wave on its output pin. Frequency $f \approx 1.44 / ((R_1 + 2R_2) \cdot C)$. | Generates the system clock — a free-running ~2 Hz square wave broadcast to the register's CLK input (via a gate). |
 | **74HC574 octal D flip-flop** | An 8-bit register: 8 D flip-flops sharing one CLK pin and one $\overline{\text{OE}}$ (output enable) pin. On each rising clock edge, all 8 D inputs are sampled and their values appear on the 8 Q outputs. | The 8-bit storage element. Holds the captured ASCII byte until the next gated rising edge replaces it. |
 | **74C922 keyboard encoder** | A 16-key (4×4 matrix) decoder chip that auto-scans the keypad, debounces the contacts internally, and outputs (a) a 4-bit binary code identifying which key is pressed, and (b) a **DA (Data Available)** pin that goes HIGH for as long as a key is held. | Translates "physical keypress" into "4-bit identifier + valid-data strobe." Without it you'd have to hand-build a scan + debounce circuit. |
-| **EEPROM lookup (28C16 or similar)** | A small non-volatile memory chip you pre-program with a 16-byte table mapping 4-bit address → 8-bit ASCII code. With A0–A3 driven by the encoder and A4–A10 tied LOW, it reads out the right ASCII byte on D0–D7 within ~150 ns. | Converts the keypad's internal 4-bit key index into actual ASCII (e.g. key index $2 \to$ ASCII `'2'` $= 0x32 = 0011\,0010$). See [[learning/notes/micro-context/eeprom]]. |
+| **EEPROM lookup (28C16 or similar)** | A small non-volatile memory chip you pre-program with a 16-byte table mapping 4-bit address → 8-bit ASCII code. With A0–A3 driven by the encoder and A4–A10 tied LOW, it reads out the right ASCII byte on D0–D7 within ~150 ns. | Converts the keypad's internal 4-bit key index into actual ASCII (e.g. key index $2 \to$ ASCII `'2'` $= 0x32 = 0011\,0010$). See eeprom. |
 | **Clock gating (AND gate)** | A 74HC08 AND gate whose two inputs are (a) the raw 555 clock and (b) the encoder's DA strobe. Output `GATED_CLK = 555_CLK ∧ DA`. | The "should this register update *this* cycle?" decision. When no key is held, DA is LOW, so GATED_CLK never rises and the register holds its last value. When a key is held, GATED_CLK passes the 555 waveform through. |
 
 ## The Circuit Architecture
@@ -126,7 +128,7 @@ Three independent signal *families* meet at the 74HC574:
 | LED + ~330 Ω resistor | 1 | "Key pressed" indicator on the DA line. |
 | 10 kΩ resistor | several | Pull-ups, encoder timing, 555 timing. |
 | 1 µF + 0.1 µF + 22 µF caps | 1 each | 1 µF on encoder KBM (sets ~10 ms debounce), 0.1 µF on encoder OSC, 22 µF for 555 timing. With $R_1 = R_2 = 10\,\text{kΩ}$ and $C = 22\,\mu\text{F}$: $f \approx 1.44 / ((R_1+2R_2) \cdot C) = 1.44 / (30\,\text{kΩ} \cdot 22\,\mu\text{F}) \approx 2.2$ Hz. Swap to $C = 47\,\mu\text{F}$ if you want ~1 Hz instead. |
-| 0.1 µF decoupling caps | 4 | One per chip, across Vcc/GND. Non-negotiable. See [[learning/notes/micro-context/decoupling-capacitor]]. |
+| 0.1 µF decoupling caps | 4 | One per chip, across Vcc/GND. Non-negotiable. See decoupling capacitor. |
 | 5 V supply | 1 | USB breakout, bench supply, or 4×AA. |
 
 Total: **~$15 in parts**, fits on a full-size breadboard.
@@ -218,7 +220,7 @@ In Nand2Tetris the clock seems gratuitous — "why not just have the keypress di
 
 1. **Synchronization across many registers.** A real CPU has thousands of registers — program counter, instruction register, ALU input/output latches, register file slots. They all need to update in *lockstep* so data flowing through combinational logic from register A reaches register B before B's next sample. The shared clock guarantees this. Without it, every register would update on its own schedule and you'd have race conditions everywhere.
 2. **Sequencing pipelined operations.** "Fetch instruction → decode → execute → writeback" is four clock cycles. Each cycle, the data physically moves one stage forward through the pipeline because each stage's output register samples on the same clock edge. The clock is the *peristalsis* that pushes data through the chip.
-3. **Bounded settling time.** Combinational logic (gates, multiplexers, ALU adders) has propagation delay. Inputs change → outputs glitch chaotically for some time → outputs eventually settle to the correct value. The clock period must be longer than the longest combinational path so that *by the next rising edge*, everything has settled. "Clock speed" is literally how short you can make the period before paths fail to settle in time. See [[learning/notes/micro-context/clock-speed]].
+3. **Bounded settling time.** Combinational logic (gates, multiplexers, ALU adders) has propagation delay. Inputs change → outputs glitch chaotically for some time → outputs eventually settle to the correct value. The clock period must be longer than the longest combinational path so that *by the next rising edge*, everything has settled. "Clock speed" is literally how short you can make the period before paths fail to settle in time. See clock speed.
 4. **Per-register write enable.** This is the part our circuit makes most concrete. Every register in a real CPU has its own enable line, gated against the global clock with an AND gate (or built-in clock-enable input). On every clock edge, *every* register sees the edge — but only those whose enable is HIGH actually update. The instruction decoder drives those enables. **The clock doesn't pick which register writes — combinational logic does. The clock just fires the gun simultaneously for all of them.**
 
 When you internalize point 4, "the clock controls the computer" stops meaning "the clock decides what happens" and starts meaning *"the clock provides the synchronized firing instants; the rest of the circuit decides who responds."*
@@ -243,24 +245,24 @@ This circuit is a 1-byte slice of a CPU register file. To get to a working CPU f
 - **A multiplexer in front of the data bus** — so the bus can carry data from different sources (keyboard, ALU output, memory) at different times. The clock still fires every register; the mux + enable combination decides which register gets which source.
 - **An instruction decoder** — combinational logic that takes the current opcode and lights up the right enable lines. "Opcode 0x4 → enable register R1; opcode 0x5 → enable register R2."
 - **A program counter** — itself a register that re-loads from `PC + 1` on every clock edge (its enable is always HIGH unless the CPU is halted). The PC is the clearest example of "the clock advances the machine one step per edge."
-- **Memory** — large arrays of [[learning/notes/micro-context/sram|SRAM cells]] (which are *also* cross-coupled latches, just like our 1-bit base case, with extra access transistors).
+- **Memory** — large arrays of SRAM cells (which are *also* cross-coupled latches, just like our 1-bit base case, with extra access transistors).
 
-Every one of those uses the same three-signal-family pattern this circuit demonstrates: a *data* path, a *clock* path, and *enable* paths that gate which clock edges count for which destination. Once that pattern is concrete, [[learning/notes/quick-context/code-to-gates-and-bootstrapping|how a computer actually runs code]] reduces to "every clock cycle, the decoder lights up enables that route data through one stage of the fetch/decode/execute pipeline."
+Every one of those uses the same three-signal-family pattern this circuit demonstrates: a *data* path, a *clock* path, and *enable* paths that gate which clock edges count for which destination. Once that pattern is concrete, how a computer actually runs code reduces to "every clock cycle, the decoder lights up enables that route data through one stage of the fetch/decode/execute pipeline."
 
 ## Peripheral Knowledge
 
-- [[learning/notes/quick-context/switches-to-registers-storing-data]] — the conceptual ladder from "switch as 1 bit" to "register as N bits." Read first if the SR-latch building block isn't intuitive yet.
-- [[learning/notes/quick-context/d-flip-flop]] — the next-step-up storage primitive: a single edge-triggered D flip-flop. The 74HC574 is just 8 of these in one chip.
-- [[learning/notes/quick-context/physics-of-writing-data-to-memory]] — what's *physically* happening inside the flip-flop at the rising edge.
-- [[learning/notes/quick-context/clock-sources-and-timing]] — full treatment of clock generators, jitter, and skew.
-- [[learning/notes/quick-context/rc-oscillator]] — how a 555 in astable mode actually generates the square wave from RC charging dynamics.
-- [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] — how the same clocked-register pattern scales up to "the CPU runs your program."
-- [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]] — the historical arc that produces this entire stack.
-- [[learning/notes/micro-context/clock-edges]] — why edge-triggering exists rather than level-triggering.
-- [[learning/notes/micro-context/clock-source]] — the spectrum of clock generators (RC → ceramic → crystal → PLL).
-- [[learning/notes/micro-context/eeprom]] — how the keymap lookup chip works.
-- [[learning/notes/micro-context/sram]] — how the same cross-coupled-latch pattern scales to gigabytes of CPU cache.
-- [[learning/notes/micro-context/decoupling-capacitor]] — why the 0.1 µF cap on every chip is non-negotiable.
+- switches to registers storing data — the conceptual ladder from "switch as 1 bit" to "register as N bits." Read first if the SR-latch building block isn't intuitive yet.
+- d flip flop — the next-step-up storage primitive: a single edge-triggered D flip-flop. The 74HC574 is just 8 of these in one chip.
+- physics of writing data to memory — what's *physically* happening inside the flip-flop at the rising edge.
+- clock sources and timing — full treatment of clock generators, jitter, and skew.
+- rc oscillator — how a 555 in astable mode actually generates the square wave from RC charging dynamics.
+- code to gates and bootstrapping — how the same clocked-register pattern scales up to "the CPU runs your program."
+- from vacuum tubes to coding on screens — the historical arc that produces this entire stack.
+- clock edges — why edge-triggering exists rather than level-triggering.
+- clock source — the spectrum of clock generators (RC → ceramic → crystal → PLL).
+- eeprom — how the keymap lookup chip works.
+- sram — how the same cross-coupled-latch pattern scales to gigabytes of CPU cache.
+- decoupling capacitor — why the 0.1 µF cap on every chip is non-negotiable.
 
 ## Test Your Understanding
 

@@ -2,6 +2,8 @@
 topic: Schematic Reading
 created: 2026-02-06
 ---
+> **Related:** can bus termination | electromagnetic induction | can bus | coil magnetic field | electric magnetic field unification
+
 
 > **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

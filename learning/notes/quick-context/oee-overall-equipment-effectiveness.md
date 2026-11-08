@@ -2,6 +2,8 @@
 topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
+> **Related:** teep | can bus termination | bambu p2s print quality
+
 
 > **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
 

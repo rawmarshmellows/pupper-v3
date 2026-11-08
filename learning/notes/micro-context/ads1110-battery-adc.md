@@ -3,6 +3,8 @@ term: ADS1110 (Battery Voltage ADC)
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** capacitive voltage sensing | input offset voltage | offset voltage drift | open loop voltage gain | output voltage swing
+
 
 # ADS1110 (Battery Voltage ADC)
 

@@ -2,6 +2,8 @@
 topic: SIL-Rated Safety Functions
 created: 2026-01-17
 ---
+> **Related:** can bus termination | integration failure modes solutions
+
 
 > **Related:** [[quick-context/preempt-rt]] | [[quick-context/plc-vs-software-control]]
 

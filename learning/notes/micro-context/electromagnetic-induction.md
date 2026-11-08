@@ -3,6 +3,8 @@ term: Electromagnetic Induction
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** electricity generation | electromagnetism | self induction
+
 
 # Electromagnetic Induction
 

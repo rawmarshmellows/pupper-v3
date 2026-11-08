@@ -2,6 +2,8 @@
 topic: PREEMPT_RT
 created: 2026-01-17
 ---
+> **Related:** preempt rt ros2 plc replacement | plc vs software control | can bus termination | pupper bom control board | pupper lab1 pid control
+
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
 

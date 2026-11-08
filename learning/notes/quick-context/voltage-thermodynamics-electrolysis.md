@@ -2,6 +2,8 @@
 topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
+> **Related:** capacitive voltage sensing | input offset voltage | offset voltage drift | open loop voltage gain | output voltage swing
+
 
 > **Related:** [[quick-context/electrolysis]]
 

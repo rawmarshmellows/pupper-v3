@@ -2,6 +2,8 @@
 topic: Clock Sources and Timing
 created: 2026-03-29
 ---
+> **Related:** clock edges | clock source | clock speed vs temperature | clock speed | can bus termination
+
 
 # Clock Sources and Timing
 
@@ -226,7 +228,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 **Source micro-context files (glossary stubs consolidated here):**
 

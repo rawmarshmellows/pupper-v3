@@ -2,6 +2,8 @@
 topic: Soldering
 created: 2026-02-06
 ---
+> **Related:** can bus termination
+
 
 > **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -168,7 +170,7 @@ REFLOW SOLDERING PROCESS (SMD production)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-printed-circuit-board]]** — PCB pad design, soldermask openings, and copper finish (HASL, ENIG, OSP) all affect solder joint quality. The PCB and soldering process are designed together.
 

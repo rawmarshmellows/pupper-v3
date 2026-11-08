@@ -2,6 +2,8 @@
 topic: Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 created: 2026-03-10
 ---
+> **Related:** pupper lab3 inverse kinematics | pupper lab1 pid control | pupper lab4 gait control | pupper lab5 neural controller | pupper lab6 llm voice control
+
 
 # Pupper Lab 2 — Forward Kinematics (3-DOF Leg)
 

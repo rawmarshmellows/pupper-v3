@@ -2,6 +2,8 @@
 topic: Self-Induction
 created: 2026-02-17
 ---
+> **Related:** can bus termination | electromagnetic induction
+
 
 # Self-Induction
 

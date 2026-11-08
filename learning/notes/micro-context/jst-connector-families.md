@@ -3,6 +3,8 @@ term: JST Connector Families
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** qwiic stemma qt i2c | push pull vs open drain | short circuit | coil magnetic field | comparator specification
+
 
 # JST Connector Families
 

@@ -3,6 +3,8 @@ topic: Polymer Crystallinity vs Amorphous
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** 3d printing filament refill vs spool | polymer chemical bonds | clock speed vs temperature | push pull vs open drain | 3d printing filament types
+
 
 > **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
 

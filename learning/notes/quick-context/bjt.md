@@ -2,6 +2,8 @@
 topic: BJT (Bipolar Junction Transistor)
 created: 2026-02-06
 ---
+> **Related:** bjt specifications | bjt mosfet igbt | mosfet | can bus termination
+
 
 > **Related:** [[quick-context/bjt-specifications|BJT Specifications]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

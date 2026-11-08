@@ -2,6 +2,8 @@
 term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
+> **Related:** offset voltage drift | capacitive voltage sensing | input bias current | input common mode range | open loop voltage gain
+
 
 # Input Offset Voltage ($V_{OS}$)
 

@@ -2,6 +2,8 @@
 topic: Electromagnetism
 created: 2026-02-09
 ---
+> **Related:** electromagnetic induction | can bus termination | robot cell integration best practices
+
 
 # Electromagnetism
 

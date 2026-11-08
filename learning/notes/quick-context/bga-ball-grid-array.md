@@ -2,6 +2,8 @@
 topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
+> **Related:** can bus termination | thread pitch screws | bond pad | python to machine code pipeline
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

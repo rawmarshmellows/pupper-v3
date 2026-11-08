@@ -3,6 +3,8 @@ topic: Tensile Strength in Materials (Understanding MPa Ratings)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** breaking elongation rate | can bus termination
+
 
 > **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/3d-printer-hotends]]
 

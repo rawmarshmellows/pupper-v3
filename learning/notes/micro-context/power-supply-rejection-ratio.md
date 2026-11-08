@@ -2,6 +2,8 @@
 term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
+> **Related:** common mode rejection ratio | power inductor | quiescent supply current | power watts joules
+
 
 # Power-Supply Rejection Ratio ($PSRR$)
 

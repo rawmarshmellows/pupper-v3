@@ -2,6 +2,8 @@
 topic: Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 created: 2026-03-10
 ---
+> **Related:** pupper lab1 pid control | pupper lab4 gait control | pupper lab7 vision tracking | pupper bom control board | pupper lab2 forward kinematics
+
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 

@@ -3,6 +3,8 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** input bias current | pupper lab2 forward kinematics
+
 
 # Reverse and Forward Bias
 

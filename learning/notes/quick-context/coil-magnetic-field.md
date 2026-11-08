@@ -2,6 +2,8 @@
 topic: Why Current Through a Coil Creates a Magnetic Field
 created: 2026-02-14
 ---
+> **Related:** electric magnetic field unification | ac dc current | current electrons per second | current inductor capacitor relationship | current mirror
+
 
 # Why Current Through a Coil Creates a Magnetic Field
 
@@ -495,7 +497,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
 | Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
+| Inductor in power supply | Specified inductance, not field | Ferrite or powdered iron core |
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |
@@ -656,7 +658,7 @@ FINAL DESIGN:
 
 - **Superconducting Magnets** — At very low temperatures, some materials have zero electrical resistance. Coils made from these can carry enormous currents without heating, enabling MRI machines and particle accelerators.
 
-- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the Faraday tensor. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
+- **[[quick-context/faraday-tensor]]** — The relativistic explanation for why moving charges create magnetic fields is made mathematically precise by the tensor|Faraday tensor]]. What one observer sees as a pure electric field, another moving observer sees as a mix of E and B—the tensor transforms correctly between frames.
 
 </details>
 

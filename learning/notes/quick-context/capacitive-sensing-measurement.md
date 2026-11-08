@@ -2,6 +2,8 @@
 topic: Capacitive Sensing and Measurement
 created: 2026-03-28
 ---
+> **Related:** capacitive voltage sensing | 4 wire kelvin measurement | can bus termination
+
 
 # Capacitive Sensing and Measurement
 

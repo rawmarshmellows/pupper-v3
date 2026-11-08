@@ -2,6 +2,8 @@
 topic: Frequency and Filtering
 created: 2026-02-06
 ---
+> **Related:** can bus termination
+
 
 > **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

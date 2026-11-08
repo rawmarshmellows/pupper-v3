@@ -2,6 +2,8 @@
 topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
+> **Related:** pupper bom control board | pupper lab6 llm voice control | ros2 architecture | pupper lab1 pid control | pupper lab2 forward kinematics
+
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 

@@ -2,6 +2,8 @@
 topic: CAN Bus (Controller Area Network)
 created: 2026-03-27
 ---
+> **Related:** can bus termination | can bus transceiver | data bus and arbitration | mcp6541 as lmc7211 replacement | meddpicc qualification framework
+
 
 # CAN Bus (Controller Area Network)
 
@@ -293,7 +295,7 @@ CANH and CANL on a scope during one frame:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[micro-context/can-bus-transceiver]]** — The MAX3051 chip that converts the MCU's single-ended digital TX/RX into differential CANH/CANL signals. This micro-context covers the physical layer interface that CAN depends on.
 

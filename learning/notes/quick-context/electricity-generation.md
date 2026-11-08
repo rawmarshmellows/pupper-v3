@@ -2,6 +2,8 @@
 topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
+> **Related:** electromagnetic induction | how source code is stored | can bus termination | clock source | challenger sale methodology
+
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

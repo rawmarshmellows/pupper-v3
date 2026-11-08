@@ -3,6 +3,8 @@ topic: 3D Printer Hotends
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** 3d printing filament refill vs spool | 3d printing filament types | 3d printing slicer settings | polymer chemical bonds | can bus termination
+
 
 > **Related:** [[quick-context/melt-index]] | [[quick-context/bambu-p2s-print-quality]]
 

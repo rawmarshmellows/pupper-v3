@@ -2,6 +2,8 @@
 topic: Helmert Transform
 created: 2026-04-04
 ---
+> **Related:** similarity transform | can bus termination
+
 
 # Helmert Transform
 
@@ -257,7 +259,7 @@ print(f"Translation: true={t_true}  estimated={np.round(t_est, 4)}")
 print(f"Rotation matches: {np.allclose(R_true, R_est, atol=0.01)}")
 
 # Apply to a new point
-new_local = np.array([[0.5, 0.5, 0.5]])
+new_local = np.array(0.5, 0.5, 0.5)
 transformed = apply_helmert(new_local, s_est, R_est, t_est)
 print(f"New point transformed: {np.round(transformed, 4)}")
 ```

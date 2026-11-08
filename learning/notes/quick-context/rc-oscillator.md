@@ -2,6 +2,8 @@
 topic: RC Oscillator
 created: 2026-03-28
 ---
+> **Related:** crystal oscillator | can bus termination | epson rc plus programming
+
 
 # RC Oscillator
 
@@ -17,11 +19,11 @@ Many circuits need a periodic signal -- a clock, a ramp, a trigger -- but don't 
 
 | Term | Definition |
 |------|------------|
-| **RC Time Constant ($\tau = RC$)** | The time it takes a [[quick-context/capacitor\|capacitor]] charging through a [[quick-context/resistor\|resistor]] to reach ~63% of its final voltage. This is the fundamental timing element -- $R$ and $C$ values set the oscillation frequency. |
-| **Threshold / Trip Point** | A voltage level (set by a [[quick-context/comparator\|comparator]] or [[quick-context/transistor\|transistor]] switch) at which the circuit changes state -- triggering a reset, discharge, or direction change in the waveform. |
-| **Sawtooth Wave** | A waveform that ramps linearly from low to high, then snaps back to zero. Produced when a constant current charges a capacitor, then a switch discharges it instantly. This is the waveform inside [[quick-context/pwm-controller-circuit\|PWM controller ICs]]. |
+| **RC Time Constant ($\tau = RC$)** | The time it takes a capacitor charging through a resistor to reach ~63% of its final voltage. This is the fundamental timing element -- $R$ and $C$ values set the oscillation frequency. |
+| **Threshold / Trip Point** | A voltage level (set by a comparator or transistor switch) at which the circuit changes state -- triggering a reset, discharge, or direction change in the waveform. |
+| **Sawtooth Wave** | A waveform that ramps linearly from low to high, then snaps back to zero. Produced when a constant current charges a capacitor, then a switch discharges it instantly. This is the waveform inside PWM controller ICs. |
 | **Relaxation Oscillator** | The general class of oscillator that works by charging a capacitor to a threshold, then rapidly discharging it and repeating. The 555 timer and the sawtooth generator inside buck converter ICs are both relaxation oscillators. |
-| **Frequency Accuracy** | How close the actual output frequency is to the target. RC oscillators are typically ±1-5% due to component tolerances and temperature drift, vs. ±0.002% for [[micro-context/crystal-oscillator\|crystals]] and ±0.5% for [[micro-context/ceramic-resonator\|ceramic resonators]]. |
+| **Frequency Accuracy** | How close the actual output frequency is to the target. RC oscillators are typically ±1-5% due to component tolerances and temperature drift, vs. ±0.002% for crystals and ±0.5% for ceramic resonators. |
 
 <details>
 <summary><strong>How It Works</strong> -- Charge, compare, reset, repeat</summary>
@@ -179,7 +181,7 @@ FREQUENCY DRIFT SOURCES
 
 The core tradeoff is between frequency precision and the ability to integrate everything on-chip:
 
-| | RC Oscillator | [[micro-context/ceramic-resonator\|Ceramic Resonator]] | [[micro-context/crystal-oscillator\|Crystal Oscillator]] |
+| | RC Oscillator | Ceramic Resonator | Crystal Oscillator |
 |---|---|---|---|
 | **Accuracy** | ±1-5% | ±0.5% | ±0.002% (20 ppm) |
 | **External parts** | None (on-chip) | 1 component (3-pin) | 1 crystal + 2 caps |
@@ -257,7 +259,7 @@ The 555 timer is the most famous RC oscillator IC ever made (over a billion sold
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/resistor]]** -- The R in RC. Resistor tolerance and temperature coefficient directly affect oscillator frequency accuracy.
 

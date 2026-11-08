@@ -3,6 +3,8 @@ topic: Breaking Elongation Rate (Material Property)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** tensile strength materials | can bus termination
+
 
 > **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/tensile-strength-materials]]
 

@@ -2,6 +2,8 @@
 topic: Tensor
 created: 2026-03-04
 ---
+> **Related:** faraday tensor | can bus termination | raspberry pi 5 components
+
 
 # Tensor
 

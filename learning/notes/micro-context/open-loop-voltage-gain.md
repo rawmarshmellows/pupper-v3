@@ -2,6 +2,8 @@
 term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
+> **Related:** capacitive voltage sensing | input offset voltage | offset voltage drift | output voltage swing | voltage thermodynamics electrolysis
+
 
 # Open-Loop Voltage Gain ($A_V$)
 

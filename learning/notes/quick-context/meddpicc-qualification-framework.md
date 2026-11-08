@@ -2,10 +2,12 @@
 topic: MEDDPICC Qualification Framework
 created: 2026-02-10
 ---
+> **Related:** mcp6541 as lmc7211 replacement | pupper v3 labs | tensile strength materials | ads1110 battery adc | stm32 microcontroller
+
 
 # MEDDPICC Qualification Framework
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/sandler-kare-segmentation]] | e2e sales process skand 80 20
 
 > **TL;DR:** MEDDPICC is an 8-element deal qualification checklist (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition) used by enterprise SaaS companies to rigorously assess whether a deal is winnable before investing significant sales resources.
 

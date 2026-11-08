@@ -3,6 +3,8 @@ term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** capacitor | qwiic stemma qt i2c | current inductor capacitor relationship
+
 
 # Decoupling Capacitor
 

@@ -3,6 +3,8 @@ term: Buck Converter
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** power watts joules | adc analog to digital converter
+
 
 # Buck Converter
 

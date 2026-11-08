@@ -2,6 +2,8 @@
 topic: Pupper Lab 1 — PID Control (Single Joint)
 created: 2026-03-10
 ---
+> **Related:** pupper lab4 gait control | pupper lab6 llm voice control | pupper bom control board | pupper lab2 forward kinematics | pupper lab3 inverse kinematics
+
 
 # Pupper Lab 1 — PID Control (Single Joint)
 

@@ -2,6 +2,8 @@
 topic: Metal Interconnect Layers
 created: 2026-01-25
 ---
+> **Related:** bond pad | pcb layers | silicon die | can bus termination | thread pitch screws
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -264,7 +266,7 @@ This is called the "interconnect bottleneck." Engineers spend enormous effort on
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how metal interconnects fit into the full packaging stack from transistors to PCB; metal interconnects are the first level of "fanning out" connections from billions of transistors to thousands of bond pads.
 

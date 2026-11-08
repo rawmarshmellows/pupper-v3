@@ -3,6 +3,8 @@ topic: Semiconductor Fabrication - Manufacturing Process and Tools
 created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
+> **Related:** cnc process selection | 3d printing filament refill vs spool | chemical bonds spectrum | code to gates and bootstrapping | how passive and discrete components are made
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -498,7 +500,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/silicon-die|Silicon Die]]** — The end product of fabrication. Understanding die structure (transistors in FEOL, metal interconnects in BEOL) shows what all these fabrication steps are building toward.
 

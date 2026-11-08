@@ -2,6 +2,8 @@
 topic: Silicon Die
 created: 2026-01-25
 ---
+> **Related:** transistor | metal interconnect layers | doped silicon | flip chip | can bus termination
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -219,7 +221,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The die sits within a packaging hierarchy that bridges nanometer-scale transistors to centimeter-scale circuit boards; this document explains the full stack from atoms to appliances.
 

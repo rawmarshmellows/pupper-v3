@@ -3,6 +3,8 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** ac dc current | current electrons per second | current mirror | input bias current | quiescent supply current
+
 
 # Current Behavior with Inductors vs Capacitors
 

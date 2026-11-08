@@ -2,6 +2,8 @@
 topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
+> **Related:** can bus termination | schmitt trigger hysteresis
+
 
 > **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

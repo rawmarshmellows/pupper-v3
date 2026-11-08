@@ -2,6 +2,8 @@
 term: Current Mirror
 created: 2026-04-02
 ---
+> **Related:** ac dc current | current electrons per second | current inductor capacitor relationship | input bias current | quiescent supply current
+
 
 # Current Mirror
 

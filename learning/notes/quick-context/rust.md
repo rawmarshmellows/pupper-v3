@@ -2,6 +2,8 @@
 topic: Rust (Iron Corrosion Chemistry)
 created: 2026-01-25
 ---
+> **Related:** can bus termination
+
 
 > **Related:** [[quick-context/electrodes]] | [[quick-context/anions-and-oxidation]] | [[quick-context/galvanic-cells-batteries]]
 
@@ -183,7 +185,7 @@ THE ELECTROCHEMISTRY OF GALVANIC PROTECTION:
                         exposed Fe
 
 
-STANDARD [[quick-context/reduction-potential|REDUCTION POTENTIALS]]:
+STANDARD REDUCTION POTENTIALS:
 ────────────────────────────────────────────────────
     Zn²⁺ + 2e⁻ → Zn    E° = -0.76 V  (MORE negative = MORE reactive)
     Fe²⁺ + 2e⁻ → Fe    E° = -0.44 V  (LESS negative = less reactive)

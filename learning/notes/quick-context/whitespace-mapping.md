@@ -2,6 +2,8 @@
 topic: Whitespace Mapping
 created: 2026-02-10
 ---
+> **Related:** can bus termination
+
 
 # Whitespace Mapping
 

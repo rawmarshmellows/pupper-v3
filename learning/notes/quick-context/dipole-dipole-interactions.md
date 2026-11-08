@@ -4,6 +4,8 @@ created: 2026-01-20
 updated: 2026-01-21
 clarification: 2026-01-21
 ---
+> **Related:** glass transition temperature | polymer crystallinity vs amorphous | can bus termination | pi pi stacking aromatic interactions
+
 
 > **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
 

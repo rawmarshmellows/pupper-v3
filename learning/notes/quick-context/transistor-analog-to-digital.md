@@ -2,6 +2,8 @@
 topic: Transistors - From Imperfect Analog Devices to Digital Switches
 created: 2026-01-25
 ---
+> **Related:** d flip flop | switches to registers storing data | adc analog to digital converter | 3d printing filament refill vs spool | chemical bonds spectrum
+
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -421,7 +423,7 @@ NOISE AND VARIATION IN REAL CHIPS:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/transistor|Transistors]]** — The physical devices this document explains. Understanding the basic MOSFET structure (gate, source, drain, channel) is prerequisite.
 

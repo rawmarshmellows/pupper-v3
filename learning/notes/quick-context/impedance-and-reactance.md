@@ -2,6 +2,8 @@
 topic: Impedance and Reactance
 created: 2026-02-06
 ---
+> **Related:** can bus termination
+
 
 > **Related:** [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

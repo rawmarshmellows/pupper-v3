@@ -2,6 +2,8 @@
 topic: Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 created: 2026-03-10
 ---
+> **Related:** pupper lab6 llm voice control | pupper lab1 pid control | pupper lab2 forward kinematics | pupper lab3 inverse kinematics | pupper lab4 gait control
+
 
 # Pupper Lab 7 — Vision + Tracking (Full Autonomy Stack)
 

@@ -3,6 +3,8 @@ topic: 3D Printing Filament - Refill vs Spool
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** 3d printing filament types | polymer crystallinity vs amorphous | 3d printing slicer settings | polymer chemical bonds | clock speed vs temperature
+
 
 > **Related:** [[quick-context/3d-printing-slicer-settings]]
 

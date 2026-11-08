@@ -3,6 +3,8 @@ topic: Polymer Chemical Bonds in 3D Printing Filaments
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** 3d printing filament types | chemical bonds spectrum | hydrogen bonds beginners | polymer crystallinity vs amorphous | van der waals forces
+
 
 > **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
 

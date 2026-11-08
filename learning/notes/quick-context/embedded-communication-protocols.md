@@ -3,6 +3,8 @@ topic: Embedded Communication Protocols — UART, I2C, SPI, CAN, RS-232, RS-485,
 created: 2026-03-27
 updated: 2026-04-06
 ---
+> **Related:** i2c | spi | qwiic stemma qt i2c | uart | can bus termination
+
 
 # Embedded Communication Protocols
 
@@ -527,7 +529,7 @@ SPI is ~32x faster for this read — but it uses 4 wires vs I2C's 2, and can't s
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/uart]]** — Deep dive into UART internals: the receive shift register (chain of D flip-flops), 16× oversampling, parallel latch to data register, baud rate generation. The simplest protocol in the comparison, with its own article covering the hardware mechanics.
 

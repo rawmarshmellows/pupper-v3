@@ -2,6 +2,8 @@
 topic: Wire Bonding
 created: 2026-01-25
 ---
+> **Related:** bond pad | swd serial wire debug | flip chip | fundamental electronic parts index | usb peripheral hardware
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -315,7 +317,7 @@ DRAM MEMORY PACKAGE (Wire-Bonded)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|Chip Packaging Hierarchy]]** — The broader context of how chips connect to circuit boards; wire bonding is one step in this multi-level system.
 

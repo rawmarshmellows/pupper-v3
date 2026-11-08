@@ -2,6 +2,8 @@
 topic: TEEP (Total Effective Equipment Performance)
 created: 2026-01-14
 ---
+> **Related:** oee overall equipment effectiveness | can bus termination
+
 
 > **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/isa-95-levels]]
 

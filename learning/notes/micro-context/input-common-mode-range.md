@@ -2,6 +2,8 @@
 term: Input Common-Mode Range (CMVR)
 created: 2026-06-07
 ---
+> **Related:** common mode rejection ratio | input bias current | input offset voltage | common ic packages
+
 
 # Input Common-Mode Range ($CMVR$)
 

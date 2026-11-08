@@ -2,6 +2,8 @@
 topic: PREEMPT_RT + ROS2 as PLC Replacement
 created: 2026-03-13
 ---
+> **Related:** mcp6541 as lmc7211 replacement | tlv7211 as lmc7211 replacement | plc programmable logic controller | plc vs software control | preempt rt
+
 
 # PREEMPT_RT + ROS2 as PLC Replacement
 
@@ -346,7 +348,7 @@ Safety I/O (e-stop buttons, safety bumpers) connects to safety-rated EtherCAT mo
 Pharmaceutical manufacturing is heavily regulated (FDA 21 CFR Part 11, EU GMP Annex 11). Filling lines handling sterile products require SIL-2 or SIL-3 rated safety functions for dose accuracy, contamination prevention, and operator protection. No PREEMPT_RT + ROS2 stack has SIL-2/SIL-3 certification as an integrated system. The Codethink CTRL OS baseline assessment (May 2025) is a pathfinder, not a product cert. CODESYS has SIL-3 on Linux, but that's a proprietary runtime, not ROS2. A safety auditor in pharma would reject the system for safety-critical functions. The startup would still need dedicated safety PLCs for interlocks and safety I/O, making the claim of "entirely" replacing PLCs misleading. See: "The Key Tension" section.
 </details>
 
-**Q5:** The Pupper v3 uses an STM32 microcontroller for 1 kHz motor control and a Raspberry Pi for ROS2. If PREEMPT_RT + ROS2 can run servo loops at 1 kHz on a single platform, why does the Pupper still use this dual-processor architecture?
+**Q5:** The Pupper v3 uses an microcontroller|STM32 microcontroller]] for 1 kHz motor control and a Raspberry Pi for ROS2. If PREEMPT_RT + ROS2 can run servo loops at 1 kHz on a single platform, why does the Pupper still use this dual-processor architecture?
 
 <details>
 <summary>Answer</summary>

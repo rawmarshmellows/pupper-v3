@@ -2,6 +2,8 @@
 topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
+> **Related:** plc vs software control | parallel vs series voltage | plc programmable logic controller | coil magnetic field | firmware
+
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
 

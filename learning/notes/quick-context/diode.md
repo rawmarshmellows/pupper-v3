@@ -3,6 +3,8 @@ topic: Diode
 created: 2026-02-06
 updated: 2026-02-25
 ---
+> **Related:** diode rectification | can bus termination | reverse and forward bias | 3d printing filament types | how passive and discrete components are made
+
 
 > **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -211,7 +213,7 @@ BRIDGE RECTIFIER CIRCUIT
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/doped-silicon]]** — The PN junction that makes diodes work is created by doping silicon with different impurities on each side. Understanding N-type and P-type silicon explains why diodes conduct in only one direction.
 

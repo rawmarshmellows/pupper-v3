@@ -2,6 +2,8 @@
 topic: ISA-95 Levels
 created: 2026-01-14
 ---
+> **Related:** robotic arm api levels | can bus termination | oee overall equipment effectiveness | wifi chip arduino uno r4
+
 
 > **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
 

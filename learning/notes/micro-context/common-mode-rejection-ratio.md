@@ -2,6 +2,8 @@
 term: Common-Mode Rejection Ratio (CMRR)
 created: 2026-06-07
 ---
+> **Related:** power supply rejection ratio | input common mode range | differential pair | common ic packages
+
 
 # Common-Mode Rejection Ratio ($CMRR$)
 

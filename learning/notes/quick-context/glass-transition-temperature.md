@@ -3,6 +3,8 @@ topic: Glass Transition Temperature (Tg)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** clock speed vs temperature | dipole dipole interactions | polymer crystallinity vs amorphous | can bus termination | pick and place file
+
 
 > **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
 

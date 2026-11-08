@@ -3,6 +3,8 @@ topic: Substrate (IC Packaging)
 created: 2026-01-25
 updated: 2026-01-26
 ---
+> **Related:** pcb chip transistor hierarchy | can bus termination | thread pitch screws | common ic packages | pupper lab3 inverse kinematics
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -412,7 +414,7 @@ Package height          │ ~1.0mm               │ Slim for smartphones
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The broader context of how substrates fit between the die and PCB in the electronics packaging hierarchy; essential for understanding why substrates exist.
 

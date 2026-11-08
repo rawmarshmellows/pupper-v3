@@ -3,6 +3,8 @@ term: CAN Bus Transceiver
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** can bus termination | can bus | data bus and arbitration | mcp6541 as lmc7211 replacement | tlv7211 as lmc7211 replacement
+
 
 # CAN Bus Transceiver
 

@@ -2,6 +2,8 @@
 topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
+> **Related:** silicon die | wire bonding | pcb chip transistor hierarchy | can bus termination | 3d printing filament refill vs spool
+
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

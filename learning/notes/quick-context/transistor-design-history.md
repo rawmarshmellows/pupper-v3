@@ -2,6 +2,8 @@
 topic: Transistor Design History
 created: 2026-01-30
 ---
+> **Related:** transistor | can bus termination | coulomb history | bjt specifications | pcb chip transistor hierarchy
+
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -411,7 +413,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/transistor|Transistor Fundamentals]]** — How MOSFETs actually work (gate, source, drain, channel). Essential prerequisite for understanding why architectural changes matter.
 

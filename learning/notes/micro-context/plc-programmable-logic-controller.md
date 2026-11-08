@@ -2,6 +2,8 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** plc vs software control | preempt rt ros2 plc replacement | plc vs software | pupper lab5 neural controller | pwm controller circuit
+
 
 # PLC (Programmable Logic Controller)
 

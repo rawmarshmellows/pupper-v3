@@ -2,6 +2,8 @@
 topic: Chemical Bonds - The Full Spectrum
 created: 2026-01-21
 ---
+> **Related:** polymer chemical bonds | code to gates and bootstrapping | hydrogen bonds beginners | covalent bonds | keypress to pixel pipeline
+
 
 > **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
 
@@ -18,7 +20,7 @@ Every material property you care about—melting point, strength, flexibility, w
 | Term | Definition |
 |------|------------|
 | **Intermolecular force** | Any attraction *between* molecules—van der Waals, dipole-dipole, hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
-| **Intramolecular bond** | The [[quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
+| **Intramolecular bond** | The covalent bonds holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
 | **Electronegativity** | An atom's "greed" for electrons—oxygen and fluorine are greedy (high EN), carbon and hydrogen share more equally—determines bond polarity. |
 | **Partial charge (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
 | **Non-covalent interaction** | Umbrella term for all intermolecular forces—emphasizes that these aren't "real" bonds in the electron-sharing sense, but still profoundly affect material behavior. |
@@ -348,7 +350,7 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
-- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+- **biology fundamentals** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
 
 </details>
 

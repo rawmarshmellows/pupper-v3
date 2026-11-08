@@ -2,6 +2,8 @@
 topic: Voltage-Current Causality (Which Causes Which?)
 created: 2026-03-27
 ---
+> **Related:** ac dc current | can bus termination | capacitive voltage sensing | current electrons per second | current inductor capacitor relationship
+
 
 # Voltage-Current Causality
 
@@ -188,8 +190,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | Inductors (where changing I creates V), current sources, electromagnetic induction |
+| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, capacitors (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```
@@ -303,7 +305,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/voltage]]** --- Voltage is the integral of the electric field. The field is what actually pushes electrons; voltage quantifies how much work the field does between two points. Understanding this resolves most of the causality confusion.
 

@@ -3,6 +3,8 @@ topic: 3D Printing Filament Types (PLA vs PETG vs ABS vs TPU)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** 3d printing filament refill vs spool | 3d printing slicer settings | polymer chemical bonds | polymer crystallinity vs amorphous | hydrogen bonds beginners
+
 
 > **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
 

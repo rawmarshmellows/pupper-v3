@@ -2,6 +2,8 @@
 topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
+> **Related:** from vacuum tubes to coding on screens | can bus termination | rc oscillator | robot cell integration best practices | semiconductor fabrication
+
 
 > **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
 

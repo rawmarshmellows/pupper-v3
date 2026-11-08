@@ -3,6 +3,8 @@ topic: Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 created: 2026-03-10
 updated: 2026-03-12
 ---
+> **Related:** pupper lab1 pid control | pupper lab2 forward kinematics | pupper lab3 inverse kinematics | pupper lab4 gait control | pupper lab6 llm voice control
+
 
 # Pupper Lab 5 — Neural Controller (Reinforcement Learning)
 

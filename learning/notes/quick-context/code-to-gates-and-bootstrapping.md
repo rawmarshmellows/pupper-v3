@@ -3,6 +3,8 @@ topic: Code to Gates - The Full Compilation Chain and Bootstrapping
 created: 2026-02-14
 updated: 2026-04-07
 ---
+> **Related:** how source code is stored | python to machine code pipeline | chemical bonds spectrum | from code to running firmware | keypress to pixel pipeline
+
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/from-code-to-running-firmware]]
 
@@ -466,7 +468,7 @@ POWER-ON SEQUENCE
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/transistor]]** — The physical switch that implements logic gates. Understanding how a transistor works (voltage on gate controls current flow) is the foundation for understanding how gates compute.
 

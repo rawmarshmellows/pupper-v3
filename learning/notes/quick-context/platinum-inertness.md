@@ -2,6 +2,8 @@
 topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
+> **Related:** oxidation | coil magnetic field | parallel vs series voltage | plc vs software | can bus termination
+
 
 > **Related:** [[quick-context/electrodes]]
 
@@ -143,9 +145,9 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 
 - **[[quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
 - **[[quick-context/electrolysis]]** - The broader process where platinum electrodes are commonly used
-- **[[quick-context/reduction-oxidation-reactions]]** - Redox chemistry that explains why some metals dissolve and others don't
-- **[[quick-context/noble-metals]]** - Other metals like gold and silver that share platinum's corrosion resistance
-- **[[quick-context/transition-metals-d-orbitals]]** - How d-orbital electron configurations influence metal reactivity
+- **reduction oxidation reactions** - Redox chemistry that explains why some metals dissolve and others don't
+- **noble metals** - Other metals like gold and silver that share platinum's corrosion resistance
+- **transition metals d orbitals** - How d-orbital electron configurations influence metal reactivity
 
 </details>
 

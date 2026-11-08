@@ -2,12 +2,14 @@
 topic: MCP6541 (C623499) as an LMC7211-N Replacement
 created: 2026-06-07
 ---
+> **Related:** tlv7211 as lmc7211 replacement | preempt rt ros2 plc replacement | can bus termination | can bus transceiver | clock speed vs temperature
+
 
 # Can the MCP6541 (LCSC C623499) Replace the LMC7211-N?
 
 > **Related:** [[quick-context/comparator-specification|Reading a Comparator Datasheet]] | [[quick-context/tlv7211-as-lmc7211-replacement|TLV7211: the unconditional drop-in]] | [[quick-context/comparator]] | [[quick-context/op-amp]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 >
-> **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from [[quick-context/comparator-specification#choosing-a-replacement|comparator-specification → Choosing a Replacement]].
+> **Parts compared:** [LMC7211-N (TI) — local PDF](lmc7211-n.pdf) vs **MCP6541RT-I/OT** (Microchip), the device behind LCSC part number **C623499** ([datasheet PDF](../micro-context/C623499.pdf)). This note *uses the cross-reference checklist* from comparator-specification → Choosing a Replacement.
 
 > **TL;DR:** **Yes — but conditionally.** The MCP6541RT-I/OT (C623499) is a *mechanical drop-in* for the LMC7211-N in SOT23-5: same package, **identical pinout**. Electrically it is a valid swap **only if your supply is ≤ 5.5 V and your signal is slow** (≥ a few µs is fine). Inside that envelope it's actually an **upgrade** — ~10× lower quiescent current (0.6 µA vs 7 µA), works down to 1.6 V, and adds **built-in hysteresis**. Outside it, it **fails**: the MCP6541 dies above 7 V and the LMC7211-N's signature 15 V operation has no equivalent, and the MCP6541 is ~9× slower (4 µs vs 450 ns).
 
@@ -139,7 +141,7 @@ The professional read: **a replacement is rarely "the same part."** It's a part 
 
 Run the [[quick-context/comparator-specification|spec checklist]] against two different LMC7211-N circuits and you get opposite answers — which is the whole point of checking *function*, not just *footprint*.
 
-**Case A — 3.0 V Li-ion undervoltage monitor (the worked circuit in [[quick-context/comparator-specification#concrete-example|the spec note]]):**
+**Case A — 3.0 V Li-ion undervoltage monitor (the worked circuit in the spec note):**
 
 ```
   Requirement                  MCP6541 (C623499)            Verdict

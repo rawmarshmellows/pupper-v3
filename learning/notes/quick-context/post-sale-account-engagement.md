@@ -2,6 +2,8 @@
 topic: Post-Sale Account Engagement
 created: 2026-02-10
 ---
+> **Related:** sandler kare segmentation | existing account management playbook | can bus termination | challenger sale methodology | playbook main
+
 
 # Post-Sale Account Engagement
 

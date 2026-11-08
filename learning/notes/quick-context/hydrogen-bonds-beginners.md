@@ -3,6 +3,8 @@ topic: Hydrogen Bonds for Beginners (PLA vs TPU Explained)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** 3d printing filament types | chemical bonds spectrum | polymer chemical bonds | covalent bonds | ac dc current
+
 
 > **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/3d-printing-filament-types]]
 
@@ -431,7 +433,7 @@ TPU at 60C:
 
 - **[[quick-context/atoms-molecules-polymers-basics]]**: Foundation concepts for understanding what polymer chains actually are before diving into how they interact with each other.
 
-- **[[quick-context/biology-fundamentals]]**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
+- **biology fundamentals**: Hydrogen bonds are critical in biology—DNA base pairing (A-T has 2, G-C has 3), protein secondary structure (alpha helices, beta sheets), and enzyme-substrate recognition all depend on H-bonding.
 
 - **[[quick-context/bambu-p2s-print-quality]]**: Why nylon must be dried at 95°C / 7h vs. PLA at 45°C / 6h — amide groups (–CO–NH–) form especially strong H-bonds with water, locking moisture between polymer chains.
 

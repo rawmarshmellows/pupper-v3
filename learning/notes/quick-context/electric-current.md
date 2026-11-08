@@ -2,6 +2,8 @@
 topic: Electric Current
 created: 2026-01-22
 ---
+> **Related:** ac dc current | current electrons per second | current inductor capacitor relationship | current mirror | input bias current
+
 
 > **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -330,7 +332,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/parallel-vs-series-voltage|Why Billions of Transistors Don't Need Billions of Volts]]** — Explains the critical difference between series circuits (voltages add) and parallel circuits (currents add). All transistors in a chip share the same voltage.
 
