@@ -3,7 +3,7 @@ term: CNC Milling
 created: 2026-01-27
 updated: 2026-03-27
 ---
-> **Related:** cnc machining | cnc process selection | cnc turning
+> **Related:** [[learning/notes/quick-context/cnc-machining]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-turning]]
 
 
 # CNC Milling

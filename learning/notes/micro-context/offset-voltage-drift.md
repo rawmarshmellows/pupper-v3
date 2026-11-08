@@ -2,14 +2,14 @@
 term: Offset Voltage Drift (TCV_OS)
 created: 2026-06-07
 ---
-> **Related:** input offset voltage | capacitive voltage sensing | open loop voltage gain | output voltage swing | voltage thermodynamics electrolysis
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]]
 
 
 # Offset Voltage Drift ($TCV_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/input-offset-voltage]] | [[quick-context/differential-pair]]
 
-**Definition:** The rate at which a comparator's or op-amp's [[micro-context/input-offset-voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
+**Definition:** The rate at which a [[learning/notes/quick-context/comparator|comparator]]'s or op-amp's [[micro-context/input-offset-voltage|input offset voltage]] changes with temperature, expressed in µV/°C. It tells you how much the offset wanders as the chip heats or cools.
 
 ## How It Works
 

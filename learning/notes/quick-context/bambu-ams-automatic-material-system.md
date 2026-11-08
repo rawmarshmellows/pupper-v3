@@ -3,10 +3,8 @@ topic: Bambu AMS (Automatic Material System)
 created: 2026-01-21
 updated: 2026-01-21
 ---
-> **Related:** bambu p2s print quality | melt index | polymer chemical bonds | can bus termination | covalent bonds
 
-
-> **Related:** [[quick-context/3d-printer-hotends]], [[quick-context/3d-printing-filament-types]], [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/melt-index]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **TL;DR:** The AMS automates multi-color printing and filament backup. It holds 4 spools and automatically retracts, cuts, and loads filament as needed. The killer feature for functional printing is spool backup for unattended long prints - not just colorful artistic prints.
 

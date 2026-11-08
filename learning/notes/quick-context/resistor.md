@@ -2,10 +2,8 @@
 topic: Resistor
 created: 2026-02-06
 ---
-> **Related:** smd resistor | fundamental electronic parts index | can bus termination | 3d printing filament types | how passive and discrete components are made
 
-
-> **Related:** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
 
 > **TL;DR:** A resistor opposes the flow of [[quick-context/electric-current|electric current]], converting electrical energy into heat according to Ohm's law (V = IR)—it's the simplest and most ubiquitous electronic component, used to limit current, divide voltages, set bias points, and terminate signals in virtually every circuit ever built.
 
@@ -207,7 +205,7 @@ I2C BUS PULL-UPS
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/electric-current]]** — Ohm's law (V = IR) is the direct relationship between resistance and current. Understanding current flow is prerequisite to understanding resistors.
 
@@ -215,13 +213,13 @@ I2C BUS PULL-UPS
 
 - **[[quick-context/capacitor]]** — Resistors and capacitors form RC circuits: the most common filter and timing element. The time constant tau = RC governs charging, discharging, and frequency response.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern transistor power delivery.
+- **[[quick-context/parallel-vs-series-voltage]]** — Series resistors divide voltage; parallel resistors divide current. Same Kirchhoff's laws that govern [[learning/notes/quick-context/transistor|transistor]] power delivery.
 
 - **[[quick-context/transistor]]** — Resistors set bias points for transistors, limit base/gate current, and form loads in amplifier circuits.
 
 - **[[quick-context/thermal-noise-electronics]]** — Every resistor generates thermal noise: V_noise = sqrt(4kTRB). Higher resistance = more noise, setting fundamental limits on sensitive analog circuits.
 
-- **pull up pull down resistors** — How a single resistor plus a button turns a floating GPIO into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
+- **[[learning/notes/small-context/pull-up-pull-down-resistors]]** — How a single resistor plus a button turns a floating GPIO into a deterministic digital input. Walks through pull-up vs pull-down and how to pick the resistor value.
 
 </details>
 

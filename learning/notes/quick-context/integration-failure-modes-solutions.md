@@ -2,10 +2,8 @@
 topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
-> **Related:** robot cell integration best practices | ros2 architecture | can bus termination
 
-
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
+> **Related:** [[learning/notes/quick-context/robot-cell-integration-best-practices]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/micro-context/can-bus-termination]]
 
 > **TL;DR:** Five architectural patterns (watchdog timers, two-phase handshakes, debouncing, state persistence, and margin monitoring) prevent the deadlocks, race conditions, and cascade failures that plague robot cells in production.
 

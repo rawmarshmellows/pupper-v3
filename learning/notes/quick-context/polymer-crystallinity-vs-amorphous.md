@@ -3,10 +3,8 @@ topic: Polymer Crystallinity vs Amorphous
 created: 2026-01-20
 updated: 2026-01-21
 ---
-> **Related:** 3d printing filament refill vs spool | polymer chemical bonds | clock speed vs temperature | push pull vs open drain | 3d printing filament types
 
-
-> **Related:** [[quick-context/atoms-molecules-polymers-basics]], [[quick-context/glass-transition-temperature]], [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/push-pull-vs-open-drain]] | [[learning/notes/quick-context/3d-printing-filament-types]]
 
 > **TL;DR:** Crystalline polymer regions shrink more than amorphous regions when cooling, causing 3D print warping. Materials like Nylon (semi-crystalline) warp aggressively, while PLA (mostly amorphous) prints easily.
 

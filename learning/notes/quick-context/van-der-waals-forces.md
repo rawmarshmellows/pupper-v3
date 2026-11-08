@@ -3,10 +3,8 @@ topic: Van der Waals Forces
 created: 2026-01-20
 updated: 2026-01-21
 ---
-> **Related:** polymer chemical bonds | can bus termination | dipole dipole interactions
 
-
-> **Related:** [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/dipole-dipole-interactions]]
 
 > **TL;DR:** Van der Waals forces are weak, universal attractions between all molecules caused by temporary electron fluctuations—individually trivial but collectively powerful enough to let geckos walk on walls.
 
@@ -386,7 +384,7 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-1. **[[quick-context/dipole-dipole-interactions]]** — Dipole-dipole interactions are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
+1. **[[quick-context/dipole-dipole-interactions]]** — [[learning/notes/quick-context/dipole-dipole-interactions|Dipole-dipole interactions]] are the "stronger cousin" of van der Waals forces, occurring between molecules with permanent dipoles rather than temporary ones.
 
 2. **[[quick-context/hydrogen-bonds-beginners]]** — Hydrogen bonds are a special, much stronger type of dipole interaction; understanding van der Waals forces helps you appreciate why hydrogen bonds are exceptionally powerful by comparison.
 

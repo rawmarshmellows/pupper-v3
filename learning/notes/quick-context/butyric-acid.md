@@ -2,18 +2,16 @@
 topic: Butyric Acid
 created: 2026-04-06
 ---
-> **Related:** can bus termination
-
 
 # Butyric Acid
 
-> **Related:** Atoms, Molecules & Polymers
+> **Related:** [[learning/notes/micro-context/can-bus-termination]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 
 ## The Core Problem
 
-Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate oxidation, not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
+Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate [[learning/notes/micro-context/oxidation|oxidation]], not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
 
 ## 5 Essential Terms
 
@@ -172,7 +170,7 @@ Butter and Parmesan cheese contain small amounts of actual butyric acid directly
 <details>
 <summary><strong>Peripheral Knowledge</strong> --- Related topics to explore</summary>
 
-- **Atoms, Molecules & Polymers** --- Butyric acid is a simple organic molecule; understanding molecular structure helps with grasping carboxylic acid chemistry
+- **[[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]** --- Butyric acid is a simple organic molecule; understanding molecular structure helps with grasping carboxylic acid chemistry
 - **Gut microbiome** --- The bacterial ecosystem that produces butyrate; understanding microbial ecology is key to understanding SCFA production
 - **Epigenetics / HDAC inhibition** --- Butyrate's gene-regulation mechanism; connects to cancer biology and drug development
 - **Inflammatory bowel disease (IBD)** --- Crohn's and ulcerative colitis involve reduced butyrate production and impaired barrier function

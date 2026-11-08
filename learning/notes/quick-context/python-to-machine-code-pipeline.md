@@ -2,14 +2,12 @@
 topic: Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 created: 2026-06-07
 ---
-> **Related:** how source code is stored | cpu fetch execute cycle | from code to running firmware | code to gates and bootstrapping | keypress to pixel pipeline
-
 
 # Python to Machine Code — Compiling, Bytecode, the Virtual Machine, and the Machine Underneath
 
-> **Related:** cpu fetch execute cycle | code to gates and bootstrapping | from code to running firmware | firmware | how a computer works index
+> **Related:** [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]]
 
-> **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the CPU rung).
+> **TL;DR:** Your Python source never runs on the CPU. CPython first **compiles** it to **bytecode** (the `.pyc` cache) — instructions for an imaginary **stack machine**, not for any real processor. A loop inside the `python` program (conceptually `ceval`, the "evaluation loop") then reads those bytecodes one at a time and acts on a value stack — this is the **virtual machine**. The twist that closes the circle: that VM loop is *itself* a C program that was compiled **ahead of time** into real machine code (the `python` executable). So every route from any language — compiled, interpreted, JIT, or transpiled — bottoms out in the same place: **machine-code instructions the CPU fetch-executes**. That meeting point is exactly where the software tower lands on the hardware tower (the [[learning/notes/quick-context/cpu-fetch-execute-cycle|CPU rung]]).
 
 ## The Core Problem
 
@@ -23,7 +21,7 @@ A CPU understands exactly one thing: binary machine-code instructions for *its* 
 | **Bytecode** | A compact list of simple instructions (`LOAD_CONST`, `STORE_NAME`, `BINARY_OP`) for a *made-up* CPU — the Python **virtual machine**. Cached in `__pycache__/*.pyc`. It is **not** machine code; no physical chip can run it directly. |
 | **Virtual Machine (VM)** | A program that pretends to be a CPU. CPython's VM is an **evaluation loop** (conceptually `ceval`) that reads one bytecode op and updates a **value stack**. "Interpreting bytecode" = this loop running. |
 | **Interpreter** | The whole `python` program: it compiles your source to bytecode, then its VM loop executes that bytecode. Crucially, the interpreter itself is **machine code** (a C program compiled ahead of time). |
-| **Machine code** | The binary instructions the physical CPU actually fetches and executes via the fetch-execute cycle. Every execution route ends here — this is where software meets hardware. |
+| **Machine code** | The binary instructions the physical CPU actually fetches and executes via the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]. Every execution route ends here — this is where software meets hardware. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
@@ -101,7 +99,7 @@ for (;;) {
 ```
 
 That `for(;;) { fetch; switch; }` shape should look familiar — it is a
-**software re-creation of the fetch-execute cycle**, but the
+**software re-creation of the [[learning/notes/quick-context/cpu-fetch-execute-cycle|fetch-execute cycle]]**, but the
 "instructions" are Python bytecodes and the "registers" are the value stack.
 This loop *is* the virtual machine.
 
@@ -254,7 +252,7 @@ is_address_instruction = self.not_gate(op_code)   # top bit = 0 -> A-instruction
 ```
 
 No `if opcode == "ADD"` anywhere — the bits *are* the control wires (see
-the fetch-execute note for the full trace of how
+[[learning/notes/quick-context/cpu-fetch-execute-cycle|the fetch-execute note]] for the full trace of how
 `D=D+A` becomes mux/ALU selects). Whether the machine code came from Jack via the
 full Part-2 chain, from C via gcc, or is the compiled `python` interpreter
 itself, **this `cpu.py`-style fetch-execute is the bottom of the tower.**
@@ -273,15 +271,15 @@ fetch-executing machine code.
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **cpu fetch execute cycle** — The destination of this whole pipeline. The VM loop here is a software re-creation of this hardware loop; the real CPU runs the *interpreter's* machine code via this exact cycle. The down-link toward hardware.
+- **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The destination of this whole pipeline. The VM loop here is a software re-creation of this hardware loop; the real CPU runs the *interpreter's* machine code via this exact cycle. The down-link toward hardware.
 
-- **code to gates and bootstrapping** — The fuller picture: the complete 7-layer chain from a high-level statement all the way down to NAND gates and transistors, plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
+- **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The fuller picture: the complete 7-layer chain from a high-level statement all the way down to NAND gates and transistors, plus how machine code is encoded by an assembler and how the first compiler was bootstrapped. This note zooms in on the Python-specific top of that chain; that note shows the whole descent.
 
-- **how source code is stored** — The up-link: how the `.py` text (and the `.pyc` bytecode cache) physically exist as bytes on disk before any of this translation begins. *(sibling note — may not exist yet.)*
+- **[[learning/notes/quick-context/how-source-code-is-stored]]** — The up-link: how the `.py` text (and the `.pyc` bytecode cache) physically exist as bytes on disk before any of this translation begins. *(sibling note — may not exist yet.)*
 
-- **from code to running firmware** — The compiled-AOT route in detail for embedded targets: how machine code is placed at real addresses by the linker, flashed to a chip, and reached at the reset vector. The mirror image of Python's runtime route.
+- **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The compiled-AOT route in detail for embedded targets: how machine code is placed at real addresses by the linker, flashed to a chip, and reached at the reset vector. The mirror image of Python's runtime route.
 
-- **firmware** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from power-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
+- **[[learning/notes/quick-context/firmware]]** — What the AOT-compiled machine code *is* on a real chip: instructions sitting in flash that the CPU fetch-executes from power-on. The `python` interpreter is the desktop analog — machine code that, once running, interprets your bytecode.
 
 - **AST (Abstract Syntax Tree)** — The tree the compiler builds between parsing your source and emitting bytecode. The `ast` module lets you inspect it; it's where structure (loops, expressions, scope) is captured before flattening to a stack-machine op list.
 
@@ -289,7 +287,7 @@ fetch-executing machine code.
 
 - **GIL / reference counting** — Other things the CPython VM loop does between ops (memory management, the Global Interpreter Lock) that make the per-instruction overhead — and Python's single-core threading limits — what they are.
 
-- **how a computer works index** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
+- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity to running code. This note sits on the software side of rung L8/L10, explaining how a high-level language reaches the machine code that L8's CPU executes.
 
 </details>
 

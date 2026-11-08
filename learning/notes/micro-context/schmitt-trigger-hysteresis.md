@@ -2,14 +2,14 @@
 term: Schmitt Trigger & Hysteresis
 created: 2026-06-07
 ---
-> **Related:** pcb assembly files bom cpl | can bus
+> **Related:** [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/quick-context/can-bus]]
 
 
 # Schmitt Trigger & Hysteresis
 
-> **See also:** comparator | comparator specification
+> **See also:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]]
 
-**Definition:** A comparator-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
+**Definition:** A [[learning/notes/quick-context/comparator|comparator]]-type circuit with **two** switching thresholds instead of one. **Hysteresis** is the deliberate voltage gap between them: the output flips HIGH only when the input rises above the upper threshold $V_{T+}$, and flips LOW only when it falls below the lower threshold $V_{T-}$.
 
 ## How It Works
 
@@ -30,4 +30,4 @@ created: 2026-06-07
              hysteresis band
 ```
 
-**Key insight:** A single-threshold comparator *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.
+**Key insight:** A single-threshold [[learning/notes/quick-context/comparator|comparator]] *chatters* — toggling many times — when a slow or noisy input lingers near the trip point; the hysteresis band swallows the noise so the output switches once, cleanly.

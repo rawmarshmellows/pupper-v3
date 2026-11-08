@@ -2,10 +2,8 @@
 topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
-> **Related:** teep | can bus termination | bambu p2s print quality
 
-
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/quick-context/teep]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/quick-context/bambu-p2s-print-quality]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 

@@ -2,10 +2,8 @@
 topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
-> **Related:** plc vs software control | parallel vs series voltage | plc programmable logic controller | coil magnetic field | firmware
 
-
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/firmware]]
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -107,7 +105,7 @@ The Python version:
 
 - **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
 - **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, including production hardware and real factory deployments
 - **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
 - **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
 

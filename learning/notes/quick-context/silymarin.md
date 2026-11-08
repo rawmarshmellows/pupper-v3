@@ -2,7 +2,7 @@
 topic: Silymarin
 created: 2026-04-06
 ---
-> **Related:** can bus termination
+> **Related:** [[learning/notes/micro-context/can-bus-termination]]
 
 
 # Silymarin

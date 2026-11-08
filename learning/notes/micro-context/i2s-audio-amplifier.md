@@ -3,7 +3,7 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
-> **Related:** i2s | high gain amplifier stage
+> **Related:** [[learning/notes/micro-context/i2s]] | [[learning/notes/quick-context/high-gain-amplifier-stage]]
 
 
 # I2S Audio Amplifier

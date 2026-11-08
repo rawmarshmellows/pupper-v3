@@ -2,12 +2,10 @@
 topic: Pupper Lab 1 — PID Control (Single Joint)
 created: 2026-03-10
 ---
-> **Related:** pupper lab4 gait control | pupper lab6 llm voice control | pupper bom control board | pupper lab2 forward kinematics | pupper lab3 inverse kinematics
-
 
 # Pupper Lab 1 — PID Control (Single Joint)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-lab2-forward-kinematics]]
+> **Related:** [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
 
 > **TL;DR:** Lab 1 introduces closed-loop motor control by having students implement and tune a PD controller for a single joint — computing torque from position and velocity error at 200 Hz — which becomes the foundational control primitive reused in every subsequent lab.
 

@@ -3,10 +3,8 @@ topic: 3D Printing Filament - Refill vs Spool
 created: 2026-01-20
 updated: 2026-01-21
 ---
-> **Related:** 3d printing filament types | polymer crystallinity vs amorphous | 3d printing slicer settings | polymer chemical bonds | clock speed vs temperature
 
-
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 

@@ -3,7 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
-> **Related:** transistor design history
+> **Related:** [[learning/notes/quick-context/transistor-design-history]]
 
 
 # Coulomb (Unit History)

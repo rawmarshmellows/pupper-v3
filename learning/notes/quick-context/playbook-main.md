@@ -1,4 +1,4 @@
-> **Related:** existing account management playbook | sandler kare segmentation | high gain amplifier stage | meddpicc qualification framework | post sale account engagement
+> **Related:** [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/post-sale-account-engagement]]
 
 # Existing Account Management Playbook
 
@@ -234,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[learning/notes/quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 

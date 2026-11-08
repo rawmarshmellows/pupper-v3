@@ -3,7 +3,7 @@ term: Clock Edge
 created: 2026-01-26
 updated: 2026-03-27
 ---
-> **Related:** clock sources and timing | clock source | clock speed vs temperature | clock speed | raspberry pi ai hat
+> **Related:** [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/raspberry-pi-ai-hat]]
 
 
 # Clock Edge

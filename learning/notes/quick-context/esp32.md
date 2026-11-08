@@ -2,18 +2,16 @@
 topic: ESP32
 created: 2026-05-28
 ---
-> **Related:** can bus termination
-
 
 # ESP32
 
-> **Related:** wifi chip arduino uno r4 | microcontroller | stm32 microcontroller | firmware | embedded communication protocols
+> **Related:** [[learning/notes/micro-context/can-bus-termination]]
 
-> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless microcontroller system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an MCU that can also talk to the internet without a separate radio module.
+> **TL;DR:** The ESP32 is a family of cheap (~$2) wireless [[learning/notes/micro-context/microcontroller|microcontroller]] system-on-chips from Espressif Systems that combines a 32-bit CPU, 320–520 KB of SRAM, dozens of peripherals (SPI, I2C, I2S, ADC, PWM, CAN), and an integrated 2.4 GHz radio for WiFi and Bluetooth onto one die. It's the default chip when you want an [[learning/notes/quick-context/firmware|MCU]] that can also talk to the internet without a separate radio module.
 
 ## The Core Problem
 
-Connecting an embedded device to WiFi used to mean pairing a microcontroller with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
+Connecting an embedded device to WiFi used to mean pairing a [[learning/notes/micro-context/microcontroller|microcontroller]] with a separate, expensive WiFi module talking over UART — two chips, two power rails, ~$15 in parts, and a clumsy AT-command protocol. The ESP32 collapses that whole stack onto a single die for under $3: the same chip that runs your application code also drives the antenna directly. This made wireless IoT cheap enough to put a WiFi-connected MCU into a lightbulb, a doorbell, or every joint of a robot.
 
 ## 5 Essential Terms
 
@@ -221,7 +219,7 @@ OFDM modulator (PHY hardware)
 
 ### Programming the chip — the auto-reset circuit
 
-Almost every ESP32 dev board (the ones with a USB connector) has a two-transistor circuit on its USB-UART bridge that toggles `EN` (reset) and `GPIO0` (boot mode) automatically when `esptool.py` opens the serial port. Without it you'd have to hold a BOOT button and tap RST every time you flash. The Arduino Uno R4 WiFi reuses the same trick — see that note for how Arduino routes USB through the ESP32-S3 as a USB-to-serial bridge for the Renesas main MCU.
+Almost every ESP32 dev board (the ones with a USB connector) has a two-[[learning/notes/quick-context/transistor|transistor]] circuit on its USB-UART bridge that toggles `EN` (reset) and `GPIO0` (boot mode) automatically when `esptool.py` opens the serial port. Without it you'd have to hold a BOOT button and tap RST every time you flash. The Arduino Uno R4 WiFi reuses the same trick — see [[learning/notes/quick-context/wifi-chip-arduino-uno-r4|that note]] for how Arduino routes USB through the ESP32-S3 as a USB-to-serial bridge for the Renesas main MCU.
 
 **The one thing most outsiders get wrong about this is...** thinking the ESP32 is "just a faster Arduino." Architecturally it's closer to a tiny Linux SoC: dual cores, MMU with flash cache, preemptive RTOS, a ~3 MB binary blob handling 802.11 in real time, hardware crypto accelerators, and watchdogs you have to feed. The Arduino `setup()`/`loop()` API is a thin shim — `loop()` is itself a FreeRTOS task that you can starve. This is why blocking `delay(5000)` calls work fine on AVR but cause "Brownout detector was triggered" or "Task watchdog got triggered" panics on ESP32 if they run on Core 0.
 
@@ -230,13 +228,13 @@ Almost every ESP32 dev board (the ones with a USB connector) has a two-transisto
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **wifi chip arduino uno r4** — Deep dive on the ESP32-S3's WiFi radio (OFDM, MAC/PHY split, antenna). Read that for what happens after `WiFi.begin()`.
-- **microcontroller** — Where the ESP32 sits in the broader MCU family tree (vs STM32, AVR, PIC).
-- **stm32 microcontroller** — The other MCU family used in Pupper. STM32 = hard real-time motor control; ESP32 = networking, audio, ML.
-- **firmware** — The firmware concept; the ESP32's bootloader chain (ROM → 2nd-stage → app) is a worked example.
-- **embedded communication protocols** — All the buses (SPI, I2C, I2S, CAN/TWAI, UART) the ESP32 exposes as peripherals.
-- **raspberry pi 5 components** — Higher up the stack: Pi runs Linux, ESP32 runs FreeRTOS. The ESP32 fills the gap between bare-metal MCUs and full Linux SBCs.
-- **silicon die** — The ESP32's WiFi radio, CPUs, and SRAM all share a single die — the cost magic comes from this integration.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — Deep dive on the ESP32-S3's WiFi radio (OFDM, MAC/PHY split, antenna). Read that for what happens after `WiFi.begin()`.
+- **[[learning/notes/micro-context/microcontroller]]** — Where the ESP32 sits in the broader MCU family tree (vs STM32, AVR, PIC).
+- **[[learning/notes/micro-context/stm32-microcontroller]]** — The other MCU family used in Pupper. STM32 = hard real-time motor control; ESP32 = networking, audio, ML.
+- **[[learning/notes/quick-context/firmware]]** — The firmware concept; the ESP32's bootloader chain (ROM → 2nd-stage → app) is a worked example.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — All the buses (SPI, I2C, I2S, CAN/TWAI, UART) the ESP32 exposes as peripherals.
+- **[[learning/notes/quick-context/raspberry-pi-5-components]]** — Higher up the stack: Pi runs Linux, ESP32 runs FreeRTOS. The ESP32 fills the gap between bare-metal MCUs and full Linux SBCs.
+- **[[learning/notes/quick-context/silicon-die]]** — The ESP32's WiFi radio, CPUs, and SRAM all share a single die — the cost magic comes from this integration.
 - **FreeRTOS** — The preemptive RTOS the ESP32 runs by default. Tasks, queues, semaphores. ESP-IDF wraps it; Arduino-ESP32 hides it.
 - **ESPHome / Tasmota** — Pre-built firmware projects that turn an ESP32 into a YAML-configured smart-home device with no C code.
 - **Matter / Thread** — New smart-home interop protocol; the ESP32-C6 and H2 were designed around it.
@@ -273,7 +271,7 @@ You're starving the IDLE task on Core 0 (or whichever core the watchdog is monit
 **Q5:** Why would you put an ESP32 alongside an STM32 in the same product (like the Pupper or Arduino Uno R4 WiFi) instead of using just the ESP32?
 <details>
 <summary>Answer</summary>
-Determinism and peripheral specialization. The ESP32's CPU spends a non-trivial fraction of every second servicing the WiFi MAC, FreeRTOS scheduling, and flash cache misses — its interrupt latency has long tails. An STM32 running bare-metal or with a stripped RTOS responds to interrupts in single-digit microseconds, every time, which is what 1 kHz motor control loops or motor commutation need. STM32s also have peripherals the ESP32 lacks (high-resolution motor-control timers, true 12-bit DACs, op-amps on the C-series, 5V tolerant I/O on some parts). So the split is: STM32 does hard-real-time motion, ESP32 does networking and rich peripherals. See wifi chip arduino uno r4 for the dual-chip pattern in Arduino's design.
+Determinism and peripheral specialization. The ESP32's CPU spends a non-trivial fraction of every second servicing the WiFi MAC, FreeRTOS scheduling, and flash cache misses — its interrupt latency has long tails. An STM32 running bare-metal or with a stripped RTOS responds to interrupts in single-digit microseconds, every time, which is what 1 kHz motor control loops or motor commutation need. STM32s also have peripherals the ESP32 lacks (high-resolution motor-control timers, true 12-bit DACs, op-amps on the C-series, 5V tolerant I/O on some parts). So the split is: STM32 does hard-real-time motion, ESP32 does networking and rich peripherals. See [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]] for the dual-chip pattern in Arduino's design.
 </details>
 
 </details>

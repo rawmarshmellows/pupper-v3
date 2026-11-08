@@ -1,4 +1,4 @@
-> **Related:** playbook main | post sale account engagement | sandler kare segmentation | coil magnetic field | dipole dipole interactions
+> **Related:** [[learning/notes/quick-context/playbook-main]] | [[learning/notes/quick-context/post-sale-account-engagement]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/dipole-dipole-interactions]]
 
 # Existing Account Management Playbook
 
