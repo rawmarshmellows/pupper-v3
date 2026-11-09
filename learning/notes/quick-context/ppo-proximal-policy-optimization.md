@@ -5,7 +5,7 @@ created: 2026-03-13
 
 # PPO (Proximal Policy Optimization)
 
-> **Related:** [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab4-gait-control]]
+> **Related:** [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/singular-value-decomposition]]
 
 > **TL;DR:** PPO is a reinforcement learning algorithm that trains a neural network policy by collecting batches of experience in the environment, estimating which actions were better than average (advantage), and updating the policy weights — but with a clipping mechanism that prevents any single update from changing the policy too drastically, making training stable enough to work reliably on continuous control tasks like robot locomotion.
 
@@ -212,7 +212,7 @@ PPO occupies a specific point in the RL algorithm design space, trading sample e
 
 ### PPO for RLHF (Language Models)
 
-PPO's second major application — beyond robotics — is Reinforcement Learning from Human Feedback (RLHF) for training language models. The same clipping mechanism that prevents a robot policy from collapsing also prevents a language model from degenerating into nonsensical text during reward-model-guided fine-tuning. In this context, the "environment" is text generation, the "action" is the next token, and the "reward" comes from a trained reward model reflecting human preferences. The KL penalty between the fine-tuned model and the base model serves a similar purpose to PPO's clipping — preventing the policy from straying too far.
+PPO's second major application — beyond robotics — is [[learning/notes/quick-context/pupper-lab5-neural-controller|Reinforcement Learning]] from Human Feedback (RLHF) for training language models. The same clipping mechanism that prevents a robot policy from collapsing also prevents a language model from degenerating into nonsensical text during reward-model-guided fine-tuning. In this context, the "environment" is text generation, the "action" is the next token, and the "reward" comes from a trained reward model reflecting human preferences. The KL penalty between the fine-tuned model and the base model serves a similar purpose to PPO's clipping — preventing the policy from straying too far.
 
 </details>
 
