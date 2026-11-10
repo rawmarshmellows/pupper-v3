@@ -3,7 +3,7 @@ topic: PREEMPT_RT
 created: 2026-01-17
 ---
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/plc-vs-software]]
 
 > **TL;DR:** PREEMPT_RT patches the Linux kernel to provide bounded worst-case latency (~50-100us), enabling soft real-time control loops in userspace - but it's not a replacement for safety-certified PLCs.
 
@@ -15,7 +15,7 @@ Standard Linux is a time-sharing system optimized for throughput, not response t
 
 If you're interpolating trajectory waypoints at 1kHz and one cycle takes 15ms instead of 1ms, your robot arm doesn't smoothly trace an arc—it jerks, overshoots, or faults the drive. PREEMPT_RT patches the Linux kernel to make nearly all kernel code preemptible, meaning your real-time task can interrupt almost anything the kernel is doing.
 
-The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a PLC. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
+The result is bounded worst-case latency (typically under 100us on good hardware) instead of unbounded spikes. Without it, you cannot run a motion control loop in userspace Linux and expect it to behave like a [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]]. With it, you can build "soft PLCs" on commodity x86 hardware that achieve 1ms cycle times reliably enough for many industrial applications—though not for SIL-rated safety functions.
 
 ## 5 Essential Terms
 
@@ -137,7 +137,7 @@ The 2024 mainlining of PREEMPT_RT into the official kernel (after 20 years as an
 <details>
 <summary><strong>Concrete Example</strong></summary>
 
-Consider a CNC machine controller running on Linux:
+Consider a [[learning/notes/micro-context/cnc-milling|CNC]] machine controller running on Linux:
 
 **Without PREEMPT_RT:**
 - You set up a 1ms timer for trajectory interpolation
@@ -153,7 +153,7 @@ Consider a CNC machine controller running on Linux:
 - Timer callback runs within 50us of schedule
 - Tool path remains smooth, part comes out correctly
 
-This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like ROS2's real-time capabilities and CODESYS-on-Linux depend on it.
+This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's also why projects like [[learning/notes/quick-context/ros2-architecture|ROS2]]'s real-time capabilities and CODESYS-on-Linux depend on it.
 
 **The one thing most outsiders get wrong about this is...** assuming PREEMPT_RT turns Linux into a PLC. It doesn't. It gives you *bounded* latency, not *zero* latency—and those bounds (50-100us typical, potentially worse with bad drivers or hardware) aren't certified or guaranteed. A SIL-rated safety function still needs a proper safety PLC. What PREEMPT_RT actually enables is running the "soft" parts of automation—trajectory interpolation, sensor fusion, high-level coordination—in userspace Linux at 1kHz without random multi-millisecond stalls.
 
@@ -162,10 +162,10 @@ This is why LinuxCNC (an open-source CNC controller) requires PREEMPT_RT. It's a
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
-- **[[quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
-- **[[quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
+- **[[learning/notes/quick-context/plc-vs-software-control]]** - How PREEMPT_RT-enabled systems divide work with traditional PLCs
+- **[[learning/notes/quick-context/plc-vs-software]]** - Why PLCs exist and what guarantees they provide that PREEMPT_RT cannot match
+- **[[learning/notes/quick-context/sil-rated-safety-functions]]** - The certification requirements that still mandate hardware PLCs for safety
+- **[[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]** — The current state of using PREEMPT_RT + ROS2 to replace PLCs entirely, including production hardware (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) and the remaining safety certification gap
 - **Xenomai** - A dual-kernel alternative providing harder real-time guarantees than PREEMPT_RT
 - **LinuxCNC** - The canonical example of PREEMPT_RT enabling industrial control in userspace
 

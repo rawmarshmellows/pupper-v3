@@ -18,7 +18,7 @@ The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation c
 | **Floating Gate** | An electrically isolated polysilicon layer inside a flash memory [[learning/notes/micro-context/mosfet|MOSFET]], surrounded by oxide insulation. Electrons trapped here shift the transistor's threshold voltage, encoding a bit that persists without power for 10+ years. |
 | **Fowler-Nordheim Tunneling** | The quantum-mechanical process used to program/erase flash memory. A strong electric field (15-20V) gives electrons enough energy to tunnel through the ~7-10 nm oxide barrier onto or off of the floating gate. |
 | **Sense Amplifier** | A circuit that detects the tiny voltage difference on a bitline during a DRAM/flash read and amplifies it to a full logic level. In DRAM, the stored charge is so small (~10-30 fF) that reading it requires destroying and rewriting the cell. |
-| **Cross-Coupled Inverters** | The core of an SRAM cell — two CMOS inverters connected output-to-input in a loop. Each inverter reinforces the other's state, creating two stable voltage configurations (bit = 0 or 1) that persist as long as power is on. This is the same feedback principle that gives [[quick-context/d-flip-flop|D flip-flops]] their memory. |
+| **Cross-Coupled Inverters** | The core of an SRAM cell — two CMOS inverters connected output-to-input in a loop. Each inverter reinforces the other's state, creating two stable voltage configurations (bit = 0 or 1) that persist as long as power is on. This is the same feedback principle that gives [[learning/notes/quick-context/d-flip-flop|D flip-flops]] their memory. |
 | **Wordline / Bitline** | The row and column wires in a memory array. The **wordline** activates a row of cells (turns on access transistors), and the **bitline** carries the data in or out. Writing = drive the bitline to the desired voltage, then pulse the wordline to connect the cell. |
 
 <details>
@@ -26,7 +26,7 @@ The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation c
 
 ### The Three Memory Technologies
 
-Every memory cell stores a bit as some form of electrical charge or voltage. The three dominant technologies differ in *how* they hold that charge:
+Every memory cell stores a bit as some form of electrical charge or [[learning/notes/quick-context/voltage|voltage]]. The three dominant technologies differ in *how* they hold that charge:
 
 ```
 THREE WAYS TO STORE A BIT
@@ -175,7 +175,7 @@ The speed difference is physical: SRAM just flips transistor states (fast), DRAM
 
 No single memory technology is best at everything. The physics forces a three-way tradeoff:
 
-| Property | SRAM | DRAM | Flash |
+| Property | [[learning/notes/micro-context/sram|SRAM]] | DRAM | Flash |
 |----------|------|------|-------|
 | **Speed** | Fastest (<1 ns) | Fast (~15 ns) | Slowest (~200 $\mu$s write) |
 | **Density** | Worst (6T/bit) | Good (1T+1C/bit) | Best (1T/bit, multi-level) |
@@ -212,12 +212,10 @@ STEP 1: KEYBOARD → SCAN CODE → USB → PC (mechanical → electrical)
 
   Inside the keyboard is a small MCU (often a CH552 or 8051)
   whose firmware exists as trapped electrons on floating gates
-  in flash — [[learning/notes/quick-context/from-code-to-running-
-  firmware|programmed at the factory]] via the same Fowler-
+  in flash — programmed at the factory via the same Fowler-
   Nordheim tunneling physics described in STEP 5 below.
 
-  The MCU's [[learning/notes/quick-context/code-to-gates-and-
-  bootstrapping|fetch-execute cycle]] runs a scan loop:
+  The MCU's fetch-execute cycle runs a scan loop:
   drive each matrix row LOW, read columns. Row 2, Col 1 reads
   LOW → "x" detected → firmware looks up the USB HID scan
   code (0x1B) from a table in flash → packages an 8-byte HID
@@ -360,7 +358,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The linking and flashing pipeline: how compiled code goes from an ELF file on your PC to bytes in an MCU's flash memory. Covers the software toolchain (linker, flash programmer) that drives the physical write process described here.
 
-- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
+- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 [[learning/notes/quick-context/capacitor|capacitor]], and flash uses a modified MOSFET with a floating gate.
 
 - **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM capacitor or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
 
@@ -376,7 +374,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/usb-peripheral-hardware]]** — Deep dive into STEP 1/STEP 4 of the keypress journey: how the keyboard MCU's Serial Interface Engine (SIE) autonomously serializes bytes from the endpoint buffer into NRZI-encoded voltage transitions on the USB data lines, using MOSFET push-pull drivers switching at 12 MHz.
 
-- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — A breadboard-level circuit (switches + clock button + 74HC574) that demonstrates data storage with real chips, and explains how this minimal pattern scales to build every register and RAM in a computer. The 74HC574's internal flip-flops use the same cross-coupled inverter pattern described here.
+- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — A breadboard-level circuit (switches + clock button + 74HC574) that demonstrates data storage with real chips, and explains how this minimal pattern scales to build every register and [[learning/notes/quick-context/ram-addressing-decoder|RAM]] in a computer. The 74HC574's internal flip-flops use the same cross-coupled inverter pattern described here.
 
 </details>
 
