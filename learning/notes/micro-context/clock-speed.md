@@ -4,11 +4,12 @@ created: 2026-01-26
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/quick-context/clock-sources-and-timing]]
 # Clock Speed
 
-> **See also:** [[micro-context/clock-edges]] | [[micro-context/clock-speed-vs-temperature]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/clock-sources-and-timing|Clock Sources and Timing]]
 
-**Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
+**Definition:** The frequency at which a CPU's clock generates edges, measured in GHz (billions of cycles per second). A 3 GHz CPU produces 3 billion [[learning/notes/micro-context/clock-edges|clock edges]] per second—each edge triggers one step of computation.
 
 ## How It Works
 
@@ -33,4 +34,4 @@ CLOCK SPEED = How many edges per second
   Light travels just 6 cm in that time.
 ```
 
-**Key insight:** Clock speed is limited by how fast transistors can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.
+**Key insight:** Clock speed is limited by how fast [[learning/notes/quick-context/transistor|transistors]] can switch AND how fast signals can propagate—you can't clock faster than your slowest circuit path can settle between edges.

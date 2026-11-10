@@ -5,7 +5,7 @@ created: 2026-03-10
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]]
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 
@@ -176,7 +176,7 @@ forward_command_controller:
     kd: [0.1, 0.1, 0.1]     # derivative gains
 ```
 
-This config tells ros2_control which joints exist, what command interface to use (effort = torque, position = angle), and what PD gains to apply. The controller reads `Float64MultiArray` messages from a topic and writes effort commands to the hardware interface, which sends them over CAN to the servos.
+This config tells ros2_control which joints exist, what command interface to use (effort = torque, position = angle), and what PD gains to apply. The controller reads `Float64MultiArray` messages from a topic and writes effort commands to the hardware interface, which sends them over [[learning/notes/micro-context/can-bus-termination|CAN]] to the servos.
 
 </details>
 
@@ -364,7 +364,7 @@ ABSTRACTION LAYERS
                                      (electrical actuation)
 ```
 
-Each layer only knows about its immediate inputs and outputs. The neural controller doesn't know about CAN buses. The STM32 doesn't know about Twist messages. This separation is what makes the system maintainable — you can swap the neural controller for a hand-tuned gait (Lab 4) or an IK solver (Lab 3) by changing which node publishes to `/joint_position_targets`, and nothing downstream changes.
+Each layer only knows about its immediate inputs and outputs. The neural controller doesn't know about CAN buses. The [[learning/notes/micro-context/stm32-microcontroller|STM32]] doesn't know about Twist messages. This separation is what makes the system maintainable — you can swap the neural controller for a hand-tuned gait (Lab 4) or an IK solver (Lab 3) by changing which node publishes to `/joint_position_targets`, and nothing downstream changes.
 
 </details>
 
@@ -385,11 +385,11 @@ Each layer only knows about its immediate inputs and outputs. The neural control
 
 - **rosbag** — Records and replays ROS2 topic data. `ros2 bag record /joint_states /cmd_vel` captures all messages with timestamps; `ros2 bag play` replays them. Essential for debugging: record a failed walking attempt, then replay the data through your analysis nodes offline without needing the physical robot.
 
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32s handle the 1 kHz loops below the ROS2 layer; the Pi runs ROS2 nodes for everything above. Understanding the hardware split explains why certain control loops are in ROS2 and others are not.
+- **[[learning/notes/quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32s handle the 1 kHz loops below the ROS2 layer; the Pi runs ROS2 nodes for everything above. Understanding the hardware split explains why certain control loops are in ROS2 and others are not.
 
-- **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum. Each lab adds ROS2 nodes to the graph: Lab 1 (PD controller), Lab 2 (FK + RViz marker), Lab 3 (IK node), Lab 4 (gait node), Lab 5 (neural controller subscribing to `/cmd_vel`), Lab 6 (realtime_voice publishing to `/gpt4_response_topic`), Lab 7 (hailo_detection + state machine + `/tracking_control`).
+- **[[learning/notes/quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum. Each lab adds ROS2 nodes to the graph: Lab 1 (PD controller), Lab 2 (FK + RViz marker), Lab 3 (IK node), Lab 4 (gait node), Lab 5 (neural controller subscribing to `/cmd_vel`), Lab 6 (realtime_voice publishing to `/gpt4_response_topic`), Lab 7 (hailo_detection + state machine + `/tracking_control`).
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The SPI connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
+- **[[learning/notes/quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The [[learning/notes/micro-context/spi|SPI]] connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
 
 </details>
 

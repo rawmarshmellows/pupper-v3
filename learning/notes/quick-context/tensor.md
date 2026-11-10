@@ -5,7 +5,7 @@ created: 2026-03-04
 
 # Tensor
 
-> **Related:** [[quick-context/faraday-tensor]] | [[quick-context/maxwell-equations]] | [[quick-context/electromagnetism]]
+> **Related:** [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/quick-context/electromagnetism]]
 
 > **TL;DR:** A tensor is a mathematical object that generalizes scalars (rank 0), vectors (rank 1), and matrices (rank 2) to arbitrary dimensions, with the defining property that it transforms predictably under coordinate changes—meaning the physical or geometric quantity it represents stays the same regardless of which coordinate system you use to describe it.
 
@@ -142,7 +142,7 @@ THE FARADAY TENSOR EXAMPLE:
 ────────────────────────────────────────────────────────────────────────────
 
     The Faraday tensor F^μν packages E and B fields into a 4×4
-    antisymmetric matrix (see: [[quick-context/faraday-tensor]]).
+    antisymmetric matrix (see: [[learning/notes/quick-context/faraday-tensor]]).
 
     Under a Lorentz transformation (changing velocity):
 
@@ -221,7 +221,7 @@ The deepest understanding comes from fluency in both: knowing *what* a tensor re
 
 ## Stress: Why a Single Number Isn't Enough
 
-When we say a material has a [[quick-context/tensile-strength-materials|tensile strength]] of 27 MPa, that's a simplification. Internally, the stress state at any point is described by a rank-2 tensor with 9 components (6 independent, due to symmetry):
+When we say a material has a [[learning/notes/quick-context/tensile-strength-materials|tensile strength]] of 27 MPa, that's a simplification. Internally, the stress state at any point is described by a rank-2 tensor with 9 components (6 independent, due to symmetry):
 
 ```
 THE STRESS TENSOR IN ACTION
@@ -298,15 +298,15 @@ COMBINED LOADING (real-world):
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
+- **[[learning/notes/quick-context/faraday-tensor]]** — The most important tensor in electromagnetism: a rank-2 antisymmetric tensor that packages the electric and magnetic fields into a single object. Demonstrates how tensor transformation laws explain why E and B mix between reference frames.
 
-- **[[quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
+- **[[learning/notes/quick-context/maxwell-equations]]** — Maxwell's four equations reduce to two tensor equations using the Faraday tensor, making Lorentz covariance manifest. This is the power of the tensor formulation: compactness and frame-independence.
 
-- **[[quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
+- **[[learning/notes/quick-context/tensile-strength-materials]]** — Tensile strength (MPa) is actually one component of the stress tensor $\sigma_{ij}$. Real materials experience multi-axis stress states described by the full rank-2 stress tensor.
 
-- **[[quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
+- **[[learning/notes/quick-context/electromagnetism]]** — Electric and magnetic fields are vector fields (rank-1 tensors). Their unification into a single entity requires a rank-2 tensor (the Faraday tensor).
 
-- **[[quick-context/electric-magnetic-field-unification]]** — The physical motivation for why E and B need tensor packaging: they transform into each other under velocity changes, which is precisely what the Faraday tensor's transformation law describes.
+- **[[learning/notes/quick-context/electric-magnetic-field-unification]]** — The physical motivation for why E and B need tensor packaging: they transform into each other under velocity changes, which is precisely what the Faraday tensor's transformation law describes.
 
 - **General Relativity** — Einstein's field equations $G_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$ relate two rank-2 tensors: the Einstein tensor (spacetime curvature) and the stress-energy tensor (matter/energy content). Gravity IS spacetime curvature, described entirely by tensors.
 
@@ -328,10 +328,10 @@ COMBINED LOADING (real-world):
 **Q2:** A rank-2 tensor in 3D has 9 components. The stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). How many independent components does it have?
 <details>
 <summary>Answer</summary>
-**6.** The 3 diagonal components ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) are independent, and of the 6 off-diagonal components, symmetry pairs them: $\sigma_{xy} = \sigma_{yx}$, $\sigma_{xz} = \sigma_{zx}$, $\sigma_{yz} = \sigma_{zy}$. So 3 diagonal + 3 independent off-diagonal = 6 total. Compare to the [[quick-context/faraday-tensor|Faraday tensor]], which is *anti*symmetric ($F^{\mu\nu} = -F^{\nu\mu}$) in 4D, also giving 6 independent components.
+**6.** The 3 diagonal components ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) are independent, and of the 6 off-diagonal components, symmetry pairs them: $\sigma_{xy} = \sigma_{yx}$, $\sigma_{xz} = \sigma_{zx}$, $\sigma_{yz} = \sigma_{zy}$. So 3 diagonal + 3 independent off-diagonal = 6 total. Compare to the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]], which is *anti*symmetric ($F^{\mu\nu} = -F^{\nu\mu}$) in 4D, also giving 6 independent components.
 </details>
 
-**Q3:** The [[quick-context/faraday-tensor|Faraday tensor]] is antisymmetric ($F^{\mu\nu} = -F^{\nu\mu}$) and the stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). What does this difference mean physically?
+**Q3:** The [[learning/notes/quick-context/faraday-tensor|Faraday tensor]] is antisymmetric ($F^{\mu\nu} = -F^{\nu\mu}$) and the stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). What does this difference mean physically?
 <details>
 <summary>Answer</summary>
 **Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
