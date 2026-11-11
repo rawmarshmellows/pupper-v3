@@ -5,20 +5,20 @@ created: 2026-04-06
 
 # Butyric Acid
 
-> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms, Molecules & Polymers]]
+> **Related:** [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
 > **TL;DR:** Butyric acid ($CH_3CH_2CH_2COOH$) is a four-carbon short-chain fatty acid named after butter (where it was first found), produced by gut bacteria fermenting dietary fiber. It's the primary fuel for colon cells and a potent anti-inflammatory signaling molecule that maintains gut barrier integrity.
 
 ## The Core Problem
 
-Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate oxidation, not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
+Without butyric acid, your colon epithelial cells starve. Colonocytes derive ~70% of their energy from butyrate [[learning/notes/micro-context/oxidation|oxidation]], not from blood glucose like most other cells. When fiber intake drops, butyrate-producing bacteria decline, the colonic energy supply collapses, the gut barrier weakens, and systemic inflammation rises. This single molecule sits at the intersection of diet, the microbiome, and immune regulation --- making it central to understanding why fiber-rich diets correlate with lower rates of inflammatory bowel disease, colorectal cancer, and metabolic syndrome.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Short-chain fatty acid (SCFA)** | Fatty acids with 2--6 carbon atoms produced by anaerobic bacterial fermentation of fiber in the colon; the three main SCFAs are acetate (~60%), propionate (~20%), and butyrate (~20%) |
-| **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its primary energy source via $\beta$-oxidation in mitochondria |
+| **Colonocyte** | An epithelial cell lining the colon that depends on butyrate as its primary energy source via $\beta$-[[learning/notes/micro-context/oxidation|oxidation]] in mitochondria |
 | **HDAC inhibitor** | A molecule that blocks histone deacetylase enzymes, loosening chromatin and activating gene expression --- butyrate's key epigenetic mechanism |
 | **Gut barrier** | The single-cell-thick epithelial layer separating the colonic lumen (trillions of bacteria) from the bloodstream; butyrate strengthens its tight junctions |
 | **Fermentation** | Anaerobic bacterial metabolism of dietary fiber and resistant starch in the colon, producing SCFAs (primarily acetate, propionate, and butyrate), $CO_2$, and $H_2$ |
@@ -81,7 +81,7 @@ At colonic pH (~6.5), butyric acid exists predominantly as its conjugate base **
 
 ### How butyrate fuels colonocytes
 
-Colonocytes absorb butyrate from the colonic lumen via monocarboxylate transporters (MCT1). Inside the cell, butyrate enters the mitochondria and undergoes $\beta$-oxidation to produce acetyl-CoA, which feeds the citric acid cycle to generate ATP. This accounts for ~70% of colonocyte energy. This is unusual --- most human cells run primarily on blood glucose.
+Colonocytes absorb butyrate from the colonic lumen via monocarboxylate transporters (MCT1). Inside the cell, butyrate enters the mitochondria and undergoes $\beta$-[[learning/notes/micro-context/oxidation|oxidation]] to produce acetyl-CoA, which feeds the citric acid cycle to generate ATP. This accounts for ~70% of colonocyte energy. This is unusual --- most human cells run primarily on blood glucose.
 
 ```
   COLONIC LUMEN                      COLONOCYTE

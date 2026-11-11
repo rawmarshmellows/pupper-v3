@@ -1,7 +1,9 @@
 ---
 topic: Silymarin
 created: 2026-04-06
----
+---> **Related:** [[learning/notes/quick-context/bambu-p2s-print-quality]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/coriolis-effect]]
+
+
 
 # Silymarin
 

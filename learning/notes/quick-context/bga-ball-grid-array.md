@@ -3,7 +3,7 @@ topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/mosfet]]
 
 > **TL;DR:** BGA (Ball Grid Array) solves the problem of connecting chips with hundreds or thousands of electrical connections by placing solder balls in a grid underneath the chip instead of metal pins around the edges, enabling far higher connection density for modern processors, memory, and graphics cards.
 
@@ -26,7 +26,7 @@ Imagine you have a computer chip containing millions of microscopic circuits, an
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Think of BGA like a bed of nails, but upside down and made of metal. The chip package has a flat bottom covered with a precise grid of solder balls—hundreds of tiny spheres arranged in rows and columns. The circuit board ([[quick-context/pcb-chip-transistor-hierarchy|PCB]]) has matching copper pads in exactly the same pattern. During assembly, the chip is placed ball-side-down onto the board, and the whole thing goes into a special oven. As temperature rises, the solder balls melt, surface tension pulls them into alignment with the pads, and when cooled, each ball forms a solid electrical bridge. Every ball carries either power, ground, or a data signal between the chip and the board.
+Think of BGA like a bed of nails, but upside down and made of metal. The chip package has a flat bottom covered with a precise grid of solder balls—hundreds of tiny spheres arranged in rows and columns. The circuit board ([[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB]]) has matching copper pads in exactly the same pattern. During assembly, the chip is placed ball-side-down onto the board, and the whole thing goes into a special oven. As temperature rises, the solder balls melt, surface tension pulls them into alignment with the pads, and when cooled, each ball forms a solid electrical bridge. Every ball carries either power, ground, or a data signal between the chip and the board.
 
 ```
 WHAT IS A BGA? - Side-by-side Comparison
@@ -129,7 +129,7 @@ STEP 3: Reflow Oven                  STEP 4: Finished Joint
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a soldering iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
+The fundamental tradeoff in BGA is **connection density vs. accessibility**. BGA enables fitting 2000+ connections on a single chip, which is impossible with edge pins—but those connections are completely hidden underneath. If a single solder ball fails (crack, cold joint, or bridge to a neighbor), you can't see it without X-rays. You can't easily touch up one bad joint with a [[learning/notes/quick-context/soldering|soldering]] iron like you could with through-hole components. Rework requires specialized equipment to heat the entire package evenly, remove it, clean both surfaces, and attach a replacement with fresh solder balls. Hobbyists and repair shops debate: is the density worth the nightmare of repair? For consumer electronics, manufacturers say yes—the performance gain justifies treating failures as board-level replacements. For aerospace and medical, extensive X-ray inspection and expensive rework capability are factored in from the start.
 
 </details>
 
@@ -221,7 +221,7 @@ X-RAY VIEW: What Inspectors See
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB/Chip Packaging Hierarchy]]** — BGAs are one package type in the larger system that connects silicon dies to circuit boards; understanding the full hierarchy shows where BGA fits in the scale from transistors to systems.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB/Chip Packaging Hierarchy]]** — BGAs are one package type in the larger system that connects silicon dies to circuit boards; understanding the full hierarchy shows where BGA fits in the scale from transistors to systems.
 
 - **Surface Mount Technology (SMT)** — The broader manufacturing process that includes BGA; covers how pick-and-place machines, stencils, and reflow ovens work together to assemble entire circuit boards.
 
@@ -254,10 +254,10 @@ Pitch is the distance from the center of one solder ball to the center of the ad
 Modern chips consume enormous amounts of current (sometimes 100+ amps) at very low voltages. A single ball can only carry limited current and has some resistance/inductance. Multiple parallel power and ground balls provide lower resistance paths, better current distribution, and cleaner power delivery with less electrical noise. See: Concrete Example (Ball Function Map)
 </details>
 
-**Q4:** Someone claims: "If one BGA solder joint fails, you can just touch it up with a regular soldering iron." What's wrong with this?
+**Q4:** Someone claims: "If one BGA solder joint fails, you can just touch it up with a regular [[learning/notes/quick-context/soldering|soldering]] iron." What's wrong with this?
 <details>
 <summary>Answer</summary>
-This is incorrect for two reasons: (1) You can't see the joints underneath to identify which one failed—you'd need X-ray inspection first. (2) You can't physically access the joints with a soldering iron tip because they're hidden under the package. BGA rework requires specialized equipment that heats the entire package evenly from above to remove it, then reattach with fresh solder balls. See: The Key Tension
+This is incorrect for two reasons: (1) You can't see the joints underneath to identify which one failed—you'd need X-ray inspection first. (2) You can't physically access the joints with a [[learning/notes/quick-context/soldering|soldering]] iron tip because they're hidden under the package. BGA rework requires specialized equipment that heats the entire package evenly from above to remove it, then reattach with fresh solder balls. See: The Key Tension
 </details>
 
 **Q5:** Given that BGA balls are pre-attached to chip packages by the manufacturer, what would happen if a circuit board assembler ran the reflow oven at too low a temperature?

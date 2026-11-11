@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/eeprom]]
 
 > **TL;DR:** A CPU does one stupid thing, billions of times a second: read a number from memory, treat that number's bits as switch settings, let those switches steer data through an [[learning/notes/quick-context/code-to-gates-and-bootstrapping|ALU and registers]], save the result, then read the next number. That's it. "Running a program" is nothing more than this loop — fetch, decode, execute, write back, advance — repeated forever. The huge "aha" is that **code is not magic: it is a list of numbers sitting in [[learning/notes/quick-context/ram-addressing-decoder|RAM]], and each number's bits are physically wired to mux-select lines, ALU controls, and register load-enables**. "Decoding" an instruction is just routing those bits to the wires they were always destined for.
 
@@ -21,7 +21,7 @@ You've built [[learning/notes/quick-context/switches-to-registers-storing-data|r
 | **Instruction** | A single number (16 bits on the Hack CPU, 32 on ARM) stored in memory. Its individual bit-fields *are* control signals — they directly drive mux selects, ALU operation bits, and register load-enables. An instruction is a list of switch settings. |
 | **Fetch** | Use the PC as an address to read RAM, pulling the instruction number into the CPU so its bits are available as control wires. |
 | **Decode** | There is no separate "decoder brain" — decode is just *wiring*. The instruction's bits are fed straight to the control inputs of the muxes, ALU, and registers. Routing, not interpreting. |
-| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the clock edge a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
+| **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the [[learning/notes/micro-context/clock-edges|clock edge]] a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
 
 <details>
 <summary><strong>How It Works</strong> — The essential mechanism</summary>
@@ -60,7 +60,7 @@ THE FETCH-EXECUTE CYCLE
 
 ### The Program Counter is just a register with feedback
 
-You already know a [[learning/notes/quick-context/switches-to-registers-storing-data|register]] captures a value at the clock edge. Take that register, wire its output through a `+1` incrementer, and feed the incremented value back into its own input. Now every clock tick it counts up by one. Bolt on two muxes so you can *override* the count with a jump address (or with zero on reset), and you have a full Program Counter:
+You already know a [[learning/notes/quick-context/switches-to-registers-storing-data|register]] captures a value at the [[learning/notes/micro-context/clock-edges|clock edge]]. Take that register, wire its output through a `+1` incrementer, and feed the incremented value back into its own input. Now every clock tick it counts up by one. Bolt on two muxes so you can *override* the count with a jump address (or with zero on reset), and you have a full Program Counter:
 
 ```
 PROGRAM COUNTER = REGISTER + INCREMENTER + FEEDBACK + MUXES
@@ -273,7 +273,7 @@ happen to play.
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Where the PC, instruction register, and data registers come from: 8 D flip-flops capturing at a clock edge. The fetch-execute loop is just "register → logic → register" running forever; this note builds that on a breadboard.
+- **[[learning/notes/quick-context/switches-to-registers-storing-data]]** — Where the PC, instruction register, and data registers come from: 8 D flip-flops capturing at a [[learning/notes/micro-context/clock-edges|clock edge]]. The fetch-execute loop is just "register → logic → register" running forever; this note builds that on a breadboard.
 
 - **[[learning/notes/quick-context/ram-addressing-decoder]]** — How "PC points to an address in RAM" physically works: an address decoder (DMUX in, MUX out) selecting one cell among thousands. Fetch is one read from this structure. *(sibling note — may not exist yet.)*
 
@@ -291,7 +291,7 @@ happen to play.
 
 - **Pipelining / caches / microcode** — The same loop, scaled: overlapping stages, fast local copies of memory, and a tiny program inside the decoder. More machinery, identical meaning.
 
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: the full ladder from electricity up to running code. This note is rung L8, the rung where "registers + ALU + RAM" becomes "a running program."
+- **how-a-computer-works-index** — The hub: the full ladder from electricity up to running code. This note is rung L8, the rung where "registers + ALU + RAM" becomes "a running program."
 
 </details>
 

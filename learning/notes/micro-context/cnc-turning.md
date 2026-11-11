@@ -2,11 +2,13 @@
 term: CNC Turning
 created: 2026-01-27
 updated: 2026-03-27
----
+---> **Related:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/quick-context/self-induction]] | [[learning/notes/quick-context/can-bus]]
+
+
 
 # CNC Turning
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]]
+> **See also:** [[learning/notes/quick-context/cnc-machining]] (full treatment) | [[learning/notes/micro-context/cnc-milling]]
 
 **Definition:** A subtractive manufacturing process where a computer-controlled lathe spins the workpiece while a stationary cutting tool removes material. The inverse of milling—here the part rotates, not the tool. Used to create cylindrical or rotationally symmetric parts like shafts, bolts, and bushings.
 
