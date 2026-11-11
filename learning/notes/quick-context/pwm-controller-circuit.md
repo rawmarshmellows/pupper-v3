@@ -20,7 +20,7 @@ Without a feedback-controlled PWM, the output [[learning/notes/quick-context/vol
 | **Sawtooth oscillator** | Internal [[learning/notes/quick-context/rc-oscillator|RC oscillator]] clock that generates a repeating ramp waveform (0V → peak → reset), setting the switching frequency (e.g., 500kHz) |
 | **Error amplifier** | An op-amp inside the IC that outputs a [[learning/notes/quick-context/voltage|voltage]] proportional to how far $V_{OUT}$ is from the target — the "error signal" |
 | **[[learning/notes/quick-context/comparator|Comparator]]** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
-| **Voltage reference ($V_{REF}$)** | A precision internal voltage (typically 0.6–0.8V) that the error amplifier uses as its target — the "setpoint" |
+| **[[learning/notes/quick-context/voltage|Voltage]] reference ($V_{REF}$)** | A precision internal voltage (typically 0.6–0.8V) that the error amplifier uses as its target — the "setpoint" |
 | **Feedback divider** | Two resistors from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
 
 <details>
@@ -83,7 +83,7 @@ $$V_{FB} = V_{OUT} \times \frac{R_2}{R_1 + R_2} \quad \xrightarrow{\text{IC regu
 
 **Step 3 — [[learning/notes/quick-context/comparator|Comparator]] intersects ramp and error.** The comparator outputs HIGH when $V_{ERR} > V_{RAMP}$ and LOW when $V_{ERR} < V_{RAMP}$. Because the ramp is a linearly rising signal, a higher $V_{ERR}$ means the ramp takes longer to "catch up" — producing a wider pulse (longer ON time, higher [[learning/notes/micro-context/pwm-pulse-width-modulation|duty cycle]]).
 
-**Step 4 — Gate driver amplifies the pulse.** The comparator output is a weak logic signal. The gate driver (a push-pull buffer) amplifies it to charge/discharge the [[learning/notes/micro-context/mosfet|MOSFET]] gate [[learning/notes/quick-context/capacitance|capacitance]] fast enough for clean switching transitions (nanoseconds).
+**Step 4 — Gate driver amplifies the pulse.** The [[learning/notes/quick-context/comparator|comparator]] output is a weak logic signal. The gate driver (a push-pull buffer) amplifies it to charge/discharge the [[learning/notes/micro-context/mosfet|MOSFET]] gate [[learning/notes/quick-context/capacitance|capacitance]] fast enough for clean switching transitions (nanoseconds).
 
 ### The Comparator Intersection — This IS How PWM Width Is Set
 
@@ -224,12 +224,12 @@ The TPS54561 at **U8** on the Pupper v3 control board is exactly this circuit in
 
 | Generic part above | Pupper board part |
 |---|---|
-| "Buck converter IC" (oscillator + error amp + comparator + gate driver) | **U8** — TPS54561DPRR (WSON-10) |
-| High-side MOSFET (Q1) | **integrated inside U8** |
+| "[[learning/notes/micro-context/buck-converter|Buck converter]] IC" (oscillator + error amp + comparator + gate driver) | **U8** — TPS54561DPRR (WSON-10) |
+| High-side [[learning/notes/micro-context/mosfet|MOSFET]] (Q1) | **integrated inside U8** |
 | $V_{REF}$ | 0.8V internal bandgap |
 | R1 (top of feedback divider) | **R5** — 60.4kΩ (E96) |
 | R2 (bottom of feedback divider) | **R6** — 11.5kΩ (E96) |
-| External inductor | **L1** — 10µH |
+| External [[learning/notes/quick-context/inductor|inductor]] | **L1** — 10µH |
 | Catch/freewheeling [[learning/notes/quick-context/diode|diode]] | **D1** — SS56 Schottky |
 | Output caps | **C18, C19** — 2× 47µF |
 
@@ -242,14 +242,14 @@ See buck-converter#real-example-pupper-v3-control-board for the full Pupper buck
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[learning/notes/micro-context/buck-converter]]** — The power stage (MOSFET + [[learning/notes/quick-context/diode|diode]] + inductor + capacitor) that this controller drives
+- **[[learning/notes/micro-context/buck-converter]]** — The power stage (MOSFET + [[learning/notes/quick-context/diode|diode]] + inductor + [[learning/notes/quick-context/capacitor|capacitor]]) that this controller drives
 - **[[learning/notes/micro-context/pwm-pulse-width-modulation]]** — The PWM signal itself — what it is, duty cycle math, and applications beyond power conversion
 - **[[learning/notes/quick-context/op-amp]]** — The error amplifier IS an op-amp; understanding virtual short and negative feedback is key to understanding the control loop
 - **[[learning/notes/quick-context/frequency-and-filtering]]** — The output LC filter is a 2nd-order low-pass filter; the compensation network shapes the loop's frequency response
 - **[[learning/notes/quick-context/capacitor]]** — Output capacitor smoothing and the MOSFET gate [[learning/notes/quick-context/capacitance|capacitance]] that the driver must charge
 - **[[learning/notes/quick-context/inductor]]** — Energy storage element; its $V = L \times dI/dt$ relationship determines the current ramp rate
 - **[[learning/notes/quick-context/resistor]]** — Feedback divider resistors set the output voltage; compensation network uses R-C
-- **[[learning/notes/micro-context/mosfet]]** — The power switch being controlled; gate capacitance affects switching speed
+- **[[learning/notes/micro-context/mosfet]]** — The power switch being controlled; gate [[learning/notes/quick-context/capacitance|capacitance]] affects switching speed
 - **[[learning/notes/quick-context/self-induction]]** — Why the inductor's collapsing field drives current through the freewheeling [[learning/notes/quick-context/diode|diode]] in Phase 2
 - **[[learning/notes/micro-context/decoupling-capacitor]]** — Related concept: local charge reservoirs near ICs, same principle as output capacitor filtering
 
@@ -267,7 +267,7 @@ VOUT drops → V_FB drops below Vref → error amplifier output rises → compar
 **Q2:** If you want to change a buck converter's output from 5V to 3.3V, what do you physically change on the board?
 <details>
 <summary>Answer</summary>
-Change R1 in the feedback divider (the resistor between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
+Change R1 in the feedback divider (the [[learning/notes/quick-context/resistor|resistor]] between VOUT and the FB pin). A smaller R1 means V_FB reaches Vref at a lower VOUT, so the controller regulates to a lower voltage. See: Concrete Example.
 </details>
 
 **Q3:** Why can't you just use a [[learning/notes/micro-context/microcontroller|microcontroller]]'s PWM output to regulate a buck converter?

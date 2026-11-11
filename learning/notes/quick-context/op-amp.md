@@ -631,7 +631,7 @@ SIGNAL CONDITIONING CHAIN
 **Q2:** Why is a [[learning/notes/quick-context/voltage|voltage]] follower (gain = 1) useful if it doesn't amplify?
 <details>
 <summary>Answer</summary>
-**Impedance transformation.** The input draws essentially zero current (won't load a delicate sensor), while the output can drive significant current into a low-impedance load. Without the buffer, connecting a high-impedance source to a low-impedance load would create a voltage divider that drops the signal. The buffer isolates them.
+**Impedance transformation.** The input draws essentially zero current (won't load a delicate sensor), while the output can drive significant current into a low-impedance load. Without the buffer, connecting a high-impedance source to a low-impedance load would create a [[learning/notes/quick-context/voltage|voltage]] divider that drops the signal. The buffer isolates them.
 </details>
 
 **Q3:** An op-amp has GBW = 10 MHz. What's the maximum frequency at which it can amplify with a gain of 100?
@@ -649,7 +649,7 @@ SIGNAL CONDITIONING CHAIN
 **Q5:** Why does the gain of an op-amp circuit depend on [[learning/notes/quick-context/resistor|resistor]] ratios rather than the op-amp's own gain?
 <details>
 <summary>Answer</summary>
-**Negative feedback.** The open-loop gain is so large (~100,000) that even a tiny difference between V+ and V- produces a huge output. The feedback loop forces V+ ≈ V- by feeding output back to the inverting input. The circuit gain then depends only on how the feedback network divides the output—which is set by resistor ratios. As long as the open-loop gain is much larger than the desired closed-loop gain, the exact op-amp gain doesn't matter.
+**Negative feedback.** The open-loop gain is so large (~100,000) that even a tiny difference between V+ and V- produces a huge output. The feedback loop forces V+ ≈ V- by feeding output back to the inverting input. The circuit gain then depends only on how the feedback network divides the output—which is set by [[learning/notes/quick-context/resistor|resistor]] ratios. As long as the open-loop gain is much larger than the desired closed-loop gain, the exact op-amp gain doesn't matter.
 </details>
 
 </details>

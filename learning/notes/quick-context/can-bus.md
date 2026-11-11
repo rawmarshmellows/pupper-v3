@@ -309,7 +309,7 @@ CANH and CANL on a scope during one frame:
 
 - **[[learning/notes/quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
 
-- **[[learning/notes/quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
+- **[[learning/notes/quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode [[learning/notes/quick-context/voltage|voltage]] on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
 
 - **OBD-II (On-Board Diagnostics)** — The standardized CAN-based diagnostic port in every car since 2008. Protocols like OBD-II, J1939 (heavy trucks), and CANopen (industrial) are application layers built on top of the CAN physical and data-link layers.
 

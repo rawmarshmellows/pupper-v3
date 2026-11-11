@@ -340,7 +340,7 @@ void setup() {
 
 - **[[learning/notes/quick-context/embedded-communication-protocols]]** — WiFi complements the wired protocols (SPI, I2C, CAN, UART) used in embedded systems. The Pupper architecture diagram shows WiFi on the Raspberry Pi alongside wired protocols on the STM32s — each chosen for its strengths.
 
-- **[[learning/notes/quick-context/firmware]]** — The ESP32-S3 runs [[learning/notes/quick-context/firmware|firmware]] that implements the WiFi stack, just like the STM32s run motor control firmware. The difference: the ESP32's firmware includes a TCP/IP stack, TLS encryption, and the 802.11 protocol engine — far more complex than bare-metal motor control code.
+- **[[learning/notes/quick-context/firmware]]** — The [[learning/notes/quick-context/esp32|ESP32]]-S3 runs [[learning/notes/quick-context/firmware|firmware]] that implements the WiFi stack, just like the STM32s run motor control firmware. The difference: the ESP32's firmware includes a TCP/IP stack, TLS encryption, and the 802.11 protocol engine — far more complex than bare-metal motor control code.
 
 - **[[learning/notes/micro-context/microcontroller]]** — The ESP32-S3 is itself a [[learning/notes/micro-context/microcontroller|microcontroller]] (CPU + memory + peripherals on one chip), but with an integrated radio transceiver — making it a "wireless SoC" (System on Chip).
 

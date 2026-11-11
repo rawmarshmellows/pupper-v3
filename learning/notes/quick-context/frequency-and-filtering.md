@@ -217,7 +217,7 @@ EMI FILTER
 **Q3:** What does "-3 dB" actually mean in practical terms?
 <details>
 <summary>Answer</summary>
-**Half the power, or 70.7% of the voltage.** -3 dB voltage = 10^(-3/20) = 0.707. Since power is proportional to voltage squared: 0.707² = 0.5 = half power. The -3 dB point is chosen as the cutoff because it's where the filter transitions from "mostly passing" to "mostly blocking."
+**Half the power, or 70.7% of the [[learning/notes/quick-context/voltage|voltage]].** -3 dB voltage = 10^(-3/20) = 0.707. Since power is proportional to voltage squared: 0.707² = 0.5 = half power. The -3 dB point is chosen as the cutoff because it's where the filter transitions from "mostly passing" to "mostly blocking."
 </details>
 
 **Q4:** Why would you choose a 2nd-order filter over a 1st-order for audio applications?

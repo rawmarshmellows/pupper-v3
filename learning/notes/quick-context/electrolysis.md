@@ -92,7 +92,7 @@ Two separate questions govern every electrolysis process:
 
 **Thermodynamics asks: "Is it possible?"** — The minimum [[learning/notes/quick-context/voltage|voltage]] (cell potential) tells you whether you've supplied enough energy to make the reaction energetically feasible. Water electrolysis needs at least 1.23V. Below this, *nothing happens*, no matter how long you wait.
 
-**Kinetics asks: "Is it fast enough?"** — Even above the minimum voltage, reactions might be painfully slow. Real systems need *overpotential*—extra voltage to overcome activation energy barriers, just like heating a reaction mixture speeds it up. This is where electrode materials matter enormously: platinum catalyzes hydrogen evolution with minimal overpotential; cheap steel needs much more.
+**Kinetics asks: "Is it fast enough?"** — Even above the minimum [[learning/notes/quick-context/voltage|voltage]], reactions might be painfully slow. Real systems need *overpotential*—extra voltage to overcome activation energy barriers, just like heating a reaction mixture speeds it up. This is where electrode materials matter enormously: platinum catalyzes hydrogen evolution with minimal overpotential; cheap steel needs much more.
 
 This thermodynamic/kinetic split echoes throughout chemistry. A reaction can be thermodynamically favored but kinetically blocked (diamond → graphite is favorable but takes geological time), or thermodynamically unfavorable but kinetically fast if you supply the energy. Electrolysis operates in the second regime: thermodynamically unfavorable reactions made kinetically accessible through electrical driving force.
 

@@ -18,7 +18,7 @@ A sensor outputs a 2 mV signal sitting on top of a 1.5V common-mode [[learning/n
 | Term | Definition |
 |------|------------|
 | **Matched transistors (Q1, Q2)** | Two transistors fabricated identically (same geometry, same process, physically adjacent on the die) so they have the same threshold [[learning/notes/quick-context/voltage|voltage]], transconductance, and temperature behavior. Matching is what makes the circuit reject common-mode signals. |
-| **[[learning/notes/micro-context/tail-current|Tail current]] source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a voltage difference into a current difference. |
+| **[[learning/notes/micro-context/tail-current|Tail current]] source** | A fixed current source (e.g., 100 $\mu$A) connected to the shared source node. It sets the total current budget that Q1 and Q2 compete for. The tail is what converts a [[learning/notes/quick-context/voltage|voltage]] difference into a current difference. |
 | **Common-mode signal** | The average of the two inputs: $V_{CM} = (V_+ + V_-) / 2$. A differential pair rejects this---if both inputs rise by the same amount, both transistors try to conduct more, but the [[learning/notes/micro-context/tail-current|tail current]] can't increase, so nothing changes at the output. |
 | **Differential signal** | The difference between the two inputs: $V_{DIFF} = V_+ - V_-$. This is what the pair amplifies. A 1 mV differential signal on top of a 1.5V common-mode voltage produces the same output as a 1 mV signal on top of 0V. |
 | **[[learning/notes/micro-context/common-mode-rejection-ratio|Common-Mode Rejection Ratio (CMRR)]]** | How well the pair ignores common-mode signals vs. amplifying differential signals, in dB. A CMRR of 80 dB means common-mode signals are attenuated 10,000× relative to differential signals. Higher = better. |
@@ -86,7 +86,7 @@ Both transistors share the same source node. Each [[learning/notes/quick-context
 $$V_{gs1} = V(+) - V_{source\_node}$$
 $$V_{gs2} = V(-) - V_{source\_node}$$
 
-When V(+) > V(-), Q1 has a higher $V_{gs}$ than Q2, so Q1 tries to conduct harder. But the tail current source is a fixed budget---it forces $I_{Q1} + I_{Q2} = 100\ \mu A$ always. So Q1 "winning" more current automatically means Q2 gets less. The shared source node and fixed tail current are what turn a voltage difference into a current difference.
+When V(+) > V(-), Q1 has a higher $V_{gs}$ than Q2, so Q1 tries to conduct harder. But the [[learning/notes/micro-context/tail-current|tail current]] source is a fixed budget---it forces $I_{Q1} + I_{Q2} = 100\ \mu A$ always. So Q1 "winning" more current automatically means Q2 gets less. The shared source node and fixed tail current are what turn a voltage difference into a current difference.
 
 ```
 CURRENT STEERING
@@ -132,7 +132,7 @@ GATE VOLTAGE vs CHANNEL STATE (NMOS)
     Channel: EXISTS → ON                 Channel: GONE → OFF
 ```
 
-- **+V on gate** → attracts electrons to surface → creates n-type channel → transistor ON
+- **+V on gate** → attracts electrons to surface → creates n-type channel → [[learning/notes/quick-context/transistor|transistor]] ON
 - **0V on gate** → no field → no channel → transistor OFF
 - **-V on gate** → attracts holes to surface, repels electrons → reinforces p-type barrier → even MORE off
 

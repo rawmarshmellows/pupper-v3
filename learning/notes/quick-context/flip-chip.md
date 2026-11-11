@@ -254,7 +254,7 @@ Here's what each layer does:
 **Q1:** What does the "flip" in flip-chip refer to?
 <details>
 <summary>Answer</summary>
-The silicon die is mounted face-down (flipped) onto the substrate, with its active circuitry facing the substrate rather than facing up. This allows solder bumps on the circuit side of the die to directly connect to matching pads on the substrate. See: How It Works (Step 3)
+The [[learning/notes/quick-context/silicon-die|silicon die]] is mounted face-down (flipped) onto the substrate, with its active circuitry facing the substrate rather than facing up. This allows solder bumps on the circuit side of the die to directly connect to matching pads on the substrate. See: How It Works (Step 3)
 </details>
 
 **Q2:** What is underfill and why is it necessary?
@@ -263,7 +263,7 @@ The silicon die is mounted face-down (flipped) onto the substrate, with its acti
 Underfill is an epoxy material injected into the gap between the flipped die and substrate after the solder connections are made. It's necessary because silicon and the substrate expand at different rates when heated (CTE mismatch). Without underfill, the solder bumps would crack and fail after repeated heating/cooling cycles. See: 5 Essential Terms and How It Works (Step 5)
 </details>
 
-**Q3:** Why can flip-chip support more I/O connections than wire bonding, even for the same size die?
+**Q3:** Why can flip-chip support more I/O connections than [[learning/notes/quick-context/wire-bonding|wire bonding]], even for the same size die?
 <details>
 <summary>Answer</summary>
 Wire bonding can only attach wires around the perimeter (edges) of the die because wires need to loop through the air from die edge to substrate. Flip-chip places solder bumps across the entire bottom surface of the die in an area array pattern. A square die has area proportional to side length squared, but perimeter only proportional to side length—so area-array connections scale much better. See: How It Works diagram (Bump Array comparison)

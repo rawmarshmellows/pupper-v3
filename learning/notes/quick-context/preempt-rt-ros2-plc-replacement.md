@@ -111,7 +111,7 @@ CONVERGING ARCHITECTURE (Bosch ctrlX / PLCnext / ROScube model)
 
 | Metric | [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] (tuned) | Typical PLC | Verdict |
 |--------|-------------------|-------------|---------|
-| Achievable cycle time | 250 us - 1 ms | 1-50 ms | PREEMPT_RT can run *faster* |
+| Achievable cycle time | 250 us - 1 ms | 1-50 ms | [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] can run *faster* |
 | Worst-case jitter at 1 ms cycle | +/- 4 us (with EtherCAT) | < 1 us (hardware) | PLC still wins on jitter |
 | Worst-case latency | 20-100 us | < 1 us | PLC wins, but 100 us is fine for 1 ms loops |
 

@@ -39,7 +39,7 @@ created: 2026-06-08
 
 ## Common Questions
 
-**Is it measured relative to ground? Then is the voltage different at different points along the conductor?**
+**Is it measured relative to ground? Then is the [[learning/notes/quick-context/voltage|voltage]] different at different points along the conductor?**
 Yes, relative to ground — [[learning/notes/quick-context/voltage|voltage]] is always a difference, and the return path reaches earth through $C_{ref}$ or your body's [[learning/notes/quick-context/capacitance|capacitance]] (no ground path → no current → nothing to sense). But **no**, the voltage is *not* different along the conductor: a wire is one **equipotential** node — negligible $IR$ drop means the same potential everywhere along it at a given instant. What varies is *time* (the AC swing the sensor detects) and *different nodes* (across a load), not position on the wire. (Exception: at RF, where wire length ≈ wavelength, transmission-line standing waves do make position matter — but 60 Hz mains has λ ≈ 5000 km, so any normal wire is equipotential.)
 
 **Where does the [[learning/notes/quick-context/differential-pair|differential pair]]'s reference come from?**

@@ -18,7 +18,7 @@ You've learned $V = IR$ ([[learning/notes/quick-context/resistor|Ohm's law]]). I
 | Term | Definition |
 |------|------------|
 | **Electric Field** | The actual force-carrying entity. It pushes charges (creating current) and its integral over distance defines [[learning/notes/quick-context/voltage|voltage]]. The field is always the mediator between V and I. |
-| **Voltage Source** | A device (battery, power supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
+| **[[learning/notes/quick-context/voltage|Voltage]] Source** | A device (battery, power supply) that maintains a fixed voltage; current adjusts based on the load. Here, voltage is the *constraint* and current is the *response*---so it looks like "V causes I." |
 | **Current Source** | A device that maintains a fixed current; voltage adjusts to whatever is needed. Here, current is the *constraint* and voltage is the *response*---so it looks like "I causes V." |
 | **Constitutive Relation** | The equation relating V and I for a specific component: $V = IR$ for [[learning/notes/quick-context/resistor|resistors]], $V = L \, dI/dt$ for [[learning/notes/quick-context/inductor|inductors]], $I = C \, dV/dt$ for [[learning/notes/quick-context/capacitor|capacitors]]. These are *simultaneous constraints*, not causal arrows. |
 | **Kirchhoff's Laws** | The circuit constraints: voltages around a loop sum to zero (KVL), currents into a node sum to zero (KCL). These enforce consistency but don't say which quantity "caused" the other. |
@@ -333,7 +333,7 @@ STORY 3: "Constraints determine everything" (the real answer)
 **Q2:** You suddenly open a switch in a circuit carrying current through an [[learning/notes/quick-context/inductor|inductor]]. What happens, and which "causes" which?
 <details>
 <summary>Answer</summary>
-**The inductor generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[learning/notes/quick-context/self-induction]].
+**The [[learning/notes/quick-context/inductor|inductor]] generates a large voltage spike.** When you open the switch, you try to instantly reduce current to zero. The inductor opposes this: $V = L \times dI/dt$, and a very fast dI/dt creates a very large voltage. This can be hundreds or thousands of volts---enough to arc across the switch contacts. Here, the *change in current* clearly causes the voltage. This is the most vivid example of "I causes V." See: How It Works (Scenario 2) and [[learning/notes/quick-context/self-induction]].
 </details>
 
 **Q3:** In an AC circuit with a [[learning/notes/quick-context/capacitor|capacitor]], current leads voltage by 90 degrees. Does this mean current "happens first" and causes the voltage?

@@ -237,7 +237,7 @@ TRACING A MEMORY READ: CPU → DRAM
 Transistors are ~5nm in size—far smaller than any wire or [[learning/notes/quick-context/soldering|soldering]] tool. The die's bond pads (~50 μm) are the smallest practical connection point, and even those require specialized [[learning/notes/quick-context/wire-bonding|wire bonding]] or flip-chip processes, not conventional soldering. The packaging hierarchy exists specifically to bridge this scale gap. See: The Core Problem
 </details>
 
-**Q2:** What's the key advantage of flip-chip packaging over wire bonding?
+**Q2:** What's the key advantage of flip-chip packaging over [[learning/notes/quick-context/wire-bonding|wire bonding]]?
 <details>
 <summary>Answer</summary>
 Flip-chip enables higher I/O density (bumps can cover the entire die bottom, not just the edges) and better electrical performance (shorter, lower-inductance connections). Wire bonding is limited to the die perimeter and adds inductance from the wire loops. See: The Key Tension and 5 Essential Terms

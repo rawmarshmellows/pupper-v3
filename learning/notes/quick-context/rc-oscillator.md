@@ -26,7 +26,7 @@ Many circuits need a periodic signal -- a clock, a ramp, a trigger -- but don't 
 <details>
 <summary><strong>How It Works</strong> -- Charge, compare, reset, repeat</summary>
 
-Every RC oscillator follows the same core loop: charge a capacitor through a [[learning/notes/quick-context/resistor|resistor]], detect when the [[learning/notes/quick-context/voltage|voltage]] crosses a threshold, then reset the capacitor and start over. The time to charge from 0V to the threshold voltage determines the period.
+Every RC oscillator follows the same core loop: charge a [[learning/notes/quick-context/capacitor|capacitor]] through a [[learning/notes/quick-context/resistor|resistor]], detect when the [[learning/notes/quick-context/voltage|voltage]] crosses a threshold, then reset the capacitor and start over. The time to charge from 0V to the threshold voltage determines the period.
 
 ### The Basic Relaxation Oscillator
 
@@ -69,7 +69,7 @@ RC RELAXATION OSCILLATOR (simplified)
 
 ### Sawtooth Waveform Generation (What's Inside a PWM IC)
 
-The [[learning/notes/quick-context/pwm-controller-circuit|sawtooth oscillator inside a buck converter IC]] uses a constant current source instead of a [[learning/notes/quick-context/resistor|resistor]], which produces a perfectly linear ramp rather than an exponential curve. This matters because a linear ramp gives a linear relationship between the error voltage and the [[learning/notes/micro-context/pwm-pulse-width-modulation|duty cycle]].
+The [[learning/notes/quick-context/pwm-controller-circuit|sawtooth oscillator inside a buck converter IC]] uses a constant current source instead of a [[learning/notes/quick-context/resistor|resistor]], which produces a perfectly linear ramp rather than an exponential curve. This matters because a linear ramp gives a linear relationship between the error [[learning/notes/quick-context/voltage|voltage]] and the [[learning/notes/micro-context/pwm-pulse-width-modulation|duty cycle]].
 
 ```
 SAWTOOTH GENERATOR (constant-current variant used in PWM ICs)
@@ -281,7 +281,7 @@ The 555 timer is the most famous RC oscillator IC ever made (over a billion sold
 
 - **[[learning/notes/quick-context/op-amp]]** -- Comparators (which trigger the oscillator's reset) are essentially op-amps without feedback, driven into saturation to produce digital-like HIGH/LOW outputs.
 
-- **[[learning/notes/quick-context/impedance-and-reactance]]** -- The capacitor's [[learning/notes/quick-context/impedance-and-reactance|reactance]] ($X_C = 1/(2\pi fC)$) is what makes RC timing frequency-dependent: at the oscillation frequency, the capacitor's impedance interacts with the resistor to set the charge/discharge rate.
+- **[[learning/notes/quick-context/impedance-and-reactance]]** -- The capacitor's [[learning/notes/quick-context/impedance-and-reactance|reactance]] ($X_C = 1/(2\pi fC)$) is what makes RC timing frequency-dependent: at the oscillation frequency, the capacitor's impedance interacts with the [[learning/notes/quick-context/resistor|resistor]] to set the charge/discharge rate.
 
 - **[[learning/notes/quick-context/capacitive-sensing-measurement]]** -- The same RC timing principle used in oscillators is repurposed for sensing: charge an unknown [[learning/notes/quick-context/capacitance|capacitance]] through a known resistor, time the result, and the count is proportional to $C_x$. An RC oscillator is essentially a capacitive sensor that continuously measures its own capacitance.
 
@@ -321,7 +321,7 @@ Choose $R1 = R2 = 4.7\text{ k}\Omega$: $4.7\text{k} + 2 \times 4.7\text{k} = 14.
 **Q5:** An RC oscillator's capacitor has a ceramic dielectric whose [[learning/notes/quick-context/capacitance|capacitance]] drops 20% when the DC bias voltage across it equals its rated voltage. How does this affect the oscillator?
 <details>
 <summary>Answer</summary>
-**The frequency increases.** With $f \propto 1/(RC)$, a 20% decrease in effective capacitance means the capacitor charges to the threshold voltage faster (less charge storage capacity). So the oscillation frequency rises by roughly 25% ($1/0.8 = 1.25$). This is a real problem with ceramic capacitors (especially X5R and Y5R types in small packages): their capacitance depends on applied voltage. This "DC bias derating" is a major reason why RC oscillators using ceramic caps have poor frequency stability -- the frequency shifts depending on supply voltage. Film capacitors or NP0/C0G ceramics have negligible voltage dependence and are preferred for precision timing. See: Peripheral Knowledge (capacitor link).
+**The frequency increases.** With $f \propto 1/(RC)$, a 20% decrease in effective [[learning/notes/quick-context/capacitance|capacitance]] means the capacitor charges to the threshold voltage faster (less charge storage capacity). So the oscillation frequency rises by roughly 25% ($1/0.8 = 1.25$). This is a real problem with ceramic capacitors (especially X5R and Y5R types in small packages): their capacitance depends on applied voltage. This "DC bias derating" is a major reason why RC oscillators using ceramic caps have poor frequency stability -- the frequency shifts depending on supply voltage. Film capacitors or NP0/C0G ceramics have negligible voltage dependence and are preferred for precision timing. See: Peripheral Knowledge (capacitor link).
 </details>
 
 </details>

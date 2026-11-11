@@ -17,7 +17,7 @@ The [[learning/notes/quick-context/code-to-gates-and-bootstrapping|compilation c
 |------|------------|
 | **Floating Gate** | An electrically isolated polysilicon layer inside a flash memory [[learning/notes/micro-context/mosfet|MOSFET]], surrounded by oxide insulation. Electrons trapped here shift the [[learning/notes/quick-context/transistor|transistor]]'s threshold [[learning/notes/quick-context/voltage|voltage]], encoding a bit that persists without power for 10+ years. |
 | **Fowler-Nordheim Tunneling** | The quantum-mechanical process used to program/erase flash memory. A strong electric field (15-20V) gives electrons enough energy to tunnel through the ~7-10 nm oxide barrier onto or off of the floating gate. |
-| **Sense Amplifier** | A circuit that detects the tiny voltage difference on a bitline during a DRAM/flash read and amplifies it to a full logic level. In DRAM, the stored charge is so small (~10-30 fF) that reading it requires destroying and rewriting the cell. |
+| **Sense Amplifier** | A circuit that detects the tiny [[learning/notes/quick-context/voltage|voltage]] difference on a bitline during a DRAM/flash read and amplifies it to a full logic level. In DRAM, the stored charge is so small (~10-30 fF) that reading it requires destroying and rewriting the cell. |
 | **Cross-Coupled Inverters** | The core of an SRAM cell — two CMOS inverters connected output-to-input in a loop. Each inverter reinforces the other's state, creating two stable voltage configurations (bit = 0 or 1) that persist as long as power is on. This is the same feedback principle that gives [[learning/notes/quick-context/d-flip-flop|D flip-flops]] their memory. |
 | **Wordline / Bitline** | The row and column wires in a memory array. The **wordline** activates a row of cells (turns on access transistors), and the **bitline** carries the data in or out. Writing = drive the bitline to the desired voltage, then pulse the wordline to connect the cell. |
 
@@ -164,7 +164,7 @@ FLASH MEMORY — Electrons trapped on a floating gate
 | Volatile? | Yes | Yes (needs refresh) | No |
 | Bits/cell | 1 (6 transistors) | 1 (1T + 1C) | 1-4 (1 [[learning/notes/quick-context/transistor|transistor]]) |
 
-The speed difference is physical: SRAM just flips transistor states (fast), DRAM transfers charge through a channel (medium), and flash forces electrons through an oxide barrier via quantum tunneling (slow, requires high voltage).
+The speed difference is physical: SRAM just flips [[learning/notes/quick-context/transistor|transistor]] states (fast), DRAM transfers charge through a channel (medium), and flash forces electrons through an oxide barrier via quantum tunneling (slow, requires high voltage).
 
 </details>
 
@@ -358,7 +358,7 @@ The entire process — erase block, program page, verify — takes ~100-500 ms f
 
 - **[[learning/notes/quick-context/from-code-to-running-firmware]]** — The linking and flashing pipeline: how compiled code goes from an ELF file on your PC to bytes in an MCU's flash memory. Covers the software toolchain (linker, flash programmer) that drives the physical write process described here.
 
-- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 capacitor, and flash uses a modified MOSFET with a floating gate.
+- **[[learning/notes/quick-context/transistor]]** — The [[learning/notes/micro-context/mosfet|MOSFET]] switch that is the foundation of all three memory types. SRAM uses 6 MOSFETs per bit, DRAM uses 1 MOSFET + 1 [[learning/notes/quick-context/capacitor|capacitor]], and flash uses a modified MOSFET with a floating gate.
 
 - **[[learning/notes/quick-context/transistor-analog-to-digital]]** — How the analog voltage on a DRAM capacitor or flash floating gate gets interpreted as a clean digital 0 or 1. Noise margins and sense amplifiers are what make this work.
 

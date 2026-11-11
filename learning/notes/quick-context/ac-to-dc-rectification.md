@@ -20,7 +20,7 @@ Wall outlets deliver AC that swings positive and negative 50-60 times per second
 | **AC (Alternating Current)** | Current that reverses direction periodically (sinusoidal, typically 50-60 Hz). The grid uses AC because transformers can step [[learning/notes/quick-context/voltage|voltage]] up for efficient long-distance transmission and down for safe household use. |
 | **DC (Direct Current)** | Current that flows in one constant direction. Batteries produce DC; electronics require DC internally. |
 | **Forward Bias** | Applying positive [[learning/notes/quick-context/voltage|voltage]] to the P-side and negative to the N-side of a PN junction. Shrinks the depletion zone and lets current flow, with a ~0.7V drop for silicon diodes. |
-| **Reverse Bias** | Applying voltage in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
+| **Reverse Bias** | Applying [[learning/notes/quick-context/voltage|voltage]] in the blocking direction (positive to N-side). Widens the depletion zone and blocks current until breakdown voltage is reached. |
 | **Ripple Voltage** | The residual AC variation on top of the DC output after rectification and filtering. Determined by [[learning/notes/quick-context/capacitance|capacitance]], load current, and rectification frequency (RC time constant). |
 
 <details>
@@ -171,7 +171,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 
 1. **120V AC from the wall** -- alternating 60 times/second
 2. **Transformer steps down** to ~7V AC (modern chargers use high-frequency switching instead)
-3. **Bridge rectifier** flips both halves positive: ~7V pulsating DC, minus 1.4V diode drop = ~5.6V pulsating
+3. **Bridge rectifier** flips both halves positive: ~7V pulsating DC, minus 1.4V [[learning/notes/quick-context/diode|diode]] drop = ~5.6V pulsating
 4. **Filter [[learning/notes/quick-context/capacitor|capacitor]]** smooths the pulses into ~5.6V with small ripple
 5. **Voltage regulator** (linear or switching) locks the output at exactly 5.0V
 
@@ -188,7 +188,7 @@ outlet         to ~7V AC)       (4 diodes)     (smooth)     (steady 5V)
 
 - **[[learning/notes/micro-context/ac-dc-current|AC vs DC Current]]** -- Why the grid uses AC (transformers), why electronics need DC, the war of currents.
 - **[[learning/notes/micro-context/reverse-and-forward-bias|Reverse and Forward Bias]]** -- PN junction mechanics, depletion zone, forward bias (0.7V), reverse bias, breakdown voltage.
-- **[[learning/notes/micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing capacitor basics.
+- **[[learning/notes/micro-context/diode-rectification|Diode Rectification]]** -- Half-wave rectification with a single diode, smoothing [[learning/notes/quick-context/capacitor|capacitor]] basics.
 - **[[learning/notes/micro-context/full-bridge-rectifier|Full-Wave Bridge Rectifier]]** -- Four-diode diamond bridge, both halves used, 1.4V total drop, Schottky bridges for low-voltage.
 
 ### Related Quick-Contexts

@@ -153,7 +153,7 @@ BUCK CONVERTER CIRCUIT (simplified)
     C16 (10μF): input bypass
 ```
 
-The 10μH [[learning/notes/quick-context/inductor|inductor]] (L1, Sunlord MWSA1004S-100MT) is the energy storage element — it smooths the chopped voltage from the [[learning/notes/micro-context/buck-converter|buck converter]]'s internal switch into steady DC. The 47μF output capacitors (C18, C19) further smooth the output ripple.
+The 10μH [[learning/notes/quick-context/inductor|inductor]] (L1, Sunlord MWSA1004S-100MT) is the energy storage element — it smooths the chopped [[learning/notes/quick-context/voltage|voltage]] from the [[learning/notes/micro-context/buck-converter|buck converter]]'s internal switch into steady DC. The 47μF output capacitors (C18, C19) further smooth the output ripple.
 
 ### Category 6: Passive Components — Capacitors, Resistors, Ferrite Beads
 
@@ -164,7 +164,7 @@ The 10μH [[learning/notes/quick-context/inductor|inductor]] (L1, Sunlord MWSA10
 | 100nF | 13 | C2,C5,C6,C8,C11,C12,C17,C53-C58 | IC decoupling (one per power pin) |
 | 1μF | 4 | C1,C3,C7,C9 | Medium-frequency decoupling |
 | 4.7μF | 2 | C4,C10 | Bulk decoupling near MCUs |
-| 10μF | 2 | C16,C68 | Input bypass for buck converter |
+| 10μF | 2 | C16,C68 | Input bypass for [[learning/notes/micro-context/buck-converter|buck converter]] |
 | 47μF | 2 | C18,C19 | Buck converter output filter |
 | 3nF, 6.8pF, 2.7nF | 3 | C13,C14,C15 | Buck converter compensation |
 
@@ -242,7 +242,7 @@ This is a common tension: the best sensor for the job (BNO086's onboard fusion p
 
 **3. Why so many [[learning/notes/quick-context/capacitor|capacitor]] values?**
 
-The 7 different capacitor values (6.8pF to 47μF) aren't random — each serves a specific frequency range:
+The 7 different [[learning/notes/quick-context/capacitor|capacitor]] values (6.8pF to 47μF) aren't random — each serves a specific frequency range:
 
 | Value | Frequency Role | Self-Resonant Freq (approx) |
 |-------|---------------|---------------------------|
@@ -370,7 +370,7 @@ NOW TRACE IT ON THE BOARD:
 **Q2:** Why are R5 and R6 such specific values (60.4kΩ and 11.5kΩ) instead of round numbers?
 <details>
 <summary>Answer</summary>
-**They're calculated from the TPS54561 datasheet's feedback formula to set exactly 5.0V output.** The formula is: $V_{OUT} = V_{REF} \times (1 + R5/R6) = 0.8V \times (1 + 60.4k/11.5k) = 0.8V \times 6.252 = 5.0V$. These values come from the E96 resistor series (1% tolerance), which provides enough precision to hit the target voltage. Using E12 values (10% tolerance, round numbers like 56kΩ and 10kΩ) would give 5.28V — unacceptably far from 5.0V. See [[learning/notes/quick-context/resistor]] for the E-series explanation.
+**They're calculated from the TPS54561 datasheet's feedback formula to set exactly 5.0V output.** The formula is: $V_{OUT} = V_{REF} \times (1 + R5/R6) = 0.8V \times (1 + 60.4k/11.5k) = 0.8V \times 6.252 = 5.0V$. These values come from the E96 [[learning/notes/quick-context/resistor|resistor]] series (1% tolerance), which provides enough precision to hit the target voltage. Using E12 values (10% tolerance, round numbers like 56kΩ and 10kΩ) would give 5.28V — unacceptably far from 5.0V. See [[learning/notes/quick-context/resistor]] for the E-series explanation.
 </details>
 
 **Q3:** The board has 4 CAN transceivers but only 2 MCUs. Why not use just 2 transceivers (one per MCU)?

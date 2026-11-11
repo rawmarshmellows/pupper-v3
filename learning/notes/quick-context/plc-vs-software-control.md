@@ -155,7 +155,7 @@ This division means: software does the "thinking" (where to move, what to pick u
 **Q1:** Why can't you just run trajectory interpolation in a ROS2 node with a 1ms timer callback?
 <details>
 <summary>Answer</summary>
-Because Linux (without PREEMPT_RT) provides no guarantees about when your callback will actually run. A garbage collection pause, kernel interrupt, or disk I/O could delay your "1ms" callback by 10-50ms, causing the robot arm to jerk, overshoot, or fault the servo drive. The PLC's scan cycle is deterministic—it runs every 2ms regardless of what else is happening.
+Because Linux (without [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]]) provides no guarantees about when your callback will actually run. A garbage collection pause, kernel interrupt, or disk I/O could delay your "1ms" callback by 10-50ms, causing the robot arm to jerk, overshoot, or fault the servo drive. The PLC's scan cycle is deterministic—it runs every 2ms regardless of what else is happening.
 </details>
 
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?

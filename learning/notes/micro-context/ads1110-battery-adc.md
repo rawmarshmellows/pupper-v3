@@ -36,4 +36,4 @@ updated: 2026-03-27
  15 SPS (16-bit) is plenty fast for battery monitoring.
 ```
 
-**Key insight:** Delta-sigma ADCs trade speed for resolution — the ADS1110 gives 16-bit at 15 SPS or 12-bit at 240 SPS. Battery voltage changes over seconds, so even 15 SPS is overkill, making this the ideal architecture: full 16-bit precision in a 6-pin package with no external reference needed.
+**Key insight:** Delta-sigma ADCs trade speed for resolution — the ADS1110 gives 16-bit at 15 SPS or 12-bit at 240 SPS. Battery [[learning/notes/quick-context/voltage|voltage]] changes over seconds, so even 15 SPS is overkill, making this the ideal architecture: full 16-bit precision in a 6-pin package with no external reference needed.

@@ -227,7 +227,7 @@ EXAMPLE: Apple M2 Die Layout (simplified)
 
 - **[[learning/notes/quick-context/semiconductor-fabrication|Photolithography]]** — The "printing press" technology that patterns transistors onto silicon using light and masks; this is the core manufacturing bottleneck that determines how small transistors can be.
 
-- **Process Node (e.g., "5nm")** — The marketing term for transistor size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
+- **Process Node (e.g., "5nm")** — The marketing term for [[learning/notes/quick-context/transistor|transistor]] size/density; understanding what "7nm" vs "3nm" actually means helps interpret chip specifications (hint: it's not the actual transistor size anymore).
 
 - **[[learning/notes/quick-context/electric-current|Electric Current]]** — Dies only work when electrons flow through their transistors; understanding current, [[learning/notes/quick-context/voltage|voltage]], and resistance explains why dies consume power and generate heat.
 

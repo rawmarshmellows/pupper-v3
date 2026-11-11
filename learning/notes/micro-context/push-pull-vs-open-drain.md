@@ -73,7 +73,7 @@ Examples:
 
 This is exactly why [[learning/notes/micro-context/i2c|I2C]] and shared interrupt lines use open-drain: any chip can assert the line, and no combination of drivers can ever short the bus.
 
-**What is "OUT" in the diagram?** It's the chip's single output pin — where the transistor structure meets the outside wire. Push-pull vs open-drain describes *how* that pin is driven.
+**What is "OUT" in the diagram?** It's the chip's single output pin — where the [[learning/notes/quick-context/transistor|transistor]] structure meets the outside wire. Push-pull vs open-drain describes *how* that pin is driven.
 
 In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carrying the 1-bit decision "is V+ > V−?", driven by the output stage (Q6 in the LMC7211-N — see [[learning/notes/quick-context/comparator-specification|datasheet specs]]):
 
@@ -98,7 +98,7 @@ The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}
 
 - **Push-pull:** a high-side transistor connects the pin to VCC (sources current, drives HIGH) and a low-side transistor connects it to GND (sinks current, drives LOW); only one is on at a time.
 - Push-pull gives strong, fast drive in both directions, but two such outputs must never share a wire — one driving HIGH against another driving LOW is a near-short (bus contention).
-- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external pull-up resistor raises it HIGH.
+- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external pull-up [[learning/notes/quick-context/resistor|resistor]] raises it HIGH.
 - This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different logic [[learning/notes/quick-context/voltage|voltage]] — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
 
 ```

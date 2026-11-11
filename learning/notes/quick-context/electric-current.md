@@ -18,7 +18,7 @@ Imagine you have energy in one place (a battery, a power plant) and you need to 
 | **Ampere (A)** | The unit of current. 1 ampere = 1 coulomb of charge flowing per second. A typical phone charger: 1-2A. Household circuit: 15-20A. Car starter motor: 200-400A. |
 | **Coulomb (C)** | The unit of electric charge. One coulomb = the charge of about 6.24 x 10^18 electrons. In Q = I x t, charge is what actually does the chemistry in [[learning/notes/quick-context/electrolysis|electrolysis]]. |
 | **Direct Current (DC)** | Current that flows in ONE direction only—like water flowing downhill. [[learning/notes/quick-context/galvanic-cells-batteries|Batteries]] produce DC. [[learning/notes/quick-context/electrolysis|Electrolysis]] requires DC (electrons must consistently enter at [[learning/notes/quick-context/electrodes|cathode]], exit at [[learning/notes/quick-context/electrodes|anode]]). |
-| **Alternating Current (AC)** | Current that reverses direction many times per second (60 Hz in US = 60 reversals/second). Wall outlets provide AC. Must convert to DC for electrolysis. |
+| **Alternating Current (AC)** | Current that reverses direction many times per second (60 Hz in US = 60 reversals/second). Wall outlets provide AC. Must convert to DC for [[learning/notes/quick-context/electrolysis|electrolysis]]. |
 | **Current Density** | Current per unit area (A/cm² or A/m²). Critical for electrolysis (too low = slow; too high = electrode damage) and [[learning/notes/quick-context/electromigration|electromigration]] in chip wires (too high = wire failure). |
 
 <details>
@@ -338,7 +338,7 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **[[learning/notes/quick-context/voltage-current-causality]]** — Does voltage "cause" current or vice versa? The answer depends on context: voltage sources make it look like V causes I, but inductors and current sources flip the story. The electric field mediates both.
 
-- **Ohm's Law (V = I x R)** — The fundamental relationship connecting voltage, current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
+- **Ohm's Law (V = I x R)** — The fundamental relationship connecting [[learning/notes/quick-context/voltage|voltage]], current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
 
 - **[[learning/notes/quick-context/power-watts-joules|Electrical Power]] (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
 

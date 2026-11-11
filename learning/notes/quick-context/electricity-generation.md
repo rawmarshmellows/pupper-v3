@@ -3,7 +3,7 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/input-bias-current]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/buck-converter]]
 
 > **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
@@ -28,7 +28,7 @@ Every power plant, battery, and solar panel is fundamentally an energy converter
 | Term | Definition |
 |------|------------|
 | **[[learning/notes/micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic field through a conductor induces [[learning/notes/quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
-| **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
+| **Generator** | A machine that converts mechanical rotation into electricity via [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
 | **Primary Energy Source** | The original energy form before conversion: coal, natural gas, nuclear fuel, sunlight, wind, falling water. Each gets converted through various steps into electricity. |
@@ -533,7 +533,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q7:** Transformers only work with AC, not DC. Using Faraday's Law, explain why.
 <details>
 <summary>Answer</summary>
-**DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces voltage in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at steady state, dI/dt = 0, so V = L × dI/dt = 0.
+**DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces [[learning/notes/quick-context/voltage|voltage]] in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at steady state, dI/dt = 0, so V = L × dI/dt = 0.
 </details>
 
 </details>

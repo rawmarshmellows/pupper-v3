@@ -91,7 +91,7 @@ ACTIVE COMPONENT FAMILY TREE
 |------|------------------------|-------------|
 | **[[learning/notes/quick-context/transistor|Transistor]] ([[learning/notes/micro-context/mosfet|MOSFET]])** | Yes | Gate-controlled switch, MOS [[learning/notes/quick-context/capacitor|capacitor]], NAND gates, CMOS |
 | **[[learning/notes/quick-context/transistor|Transistor]]: Analog → Digital** | Yes | Leakage, noise margins, regenerative logic, clocking |
-| **Transistor: Design History** | Yes | Point-contact → BJT → planar [[learning/notes/micro-context/mosfet|MOSFET]] → FinFET → GAA |
+| **[[learning/notes/quick-context/transistor|Transistor]]: Design History** | Yes | Point-contact → BJT → planar [[learning/notes/micro-context/mosfet|MOSFET]] → FinFET → GAA |
 | **[[learning/notes/quick-context/diode|Diode]]** | Yes | PN junction, forward/reverse bias, rectification, LEDs |
 | **[[learning/notes/quick-context/bjt|BJT (Bipolar Junction Transistor)]]** | Yes | Current-controlled amplifier, NPN/PNP, base/collector/emitter |
 | **BJT Specifications** | Yes | The 5 datasheet numbers to check: type, V_CEO, I_C, P_C, β/hFE |
@@ -121,7 +121,7 @@ FROM SAND TO SWITCH
 | Topic | Existing Quick-Context? | Key Concept |
 |-------|------------------------|-------------|
 | **[[learning/notes/quick-context/electric-current|Electric Current]]** | Yes | Amperes, coulombs, DC/AC, Faraday's law |
-| **Parallel vs. Series Voltage** | Yes | Why billions of transistors share ~0.65V, Kirchhoff's laws |
+| **Parallel vs. Series [[learning/notes/quick-context/voltage|Voltage]]** | Yes | Why billions of transistors share ~0.65V, Kirchhoff's laws |
 | **Thermal Noise** | Yes | Johnson-Nyquist noise, kT energy scale, noise margins |
 | **[[learning/notes/quick-context/impedance-and-reactance|Impedance and Reactance]]** | Yes | Z = R + jX (impedance = resistance + imaginary unit × reactance), capacitive/inductive reactance, phase angle |
 | **[[learning/notes/quick-context/frequency-and-filtering|Frequency and Filtering]]** | Yes | Cutoff frequency, dB (decibels), low-pass/high-pass, filter order |
@@ -308,7 +308,7 @@ Every signal in every electronic device passes through some combination of these
 **Q1:** What are the three fundamental passive components, and what form of energy does each store or dissipate?
 <details>
 <summary>Answer</summary>
-**Resistor** dissipates energy as heat. **[[learning/notes/quick-context/capacitor|Capacitor]]** stores energy in an electric field (E = ½CV²: energy = ½ × [[learning/notes/quick-context/capacitance|capacitance]] × voltage²). **[[learning/notes/quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
+**[[learning/notes/quick-context/resistor|Resistor]]** dissipates energy as heat. **[[learning/notes/quick-context/capacitor|Capacitor]]** stores energy in an electric field (E = ½CV²: energy = ½ × [[learning/notes/quick-context/capacitance|capacitance]] × voltage²). **[[learning/notes/quick-context/inductor|Inductor]]** stores energy in a magnetic field (E = ½LI²: energy = ½ × inductance × current²). Resistors are the only passive that converts electrical energy into a non-electrical form; capacitors and inductors store energy temporarily and can return it to the circuit.
 </details>
 
 **Q2:** What is the difference between a passive and an active component?
@@ -317,10 +317,10 @@ Every signal in every electronic device passes through some combination of these
 A **passive component** can only store or dissipate energy—it cannot amplify a signal. Resistors, capacitors, and inductors are passive. An **active component** can amplify or switch signals by drawing energy from a power supply and injecting it into the signal path. Transistors are the primary example: a small voltage on the gate controls a much larger current between source and drain.
 </details>
 
-**Q3:** A capacitor "blocks DC but passes AC" and an [[learning/notes/quick-context/inductor|inductor]] "blocks AC but passes DC." Why are these behaviors exactly opposite?
+**Q3:** A [[learning/notes/quick-context/capacitor|capacitor]] "blocks DC but passes AC" and an [[learning/notes/quick-context/inductor|inductor]] "blocks AC but passes DC." Why are these behaviors exactly opposite?
 <details>
 <summary>Answer</summary>
-They store energy in dual forms: capacitors in electric fields (voltage-dependent), inductors in magnetic fields (current-dependent). A capacitor opposes voltage changes (I = C × dV/dt: current = [[learning/notes/quick-context/capacitance|capacitance]] × rate of voltage change)—DC has no voltage change, so no current passes. An inductor opposes current changes (V = L × dI/dt: voltage = inductance × rate of current change)—DC has no current change, so the inductor acts like a wire. At higher frequencies, voltage and current change faster, amplifying these opposing behaviors. This duality is why LC combinations create resonance and second-order filters.
+They store energy in dual forms: capacitors in electric fields (voltage-dependent), inductors in magnetic fields (current-dependent). A capacitor opposes voltage changes (I = C × dV/dt: current = [[learning/notes/quick-context/capacitance|capacitance]] × rate of voltage change)—DC has no voltage change, so no current passes. An [[learning/notes/quick-context/inductor|inductor]] opposes current changes (V = L × dI/dt: voltage = inductance × rate of current change)—DC has no current change, so the inductor acts like a wire. At higher frequencies, voltage and current change faster, amplifying these opposing behaviors. This duality is why LC combinations create resonance and second-order filters.
 </details>
 
 **Q4:** In the packaging hierarchy, why are there multiple connection technologies ([[learning/notes/quick-context/wire-bonding|wire bonding]] vs. flip-chip) rather than just one?

@@ -345,7 +345,7 @@ WHICH IS "TRUE"?
 
 | Situation | Better Mental Model |
 |-----------|-------------------|
-| DC circuit analysis | Charges flow, voltage pushes |
+| DC circuit analysis | Charges flow, [[learning/notes/quick-context/voltage|voltage]] pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
 | [[learning/notes/quick-context/capacitor|Capacitor]] charging | electric field building between plates |
 | [[learning/notes/quick-context/inductor|Inductor]] charging | magnetic field building in coil |
@@ -549,7 +549,7 @@ SUMMARY: The Four Quantities in Action
 **Q5:** If electric and magnetic fields are "really the same thing" (as relativity says), why do circuits have separate capacitors (electric field storage) and inductors (magnetic field storage)?
 <details>
 <summary>Answer</summary>
-**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a capacitor. To store energy using current (moving charges), you use an [[learning/notes/quick-context/inductor|inductor]]. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
+**They're the same thing at rest in different reference frames, but in our frame (stationary relative to the circuit) they behave differently.** electric fields exert forces on stationary and moving charges alike; magnetic fields only act on moving charges. electric fields can do work; magnetic fields cannot. electric field energy density ∝ E²; magnetic field energy density ∝ B². In practice: to store energy using voltage (charge separation), you use a [[learning/notes/quick-context/capacitor|capacitor]]. To store energy using current (moving charges), you use an [[learning/notes/quick-context/inductor|inductor]]. They're complementary tools for different jobs, even though at the deepest level they're aspects of one unified field.
 </details>
 
 </details>

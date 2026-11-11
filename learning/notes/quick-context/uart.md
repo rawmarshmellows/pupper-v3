@@ -270,7 +270,7 @@ UART sits at the "dead simple" end of the [[learning/notes/quick-context/embedde
 
 **UART's advantage is simplicity:** two wires, no clock to route, no addressing, no protocol overhead. This makes it the default choice for debug consoles, GPS modules, and any point-to-point link where you just need to send bytes.
 
-**UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for voltage levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
+**UART's weakness is everything else:** no error detection (unless you add parity, and even then it only catches 1-bit errors), no multi-device support, no noise immunity (single-ended signaling), clock drift can cause framing errors at high speeds. For anything more demanding, you layer a physical standard on top (RS-232 for [[learning/notes/quick-context/voltage|voltage]] levels, RS-485 for differential long-haul) or switch to a different protocol entirely.
 
 The deeper tension is **asynchronous vs. synchronous**: UART requires both sides to independently generate matching clocks from crystal oscillators. A ~3% mismatch is tolerable (the oversampling handles it), but beyond that, bits get sampled at the wrong time and you get framing errors. Synchronous protocols (SPI, I2C) avoid this entirely by sending a clock wire — but that's one more wire to route.
 

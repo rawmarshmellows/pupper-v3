@@ -20,7 +20,7 @@ created: 2026-01-22
 | **Gibbs Free Energy (ΔG)** | The total energy a reaction needs (positive) or releases (negative)—think of it as the "energy price tag" of a chemical change |
 | **Overpotential** | Extra [[learning/notes/quick-context/voltage|voltage]] beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish electrodes and resistance |
 | **Faraday Constant (F)** | A conversion factor (96,485 C/mol) that translates between "chemistry units" (moles of electrons) and "electricity units" (coulombs) |
-| **Cell Potential (E)** | The voltage that corresponds to a reaction's energy requirement—directly calculated from Gibbs free energy |
+| **Cell Potential (E)** | The [[learning/notes/quick-context/voltage|voltage]] that corresponds to a reaction's energy requirement—directly calculated from Gibbs free energy |
 | **Non-spontaneous** | A reaction that won't happen unless you force it with external energy (like pushing a ball uphill) |
 
 ## What Does "Non-Spontaneous" Mean?
@@ -248,7 +248,7 @@ Worst case: (1.23 / 2.5) × 100% = 49% efficient
 
 - **Thermodynamics (entropy and enthalpy)** — Gibbs free energy combines enthalpy (heat content) and entropy (disorder); understanding these components explains *why* ΔG has the value it does.
 
-- **Hydrogen economy** — The vision of using hydrogen as a clean fuel; the efficiency of electrolysis (determined by overpotential) is a key bottleneck in making "green hydrogen" economically viable.
+- **Hydrogen economy** — The vision of using hydrogen as a clean fuel; the efficiency of [[learning/notes/quick-context/electrolysis|electrolysis]] (determined by overpotential) is a key bottleneck in making "green hydrogen" economically viable.
 
 </details>
 

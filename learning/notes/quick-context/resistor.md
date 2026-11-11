@@ -21,7 +21,7 @@ Imagine connecting an LED directly to a 9V battery. The LED wants about 20 mA at
 | **Ohm's Law** | V = I × R. The [[learning/notes/quick-context/voltage|voltage]] across a resistor equals the current through it times its resistance. The most fundamental equation in electronics. |
 | **Power Dissipation** | P = I²R = V²/R = IV. Resistors convert electrical energy to heat. Every resistor has a maximum power rating (commonly 1/8W, 1/4W, 1/2W). Exceed it and the resistor burns. |
 | **Tolerance** | How close the actual resistance is to the labeled value. A 1kΩ resistor at ±5% could be 950Ω to 1050Ω. Precision circuits need ±1% or better. |
-| **Voltage Divider** | Two resistors in series that split a voltage proportionally: Vout = Vin × R2/(R1+R2). The most common resistor circuit after simple current limiting. |
+| **[[learning/notes/quick-context/voltage|Voltage]] Divider** | Two resistors in series that split a voltage proportionally: Vout = Vin × R2/(R1+R2). The most common resistor circuit after simple current limiting. |
 
 <details>
 <summary><strong>How It Works</strong></summary>

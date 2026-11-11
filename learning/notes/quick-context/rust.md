@@ -267,7 +267,7 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 **Q2:** At which type of site on a corroding iron surface does the iron actually dissolve—anodic or cathodic?
 <details>
 <summary>Answer</summary>
-**Anodic sites.** At anodic regions, iron undergoes oxidation (Fe → Fe²⁺ + 2e⁻), losing electrons and dissolving into the water film as hydrated ions. Cathodic sites are where oxygen is reduced (O₂ + 2H₂O + 4e⁻ → 4OH⁻), consuming the electrons released at anodic sites. See: Step 1 and Step 3 in How It Works.
+**Anodic sites.** At anodic regions, iron undergoes [[learning/notes/micro-context/oxidation|oxidation]] (Fe → Fe²⁺ + 2e⁻), losing electrons and dissolving into the water film as hydrated ions. Cathodic sites are where oxygen is reduced (O₂ + 2H₂O + 4e⁻ → 4OH⁻), consuming the electrons released at anodic sites. See: Step 1 and Step 3 in How It Works.
 </details>
 
 **Q3:** Why does salt water cause iron to rust faster than pure water?
@@ -279,13 +279,13 @@ CONTRAST: What happens with a scratched TIN-PLATED can
 **Q4:** A galvanized (zinc-coated) nail and a tin-plated nail both get scratched, exposing the underlying steel. One rusts rapidly at the scratch; the other stays rust-free. Which rusts, and why?
 <details>
 <summary>Answer</summary>
-**The tin-plated nail rusts rapidly.** Zinc has a more negative electrode potential (-0.76V) than iron (-0.44V), so zinc preferentially oxidizes, making iron the [[learning/notes/micro-context/cathode|cathode]] (protected). Tin has a less negative potential (-0.14V) than iron, so iron preferentially oxidizes when coupled with tin—the scratch becomes the anode and corrodes faster than uncoated iron would. Galvanizing provides sacrificial protection; tin plating only works as a barrier and accelerates corrosion when breached. See: Concrete Example.
+**The tin-plated nail rusts rapidly.** Zinc has a more negative electrode potential (-0.76V) than iron (-0.44V), so zinc preferentially oxidizes, making iron the [[learning/notes/micro-context/cathode|cathode]] (protected). Tin has a less negative potential (-0.14V) than iron, so iron preferentially oxidizes when coupled with tin—the scratch becomes the [[learning/notes/micro-context/anode|anode]] and corrodes faster than uncoated iron would. Galvanizing provides sacrificial protection; tin plating only works as a barrier and accelerates corrosion when breached. See: Concrete Example.
 </details>
 
 **Q5:** Connect the concepts: How does the "hydration energy" that dissolves Fe²⁺ ions during rusting relate to the same force that makes salt dissolve in water or allows electrolytes to conduct electricity?
 <details>
 <summary>Answer</summary>
-**It's all ion-dipole attraction.** When any ionic compound dissolves—salt, iron, or electrolyte—water molecules orient with their partially charged ends toward the opposite charge of the ion. This attraction releases hydration energy that stabilizes ions in solution. For Fe²⁺, this hydration energy (~1900 kJ/mol) is what allows iron atoms to leave the solid metal and exist as dissolved ions. The same force that dissolves table salt (Na⁺ and Cl⁻ getting hydrated) enables rust formation (Fe²⁺ getting hydrated and drifting away). And once ions are hydrated and mobile, they can carry current—which is exactly how [[learning/notes/quick-context/electrolyte|electrolytes]] work. See: Step 2 (Why Iron Ions Dissolve) and [[learning/notes/quick-context/electrolyte]].
+**It's all ion-dipole attraction.** When any ionic compound dissolves—salt, iron, or [[learning/notes/quick-context/electrolyte|electrolyte]]—water molecules orient with their partially charged ends toward the opposite charge of the ion. This attraction releases hydration energy that stabilizes ions in solution. For Fe²⁺, this hydration energy (~1900 kJ/mol) is what allows iron atoms to leave the solid metal and exist as dissolved ions. The same force that dissolves table salt (Na⁺ and Cl⁻ getting hydrated) enables rust formation (Fe²⁺ getting hydrated and drifting away). And once ions are hydrated and mobile, they can carry current—which is exactly how [[learning/notes/quick-context/electrolyte|electrolytes]] work. See: Step 2 (Why Iron Ions Dissolve) and [[learning/notes/quick-context/electrolyte]].
 </details>
 
 </details>

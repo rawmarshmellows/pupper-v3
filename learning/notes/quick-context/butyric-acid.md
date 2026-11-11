@@ -104,7 +104,7 @@ Colonocytes absorb butyrate from the colonic lumen via monocarboxylate transport
 
 ### The epigenetic mechanism (HDAC inhibition)
 
-At higher concentrations (once $\beta$-oxidation is saturated), butyrate accumulates in the nucleus and inhibits histone deacetylase (HDAC) enzymes. Normally, HDACs remove acetyl groups from histone proteins, keeping chromatin tightly wound and genes silenced. By blocking HDACs, butyrate keeps chromatin open and activates anti-inflammatory and tumor-suppressive genes.
+At higher concentrations (once $\beta$-[[learning/notes/micro-context/oxidation|oxidation]] is saturated), butyrate accumulates in the nucleus and inhibits histone deacetylase (HDAC) enzymes. Normally, HDACs remove acetyl groups from histone proteins, keeping chromatin tightly wound and genes silenced. By blocking HDACs, butyrate keeps chromatin open and activates anti-inflammatory and tumor-suppressive genes.
 
 Butyrate also signals through G protein-coupled receptors: **GPR41** (FFAR3), **GPR43** (FFAR2), and **GPR109A** (HCAR2), modulating immune responses and energy metabolism.
 

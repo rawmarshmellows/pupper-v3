@@ -80,7 +80,7 @@ SPEC  →  WHICH STAGE OF THE COMPARATOR IT GRADES
 | $A_V$ | The [[learning/notes/quick-context/high-gain-amplifier-stage|high-gain node]] + mirror load --- the gain that slams the output to a rail |
 | $CMVR$ | The input pair's usable [[learning/notes/quick-context/voltage|voltage]] window (the rail-to-rail-and-beyond design) |
 | $V_{OH}$, $V_{OL}$, $I_{SC}$ | The output stage (Q6 push-pull) --- how hard and how close to the rails it drives |
-| $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no compensation [[learning/notes/quick-context/capacitor|capacitor]]** --- the structural reason a comparator is fast |
+| $t_{PD}$, $t_{rise/fall}$ | The whole chain run with **no compensation [[learning/notes/quick-context/capacitor|capacitor]]** --- the structural reason a [[learning/notes/quick-context/comparator|comparator]] is fast |
 | $I_S$ | The standing bias current (tail + mirror) the chip burns just to stay alive |
 
 ### 4.1 Absolute Maximum Ratings --- "the do-not-cross lines"
@@ -89,7 +89,7 @@ These are **stress limits, not operating specs**. Exceed any one of them---even 
 
 | Rating (LMC7211-N) | Value | What it means |
 |---|---|---|
-| Supply Voltage ($V^+ - V^-$) | **16 V** | Total rail-to-rail supply that destroys the part above this. |
+| Supply [[learning/notes/quick-context/voltage|Voltage]] ($V^+ - V^-$) | **16 V** | Total rail-to-rail supply that destroys the part above this. |
 | Voltage at any Input/Output pin | $(V^+ +0.3)$ to $(V^- -0.3)$ V | Pins must stay within ~0.3 V of the rails (the on-chip protection diodes start conducting beyond this). |
 | Current at Input pin | **±5 mA** | If an input is driven outside the rails, series resistors must limit current to this. |
 | Current at Output pin | **±30 mA** | Beyond this the output [[learning/notes/quick-context/transistor|transistor]] can be damaged. |
@@ -158,7 +158,7 @@ Key LMC7211-N rows at 2.7 V:
 > **↳ In the circuit:** this table grades, parameter by parameter, the stages the [[learning/notes/quick-context/comparator|comparator]] note draws:
 > - **$V_{OS}$ / $TCV_{OS}$ → the [[learning/notes/quick-context/differential-pair|differential pair]] (Q1/Q2).** Q1 and Q2 are *drawn* identical, but real silicon etches slightly differently, so they don't split the [[learning/notes/micro-context/tail-current|tail current]] evenly at exactly `V(+) = V(-)`. The few mV of input difference needed to re-balance them *is* the offset. This is why your real threshold is $V_{REF} \pm V_{OS}$, not exactly $V_{REF}$---the "ideal" rule "output flips when V(+) > V(-)" from the [[learning/notes/quick-context/comparator|comparator]] note has this small built-in error.
 > - **$A_V$ (100 dB) → the [[learning/notes/quick-context/high-gain-amplifier-stage|high-gain node]].** This is the number behind the comparator's defining behavior: the [[learning/notes/quick-context/comparator|comparator]] note's "20 µA mismatch × 2 MΩ = huge swing → rail." Enormous open-loop gain is what turns a millivolt of imbalance into a full-rail digital output.
-> - **$CMRR$ → the tail current source (Q5).** A perfect tail source keeps Q1+Q2's total current fixed, so moving *both* inputs together changes nothing at the output. CMRR measures how close to perfect it is---the same Q5 the [[learning/notes/quick-context/comparator|comparator]] note credits with "rejecting common-mode noise on both inputs."
+> - **$CMRR$ → the [[learning/notes/micro-context/tail-current|tail current]] source (Q5).** A perfect tail source keeps Q1+Q2's total current fixed, so moving *both* inputs together changes nothing at the output. CMRR measures how close to perfect it is---the same Q5 the [[learning/notes/quick-context/comparator|comparator]] note credits with "rejecting common-mode noise on both inputs."
 > - **$CMVR$ → the input pair's voltage window.** It works from −0.3 V to 3.0 V (slightly past both rails)---the "rail-to-rail-and-beyond input" feature, which is what lets you sense a divider node sitting near ground or near V+.
 > - **$V_{OH}$ / $V_{OL}$ → the output stage (Q6).** How close the push-pull output gets to each rail---i.e. how clean the digital HIGH/LOW levels are that feed your logic.
 > - **$I_S$ → the standing bias** (tail + mirror currents) the chip burns just to stay biased and ready, even when the output isn't switching.
@@ -218,7 +218,7 @@ These are **curves, not guaranteed limits**---they show how the part behaves acr
 - **Output voltage vs. output sinking/sourcing current** at 5 V and 12 V---shows the output *can't quite reach the rail under load*; the harder you pull, the more volts it drops.
 - **Propagation delay vs. input overdrive** at 5 V and 12 V, across temperature---the curve behind the 4.5 numbers, letting you read the delay at *your* overdrive and temperature.
 
-> **↳ In the circuit:** the most instructive graph---output voltage vs. output current---is a direct picture of the [[learning/notes/quick-context/comparator|comparator]]'s output transistor (Q6). An ideal switch would clamp `Vout` exactly to a rail; the real FET has on-resistance, so the harder you make it sink or source, the more volts drop across it and the further `Vout` strays from the rail. That curve is *why* $V_{OH}/V_{OL}$ in §4.3--4.4 are specified *at a stated load current*. The supply-current and propagation-delay curves likewise show the bias network and [[learning/notes/quick-context/differential-pair|differential pair]] drifting with temperature---the same stages the DC and AC tables grade at fixed points.
+> **↳ In the circuit:** the most instructive graph---output voltage vs. output current---is a direct picture of the [[learning/notes/quick-context/comparator|comparator]]'s output [[learning/notes/quick-context/transistor|transistor]] (Q6). An ideal switch would clamp `Vout` exactly to a rail; the real FET has on-resistance, so the harder you make it sink or source, the more volts drop across it and the further `Vout` strays from the rail. That curve is *why* $V_{OH}/V_{OL}$ in §4.3--4.4 are specified *at a stated load current*. The supply-current and propagation-delay curves likewise show the bias network and [[learning/notes/quick-context/differential-pair|differential pair]] drifting with temperature---the same stages the DC and AC tables grade at fixed points.
 
 **Why they exist:** the tables guarantee a few points; the graphs let you *interpolate* to your actual operating conditions. Use tables for go/no-go limits, graphs for "what will it roughly do here."
 

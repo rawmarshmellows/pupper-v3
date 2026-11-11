@@ -19,7 +19,7 @@ Combinational logic (AND, OR, NOT gates) can compute any function, but it has no
 |------|------------|
 | **D (Data) Input** | The single data input to the flip-flop. Whatever binary value (0 or 1) is present here at the moment of the [[learning/notes/micro-context/clock-edges|clock edge]] gets captured. |
 | **Q (Output)** | The stored value. After a [[learning/notes/micro-context/clock-edges|clock edge]], Q holds the value that D had at that edge. Q stays stable until the next clock edge, regardless of what D does in between. |
-| **Clock (CLK)** | A continuous square wave that drives all flip-flops in a synchronous circuit. The flip-flop only "looks" at D during the clock edge (rising or falling, depending on design). Between edges, input changes are ignored. See [[learning/notes/micro-context/clock-edges]]. |
+| **Clock (CLK)** | A continuous square wave that drives all flip-flops in a synchronous circuit. The flip-flop only "looks" at D during the [[learning/notes/micro-context/clock-edges|clock edge]] (rising or falling, depending on design). Between edges, input changes are ignored. See [[learning/notes/micro-context/clock-edges]]. |
 | **Latch vs. Flip-Flop** | A **latch** is level-sensitive: it passes input to output whenever the enable signal is HIGH (transparent). A **flip-flop** is edge-sensitive: it captures input only at the clock transition instant. Flip-flops are preferred in synchronous design because they avoid race conditions. |
 | **Setup & Hold Time** | The data input must be stable for a minimum time *before* the clock edge (**setup time**, $t_{su}$) and *after* (**hold time**, $t_h$). Violating these causes **metastability** — the flip-flop enters an undefined state between 0 and 1. |
 

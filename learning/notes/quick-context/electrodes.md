@@ -43,7 +43,7 @@ Without electrodes, you couldn't run any electrical process through a liquid. No
 <details>
 <summary><strong>How It Works</strong></summary>
 
-The electrode system operates through a coordinated dance between the external circuit (wires and power supply) and the internal circuit (ions moving through the liquid). The power supply acts like a pump, pushing electrons out one terminal and pulling them in the other. Electrons cannot travel through the liquid itself—liquids don't conduct electrons the way metals do. Instead, electrons enter the liquid phase by reacting with chemicals at one electrode (the cathode), and leave by taking electrons from chemicals at the other electrode (the anode). The circuit is completed inside the liquid by ions—charged atoms or molecules—that drift through the solution carrying charge between electrodes.
+The electrode system operates through a coordinated dance between the external circuit (wires and power supply) and the internal circuit (ions moving through the liquid). The power supply acts like a pump, pushing electrons out one terminal and pulling them in the other. Electrons cannot travel through the liquid itself—liquids don't conduct electrons the way metals do. Instead, electrons enter the liquid phase by reacting with chemicals at one electrode (the [[learning/notes/micro-context/cathode|cathode]]), and leave by taking electrons from chemicals at the other electrode (the [[learning/notes/micro-context/anode|anode]]). The circuit is completed inside the liquid by ions—charged atoms or molecules—that drift through the solution carrying charge between electrodes.
 
 At the cathode, electrons arriving from the power supply need somewhere to go. They transfer to nearby ions or molecules, causing **reduction** (electron gain). Positive ions like H+ or Cu2+ are attracted here, grab the electrons, and transform—hydrogen ions become hydrogen gas, copper ions become solid copper metal. Meanwhile, at the anode, the opposite occurs: chemicals give up electrons to the electrode surface, undergoing **[[learning/notes/micro-context/oxidation|oxidation]]** (electron loss). Negative ions like OH- or Cl- migrate here and surrender electrons, becoming oxygen gas, chlorine gas, or other products.
 
@@ -226,7 +226,7 @@ STEP 4: THE CIRCUIT COMPLETES
 | **Charge** | Negative (-) | Positive (+) |
 | **Electron flow** | Electrons flow IN | Electrons flow OUT |
 | **Ions attracted** | Cations (+ions) | Anions (-ions) |
-| **Reaction type** | REDUCTION (gain e⁻) | OXIDATION (lose e⁻) |
+| **Reaction type** | REDUCTION (gain e⁻) | [[learning/notes/micro-context/oxidation|OXIDATION]] (lose e⁻) |
 | **In water [[learning/notes/quick-context/electrolysis|electrolysis]]** | H₂ gas forms | O₂ gas forms |
 | **Easy memory** | **C**athode → **C**ations | **A**node → **A**nions |
 
@@ -241,7 +241,7 @@ STEP 4: THE CIRCUIT COMPLETES
 
 - **Redox Reactions** — The broader category of chemistry involving electron transfer. [[learning/notes/quick-context/electrolysis|Electrolysis]] is just one way to make redox reactions happen; electrodes are where you physically see oxidation and reduction occurring at separate locations.
 
-- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for electrolysis to work. Pure water has almost no ions to carry charge; the [[learning/notes/quick-context/electrolyte|electrolyte]] provides the mobile ions that complete the circuit internally.
+- **Conductivity and Electrolytes** — Why you need to add acid or salt to water for [[learning/notes/quick-context/electrolysis|electrolysis]] to work. Pure water has almost no ions to carry charge; the [[learning/notes/quick-context/electrolyte|electrolyte]] provides the mobile ions that complete the circuit internally.
 
 - **Electroplating** — A practical application where the anode IS the metal you want to deposit (it dissolves) and the cathode IS the object you're coating (metal deposits onto it). Same electrode principles, different purpose.
 

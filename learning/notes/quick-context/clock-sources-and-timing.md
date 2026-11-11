@@ -219,7 +219,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
   4. No USB on this board → no need for crystal-level accuracy
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming the 8 MHz ceramic resonator IS the MCU's operating frequency. It's not -- 8 MHz is far too slow for 1 kHz motor control loops with PID computation, sensor fusion, and CAN communication. The resonator is just a stable *reference* that the PLL multiplies by 22.5 to reach 180 MHz. The resonator's job is accuracy; the PLL's job is speed. No CPU runs directly off its oscillator source.
+**The one thing most outsiders get wrong about this is...** assuming the 8 MHz [[learning/notes/micro-context/ceramic-resonator|ceramic resonator]] IS the MCU's operating frequency. It's not -- 8 MHz is far too slow for 1 kHz motor control loops with PID computation, sensor fusion, and CAN communication. The resonator is just a stable *reference* that the PLL multiplies by 22.5 to reach 180 MHz. The resonator's job is accuracy; the PLL's job is speed. No CPU runs directly off its oscillator source.
 
 </details>
 
@@ -239,7 +239,7 @@ PUPPER V3 CLOCK CHAIN (per STM32)
 
 **Related quick-context files:**
 
-- **[[learning/notes/quick-context/rc-oscillator|RC Oscillator]]** -- The simplest clock source type: [[learning/notes/quick-context/resistor|resistor]]-[[learning/notes/quick-context/capacitor|capacitor]] charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
+- **[[learning/notes/quick-context/rc-oscillator|RC Oscillator]]** -- The simplest [[learning/notes/micro-context/clock-source|clock source]] type: [[learning/notes/quick-context/resistor|resistor]]-[[learning/notes/quick-context/capacitor|capacitor]] charging loops. Covers the HSI internal oscillator and why it's "good enough" for PWM but not for CAN.
 - **[[learning/notes/quick-context/pupper-bom-control-board|Pupper BOM Control Board]]** -- The full BOM including the two muRata CSTNE8M00G55A000R0 ceramic resonators (X1, X2).
 - **[[learning/notes/quick-context/can-bus|CAN Bus]]** -- The communication protocol that drives the Pupper's clock source choice: its ±1.58% tolerance makes ceramic resonators sufficient.
 - **[[learning/notes/quick-context/firmware|Firmware]]** -- The code that configures the clock tree at startup: selecting HSE, configuring PLL multipliers, switching SYSCLK.
@@ -280,10 +280,10 @@ Using $P = CV^2f$:
 
 $\frac{P_{new}}{P_{old}} = \frac{V_{new}^2 \times f_{new}}{V_{old}^2 \times f_{old}} = \frac{(2.2)^2 \times 360}{(1.8)^2 \times 180} = \frac{4.84 \times 360}{3.24 \times 180} = \frac{1742.4}{583.2} \approx 2.99$
 
-About 3x more power -- nearly triple. The frequency doubling contributes 2x, and the voltage increase from 1.8V to 2.2V contributes another 1.49x ($2.2^2 / 1.8^2$). This is why voltage scaling dominates: a modest 22% voltage increase causes a 49% power increase due to the $V^2$ relationship. See: How It Works (Power-Temperature Equation).
+About 3x more power -- nearly triple. The frequency doubling contributes 2x, and the [[learning/notes/quick-context/voltage|voltage]] increase from 1.8V to 2.2V contributes another 1.49x ($2.2^2 / 1.8^2$). This is why voltage scaling dominates: a modest 22% voltage increase causes a 49% power increase due to the $V^2$ relationship. See: How It Works (Power-Temperature Equation).
 </details>
 
-**Q4:** The STM32 boots on its internal 16 MHz RC oscillator, then switches to the external 8 MHz ceramic resonator. Explain two reasons for this sequence.
+**Q4:** The STM32 boots on its internal 16 MHz [[learning/notes/quick-context/rc-oscillator|RC oscillator]], then switches to the external 8 MHz ceramic resonator. Explain two reasons for this sequence.
 
 <details>
 <summary>Answer</summary>

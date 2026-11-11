@@ -221,7 +221,7 @@ Comparison of Common Electrolytes:
 
 - **[[learning/notes/quick-context/cations-and-reduction]]** — Positive ions (cations) in the electrolyte migrate to the [[learning/notes/micro-context/cathode|cathode]] and gain electrons.
 
-- **[[learning/notes/quick-context/anions-and-oxidation]]** — Negative ions (anions) in the electrolyte migrate to the anode and lose electrons.
+- **[[learning/notes/quick-context/anions-and-oxidation]]** — Negative ions (anions) in the electrolyte migrate to the [[learning/notes/micro-context/anode|anode]] and lose electrons.
 
 - **[[learning/notes/quick-context/voltage-thermodynamics-electrolysis]]** — The minimum voltage needed relates to which ions in the electrolyte will react first.
 

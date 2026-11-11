@@ -110,7 +110,7 @@ The Nand-to-Tetris model in this note treats each cell as a full register (a bun
 | Needs refresh? | No (static while powered) | Yes (charge leaks) |
 | Typical use | CPU registers, cache | Main memory (the GBs of "RAM") |
 
-So a machine uses **both**: a little fast SRAM right next to the CPU (registers and cache) and a lot of cheap DRAM as main memory. See [[learning/notes/micro-context/sram|SRAM]] for the cross-coupled-inverter cell and [[learning/notes/quick-context/physics-of-writing-data-to-memory|the physics of writing data to memory]] for why the capacitor approach leaks. The decoder/MUX/DMUX addressing logic in this note is **identical** for both — it is independent of how each cell physically stores its bit.
+So a machine uses **both**: a little fast SRAM right next to the CPU (registers and cache) and a lot of cheap DRAM as main memory. See [[learning/notes/micro-context/sram|SRAM]] for the cross-coupled-inverter cell and [[learning/notes/quick-context/physics-of-writing-data-to-memory|the physics of writing data to memory]] for why the [[learning/notes/quick-context/capacitor|capacitor]] approach leaks. The decoder/MUX/DMUX addressing logic in this note is **identical** for both — it is independent of how each cell physically stores its bit.
 
 The other recurring argument is **decoder cost as $n$ grows**. A flat decoder for $2^n$ words needs a fan-out that grows exponentially, which is why real chips (and the recursive build below) decompose the address into stages — a few bits per level — rather than one giant decoder.
 
@@ -257,7 +257,7 @@ Because each register only captures new data when its own `load` (clock-enable) 
 $16384 / 4096 = 4$, not 8 — so RAM16K is built from **four** RAM4Ks, not eight. The "8×" rhythm of RAM8 -> RAM64 -> RAM512 -> RAM4K breaks at the top level. Accordingly, `ram16K_chip.py` uses a **4-way** DMUX/MUX and a **2-bit** top address field (`address[:2]`) instead of the 3-bit 8-way decoder used at the lower levels.
 </details>
 
-**Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a clock edge. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
+**Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a [[learning/notes/micro-context/clock-edges|clock edge]]. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
 <details>
 <summary>Answer</summary>
 Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the [[learning/notes/quick-context/d-flip-flop|D flip-flop]] provides at the single-bit level.

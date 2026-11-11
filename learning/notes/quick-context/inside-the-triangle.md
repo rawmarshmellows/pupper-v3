@@ -32,7 +32,7 @@ Datasheets tell you the gain is 100,000x, input impedance is infinite, and outpu
 | **Stage 2: High-gain amplifier** | [[learning/notes/micro-context/current-mirror|Current mirror]] active load on the [[learning/notes/quick-context/differential-pair|differential pair]]. Converts the $\mu$A current difference into a full-rail [[learning/notes/quick-context/voltage|voltage]] swing by exploiting the high impedance at the mirror output node. |
 | **Stage 3: Output buffer** | Drives the external load. Push-pull (op-amp) or open-drain/open-collector ([[learning/notes/quick-context/comparator|comparator]]). Provides low output impedance so the signal doesn't droop under load. |
 | **Compensation [[learning/notes/quick-context/capacitor|capacitor]] ($C_c$)** | A small capacitor (~10--30 pF) at the Stage 2 output node. Present in op-amps (limits speed, ensures stability). Absent in comparators (maximum speed, no feedback to stabilize). **This is the single component that separates an op-amp from a [[learning/notes/quick-context/comparator|comparator]].** |
-| **Bias network** | Current mirrors and voltage references that set the DC operating point for every [[learning/notes/quick-context/transistor|transistor]]. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |
+| **Bias network** | Current mirrors and [[learning/notes/quick-context/voltage|voltage]] references that set the DC operating point for every [[learning/notes/quick-context/transistor|transistor]]. Ensures all transistors sit in saturation, ready to amplify. Typically adds 3--5 more transistors beyond the 5 in the core signal path. |
 
 <details>
 <summary><strong>How It Works</strong> --- The complete 7-[[learning/notes/quick-context/transistor|transistor]] signal path</summary>
@@ -234,7 +234,7 @@ RULE 2: "V+ = V-" (with negative feedback)
 </details>
 
 <details>
-<summary><strong>The Key Tension</strong> --- Op-amp vs. comparator is a one-component difference</summary>
+<summary><strong>The Key Tension</strong> --- Op-amp vs. [[learning/notes/quick-context/comparator|comparator]] is a one-component difference</summary>
 
 The entire difference between an op-amp and a comparator comes down to **one [[learning/notes/quick-context/capacitor|capacitor]]** and the design choices that follow from it:
 
@@ -271,7 +271,7 @@ THE SAME 5 TRANSISTORS, TWO DIFFERENT PRODUCTS
     Same silicon. Same physics. Different optimization.
 ```
 
-This is why you should never use an op-amp as a comparator: the compensation capacitor slows it down, the output stage isn't designed for rail-to-rail digital levels, and the input stage isn't designed for large overdrive. It "works" in a prototype but fails in production.
+This is why you should never use an op-amp as a comparator: the compensation [[learning/notes/quick-context/capacitor|capacitor]] slows it down, the output stage isn't designed for rail-to-rail digital levels, and the input stage isn't designed for large overdrive. It "works" in a prototype but fails in production.
 
 </details>
 

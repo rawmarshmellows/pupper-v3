@@ -279,7 +279,7 @@ happen to play.
 
 - **[[learning/notes/quick-context/code-to-gates-and-bootstrapping]]** — The upstream chain: how source code becomes the exact 16-bit numbers traced above, including the Hack C-instruction bit-field layout and how the ALU is built from NAND gates.
 
-- **[[learning/notes/micro-context/clock-edges]]** — The "do it now" pulse. Each fetch-execute step is gated by a clock edge so every register captures consistent, settled values at the same instant.
+- **[[learning/notes/micro-context/clock-edges]]** — The "do it now" pulse. Each fetch-execute step is gated by a [[learning/notes/micro-context/clock-edges|clock edge]] so every register captures consistent, settled values at the same instant.
 
 - **[[learning/notes/quick-context/d-flip-flop]]** — The 1-bit memory cell underneath every register, the PC, and the instruction register. Edge-triggering is why the loop advances in clean discrete steps.
 

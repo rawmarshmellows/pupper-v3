@@ -392,7 +392,7 @@ Passivation is a protective insulating layer (like silicon nitride or oxide) tha
 **Q3:** Why can flip-chip packaging support more connections than [[learning/notes/quick-context/wire-bonding|wire bonding]], even on the same size die?
 <details>
 <summary>Answer</summary>
-Wire bonding requires bond pads at the die edges only (since wires loop outward), limiting connections to the perimeter. Flip-chip uses solder bumps that can cover the entire bottom surface of the die in a grid pattern (area array), dramatically increasing available connection points. A die might fit only ~1000 edge pads but could accommodate 3000+ area-array bumps. See: How It Works (Two Arrangements diagram) and The Key Tension.
+[[learning/notes/quick-context/wire-bonding|Wire bonding]] requires bond pads at the die edges only (since wires loop outward), limiting connections to the perimeter. Flip-chip uses solder bumps that can cover the entire bottom surface of the die in a grid pattern (area array), dramatically increasing available connection points. A die might fit only ~1000 edge pads but could accommodate 3000+ area-array bumps. See: How It Works (Two Arrangements diagram) and The Key Tension.
 </details>
 
 **Q4:** An engineer claims "we should use the smallest possible bond pads to fit more connections." What's wrong with this reasoning?

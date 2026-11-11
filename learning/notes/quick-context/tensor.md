@@ -334,7 +334,7 @@ COMBINED LOADING (real-world):
 **Q3:** The [[learning/notes/quick-context/faraday-tensor|Faraday tensor]] is antisymmetric ($F^{\mu\nu} = -F^{\nu\mu}$) and the stress tensor is symmetric ($\sigma_{ij} = \sigma_{ji}$). What does this difference mean physically?
 <details>
 <summary>Answer</summary>
-**Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the Faraday tensor, this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
+**Antisymmetry means the "diagonal" (same-index) components are zero, and swapping indices flips the sign.** For the [[learning/notes/quick-context/faraday-tensor|Faraday tensor]], this encodes the fact that the electromagnetic field has a rotational character—E and B represent oriented planes in spacetime, not symmetric pairings. For the stress tensor, symmetry reflects conservation of angular momentum: if the stress weren't symmetric, the material would spontaneously start spinning. The symmetry type constrains which physical quantities the tensor can represent.
 </details>
 
 **Q4:** In PyTorch, you create a "tensor" with `torch.tensor([1, 2, 3])`. Is this a tensor in the physics/math sense? Why or why not?

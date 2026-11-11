@@ -19,7 +19,7 @@ If a chip has 50 billion [[learning/notes/quick-context/transistor|transistors]]
 |------|------------|
 | **[[learning/notes/quick-context/voltage|Voltage]] (Potential Difference)** | The "pressure" or energy difference between two points; measured in volts. Like the height difference between the top and bottom of a waterfall—it doesn't change if more water flows. |
 | **Series Circuit** | Components connected end-to-end, so current flows through each one sequentially. Voltages ADD across series elements. |
-| **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME voltage; currents add instead. |
+| **Parallel Circuit** | Components connected side-by-side, sharing the same two connection points. Each component sees the SAME [[learning/notes/quick-context/voltage|voltage]]; currents add instead. |
 | **Power Rails (Vdd/GND)** | The two voltage levels that supply power to all transistors in a chip. Every [[learning/notes/quick-context/transistor|transistor]] connects between these same two rails. |
 | **Current (Amperes)** | The flow rate of electric charge. In parallel circuits, each branch draws its own current, and these currents add up at the power supply. |
 
@@ -307,7 +307,7 @@ THE MATH THAT MATTERS:
   Peak current (when many transistors switch simultaneously) can be 2-3× higher
 ```
 
-**The one thing most outsiders get wrong about this is...** assuming that because each transistor "needs" 0.65V, you must stack up voltage for every transistor. But voltage is a *potential difference*, not a consumable resource. Every transistor experiences the same 0.65V drop between Vdd and GND—they're all in parallel. What does get consumed (and must be supplied in ever-larger amounts) is [[learning/notes/quick-context/electric-current|current]]. A 50-billion-transistor chip draws hundreds of amps, not billions of volts. The engineering challenge isn't generating high voltage; it's delivering enormous current through extremely low-resistance paths while keeping the voltage stable across the entire die.
+**The one thing most outsiders get wrong about this is...** assuming that because each [[learning/notes/quick-context/transistor|transistor]] "needs" 0.65V, you must stack up voltage for every transistor. But voltage is a *potential difference*, not a consumable resource. Every transistor experiences the same 0.65V drop between Vdd and GND—they're all in parallel. What does get consumed (and must be supplied in ever-larger amounts) is [[learning/notes/quick-context/electric-current|current]]. A 50-billion-transistor chip draws hundreds of amps, not billions of volts. The engineering challenge isn't generating high voltage; it's delivering enormous current through extremely low-resistance paths while keeping the voltage stable across the entire die.
 
 </details>
 

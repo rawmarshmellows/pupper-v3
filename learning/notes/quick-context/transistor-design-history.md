@@ -18,7 +18,7 @@ Every few years, [[learning/notes/quick-context/transistor|transistor]] designs 
 | Term | Definition |
 |------|------------|
 | **Point-contact [[learning/notes/quick-context/transistor|transistor]]** | The first transistor (1947): two metal points touching a germanium crystal; unreliable but proved amplification was possible without vacuum tubes |
-| **Bipolar Junction Transistor (BJT)** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
+| **Bipolar Junction [[learning/notes/quick-context/transistor|Transistor]] (BJT)** | Current-controlled switch using two PN junctions (NPN or PNP); dominated 1950s-1970s before MOSFETs took over for digital logic |
 | **Planar [[learning/notes/micro-context/mosfet|MOSFET]]** | [[learning/notes/quick-context/voltage|Voltage]]-controlled switch where a flat gate sits atop the channel; the workhorse design from 1960-2011, simple to manufacture but leaked badly at small scales |
 | **FinFET** | 3D transistor (2011+) where the channel is a vertical "fin" with the gate wrapped around three sides; dramatically reduced leakage at 22nm and below |
 | **Gate-All-Around (GAA/GAAFET)** | Latest architecture (2022+) using stacked horizontal nanosheets with the gate surrounding the channel on all four sides; enables 3nm and beyond |
@@ -404,7 +404,7 @@ Architecture: Complementary FET (stacked NMOS + PMOS)
     Timeline (per IMEC roadmap): ~2031 at "A7" node
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking "Moore's Law" is about shrinking the same transistor. It's not. The planar MOSFET of 1960 is unrecognizable compared to a 2024 GAA nanosheet. What's really happening is a series of complete architectural reinventions, each buying another decade of scaling. The engineers aren't making smaller versions of the same thing—they're inventing entirely new ways to build switches. A FinFET is as different from a planar MOSFET as a jet engine is from a propeller: same job (make thrust / switch current), completely different physics and manufacturing. Understanding transistor history means understanding that every "nm" number represents a different *kind* of transistor, not just a smaller one.
+**The one thing most outsiders get wrong about this is...** thinking "Moore's Law" is about shrinking the same transistor. It's not. The planar [[learning/notes/micro-context/mosfet|MOSFET]] of 1960 is unrecognizable compared to a 2024 GAA nanosheet. What's really happening is a series of complete architectural reinventions, each buying another decade of scaling. The engineers aren't making smaller versions of the same thing—they're inventing entirely new ways to build switches. A FinFET is as different from a planar MOSFET as a jet engine is from a propeller: same job (make thrust / switch current), completely different physics and manufacturing. Understanding transistor history means understanding that every "nm" number represents a different *kind* of transistor, not just a smaller one.
 
 </details>
 

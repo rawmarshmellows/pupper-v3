@@ -200,7 +200,7 @@ The Pupper v3 Control Board Rev 3.5 uses a textbook asynchronous buck. Open [pup
 | Role in topology | Part on board | Value / designator |
 |---|---|---|
 | Buck IC (integrated high-side [[learning/notes/micro-context/mosfet|MOSFET]] + PWM controller) | TPS54561DPRR | **U8**, WSON-10 |
-| Inductor (energy storage) | Sunlord MWSA1004S-100MT | **L1**, 10µH |
+| [[learning/notes/quick-context/inductor|Inductor]] (energy storage) | Sunlord MWSA1004S-100MT | **L1**, 10µH |
 | Catch / freewheeling [[learning/notes/quick-context/diode|diode]] | SS56 Schottky | **D1**, SMA, 5A/60V, Vf≈0.5V |
 | Output caps (ripple filter) | 2× 47µF X5R | **C18, C19**, 0805 |
 | Feedback divider top | 60.4kΩ (E96) | **R5** |
@@ -229,7 +229,7 @@ The Pupper v3 Control Board Rev 3.5 uses a textbook asynchronous buck. Open [pup
 
 **D1 is NOT a series reverse-polarity [[learning/notes/quick-context/diode|diode]].** CN21 connects directly to U8's VIN. D1 sits between U8's SW node and GND as the catch diode — it conducts only during the [[learning/notes/micro-context/mosfet|MOSFET]] off-phase (Phase 2 above), when L1's collapsing field pulls SW below GND.
 
-**Output voltage math:** U8's internal $V_{REF} = 0.8\text{V}$. The feedback pin is regulated to $V_{REF}$, so:
+**Output [[learning/notes/quick-context/voltage|voltage]] math:** U8's internal $V_{REF} = 0.8\text{V}$. The feedback pin is regulated to $V_{REF}$, so:
 
 $$V_{OUT} = V_{REF} \times \left(1 + \frac{R5}{R6}\right) = 0.8 \times \left(1 + \frac{60.4\text{k}}{11.5\text{k}}\right) = 0.8 \times 6.252 \approx 5.0\text{V}$$
 

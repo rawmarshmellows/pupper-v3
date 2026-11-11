@@ -20,7 +20,7 @@ Why does this matter? Without understanding anions and [[learning/notes/micro-co
 | **Electron** | A tiny negatively-charged particle that orbits atoms; the currency of chemistry |
 | **Ion** | An atom that has gained or lost electrons, giving it an electrical charge |
 | **Anion** | A negatively-charged ion (has extra electrons); moves toward positive electrodes |
-| **Oxidation** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
+| **[[learning/notes/micro-context/oxidation|Oxidation]]** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
 | **[[learning/notes/micro-context/anode|Anode]]** | The positive electrode where oxidation occurs; anions migrate here |
 
 <details>
@@ -28,7 +28,7 @@ Why does this matter? Without understanding anions and [[learning/notes/micro-co
 
 Oxidation at the [[learning/notes/micro-context/anode|anode]] follows a predictable sequence driven by electrical attraction. First, the power supply pulls electrons away from the anode, making it positive. This positive electrode then attracts anions (negative ions) floating in the solution—opposite charges attract, so Cl⁻, OH⁻, or other anions drift toward the anode surface. When an anion reaches the electrode, the electrode's "hunger" for electrons (its positive charge) strips electrons away from the anion. The anion loses its extra electron(s), becoming neutral. These released electrons flow into the wire, traveling toward the power supply and completing the circuit.
 
-The transformation from charged ion to neutral species often involves dramatic changes. When chloride anions (Cl⁻) lose their electrons at the anode, two neutral chlorine atoms immediately bond together to form Cl₂ gas, which bubbles away. When hydroxide anions (OH⁻) are oxidized, four of them combine to release one O₂ molecule plus water. The key insight is that oxidation is not destruction—it's transformation. The atoms remain; only their electrical state changes. And those released electrons don't disappear—they become the current flowing through your circuit.
+The transformation from charged ion to neutral species often involves dramatic changes. When chloride anions (Cl⁻) lose their electrons at the [[learning/notes/micro-context/anode|anode]], two neutral chlorine atoms immediately bond together to form Cl₂ gas, which bubbles away. When hydroxide anions (OH⁻) are oxidized, four of them combine to release one O₂ molecule plus water. The key insight is that oxidation is not destruction—it's transformation. The atoms remain; only their electrical state changes. And those released electrons don't disappear—they become the current flowing through your circuit.
 
 ```
 THE OXIDATION PROCESS: Step by Step at the Anode
@@ -186,7 +186,7 @@ so they go to the Anode to lose electrons!
 
 2. **Electrochemical Series** — A ranking of how easily different species lose or gain electrons. This determines which anion gets oxidized when multiple are present (the selectivity problem mentioned above).
 
-3. **[[learning/notes/quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without electrolytes, anions couldn't exist in solution and electrolysis couldn't occur. See: [[learning/notes/quick-context/electrolysis]]
+3. **[[learning/notes/quick-context/making-electrolytes|Electrolytes]]** — Substances that dissolve to form ions in solution, making the liquid conductive. Without electrolytes, anions couldn't exist in solution and [[learning/notes/quick-context/electrolysis|electrolysis]] couldn't occur. See: [[learning/notes/quick-context/electrolysis]]
 
 4. **Electron Configuration** — Understanding *why* atoms gain or lose electrons requires knowing how electrons arrange themselves around atoms. Atoms "want" stable configurations, which drives ion formation.
 

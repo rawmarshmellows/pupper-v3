@@ -48,7 +48,7 @@ THE BJT SPEC CHECKLIST
                    I_B         >=  I_load / beta_min   (then over-drive)
 ```
 
-**1. Type — NPN vs PNP (polarity, not voltage).**
+**1. Type — NPN vs PNP (polarity, not [[learning/notes/quick-context/voltage|voltage]]).**
 The single most common beginner myth is "NPN needs less voltage to turn on." It does not. *Both* types need roughly the same ~0.6–0.7 V across the base–emitter junction to start conducting. The real differences:
 
 - **Direction of control.** NPN turns on when the base is pulled *more positive* than the emitter; PNP turns on when the base is pulled *more negative* than the emitter.
@@ -103,7 +103,7 @@ The margin matters because inductive loads (motors, relays, solenoids) generate 
 The maximum continuous current the collector terminal can carry. Above it the bond wires overheat and the silicon degrades. Your worst-case load current must stay comfortably under it (derate to ~50–70% for reliability). Datasheets also list a higher *peak/pulsed* $I_{CM}$ for brief surges — don't confuse the two.
 
 **4. $P_C$ — the heat ceiling.**
-This is the one beginners forget, and it's the one that quietly cooks parts. The transistor itself dissipates power equal to the voltage across it times the current through it:
+This is the one beginners forget, and it's the one that quietly cooks parts. The [[learning/notes/quick-context/transistor|transistor]] itself dissipates power equal to the voltage across it times the current through it:
 
 $$P_{dissipated} = V_{CE} \cdot I_C$$
 

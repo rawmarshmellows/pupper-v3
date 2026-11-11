@@ -22,7 +22,7 @@ If we actually treated transistors as the messy analog devices they are, digital
 | **Threshold [[learning/notes/quick-context/voltage|Voltage]] (Vth)** | The gate voltage at which a [[learning/notes/quick-context/transistor|transistor]] begins to conduct; below this, it should be "off"—but leakage still occurs |
 | **Leakage Current** | Current that flows through a [[learning/notes/quick-context/transistor|transistor]] even when it's supposed to be off; worsens at smaller process nodes due to quantum tunneling |
 | **Noise Margin** | The [[learning/notes/quick-context/voltage|voltage]] buffer between a valid logic level and the point where it might be misinterpreted; larger margins = more robust digital operation |
-| **Subthreshold Conduction** | Current that flows when gate voltage is below threshold; transistors don't turn off instantly—conductivity drops exponentially but never hits zero |
+| **Subthreshold Conduction** | Current that flows when gate [[learning/notes/quick-context/voltage|voltage]] is below threshold; transistors don't turn off instantly—conductivity drops exponentially but never hits zero |
 | **Regenerative Logic** | Circuit technique where each logic gate "refreshes" a degraded signal back to a clean 0 or 1, preventing error accumulation |
 
 <details>
@@ -32,7 +32,7 @@ The Analog Reality Behind Digital Fiction
 
 ### The Smooth Transition (Not a Binary Snap)
 
-When you raise the gate voltage, a transistor doesn't instantly flip from OFF to ON. It smoothly transitions through an exponential curve:
+When you raise the gate voltage, a [[learning/notes/quick-context/transistor|transistor]] doesn't instantly flip from OFF to ON. It smoothly transitions through an exponential curve:
 
 ```
 TRANSISTOR TRANSFER CURVE: The Analog Truth

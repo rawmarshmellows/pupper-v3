@@ -730,7 +730,7 @@ COMBINED EFFECT:
 
 - **[[learning/notes/micro-context/electromagnetic-induction]]** — Brief definition of Faraday's Law and [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]], of which Lenz's Law specifies the direction.
 
-- **[[learning/notes/quick-context/inductor|inductor]]-current-magnetic-field-emf** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and voltage spikes.
+- **[[learning/notes/quick-context/inductor|inductor]]-current-magnetic-field-emf** — Step-by-step walkthrough of how inductors work, with detailed treatment of how Lenz's Law causes back-EMF and [[learning/notes/quick-context/voltage|voltage]] spikes.
 
 - **Eddy Currents** — Induced currents in bulk conductors (not wires). Used in induction heating, magnetic braking, and metal detectors. Lenz's Law determines their direction and explains why they oppose motion.
 
@@ -751,7 +751,7 @@ COMBINED EFFECT:
 **The generator would spin freely and produce no useful energy.** Without opposition, there would be no magnetic braking. The coil would spin with no resistance, but also no energy transfer. Current might flow, but it wouldn't come from your mechanical work — it would be "free energy" from nothing, violating conservation of energy. Lenz's Law ensures that the mechanical work you do against magnetic braking equals the electrical energy produced. See: Why Opposition is Inevitable.
 </details>
 
-**Q3:** An inductor carries steady DC current. Is Lenz's Law active?
+**Q3:** An [[learning/notes/quick-context/inductor|inductor]] carries steady DC current. Is Lenz's Law active?
 <details>
 <summary>Answer</summary>
 **No, Lenz's Law requires change.** With steady DC, dI/dt = 0, so there's no changing flux, so no induced EMF. The inductor acts like a simple wire (just its DC resistance). Lenz's Law only activates when current changes — during turn-on, turn-off, or AC operation. At steady state, all the "opposition" has already happened, and the inductor is doing nothing but maintaining its magnetic field.

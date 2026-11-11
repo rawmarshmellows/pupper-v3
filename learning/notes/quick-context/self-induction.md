@@ -20,7 +20,7 @@ The answer: **the flux doesn't oppose the current directly — the *changing* fl
 | Term | Definition |
 |------|------------|
 | **Self-Induction** | When a coil's own changing current induces a [[learning/notes/quick-context/voltage|voltage]] in itself. The coil's flux links with its own turns, so any current change creates back-EMF. |
-| **Back-EMF** | The voltage induced in a coil that opposes the change in current. Equal to V = L × dI/dt. It's called "back" because it opposes the applied voltage. |
+| **Back-EMF** | The [[learning/notes/quick-context/voltage|voltage]] induced in a coil that opposes the change in current. Equal to V = L × dI/dt. It's called "back" because it opposes the applied voltage. |
 | **Flux Linkage** | The total magnetic flux linking with a coil: Λ = N × Φ = L × I. For a coil, each turn links with flux from all turns, multiplying the effect. |
 | **Mutual Induction** | When changing current in one coil induces voltage in a nearby coil. Self-induction is the special case where the coil induces voltage in itself. |
 | **Steady State** | When current is constant (dI/dt = 0), so there's no changing flux, no back-EMF, and the [[learning/notes/quick-context/inductor|inductor]] acts like a plain wire. |
@@ -457,7 +457,7 @@ HOW A 12V BATTERY CREATES A 40,000V SPARK
 
 - **[[learning/notes/quick-context/electromagnetism]]** — The unified picture: changing magnetic fields create electric fields (which is why changing flux induces EMF), and changing electric fields create magnetic fields.
 
-- **[[learning/notes/quick-context/capacitor]]** — The dual of an inductor. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
+- **[[learning/notes/quick-context/capacitor]]** — The dual of an [[learning/notes/quick-context/inductor|inductor]]. Capacitors store energy in electric fields and oppose voltage changes, while inductors store energy in magnetic fields and oppose current changes.
 
 - **[[learning/notes/quick-context/electric-current]]** — Current is the flow of charge. In an inductor, the current creates the magnetic field that stores energy.
 

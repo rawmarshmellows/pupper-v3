@@ -507,10 +507,10 @@ You could fit 50 BILLION transistors in a space the size of your fingernail.
 **Q1:** What are the three terminals of a basic [[learning/notes/micro-context/mosfet|MOSFET]] transistor, and what does each do?
 <details>
 <summary>Answer</summary>
-The three terminals are: (1) **Gate** - the control terminal where voltage is applied to turn the transistor on or off; (2) **Source** - where current enters/exits; (3) **Drain** - where current exits/enters. Current flows between source and drain when the gate voltage is high enough; the gate itself draws almost no current because it is insulated by an oxide layer. See: 5 Essential Terms
+The three terminals are: (1) **Gate** - the control terminal where [[learning/notes/quick-context/voltage|voltage]] is applied to turn the transistor on or off; (2) **Source** - where current enters/exits; (3) **Drain** - where current exits/enters. Current flows between source and drain when the gate voltage is high enough; the gate itself draws almost no current because it is insulated by an oxide layer. See: 5 Essential Terms
 </details>
 
-**Q2:** How does the oxide layer in a MOSFET act as a [[learning/notes/quick-context/capacitor|capacitor]], and why is this important for transistor operation?
+**Q2:** How does the oxide layer in a [[learning/notes/micro-context/mosfet|MOSFET]] act as a [[learning/notes/quick-context/capacitor|capacitor]], and why is this important for transistor operation?
 <details>
 <summary>Answer</summary>
 The gate-oxide-semiconductor stack forms a parallel-plate [[learning/notes/quick-context/capacitor|capacitor]]: the metal gate is one plate, the semiconductor surface is the other "plate," and the oxide (SiO₂) is the dielectric. When voltage is applied to the gate, positive charge accumulates on the gate (just like charging a capacitor). The electric field from this charge passes through the oxide and attracts electrons to the semiconductor surface, creating the conductive channel. This is why it's called a "field-effect" transistor—the gate controls current through an electric field, not by carrying current itself. See: How It Works (The Oxide Layer as a Capacitor)
@@ -525,7 +525,7 @@ NAND gates are "functionally complete" - any Boolean logic function can be expre
 **Q4:** If making the oxide layer thinner increases [[learning/notes/quick-context/capacitance|capacitance]] and improves transistor performance, why can't manufacturers just keep making it thinner indefinitely?
 <details>
 <summary>Answer</summary>
-As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The capacitor equation Q = C × V shows why thin oxide is desirable (higher [[learning/notes/quick-context/capacitance|capacitance]] = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
+As the oxide becomes extremely thin (approaching atomic scales), **quantum tunneling** becomes a problem. Electrons can "tunnel" through the oxide barrier even when they shouldn't, causing leakage current. This means current flows through the gate (which should be perfectly insulating), wasting power and generating heat. The [[learning/notes/quick-context/capacitor|capacitor]] equation Q = C × V shows why thin oxide is desirable (higher [[learning/notes/quick-context/capacitance|capacitance]] = stronger control), but quantum mechanics sets a physical limit. The industry has responded with "high-k dielectrics"—materials that provide higher capacitance without being as physically thin. See: The Key Tension, How It Works
 </details>
 
 **Q5:** A colleague claims that transistors work by "current flowing through the gate to control the channel." Explain why this is fundamentally wrong and what actually happens.

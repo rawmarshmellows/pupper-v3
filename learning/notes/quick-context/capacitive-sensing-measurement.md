@@ -24,11 +24,11 @@ Dozens of physical quantities -- humidity, acceleration, pressure, proximity, to
 | **Differential [[learning/notes/quick-context/capacitance|Capacitance]]** | A sensor architecture with two capacitors ($C_1$, $C_2$) that change in opposite directions when the measurand changes. The readout measures $\Delta C = C_1 - C_2$, which doubles sensitivity and cancels common-mode drift -- the same principle as [[learning/notes/quick-context/can-bus|CAN bus]] differential signaling. |
 
 <details>
-<summary><strong>How It Works</strong> -- Three families of capacitance measurement</summary>
+<summary><strong>How It Works</strong> -- Three families of [[learning/notes/quick-context/capacitance|capacitance]] measurement</summary>
 
 ### Why DC Doesn't Work
 
-A capacitor at steady-state [[learning/notes/quick-context/voltage|voltage]] is an open circuit. No current flows, so there's nothing to measure. To extract information from a capacitance, you must *change* the voltage across it -- that creates current proportional to capacitance:
+A [[learning/notes/quick-context/capacitor|capacitor]] at steady-state [[learning/notes/quick-context/voltage|voltage]] is an open circuit. No current flows, so there's nothing to measure. To extract information from a capacitance, you must *change* the voltage across it -- that creates current proportional to capacitance:
 
 $$I = C \cdot \frac{dV}{dt}$$
 
@@ -64,7 +64,7 @@ THREE FAMILIES OF CAPACITANCE MEASUREMENT
 
 ### Family 1: RC Timing
 
-The simplest approach: charge $C_x$ through a known [[learning/notes/quick-context/resistor|resistor]] $R$, and measure how long it takes to reach a threshold voltage. Since $\tau = RC$, the time is directly proportional to capacitance.
+The simplest approach: charge $C_x$ through a known [[learning/notes/quick-context/resistor|resistor]] $R$, and measure how long it takes to reach a threshold [[learning/notes/quick-context/voltage|voltage]]. Since $\tau = RC$, the time is directly proportional to capacitance.
 
 ```
 RC TIMING — HOW TOUCHSCREEN CONTROLLERS WORK

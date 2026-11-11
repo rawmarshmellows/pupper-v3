@@ -16,7 +16,7 @@ updated: 2026-06-08
 
 - Applying [[learning/notes/quick-context/voltage|voltage]] to the gate creates an electric field through the oxide insulator, attracting charge carriers into the channel region.
 - Above the threshold [[learning/notes/quick-context/voltage|voltage]] ($V_{th}$), enough carriers accumulate to form a conductive channel between source and drain.
-- Removing the gate voltage collapses the channel, turning the [[learning/notes/quick-context/transistor|transistor]] off — no gate current flows because the oxide is an insulator.
+- Removing the gate [[learning/notes/quick-context/voltage|voltage]] collapses the channel, turning the [[learning/notes/quick-context/transistor|transistor]] off — no gate current flows because the oxide is an insulator.
 - In CMOS logic, NMOS and PMOS transistors are paired so that one is always off, minimizing static power consumption.
 
 ```
@@ -90,4 +90,4 @@ You don't need an ever-*larger* voltage to switch off — you bring the gate *do
 
 Knob analogy: gate charge = how far you turn the knob; channel = the valve it opens. *Holding* the knob costs ~nothing; only *moving* it costs a blip.
 
-**Key insight:** The gate is one plate of a capacitor—it switches by electric field, not current flow—which is why MOSFETs are far more power-efficient than [[learning/notes/quick-context/bjt|BJTs]] and dominate digital circuits with billions per chip.
+**Key insight:** The gate is one plate of a [[learning/notes/quick-context/capacitor|capacitor]]—it switches by electric field, not current flow—which is why MOSFETs are far more power-efficient than [[learning/notes/quick-context/bjt|BJTs]] and dominate digital circuits with billions per chip.

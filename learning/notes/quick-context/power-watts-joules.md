@@ -194,7 +194,7 @@ POWER FLOW: WALL OUTLET → PHONE BATTERY
 **Q2:** A linear regulator converts 12V to 3.3V at 200 mA. How much power is wasted as heat?
 <details>
 <summary>Answer</summary>
-**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a [[learning/notes/micro-context/buck-converter|buck converter]] (90%+ efficient) is preferred for large voltage drops.
+**1.74W.** Pin = 12V × 0.2A = 2.4W. Pout = 3.3V × 0.2A = 0.66W. Ploss = 2.4 - 0.66 = 1.74W. Efficiency = 0.66/2.4 = 27.5%. This is why a [[learning/notes/micro-context/buck-converter|buck converter]] (90%+ efficient) is preferred for large [[learning/notes/quick-context/voltage|voltage]] drops.
 </details>
 
 **Q3:** Your phone battery is 15 Wh. At 4W average power consumption, how long does it last?

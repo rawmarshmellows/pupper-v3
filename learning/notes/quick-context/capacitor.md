@@ -19,7 +19,7 @@ Electronics need stable [[learning/notes/quick-context/voltage|voltage]] to oper
 |------|------------|
 | **[[learning/notes/quick-context/capacitance|Capacitance]] (C)** | The ability to store charge per unit [[learning/notes/quick-context/voltage|voltage]], measured in farads (F). C = Q/V. A 1-farad capacitor stores 1 coulomb of charge at 1 volt. Most capacitors are microfarads (uF) to picofarads (pF). |
 | **Dielectric** | The insulating material between the capacitor's plates that determines [[learning/notes/quick-context/capacitance|capacitance]] and [[learning/notes/quick-context/voltage|voltage]] rating. Common dielectrics: ceramic, tantalum, aluminum oxide, silicon dioxide (in [[learning/notes/quick-context/transistor|transistors]]). |
-| **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More [[learning/notes/quick-context/capacitance|capacitance]] or higher voltage means more stored charge. |
+| **Charge (Q)** | The amount of electrical charge stored, measured in coulombs. Q = C x V. More [[learning/notes/quick-context/capacitance|capacitance]] or higher [[learning/notes/quick-context/voltage|voltage]] means more stored charge. |
 | **Time Constant (RC)** | The product of resistance and [[learning/notes/quick-context/capacitance|capacitance]] that determines how fast a capacitor charges/discharges. After one time constant (tau = RC), a capacitor reaches ~63% of its final voltage. |
 | **Decoupling/Bypass Capacitor** | A capacitor placed near an IC to provide instant current during switching and filter high-frequency noise from the power supply - the most common capacitor application in digital electronics. |
 
@@ -101,7 +101,7 @@ ENERGY STORAGE COMPARISON:
 Everything about capacitors flows from one equation: **Q = C × V**
 
 - **Q** (charge in coulombs) = how many electrons have accumulated
-- **C** (capacitance in farads) = the capacitor's "size" for storing charge
+- **C** ([[learning/notes/quick-context/capacitance|capacitance]] in farads) = the capacitor's "size" for storing charge
 - **V** (voltage in volts) = the electrical pressure across the plates
 
 ```

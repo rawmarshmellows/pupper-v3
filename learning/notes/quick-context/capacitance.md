@@ -169,7 +169,7 @@ WATER ANALOGY
     Flow rate = Area × dh/dt     ↔  I = C × dV/dt
 ```
 
-This equation is **the** capacitor equation — every speed limit, RC time constant, switching power calculation, and decoupling-cap sizing comes from it.
+This equation is **the** [[learning/notes/quick-context/capacitor|capacitor]] equation — every speed limit, RC time constant, switching power calculation, and decoupling-cap sizing comes from it.
 
 ### Why Parasitic Capacitance Limits Speed
 
@@ -328,7 +328,7 @@ TWO PARALLEL TRACES = THREE CAPACITORS
               GND                GND         GND
 ```
 
-**What "scenario" means** — the *voltage waveform* on each trace at the same moment. Three cases:
+**What "scenario" means** — the *[[learning/notes/quick-context/voltage|voltage]] waveform* on each trace at the same moment. Three cases:
 
 ```
 SCENARIO 1: BOTH TRACES SWITCH SAME DIRECTION, AT SAME TIME
@@ -605,7 +605,7 @@ DYNAMIC POWER IN A CMOS INVERTER
     the #1 trick for reducing chip power for decades.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking capacitance only matters when you're using a discrete capacitor component. In reality, the parasitic capacitance of wires, traces, and transistor gates dominates modern circuit behavior. A 5 cm PCB trace can have 2-5 pF of capacitance to the ground plane (depending on trace width and dielectric thickness) -- comparable to a small ceramic capacitor. A CPU's total gate capacitance (summed across billions of transistors) determines its power consumption more than any other single factor. The [[learning/notes/quick-context/capacitor|capacitor components]] on your board are the capacitance you *chose*; the parasitic capacitance is the capacitance physics *imposed* -- and the parasitic kind is usually what limits your design.
+**The one thing most outsiders get wrong about this is...** thinking capacitance only matters when you're using a discrete capacitor component. In reality, the parasitic capacitance of wires, traces, and [[learning/notes/quick-context/transistor|transistor]] gates dominates modern circuit behavior. A 5 cm PCB trace can have 2-5 pF of capacitance to the ground plane (depending on trace width and dielectric thickness) -- comparable to a small ceramic capacitor. A CPU's total gate capacitance (summed across billions of transistors) determines its power consumption more than any other single factor. The [[learning/notes/quick-context/capacitor|capacitor components]] on your board are the capacitance you *chose*; the parasitic capacitance is the capacitance physics *imposed* -- and the parasitic kind is usually what limits your design.
 
 </details>
 

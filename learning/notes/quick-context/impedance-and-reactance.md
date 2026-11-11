@@ -238,7 +238,7 @@ RC LOW-PASS FILTER
 **Q5:** A [[learning/notes/micro-context/decoupling-capacitor|decoupling capacitor]] has 1.6Ω of reactance at 1 MHz. Is it doing its job?
 <details>
 <summary>Answer</summary>
-**Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the capacitor provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.
+**Yes—1.6Ω is low enough to effectively short high-frequency noise to ground.** The power supply rail typically has much higher source impedance at 1 MHz (tens of ohms from trace inductance), so the [[learning/notes/quick-context/capacitor|capacitor]] provides a much easier path for high-frequency currents. The lower the impedance at the frequency of interest, the better the decoupling. However, every real capacitor also has parasitic inductance (ESL) that increases impedance above its self-resonant frequency.
 </details>
 
 </details>

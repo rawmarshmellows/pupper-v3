@@ -223,7 +223,7 @@ The salt bridge allows ions to migrate:
 | Li-ion | 3.6-3.7V | 150-260 Wh/kg | 500-2000 | Phones, EVs |
 | LiFePO₄ | 3.2V | 90-120 Wh/kg | 2000-5000 | Solar storage |
 
-**The one thing most outsiders get wrong about this is...** thinking batteries "store electricity." They don't—batteries store *chemical potential energy* and convert it to electricity on demand. When you "charge" a lithium-ion battery, you're not pumping electrons into a tank; you're using electrical energy to force lithium ions from the cathode material back into the anode material (intercalation), which is a non-spontaneous process. When you discharge, the lithium ions spontaneously migrate back, and that spontaneous chemical change releases electrical energy. The battery is always doing chemistry—it just reverses direction depending on whether you're charging ([[learning/notes/quick-context/electrolysis|electrolysis]] mode) or discharging (galvanic mode).
+**The one thing most outsiders get wrong about this is...** thinking batteries "store electricity." They don't—batteries store *chemical potential energy* and convert it to electricity on demand. When you "charge" a lithium-ion battery, you're not pumping electrons into a tank; you're using electrical energy to force lithium ions from the [[learning/notes/micro-context/cathode|cathode]] material back into the [[learning/notes/micro-context/anode|anode]] material (intercalation), which is a non-spontaneous process. When you discharge, the lithium ions spontaneously migrate back, and that spontaneous chemical change releases electrical energy. The battery is always doing chemistry—it just reverses direction depending on whether you're charging ([[learning/notes/quick-context/electrolysis|electrolysis]] mode) or discharging (galvanic mode).
 
 This also explains why batteries degrade: you're physically moving atoms around thousands of times. Eventually, the electrode materials crack, lose contact, or undergo irreversible side reactions. A battery isn't wearing out from "holding too many electrons"—it's wearing out from repeated atomic-scale structural stress.
 
@@ -249,7 +249,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** In a galvanic cell, electrons flow from anode to cathode through the external circuit. Why don't they just flow directly through the electrolyte instead?
+**Q1:** In a galvanic cell, electrons flow from anode to cathode through the external circuit. Why don't they just flow directly through the [[learning/notes/quick-context/electrolyte|electrolyte]] instead?
 <details>
 <summary>Answer</summary>
 **Electrolytes conduct ions, not electrons.** The electrolyte is an ionic conductor—dissolved salts or acids that allow charged ions (like Zn²⁺, Cu²⁺, SO₄²⁻) to move through the solution. Free electrons cannot travel through ionic solutions; they must go through the metallic external circuit. This separation is what allows us to extract useful work—if electrons could shortcut through the electrolyte, the reaction would just produce heat instead of electrical current. See: The salt bridge explanation in Concrete Example
@@ -258,7 +258,7 @@ This also explains why batteries degrade: you're physically moving atoms around 
 **Q2:** The Daniell cell produces 1.10V. If you wanted a 3.3V battery for a [[learning/notes/micro-context/microcontroller|microcontroller]], how would you achieve this using Daniell cells?
 <details>
 <summary>Answer</summary>
-**Connect three Daniell cells in series.** When batteries are connected in series (positive terminal of one to negative terminal of the next), their voltages add: 1.10V + 1.10V + 1.10V = 3.30V. The capacity (Ah) stays the same as a single cell, but voltage stacks. This is how a 12V car battery works—six 2.1V lead-acid cells in series. See: Concrete Example (cell voltage calculation)
+**Connect three Daniell cells in series.** When batteries are connected in series (positive terminal of one to negative terminal of the next), their voltages add: 1.10V + 1.10V + 1.10V = 3.30V. The capacity (Ah) stays the same as a single cell, but [[learning/notes/quick-context/voltage|voltage]] stacks. This is how a 12V car battery works—six 2.1V lead-acid cells in series. See: Concrete Example (cell voltage calculation)
 </details>
 
 **Q3:** Why does the copper electrode grow larger while the zinc electrode shrinks during discharge of a Daniell cell?

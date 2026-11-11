@@ -584,7 +584,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A [[learning/notes/micro-context/buck-converter|buck converter]] uses a switch, [[learning/notes/quick-context/diode|diode]], inductor, and [[learning/notes/quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a [[learning/notes/quick-context/resistor|resistor]] voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[learning/notes/micro-context/buck-converter|buck converter]] uses a switch, [[learning/notes/quick-context/diode|diode]], inductor, and [[learning/notes/quick-context/capacitor|capacitor]] to step [[learning/notes/quick-context/voltage|voltage]] down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a [[learning/notes/quick-context/resistor|resistor]] voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION

@@ -24,7 +24,7 @@ Wall outlets provide AC power that alternates direction 50-60 times per second, 
 |------|------------|
 | **PN Junction** | The boundary where P-type silicon (holes) meets N-type silicon (electrons). A depletion zone forms at the boundary, creating a natural barrier to current flow. |
 | **Forward Bias** | Applying [[learning/notes/quick-context/voltage|voltage]] in the "easy" direction (positive to P-side, negative to N-side). Overcomes the depletion zone; current flows. Requires ~0.7V for silicon, ~0.3V for Schottky, ~2V for LEDs. |
-| **Reverse Bias** | Applying voltage in the "blocking" direction. Widens the depletion zone; essentially no current flows (only tiny leakage). |
+| **Reverse Bias** | Applying [[learning/notes/quick-context/voltage|voltage]] in the "blocking" direction. Widens the depletion zone; essentially no current flows (only tiny leakage). |
 | **Forward Voltage Drop (Vf)** | The voltage "consumed" by the diode when conducting. Always present—a silicon diode always drops ~0.7V regardless of current (within limits). |
 | **Breakdown Voltage** | The reverse voltage at which the diode can no longer block current and conducts in reverse. Destructive for normal diodes; intentionally exploited in Zener diodes for voltage regulation. |
 
@@ -256,7 +256,7 @@ BRIDGE RECTIFIER CIRCUIT
 **In a rectifier, the load itself limits the current.** The load resistance determines how much current flows. An LED has very low dynamic resistance once conducting—without an external [[learning/notes/quick-context/resistor|resistor]], the current is limited only by the source's ability to deliver it, which is usually far more than the 20 mA an LED can handle. The resistor acts as the current-controlling element: R = (Vsupply - Vf_LED) / I_desired.
 </details>
 
-**Q5:** In a [[learning/notes/micro-context/buck-converter|buck converter]], the MOSFET turns off and the [[learning/notes/quick-context/inductor|inductor]]'s current must keep flowing. Why does the freewheeling diode conduct, and what would happen without it?
+**Q5:** In a [[learning/notes/micro-context/buck-converter|buck converter]], the [[learning/notes/micro-context/mosfet|MOSFET]] turns off and the [[learning/notes/quick-context/inductor|inductor]]'s current must keep flowing. Why does the freewheeling diode conduct, and what would happen without it?
 <details>
 <summary>Answer</summary>
 **The [[learning/notes/quick-context/inductor|inductor]]'s collapsing magnetic field pulls the switch node voltage below GND.** An [[learning/notes/quick-context/inductor|inductor]] resists changes in current ([[learning/notes/quick-context/self-induction|self-induction]]) — when the MOSFET opens, the inductor generates whatever voltage is needed to keep current flowing. The switch node drops below GND by ~0.7V, forward-biasing the diode ([[learning/notes/micro-context/cathode|cathode]] at the switch node is now more negative than the [[learning/notes/micro-context/anode|anode]] at GND). Current flows: GND → anode → cathode → inductor → load → GND. Without the diode, the inductor's voltage spike would have no safe path — the switch node voltage would shoot to hundreds of volts, destroying the MOSFET. The freewheeling diode is there to protect the circuit by absorbing the inductor's stored energy.

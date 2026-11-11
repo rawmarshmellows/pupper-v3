@@ -351,7 +351,7 @@ GENERATOR OPERATION — Step by Step
 
 - **[[learning/notes/quick-context/capacitor]]** — Capacitors store energy in electric fields; inductors store energy in magnetic fields. They are electromagnetic duals: I = C×dV/dt vs. V = L×dI/dt.
 
-- **[[learning/notes/micro-context/electromagnetic-induction]]** — Glossary-style definition of electromagnetic induction with Faraday's law.
+- **[[learning/notes/micro-context/electromagnetic-induction]]** — Glossary-style definition of [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]] with Faraday's law.
 
 - **[[learning/notes/quick-context/lenzs-law]]** — Why the minus sign in Faraday's Law matters: the induced EMF opposes the change that caused it, enforcing conservation of energy.
 
@@ -382,7 +382,7 @@ GENERATOR OPERATION — Step by Step
 **Faraday's Law and [[learning/notes/quick-context/lenzs-law|Lenz's Law]].** When current through an [[learning/notes/quick-context/inductor|inductor]] changes, the magnetic field it creates also changes. By Faraday's Law, a changing magnetic field induces a [[learning/notes/quick-context/voltage|voltage]] (V = L×dI/dt). By Lenz's Law, this induced voltage opposes the change that caused it—if current is increasing, the induced voltage pushes back against the increase; if decreasing, it tries to maintain the current. This is why inductors "resist" current changes.
 </details>
 
-**Q3:** A transformer has 100 turns on the primary coil and 1000 turns on the secondary. If you apply 12V AC to the primary, what voltage appears on the secondary?
+**Q3:** A transformer has 100 turns on the primary coil and 1000 turns on the secondary. If you apply 12V AC to the primary, what [[learning/notes/quick-context/voltage|voltage]] appears on the secondary?
 <details>
 <summary>Answer</summary>
 **120V AC.** Transformer voltage ratio equals turns ratio: V₂/V₁ = N₂/N₁. So V₂ = 12V × (1000/100) = 120V. Note this only works with AC—the changing current in the primary creates a changing magnetic field, which induces voltage in the secondary. DC would create a constant field, meaning dΦ/dt = 0, meaning no induced voltage.

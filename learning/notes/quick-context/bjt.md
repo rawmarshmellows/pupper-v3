@@ -218,7 +218,7 @@ MOTOR DRIVER CIRCUIT
 **15 mA.** Ic = β × Ib = 150 × 100μA = 15,000μA = 15 mA. This is only valid in the active region—if the load resistance limits current below this, the BJT is in saturation and Ic < β × Ib.
 </details>
 
-**Q2:** Why does a BJT base always draw current, but a MOSFET gate doesn't?
+**Q2:** Why does a BJT base always draw current, but a [[learning/notes/micro-context/mosfet|MOSFET]] gate doesn't?
 <details>
 <summary>Answer</summary>
 **The BJT base-emitter junction is a forward-biased [[learning/notes/quick-context/diode|diode]].** Current must flow through this junction to inject carriers into the base that get swept to the collector. A MOSFET gate is separated from the channel by an insulating oxide layer—it's a [[learning/notes/quick-context/capacitor|capacitor]], not a diode. Charge flows to charge/discharge the gate [[learning/notes/quick-context/capacitance|capacitance]], but no DC current flows through it.
@@ -239,7 +239,7 @@ MOTOR DRIVER CIRCUIT
 **Q5:** A digital circuit needs 50 million transistors. Why can't you build it with BJTs?
 <details>
 <summary>Answer</summary>
-**Power consumption.** Each BJT gate draws continuous base current, even when idle. With 50 million gates, the total idle power would be enormous—and the heat would be unmanageable. CMOS (complementary MOSFETs) draws essentially zero static power because MOSFET gates don't need DC current. CMOS only draws current during switching transitions, making billion-transistor chips thermally feasible.
+**Power consumption.** Each BJT gate draws continuous base current, even when idle. With 50 million gates, the total idle power would be enormous—and the heat would be unmanageable. CMOS (complementary MOSFETs) draws essentially zero static power because MOSFET gates don't need DC current. CMOS only draws current during switching transitions, making billion-[[learning/notes/quick-context/transistor|transistor]] chips thermally feasible.
 </details>
 
 </details>

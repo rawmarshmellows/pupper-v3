@@ -261,7 +261,7 @@ No — SparkFun Qwiic boards are 3.3V only. The Arduino Uno's I2C lines run at 5
 **Q2:** You've daisy-chained 3 Qwiic sensors and the last one in the chain isn't responding. What's likely wrong?
 <details>
 <summary>Answer</summary>
-Most likely **bus [[learning/notes/quick-context/capacitance|capacitance]]**. Each breakout board adds ~10-30 pF of capacitance, plus each cable adds capacitance proportional to its length. Beyond ~400 pF total, I2C signal edges become too slow for the pull-up resistors to restore the bus voltage in time. Fixes: use shorter cables, reduce the number of boards, use stronger pull-ups (lower resistance, e.g., 4.7k$\Omega$ instead of 10k$\Omega$), or use an I2C bus extender chip.
+Most likely **bus [[learning/notes/quick-context/capacitance|capacitance]]**. Each breakout board adds ~10-30 pF of capacitance, plus each cable adds capacitance proportional to its length. Beyond ~400 pF total, I2C signal edges become too slow for the pull-up resistors to restore the bus [[learning/notes/quick-context/voltage|voltage]] in time. Fixes: use shorter cables, reduce the number of boards, use stronger pull-ups (lower resistance, e.g., 4.7k$\Omega$ instead of 10k$\Omega$), or use an I2C bus extender chip.
 </details>
 
 **Q3:** You want to connect two identical BME280 temperature sensors to measure two different locations. Both have address 0x77. How do you solve this with Qwiic?

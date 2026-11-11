@@ -14,7 +14,7 @@ created: 2026-04-02
 - A reference current $I_{ref}$ (set by a [[learning/notes/quick-context/resistor|resistor]] or upstream source) flows through a [[learning/notes/quick-context/diode|diode]]-connected [[learning/notes/micro-context/mosfet|MOSFET]] (gate tied to drain), forcing it to develop whatever $V_{gs}$ is needed to carry that current.
 - A second matched [[learning/notes/quick-context/transistor|transistor]] shares the same $V_{gs}$ (gates tied together), so it develops the same channel conditions and conducts the same current: $I_{out} \approx I_{ref}$.
 - Because the output [[learning/notes/quick-context/transistor|transistor]] operates in saturation, its drain current is nearly independent of drain [[learning/notes/quick-context/voltage|voltage]] — giving high output impedance, which is what makes it a good current source.
-- Scaling the output transistor's $W/L$ ratio relative to the reference transistor scales the copied current proportionally: $I_{out} = I_{ref} \times (W/L)_{out} / (W/L)_{ref}$.
+- Scaling the output [[learning/notes/quick-context/transistor|transistor]]'s $W/L$ ratio relative to the reference transistor scales the copied current proportionally: $I_{out} = I_{ref} \times (W/L)_{out} / (W/L)_{ref}$.
 
 ```
     I_ref                 I_out ≈ I_ref

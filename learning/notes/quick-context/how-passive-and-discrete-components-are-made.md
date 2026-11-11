@@ -55,7 +55,7 @@ TWO ROADS TO THE SAME FOUR PARTS
 
 ### ON-CHIP — all four are patterned together on one wafer
 
-Everything below is created by the *same* cycle described in [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]]: deposit a layer, spin photoresist, expose a mask, etch or implant, repeat. The mask shapes decide whether a given patch of silicon becomes a [[learning/notes/quick-context/transistor|transistor]], a resistor, a [[learning/notes/quick-context/capacitor|capacitor]], or a [[learning/notes/quick-context/diode|diode]]. Nothing is "added on" — it is all carved out of the layer stack.
+Everything below is created by the *same* cycle described in [[learning/notes/quick-context/semiconductor-fabrication|semiconductor fabrication]]: deposit a layer, spin photoresist, expose a mask, etch or implant, repeat. The mask shapes decide whether a given patch of silicon becomes a [[learning/notes/quick-context/transistor|transistor]], a [[learning/notes/quick-context/resistor|resistor]], a [[learning/notes/quick-context/capacitor|capacitor]], or a [[learning/notes/quick-context/diode|diode]]. Nothing is "added on" — it is all carved out of the layer stack.
 
 ```
 ON-CHIP COMPONENTS — same wafer, same litho, different mask shapes
@@ -180,7 +180,7 @@ DISCRETE DIODE  (one junction die in a 2-lead package)
     of sharing a wafer. → [[learning/notes/quick-context/diode|diode]]
 ```
 
-**Math notation:** On-chip resistance follows $R = R_s \cdot \dfrac{L}{W}$, where $R_s$ is sheet resistance in $\Omega/\square$. A parallel-plate capacitor (MOS, MIM, or one MLCC layer) follows $C = \dfrac{\varepsilon \cdot A}{d}$, with $\varepsilon$ the dielectric permittivity, $A$ the plate area, and $d$ the insulator thickness.
+**Math notation:** On-chip resistance follows $R = R_s \cdot \dfrac{L}{W}$, where $R_s$ is sheet resistance in $\Omega/\square$. A parallel-plate [[learning/notes/quick-context/capacitor|capacitor]] (MOS, MIM, or one MLCC layer) follows $C = \dfrac{\varepsilon \cdot A}{d}$, with $\varepsilon$ the dielectric permittivity, $A$ the plate area, and $d$ the insulator thickness.
 
 </details>
 
@@ -219,7 +219,7 @@ This is exactly why a [[learning/notes/quick-context/comparator|comparator]] is 
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> — The same comparator circuit, both worlds at once</summary>
+<summary><strong>Concrete Example</strong> — The same [[learning/notes/quick-context/comparator|comparator]] circuit, both worlds at once</summary>
 
 The [[learning/notes/quick-context/comparator|comparator battery-monitor]] circuit is the perfect illustration: parts from *both* roads sit in one tiny circuit, and you can point at which is which.
 
@@ -271,7 +271,7 @@ Down the ladder, every "on-chip" part above traces to the raw [[learning/notes/q
 
 - **How a Computer Works — Index-Spine** — this note is rung F3 of the Fabrication Basement: the hardware rungs are built from parts, and this explains how those parts are themselves made.
 - **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — the litho/etch/implant/deposit cycle that patterns *all* the on-chip parts here, exactly as it patterns transistors. The "down" link.
-- **[[learning/notes/quick-context/doped-silicon|Doped Silicon]]** — the raw material an on-chip resistor (diffused strip) and diode (PN junction) are carved from; doping level sets sheet resistance.
+- **[[learning/notes/quick-context/doped-silicon|Doped Silicon]]** — the raw material an on-chip resistor (diffused strip) and [[learning/notes/quick-context/diode|diode]] (PN junction) are carved from; doping level sets sheet resistance.
 - **[[learning/notes/quick-context/silicon-die|Silicon Die]]** & **[[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]]** — where on-chip parts physically live: diffused resistors and MOS caps near the transistors, MIM caps up in the metal stack.
 - **[[learning/notes/quick-context/transistor|Transistor]]** — the diode's PN junction is the same physics; a comparator is a circuit of these. The component all four parts share fabrication with.
 - **[[learning/notes/quick-context/resistor|Resistor]]**, **[[learning/notes/quick-context/capacitor|Capacitor]]**, **[[learning/notes/quick-context/diode|Diode]]**, **[[learning/notes/quick-context/comparator|Comparator]]** — what each part *does* in a circuit; this note explains how each is *built*.
@@ -301,7 +301,7 @@ The resistor's value is $R = R_s \cdot (L/W)$ — the *doping level* fixes the s
 Because a comparator is not a single circuit element — it is an *integrated circuit*: a dozen-plus transistors plus on-chip resistors and capacitors (a [[learning/notes/quick-context/differential-pair|differential pair]], a [[learning/notes/micro-context/current-mirror|current mirror]], a bias resistor, an output stage) all fabricated together on one die. A diode is one PN junction, which fits on a single tiny die with two terminals. You can package one junction with two leads; you cannot reduce a multi-[[learning/notes/quick-context/transistor|transistor]] circuit to a single two-terminal element. A comparator is therefore made like any chip, not like a passive part. See: How It Works (comparator) and the misconception note.
 </details>
 
-**Q4:** A designer says: "I'll just use the resistors inside my chip for the voltage divider that sets my reference — saves two parts." What's wrong with relying on on-chip resistors for an *accurate absolute* value?
+**Q4:** A designer says: "I'll just use the resistors inside my chip for the [[learning/notes/quick-context/voltage|voltage]] divider that sets my reference — saves two parts." What's wrong with relying on on-chip resistors for an *accurate absolute* value?
 <details>
 <summary>Answer</summary>
 On-chip resistor absolute accuracy is poor (±20–30%) because doping and geometry drift across the wafer and there's no per-part trimming. So an on-chip divider's absolute output voltage is unreliable. *However*, on-chip parts *match each other* extremely well, so a divider that depends only on the *ratio* of two on-chip resistors can be trustworthy even though neither absolute value is. If the reference truly needs an accurate absolute trip point, you use discrete, laser-trimmed (±1%) resistors on the board instead. See: The Key Tension.

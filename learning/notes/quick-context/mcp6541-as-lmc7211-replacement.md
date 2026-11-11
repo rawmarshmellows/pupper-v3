@@ -162,7 +162,7 @@ Run the [[learning/notes/quick-context/comparator-specification|spec checklist]]
   12 V rail                    ABS MAX is 7 V → DESTROYED   ✗ STOP
 ```
 
-**Verdict: not a replacement — full stop.** The 12 V rail exceeds the MCP6541's 7 V absolute maximum; the part is damaged on power-up before speed or anything else even matters. Here you need another *15 V-rated* push-pull comparator, or the LMC7211-N itself.
+**Verdict: not a replacement — full stop.** The 12 V rail exceeds the MCP6541's 7 V absolute maximum; the part is damaged on power-up before speed or anything else even matters. Here you need another *15 V-rated* push-pull [[learning/notes/quick-context/comparator|comparator]], or the LMC7211-N itself.
 
 **The one thing most outsiders get wrong about this is...** assuming that "identical pinout, same package, cheaper" means "drop-in replacement." Form-compatibility is necessary but **not sufficient** — the MCP6541 fits the LMC7211-N footprint flawlessly and is still a *wrong* part for any design above 5.5 V or needing sub-microsecond response. Always run the *function* half of the checklist against **your** operating conditions, not the datasheet's headline.
 
@@ -215,7 +215,7 @@ Run the [[learning/notes/quick-context/comparator-specification|spec checklist]]
 **Q5:** The LMC7211-N's propagation delay is ~450 ns; the MCP6541's is ~4 µs. For which kind of signal does this 9× gap *not* matter, and why?
 <details>
 <summary>Answer</summary>
-**Slow-moving signals** — a battery voltage sagging over seconds, a thermostat, a sensor threshold. The output only needs to switch "eventually," so 4 µs of delay is invisible. The gap *does* matter for fast edges (PWM feedback, high-frequency switching, precise edge timing), where 4 µs is an eternity. This is why Case A (slow battery monitor) passes despite the speed loss, while a fast logic-edge design would not. See: The Key Tension and Concrete Example.
+**Slow-moving signals** — a battery [[learning/notes/quick-context/voltage|voltage]] sagging over seconds, a thermostat, a sensor threshold. The output only needs to switch "eventually," so 4 µs of delay is invisible. The gap *does* matter for fast edges (PWM feedback, high-frequency switching, precise edge timing), where 4 µs is an eternity. This is why Case A (slow battery monitor) passes despite the speed loss, while a fast logic-edge design would not. See: The Key Tension and Concrete Example.
 </details>
 
 </details>

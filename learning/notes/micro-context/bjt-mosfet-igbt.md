@@ -16,7 +16,7 @@ created: 2026-06-02
 - **BJT:** a small base current controls a much larger collector→emitter current (bipolar conduction); the base draws continuous current and switches at moderate speed.
 - **[[learning/notes/micro-context/mosfet|MOSFET]]:** an insulated gate sets up an electric field with near-zero gate current, giving the fastest switching and lowest loss at low–mid [[learning/notes/quick-context/voltage|voltage]]—dominates logic and switch-mode supplies.
 - **IGBT:** the insulated gate (easy [[learning/notes/quick-context/voltage|voltage]] drive, like a [[learning/notes/micro-context/mosfet|MOSFET]]) feeds an internal BJT output, so it conducts like a BJT—low loss at high voltage, but slower than a MOSFET.
-- **Pick by voltage/frequency:** [[learning/notes/micro-context/mosfet|MOSFET]] for low-voltage high-frequency, IGBT for high-voltage high-power (motor drives, EV/solar inverters, welders), BJT for analog and small-signal.
+- **Pick by [[learning/notes/quick-context/voltage|voltage]]/frequency:** [[learning/notes/micro-context/mosfet|MOSFET]] for low-voltage high-frequency, IGBT for high-voltage high-power (motor drives, EV/solar inverters, welders), BJT for analog and small-signal.
 
 ```
               BJT            MOSFET        IGBT
@@ -33,6 +33,6 @@ created: 2026-06-02
          (voltage in)      (low-loss, high-voltage current)
 ```
 
-**Key insight:** An IGBT is literally a MOSFET front-end bolted to a BJT back-end—drive it like a MOSFET (cheap voltage gate) but it conducts like a BJT (big volts and amps)—which is why IGBTs rule high-power conversion above ~400 V while MOSFETs own the low-voltage, high-speed domain.
+**Key insight:** An IGBT is literally a [[learning/notes/micro-context/mosfet|MOSFET]] front-end bolted to a BJT back-end—drive it like a MOSFET (cheap voltage gate) but it conducts like a BJT (big volts and amps)—which is why IGBTs rule high-power conversion above ~400 V while MOSFETs own the low-voltage, high-speed domain.
 
 > **Video:** https://youtu.be/EddYiCeL16Q

@@ -242,7 +242,7 @@ CHOOSING A PACKAGE FOR THE ATmega328P
 **Q5:** What is the thermal pad (exposed pad) on the bottom of a QFN, and why does it matter?
 <details>
 <summary>Answer</summary>
-**It's a large metal pad connected to the die attach paddle inside the package, providing a direct thermal path from the chip to the PCB.** Heat from the die conducts through the paddle to this exposed pad, then through solder into the PCB copper (especially if thermal vias connect to internal ground planes). Without soldering the exposed pad, the IC can overheat even at moderate power levels. It often also serves as the ground connection.
+**It's a large metal pad connected to the die attach paddle inside the package, providing a direct thermal path from the chip to the PCB.** Heat from the die conducts through the paddle to this exposed pad, then through solder into the PCB copper (especially if thermal vias connect to internal ground planes). Without [[learning/notes/quick-context/soldering|soldering]] the exposed pad, the IC can overheat even at moderate power levels. It often also serves as the ground connection.
 </details>
 
 </details>

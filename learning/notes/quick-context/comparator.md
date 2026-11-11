@@ -21,7 +21,7 @@ A battery monitor needs to answer a simple question: "Is the battery [[learning/
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate [[learning/notes/quick-context/voltage|voltage]] gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
 | **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A pull-up [[learning/notes/quick-context/resistor|resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any [[learning/notes/quick-context/voltage|voltage]] logic level. |
-| **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
+| **Reference [[learning/notes/quick-context/voltage|voltage]] ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>
 <summary><strong>How It Works</strong> --- From [[learning/notes/quick-context/transistor|transistor]] pairs to digital output</summary>
