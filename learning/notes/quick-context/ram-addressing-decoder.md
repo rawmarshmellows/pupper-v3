@@ -5,13 +5,13 @@ created: 2026-06-07
 
 # RAM — Addressing an Array of Registers
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/buck-converter]]
 
 > **TL;DR:** A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] stores exactly one word. RAM (Random-Access Memory) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its address**. Two switching circuits do the picking: a **DMUX** routes the "write now" signal to the one register you want to change, and a **MUX** selects the one register's value you want to read. With $n$ address bits you can name $2^n$ words, and you build big RAM by stacking eight small RAMs and gluing on three more address bits — over and over.
 
 ## The Core Problem
 
-A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a short circuit, and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
+A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a [[learning/notes/micro-context/short-circuit|short circuit]], and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
 
 ## 5 Essential Terms
 
@@ -19,7 +19,7 @@ A single register can hold one word, but a useful program needs thousands or mil
 |------|------------|
 | **Word** | The fixed-size chunk RAM stores and returns per address — one register's worth of bits. In the Nand-to-Tetris machine modeled here a word is 16 bits (`Bits16`); on a PC it is usually 8, 32, or 64. |
 | **Address** | A binary number that names one word in the array. With $n$ address bits there are $2^n$ distinct addresses, so an $n$-bit address selects one of $2^n$ words. |
-| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the clock edge. |
+| **DMUX (demultiplexer)** | A 1-to-many router on the **write path**. It takes the single `load` ("write now") signal and forwards it to **exactly one** register's load pin, chosen by the address. All other registers get `load = 0` and ignore the [[learning/notes/micro-context/clock-edges|clock edge]]. |
 | **MUX (multiplexer)** | A many-to-1 selector on the **read path**. Every register is always outputting its stored value; the MUX picks **exactly one** of those outputs to pass through, chosen by the address. |
 | **Load / clock-enable** | The gate that decides whether a register captures new data on the next [[learning/notes/micro-context/clock-edges|clock edge]]. If `load = 1` the register overwrites itself at the edge; if `load = 0` it holds. The DMUX sets exactly one register's `load` to 1. |
 
@@ -82,7 +82,7 @@ The asymmetry is the whole trick. Writing must be **gated by the clock** so data
 
 ### Why the DMUX prevents clobbering
 
-Every register shares the same clock. If you simply let all of them capture on every edge, one write would overwrite all eight. The DMUX is what makes the array behave like memory instead of a broadcast: it converts a single `load` into a **one-hot** vector (exactly one wire high) so the clock edge only "lands" on the addressed register.
+Every register shares the same clock. If you simply let all of them capture on every edge, one write would overwrite all eight. The DMUX is what makes the array behave like memory instead of a broadcast: it converts a single `load` into a **one-hot** vector (exactly one wire high) so the [[learning/notes/micro-context/clock-edges|clock edge]] only "lands" on the addressed register.
 
 ```
 address = 5 (binary 101)        load = 1
@@ -100,17 +100,17 @@ address = 5 (binary 101)        load = 1
 
 The central design tension in real RAM is **speed vs. density vs. cost**, and it shows up as the SRAM-vs-DRAM split.
 
-The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a capacitor — one transistor plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
+The Nand-to-Tetris model in this note treats each cell as a full register (a bundle of flip-flops). That is essentially **SRAM**: fast, holds its value as long as power is on, but expensive because every bit costs roughly six transistors. Real **DRAM** stores each bit as a tiny charge on a [[learning/notes/quick-context/capacitor|capacitor]] — one [[learning/notes/quick-context/transistor|transistor]] plus one capacitor — so it is far denser and cheaper per bit, but the charge leaks and must be **refreshed** thousands of times per second, and reads are destructive (you have to write the value back). DRAM is also slower to access.
 
-| | SRAM (register-like) | DRAM (capacitor) |
+| | SRAM (register-like) | DRAM ([[learning/notes/quick-context/capacitor|capacitor]]) |
 |---|---|---|
-| Cell | ~6 transistors (flip-flop) | 1 transistor + 1 capacitor |
+| Cell | ~6 transistors (flip-flop) | 1 [[learning/notes/quick-context/transistor|transistor]] + 1 [[learning/notes/quick-context/capacitor|capacitor]] |
 | Speed | Fastest (<1 ns) | Slower |
 | Density / cost | Low density, expensive | High density, cheap |
 | Needs refresh? | No (static while powered) | Yes (charge leaks) |
 | Typical use | CPU registers, cache | Main memory (the GBs of "RAM") |
 
-So a machine uses **both**: a little fast SRAM right next to the CPU (registers and cache) and a lot of cheap DRAM as main memory. See [[learning/notes/micro-context/sram|SRAM]] for the cross-coupled-inverter cell and [[learning/notes/quick-context/physics-of-writing-data-to-memory|the physics of writing data to memory]] for why the capacitor approach leaks. The decoder/MUX/DMUX addressing logic in this note is **identical** for both — it is independent of how each cell physically stores its bit.
+So a machine uses **both**: a little fast SRAM right next to the CPU (registers and cache) and a lot of cheap DRAM as main memory. See [[learning/notes/micro-context/sram|SRAM]] for the cross-coupled-inverter cell and [[learning/notes/quick-context/physics-of-writing-data-to-memory|the physics of writing data to memory]] for why the [[learning/notes/quick-context/capacitor|capacitor]] approach leaks. The decoder/MUX/DMUX addressing logic in this note is **identical** for both — it is independent of how each cell physically stores its bit.
 
 The other recurring argument is **decoder cost as $n$ grows**. A flat decoder for $2^n$ words needs a fan-out that grows exponentially, which is why real chips (and the recursive build below) decompose the address into stages — a few bits per level — rather than one giant decoder.
 
@@ -226,7 +226,7 @@ def __call__(self, in_bits: Bits16, load: Bit, address: Bits6) -> Bits16:
 - **[[learning/notes/micro-context/sram]]** — How a real fast memory cell stores a bit with six cross-coupled transistors. The "register per word" model in this note is essentially SRAM.
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — The other side of the SRAM-vs-DRAM split: why a capacitor-based cell is dense and cheap but leaks and needs refresh.
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The rung above this one: the CPU repeatedly reads instructions and data from RAM by address, then writes results back — it is the main "customer" of this addressing machinery.
-- **[[learning/notes/index/how-a-computer-works-index]]** — The spine hub: the full ladder from electricity up to running code. RAM is rung L7, sitting above the register and below the CPU.
+- **how-a-computer-works-index** — The spine hub: the full ladder from electricity up to running code. RAM is rung L7, sitting above the register and below the CPU.
 
 </details>
 
@@ -248,7 +248,7 @@ $2^{10} = 1024$ words. Each address bit doubles the number of distinguishable ad
 **Q3:** All eight registers in a RAM8 share the same clock line. Why doesn't a single write overwrite all eight registers at once?
 <details>
 <summary>Answer</summary>
-Because each register only captures new data when its own `load` (clock-enable) is 1. The DMUX converts the single incoming `load` into a one-hot vector — exactly one of the eight load lines is high — so when the clock edge arrives, only the addressed register captures `in`; the other seven have `load = 0` and simply hold. See "Why the DMUX prevents clobbering."
+Because each register only captures new data when its own `load` (clock-enable) is 1. The DMUX converts the single incoming `load` into a one-hot vector — exactly one of the eight load lines is high — so when the [[learning/notes/micro-context/clock-edges|clock edge]] arrives, only the addressed register captures `in`; the other seven have `load = 0` and simply hold. See "Why the DMUX prevents clobbering."
 </details>
 
 **Q4:** Someone says "a 16K RAM must be built from 8 RAM4Ks, because that's the recursive rule." What's wrong with that claim?
@@ -257,7 +257,7 @@ Because each register only captures new data when its own `load` (clock-enable) 
 $16384 / 4096 = 4$, not 8 — so RAM16K is built from **four** RAM4Ks, not eight. The "8×" rhythm of RAM8 -> RAM64 -> RAM512 -> RAM4K breaks at the top level. Accordingly, `ram16K_chip.py` uses a **4-way** DMUX/MUX and a **2-bit** top address field (`address[:2]`) instead of the 3-bit 8-way decoder used at the lower levels.
 </details>
 
-**Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a clock edge. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
+**Q5:** Reading from RAM is described as combinational (no clock needed) while writing requires a [[learning/notes/micro-context/clock-edges|clock edge]]. Why the asymmetry, and what would go wrong if writes weren't clock-gated?
 <details>
 <summary>Answer</summary>
 Reading is pure selection: every register is already holding a stable value and continuously outputting it, so the MUX can route the chosen one out immediately. Writing changes stored state, which must happen at a single, well-defined instant. If a write weren't gated to the clock edge, the register could capture transient, mid-settling "glitch" values as the address and data lines change, corrupting memory. The clock edge (plus the DMUX picking one register) guarantees the addressed cell latches a clean value at one precise moment. This is the same edge-triggered discipline the [[learning/notes/quick-context/d-flip-flop|D flip-flop]] provides at the single-bit level.

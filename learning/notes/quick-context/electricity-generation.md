@@ -3,9 +3,9 @@ topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/maxwell-equations]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/buck-converter]]
 
-> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from electromagnetic induction: spin a coil in a magnetic field and electrons are forced to move.
+> **TL;DR:** Electricity is created by converting other forms of energy into the directed flow of electrons—whether through chemical reactions (batteries), changing magnetic fields (generators), or photon absorption (solar cells). Over 99% of grid electricity comes from [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]: spin a coil in a magnetic field and electrons are forced to move.
 
 # How Electricity is Created
 
@@ -15,20 +15,20 @@ Electricity doesn't exist freely in nature in a useful form. Lightning is too br
 
 There are fundamentally three ways to force electrons to move:
 
-1. **Chemical reactions** — Batteries exploit spontaneous redox reactions where certain atoms "want" to give up electrons while others "want" to accept them. See [[quick-context/galvanic-cells-batteries]].
+1. **Chemical reactions** — Batteries exploit spontaneous redox reactions where certain atoms "want" to give up electrons while others "want" to accept them. See [[learning/notes/quick-context/galvanic-cells-batteries]].
 
-2. **[[quick-context/electromagnetism|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
+2. **[[learning/notes/quick-context/electromagnetism|Electromagnetic induction]]** — Moving a conductor through a magnetic field (or changing the field around a conductor) forces electrons to flow. This powers 99%+ of grid electricity.
 
 3. **Photovoltaic effect** — Photons knock electrons loose in semiconductor materials, creating current. Solar panels work this way.
 
-Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always electromagnetic induction.
+Every power plant, battery, and solar panel is fundamentally an energy converter. Coal plants convert chemical energy → heat → mechanical motion → electricity. Hydroelectric dams convert gravitational potential → mechanical motion → electricity. The final step is almost always [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]].
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Electromagnetic Induction** | A changing magnetic field through a conductor induces voltage and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
-| **Generator** | A machine that converts mechanical rotation into electricity via electromagnetic induction. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
+| **[[learning/notes/micro-context/electromagnetic-induction|Electromagnetic Induction]]** | A changing magnetic field through a conductor induces [[learning/notes/quick-context/voltage|voltage]] and current. Discovered by Faraday (1831). The equation: EMF = -N × dΦ/dt (voltage equals turns times rate of magnetic flux change). This is how generators work. |
+| **Generator** | A machine that converts mechanical rotation into electricity via [[learning/notes/micro-context/electromagnetic-induction|electromagnetic induction]]. A coil spins inside a magnetic field (or magnets spin around a coil), inducing alternating current. |
 | **Photovoltaic Effect** | When photons strike certain semiconductors, they knock electrons loose, creating current. Silicon solar cells achieve 20-25% efficiency; the theoretical maximum is ~33% (Shockley-Queisser limit). |
 | **Turbine** | A rotary mechanical device that extracts energy from fluid flow (steam, water, wind) and converts it to rotation. The turbine spins the generator. |
 | **Primary Energy Source** | The original energy form before conversion: coal, natural gas, nuclear fuel, sunlight, wind, falling water. Each gets converted through various steps into electricity. |
@@ -82,7 +82,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
 2. CHEMICAL (Batteries/Galvanic Cells)
 ──────────────────────────────────────
-   See [[quick-context/galvanic-cells-batteries]] for full details.
+   See [[learning/notes/quick-context/galvanic-cells-batteries]] for full details.
 
          ANODE (-)              CATHODE (+)
             │                       │
@@ -152,7 +152,7 @@ THE THREE MECHANISMS FOR CREATING ELECTRICITY
 
 ## Faraday's Law Unifies Everything
 
-Generators and [[quick-context/inductor|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
+Generators and [[learning/notes/quick-context/inductor|inductors]] are governed by the **exact same equation**—Faraday's Law. The difference is only what causes the magnetic flux to change:
 
 ```
 FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
@@ -165,7 +165,7 @@ FARADAY'S LAW: THE UNIVERSAL PRINCIPLE
     Φ   = magnetic flux through the coil (webers)
     dΦ/dt = rate of change of flux
 
-    The minus sign ([[quick-context/lenzs-law|Lenz's Law]]): induced voltage OPPOSES the change
+    The minus sign ([[learning/notes/quick-context/lenzs-law|Lenz's Law]]): induced voltage OPPOSES the change
     that created it. This is why inductors resist current changes
     and why generators require mechanical force to turn.
 
@@ -291,7 +291,7 @@ THE LENZ'S LAW INSIGHT:
     • Energy is stored in the magnetic field, not created or destroyed
 ```
 
-**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a passive component. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An inductor creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much voltage appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
+**The one thing most outsiders get wrong about generators vs inductors:** They seem like completely different devices—one makes electricity, the other is a passive component. But they're both coils of wire exploiting the same physics. A generator has an *external* source of changing flux (mechanical rotation). An [[learning/notes/quick-context/inductor|inductor]] creates its *own* flux from current, so changing the current changes the flux, inducing back-EMF. The "inductance" L is just a measure of how much flux a coil creates per amp of current (L = NΦ/I), which then determines how much [[learning/notes/quick-context/voltage|voltage]] appears when current changes (V = L × dI/dt). Understanding this unity reveals why transformers work (mutual inductance between two coils), why motors and generators are reversible, and why inductors are essential in switching power supplies.
 
 </details>
 
@@ -471,23 +471,23 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Electricity generation creates current: the directed flow of electrons. Understanding current (I = Q/t) is essential for understanding what generators, batteries, and solar cells actually produce.
+- **[[learning/notes/quick-context/electric-current]]** — Electricity generation creates current: the directed flow of electrons. Understanding current (I = Q/t) is essential for understanding what generators, batteries, and solar cells actually produce.
 
-- **[[quick-context/galvanic-cells-batteries]]** — The chemistry of how batteries convert chemical potential energy to electrical energy. Batteries are the portable alternative to grid generation.
+- **[[learning/notes/quick-context/galvanic-cells-batteries]]** — The chemistry of how batteries convert chemical potential energy to electrical energy. Batteries are the portable alternative to grid generation.
 
-- **[[quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
+- **[[learning/notes/quick-context/electrolysis]]** — The reverse of batteries and a potential storage mechanism. Excess renewable electricity can electrolyze water into hydrogen, which can later be burned or run through fuel cells.
 
-- **[[quick-context/power-watts-joules]]** — Power (watts) is the rate of energy transfer. A 1 GW power plant generates 1 billion joules per second. Understanding power helps connect generation capacity to energy consumption.
+- **[[learning/notes/quick-context/power-watts-joules]]** — Power (watts) is the rate of energy transfer. A 1 GW power plant generates 1 billion joules per second. Understanding power helps connect generation capacity to energy consumption.
 
-- **[[quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
+- **[[learning/notes/quick-context/inductor]]** — Inductors are the key component in generators and transformers. They store energy in magnetic fields and are central to electromagnetic induction.
 
-- **[[quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
+- **[[learning/notes/quick-context/capacitor]]** — Capacitors store energy in electric fields. Combined with inductors, they form the basis of AC power systems and grid stabilization.
 
-- **[[quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
+- **[[learning/notes/quick-context/lenzs-law]]** — Why generators require mechanical work: the induced current creates magnetic fields that oppose the rotation, and overcoming this opposition is how mechanical energy converts to electrical.
 
-- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
+- **[[learning/notes/quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena, including Faraday's law of induction (which explains generators) and Ampère's law (which explains electromagnets).
 
-- **[[quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — Explains why current through a generator's coils creates magnetic fields, and how to calculate field strength. The B = μ₀nI formula governs electromagnet and generator design.
 
 </details>
 
@@ -503,7 +503,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q2:** Solar panels produce DC electricity, but the grid runs on AC. Why do we use AC for the grid instead of DC?
 <details>
 <summary>Answer</summary>
-**AC can be easily transformed to different voltages.** Transformers only work with AC (they rely on changing magnetic fields). To minimize transmission losses (P = I²R), we step voltage up to hundreds of thousands of volts for long-distance transmission, then step it down for distribution and household use. With DC, voltage conversion requires expensive power electronics. Historically, AC won because transformers were cheap and efficient. Modern HVDC (high-voltage DC) is now used for very long distances and undersea cables, but the grid remains predominantly AC.
+**AC can be easily transformed to different voltages.** Transformers only work with AC (they rely on changing magnetic fields). To minimize transmission losses (P = I²R), we step [[learning/notes/quick-context/voltage|voltage]] up to hundreds of thousands of volts for long-distance transmission, then step it down for distribution and household use. With DC, voltage conversion requires expensive power electronics. Historically, AC won because transformers were cheap and efficient. Modern HVDC (high-voltage DC) is now used for very long distances and undersea cables, but the grid remains predominantly AC.
 </details>
 
 **Q3:** A nuclear plant and a coal plant have similar overall efficiencies (33-37%), yet nuclear produces almost no CO₂. Why the similar efficiency if the fuel is so different?
@@ -515,7 +515,7 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Q4:** Why can't we simply store solar electricity in giant capacitors instead of batteries?
 <details>
 <summary>Answer</summary>
-**Capacitors have far lower energy density than batteries.** Energy stored in a capacitor is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
+**Capacitors have far lower energy density than batteries.** Energy stored in a [[learning/notes/quick-context/capacitor|capacitor]] is E = ½CV². Even supercapacitors store only ~5-10 Wh/kg, while lithium-ion batteries store 150-260 Wh/kg. To store a day's worth of solar production for a home (~30 kWh), you'd need 3-6 tons of supercapacitors vs. ~120 kg of lithium batteries. Capacitors excel at rapid charge/discharge (high power density) but can't hold much total energy. Batteries are the opposite: high energy density but slower charge/discharge. Grid storage needs energy density, so batteries win.
 </details>
 
 **Q5:** Hydroelectric dams achieve 85-90% efficiency while coal plants achieve only 33-37%. What's the fundamental reason for this difference?
@@ -524,16 +524,16 @@ Solar PV is unique: no moving parts, no intermediate conversions. Light directly
 **Hydro skips the thermal conversion step.** Coal plants must convert chemical energy to heat, then heat to mechanical motion. This thermal step is limited by Carnot efficiency (typically 40-45% for steam turbines). Hydro converts gravitational potential energy directly to mechanical rotation—water falling through turbines spins them directly. No heat engines means no Carnot limit. The only losses are friction in the turbines and generator inefficiency, both small. This is why hydro is the most efficient large-scale generation technology.
 </details>
 
-**Q6:** A generator and an inductor both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
+**Q6:** A generator and an [[learning/notes/quick-context/inductor|inductor]] both use coils of wire and both involve Faraday's Law. What's the fundamental difference in how they use the law?
 <details>
 <summary>Answer</summary>
-**The source of the changing magnetic flux is different.** In a generator, mechanical rotation moves the coil through an external magnetic field—the flux changes because the coil's orientation changes. In an inductor, the coil creates its own magnetic field from the current flowing through it—the flux changes because the current changes (Φ = L × I, so dΦ/dt = L × dI/dt). Same equation (EMF = -N × dΦ/dt), but generator converts mechanical motion to electricity, while inductor opposes changes in current by generating back-EMF. See: Generators and Inductors section.
+**The source of the changing magnetic flux is different.** In a generator, mechanical rotation moves the coil through an external magnetic field—the flux changes because the coil's orientation changes. In an [[learning/notes/quick-context/inductor|inductor]], the coil creates its own magnetic field from the current flowing through it—the flux changes because the current changes (Φ = L × I, so dΦ/dt = L × dI/dt). Same equation (EMF = -N × dΦ/dt), but generator converts mechanical motion to electricity, while inductor opposes changes in current by generating back-EMF. See: Generators and Inductors section.
 </details>
 
 **Q7:** Transformers only work with AC, not DC. Using Faraday's Law, explain why.
 <details>
 <summary>Answer</summary>
-**DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces voltage in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at steady state, dI/dt = 0, so V = L × dI/dt = 0.
+**DC creates constant flux, and dΦ/dt = 0 means EMF = 0.** A transformer works by the primary coil creating a changing magnetic field that induces [[learning/notes/quick-context/voltage|voltage]] in the secondary coil (EMF = -N × dΦ/dt). With AC, current continuously alternates, so flux continuously changes, so voltage is continuously induced. With DC, once current stabilizes, it creates a constant magnetic field—no change means no induced voltage in the secondary. You'd only get a brief pulse when DC is first applied (while current is rising). This is also why inductors "pass DC" after the initial transient—at steady state, dI/dt = 0, so V = L × dI/dt = 0.
 </details>
 
 </details>

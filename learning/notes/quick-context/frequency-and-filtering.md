@@ -3,9 +3,9 @@ topic: Frequency and Filtering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/fundamental-electronic-parts-index]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/capacitive-voltage-sensing]]
 
-> **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[quick-context/capacitor|capacitors]] and [[quick-context/inductor|inductors]] (described by [[quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
+> **TL;DR:** Real-world signals are mixtures of many frequencies; filters use the frequency-dependent behavior of [[learning/notes/quick-context/capacitor|capacitors]] and [[learning/notes/quick-context/inductor|inductors]] (described by [[learning/notes/quick-context/impedance-and-reactance|impedance]]) to keep desired frequencies and reject unwanted ones—they're essential for separating signals from noise, processing audio, and preventing electromagnetic interference.
 
 # Frequency and Filtering
 
@@ -18,8 +18,8 @@ A microphone picks up a voice (300 Hz - 3 kHz) plus a 60 Hz hum from nearby powe
 | Term | Definition |
 |------|------------|
 | **Frequency (f)** | How many times a signal repeats per second, measured in hertz (Hz). Period T = 1/f. Human hearing: 20 Hz - 20 kHz. WiFi: 2.4 GHz. |
-| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% voltage, 50% power). Defines the boundary between "pass" and "stop." |
-| **Decibel (dB)** | A logarithmic ratio: dB = 20 × log₁₀(Vout/Vin). -3 dB = half power. -20 dB = 1/10 voltage. -40 dB = 1/100 voltage. |
+| **Cutoff Frequency (fc)** | The frequency at which a filter's output drops to -3 dB (70.7% [[learning/notes/quick-context/voltage|voltage]], 50% power). Defines the boundary between "pass" and "stop." |
+| **Decibel (dB)** | A logarithmic ratio: dB = 20 × log₁₀(Vout/Vin). -3 dB = half power. -20 dB = 1/10 [[learning/notes/quick-context/voltage|voltage]]. -40 dB = 1/100 voltage. |
 | **Low-pass / High-pass** | Low-pass: passes below fc, blocks above. High-pass: passes above fc, blocks below. Band-pass: passes a range. Band-stop/notch: blocks a range. |
 | **Order** | How many reactive elements (C or L) in the filter. Higher order = sharper cutoff slope. 1st order = -20 dB/decade. 2nd order = -40 dB/decade. |
 
@@ -130,7 +130,7 @@ FILTER ORDER AND ROLLOFF
 
 A 1st-order filter is simple (one R + one C) but its -20 dB/decade slope means unwanted signals only 10× above the cutoff are only attenuated 10×. For many applications, that's not enough.
 
-Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[quick-context/op-amp|op-amps]]) can achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
+Higher-order filters have sharper rolloff but introduce more phase shift (which distorts waveforms) and need more components. Active filters (using [[learning/notes/quick-context/op-amp|op-amps]]) can achieve sharper rolloff without inductors, but add noise, power consumption, and complexity.
 
 ```
 FILTER TOPOLOGY TRADEOFFS
@@ -185,17 +185,17 @@ EMI FILTER
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
+- **[[learning/notes/quick-context/impedance-and-reactance]]** — Filters work because capacitive and inductive reactance change with frequency. Understanding impedance is prerequisite to understanding filter behavior.
 
-- **[[quick-context/capacitor]]** — The primary component in most filters. Its reactance (Xc = 1/2πfC) decreasing with frequency is what makes low-pass filters work.
+- **[[learning/notes/quick-context/capacitor]]** — The primary component in most filters. Its reactance (Xc = 1/2πfC) decreasing with frequency is what makes low-pass filters work.
 
-- **[[quick-context/inductor]]** — Inductors combined with capacitors form second-order filters with -40 dB/decade rolloff and LC resonant circuits at f = 1/(2π√LC).
+- **[[learning/notes/quick-context/inductor]]** — Inductors combined with capacitors form second-order filters with -40 dB/decade rolloff and LC resonant circuits at f = 1/(2π√LC).
 
-- **[[quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
+- **[[learning/notes/quick-context/resistor]]** — RC filters are the simplest and most common. The R sets the impedance level and, together with C, determines the cutoff frequency.
 
-- **[[quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
+- **[[learning/notes/quick-context/thermal-noise-electronics]]** — Filtering reduces noise by limiting bandwidth. A filter with 1 kHz bandwidth passes 1/1000th the noise power of a 1 MHz bandwidth system.
 
-- **[[quick-context/wifi-chip-arduino-uno-r4]]** — WiFi chips use bandpass filters extensively in their RF front-end to select the 2.4 GHz band and reject out-of-band interference. The frequency table above lists WiFi at 2.4 GHz / 12.5 cm wavelength.
+- **[[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]** — WiFi chips use bandpass filters extensively in their RF front-end to select the 2.4 GHz band and reject out-of-band interference. The frequency table above lists WiFi at 2.4 GHz / 12.5 cm wavelength.
 
 </details>
 
@@ -211,13 +211,13 @@ EMI FILTER
 **Q2:** A signal at 100 kHz is passed through a 1st-order low-pass filter with fc = 1 kHz. How much is it attenuated?
 <details>
 <summary>Answer</summary>
-**-40 dB (1/100th voltage).** The signal is 100× above the cutoff (2 decades). A 1st-order filter rolls off at -20 dB/decade, so 2 decades × -20 = -40 dB. In voltage, that's a factor of 100: a 1V signal would be reduced to 10 mV.
+**-40 dB (1/100th [[learning/notes/quick-context/voltage|voltage]]).** The signal is 100× above the cutoff (2 decades). A 1st-order filter rolls off at -20 dB/decade, so 2 decades × -20 = -40 dB. In voltage, that's a factor of 100: a 1V signal would be reduced to 10 mV.
 </details>
 
 **Q3:** What does "-3 dB" actually mean in practical terms?
 <details>
 <summary>Answer</summary>
-**Half the power, or 70.7% of the voltage.** -3 dB voltage = 10^(-3/20) = 0.707. Since power is proportional to voltage squared: 0.707² = 0.5 = half power. The -3 dB point is chosen as the cutoff because it's where the filter transitions from "mostly passing" to "mostly blocking."
+**Half the power, or 70.7% of the [[learning/notes/quick-context/voltage|voltage]].** -3 dB voltage = 10^(-3/20) = 0.707. Since power is proportional to voltage squared: 0.707² = 0.5 = half power. The -3 dB point is chosen as the cutoff because it's where the filter transitions from "mostly passing" to "mostly blocking."
 </details>
 
 **Q4:** Why would you choose a 2nd-order filter over a 1st-order for audio applications?
@@ -229,7 +229,7 @@ EMI FILTER
 **Q5:** To make an RC high-pass filter from an RC low-pass filter, what do you change?
 <details>
 <summary>Answer</summary>
-**Swap the resistor and capacitor positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
+**Swap the [[learning/notes/quick-context/resistor|resistor]] and [[learning/notes/quick-context/capacitor|capacitor]] positions.** In a low-pass, the resistor is in series and the capacitor shunts to ground. In a high-pass, the capacitor is in series and the resistor shunts to ground. The cutoff frequency formula fc = 1/(2πRC) stays the same. At low frequencies the capacitor has high impedance (blocks signal); at high frequencies it has low impedance (passes signal).
 </details>
 
 </details>
