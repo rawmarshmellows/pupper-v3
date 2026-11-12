@@ -18,7 +18,7 @@ A computer is dozens of chips that all need to exchange bytes: the CPU reads an 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the Output Enable (OE) pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |

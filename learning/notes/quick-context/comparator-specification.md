@@ -338,7 +338,7 @@ FINDING A REPLACEMENT --- TWO QUESTIONS
 
 | What to check | Datasheet section | Replacement rule |
 |---|---|---|
-| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a [[quick-context/comparator\|pull-up resistor]]; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
+| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a pull-up resistor; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
 | **Supply voltage range** | §4.2 Operating Ratings | New part's operating range must *contain* your rail, with margin. |
 | **Input common-mode range** ($CMVR$) | §4.3 | Must include every voltage your inputs actually see. If you relied on rail-to-rail-and-beyond, keep it. |
 | **Input offset grade** ($V_{OS}$) | §4.3 | New boldface $V_{OS}$ ≤ your threshold-error budget (don't regress accuracy). |

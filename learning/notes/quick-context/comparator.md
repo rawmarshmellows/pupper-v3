@@ -17,10 +17,10 @@ A battery monitor needs to answer a simple question: "Is the battery [[learning/
 
 | Term | Definition |
 |------|------------|
-| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an [[quick-context/op-amp\|op-amp]], but no feedback loop. |
+| **Non-inverting (+) / Inverting (-) inputs** | The two input pins. Output goes HIGH when V(+) > V(-), LOW when V(+) < V(-). Same pin naming as an op-amp, but no feedback loop. |
 | **Propagation delay ($t_{pd}$)** | The time from when the input crosses the threshold until the output changes state. Fast comparators achieve 1--10 ns; general-purpose ones are 200--500 ns. |
 | **Hysteresis** | A deliberate voltage gap between the rising and falling thresholds (e.g., trip HIGH at 3.0V, trip LOW at 2.9V). Prevents rapid oscillation ("chatter") when the input hovers near the threshold. Created by positive feedback. |
-| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A [[quick-context/resistor\|pull-up resistor]] provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
+| **Open-drain / open-collector output** | Many comparators have an output that can only pull LOW (sink current to ground). A pull-up resistor provides the HIGH level. This lets you wire-OR multiple comparators and interface to any voltage logic level. |
 | **Reference voltage ($V_{REF}$)** | The fixed voltage applied to one input, against which the signal is compared. Can come from a voltage divider, a bandgap reference IC, or a precision voltage source. |
 
 <details>

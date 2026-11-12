@@ -495,7 +495,7 @@ THE HEAT PROBLEM IN DETAIL:
 | Application | Field Needed | Solution |
 |-------------|-------------|----------|
 | Door electromagnet | 0.01-0.1 T | Air gap, iron core, modest current |
-| [[quick-context/inductor\|Inductor]] in power supply | Specified inductance, not field | Ferrite or powdered iron core |
+| Inductor in power supply | Specified inductance, not field | Ferrite or powdered iron core |
 | Motor/Generator | 0.5-2 T | Laminated steel core, optimized geometry |
 | MRI machine | 1.5-7 T | Superconducting coil |
 | Research magnets | 10-45 T | Hybrid superconducting + resistive |

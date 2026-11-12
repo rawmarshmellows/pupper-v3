@@ -499,7 +499,7 @@ THE KEY INSIGHT: Opposition is proportional to RATE OF CHANGE
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
 
-    See [[quick-context/inductor#rl-time-constant|RL Time Constant]] for the
+    See RL Time Constant for the
     mathematics: the time constant τ = L/R determines how fast this happens.
 ```
 
@@ -581,7 +581,7 @@ THE DEEP INSIGHT:
 |--------|------------------------|-------------------|
 | Generator | Rotation of coil | Mechanical → electrical conversion |
 | Motor | Current flow | Electrical → mechanical conversion |
-| [[quick-context/inductor\|Inductor]] | Current changes | Energy storage in magnetic field |
+| Inductor | Current changes | Energy storage in magnetic field |
 | Transformer | Flux changes in primary | Power transfer to secondary |
 | Eddy current brake | Motion of conductor | Magnetic braking (no friction wear) |
 
