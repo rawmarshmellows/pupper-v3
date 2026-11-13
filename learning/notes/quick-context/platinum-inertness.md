@@ -2,8 +2,10 @@
 topic: Why Platinum is Chemically Inert
 created: 2026-01-25
 ---
+> **Related:** [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]]
 
-> **Related:** [[quick-context/electrodes]]
+
+> **Related:** Electrodes
 
 > **TL;DR:** Platinum stays unreactive in electrolysis because its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons rather than dissolving.
 
@@ -11,7 +13,7 @@ created: 2026-01-25
 
 ## The Core Problem
 
-In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the anode because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
+In electrolysis, we need [[learning/notes/quick-context/electrodes|electrodes]] that conduct electricity without participating in the chemical reaction. Cheap metals like iron or copper dissolve at the [[learning/notes/micro-context/anode|anode]] because they readily give up electrons. But platinum just sits there, pristine, letting electrons flow through while refusing to react—its nearly-full d-orbitals, high ionization energy, and very positive reduction potential (+1.18V) make it strongly prefer keeping its electrons.
 
 ## 5 Essential Terms
 
@@ -20,7 +22,7 @@ In [[quick-context/electrodes|electrolysis]], we need electrodes that conduct el
 | **Inert** | Chemically unreactive; doesn't participate in reactions |
 | **Ionization energy** | Energy required to remove an electron from an atom |
 | **Reduction potential (E°)** | Voltage indicating how much a species "wants" electrons; positive = wants to stay as metal |
-| **Oxidation** | Losing electrons (what happens to reactive metals at anodes) |
+| **[[learning/notes/micro-context/oxidation|Oxidation]]** | Losing electrons (what happens to reactive metals at anodes) |
 | **Noble metal** | Metals like platinum, gold, silver that resist corrosion due to high E° |
 
 <details>
@@ -141,11 +143,11 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electrodes]]** - Understanding electrode fundamentals and why material choice matters in electrochemistry
-- **[[quick-context/electrolysis]]** - The broader process where platinum electrodes are commonly used
-- **[[quick-context/reduction-oxidation-reactions]]** - Redox chemistry that explains why some metals dissolve and others don't
-- **[[quick-context/noble-metals]]** - Other metals like gold and silver that share platinum's corrosion resistance
-- **[[quick-context/transition-metals-d-orbitals]]** - How d-orbital electron configurations influence metal reactivity
+- **Electrodes** - Understanding electrode fundamentals and why material choice matters in electrochemistry
+- **Electrolysis** - The broader process where platinum electrodes are commonly used
+- **Reduction Oxidation Reactions** - Redox chemistry that explains why some metals dissolve and others don't
+- **Noble Metals** - Other metals like gold and silver that share platinum's corrosion resistance
+- **Transition Metals D Orbitals** - How d-orbital electron configurations influence metal reactivity
 
 </details>
 
@@ -158,7 +160,7 @@ Platinum's inertness comes at a cost: ~$30,000/kg. Industrial applications often
 **Iron** is more likely to dissolve. The negative reduction potential means iron "prefers" to give up electrons and become Fe²⁺ ions. Platinum's positive potential means it strongly prefers to keep its electrons and stay as solid metal.
 </details>
 
-**Q2:** If platinum is so inert, how can electricity flow through it during electrolysis?
+**Q2:** If platinum is so inert, how can electricity flow through it during [[learning/notes/quick-context/electrolysis|electrolysis]]?
 <details>
 <summary>Answer</summary>
 Platinum conducts electricity by allowing electrons to flow *through* its metallic structure without the platinum atoms themselves reacting. The electrons enter one side, pass through the metal's "sea of electrons," and exit the other side. At the electrode surface, other species (like water or hydroxide ions) react instead of the platinum.

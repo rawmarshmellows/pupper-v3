@@ -2,8 +2,10 @@
 topic: Robot Cell Integration Best Practices, Tools, Methods, and VLM Potential
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/pupper-brain]]
 
-> **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software-control]] | [[quick-context/integration-failure-modes-solutions]]
+
+> **Related:** Epson Rc Plus Programming | Robotic Arm Api Levels | Plc Vs Software Control | Integration Failure Modes Solutions
 
 > **TL;DR:** Robot cell integration requires structured handshakes, state machines (PackML), virtual commissioning, and rigorous I/O documentation to prevent deadlocks, race conditions, and unrecoverable states that halt production.
 
@@ -25,7 +27,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 | **PackML** | The ISA-TR88 standard state model (Execute, Stopped, Held, Aborted, etc.) that gives every cell a common vocabulary for operating modes. |
 | **Virtual Commissioning** | Debugging integration logic in simulation before hardware arrives, catching handshake errors and collision paths early. |
 | **I/O Mapping** | The document listing every signal, its source, destination, and meaning; without this, integration debugging is archaeology. |
-| **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just discrete signals. |
+| **OPC-UA** | The emerging unified communication standard that lets devices from different vendors exchange structured data, not just [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] signals. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -126,11 +128,11 @@ This pattern includes explicit timeout handling (2 seconds), retry logic (3 atte
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/epson-rc-plus-programming]]** - Example of robot-side programming that must integrate with PLC handshakes
-- **[[quick-context/robotic-arm-api-levels]]** - Understanding which API level handles integration vs. motion
-- **[[quick-context/plc-vs-software-control]]** - When to put coordination logic in PLC vs. robot vs. external software
-- **[[quick-context/integration-failure-modes-solutions]]** - Common integration failures and how to prevent them
-- **[[quick-context/oee-overall-equipment-effectiveness]]** - Metrics for measuring how well integration is working in production
+- **Epson Rc Plus Programming** - Example of robot-side programming that must integrate with PLC handshakes
+- **Robotic Arm Api Levels** - Understanding which API level handles integration vs. motion
+- **Plc Vs Software Control** - When to put coordination logic in PLC vs. robot vs. external software
+- **Integration Failure Modes Solutions** - Common integration failures and how to prevent them
+- **Oee Overall Equipment Effectiveness** - Metrics for measuring how well integration is working in production
 
 </details>
 

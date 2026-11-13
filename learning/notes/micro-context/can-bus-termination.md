@@ -2,18 +2,20 @@
 term: CAN Bus Termination
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/micro-context/can-bus-transceiver]]
+
 
 # CAN Bus Termination
 
-> **See also:** [[quick-context/can-bus]] | [[quick-context/embedded-communication-protocols]]
+> **See also:** Can Bus | Embedded Communication Protocols
 
-**Definition:** A 120Ω [[quick-context/resistor|resistor]] placed at each end of a [[quick-context/can-bus|CAN bus]] to match the cable's characteristic [[quick-context/impedance-and-reactance|impedance]] and prevent signal reflections. On the Pupper v3 control board, R1–R4 are the termination resistors for the 4 CAN buses connecting to 12 servo motors.
+**Definition:** A 120Ω resistor placed at each end of a CAN bus to match the cable's characteristic impedance and prevent signal reflections. On the Pupper v3 control board, R1–R4 are the termination resistors for the 4 CAN buses connecting to 12 servo motors.
 
 ## How It Works
 
-- A CAN bus is a differential pair (CANH/CANL) with ~120Ω characteristic impedance set by the wire geometry.
+- A [[learning/notes/quick-context/can-bus|CAN bus]] is a [[learning/notes/quick-context/differential-pair|differential pair]] (CANH/CANL) with ~120Ω characteristic impedance set by the wire geometry.
 - When a signal reaches an unterminated end, the impedance mismatch causes it to bounce back as a reflection, corrupting data.
-- A 120Ω resistor across CANH and CANL at each bus end absorbs the signal energy, eliminating reflections.
+- A 120Ω [[learning/notes/quick-context/resistor|resistor]] across CANH and CANL at each bus end absorbs the signal energy, eliminating reflections.
 - Only the two endpoints need termination — nodes in the middle of the bus must **not** add termination resistors, or they'll reduce the bus impedance and distort signals.
 
 ```

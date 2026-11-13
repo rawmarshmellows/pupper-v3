@@ -3,10 +3,12 @@ topic: Miller Heiman Strategic Selling / LAMP
 created: 2026-02-10
 updated: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/strategic-selling-buyer-roles]]
+
 
 # Miller Heiman Strategic Selling / LAMP
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/sandler-kare-segmentation]]
+> **Related:** Meddpicc Qualification Framework | Mcdonald Kam Model | Sandler Kare Segmentation
 
 > **TL;DR:** Miller Heiman Strategic Selling is an account planning methodology that maps stakeholder roles and builds 1-3 year strategic plans through its LAMP (Large Account Management Process) framework, using the "Gold Sheet" to systematically research, strategize, and execute complex B2B deals.
 
@@ -401,11 +403,11 @@ ACCOUNT HEALTH: YELLOW (Winnable but requires active management)
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC is a qualification complement to LAMP; use MEDDPICC to validate deal viability, LAMP to plan account strategy
-- **[[quick-context/challenger-sale-methodology]]** — Challenger provides the *how* of customer interactions; LAMP provides the *who* and *when*
-- **[[quick-context/mcdonald-kam-model]]** — McDonald's relationship maturity model adds a diagnostic layer to LAMP's stakeholder mapping
-- **[[quick-context/sandler-kare-segmentation]]** — KARE helps decide which accounts deserve full LAMP treatment vs. lighter touch
-- **[[quick-context/whitespace-mapping]]** — Visual tool for identifying expansion opportunities; feeds into LAMP's situation appraisal
+- **Meddpicc Qualification Framework** — MEDDPICC is a qualification complement to LAMP; use MEDDPICC to validate deal viability, LAMP to plan account strategy
+- **Challenger Sale Methodology** — Challenger provides the *how* of customer interactions; LAMP provides the *who* and *when*
+- **Mcdonald Kam Model** — McDonald's relationship maturity model adds a diagnostic layer to LAMP's stakeholder mapping
+- **Sandler Kare Segmentation** — KARE helps decide which accounts deserve full LAMP treatment vs. lighter touch
+- **Whitespace Mapping** — Visual tool for identifying expansion opportunities; feeds into LAMP's situation appraisal
 - **Value Selling** — Complementary methodology for quantifying the business case LAMP identifies
 
 </details>

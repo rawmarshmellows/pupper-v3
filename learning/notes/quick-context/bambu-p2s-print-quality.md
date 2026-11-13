@@ -2,6 +2,8 @@
 topic: Bambu P2S Print Quality
 created: 2026-04-29
 ---
+> **Related:** [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
+
 
 # Bambu P2S Print Quality
 
@@ -109,7 +111,7 @@ Filaments are [[learning/notes/quick-context/atoms-molecules-polymers-basics|pol
 | Filament | Polar groups | Hygroscopic? | Why |
 |----------|--------------|--------------|-----|
 | **PLA** | Ester (–COO–) | Mild | Few H-bond acceptors |
-| **PETG** | Ester + glycol | Moderate | More polar groups |
+| **[[learning/notes/quick-context/3d-printing-filament-types|PETG]]** | Ester + glycol | Moderate | More polar groups |
 | **ABS** | Nitrile (–CN) | Low | Mostly non-polar backbone |
 | **PA / Nylon** | Amide (–CO–NH–) | Severe | Amide group is a near-perfect H-bond donor *and* acceptor — like a sponge for water |
 | **PC** | Carbonate ester | High | Hydrolyzes catastrophically when wet |
@@ -131,13 +133,13 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[learning/notes/quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 
 Flow ratio is the slicer's "how much filament to push per mm of toolpath." Three molecular reasons it varies:
 - **Pigment loading.** Black PLA often has 1–3% carbon black; matte PLA has glass beads or chalk. These fillers displace polymer volume but don't melt — they raise the *effective* viscosity and reduce volumetric output per gram fed.
-- **Molecular weight distribution.** Different production batches have slightly different chain-length distributions, which changes [[learning/notes/quick-context/melt-index|melt index]] and therefore flow at the same temperature.
+- **Molecular weight distribution.** Different production batches have slightly different chain-length distributions, which changes [[learning/notes/quick-context/melt-index|melt index]] and therefore flow at the same [[learning/notes/micro-context/clock-speed-vs-temperature|temperature]].
 - **Diameter tolerance.** "1.75 mm" filament is really 1.70–1.80 mm. The extruder feeds by length but the slicer assumes nominal diameter. A 1.78 mm spool delivers 3.4% more cross-section than 1.75 mm.
 
 Calibration zeroes out all three sources at once.
@@ -147,7 +149,7 @@ Calibration zeroes out all three sources at once.
 A freshly extruded bead is above the polymer's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature (Tg)]] — chains are mobile and the bead deforms under the next layer's weight. The fan must drag the bead below Tg before that next layer arrives, otherwise overhangs droop and bridges sag.
 
 But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|semi-crystalline polymers]] (PA, PP, PE) prevents proper crystal formation and reduces interlayer adhesion — the chains "freeze" before they can tangle across the layer boundary. This is why:
-- **PLA** (mostly amorphous): blast it with 100% fan — overhangs love it, layer adhesion fine.
+- **PLA** (mostly [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous|amorphous]]): blast it with 100% fan — overhangs love it, layer adhesion fine.
 - **PETG** (slow-crystallizing): 30–50% fan — full fan weakens layers.
 - **ABS / PA**: minimal fan — needs slow cooling for crystallinity and warp control. **Enclose the chamber.** This is exactly what the P2S Adaptive Airflow seals shut for engineering filaments.
 
@@ -258,7 +260,7 @@ Bambu Studio → your project → Process → Quality:
 - **[[learning/notes/quick-context/3d-printer-hotends]]** — P2S hardened-steel hotend handles fiber-reinforced filaments and reaches 300°C. Max volumetric throughput is the hard ceiling that no amount of K-value tuning can exceed.
 - **[[learning/notes/quick-context/3d-printing-filament-types]]** — Each material (PLA / PETG / ABS / PA-CF) has a different optimal K-value, flow ratio, dry temp, and cooling target. Calibration is *per material*, not just per printer.
 - **[[learning/notes/quick-context/bambu-ams-automatic-material-system]]** — P2S ships with AMS 2 Pro, which actively vents to dry filament 30% faster than sealed heating. Dry filament is precondition #1 for quality.
-- **[[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]** — Refill spools sometimes have different flow behavior than full spools (slightly different supplier batches). Re-run flow calibration when switching.
+- **[[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]]** — [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool|Refill]] spools sometimes have different flow behavior than full spools (slightly different supplier batches). Re-run flow calibration when switching.
 - **[[learning/notes/quick-context/glass-transition-temperature]]** — Tg is the threshold above which polymer chains can interdiffuse between layers. Cooling, chamber temp, and overhang fan speed are all really about controlling time above Tg.
 - **[[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]]** — Why PLA (amorphous) tolerates aggressive cooling but PA / PP (semi-crystalline) warp and delaminate without an enclosed, slow-cooling environment.
 - **[[learning/notes/quick-context/melt-index]]** — Polymer flow rate at melt — directly drives optimal K-value and flow ratio. High-MFI batches need different settings than low-MFI batches of the "same" filament.

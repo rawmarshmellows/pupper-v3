@@ -3,8 +3,10 @@ topic: 3D Printing Filament - Refill vs Spool
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/substrate-ic-packaging]]
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+
+> **Related:** 3D Printing Slicer Settings
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
@@ -12,7 +14,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-3D printing [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
+3D printing filament comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
 
 ## 5 Essential Terms
 
@@ -177,9 +179,9 @@ Once mounted, it works exactly like a regular spool.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Different filament materials (PLA, PETG, ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
-- [[quick-context/melt-index]] — Understanding [[quick-context/melt-index|melt flow rate]] helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
-- [[quick-context/3d-printer-hotends]] — [[quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
+- 3D Printing Filament Types — Different filament materials (PLA, [[learning/notes/quick-context/3d-printing-filament-types|PETG]], ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
+- Melt Index — Understanding melt flow rate helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
+- 3D Printer Hotends — Hotend compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
 
 </details>
 

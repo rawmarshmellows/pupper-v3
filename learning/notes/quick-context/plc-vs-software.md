@@ -2,8 +2,10 @@
 topic: PLC and why it's different to software and how it's implemented
 created: 2026-01-14
 ---
+> **Related:** [[learning/notes/quick-context/plc-vs-software-control]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/hydrogen-bonds-beginners]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]]
 
-> **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/preempt-rt]] | [[quick-context/sil-rated-safety-functions]]
+
+> **Related:** Plc Vs Software Control | Preempt Rt | Sil Rated Safety Functions
 
 > **TL;DR:** PLCs are purpose-built for deterministic, fail-safe control in harsh industrial environments where general-purpose computers would crash, freeze, or get people killed.
 
@@ -11,7 +13,7 @@ created: 2026-01-14
 
 ## The Core Problem: When Computers Crash, People Die
 
-A **Programmable Logic Controller (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, temperature extremes, electrical noise).
+A **[[learning/notes/micro-context/plc-programmable-logic-controller|Programmable Logic Controller]] (PLC)** exists because general-purpose computers fail catastrophically in industrial environments—they crash, they need reboots, they have non-deterministic timing, and when they freeze, people die or million-dollar equipment destroys itself. PLCs solve the problem of executing control logic with absolute determinism and reliability in harsh conditions (vibration, [[learning/notes/micro-context/clock-speed-vs-temperature|temperature]] extremes, electrical noise).
 
 Before PLCs, factories used massive relay panels with hundreds of physical switches wired together; changing the logic meant rewiring. PLCs replaced that with programmable logic while keeping the same deterministic, fail-safe behavior. If a PLC stops running, a conveyor might crush someone, a chemical reactor might overheat, or a robot arm might swing into a human. The failure mode isn't "restart the app"—it's "call the coroner."
 
@@ -103,11 +105,11 @@ The Python version:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/plc-vs-software-control]]** - How PLCs and software divide responsibilities in modern robotic systems
-- **[[quick-context/preempt-rt]]** - Linux kernel patches that let software approach (but not match) PLC determinism
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 state of replacing PLCs entirely with PREEMPT_RT + ROS2, including production hardware and real factory deployments
-- **[[quick-context/sil-rated-safety-functions]]** - The certification framework that makes PLCs mandatory for safety-critical functions
-- **[[quick-context/isa-95-levels]]** - Where PLCs fit in the automation hierarchy (Level 1-2)
+- **Plc Vs Software Control** - How PLCs and software divide responsibilities in modern robotic systems
+- **Preempt Rt** - Linux kernel patches that let software approach (but not match) PLC determinism
+- **Preempt Rt Ros2 Plc Replacement** — The 2025-2026 state of replacing PLCs entirely with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, including production hardware and real factory deployments
+- **Sil Rated Safety Functions** - The certification framework that makes PLCs mandatory for safety-critical functions
+- **Isa 95 Levels** - Where PLCs fit in the automation hierarchy (Level 1-2)
 
 </details>
 
