@@ -2,16 +2,18 @@
 topic: Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 created: 2026-03-10
 ---
+> **Related:** [[learning/notes/quick-context/pupper-lab4-gait-control]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pupper-lab3-inverse-kinematics]]
+
 
 # Pupper Lab 6 — LLM Voice Control (Karel + OpenAI Realtime API)
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab7-vision-tracking]] | [[quick-context/ros2-architecture]]
+> **Related:** Pupper V3 Labs | Pupper Lab5 Neural Controller | Pupper Lab7 Vision Tracking | Ros2 Architecture
 
 > **TL;DR:** Students build a voice-controlled robot by wiring together two systems: a KarelPupper class that wraps ROS2 Twist commands into named actions (move_forward, dance, bob), and an OpenAI Realtime API WebSocket client that streams microphone audio to an LLM whose system prompt constrains its output to exactly those action names, closing the loop from spoken English to motor movement.
 
 ## The Core Problem
 
-Telling a robot "go forward and then do a little dance" is trivially easy for a human to understand but involves a surprisingly deep pipeline to execute. The voice signal must be captured, streamed to a speech-understanding model, interpreted as a sequence of discrete robot commands, translated into velocity messages the locomotion controller accepts, and finally converted to joint torques by the neural policy running on the real-time control loop. Every layer operates at a different timescale: audio at 24 kHz, the LLM at hundreds of milliseconds, ROS2 topics at tens of Hz, and the motor loop at 1 kHz. Lab 6 asks students to build the top two layers of this stack and connect them to the bottom layers they already have from Labs 4-5.
+Telling a robot "go forward and then do a little dance" is trivially easy for a human to understand but involves a surprisingly deep pipeline to execute. The voice signal must be captured, streamed to a speech-understanding model, interpreted as a sequence of [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] robot commands, translated into velocity messages the locomotion controller accepts, and finally converted to joint torques by the neural policy running on the real-time control loop. Every layer operates at a different timescale: audio at 24 kHz, the LLM at hundreds of milliseconds, ROS2 topics at tens of Hz, and the motor loop at 1 kHz. Lab 6 asks students to build the top two layers of this stack and connect them to the bottom layers they already have from Labs 4-5.
 
 The KarelPupper abstraction exists because LLMs produce text, not Twist messages. Rather than asking the LLM to output raw linear and angular velocities (which it would hallucinate constantly), students define a small vocabulary of named actions — `move_forward`, `turn_left`, `bob`, `dance` — each implemented as a method that publishes the correct Twist sequence to `/cmd_vel`. This reduces the LLM's job from "generate arbitrary floating-point velocity vectors" to "pick from a menu of action names," which is a dramatically easier task for a language model and produces reliable behavior.
 
@@ -89,7 +91,7 @@ VOICE-TO-ACTION PIPELINE
 
 6. **Karel execution**: The matched method (e.g., `move_forward()`) publishes a Twist message to `/cmd_vel` with the appropriate linear and angular velocities, held for a duration (typically 1-2 seconds per movement step).
 
-7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via CAN bus.
+7. **Motor execution**: The neural controller (from Lab 5) or the classical gait controller (from Lab 4) reads `/cmd_vel` and converts the velocity command into 12 joint position targets at ~50 Hz, which are sent to the servos via [[learning/notes/quick-context/can-bus|CAN bus]].
 
 ### Audio muting for echo prevention
 
@@ -192,8 +194,8 @@ The Realtime API also returns an audio version of "Time to bust a move!" as `res
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-v3-labs]]** — The full 7-lab progression. Lab 6 sits between the neural controller (Lab 5) and vision tracking (Lab 7), adding the voice-to-command layer.
-- **[[quick-context/pupper-brain]]** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
+- **Pupper V3 Labs** — The full 7-lab progression. Lab 6 sits between the neural controller (Lab 5) and vision tracking (Lab 7), adding the voice-to-command layer.
+- **Pupper Brain** — The hardware architecture underneath: the Raspberry Pi runs the Python voice client and Karel class, while the STM32 microcontrollers handle the real-time motor loop.
 - **WebSocket protocol** — Lab 6 uses a persistent WebSocket (`wss://`) rather than REST API calls. WebSockets provide full-duplex communication: audio streams up while responses stream down simultaneously, which is essential for real-time voice interaction. REST would require "record, send, wait, receive" — far too slow for conversational feel.
 - **PCM16 audio format** — Pulse-Code Modulation at 16-bit depth. Each sample is a signed 16-bit integer (-32768 to +32767) representing the instantaneous amplitude. At 24 kHz, this produces 48,000 bytes/second of raw audio. No compression (unlike MP3/Opus), which means low latency but high bandwidth.
 - **Echo cancellation** — In production voice systems, acoustic echo cancellation (AEC) algorithms subtract the known speaker output from the microphone input in real time. Lab 6 uses a simpler approach (mute during playback) because full AEC requires DSP expertise beyond the lab's scope. The tradeoff: the robot cannot hear new commands while it is speaking.

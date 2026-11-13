@@ -4,8 +4,10 @@ created: 2026-01-20
 updated: 2026-01-21
 clarification: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/glass-transition-temperature]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]]
 
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+
+> **Related:** Van Der Waals Forces | Hydrogen Bonds Beginners | Polymer Chemical Bonds
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -13,7 +15,7 @@ clarification: 2026-01-21
 
 ## The Core Problem
 
-Imagine you're trying to understand why water boils at 100°C while methane (natural gas) boils at -161°C, even though methane molecules are heavier. The answer lies in **dipole-dipole interactions**—the attractive forces between molecules that have uneven charge distributions. Without these forces, water would be a gas at room temperature, oceans wouldn't exist, and life as we know it would be impossible. These interactions explain why some liquids evaporate slowly (they "stick" to each other), why certain substances dissolve in water while others don't, and why biological molecules fold into specific shapes. When dipole-dipole interactions are weak or absent, molecules slip past each other easily; when they're strong, molecules cling together, requiring more energy (heat) to separate them.
+Imagine you're trying to understand why water boils at 100°C while methane (natural gas) boils at -161°C, even though methane molecules are heavier. The answer lies in **dipole-dipole interactions**—the attractive forces between molecules that have uneven charge distributions. Without these forces, water would be a gas at room [[learning/notes/micro-context/clock-speed-vs-temperature|temperature]], oceans wouldn't exist, and life as we know it would be impossible. These interactions explain why some liquids evaporate slowly (they "stick" to each other), why certain substances dissolve in water while others don't, and why biological molecules fold into specific shapes. When dipole-dipole interactions are weak or absent, molecules slip past each other easily; when they're strong, molecules cling together, requiring more energy (heat) to separate them.
 
 ## 5 Essential Terms
 
@@ -23,7 +25,7 @@ Imagine you're trying to understand why water boils at 100°C while methane (nat
 | **Electronegativity** | An atom's "greediness" for electrons—oxygen and nitrogen hog electrons; hydrogen and carbon share more fairly |
 | **Partial charge (δ+ / δ-)** | Not a full +1 or -1 charge, but a slight imbalance—written as delta-plus or delta-minus |
 | **Dipole** | A pair of equal and opposite partial charges separated by distance—the molecule has a "positive pole" and "negative pole" |
-| **Intermolecular force** | Any attraction *between* molecules (not the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule) |
+| **Intermolecular force** | Any attraction *between* molecules (not the covalent bonds holding atoms together *within* a molecule) |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -268,10 +270,10 @@ POLAR (HCl) - molecules stick:     NONPOLAR (H2) - molecules slip past:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/van-der-waals-forces]]** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
-- **[[quick-context/hydrogen-bonds-beginners]]** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
-- **[[quick-context/covalent-bonds]]** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
-- **[[quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
+- **Van Der Waals Forces** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
+- **Hydrogen Bonds Beginners** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
+- **Covalent Bonds** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
+- **Polymer Chemical Bonds** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
 
 </details>
 

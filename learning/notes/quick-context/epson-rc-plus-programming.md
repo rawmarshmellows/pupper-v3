@@ -2,8 +2,10 @@
 topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
+
+> **Related:** Robotic Arm Api Levels | Robot Cell Integration Best Practices | Plc Vs Software Control
 
 > **TL;DR:** EPSON RC+ is the IDE and SPEL+ programming language for Epson robots, enabling motion control through commands like Go, Move, and Jump with careful tuning of speed, accuracy, and path smoothness tradeoffs.
 
@@ -35,7 +37,7 @@ EPSON RC+ provides a complete workflow for robot programming:
 2. **Motion Programming**: Write SPEL+ code that references these points using motion commands:
    - `Go` - Joint interpolation (fastest, curved path)
    - `Move` - Linear interpolation (straight Cartesian path)
-   - `Jump` - Arc motion with automatic Z-retract for pick-and-place
+   - `Jump` - Arc motion with automatic Z-retract for [[learning/notes/quick-context/pcb-assembly-files-bom-cpl|pick-and-place]]
 
 3. **Tool Definition**: Set coordinate frame offsets from the robot flange to the actual gripper or tool tip, ensuring positions are accurate regardless of end-effector.
 
@@ -104,10 +106,10 @@ The `Jump` command is doing the heavy lifting here—it automatically retracts i
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/robotic-arm-api-levels]]** - Understanding where EPSON RC+ fits in the hierarchy from low-level servo control to high-level task planning
-- **[[quick-context/robot-cell-integration-best-practices]]** - How to integrate EPSON robots with PLCs, vision systems, and other cell equipment
-- **[[quick-context/plc-vs-software-control]]** - When to use PLC logic vs. robot-native programming for cell coordination
-- **[[quick-context/sil-rated-safety-functions]]** - Safety considerations for industrial robot programming
+- **Robotic Arm Api Levels** - Understanding where EPSON RC+ fits in the hierarchy from low-level servo control to high-level task planning
+- **Robot Cell Integration Best Practices** - How to integrate EPSON robots with PLCs, vision systems, and other cell equipment
+- **Plc Vs Software Control** - When to use PLC logic vs. robot-native programming for cell coordination
+- **Sil Rated Safety Functions** - Safety considerations for industrial robot programming
 
 </details>
 

@@ -2,22 +2,24 @@
 topic: Voltage
 created: 2026-02-13
 ---
+> **Related:** [[learning/notes/quick-context/voltage-thermodynamics-electrolysis]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/usb-peripheral-hardware]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/micro-context/output-voltage-swing]]
+
 
 # Voltage
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/electromagnetism]] | [[quick-context/resistor]] | [[quick-context/parallel-vs-series-voltage]]
+> **Related:** Electric Current | Electromagnetism | Resistor | Parallel Vs Series Voltage
 
 > **TL;DR:** Voltage is the electric potential difference between two points—defined by the electric field between them. The field exerts force on charges, and in a conductive material, a stronger field drives more current (with the exact relationship depending on the material's resistance).
 
 ## The Core Problem
 
-You have a battery, and you want current to flow through a wire to do useful work. But what actually *causes* electrons to move? The answer is the **electric field**. When you connect a battery, it establishes an electric field inside the conductor. This field exerts force on the free electrons, pushing them in one direction. The voltage between two points is a measure of how much work the field does on a charge moving between those points—it's the *integral* of the electric field along the path. Higher voltage means a stronger field (over the same distance), which pushes harder on electrons, which—depending on the material's resistance—results in more [[quick-context/electric-current|current]].
+You have a battery, and you want current to flow through a wire to do useful work. But what actually *causes* electrons to move? The answer is the **electric field**. When you connect a battery, it establishes an electric field inside the conductor. This field exerts force on the free electrons, pushing them in one direction. The voltage between two points is a measure of how much work the field does on a charge moving between those points—it's the *integral* of the electric field along the path. Higher voltage means a stronger field (over the same distance), which pushes harder on electrons, which—depending on the material's resistance—results in more current.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **Volt (V)** | The unit of voltage. 1 volt = 1 joule of energy per coulomb of charge. A AA battery: 1.5V. USB: 5V. Wall outlet (US): 120V. Car battery: 12V. |
+| **Volt (V)** | The unit of voltage. 1 volt = 1 joule of energy per [[learning/notes/micro-context/coulomb-history|coulomb]] of charge. A AA battery: 1.5V. USB: 5V. Wall outlet (US): 120V. Car battery: 12V. |
 | **Electric Field (E)** | A vector field that exerts force on electric charges. Measured in volts per meter (V/m). The field is what actually pushes electrons. |
 | **Potential Difference** | Another name for voltage—the difference in electric potential energy per unit charge between two points. |
 | **Ground/Reference** | Voltage is always relative. "Ground" is the arbitrary 0V reference point. A "9V" battery means 9V *higher than* the negative terminal. |
@@ -193,7 +195,7 @@ A subtle but important distinction: voltage tells you the *total* potential diff
 This is why:
 - **Spark plugs** work: modest voltage (20-40kV) across tiny gap = extreme field = ionizes air
 - **Power transmission** uses high voltage: same power with less current (P = IV), reducing I²R losses
-- **Capacitors** can fail: thin dielectric + high voltage = field exceeds breakdown strength
+- **[[learning/notes/micro-context/current-inductor-capacitor-relationship|Capacitors]]** can fail: thin dielectric + high voltage = field exceeds breakdown strength
 
 The practitioner tension: high voltage is efficient for power transmission but dangerous for safety. Field strength (V/m) determines breakdown and safety, while voltage (V) determines energy delivery.
 
@@ -289,23 +291,23 @@ THE FIELD-CURRENT RELATIONSHIP:
 
 - **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
-- **[[quick-context/voltage-current-causality]]** — Does voltage cause current or current cause voltage? Neither, universally. The electric field is the mediator; which quantity is "cause" depends on what's driving the circuit.
+- **Voltage Current Causality** — Does voltage cause current or current cause voltage? Neither, universally. The electric field is the mediator; which quantity is "cause" depends on what's driving the circuit.
 
-- **[[quick-context/electric-current]]** — Current is what flows as a result of the electric field pushing electrons. Voltage defines the field; current is the response.
+- **Electric Current** — Current is what flows as a result of the electric field pushing electrons. Voltage defines the field; current is the response.
 
-- **[[quick-context/resistor]]** — Resistance determines how much current flows for a given field strength. Ohm's Law (V=IR) is the circuit-level expression of the field-current relationship.
+- **Resistor** — Resistance determines how much current flows for a given field strength. Ohm's Law (V=IR) is the circuit-level expression of the field-current relationship.
 
-- **[[quick-context/electromagnetism]]** — The electric field is one component of the electromagnetic field. Moving charges create magnetic fields; changing magnetic fields create electric fields.
+- **Electromagnetism** — The electric field is one component of the electromagnetic field. Moving charges create magnetic fields; changing magnetic fields create electric fields.
 
-- **[[quick-context/parallel-vs-series-voltage]]** — In series, voltages add (same current, field adds up). In parallel, voltages are equal (current divides).
+- **Parallel Vs Series Voltage** — In series, voltages add (same current, field adds up). In parallel, voltages are equal (current divides).
 
-- **[[quick-context/capacitor]]** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See [[quick-context/capacitance]] for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
+- **Capacitor** — Stores energy in the electric field between plates. The field strength (and stored energy) depends on voltage and plate separation. See Capacitance for how the property $C = \varepsilon A/d$ governs both intentional and parasitic charge storage.
 
-- **[[quick-context/self-induction]]** — How changing current in an inductor creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
+- **Self Induction** — How changing current in an [[learning/notes/quick-context/inductor|inductor]] creates a real voltage (back-EMF) through Faraday's Law. The collapsing magnetic field can generate very high voltages.
 
-- **[[quick-context/power-watts-joules]]** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
+- **Power Watts Joules** — Power = voltage × current. This is the rate of energy delivery, combining the field strength (voltage) with the charge flow rate (current).
 
-- **[[small-context/electric-charge-origin]]** — Where positive and negative charges come from at the atomic level, and why electrons are what actually move in circuits.
+- **Electric Charge Origin** — Where positive and negative charges come from at the atomic level, and why electrons are what actually move in circuits.
 
 </details>
 
@@ -318,7 +320,7 @@ THE FIELD-CURRENT RELATIONSHIP:
 **12 V/m** (assuming uniform field and ignoring resistance variations). E = V/d = 12V / 1m. In reality, most of the field would concentrate in any resistive components, with very little in the low-resistance wire itself.
 </details>
 
-**Q2:** If you double the voltage across a resistor, what happens to the electric field inside it?
+**Q2:** If you double the voltage across a [[learning/notes/quick-context/resistor|resistor]], what happens to the electric field inside it?
 <details>
 <summary>Answer</summary>
 **The field doubles.** Voltage is the integral of the field over distance. If distance stays the same and voltage doubles, field must double. This doubled field exerts twice the force on electrons, which (in an ohmic material) doubles the current—consistent with I = V/R.

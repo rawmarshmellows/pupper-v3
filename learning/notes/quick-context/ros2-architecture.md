@@ -2,10 +2,12 @@
 topic: ROS2 Architecture — Robot Operating System 2 for Pupper v3
 created: 2026-03-10
 ---
+> **Related:** [[learning/notes/quick-context/pupper-v3-labs]] | [[learning/notes/quick-context/pupper-lab2-forward-kinematics]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/robot-cell-integration-best-practices]]
+
 
 # ROS2 Architecture — Robot Operating System 2 for Pupper v3
 
-> **Related:** [[quick-context/pupper-v3-labs]] | [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]]
+> **Related:** Pupper V3 Labs | Pupper Brain | Pupper Bom Control Board
 
 > **TL;DR:** ROS2 is the middleware framework that connects every software component on the Pupper v3 — from motor PD controllers to neural network policies to LLM voice agents — through a publish/subscribe messaging system where nodes communicate over named topics, allowing each of the 7 CS123 labs to add new capabilities without modifying existing code.
 
@@ -385,11 +387,11 @@ Each layer only knows about its immediate inputs and outputs. The neural control
 
 - **rosbag** — Records and replays ROS2 topic data. `ros2 bag record /joint_states /cmd_vel` captures all messages with timestamps; `ros2 bag play` replays them. Essential for debugging: record a failed walking attempt, then replay the data through your analysis nodes offline without needing the physical robot.
 
-- **[[quick-context/pupper-brain]]** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32s handle the 1 kHz loops below the ROS2 layer; the Pi runs ROS2 nodes for everything above. Understanding the hardware split explains why certain control loops are in ROS2 and others are not.
+- **Pupper Brain** — The dual-STM32 + Raspberry Pi hardware architecture. The STM32s handle the 1 kHz loops below the ROS2 layer; the Pi runs ROS2 nodes for everything above. Understanding the hardware split explains why certain control loops are in ROS2 and others are not.
 
-- **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum. Each lab adds ROS2 nodes to the graph: Lab 1 (PD controller), Lab 2 (FK + RViz marker), Lab 3 (IK node), Lab 4 (gait node), Lab 5 (neural controller subscribing to `/cmd_vel`), Lab 6 (realtime_voice publishing to `/gpt4_response_topic`), Lab 7 (hailo_detection + state machine + `/tracking_control`).
+- **Pupper V3 Labs** — The 7-lab CS123 curriculum. Each lab adds ROS2 nodes to the graph: Lab 1 (PD controller), Lab 2 (FK + RViz marker), Lab 3 (IK node), Lab 4 (gait node), Lab 5 (neural controller subscribing to `/cmd_vel`), Lab 6 (realtime_voice publishing to `/gpt4_response_topic`), Lab 7 (hailo_detection + state machine + `/tracking_control`).
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The SPI connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
+- **Pupper Bom Control Board** — The physical hardware that ros2_control's hardware interface talks to. The SPI connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
 
 </details>
 
@@ -1117,7 +1119,7 @@ The neural controller needs `/cmd_vel` to know *what* the robot should do (walk 
 <details>
 <summary>Answer</summary>
 
-ROS2 topics support multiple publishers — the subscriber (neural controller) receives messages from *both* publishers interleaved by arrival time. This means the robot would receive conflicting velocity commands: the state machine might say "rotate to search" while Karel says "move forward." The result is erratic behavior as the neural controller alternates between contradictory commands. In practice, the labs are designed so only one high-level controller is active at a time — the state machine only publishes when tracking is active, and Karel publishes discrete motion commands that complete before the next one starts. But this is a convention, not an enforcement. In production systems, you would use a **cmd_vel_mux** (velocity multiplexer) node that accepts commands from multiple sources with priorities and only forwards the highest-priority active source.
+ROS2 topics support multiple publishers — the subscriber (neural controller) receives messages from *both* publishers interleaved by arrival time. This means the robot would receive conflicting velocity commands: the state machine might say "rotate to search" while Karel says "move forward." The result is erratic behavior as the neural controller alternates between contradictory commands. In practice, the labs are designed so only one high-level controller is active at a time — the state machine only publishes when tracking is active, and Karel publishes [[learning/notes/quick-context/how-passive-and-discrete-components-are-made|discrete]] motion commands that complete before the next one starts. But this is a convention, not an enforcement. In production systems, you would use a **cmd_vel_mux** (velocity multiplexer) node that accepts commands from multiple sources with priorities and only forwards the highest-priority active source.
 </details>
 
 **Q3:** The PD controller runs at 200 Hz, but the neural controller only publishes new joint targets at ~50 Hz. What does the PD controller do during the 3 out of every 4 cycles when no new target arrives?

@@ -2,12 +2,14 @@
 topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
+> **Related:** [[learning/notes/quick-context/ros2-architecture]] | [[learning/notes/quick-context/pupper-lab7-vision-tracking]] | [[learning/notes/quick-context/pupper-lab1-pid-control]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/pupper-lab6-llm-voice-control]]
+
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-bom-control-board]] | [[quick-context/ros2-architecture]]
+> **Related:** Pupper Brain | Pupper Bom Control Board | Ros2 Architecture
 >
-> **Individual Labs:** [[quick-context/pupper-lab1-pid-control]] | [[quick-context/pupper-lab2-forward-kinematics]] | [[quick-context/pupper-lab3-inverse-kinematics]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab5-neural-controller]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab7-vision-tracking]]
+> **Individual Labs:** Pupper Lab1 Pid Control | Pupper Lab2 Forward Kinematics | Pupper Lab3 Inverse Kinematics | Pupper Lab4 Gait Control | Pupper Lab5 Neural Controller | Pupper Lab6 Llm Voice Control | Pupper Lab7 Vision Tracking
 
 > **TL;DR:** Seven progressive labs that take you from controlling a single motor joint with PID to a fully autonomous voice-controlled quadruped that sees, tracks, and responds to spoken commands. Labs 1-4 build classical robotics foundations (PID, forward kinematics, inverse kinematics, gait control), Lab 5 replaces hand-tuned control with RL-trained neural policies, and Labs 6-7 add LLM voice control and computer vision for a complete autonomy stack.
 
@@ -21,7 +23,7 @@ Building a walking, seeing, talking robot requires knowledge spanning control th
 |------|------------|
 | **PD Control** | Proportional-Derivative controller that computes torque as $\tau = K_p(q_{target} - q) + K_d(\dot{q}_{target} - \dot{q})$ — the foundation of Labs 1, 3, and 4 |
 | **Forward Kinematics (FK)** | Computing end-effector (foot) position from joint angles using chained 4x4 homogeneous transformation matrices — Lab 2's core concept, reused in every subsequent lab |
-| **Inverse Kinematics (IK)** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via gradient descent on the FK cost function |
+| **Inverse Kinematics (IK)** | Finding joint angles that place the foot at a desired position — Lab 3 solves this via [[learning/notes/quick-context/pupper-lab3-inverse-kinematics|gradient descent]] on the FK cost function |
 | **Karel** | The `KarelPupper` class (Labs 6-7) that wraps ROS2 Twist commands into simple actions (`move_forward`, `bark`, `begin_tracking`) so an LLM can control the robot through function calls |
 | **State Machine** | Lab 7's IDLE/SEARCH/TRACK controller that transitions between rotating to find a target, and using proportional control to follow it based on camera detections |
 
@@ -234,9 +236,9 @@ The ROS2 topic graph for the full Lab 7 system:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pupper-brain]]** — The [[micro-context/stm32-microcontroller|dual-STM32]] + Raspberry Pi hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
-- **[[quick-context/pupper-bom-control-board]]** — Every physical component on the board: the [[micro-context/can-bus-transceiver|CAN transceivers]] that carry joint commands, the [[small-context/imu-robot-balance-sensing|BNO086 IMU]] that Lab 5's neural policy reads for balance, and the [[micro-context/buck-converter|buck converter]] powering it all.
-- **[[quick-context/ros2-architecture|ROS2 (Robot Operating System 2)]]** — The middleware framework all labs use. Nodes communicate via topics (pub/sub), services, and actions. Key message types: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`. See the dedicated quick-context for the full node graph and topic map.
+- **Pupper Brain** — The dual-STM32 + Raspberry Pi hardware architecture that Labs 1-4 run on directly. The 1kHz control loop described there is what executes the PD control from Lab 1 and the joint targets from Labs 3-5.
+- **Pupper Bom Control Board** — Every physical component on the board: the CAN transceivers that carry joint commands, the BNO086 IMU that Lab 5's neural policy reads for balance, and the buck converter powering it all.
+- **ROS2 (Robot Operating System 2)** — The middleware framework all labs use. Nodes communicate via topics (pub/sub), services, and actions. Key message types: `JointState`, `Float64MultiArray`, `Twist`, `Detection2DArray`. See the dedicated quick-context for the full node graph and topic map.
 - **MuJoCo** — Physics simulator used in Lab 5 for training RL policies before transferring to the real robot (sim-to-real).
 - **Hailo AI Accelerator** — Edge AI chip used in Lab 7 for running YOLOv5 object detection at low power on the robot.
 - **OpenAI Realtime API** — WebSocket-based voice API used in Labs 6-7, replacing the traditional Whisper + GPT + TTS pipeline with a single low-latency connection.

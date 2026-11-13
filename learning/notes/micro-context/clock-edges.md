@@ -3,12 +3,14 @@ term: Clock Edge
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/raspberry-pi-ai-hat]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-speed]]
+
 
 # Clock Edge
 
-> **See also:** [[quick-context/transistor-analog-to-digital]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]
+> **See also:** Transistor Analog To Digital | Clock Speed | Clock Sources and Timing
 
-**Definition:** The precise moment when a clock signal transitions between states—either rising (0→1) or falling (1→0). Digital circuits like [[quick-context/d-flip-flop|D flip-flops]] sample data only at clock edges, avoiding the "forbidden zone" where signals are mid-transition and invalid.
+**Definition:** The precise moment when a clock signal transitions between states—either rising (0→1) or falling (1→0). Digital circuits like D flip-flops sample data only at clock edges, avoiding the "forbidden zone" where signals are mid-transition and invalid.
 
 ## How It Works
 
