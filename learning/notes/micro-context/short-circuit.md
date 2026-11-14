@@ -3,6 +3,8 @@ term: Short Circuit
 created: 2026-04-17
 ---
 
+> **Related:** [[learning/notes/quick-context/pwm-controller-circuit]] | [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]]
+
 # Short Circuit
 
 > **See also:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/grounding-and-return-paths]]
