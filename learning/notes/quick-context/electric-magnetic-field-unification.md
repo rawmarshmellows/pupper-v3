@@ -2,26 +2,25 @@
 topic: Electric and Magnetic Field Unification
 created: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/micro-context/mosfet]]
 
 # Electric and Magnetic Field Unification
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
-
-> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "electromagnetism."
+> **TL;DR:** Current, voltage, electric fields, and magnetic fields are four aspects of one underlying reality: charges push through voltage differences, creating current; stationary charges create electric fields, moving charges (current) create magnetic fields; and changes in either field create the other—this chain of causation is why electricity and magnetism are actually "[[learning/notes/quick-context/electromagnetism|electromagnetism]]."
 
 ## The Core Problem: Four Concepts That Seem Disconnected
 
-Students learn voltage, current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
+Students learn [[learning/notes/quick-context/voltage|voltage]], current, electric fields, and magnetic fields as separate topics—often in different chapters or courses. This makes it hard to see that they're all faces of the same physics. The conceptual chain is: **charges → fields → forces → motion → more fields**. Understanding this chain turns a pile of memorized equations into a coherent mental model you can reason with.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
-| **[[quick-context/electric-current\|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
+| **[[learning/notes/quick-context/electric-current|Current]] (I)** | Moving charges. Measured in amps (A = coulombs/second). Current is the *flow* of charge—the thing actually doing work in circuits. |
 | **Voltage (V)** | Energy per unit charge, measured in volts (V = joules/coulomb). Voltage is the "pressure" that pushes charges. It's a difference in electric potential between two points. |
 | **Electric Field (E)** | The force per unit charge at each point in space, measured in V/m or N/C. Created by charges (stationary or moving). Points from + toward -. |
 | **Magnetic Field (B)** | A force field created by moving charges (current) or changing electric fields, measured in tesla (T). Exerts forces on other moving charges, perpendicular to their velocity. |
-| **[[quick-context/electromagnetism\|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
+| **[[learning/notes/quick-context/electromagnetism|Electromagnetic Field]]** | The unified reality: E and B are two aspects of one thing. A stationary observer sees a magnetic field; an observer moving with the charges sees an electric field. Maxwell unified them; Einstein explained why. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -193,7 +192,6 @@ This self-reinforcing loop is what makes electromagnetic waves possible:
 • Changing B creates E
 • They bootstrap each other through empty space at the speed of light
 
-
 IN CIRCUITS (the practical version):
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -245,7 +243,6 @@ ENERGY STORAGE — The Link Between Fields and Components
     Opposes voltage changes                Opposes current changes
     (can't change E instantly)             (can't change B instantly)
 
-
     RESISTOR
     ════════
 
@@ -259,7 +256,6 @@ ENERGY STORAGE — The Link Between Fields and Components
     electric field inside resistor does work on charges,
     but that energy goes to heating atoms (random motion),
     not to organized motion (current).
-
 
 WHY CAPACITORS AND INDUCTORS ARE "DUALS"
 ══════════════════════════════════════════════════════════════════════════════
@@ -311,7 +307,6 @@ VIEW 1: CHARGES ARE FUNDAMENTAL, FIELDS ARE BOOKKEEPING
     • Simple force calculations
     • Building intuition
 
-
 VIEW 2: FIELDS ARE FUNDAMENTAL, CHARGES ARE SOURCES
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -328,7 +323,6 @@ VIEW 2: FIELDS ARE FUNDAMENTAL, CHARGES ARE SOURCES
     • Understanding radiation
     • Antennas and wireless
     • Special relativity
-
 
 WHICH IS "TRUE"?
 ──────────────────────────────────────────────────────────────────────────────
@@ -347,8 +341,8 @@ WHICH IS "TRUE"?
 |-----------|-------------------|
 | DC circuit analysis | Charges flow, voltage pushes |
 | AC circuit analysis | Charges flow, but consider reactance |
-| Capacitor charging | electric field building between plates |
-| Inductor charging | magnetic field building in coil |
+| [[learning/notes/quick-context/capacitor|Capacitor]] charging | electric field building between plates |
+| [[learning/notes/quick-context/inductor|Inductor]] charging | magnetic field building in coil |
 | Transformer operation | Changing B creates E in secondary |
 | Radio transmission | E and B waves propagating through space |
 | Lightning | Charges discharge, massive current, huge magnetic field |
@@ -376,7 +370,6 @@ WHAT'S ACTUALLY HAPPENING — Physics Step by Step
         │ (-)  │──────────────────────────────────│      │
         └──────┘           ───────────           └──────┘
 
-
     STEP 1: Battery creates electric field
     ────────────────────────────────────────────────────────────────────────
 
@@ -394,7 +387,6 @@ WHAT'S ACTUALLY HAPPENING — Physics Step by Step
 
     The electric field exists INSTANTLY (at speed of light) along the whole wire,
     even before any electrons have moved!
-
 
     STEP 2: electric field pushes electrons (creating current)
     ────────────────────────────────────────────────────────────────────────
@@ -414,7 +406,6 @@ WHAT'S ACTUALLY HAPPENING — Physics Step by Step
 
     Conventional current I flows opposite to electron motion (historical accident)
 
-
     STEP 3: Current creates magnetic field
     ────────────────────────────────────────────────────────────────────────
 
@@ -429,7 +420,6 @@ WHAT'S ACTUALLY HAPPENING — Physics Step by Step
 
     If you held a compass near the wire, it would deflect!
     This was Oersted's discovery in 1820.
-
 
     STEP 4: Energy transfer in the bulb
     ────────────────────────────────────────────────────────────────────────
@@ -451,14 +441,12 @@ WHAT'S ACTUALLY HAPPENING — Physics Step by Step
 
     Power dissipated: P = V × I = I²R = V²/R
 
-
     STEP 5: Completing the circuit
     ────────────────────────────────────────────────────────────────────────
 
     Electrons that gave up energy in the bulb return to the battery
     The battery's chemical reaction re-energizes them (adds potential)
     The cycle repeats continuously as long as the circuit is closed
-
 
 SUMMARY: The Four Quantities in Action
 ══════════════════════════════════════════════════════════════════════════════
@@ -495,27 +483,27 @@ SUMMARY: The Four Quantities in Action
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including Maxwell's equations and electromagnetic waves. Read this for the mathematical relationships.
+- **[[learning/notes/quick-context/electromagnetism]]** — The detailed physics of how electric and magnetic fields interact, including [[learning/notes/quick-context/maxwell-equations|Maxwell's equations]] and electromagnetic waves. Read this for the mathematical relationships.
 
-- **[[quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in electrolysis and circuits.
+- **[[learning/notes/quick-context/electric-current]]** — Deep dive into current: what it is, how it's measured, the relationship to charge, and practical applications in [[learning/notes/quick-context/electrolysis|electrolysis]] and circuits.
 
-- **[[quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
+- **[[learning/notes/quick-context/capacitor]]** — How electric fields store energy between conductive plates. Understanding capacitors is understanding electric field energy storage in a practical package.
 
-- **[[quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
+- **[[learning/notes/quick-context/inductor]]** — How magnetic fields store energy in coils. Understanding inductors is understanding magnetic field energy storage in a practical package.
 
-- **[[quick-context/resistor]]** — Where electrical energy becomes heat. The resistor shows what happens when current flows but the energy isn't stored—it's dissipated.
+- **[[learning/notes/quick-context/resistor]]** — Where electrical energy becomes heat. The [[learning/notes/quick-context/resistor|resistor]] shows what happens when current flows but the energy isn't stored—it's dissipated.
 
-- **[[quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical cost).
+- **[[learning/notes/quick-context/power-watts-joules]]** — The rate of energy transfer: P = VI. This connects the abstract concepts (voltage, current, fields) to practical concerns (heat, battery life, electrical cost).
 
-- **[[quick-context/voltage]]** — Electric field defines voltage; field strength drives current through materials.
+- **[[learning/notes/quick-context/voltage]]** — Electric field defines voltage; field strength drives current through materials.
 
-- **[[quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — The practical application of the principle that moving charges create magnetic fields. Explains solenoid field calculations and why coiling concentrates the field.
 
 - **Special Relativity** — Einstein showed that E and B fields are the *same thing* seen from different reference frames. What looks like a magnetic field to a stationary observer looks like an electric field to a moving observer. This is why "electromagnetism" is one word.
 
-- **[[quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric tensor containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
+- **[[learning/notes/quick-context/faraday-tensor]]** — The mathematical object that makes E/B unification precise: a 4×4 antisymmetric [[learning/notes/quick-context/tensor|tensor]] containing all six field components. Under Lorentz transformations, the tensor components mix E and B together automatically, showing they're aspects of one unified electromagnetic field.
 
-- **[[quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
+- **[[learning/notes/quick-context/maxwell-equations]]** — The four equations that govern all electromagnetic phenomena. They encode the relationships between charges, currents, and the E and B fields discussed here, and predict that changing E creates B and vice versa.
 
 </details>
 

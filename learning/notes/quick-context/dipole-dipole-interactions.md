@@ -4,8 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 clarification: 2026-01-21
 ---
-
-> **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
+> **Related:** [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]]
 
 > **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
@@ -23,7 +22,7 @@ Imagine you're trying to understand why water boils at 100°C while methane (nat
 | **Electronegativity** | An atom's "greediness" for electrons—oxygen and nitrogen hog electrons; hydrogen and carbon share more fairly |
 | **Partial charge (δ+ / δ-)** | Not a full +1 or -1 charge, but a slight imbalance—written as delta-plus or delta-minus |
 | **Dipole** | A pair of equal and opposite partial charges separated by distance—the molecule has a "positive pole" and "negative pole" |
-| **Intermolecular force** | Any attraction *between* molecules (not the [[quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule) |
+| **Intermolecular force** | Any attraction *between* molecules (not the [[learning/notes/quick-context/covalent-bonds|covalent bonds]] holding atoms together *within* a molecule) |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -50,7 +49,6 @@ hydrogen (electronegativity 2.1):
      low      high                      "positive    "negative
      density  density                      pole"        pole"
 
-
 STEP 2: Dipoles align to minimize energy
 ========================================
 
@@ -65,7 +63,6 @@ charges near each other:
         (high energy,                   ATTRACTION!
          may repel)                   (low energy,
                                        stable)
-
 
 STEP 3: Network formation in bulk liquid
 ========================================
@@ -88,7 +85,6 @@ Many molecules form an organized network of attractions:
     Breaking free requires enough thermal energy to overcome
     ALL these attractions simultaneously.
 
-
 STRENGTH FACTORS:
 
     Factor              Effect                    Example
@@ -102,7 +98,6 @@ STRENGTH FACTORS:
 
     Orientation         Aligned = attractive      d+...d- ATTRACTS
                         Misaligned = repulsive    d+...d+ REPELS
-
 
 COMPARISON: POLAR vs NONPOLAR LIQUIDS
 
@@ -177,7 +172,6 @@ Water molecule structure:
           /   \
        δ+H     Hδ+
 
-
 How water molecules ACTUALLY attract (δ+ attracts δ-, NOT δ+ to δ+):
 
 ⚠️  IMPORTANT: Like charges REPEL. δ+ repels δ+, δ- repels δ-.
@@ -186,7 +180,6 @@ How water molecules ACTUALLY attract (δ+ attracts δ-, NOT δ+ to δ+):
 WRONG (what you might mistakenly think):
 
        δ+H ←✗ repels ✗→ Hδ+         ← WRONG! Same charges repel!
-
 
 CORRECT orientation (opposite charges attract):
 
@@ -204,7 +197,6 @@ CORRECT orientation (opposite charges attract):
                                / \                |
                             δ+H   Hδ+ ------------┘
 
-
 Side view showing the actual attractions:
 
     Molecule A              Molecule B
@@ -220,7 +212,6 @@ Side view showing the actual attractions:
 
     The δ- oxygen of molecule A attracts the δ+ hydrogen of molecule B.
     NOT hydrogen-to-hydrogen (that would be repulsion).
-
 
 Network view - each oxygen can attract MULTIPLE hydrogens from neighbors:
 
@@ -268,10 +259,10 @@ POLAR (HCl) - molecules stick:     NONPOLAR (H2) - molecules slip past:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/van-der-waals-forces]]** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
-- **[[quick-context/hydrogen-bonds-beginners]]** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
-- **[[quick-context/covalent-bonds]]** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
-- **[[quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
+- **[[learning/notes/quick-context/van-der-waals-forces]]** — The broader category of intermolecular forces that includes dipole-dipole interactions, as well as weaker London dispersion forces present in all molecules.
+- **[[learning/notes/quick-context/hydrogen-bonds-beginners]]** — A special, stronger type of dipole-dipole interaction that occurs when hydrogen is bonded to highly electronegative atoms (O, N, F).
+- **[[learning/notes/quick-context/covalent-bonds]]** — The intramolecular bonds holding atoms together within a molecule; understanding these helps distinguish them from intermolecular dipole-dipole forces.
+- **[[learning/notes/quick-context/polymer-chemical-bonds]]** — How dipole-dipole interactions influence polymer properties like flexibility, melting point, and solubility.
 
 </details>
 
