@@ -3,12 +3,13 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/pupper-lab4-gait-control]]
 
 # 4-Wire Kelvin Measurement
 
-> **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
+> **See also:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
 
-**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures voltage directly across it. This eliminates lead wire resistance from the measurement.
+**Definition:** A precision resistance measurement technique using two separate wire pairs—one pair supplies current through the unknown resistance, while the other pair measures [[learning/notes/quick-context/voltage|voltage]] directly across it. This eliminates lead wire resistance from the measurement.
 
 ## How It Works
 
@@ -23,7 +24,6 @@ PROBLEM: 2-wire measurement includes lead resistance
     Meter ──────R_lead──────┬───[R_unknown]───┬──────R_lead────── Meter
                             │                 │
                       You measure R_lead + R_unknown + R_lead  ✗
-
 
 SOLUTION: 4-wire Kelvin separates current and voltage paths
 

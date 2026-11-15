@@ -2,10 +2,9 @@
 topic: Flip-Chip (C4) Packaging
 created: 2026-01-25
 ---
+> **Related:** [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/substrate-ic-packaging]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/wifi-chip-arduino-uno-r4]]
 
-> **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
-
-> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic silicon die to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional wire bonding.
+> **TL;DR:** Flip-chip packaging solves the problem of connecting a microscopic [[learning/notes/quick-context/silicon-die|silicon die]] to the human-scale world by flipping the chip upside-down and using an array of tiny solder bumps across its entire bottom surface, enabling more connections, faster signals, and better heat dissipation than traditional [[learning/notes/quick-context/wire-bonding|wire bonding]].
 
 # Flip-Chip (C4) Packaging
 
@@ -65,7 +64,6 @@ Wires connect EDGES only                    Bumps connect ENTIRE SURFACE
       ║    SUBSTRATE      ║    the edges         │  SUBSTRATE    │
       ╚═══════════════════╝                      └───────────────┘
 
-
 SIDE VIEW COMPARISON:
 ─────────────────────
 
@@ -86,7 +84,6 @@ Wire Bonding:                               Flip-Chip:
 
     ↑ Long wire = more delay,                    ↑ Short bump = fast,
       fewer connections                            many connections
-
 
 BUMP ARRAY: What the bottom of a flip-chip looks like
 ────────────────────────────────────────────────────────
@@ -203,7 +200,6 @@ CROSS-SECTION OF A MODERN FLIP-CHIP CPU PACKAGE
 
    │←─────────────── ~45mm ────────────────────→│
 
-
 SCALE COMPARISON:
 ─────────────────
                                     Human hair: ~80 μm
@@ -236,7 +232,7 @@ Here's what each layer does:
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The full packaging stack from transistors to system board; flip-chip is one option at the die-to-substrate interface level.
+- **[[learning/notes/quick-context/pcb-chip-transistor-hierarchy|PCB-Chip-Transistor Hierarchy]]** — The full packaging stack from transistors to system board; flip-chip is one option at the die-to-substrate interface level.
 
 - **Solder Reflow** — The heating process that melts solder to form connections; understanding reflow profiles is essential for flip-chip assembly quality.
 
@@ -278,7 +274,7 @@ Flip-chip has significant cost and complexity disadvantages: it requires tighter
 **Q5:** Given that flip-chip places the die face-down, how does this actually improve thermal performance compared to wire bonding where the die faces up?
 <details>
 <summary>Answer</summary>
-When the die is flipped face-down, the backside of the silicon (which has no circuitry, just bulk silicon) is exposed upward. This backside can be placed in direct or near-direct contact with a heat spreader or heatsink via thermal interface material. In wire bonding, the active (hot) side of the die faces up, but wires obstruct direct contact with cooling. Additionally, silicon is an excellent heat conductor, so heat generated in the transistor layers (near the face) conducts efficiently through the bulk silicon to the exposed backside. The flip-chip configuration provides a shorter, lower-resistance thermal path to external cooling. See: Concrete Example (cross-section diagram) and The Key Tension (Heat Dissipation row)
+When the die is flipped face-down, the backside of the silicon (which has no circuitry, just bulk silicon) is exposed upward. This backside can be placed in direct or near-direct contact with a heat spreader or heatsink via thermal interface material. In wire bonding, the active (hot) side of the die faces up, but wires obstruct direct contact with cooling. Additionally, silicon is an excellent heat conductor, so heat generated in the [[learning/notes/quick-context/transistor|transistor]] layers (near the face) conducts efficiently through the bulk silicon to the exposed backside. The flip-chip configuration provides a shorter, lower-resistance thermal path to external cooling. See: Concrete Example (cross-section diagram) and The Key Tension (Heat Dissipation row)
 </details>
 
 </details>

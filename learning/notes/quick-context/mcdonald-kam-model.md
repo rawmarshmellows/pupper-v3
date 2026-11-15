@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Malcolm McDonald KAM Model (Cranfield)
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/sandler-kare-segmentation]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | quick-context/e2e-sales-process-skand-80-20
 
 > **TL;DR:** Malcolm McDonald's Key Account Management (KAM) model from Cranfield University provides a five-stage relationship maturity framework—Exploratory → Basic → Cooperative → Interdependent → Integrated—helping teams diagnose where each account relationship stands and what's needed to deepen it.
 
@@ -129,7 +129,7 @@ Not every account should progress to Integrated—the tension is deciding where 
 | Push Toward Integration | Stay Transactional |
 |------------------------|-------------------|
 | Strategic fit, long-term value | Commodity product, price-driven |
-| High TAM within account | Limited [[quick-context/whitespace-mapping|whitespace]] |
+| High TAM within account | Limited [[learning/notes/quick-context/whitespace-mapping|whitespace]] |
 | Mutual benefit from partnership | One-sided dependency risk |
 | Defensible competitive moat | Resources better spent on new logos |
 | Customer wants partnership | Customer wants arm's-length vendor |
@@ -259,12 +259,12 @@ Next Stage Action: Prevent further regression
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides the account planning mechanics; McDonald's KAM model diagnoses relationship maturity to inform that planning
-- **[[quick-context/sandler-kare-segmentation]]** — KARE segments the portfolio; McDonald's model goes deeper on relationship quality within each segment
-- **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC qualifies deals; McDonald's model qualifies the *relationship* context in which deals occur
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP provides the account planning mechanics; McDonald's KAM model diagnoses relationship maturity to inform that planning
+- **[[learning/notes/quick-context/sandler-kare-segmentation]]** — KARE segments the portfolio; McDonald's model goes deeper on relationship quality within each segment
+- **[[learning/notes/quick-context/meddpicc-qualification-framework]]** — MEDDPICC qualifies deals; McDonald's model qualifies the *relationship* context in which deals occur
 - **Customer Success** — The function most responsible for relationship progression post-sale; KAM model helps CS prioritize accounts
 - **Net Promoter Score (NPS)** — A quantitative signal that sometimes correlates with relationship maturity, though imperfect
-- **[[quick-context/whitespace-mapping]]** — Tool for identifying expansion opportunities; relationship maturity affects which whitespace cells are accessible
+- **[[learning/notes/quick-context/whitespace-mapping]]** — Tool for identifying expansion opportunities; relationship maturity affects which whitespace cells are accessible
 
 </details>
 
@@ -289,7 +289,7 @@ Bow-Tie funnels all communication through single contacts on each side. When tha
 Basic—regardless of contact count. Contact volume doesn't indicate relationship depth if the buying behavior remains transactional. They may have many tactical contacts (support tickets, implementation) but no strategic relationship. The diagnostic is behavior: price-shopping means you're a commodity to them.
 </details>
 
-**Q4:** How would you use McDonald's KAM model together with [[quick-context/sandler-kare-segmentation|KARE]]?
+**Q4:** How would you use McDonald's KAM model together with [[learning/notes/quick-context/sandler-kare-segmentation|KARE]]?
 <details>
 <summary>Answer</summary>
 KARE segments your portfolio into Keep/Attain/Recapture/Expand buckets. McDonald's model then diagnoses relationship depth within those buckets. Example: a "Keep" account at Basic stage needs different protection tactics than a "Keep" at Interdependent stage. An "Expand" account at Cooperative stage is ready for upsell conversations; an "Expand" at Basic stage needs relationship development first before pitching expansion.

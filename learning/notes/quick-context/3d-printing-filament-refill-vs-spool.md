@@ -3,8 +3,7 @@ topic: 3D Printing Filament - Refill vs Spool
 created: 2026-01-20
 updated: 2026-01-21
 ---
-
-> **Related:** [[quick-context/3d-printing-slicer-settings]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/polymer-chemical-bonds]] | [[learning/notes/quick-context/3d-printer-hotends]]
 
 > **TL;DR:** Refill filament is the same plastic without the disposable spool, saving 15-25% cost and eliminating 150-200g of plastic waste per roll. You load refills onto a reusable "master spool" - identical print quality for less money and waste.
 
@@ -12,7 +11,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-3D printing [[quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
+3D printing [[learning/notes/quick-context/3d-printing-filament-types|filament]] comes either wound on a disposable plastic spool (~$25-30/kg) or as a bare coil you load onto a reusable "master spool" (~$18-22/kg). The refill option saves 15-25% cost and eliminates 150-200g of plastic waste per roll, but requires slightly more handling and careful storage to prevent tangling.
 
 ## 5 Essential Terms
 
@@ -52,7 +51,6 @@ STEP 1: What You Receive
    150-200g of spool             Just filament
    becomes waste
 
-
 STEP 2: Loading a Refill onto Master Spool
 ──────────────────────────────────────────
 
@@ -67,7 +65,6 @@ STEP 2: Loading a Refill onto Master Spool
     └─────────┘                                       └─────────┘
      Half A + Half B         Filament coil         Ready to print!
      (reusable forever)      (consumable)
-
 
 STEP 3: Mount and Print
 ───────────────────────
@@ -90,7 +87,6 @@ STEP 3: Mount and Print
   │   Works exactly like regular spool   │
   │   from this point forward            │
   └──────────────────────────────────────┘
-
 
 LIFECYCLE COMPARISON
 ────────────────────
@@ -177,9 +173,9 @@ Once mounted, it works exactly like a regular spool.
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- [[quick-context/3d-printing-filament-types]] — Different filament materials (PLA, PETG, ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
-- [[quick-context/melt-index]] — Understanding [[quick-context/melt-index|melt flow rate]] helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
-- [[quick-context/3d-printer-hotends]] — [[quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
+- [[learning/notes/quick-context/3d-printing-filament-types]] — Different filament materials (PLA, PETG, ABS, etc.) have different moisture sensitivity and storage requirements, which matters more for refills since they lack protective spool packaging
+- [[learning/notes/quick-context/melt-index]] — Understanding [[learning/notes/quick-context/melt-index|melt flow rate]] helps explain why some filaments are more prone to tangling or brittleness when stored improperly as refills
+- [[learning/notes/quick-context/3d-printer-hotends]] — [[learning/notes/quick-context/3d-printer-hotends|Hotend]] compatibility varies by filament type; knowing your hotend's capabilities helps when choosing refill options for specialty materials
 
 </details>
 

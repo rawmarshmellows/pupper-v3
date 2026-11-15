@@ -2,23 +2,22 @@
 topic: Inductor
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/power-inductor]]
 
-> **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
-
-> **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
+> **TL;DR:** An inductor stores energy in a magnetic field created by current flowing through a coil of wire, opposing any change in current—it's the magnetic counterpart to a [[learning/notes/quick-context/capacitor|capacitor]] (which stores energy in an electric field) and is essential for power supplies, filters, and energy conversion.
 
 # Inductor
 
 ## The Core Problem: Smoothing and Converting Power
 
-A switching power supply chops a DC voltage on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
+A switching power supply chops a DC [[learning/notes/quick-context/voltage|voltage]] on and off millions of times per second. Without an inductor, you'd just get violent pulses of current. The inductor smooths these pulses into steady current by storing energy in its magnetic field during the "on" phase and releasing it during the "off" phase. Every phone charger, laptop adapter, and voltage regulator on every [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] depends on inductors to efficiently convert one voltage to another. They're also half of the LC resonant circuits used in radio tuning, and they form filters that block high-frequency noise while passing DC.
 
 ## 5 Essential Terms
 
 | Term | Definition |
 |------|------------|
 | **Inductance (L)** | The ability to store energy in a magnetic field per unit current change, measured in henrys (H). Most practical inductors are microhenrys (μH) to millihenrys (mH). |
-| **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt ([[quick-context/lenzs-law|Lenz's Law]]). Try to suddenly stop current through an inductor and it generates a voltage spike (potentially destructive). |
+| **Back-EMF** | The voltage an inductor generates to oppose changes in current: V = L × dI/dt ([[learning/notes/quick-context/lenzs-law|Lenz's Law]]). Try to suddenly stop current through an inductor and it generates a voltage spike (potentially destructive). |
 | **Saturation Current** | The current at which the core's magnetic material can't hold any more flux—inductance drops sharply and the inductor stops working properly. Exceeding this is a common design mistake. |
 | **DCR (DC Resistance)** | The resistance of the wire in the coil. Lower is better—DCR wastes power as heat. Thicker wire = lower DCR but larger inductor. |
 | **Core Material** | What the coil is wound around. Air (no saturation, low inductance), ferrite (high inductance, saturates), powdered iron (good for power, gradual saturation). |
@@ -26,7 +25,7 @@ A switching power supply chops a DC voltage on and off millions of times per sec
 <details>
 <summary><strong>How It Works</strong></summary>
 
-When [[quick-context/electric-current|current]] flows through a wire, it creates a magnetic field around the wire (see [[quick-context/electromagnetism]] and [[quick-context/coil-magnetic-field|coil magnetic field]]). Coiling the wire concentrates the field. The key behavior: an inductor resists changes to the current flowing through it—the exact opposite of a [[quick-context/capacitor|capacitor]], which resists changes in voltage.
+When [[learning/notes/quick-context/electric-current|current]] flows through a wire, it creates a magnetic field around the wire (see [[learning/notes/quick-context/electromagnetism]] and [[learning/notes/quick-context/coil-magnetic-field|coil magnetic field]]). Coiling the wire concentrates the field. The key behavior: an inductor resists changes to the current flowing through it—the exact opposite of a [[learning/notes/quick-context/capacitor|capacitor]], which resists changes in voltage.
 
 ```
 WHY A COIL, NOT JUST A STRAIGHT WIRE?
@@ -38,7 +37,6 @@ So why doesn't a straight wire act like an inductor?
 
 It does! But the inductance is tiny. The difference is concentration and
 self-linkage.
-
 
 STRAIGHT WIRE: Field exists, but weak and spread out
 ──────────────────────────────────────────────────────────────────────────────
@@ -63,7 +61,6 @@ STRAIGHT WIRE: Field exists, but weak and spread out
     A 10cm straight wire has inductance ≈ 100 nH (0.0001 mH)
     That's basically nothing for most purposes.
 
-
 COILED WIRE: Same physics, but MULTIPLIED
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -82,7 +79,6 @@ COILED WIRE: Same physics, but MULTIPLIED
 
                                    Fields from each turn ADD UP
                                    in the center of the coil
-
 
     2. EACH TURN LINKS WITH FLUX FROM ALL OTHER TURNS (the key insight!)
 
@@ -108,7 +104,6 @@ COILED WIRE: Same physics, but MULTIPLIED
 
         10 turns doesn't give 10× inductance — it gives 100× inductance!
 
-
     THE MATH:
 
         For a coil:  L = (μ₀ × N² × A) / length
@@ -122,7 +117,6 @@ COILED WIRE: Same physics, but MULTIPLIED
         • 1 turn:    L ∝ 1² = 1
         • 10 turns:  L ∝ 10² = 100
         • 100 turns: L ∝ 100² = 10,000
-
 
     ┌────────────────────────────────────────────────────────────────────────┐
     │                                                                        │
@@ -139,7 +133,6 @@ COILED WIRE: Same physics, but MULTIPLIED
     │   The physics is IDENTICAL. The geometry makes the difference.       │
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
-
 
 INDUCTOR FUNDAMENTALS
 ══════════════════════════════════════════════════════════════════════════════
@@ -160,7 +153,6 @@ INDUCTOR FUNDAMENTALS
     • Increasing current → inductor opposes, generates negative voltage
     • Decreasing current → inductor opposes, generates positive voltage
     • Sudden current cutoff → HUGE voltage spike (V = L × dI/dt, dt≈0)
-
 
 ENERGY STORAGE — The Key to Understanding Everything
 ══════════════════════════════════════════════════════════════════════════════
@@ -184,7 +176,6 @@ ENERGY STORAGE — The Key to Understanding Everything
     Parallel: 1/L = 1/L1 + 1/L2    Parallel: C_total = C1 + C2
 
     They're exact duals of each other!
-
 
 RL TIME CONSTANT
 ══════════════════════════════════════════════════════════════════════════════
@@ -214,7 +205,6 @@ RL TIME CONSTANT
     At t=∞: inductor passes all current (acts like short circuit)
     Exactly opposite of a capacitor!
 
-
 WHY DOES VOLTAGE "APPEAR" ACROSS THE LOAD OVER TIME?
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -231,7 +221,6 @@ connect a battery to an inductor with a load (resistor):
 
     Kirchhoff's Voltage Law:   Vs = V_L + V_R
                                10V = V_L + V_R   (always true!)
-
 
 MOMENT 1: The instant you connect the battery (t = 0)
 ──────────────────────────────────────────────────────────────────────────────
@@ -262,7 +251,6 @@ MOMENT 1: The instant you connect the battery (t = 0)
 
     So current STARTS to rise at rate 10/L amps per second.
 
-
 MOMENT 2: A short time later (t = small)
 ──────────────────────────────────────────────────────────────────────────────
 
@@ -286,7 +274,6 @@ MOMENT 2: A short time later (t = small)
     • V_L = L × dI/dt → smaller dI/dt means smaller V_L
 
     The inductor is "giving up" voltage to the load as current builds up.
-
 
 MOMENT 3: Much later (t → ∞, steady state)
 ──────────────────────────────────────────────────────────────────────────────
@@ -313,7 +300,6 @@ MOMENT 3: Much later (t → ∞, steady state)
     • Magnetic field is fully established and stable
     • Inductor acts like a plain wire (just its DCR)
 
-
 THE PHYSICS SUMMARY:
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -330,7 +316,7 @@ THE PHYSICS SUMMARY:
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
 
-    This is [[quick-context/lenzs-law|Lenz's Law]] in action:
+    This is [[learning/notes/quick-context/lenzs-law|Lenz's Law]] in action:
 
     • Inductor opposes CHANGE, not current itself
     • Opposition is proportional to rate of change
@@ -341,7 +327,6 @@ THE PHYSICS SUMMARY:
     • While V_L > 0, energy is flowing INTO the magnetic field
     • At steady state, field is "full"—no more energy transfer needed
     • If you then disconnect, stored energy releases (voltage spike!)
-
 
 THE DEEP PHYSICS: WHY CAN'T CURRENT CHANGE INSTANTLY?
 ══════════════════════════════════════════════════════════════════════════════
@@ -366,7 +351,6 @@ THE ANSWER: Because the magnetic field requires ENERGY to create.
     exists in space and contains energy. Creating this field requires
     transferring energy from the power source into the field.
 
-
     Why instant current change is impossible:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -388,7 +372,6 @@ THE ANSWER: Because the magnetic field requires ENERGY to create.
 
     If dI/dt → ∞ (instant change), then V → ∞ (infinite voltage).
     No real power source can provide infinite voltage.
-
 
     The mechanical analogy — INERTIA:
     ─────────────────────────────────────────────────────────────────────────
@@ -428,7 +411,6 @@ THE ANSWER: Because the magnetic field requires ENERGY to create.
         │                                                                 │
         └─────────────────────────────────────────────────────────────────┘
 
-
 THE DEEP PHYSICS: WHY DOES CURRENT KEEP FLOWING WHEN DISCONNECTED?
 ══════════════════════════════════════════════════════════════════════════════
 
@@ -450,7 +432,6 @@ THE ANSWER: The magnetic field contains energy that MUST go somewhere.
                      magnetic field
                      contains E = ½LI²
 
-
     The moment you open the switch:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -464,7 +445,6 @@ THE ANSWER: The magnetic field contains energy that MUST go somewhere.
 
     The field cannot just disappear. Energy is conserved.
     That energy MUST be released somehow.
-
 
     What happens physically:
     ─────────────────────────────────────────────────────────────────────────
@@ -489,7 +469,6 @@ THE ANSWER: The magnetic field contains energy that MUST go somewhere.
     6. Current continues through whatever path exists, dissipating
        the field's energy as heat (in the arc, in components, etc.)
 
-
     The field FORCES current to continue:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -511,7 +490,6 @@ THE ANSWER: The magnetic field contains energy that MUST go somewhere.
         → Dissipated as heat in the arc
         → Or heat in whatever component absorbed the spike
 
-
     This is NOT the inductor "wanting" current to flow—it's simpler:
     ─────────────────────────────────────────────────────────────────────────
 
@@ -527,7 +505,6 @@ THE ANSWER: The magnetic field contains energy that MUST go somewhere.
     │   and a collapsing field ALWAYS induces current. It's physics.        │
     │                                                                        │
     └────────────────────────────────────────────────────────────────────────┘
-
 
     The flyback diode solution:
     ─────────────────────────────────────────────────────────────────────────
@@ -584,7 +561,7 @@ THE CORE TRADEOFFS
 
 ## Buck Converter: Stepping Voltage Down Efficiently
 
-The most common inductor application. A buck converter uses a switch, diode, inductor, and [[quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a resistor voltage divider, which wastes the excess as heat.
+The most common inductor application. A [[learning/notes/micro-context/buck-converter|buck converter]] uses a switch, [[learning/notes/quick-context/diode|diode]], inductor, and [[learning/notes/quick-context/capacitor|capacitor]] to step voltage down (e.g., 12V → 3.3V) at 85-95% efficiency—far better than a [[learning/notes/quick-context/resistor|resistor]] voltage divider, which wastes the excess as heat.
 
 ```
 BUCK CONVERTER OPERATION
@@ -601,7 +578,6 @@ BUCK CONVERTER OPERATION
                    ║
               Controller sets duty cycle: D = Vout/Vin = 3.3/12 = 27.5%
 
-
     PHASE 1: Switch ON (27.5% of cycle)
     ────────────────────────────────────
     Vin ──[ON]──⊃⊃⊃⊃──┬── Vout
@@ -613,7 +589,6 @@ BUCK CONVERTER OPERATION
     • Current flows from Vin through L to load
     • L stores energy in magnetic field (current increasing)
     • V_L = Vin - Vout = 8.7V (positive, current ramps up)
-
 
     PHASE 2: Switch OFF (72.5% of cycle)
     ─────────────────────────────────────
@@ -627,7 +602,6 @@ BUCK CONVERTER OPERATION
     • Current freewheels through diode
     • L releases stored energy (current decreasing)
     • V_L = -Vout = -3.3V (negative, current ramps down)
-
 
     INDUCTOR CURRENT WAVEFORM
     ─────────────────────────────────────
@@ -649,25 +623,25 @@ BUCK CONVERTER OPERATION
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[quick-context/capacitance]] for the underlying property and how parasitic capacitance interacts with inductance in real circuits.
+- **[[learning/notes/quick-context/capacitor]]** — Inductors and capacitors are exact duals: one stores energy in magnetic fields, the other in electric fields. Together they form LC resonant circuits (f = 1/(2π√LC)) and second-order filters. See [[learning/notes/quick-context/capacitance]] for the underlying property and how parasitic [[learning/notes/quick-context/capacitance|capacitance]] interacts with inductance in real circuits.
 
-- **[[quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as charge flow is essential.
+- **[[learning/notes/quick-context/electric-current]]** — The inductor equation V = L×dI/dt means inductors care about current changes. Understanding current as charge flow is essential.
 
-- **[[quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
+- **[[learning/notes/quick-context/resistor]]** — RL circuits (inductor + resistor) have a time constant τ = L/R, analogous to RC circuits. Real inductors always have parasitic resistance (DCR).
 
-- **[[quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. Power inductor layout is critical for switching power supply performance.
+- **[[learning/notes/quick-context/pcb-printed-circuit-board]]** — Inductor placement matters: magnetic fields can couple into nearby traces. [[learning/notes/micro-context/power-inductor|Power inductor]] layout is critical for switching power supply performance.
 
-- **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
+- **[[learning/notes/quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
-- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
+- **[[learning/notes/quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
 
-- **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field, and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
+- **[[learning/notes/quick-context/coil-magnetic-field]]** — [[learning/notes/quick-context/coil-magnetic-field|Why current through a coil creates a magnetic field]], and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
 
-- **[[quick-context/lenzs-law]]** — The physics behind back-EMF: why the induced voltage always opposes current changes. This is conservation of energy enforced electromagnetically.
+- **[[learning/notes/quick-context/lenzs-law]]** — The physics behind back-EMF: why the induced voltage always opposes current changes. This is conservation of energy enforced electromagnetically.
 
-- **[[quick-context/self-induction]]** — The complete cycle: how current creates flux, changing flux creates back-EMF, and what happens when you disconnect the battery (the field collapses, pushing current through the load until all energy is dissipated). Includes voltage across both inductor and load at each phase.
+- **[[learning/notes/quick-context/self-induction]]** — The complete cycle: how current creates flux, changing flux creates back-EMF, and what happens when you disconnect the battery (the field collapses, pushing current through the load until all energy is dissipated). Includes voltage across both inductor and load at each phase.
 
-- **[[small-context/permanent-magnet-creation]]** — A magnetizer is essentially a high-current inductor used to align magnetic domains in ferromagnetic materials. The same principle (current creates magnetic field) but applied to create permanent magnets.
+- **small-context/permanent-magnet-creation** — A magnetizer is essentially a high-current inductor used to align magnetic domains in ferromagnetic materials. The same principle (current creates magnetic field) but applied to create permanent magnets.
 
 </details>
 
@@ -680,7 +654,7 @@ BUCK CONVERTER OPERATION
 **V = L × dI/dt. If dt approaches zero (instant cutoff), the voltage approaches infinity.** The inductor's magnetic field is collapsing and it will do whatever it takes to keep current flowing—even generating hundreds of volts across a small inductor. This is why flyback diodes are placed across inductive loads like motors and relays: they give the current a safe path to flow during turn-off.
 </details>
 
-**Q2:** An inductor and a capacitor are "duals." What does this mean practically?
+**Q2:** An inductor and a [[learning/notes/quick-context/capacitor|capacitor]] are "duals." What does this mean practically?
 <details>
 <summary>Answer</summary>
 **They have opposite behaviors in every way.** Capacitors block DC and pass AC; inductors pass DC and block AC. Capacitors oppose voltage changes; inductors oppose current changes. Their series/parallel formulas are swapped. Their time constant formulas are inverted (τ = RC vs τ = L/R). Together they create resonance at f = 1/(2π√LC).
@@ -701,7 +675,7 @@ BUCK CONVERTER OPERATION
 **Q5:** What happens if you exceed an inductor's saturation current?
 <details>
 <summary>Answer</summary>
-**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a short circuit (just its DCR). In a switching power supply, this means current shoots up, the switch transistor may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
+**Inductance drops sharply and current spikes uncontrollably.** The core material can't support any more magnetic flux, so the inductor stops opposing current changes and acts more like a [[learning/notes/micro-context/short-circuit|short circuit]] (just its DCR). In a switching power supply, this means current shoots up, the switch [[learning/notes/quick-context/transistor|transistor]] may overheat or blow, and output voltage regulation is lost. Always pick an inductor with saturation current above your maximum expected current.
 </details>
 
 </details>
