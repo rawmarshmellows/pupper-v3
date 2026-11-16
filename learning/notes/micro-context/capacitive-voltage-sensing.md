@@ -3,6 +3,8 @@ term: Capacitive Voltage Sensing
 created: 2026-06-08
 ---
 
+> **Related:** [[micro-context/adc-analog-to-digital-converter]] | [[quick-context/capacitance]] | [[quick-context/capacitor]] | [[quick-context/differential-pair]] | [[quick-context/voltage]]
+
 # Capacitive Voltage Sensing
 
 > **See also:** [[quick-context/differential-pair]] | [[quick-context/capacitance]] | [[micro-context/capacitive-sensing-measurement]]
@@ -11,7 +13,7 @@ created: 2026-06-08
 
 ## How It Works
 
-- The source conductor and the sense plate form a small coupling capacitor $C_c$ across the air/dielectric gap — no metal-to-metal contact.
+- The source conductor and the sense plate form a small coupling [[quick-context/capacitor|capacitor]] $C_c$ across the air/dielectric gap — no metal-to-metal contact.
 - The source's electric field induces a proportional charge on the plate, $Q = C_c \cdot V_{source}$, so the plate "feels" the voltage through the field alone.
 - $C_c$ in series with a reference capacitor $C_{ref}$ to ground makes a capacitive divider: $V_{sense} = V_{source} \cdot \dfrac{C_c}{C_c + C_{ref}}$.
 - For a *changing* (AC) source the field drives a displacement current $I = C_c \, dV/dt$ into the plate; this tiny signal feeds a high-impedance [[quick-context/differential-pair|differential pair]], which amplifies it against a reference and rejects common-mode noise.
