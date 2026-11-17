@@ -4,6 +4,8 @@ created: 2026-02-25
 updated: 2026-06-08
 ---
 
+> **Related:** [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]] | [[learning/notes/quick-context/semiconductor-fabrication]]
+
 # MOSFET
 
 > **See also:** [[quick-context/transistor]]

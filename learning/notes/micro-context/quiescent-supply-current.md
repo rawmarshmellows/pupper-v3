@@ -3,6 +3,8 @@ term: Quiescent Supply Current (I_S)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/input-bias-current]]
+
 # Quiescent Supply Current ($I_S$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/tail-current]] | [[quick-context/comparator]]
