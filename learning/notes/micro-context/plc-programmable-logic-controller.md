@@ -3,6 +3,8 @@ term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
 
+> **Related:** [[learning/notes/micro-context/eeprom]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/pupper-lab5-neural-controller]] | [[learning/notes/quick-context/pwm-controller-circuit]]
+
 # PLC (Programmable Logic Controller)
 
 > **See also:** [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt-ros2-plc-replacement]] | [[quick-context/pcb-printed-circuit-board]]

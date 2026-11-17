@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/power-watts-joules]]
+
 # Power Inductor
 
 > **See also:** [[quick-context/electric-current]] | [[micro-context/buck-converter]]

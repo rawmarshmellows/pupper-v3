@@ -3,6 +3,8 @@ term: EEPROM (Electrically Erasable Programmable Read-Only Memory)
 created: 2026-04-07
 ---
 
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/how-source-code-is-stored]] | [[learning/notes/quick-context/physics-of-writing-data-to-memory]]
+
 # EEPROM (Electrically Erasable Programmable Read-Only Memory)
 
 **Definition:** A non-volatile memory chip that retains data without power, can be electrically rewritten byte-by-byte, and is used to store small amounts of configuration data (typically 1 KB – 64 KB). It sits between one-time-programmable ROM (write once) and [[learning/notes/micro-context/sram|SRAM]] (volatile, loses data on power-off).

@@ -3,6 +3,8 @@ term: Input Bias Current (I_B)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/current-mirror]] | [[learning/notes/micro-context/quiescent-supply-current]]
+
 # Input Bias Current ($I_B$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[micro-context/mosfet]] | [[quick-context/resistor]]

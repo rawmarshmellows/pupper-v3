@@ -3,6 +3,8 @@ term: Input Offset Voltage (V_OS)
 created: 2026-06-07
 ---
 
+> **Related:** [[learning/notes/micro-context/offset-voltage-drift]]
+
 # Input Offset Voltage ($V_{OS}$)
 
 > **See also:** [[quick-context/comparator-specification]] | [[quick-context/differential-pair]] | [[quick-context/comparator]]
