@@ -2,6 +2,7 @@
 term: PLC (Programmable Logic Controller)
 created: 2026-03-29
 ---
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/plc-vs-software]]
 
 # PLC (Programmable Logic Controller)
 

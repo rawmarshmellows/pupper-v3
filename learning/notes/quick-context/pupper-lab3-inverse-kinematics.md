@@ -3,6 +3,7 @@ topic: Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 created: 2026-03-10
 updated: 2026-03-11
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]]
 
 # Pupper Lab 3 — Inverse Kinematics (Gradient Descent)
 

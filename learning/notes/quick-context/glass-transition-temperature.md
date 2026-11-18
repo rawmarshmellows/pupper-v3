@@ -3,6 +3,7 @@ topic: Glass Transition Temperature (Tg)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 > **Related:** [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]] | [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/thermal-noise-electronics]]
 
@@ -239,7 +240,7 @@ Related concepts that deepen your understanding of glass transition temperature:
 
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Understanding why amorphous polymers have a distinct Tg while semi-crystalline polymers have both Tg and a melting point (Tm).
 
-- **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high melt index means easier flow, which connects to how far above Tg you need to go for processing.
+- **[[quick-context/melt-index]]** — How polymer flow characteristics relate to processing temperature; a high [[learning/notes/quick-context/melt-index|melt index]] means easier flow, which connects to how far above Tg you need to go for processing.
 
 - **[[quick-context/3d-printing-filament-types]]** — Practical comparison of filament materials and their Tg values, helping you choose the right material for your application's thermal environment.
 

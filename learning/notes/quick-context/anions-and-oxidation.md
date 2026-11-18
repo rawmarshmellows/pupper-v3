@@ -2,6 +2,7 @@
 topic: Anions and Oxidation
 created: 2026-01-22
 ---
+> **Related:** [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/covalent-bonds]]
 
 > **Related:** [[quick-context/electrolysis]]
 
@@ -19,7 +20,7 @@ Why does this matter? Without understanding anions and oxidation, we couldn't ex
 |------|------------|
 | **Electron** | A tiny negatively-charged particle that orbits atoms; the currency of chemistry |
 | **Ion** | An atom that has gained or lost electrons, giving it an electrical charge |
-| **Anion** | A negatively-charged ion (has extra electrons); moves toward positive electrodes |
+| **Anion** | A negatively-charged ion (has extra electrons); moves toward positive [[learning/notes/quick-context/electrodes|electrodes]] |
 | **Oxidation** | The process of *losing* electrons (remember: **O**xidation **I**s **L**oss = OIL) |
 | **Anode** | The positive electrode where oxidation occurs; anions migrate here |
 

@@ -2,6 +2,7 @@
 topic: "Singular Value Decomposition (SVD)"
 created: 2026-04-04
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]]
 
 # Singular Value Decomposition (SVD)
 
@@ -254,8 +255,8 @@ print("Rotation error:", np.linalg.norm(R_true - R_estimated))
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
 - **[[quick-context/helmert-transform|Helmert Transform]]** -- Uses SVD to extract the optimal rotation matrix from the cross-covariance matrix of corresponding point sets
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a similarity transform (rotation + scale + translation)
-- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the absolute orientation problem
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- SVD helps estimate the rotation component of a [[learning/notes/quick-context/similarity-transform|similarity transform]] (rotation + scale + translation)
+- **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The SVD-based Kabsch-Umeyama method is one of three main approaches to solving the [[learning/notes/quick-context/absolute-orientation|absolute orientation problem]]
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- SVD of the cross-covariance matrix is central to point cloud alignment; SVD of the covariance matrix yields PCA
 - **Principal Component Analysis (PCA)** -- PCA is SVD applied to the centered data matrix; the principal components are the right singular vectors, and the explained variance comes from the squared singular values
 - **Polar decomposition** -- Every matrix factors as $A = QS$ (orthogonal times symmetric positive semi-definite); SVD gives you this directly since $Q = UV^T$ and $S = V\Sigma V^T$

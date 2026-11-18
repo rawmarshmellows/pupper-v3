@@ -3,6 +3,7 @@ topic: Transistor
 created: 2026-01-25
 updated: 2026-02-21
 ---
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/silicon-die]]
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/transistor-analog-to-digital]] | [[quick-context/transistor-design-history]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -162,7 +163,7 @@ The capacitor equation explains transistor behavior:
     (But too thin → quantum tunneling through oxide → leakage current)
 ```
 
-The most common modern transistor type is the **MOSFET** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
+The most common modern transistor type is the **[[learning/notes/micro-context/mosfet|MOSFET]]** (Metal-Oxide-Semiconductor Field-Effect Transistor). Here is how it works step by step:
 
 ```
 INSIDE A MOSFET TRANSISTOR

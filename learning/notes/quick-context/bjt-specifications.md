@@ -2,6 +2,7 @@
 topic: BJT Specifications (Choosing a Transistor)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/transistor]]
 
 # BJT Specifications — The 5 Numbers That Decide If a Transistor Survives
 
@@ -164,7 +165,7 @@ The five specs pull against each other; choosing a BJT is balancing them.
 | **$P_C$** | Bigger package or a heatsink — board area, cost | Heat capacity vs. size/cost |
 | **$\beta$** | High-$\beta$ parts trade off voltage and ruggedness | Easy drive vs. robustness |
 
-**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a MOSFET gate is a [[quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
+**The central design tension is saturation vs. speed vs. drive.** Overdriving the base (forced $\beta$ much smaller than the rated $\beta$) guarantees a low $V_{CE(sat)}$ — which *minimizes* $P_C$ heating — but stuffing the base full of charge makes the transistor **slow to turn off** (stored charge has to drain out, the "storage time"). So: more base drive → lower conduction loss but slower switching. This exact tradeoff is one reason [[quick-context/transistor|MOSFETs]] displaced BJTs for high-speed switching — a [[learning/notes/micro-context/mosfet|MOSFET]] gate is a [[quick-context/capacitor|capacitor]], not a current-hungry, charge-storing junction.
 
 ```
 PICKING THE PART — the decision order

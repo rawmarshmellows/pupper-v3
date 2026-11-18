@@ -2,6 +2,7 @@
 topic: Solving Robot Cell Integration Failure Modes
 created: 2026-01-17
 ---
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/plc-vs-software-control]]
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/robot-cell-integration-best-practices]]
 

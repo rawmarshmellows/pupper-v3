@@ -3,6 +3,7 @@ term: ADC (Analog-to-Digital Converter)
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/swd-serial-wire-debug]]
 
 # ADC (Analog-to-Digital Converter)
 

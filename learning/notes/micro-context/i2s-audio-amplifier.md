@@ -3,6 +3,7 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
 
 # I2S Audio Amplifier
 

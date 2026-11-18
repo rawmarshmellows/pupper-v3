@@ -2,6 +2,7 @@
 topic: PCB, Chip, Transistor, and Substrate Packaging Hierarchy
 created: 2026-01-23
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/flip-chip]]
 
 
 > **Related:** [[quick-context/doped-silicon]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]

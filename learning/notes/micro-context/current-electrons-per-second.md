@@ -3,6 +3,7 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/coulomb-history]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 # Current and Electrons Per Second
 

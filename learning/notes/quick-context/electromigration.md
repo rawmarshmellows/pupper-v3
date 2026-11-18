@@ -2,6 +2,7 @@
 topic: Electromigration
 created: 2026-01-26
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/metal-interconnect-layers]] | [[quick-context/electric-current]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

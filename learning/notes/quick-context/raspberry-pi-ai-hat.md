@@ -2,6 +2,7 @@
 topic: Raspberry Pi AI HAT+ — Edge AI Acceleration
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]]
 
 # Raspberry Pi AI HAT+ — Edge AI Acceleration
 
@@ -17,7 +18,7 @@ Running AI models (object detection, pose estimation, image classification) on a
 
 | Term | Definition |
 |------|------------|
-| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C EEPROM for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
+| **HAT (Hardware Attached on Top)** | Official Raspberry Pi spec for add-on boards: 65 x 56 mm, 40-pin GPIO header, I2C [[learning/notes/micro-context/eeprom|EEPROM]] for auto-configuration — the mechanical and electrical standard that makes boards plug-and-play |
 | **NPU (Neural Processing Unit)** | A chip designed specifically for the multiply-accumulate operations that dominate neural networks, with massively parallel datapaths that a general-purpose CPU cannot match |
 | **TOPS (Tera Operations Per Second)** | NPU throughput metric — how many trillion math operations per second the chip can perform. Caveat: TOPS depends on precision (INT4 vs INT8) and does not capture memory bandwidth or software efficiency |
 | **Hailo** | Israeli semiconductor company that manufactures the NPU chips used in all Pi AI HATs: Hailo-8L (13 TOPS), Hailo-8 (26 TOPS), and Hailo-10H (40 TOPS) |
@@ -244,7 +245,7 @@ For FPC-only adapters with no supplemental power, the **Hailo-8L is the safe cho
 
 **Geekworm M901 + Hailo-8L (M-key)** is the simplest path:
 - ~$15-20 for the adapter + ~$45-55 for the Hailo-8L M.2 module
-- FPC-only: all 40 GPIO pins free for motor control, IMU, CAN bus
+- FPC-only: all 40 GPIO pins free for motor control, IMU, [[learning/notes/quick-context/can-bus|CAN bus]]
 - 13 TOPS is sufficient for real-time YOLOv8 at ~15 FPS
 - Power draw stays well within FPC's 5W budget
 - One line in config.txt: `dtparam=pciex1_gen=3`

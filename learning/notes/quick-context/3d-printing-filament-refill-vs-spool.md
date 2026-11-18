@@ -3,6 +3,7 @@ topic: 3D Printing Filament - Refill vs Spool
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]] | [[learning/notes/quick-context/bambu-p2s-print-quality]]
 
 > **Related:** [[quick-context/3d-printing-slicer-settings]]
 

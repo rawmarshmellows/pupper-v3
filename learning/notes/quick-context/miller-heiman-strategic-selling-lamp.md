@@ -3,6 +3,7 @@ topic: Miller Heiman Strategic Selling / LAMP
 created: 2026-02-10
 updated: 2026-02-10
 ---
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
 # Miller Heiman Strategic Selling / LAMP
 

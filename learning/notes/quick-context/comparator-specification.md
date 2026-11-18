@@ -2,6 +2,7 @@
 topic: Comparator Specifications
 created: 2026-06-06
 ---
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/op-amp]]
 
 # Comparator Specifications (Reading the LMC7211-N Datasheet)
 
@@ -22,7 +23,7 @@ A comparator that switches cleanly on your bench at room temperature can fail in
 | **Absolute Maximum Ratings** | Stress limits you must never exceed, even for an instant. Beyond them the part can be permanently damaged. These are *not* an operating range---a part is not designed to run at its absolute max. |
 | **Operating Ratings** | The conditions (supply voltage, temperature) under which the device is functional and the electrical specs are guaranteed. The "safe operating envelope." |
 | **Typical vs. Limit (boldface)** | *Typical* (Typ) is the average part at 25°C and nominal conditions---not guaranteed. *Limit* columns are tested and guaranteed worst case. **Boldface** limits hold across the full temperature range, not just at 25°C. |
-| **Input Offset Voltage ($V_{OS}$)** | A small built-in voltage error between the two inputs from transistor mismatch. The real switching point is $V_{REF} \pm V_{OS}$, so $V_{OS}$ sets your threshold accuracy. |
+| **[[learning/notes/micro-context/input-offset-voltage|Input Offset Voltage]] ($V_{OS}$)** | A small built-in voltage error between the two inputs from transistor mismatch. The real switching point is $V_{REF} \pm V_{OS}$, so $V_{OS}$ sets your threshold accuracy. |
 | **Propagation Delay ($t_{PD}$)** | Time from the input crossing the threshold until the output actually switches. It *shrinks as input overdrive grows*---a comparator hovering near its threshold is slow. |
 
 <details>
@@ -75,7 +76,7 @@ SPEC  →  WHICH STAGE OF THE COMPARATOR IT GRADES
 | Spec | Grades which stage (see [[quick-context/comparator]]) |
 |---|---|
 | $V_{OS}$, $TCV_{OS}$ | The [[quick-context/differential-pair|differential pair]] (Q1/Q2) --- offset *is* its built-in mismatch |
-| $I_B$ | The MOSFET input gates --- insulated, so ~zero current flows in |
+| $I_B$ | The [[learning/notes/micro-context/mosfet|MOSFET]] input gates --- insulated, so ~zero current flows in |
 | $CMRR$ | The tail current source (Q5) --- how well it holds total current fixed and ignores common-mode |
 | $A_V$ | The [[quick-context/high-gain-amplifier-stage|high-gain node]] + mirror load --- the gain that slams the output to a rail |
 | $CMVR$ | The input pair's usable voltage window (the rail-to-rail-and-beyond design) |
@@ -338,7 +339,7 @@ FINDING A REPLACEMENT --- TWO QUESTIONS
 
 | What to check | Datasheet section | Replacement rule |
 |---|---|---|
-| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a [[quick-context/comparator\|pull-up resistor]]; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
+| **Output type** (push-pull vs open-drain) | §4.4 + [[quick-context/comparator]] | **Must match the circuit.** Open-drain needs a pull-up resistor; push-pull doesn't. Swap types and the board breaks unless you also add/remove the pull-up. |
 | **Supply voltage range** | §4.2 Operating Ratings | New part's operating range must *contain* your rail, with margin. |
 | **Input common-mode range** ($CMVR$) | §4.3 | Must include every voltage your inputs actually see. If you relied on rail-to-rail-and-beyond, keep it. |
 | **Input offset grade** ($V_{OS}$) | §4.3 | New boldface $V_{OS}$ ≤ your threshold-error budget (don't regress accuracy). |

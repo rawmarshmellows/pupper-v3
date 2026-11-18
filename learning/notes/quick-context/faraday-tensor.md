@@ -2,6 +2,7 @@
 topic: Faraday Tensor
 created: 2026-02-20
 ---
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/maxwell-equations]]
 
 # Faraday Tensor
 
@@ -159,7 +160,7 @@ EXAMPLE: A Moving Charge Near a Wire
 
 ## Maxwell's Equations in Tensor Form
 
-The four Maxwell equations compress into just two tensor equations:
+The four [[learning/notes/quick-context/maxwell-equations|Maxwell equations]] compress into just two tensor equations:
 
 ```
 [[quick-context/maxwell-equations|MAXWELL'S EQUATIONS]] — From Four to Two
@@ -283,7 +284,7 @@ APPROACH 2: UNIFIED FARADAY TENSOR (relativistic, elegant)
 | When to Use | E/B Separate | Faraday Tensor |
 |-------------|--------------|----------------|
 | Circuit design | Better | Overkill |
-| [[quick-context/inductor\|Inductor]]/[[quick-context/capacitor\|capacitor]] analysis | Better | Overkill |
+| Inductor/capacitor analysis | Better | Overkill |
 | High-velocity particles | Works but messy | Natural |
 | Particle physics | Awkward | Required |
 | General relativity + EM | Impossible | Required |

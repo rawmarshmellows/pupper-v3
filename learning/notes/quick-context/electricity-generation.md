@@ -2,6 +2,7 @@
 topic: Electricity Generation (How Electricity is Created)
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/inductor]] | [[quick-context/galvanic-cells-batteries]] | [[quick-context/power-watts-joules]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

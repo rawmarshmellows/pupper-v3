@@ -2,6 +2,7 @@
 topic: Schematic Reading
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/flip-chip]]
 
 > **Related:** [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/transistor]] | [[quick-context/diode]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -186,7 +187,7 @@ SIMPLE LED BLINK CIRCUIT
 
 - **[[quick-context/capacitor]]** — Two parallel lines (non-polarized) or one curved line (polarized). Usually found near IC power pins (decoupling). Reference designator: C.
 
-- **[[quick-context/transistor]]** — MOSFET and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
+- **[[quick-context/transistor]]** — [[learning/notes/micro-context/mosfet|MOSFET]] and BJT have distinct symbols. The arrow direction indicates NPN vs PNP (BJT) or N-channel vs P-channel (MOSFET). Reference designator: Q.
 
 - **[[quick-context/diode]]** — Triangle with a bar. Arrow points in the direction of conventional current flow. LEDs add small arrows indicating light emission. Reference designator: D.
 

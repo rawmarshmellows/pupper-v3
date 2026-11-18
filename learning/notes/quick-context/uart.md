@@ -2,6 +2,7 @@
 topic: UART — Universal Asynchronous Receiver/Transmitter
 created: 2026-04-08
 ---
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/micro-context/can-bus-termination]]
 
 # UART — Universal Asynchronous Receiver/Transmitter
 
@@ -342,7 +343,7 @@ The integer part (39) goes in BRR[15:4], the fraction (0.0625 × 16 = 1) goes in
 
 - **[[quick-context/d-flip-flop]]** — Deep dive into how the D flip-flop works: from SR latches to edge-triggered master-slave design, the clock's role, and how DFFs compose into shift registers and registers. The UART's shift register is a chain of 8 of these.
 
-- **[[micro-context/clock-edges]]** — How flip-flops sample data on clock edges. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
+- **[[micro-context/clock-edges]]** — How flip-flops sample data on [[learning/notes/micro-context/clock-edges|clock edges]]. This is the foundation of how the shift register works: each D flip-flop captures its input on the rising edge of the baud clock.
 
 - **[[quick-context/code-to-gates-and-bootstrapping]]** — How logic gates and flip-flops are built from transistors. The UART's shift register and data register are ultimately chains of these gate-level primitives.
 

@@ -2,6 +2,7 @@
 topic: Capacitor
 created: 2026-01-30
 ---
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
 # Capacitor
 

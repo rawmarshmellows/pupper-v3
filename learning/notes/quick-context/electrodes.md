@@ -2,6 +2,7 @@
 topic: Electrodes (Cathode and Anode)
 created: 2026-01-22
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/electrolysis]]
 
@@ -267,7 +268,7 @@ STEP 4: THE CIRCUIT COMPLETES
 **Q3:** A student uses iron nails as electrodes for water electrolysis. After an hour, the anode nail looks rusty and pitted while the cathode nail looks unchanged. Explain why.
 <details>
 <summary>Answer</summary>
-**The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form rust). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from [[quick-context/rust|corrosion]]. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
+**The iron anode is dissolving/oxidizing.** At the anode, oxidation happens—electrons leave. The iron itself can lose electrons and become Fe²⁺ or Fe³⁺ ions that dissolve into the solution (or react with oxygen/water to form [[learning/notes/quick-context/rust|rust]]). The anode is participating in the reaction rather than staying inert. The cathode nail is protected because it's gaining electrons, not losing them—reduction protects metals from [[quick-context/rust|corrosion]]. This is why industrial electrolysis often uses inert electrodes like platinum. See: The Key Tension (active vs. inert electrodes).
 
 **Why do iron ions dissolve in water?** Iron ions (Fe²⁺ and Fe³⁺) dissolve because they become [[quick-context/rust|hydrated]]—water molecules surround each ion with their partially negative oxygen atoms pointing toward the positive iron ion. This ion-dipole attraction releases enough energy (called hydration energy) to stabilize the ions in solution. Once dissolved, these ions can drift away from the electrode surface, migrate through the solution, and eventually react with dissolved oxygen and hydroxide ions to form rust (iron oxides/hydroxides) that precipitates out. The pitting occurs because iron atoms are literally leaving the solid metal surface atom by atom, creating microscopic craters.
 </details>

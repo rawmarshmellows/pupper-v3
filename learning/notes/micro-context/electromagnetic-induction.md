@@ -3,6 +3,7 @@ term: Electromagnetic Induction
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/coriolis-effect]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-magnetic-field-unification]]
 
 # Electromagnetic Induction
 

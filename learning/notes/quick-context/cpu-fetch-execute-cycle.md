@@ -2,6 +2,7 @@
 topic: The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]] | [[learning/notes/quick-context/from-vacuum-tubes-to-coding-on-screens]]
 
 # The CPU Fetch-Execute Cycle — How a Machine Runs Instructions
 

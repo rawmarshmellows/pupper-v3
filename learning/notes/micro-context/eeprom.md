@@ -2,6 +2,7 @@
 term: EEPROM (Electrically Erasable Programmable Read-Only Memory)
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/scan-loop]] | [[learning/notes/micro-context/sram]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/how-source-code-is-stored]]
 
 # EEPROM (Electrically Erasable Programmable Read-Only Memory)
 

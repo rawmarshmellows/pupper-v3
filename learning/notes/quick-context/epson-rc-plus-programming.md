@@ -2,6 +2,7 @@
 topic: EPSON RC+ Programming
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/plc-vs-software-control]]
 
 > **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
 

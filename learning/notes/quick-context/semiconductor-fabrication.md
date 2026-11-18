@@ -3,6 +3,7 @@ topic: Semiconductor Fabrication - Manufacturing Process and Tools
 created: 2026-01-25
 source: Branch Education video on CPU manufacturing
 ---
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/silicon-die]] | [[learning/notes/quick-context/transistor]]
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/silicon-die]] | [[quick-context/transistor]] | [[quick-context/doped-silicon]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -510,7 +511,7 @@ Each fin is ~5-7nm wide. The process repeats hundreds of times.
 
 - **Moore's Law & Process Nodes** — The economic driver behind fabrication innovation. Each new node (7nm → 5nm → 3nm) requires new tools, new materials, and billions in R&D.
 
-- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar MOSFET to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
+- **[[quick-context/transistor-design-history|Transistor Design History]]** — How transistor architecture evolved from planar [[learning/notes/micro-context/mosfet|MOSFET]] to FinFET to Gate-All-Around. Each architecture requires different fabrication techniques and explains why "3nm" processes need completely different equipment than "22nm."
 
 </details>
 

@@ -2,6 +2,7 @@
 topic: Electric Current
 created: 2026-01-22
 ---
+> **Related:** [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
 
 > **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electrolysis]] | [[quick-context/electricity-generation]] | [[quick-context/thermal-noise-electronics]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -340,17 +341,17 @@ battery              │ Low voltage          │ HUGE current = dangerous!
 
 - **Ohm's Law (V = I x R)** — The fundamental relationship connecting voltage, current, and resistance. In electrolysis cells, this helps predict current flow given applied voltage and cell resistance.
 
-- **Electrical Power (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
+- **[[learning/notes/quick-context/power-watts-joules|Electrical Power]] (P = I x V)** — Current multiplied by voltage gives power in watts. Essential for calculating energy costs of electrolysis: running at higher current costs more electricity.
 
 - **Conductivity and Electrolytes** — Why some materials allow current to flow (conductors, ionic solutions) while others don't (insulators). Pure water has almost no conductivity, which is why electrolysis requires added [[quick-context/making-electrolytes|electrolyte]].
 
 - **Electrochemical Series** — The ranking of elements by how easily they gain/lose electrons. Combined with current, this determines what reactions happen and at what rates during electrolysis.
 
-- **[[quick-context/electricity-generation]]** — How electricity is created in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
+- **[[quick-context/electricity-generation]]** — [[learning/notes/quick-context/electricity-generation|How electricity is created]] in the first place: electromagnetic induction (generators), chemical reactions (batteries), and photovoltaics (solar). Understanding current flow is essential for understanding all generation methods.
 
 - **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field. Moving charges create magnetic fields, and coiling the wire concentrates those fields into a powerful electromagnet.
 
-- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged subatomic particles that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
+- **[[quick-context/subatomic-particles]]** — What electrons actually are: negatively charged [[learning/notes/quick-context/subatomic-particles|subatomic particles]] that orbit atomic nuclei and are responsible for all electrical phenomena. Current is literally the flow of these particles.
 
 - **[[small-context/permanent-magnet-creation]]** — Magnetizers use high current through a coil to create strong magnetic fields that align domains in iron. The field strength scales with current: more amps = stronger field = more domain alignment force.
 

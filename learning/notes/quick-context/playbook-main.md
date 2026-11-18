@@ -1,6 +1,7 @@
 # Existing Account Management Playbook
+> **Related:** [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/existing-account-management-playbook]] | [[learning/notes/quick-context/inside-the-triangle]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/meddpicc-qualification-framework]]
 
-> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
+> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]], Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
 
@@ -440,7 +441,7 @@ Anticipate pushback scenarios:
 |---|---|
 | "What motion am I running?" (Defend/Hunt/Re-engage/Grow) | KARE Segmentation |
 | "How much CSM investment for this customer?" | Value/Potential Matrix |
-| "Where does this relationship stand?" | McDonald KAM Model |
+| "Where does this relationship stand?" | [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]] |
 | "Who should I be talking to?" | Miller Heiman LAMP |
 | "What are we trying to achieve?" | LAMP Charter Statement |
 | "How should I structure this conversation?" | Challenger |

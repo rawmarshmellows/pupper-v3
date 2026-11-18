@@ -2,6 +2,7 @@
 term: Coriolis Effect
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/faraday-tensor]]
 
 # Coriolis Effect
 

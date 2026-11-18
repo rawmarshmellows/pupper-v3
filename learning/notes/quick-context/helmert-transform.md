@@ -2,6 +2,7 @@
 topic: Helmert Transform
 created: 2026-04-04
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]
 
 # Helmert Transform
 
@@ -285,7 +286,7 @@ Note that in the geodetic convention, the scale is expressed as parts-per-millio
 <details>
 <summary><strong>Peripheral Knowledge</strong> -- Related topics to explore</summary>
 
-- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a similarity transform; "Helmert" is the geodetic name for the same mathematical operation
+- **[[quick-context/similarity-transform|Similarity Transform]]** -- The Helmert Transform IS a [[learning/notes/quick-context/similarity-transform|similarity transform]]; "Helmert" is the geodetic name for the same mathematical operation
 - **[[quick-context/absolute-orientation|Absolute Orientation]]** -- The problem that Helmert solves: given corresponding 3D points in two frames, find the transform between them (Horn 1987 gave a closed-form quaternion solution; Arun et al. 1987 gave the SVD-based solution)
 - **[[quick-context/singular-value-decomposition|Singular Value Decomposition]]** -- The computational engine that extracts the rotation matrix from the cross-covariance matrix
 - **[[quick-context/covariance-matrix|Covariance Matrix]]** -- The cross-covariance matrix $H$ is the critical intermediate representation; its SVD reveals the rotation

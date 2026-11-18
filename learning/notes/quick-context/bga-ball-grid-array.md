@@ -2,6 +2,7 @@
 topic: BGA (Ball Grid Array)
 created: 2026-01-25
 ---
+> **Related:** [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

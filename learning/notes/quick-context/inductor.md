@@ -2,6 +2,7 @@
 topic: Inductor
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/self-induction]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/electromagnetic-induction]]
 
 > **Related:** [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/electromagnetism]] | [[quick-context/electric-current]] | [[quick-context/electricity-generation]] | [[quick-context/capacitor]] | [[quick-context/resistor]] | [[quick-context/self-induction]] | [[quick-context/lenzs-law]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -659,7 +660,7 @@ BUCK CONVERTER OPERATION
 
 - **[[quick-context/thermal-noise-electronics]]** — Inductors don't generate thermal noise themselves (only resistive elements do), but their DCR contributes noise in sensitive circuits.
 
-- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid electricity generation.
+- **[[quick-context/electricity-generation]]** — Inductors are fundamental to electromagnetic generators. Faraday's law (EMF = -N × dΦ/dt) describes how changing magnetic flux through a coil induces voltage—the operating principle of virtually all grid [[learning/notes/quick-context/electricity-generation|electricity generation]].
 
 - **[[quick-context/coil-magnetic-field]]** — Why current through a coil creates a magnetic field, and how to calculate field strength (B = μ₀nI). The coil field is what inductors store energy in.
 

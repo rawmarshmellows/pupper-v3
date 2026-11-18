@@ -3,6 +3,7 @@ term: Thermal Runaway
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 # Thermal Runaway
 
@@ -37,4 +38,4 @@ THE THERMAL RUNAWAY FEEDBACK LOOP
   └── Thermal design power (TDP): design limit
 ```
 
-**Key insight:** The "off" transistors that [[quick-context/transistor-analog-to-digital|leak current even when supposedly off]] leak MORE when hot—this is why cooling isn't optional and why chips have thermal limits baked into firmware.
+**Key insight:** The "off" transistors that [[quick-context/transistor-analog-to-digital|leak current even when supposedly off]] leak MORE when hot—this is why cooling isn't optional and why chips have thermal limits baked into [[learning/notes/quick-context/firmware|firmware]].

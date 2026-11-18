@@ -2,6 +2,7 @@
 topic: Butyric Acid
 created: 2026-04-06
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]] | [[learning/notes/quick-context/covalent-bonds]]
 
 # Butyric Acid
 

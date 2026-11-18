@@ -3,6 +3,7 @@ term: I2C
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/i2s-audio-amplifier]] | [[learning/notes/micro-context/push-pull-vs-open-drain]]
 
 # I2C
 

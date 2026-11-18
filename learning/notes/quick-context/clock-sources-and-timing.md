@@ -2,6 +2,7 @@
 topic: Clock Sources and Timing
 created: 2026-03-29
 ---
+> **Related:** [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-speed]]
 
 # Clock Sources and Timing
 
@@ -11,7 +12,7 @@ created: 2026-03-29
 
 ## The Core Problem
 
-Every digital circuit needs a heartbeat -- a precise, repeating signal that tells billions of transistors exactly when to "look" at their inputs. The clock source determines how accurate that heartbeat is, the PLL multiplies it to operating speed, and the clock edges are the atomic units of computation. But faster clocks generate more heat, and heat degrades performance, so the entire clock chain is a negotiation between speed, accuracy, power, and thermal limits.
+Every digital circuit needs a heartbeat -- a precise, repeating signal that tells billions of transistors exactly when to "look" at their inputs. The clock source determines how accurate that heartbeat is, the PLL multiplies it to operating speed, and the [[learning/notes/micro-context/clock-edges|clock edges]] are the atomic units of computation. But faster clocks generate more heat, and heat degrades performance, so the entire clock chain is a negotiation between speed, accuracy, power, and thermal limits.
 
 ## 5 Essential Terms
 
@@ -101,7 +102,7 @@ $$f_{SYSCLK} = f_{source} \times \frac{N}{M \times P}$$
 For the Pupper v3 STM32F446:
 - $f_{source} = 8\text{ MHz}$ (ceramic resonator)
 - PLL multiplies to: $8\text{ MHz} \times 22.5 = 180\text{ MHz}$
-- APB1 = $180 \div 4 = 45\text{ MHz}$ (timers, UART, I2C, CAN)
+- APB1 = $180 \div 4 = 45\text{ MHz}$ (timers, [[learning/notes/quick-context/uart|UART]], I2C, CAN)
 - APB2 = $180 \div 2 = 90\text{ MHz}$ (SPI, ADC)
 
 ### Clock Edges and Signal Settling
@@ -172,7 +173,7 @@ The clock source selection is a four-way tradeoff between accuracy, cost, power,
 
 **Startup Speed vs. Accuracy:** The internal RC oscillator (HSI) is ready in microseconds; an external resonator takes ~0.1-0.5 ms; a crystal takes ~1-10 ms. The STM32 boots on HSI immediately, then switches to the external source once the PLL locks. If the external source fails, the MCU can fall back to HSI.
 
-**Protocol Requirements Drive the Choice:** CAN bus tolerates ±1.58% clock error -- ceramic resonators (±0.5%) pass easily, even RC oscillators are marginal. USB requires ±0.25% -- only crystals and good resonators qualify. RF communication needs ±0.01% or better -- crystals with temperature compensation (TCXO) are mandatory.
+**Protocol Requirements Drive the Choice:** [[learning/notes/quick-context/can-bus|CAN bus]] tolerates ±1.58% clock error -- ceramic resonators (±0.5%) pass easily, even RC oscillators are marginal. USB requires ±0.25% -- only crystals and good resonators qualify. RF communication needs ±0.01% or better -- crystals with temperature compensation (TCXO) are mandatory.
 
 </details>
 

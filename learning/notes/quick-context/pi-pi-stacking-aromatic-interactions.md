@@ -3,6 +3,7 @@ topic: Pi-Pi Stacking (Aromatic Ring Interactions)
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/3d-printing-filament-types]]
 
@@ -254,7 +255,7 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 ## Peripheral Knowledge
 
 - **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of van der Waals interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
-- **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: covalent bonds along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
+- **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: [[learning/notes/quick-context/covalent-bonds|covalent bonds]] along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
 - **[[quick-context/covalent-bonds]]** — The "real" bonds that hold atoms together within molecules; pi-pi stacking is fundamentally different—it's an attraction *between* molecules, not within them.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
 
@@ -272,7 +273,7 @@ ABS contains styrene monomers with aromatic (benzene) rings that participate in 
 **Q2:** If a single pi-pi interaction is about 50x weaker than a covalent bond, why do these interactions matter so much for material properties?
 <details>
 <summary>Answer</summary>
-Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and glass transition temperature. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
+Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]]. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
 </details>
 
 **Q3:** A 3D print in ABS is warping at the corners. Based on pi-pi stacking, what are two potential solutions and why would they work?
@@ -286,7 +287,7 @@ Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacki
 **Q4:** You're designing a new polymer for high-temperature applications. Would you want more or fewer aromatic rings in your monomer structure? Explain the tradeoff.
 <details>
 <summary>Answer</summary>
-**More aromatic rings** would increase pi-pi stacking, raising the glass transition temperature and making the material more rigid at higher temperatures—good for heat resistance. However, this also means higher processing temperatures (harder to melt and mold), increased risk of thermal degradation during manufacturing, and greater shrinkage/warping. The tradeoff is: heat-resistant in use vs. difficult to manufacture. Engineers balance this by choosing the minimum aromatic content needed to meet thermal requirements.
+**More aromatic rings** would increase pi-pi stacking, raising the [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] and making the material more rigid at higher temperatures—good for heat resistance. However, this also means higher processing temperatures (harder to melt and mold), increased risk of thermal degradation during manufacturing, and greater shrinkage/warping. The tradeoff is: heat-resistant in use vs. difficult to manufacture. Engineers balance this by choosing the minimum aromatic content needed to meet thermal requirements.
 </details>
 
 **Q5:** Compare pi-pi stacking to [[quick-context/hydrogen-bonds-beginners|hydrogen bonding]] and [[quick-context/van-der-waals-forces|van der Waals forces]]. Where does pi-pi stacking fit in the intermolecular force hierarchy, and why?

@@ -2,6 +2,7 @@
 topic: Silicon Die
 created: 2026-01-25
 ---
+> **Related:** [[learning/notes/quick-context/bjt]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/doped-silicon]] | [[learning/notes/quick-context/semiconductor-fabrication]] | [[learning/notes/quick-context/transistor]]
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/semiconductor-fabrication]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

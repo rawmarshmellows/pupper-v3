@@ -3,6 +3,7 @@ term: Coulomb (Unit History)
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/current-electrons-per-second]] | [[learning/notes/micro-context/oxidation]] | [[learning/notes/quick-context/anions-and-oxidation]]
 
 # Coulomb (Unit History)
 

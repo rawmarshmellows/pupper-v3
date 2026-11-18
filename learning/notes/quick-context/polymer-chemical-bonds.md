@@ -3,6 +3,7 @@ topic: Polymer Chemical Bonds in 3D Printing Filaments
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/3d-printing-filament-types]] | [[quick-context/melt-index]]
 
@@ -27,7 +28,7 @@ Understanding [[quick-context/chemical-bonds-spectrum|chemical bonds]] explains 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Polymer behavior emerges from a two-level bonding hierarchy. At the first level, strong covalent bonds link atoms into long chains—the polymer backbone. These bonds are so strong (300-400 kJ/mol) that they never break during normal 3D printing; breaking them means burning the plastic. At the second level, weaker intermolecular forces hold neighboring chains together. When you heat filament, you're adding enough thermal energy to overcome these weaker forces, allowing chains to slide past each other and flow. The type and strength of intermolecular forces present determine the exact temperature needed.
+Polymer behavior emerges from a two-level bonding hierarchy. At the first level, strong [[learning/notes/quick-context/covalent-bonds|covalent bonds]] link atoms into long chains—the polymer backbone. These bonds are so strong (300-400 kJ/mol) that they never break during normal 3D printing; breaking them means burning the plastic. At the second level, weaker intermolecular forces hold neighboring chains together. When you heat filament, you're adding enough thermal energy to overcome these weaker forces, allowing chains to slide past each other and flow. The type and strength of intermolecular forces present determine the exact temperature needed.
 
 The printing process is essentially: heat to break intermolecular forces (chains become mobile), extrude the flowing polymer, then cool to re-establish intermolecular forces (chains lock in place). Layer adhesion depends on chains from the new layer entangling and forming intermolecular bonds with chains from the previous layer before cooling "freezes" them apart. Materials with stronger intermolecular forces (like ABS's aromatic stacking) create stronger layer bonds—but also require higher temperatures to achieve that chain mobility in the first place.
 
@@ -194,7 +195,7 @@ Concepts that deepen understanding of polymer chemical bonds:
 **Q1:** Why does PLA deform in a hot car (~60°C) while ABS parts survive?
 <details>
 <summary>Answer</summary>
-PLA has a glass transition temperature (Tg) of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
+PLA has a [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (Tg) of only 55-60°C because its ester groups form moderate hydrogen bonds between chains. Above Tg, the amorphous regions mobilize and the material softens. ABS has a Tg of ~105°C because its aromatic rings (benzene) engage in strong π-π stacking interactions, requiring significantly more thermal energy to mobilize chains. A hot car interior easily exceeds PLA's Tg but stays well below ABS's.
 </details>
 
 **Q2:** TPU is flexible and elastic, yet it has strong hydrogen bonds. How is this possible?

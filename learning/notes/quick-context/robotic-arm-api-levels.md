@@ -2,6 +2,7 @@
 topic: Different Levels of APIs for Controlling Robotic Arms
 created: 2026-01-16
 ---
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/isa-95-levels]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/plc-vs-software]]
 
 > **Related:** [[quick-context/epson-rc-plus-programming]] | [[quick-context/robot-cell-integration-best-practices]] | [[quick-context/plc-vs-software-control]]
 

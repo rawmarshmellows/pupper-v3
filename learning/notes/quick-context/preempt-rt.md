@@ -2,6 +2,7 @@
 topic: PREEMPT_RT
 created: 2026-01-17
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]
 
 > **Related:** [[quick-context/plc-vs-software-control]] | [[quick-context/plc-vs-software]]
 

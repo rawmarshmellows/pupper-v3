@@ -2,6 +2,7 @@
 topic: Capacitance
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/quick-context/capacitive-sensing-measurement]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
 # Capacitance
 
@@ -534,7 +535,7 @@ THE SPEED-POWER-NOISE TRIANGLE
 </details>
 
 <details>
-<summary><strong>Concrete Example</strong> -- MOSFET gate capacitance and dynamic power</summary>
+<summary><strong>Concrete Example</strong> -- [[learning/notes/micro-context/mosfet|MOSFET]] gate capacitance and dynamic power</summary>
 
 The most consequential capacitance in modern electronics is the gate capacitance of a [[quick-context/transistor|MOSFET transistor]]. Every time a transistor switches, its gate capacitance must be charged (0 → VDD) or discharged (VDD → 0). In a processor with billions of transistors switching billions of times per second, this is where most of the power goes.
 
