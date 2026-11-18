@@ -2,6 +2,7 @@
 topic: Voltage-Current Causality (Which Causes Which?)
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]]
 
 # Voltage-Current Causality
 
@@ -188,8 +189,8 @@ Most introductory courses teach circuits from a "voltage-source" perspective: ba
 
 | Perspective | When It Works | When It Breaks Down |
 |------------|--------------|-------------------|
-| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | [[quick-context/inductor\|Inductors]] (where changing I creates V), current sources, electromagnetic induction |
-| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, [[quick-context/capacitor\|capacitors]] (where changing V creates I) |
+| **"V causes I"** | Battery/supply driving resistors, LEDs, simple DC circuits | Inductors (where changing I creates V), current sources, electromagnetic induction |
+| **"I causes V"** | Current sources, transistor bias analysis, inductor back-EMF | Voltage sources, capacitors (where changing V creates I) |
 | **"Field causes both"** | Always correct, but harder to use for circuit calculations | Never---this is the fundamental physics |
 
 ```

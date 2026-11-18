@@ -3,6 +3,7 @@ term: Power Inductor
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/lenzs-law]]
 
 # Power Inductor
 

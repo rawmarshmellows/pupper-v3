@@ -2,6 +2,7 @@
 topic: Electromagnetism
 created: 2026-02-09
 ---
+> **Related:** [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/electric-magnetic-field-unification]] | [[learning/notes/quick-context/faraday-tensor]] | [[learning/notes/quick-context/lenzs-law]] | [[learning/notes/quick-context/maxwell-equations]]
 
 # Electromagnetism
 

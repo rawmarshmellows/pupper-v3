@@ -2,6 +2,7 @@
 topic: CAN Bus (Controller Area Network)
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/uart]] | [[learning/notes/micro-context/can-bus-termination]]
 
 # CAN Bus (Controller Area Network)
 
@@ -307,7 +308,7 @@ CANH and CANL on a scope during one frame:
 
 - **[[quick-context/pupper-bom-control-board]]** — Every physical component in the CAN subsystem: the 4 MAX3051 transceivers (U3, U4, U6, U7), the 120$\Omega$ termination resistors (R1-R4), and the JST connectors (CN1, CN2) carrying CAN signals to the servo cables.
 
-- **[[quick-context/firmware]]** — The STM32 firmware initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
+- **[[quick-context/firmware]]** — The STM32 [[learning/notes/quick-context/firmware|firmware]] initializes the CAN peripheral, configures bit timing, and handles frame transmission/reception via interrupts or DMA. CAN is a hardware peripheral — the protocol state machine runs in silicon, not software.
 
 - **[[quick-context/grounding-and-return-paths]]** — CAN's differential signaling is robust because noise appears as common-mode voltage on both wires; the receiver's subtraction rejects it. Understanding return paths explains why CAN also needs a shared ground reference between nodes.
 

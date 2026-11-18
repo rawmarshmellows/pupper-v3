@@ -2,6 +2,7 @@
 topic: From Human Calculators to Coding on Screens — How Programming Interfaces Evolved
 created: 2026-03-26
 ---
+> **Related:** [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/esp32]] | [[learning/notes/quick-context/firmware]] | [[learning/notes/quick-context/from-code-to-running-firmware]]
 
 # From Human Calculators to Coding on Screens
 
@@ -617,7 +618,7 @@ ERA 4: FROM SCREEN TO CPU -- THE MODERN WORKFLOW
   +------------------------------------------+
 ```
 
-For embedded/firmware development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
+For embedded/[[learning/notes/quick-context/firmware|firmware]] development (e.g., the Pupper robot), the path is slightly different — instead of an OS loader, a cross-compiler produces an ELF file that a [[quick-context/firmware|flash programmer]] writes directly to the [[micro-context/microcontroller|microcontroller's]] flash memory. See [[quick-context/from-code-to-running-firmware]] for that full pipeline.
 
 ### Where Is Your Code Stored?
 
@@ -789,7 +790,7 @@ For the same operation on the Pupper's [[micro-context/stm32-microcontroller|STM
 
 - **[[quick-context/semiconductor-fabrication]]** — How billions of transistors are manufactured on silicon. The hardware foundation that enabled the miniaturization from room-sized vacuum tube computers to pocket devices.
 
-- **[[quick-context/uart]]** — Deep dive into how the UART hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
+- **[[quick-context/uart]]** — Deep dive into how the [[learning/notes/quick-context/uart|UART]] hardware works: the receive shift register (chain of D flip-flops), 16× oversampling to find bit centers, and the parallel latch that transfers completed bytes to the CPU. The key bridge between the teletype's serial wire and the computer's parallel data bus.
 
 - **Von Neumann Architecture** — The stored-program concept that made the transition from plugboards to software possible. Instructions and data share the same memory, enabling programs to be loaded and replaced without rewiring.
 

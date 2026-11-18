@@ -2,6 +2,7 @@
 topic: PREEMPT_RT + ROS2 as PLC Replacement
 created: 2026-03-13
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/integration-failure-modes-solutions]]
 
 # PREEMPT_RT + ROS2 as PLC Replacement
 
@@ -327,7 +328,7 @@ No. Industrial robots typically require timing jitter under 200 us for a 1 ms co
 <details>
 <summary>Answer</summary>
 
-Containerization enables several things that traditional PLCs can't do: (1) multiple independent PLC instances on shared server infrastructure, reducing per-station hardware costs, (2) rapid deployment and rollback — a new PLC program is a container image push, not a firmware flash, (3) centralized management — IT teams manage PLC infrastructure with the same tools they use for other services, (4) resource isolation — one PLC instance crashing doesn't affect others. The real-time scheduling still happens at the kernel level (PREEMPT_RT), so containerization doesn't compromise timing. Audi's system is TUV-certified, validating that the container approach meets safety requirements.
+Containerization enables several things that traditional PLCs can't do: (1) multiple independent PLC instances on shared server infrastructure, reducing per-station hardware costs, (2) rapid deployment and rollback — a new PLC program is a container image push, not a [[learning/notes/quick-context/firmware|firmware]] flash, (3) centralized management — IT teams manage PLC infrastructure with the same tools they use for other services, (4) resource isolation — one PLC instance crashing doesn't affect others. The real-time scheduling still happens at the kernel level (PREEMPT_RT), so containerization doesn't compromise timing. Audi's system is TUV-certified, validating that the container approach meets safety requirements.
 </details>
 
 **Q3:** The Panasonic AMR replaced 3 separate controllers with 1 ROScube. What happens to the safety PLC functions (e-stop, bumper) in this architecture?
@@ -351,7 +352,7 @@ Pharmaceutical manufacturing is heavily regulated (FDA 21 CFR Part 11, EU GMP An
 <details>
 <summary>Answer</summary>
 
-Several reasons: (1) The Pupper is a teaching platform designed before PREEMPT_RT's mainline merge — the dual architecture is a pragmatic design choice, not a fundamental requirement. (2) The Raspberry Pi's ARM SoC doesn't have the same real-time guarantees as a purpose-built industrial controller (ROScube, ctrlX CORE); even with PREEMPT_RT, SD card I/O and GPU thermal throttling can cause latency spikes. (3) The STM32 provides bare-metal CAN bus communication with 12 servos — handling the electrical-level protocol is simpler and more reliable on a dedicated microcontroller than through Linux kernel drivers. (4) Cost: the dual STM32 + Pi architecture is cheaper for a student robot than an industrial PREEMPT_RT controller. However, if you were building a production Pupper, a single PREEMPT_RT platform with EtherCAT servos could absolutely collapse the architecture — exactly what PAL Robotics does with their production humanoids running ros2_control at 2000 Hz.
+Several reasons: (1) The Pupper is a teaching platform designed before PREEMPT_RT's mainline merge — the dual architecture is a pragmatic design choice, not a fundamental requirement. (2) The Raspberry Pi's ARM SoC doesn't have the same real-time guarantees as a purpose-built industrial controller (ROScube, ctrlX CORE); even with PREEMPT_RT, SD card I/O and GPU thermal throttling can cause latency spikes. (3) The STM32 provides bare-metal [[learning/notes/quick-context/can-bus|CAN bus]] communication with 12 servos — handling the electrical-level protocol is simpler and more reliable on a dedicated microcontroller than through Linux kernel drivers. (4) Cost: the dual STM32 + Pi architecture is cheaper for a student robot than an industrial PREEMPT_RT controller. However, if you were building a production Pupper, a single PREEMPT_RT platform with EtherCAT servos could absolutely collapse the architecture — exactly what PAL Robotics does with their production humanoids running ros2_control at 2000 Hz.
 </details>
 
 </details>

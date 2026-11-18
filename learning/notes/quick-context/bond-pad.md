@@ -2,6 +2,7 @@
 topic: Bond Pad
 created: 2026-01-25
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -366,7 +367,7 @@ COMPARISON: Bond Pad Requirements
 
 - **[[quick-context/electrodes|Electrodes]] and Metallurgy** — Bond pads are made of specific metals (aluminum, copper, gold) chosen for their electrical conductivity and ability to form reliable bonds; understanding why matters for reliability.
 
-- **Electromigration** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
+- **[[learning/notes/quick-context/electromigration|Electromigration]]** — When too much current flows through a bond pad or wire bond, metal atoms literally move, eventually breaking the connection; this limits how much power each pad can handle.
 
 - **ESD (Electrostatic Discharge) Protection** — Bond pads are the entry points for static electricity that can destroy a chip; every pad needs protection circuits that can shunt thousands of volts safely.
 

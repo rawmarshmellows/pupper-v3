@@ -3,6 +3,7 @@ term: Full-Wave Bridge Rectifier
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/reverse-and-forward-bias]] | [[learning/notes/quick-context/ac-to-dc-rectification]]
 
 # Full-Wave Bridge Rectifier
 

@@ -3,6 +3,7 @@ topic: Substrate (IC Packaging)
 created: 2026-01-25
 updated: 2026-01-26
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/flip-chip]]
 
 > **Related:** [[quick-context/pcb-chip-transistor-hierarchy]] | [[quick-context/flip-chip]] | [[quick-context/wire-bonding]] | [[quick-context/bga-ball-grid-array]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

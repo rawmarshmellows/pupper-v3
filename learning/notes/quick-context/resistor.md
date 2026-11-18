@@ -2,6 +2,7 @@
 topic: Resistor
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/smd-resistor]]
 
 > **Related:** [[quick-context/electric-current]] | [[quick-context/capacitor]] | [[quick-context/parallel-vs-series-voltage]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

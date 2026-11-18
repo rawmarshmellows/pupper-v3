@@ -2,6 +2,7 @@
 topic: Subatomic Particles - Quarks, Protons, Neutrons, Electrons
 created: 2026-02-14
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 # Subatomic Particles
 
@@ -366,7 +367,7 @@ THE TWO MODELS OF ATOMIC STRUCTURE
 |-----------|---------------|-----|
 | Understanding electron shells | Bohr (classical) | Simple, explains periodic table |
 | Predicting chemical bonding | Shell model | Outer electrons determine reactivity |
-| Understanding [[quick-context/doped-silicon\|semiconductors]] | Band theory (quantum) | Energy bands, not orbits |
+| Understanding semiconductors | Band theory (quantum) | Energy bands, not orbits |
 | Atomic spectroscopy | Quantum model | Energy levels aren't simple circles |
 | Molecular orbitals | Quantum model | Orbitals overlap and hybridize |
 

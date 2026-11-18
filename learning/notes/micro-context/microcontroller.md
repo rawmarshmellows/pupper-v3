@@ -3,6 +3,7 @@ term: Microcontroller
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/spinev1-elf]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/code-to-gates-and-bootstrapping]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/esp32]]
 
 # Microcontroller
 

@@ -2,6 +2,7 @@
 topic: Op-Amp (Operational Amplifier)
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/differential-pair]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]]
 
 > **Related:** [[quick-context/transistor]] | [[quick-context/resistor]] | [[quick-context/capacitor]] | [[quick-context/inside-the-triangle|Inside the Triangle]] | [[micro-context/tail-current|Tail Current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 
@@ -405,7 +406,7 @@ SUMMARY — Op-Amp as Analog Computer
 </details>
 
 <details>
-<summary><strong>Inside the Triangle: Transistor-Level Construction</strong></summary>
+<summary><strong>[[learning/notes/quick-context/inside-the-triangle|Inside the Triangle]]: Transistor-Level Construction</strong></summary>
 
 An op-amp isn't magic—it's ~20 [[quick-context/transistor|transistors]] and a few [[quick-context/resistor|resistors]] on a single chip. Here's the simplified architecture (based on the classic 741):
 

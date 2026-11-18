@@ -2,6 +2,7 @@
 topic: Voltage and Thermodynamic Relationship in Electrolysis
 created: 2026-01-22
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/electrolysis]]
 
@@ -18,7 +19,7 @@ created: 2026-01-22
 | Term | Definition |
 |------|------------|
 | **Gibbs Free Energy (ΔG)** | The total energy a reaction needs (positive) or releases (negative)—think of it as the "energy price tag" of a chemical change |
-| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish electrodes and resistance |
+| **Overpotential** | Extra voltage beyond the theoretical minimum, wasted fighting real-world inefficiencies like sluggish [[learning/notes/quick-context/electrodes|electrodes]] and resistance |
 | **Faraday Constant (F)** | A conversion factor (96,485 C/mol) that translates between "chemistry units" (moles of electrons) and "electricity units" (coulombs) |
 | **Cell Potential (E)** | The voltage that corresponds to a reaction's energy requirement—directly calculated from Gibbs free energy |
 | **Non-spontaneous** | A reaction that won't happen unless you force it with external energy (like pushing a ball uphill) |

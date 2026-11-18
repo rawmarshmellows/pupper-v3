@@ -2,6 +2,7 @@
 topic: Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 created: 2026-03-10
 ---
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/quick-context/helmert-transform]] | [[learning/notes/quick-context/ppo-proximal-policy-optimization]] | [[learning/notes/quick-context/preempt-rt]]
 
 # Pupper v3 Labs — CS123 Robotics Curriculum (Labs 1-7)
 

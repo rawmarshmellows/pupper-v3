@@ -3,6 +3,7 @@ topic: Electrolyte
 created: 2026-01-22
 updated: 2026-01-22
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/electrolysis]] | [[quick-context/making-electrolytes]] | [[quick-context/electrodes]]
 
@@ -46,7 +47,7 @@ See [[quick-context/making-electrolytes]] for detailed preparation methods.
 
 ## The Core Problem: Making Liquids Conduct Electricity
 
-Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS/cm because water molecules barely split into ions (only 10⁻⁷ M H⁺ and OH⁻ from autoionization). Without an electrolyte, you cannot run [[quick-context/electrolysis|electrolysis]], batteries cannot function, and electrochemical processes halt completely. The ions physically move through the liquid—[[quick-context/cations-and-reduction|cations]] toward the [[quick-context/electrodes|cathode]], [[quick-context/anions-and-oxidation|anions]] toward the [[quick-context/electrodes|anode]]—carrying charge and enabling the electrode reactions. No electrolyte means no current flow through the liquid, which means no chemistry happens at the electrodes.
+Pure water is essentially an insulator—it has a conductivity of only ~0.05 μS/cm because water molecules barely split into ions (only 10⁻⁷ M H⁺ and OH⁻ from autoionization). Without an electrolyte, you cannot run [[quick-context/electrolysis|electrolysis]], batteries cannot function, and electrochemical processes halt completely. The ions physically move through the liquid—[[quick-context/cations-and-reduction|cations]] toward the [[quick-context/electrodes|cathode]], [[quick-context/anions-and-oxidation|anions]] toward the [[quick-context/electrodes|anode]]—carrying charge and enabling the electrode reactions. No electrolyte means no current flow through the liquid, which means no chemistry happens at the [[learning/notes/quick-context/electrodes|electrodes]].
 
 ## 5 Essential Terms
 

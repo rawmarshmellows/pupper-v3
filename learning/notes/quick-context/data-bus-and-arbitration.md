@@ -2,6 +2,7 @@
 topic: The Data Bus and Bus Arbitration — How Chips Share Wires
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/uart]] | [[learning/notes/micro-context/can-bus-termination]]
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
@@ -18,7 +19,7 @@ A computer is dozens of chips that all need to exchange bytes: the CPU reads an 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the Output Enable (OE) pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |
@@ -137,7 +138,7 @@ The **master** (here, the CPU) always owns the address and control buses. The **
 
 The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], SPI, [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
 
-| | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, UART, CAN, USB) |
+| | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, [[learning/notes/quick-context/uart|UART]], CAN, USB) |
 |---|---|---|
 | Data per clock | A whole word at once (8/16/32/64 bits) | 1 bit at a time |
 | Wire count | Many (1 per data bit + address + control) | Few (1–4) |

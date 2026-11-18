@@ -3,6 +3,7 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/electromagnetic-induction]] | [[learning/notes/micro-context/power-inductor]] | [[learning/notes/quick-context/coil-magnetic-field]] | [[learning/notes/quick-context/inductor]] | [[learning/notes/quick-context/lenzs-law]]
 
 # Current Behavior with Inductors vs Capacitors
 

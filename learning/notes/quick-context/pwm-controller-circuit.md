@@ -2,6 +2,7 @@
 topic: PWM Controller Circuit
 created: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]]
 
 # PWM Controller Circuit
 
@@ -18,10 +19,10 @@ Without a feedback-controlled PWM, the output voltage of a [[micro-context/buck-
 | Term | Definition |
 |------|------------|
 | **Sawtooth oscillator** | Internal [[quick-context/rc-oscillator|RC oscillator]] clock that generates a repeating ramp waveform (0V → peak → reset), setting the switching frequency (e.g., 500kHz) |
-| **Error amplifier** | An [[quick-context/op-amp\|op-amp]] inside the IC that outputs a voltage proportional to how far $V_{OUT}$ is from the target — the "error signal" |
-| **[[quick-context/comparator\|Comparator]]** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
+| **Error amplifier** | An op-amp inside the IC that outputs a voltage proportional to how far $V_{OUT}$ is from the target — the "error signal" |
+| **Comparator** | Compares the error signal to the sawtooth ramp; output goes HIGH when error > ramp, LOW when error < ramp — this IS the PWM pulse |
 | **Voltage reference ($V_{REF}$)** | A precision internal voltage (typically 0.6–0.8V) that the error amplifier uses as its target — the "setpoint" |
-| **Feedback divider** | Two [[quick-context/resistor\|resistors]] from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
+| **Feedback divider** | Two resistors from $V_{OUT}$ to GND that scale the output down to match $V_{REF}$ (e.g., 5V → 0.8V), so the IC can regulate any voltage |
 
 <details>
 <summary><strong>How It Works</strong> — The complete PWM generation circuit</summary>
@@ -73,7 +74,7 @@ $$V_{FB} = V_{OUT} \times \frac{R_2}{R_1 + R_2} \quad \xrightarrow{\text{IC regu
 
 **Why two resistors, not one?** A single resistor wouldn't create a defined division ratio. You need two resistors to form a ratio that depends *only* on R1 and R2, not on the IC's internals. The FB pin has extremely high input impedance (megaohms), so it draws negligible current and doesn't disturb the divider — the voltage at FB is determined purely by the R1/R2 ratio and $V_{OUT}$.
 
-**R1 and R2 are the converter's "programming interface."** Changing the output voltage means changing one resistor. The IC, MOSFET, inductor, and capacitor can all stay the same — only the feedback divider ratio determines $V_{OUT}$.
+**R1 and R2 are the converter's "programming interface."** Changing the output voltage means changing one resistor. The IC, [[learning/notes/micro-context/mosfet|MOSFET]], inductor, and capacitor can all stay the same — only the feedback divider ratio determines $V_{OUT}$.
 
 ### Step-by-Step: How One PWM Cycle Happens
 
@@ -171,7 +172,7 @@ This is tuned by the **compensation network** — a small R-C circuit on the err
 
 | Higher frequency (1–2MHz) | Lower frequency (100–300kHz) |
 |---|---|
-| Smaller [[quick-context/inductor\|inductor]] and [[quick-context/capacitor\|capacitor]] needed (smaller board area) | Larger L and C needed (bigger board) |
+| Smaller inductor and capacitor needed (smaller board area) | Larger L and C needed (bigger board) |
 | More switching losses ($P_{sw} \propto f$) — MOSFET turns on/off more often | Less switching loss |
 | Gate driver must charge MOSFET capacitance faster | Easier gate driving |
 
@@ -235,7 +236,7 @@ The TPS54561 at **U8** on the Pupper v3 control board is exactly this circuit in
 
 $V_{OUT} = 0.8\text{V} \times (1 + 60.4\text{k}/11.5\text{k}) \approx 5.0\text{V}$. R5 and R6 aren't some separate "PWM-setting" resistors — they are literally the feedback divider that programs the setpoint of the analog loop inside U8. The PWM itself never leaves U8; the only externally visible power-loop signals are SW (switching node, at L1), FB (the divider midpoint), and VOUT.
 
-See [[micro-context/buck-converter#real-example-pupper-v3-control-board]] for the full Pupper buck topology.
+See buck-converter for the full Pupper buck topology.
 
 </details>
 

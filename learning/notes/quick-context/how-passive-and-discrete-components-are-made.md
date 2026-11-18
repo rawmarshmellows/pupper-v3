@@ -2,6 +2,7 @@
 topic: How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete Fabrication
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/dupont-jumper-wires]] | [[learning/notes/quick-context/flip-chip]]
 
 # How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete
 

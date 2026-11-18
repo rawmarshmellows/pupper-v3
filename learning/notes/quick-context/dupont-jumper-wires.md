@@ -2,6 +2,7 @@
 topic: DuPont Jumper Wires
 created: 2026-04-03
 ---
+> **Related:** [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/bond-pad]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/flip-chip]] | [[learning/notes/quick-context/fundamental-electronic-parts-index]]
 
 # DuPont Jumper Wires
 

@@ -3,6 +3,7 @@ term: SPI
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/micro-context/i2s]] | [[learning/notes/micro-context/i2s-audio-amplifier]]
 
 # SPI
 

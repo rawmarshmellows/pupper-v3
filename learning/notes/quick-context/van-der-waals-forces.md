@@ -3,6 +3,7 @@ topic: Van der Waals Forces
 created: 2026-01-20
 updated: 2026-01-21
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/chemical-bonds-spectrum]]
 
 > **Related:** [[quick-context/polymer-chemical-bonds]]
 
@@ -392,9 +393,9 @@ The same principle explains why waxes (even longer carbon chains) are solid at r
 
 4. **[[quick-context/polymer-chemical-bonds]]** — In polymers, van der Waals forces between chains determine properties like flexibility and melting point—chains held only by van der Waals are easier to pull apart than those with stronger intermolecular bonds.
 
-5. **[[quick-context/glass-transition-temperature]]** — The glass transition temperature is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
+5. **[[quick-context/glass-transition-temperature]]** — The [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] is influenced by how strongly polymer chains interact via van der Waals forces; weaker interactions mean chains can slide past each other at lower temperatures.
 
-6. **[[quick-context/biology-fundamentals]]** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
+6. **biology-fundamentals** — Van der Waals forces contribute to protein folding (hydrophobic core formation), membrane structure, and the precise molecular recognition between enzymes and substrates.
 
 </details>
 

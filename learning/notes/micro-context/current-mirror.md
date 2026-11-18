@@ -2,6 +2,7 @@
 term: Current Mirror
 created: 2026-04-02
 ---
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/input-common-mode-range]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]]
 
 # Current Mirror
 

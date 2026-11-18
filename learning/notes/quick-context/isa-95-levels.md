@@ -2,6 +2,7 @@
 topic: ISA-95 Levels
 created: 2026-01-14
 ---
+> **Related:** [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]] | [[learning/notes/quick-context/oee-overall-equipment-effectiveness]] | [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/plc-vs-software-control]]
 
 > **Related:** [[quick-context/oee-overall-equipment-effectiveness]] | [[quick-context/plc-vs-software-control]]
 

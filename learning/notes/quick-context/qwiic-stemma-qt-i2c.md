@@ -2,6 +2,7 @@
 topic: Qwiic / STEMMA QT — Plug-and-Play I2C Connector Ecosystem
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/data-bus-and-arbitration]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/uart]] | [[learning/notes/micro-context/can-bus-termination]]
 
 # Qwiic / STEMMA QT — Plug-and-Play I2C
 
@@ -130,7 +131,7 @@ This means the breakout board handles all the electrical details. You just plug 
 | **Connector** | JST SH 1.0mm | JST SH 1.0mm | HY 2.0mm |
 | **Cross-compatible** | ✓ with STEMMA QT | ✓ with Qwiic | ✗ different connector |
 | **Logic voltage** | 3.3V only | 3.3V and 5V | 3.3V and 5V |
-| **Protocols** | I2C only | I2C only | I2C, UART, analog, digital |
+| **Protocols** | I2C only | I2C only | I2C, [[learning/notes/quick-context/uart|UART]], analog, digital |
 | **Board count** | ~200+ | ~300+ | ~400+ |
 | **Pull-ups on board** | ✓ | ✓ | ✓ |
 | **Typical price** | $5-15 per board | $5-15 per board | $3-12 per board |

@@ -2,6 +2,7 @@
 topic: Bambu P2S Print Quality
 created: 2026-04-29
 ---
+> **Related:** [[learning/notes/quick-context/3d-printer-hotends]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-filament-types]] | [[learning/notes/quick-context/3d-printing-slicer-settings]] | [[learning/notes/quick-context/bambu-ams-automatic-material-system]]
 
 # Bambu P2S Print Quality
 
@@ -131,7 +132,7 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[learning/notes/quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower [[learning/notes/quick-context/melt-index|melt index]] → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 

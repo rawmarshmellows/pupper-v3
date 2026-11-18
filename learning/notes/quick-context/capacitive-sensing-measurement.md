@@ -2,6 +2,7 @@
 topic: Capacitive Sensing and Measurement
 created: 2026-03-28
 ---
+> **Related:** [[learning/notes/quick-context/capacitance]] | [[learning/notes/quick-context/capacitor]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/decoupling-capacitor]]
 
 # Capacitive Sensing and Measurement
 

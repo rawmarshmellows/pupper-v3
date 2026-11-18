@@ -2,6 +2,7 @@
 topic: Differential Pair
 created: 2026-04-01
 ---
+> **Related:** [[learning/notes/quick-context/comparator]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/high-gain-amplifier-stage]] | [[learning/notes/quick-context/mcp6541-as-lmc7211-replacement]] | [[learning/notes/quick-context/op-amp]]
 
 # Differential Pair
 
@@ -176,8 +177,8 @@ COMMON-MODE REJECTION
 ```
 
 Both BJTs and MOSFETs can be used as Q1/Q2:
-- **BJT pairs:** higher transconductance ($g_m$), faster, lower input offset voltage
-- **MOSFET pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
+- **BJT pairs:** higher transconductance ($g_m$), faster, lower [[learning/notes/micro-context/input-offset-voltage|input offset voltage]]
+- **[[learning/notes/micro-context/mosfet|MOSFET]] pairs:** essentially zero input current, easier to integrate on-chip, dominate in IC design
 
 </details>
 
@@ -295,7 +296,7 @@ WHERE YOU'LL FIND DIFFERENTIAL PAIRS
 **Q4:** Why do IC designers make the differential pair transistors physically large, even though smaller transistors are faster?
 <details>
 <summary>Answer</summary>
-**Matching.** Manufacturing variation (random dopant fluctuation, lithographic error) affects small transistors more than large ones. A mismatch between Q1 and Q2 creates an input offset voltage---the pair thinks there's a differential signal even when both inputs are equal. Larger transistors average out these random variations, reducing offset from ~10 mV to ~1 mV or less. The cost is more gate capacitance (slower). See: The Key Tension.
+**Matching.** Manufacturing variation (random dopant fluctuation, lithographic error) affects small transistors more than large ones. A mismatch between Q1 and Q2 creates an [[learning/notes/micro-context/input-offset-voltage|input offset voltage]]---the pair thinks there's a differential signal even when both inputs are equal. Larger transistors average out these random variations, reducing offset from ~10 mV to ~1 mV or less. The cost is more gate capacitance (slower). See: The Key Tension.
 </details>
 
 **Q5:** An engineer replaces the tail current source with a simple resistor to GND. The circuit "works" on the bench but has poor CMRR. Why?

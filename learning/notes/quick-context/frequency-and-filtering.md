@@ -2,6 +2,7 @@
 topic: Frequency and Filtering
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
 
 > **Related:** [[quick-context/impedance-and-reactance]] | [[quick-context/capacitor]] | [[quick-context/inductor]] | [[small-context/decibels-across-domains|Why decibels]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

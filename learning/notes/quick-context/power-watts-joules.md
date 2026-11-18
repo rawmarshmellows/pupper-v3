@@ -2,6 +2,7 @@
 topic: Electrical Power (Watts, Joules, Energy)
 created: 2026-02-06
 ---
+> **Related:** [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/frequency-and-filtering]] | [[learning/notes/quick-context/grounding-and-return-paths]] | [[learning/notes/quick-context/impedance-and-reactance]]
 
 > **Related:** [[quick-context/electric-current]] | [[quick-context/resistor]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
 

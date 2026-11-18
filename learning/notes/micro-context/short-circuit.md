@@ -2,6 +2,7 @@
 term: Short Circuit
 created: 2026-04-17
 ---
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/electric-current]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/frequency-and-filtering]]
 
 # Short Circuit
 
