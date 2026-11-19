@@ -3,7 +3,7 @@ topic: Raspberry Pi 5 — Board Components
 created: 2026-04-05
 ---
 
-> **Related:** [[learning/notes/quick-context/how-passive-and-discrete-components-are-made]] | [[learning/notes/quick-context/raspberry-pi-ai-hat]]
+> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-brain]] | [[micro-context/stm32-microcontroller]] | [[quick-context/common-ic-packages]] | [[quick-context/embedded-communication-protocols]]
 
 > **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[micro-context/stm32-microcontroller|STM32 microcontrollers]].
 
@@ -17,7 +17,7 @@ created: 2026-04-05
 |------|------------|
 | **BCM2712 SoC** | Broadcom system-on-chip — quad-core ARM Cortex-A76 @ 2.4GHz, the main processor that runs Linux and applications |
 | **RP1** | Raspberry Pi's custom I/O controller chip — a "southbridge" that manages USB, Ethernet, GPIO, camera, and display interfaces so the SoC doesn't have to |
-| **LPDDR4X** | Low-Power Double Data Rate 4X RAM — the board's working memory (1/2/4/8GB variants, marked on the [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] silkscreen) |
+| **LPDDR4X** | Low-Power Double Data Rate 4X RAM — the board's working memory (1/2/4/8GB variants, marked on the PCB silkscreen) |
 | **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], UART, and raw digital pins |
 | **PCIe** | Peripheral Component Interconnect Express — a high-speed serial bus (1-lane Gen 2 on Pi 5) used to connect NVMe SSDs or other expansion cards |
 
