@@ -4,6 +4,8 @@ created: 2026-01-27
 updated: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/quick-context/cnc-machining]]
+
 # EDM Machining (Electrical Discharge Machining)
 
 > **See also:** [[quick-context/cnc-machining]] (full treatment) | [[quick-context/electrolysis]] | [[quick-context/electrodes]]
