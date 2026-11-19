@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/3d-printing-slicer-settings]] | [[quick-context/3d-printer-hotends]] | [[quick-context/polymer-chemical-bonds]] | [[quick-context/glass-transition-temperature]] | [[quick-context/bambu-p2s-print-quality]]
+> **Related:** [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/3d-printing-slicer-settings]]
 
 > **TL;DR:** Different 3D printing filaments (PLA, PETG, ABS, TPU) offer distinct tradeoffs between printability and performance—PLA prints easily but fails under heat/stress, while ABS and TPU offer better performance at the cost of printing difficulty.
 

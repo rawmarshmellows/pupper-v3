@@ -3,6 +3,8 @@ term: Clock Source
 created: 2026-03-27
 ---
 
+> **Related:** [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-speed-vs-temperature]] | [[learning/notes/micro-context/clock-speed]] | [[learning/notes/quick-context/clock-sources-and-timing]]
+
 # Clock Source
 
 > **See also:** [[micro-context/ceramic-resonator]] | [[micro-context/clock-speed]] | [[quick-context/clock-sources-and-timing|Clock Sources and Timing]]

@@ -1,3 +1,5 @@
+> **Related:** [[learning/notes/quick-context/existing-account-management-playbook]]
+
 # Existing Account Management Playbook
 
 > A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
@@ -232,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[learning/notes/quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
