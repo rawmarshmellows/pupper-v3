@@ -5,7 +5,7 @@ created: 2026-02-25
 
 # Pupper v3 Control Board BOM — Every Part Explained
 
-> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/schematic-reading]] | [[quick-context/common-ic-packages]]
+> **Related:** [[quick-context/pupper-brain]] | [[quick-context/pupper-lab6-llm-voice-control]] | [[quick-context/pupper-lab4-gait-control]] | [[quick-context/pupper-lab1-pid-control]] | [[quick-context/ros2-architecture]]
 
 > **TL;DR:** The Pupper v3 Control Board Rev 3.5 BOM contains 36 line items (about 80 individual parts) spanning 7 functional categories — dual STM32 microcontrollers for real-time motor control, 4 [[micro-context/can-bus-transceiver|CAN transceivers]] for servo communication, a BNO086 [[small-context/imu-robot-balance-sensing|IMU]] for orientation sensing, a TPS54561 [[micro-context/buck-converter|buck converter]] for power, an [[micro-context/i2s-audio-amplifier|I2S audio amplifier]], a 16-bit [[micro-context/adc-analog-to-digital-converter|ADC]] for battery monitoring, plus the passive components (capacitors, resistors, inductors, ferrite beads) and connectors that tie everything together.
 
@@ -344,13 +344,13 @@ NOW TRACE IT ON THE BOARD:
 
 - **[[quick-context/resistor]]** — Why resistor values like 60.4kΩ and 174kΩ exist (E96 precision series), how voltage dividers set the buck output, and why 120Ω terminates CAN buses.
 
-- **[[quick-context/inductor]]** — The 10μH power inductor is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
+- **[[quick-context/inductor]]** — The 10μH [[micro-context/power-inductor|power inductor]] is the heart of the buck converter. Its saturation current must exceed the 5A output current, and its DCR determines power loss.
 
 - **[[quick-context/diode]]** — The SS56 Schottky diode protects against reverse battery polarity. Its low forward voltage (0.7V vs 1.1V for silicon) minimizes power loss.
 
 - **[[quick-context/common-ic-packages]]** — This BOM uses LQFP-64, SOT-23-8, SOT-23-6, WSON-10, LGA-28, and WLP-9 packages. Understanding package types explains why certain parts can't be hand-soldered.
 
-- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow soldering. The paste mask layer defines the stencil apertures for solder paste deposition.
+- **[[quick-context/soldering]]** — All 0402 passives and SMD ICs require reflow [[quick-context/soldering|soldering]]. The paste mask layer defines the stencil apertures for solder paste deposition.
 
 - **[[quick-context/frequency-and-filtering]]** — The ferrite beads (L2, L3) and multi-value capacitor network form a distributed filter that suppresses switching noise across a wide bandwidth.
 

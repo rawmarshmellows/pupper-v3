@@ -7,7 +7,7 @@ created: 2026-03-28
 
 > **Related:** [[quick-context/electromagnetism]] | [[quick-context/frequency-and-filtering]] | [[quick-context/embedded-communication-protocols]] | [[quick-context/firmware]]
 
-> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an ESP32-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
+> **TL;DR:** A WiFi chip is a single-chip radio that converts digital data into 2.4 GHz [[quick-context/electromagnetism|electromagnetic waves]] and back again, using modulation (encoding bits onto radio carrier waves), an antenna to radiate/receive those waves, and a protocol stack (802.11) to manage shared airtime. The Arduino Uno R4 WiFi puts an [[quick-context/esp32|ESP32]]-S3 WiFi/BLE SoC alongside a Renesas RA4M1 [[micro-context/microcontroller|microcontroller]] — one chip does the radio, the other runs your code.
 
 ## The Core Problem
 
@@ -21,7 +21,7 @@ You want your [[micro-context/microcontroller|microcontroller]] to talk to the i
 | **Modulation / Demodulation** | Modulation encodes digital bits onto an analog carrier wave by varying its amplitude, frequency, or phase. Demodulation reverses the process to recover the bits. WiFi uses OFDM with QAM — encoding multiple bits per symbol across many subcarriers simultaneously. |
 | **OFDM (Orthogonal Frequency-Division Multiplexing)** | WiFi's core modulation scheme: splits the 20 MHz channel into 48+ narrow subcarriers (each 312.5 kHz wide), transmitting data on all of them in parallel. This resists multipath interference (signals bouncing off walls) because each subcarrier is narrow enough to experience flat fading. |
 | **MAC (Media Access Control)** | The protocol layer that manages who gets to transmit and when. WiFi uses CSMA/CA: "listen before you talk." If the channel is busy, wait a random backoff time, then try again. The MAC also handles encryption (WPA), association with access points, and retransmissions. |
-| **PHY (Physical Layer)** | The hardware that converts between digital bits and analog radio signals. Includes the baseband processor (FFT/IFFT for OFDM), DAC/ADC converters, and the RF front-end (mixers, filters, amplifiers). |
+| **PHY (Physical Layer)** | The hardware that converts between digital bits and analog radio signals. Includes the baseband processor (FFT/IFFT for OFDM), DAC/[[micro-context/adc-analog-to-digital-converter|ADC]] converters, and the RF front-end (mixers, filters, amplifiers). |
 
 <details>
 <summary><strong>How It Works</strong> — From bits to radio waves and back</summary>
@@ -332,7 +332,7 @@ void setup() {
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. Maxwell's equations predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
+- **[[quick-context/electromagnetism]]** — WiFi signals are [[quick-context/electromagnetism|electromagnetic waves]] at 2.4 GHz. [[quick-context/maxwell-equations|Maxwell's equations]] predict their propagation, and the antenna design relies on resonance at the carrier frequency. The EM wave section explains exactly what a WiFi signal physically is.
 
 - **[[quick-context/frequency-and-filtering]]** — The WiFi radio uses bandpass [[quick-context/frequency-and-filtering|filters]] extensively: to select the 2.4 GHz band, reject out-of-band interference, and clean up the transmitted signal. The frequency table in that article lists WiFi at 2.4 GHz with a 12.5 cm wavelength.
 
@@ -366,7 +366,7 @@ OFDM splits the 20 MHz WiFi channel into 48+ narrow subcarriers (each 312.5 kHz 
 **Q2:** Why does the Arduino Uno R4 WiFi use two separate chips instead of just the ESP32-S3?
 <details>
 <summary>Answer</summary>
-Backward compatibility and voltage levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
+Backward compatibility and [[quick-context/voltage|voltage]] levels. The RA4M1 runs at 5V, matching the classic Arduino ecosystem's shields and sensors. The ESP32-S3 runs at 3.3V and isn't 5V-tolerant. Using the RA4M1 as the main MCU preserves compatibility with existing Arduino hardware while the ESP32-S3 handles WiFi/BLE as a coprocessor. The ESP32-S3 also lacks the RA4M1's unique peripherals: CAN bus, a true 12-bit DAC, and an on-chip op-amp. See: Concrete Example — Why Two Chips.
 </details>
 
 **Q3:** Your WiFi connection drops when you microwave popcorn. Why?
