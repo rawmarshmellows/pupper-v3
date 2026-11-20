@@ -3,7 +3,7 @@ term: Decoupling Capacitor
 created: 2026-01-27
 updated: 2026-03-27
 ---
-
+> **Related:** [[quick-context/capacitor]] | [[quick-context/op-amp]] | [[quick-context/inductor]] | [[quick-context/impedance-and-reactance]] | [[quick-context/high-gain-amplifier-stage]]
 # Decoupling Capacitor
 
 > **See also:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/electric-current]]

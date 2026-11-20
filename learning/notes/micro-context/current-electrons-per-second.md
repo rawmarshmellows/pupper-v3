@@ -3,12 +3,12 @@ term: Current and Electrons Per Second
 created: 2026-01-26
 updated: 2026-03-27
 ---
-
+> **Related:** [[quick-context/voltage-current-causality]] | [[quick-context/electromigration]] | [[quick-context/electric-current]] | [[micro-context/tail-current]] | [[micro-context/quiescent-supply-current]]
 # Current and Electrons Per Second
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/parallel-vs-series-voltage]]
 
-**Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one coulomb per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
+**Definition:** [[quick-context/electric-current|Electric current]] (measured in amperes) is charge flow per second. One ampere equals one [[micro-context/coulomb-history|coulomb]] per second, which equals 6.24 × 10¹⁸ electrons per second passing a point in a wire.
 
 ## How It Works
 

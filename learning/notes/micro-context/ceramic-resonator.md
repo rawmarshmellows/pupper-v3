@@ -12,7 +12,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- An AC signal applied to the ceramic element excites mechanical vibrations at its natural resonant frequency via the piezoelectric effect.
+- An AC signal applied to the ceramic element excites mechanical vibrations at its natural resonant frequency via the [[micro-context/piezoelectric-effect|piezoelectric effect]].
 - The vibrating ceramic feeds back a stable oscillating signal to the MCU's oscillator circuit, locking it to the resonant frequency (8 MHz).
 - The STM32's internal PLL multiplies this 8 MHz reference up to the operating frequency (180 MHz).
 - Built-in load capacitors (33 pF) eliminate the need for external components, unlike quartz crystals which require two external caps.
@@ -39,4 +39,4 @@ updated: 2026-03-27
   └──────────────────┴───────────┴──────────────────┘
 ```
 
-**Key insight:** The Pupper BOM uses ceramic resonators instead of quartz crystals because CAN bus tolerates ±0.5% clock error — the built-in load capacitors save two external components per MCU for no practical accuracy tradeoff in this application.
+**Key insight:** The Pupper BOM uses ceramic resonators instead of quartz crystals because [[quick-context/can-bus|CAN bus]] tolerates ±0.5% clock error — the built-in load capacitors save two external components per MCU for no practical accuracy tradeoff in this application.

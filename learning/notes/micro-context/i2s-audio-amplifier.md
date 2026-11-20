@@ -3,7 +3,7 @@ term: I2S Audio Amplifier
 created: 2026-01-27
 updated: 2026-03-27
 ---
-
+> **Related:** [[quick-context/op-amp]] | [[quick-context/high-gain-amplifier-stage]] | [[quick-context/inductor]] | [[quick-context/frequency-and-filtering]] | [[quick-context/differential-pair]]
 # I2S Audio Amplifier
 
 > **See also:** [[quick-context/electric-current]] | [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-bom-control-board]]
@@ -14,7 +14,7 @@ updated: 2026-03-27
 
 - The MCU transmits audio samples as a serial bit stream over three I2S lines: bit clock (BCLK), left/right select (LRCLK), and data (DIN).
 - The MAX98357A's internal DAC reconstructs the analog waveform from the digital samples.
-- A Class-D amplifier stage converts the analog signal into high-frequency PWM that drives the speaker coil.
+- A Class-D amplifier stage converts the analog signal into high-frequency [[micro-context/pwm-pulse-width-modulation|PWM]] that drives the speaker coil.
 - The speaker's mechanical inertia acts as a natural low-pass filter, reproducing the original audio waveform.
 
 ```
