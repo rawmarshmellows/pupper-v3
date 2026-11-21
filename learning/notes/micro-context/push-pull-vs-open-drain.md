@@ -3,6 +3,7 @@ term: Push-Pull vs Open-Collector / Open-Drain
 created: 2026-06-07
 updated: 2026-06-07
 ---
+> **Related:** [[learning/notes/quick-context/tensile-strength-materials]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/input-bias-current]]
 
 # Push-Pull vs Open-Collector / Open-Drain
 
@@ -10,7 +11,7 @@ updated: 2026-06-07
 
 **What does "This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight)" mean?**
 
-An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] does that, holding the line HIGH whenever everyone has released.
+An open-drain output has only two states: **pull LOW** (its [[learning/notes/micro-context/mosfet|NMOS]] turns on, connecting the line to GND) or **release** (NMOS off, line floats). It can *never* drive HIGH on its own — a single shared pull-up resistor does that, holding the line HIGH whenever everyone has released.
 
 - **"none fight"** → Bus contention (a near-short) only happens when one output drives HIGH while another drives LOW — that's two transistors fighting, VCC dumping straight to GND. Open-drain *deletes* the HIGH-driving transistor, so that fight is physically impossible. The worst case is several devices pulling LOW at once, which just means several NMOS share the one pull-up's small current — harmless.
 - **"any device can pull LOW"** → One device turning on its NMOS drags the *whole* shared line LOW, regardless of what the others do. Low always wins.
@@ -88,15 +89,15 @@ In a [[learning/notes/quick-context/comparator|comparator]], OUT is the pin carr
 
 The spec rows `$V_{OH}$/$V_{OL}$` (how close OUT gets to each rail) and `$I_{SC}$` (how hard OUT drives) both grade this exact pin.
 
-> **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | [[learning/notes/small-context/pull-up-pull-down-resistors]]
+> **See also:** [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/i2c]] | pull-up-pull-down-resistors
 
-**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** (BJT) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
+**Definition:** Two ways a digital chip drives its output pin. A **push-pull** output uses two transistors to actively drive both HIGH and LOW. An **open-collector** ([[learning/notes/quick-context/bjt|BJT]]) or **open-drain** (MOSFET) output uses a single transistor that can only pull LOW — going HIGH relies on an external pull-up resistor.
 
 ## How It Works
 
 - **Push-pull:** a high-side transistor connects the pin to VCC (sources current, drives HIGH) and a low-side transistor connects it to GND (sinks current, drives LOW); only one is on at a time.
 - Push-pull gives strong, fast drive in both directions, but two such outputs must never share a wire — one driving HIGH against another driving LOW is a near-short (bus contention).
-- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external [[learning/notes/small-context/pull-up-pull-down-resistors|pull-up resistor]] raises it HIGH.
+- **Open-drain:** only the low-side transistor exists; turning it on sinks the pin LOW, turning it off lets the pin "float" so an external pull-up resistor raises it HIGH.
 - This lets many outputs share one line safely (wired-AND: any device can pull LOW, none fight) and lets the pull-up set a different logic voltage — which is why [[learning/notes/micro-context/i2c|I2C]] buses and interrupt lines use open-drain.
 
 ```

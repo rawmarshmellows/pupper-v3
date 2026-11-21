@@ -3,12 +3,13 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]]
 
 # Cathode
 
-> **See also:** [[quick-context/electrodes]]
+> **See also:** [[learning/notes/quick-context/electrodes]]
 
-**Definition:** The terminal where electrons flow IN — regardless of context. In [[quick-context/electrolysis|electrolysis]], it's the negative electrode where reduction (electron gain) occurs. In a [[quick-context/diode|diode]], it's the bar side of the symbol, marked K — where conventional current exits.
+**Definition:** The terminal where electrons flow IN — regardless of context. In [[learning/notes/quick-context/electrolysis|electrolysis]], it's the negative electrode where reduction (electron gain) occurs. In a [[learning/notes/quick-context/diode|diode]], it's the bar side of the symbol, marked K — where conventional current exits.
 
 ## How It Works
 
@@ -31,4 +32,4 @@ updated: 2026-03-27
   Common thread: electrons ARRIVE at the cathode
 ```
 
-**Key insight:** "Cathode" always means "where electrons enter and reduction occurs" — in electrolysis it's the negative electrode, but in a [[quick-context/galvanic-cells-batteries|battery]] it's the positive terminal. The polarity flips, but the electron-flow rule never does. Mnemonic: **C**athode attracts **C**ations.
+**Key insight:** "Cathode" always means "where electrons enter and reduction occurs" — in electrolysis it's the negative electrode, but in a [[learning/notes/quick-context/galvanic-cells-batteries|battery]] it's the positive terminal. The polarity flips, but the electron-flow rule never does. Mnemonic: **C**athode attracts **C**ations.

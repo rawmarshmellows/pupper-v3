@@ -3,12 +3,13 @@ term: Electromagnetic Induction
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]]
 
 # Electromagnetic Induction
 
-> **See also:** [[quick-context/electromagnetism]] | [[quick-context/electricity-generation]] | [[quick-context/inductor]]
+> **See also:** [[learning/notes/quick-context/electromagnetism]] | [[learning/notes/quick-context/electricity-generation]] | [[learning/notes/quick-context/inductor]]
 
-**Definition:** The phenomenon where a changing magnetic field through a conductor induces a voltage (and thus [[quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
+**Definition:** The phenomenon where a changing magnetic field through a conductor induces a voltage (and thus [[learning/notes/quick-context/electric-current|current]] if the circuit is closed). Discovered by Faraday in 1831, this single principle generates 99%+ of grid electricity—every coal, gas, nuclear, hydro, and wind plant uses it.
 
 ## How It Works
 

@@ -3,10 +3,11 @@ term: CNC Process Selection
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/thermal-runaway]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]]
 
 # CNC Process Selection
 
-> **See also:** [[quick-context/cnc-machining]] (full treatment) | [[micro-context/cnc-milling]] | [[micro-context/cnc-turning]] | [[micro-context/edm-machining]]
+> **See also:** [[learning/notes/quick-context/cnc-machining]] (full treatment) | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]]
 
 **Definition:** A decision framework for when to use CNC machining over other methods, and which CNC process to choose. CNC excels at tight tolerances, metal parts, and low-to-medium volumes where tooling costs for casting/molding aren't justified.
 

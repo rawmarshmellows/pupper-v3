@@ -3,7 +3,7 @@ topic: Oscilloscope and Multimeter
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/electric-current]] | [[quick-context/impedance-and-reactance]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/pwm-controller-circuit]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/high-gain-amplifier-stage]]
 
 > **TL;DR:** A multimeter measures voltage, current, and resistance as single numbers (good for DC and slow checks), while an oscilloscope shows how voltage changes over time (essential for debugging signals, timing, noise, and anything that happens faster than your eye can see)—together they are the two fundamental tools for understanding what's actually happening in a circuit.
 
@@ -122,8 +122,8 @@ WHEN TO USE WHICH
 | Bandwidth | Price Range | Good For |
 |-----------|-----------|----------|
 | 50 MHz | $300-500 | Arduino, slow digital, audio, power supplies |
-| 100 MHz | $400-800 | SPI, I2C, UART, most embedded work |
-| 200 MHz | $800-2000 | Faster SPI, CAN bus, switching supply debug |
+| 100 MHz | $400-800 | SPI, I2C, [[learning/notes/quick-context/uart|UART]], most embedded work |
+| 200 MHz | $800-2000 | Faster SPI, [[learning/notes/quick-context/can-bus|CAN bus]], switching supply debug |
 | 500 MHz | $2000-5000 | USB, Ethernet PHY, DDR memory |
 | 1+ GHz | $5000-50000 | PCIe, high-speed serial, RF |
 
@@ -176,13 +176,13 @@ SCENARIO: I2C communication between MCU and sensor is intermittent
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
+- **[[learning/notes/quick-context/electric-current]]** — Multimeters measure current by inserting a known resistance (shunt) and measuring voltage drop. Understanding I = V/R explains how current measurement works internally.
 
-- **[[quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
+- **[[learning/notes/quick-context/impedance-and-reactance]]** — Oscilloscope probes have capacitance that loads the circuit. At high frequencies, this loading changes the signal you're trying to measure. The 10× probe reduces this by 10×.
 
-- **[[quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
+- **[[learning/notes/quick-context/resistor]]** — Multimeter resistance measurement works by injecting a known current and measuring voltage (R = V/I). Always disconnect power before measuring resistance, or you'll get wrong readings.
 
-- **[[quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
+- **[[learning/notes/quick-context/frequency-and-filtering]]** — Oscilloscope bandwidth is itself a low-pass filter. A 100 MHz scope attenuates signal components above 100 MHz by -3 dB, rounding sharp edges.
 
 </details>
 

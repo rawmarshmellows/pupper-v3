@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # How Resistors, Capacitors, Diodes, and Comparators Are Made — On-Chip vs Discrete
 
-> **Related:** [[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]] | [[learning/notes/quick-context/resistor|Resistor]] | [[learning/notes/quick-context/capacitor|Capacitor]] | [[learning/notes/quick-context/diode|Diode]] | [[learning/notes/quick-context/comparator|Comparator]] | [[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index]]
+> **Related:** [[learning/notes/quick-context/qwiic-stemma-qt-i2c]] | [[learning/notes/quick-context/pupper-bom-control-board]] | [[learning/notes/quick-context/comparator-specification]] | [[learning/notes/quick-context/rc-oscillator]] | [[learning/notes/quick-context/pcb-assembly-files-bom-cpl]]
 
 > **TL;DR:** The same four everyday parts get manufactured two completely different ways. **On-chip (monolithic):** a resistor is a doped strip, a capacitor is two metal/silicon layers with a thin insulator between them, a diode is a PN junction, and a comparator is a whole integrated circuit of many transistors — all *patterned together* on one silicon wafer by the same [[learning/notes/quick-context/semiconductor-fabrication|photolithography process]] that makes transistors. **Discrete:** each is a tiny standalone object built by its own specialized process (screen-printed resistive paste, stacked ceramic layers, a single junction die) and then soldered onto a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]].
 
@@ -262,14 +262,14 @@ Walk it through:
 
 Down the ladder, every "on-chip" part above traces to the raw [[learning/notes/quick-context/semiconductor-fabrication|fabrication]] cycle on a [[learning/notes/quick-context/silicon-die|silicon die]]; every "discrete" part traces to its own screen-print / co-fire / junction-dicing line and then a [[learning/notes/quick-context/pcb-printed-circuit-board|PCB]] solder joint, with the finished chips landing in their [[learning/notes/quick-context/substrate-ic-packaging|packages]] first.
 
-**The one thing most outsiders get wrong about this is...** thinking a "comparator" or "op-amp" is a basic component like a resistor or capacitor — a single physical thing you fabricate in one shot. It isn't. A comparator is a *circuit* — a small integrated circuit of many transistors plus on-chip resistors and capacitors — manufactured exactly like a CPU, just smaller. There is no such thing as a single-element "comparator" the way there is a single doped strip "resistor." The naming makes them all sound like peers, but a resistor/capacitor/diode are *elements*, while a comparator is an *assembly of elements* on a chip.
+**The one thing most outsiders get wrong about this is...** thinking a "comparator" or "[[learning/notes/quick-context/op-amp|op-amp]]" is a basic component like a resistor or capacitor — a single physical thing you fabricate in one shot. It isn't. A comparator is a *circuit* — a small integrated circuit of many transistors plus on-chip resistors and capacitors — manufactured exactly like a CPU, just smaller. There is no such thing as a single-element "comparator" the way there is a single doped strip "resistor." The naming makes them all sound like peers, but a resistor/capacitor/diode are *elements*, while a comparator is an *assembly of elements* on a chip.
 
 </details>
 
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — this note is rung F3 of the Fabrication Basement: the hardware rungs are built from parts, and this explains how those parts are themselves made.
+- **How a Computer Works — Index-Spine** — this note is rung F3 of the Fabrication Basement: the hardware rungs are built from parts, and this explains how those parts are themselves made.
 - **[[learning/notes/quick-context/semiconductor-fabrication|Semiconductor Fabrication]]** — the litho/etch/implant/deposit cycle that patterns *all* the on-chip parts here, exactly as it patterns transistors. The "down" link.
 - **[[learning/notes/quick-context/doped-silicon|Doped Silicon]]** — the raw material an on-chip resistor (diffused strip) and diode (PN junction) are carved from; doping level sets sheet resistance.
 - **[[learning/notes/quick-context/silicon-die|Silicon Die]]** & **[[learning/notes/quick-context/metal-interconnect-layers|Metal Interconnect Layers]]** — where on-chip parts physically live: diffused resistors and MOS caps near the transistors, MIM caps up in the metal stack.

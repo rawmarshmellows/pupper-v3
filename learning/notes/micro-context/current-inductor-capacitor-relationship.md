@@ -3,10 +3,11 @@ term: Current Behavior with Inductors vs Capacitors
 created: 2026-02-08
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/transistor]] | [[learning/notes/micro-context/mosfet]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/micro-context/tail-current]]
 
 # Current Behavior with Inductors vs Capacitors
 
-**Definition:** [[quick-context/inductor|Inductors]] and [[quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
+**Definition:** [[learning/notes/quick-context/inductor|Inductors]] and [[learning/notes/quick-context/capacitor|capacitors]] have opposite relationships with current. Inductors oppose current *changes* (current stays steady, voltage can jump). Capacitors oppose voltage *changes* (voltage stays steady, current can jump). They're exact duals.
 
 ## How It Works
 
