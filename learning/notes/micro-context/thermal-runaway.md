@@ -3,12 +3,13 @@ term: Thermal Runaway
 created: 2026-01-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/micro-context/st-link-v2-programmer]] | [[learning/notes/micro-context/spi]] | [[learning/notes/micro-context/smd-resistor]]
 
 # Thermal Runaway
 
-> **See also:** [[quick-context/transistor-analog-to-digital]] | [[quick-context/thermal-noise-electronics]] | [[micro-context/clock-speed-vs-temperature]]
+> **See also:** [[learning/notes/quick-context/transistor-analog-to-digital]] | [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
 
-**Definition:** A destructive feedback loop where heat increases [[quick-context/transistor-analog-to-digital|leakage current]], which generates more heat, which increases leakage further—until the chip throttles, shuts down, or permanently damages itself.
+**Definition:** A destructive feedback loop where heat increases [[learning/notes/quick-context/transistor-analog-to-digital|leakage current]], which generates more heat, which increases leakage further—until the chip throttles, shuts down, or permanently damages itself.
 
 ## How It Works
 
@@ -37,4 +38,4 @@ THE THERMAL RUNAWAY FEEDBACK LOOP
   └── Thermal design power (TDP): design limit
 ```
 
-**Key insight:** The "off" transistors that [[quick-context/transistor-analog-to-digital|leak current even when supposedly off]] leak MORE when hot—this is why cooling isn't optional and why chips have thermal limits baked into firmware.
+**Key insight:** The "off" transistors that [[learning/notes/quick-context/transistor-analog-to-digital|leak current even when supposedly off]] leak MORE when hot—this is why cooling isn't optional and why chips have thermal limits baked into [[learning/notes/quick-context/firmware|firmware]].

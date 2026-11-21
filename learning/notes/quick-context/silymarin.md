@@ -2,6 +2,7 @@
 topic: Silymarin
 created: 2026-04-06
 ---
+> **Related:** [[learning/notes/quick-context/butyric-acid]] | [[learning/notes/quick-context/thermal-noise-electronics]] | [[learning/notes/quick-context/ram-addressing-decoder]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/pcb-chip-transistor-hierarchy]]
 
 # Silymarin
 

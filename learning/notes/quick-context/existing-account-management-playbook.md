@@ -1,6 +1,6 @@
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
+> A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM Model]], KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
 
 ---
 
@@ -225,7 +225,7 @@ _____________________________________________________________
 2.
 3.
 
-### 4.3 [[quick-context/whitespace-mapping|Whitespace Analysis]]
+### 4.3 [[learning/notes/quick-context/whitespace-mapping|Whitespace Analysis]]
 
 Where can we expand within this account?
 

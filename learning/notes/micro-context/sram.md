@@ -2,6 +2,7 @@
 term: SRAM (Static Random-Access Memory)
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/micro-context/eeprom]]
 
 # SRAM (Static Random-Access Memory)
 

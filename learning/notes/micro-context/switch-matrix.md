@@ -2,6 +2,7 @@
 term: Switch Matrix
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/scan-loop]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/micro-context/homogeneous-transformation-matrix]]
 
 # Switch Matrix
 

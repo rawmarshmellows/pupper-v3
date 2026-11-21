@@ -5,7 +5,7 @@ created: 2026-06-07
 
 # The Data Bus and Bus Arbitration — How Chips Share Wires
 
-> **Related:** [[learning/notes/index/how-a-computer-works-index]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/keypress-to-pixel-pipeline]] | [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/bare-minimal-data-storage-circuit]] | [[learning/notes/quick-context/embedded-communication-protocols]] | [[learning/notes/quick-context/uart]]
 
 > **TL;DR:** A **bus** is a single bundle of wires that the CPU, RAM, and every peripheral all share — instead of running a private set of wires from every chip to every other chip. The catch: if two chips try to drive the same wire to opposite voltages, you get a short circuit and garbage data. The fix is **tri-state** outputs (the same Output Enable pin you met on the 74HC574 register) plus **arbitration** — a discipline that guarantees exactly one chip drives the shared wires at any instant, while everyone else stays electrically "invisible."
 
@@ -18,7 +18,7 @@ A computer is dozens of chips that all need to exchange bytes: the CPU reads an 
 | Term | Definition |
 |------|------------|
 | **Bus** | A shared bundle of parallel wires that multiple chips connect to. A typical system bus has three parts: an **address bus** (which location?), a **data bus** (what value?), and a **control bus** (read or write? when?). |
-| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the [[learning/notes/quick-context/switches-to-registers-storing-data\|Output Enable (OE)]] pin. |
+| **Tri-state / High-impedance (Hi-Z)** | A third output state beyond HIGH and LOW: electrically *disconnected*. A chip whose output is Hi-Z is "not on the wire" — it neither pulls the line high nor low, letting another chip drive it. Enabled/disabled by the Output Enable (OE) pin. |
 | **Bus contention** | The fault condition where two chips drive the same wire to opposite voltages (one HIGH, one LOW) simultaneously — a near-short that produces garbage logic levels and can overheat or damage the chips. The thing arbitration exists to prevent. |
 | **Address decoding / Chip-select (CS)** | Logic that watches the address bus and activates exactly one device's enable pin when its assigned address range appears. This is how "everyone listens, one responds" is enforced. |
 | **Memory-mapped I/O** | Treating peripherals (display, keyboard, timers) as if they were memory: each gets a slice of the address space, and the CPU talks to them with the *same* read/write instructions it uses for RAM. |
@@ -137,7 +137,7 @@ The **master** (here, the CPU) always owns the address and control buses. The **
 
 The parallel system bus described above (8/16/32/64 data wires switching together) is one end of a spectrum. The other end is the **serial protocols** — [[learning/notes/quick-context/uart|UART]], [[learning/notes/micro-context/i2c|I2C]], SPI, [[learning/notes/quick-context/can-bus|CAN]], [[learning/notes/quick-context/usb-peripheral-hardware|USB]] — covered in [[learning/notes/quick-context/embedded-communication-protocols|Embedded Communication Protocols]]. The tension is *width vs. wires vs. distance.*
 
-| | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, UART, CAN, USB) |
+| | **Parallel bus** (system bus) | **Serial protocol** (I2C, SPI, [[learning/notes/quick-context/uart|UART]], CAN, USB) |
 |---|---|---|
 | Data per clock | A whole word at once (8/16/32/64 bits) | 1 bit at a time |
 | Wire count | Many (1 per data bit + address + control) | Few (1–4) |
@@ -234,7 +234,7 @@ A SMALL 16-BIT MEMORY MAP (memory-mapped I/O)
 - **[[learning/notes/micro-context/i2c]]** — A 2-wire *shared* serial bus with 7-bit addressing and open-drain lines — serial-world chip-select; the closest serial cousin to address decoding.
 - **[[learning/notes/quick-context/can-bus]]** — The canonical example of true **multi-master arbitration**: bitwise dominant/recessive contention resolves who transmits with no central arbiter.
 - **[[learning/notes/quick-context/usb-peripheral-hardware]]** — A host-orchestrated serial bus where the host (a single master) polls devices, another point on the arbitration spectrum.
-- **[[learning/notes/index/how-a-computer-works-index]]** — The hub: how we climb from electricity up to code executing. This note is rung L9.
+- **how-a-computer-works-index** — The hub: how we climb from electricity up to code executing. This note is rung L9.
 
 </details>
 
