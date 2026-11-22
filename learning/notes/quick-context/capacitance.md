@@ -307,7 +307,7 @@ ONE DEVICE'S CONTRIBUTION TO BUS CAPACITANCE
         C_device ≈ C_pad + C_pin + C_bond + C_ESD + C_gate ≈ 10 pF
 ```
 
-The ESD diode usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
+The ESD [[quick-context/diode|diode]] usually dominates — it's a relatively large junction sized to dump kilovolts of static. The gate itself is small (sub-pF on modern processes) but it's what the signal is trying to switch.
 
 ### Neighboring Traces: Discharge Speed Depends on What the Neighbor Does
 
