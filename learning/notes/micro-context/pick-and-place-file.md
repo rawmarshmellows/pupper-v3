@@ -34,4 +34,4 @@ PICK AND PLACE WORKFLOW:
                                                               └───┘
 ```
 
-**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-soldering).
+**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-[[quick-context/soldering|soldering]]).
