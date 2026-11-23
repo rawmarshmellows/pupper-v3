@@ -27,7 +27,7 @@ Without this framework, there's no way to systematically design, verify, and cer
 | **Safe Failure Fraction (SFF)** | The proportion of failures that leave the system in a safe state (e.g., valve fails closed)—higher SFF allows higher SIL with less redundancy. |
 | **Dual-Channel Architecture (1oo2)** | Two independent systems that must both agree to allow operation; either can independently trigger shutdown—the standard pattern for SIL 2/3. |
 | **Diagnostic Coverage (DC)** | The percentage of dangerous failures detectable by automatic diagnostics—higher DC reduces the "undetected dangerous failure" rate that drives PFD. |
-| **Safety PLC** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
+| **Safety [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]]** | A PLC certified to execute safety functions (Siemens F-CPU, Allen-Bradley GuardLogix, Pilz)—internally redundant with self-monitoring, certified to IEC 61508. |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -184,7 +184,7 @@ NETWORK 1: Light Curtain Dual-Channel Evaluation
 
 - **[[quick-context/plc-vs-software-control]]** - Understanding why safety functions must run on certified PLCs, not general-purpose software
 - **[[quick-context/preempt-rt]]** - Real-time Linux limitations that explain why ROS2 cannot replace safety PLCs
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with PREEMPT_RT + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The 2025-2026 push to replace PLCs with [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2, and why SIL certification remains the last hard barrier (Codethink CTRL OS achieved SIL-3 baseline assessment in May 2025, but no full product cert yet)
 - **[[quick-context/integration-failure-modes-solutions]]** - Non-safety failure modes where standard (non-SIL) solutions apply
 
 </details>

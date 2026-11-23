@@ -11,7 +11,7 @@ created: 2026-06-07
 
 ## The Core Problem
 
-A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, firmware — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
+A computer is, at bottom, just switches that are either on or off — there is no "letter A" anywhere in the silicon. Yet you press a key and an "A" appears on a glowing screen made of millions of independent dots. The whole reason every lower rung of this ladder exists — switches, registers, RAM, buses, the fetch-execute cycle, interrupts, protocols, [[learning/notes/quick-context/firmware|firmware]] — is to bridge that gap: to turn one physical contact into a meaningful symbol and then back into a physical pattern of light. If you understand this one end-to-end path, you understand what a computer fundamentally *is*: a machine that moves a bit up through layers of meaning and back down into the physical world.
 
 ## 5 Essential Terms
 
@@ -215,7 +215,7 @@ Note an honest caveat about this *specific* implementation: its accompanying tes
 - **[[learning/notes/quick-context/data-bus-and-arbitration]]** — How bytes actually travel between CPU, memory, and peripherals on shared wires. *(sibling — may not exist yet)*
 - **[[learning/notes/quick-context/uart]]** — A bare serial transport; the simplest version of "carry the scancode over a wire" (rung 6).
 - **[[learning/notes/quick-context/usb-peripheral-hardware]]** — How a real PC keyboard's HID packets reach the host (rungs 5-6).
-- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses (UART/SPI/I2C/USB) that move bytes between chips.
+- **[[learning/notes/quick-context/embedded-communication-protocols]]** — The general menu of buses ([[learning/notes/quick-context/uart|UART]]/[[learning/notes/micro-context/spi|SPI]]/[[learning/notes/micro-context/i2c|I2C]]/USB) that move bytes between chips.
 - **[[learning/notes/quick-context/firmware]]** — The keyboard MCU's code (scan/debounce/encode) and the host's interrupt handler are both firmware.
 
 </details>
