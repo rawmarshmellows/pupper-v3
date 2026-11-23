@@ -338,7 +338,7 @@ This entire pipeline repeats at ~5 Hz (camera frame rate). Each cycle:
 - **Fisheye Lens Models** — Fisheye cameras use ultra-wide-angle lenses (>180 FOV) that introduce severe radial distortion modeled by: $r_d = \frac{1}{\omega} \arctan(2r_u \tan(\omega/2))$ (equidistant projection). Undistortion is essential before running detectors trained on rectilinear images. OpenCV's `cv2.fisheye` module handles the calibration and remapping.
 - **Hysteresis in Control Systems** — The timeout-based TRACK-to-SEARCH transition is a form of hysteresis: the condition for entering TRACK (any fresh detection) differs from the condition for leaving it (no detection for $> T$ seconds). This asymmetry prevents rapid state oscillation (chattering) when detections are intermittent. Hysteresis appears throughout engineering: thermostats, Schmitt triggers, magnetic materials.
 - **[[quick-context/pupper-v3-labs]]** — The full 7-lab curriculum overview showing how Labs 1-6 build the foundation that Lab 7 integrates.
-- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + CAN bus) that executes the motor commands Lab 7's state machine generates.
+- **[[quick-context/pupper-brain]]** — The hardware architecture (dual STM32 + Raspberry Pi + [[learning/notes/quick-context/can-bus|CAN bus]]) that executes the motor commands Lab 7's state machine generates.
 
 </details>
 

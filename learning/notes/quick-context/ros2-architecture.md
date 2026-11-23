@@ -389,7 +389,7 @@ Each layer only knows about its immediate inputs and outputs. The neural control
 
 - **[[quick-context/pupper-v3-labs]]** — The 7-lab CS123 curriculum. Each lab adds ROS2 nodes to the graph: Lab 1 (PD controller), Lab 2 (FK + RViz marker), Lab 3 (IK node), Lab 4 (gait node), Lab 5 (neural controller subscribing to `/cmd_vel`), Lab 6 (realtime_voice publishing to `/gpt4_response_topic`), Lab 7 (hailo_detection + state machine + `/tracking_control`).
 
-- **[[quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The SPI connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
+- **[[quick-context/pupper-bom-control-board]]** — The physical hardware that ros2_control's hardware interface talks to. The [[learning/notes/micro-context/spi|SPI]] connection to the STM32, the CAN transceivers to the servos, and the IMU that provides orientation data to `/joint_states` are all components on this board.
 
 </details>
 
