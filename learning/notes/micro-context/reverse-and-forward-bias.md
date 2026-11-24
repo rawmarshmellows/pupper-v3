@@ -3,10 +3,12 @@ term: Reverse and Forward Bias
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/cations-and-reduction]] | [[learning/notes/quick-context/clock-sources-and-timing]]
+
 
 # Reverse and Forward Bias
 
-**Definition:** The two ways to apply voltage across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
+**Definition:** The two ways to apply [[learning/notes/quick-context/voltage|voltage]] across a [[quick-context/diode|PN junction]]. **Forward bias** (positive to P-side, negative to N-side) shrinks the [[quick-context/doped-silicon|depletion zone]] and lets current flow. **Reverse bias** (flipped polarity) widens the depletion zone and blocks current. This is what makes diodes one-way valves.
 
 ## How It Works
 

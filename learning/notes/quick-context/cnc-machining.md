@@ -5,7 +5,7 @@ created: 2026-03-28
 
 # CNC Machining
 
-> **Related:** [[quick-context/3d-printing-filament-types|3D Printing Filament Types]] | [[quick-context/tensile-strength-materials|Tensile Strength Materials]] | [[quick-context/electrolysis|Electrolysis]] | [[quick-context/electrodes|Electrodes]]
+> **Related:** [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]]
 
 > **TL;DR:** CNC machining is subtractive manufacturing -- a computer-controlled cutting tool removes material from a solid block to create precision parts. It is the default choice for metal parts at low volumes ($1$--$1{,}000$ units) where tight tolerances ($\pm 0.001"$) and full material strength are required.
 
@@ -77,7 +77,7 @@ MILLING vs TURNING:
 
 ### EDM: Sparks Instead of Cutting
 
-A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-voltage pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
+A shaped electrode is brought close to the conductive workpiece, separated by a thin gap filled with dielectric fluid. High-[[learning/notes/quick-context/voltage|voltage]] pulses ionize the fluid, creating brief electrical sparks that vaporize tiny craters in the workpiece surface.
 
 ```
 EDM SPARK EROSION:
@@ -164,7 +164,7 @@ The fundamental tradeoff: CNC gives you precision and strength but wastes materi
 
 Imagine you need to manufacture a custom motor shaft with a mounting bracket for a robotics project -- 50 units total.
 
-**Step 1: The shaft (CNC Turning)**
+**Step 1: The shaft ([[learning/notes/micro-context/cnc-turning|CNC Turning]])**
 The shaft is a cylindrical part with stepped diameters and a keyway. You start with a round bar of 4140 steel clamped in a lathe chuck. The CNC lathe spins it at 1,500 RPM while a carbide insert tool traverses along the axis, cutting each diameter step to $\pm 0.0005"$ concentricity. Turning is the obvious choice -- the part has rotational symmetry, and no other process matches turning's cylindrical surface finish.
 
 **Step 2: The mounting bracket (CNC Milling)**

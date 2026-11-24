@@ -2,10 +2,12 @@
 term: Scan Loop
 created: 2026-04-07
 ---
+> **Related:** [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]] | [[learning/notes/micro-context/clock-speed-vs-temperature]]
+
 
 # Scan Loop
 
-**Definition:** A firmware routine that rapidly cycles through rows of a **switch matrix** — a grid of electrical switches wired at the intersections of row and column lines, so each switch is uniquely identified by its (row, col) coordinate — driving each row LOW in turn and reading all columns to detect which switches are closed. Used by keyboard and keypad [[learning/notes/micro-context/stm32-microcontroller|microcontrollers]] to monitor many switches with few GPIO pins.
+**Definition:** A [[learning/notes/quick-context/firmware|firmware]] routine that rapidly cycles through rows of a **switch matrix** — a grid of electrical switches wired at the intersections of row and column lines, so each switch is uniquely identified by its (row, col) coordinate — driving each row LOW in turn and reading all columns to detect which switches are closed. Used by keyboard and keypad [[learning/notes/micro-context/stm32-microcontroller|microcontrollers]] to monitor many switches with few GPIO pins.
 
 ## How It Works
 

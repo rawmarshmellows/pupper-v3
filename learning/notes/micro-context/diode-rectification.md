@@ -3,6 +3,8 @@ term: Diode Rectification (AC → DC)
 created: 2026-02-07
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/pwm-pulse-width-modulation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/diode]]
+
 
 # Diode Rectification (AC → DC)
 

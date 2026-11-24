@@ -5,7 +5,7 @@ created: 2026-02-20
 
 # Maxwell's Equations
 
-> **Related:** [[quick-context/electromagnetism]] | [[quick-context/electric-magnetic-field-unification|Field Unification]] | [[quick-context/faraday-tensor]] | [[quick-context/inductor]] | [[quick-context/capacitor]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/atoms-molecules-polymers-basics]] | [[learning/notes/quick-context/bjt-specifications]]
 
 > **TL;DR:** Maxwell's equations are four mathematical statements that completely describe all classical electromagnetic phenomena—from static charges to light itself. They unify electricity and magnetism by showing that changing electric fields create magnetic fields and vice versa, enabling self-sustaining electromagnetic waves that travel at the speed of light.
 
@@ -510,7 +510,7 @@ EQUATION 4: AMPÈRE-MAXWELL → ELECTROMAGNETS AND EM WAVES
 
 - **Vector Calculus** — Understanding ∇·, ∇×, line integrals, and surface integrals is essential for working with Maxwell's equations mathematically.
 
-- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not electromagnetism.
+- **Special Relativity** — Einstein showed that Maxwell's equations are already relativistically correct. It was Newton's mechanics that needed modification, not [[learning/notes/quick-context/electromagnetism|electromagnetism]].
 
 </details>
 

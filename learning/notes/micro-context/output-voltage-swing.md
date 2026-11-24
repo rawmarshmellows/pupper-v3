@@ -2,6 +2,8 @@
 term: Output Voltage Swing (V_OH / V_OL)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/quick-context/parallel-vs-series-voltage]]
+
 
 # Output Voltage Swing ($V_{OH}$ / $V_{OL}$)
 

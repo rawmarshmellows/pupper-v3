@@ -5,13 +5,13 @@ created: 2026-03-28
 
 # Qwiic / STEMMA QT — Plug-and-Play I2C
 
-> **Related:** [[micro-context/i2c]] | [[micro-context/jst-connector-families]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/micro-context/i2c]] | [[learning/notes/quick-context/can-bus]] | [[learning/notes/quick-context/clock-sources-and-timing]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/quick-context/firmware]]
 
-> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate soldering and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
+> **TL;DR:** Qwiic (SparkFun) and STEMMA QT (Adafruit) are cross-compatible plug-and-play [[micro-context/i2c|I2C]] ecosystems that use a standardized 4-pin JST SH 1.0mm connector carrying power (3.3V), ground, SDA, and SCL. They eliminate [[learning/notes/quick-context/soldering|soldering]] and wiring errors for sensor hookup — just plug in a cable and start reading data over I2C. Hundreds of breakout boards (IMUs, temperature sensors, displays, ADCs) use this connector.
 
 ## The Core Problem
 
-Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply voltage, typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
+Wiring up an I2C sensor on a breadboard means 4 jumper wires — **VCC** (supply [[learning/notes/quick-context/voltage|voltage]], typically 3.3V or 5V that powers the sensor), **GND** (ground, the return path that completes the circuit), **SDA** (Serial Data, the line that carries the actual data bits back and forth), and **SCL** (Serial Clock, the line the master toggles to set the timing for each bit) — plus pull-up [[quick-context/resistor|resistors]], and plenty of opportunities to swap SDA/SCL or short power to ground. Every new sensor means re-reading the datasheet pinout. Qwiic/STEMMA QT solves this by standardizing the physical connector, pinout, and voltage — every board has the same 4-pin JST SH jack with the same pin order. Plug in a cable, and I2C just works. No soldering, no wrong pins, no missing pull-ups (they're on the breakout board).
 
 ## 5 Essential Terms
 
@@ -130,7 +130,7 @@ This means the breakout board handles all the electrical details. You just plug 
 | **Connector** | JST SH 1.0mm | JST SH 1.0mm | HY 2.0mm |
 | **Cross-compatible** | ✓ with STEMMA QT | ✓ with Qwiic | ✗ different connector |
 | **Logic voltage** | 3.3V only | 3.3V and 5V | 3.3V and 5V |
-| **Protocols** | I2C only | I2C only | I2C, UART, analog, digital |
+| **Protocols** | I2C only | I2C only | I2C, [[learning/notes/quick-context/uart|UART]], analog, digital |
 | **Board count** | ~200+ | ~300+ | ~400+ |
 | **Pull-ups on board** | ✓ | ✓ | ✓ |
 | **Typical price** | $5-15 per board | $5-15 per board | $3-12 per board |
@@ -138,7 +138,7 @@ This means the breakout board handles all the electrical details. You just plug 
 **The tradeoff:** Qwiic/STEMMA QT optimizes for I2C simplicity — one connector type, one protocol, zero configuration. Grove is more flexible (supports analog, digital, UART) but at the cost of a larger connector and needing to know which Grove port type to use.
 
 **When Qwiic/STEMMA QT doesn't work:**
-- **SPI sensors** — these ecosystems are I2C only. High-speed sensors that need SPI require traditional wiring.
+- **SPI sensors** — these ecosystems are I2C only. High-speed sensors that need [[learning/notes/micro-context/spi|SPI]] require traditional wiring.
 - **Long cable runs** — I2C is limited to ~1 m. For longer distances, you need [[quick-context/can-bus|CAN bus]] or RS-485.
 - **High-current devices** — the JST SH connector is rated for ~1A. Motors, heaters, or solenoids need separate power wiring.
 - **Address conflicts** — if two identical sensors have the same fixed I2C address and no address jumper, you need a TCA9548A I2C multiplexer.

@@ -3,6 +3,8 @@ term: ADS1110 (Battery Voltage ADC)
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ac-dc-current]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/crystal-oscillator]]
+
 
 # ADS1110 (Battery Voltage ADC)
 

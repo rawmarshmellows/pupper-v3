@@ -3,7 +3,7 @@ topic: PLC vs Software Control for Robotic Arms
 created: 2026-01-16
 ---
 
-> **Related:** [[quick-context/robotic-arm-api-levels]] | [[quick-context/plc-vs-software]] | [[quick-context/preempt-rt]]
+> **Related:** [[learning/notes/quick-context/plc-vs-software]] | [[learning/notes/quick-context/3d-printing-filament-refill-vs-spool]] | [[learning/notes/quick-context/parallel-vs-series-voltage]] | [[learning/notes/quick-context/polymer-crystallinity-vs-amorphous]] | [[learning/notes/quick-context/preempt-rt-ros2-plc-replacement]]
 
 > **TL;DR:** PLCs handle deterministic real-time motion and safety, while software handles complex planning and intelligence - modern robotic systems need both working together.
 
@@ -121,7 +121,7 @@ The key insight: ROS does the smart stuff (vision, planning) on commodity hardwa
 <details>
 <summary><strong>The Key Tension</strong></summary>
 
-The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels (PREEMPT_RT, Xenomai), careful architecture, and loses most safety certifications.
+The fundamental argument is **determinism vs. capability**. PLC vendors (Siemens, Rockwell, Beckhoff) have spent decades building certified, safety-rated, industrially-hardened systems with SIL-rated emergency stop handling and 20-year part availability. Software ecosystems (ROS, custom stacks) offer modern programming paradigms, rich libraries, machine learning integration, and escape from vendor lock-in—but achieving hard real-time in software requires specialized kernels ([[learning/notes/quick-context/preempt-rt|PREEMPT_RT]], Xenomai), careful architecture, and loses most safety certifications.
 
 The industry is slowly converging: Beckhoff's TwinCAT runs PLC runtime on Windows with a real-time hypervisor, ROS2 added deterministic DDS transports, and "soft PLCs" blur the line entirely. But in regulated industries (automotive, pharma, food), auditors still want to see traditional PLC programs for anything safety-related, regardless of technical capability.
 
@@ -143,7 +143,7 @@ This division means: software does the "thinking" (where to move, what to pick u
 
 - **[[quick-context/robotic-arm-api-levels]]** - The full API stack from high-level task planning down to servo control
 - **[[quick-context/preempt-rt]]** - The Linux kernel patch that enables soft real-time, bridging the gap between software and PLC
-- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single PREEMPT_RT + ROS2 device
+- **[[quick-context/preempt-rt-ros2-plc-replacement]]** — The emerging hardware platforms (Bosch ctrlX, ADLINK ROScube, Beckhoff TwinCAT on Linux) that collapse the PLC/software split onto a single [[learning/notes/quick-context/preempt-rt|PREEMPT_RT]] + ROS2 device
 - **[[quick-context/plc-vs-software]]** - Deeper dive into PLC architecture and why it differs fundamentally from software
 - **[[quick-context/sil-rated-safety-functions]]** - Why safety-critical functions still require certified hardware
 
@@ -161,7 +161,7 @@ Because Linux (without PREEMPT_RT) provides no guarantees about when your callba
 **Q2:** If PREEMPT_RT gives Linux soft real-time capabilities, why not move everything to software?
 <details>
 <summary>Answer</summary>
-Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for SIL-rated safety functions. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
+Two reasons: (1) PREEMPT_RT provides bounded latency (~50-100μs worst case), not the sub-microsecond determinism of dedicated hardware—fine for 1ms loops but not for [[learning/notes/quick-context/sil-rated-safety-functions|SIL-rated safety functions]]. (2) Safety certifications (SIL, PLe) require certified hardware and auditable, simple code. Even if your software is technically capable, regulators in automotive, pharma, and food industries won't accept it for safety-critical functions.
 </details>
 
 **Q3:** What's the role of OPC-UA in this architecture?
