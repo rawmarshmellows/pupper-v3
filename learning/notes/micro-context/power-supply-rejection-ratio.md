@@ -2,6 +2,8 @@
 term: Power-Supply Rejection Ratio (PSRR)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/common-mode-rejection-ratio]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/current-inductor-capacitor-relationship]] | [[learning/notes/micro-context/diode-rectification]]
+
 
 # Power-Supply Rejection Ratio ($PSRR$)
 

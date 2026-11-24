@@ -4,7 +4,7 @@ created: 2026-01-20
 updated: 2026-01-21
 ---
 
-> **Related:** [[quick-context/covalent-bonds]] | [[quick-context/polymer-crystallinity-vs-amorphous]] | [[quick-context/3d-printing-filament-types]]
+> **Related:** [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/ac-to-dc-rectification]] | [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/quick-context/bjt-specifications]] | [[learning/notes/quick-context/bond-pad]]
 
 > **TL;DR:** Matter builds up in layers (atoms -> molecules -> monomers -> polymers), and 3D printing works by heating thermoplastics enough to let polymer chains slide past each other without breaking them, then cooling to re-lock chains in new positions.
 
@@ -248,7 +248,7 @@ When you heat a thermoplastic, you're not breaking the [[quick-context/covalent-
 **Q3:** Why do longer polymer chains generally produce stronger parts but require higher printing temperatures?
 <details>
 <summary>Answer</summary>
-Longer chains have more contact points with neighboring chains, creating more intermolecular attractions (van der Waals forces) that hold the solid together—hence parts with greater [[quick-context/tensile-strength-materials|tensile strength]]. However, those same additional attractions mean you need more thermal energy to free the chains from each other, resulting in higher melting/processing temperatures and more viscous melts that are harder to extrude.
+Longer chains have more contact points with neighboring chains, creating more intermolecular attractions ([[learning/notes/quick-context/van-der-waals-forces|van der Waals forces]]) that hold the solid together—hence parts with greater [[quick-context/tensile-strength-materials|tensile strength]]. However, those same additional attractions mean you need more thermal energy to free the chains from each other, resulting in higher melting/processing temperatures and more viscous melts that are harder to extrude.
 </details>
 
 **Q4:** A print has poor layer adhesion. Using what you know about polymer chains, what might be happening at the molecular level?
