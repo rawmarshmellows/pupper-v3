@@ -2,6 +2,7 @@
 topic: Silymarin
 created: 2026-04-06
 ---
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/output-voltage-swing]]
 
 # Silymarin
 

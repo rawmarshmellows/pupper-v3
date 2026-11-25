@@ -3,7 +3,7 @@ topic: Soldering
 created: 2026-02-06
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/common-ic-packages]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/jst-connector-families]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/swd-serial-wire-debug]]
 
 > **TL;DR:** Soldering creates permanent electrical and mechanical connections by melting a metal alloy (solder) between component leads and [[quick-context/pcb-printed-circuit-board|PCB]] pads—it's the fundamental assembly technique for all electronics, from hand-built prototypes to billions of machine-soldered connections on factory production lines.
 
@@ -168,7 +168,7 @@ REFLOW SOLDERING PROCESS (SMD production)
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it (the fabrication basement).
 
 - **[[quick-context/pcb-printed-circuit-board]]** — PCB pad design, soldermask openings, and copper finish (HASL, ENIG, OSP) all affect solder joint quality. The PCB and soldering process are designed together.
 

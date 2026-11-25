@@ -3,6 +3,7 @@ term: Cathode
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/full-bridge-rectifier]] | [[learning/notes/micro-context/input-bias-current]]
 
 # Cathode
 

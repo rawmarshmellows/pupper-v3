@@ -3,6 +3,7 @@ term: Oxidation
 created: 2026-02-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/quick-context/anions-and-oxidation]] | [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]]
 
 # Oxidation
 

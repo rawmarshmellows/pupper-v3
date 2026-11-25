@@ -3,6 +3,7 @@ term: SPIneV1.elf
 created: 2026-03-26
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-edges]]
 
 # SPIneV1.elf
 

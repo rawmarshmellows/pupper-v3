@@ -3,9 +3,9 @@ topic: Cations and Reduction
 created: 2026-01-22
 ---
 
-> **Related:** [[quick-context/electrolysis]]
+> **Related:** [[learning/notes/micro-context/capacitive-voltage-sensing]] | [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/open-loop-voltage-gain]] | [[learning/notes/micro-context/output-voltage-swing]]
 
-> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the cathode during electrolysis and is essential for metal extraction, electroplating, and hydrogen gas production.
+> **TL;DR:** Cations are positively charged ions that have lost electrons; reduction is the process of giving them electrons back, which happens at the [[learning/notes/micro-context/cathode|cathode]] during [[learning/notes/quick-context/electrolysis|electrolysis]] and is essential for metal extraction, electroplating, and hydrogen gas production.
 
 ## The Core Problem
 
@@ -32,7 +32,7 @@ BUILDING BLOCKS - What you need to know before understanding reduction:
 | **Electron** | A subatomic particle with negative charge (written as e^- or just e). Electrons are what flow through wires as electricity. Gaining electrons makes something more negative; losing them makes it more positive. |
 | **Reduction** | The process of *gaining* electrons. When a cation is "reduced," it receives electrons and becomes less positive (or neutral). Remember "OILRIG": **R**eduction **I**s **G**ain of electrons. |
 | **Cathode** | The negative electrode in an electrolysis setup. Because it's negative, it attracts positive cations and supplies them with electrons. Memory trick: **Cat**ions go to the **Cat**hode. |
-| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the anode is the positive one. |
+| **Electrode** | A conductor (usually metal) that electrons flow through to enter or leave a chemical solution. The cathode is the negative electrode; the [[learning/notes/micro-context/anode|anode]] is the positive one. |
 
 <details>
 <summary><strong>How It Works</strong></summary>

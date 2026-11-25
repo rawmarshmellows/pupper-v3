@@ -3,6 +3,7 @@ term: Pick and Place File
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/cnc-milling]] | [[learning/notes/micro-context/cnc-process-selection]] | [[learning/notes/micro-context/cnc-turning]] | [[learning/notes/micro-context/edm-machining]]
 
 # Pick and Place File
 
@@ -34,4 +35,4 @@ PICK AND PLACE WORKFLOW:
                                                               └───┘
 ```
 
-**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-soldering).
+**Key insight:** Without this file, someone would have to manually place hundreds of tiny components under a microscope—the P&P file is what makes automated PCB assembly affordable ($0.001/component vs hand-[[learning/notes/quick-context/soldering|soldering]]).
