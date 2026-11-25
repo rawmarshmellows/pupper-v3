@@ -4,9 +4,9 @@ created: 2026-02-06
 updated: 2026-02-25
 ---
 
-> **Related:** [[quick-context/doped-silicon]] | [[quick-context/transistor]] | [[quick-context/electric-current]] | [[quick-context/fundamental-electronic-parts-index|Parts Index]]
+> **Related:** [[learning/notes/micro-context/diode-rectification]] | [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/bjt-mosfet-igbt]] | [[learning/notes/micro-context/cathode]] | [[learning/notes/micro-context/full-bridge-rectifier]]
 
-> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, voltage protection, and light emission (LEDs).
+> **TL;DR:** A diode is a one-way valve for [[quick-context/electric-current|electric current]]—built from a PN junction in [[quick-context/doped-silicon|doped silicon]], it conducts in one direction (with a ~0.7V drop) and blocks in the other, enabling AC-to-DC conversion, [[learning/notes/quick-context/voltage|voltage]] protection, and light emission (LEDs).
 
 # Diode
 
@@ -211,7 +211,7 @@ BRIDGE RECTIFIER CIRCUIT
 <details>
 <summary><strong>Peripheral Knowledge</strong></summary>
 
-- **[[learning/notes/index/how-a-computer-works-index|How a Computer Works — Index-Spine]]** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
+- **How a Computer Works — Index-Spine** — the end-to-end ladder from electricity to code executing; this note is one rung of it.
 
 - **[[quick-context/doped-silicon]]** — The PN junction that makes diodes work is created by doping silicon with different impurities on each side. Understanding N-type and P-type silicon explains why diodes conduct in only one direction.
 
@@ -221,7 +221,7 @@ BRIDGE RECTIFIER CIRCUIT
 
 - **[[quick-context/ac-to-dc-rectification|AC-to-DC Rectification]]** — The full story: AC from the grid, forward/reverse bias, half-wave vs full-bridge rectification, smoothing capacitors, and the complete conversion chain inside every power supply.
 
-- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on capacitance, load current, and frequency.
+- **[[quick-context/capacitor]]** — After rectification, capacitors smooth the pulsating DC into steady DC. The ripple voltage depends on [[learning/notes/quick-context/capacitance|capacitance]], load current, and frequency.
 
 - **[[quick-context/resistor]]** — LEDs always need a current-limiting resistor (R = (Vsupply - Vf) / I_desired). Without one, the LED draws too much current and burns out.
 

@@ -3,7 +3,7 @@ topic: OEE (Overall Equipment Effectiveness)
 created: 2026-01-14
 ---
 
-> **Related:** [[quick-context/teep]] | [[quick-context/isa-95-levels]]
+> **Related:** [[learning/notes/micro-context/plc-programmable-logic-controller]] | [[learning/notes/quick-context/absolute-orientation]] | [[learning/notes/quick-context/camera-fundamentals]] | [[learning/notes/quick-context/epson-rc-plus-programming]] | [[learning/notes/quick-context/integration-failure-modes-solutions]]
 
 > **TL;DR:** OEE decomposes equipment losses into Availability, Performance, and Quality—multiplied together—revealing whether you're losing capacity to breakdowns, slow cycles, or defects.
 

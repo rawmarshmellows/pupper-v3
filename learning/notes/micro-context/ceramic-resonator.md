@@ -3,6 +3,7 @@ term: Ceramic Resonator
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]]
 
 # Ceramic Resonator
 

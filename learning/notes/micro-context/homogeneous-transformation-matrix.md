@@ -3,6 +3,7 @@ term: Homogeneous Transformation Matrix
 created: 2026-03-11
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/switch-matrix]] | [[learning/notes/quick-context/covariance-matrix]] | [[learning/notes/micro-context/adc-analog-to-digital-converter]] | [[learning/notes/micro-context/ads1110-battery-adc]] | [[learning/notes/micro-context/buck-converter]]
 
 # Homogeneous Transformation Matrix
 

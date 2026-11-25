@@ -3,6 +3,7 @@ term: 4-Wire Kelvin Measurement
 created: 2026-01-27
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/wire-bonding]] | [[learning/notes/quick-context/bga-ball-grid-array]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/flip-chip]]
 
 # 4-Wire Kelvin Measurement
 

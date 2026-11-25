@@ -2,6 +2,7 @@
 term: Open-Loop Voltage Gain (A_V)
 created: 2026-06-07
 ---
+> **Related:** [[learning/notes/micro-context/input-offset-voltage]] | [[learning/notes/micro-context/offset-voltage-drift]] | [[learning/notes/micro-context/output-voltage-swing]] | [[learning/notes/quick-context/voltage-current-causality]] | [[learning/notes/quick-context/pi-pi-stacking-aromatic-interactions]]
 
 # Open-Loop Voltage Gain ($A_V$)
 

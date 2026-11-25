@@ -3,6 +3,7 @@ term: JST Connector Families
 created: 2026-03-25
 updated: 2026-03-27
 ---
+> **Related:** [[learning/notes/micro-context/4-wire-kelvin-measurement]] | [[learning/notes/micro-context/pick-and-place-file]] | [[learning/notes/micro-context/smd-resistor]] | [[learning/notes/micro-context/swd-serial-wire-debug]] | [[learning/notes/quick-context/bga-ball-grid-array]]
 
 # JST Connector Families
 
