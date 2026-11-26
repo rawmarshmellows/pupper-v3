@@ -5,6 +5,8 @@ created: 2026-04-07
 
 # SRAM (Static Random-Access Memory)
 
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/eeprom]] | [[learning/notes/micro-context/input-bias-current]] | [[learning/notes/micro-context/power-supply-rejection-ratio]] | [[learning/notes/quick-context/diode]]
+
 **Definition:** A volatile memory technology that stores each bit using six cross-coupled [[learning/notes/micro-context/mosfet|MOSFETs]] arranged as two inverters in a feedback loop. "Static" means the data stays stable as long as power is on — no refresh needed, unlike [[learning/notes/quick-context/physics-of-writing-data-to-memory|DRAM's leaking capacitors]].
 
 ## How It Works

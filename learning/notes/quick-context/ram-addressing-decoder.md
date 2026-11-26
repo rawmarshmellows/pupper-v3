@@ -5,13 +5,13 @@ created: 2026-06-07
 
 # RAM — Addressing an Array of Registers
 
-> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | [[learning/notes/index/how-a-computer-works-index]]
+> **Related:** [[learning/notes/quick-context/switches-to-registers-storing-data]] | [[learning/notes/quick-context/d-flip-flop]] | [[learning/notes/quick-context/cpu-fetch-execute-cycle]] | how a computer works index
 
 > **TL;DR:** A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] stores exactly one word. RAM (Random-Access Memory) is just an **array of those registers** plus a way to pick **exactly one of them by a number — its address**. Two switching circuits do the picking: a **DMUX** routes the "write now" signal to the one register you want to change, and a **MUX** selects the one register's value you want to read. With $n$ address bits you can name $2^n$ words, and you build big RAM by stacking eight small RAMs and gluing on three more address bits — over and over.
 
 ## The Core Problem
 
-A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a short circuit, and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
+A single register can hold one word, but a useful program needs thousands or millions of words and must be able to grab **any one of them at random**, instantly, by name. If you wired every register's output together you'd get a [[learning/notes/micro-context/short-circuit|short circuit]], and if you pulsed every register's clock at once you'd overwrite all of them. RAM solves both: an **address decoder** guarantees that on any given operation, exactly **one** register is written and exactly **one** register is read — chosen by a plain binary number.
 
 ## 5 Essential Terms
 
@@ -226,7 +226,7 @@ def __call__(self, in_bits: Bits16, load: Bit, address: Bits6) -> Bits16:
 - **[[learning/notes/micro-context/sram]]** — How a real fast memory cell stores a bit with six cross-coupled transistors. The "register per word" model in this note is essentially SRAM.
 - **[[learning/notes/quick-context/physics-of-writing-data-to-memory]]** — The other side of the SRAM-vs-DRAM split: why a capacitor-based cell is dense and cheap but leaks and needs refresh.
 - **[[learning/notes/quick-context/cpu-fetch-execute-cycle]]** — The rung above this one: the CPU repeatedly reads instructions and data from RAM by address, then writes results back — it is the main "customer" of this addressing machinery.
-- **[[learning/notes/index/how-a-computer-works-index]]** — The spine hub: the full ladder from electricity up to running code. RAM is rung L7, sitting above the register and below the CPU.
+- **how a computer works index** — The spine hub: the full ladder from electricity up to running code. RAM is rung L7, sitting above the register and below the CPU.
 
 </details>
 

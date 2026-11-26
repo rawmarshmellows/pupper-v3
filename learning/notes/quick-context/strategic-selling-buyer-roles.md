@@ -5,7 +5,7 @@ created: 2026-02-10
 
 # Strategic Selling Buyer Roles
 
-> **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
+> **Related:** [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/mcdonald-kam-model]]
 
 > **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
@@ -213,9 +213,9 @@ PRIORITY ACTIONS:
 <details>
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
-- **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
-- **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
-- **[[quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
+- **[[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
+- **[[learning/notes/quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
+- **[[learning/notes/quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
 - **Org Chart Analysis** — The practical skill of mapping formal and informal power structures
 - **Multi-threading** — Sales tactic of building relationships across multiple stakeholders to avoid single-point-of-failure
 
@@ -245,7 +245,7 @@ No. Coach *opinion* isn't the same as Economic Buyer *engagement*. You need to v
 **Q4:** How do buyer modes change your approach to the same role?
 <details>
 <summary>Answer</summary>
-A User Buyer in TROUBLE mode is receptive—lead with quick pain relief. A User Buyer in EVEN KEEL mode needs disruption—use [[quick-context/challenger-sale-methodology|Challenger]] insights to create dissatisfaction with status quo. Same role, opposite strategies. Mode determines receptivity; role determines criteria.
+A User Buyer in TROUBLE mode is receptive—lead with quick pain relief. A User Buyer in EVEN KEEL mode needs disruption—use [[learning/notes/quick-context/challenger-sale-methodology|Challenger]] insights to create dissatisfaction with status quo. Same role, opposite strategies. Mode determines receptivity; role determines criteria.
 </details>
 
 **Q5:** Your Technical Buyer (VP Security) is in OVERCONFIDENT mode about their current solution. How do you proceed?
