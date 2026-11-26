@@ -5,6 +5,8 @@ created: 2026-04-07
 
 # Switch Matrix
 
+> **Related:** [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/ceramic-resonator]] | [[learning/notes/micro-context/clock-edges]] | [[learning/notes/micro-context/clock-source]]
+
 **Definition:** A grid of electrical switches wired at the intersections of row and column lines, allowing a [[learning/notes/micro-context/stm32-microcontroller|microcontroller]] to monitor $N \times M$ switches using only $N + M$ GPIO pins instead of one pin per switch.
 
 ## How It Works

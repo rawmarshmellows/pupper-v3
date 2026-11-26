@@ -5,6 +5,7 @@ created: 2026-04-06
 
 # Silymarin
 
+> **Related:** [[learning/notes/micro-context/anode]] | [[learning/notes/micro-context/buck-converter]] | [[learning/notes/micro-context/can-bus-termination]] | [[learning/notes/micro-context/can-bus-transceiver]] | [[learning/notes/micro-context/cathode]]
 > **TL;DR:** Silymarin is a mixture of flavonolignans extracted from milk thistle (*Silybum marianum*) seeds, best known for hepatoprotection — it scavenges free radicals, stabilizes liver cell membranes, and suppresses inflammatory pathways, making it one of the most-studied herbal compounds for liver disease.
 
 ## The Core Problem

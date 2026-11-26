@@ -3,11 +3,11 @@ topic: Raspberry Pi 5 — Board Components
 created: 2026-04-05
 ---
 
-> **Related:** [[quick-context/pcb-printed-circuit-board]] | [[quick-context/pupper-brain]] | [[micro-context/stm32-microcontroller]] | [[quick-context/common-ic-packages]] | [[quick-context/embedded-communication-protocols]]
+> **Related:** [[learning/notes/quick-context/pcb-printed-circuit-board]] | [[learning/notes/quick-context/pupper-brain]] | [[learning/notes/micro-context/stm32-microcontroller]] | [[learning/notes/quick-context/common-ic-packages]] | [[learning/notes/quick-context/embedded-communication-protocols]]
 
-> **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[micro-context/stm32-microcontroller|STM32 microcontrollers]].
+> **TL;DR:** The Raspberry Pi 5 is a credit-card-sized single-board computer built around a Broadcom BCM2712 SoC and a custom RP1 "southbridge" I/O controller. It runs a full Linux OS and serves as the high-level brain in robots like Pupper, handling vision, planning, and communication — while real-time motor control is delegated to dedicated [[learning/notes/micro-context/stm32-microcontroller|STM32 microcontrollers]].
 
-> **Photo reference:** [[micro-context/raspberry-pi-5.png]]
+> **Photo reference:** raspberry pi 5.png
 
 # Raspberry Pi 5 — Board Components
 
@@ -18,7 +18,7 @@ created: 2026-04-05
 | **BCM2712 SoC** | Broadcom system-on-chip — quad-core ARM Cortex-A76 @ 2.4GHz, the main processor that runs Linux and applications |
 | **RP1** | Raspberry Pi's custom I/O controller chip — a "southbridge" that manages USB, Ethernet, GPIO, camera, and display interfaces so the SoC doesn't have to |
 | **LPDDR4X** | Low-Power Double Data Rate 4X RAM — the board's working memory (1/2/4/8GB variants, marked on the PCB silkscreen) |
-| **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via I2C, SPI, UART, and raw digital pins |
+| **GPIO** | General-Purpose Input/Output — the 40-pin header that connects to HATs, sensors, and other hardware via [[learning/notes/micro-context/i2c|I2C]], [[learning/notes/micro-context/spi|SPI]], UART, and raw digital pins |
 | **PCIe** | Peripheral Component Interconnect Express — a high-speed serial bus (1-lane Gen 2 on Pi 5) used to connect NVMe SSDs or other expansion cards |
 
 ## Every Component on the Board
@@ -41,8 +41,8 @@ Starting from the top-left and working around the board:
 | **Ethernet (J14 area)** | Gigabit Ethernet jack | Trxcom magjack with integrated magnetics — 1 Gbps networking |
 | **USB 3.0** | 2x USB 3.0 Type-A | SuperSpeed 5 Gbps ports (the blue-tabbed pair) — via RP1 |
 | **USB 2.0** | 2x USB 2.0 Type-A | 480 Mbps ports (the white-tabbed pair) — via RP1 |
-| **PCIe (J20)** | PCIe FPC connector | 16-pin FPC for a PCIe x1 Gen 2 (5 GT/s) link — used with an NVMe HAT or [[quick-context/raspberry-pi-ai-hat|AI HAT+]] for neural network acceleration |
-| **HAT+ GPIO** | 40-pin header | Standard Raspberry Pi GPIO header with I2C, SPI, UART, PWM, and 26 general-purpose pins |
+| **PCIe (J20)** | PCIe FPC connector | 16-pin FPC for a PCIe x1 Gen 2 (5 GT/s) link — used with an NVMe HAT or [[learning/notes/quick-context/raspberry-pi-ai-hat|AI HAT+]] for neural network acceleration |
+| **HAT+ GPIO** | 40-pin header | Standard Raspberry Pi GPIO header with I2C, SPI, UART, [[learning/notes/micro-context/pwm-pulse-width-modulation|PWM]], and 26 general-purpose pins |
 | **FAN** | 4-pin fan connector | JST connector for the official active cooler — PWM speed control and tach feedback |
 
 ### Major ICs (chips on the board)
@@ -82,7 +82,7 @@ RASPBERRY PI 5 — COMPONENT MAP (top view, ports facing down):
 
 ## How It Fits in Pupper
 
-The Raspberry Pi 5 is the **high-level controller**: it runs Linux, ROS 2, computer vision (camera via CSI), and voice/LLM processing. It communicates with the [[quick-context/pupper-brain|Pupper control board]] (which holds the [[micro-context/stm32-microcontroller|STM32 MCUs]]) over a serial or CAN-to-USB bridge. The Pi handles *what* the robot should do; the STM32s handle *how* — executing the 1kHz motor control loops in hard real-time.
+The Raspberry Pi 5 is the **high-level controller**: it runs Linux, ROS 2, computer vision (camera via CSI), and voice/LLM processing. It communicates with the [[learning/notes/quick-context/pupper-brain|Pupper control board]] (which holds the [[learning/notes/micro-context/stm32-microcontroller|STM32 MCUs]]) over a serial or CAN-to-USB bridge. The Pi handles *what* the robot should do; the STM32s handle *how* — executing the 1kHz motor control loops in hard real-time.
 
 | Layer | Hardware | Runs | Timing |
 |-------|----------|------|--------|
