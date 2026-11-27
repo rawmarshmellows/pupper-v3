@@ -98,7 +98,7 @@ P2S PRINT QUALITY STACK (top = highest leverage)
 </details>
 
 <details>
-<summary><strong>The Science Behind It</strong> — Polymer chemistry & physics for every knob</summary>
+<summary><strong>The Science Behind It</strong> — [[learning/notes/quick-context/atoms-molecules-polymers-basics|Polymer]] chemistry & physics for every knob</summary>
 
 Every print-quality lever maps to a real physical or chemical mechanism. Understanding the science tells you *why* a setting matters and *when* a workaround will or won't work.
 
@@ -116,7 +116,7 @@ Filaments are [[learning/notes/quick-context/atoms-molecules-polymers-basics|pol
 
 Two failure modes when wet filament hits the 200–280°C melt zone:
 1. **Steam explosion.** Trapped H₂O flashes to vapor at >100°C → micro-bubbles in the extruded bead → popping sound, pockmarked surface, weak layer bonds.
-2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker tensile strength, brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
+2. **Hydrolysis.** Water attacks the ester or amide bond and breaks the polymer chain. Shorter chains = lower viscosity, weaker [[learning/notes/quick-context/tensile-strength-materials|tensile strength]], brittle parts. PETG, PC, and PA are most vulnerable. The damage is **permanent** — drying afterward removes water but cannot rejoin broken chains.
 
 This is why nylon needs 95°C / 7h while PLA only needs 45°C / 6h. The amide groups in nylon trap water *between* chains via H-bonds; you must heat above the H-bond rupture energy to evict it.
 
@@ -131,11 +131,11 @@ Result without compensation:
 
 Pressure advance (K-value) **predicts** how much pressure will build at a given speed and pre-adjusts the extruder ahead of time — extra push during accel, retract during decel.
 
-The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher melt index (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
+The right K depends on the polymer's [[learning/notes/quick-context/melt-index|melt index]] and chain entanglement. Higher [[learning/notes/quick-context/melt-index|melt index]] (longer chains, more entanglement) → more elastic memory → higher K. Lower melt index → less elasticity → lower K. This is why every filament needs its own K — the polymer's molecular architecture dictates it.
 
 ### 3. Why flow ratio drifts per spool — density, fillers, molecular weight
 
-Flow ratio is the slicer's "how much filament to push per mm of toolpath." Three molecular reasons it varies:
+Flow ratio is the [[learning/notes/quick-context/3d-printing-slicer-settings|slicer]]'s "how much filament to push per mm of toolpath." Three molecular reasons it varies:
 - **Pigment loading.** Black PLA often has 1–3% carbon black; matte PLA has glass beads or chalk. These fillers displace polymer volume but don't melt — they raise the *effective* viscosity and reduce volumetric output per gram fed.
 - **Molecular weight distribution.** Different production batches have slightly different chain-length distributions, which changes [[learning/notes/quick-context/melt-index|melt index]] and therefore flow at the same temperature.
 - **Diameter tolerance.** "1.75 mm" filament is really 1.70–1.80 mm. The extruder feeds by length but the slicer assumes nominal diameter. A 1.78 mm spool delivers 3.4% more cross-section than 1.75 mm.
@@ -153,7 +153,7 @@ But cooling too fast on [[learning/notes/quick-context/polymer-crystallinity-vs-
 
 ### 5. Why layer adhesion needs heat — polymer interdiffusion
 
-Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh van der Waals + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
+Two layers don't bond by glue or melt-fusion alone. Adjacent chains must **interdiffuse** — wiggle into each other's territory and form fresh [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] + [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bonds]] across the boundary. Interdiffusion only happens above Tg, and its rate scales with $\sqrt{t}$ (square root of time spent above Tg).
 
 Practical consequences:
 - Tall thin towers (each layer cools too fast) → weak layers.
@@ -162,7 +162,7 @@ Practical consequences:
 
 ### 6. Why outer-wall speed/accel matters — mechanical resonance, not chemistry
 
-Ringing/ghosting is **not** a polymer issue. It's structural: the printer's gantry has natural resonance frequencies (typically 30–80 Hz on bedslingers, higher on CoreXY like P2S). A sharp accel pulse contains energy across many frequencies — if any matches a resonance, the toolhead oscillates after the move ends, leaving wavy "echoes" of corners on the wall. Slowing outer wall lowers the excitation amplitude; reducing accel removes the high-frequency components. Input shaping cancels the resonance directly. Three independent levers, one symptom.
+Ringing/ghosting is **not** a polymer issue. It's structural: the printer's gantry has natural resonance frequencies (typically 30–80 Hz on bedslingers, higher on CoreXY like P2S). A sharp accel pulse contains energy across many frequencies — if any matches a resonance, the toolhead oscillates after the move ends, leaving wavy "echoes" of corners on the wall. Slowing outer wall lowers the excitation amplitude; reducing accel removes the high-[[learning/notes/quick-context/frequency-and-filtering|frequency]] components. Input shaping cancels the resonance directly. Three independent levers, one symptom.
 
 ### Summary — chemistry → setting
 
@@ -186,7 +186,7 @@ NOZZLE WEAR (mechanical)             →  hardened steel for CF/GF filaments
 
 **Tension 2: Stock RFID profile vs. custom calibrated profile.** Bambu RFID auto-loads a generic profile per filament SKU. It's fine. A *calibrated* profile (your specific spool, your specific environment) is better. Real maker workflow: clone the stock profile, run K-value + flow rate calibrations once per spool batch, save as "Bambu PLA Matte — Spool 47."
 
-**Tension 3: P2S vs. P1S calibration UX.** P1S has no LiDAR or eddy sensor — calibration is manual visual judgment of test patterns. **P2S adds an eddy current sensor between extruder and hotend**, enabling automatic Flow Dynamics (K-value) calibration: start the routine, printer returns the K. Manual mode still exists for users who want fine control. Plan to spend ~20 min per new filament regardless.
+**Tension 3: P2S vs. P1S calibration UX.** P1S has no LiDAR or eddy sensor — calibration is manual visual judgment of test patterns. **P2S adds an eddy current sensor between extruder and [[learning/notes/quick-context/3d-printer-hotends|hotend]]**, enabling automatic Flow Dynamics (K-value) calibration: start the routine, printer returns the K. Manual mode still exists for users who want fine control. Plan to spend ~20 min per new filament regardless.
 
 | Setting | Stock default | Quality preset |
 |---------|---------------|----------------|

@@ -19,7 +19,7 @@ You've built [[learning/notes/quick-context/switches-to-registers-storing-data|r
 |------|------------|
 | **Program Counter (PC)** | A [[learning/notes/quick-context/switches-to-registers-storing-data|register]] that holds the memory address of the next instruction. It's just a register wired to a `+1` incrementer with feedback — each clock tick it advances by one (or loads a jump target). |
 | **Instruction** | A single number (16 bits on the Hack CPU, 32 on ARM) stored in memory. Its individual bit-fields *are* control signals — they directly drive mux selects, ALU operation bits, and register load-enables. An instruction is a list of switch settings. |
-| **Fetch** | Use the PC as an address to read RAM, pulling the instruction number into the CPU so its bits are available as control wires. |
+| **Fetch** | Use the PC as an address to read [[learning/notes/quick-context/ram-addressing-decoder|RAM]], pulling the instruction number into the CPU so its bits are available as control wires. |
 | **Decode** | There is no separate "decoder brain" — decode is just *wiring*. The instruction's bits are fed straight to the control inputs of the muxes, ALU, and registers. Routing, not interpreting. |
 | **Execute / Write-back** | The ALU computes (steered by the instruction's bits), and on the clock edge a register or RAM cell captures the result. Then the PC advances and the loop repeats. |
 

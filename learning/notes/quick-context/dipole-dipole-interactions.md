@@ -7,7 +7,7 @@ clarification: 2026-01-21
 
 > **Related:** [[quick-context/van-der-waals-forces]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/polymer-chemical-bonds]]
 
-> **TL;DR:** Dipole-dipole interactions are attractive forces between molecules with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
+> **TL;DR:** Dipole-dipole interactions are attractive forces between [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecules]] with uneven charge distributions (positive and negative ends), explaining why polar substances like water have high boiling points and why some liquids mix while others don't.
 
 # Dipole-Dipole Interactions: A Beginner's Guide
 

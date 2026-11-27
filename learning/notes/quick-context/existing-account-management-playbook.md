@@ -1,6 +1,8 @@
+
+> **Related:** [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/sandler-kare-segmentation]]
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing existing accounts, synthesizing Miller Heiman LAMP, McDonald KAM Model, KARE Segmentation, Challenger methodology, and Post-Sale Engagement frameworks.
+> A step-by-step guide for managing and growing existing accounts, synthesizing [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman]] LAMP, [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM]] Model, KARE Segmentation, Challenger methodology, and [[learning/notes/quick-context/post-sale-account-engagement|Post-Sale]] Engagement frameworks.
 
 ---
 
@@ -42,7 +44,7 @@ Based on your primary motion with this account:
 
 ### 1.3 Determine Engagement Level
 
-| Segment | Named CSM | Touchpoint Frequency | QBR Frequency | Accounts per CSM |
+| Segment | Named CSM | Touchpoint [[learning/notes/quick-context/frequency-and-filtering|Frequency]] | QBR Frequency | Accounts per CSM |
 |---|---|---|---|---|
 | STRATEGIC | Dedicated | Weekly | Quarterly | 10-20 |
 | GROWTH | Shared | Bi-weekly | Semi-annual | 30-50 |
@@ -532,7 +534,7 @@ When you're stuck, remember which framework to consult:
 | "Who should I be talking to?" | Miller Heiman LAMP | Step 3 |
 | "What are we trying to achieve?" | LAMP Charter Statement | Step 4 |
 | "How should I structure this conversation?" | Challenger | Step 6 |
-| "Is this expansion deal real?" | MEDDPICC | (separate qualification framework) |
+| "Is this expansion deal real?" | [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] | (separate qualification framework) |
 
 ---
 
@@ -570,4 +572,4 @@ Rate 1-5 for each dimension quarterly:
 
 ---
 
-*This playbook synthesizes frameworks from: Miller Heiman (LAMP/Strategic Selling), Malcolm McDonald (KAM Model), Sandler (KARE), CEB/Gartner (Challenger Sale), and post-sale engagement best practices.*
+*This playbook synthesizes frameworks from: Miller Heiman (LAMP/[[learning/notes/quick-context/strategic-selling-buyer-roles|Strategic Selling]]), Malcolm McDonald (KAM Model), [[learning/notes/quick-context/sandler-kare-segmentation|Sandler]] (KARE), CEB/Gartner ([[learning/notes/quick-context/challenger-sale-methodology|Challenger Sale]]), and post-sale engagement best practices.*

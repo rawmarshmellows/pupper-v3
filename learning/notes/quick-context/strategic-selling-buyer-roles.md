@@ -7,7 +7,7 @@ created: 2026-02-10
 
 > **Related:** [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/meddpicc-qualification-framework]] | [[quick-context/mcdonald-kam-model]]
 
-> **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a Miller Heiman framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
+> **TL;DR:** The four buyer roles—Economic Buyer, User Buyer, Technical Buyer, and Coach—are a [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman]] framework for mapping decision-makers in complex B2B sales, where each role has different criteria, access points, and influence over the deal outcome.
 
 ## The Core Problem
 
@@ -214,7 +214,7 @@ PRIORITY ACTIONS:
 <summary><strong>Peripheral Knowledge</strong> — Related topics to explore</summary>
 
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — The broader account planning framework where these buyer roles originate
-- **[[quick-context/meddpicc-qualification-framework]]** — MEDDPICC's Economic Buyer and Champion overlap with these roles; they're complementary views
+- **[[quick-context/meddpicc-qualification-framework]]** — [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]]'s Economic Buyer and Champion overlap with these roles; they're complementary views
 - **[[quick-context/challenger-sale-methodology]]** — Challenger's "Tailor" pillar requires adjusting your message for each buyer role
 - **Org Chart Analysis** — The practical skill of mapping formal and informal power structures
 - **Multi-threading** — Sales tactic of building relationships across multiple stakeholders to avoid single-point-of-failure

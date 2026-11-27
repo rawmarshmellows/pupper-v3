@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem
 
-**The core problem tensile strength solves** is predicting when a material will break under pulling force. Without this number, you're guessing whether your part survives real-world loads—a bridge cable snaps, a [[quick-context/3d-printing-filament-types|3D printed]] bracket fails, a climbing rope breaks. Tensile strength (measured in MPa, megapascals) tells you the maximum stress a material can handle before it fractures. The "27.3 ± 0.8 MPa" format means: this material withstands ~27.3 megapascals of pulling stress, with a standard deviation of 0.8 MPa across test samples. For context: PLA filament is typically 25-65 MPa, PETG is 30-50 MPa, ABS is 30-45 MPa, mild steel is ~400 MPa, and spider silk is ~1,000 MPa. The ± value matters because real materials vary—if your safety margin doesn't account for that 0.8 MPa variance, the weakest sample in your batch might fail.
+**The core problem tensile strength solves** is predicting when a material will break under pulling force. Without this number, you're guessing whether your part survives real-world loads—a bridge cable snaps, a [[quick-context/3d-printing-filament-types|3D printed]] bracket fails, a climbing rope breaks. Tensile strength (measured in MPa, megapascals) tells you the maximum stress a material can handle before it fractures. The "27.3 ± 0.8 MPa" format means: this material withstands ~27.3 megapascals of pulling stress, with a standard deviation of 0.8 MPa across test samples. For context: [[learning/notes/quick-context/3d-printing-filament-types|PLA filament]] is typically 25-65 MPa, PETG is 30-50 MPa, ABS is 30-45 MPa, mild steel is ~400 MPa, and spider silk is ~1,000 MPa. The ± value matters because real materials vary—if your safety margin doesn't account for that 0.8 MPa variance, the weakest sample in your batch might fail.
 
 ## 5 Essential Terms
 
@@ -27,7 +27,7 @@ updated: 2026-01-21
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Tensile strength emerges from the atomic-level bonds holding a material together. When you pull on a material, you're trying to separate atoms from each other. At low forces, atoms stretch apart slightly but spring back—this is elastic deformation. As force increases, you reach the yield point where atoms permanently slip past each other (in metals) or polymer chains begin to disentangle and slide. Push further, and you reach ultimate tensile strength—the maximum stress before bonds start breaking catastrophically and a crack propagates through the material. The failure mode depends on material structure: brittle materials (glass, ceramics, PLA) crack suddenly once any bond breaks because the crack concentrates stress at its tip; ductile materials (steel, nylon, PETG) "neck" and stretch as bonds break gradually, redistributing stress.
+Tensile strength emerges from the atomic-level bonds holding a material together. When you pull on a material, you're trying to separate [[learning/notes/quick-context/atoms-molecules-polymers-basics|atoms]] from each other. At low forces, atoms stretch apart slightly but spring back—this is elastic deformation. As force increases, you reach the yield point where atoms permanently slip past each other (in metals) or polymer chains begin to disentangle and slide. Push further, and you reach ultimate tensile strength—the maximum stress before bonds start breaking catastrophically and a crack propagates through the material. The failure mode depends on material structure: brittle materials (glass, ceramics, PLA) crack suddenly once any bond breaks because the crack concentrates stress at its tip; ductile materials (steel, nylon, PETG) "neck" and stretch as bonds break gradually, redistributing stress.
 
 The measurement process itself reveals what the numbers mean. A standardized dog-bone specimen is gripped at both ends and pulled at constant rate while sensors record force and elongation. Stress (MPa) = Force / Cross-sectional Area. The stress-strain curve that results tells the full story: the slope is Young's modulus (stiffness), the bend is yield strength, the peak is ultimate tensile strength, and the endpoint is fracture. For 3D printed parts, this curve looks different than injection-molded samples because layer boundaries create weak points—the material between layers fails before the polymer chains themselves break.
 
@@ -145,7 +145,7 @@ Aluminum 6061     | 310           | 12%        | Reference: "real" material
 
 ## How Hotend Settings Affect Actual Tensile Strength
 
-The spec sheet says 27.3 MPa, but **your printed part won't achieve that** unless layers properly fuse together. Layer adhesion is controlled by your hotend—specifically temperature, flow rate, and print speed. Here's what happens when hotend settings are wrong:
+The spec sheet says 27.3 MPa, but **your printed part won't achieve that** unless layers properly fuse together. Layer adhesion is controlled by your [[learning/notes/quick-context/3d-printer-hotends|hotend]]—specifically temperature, flow rate, and print speed. Here's what happens when hotend settings are wrong:
 
 ```
 Scenario                        | Layer Adhesion | Actual Strength | Failure Mode
@@ -161,7 +161,7 @@ High-flow hotend + 0.8mm nozzle | 70-85%         | ~20-23 MPa      | Proper melt
 
 **The high-flow hotend question:** If you're printing fast with large nozzles (0.6mm+), a high-flow hotend (~30+ mm³/s) maintains proper melt rates, preserving layer adhesion. With a standard hotend at those speeds, you're trading tensile strength for print time—sometimes 30-40% weaker parts. For slow, detailed prints with 0.4mm nozzles, standard-flow hotends achieve full material fusion and the extra cost of high-flow is wasted.
 
-**Practical rule:** If your slicer warns about volumetric flow limits or you see rough/matte layer surfaces (sign of under-extrusion), your hotend can't keep up. Either slow down, raise temperature (within material limits), or upgrade to high-flow for strength-critical parts.
+**Practical rule:** If your [[learning/notes/quick-context/3d-printing-slicer-settings|slicer]] warns about volumetric flow limits or you see rough/matte layer surfaces (sign of under-extrusion), your hotend can't keep up. Either slow down, raise temperature (within material limits), or upgrade to high-flow for strength-critical parts.
 
 ---
 

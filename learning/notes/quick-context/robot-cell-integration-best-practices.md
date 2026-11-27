@@ -11,7 +11,7 @@ created: 2026-01-16
 
 ## The Core Problem: Making Disparate Devices Act in Concert
 
-Robot cell integration best practices exist to solve the coordination problem: making sure a robot, PLC, vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
+Robot cell integration best practices exist to solve the coordination problem: making sure a robot, [[learning/notes/micro-context/plc-programmable-logic-controller|PLC]], vision system, conveyors, and sensors act in concert rather than as isolated devices that happen to share floor space.
 
 Without disciplined integration practices, you get deadlocks (robot waits for PLC, PLC waits for robot, line stops), race conditions (conveyor starts before gripper clears), unrecoverable states (after e-stop, nobody knows what's gripped or where parts are), and debugging sessions that cost $10K/hour in lost production.
 
@@ -33,7 +33,7 @@ The core methods are: **structured handshakes** (explicit signal exchanges where
 **Tools of the trade include:**
 
 - **PLC programming environments**: Rockwell Studio 5000, Siemens TIA Portal
-- **Robot IDEs**: Fanuc Roboguide, ABB RobotStudio, EPSON RC+
+- **Robot IDEs**: Fanuc Roboguide, ABB RobotStudio, [[learning/notes/quick-context/epson-rc-plus-programming|EPSON RC+]]
 - **Industrial protocol analyzers**: Wireshark with EtherNet/IP dissectors
 - **Digital twin platforms**: Visual Components, Siemens Process Simulate, RoboDK
 

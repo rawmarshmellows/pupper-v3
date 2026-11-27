@@ -34,15 +34,15 @@ Stretched before breaking:
 | **Elongation at break** | How far a material stretches (as % of original length) before snapping |
 | **[[quick-context/tensile-strength-materials|Tensile strength]]** | How much pulling force a material can handle before breaking (measured in MPa) |
 | **Shore hardness** | How squishy/hard a flexible material is (Shore 95A = firm rubber, Shore 60A = soft rubber) |
-| **[[quick-context/3d-printing-filament-types|TPU]]** | Thermoplastic polyurethane—the common flexible 3D printing filament with high elongation |
+| **[[quick-context/3d-printing-filament-types|TPU]]** | Thermoplastic polyurethane—the common flexible [[learning/notes/quick-context/3d-printing-filament-types|3D printing filament]] with high elongation |
 | **Brittle** | A material that breaks with little/no stretching (low elongation, like PLA or glass) |
 
 <details>
 <summary><strong>How It Works</strong></summary>
 
-Elongation at break is fundamentally about polymer chain behavior under stress. When you pull on a material, you're forcing the tangled, coiled polymer chains to straighten out and slide past each other. In high-elongation materials like TPU, the chains are long, flexible, and loosely entangled—they can uncoil extensively before the bonds within the chains themselves start breaking. In low-elongation materials like PLA, the chains are either shorter, more rigidly structured, or locked together by crystalline regions that resist chain movement. When those chains can't slip past each other, the stress concentrates and bonds break—the material snaps.
+Elongation at break is fundamentally about [[learning/notes/quick-context/atoms-molecules-polymers-basics|polymer]] chain behavior under stress. When you pull on a material, you're forcing the tangled, coiled polymer chains to straighten out and slide past each other. In high-elongation materials like TPU, the chains are long, flexible, and loosely entangled—they can uncoil extensively before the bonds within the chains themselves start breaking. In low-elongation materials like PLA, the chains are either shorter, more rigidly structured, or locked together by crystalline regions that resist chain movement. When those chains can't slip past each other, the stress concentrates and bonds break—the material snaps.
 
-The stretching process happens in stages. First, loosely organized (amorphous) regions allow chains to straighten with relatively little force. As stretching continues, chains begin sliding past each other, overcoming weak intermolecular attractions like van der Waals forces. In highly elastic materials, this sliding can continue for a long time because the chains are flexible and the intermolecular forces re-form as chains move, preventing catastrophic failure. Eventually, if you keep pulling, the chains either run out of slack, pull apart from each other completely, or the covalent bonds in the polymer backbone itself break—that's the breaking point.
+The stretching process happens in stages. First, loosely organized (amorphous) regions allow chains to straighten with relatively little force. As stretching continues, chains begin sliding past each other, overcoming weak intermolecular attractions like [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] forces. In highly elastic materials, this sliding can continue for a long time because the chains are flexible and the intermolecular forces re-form as chains move, preventing catastrophic failure. Eventually, if you keep pulling, the chains either run out of slack, pull apart from each other completely, or the covalent bonds in the polymer backbone itself break—that's the breaking point.
 
 ```
 WHAT HAPPENS WHEN YOU STRETCH A POLYMER
@@ -155,7 +155,7 @@ Print Temp: 220-240°C
 ```
 
 This tells you:
-- **45 MPa tensile strength**: Moderately strong (won't tear easily)
+- **45 MPa [[learning/notes/quick-context/tensile-strength-materials|tensile strength]]**: Moderately strong (won't tear easily)
 - **> 650% elongation**: Extremely stretchy/flexible
 - **Shore 95A**: Firm but flexible (like a car tire, not a gummy bear)
 
@@ -199,7 +199,7 @@ TPU. Despite lower tensile strength, the 650% elongation means the bumper absorb
 <details>
 <summary>Answer</summary>
 
-The freezer temperature may be below the polymer's glass transition temperature (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
+The freezer temperature may be below the polymer's [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]] (Tg). Above Tg, polymer chains can move and uncoil, allowing large elongation. Below Tg, the amorphous regions "freeze" into a glassy state where chains can't move—the material becomes rigid and brittle with drastically reduced elongation at break.
 
 </details>
 

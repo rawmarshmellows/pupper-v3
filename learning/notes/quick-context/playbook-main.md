@@ -1,6 +1,8 @@
+
+> **Related:** [[learning/notes/quick-context/meddpicc-qualification-framework]] | [[learning/notes/quick-context/challenger-sale-methodology]] | [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp]] | [[learning/notes/quick-context/mcdonald-kam-model]] | [[learning/notes/quick-context/sandler-kare-segmentation]]
 # Existing Account Management Playbook
 
-> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with Miller Heiman LAMP, McDonald KAM Model, Challenger methodology, and Post-Sale Engagement frameworks.
+> A step-by-step guide for managing and growing accounts using KARE Segmentation as the primary classification, synthesized with [[learning/notes/quick-context/miller-heiman-strategic-selling-lamp|Miller Heiman]] LAMP, [[learning/notes/quick-context/mcdonald-kam-model|McDonald KAM]] Model, Challenger methodology, and [[learning/notes/quick-context/post-sale-account-engagement|Post-Sale]] Engagement frameworks.
 
 ---
 
@@ -65,7 +67,7 @@ This playbook is designed to be followed sequentially for each account, then mai
 
 ### 1.3 Engagement Levels by KARE Segment
 
-| Segment | Named CSM | Touchpoint Frequency | QBR Frequency | Typical Time % |
+| Segment | Named CSM | Touchpoint [[learning/notes/quick-context/frequency-and-filtering|Frequency]] | QBR Frequency | Typical Time % |
 |---|---|---|---|---|
 | KEEP | Dedicated | Monthly | Quarterly | 20-30% |
 | ATTAIN | AE-owned | Prospecting cadence | N/A (pre-sale) | 20-30% |
@@ -101,7 +103,7 @@ VALUE           │    MAINTAIN     │    GROWTH       │
 
 - **KEEP accounts** land in Protect (high value, defend) or Maintain (low value, efficient)
 - **EXPAND accounts** land in Strategic (high value + potential) or Growth (low value but high potential)
-- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification (MEDDPICC) instead
+- **ATTAIN/RECAPTURE** are pre-sale motions—use sales qualification ([[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]]) instead
 
 **Decision flow:**
 1. **First:** Assign KARE category (portfolio motion)
@@ -232,7 +234,7 @@ Always include "Status Quo" (doing nothing) as a competitor. Often the real comp
 **EXPAND Accounts (Existing - Grow Revenue):**
 - Champion call: Bi-weekly
 - Usage review: Monthly
-- Whitespace mapping session: Quarterly
+- [[learning/notes/quick-context/whitespace-mapping|Whitespace mapping]] session: Quarterly
 - Business review: Semi-annual
 - Executive alignment: As expansion progresses
 
@@ -452,4 +454,4 @@ Anticipate pushback scenarios:
 
 ---
 
-*This playbook synthesizes: Miller Heiman (LAMP), Malcolm McDonald (KAM), Sandler (KARE), CEB/Gartner (Challenger), and post-sale engagement best practices.*
+*This playbook synthesizes: Miller Heiman (LAMP), Malcolm McDonald (KAM), [[learning/notes/quick-context/sandler-kare-segmentation|Sandler]] (KARE), CEB/Gartner (Challenger), and post-sale engagement best practices.*
