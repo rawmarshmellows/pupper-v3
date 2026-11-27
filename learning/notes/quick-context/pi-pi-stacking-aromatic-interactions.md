@@ -12,7 +12,7 @@ updated: 2026-01-21
 
 ## The Core Problem: Invisible Velcro Between Molecules
 
-Imagine you have flat hexagonal rings made of carbon atoms—these are called **benzene rings**, and they're everywhere in plastics like ABS (the stuff LEGO bricks are made of). These rings have electron clouds floating above and below them, like tiny magnetic fields. When two rings get close, they attract each other and stack up like pancakes:
+Imagine you have flat hexagonal rings made of carbon [[learning/notes/quick-context/atoms-molecules-polymers-basics|atoms]]—these are called **benzene rings**, and they're everywhere in plastics like ABS (the stuff LEGO bricks are made of). These rings have electron clouds floating above and below them, like tiny magnetic fields. When two rings get close, they attract each other and stack up like pancakes:
 
 ```
     BENZENE RING (top view)           BENZENE RINGS STACKING (side view)
@@ -244,7 +244,7 @@ SOLUTION: Keep bed at 100°C so bottom layers stay partially
 
 The practical rule: more aromatic rings = higher temperatures needed = more warping risk. That's why ABS needs an enclosure (keeps everything warm) while PLA doesn't.
 
-**The one thing most outsiders get wrong about this is...** thinking that melting plastic is just about "making it hot enough." In reality, you're fighting against millions of tiny molecular attractions, and the *type* of attraction matters. ABS doesn't need high temperatures because it has stronger chemical bonds—it needs high temperatures because it has more of these weak pi-pi stacking interactions that collectively act like molecular velcro. It's death by a thousand paper cuts in reverse: strength from a thousand weak hugs.
+**The one thing most outsiders get wrong about this is...** thinking that melting plastic is just about "making it hot enough." In reality, you're fighting against millions of tiny molecular attractions, and the *type* of attraction matters. ABS doesn't need high temperatures because it has stronger [[learning/notes/quick-context/chemical-bonds-spectrum|chemical bonds]]—it needs high temperatures because it has more of these weak pi-pi stacking interactions that collectively act like molecular velcro. It's death by a thousand paper cuts in reverse: strength from a thousand weak hugs.
 
 </details>
 
@@ -253,7 +253,7 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 
 ## Peripheral Knowledge
 
-- **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of van der Waals interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
+- **[[quick-context/van-der-waals-forces]]** — Pi-pi stacking is a specific type of [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] interaction; understanding the broader category helps clarify why these forces are weak individually but powerful collectively.
 - **[[quick-context/polymer-chemical-bonds]]** — Contrasts with pi-pi stacking: covalent bonds along the polymer backbone are strong and permanent, while pi-pi interactions between chains are weak and reversible with heat.
 - **[[quick-context/covalent-bonds]]** — The "real" bonds that hold atoms together within molecules; pi-pi stacking is fundamentally different—it's an attraction *between* molecules, not within them.
 - **[[quick-context/polymer-crystallinity-vs-amorphous]]** — Pi-pi stacking influences whether polymer chains can pack into ordered crystalline regions or stay disordered (amorphous); aromatic rings tend to promote local ordering.
@@ -269,10 +269,10 @@ The practical rule: more aromatic rings = higher temperatures needed = more warp
 ABS contains styrene monomers with aromatic (benzene) rings that participate in pi-pi stacking interactions. These millions of weak attractions between polymer chains act like molecular velcro, requiring more thermal energy to disrupt. PLA lacks aromatic rings entirely, so it has fewer intermolecular attractions to overcome and flows at lower temperatures.
 </details>
 
-**Q2:** If a single pi-pi interaction is about 50x weaker than a covalent bond, why do these interactions matter so much for material properties?
+**Q2:** If a single pi-pi interaction is about 50x weaker than a [[learning/notes/quick-context/covalent-bonds|covalent bond]], why do these interactions matter so much for material properties?
 <details>
 <summary>Answer</summary>
-Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and glass transition temperature. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
+Strength in numbers. A cubic millimeter of ABS contains millions of pi-pi stacking interactions. While each individual interaction is weak and easily broken, collectively they create a network of attractions that significantly increases the material's stiffness, strength, and [[learning/notes/quick-context/glass-transition-temperature|glass transition temperature]]. It's the difference between one piece of tape (easily peeled) and an entire roll wrapped around something (nearly impossible to remove).
 </details>
 
 **Q3:** A 3D print in ABS is warping at the corners. Based on pi-pi stacking, what are two potential solutions and why would they work?

@@ -249,9 +249,9 @@ Action: Wait for: Procore contract renewal, buyer turnover, or delivery failure
 
 - **[[quick-context/sandler-kare-segmentation]]** — KARE's EXPAND bucket identifies accounts with whitespace worth pursuing; the whitespace map shows *where* within those accounts
 - **[[quick-context/miller-heiman-strategic-selling-lamp]]** — LAMP account planning uses whitespace analysis as a key input to strategy; the Gold Sheet's "Field of Play Opportunities" draws from whitespace
-- **[[quick-context/post-sale-account-engagement]]** — Post-sale expansion playbooks are triggered by whitespace analysis
+- **[[quick-context/post-sale-account-engagement]]** — [[learning/notes/quick-context/post-sale-account-engagement|Post-sale]] expansion playbooks are triggered by whitespace analysis
 - **[[quick-context/mcdonald-kam-model]]** — Relationship maturity affects which whitespace cells are accessible; Cooperative+ accounts enable cross-BC selling
-- **[[quick-context/meddpicc-qualification-framework]]** — Each whitespace cell becoming Pipeline needs MEDDPICC qualification
+- **[[quick-context/meddpicc-qualification-framework]]** — Each whitespace cell becoming Pipeline needs [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] qualification
 - **Total Addressable Market (TAM)** — Whitespace map shows account-level TAM; sum across accounts = expansion TAM
 - **Land-and-Expand** — The go-to-market strategy that whitespace mapping operationalizes
 

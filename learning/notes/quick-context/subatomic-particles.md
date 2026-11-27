@@ -7,7 +7,7 @@ created: 2026-02-14
 
 > **Related:** [[quick-context/atoms-molecules-polymers-basics]] | [[quick-context/covalent-bonds]] | [[quick-context/electric-current]] | [[quick-context/doped-silicon]]
 
-> **TL;DR:** Atoms are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
+> **TL;DR:** [[learning/notes/quick-context/atoms-molecules-polymers-basics|Atoms]] are made of protons (positive, in nucleus), neutrons (neutral, in nucleus), and electrons (negative, orbiting)—protons and neutrons are themselves made of quarks bound by the strong force, while electrons are fundamental particles; the number of protons defines what element you have, and electron behavior explains all of chemistry.
 
 ## The Core Problem
 
@@ -21,7 +21,7 @@ Everything around you—your body, your computer, the air you breathe—is made 
 | **Neutron** | A neutral particle in the nucleus; adds mass without changing element identity. Same mass as proton. Different neutron counts create isotopes (same element, different mass). |
 | **Electron** | A negatively charged particle that orbits the nucleus; participates in [[quick-context/covalent-bonds|chemical bonding]] and [[quick-context/electric-current|electrical conduction]]. Mass: ~9.1 × 10⁻³¹ kg (~1/1836 of a proton). Charge: -1 elementary charge. |
 | **Quark** | A fundamental particle that makes up protons and neutrons. Two types matter here: up quarks (+2/3 charge) and down quarks (-1/3 charge). Proton = 2 up + 1 down; neutron = 1 up + 2 down. |
-| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than electromagnetism but only works at nuclear distances (~10⁻¹⁵ m). |
+| **Strong Force** | The force that binds quarks into protons/neutrons and binds protons/neutrons into nuclei. ~100× stronger than [[learning/notes/quick-context/electromagnetism|electromagnetism]] but only works at nuclear distances (~10⁻¹⁵ m). |
 
 <details>
 <summary><strong>How It Works</strong></summary>
@@ -537,7 +537,7 @@ SODIUM IN WATER — A Subatomic Explanation
     The energy required to remove that electron matters enormously.
 ```
 
-**The one thing most outsiders get wrong about this is...** thinking electrons orbit the nucleus like planets orbit the sun. They don't. Electrons exist as probability clouds—the electron is statistically more likely to be found in certain regions, but it doesn't trace a definite path. This matters because it explains why atoms can bond (electron clouds overlap), why quantum tunneling works (electrons can "teleport" through barriers), and why semiconductor physics requires quantum mechanics. For basic chemistry, the planetary model is a useful lie. For understanding modern electronics at a fundamental level, you need the quantum picture.
+**The one thing most outsiders get wrong about this is...** thinking electrons orbit the nucleus like planets orbit the sun. They don't. Electrons exist as probability clouds—the electron is statistically more likely to be found in certain regions, but it doesn't trace a definite path. This matters because it explains why atoms can bond (electron clouds overlap), why quantum tunneling works (electrons can "teleport" through barriers), and why [[learning/notes/quick-context/semiconductor-fabrication|semiconductor]] physics requires quantum mechanics. For basic chemistry, the planetary model is a useful lie. For understanding modern electronics at a fundamental level, you need the quantum picture.
 
 </details>
 
@@ -552,9 +552,9 @@ SODIUM IN WATER — A Subatomic Explanation
 
 - **[[quick-context/electric-current]]** — Current is flowing electrons. Understanding that electrons are tiny, negatively charged particles explains why conductors work (loose outer electrons) and insulators don't (tightly held electrons).
 
-- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from cathode to ions in solution, enabling chemical transformations.
+- **[[quick-context/electrolysis]]** — Using electricity to force electron transfer that wouldn't happen spontaneously. Electrons move from [[learning/notes/micro-context/cathode|cathode]] to ions in solution, enabling chemical transformations.
 
-- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The electrode potential differences come from how strongly different atoms hold their electrons.
+- **[[quick-context/galvanic-cells-batteries]]** — Batteries harvest electron flow from spontaneous chemical reactions. The [[learning/notes/quick-context/electrodes|electrode]] potential differences come from how strongly different atoms hold their electrons.
 
 - **Radioactivity and Nuclear Physics** — When the nucleus is unstable (too many or too few neutrons), it decays by emitting particles. Alpha decay, beta decay, and gamma radiation all involve subatomic particle transformations.
 

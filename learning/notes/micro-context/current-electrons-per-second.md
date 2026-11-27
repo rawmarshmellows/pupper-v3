@@ -12,7 +12,7 @@ updated: 2026-03-27
 
 ## How It Works
 
-- An electric field (from a voltage source) pushes free electrons through the conductor in a coordinated drift.
+- An electric field (from a [[learning/notes/quick-context/voltage|voltage]] source) pushes free electrons through the conductor in a coordinated drift.
 - At any cross-section of the wire, the number of electrons passing per second determines the current in amperes.
 - One ampere equals one coulomb (6.24 × 10¹⁸ electrons) flowing past that point every second.
 

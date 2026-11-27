@@ -5,7 +5,7 @@ created: 2026-01-21
 
 > **Related:** [[quick-context/covalent-bonds]] | [[quick-context/hydrogen-bonds-beginners]] | [[quick-context/van-der-waals-forces]] | [[quick-context/dipole-dipole-interactions]] | [[quick-context/pi-pi-stacking-aromatic-interactions]] | [[quick-context/polymer-chemical-bonds]]
 
-> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold molecules together, down to weak van der Waals forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
+> **TL;DR:** All material properties (melting point, strength, flexibility) come from a spectrum of bond strengths—from strong covalent bonds (~350 kJ/mol) that hold [[learning/notes/quick-context/atoms-molecules-polymers-basics|molecules]] together, down to weak [[learning/notes/quick-context/van-der-waals-forces|van der Waals]] forces (~2 kJ/mol) between molecules; heating overcomes intermolecular forces (melting) without breaking intramolecular bonds (decomposition).
 
 # Chemical Bonds: The Full Spectrum
 
@@ -17,7 +17,7 @@ Every material property you care about—melting point, strength, flexibility, w
 
 | Term | Definition |
 |------|------------|
-| **Intermolecular force** | Any attraction *between* molecules—van der Waals, dipole-dipole, hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
+| **Intermolecular force** | Any attraction *between* molecules—van der Waals, [[learning/notes/quick-context/dipole-dipole-interactions|dipole-dipole]], hydrogen bonds—these determine melting/boiling points, solubility, and material flexibility. |
 | **Intramolecular bond** | The [[quick-context/covalent-bonds\|covalent bonds]] holding atoms together *within* a molecule—breaking these means chemical decomposition, not melting. |
 | **Electronegativity** | An atom's "greed" for electrons—oxygen and fluorine are greedy (high EN), carbon and hydrogen share more equally—determines bond polarity. |
 | **Partial charge (δ+/δ-)** | When electrons aren't shared equally, one atom becomes slightly positive, the other slightly negative—the basis for dipole-dipole and hydrogen bonding. |
@@ -98,7 +98,7 @@ The most important distinction practitioners make is between **intramolecular fo
 - **Melting** = overcoming intermolecular forces (molecules separate but stay intact)
 - **Decomposition** = breaking intramolecular bonds (molecules destroyed)
 
-When you heat PLA in your 3D printer, you're overcoming the weak forces *between* polymer chains so they slide past each other. The strong covalent bonds *within* each chain never break—that's why you can melt and re-solidify thermoplastics repeatedly. Heat too much (>300°C) and you start breaking covalent bonds—now you're burning the plastic, not melting it. The spectrum debate centers on where to draw lines: Is a hydrogen bond "just" a strong dipole-dipole interaction, or is it fundamentally different? Are ionic bonds really "bonds" or just electrostatic attraction? Does π-π stacking belong with van der Waals or deserve its own category? These aren't just academic questions—they determine how you model materials and predict behavior.
+When you heat PLA in your 3D printer, you're overcoming the weak forces *between* polymer chains so they slide past each other. The strong covalent bonds *within* each chain never break—that's why you can melt and re-solidify thermoplastics repeatedly. Heat too much (>300°C) and you start breaking covalent bonds—now you're burning the plastic, not melting it. The spectrum debate centers on where to draw lines: Is a [[learning/notes/quick-context/hydrogen-bonds-beginners|hydrogen bond]] "just" a strong dipole-dipole interaction, or is it fundamentally different? Are ionic bonds really "bonds" or just electrostatic attraction? Does π-π stacking belong with van der Waals or deserve its own category? These aren't just academic questions—they determine how you model materials and predict behavior.
 
 </details>
 
@@ -348,14 +348,14 @@ EXAMPLE 3: Where does π-π stacking fit?
 
 - **[[small-context/glass-vs-plastic-uv-degradation]]** — Why sunlight destroys plastic but not glass: UV photon energy (3.1–4.2 eV) exceeds C–C bond energy (3.59 eV) but falls short of Si–O (4.69 eV), triggering a radical chain reaction in polymers.
 
-- **[[quick-context/biology-fundamentals]]** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
+- **Biology Fundamentals** — The full bond spectrum operates in biology: covalent bonds form molecular backbones, hydrogen bonds stabilize DNA and protein structures, van der Waals forces enable molecular recognition.
 
 </details>
 
 <details>
 <summary><strong>Test Your Understanding</strong></summary>
 
-**Q1:** You're heating PLA filament in your 3D printer. Which bonds are you breaking—covalent or intermolecular? What would happen if you broke the other type?
+**Q1:** You're heating [[learning/notes/quick-context/3d-printing-filament-types|PLA filament]] in your 3D printer. Which bonds are you breaking—covalent or intermolecular? What would happen if you broke the other type?
 <details>
 <summary>Answer</summary>
 You're breaking **intermolecular** forces (hydrogen bonds, van der Waals) between polymer chains, allowing them to slide past each other and flow. The covalent bonds within each PLA chain remain intact. If you broke the covalent bonds, you'd be decomposing the polymer—breaking the chain into smaller pieces, releasing gases, and turning your filament into char. This happens around 300°C+ for PLA, which is why you print at ~200°C. See: The Key Tension

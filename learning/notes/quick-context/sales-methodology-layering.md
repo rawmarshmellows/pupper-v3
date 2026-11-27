@@ -5,13 +5,13 @@ created: 2026-02-10
 
 # Sales Methodology Layering
 
-> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | [[quick-context/e2e-sales-process-skand-80-20]]
+> **Related:** [[quick-context/meddpicc-qualification-framework]] | [[quick-context/challenger-sale-methodology]] | [[quick-context/miller-heiman-strategic-selling-lamp]] | [[quick-context/sandler-kare-segmentation]] | [[quick-context/mcdonald-kam-model]] | E2E Sales Process Skand 80 20
 
 > **TL;DR:** No single sales methodology covers the entire account management lifecycle—the most effective organizations layer three types: a qualification framework (deal viability), a selling methodology (how to engage), and an account planning framework (long-term strategy), combining strengths while avoiding redundancy.
 
 ## The Core Problem
 
-Sales leaders often pick one methodology and expect it to solve all problems. But MEDDPICC doesn't teach you how to sell, Challenger doesn't tell you who to sell to, and LAMP doesn't help you qualify deals. Using just one framework leaves gaps; using too many creates overhead and confusion. Without intentional layering, teams either under-process (missing deals they should win) or over-process (bureaucracy that slows momentum).
+Sales leaders often pick one methodology and expect it to solve all problems. But [[learning/notes/quick-context/meddpicc-qualification-framework|MEDDPICC]] doesn't teach you how to sell, Challenger doesn't tell you who to sell to, and LAMP doesn't help you qualify deals. Using just one framework leaves gaps; using too many creates overhead and confusion. Without intentional layering, teams either under-process (missing deals they should win) or over-process (bureaucracy that slows momentum).
 
 ## 5 Essential Terms
 

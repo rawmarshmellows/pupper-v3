@@ -8,13 +8,13 @@ updated: 2026-03-27
 
 > **See also:** [[quick-context/electrodes]]
 
-**Definition:** The terminal where electrons flow IN — regardless of context. In [[quick-context/electrolysis|electrolysis]], it's the negative electrode where reduction (electron gain) occurs. In a [[quick-context/diode|diode]], it's the bar side of the symbol, marked K — where conventional current exits.
+**Definition:** The terminal where electrons flow IN — regardless of context. In [[quick-context/electrolysis|electrolysis]], it's the negative [[learning/notes/quick-context/electrodes|electrode]] where reduction (electron gain) occurs. In a [[quick-context/diode|diode]], it's the bar side of the symbol, marked K — where conventional current exits.
 
 ## How It Works
 
 - Electrons arrive at the cathode from the external circuit and are consumed by reduction reactions (species gain electrons here).
-- In electrolysis, the power supply forces electrons onto the cathode, making it the negative terminal where cations are reduced.
-- In a diode, conventional current exits through the cathode (marked K or bar) — electron flow enters.
+- In [[learning/notes/quick-context/electrolysis|electrolysis]], the power supply forces electrons onto the cathode, making it the negative terminal where [[learning/notes/quick-context/cations-and-reduction|cations]] are reduced.
+- In a [[learning/notes/quick-context/diode|diode]], conventional current exits through the cathode (marked K or bar) — electron flow enters.
 
 ```
   CHEMISTRY (electrolysis):         ELECTRONICS (diode):
